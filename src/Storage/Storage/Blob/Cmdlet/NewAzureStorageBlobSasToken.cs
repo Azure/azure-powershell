@@ -281,6 +281,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="blob">CloudBlob object</param>
         /// <param name="accessPolicy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The existing policy identifier.</param>
+        /// <param name="protocol"></param>
+        /// <param name="iPAddressOrRange"></param>
+        /// <param name="generateUserDelegationSas"></param>
         /// <returns></returns>
         private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier, SharedAccessProtocol? protocol, IPAddressOrRange iPAddressOrRange, bool generateUserDelegationSas)
         {
@@ -299,7 +302,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Update the access policy
         /// </summary>
-        /// <param name="policy">Access policy object</param>
+        /// <param name="accessPolicy">Access policy object</param>
         /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
         private void SetupAccessPolicy(SharedAccessBlobPolicy accessPolicy, bool shouldSetExpiryTime)
         {

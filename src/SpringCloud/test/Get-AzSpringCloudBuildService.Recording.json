@@ -1,0 +1,45 @@
+{
+  "Get-AzSpringCloudBuildService+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-f7lz2n/buildServices/default?api-version=2022-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-f7lz2n/buildServices/default?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "5470fc31-3ab5-4907-98eb-2e7da9b8f4ba" ],
+        "CommandName": [ "Get-AzSpringCloudBuildService" ],
+        "FullCommandName": [ "Get-AzSpringCloudBuildService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "5470fc31-3ab5-4907-98eb-2e7da9b8f4ba" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "9719f70b-a3bd-41a2-a784-fde100534948" ],
+        "x-ms-correlation-request-id": [ "9719f70b-a3bd-41a2-a784-fde100534948" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T060113Z:9719f70b-a3bd-41a2-a784-fde100534948" ],
+        "Date": [ "Fri, 29 Jul 2022 06:01:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "357" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppPlatform/Spring/buildServices\",\"properties\":{\"kPackVersion\":\"0.5.2\",\"provisioningState\":\"Succeeded\",\"resourceRequests\":{\"cpu\":null,\"memory\":null}},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-f7lz2n/buildServices/default\",\"name\":\"default\"}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -26,7 +26,7 @@ Creates a  Confidential Ledger with the specified ledger parameters.
 
 ### Example 1: Create a new Confidential Ledger
 ```powershell
-PS C:\> New-AzConfidentialLedger `
+New-AzConfidentialLedger `
   -Name test-ledger `
   -ResourceGroupName rg-000 `
   -SubscriptionId 00000000-0000-0000-0000-000000000000 `
@@ -44,7 +44,9 @@ PS C:\> New-AzConfidentialLedger `
   -LedgerType Public `
   -Location eastus `
   -Tag @{Location="additional properties 0"}
+```
 
+```output
 Location Name
 eastus   test-ledger
 ```
@@ -53,16 +55,16 @@ Creates a new Confidential Ledger.
 
 ### Example 2: Create Using Security Principal Objects
 ```powershell
-PS C:\> $aadSecurityPrincipal = New-AzConfidentialLedgerAadBasedSecurityPrincipalObject `
+$aadSecurityPrincipal = New-AzConfidentialLedgerAadBasedSecurityPrincipalObject `
   -LedgerRoleName "Administrator" `
   -PrincipalId "34621747-6fc8-4771-a2eb-72f31c461f2e" `
   -TenantId "bce123b9-2b7b-4975-8360-5ca0b9b1cd08"
 
-PS C:\> $certSecurityPrincipal = New-AzConfidentialLedgerCertBasedSecurityPrincipalObject `
+$certSecurityPrincipal = New-AzConfidentialLedgerCertBasedSecurityPrincipalObject `
   -Cert "-----BEGIN CERTIFICATE-----********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************-----END CERTIFICATE-----" `
   -LedgerRoleName "Reader"
 
-PS C:\> New-AzConfidentialLedger `
+New-AzConfidentialLedger `
   -Name test-ledger `
   -ResourceGroupName rg-000 `
   -SubscriptionId 00000000-0000-0000-0000-000000000000 `
@@ -71,7 +73,9 @@ PS C:\> New-AzConfidentialLedger `
   -LedgerType Public `
   -Location eastus `
   -Tag @{Location="additional properties 0"}
+```
 
+```output
 Location Name
 eastus   test-ledger
 ```
@@ -85,7 +89,7 @@ Array of all AAD based Security Principals.
 To construct, see NOTES section for AADBASEDSECURITYPRINCIPAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IAadBasedSecurityPrincipal[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IAadBasedSecurityPrincipal[]
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +120,7 @@ Array of all cert based Security Principals.
 To construct, see NOTES section for CERTBASEDSECURITYPRINCIPAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.ICertBasedSecurityPrincipal[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ICertBasedSecurityPrincipal[]
 Parameter Sets: (All)
 Aliases:
 
@@ -287,7 +291,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger
+### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger
 
 ## NOTES
 

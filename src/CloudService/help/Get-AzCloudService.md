@@ -55,14 +55,11 @@ This command gets all cloud services in resource group named ContosOrg
 
 ### Example 2: Get cloud service
 ```powershell
-Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
-
-ResourceGroupName Name              Location    ProvisioningState
------------------ ----              --------    -----------------
-ContosOrg         ContosoCS         eastus2euap Succeeded
-
 $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 $cloudService | Format-List
+```
+
+```output
 ResourceGroupName : ContosOrg
 Configuration     : xxxxxxxx
 ConfigurationUrl  :
@@ -82,7 +79,6 @@ Tag               : {
 Type              : Microsoft.Compute/cloudServices
 UniqueId          : xxxxxxxx
 UpgradeMode       : Auto
-
 ```
 
 This command gets cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -186,7 +182,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
+INPUTOBJECT `<ICloudServiceIdentity>`: Identity Parameter
   - `[CloudServiceName <String>]`: 
   - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path

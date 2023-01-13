@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// Creates a new instance of <see cref="NetworkConfiguration" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="NetworkConfiguration" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfiguration FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -98,13 +100,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv4Interface = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv4NetworkInterface[]) content.GetValueForProperty("Ipv4Interface",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv4Interface, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv4NetworkInterface>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Ipv4NetworkInterfaceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv6Interface = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv6NetworkInterface[]) content.GetValueForProperty("Ipv6Interface",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv6Interface, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv6NetworkInterface>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Ipv6NetworkInterfaceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DefaultIpv4Gateway = (string[]) content.GetValueForProperty("DefaultIpv4Gateway",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DefaultIpv4Gateway, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).MacAddress = (string[]) content.GetValueForProperty("MacAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).MacAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsName = (string[]) content.GetValueForProperty("DnsName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsQuestion = (string[]) content.GetValueForProperty("DnsQuestion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsQuestion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsCanonicalName = (string[]) content.GetValueForProperty("DnsCanonicalName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsCanonicalName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("Ipv4Interface"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv4Interface = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv4NetworkInterface[]) content.GetValueForProperty("Ipv4Interface",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv4Interface, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv4NetworkInterface>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Ipv4NetworkInterfaceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Ipv6Interface"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv6Interface = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv6NetworkInterface[]) content.GetValueForProperty("Ipv6Interface",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv6Interface, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv6NetworkInterface>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Ipv6NetworkInterfaceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DefaultIpv4Gateway"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DefaultIpv4Gateway = (string[]) content.GetValueForProperty("DefaultIpv4Gateway",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DefaultIpv4Gateway, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("MacAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).MacAddress = (string[]) content.GetValueForProperty("MacAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).MacAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DnsName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsName = (string[]) content.GetValueForProperty("DnsName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DnsQuestion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsQuestion = (string[]) content.GetValueForProperty("DnsQuestion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsQuestion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DnsCanonicalName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsCanonicalName = (string[]) content.GetValueForProperty("DnsCanonicalName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsCanonicalName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,13 +145,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv4Interface = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv4NetworkInterface[]) content.GetValueForProperty("Ipv4Interface",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv4Interface, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv4NetworkInterface>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Ipv4NetworkInterfaceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv6Interface = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv6NetworkInterface[]) content.GetValueForProperty("Ipv6Interface",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv6Interface, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv6NetworkInterface>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Ipv6NetworkInterfaceTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DefaultIpv4Gateway = (string[]) content.GetValueForProperty("DefaultIpv4Gateway",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DefaultIpv4Gateway, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).MacAddress = (string[]) content.GetValueForProperty("MacAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).MacAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsName = (string[]) content.GetValueForProperty("DnsName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsQuestion = (string[]) content.GetValueForProperty("DnsQuestion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsQuestion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsCanonicalName = (string[]) content.GetValueForProperty("DnsCanonicalName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsCanonicalName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("Ipv4Interface"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv4Interface = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv4NetworkInterface[]) content.GetValueForProperty("Ipv4Interface",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv4Interface, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv4NetworkInterface>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Ipv4NetworkInterfaceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Ipv6Interface"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv6Interface = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv6NetworkInterface[]) content.GetValueForProperty("Ipv6Interface",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).Ipv6Interface, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IIpv6NetworkInterface>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.Ipv6NetworkInterfaceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DefaultIpv4Gateway"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DefaultIpv4Gateway = (string[]) content.GetValueForProperty("DefaultIpv4Gateway",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DefaultIpv4Gateway, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("MacAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).MacAddress = (string[]) content.GetValueForProperty("MacAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).MacAddress, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DnsName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsName = (string[]) content.GetValueForProperty("DnsName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DnsQuestion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsQuestion = (string[]) content.GetValueForProperty("DnsQuestion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsQuestion, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DnsCanonicalName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsCanonicalName = (string[]) content.GetValueForProperty("DnsCanonicalName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.INetworkConfigurationInternal)this).DnsCanonicalName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 

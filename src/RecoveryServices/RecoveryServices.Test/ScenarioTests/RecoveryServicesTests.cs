@@ -12,29 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {
-    public class RecoveryServicesTests : RMTestBase
+    public class RecoveryServicesTests : RecoveryServicesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public RecoveryServicesTests(Xunit.Abstractions.ITestOutputHelper output)
+        public RecoveryServicesTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecoveryServicesVaultCRUD()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RecoveryServicesVaultCRUD");
+            TestRunner.RunTestScript("Test-RecoveryServicesVaultCRUD");
         }
 
 #if NETSTANDARD
@@ -45,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRSVaultSettingsFile()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetRSVaultSettingsFile");
+            TestRunner.RunTestScript("Test-GetRSVaultSettingsFile");
         }
     }
 }

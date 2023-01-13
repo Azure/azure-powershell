@@ -13,7 +13,7 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.ResourceGroupName = 'test-az-powershell-rg-' + (RandomString -allChars $false -len 6)
+    $env.ResourceGroupName = 'az-sdk-test-powershell-rg-' + (RandomString -allChars $false -len 6)
     $env.Location = 'eastus2euap'
     $env.MachineName = (RandomString -allChars $false -len 6)
     $env.PrivateLinkScopeName = 'scope-' + (RandomString -allChars $false -len 6)

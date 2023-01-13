@@ -45,7 +45,7 @@ $policyName = "afspolicy1"
 
  function Enable-Protection(
 	$vault, 
-	$fileShareName,
+	$fileShareFriendlyName,
 	$saName)
 {
 	$container = Get-AzRecoveryServicesBackupContainer `
@@ -62,7 +62,7 @@ $policyName = "afspolicy1"
 		Enable-AzRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
 			-Policy $policy `
-			-Name $fileShareName `
+			-Name $fileShareFriendlyName `
 			-storageAccountName $saName | Out-Null
 
  		$container = Get-AzRecoveryServicesBackupContainer `
@@ -75,7 +75,7 @@ $policyName = "afspolicy1"
 		-VaultId $vault.ID `
 		-Container $container `
 		-WorkloadType AzureFiles `
-		-Name $fileShareName
+		-Name $fileShareFriendlyName
 
 	if ($item -eq $null)
 	{
@@ -86,14 +86,14 @@ $policyName = "afspolicy1"
 		Enable-AzRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
 			-Policy $policy `
-			-Name $fileShareName `
+			-Name $fileShareFriendlyName `
 			-storageAccountName $saName | Out-Null
 
  		$item = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureFiles `
-			-Name $fileShareName
+			-Name $fileShareFriendlyName
 	}
 
  	return $item

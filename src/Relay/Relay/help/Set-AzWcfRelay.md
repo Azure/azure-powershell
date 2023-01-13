@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/powershell/module/az.relay/set-azwcfrelay
+online version: https://learn.microsoft.com/powershell/module/az.relay/set-azwcfrelay
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ The Set-AzWcfRelay cmdlet updates the description for the WcfRelay in the specif
 
 ### Example 1 - InputObject
 ```powershell
-$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay
+$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay
 $getWcfRelay.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store desc
 riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."
 Set-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -InputObject $getWcfRelay

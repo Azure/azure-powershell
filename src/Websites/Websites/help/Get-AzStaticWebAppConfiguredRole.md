@@ -1,7 +1,7 @@
 ---
 external help file: Az.Websites-help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappconfiguredrole
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappconfiguredrole
 schema: 2.0.0
 ---
 

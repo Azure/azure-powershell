@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azmanagementgroup/
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azmanagementgroup/
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ New-AzManagementGroup [-GroupName] <String> [-DisplayName <String>] [-DefaultPro
 ```
 
 ## DESCRIPTION
-The **New-AzManagementGroup** cmdlet creates a management group.
+The **New-AzManagementGroup** cmdlet creates a management group with name **GroupName**. The **DisplayName** and **ParentId** can also be set when creating a new Management Group.
 
 ## EXAMPLES
 

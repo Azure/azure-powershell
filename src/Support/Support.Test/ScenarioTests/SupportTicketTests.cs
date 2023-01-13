@@ -12,141 +12,134 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Support.Test.ScenarioTests
 {
-    public class SupportTicketTests
+    public class SupportTicketTests : SupportTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public SupportTicketTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SupportTicketTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportTicketByNameParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportTicketByNameParameterSet");
+            TestRunner.RunTestScript("Get-AzSupportTicketByNameParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportTicketFilterByStatus()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportTicketFilterByStatus");
+            TestRunner.RunTestScript("Get-AzSupportTicketFilterByStatus");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportTicketPagingParameters()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportTicketPagingParameters");
+            TestRunner.RunTestScript("Get-AzSupportTicketPagingParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzSupportTicketWithContactObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSupportTicketWithContactObject");
+            TestRunner.RunTestScript("New-AzSupportTicketWithContactObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzSupportTicketQuotaWithContactObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSupportTicketQuotaWithContactObject");
+            TestRunner.RunTestScript("New-AzSupportTicketQuotaWithContactObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzSupportTicketTechnicalWithContactObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSupportTicketTechnicalWithContactObject");
+            TestRunner.RunTestScript("New-AzSupportTicketTechnicalWithContactObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzSupportTicketWithContactDetail()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSupportTicketWithContactDetail");
+            TestRunner.RunTestScript("New-AzSupportTicketWithContactDetail");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzSupportTicketQuotaWithContactDetail()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSupportTicketQuotaWithContactDetail");
+            TestRunner.RunTestScript("New-AzSupportTicketQuotaWithContactDetail");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzSupportTicketTechnicalWithContactDetail()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, string.Format("New-AzSupportTicketTechnicalWithContactDetail"));
+            TestRunner.RunTestScript(string.Format("New-AzSupportTicketTechnicalWithContactDetail"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAzSupportTicketParentObjectParameterSetWithContactObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketParentObjectParameterSetWithContactObject");
+            TestRunner.RunTestScript("Update-AzSupportTicketParentObjectParameterSetWithContactObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAzSupportTicketNameParameterSetWithContactObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketNameParameterSetWithContactObject");
+            TestRunner.RunTestScript("Update-AzSupportTicketNameParameterSetWithContactObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAzSupportTicketParentObjectParameterSetWithContactDetail()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketParentObjectParameterSetWithContactDetail");
+            TestRunner.RunTestScript("Update-AzSupportTicketParentObjectParameterSetWithContactDetail");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAzSupportTicketNameParameterSetWithContactDetail()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketNameParameterSetWithContactDetail");
+            TestRunner.RunTestScript("Update-AzSupportTicketNameParameterSetWithContactDetail");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAzSupportTicketParentObjectParameterSetUpdateSeverity()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketParentObjectParameterSetUpdateSeverity");
+            TestRunner.RunTestScript("Update-AzSupportTicketParentObjectParameterSetUpdateSeverity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAzSupportTicketNameParameterSetUpdateSeverity()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketNameParameterSetUpdateSeverity");
+            TestRunner.RunTestScript("Update-AzSupportTicketNameParameterSetUpdateSeverity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAzSupportTicketParentObjectParameterSetUpdateStatus()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketParentObjectParameterSetUpdateStatus");
+            TestRunner.RunTestScript("Update-AzSupportTicketParentObjectParameterSetUpdateStatus");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAzSupportTicketNameParameterSetUpdateStatus()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSupportTicketNameParameterSetUpdateStatus");
+            TestRunner.RunTestScript("Update-AzSupportTicketNameParameterSetUpdateStatus");
         }
     }
 }

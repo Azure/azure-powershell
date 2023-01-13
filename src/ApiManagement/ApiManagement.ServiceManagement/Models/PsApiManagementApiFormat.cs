@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         Swagger = 2,
         Wsdl = 3,
         OpenApi = 4,
-        OpenApiJson = 5
+        OpenApiJson = 5,
+        GraphQL = 6,
     }
 }

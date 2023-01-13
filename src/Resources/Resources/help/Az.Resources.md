@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Resources
 Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
-Download Help Link: https://docs.microsoft.com/powershell/module/az.resources
+Download Help Link: https://learn.microsoft.com/powershell/module/az.resources
 Help Version: 5.5.2.0
 Locale: en-US
 ---
@@ -26,6 +26,9 @@ Exports a Template Spec to the local filesystem
 ### [Get-AzADAppCredential](Get-AzADAppCredential.md)
 Lists key credentials and password credentials for an application.
 
+### [Get-AzADAppFederatedCredential](Get-AzADAppFederatedCredential.md)
+Get federatedIdentityCredentials by Id from applications.
+
 ### [Get-AzADApplication](Get-AzADApplication.md)
 Lists entities from applications or get entity from applications by key
 
@@ -37,6 +40,9 @@ Lists entities from groups or get entity from groups by key
 
 ### [Get-AzADGroupMember](Get-AzADGroupMember.md)
 Lists members from group.
+
+### [Get-AzADOrganization](Get-AzADOrganization.md)
+Retrieve a list of organization objects.
 
 ### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
 Lists entities from service principals or get entity from service principals by key
@@ -92,6 +98,18 @@ Get deployment operation for management group deployment
 
 ### [Get-AzManagementGroupDeploymentWhatIfResult](Get-AzManagementGroupDeploymentWhatIfResult.md)
 Gets a template What-If result for a deployment at management group scope. 
+
+### [Get-AzManagementGroupEntity](Get-AzManagementGroupEntity.md)
+Lists all Entities under the current Tenant
+
+### [Get-AzManagementGroupHierarchySetting](Get-AzManagementGroupHierarchySetting.md)
+Gets the Hierarchy Settings under the current tenant
+
+### [Get-AzManagementGroupNameAvailability](Get-AzManagementGroupNameAvailability.md)
+Checks if the Management Group name is available in the Tenant and a valid name.
+
+### [Get-AzManagementGroupSubscription](Get-AzManagementGroupSubscription.md)
+Gets the details of Subscription(s) under a Management Group.
 
 ### [Get-AzPolicyAlias](Get-AzPolicyAlias.md)
 Get-AzPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
@@ -197,6 +215,9 @@ Gets predefined Azure tags | Gets the entire set of tags on a resource or subscr
 ### [Get-AzTemplateSpec](Get-AzTemplateSpec.md)
 Gets or lists Template Specs
 
+### [Get-AzTenantBackfillStatus](Get-AzTenantBackfillStatus.md)
+Get the current Tenant Backfill Subscription Status
+
 ### [Get-AzTenantDeployment](Get-AzTenantDeployment.md)
 Get deployment at tenant scope
 
@@ -215,6 +236,9 @@ Moves a resource to a different resource group or subscription.
 ### [New-AzADAppCredential](New-AzADAppCredential.md)
 Creates key credentials or password credentials for an application.
 
+### [New-AzADAppFederatedCredential](New-AzADAppFederatedCredential.md)
+Create federatedIdentityCredential for applications.
+
 ### [New-AzADApplication](New-AzADApplication.md)
 Adds new entity to applications
 
@@ -231,7 +255,7 @@ Creates key credentials or password credentials for an service principal.
 Adds new entity to users
 
 ### [New-AzDeployment](New-AzDeployment.md)
-Create a deployment
+Create a deployment at the current subscription scope.
 
 ### [New-AzManagedApplication](New-AzManagedApplication.md)
 Creates an Azure managed application.
@@ -244,6 +268,9 @@ Creates a Management Group
 
 ### [New-AzManagementGroupDeployment](New-AzManagementGroupDeployment.md)
 Create a deployment at a management group
+
+### [New-AzManagementGroupHierarchySetting](New-AzManagementGroupHierarchySetting.md)
+Creates Hierarchy Settings under the current tenant
 
 ### [New-AzManagementGroupSubscription](New-AzManagementGroupSubscription.md)
 Adds a Subscription to a Management Group.
@@ -319,7 +346,7 @@ Create a deployment at tenant scope
 Publishes a Bicep file to a registry.
 
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
-Registers an Azure provider feature in your account.
+Registers an Azure provider feature in your current subscription context.
 
 ### [Register-AzProviderPreviewFeature](Register-AzProviderPreviewFeature.md)
 Creates a feature registration in your account.
@@ -329,6 +356,9 @@ Registers a resource provider.
 
 ### [Remove-AzADAppCredential](Remove-AzADAppCredential.md)
 Removes key credentials or password credentials for an application.
+
+### [Remove-AzADAppFederatedCredential](Remove-AzADAppFederatedCredential.md)
+Delete navigation property federatedIdentityCredentials for applications
 
 ### [Remove-AzADApplication](Remove-AzADApplication.md)
 Deletes entity from applications
@@ -372,6 +402,9 @@ Removes a Management Group
 
 ### [Remove-AzManagementGroupDeployment](Remove-AzManagementGroupDeployment.md)
 Removes a deployment at a management group and any associated operations
+
+### [Remove-AzManagementGroupHierarchySetting](Remove-AzManagementGroupHierarchySetting.md)
+Deletes all Hierarchy Settings under the current tenant
 
 ### [Remove-AzManagementGroupSubscription](Remove-AzManagementGroupSubscription.md)
 Removes a Subscription from a Management Group.
@@ -504,6 +537,9 @@ Finally, save the role definition using this command.
 ### [Set-AzTemplateSpec](Set-AzTemplateSpec.md)
 Modifies a Template Spec.
 
+### [Start-AzTenantBackfill](Start-AzTenantBackfill.md)
+Starts backfilling subscriptions for the current Tenant
+
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
 Cancel a running deployment
 
@@ -543,6 +579,9 @@ Removes a feature registration from your account.
 ### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a resource provider.
 
+### [Update-AzADAppFederatedCredential](Update-AzADAppFederatedCredential.md)
+Update the navigation property federatedIdentityCredentials in applications
+
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
 
@@ -557,6 +596,9 @@ Updates entity in users
 
 ### [Update-AzManagementGroup](Update-AzManagementGroup.md)
 Updates a Management Group
+
+### [Update-AzManagementGroupHierarchySetting](Update-AzManagementGroupHierarchySetting.md)
+Updates Hierarchy Settings under the current tenant
 
 ### [Update-AzRoleManagementPolicy](Update-AzRoleManagementPolicy.md)
 Update a role management policy

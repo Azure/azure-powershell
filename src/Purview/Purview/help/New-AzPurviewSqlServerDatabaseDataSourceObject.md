@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseDataSourceObject
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create an in-memory object for SqlServerDatabaseDataSource.
 
 ### Example 1: Create SQL Server Database data source object
 ```powershell
-PS C:\> New-AzPurviewSqlServerDatabaseDataSourceObject -Kind 'SqlServerDatabase' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint '12.13.14.12'
+New-AzPurviewSqlServerDatabaseDataSourceObject -Kind 'SqlServerDatabase' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint '12.13.14.12'
+```
 
+```output
 CollectionLastModifiedAt :
 CollectionReferenceName  : parv-brs-2
 CollectionType           : CollectionReference

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/powershell/module/az.mysql/restart-azmysqlflexibleserver
+online version: https://learn.microsoft.com/powershell/module/az.mysql/restart-azmysqlflexibleserver
 schema: 2.0.0
 ---
 
@@ -289,7 +289,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
@@ -302,7 +302,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
-PARAMETER <IServerRestartParameter>: Server restart parameters.
+`PARAMETER <IServerRestartParameter>`: Server restart parameters.
   - `[MaxFailoverSecond <Int32?>]`: The maximum allowed failover time in seconds.
   - `[RestartWithFailover <EnableStatusEnum?>]`: Whether or not failover to standby server when restarting a server with high availability enabled.
 

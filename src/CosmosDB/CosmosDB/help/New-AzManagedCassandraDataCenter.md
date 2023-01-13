@@ -38,12 +38,12 @@ The **New-AzManagedCassandraDataCenter** cmdlet creates a new managed Cassandra 
 ### Example 1
 ```powershell
 New-AzManagedCassandraDataCenter `
- -ResourceGroupName {resourceGroupName} `
- -ClusterName {clusterName} `
- -DataCenterName {dataCenterName} `
- -DelegatedSubnetId {resourceId} `
- -Location {location} `
- -NodeCount {N}
+ -ResourceGroupName "resourceGroupName" `
+ -ClusterName "clusterName" `
+ -DataCenterName "dataCenterName" `
+ -DelegatedSubnetId "resourceId" `
+ -Location "location" `
+ -NodeCount 3
 ```
 
 ## PARAMETERS

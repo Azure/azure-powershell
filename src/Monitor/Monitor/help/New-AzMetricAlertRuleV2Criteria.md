@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria
+online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ New-AzMetricAlertRuleV2Criteria [-WebTest] -WebTestId <String> -ApplicationInsig
 ```
 
 ## DESCRIPTION
-The **New-AzMetricAlertRuleV2Criteria** cmdlet creates a local metric criteria object to be used as an input [Add-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2) cmdlet which creates a new metric alert rule.
+The **New-AzMetricAlertRuleV2Criteria** cmdlet creates a local metric criteria object to be used as an input [Add-AzMetricAlertRuleV2](https://learn.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2) cmdlet which creates a new metric alert rule.
 
 ## EXAMPLES
 
@@ -62,7 +62,7 @@ This command creates a simple metric alert criteria that can be used in a metric
 ### Example 2: Create a dynamic metric alert criteria
 
 ```powershell
-New-AzMetricAlertRuleV2Criteria -Dynamic -MetricName "Percentage CPU" -MetricNameSpace "Microsoft.Compute/virtualMachines" -TimeAggregation Average -Operator GreaterThan -ThresholdSensitivity Medium -ViolationCount 2 -ExaminedAggregatedPointCount 4
+New-AzMetricAlertRuleV2Criteria -DynamicThreshold -MetricName "Percentage CPU" -MetricNameSpace "Microsoft.Compute/virtualMachines" -TimeAggregation Average -Operator GreaterThan -ThresholdSensitivity Medium -ViolationCount 2 -ExaminedAggregatedPointCount 4
 ```
 
 ```output

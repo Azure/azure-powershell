@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using System.Text.RegularExpressions;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     public class PsApiManagement
     {
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Id = apiServiceResource.Id;
             Name = apiServiceResource.Name;
             Location = apiServiceResource.Location;
-            Sku = ApiManagementClient.Mapper.Map<string, PsApiManagementSku>(apiServiceResource.Sku.Name);
+            Sku = ApiManagementClient.Mapper.Map<string, string>(apiServiceResource.Sku.Name);
             Capacity = apiServiceResource.Sku.Capacity;
             CreatedTimeUtc = apiServiceResource.CreatedAtUtc;
             PublisherEmail = apiServiceResource.PublisherEmail;
@@ -59,6 +60,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             PublicIPAddresses = apiServiceResource.PublicIPAddresses != null ? apiServiceResource.PublicIPAddresses.ToArray() : null;
             PrivateIPAddresses = apiServiceResource.PrivateIPAddresses != null ? apiServiceResource.PrivateIPAddresses.ToArray() : null;
             EnableClientCertificate = apiServiceResource.EnableClientCertificate;
+            PublicNetworkAccess = apiServiceResource.PublicNetworkAccess;
+            PublicIpAddressId = apiServiceResource.PublicIpAddressId;
+            PlatformVersion = apiServiceResource.PlatformVersion;
 
             VpnType = ApiManagementClient.Mapper.Map<string, PsApiManagementVpnType>(apiServiceResource.VirtualNetworkType);
 
@@ -144,6 +148,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Zone = apiServiceResource.Zones?.ToArray();
             MinimalControlPlaneApiVersion = apiServiceResource.ApiVersionConstraint?.MinApiVersion;
             DisableGateway = apiServiceResource.DisableGateway;
+            PrivateEndpointConnections = apiServiceResource.PrivateEndpointConnections;
         }
 
         public string[] PublicIPAddresses { get; private set; }
@@ -156,7 +161,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string Location { get; private set; }
 
-        public PsApiManagementSku Sku { get; set; }
+        [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
+        public string Sku { get; set; }
 
         public int Capacity { get; set; }
 
@@ -214,6 +220,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string MinimalControlPlaneApiVersion { get; set; }
 
+        public string PublicIpAddressId { get; set; }
+
+        //
+        // Summary:
+        //     Gets compute Platform Version running the service. Possible values include: 'undetermined',
+        //     'stv1', 'stv2', 'mtv1'
+        public string PlatformVersion { get; set; }
+
+        public string PublicNetworkAccess { get; set; }
+
+        //     Gets or sets list of Private Endpoint Connections configured for the Api Management Service .
+        public IList<RemotePrivateEndpointConnectionWrapper> PrivateEndpointConnections { get; set; }
+
         public string ResourceGroupName
         {
             get
@@ -239,11 +258,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public PsApiManagementRegion AddRegion(
             string location,
-            PsApiManagementSku sku = PsApiManagementSku.Developer,
+            string sku = SkuType.Developer,
             int capacity = 1,
             PsApiManagementVirtualNetwork virtualNetwork = null,
             string[] zone = null,
-            bool? disableGateway = null)
+            bool? disableGateway = null,
+            string publicIpAddressId = null)
         {
             if (location == null)
             {
@@ -262,7 +282,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 Capacity = capacity,
                 VirtualNetwork = virtualNetwork,
                 Zone = zone,
-                DisableGateway = disableGateway
+                DisableGateway = disableGateway,
+                PublicIpAddressId = publicIpAddressId
             };
 
             AdditionalRegions.Add(newRegion);
@@ -291,11 +312,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public void UpdateRegion(
             string location, 
-            PsApiManagementSku sku,
+            string sku,
             int capacity, 
             PsApiManagementVirtualNetwork virtualNetwork,
             string[] zone,
-            bool? disableGateway)
+            bool? disableGateway,
+            string publicIpAddressId)
         {
             if (location == null)
             {
@@ -305,12 +327,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             var regionToUpdate = AdditionalRegions.FirstOrDefault(r => location.Trim().Equals(r.Location, StringComparison.OrdinalIgnoreCase));
             if (regionToUpdate != null)
             {
-                // if this is additional region
+                // if this is additional region 
                 regionToUpdate.Sku = sku;
                 regionToUpdate.Capacity = capacity;
                 regionToUpdate.VirtualNetwork = virtualNetwork;
                 regionToUpdate.Zone = zone;
                 regionToUpdate.DisableGateway = disableGateway;
+                regionToUpdate.PublicIpAddressId = publicIpAddressId;
             }
             else if (location.Equals(Location))
             {
@@ -320,6 +343,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 VirtualNetwork = virtualNetwork;
                 Zone = zone;
                 DisableGateway = disableGateway;
+                PublicIpAddressId = publicIpAddressId;
             }
             else
             {

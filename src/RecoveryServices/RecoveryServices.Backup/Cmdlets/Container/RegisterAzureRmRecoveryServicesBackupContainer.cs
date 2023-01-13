@@ -88,7 +88,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                string containerName = Container != null ? Container.Name : ResourceId.Split('/')[8];
+                string containerName = Container != null ? Container.Name : ResourceId.Split('/')[8];                
+
                 ConfirmAction(
                     Force.IsPresent,
                     string.Format(Resources.RegisterContainerWarning, containerName),
@@ -116,10 +117,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                         psBackupProvider.RegisterContainer();
 
+                        string[] parseContainer = containerName.Split(';');
+                        string friendlyName = parseContainer[parseContainer.Length - 1];
+
                         // List containers
                         string backupManagementType = BackupManagementType.ToString();
                         ODataQuery<BMSContainerQueryObject> queryParams = new ODataQuery<BMSContainerQueryObject>(
-                        q => q.FriendlyName == containerName &&
+                        q => q.FriendlyName == friendlyName &&
                         q.BackupManagementType == backupManagementType);
 
                         var listResponse = ServiceClientAdapter.ListContainers(queryParams,

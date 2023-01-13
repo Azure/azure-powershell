@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azvpnserverconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvpnserverconfiguration
 schema: 2.0.0
 ---
 
@@ -19,8 +19,8 @@ New-AzVpnServerConfiguration -ResourceGroupName <String> -Name <String> -Locatio
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
  [-RadiusServerRootCertificateFilesList <String[]>] [-RadiusClientRootCertificateFilesList <String[]>]
  [-AadTenant <String>] [-AadAudience <String>] [-AadIssuer <String>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ConfigurationPolicyGroup <PSVpnServerConfigurationPolicyGroup[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,6 +125,21 @@ Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationPolicyGroup
+The list of VpnServerConfigurationPolicyGroups that this P2SVpnGateway needs to have.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroup[]
 Parameter Sets: (All)
 Aliases:
 

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseScanRulesetObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseScanRulesetObject
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create an in-memory object for AzureSqlDataWarehouseScanRuleset.
 
 ### Example 1: Create Azure SQL Data Warehouse custom scanruleset object
 ```powershell
-PS C:\> {{ Add code here }}
+New-AzPurviewAzureSqlDataWarehouseScanRulesetObject -Kind 'AzureSqlDataWarehouse' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+```
 
+```output
 CreatedAt                            :
 Description                          : desc
 ExcludedSystemClassification         : {MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER, MICROSOFT.SECURITY.COMMON_PASSWORDS}

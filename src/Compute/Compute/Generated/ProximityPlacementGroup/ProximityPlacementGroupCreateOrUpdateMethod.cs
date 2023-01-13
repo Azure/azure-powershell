@@ -51,6 +51,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         parameters.ProximityPlacementGroupType = this.ProximityPlacementGroupType;
                     }
+                    
+                    if (this.IsParameterBound(c => c.Zone))
+                    {
+                        parameters.Zones = this.Zone;
+                    }
+
+                    if (this.IsParameterBound(c => c.IntentVMSizeList))
+                    {
+                        parameters.Intent = new ProximityPlacementGroupPropertiesIntent(this.IntentVMSizeList);
+                    }
 
                     parameters.Location = this.Location;
                     parameters.Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null;
@@ -92,5 +102,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.",
+            ValueFromPipelineByPropertyName = true)]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies possible sizes of virtual machines that can be created in the proximity placement group.",
+            ValueFromPipelineByPropertyName = true)]
+        public string[] IntentVMSizeList { get; set; }
     }
 }

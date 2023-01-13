@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1MsiScanObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1MsiScanObject
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create an in-memory object for AdlsGen1MsiScan.
 
 ### Example 1: Create AdlsGen1 Msi scan object
 ```powershell
-PS C:\> New-AzPurviewAdlsGen1MsiScanObject -Kind 'AdlsGen1Msi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
+New-AzPurviewAdlsGen1MsiScanObject -Kind 'AdlsGen1Msi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

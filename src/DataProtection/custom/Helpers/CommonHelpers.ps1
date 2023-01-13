@@ -5,13 +5,13 @@ function GetDatasourceSetInfo
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
-		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDatasource]
+		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IDatasource]
 		$DatasourceInfo
 	)
 
 	process 
 	{
-		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.DatasourceSet]::new()
+		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.DatasourceSet]::new()
 		$DataSourceSetInfo.DatasourceType = $DatasourceInfo.Type
         $DataSourceSetInfo.ObjectType = "DatasourceSet"
         $splitResourceId = $DatasourceInfo.ResourceId.Split("/")
@@ -48,18 +48,21 @@ function GetDatasourceInfo
 
 	process
 	{
+
 		$manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.Datasource]::new()
+		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.Datasource]::new()
 		$DataSourceInfo.ObjectType = "Datasource"
         $DataSourceInfo.ResourceId = $ResourceId
         $DataSourceInfo.ResourceLocation = $ResourceLocation
         $DataSourceInfo.ResourceName = $ResourceId.Split("/")[-1]
         $DataSourceInfo.ResourceType = $manifest.resourceType
         $DataSourceInfo.ResourceUri = ""
+
         if($manifest.isProxyResource -eq $false)
         {
             $DataSourceInfo.ResourceUri = $ResourceId
         }
+
         $DataSourceInfo.Type = $manifest.datasourceType
 
 		return $DataSourceInfo

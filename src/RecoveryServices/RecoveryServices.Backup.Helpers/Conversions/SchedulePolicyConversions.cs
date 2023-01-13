@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     {
         #region ServiceClientToPSObject conversions
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert ps simple schedule policy from service response.
         /// </summary>
         public static SimpleSchedulePolicy GetPSSimpleSchedulePolicy(
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             psPolicy.ScheduleRunDays = HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(serviceClientPolicy.ScheduleRunDays);
 
             psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(typeof(ScheduleRunType), serviceClientPolicy.ScheduleRunFrequency.ToString());
-            psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.ScheduleRunTimes, timeZone);
+            psPolicy.ScheduleRunTimes = ParseDateTimesToLocal(serviceClientPolicy.ScheduleRunTimes, timeZone);
 
             if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return psPolicy;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert ps simple schedule policy from service response.
         /// </summary>
         public static SimpleSchedulePolicyV2 GetPSSimpleSchedulePolicyV2(
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (serviceClientPolicy.WeeklySchedule != null)
                 {
                     psPolicy.WeeklySchedule.ScheduleRunDays = HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(serviceClientPolicy.WeeklySchedule.ScheduleRunDays);                    
-                    psPolicy.WeeklySchedule.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.WeeklySchedule.ScheduleRunTimes, timeZone);
+                    psPolicy.WeeklySchedule.ScheduleRunTimes = ParseDateTimesToLocal(serviceClientPolicy.WeeklySchedule.ScheduleRunTimes, timeZone);
 
                     offset = psPolicy.WeeklySchedule.ScheduleRunTimes[0].DayOfWeek.GetHashCode() - serviceClientPolicy.WeeklySchedule.ScheduleRunTimes[0].Value.DayOfWeek.GetHashCode();
                 }
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             else
             {
                 psPolicy.DailySchedule = new DailySchedule();
-                psPolicy.DailySchedule.ScheduleRunTimes = (serviceClientPolicy.DailySchedule != null) ? ParseDateTimesToUTC(serviceClientPolicy.DailySchedule.ScheduleRunTimes, timeZone) : null;
+                psPolicy.DailySchedule.ScheduleRunTimes = (serviceClientPolicy.DailySchedule != null) ? ParseDateTimesToLocal(serviceClientPolicy.DailySchedule.ScheduleRunTimes, timeZone) : null;
             }
 
             psPolicy.ScheduleRunTimeZone = timeZone;
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return psPolicy;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert ps log schedule policy from service response.
         /// </summary>
         public static LogSchedulePolicy GetPSLogSchedulePolicy(
@@ -190,7 +190,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region PStoServiceClientObject conversions
 
-        // <summary>
+        /// <summary>
+        /// Helper function to parse utc time from local time.
+        /// </summary>
+        public static List<DateTime> ParseDateTimesToLocal(IList<DateTime?> localTimes, string timeZone)
+        {
+            List<DateTime> utcTimes = ParseDateTimesToUTC(localTimes, timeZone);
+            return ParseDateTimesFromUTCToTimeZone(utcTimes, timeZone); 
+        }
+
+        /// <summary>
         /// Helper function to parse utc time from local time.
         /// </summary>
         public static List<DateTime> ParseDateTimesToUTC(IList<DateTime?> localTimes, string timeZone)
@@ -222,7 +231,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return utcTimes;
         }
 
-        // <summary>
+        public static List<DateTime> ParseDateTimesFromUTCToTimeZone(List<DateTime> utcTimes, string timeZone)
+        {
+            if (utcTimes == null || utcTimes.Count == 0)
+            {
+                return null;
+            }
+
+            List<DateTime> localTimes = new List<DateTime>();
+            DateTime temp;
+
+            foreach (DateTime utcTime in utcTimes)
+            {
+                if (utcTime == null)
+                {
+                    throw new ArgumentNullException("Policy date time object is null");
+                }
+
+                temp = utcTime;
+                if (!string.IsNullOrEmpty(timeZone) && timeZone != "UTC")
+                {
+                    TimeZoneInfo timeZoneInfo = TimeZoneConverter.TZConvert.GetTimeZoneInfo(timeZone);
+                    temp = TimeZoneInfo.ConvertTimeFromUtc(temp, timeZoneInfo);
+                    temp = DateTime.SpecifyKind(temp, DateTimeKind.Utc);
+                }
+                localTimes.Add(temp);
+            }
+
+            return localTimes;
+        }
+
+
+        /// <summary>
         /// Helper function to convert service simple schedule policy from ps schedule policy.
         /// </summary>
         public static ServiceClientModel.SchedulePolicy GetServiceClientSimpleSchedulePolicy(
@@ -306,7 +346,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return serviceClientPolicy;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to get nullable date time list from date time list.
         /// </summary>
         public static List<DateTime?> GetNullableDateTimeListFromDateTimeList(

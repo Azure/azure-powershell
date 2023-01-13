@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 56074606-28A6-4F91-A56C-4C8A9A31543F
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvaultsettingsfile
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvaultsettingsfile
 schema: 2.0.0
 ---
 
@@ -16,20 +16,20 @@ Gets the Azure Site Recovery vault settings file.
 ### ForSiteWithCertificate
 ```
 Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] -SiteIdentifier <String>
- -Certificate <String> -SiteFriendlyName <String> [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>]
+ [-Certificate <String>] -SiteFriendlyName <String> [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByDefaultWithCertificate
 ```
-Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] -Certificate <String>
+Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] [-Certificate <String>]
  [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ForBackupVaultTypeWithCertificate
 ```
-Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] -Certificate <String> [-Backup]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] [-Certificate <String>]
+ [-Backup] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,17 +50,10 @@ The last command gets the vault credentials file for $Vault01 using the credenti
 
 ### Example 2
 ```powershell
-$Credsfilename = Get-AzRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01
+$Credsfilename = Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault01
 ```
 
 The command gets the vault credentials file for $Vault01 of vault type siteRecovery.
-
-### Example 3: Register a Windows Server or DPM machine for Azure Backup
-```powershell
-$Credsfilename = Get-AzRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01
-```
-
-The command gets the vault credentials file for $Vault01.
 
 ## PARAMETERS
 
@@ -87,7 +80,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

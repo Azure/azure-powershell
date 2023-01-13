@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "1h".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("1h", "1h", global::System.Management.Automation.CompletionResultType.ParameterValue, "1h");
+                yield return new global::System.Management.Automation.CompletionResult("'1h'", "1h", global::System.Management.Automation.CompletionResultType.ParameterValue, "1h");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "6h".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("6h", "6h", global::System.Management.Automation.CompletionResultType.ParameterValue, "6h");
+                yield return new global::System.Management.Automation.CompletionResult("'6h'", "6h", global::System.Management.Automation.CompletionResultType.ParameterValue, "6h");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "12h".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("12h", "12h", global::System.Management.Automation.CompletionResultType.ParameterValue, "12h");
+                yield return new global::System.Management.Automation.CompletionResult("'12h'", "12h", global::System.Management.Automation.CompletionResultType.ParameterValue, "12h");
             }
         }
     }

@@ -23,6 +23,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Rest.Azure.OData;
+using System;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -54,6 +55,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
 
         /// <summary>
+        /// Auxiliary access token for authenticating critical operation to resource guard subscription
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public string Token;
+
+        /// <summary>
         /// Prevents the confirmation dialog when specified.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.ForceOption)]
@@ -77,6 +85,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         string vaultName = resourceIdentifier.ResourceName;
                         string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
+                        if (Token != "" && Token != null && !this.DeleteBackupData)
+                        {
+                            throw new ArgumentException(String.Format(Resources.DisableWithRetainBackupNotCrititcal));
+                        }
+
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                             {
@@ -84,6 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { VaultParams.ResourceGroupName, resourceGroupName },
                                 { ItemParams.Item, Item },
                                 { ItemParams.DeleteBackupData, this.DeleteBackupData },
+                                { ResourceGuardParams.Token, Token },
                             }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider =

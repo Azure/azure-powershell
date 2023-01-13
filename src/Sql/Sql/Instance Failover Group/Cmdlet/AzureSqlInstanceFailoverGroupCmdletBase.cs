@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Initializes the Azure Sql Instance Failover Group Adapter
         /// </summary>
-        /// <param name="subscription"></param>
         /// <returns></returns>
         protected override AzureSqlInstanceFailoverGroupAdapter InitModelAdapter()
         {

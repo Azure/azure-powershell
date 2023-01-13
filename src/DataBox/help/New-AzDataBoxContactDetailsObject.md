@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxContactDetailsObject
+online version: https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxContactDetailsObject
 schema: 2.0.0
 ---
 
@@ -25,8 +25,7 @@ Create an in-memory object for ContactDetails.
 
 ### Example 1: Create a in-memory object for ContactDetails 
 ```powershell
-$contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
-$contactDetail
+New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 ```
 
 ```output

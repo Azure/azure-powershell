@@ -42,7 +42,7 @@ $resourceGroupName = "testRG"
 $clusterName = "testCluster"
 $appTypeName = "testAppType"
 $newTags = @{new="tags"}
-Set-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Tags $newTags -Verbose
+Set-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Tag $newTags -Verbose
 ```
 
 This example will update the managed application type "testAppType" tags.
@@ -54,7 +54,7 @@ $clusterName = "testCluster"
 $appTypeName = "testAppType"
 $newTags = @{new="tags"}
 $appType = Get-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
-$appType | Set-AzServiceFabricManagedClusterApplicationType -Tags $newTags -Verbose
+$appType | Set-AzServiceFabricManagedClusterApplicationType -Tag $newTags -Verbose
 ```
 
 This example will update the managed application type "testAppType" tags.
@@ -63,7 +63,7 @@ This example will update the managed application type "testAppType" tags.
 ```powershell
 $newTags = @{new="tags"}
 $resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType"
-Set-AzServiceFabricManagedClusterApplicationType -ResourceId $resourceId -Tags $newTags
+Set-AzServiceFabricManagedClusterApplicationType -ResourceId $resourceId -Tag $newTags
 ```
 
 This example will update the managed application type details with the ARM Resource ID specified.

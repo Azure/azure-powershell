@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Sql.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
 {
@@ -34,6 +35,66 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         /// Gets or sets current restoring file name.
         /// </summary>
         public string CurrentRestoringFileName { get; set; }
+
+        /// <summary>
+        /// Gets or sets restore details type
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets current restored size
+        /// </summary>
+        public int? CurrentRestoredSizeMB { get; set; }
+
+        /// <summary>
+        /// Gets or sets current restore plan size
+        /// </summary>
+        public int? CurrentRestorePlanSizeMB { get; set; }
+
+        /// <summary>
+        /// Gets or sets current backup type
+        /// </summary>
+        public string CurrentBackupType { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of files queued
+        /// </summary>
+        public int? NumberOfFilesQueued { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of files skipped
+        /// </summary>
+        public int? NumberOfFilesSkipped { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of files restoring
+        /// </summary>
+        public int? NumberOfFilesRestoring { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of files restored
+        /// </summary>
+        public int? NumberOfFilesRestored { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of files unrestorable
+        /// </summary>
+        public int? NumberOfFilesUnrestorable { get; set; }
+
+        /// <summary>
+        /// Gets or sets full backup sets
+        /// </summary>
+        public string FullBackupSets { get; set; }
+
+        /// <summary>
+        /// Gets or sets diff backup sets
+        /// </summary>
+        public string DiffBackupSets { get; set; }
+
+        /// <summary>
+        /// Gets or sets log backup sets
+        /// </summary>
+        public string LogBackupSets { get; set; }
 
         /// <summary>
         /// Gets or sets last restored file name.
@@ -92,9 +153,19 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             LastRestoredFileName = result.LastRestoredFileName;
             LastRestoredFileTime = result.LastRestoredFileTime.ToString();
             PercentCompleted = result.PercentCompleted ?? -1;
-            UnrestorableFiles = result.UnrestorableFiles != null && result.UnrestorableFiles.Count > 0
-                ? result.UnrestorableFiles.Aggregate((f1, f2) => $"{f1}, {f2}")
-                : null;
+            Type = result.ManagedDatabaseRestoreDetailsResultType;
+            CurrentRestoredSizeMB = result.CurrentRestoredSizeMB;
+            CurrentRestorePlanSizeMB = result.CurrentRestorePlanSizeMB;
+            CurrentBackupType = result.CurrentBackupType;
+            NumberOfFilesQueued = result.NumberOfFilesQueued;
+            NumberOfFilesSkipped = result.NumberOfFilesSkipped;
+            NumberOfFilesRestoring = result.NumberOfFilesRestoring;
+            NumberOfFilesRestored = result.NumberOfFilesRestored;
+            NumberOfFilesUnrestorable = result.NumberOfFilesUnrestorable;
+            FullBackupSets = JsonConvert.SerializeObject(result.FullBackupSets);
+            DiffBackupSets = JsonConvert.SerializeObject(result.DiffBackupSets);
+            LogBackupSets = JsonConvert.SerializeObject(result.LogBackupSets);
+            UnrestorableFiles = JsonConvert.SerializeObject(result.UnrestorableFiles);
             NumberOfFilesDetected = result.NumberOfFilesDetected ?? -1;
             LastUploadedFileName = result.LastUploadedFileName;
             LastUploadedFileTime = result.LastUploadedFileTime.ToString();

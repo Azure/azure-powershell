@@ -14,9 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Internal.Subscriptions;
-using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using System;
 using System.Collections.Generic;
 
@@ -52,11 +51,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             this.SubscriptionClient = subscriptionClient;
         }
 
-        public List<Location> ListLocations(string subscriptionId)
+        public List<Location> ListLocations(string subscriptionId, bool? includeExtendedLocations = null)
         {
             var locationList = new List<Location>();
 
-            var tempResult = this.SubscriptionClient.Subscriptions.ListLocations(subscriptionId);
+            var tempResult = this.SubscriptionClient.Subscriptions.ListLocations(subscriptionId, includeExtendedLocations);
             locationList.AddRange(tempResult);
 
             return locationList;

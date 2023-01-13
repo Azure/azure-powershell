@@ -32,9 +32,11 @@ Updates the tags for the network function resource.
 
 ### Example 1: Update-AzConnectedNetworkFunctionTag
 ```powershell
-PS C:\> $tags = @{ NewTag = "NewTagValue"}
-PS C:\> Update-AzConnectedNetworkFunctionTag -NetworkFunctionName myNewVnf1 -ResourceGroupName myResources -Tag $tags
+$tags = @{ NewTag = "NewTagValue"}
+Update-AzConnectedNetworkFunctionTag -NetworkFunctionName myNewVnf1 -ResourceGroupName myResources -Tag $tags
+```
 
+```output
 Location    Name      Etag              ResourceGroupName
 --------    ----      ----              -----------------
 eastus2euap myNewVnf1 "sampleEtagValue" myResources
@@ -45,10 +47,12 @@ Updating the tag of NF with resource name myNewVnf1 in resource group myResource
 
 ### Example 2: Update-AzConnectedNetworkFunctionTag
 ```powershell
-PS C:\> $tags = @{ NewTag = "NewTagValue"}
-PS C:\> $vnf = @{ NetworkFunctionName = "myVnf1"; ResourceGroupName = "myResources"; SubscriptionId = "00000000-0000-0000-0000-000000000000"}
-PS C:\> Update-AzConnectedNetworkFunctionTag -InputObject $vnf -Tag $tags
+$tags = @{ NewTag = "NewTagValue"}
+$vnf = @{ NetworkFunctionName = "myVnf1"; ResourceGroupName = "myResources"; SubscriptionId = "00000000-0000-0000-0000-000000000000"}
+Update-AzConnectedNetworkFunctionTag -InputObject $vnf -Tag $tags
+```
 
+```output
 Location    Name      Etag                                   ResourceGroupName
 --------    ----      ----                                   -----------------
 eastus2euap myNewVnf1 "0000f211-0000-3300-0000-61a9edc70000" myResources
@@ -202,7 +206,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

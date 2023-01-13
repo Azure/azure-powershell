@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: E53D5040-C1E8-4DC1-8371-F41C00B666E3
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageaccount
 schema: 2.0.0
 ---
 
@@ -58,6 +58,7 @@ PS C:\>Get-AzStorageAccount
 This command gets all of the Storage accounts in the subscription.
 
 ### Example 4:  Get a Storage accounts with its blob restore status
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $account = Get-AzStorageAccount -ResourceGroupName "myresourcegoup" -Name "mystorageaccount" -IncludeBlobRestoreStatus
 

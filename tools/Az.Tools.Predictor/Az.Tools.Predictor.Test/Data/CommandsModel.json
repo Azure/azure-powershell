@@ -1,0 +1,59 @@
+{
+    "0.0.0": [
+        {
+            "suggestion": "Set-Content -Path C:\\Temp\\* -Filter *.txt -Value 'Empty'",
+            "description": "Use Filters with Set-Content",
+            "suggestion count": 462722,
+            "history count": 4308085
+        },
+        {
+            "suggestion": "Get-LogProperties -Name 'Windows PowerShell'",
+            "description": "Get the configuration settings of the Windows PowerShell event log",
+            "suggestion count": 24329,
+            "history count": 286927
+        },
+        {
+            "suggestion": "Clear-Content -Path C:\\Test\\Copy-Script.ps1 -Stream Zone.Identifier",
+            "description": "Clear all data from a stream",
+            "suggestion count": 438969,
+            "history count": 86296
+        },
+        {
+            "suggestion": "Clear-Content -Path '*' -Filter '*.log' -Force",
+            "description": "Delete content of all files with a wildcard",
+            "suggestion count": 689282,
+            "history count": 869382
+        },
+        {
+            "suggestion": "Compare-Object -ReferenceObject $a -DifferenceObject $b -IncludeEqual -ExcludeDifferent",
+            "description": "Compare each line of content and exclude the differences",
+            "suggestion count": 686927,
+            "history count": 769284
+        },
+        {
+            "suggestion": "Clear-Variable -Name my* -Scope Global",
+            "description": "Remove the value of global variables that begin with a search string",
+            "suggestion count": 686797,
+            "history count": 6789789
+        },
+        {
+            "suggestion": "Set-Variable -Name 'desc' -Value 'A description'",
+            "description": "Set a variable and get its value",
+            "suggestion count": 768392,
+            "history count": 123956
+        },
+        {
+            "suggestion": "Remove-Item -Path * -Include *.doc -Exclude *1*",
+            "description": "Delete some of the document files in a folder",
+            "suggestion count": 18691,
+            "history count": 68292
+        },
+        {
+            "suggestion": "Get-ChildItem",
+            "description": "Get child item names",
+            "suggestion count": 1869,
+            "history count": 6292
+
+        }
+    ]
+}

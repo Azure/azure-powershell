@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string SubscriptionId = "Subscription ID.";
         public const string ResourceGroupName = "Resource group name.";
         public const string ResourceId = "Resource ID.";
-        public const string PolicySetDefinitionName = "Policy set definition name.";
-        public const string PolicyDefinitionName = "Policy definition name.";
-        public const string PolicyAssignmentName = "Policy assignment name.";
+        public const string PolicySetDefinitionName = "Policy set definition name. This policy set definition must exist in the subscription being queried. It cannot be a management group scope policy set definition.";
+        public const string PolicyDefinitionName = "Policy definition name. This policy definition must exist in the subscription being queried. It cannot be a management group scope policy definition.";
+        public const string PolicyAssignmentName = "Policy assignment name. This policy assignment must have exactly the same scope as the parameter set. e.g. if `-SubscriptionId` and `ResourceGroupName` are specified, the policy assignment must be assigned to that resource group. If only `-SubscriptionId` is specified, then the policy assignment must be assigned to that subscription."; 
         public const string PolicyAssignmentId = "Policy assignment ID. E.g. '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{assignmentName}'.";
         public const string PolicyDefinitionReferenceId = "The policy definition reference ID of the individual definition that is being remediated. Required when the policy assignment assigns a policy set definition.";
         public const string ResourceDiscoveryMode = "Describes how the remediation task will discover resources that need to be remediated. ReEvaluateCompliance is not supported when remediating management group scopes.";

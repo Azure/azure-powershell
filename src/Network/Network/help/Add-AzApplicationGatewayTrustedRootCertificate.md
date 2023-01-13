@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaytrustedrootcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azapplicationgatewaytrustedrootcertificate
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ The **Add-AzApplicationGatewayTrustedRootCertificate** cmdlet adds a trusted roo
 ```powershell
 $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
 $gw = Add-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $gw -Name $certName -CertificateFile ".\rootCA.cer"
-$gw = Add-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $gw -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $gw.TrustedRootCertificates[0]
+$gw = Add-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $gw.TrustedRootCertificates[0]
 $gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 

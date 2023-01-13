@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/update-azrmstoragecontainer
+online version: https://learn.microsoft.com/powershell/module/az.storage/update-azrmstoragecontainer
 schema: 2.0.0
 ---
 
@@ -60,6 +60,7 @@ PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountNam
 This command set public access as Blob for all Storage blob containers in a Storage account with pipeline.
 
 ### Example 4: Update an Azure storage container with RootSquash
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $container = Update-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash NoRootSquash
 

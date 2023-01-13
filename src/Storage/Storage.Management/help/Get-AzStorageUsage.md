@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 11AAA319-DDBB-4156-9BE7-4DE8B80A904C
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageusage
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageusage
 schema: 2.0.0
 ---
 
@@ -23,6 +23,7 @@ The **Get-AzStorageUsage** cmdlet gets the resource usage for Azure Storage for 
 ## EXAMPLES
 
 ### Example 1: Get the storage resources usage of specified location
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageUsage -Location 'West US'
 

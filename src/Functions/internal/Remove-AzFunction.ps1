@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Delete a function for web site, or a deployment slot.
+Delete a function for web site, or a deployment slot.
 .Description
-Description for Delete a function for web site, or a deployment slot.
+Delete a function for web site, or a deployment slot.
 .Example
 {{ Add code here }}
 .Example
@@ -91,7 +91,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/remove-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/remove-azfunction
 #>
 function Remove-AzFunction {
 [OutputType([System.Boolean])]
@@ -192,6 +192,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunction_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunction_DeleteViaIdentity';
@@ -205,6 +206,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -213,15 +215,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -19,6 +19,8 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -42,12 +44,28 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        // CustomBlockResponse body is stored as base64. We need to convert it back to string during a GET call
+        private void ConvertCustomBlockResponseBodyToString(PSApplicationGatewayWebApplicationFirewallPolicy firewallPolicy)
+        {
+            byte[] customBlockResponseBodyByteArray = Convert.FromBase64String(firewallPolicy.PolicySettings.CustomBlockResponseBody);
+            firewallPolicy.PolicySettings.CustomBlockResponseBody = Encoding.UTF8.GetString(customBlockResponseBodyByteArray);
+        }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var firewallPolicy = this.GetApplicationGatewayFirewallPolicy(this.ResourceGroupName, this.Name);
+
+                if (!string.IsNullOrEmpty(firewallPolicy.PolicySettings.CustomBlockResponseBody))
+                {
+                    ConvertCustomBlockResponseBodyToString(firewallPolicy);
+                }
+
+                // Assign the CustomBlockResponse fields from policy settings to policy (Feature parity with AFD WAF Policy)
+                firewallPolicy.CustomBlockResponseStatusCode = firewallPolicy.PolicySettings.CustomBlockResponseStatusCode;
+                firewallPolicy.CustomBlockResponseBody = firewallPolicy.PolicySettings.CustomBlockResponseBody;
 
                 WriteObject(firewallPolicy);
             }
@@ -72,6 +90,15 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     var psFirewallPolicy = this.ToPsApplicationGatewayFirewallPolicy(firewallPolicy);
                     psFirewallPolicy.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(firewallPolicy.Id);
+
+                    if (!string.IsNullOrEmpty(psFirewallPolicy.PolicySettings.CustomBlockResponseBody))
+                    {
+                        ConvertCustomBlockResponseBodyToString(psFirewallPolicy);
+                    }
+
+                    psFirewallPolicy.CustomBlockResponseStatusCode = psFirewallPolicy.PolicySettings.CustomBlockResponseStatusCode;
+                    psFirewallPolicy.CustomBlockResponseBody = psFirewallPolicy.PolicySettings.CustomBlockResponseBody;
+
                     psFirewallPolicies.Add(psFirewallPolicy);
                 }
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azserviceendpointpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azserviceendpointpolicy
 schema: 2.0.0
 ---
 
@@ -37,14 +37,14 @@ The **Remove-AzServiceEndpointPolicy** cmdlet removes a service endpoint policy.
 
 ### Example 1: Removes a service endpoint policy using name
 ```powershell
-Remove-AzServiceEndpointPolicy -Name "Policy1" -ResourceGroup "resourcegroup1"
+Remove-AzServiceEndpointPolicy -Name "Policy1" -ResourceGroupName "resourcegroup1"
 ```
 
 This command removes a service endpoint policy with name Policy1 which belongs to resourcegroup with name "resourcegroup1"
 
 ### Example 2: Remove a service endpoint policy using input object
 ```powershell
-Remove-AzServiceEndpointPolicy -InputObject $Policy1 -ResourceGroup "resourcegroup1"
+Remove-AzServiceEndpointPolicy -InputObject $Policy1
 ```
 
 This command removes a service endpoint policy object Policy1 which belongs to resourcegroup with name "resourcegroup1"

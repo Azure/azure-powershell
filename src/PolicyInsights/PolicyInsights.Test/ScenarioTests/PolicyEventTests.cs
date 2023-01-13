@@ -12,92 +12,85 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 {
-    public class PolicyEventTests
+    public class PolicyEventTests : PolicyInsightsTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public PolicyEventTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PolicyEventTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagementGroupScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-ManagementGroupScope");
+            TestRunner.RunTestScript("Get-AzureRmPolicyEvent-ManagementGroupScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagementGroupScope_Paging()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-ManagementGroupScope-Paging");
+            TestRunner.RunTestScript("Get-AzureRmPolicyEvent-ManagementGroupScope-Paging");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzureRmPolicyEvent-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionScope_Paging()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-SubscriptionScope-Paging");
+            TestRunner.RunTestScript("Get-AzureRmPolicyEvent-SubscriptionScope-Paging");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResourceGroupScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-ResourceGroupScope");
+            TestRunner.RunTestScript("Get-AzureRmPolicyEvent-ResourceGroupScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResourceScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-ResourceScope");
+            TestRunner.RunTestScript("Get-AzureRmPolicyEvent-ResourceScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PolicySetDefinitionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-PolicySetDefinitionScope");
+            TestRunner.RunTestScript("Get-AzureRmPolicyEvent-PolicySetDefinitionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PolicyDefinitionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-PolicyDefinitionScope");
+            TestRunner.RunTestScript("Get-AzureRmPolicyEvent-PolicyDefinitionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionLevelPolicyAssignmentScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-SubscriptionLevelPolicyAssignmentScope");
+            TestRunner.RunTestScript("Get-AzureRmPolicyEvent-SubscriptionLevelPolicyAssignmentScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResourceGroupLevelPolicyAssignmentScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyEvent-ResourceGroupLevelPolicyAssignmentScope");
+            TestRunner.RunTestScript("Get-AzureRmPolicyEvent-ResourceGroupLevelPolicyAssignmentScope");
         }
     }
 }

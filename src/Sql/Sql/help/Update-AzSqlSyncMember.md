@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncmember
+online version: https://learn.microsoft.com/powershell/module/az.sql/update-azsqlsyncmember
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ The **Update-AzSqlSyncGroup** cmdlet modifies properties of an Azure SQL Databas
 ### Example 1
 ```powershell
 $credential = Get-Credential
-Update-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01"
+Update-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" `
 -MemberDatabaseCredential $credential | Format-List
 ```
 

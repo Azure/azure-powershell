@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrpolicy
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrpolicy
 schema: 2.0.0
 ---
 
@@ -85,13 +85,6 @@ $currentJob = Update-AzRecoveryServicesAsrPolicy -Policy $Policy -ReplicationFre
 Starts the update replication policy operation using the specified parameters and returns the ASR job used to track the operation.
 
 ### Example 2
-```powershell
-Update-AzRecoveryServicesAsrPolicy -AzureToAzure -InputObject $Policy -ReplicationFrequencyInSeconds 900
-```
-
-Starts the update azure to azure replication policy operation using the specified parameters and returns the ASR job used to track the operation.
-
-### Example 3
 ```powershell
 $currentJob = Update-AzRecoveryServicesAsrPolicy -AzureToAzure -InputObject $Policy -RecoveryPointRetentionInHours 20
 ```

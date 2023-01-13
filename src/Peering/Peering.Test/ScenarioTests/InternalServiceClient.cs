@@ -10,7 +10,7 @@ using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    public class InternalServiceClient
+    public class InternalServiceClient 
     {
         private const string LocalEdgeRpUri = "https://secrets.wanrr-test.radar.core.azure-test.net";
 

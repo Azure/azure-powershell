@@ -1,0 +1,340 @@
+{
+  "Get-AzSpringCloudConfigServer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/default?api-version=2022-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/default?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "3be636d3-a5de-4067-8824-10155e332139" ],
+        "CommandName": [ "Get-AzSpringCloudConfigServer" ],
+        "FullCommandName": [ "Get-AzSpringCloudConfigServer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "3be636d3-a5de-4067-8824-10155e332139" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "86c9e4cf-1338-4d27-a98c-53bd961e6a79" ],
+        "x-ms-correlation-request-id": [ "86c9e4cf-1338-4d27-a98c-53bd961e6a79" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T081023Z:86c9e4cf-1338-4d27-a98c-53bd961e6a79" ],
+        "Date": [ "Fri, 29 Jul 2022 08:10:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "288" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AppPlatform/Spring/configServers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/default\",\"name\":\"default\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSpringCloudConfigServer+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/validate?api-version=2022-04-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/validate?api-version=2022-04-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationResults/e9959386-d030-439b-a46f-b01cc85d3a3d/Spring/spring-va4fsz?api-version=2022-04-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "5b65fd62-78fe-4e69-be8e-7a95d8d15874" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/e9959386-d030-439b-a46f-b01cc85d3a3d?api-version=2022-04-01" ],
+        "x-ms-request-id": [ "1e22bdad-665d-4252-9155-8521c89c437b" ],
+        "x-ms-correlation-request-id": [ "1e22bdad-665d-4252-9155-8521c89c437b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T081024Z:1e22bdad-665d-4252-9155-8521c89c437b" ],
+        "Date": [ "Fri, 29 Jul 2022 08:10:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSpringCloudConfigServer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/e9959386-d030-439b-a46f-b01cc85d3a3d?api-version=2022-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/e9959386-d030-439b-a46f-b01cc85d3a3d?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "5b65fd62-78fe-4e69-be8e-7a95d8d15874" ],
+        "CommandName": [ "Test-AzSpringCloudConfigServer" ],
+        "FullCommandName": [ "Test-AzSpringCloudConfigServer_ValidateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "5b65fd62-78fe-4e69-be8e-7a95d8d15874" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "534926a8-25ad-4587-9a6d-a167dc9c5cc5" ],
+        "x-ms-correlation-request-id": [ "534926a8-25ad-4587-9a6d-a167dc9c5cc5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T081055Z:534926a8-25ad-4587-9a6d-a167dc9c5cc5" ],
+        "Date": [ "Fri, 29 Jul 2022 08:10:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "375" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/e9959386-d030-439b-a46f-b01cc85d3a3d\",\"name\":\"e9959386-d030-439b-a46f-b01cc85d3a3d\",\"status\":\"Succeeded\",\"startTime\":\"2022-07-29T08:10:24.3777678Z\",\"endTime\":\"2022-07-29T08:10:31.0077215Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSpringCloudConfigServer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationResults/e9959386-d030-439b-a46f-b01cc85d3a3d/Spring/spring-va4fsz?api-version=2022-04-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationResults/e9959386-d030-439b-a46f-b01cc85d3a3d/Spring/spring-va4fsz?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "5b65fd62-78fe-4e69-be8e-7a95d8d15874" ],
+        "CommandName": [ "Test-AzSpringCloudConfigServer" ],
+        "FullCommandName": [ "Test-AzSpringCloudConfigServer_ValidateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "5b65fd62-78fe-4e69-be8e-7a95d8d15874" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "e0ba996c-4c74-4f1b-95f3-d5397233dbd6" ],
+        "x-ms-correlation-request-id": [ "e0ba996c-4c74-4f1b-95f3-d5397233dbd6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T081055Z:e0ba996c-4c74-4f1b-95f3-d5397233dbd6" ],
+        "Date": [ "Fri, 29 Jul 2022 08:10:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "29" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"isValid\":true,\"details\":[]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSpringCloudConfigServer+[NoContext]+Get+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/default?api-version=2022-04-01+5": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/default?api-version=2022-04-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationResults/103bb0ab-9b53-487a-a2f5-4ba2dd129652/Spring/spring-va4fsz?api-version=2022-04-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "c51c8712-32fb-4c57-94f3-4f7a5643745e" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/103bb0ab-9b53-487a-a2f5-4ba2dd129652?api-version=2022-04-01" ],
+        "x-ms-request-id": [ "71f84b70-3f10-4da3-b67d-8615535fd687" ],
+        "x-ms-correlation-request-id": [ "71f84b70-3f10-4da3-b67d-8615535fd687" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T081056Z:71f84b70-3f10-4da3-b67d-8615535fd687" ],
+        "Date": [ "Fri, 29 Jul 2022 08:10:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "519" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Updating\"},\"type\":\"Microsoft.AppPlatform/Spring/configServers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/default\",\"name\":\"default\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-29T08:10:56.4040778Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-29T08:10:56.4040778Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSpringCloudConfigServer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/103bb0ab-9b53-487a-a2f5-4ba2dd129652?api-version=2022-04-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/103bb0ab-9b53-487a-a2f5-4ba2dd129652?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "c51c8712-32fb-4c57-94f3-4f7a5643745e" ],
+        "CommandName": [ "Update-AzSpringCloudConfigServer" ],
+        "FullCommandName": [ "Update-AzSpringCloudConfigServer_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "c51c8712-32fb-4c57-94f3-4f7a5643745e" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "ed3e9974-de3c-47ce-bb7f-87ad78002a5d" ],
+        "x-ms-correlation-request-id": [ "ed3e9974-de3c-47ce-bb7f-87ad78002a5d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T081127Z:ed3e9974-de3c-47ce-bb7f-87ad78002a5d" ],
+        "Date": [ "Fri, 29 Jul 2022 08:11:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "332" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/103bb0ab-9b53-487a-a2f5-4ba2dd129652\",\"name\":\"103bb0ab-9b53-487a-a2f5-4ba2dd129652\",\"status\":\"Running\",\"startTime\":\"2022-07-29T08:10:56.8009779Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSpringCloudConfigServer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/103bb0ab-9b53-487a-a2f5-4ba2dd129652?api-version=2022-04-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/103bb0ab-9b53-487a-a2f5-4ba2dd129652?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "c51c8712-32fb-4c57-94f3-4f7a5643745e" ],
+        "CommandName": [ "Update-AzSpringCloudConfigServer" ],
+        "FullCommandName": [ "Update-AzSpringCloudConfigServer_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "c51c8712-32fb-4c57-94f3-4f7a5643745e" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "4c62d9c9-2691-438c-af25-531f5630ff36" ],
+        "x-ms-correlation-request-id": [ "4c62d9c9-2691-438c-af25-531f5630ff36" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T081138Z:4c62d9c9-2691-438c-af25-531f5630ff36" ],
+        "Date": [ "Fri, 29 Jul 2022 08:11:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "374" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/spring-va4fsz/operationId/103bb0ab-9b53-487a-a2f5-4ba2dd129652\",\"name\":\"103bb0ab-9b53-487a-a2f5-4ba2dd129652\",\"status\":\"Succeeded\",\"startTime\":\"2022-07-29T08:10:56.8009779Z\",\"endTime\":\"2022-07-29T08:11:33.832156Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSpringCloudConfigServer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/default?api-version=2022-04-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/default?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "c51c8712-32fb-4c57-94f3-4f7a5643745e" ],
+        "CommandName": [ "Update-AzSpringCloudConfigServer" ],
+        "FullCommandName": [ "Update-AzSpringCloudConfigServer_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "c51c8712-32fb-4c57-94f3-4f7a5643745e" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "345c797e-6837-4bba-9267-2db30937dada" ],
+        "x-ms-correlation-request-id": [ "345c797e-6837-4bba-9267-2db30937dada" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T081138Z:345c797e-6837-4bba-9267-2db30937dada" ],
+        "Date": [ "Fri, 29 Jul 2022 08:11:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "520" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AppPlatform/Spring/configServers\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-va4fsz/configServers/default\",\"name\":\"default\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-29T08:10:56.4040778Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-29T08:10:56.4040778Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

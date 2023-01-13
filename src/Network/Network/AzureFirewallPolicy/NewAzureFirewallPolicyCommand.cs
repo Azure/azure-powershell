@@ -121,6 +121,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.FirewallPolicySkuTier.Standard,
             MNM.FirewallPolicySkuTier.Premium,
+            MNM.FirewallPolicySkuTier.Basic,
             IgnoreCase = true)]
         public string SkuTier { get; set; }
 
@@ -142,6 +143,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The private IP ranges to which traffic won't be SNAT'ed"
         )]
         public string[] PrivateRange { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Explicit Proxy Settings in Firewall Policy.")]
+        public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
 
         public override void Execute()
         {
@@ -176,7 +182,8 @@ namespace Microsoft.Azure.Commands.Network
                     Tier = this.SkuTier ?? MNM.FirewallPolicySkuTier.Standard
                 },
                 IntrusionDetection = this.IntrusionDetection,
-                PrivateRange = this.PrivateRange
+                PrivateRange = this.PrivateRange,
+                ExplicitProxy = this.ExplicitProxy
             };
 
             if (this.UserAssignedIdentityId != null)

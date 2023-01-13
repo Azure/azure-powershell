@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultmanagedstoragesasdefinition
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultmanagedstoragesasdefinition
 schema: 2.0.0
 ---
 
@@ -222,4 +222,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Key Vault PowerShell cmdlets](/powershell/module/az.keyvault/)
+[Get-AzKeyVaultManagedStorageSasDefinition](./Get-AzKeyVaultManagedStorageSasDefinition.md)
+
+[Set-AzKeyVaultManagedStorageSasDefinition](./Set-AzKeyVaultManagedStorageSasDefinition.md)
+
+[Undo-AzKeyVaultManagedStorageSasDefinitionRemoval](./Undo-AzKeyVaultManagedStorageSasDefinitionRemoval.md)

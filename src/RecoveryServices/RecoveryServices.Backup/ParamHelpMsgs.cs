@@ -65,6 +65,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " policy, then this command will expect a policyID.";
             public const string SchedulePolicySubType = "Type of schedule policy to be fetched: Standard, Enhanced";
             public const string PolicySubType = "Type of policy to be fetched: Standard, Enhanced";
+            public const string MoveToArchiveTier = "Specifies whether recovery points should be moved to archive storage by the policy or not. Allowed values are $true, $false";
+            public const string IsSmartTieringEnabled = "Parameter to list policies for which smart tiering is Enabled/Disabled. Allowed values are $true, $false.";
+            public const string TieringMode = "Specifies whether to move recommended or all eligible recovery points to archive";
+            public const string TierAfterDuration = "Specifies the duration after which recovery points should start moving to the archive tier, value can be in days or months. Applicable only when TieringMode is TierAllEligible";
+            public const string TierAfterDurationType = "Specifies whether the TierAfterDuration is in Days or Months";
         }
 
         internal static class Job
@@ -172,6 +177,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetVNetName = "Name of the VNet in which the target VM should be created, in the case of Alternate Location restore to a new VM";
             public const string TargetVNetResourceGroup = "Name of the resource group which contains the target VNet, in the case of Alternate Location restore to a new VM";
             public const string TargetSubnetName = "Name of the subnet in which the target VM should be created, in the case of Alternate Location restore to a new VM";
+            public const string TargetSubscriptionId = "ID of the target subscription to which the resource should be restored. Use this parameter for Cross subscription restore";
         }
 
         internal static class RestoreFS
@@ -228,6 +234,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " used to encrypt newly created disks.";
             public const string UseSystemAssignedIdentity = "Boolean flag to indicate if SystemAssigned Identity will be used for CMK encryption";
             public const string UserAssignedIdentity = "ARM Id of UserAssigned Identity to be used for CMK encryption. Provide this parameter if UseSystemAssignedIdentity is $false";
+        }
+
+        internal static class ResourceGuard
+        {
+            public const string ResourceGuardMappingName = "Resource guard mapping Name to be fetched";
+            public const string AuxiliaryAccessToken = "Auxiliary access token for authenticating critical operation to resource guard subscription";
+            public const string ResourceGuardId = "ResourceGuardId of the ResourceGuard to be mapped with RecoveryServicesVault";
         }
     }
 }

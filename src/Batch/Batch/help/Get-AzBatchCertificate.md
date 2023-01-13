@@ -34,7 +34,7 @@ Specify the *Filter* parameter to get the certificates that match an Open Data P
 
 ### Example 1: Get a certificate by thumbprint
 ```powershell
-Get-AzBatchCertificate -ThumbprintAlgorithm "sha1" - Thumbprint "C1E494A415149C5F211C4778B52F2E834A07247C" -BatchContext $Context
+Get-AzBatchCertificate -ThumbprintAlgorithm "sha1" -Thumbprint "C1E494A415149C5F211C4778B52F2E834A07247C" -BatchContext $Context
 ```
 
 ```output

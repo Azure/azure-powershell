@@ -12,6 +12,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
@@ -20,6 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -82,6 +85,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
 
+        
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Specify the tags as key/value pairs.")]
+        [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Specify the tags as key/value pairs.")]
+        public Hashtable Tag { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -138,6 +146,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (!string.IsNullOrEmpty(this.DnsName))
             {
                 currentCluster.DnsName = DnsName;
+            }
+
+            if (this.IsParameterBound(c => c.Tag))
+            {
+                currentCluster.Tags = this.Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
             }
 
             return currentCluster;

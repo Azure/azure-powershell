@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Apply user input to the retrieved sql virtual machine group
         /// </summary>
-        /// <param name="model">The sql virtual machine group that will be updated<param>
+        /// <param name="model">The sql virtual machine group that will be updated</param>
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<AzureSqlVMGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlVMGroupModel> model)
         {

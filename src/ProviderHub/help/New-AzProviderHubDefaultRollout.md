@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubdefaultrollout
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubdefaultrollout
 schema: 2.0.0
 ---
 
@@ -488,7 +488,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SPECIFICATIONPROVIDERREGISTRATION <IProviderRegistration>: .
+SPECIFICATIONPROVIDERREGISTRATION `<IProviderRegistration>`: .
   - `[Capability <IResourceProviderCapabilities[]>]`: 
     - `Effect <ResourceProviderCapabilitiesEffect>`: 
     - `QuotaId <String>`: 

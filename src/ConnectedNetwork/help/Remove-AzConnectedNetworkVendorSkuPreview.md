@@ -32,17 +32,15 @@ Deletes the preview information of a vendor sku.
 
 ### Example 1: Remove-AzConnectedNetworkVendorSkuPreview via sku name, vendor name and preview subscription
 ```powershell
-PS C:\> Remove-AzConnectedNetworkVendorSkuPreview -SkuName mySku -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
-
+Remove-AzConnectedNetworkVendorSkuPreview -SkuName mySku -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
 ```
 
 Deleting the preview information of sku mySku with vendor name myVendor for the given preview subscription.
 
 ### Example 2: Remove-AzConnectedNetworkVendorSkuPreview via Identity
 ```powershell
-PS C:\> $sku = Get-AzConnectedNetworkVendorSkuPreview -SkuName mySku1 -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
-PS C:\> Remove-AzConnectedNetworkVendorSkuPreview -InputObject $sku
-
+$sku = Get-AzConnectedNetworkVendorSkuPreview -SkuName mySku1 -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
+Remove-AzConnectedNetworkVendorSkuPreview -InputObject $sku
 ```
 
 Creating an identity with skuname mySku1, vendor name myVendor and preview subscription.
@@ -237,7 +235,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

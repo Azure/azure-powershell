@@ -16,48 +16,34 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-	public class ServerTrustCertificateTests : SqlTestsBase
+	public class ServerTrustCertificateTests : SqlTestRunner
 	{
 		public ServerTrustCertificateTests(ITestOutputHelper output) : base(output)
 		{
-			base.resourceTypesToIgnoreApiVersion = new string[] {
-				"Microsoft.Sql/servers"
-			};
-		}
-		
-		protected override void SetupManagementClients(RestTestFramework.MockContext context)
-		{
-			var newResourcesClient = GetResourcesClient(context);
-			var sqlClient = GetSqlClient(context);
-			var networkClient = GetNetworkClient(context);
-			var graphClient = GetGraphClientVersion1_6(context);
-			Helper.SetupSomeOfManagementClients(newResourcesClient, sqlClient, networkClient, graphClient);
 		}
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void TestServerTrustCertificate()
 		{
-			RunPowerShellTest("Test-ServerTrustCertificate");
+			TestRunner.RunTestScript("Test-ServerTrustCertificate");
 		}
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void TestServerTrustCertificateErrHandling()
 		{
-			RunPowerShellTest("Test-ServerTrustCertificateErrHandling");
+			TestRunner.RunTestScript("Test-ServerTrustCertificateErrHandling");
 		}
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void TestServerTrustCertificatePiping()
 		{
-			RunPowerShellTest("Test-ServerTrustCertificatePiping");
+			TestRunner.RunTestScript("Test-ServerTrustCertificatePiping");
 		}
-
 	}
 }

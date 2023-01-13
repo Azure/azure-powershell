@@ -112,7 +112,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PREFERENCE <IPreferences>: Customer notification Preferences.
+PREFERENCE `<IPreferences>`: Customer notification Preferences.
   - `[EncryptionPreference <IEncryptionPreferences>]`: Preferences related to the Encryption.
     - `[DoubleEncryptionStatus <DoubleEncryptionStatus?>]`: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
   - `[ManagementResourcePreference <IManagementResourcePreferences>]`: Preferences related to the Management resource.
@@ -123,7 +123,7 @@ PREFERENCE <IPreferences>: Customer notification Preferences.
   - `[TransportPreference <ITransportPreferences>]`: Preferences related to the shipment logistics of the order.
     - `PreferredShipmentType <TransportShipmentTypes>`: Indicates Shipment Logistics type that the customer preferred.
 
-PRODUCTDETAIL <IProductDetails>: Unique identifier for configuration.
+PRODUCTDETAIL `<IProductDetails>`: Unique identifier for configuration.
   - `HierarchyInformation <IHierarchyInformation>`: Hierarchy of the product which uniquely identifies the product
     - `[ConfigurationName <String>]`: Represents configuration name that uniquely identifies configuration
     - `[ProductFamilyName <String>]`: Represents product family name that uniquely identifies product family

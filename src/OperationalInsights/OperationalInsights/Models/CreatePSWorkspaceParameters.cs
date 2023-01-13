@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public bool? ForceCmkForQuery { get; set; }
 
+        public string DefaultDataCollectionRuleResourceId { get; set; }
+
         public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
     }
 }

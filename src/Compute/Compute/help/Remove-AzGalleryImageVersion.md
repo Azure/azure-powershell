@@ -96,7 +96,7 @@ The name of the gallery image definition.
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameter
-Aliases:
+Aliases: GalleryImageName
 
 Required: True
 Position: 2

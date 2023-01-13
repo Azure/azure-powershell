@@ -1,0 +1,17 @@
+{
+  "schemaRegistry": "https://psrc-xxxx.westus2.azure.confluent.cloud",
+  "postgresqId": "/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/postgres",
+  "preparedWebApp": "servicelinker-test-app",
+  "storageId": "/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Storage/storageAccounts/servicelinkerteststorage/blobServices/default",
+  "webapp": "servicelinker-powershell",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "secretUri": "https://servicelinker-kv-ref.vault.azure.net/secrets/azure-mysql-host-28449/cc5d8095a54f4755b342f4e7884b5c84",
+  "newLinker": "ps_linker",
+  "confluentEndpoint": "pkc-xxxx.eastus.azure.confluent.cloud:9092",
+  "SubscriptionId": "937bc588-a144-4083-8612-5f9ffbbddb14",
+  "clientType": "dotnet",
+  "resourceGroup": "servicelinker-test-linux-group",
+  "preparedLinker": "preparedLinker",
+  "postgresUsername": "servicelinker",
+  "keyvaultId": "/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.KeyVault/vaults/servicelinker-test-kv"
+}

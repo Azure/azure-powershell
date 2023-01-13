@@ -18,7 +18,7 @@ Get-AzFrontDoor [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-The **Get-AzFrontDoor** cmdletGet gets all existing Front Doors in the current subscription that matches provided information.
+The **Get-AzFrontDoor** cmdletGet gets all existing Front Doors (Classic Tier only) in the current subscription that matches provided information.
 
 ## EXAMPLES
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaselongtermretentionbackup
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqldatabaselongtermretentionbackup
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ The **Remove-AzSqlDatabaseLongTermRetentionBackup** cmdlet deletes the backup sp
 
 ### Example 1: Delete a single backup with resource group
 ```powershell
-Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -ResourceGrouName resourcegroup01
+Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -ResourceGroupName resourcegroup01
 ```
 
 ```output

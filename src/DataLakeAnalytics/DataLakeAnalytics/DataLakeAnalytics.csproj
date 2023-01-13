@@ -14,4 +14,6 @@
     <PackageReference Include="Microsoft.Azure.Management.DataLake.Analytics" Version="3.3.1-preview" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/get-azactionrule
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/get-azactionrule
 schema: 2.0.0
 ---
 
@@ -41,21 +41,21 @@ Get-AzAlertProcessingRule -Name <String> -ResourceGroupName <String> [-DefaultPr
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAlertProcessingRule
+Get-AzAlertProcessingRule
 ```
 
 List all alert processing rules configured in subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAlertProcessingRule -ResourceGroupName "test-rg"
+Get-AzAlertProcessingRule -ResourceGroupName "test-rg"
 ```
 
 List all alert processing rules configured in resource group test-rg.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "Test-AlertProcessing-Rule" | Format-List
+Get-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "Test-AlertProcessing-Rule" | Format-List
 ```
 
 Get the alert processing rule with name Test-AlertProcessing-Rule in test-rg resource group.

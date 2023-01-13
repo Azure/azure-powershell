@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azvirtualrouterpeer
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azvirtualrouterpeer
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **Add-AzVirtualRouterPeer** cmdlet adds a VirtualRouter Peer to an Azure Vir
 
 ### Example 1
 ```powershell
-Add-AzVirtualRouterPeer 1ResourceGroupName virtualRouterRG -PeerName csr -PeerIp 10.0.1.5 -PeerAsn 63000  -VirtualRouterName virtualRouter
+Add-AzVirtualRouterPeer -ResourceGroupName virtualRouterRG -PeerName csr -PeerIp 10.0.1.5 -PeerAsn 63000  -VirtualRouterName virtualRouter
 ```
 
 ## PARAMETERS

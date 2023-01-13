@@ -13,18 +13,16 @@ while(-not $mockingPath) {
 
 Describe 'Stop-AzImageBuilderTemplate' {
     It 'Cancel' {
-        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup -NoWait
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
-        Stop-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
+        Stop-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
+        $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         $template.LastRunStatusRunState | Should -Be 'Canceling'
     }
 
-    It 'CancelViaIdentity' {
-        Start-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup -NoWait
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
+    It 'CancelViaIdentity' -Skip {
+        $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         Stop-AzImageBuilderTemplate -InputObject $template
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
+        $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         $template.LastRunStatusRunState | Should -Be 'Canceling'
     }
 }

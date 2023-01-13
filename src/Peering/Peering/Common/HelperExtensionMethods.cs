@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <typeparam name="T"> The Type parameter
         /// </typeparam>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{Variance}"/>.
         /// </returns>
         public static List<Variance> DetailedCompare<T>(this T val1, T val2)
         {

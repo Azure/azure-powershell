@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets a job
         /// </summary>
         /// <param name="jobId">ID of the job</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job response returned by the service</returns>
         public JobResource GetJob(
             string jobId,
@@ -85,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             return HelperUtils.GetPagedListCrr(listAsync, listNextAsync);
         }
-                
+
         /// <summary>
         /// Lists jobs according to the parameters
         /// </summary>
@@ -96,6 +98,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="endTime">Time when the job finished</param>
         /// <param name="backupManagementType">Backup management type of the item represented by the job</param>
         /// <param name="skipToken">Skip token pagination param</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job list response from the service</returns>
         public List<JobResource> GetJobs(
             string jobId,
@@ -136,6 +140,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Cancels a job
         /// </summary>
         /// <param name="jobId">ID of the job to cancel</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Cancelled job response from the service</returns>
         public RestAzureNS.AzureOperationResponse CancelJob(
             string jobId,
@@ -154,6 +160,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="jobId">ID of the job</param>
         /// <param name="operationId">ID of the operation associated with the job</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job response returned by the service</returns>
         public RestAzureNS.AzureOperationResponse GetJobOperationStatus(
             string jobId,

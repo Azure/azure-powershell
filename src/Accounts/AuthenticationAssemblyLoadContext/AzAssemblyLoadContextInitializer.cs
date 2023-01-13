@@ -14,49 +14,34 @@
 
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Loader;
+using Microsoft.Azure.PowerShell.AssemblyLoading;
 
 namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 {
     public static class AzAssemblyLoadContextInitializer
     {
-        private static string AzSharedAssemblyDirectory { get; set; }
-        private static ConcurrentDictionary<string, Version> AzSharedAssemblyMap { get; set; }
+        private static ConcurrentDictionary<string, (string Path, Version Version)> AzSharedAssemblyMap { get; set; }
         private static ConcurrentDictionary<string, string> ModuleAlcEntryAssemblyMap { get; set; }
 
         static AzAssemblyLoadContextInitializer()
         {
-            //TODO: Generate assembly version info into AzSharedAssemblies.json during build
-            var azSharedAssemblies = new Dictionary<string, Version>()
-            {
-                {"Azure.Core", new Version("1.22.0.0")},
-                {"Azure.Identity", new Version("1.5.0.0")},
-                {"Microsoft.Bcl.AsyncInterfaces", new Version("1.1.1.0")},
-                {"Microsoft.Identity.Client", new Version("4.30.1.0") },
-                {"Microsoft.Identity.Client.Extensions.Msal", new Version("2.18.4.0") },
-                {"System.Memory.Data", new Version("1.0.2.0")},
-                {"System.Text.Json", new Version("4.0.1.2")},
-            };
-
-            AzSharedAssemblyMap = new ConcurrentDictionary<string, Version>(azSharedAssemblies, StringComparer.OrdinalIgnoreCase);
-
+            var azSharedAssemblies = ConditionalAssemblyProvider.GetAssemblies();
+            AzSharedAssemblyMap = new ConcurrentDictionary<string, (string, Version)>(azSharedAssemblies, StringComparer.OrdinalIgnoreCase);
             ModuleAlcEntryAssemblyMap = new ConcurrentDictionary<string, string>();
         }
 
         /// <summary>
         /// Registers the shared ALC and listen to assembly resolving event of the default ALC.
         /// </summary>
-        /// <param name="azSharedAssemblyDirectory">Root directory to look for assemblies.</param>
-        public static void RegisterAzSharedAssemblyLoadContext(string azSharedAssemblyDirectory)
+        public static void RegisterAzSharedAssemblyLoadContext()
         {
-            AzSharedAssemblyDirectory = azSharedAssemblyDirectory;
             AssemblyLoadContext.Default.Resolving += Default_Resolving;
         }
 
         /// <summary>
-        /// Registers an ALC to be instanciated later.
+        /// Registers an ALC to be instantiated later.
         /// </summary>
         /// <param name="contextEntryAssembly">Name of the entry assembly, typically "{Module}.AlcWrapper.dll". It must be unique for each module.</param>
         /// <param name="directory">Root directory to look for assemblies.</param>
@@ -67,9 +52,9 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 
         private static System.Reflection.Assembly Default_Resolving(AssemblyLoadContext context, System.Reflection.AssemblyName assemblyName)
         {
-            if (AzSharedAssemblyMap.ContainsKey(assemblyName.Name) && AzSharedAssemblyMap[assemblyName.Name] >= assemblyName.Version)
+            if (AzSharedAssemblyMap.TryGetValue(assemblyName.Name, out var azSharedAssembly) && azSharedAssembly.Version >= assemblyName.Version)
             {
-                return AzAssemblyLoadContext.GetForDirectory(AzSharedAssemblyDirectory).LoadFromAssemblyName(assemblyName);
+                return AzAssemblyLoadContext.GetForDirectory(AzSharedAssemblyLoadContext.Key).LoadFromAssemblyName(assemblyName);
             }
 
             if (ModuleAlcEntryAssemblyMap.TryGetValue(assemblyName.Name, out string moduleLoadContextDirectory))

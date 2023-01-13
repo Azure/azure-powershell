@@ -1,7 +1,7 @@
 ---
 Module Name: Az.RedisEnterpriseCache
 Module Guid: 0b3b43eb-9078-4d06-8c79-d156a1410906
-Download Help Link: https://docs.microsoft.com/powershell/module/az.redisenterprisecache
+Download Help Link: https://learn.microsoft.com/powershell/module/az.redisenterprisecache
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -29,8 +29,11 @@ Gets the status of operation.
 ### [Import-AzRedisEnterpriseCache](Import-AzRedisEnterpriseCache.md)
 Imports a database file to target database.
 
+### [Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink](Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink.md)
+Forcibly removes the link to the specified database resource.
+
 ### [New-AzRedisEnterpriseCache](New-AzRedisEnterpriseCache.md)
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
+Creates a Redis Enterprise cache.
 
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.

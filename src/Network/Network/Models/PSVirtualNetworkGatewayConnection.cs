@@ -72,6 +72,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public bool ExpressRouteGatewayBypass { get; set; }
 
+        public bool EnablePrivateLinkFastPath { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public string ConnectionProtocol { get; set; }
 

@@ -17,28 +17,24 @@ using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 {
-    public class DataBoxEdgeDeviceTests : DataBoxEdgeScenarioTestBase
+    public class DataBoxEdgeDeviceTests : DataBoxEdgeTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public DataBoxEdgeDeviceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataBoxEdgeDeviceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDevice()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-GetDeviceNonExistent");
+            TestRunner.RunTestScript("Test-GetDeviceNonExistent");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDevice()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateDevice");
+            TestRunner.RunTestScript("Test-CreateDevice");
         }
 
 
@@ -46,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveDevice()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveDevice");
+            TestRunner.RunTestScript("Test-RemoveDevice");
         }
     }
 }

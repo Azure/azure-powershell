@@ -12,34 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataFactoryV2.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
-    public class PipelineTests : DataFactoriesScenarioTestsBase
+    public class PipelineTests : DataFactoryV2TestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public PipelineTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PipelineTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipelineV2()
         {
-            RunPowerShellTest(_logger, "Test-Pipeline");
+            TestRunner.RunTestScript("Test-Pipeline");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipelineWithResourceIdV2()
         {
-            RunPowerShellTest(_logger, "Test-PipelineWithResourceId");
+            TestRunner.RunTestScript("Test-PipelineWithResourceId");
         }
     }
 }

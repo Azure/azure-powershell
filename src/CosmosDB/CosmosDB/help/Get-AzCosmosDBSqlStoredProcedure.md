@@ -31,7 +31,7 @@ The **Get-AzCosmosDBSqlStoredProcedure** cmdlet gets the list of all existing Co
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBSqlStoredProcedure -AccountName {accountName} -ResourceGroupName {resourceGroupName} -DatabaseName {databaseName} -Name {storedProcedureName} -ContainerName {containerName}
+Get-AzCosmosDBSqlStoredProcedure -AccountName "accountName" -ResourceGroupName "resourceGroupName" -DatabaseName "databaseName" -Name "storedProcedureName" -ContainerName "containerName"
 ```
 
 ```output

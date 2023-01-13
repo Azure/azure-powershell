@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 VolumeBackups = (backupPolicy.VolumeBackups !=null) ?  backupPolicy.VolumeBackups.ConvertToPS() : null,
                 VolumesAssigned = backupPolicy.VolumesAssigned,
                 Enabled = backupPolicy.Enabled,
+                SystemData = backupPolicy.SystemData?.ToPsSystemData(),
             };
             return psBackupPolicy;
         }

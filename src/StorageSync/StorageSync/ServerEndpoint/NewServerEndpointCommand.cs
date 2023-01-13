@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           HelpMessage = HelpMessages.TierFilesOlderThanDaysParameter)]
         public int? TierFilesOlderThanDays { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Gets or sets a value indicating the policy to use for the initial download sync.
         /// </summary>
         /// <value>The initial download policy.</value>
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             IgnoreCase = true)]
         public string LocalCacheMode { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Gets or sets a value indicating the policy to use for the initial upload sync.
         /// </summary>
         /// <value>The initial upload policy.</value>

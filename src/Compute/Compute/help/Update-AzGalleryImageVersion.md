@@ -81,7 +81,6 @@ Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryNam
 
 Update a gallery image version's end-of-life date. The image version can still be used to create virtual machines after the end-of-life date.
 
-
 ## PARAMETERS
 
 ### -AsJob
@@ -120,7 +119,7 @@ The name of the gallery image definition.
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameter
-Aliases:
+Aliases: GalleryImageName
 
 Required: True
 Position: 2

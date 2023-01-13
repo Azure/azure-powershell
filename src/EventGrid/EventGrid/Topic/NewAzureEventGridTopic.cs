@@ -110,6 +110,27 @@ namespace Microsoft.Azure.Commands.EventGrid
         public Hashtable InboundIpRule { get; set; }
 
         /// <summary>
+        /// string which represents the IdentityType.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.IdentityTypeHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        /// <summary>
+        /// string array of identity ids for user assigned identities
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.IdentityIdsHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        public string[] IdentityId { get; set; }
+
+        /// <summary>
         /// Public network access.
         /// </summary>
         [Parameter(
@@ -128,6 +149,16 @@ namespace Microsoft.Azure.Commands.EventGrid
             Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingField, true);
             Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
             Dictionary<string, string> inboundIpRuleDictionary = TagsConversionHelper.CreateTagDictionary(this.InboundIpRule, true);
+            Dictionary<string, UserIdentityProperties> userAssignedIdentities = null;
+            if(IdentityId != null && IdentityId.Length > 0)
+            {
+                userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
+                foreach (string identityId in IdentityId)
+                {
+                    userAssignedIdentities.Add(identityId, new UserIdentityProperties());
+                }
+            }
+            
 
             EventGridUtils.ValidateInputMappingInfo(this.InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
@@ -142,7 +173,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                     inputMappingFieldsDictionary,
                     inputMappingDefaultValuesDictionary,
                     inboundIpRuleDictionary,
-                    this.PublicNetworkAccess);
+                    this.PublicNetworkAccess,
+                    this.IdentityType,
+                    userAssignedIdentities);
 
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);

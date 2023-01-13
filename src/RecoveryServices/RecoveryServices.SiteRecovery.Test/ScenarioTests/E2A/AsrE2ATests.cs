@@ -12,127 +12,85 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-
 
 namespace RecoveryServices.SiteRecovery.Test
 {
-    public class AsrE2ATests : AsrTestsBase
+    public class AsrE2ATests : RecoveryServicesSiteRecoveryTestRunner
     {
-        public XunitTracingInterceptor _logger;
-        public AsrE2ATests(
-            ITestOutputHelper output)
+        private readonly string _credModule = $"ScenarioTests/E2A/E2A.VaultCredentials";
+        private readonly string _testModule = $"ScenarioTests/E2A/AsrE2ATests.ps1";
+
+        public AsrE2ATests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            this.VaultSettingsFilePath = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "E2A", "E2A.VaultCredentials");
-            this.PowershellFile = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "E2A", "AsrE2ATests.ps1");
-            this.Initialize();
+
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FabricTests()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-FabricTest -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-FabricTest -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePolicy()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-SiteRecoveryCreatePolicy -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-SiteRecoveryCreatePolicy -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableDR()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-SiteRecoveryEnableDR -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-SiteRecoveryEnableDR -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMapNetwork()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-MapNetwork -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-MapNetwork -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTFO()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-TFO -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-TFO -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPlannedFailover()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-PlannedFailover -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-PlannedFailover -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestReprotect()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-Reprotect -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-Reprotect -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void BeginProcessing()
         {
-            //cmdlet is failing due to _metrichelper being null, since we skipped beging processing. 
+            //cmdlet is failing due to _metrichelper being null, since we skipped begin processing. 
             base.BeginProcessing(); 
 
             if (!this.CheckIfInteractive())
@@ -79,11 +79,6 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     interactive = false;
                 }
-            }
-
-            if (!interactive && _dataCollectionProfile != null && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
-            {
-                _dataCollectionProfile.EnableAzureDataCollection = false;
             }
             return interactive;
         }

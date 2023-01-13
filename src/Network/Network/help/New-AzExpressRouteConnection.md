@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azexpressrouteconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azexpressrouteconnection
 schema: 2.0.0
 ---
 
@@ -49,7 +49,7 @@ $ExpressRouteCircuit = New-AzExpressRouteCircuit -ResourceGroupName "testRG" -Na
 Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ExpressRouteCircuit -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300
 $ExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $ExpressRouteCircuit
 $ExpressRouteCircuitPeeringId = $ExpressRouteCircuit.Peerings[0].Id
-New-AzExpressRouteConnection -ResourceGroupName $ExpressRouteGateway.ResourceGroupName -ParentResourceName $ExpressRouteGateway.Name -Name "testConnection" -ExpressRouteCircuitPeeringId $ExpressRouteCircuitPeeringId -RoutingWeight 20
+New-AzExpressRouteConnection -ResourceGroupName $ExpressRouteGateway.ResourceGroupName -ExpressRouteGatewayName $ExpressRouteGateway.Name -Name "testConnection" -ExpressRouteCircuitPeeringId $ExpressRouteCircuitPeeringId -RoutingWeight 20
 ```
 
 ```output

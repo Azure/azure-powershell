@@ -42,9 +42,10 @@ Gets information about the specified device.
 
 ### Example 1: Get-AzConnectedNetworkDevice via Resource Group and Resource name
 ```powershell
-PS C:\> Get-AzConnectedNetworkDevice -ResourceGroupName myResources -Name myMecDevice
+Get-AzConnectedNetworkDevice -ResourceGroupName myResources -Name myMecDevice
+```
 
-
+```output
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMecDevice
 Location                     : westcentralus
@@ -68,10 +69,11 @@ Getting information about the NFM device in resource group myResources with name
 
 ### Example 2: Get-AzConnectedNetworkDevice via Identity
 ```powershell
-PS C:\> $mecDevice = @{ DeviceName = "myMecDevice1"; Location = "eastus"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
-PS C:\> Get-AzConnectedNetworkDevice -InputObject $mecDevice
+$mecDevice = @{ DeviceName = "myMecDevice1"; Location = "eastus"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
+Get-AzConnectedNetworkDevice -InputObject $mecDevice
+```
 
-
+```output
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMecDevice1
 Location                     : eastus
@@ -193,7 +195,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

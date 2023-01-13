@@ -47,6 +47,16 @@ namespace Microsoft.Azure.Commands.Aks.Models
                 cfg.CreateMap<ManagedClusterPoolUpgradeProfileUpgradesItem,PSManagedClusterPoolUpgradeProfileUpgradesItem>().ReverseMap();
                 cfg.CreateMap<ManagedClusterUpgradeProfile,PSManagedClusterUpgradeProfile>().ReverseMap();
                 cfg.CreateMap<ManagedClusterWindowsProfile, PSManagedClusterWindowsProfile>().ReverseMap();
+                cfg.CreateMap<ManagedClusterAutoUpgradeProfile, PSManagedClusterAutoUpgradeProfile>().ReverseMap();
+                cfg.CreateMap<ManagedClusterHTTPProxyConfig, PSManagedClusterHTTPProxyConfig>().ReverseMap();
+                cfg.CreateMap<ManagedClusterPodIdentity, PSManagedClusterPodIdentity>().ReverseMap();
+                cfg.CreateMap<ManagedClusterPodIdentityException, PSManagedClusterPodIdentityException>().ReverseMap();
+                cfg.CreateMap<ManagedClusterPodIdentityProfile, PSManagedClusterPodIdentityProfile>().ReverseMap();
+                cfg.CreateMap<UserAssignedIdentity, PSManagedClusterPodIdentityProfileUserAssignedIdentity>().ReverseMap();
+                cfg.CreateMap<ManagedClusterPodIdentityProvisioningError, PSManagedClusterPodIdentityProvisioningError>().ReverseMap();
+                cfg.CreateMap<ManagedClusterPodIdentityProvisioningErrorBody, PSManagedClusterPodIdentityProvisioningErrorBody>().ReverseMap();
+                cfg.CreateMap<ManagedClusterPodIdentityProvisioningInfo, PSManagedClusterPodIdentityProvisioningInfo>().ReverseMap();
+                cfg.CreateMap<ManagedClusterPropertiesAutoScalerProfile, PSManagedClusterAutoScalerProfile>().ReverseMap();
                 cfg.CreateMap<Resource,PSResource>().ReverseMap();
                 cfg.CreateMap<ResourceIdentityType, PSResourceIdentityType>().ReverseMap();
                 cfg.CreateMap<AgentPool, PSNodePool>().ReverseMap();

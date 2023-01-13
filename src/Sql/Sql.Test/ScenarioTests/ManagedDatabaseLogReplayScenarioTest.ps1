@@ -45,9 +45,7 @@ function Test-ManagedDatabaseLogReplay
 			-StorageContainerSasToken $testStorageContainerSasToken `
 			-AutoComplete -LastBackupName $lastBackupName
 
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Start-Sleep -s 10
-        }
+		Start-TestSleep -Seconds 10
 
 		# Fetch status of the operation
 		$status = "InProgress"
@@ -67,9 +65,7 @@ function Test-ManagedDatabaseLogReplay
 				break;
             }
 			
-            if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-				Start-Sleep -s 15
-            }
+            Start-TestSleep -Seconds 15
         }
 
 		Assert-NotNull $statusResponse
@@ -104,9 +100,7 @@ function Test-CompleteManagedDatabaseLogReplay
 			-StorageContainerUri $testStorageContainerUri `
 			-StorageContainerSasToken $testStorageContainerSasToken
 
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Start-Sleep -s 10
-        }
+		Start-TestSleep -Seconds 10
 
 		# Fetch status of the operation
 		$status = "InProgress"
@@ -126,9 +120,7 @@ function Test-CompleteManagedDatabaseLogReplay
 				break;
             }
 			
-            if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-				Start-Sleep -s 15
-            }
+            Start-TestSleep -Seconds 15
         }
 
 		Complete-AzSqlInstanceDatabaseLogReplay `
@@ -150,9 +142,7 @@ function Test-CompleteManagedDatabaseLogReplay
 				break;
             }
 			
-            if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-				Start-Sleep -s 15
-            }
+            Start-TestSleep -Seconds 15
         }
 
 		Assert-NotNull $statusResponse
@@ -187,9 +177,7 @@ function Test-CancelManagedDatabaseLogReplay
 			-StorageContainerUri $testStorageContainerUri `
 			-StorageContainerSasToken $testStorageContainerSasToken
 
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Start-Sleep -s 10
-        }
+		Start-TestSleep -Seconds 10
 
 		# Fetch status of the operation
 		$status = "InProgress"
@@ -207,9 +195,7 @@ function Test-CancelManagedDatabaseLogReplay
 				break;
             }
 			
-            if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-				Start-Sleep -s 15
-            }
+            Start-TestSleep -Seconds 15
         }
 
 		Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName -Force
@@ -259,9 +245,7 @@ function Test-ManagedDatabaseLogReplayPiping
 			-StorageContainerSasToken $testStorageContainerSasToken `
 			-AutoComplete -LastBackupName $lastBackupName
 
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Start-Sleep -s 10
-        }
+		Start-TestSleep -Seconds 10
 
 		# Fetch status of the operation
 		$status = "InProgress"
@@ -280,9 +264,7 @@ function Test-ManagedDatabaseLogReplayPiping
 				break;
             }
 			
-            if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-				Start-Sleep -s 15
-            }
+            Start-TestSleep -Seconds 15
         }
 
 		Assert-NotNull $statusResponse
@@ -317,9 +299,7 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 			-StorageContainerUri $testStorageContainerUri `
 			-StorageContainerSasToken $testStorageContainerSasToken
 
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Start-Sleep -s 10
-        }
+		Start-TestSleep -Seconds 10
 
 		# Fetch status of the operation
 		$status = "InProgress"
@@ -341,17 +321,13 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 				break;
             }
 			
-            if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-				Start-Sleep -s 15
-            }
+            Start-TestSleep -Seconds 15
         }
 
 
 		$db | Complete-AzSqlInstanceDatabaseLogReplay -LastBackupName $lastBackupName
 
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Start-Sleep -s 10
-		}
+		Start-TestSleep -Seconds 10
 		
 		$db | Stop-AzSqlInstanceDatabaseLogReplay -Force
 		
@@ -373,6 +349,36 @@ function Test-PipingCompleteCancelManagedDatabaseLogReplay
 	{
 		Remove-ResourceGroupForTest $rg
 	}
+}
+
+<#
+.SYNOPSIS
+Tests Managed Database Log Replay cancel on a wrong database
+#>
+function Test-CancelManagedDatabaseLogReplayFailForWrongDatabase
+{
+    # Setup
+    $rg = Create-ResourceGroupForTest
+    $managedInstance = Create-ManagedInstanceForTest $rg
+
+    $rgName = $rg.ResourceGroupName
+    $managedInstance = $managedInstance.ManagedInstanceName
+
+    try
+    {
+        # Start log replay
+        $managedDatabaseName = Get-ManagedDatabaseName
+        $db = New-AzSqlInstanceDatabase -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName
+
+        # Stop log replay on a DB that's not created with log replay should fail
+        Assert-Throws { $db | Stop-AzSqlInstanceDatabaseLogReplay -Force }
+        $notDeletedDB = Get-AzSqlInstanceDatabase -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName
+        Assert-NotNull $notDeletedDB
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
 }
 
 function Generate-SasToken ($rgname)

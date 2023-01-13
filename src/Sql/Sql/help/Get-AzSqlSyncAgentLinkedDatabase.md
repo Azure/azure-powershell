@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncagentlinkeddatabase
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlsyncagentlinkeddatabase
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **Get-AzSqlSyncAgentLinkedDatabase** cmdlet returns information about SQL Se
 
 The following example returns the linked SQL Server databases linked by an Azure SQL sync agent.
 
+<!-- Aladdin Generated Example -->
 ```powershell
-<!-- Aladdin Generated Example --> 
 Get-AzSqlSyncAgentLinkedDatabase -ResourceGroupName MyResourceGroup -ServerName s1 -SyncAgentName 'SyncAgent01'
 ```
 

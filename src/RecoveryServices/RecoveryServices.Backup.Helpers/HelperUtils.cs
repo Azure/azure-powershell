@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Gets list of enum type S equivalents given the corresponding list of enums of type T. 
         /// </summary>
         /// <typeparam name="T">Type of the enum whose list should be converted to list of strings.</typeparam>
+        /// <typeparam name="S">Type of the enum whose list should be converted from list of T.</typeparam>
         /// <param name="enumListT">List of enums.</param>
         /// <returns>List of enums converted.</returns>
         public static List<S> EnumListConverter<T, S>(IList<T> enumListT)

@@ -115,17 +115,17 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ENCRYPTIONPREFERENCE <IEncryptionPreferences>: Preferences related to the Encryption.
+ENCRYPTIONPREFERENCE `<IEncryptionPreferences>`: Preferences related to the Encryption.
   - `[DoubleEncryptionStatus <DoubleEncryptionStatus?>]`: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
 
-MANAGEMENTRESOURCEPREFERENCE <IManagementResourcePreferences>: Preferences related to the Management resource.
+MANAGEMENTRESOURCEPREFERENCE `<IManagementResourcePreferences>`: Preferences related to the Management resource.
   - `[PreferredManagementResourceId <String>]`: Customer preferred Management resource ARM ID
 
 NOTIFICATIONPREFERENCE <INotificationPreference[]>: Notification preferences.
   - `SendNotification <Boolean>`: Notification is required or not.
   - `StageName <NotificationStageName>`: Name of the stage.
 
-TRANSPORTPREFERENCE <ITransportPreferences>: Preferences related to the shipment logistics of the order.
+TRANSPORTPREFERENCE `<ITransportPreferences>`: Preferences related to the shipment logistics of the order.
   - `PreferredShipmentType <TransportShipmentTypes>`: Indicates Shipment Logistics type that the customer preferred.
 
 ## RELATED LINKS

@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 3.2.0
+* Added new cmdlets for Table resource: 'New-AzOperationalInsightsRestoreTable', 'New-AzOperationalInsightsSearchTable', 'New-AzOperationalInsightsTable','Remove-AzOperationalInsightsTable','Update-AzOperationalInsightsTable', 'Convert-AzOperationalInsightsMigrateTable'
+* Added new property 'DefaultDataCollectionRuleResourceId' to 'Set-AzOperationalInsightsWorkspace' and to 'New-AzOperationalInsightsWorkspace' cmdlets
+
 ## Version 3.1.0
 * Removed capacity validation in new and update cluster cmdlets as validation exists on server side.
 * Extended error message on base class for extended information.

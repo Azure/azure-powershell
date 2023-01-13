@@ -74,6 +74,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// remove azure container by container name
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="name">container name</param>
         internal async Task RemoveAzureContainer(long taskId, IStorageBlobManagement localChannel, string name)
         {

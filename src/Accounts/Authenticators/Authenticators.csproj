@@ -23,18 +23,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
   </ItemGroup>
 
-  <Target Name="CopyFiles" AfterTargets="Build">
-    <ItemGroup>
-      <OutputAssembly Include="$(TargetDir)\$(AssemblyName).dll" />
-    </ItemGroup>
-    <Copy SourceFiles="@(OutputAssembly)" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.Accounts\PreloadAssemblies" />
-  </Target>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

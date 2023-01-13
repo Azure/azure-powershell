@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/set-azdataboxedgebandwidthschedule
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/set-azdataboxedgebandwidthschedule
 schema: 2.0.0
 ---
 
@@ -82,7 +82,7 @@ The **Set-AzDataBoxEdgeBandwidthSchedule** cmdlet updates a Bandwidth schedule f
 
 ### Example 1
 ```powershell
-Set-AzDataBoxEdgeBandwidthSchedule  -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -UnlimitedBandwidth
+Set-AzDataBoxEdgeBandwidthSchedule  -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -UnlimitedBandwidth $ture
 ```
 
 ```output

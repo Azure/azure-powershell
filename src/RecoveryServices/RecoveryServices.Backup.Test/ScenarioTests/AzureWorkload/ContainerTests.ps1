@@ -43,15 +43,13 @@ function Get-AzureVmWorkloadContainer
       # VARIATION-1: Get All Containers with only mandatory parameters
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
-         -ContainerType AzureVMAppContainer `
-         -Status Registered;
+         -ContainerType AzureVMAppContainer;
       Assert-True { $containers[0].FriendlyName -contains $containerName }
 
       # VARIATION-2: Get Containers with friendly name filter
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer `
-         -Status Registered `
          -FriendlyName $containerName;
       Assert-True { $containers.FriendlyName -contains $containerName }
 
@@ -59,7 +57,6 @@ function Get-AzureVmWorkloadContainer
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer `
-         -Status Registered `
          -ResourceGroupName $resourceGroupName;
       Assert-True { $containers[0].FriendlyName -contains $containerName }
    
@@ -67,7 +64,6 @@ function Get-AzureVmWorkloadContainer
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer `
-         -Status Registered `
          -FriendlyName $containerName `
          -ResourceGroupName $resourceGroupName;
       Assert-True { $containers.FriendlyName -contains $containerName }
@@ -98,13 +94,11 @@ function Unregister-AzureWorkloadContainer
       Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer `
-         -Status Registered `
          -FriendlyName $containerName | Unregister-AzRecoveryServicesBackupContainer -VaultId $vault.ID
 
 	  $container = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer `
-         -Status Registered `
          -FriendlyName $containerName
       Assert-Null $container
 }

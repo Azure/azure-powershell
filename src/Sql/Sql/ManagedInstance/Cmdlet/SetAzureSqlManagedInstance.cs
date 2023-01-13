@@ -231,14 +231,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             HelpMessage = "The Maintenance configuration id for the Sql Azure Managed Instance.")]
         public string MaintenanceConfigurationId { get; set; }
 
-        // <summary>
+        /// <summary>
         /// List of user assigned identities.
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "List of user assigned identities")]
         public List<string> UserAssignedIdentityId { get; set; }
 
-        // <summary>
+        /// <summary>
         /// List of user assigned identities.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Use zone redundant storage")]
         public SwitchParameter ZoneRedundant { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Gets or sets service principal type
         /// </summary>
         [Parameter(Mandatory = false,

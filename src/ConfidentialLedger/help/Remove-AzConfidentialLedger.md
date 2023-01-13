@@ -31,11 +31,9 @@ Deletes an existing Confidential Ledger.
 
 ### Example 1: Delete a Confidential Ledger
 ```powershell
-PS C:\> Remove-AzConfidentialLedger `
+Remove-AzConfidentialLedger `
   -Name test-ledger `
   -ResourceGroupName rg-000
-
-# No output
 ```
 
 Deletes the specified Confidential Ledger.
@@ -216,7 +214,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter
+INPUTOBJECT `<IConfidentialLedgerIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[LedgerName <String>]`: Name of the Confidential Ledger
   - `[ResourceGroupName <String>]`: The name of the resource group.

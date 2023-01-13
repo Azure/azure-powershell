@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="exception">The <see cref="System.Exception" /> that is being thrown (if available)</param>
         public async Task EventListener(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, InvocationInfo invocationInfo, string parameterSetName, string correlationId, string processRecordId, System.Exception exception)
         {
-            /// Drain the queue of ADAL events whenever an event is fired
+            // Drain the queue of ADAL events whenever an event is fired
             DrainDeferredEvents(signal, cancellationToken);
             switch (id)
             {
@@ -159,6 +159,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="id">a <c>string</c> containing the name of the event being raised (well-known events are in <see cref="Microsoft.Azure.Commands.Common.Events"/></param>
         /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
         /// <param name="parameterSetName">The <see cref="string" /> containing the name of the parameter set for this invocation (if available></param>
+        /// <param name="pscmdlet"></param>
         public void Telemetry(string id, InvocationInfo invocationInfo, string parameterSetName, PSCmdlet pscmdlet)
         {
             switch (id)
@@ -194,7 +195,7 @@ namespace Microsoft.Azure.Commands.Common
                     }
                 }
 
-                /// Print formatted response message
+                // Print formatted response message
                 await signal(Events.Debug, cancellationToken,
                     () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
             }
@@ -360,7 +361,7 @@ namespace Microsoft.Azure.Commands.Common
                     }
                 }
 
-                /// Print formatted request message
+                // Print formatted request message
                 await signal(Events.Debug, cancellationToken,
                     () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
             }

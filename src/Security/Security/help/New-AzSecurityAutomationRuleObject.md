@@ -24,7 +24,7 @@ Creates security automation rule object
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSecurityAutomationRuleObject -PropertyJPath 'properties.metadata.severity'  -PropertyType 'String' -Operator 'Equals'  -ExpectedValue 'High'
+New-AzSecurityAutomationRuleObject -PropertyJPath 'properties.metadata.severity'  -PropertyType 'String' -Operator 'Equals'  -ExpectedValue 'High'
 ```
 
 Creates security automation rule object that filters messages that with "High" severity

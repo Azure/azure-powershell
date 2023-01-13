@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageobjectreplicationpolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageobjectreplicationpolicy
 schema: 2.0.0
 ---
 
@@ -30,6 +30,7 @@ The **Get-AzStorageObjectReplicationPolicy** cmdlet gets or lists object replica
 ## EXAMPLES
 
 ### Example 1: Get an object replication policy with specific policy Id and show its rules.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $policy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId 56bfa11c-81ef-4f8d-b307-5e5386e16fba
 
@@ -50,6 +51,7 @@ d3d39a01-8d92-40e5-849f-e56209ae5cf5 src1            dest1                {}
 This command gets an object replication policy with specific policy Id and show its rules.
 
 ### Example 2:List object replication policy from a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $policies = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" 
 

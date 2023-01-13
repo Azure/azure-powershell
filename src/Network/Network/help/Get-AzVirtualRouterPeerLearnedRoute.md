@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualrouterpeerlearnedroute
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualrouterpeerlearnedroute
 schema: 2.0.0
 ---
 
@@ -31,13 +31,13 @@ Enumerate routes learned by a virtual router peer from other sources.
 
 ### Example 1
 ```powershell
-Get-AzVirtualRouterPeerLearnedRouter -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
+Get-AzVirtualRouterPeerLearnedRoute -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
 ```
 
 ### Example 2
 ```powershell
 $virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
-Get-AzVirtualRouterPeerLearnedRouter -InputObject $virtualRouterPeer
+Get-AzVirtualRouterPeerLearnedRoute -InputObject $virtualRouterPeer
 ```
 
 ## PARAMETERS

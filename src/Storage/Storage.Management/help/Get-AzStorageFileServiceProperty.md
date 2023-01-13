@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefileserviceproperty
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstoragefileserviceproperty
 schema: 2.0.0
 ---
 
@@ -36,6 +36,7 @@ The **Get-AzStorageFileServiceProperty** cmdlet gets the service properties for 
 ## EXAMPLES
 
 ### Example 1: Get  Azure Storage File services property of a specified Storage Account
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> Get-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 

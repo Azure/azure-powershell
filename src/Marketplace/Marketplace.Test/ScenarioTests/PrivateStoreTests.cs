@@ -14,74 +14,69 @@
 
 namespace Microsoft.Azure.Commands.Marketplace.Test.ScenarioTests
 {
-    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class PrivateStoreTests
+    public class PrivateStoreTests : MarketplaceTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public PrivateStoreTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PrivateStoreTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPrivateStores()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzMarketplacePrivateStore");
+            TestRunner.RunTestScript("Test-GetAzMarketplacePrivateStore");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPrivateStoreOffers()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzMarketplacePrivateStoreOffers");
+            TestRunner.RunTestScript("Test-GetAzMarketplacePrivateStoreOffers");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPrivateStoreOffer()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzMarketplacePrivateStoreOffer");
+            TestRunner.RunTestScript("Test-GetAzMarketplacePrivateStoreOffer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemovePrivateStoreOffer()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveAzMarketplacePrivateStoreOffer");
+            TestRunner.RunTestScript("Test-RemoveAzMarketplacePrivateStoreOffer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePrivateStoreOffer()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAzMarketplacePrivateStoreOffer");
+            TestRunner.RunTestScript("Test-CreateAzMarketplacePrivateStoreOffer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdatePrivateStoreOffer()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateAzMarketplacePrivateStoreOffer");
+            TestRunner.RunTestScript("Test-UpdateAzMarketplacePrivateStoreOffer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdatePrivateStorePrivateOffer()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateAzMarketplacePrivateStorePrivateOffer");
+            TestRunner.RunTestScript("Test-UpdateAzMarketplacePrivateStorePrivateOffer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPrivateStorePrivateOffer()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzMarketplacePrivateStorePrivateOffers");
+            TestRunner.RunTestScript("Test-GetAzMarketplacePrivateStorePrivateOffers");
         }
     }
 }

@@ -14,27 +14,21 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
 {
-    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
     using Xunit.Abstractions;
 
-    public class DeploymentManagerTests : RMTestBase
+    public class DeploymentManagerTests : DeploymentManagerTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public DeploymentManagerTests(ITestOutputHelper output)
+        public DeploymentManagerTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EndToEndFunctionalTests()
         {
-            DeploymentManagerController.NewInstance.RunPowerShellTest(_logger, "Test-EndToEndFunctionalTests");
+            TestRunner.RunTestScript("Test-EndToEndFunctionalTests");
         }
     }
 }

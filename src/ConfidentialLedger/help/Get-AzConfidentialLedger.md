@@ -43,9 +43,11 @@ Retrieves the properties of a Confidential Ledger.
 
 ### Example 1: List Confidential Ledgers
 ```powershell
-PS C:\> Get-AzConfidentialLedger `
+Get-AzConfidentialLedger `
   -SubscriptionId 00000000-0000-0000-0000-000000000000
+```
 
+```output
 Location Name               
 eastus   testledger0
 eastus   testledger1
@@ -56,10 +58,12 @@ Lists all the Confidential Ledgers under a subscription.
 
 ### Example 2: Get a Confidential Ledger
 ```powershell
-PS C:\> Get-AzConfidentialLedger `
+Get-AzConfidentialLedger `
   -Name test-ledger `
   -ResourceGroupName test-rg
+```
 
+```output
 Location Name
 eastus   test-ledger
 ```
@@ -172,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.IConfidentialLedger
+### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger
 
 ## NOTES
 
@@ -183,7 +187,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter
+INPUTOBJECT `<IConfidentialLedgerIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[LedgerName <String>]`: Name of the Confidential Ledger
   - `[ResourceGroupName <String>]`: The name of the resource group.

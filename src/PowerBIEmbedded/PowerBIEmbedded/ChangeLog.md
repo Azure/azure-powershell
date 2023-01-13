@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Updated SKU allowed values to support A7 and A8
+
 ## Version 1.1.2
 * Updated assembly version of PowerBI cmdlets
 

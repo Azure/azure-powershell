@@ -44,7 +44,7 @@ function Preload-Assembly {
             }
         }
         catch {}
-    }    
+    }
 }
 
 if (%ISAZMODULE% -and ($PSEdition -eq 'Desktop'))
@@ -74,36 +74,6 @@ if (Get-Module %AZORAZURERM%.profile -ErrorAction Ignore)
         "If you are running in Azure Automation, take care that none of your runbooks import both Az and AzureRM modules. More information can be found here: https://aka.ms/azps-migration-guide.")
 }
 
-$preloadPath = (Join-Path $PSScriptRoot -ChildPath "PreloadAssemblies")
-Preload-Assembly -AssemblyDirectory $preloadPath
-$preloadPath = (Join-Path $PSScriptRoot -ChildPath "ModuleAlcAssemblies")
-Preload-Assembly -AssemblyDirectory $preloadPath
-
-$netCorePath = (Join-Path $PSScriptRoot -ChildPath "NetCoreAssemblies")
-if($PSEdition -eq 'Core' -and (Test-Path $netCorePath -ErrorAction Ignore))
-{
-    try
-    {
-        $loadedAssemblies = ([System.AppDomain]::CurrentDomain.GetAssemblies() | ForEach-Object {New-Object -TypeName System.Reflection.AssemblyName -ArgumentList $_.FullName} )
-        Get-ChildItem -ErrorAction Stop -Path $netCorePath -Filter "*.dll" | ForEach-Object {
-            $assemblyName = ([System.Reflection.AssemblyName]::GetAssemblyName($_.FullName))
-            $matches = ($loadedAssemblies | Where-Object {$_.Name -eq $assemblyName.Name})
-            if (-not $matches)
-            {
-                try
-                {
-                    Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
-                }
-                catch {
-                    Write-Verbose $_
-                }
-            }
-        }
-    }
-    catch {}
-}
-
-
 %IMPORTED-DEPENDENCIES%
 
 if (Test-Path -Path "$PSScriptRoot\PostImportScripts" -ErrorAction Ignore)
@@ -122,11 +92,11 @@ if ($Env:ACC_CLOUD -eq $null)
         $existingDefault = $false
         foreach ($key in $global:PSDefaultParameterValues.Keys)
         {
-    	    if ($_ -like "$key")
-    	        {
-        	    $existingDefault = $true
-    	        }
-	    }
+            if ($_ -like "$key")
+            {
+                $existingDefault = $true
+            }
+        }
 
         if (!$existingDefault)
         {
@@ -147,3 +117,5 @@ if ($Env:ACC_CLOUD -eq $null)
         }
     }
 }
+
+%COMMAND-NOT-FOUND%

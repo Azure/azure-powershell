@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ManagedServices
-online version: https://docs.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesassignment
+online version: https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesassignment
 schema: 2.0.0
 ---
 
@@ -190,7 +190,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
+INPUTOBJECT `<IManagedServicesIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[MarketplaceIdentifier <String>]`: The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}).
   - `[RegistrationAssignmentId <String>]`: The GUID of the registration assignment.

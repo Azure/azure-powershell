@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/powershell/module/az.kusto/new-azkustoprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -250,7 +250,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IPrivateEndpointConnection>: A private endpoint connection
+PARAMETER `<IPrivateEndpointConnection>`: A private endpoint connection
   - `[PrivateLinkServiceConnectionStateDescription <String>]`: The private link service connection description.
   - `[PrivateLinkServiceConnectionStateStatus <String>]`: The private link service connection status.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).

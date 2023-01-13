@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azdelegation
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azdelegation
 schema: 2.0.0
 ---
 
@@ -28,7 +28,7 @@ $delegation = New-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/
 $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet
 $subnet.Delegations.Add($delegation)
-Set-AzVirtualNetwork $vnet
+Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
 
 The first cmdlet creates a delegation that can be added to a subnet, and stores it in the $delegation variable. The second and third cmdlets retrieve the subnet to be delegated. The fourth cmdlet adds the created delegation to the subnet of interest, and the final cmdlet sends the updated configuration to the server.

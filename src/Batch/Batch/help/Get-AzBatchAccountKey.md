@@ -31,6 +31,7 @@ $Context = Get-AzBatchAccountKey -AccountName myaccount
 This command gets the account details and stores it in a `$Context` object for use later.
 
 ### Example 2: Get batch account keys and display them
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $Context = Get-AzBatchAccountKey -AccountName myaccount
 $Context.PrimaryAccountKey

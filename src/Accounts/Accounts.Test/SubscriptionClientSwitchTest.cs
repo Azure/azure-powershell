@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Test.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.Azure;
@@ -92,6 +93,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var firstList = new List<string> { Guid.NewGuid().ToString() };
             var subscriptionList = new Queue<List<string>>();
             subscriptionList.Enqueue(firstList);
+
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
 
             MockSubscriptionClientFactory.TenantListQueueVerLatest = new Queue<Func<AzureOperationResponse<IPage<TenantIdDescription>>>>();
@@ -156,6 +159,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var firstList = new List<string> { Guid.NewGuid().ToString() };
             var subscriptionList = new Queue<List<string>>();
             subscriptionList.Enqueue(firstList);
+
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
 
             MockSubscriptionClientFactory.SubGetQueueVerLatest = new Queue<Func<AzureOperationResponse<Subscription>>>();
@@ -222,6 +227,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subscriptionList = new Queue<List<string>>();
             subscriptionList.Enqueue(firstList);
             subscriptionList.Enqueue(secondList);
+
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
 
             MockSubscriptionClientFactory.SubListQueueVerLatest = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();

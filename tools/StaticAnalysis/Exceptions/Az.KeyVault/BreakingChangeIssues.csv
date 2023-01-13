@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.KeyVault","Microsoft.Azure.Commands.KeyVault.AddAzureKeyVaultCertificateContact","Add-AzKeyVaultCertificateContact","0","3010","The property 'ActionRequired' of type 'Microsoft.Azure.Management.KeyVault.Models.PrivateLinkServiceConnectionState' has been removed.","Add the property 'ActionRequired' back to type 'Microsoft.Azure.Management.KeyVault.Models.PrivateLinkServiceConnectionState'."

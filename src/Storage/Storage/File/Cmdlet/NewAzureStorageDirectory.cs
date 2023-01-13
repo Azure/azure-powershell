@@ -14,9 +14,10 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using global::Azure.Storage.Files.Shares;
     using Microsoft.Azure.Storage.File;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using System.Globalization;
     using System.Management.Automation;
 
@@ -64,34 +65,43 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            string[] path = NamingUtil.ValidatePath(this.Path);
 
-            CloudFileDirectory baseDirectory;
+            ShareDirectoryClient baseDirClient;
             switch (this.ParameterSetName)
             {
                 case Constants.DirectoryParameterSetName:
-                    baseDirectory = this.Directory;
+                    baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
+
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 case Constants.ShareNameParameterSetName:
-                    var share = this.BuildFileShareObjectFromName(this.ShareName);
-                    baseDirectory = share.GetRootDirectoryReference();
+                    NamingUtil.ValidateShareName(this.ShareName, false);
+                    ShareServiceClient fileserviceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
+                    baseDirClient = fileserviceClient.GetShareClient(this.ShareName).GetRootDirectoryClient();
                     break;
 
                 case Constants.ShareParameterSetName:
-                    baseDirectory = this.Share.GetRootDirectoryReference();
+                    baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
+
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 default:
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            var directoryToBeCreated = baseDirectory.GetDirectoryReferenceByPath(path);
-            this.RunTask(async taskId =>
-            {
-                await this.Channel.CreateDirectoryAsync(directoryToBeCreated, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-                WriteCloudFileDirectoryeObject(taskId, this.Channel, directoryToBeCreated);
-            });
+            ShareDirectoryClient directoryToBeCreated = baseDirClient.GetSubdirectoryClient(this.Path);
+            directoryToBeCreated.Create(cancellationToken: this.CmdletCancellationToken);
+            WriteObject(new AzureStorageFileDirectory(directoryToBeCreated, (AzureStorageContext)this.Context, shareDirectoryProperties: null, ClientOptions));           
         }
     }
 }

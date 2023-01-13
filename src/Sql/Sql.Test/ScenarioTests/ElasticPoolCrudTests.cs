@@ -14,19 +14,15 @@
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ElasticPoolCrudTests : SqlTestsBase
+    public class ElasticPoolCrudTests : SqlTestRunner
     {
         public ElasticPoolCrudTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         // Currently the test runs too long to be marked as a check-in test.
@@ -34,14 +30,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolCreate()
         {
-            RunPowerShellTest("Test-CreateElasticPool");
+            TestRunner.RunTestScript("Test-CreateElasticPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVcoreElasticPoolCreate()
         {
-            RunPowerShellTest("Test-CreateVcoreElasticPool");
+            TestRunner.RunTestScript("Test-CreateVcoreElasticPool");
         }
 
         [Fact]
@@ -49,126 +45,126 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVcoreElasticPoolCreateWithLicenseType()
         {
-            RunPowerShellTest("Test-CreateVcoreElasticPoolWithLicenseType");
+            TestRunner.RunTestScript("Test-CreateVcoreElasticPoolWithLicenseType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolCreateWithZoneRedundancy()
         {
-            RunPowerShellTest("Test-CreateElasticPoolWithZoneRedundancy");
+            TestRunner.RunTestScript("Test-CreateElasticPoolWithZoneRedundancy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolCreateWithMaintenanceConfigurationId()
         {
-            RunPowerShellTest("Test-CreateElasticPoolWithMaintenanceConfigurationId");
+            TestRunner.RunTestScript("Test-CreateElasticPoolWithMaintenanceConfigurationId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHyperscaleElasticPoolCreate()
         {
-            RunPowerShellTest("Test-CreateHyperscaleElasticPool");
+            TestRunner.RunTestScript("Test-CreateHyperscaleElasticPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHyperscaleElasticPoolCreateWithReplica()
         {
-            RunPowerShellTest("Test-CreateHyperscaleElasticPoolWithReplica");
+            TestRunner.RunTestScript("Test-CreateHyperscaleElasticPoolWithReplica");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolUpdate()
         {
-            RunPowerShellTest("Test-UpdateElasticPool");
+            TestRunner.RunTestScript("Test-UpdateElasticPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVcoreElasticPoolUpdate()
         {
-            RunPowerShellTest("Test-UpdateVcoreElasticPool");
+            TestRunner.RunTestScript("Test-UpdateVcoreElasticPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVcoreElasticPoolUpdateWithLicenseType()
         {
-            RunPowerShellTest("Test-UpdateVcoreElasticPoolWithLicenseType");
+            TestRunner.RunTestScript("Test-UpdateVcoreElasticPoolWithLicenseType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolUpdateWithZoneRedundancy()
         {
-            RunPowerShellTest("Test-UpdateElasticPoolWithZoneRedundancy");
+            TestRunner.RunTestScript("Test-UpdateElasticPoolWithZoneRedundancy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolUpdateWithMaintenanceConfigurationId()
         {
-            RunPowerShellTest("Test-UpdateElasticPoolWithMaintenanceConfigurationId");
+            TestRunner.RunTestScript("Test-UpdateElasticPoolWithMaintenanceConfigurationId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHyperscaleElasticPoolUpdateReplicaCount()
         {
-            RunPowerShellTest("Test-UpdateHyperscaleElasticPoolReplicaCount");
+            TestRunner.RunTestScript("Test-UpdateHyperscaleElasticPoolReplicaCount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveDatabaseOutHyperscaleElasticPool()
         {
-            RunPowerShellTest("Test-MoveDatabaseOutHyperscaleElasticPool");
+            TestRunner.RunTestScript("Test-MoveDatabaseOutHyperscaleElasticPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolGet()
         {
-            RunPowerShellTest("Test-GetElasticPool");
+            TestRunner.RunTestScript("Test-GetElasticPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolGetWithZoneRedundancy()
         {
-            RunPowerShellTest("Test-GetElasticPoolWithZoneRedundancy");
+            TestRunner.RunTestScript("Test-GetElasticPoolWithZoneRedundancy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolGetWithMaintenanceConfigurationId()
         {
-            RunPowerShellTest("Test-GetElasticPoolWithMaintenanceConfigurationId");
+            TestRunner.RunTestScript("Test-GetElasticPoolWithMaintenanceConfigurationId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHyperscaleElasticPoolGet()
         {
-            RunPowerShellTest("Test-GetHyperscaleElasticPool");
+            TestRunner.RunTestScript("Test-GetHyperscaleElasticPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolRemove()
         {
-            RunPowerShellTest("Test-RemoveElasticPool");
+            TestRunner.RunTestScript("Test-RemoveElasticPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolCancelOperation()
         {
-            RunPowerShellTest("Test-ListAndCancelElasticPoolOperation");
+            TestRunner.RunTestScript("Test-ListAndCancelElasticPoolOperation");
         }
     }
 }

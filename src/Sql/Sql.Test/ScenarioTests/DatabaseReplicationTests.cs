@@ -19,111 +19,123 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DatabaseReplicationTests : SqlTestsBase
+    public class DatabaseReplicationTests : SqlTestRunner
     {
         public DatabaseReplicationTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDatabaseCopy()
         {
-            RunPowerShellTest("Test-CreateDatabaseCopy");
+            TestRunner.RunTestScript("Test-CreateDatabaseCopy");
         }
 
         [Fact(Skip = "Taking too long - try again before PR merge")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateVcoreDatabaseCopy()
         {
-            RunPowerShellTest("Test-CreateVcoreDatabaseCopy");
+            TestRunner.RunTestScript("Test-CreateVcoreDatabaseCopy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryDatabase()
         {
-            RunPowerShellTest("Test-CreateSecondaryDatabase");
+            TestRunner.RunTestScript("Test-CreateSecondaryDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNamedSecondaryDatabase()
         {
-            RunPowerShellTest("Test-CreateNamedSecondaryDatabase");
+            TestRunner.RunTestScript("Test-CreateNamedSecondaryDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNamedSecondaryDatabaseNegative()
         {
-            RunPowerShellTest("Test-CreateNamedSecondaryDatabaseNegative");
+            TestRunner.RunTestScript("Test-CreateNamedSecondaryDatabaseNegative");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetReplicationLink()
         {
-            RunPowerShellTest("Test-GetReplicationLink");
+            TestRunner.RunTestScript("Test-GetReplicationLink");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSecondaryDatabase()
         {
-            RunPowerShellTest("Test-RemoveSecondaryDatabase");
+            TestRunner.RunTestScript("Test-RemoveSecondaryDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverSecondaryDatabase()
         {
-            RunPowerShellTest("Test-FailoverSecondaryDatabase");
+            TestRunner.RunTestScript("Test-FailoverSecondaryDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDatabaseCopyWithBackupStorageRedundancy()
         {
-            RunPowerShellTest("Test-CreateDatabaseCopyWithBackupStorageRedundancy");
+            TestRunner.RunTestScript("Test-CreateDatabaseCopyWithBackupStorageRedundancy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryDatabaseWithBackupStorageRedundancy()
         {
-            RunPowerShellTest("Test-CreateSecondaryDatabaseWithBackupStorageRedundancy");
+            TestRunner.RunTestScript("Test-CreateSecondaryDatabaseWithBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateCopyDatabaseWithGeoZoneBackupStorageRedundancy()
+        {
+            TestRunner.RunTestScript("Test-CreateCopyDatabaseWithGeoZoneBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateSecondaryDatabaseWithGeoZoneBackupStorageRedundancy()
+        {
+            TestRunner.RunTestScript("Test-CreateSecondaryDatabaseWithGeoZoneBackupStorageRedundancy");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
         {
-            RunPowerShellTest("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
+            TestRunner.RunTestScript("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
         {
-            RunPowerShellTest("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
+            TestRunner.RunTestScript("Test-CreateCopyRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant()
         {
-            RunPowerShellTest("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
+            TestRunner.RunTestScript("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRedundant");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant()
         {
-            RunPowerShellTest("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
+            TestRunner.RunTestScript("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
         }
     }
 }

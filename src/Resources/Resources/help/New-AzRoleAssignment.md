@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: E460D108-2BF9-4F57-AF3D-13868DC73EA0
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azroleassignment
 schema: 2.0.0
 ---
 
@@ -131,6 +131,9 @@ New-AzRoleAssignment -ResourceGroupName rg1 -SignInName allen.young@live.com -Ro
 Grant Reader role access to a user at a resource group scope with the Role Assignment being available for delegation
 
 ### Example 2
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 Get-AzADGroup -SearchString "Christine Koch Team"
 

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/test-azpurviewaccountnameavailability
+online version: https://learn.microsoft.com/powershell/module/az.purview/test-azpurviewaccountnameavailability
 schema: 2.0.0
 ---
 
@@ -30,8 +30,7 @@ Test-AzPurviewAccountNameAvailability -Name test-pa -Type Tenant
 ```output
 Message                                                 NameAvailable Reason
 -------                                                 ------------- ------
-The name test-pa is invalid, please use another name.
-False         Invalid
+The name test-pa is invalid, please use another name.   False         Invalid
 ```
 
 Check if account name 'test-pa' is available.

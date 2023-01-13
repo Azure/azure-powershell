@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
 using Xunit;
 
@@ -28,13 +29,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
     /// </summary>
     public sealed class ModelFixture : IDisposable
     {
-        private const string CommandsModelZip = "CommandsModel.zip";
         private const string CommandsModelJson = "CommandsModel.json";
-        private const string PredictionsModelZip = "PredictionsModel.zip";
         private const string PredictionsModelJson = "PredictionsModel.json";
         private const string DataDirectoryName = "Data";
-        private static readonly Version CommandsVersionToUse = new Version("5.1.0");
-        private static readonly Version PredictionsVersionToUse = new Version("5.1.0");
+        private static readonly Version CommandsVersionToUse = new Version("0.0.0");
+        private static readonly Version PredictionsVersionToUse = new Version("0.0.0");
 
         /// <summary>
         /// Gets a list of string for the commands.
@@ -55,8 +54,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var fileInfo = new FileInfo(currentLocation);
             var directory = fileInfo.DirectoryName;
             var dataDirectory = Path.Join(directory, ModelFixture.DataDirectoryName);
-            var commandsModelVersions = JsonSerializer.Deserialize<IDictionary<Version, IList<ModelEntry>>>(ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.CommandsModelZip), ModelFixture.CommandsModelJson), JsonUtilities.DefaultSerializerOptions);
-            var predictionsModelVersions = JsonSerializer.Deserialize<IDictionary<Version, Dictionary<string, IList<ModelEntry>>>>(ModelFixture.ReadZipEntry(Path.Join(dataDirectory, ModelFixture.PredictionsModelZip), ModelFixture.PredictionsModelJson), JsonUtilities.DefaultSerializerOptions);
+            var commandsModelVersions = JsonSerializer.Deserialize<IDictionary<Version, IList<ModelEntry>>>(File.ReadAllText(Path.Join(dataDirectory, ModelFixture.CommandsModelJson), Encoding.UTF8), JsonUtilities.DefaultSerializerOptions);
+            var predictionsModelVersions = JsonSerializer.Deserialize<IDictionary<Version, Dictionary<string, IList<ModelEntry>>>>(File.ReadAllText(Path.Join(dataDirectory, ModelFixture.PredictionsModelJson), Encoding.UTF8), JsonUtilities.DefaultSerializerOptions);
 
             var commandsModel = commandsModelVersions[CommandsVersionToUse];
             var predictionsModel = predictionsModelVersions[PredictionsVersionToUse];
@@ -78,15 +77,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// <inheritdoc/>
         public void Dispose()
         {
-        }
-
-        private static string ReadZipEntry(string zipFilePath, string zipEntryName)
-        {
-            using ZipArchive zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Read);
-            var entry = zipArchive.GetEntry(zipEntryName);
-
-            using StreamReader streamReader = new StreamReader(entry.Open());
-            return streamReader.ReadToEnd();
         }
     }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [OutputType(typeof(HybridRunbookWorkerGroup))]
     public class GetAzureAutomationHybridWorkerGroup : AzureAutomationBaseCmdlet
     {
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2,  Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
         [Alias("Group")]
         public string Name { get; set; }
 
@@ -23,18 +23,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 IEnumerable<HybridRunbookWorkerGroup> ret = null;
                 ret = new List<HybridRunbookWorkerGroup> {
 
-                    this.AutomationClient.GetHybridRunbookWorkerGroup(this.ResourceGroupName, this.AutomationAccountName, this.Name)
+                    this.AutomationClient.GetHybridWorkerGroup(this.ResourceGroupName, this.AutomationAccountName, this.Name)
                 };
                 this.GenerateCmdletOutput(ret);
             }
-            else if(this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {
                 var nextLink = string.Empty;
                 do
                 {
                     var results = this.AutomationClient.ListHybridRunbookWorkerGroups(this.ResourceGroupName, this.AutomationAccountName, ref nextLink);
                     this.GenerateCmdletOutput(results);
-                }while (!string.IsNullOrEmpty(nextLink));
+                } while (!string.IsNullOrEmpty(nextLink));
             }
         }
     }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightscluster
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightscluster
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Get or list clusters, list clusters under resource group when "-ClusterName" was
 
 ### Example 1
 ```powershell
-Get-AzOperationalInsightsCluster -ResourceGroupName {rg-name} -ClusterName {cluster-name}
+Get-AzOperationalInsightsCluster -ResourceGroupName "rg-name" -ClusterName "cluster-name"
 ```
 
 ```output

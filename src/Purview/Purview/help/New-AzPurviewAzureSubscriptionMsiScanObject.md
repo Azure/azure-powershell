@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSubscriptionMsiScanObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSubscriptionMsiScanObject
 schema: 2.0.0
 ---
 
@@ -26,8 +26,10 @@ Create an in-memory object for AzureSubscriptionMsiScan.
 
 ### Example 1: Create Azure resource sub Msi scan object
 ```powershell
-PS C:\> New-AzPurviewAzureSubscriptionMsiScanObject -Kind 'AzureSubscriptionMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
+New-AzPurviewAzureSubscriptionMsiScanObject -Kind 'AzureSubscriptionMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference
@@ -210,7 +212,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>: 
+RESOURCETYPE `<IExpandingResourceScanPropertiesResourceTypes>`: 
   - `[AdlGen1ScanRulesetName <String>]`: 
   - `[AdlGen1ScanRulesetType <ScanRulesetType?>]`: 
   - `[AdlGen2ScanRulesetName <String>]`: 

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -23,21 +22,14 @@ namespace ScenarioTests
     /// <summary>
     /// Class StorageSyncTests.
     /// </summary>
-    public class StorageSyncTests
+    public class StorageSyncTests : StorageSyncTestRunner
     {
-        /// <summary>
-        /// The logger
-        /// </summary>
-        private readonly XunitTracingInterceptor _logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageSyncTests"/> class.
         /// </summary>
         /// <param name="output">The output.</param>
-        public StorageSyncTests(ITestOutputHelper output)
+        public StorageSyncTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -47,7 +39,7 @@ namespace ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageSync()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-StorageSync");
+            TestRunner.RunTestScript("Test-StorageSync");
         }
     }
 }

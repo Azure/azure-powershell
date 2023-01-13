@@ -12,58 +12,51 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Azure.Commands.ManagementPartner;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ManagementPartner.Test.ScenarioTests
 {
-    public class ManagementPartnerTests : RMTestBase
+    public class ManagementPartnerTests : ManagementPartnerTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ManagementPartnerTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ManagementPartnerTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPartner()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetPartner");
+            TestRunner.RunTestScript("Test-GetPartner");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPartnerNoParnterId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetPartnerNoPartnerId");
+            TestRunner.RunTestScript("Test-GetPartnerNoPartnerId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewParnter()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-NewPartner");
+            TestRunner.RunTestScript("Test-NewPartner");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateParnter()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-UpdatePartner");
+            TestRunner.RunTestScript("Test-UpdatePartner");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveParnter()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemovePartner");
+            TestRunner.RunTestScript("Test-RemovePartner");
         }
     }
 }

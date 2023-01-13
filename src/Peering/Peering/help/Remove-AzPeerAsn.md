@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/powershell/module/az.peering/remove-azpeerasn
+online version: https://learn.microsoft.com/powershell/module/az.peering/remove-azpeerasn
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Remove a PeerAsn from the subscription.
 
 ### Example 1
 ```powershell
-Remove-AzPeerAsn -PeerName Contoso -Force
+Remove-AzPeerAsn -Name Contoso -Force
 ```
 
 Removes the Peer Asn

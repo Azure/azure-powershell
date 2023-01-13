@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultmanagedhsm
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultmanagedhsm
 schema: 2.0.0
 ---
 
@@ -93,7 +93,7 @@ This command gets all managed HSMs in the subscription that start with "myhsm".
 
 ### Example 5: List deleted managed HSMs
 ```powershell
-PS C:\> Get-AzKeyVaultManagedHsm -InRemovedState
+Get-AzKeyVaultManagedHsm -InRemovedState
 ```
 ```output
 Name                     Location      DeletionDate           ScheduledPurgeDate    Purge Protection Enabled?
@@ -253,3 +253,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzKeyVaultManagedHsm](./Remove-AzKeyVaultManagedHsm.md)
 
 [Update-AzKeyVaultManagedHsm](./Update-AzKeyVaultManagedHsm.md)
+
+[Undo-AzKeyVaultManagedHsmRemoval](./Undo-AzKeyVaultManagedHsmRemoval.md)

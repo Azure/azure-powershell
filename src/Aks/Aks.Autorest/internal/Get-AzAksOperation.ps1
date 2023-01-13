@@ -20,18 +20,14 @@ Gets a list of compute operations.
 .Description
 Gets a list of compute operations.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IOperationValue
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/get-azaksoperation
+https://learn.microsoft.com/powershell/module/az.aks/get-azaksoperation
 #>
 function Get-AzAksOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IOperationValue])]
@@ -92,6 +88,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Aks.private\Get-AzAksOperation_List';
         }
@@ -101,6 +98,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -109,15 +107,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

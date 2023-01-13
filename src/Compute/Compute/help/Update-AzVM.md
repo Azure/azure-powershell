@@ -58,8 +58,8 @@ To obtain a virtual machine object, use the **Get-AzVM** cmdlet.
 
 ### Example 2: Update a virtual machine to disable hyperthreading.
 ```powershell
-$resourceGroupName = <Resource Group Name>;
-$vmname = <Virtual Machine Name>;
+$resourceGroupName = 'Resource Group Name>'
+$vmname = 'Virtual Machine Name';
 $domainNameLabel = "d1" + $rgname;
 $vCPUsCoreInitial = 2;
 $vCPUsAvailableInitial = 4;
@@ -67,13 +67,13 @@ $vCPUsCore1 = 1;
 $vCPUsAvailable1 = 1;
 $vmSize = 'Standard_D4s_v4';
 
-$securePassword = <Password> | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = 'Password' | ConvertTo-SecureString -AsPlainText -Force;  
 $user = "user";
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUsPerCore $vCPUsCoreInitial -vCPUsAvailable $vCPUsAvailableInitial;
+$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUCountPerCore $vCPUsCoreInitial -vCPUCountAvailable $vCPUsAvailableInitial;
 # The $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore property is 2, and the $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable property is 4.
 
-Update-AzVm -ResourceGroupName $rgname -VM $vm -vCPUsAvailable $vCPUsAvailable1 -vCPUsPerCore $vCPUsCore1;
+Update-AzVm -ResourceGroupName $rgname -VM $vm -vCPUCountAvailable $vCPUsAvailable1 -vCPUCountPerCore $vCPUsCore1;
 # The $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore property is 1, and the $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable property is 1. 
 # Hyperthreading is now disabled for this VM.
 ```

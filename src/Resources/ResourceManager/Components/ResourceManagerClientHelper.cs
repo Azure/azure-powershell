@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Gets a new instance of the <see cref="ResourceManagerRestRestClient"/>.
         /// </summary>
         /// <param name="context">The azure profile.</param>
+        /// <param name="cmdletHeaderValues">The cmdlet info header values.</param>
         internal static ResourceManagerRestRestClient GetResourceManagerClient(IAzureContext context, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var endpoint = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);

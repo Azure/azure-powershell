@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azvirtualhubvnetconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualhubvnetconnection
 schema: 2.0.0
 ---
 
@@ -114,6 +114,7 @@ New-AzVirtualHubVnetConnection -EnableInternetSecurity -Name 'testvnetconnection
 
 
 ### Example 3
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $rgName = "testRg"
 $virtualHubName = "testHub"

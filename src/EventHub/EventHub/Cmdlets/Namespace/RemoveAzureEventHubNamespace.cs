@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             {
                 try
                 {
-                    Client.BeginDeleteNamespace(ResourceGroupName, Name);
+                    UtilityClient.BeginDeleteNamespace(ResourceGroupName, Name);
                     if (PassThru)
                     {
                         WriteObject(true);

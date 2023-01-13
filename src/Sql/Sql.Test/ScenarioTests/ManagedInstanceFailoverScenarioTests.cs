@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -23,16 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     /// <summary>
     /// These tests depends on the existing resources. Please contact MDCSSQLCustomerExp@microsoft.com for instructions.
     /// </summary>
-    public class ManagedInstanceFailoverScenarioTests : SqlTestsBase
+    public class ManagedInstanceFailoverScenarioTests : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
-        }
-
         public ManagedInstanceFailoverScenarioTests(ITestOutputHelper output) : base(output)
         {
         }
@@ -41,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverManagedInstance()
         {
-            RunPowerShellTest("Test-FailoverManagedInstance");
+            TestRunner.RunTestScript("Test-FailoverManagedInstance");
         }
     }
 }

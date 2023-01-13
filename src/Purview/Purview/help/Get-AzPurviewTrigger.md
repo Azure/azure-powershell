@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewtrigger
+online version: https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewtrigger
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Gets trigger information
 
 ### Example 1: Get trigger schedule for scan run
 ```powershell
-PS C:\> Get-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK'
+Get-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK'
+```
 
+```output
 CreatedAt                  : 2/17/2022 1:35:12 PM
 Id                         : datasources/DataScanTestData-Parv/scans/Scan-6HK/triggers/default
 IncrementalScanStartTime   :

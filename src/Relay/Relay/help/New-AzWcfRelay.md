@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/powershell/module/az.relay/new-azwcfrelay
+online version: https://learn.microsoft.com/powershell/module/az.relay/new-azwcfrelay
 schema: 2.0.0
 ---
 
@@ -33,11 +33,11 @@ The New-AzWcfRelay cmdlet creates a WcfRelay in the specified Relay namespace.
 
 ### Example 1 - InputObject
 ```powershell
-$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1
+$getWcfRelay = Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1
 $GetWcfRelay.UserMetadata = "TestWCFRelay2"
 $GetWcfRelay.RequiresClientAuthorization = $False
 $GetWcfRelay.RelayType = "Http"
-New-AzWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay2 -InputObject
+New-AzWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay2 -InputObject $getWcfRelay
 ```
 
 ```output

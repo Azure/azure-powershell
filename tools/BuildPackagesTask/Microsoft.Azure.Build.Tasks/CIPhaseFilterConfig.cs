@@ -19,6 +19,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
     class CIPhaseFilterConfig
     {
         public List<Rule> Rules { get; set; }
+        public List<string> SelectModuleList { get; set; }
+        public string ArtifactPipelineInfoFolder { get; set; }
     }
 
     class Rule

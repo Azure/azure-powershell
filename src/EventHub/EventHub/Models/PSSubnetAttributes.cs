@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Initializes a new instance of the Subnet class.
         /// </summary>
-        /// <param name="id">Resource ID of Virtual Network Subnet</param>
+        /// <param name="subnet"></param>
         public PSSubnetAttributes(Subnet subnet)
         {
             Id = subnet.Id;

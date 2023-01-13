@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models
         string SubscriptionId { get; set; }
 
     }
-    public partial interface IImageBuilderIdentityInternal
+    internal partial interface IImageBuilderIdentityInternal
 
     {
         /// <summary>Resource identity path</summary>

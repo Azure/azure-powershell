@@ -12,64 +12,57 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecurityContactTests
+    public class SecurityContactTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecurityContactTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecurityContactTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityContact-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzureRmSecurityContact-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityContact-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmSecurityContact-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityContact-ResourceId");
+            TestRunner.RunTestScript("Get-AzureRmSecurityContact-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityContact-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Set-AzureRmSecurityContact-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSubscriptionLevelResourceSecondary()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityContact-SubscriptionLevelResource-Secondary");
+            TestRunner.RunTestScript("Set-AzureRmSecurityContact-SubscriptionLevelResource-Secondary");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzureRmSecurityContact-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Remove-AzureRmSecurityContact-SubscriptionLevelResource");
         }
     }
 }

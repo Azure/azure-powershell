@@ -12,34 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SqlInformationProtectionPolicyTests
+    public class SqlInformationProtectionPolicyTests : SecurityTestRunner
     {
-        public SqlInformationProtectionPolicyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SqlInformationProtectionPolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenInformationTypeAndSensitivityLabelShareSameId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenInformationTypeAndSensitivityLabelShareSameId");
+            TestRunner.RunTestScript("Test-ErrorWhenInformationTypeAndSensitivityLabelShareSameId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenInformationTypeAndSensitivityLabelShareSameDisplayName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenInformationTypeAndSensitivityLabelShareSameDisplayName");
+            TestRunner.RunTestScript("Test-ErrorWhenInformationTypeAndSensitivityLabelShareSameDisplayName");
 
         }
 
@@ -47,51 +42,49 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenInformationTypesShareSameDisplayName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenInformationTypesShareSameDisplayName");
+            TestRunner.RunTestScript("Test-ErrorWhenInformationTypesShareSameDisplayName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenInformationTypesShareSameId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenInformationTypesShareSameId");
+            TestRunner.RunTestScript("Test-ErrorWhenInformationTypesShareSameId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenSensitivityLabelsShareSameDisplayName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenSensitivityLabelsShareSameDisplayName");
+            TestRunner.RunTestScript("Test-ErrorWhenSensitivityLabelsShareSameDisplayName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenSensitivityLabelsShareSameId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenSensitivityLabelsShareSameId");
+            TestRunner.RunTestScript("Test-ErrorWhenSensitivityLabelsShareSameId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenRankIsInvalid()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenRankIsInvalid");
+            TestRunner.RunTestScript("Test-ErrorWhenRankIsInvalid");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenRankIsMissing()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenRankIsMissing");
+            TestRunner.RunTestScript("Test-ErrorWhenRankIsMissing");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestErrorWhenSettingAnEmptyPolicy()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ErrorWhenSettingAnEmptyPolicy");
+            TestRunner.RunTestScript("Test-ErrorWhenSettingAnEmptyPolicy");
         }
-
-        private readonly XunitTracingInterceptor _logger;
     }
 }

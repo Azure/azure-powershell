@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/restore-azoperationalinsightsworkspace
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/restore-azoperationalinsightsworkspace
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ Restore a deleted workspace.
 
 ### Example 1
 ```powershell
-$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
+$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName RG-NAME -Name WORKSPACE-NAME -Location LOCATION-VALUE
 $workspace | Remove-AzOperationalInsightsWorkspace
-$workspace = Restore-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
+$workspace = Restore-AzOperationalInsightsWorkspace -ResourceGroupName RG-NAME -Name WORKSPACE-NAME -Location LOCATION-VALUE
 ```
 
 Restore deleted workspace.

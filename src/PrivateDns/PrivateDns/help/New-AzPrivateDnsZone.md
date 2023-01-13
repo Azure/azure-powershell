@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version: https://docs.microsoft.com/powershell/module/az.privatedns/new-azprivatednszone
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/new-azprivatednszone
 schema: 2.0.0
 ---
 
@@ -43,7 +43,8 @@ NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
 ```
 This command creates a new private DNS zone named myzone.com in the specified resource group, and then
-stores it in the $Zone variable. $Zone object looks something like this,
+stores it in the $Zone variable.
+
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Hashtable Tags { get; set; }
         public string SkuName { get; set; }
         public string SkuFamilyName { get; set; }
-        public bool EnabledForDeployment { get; set; }
-        public bool EnabledForTemplateDeployment { get; set; }
-        public bool EnabledForDiskEncryption { get; set; }
+        public bool? EnabledForDeployment { get; set; }
+        public bool? EnabledForTemplateDeployment { get; set; }
+        public bool? EnabledForDiskEncryption { get; set; }
         public bool? EnableSoftDelete { get; set; }
         public bool? EnablePurgeProtection { get; set; }
         public bool? EnableRbacAuthorization { get; set; }

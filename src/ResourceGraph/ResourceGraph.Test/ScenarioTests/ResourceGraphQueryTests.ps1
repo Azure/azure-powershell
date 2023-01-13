@@ -139,6 +139,29 @@ function Search-AzureRmGraph-ManagementGroups
 
 <#
 .SYNOPSIS
+Run query with UseTenantScope passed
+#>
+function Search-AzureRmGraph-Tenant
+{
+	$testSubId = "82506e98-9fdb-41f5-ab67-031005041a26"
+	$query = "distinct subscriptionId | order by subscriptionId asc"
+
+	$queryResultTenant = Search-AzGraph $query -UseTenantScope
+	$queryResultTenantWithPartialScope = Search-AzGraph $query -UseTenantScope -AllowPartialScope
+	
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse[PSObject] $queryResultTenant	
+	Assert-Null $queryResultTenant.SkipToken
+	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultTenant.Data
+	Assert-AreEqual $testSubId $queryResultTenant.Data.subscriptionId
+	
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse[PSObject] $queryResultTenantWithPartialScope
+	Assert-Null $queryResultTenantWithPartialScope.SkipToken
+	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultTenantWithPartialScope.Data
+	Assert-AreEqual $testSubId $queryResultTenantWithPartialScope.Data.subscriptionId
+}
+
+<#
+.SYNOPSIS
 Run simple query with the skip token
 #>
 function Search-AzureRmGraph-SkipTokenQuery
@@ -240,6 +263,29 @@ function Search-AzureRmGraph-SubscriptionAndManagementGroupQueryError
  	try
 	{
 		Search-AzGraph "project id, type" -Subscription 'a' -ManagementGroup 'b'
+		Assert-True $false  # Expecting an error
+	}
+	catch [Exception]
+	{
+		Assert-AreEqual $expectedErrorId $PSItem.FullyQualifiedErrorId
+		Assert-AreEqual $expectedErrorMessage $PSItem.Exception.Message
+		Assert-IsInstance System.Management.Automation.ParameterBindingException $PSItem.Exception
+	}
+}
+
+<#
+.SYNOPSIS
+Run query with both subscriptions and management groups present
+#>
+function Search-AzureRmGraph-SubscriptionAndTenantQueryError
+{
+	$expectedErrorId = 'AmbiguousParameterSet,' + [Microsoft.Azure.Commands.ResourceGraph.Cmdlets.SearchAzureRmGraph].FullName
+	$expectedErrorMessage = 
+		'Parameter set cannot be resolved using the specified named parameters. One or more parameters issued cannot be used together or an insufficient number of parameters were provided.'
+
+ 	try
+	{
+		Search-AzGraph "project id, type" -Subscription 'a' -UseTenantScope
 		Assert-True $false  # Expecting an error
 	}
 	catch [Exception]

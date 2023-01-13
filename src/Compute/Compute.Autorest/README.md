@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Compute service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -29,16 +29,16 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-branch: 0c887b0c35f6f19468a16e660bba2a9eb5f4a330
+branch: 4640dfc655f8641962814663fd03fd667e5c1a88
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/gallery.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2022-01-03/GalleryRP/gallery.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/runCommands.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-module-version: 0.1.0
+module-version: 0.2.0
 # Normally, title is the service name
 title: Compute
 subject-prefix: ""
@@ -149,6 +149,18 @@ directive:
       parameter-name: PublishingProfileTargetRegion
     set:
       parameter-name: TargetRegion  
+  - where:  
+      verb: New|Update
+      subject: GalleryApplicationVersion
+      parameter-name: SettingConfigFileName
+    set:
+      parameter-name: ConfigFileName  
+  - where:  
+      verb: New|Update
+      subject: GalleryApplicationVersion
+      parameter-name: SettingPackageFileName
+    set:
+      parameter-name: PackageFileName  
   ### END # change parameter names for GalleryApplicationVersion
   # hide parameters for New, Update Gallery Application
   - where:
@@ -166,7 +178,7 @@ directive:
   - where:
       verb: Update|New
       subject: GalleryApplicationVersion$
-      parameter-name: PublishingProfileEnableHealthCheck|PublishingProfileStorageAccountType|PublishingProfileReplicationMode
+      parameter-name: PublishingProfileEnableHealthCheck|PublishingProfileStorageAccountType|PublishingProfileReplicationMode|PublishingProfileTargetExtendedLocation|PublishingProfileAdvancedSetting
     hide: true
   - where:
       verb: Update
@@ -211,5 +223,11 @@ directive:
   - where:
       subject: VmssVMRunCommand|VMRunCommand
       variant: ^GetViaIdentity1
+    remove: true
+  ### Remove Get-AzVmRuncommand so I can code it traditionally.
+  - select: command
+    where: 
+      subject: VMRunCommand|VmssVMRunCommand
+      verb: Get
     remove: true
 ```

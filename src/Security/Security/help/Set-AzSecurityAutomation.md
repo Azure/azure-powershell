@@ -19,7 +19,7 @@ Creates or updates a security automation. If a security automation is already cr
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecurityAutomation -ResourceGroupName rg -Name automationTest -Location centralus -Description "Test automation creation" -Scopes $scopes -Sources $sources -Actions $actions
+Set-AzSecurityAutomation -ResourceGroupName rg -Name automationTest -Location centralus -Description "Test automation creation" -Scopes $scopes -Sources $sources -Actions $actions
 ```
 
 Creates or updates security automation 'automationTest' under resource group 'rg'

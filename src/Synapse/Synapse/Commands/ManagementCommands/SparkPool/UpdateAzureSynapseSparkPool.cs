@@ -21,7 +21,9 @@ using Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -114,6 +116,20 @@ namespace Microsoft.Azure.Commands.Synapse
         [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
         public string NodeSize { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, 
+            HelpMessage = HelpMessages.EnableDynamicExecutorAllocation)]
+        public bool? EnableDynamicExecutorAllocation { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+           HelpMessage = HelpMessages.MinExecutorCount)]
+        [ValidateNotNullOrEmpty]
+        public int MinExecutorCount { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.MaxExecutorCount)]
+        [ValidateNotNullOrEmpty]
+        public int MaxExecutorCount { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.SparkVersion)]
         [ValidateNotNullOrEmpty]
@@ -123,9 +139,14 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.LibraryRequirementsFilePath)]
         public string LibraryRequirementsFilePath { get; set; }
 
+        [CmdletParameterBreakingChange("SparkConfigFilePath", ReplaceMentCmdletParameterName = "SparkConfiguration")]
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
            HelpMessage = HelpMessages.SparkConfigPropertiesFilePath)]
         public string SparkConfigFilePath { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+           HelpMessage = HelpMessages.SparkConfigurationResource)]
+        public PSSparkConfigurationResource SparkConfiguration { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.PackageAction)]
@@ -197,6 +218,7 @@ namespace Microsoft.Azure.Commands.Synapse
             existingSparkPool.NodeSize = this.IsParameterBound(c => c.NodeSize) ? this.NodeSize : existingSparkPool.NodeSize;
             existingSparkPool.LibraryRequirements = this.IsParameterBound(c => c.LibraryRequirementsFilePath) ? CreateLibraryRequirements() : existingSparkPool.LibraryRequirements;
             existingSparkPool.SparkConfigProperties = this.IsParameterBound(c => c.SparkConfigFilePath) ? CreateSparkConfigProperties() : existingSparkPool.SparkConfigProperties;
+            existingSparkPool.SparkVersion = this.IsParameterBound(c => c.SparkVersion) ? this.SparkVersion : existingSparkPool.SparkVersion;
 
             if (this.IsParameterBound(c => c.EnableAutoScale)
                 || this.IsParameterBound(c => c.AutoScaleMinNodeCount)
@@ -222,6 +244,16 @@ namespace Microsoft.Azure.Commands.Synapse
                 };
             }
 
+            if(this.IsParameterBound(c => c.EnableDynamicExecutorAllocation))
+            {
+                existingSparkPool.DynamicExecutorAllocation = new DynamicExecutorAllocation
+                {
+                    Enabled = this.EnableDynamicExecutorAllocation != null ? this.EnableDynamicExecutorAllocation : existingSparkPool.DynamicExecutorAllocation?.Enabled ?? false,
+                    MinExecutors = this.IsParameterBound(c => c.MinExecutorCount) ? this.MinExecutorCount : existingSparkPool.DynamicExecutorAllocation?.MinExecutors ?? int.Parse(SynapseConstants.DefaultMinExecutorCount),
+                    MaxExecutors = this.IsParameterBound(c => c.MaxExecutorCount) ? this.MaxExecutorCount : existingSparkPool.DynamicExecutorAllocation?.MaxExecutors ?? int.Parse(SynapseConstants.DefaultMaxExecutorCount)
+                };
+            }
+
             if ((!this.IsParameterBound(c => c.PackageAction) && this.IsParameterBound(c => c.Package))
                 || ((this.IsParameterBound(c => c.PackageAction) && !this.IsParameterBound(c => c.Package))))
             {
@@ -242,14 +274,29 @@ namespace Microsoft.Azure.Commands.Synapse
                         Name = psPackage?.Name,
                         Type = psPackage?.PackageType,
                         Path = psPackage?.Path,
-                        ContainerName = psPackage?.ContainerName
-                        // TODO: set uploadedTimeStamp property after upgrading SDK otherwise we will see a incorrect property value from Azure portal.
-                    })).ToList();
+                        ContainerName = psPackage?.ContainerName,
+                        UploadedTimestamp = DateTime.Parse(psPackage?.UploadedTimestamp).ToUniversalTime()
+                    }), new LibraryComparer()).ToList();
                 }
                 else if (this.PackageAction == SynapseConstants.PackageActionType.Remove)
                 {
                     existingSparkPool.CustomLibraries = existingSparkPool.CustomLibraries.Where(lib => !this.Package.Any(p => lib.Path.Equals(p.Path, System.StringComparison.OrdinalIgnoreCase))).ToList();
                 }
+            }
+
+            if (this.IsParameterBound(c => c.SparkConfiguration))
+            {
+                if (this.SparkConfiguration != null)
+                {
+                    existingSparkPool.SparkConfigProperties = new SparkConfigProperties()
+                    {
+                        Filename = SparkConfiguration.Name,
+                        ConfigurationType = ConfigurationType.Artifact,                       
+                        Content = Newtonsoft.Json.JsonConvert.SerializeObject(SparkConfiguration)
+                    };
+                }
+                else
+                    existingSparkPool.SparkConfigProperties = null;
             }
 
             bool? isForceApplySetting = false;
@@ -295,6 +342,35 @@ namespace Microsoft.Azure.Commands.Synapse
                 Filename = Path.GetFileName(powerShellDestinationPath),
                 Content = this.ReadFileAsText(powerShellDestinationPath)
             };
+        }
+
+        private class LibraryComparer : IEqualityComparer<LibraryInfo>
+        {
+            public bool Equals(LibraryInfo x, LibraryInfo y)
+            {
+                //Check whether the compared objects reference the same data.
+                if (Object.ReferenceEquals(x, y)) return true;
+
+                //Check whether any of the compared objects is null.
+                if (Object.ReferenceEquals(x, null) || Object.ReferenceEquals(y, null))
+                    return false;
+
+                return x.Name == y.Name
+                    && x.Path == y.Path
+                    && x.ContainerName == y.ContainerName
+                    && x.UploadedTimestamp == y.UploadedTimestamp
+                    && x.Type == y.Type;
+
+            }
+            public int GetHashCode(LibraryInfo obj)
+            {
+                //Check whether the object is null
+                if (Object.ReferenceEquals(obj, null)) return 0;
+
+                //Get hash code for the object if it is not null.
+                int hCode = obj.Name.GetHashCode() ^ obj.Path.GetHashCode() ^ obj.ContainerName.GetHashCode() ^ obj.UploadedTimestamp.GetHashCode() ^ obj.Type.GetHashCode();
+                return hCode;
+             }
         }
     }
 }

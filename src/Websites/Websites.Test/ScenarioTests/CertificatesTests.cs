@@ -12,52 +12,53 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class CertificatesTests : RMTestBase
+    public class CertificatesTests : WebsitesTestRunner
     {
-        public XunitTracingInterceptor _logger;
         public CertificatesTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzWebAppCertificate()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-NewAzWebAppCertificate");
+            TestRunner.RunTestScript("Test-NewAzWebAppCertificate");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzWebAppCertificateWithSSLBinding()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-NewAzWebAppCertificateWithSSLBinding");
+            TestRunner.RunTestScript("Test-NewAzWebAppCertificateWithSSLBinding");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzWebAppCertificateForSlot()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-NewAzWebAppCertificateForSlot");
+            TestRunner.RunTestScript("Test-NewAzWebAppCertificateForSlot");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzWebAppCertificate()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveAzWebAppCertificate");
+            TestRunner.RunTestScript("Test-RemoveAzWebAppCertificate");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImportAzWebAppKeyVaultCertificate()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-ImportAzWebAppKeyVaultCertificate");
+            TestRunner.RunTestScript("Test-ImportAzWebAppKeyVaultCertificate");
         }
     }
 }

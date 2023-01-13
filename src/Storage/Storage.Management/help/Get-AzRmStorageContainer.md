@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azrmstoragecontainer
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azrmstoragecontainer
 schema: 2.0.0
 ---
 
@@ -52,6 +52,7 @@ PS C:\>Get-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "m
 This command gets a Storage blob container with Storage account object and container name.
 
 ### Example 4: List Storage blob container of a Storage account, include deleted containers.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -IncludeDeleted
 

@@ -27,11 +27,17 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string Target { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public PSPacketCaptureMachineScope Scope { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public PSPacketCaptureTargetType? TargetType { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public int? BytesToCapturePerPacket { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public int? TotalBytesPerSession { get; set; }
+        public uint? TotalBytesPerSession { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public int? TimeLimitInSeconds { get; set; }
@@ -58,6 +64,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string FiltersText
         {
             get { return JsonConvert.SerializeObject(this.Filters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ScopeText
+        {
+            get { return JsonConvert.SerializeObject(this.Scope, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

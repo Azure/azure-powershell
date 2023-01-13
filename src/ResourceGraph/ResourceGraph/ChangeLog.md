@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.13.0
+* Introduced -UseTenantScope parameter. Should be used to query for all accessible resources under current tenant.
+
 ## Version 0.12.0
 * Supported piping for the `-Query` parameter of `Search-AzGraph` by pipeline property name
 

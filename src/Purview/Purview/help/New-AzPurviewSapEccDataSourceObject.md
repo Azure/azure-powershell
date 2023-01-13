@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapEccDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapEccDataSourceObject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Create an in-memory object for SapEccDataSource.
 
 ### Example 1: Create SAPECC data source object
 ```powershell
-PS C:\> New-AzPurviewSapEccDataSourceObject -Kind 'SapEcc' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ApplicationServer '12.13.14.12' -SystemNumber 32
+New-AzPurviewSapEccDataSourceObject -Kind 'SapEcc' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ApplicationServer '12.13.14.12' -SystemNumber 32
+```
 
+```output
 ApplicationServer        : 12.13.14.12
 CollectionLastModifiedAt :
 CollectionReferenceName  : parv-brs-2

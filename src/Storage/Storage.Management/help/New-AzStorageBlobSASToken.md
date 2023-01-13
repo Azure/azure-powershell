@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 585371E3-D4CE-452E-B0B0-92B3ABD127E7
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken
 schema: 2.0.0
 ---
 
@@ -71,7 +71,7 @@ This example generates a blob SAS token with life time.
 PS C:\> $ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
 PS C:\> $StartTime = Get-Date
 PS C:\> $EndTime = $startTime.AddDays(6)
-PS C:\> New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
+PS C:\> New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $ctx
 ```
 
 This example generates a User Identity blob SAS token with storage context based on OAuth authentication

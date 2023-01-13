@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public string TargetServerFullyQualifiedDomainName { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource ID of the target server (target subscription ID & target resource group name can be derived).  
+        /// Gets or sets the resource ID of the target server (target subscription ID &amp; target resource group name can be derived).
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the target server.")]

@@ -12,10 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using System;
 using System.Collections;
+using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -121,6 +127,20 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string[] KeyOps { get; set; }
 
         [Parameter(Mandatory = false,
+            ParameterSetName = HsmInteractiveParameterSet,
+            HelpMessage = "Sets the release policy as immutable state. Once marked immutable, this flag cannot be reset and the policy cannot be changed under any circumstances.")]
+        public SwitchParameter Immutable { get; set; }
+
+        /// <summary>
+        /// A path to the release policy file that contains JSON policy definition. The policy rules under which a key can be exported.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInteractiveParameterSet,
+            HelpMessage = "A path to the release policy file that contains JSON policy definition. The policy rules under which a key can be exported.")]
+        public string ReleasePolicyPath { get; set; }
+
+
+        [Parameter(Mandatory = false,
             HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
@@ -134,6 +154,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public override void ExecuteCmdlet()
         {
             NormalizeParameterSets();
+            ValidateParameters();
 
             if (ShouldProcess(Name, Properties.Resources.SetKeyAttribute))
             {
@@ -151,14 +172,34 @@ namespace Microsoft.Azure.Commands.KeyVault
                     keyBundle = this.Track2DataClient.UpdateManagedHsmKey(
                         HsmName,
                         Name,
-                        Version ?? string.Empty,
-                        new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+                        Version,
+                        new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag)
+                        {
+                            ReleasePolicy = this.IsParameterBound(c => c.ReleasePolicyPath) && File.Exists(this.ReleasePolicyPath) ? 
+                                new PSKeyReleasePolicy(this.ReleasePolicyPath) 
+                                {
+                                    Immutable = this.Immutable.IsPresent ? (true as bool?) : null
+                                } : null,                            
+                        });
                 }
 
                 if (PassThru)
                 {
                     WriteObject(keyBundle);
                 }
+            }
+        }
+
+        private void ValidateParameters()
+        {
+            if (this.IsParameterBound(c => c.Immutable) && !this.IsParameterBound(c => c.ReleasePolicyPath))
+            {
+                throw new AzPSArgumentException("Please provide release policy when Immutable is present.", nameof(Immutable), ErrorKind.UserError);
+            }
+
+            if (this.IsParameterBound(c => c.ReleasePolicyPath) && !File.Exists(ReleasePolicyPath))
+            {
+                throw new AzPSArgumentException(string.Format(Resources.FileNotFound, this.ReleasePolicyPath), nameof(ReleasePolicyPath));
             }
         }
 

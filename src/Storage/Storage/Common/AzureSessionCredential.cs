@@ -56,10 +56,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 token = new AccessToken(tokenValue, DateTimeOffset.UtcNow);
             });
+#if DEBUG 
             if (this.debugLogWriter != null)
             {
                 this.debugLogWriter("[" + DateTime.Now.ToString() + "] GetToken: " + token.Token);
             }
+#endif
             return token;
         }
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewayprobeconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewayprobeconfig
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Sets the health probe configuration on an existing Application Gateway.
 
 ```
 Set-AzApplicationGatewayProbeConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -Protocol <String> [-HostName <String>] -Path <String> -Interval <Int32> -Timeout <Int32>
+ -Protocol <String> [-HostName <String>] [-Path <String>] -Interval <Int32> -Timeout <Int32>
  -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings] [-MinServers <Int32>]
  [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -163,7 +163,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,7 +193,7 @@ Specifies the protocol used to send probe.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Http, Https
+Accepted values: Http, Https, TCP, TLS
 
 Required: True
 Position: Named

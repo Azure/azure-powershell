@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
+online version: https://learn.microsoft.com/powershell/module/az.accounts/get-azsubscription
 schema: 2.0.0
 ---
 
@@ -64,7 +64,7 @@ current account.
 
 ### Example 3: Get all subscriptions in the current tenant
 ```powershell
-Get-AzSubscription
+Get-AzSubscription -TenantId (Get-AzContext).Tenant
 ```
 
 ```Output

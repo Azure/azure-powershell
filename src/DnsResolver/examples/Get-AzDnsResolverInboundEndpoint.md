@@ -15,7 +15,9 @@ This command lists Inbound Endpoints under a DNS Resolver
 ### Example 2: Get single Inbound Endpoint by name
 ```powershell
 Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
+```
 
+```output
 Name                  Type                                            Etag
 ----                  ----                                            ----
 sampleInboundEndpoint Microsoft.Network/dnsResolvers/inboundEndpoints "0b008451-0000-0800-0000-60402b960000"

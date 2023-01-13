@@ -19,41 +19,38 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-	public class ServerDnsAliasTests : SqlTestsBase
+	public class ServerDnsAliasTests : SqlTestRunner
 	{
 		public ServerDnsAliasTests(ITestOutputHelper output) : base(output)
 		{
-			base.resourceTypesToIgnoreApiVersion = new string[] {
-				"Microsoft.Sql/servers"
-			};
 		}
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void TestCreateServerDnsAlias()
 		{
-			RunPowerShellTest("Test-CreateServerDnsAlias");
+			TestRunner.RunTestScript("Test-CreateServerDnsAlias");
 		}
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void TestServerDnsAliasUpdate()
 		{
-			RunPowerShellTest("Test-UpdateServerDnsAlias");
+			TestRunner.RunTestScript("Test-UpdateServerDnsAlias");
 		}
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerDnsAliasGet()
 		{
-			RunPowerShellTest("Test-GetServerDnsAlias");
+			TestRunner.RunTestScript("Test-GetServerDnsAlias");
 		}
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void TestServerDnsAliasRemove()
 		{
-			RunPowerShellTest("Test-RemoveServerDnsAlias");
+			TestRunner.RunTestScript("Test-RemoveServerDnsAlias");
 		}
 	}
 }

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: D4A40E83-2969-40A2-AED0-A6073142CAF1
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightssavedsearch
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightssavedsearch
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **Remove-AzOperationalInsightsSavedSearch** cmdlet removes a saved search fr
 
 ### Example 1: Remove a saved search
 ```powershell
-Remove-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId" -Force
+Remove-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId"
 ```
 
 This command removes a saved search from the workspace.

@@ -29,7 +29,7 @@ StreamingClusters Microsoft.StreamAnalytics/quotas
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ISubscriptionQuota
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsquota
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsquota
 #>
 function Get-AzStreamAnalyticsQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ISubscriptionQuota])]

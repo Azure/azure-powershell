@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Extensions;
+    using System;
 
     /// <summary>Cancel the long running image build based on the image template</summary>
     /// <remarks>
@@ -66,8 +67,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>Backing field for <see cref="ImageTemplateName" /> property.</summary>
-        private string _imageTemplateName;
+        /// <summary>Accessor for our copy of the InvocationInfo.</summary>
+        public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// </summary>
+        global::System.Action Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
+
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener" /> cancellation token.</summary>
+        global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
 
         /// <summary>The name of the image Template</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the image Template")]
@@ -77,20 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         Description = @"The name of the image Template",
         SerializedName = @"imageTemplateName",
         PossibleTypes = new [] { typeof(string) })]
-        [global::System.Management.Automation.Alias("Name")]
+        [global::System.Management.Automation.Alias("ImageTemplateName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ParameterCategory.Path)]
-        public string ImageTemplateName { get => this._imageTemplateName; set => this._imageTemplateName = value; }
-
-        /// <summary>Accessor for our copy of the InvocationInfo.</summary>
-        public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
-
-        /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
-        /// </summary>
-        global::System.Action Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
-
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
-        global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+        public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -168,12 +169,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ICloudError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
@@ -200,6 +201,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -227,14 +233,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
-            clone.ImageTemplateName = this.ImageTemplateName;
+            clone.Name = this.Name;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -288,7 +294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
                             var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
-                                var asyncOperation = response.GetFirstHeader(@"azure-asyncoperation");
+                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
                                 var location = response.GetFirstHeader(@"Location");
                                 var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
                                 WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
@@ -367,7 +373,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -382,12 +387,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.VirtualMachineImageTemplatesCancel(SubscriptionId, ResourceGroupName, ImageTemplateName, onOk, onNoContent, onDefault, this, Pipeline);
+                    await this.Client.VirtualMachineImageTemplatesCancel(SubscriptionId, ResourceGroupName, Name, onOk, onNoContent, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ImageTemplateName=ImageTemplateName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -418,12 +423,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ICloudError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -440,15 +445,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IApiError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ImageTemplateName=ImageTemplateName })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ImageTemplateName=ImageTemplateName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

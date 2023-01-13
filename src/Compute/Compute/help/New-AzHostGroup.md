@@ -14,8 +14,9 @@ Creates a host group.
 
 ```
 New-AzHostGroup [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- -PlatformFaultDomain <Int32> [-Zone <String[]>] [-SupportAutomaticPlacement <bool>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PlatformFaultDomain <Int32> [-Zone <String[]>] [-SupportAutomaticPlacement <Boolean>] [-Tag <Hashtable>]
+ [-EnableUltraSSD] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +66,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableUltraSSD
+The flag that enables or disables a capability to have UltraSSD Enabled Virtual Machines on Dedicated Hosts of the Dedicated Host Group. For the Virtual Machines to be UltraSSD Enabled, UltraSSDEnabled flag for the resource needs to be set true as well. Please refer to https://docs.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd for more details on Ultra SSD feature. The ultraSSDEnabled setting can only be enabled for Host Groups that are created as zonal.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -133,6 +149,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SupportAutomaticPlacement
+Specifies if HostGroup will enable automatic placement of vm's.
+Automatic placement means these VMs are placed on dedicated hosts, chosen by Azure, under the dedicated host group.
+If not specified, default value will be false.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: True
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 Specifies Tags
 
@@ -162,24 +195,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### -SupportAutomaticPlacement
-Specifies if HostGroup will enable automatic placement of vm's.
-Automatic placement means these VMs are placed on dedicated hosts, chosen by Azure, under the dedicated host group.
-If not specified, default value will be false.
-
-```yaml
-Type: bool
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: True
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.

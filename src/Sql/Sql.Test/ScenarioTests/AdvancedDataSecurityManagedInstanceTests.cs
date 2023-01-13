@@ -21,29 +21,18 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class AdvancedDataSecurityManagedInstanceTests : SqlTestsBase
+    public class AdvancedDataSecurityManagedInstanceTests : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var resourcesClient = GetResourcesClient(context);
-            var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, networkClient, resourcesClient);
-        }
-
         public AdvancedDataSecurityManagedInstanceTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/managedInstances",
-                "Microsoft.Sql/managedInstances/databases"
-            };
+
         }
 
         [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AdvancedDataSecurityPolicyTest()
         {
-            RunPowerShellTest("Test-AdvancedDataSecurityPolicyManagedInstanceTest");
+            TestRunner.RunTestScript("Test-AdvancedDataSecurityPolicyManagedInstanceTest");
         }
     }
 }

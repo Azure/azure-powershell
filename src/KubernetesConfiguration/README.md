@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the KubernetesConfiguration se
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,12 +47,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: fa0a95854a551be7fdb04367e2e7b6500ab2e341
+branch: 791255f0c5dd775015cd51f3e642549190fb3803
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-03-01/kubernetesconfiguration.json
-  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-09-01/extensions.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/extensions.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/fluxconfiguration.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/operations.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/kubernetesconfiguration.json
 
 title: KubernetesConfiguration
 module-version: 0.1.0
@@ -73,6 +75,12 @@ directive:
             "$ref": "#/definitions/Extension"
           }
         },
+        "201": {
+          "description": "Request received successfully.",
+          "schema": {
+            "$ref": "#/definitions/Extension"
+          }
+        },
         "202": {
           "description": "Request received successfully, and the resource will be updated asynchronously.",
           "schema": {
@@ -83,13 +91,66 @@ directive:
           "description": "Conflict",
           "x-ms-error-response": true,
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/fa0a95854a551be7fdb04367e2e7b6500ab2e341/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
           }
         },
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/fa0a95854a551be7fdb04367e2e7b6500ab2e341/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}"].put.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "Request received successfully for an existing resource.",
+          "schema": {
+            "$ref": "#/definitions/FluxConfiguration"
+          }
+        },
+        "201": {
+          "description": "Request received successfully.",
+          "schema": {
+            "$ref": "#/definitions/FluxConfiguration"
+          }
+        },
+        "400": {
+          "description": "Conflict",
+          "x-ms-error-response": true,
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "Request received successfully for an existing resource.",
+          "schema": {
+            "$ref": "#/definitions/FluxConfiguration"
+          }
+        },
+        "202": {
+          "description": "Request received successfully, and the resource will be updated asynchronously.",
+          "schema": {
+            "$ref": "#/definitions/FluxConfiguration"
+          }
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -97,13 +158,34 @@ directive:
     where: $.definitions.Extension.properties.properties.properties.statuses
     transform: >-
       return {
-          "description": "Status from this extension.",
-          "type": "array",
-          "readOnly": true,
-          "x-nullable": true,
-          "items": {
-            "$ref": "#/definitions/ExtensionStatus"
-          }
+        "description": "Status from this extension.",
+        "type": "array",
+        "readOnly": true,
+        "x-nullable": true,
+        "items": {
+          "$ref": "#/definitions/ExtensionStatus"
+        },
+        "x-ms-identifiers": []
+      }
+  - from: swagger-document 
+    where: $.definitions.BucketDefinition.properties.accessKey
+    transform: >-
+      return {
+        "description": "Plaintext access key used to securely access the S3 bucket",
+        "type": "string",
+        "format": "password",
+        "x-ms-secret": true,
+        "x-nullable": true
+      }
+  - from: swagger-document 
+    where: $.definitions.BucketPatchDefinition.properties.accessKey
+    transform: >-
+      return {
+        "description": "Plaintext access key used to securely access the S3 bucket",
+        "type": "string",
+        "format": "password",
+        "x-ms-secret": true,
+        "x-nullable": true
       }
   - from: swagger-document
     where: $.definitions.EnableHelmOperatorDefinition.type
@@ -115,6 +197,14 @@ directive:
       subject: SourceControlConfiguration
     set:
       subject: KubernetesConfiguration
+  - where:
+      subject: FluxConfiguration
+    set:
+      subject: KubernetesConfigurationFlux
+  - where:
+      subject: FluxConfigOperationStatus
+    set:
+      subject: KubernetesConfigFluxOperationStatus
   - where:
       parameter-name: ClusterResourceName
     set:
@@ -166,6 +256,12 @@ directive:
       subject: KubernetesExtension
     hide: true
   - where:
+      subject: KubernetesConfigurationFlux
+    hide: true
+  - where:
+      subject: KubernetesConfigFluxOperationStatus
+    hide: true
+  - where:
       verb: Get
       subject: KubernetesExtension
     set:
@@ -201,6 +297,31 @@ directive:
     set:
       alias: Remove-AzK8sConfiguration
   - where:
+      verb: New
+      subject: KubernetesConfigurationFlux
+    set:
+      alias: New-AzK8sConfigurationFlux
+  - where:
+      verb: Get
+      subject: KubernetesConfigurationFlux
+    set:
+      alias: Get-AzK8sConfigurationFlux
+  - where:
+      verb: Remove
+      subject: KubernetesConfigurationFlux
+    set:
+      alias: Remove-AzK8sConfigurationFlux
+  - where:
+      verb: Update
+      subject: KubernetesConfigurationFlux
+    set:
+      alias: Update-AzK8sConfigurationFlux
+  - where:
+      verb: Get
+      subject: KubernetesConfigFluxOperationStatus
+    set:
+      alias: Get-AzK8sConfigFluxOperationStatus
+  - where:
       model-name: Extension
     set:
       format-table:
@@ -211,4 +332,12 @@ directive:
           - ProvisioningState
           - AutoUpgradeMinorVersion
           - ReleaseTrain
+  - where:
+      model-name: SourceControlConfiguration
+    set:
+      format-table:
+        properties:
+          - Name
+          - RepositoryUrl
+          - ResourceGroupName
 ```

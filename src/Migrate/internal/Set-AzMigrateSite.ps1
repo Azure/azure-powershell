@@ -20,13 +20,9 @@ Method to create or update a site.
 .Description
 Method to create or update a site.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite
@@ -54,7 +50,7 @@ BODY <IVMwareSite>: Site REST Resource.
   [Tag <IVMwareSiteTags>]: Dictionary of <string>
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/set-azmigratesite
+https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratesite
 #>
 function Set-AzMigrateSite {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite])]
@@ -227,6 +223,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Migrate.private\Set-AzMigrateSite_Update';
             UpdateExpanded = 'Az.Migrate.private\Set-AzMigrateSite_UpdateExpanded';
@@ -240,6 +237,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -248,15 +246,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -30,6 +30,7 @@ Gets the Network status of their Api Management service
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzApiManagementNetworkStatus -ResourceGroupName powershelltest -Name powershellsdkservice
 

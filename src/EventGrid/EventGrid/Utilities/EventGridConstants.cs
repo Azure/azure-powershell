@@ -48,6 +48,12 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string DomainLocationHelp = "The location of the domain.";
         public const string TagsHelp = "Hashtable which represents resource Tags.";
         public const string ResourceIdNameHelp = "The identifier of the resource to which the event subscription should be created.";
+        public const string AdvancedFilteringOnArraysHelp = "The presence of this parameter denotes that advanced filtering on arrays is enabled";
+
+        public const string IdentityTypeHelp = "Different identity types. Could be either  of following 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'";
+        public const string IdentityIdsHelp = "The list of user assigned identities";
+        public const string SourceHelp = "Source for a system topic";
+        public const string ForceHelp = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the resource";
 
         public const string ODataQueryHelp = "The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.";
         public const string TopHelp = "The maximum number of resources to be obtained. Valid value is between 1 and 100. If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink. If the Top value is not specified, the full list of resources will be returned at once.";
@@ -62,7 +68,9 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string InputMappingFieldHelp = "Hashtable which represents the input mapping fields in space separated key = value format. Allowed key names are: id, topic, eventtime, subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.";
         public const string InputMappingDefaultValueHelp = "Hashtable which represents the input mapping fields with default value in space separated key = value format. Allowed key names are: subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.";
         public const string EventTtlHelp = "The time in minutes for the event delivery. This value must be between 1 and 1440";
+        public const string StorageQueueMessageTtlHelp = "The time in milliseconds for time to live of a storage queue message";
         public const string MaxDeliveryAttemptHelp = "The maximum number of attempts to deliver the event. This value must be between 1 and 30.";
+        public const string DeliveryAttributeMappingHelp = "The delivery attribute mappings for this system topic event subscription";
         public const string DeliverySchemaHelp = "The schema to be used when delivering events to the destination. The possible values are: eventgridschema, CustomInputSchema, or cloudeventv01schema. Default value is CustomInputSchema.";
         public const string DeadletterEndpointHelp = "The endpoint used for storing undelivered events. Specify the Azure resource ID of a Storage blob container. For example: " +
                                                      "/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].";
@@ -78,7 +86,49 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string DomainResourceIdHelp = "Resource Identifier representing the Event Grid Domain.";
         public const string DomainTopicResourceIdHelp = "Resource Identifier representing the Event Grid Domain Topic.";
         public const string DomainOrDomainTopicResourceIdHelp = "Resource Identifier representing the Event Grid Domain or Grid Domain Topic.";
+        public const string VerifiedPartnerResourceIdHelp = "Resource Idenitifier representing the Event Grid Verified Partner.";
+        public const string PartnerConfigurationResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Configuration.";
+        public const string PartnerRegistrationResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Registration.";
+        public const string PartnerTopicResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Topic.";
+        public const string PartnerNamespaceResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Namespace.";
+        public const string PartnerDestinationResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Destination.";
+        public const string ChannelResourceIdHelp = "Resource Idenitifier representing the Event Grid Channel.";
+        public const string EventSubscriptionResourceIdHelp = "Resource Identifier representing the Event Grid Event Subscription.";
 
+        public const string PartnerConfigurationInputObjectHelp = "PartnerConfiguration object.";
+        public const string PartnerRegistrationInputObjectHelp = "PartnerRegistration object";
+        public const string PartnerTopicInputObjectHelp = "PartnerTopic object.";
+        public const string PartnerNamespaceInputObjectHelp = "PartnerNamespace object";
+        public const string ChannelInputObjectHelp = "Channel object";
+
+        public const string PartnerRegistrationNameHelp = "Event Grid partner registration name.";
+        public const string PartnerTopicNameHelp = "Event Grid partner topic name.";
+        public const string PartnerNameHelp = "Parter name.";
+        public const string PartnerNamespaceNameHelp = "Event Grid partner namespace name.";
+        public const string PartnerNamespaceLocationHelp = "Location of the partner namespace.";
+        public const string PartnerNamespaceKeyNameHelp = "The name of the shared access key for the partner namespace. Either key1 or key2.";
+        public const string ChannelNameHelp = "The name of the Event Grid channel.";
+
+        public const string PartnerRegistrationImmutableIdHelp = "Immutable id of the corresponding partner registration";
+        public const string AuthorizationExpirationTimeHelp = "Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail. " +
+                                                              "If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration. " + 
+                                                              "If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified.";
+        public const string MaxExpirationTimeInDaysHelp = "Expiration time in days used to validate the authorization expiration time for each authorized partner. If this parameter is not specified, the default is 7 days. Otherwise, allowed values are between 1 and 365 days.";
+        public const string AuthorizedPartnersHelp = "Array of HashTables where each HashTable is the details of an authorized partner. Each HashTable has the following key-value info: partnerName, partnerRegistrationImmutableId, and authorizationExpirationTimeInUtc. " +
+                                                     "At least one key is required. The partnerName is a String, partnerRegistrationImmutableId  is a Guid, and authorizationExpirationTimeInUtc is a DateTime.";
+        public const string PrivateEndpointConnectionsHelp = "List of PSPrivateEndointConnection representing information about the private endpoint connections.";
+        public const string PSInboundIpRuleHelp = "Array of PSInboundIpRule which represents list of inbound IP rules. Each rule specifies the IP Address in CIDR notation e.g., 10.0.0.0/8 along with the corresponding Action to be performed based on the match or no match of the IpMask. Possible Action values include Allow only";
+        public const string PartnerNamespaceEndpointHelp = "Endpoint for the partner namespace";
+        public const string PartnerRegistrationFullyQualifiedIdHelp = "Fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.";
+        public const string PartnerTopicRoutingModeHelp = "Determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. Possible values include: 'SourceEventAttribute', 'ChannelNameHeader'";
+        public const string ExpirationTimeIfNotActivatedHelp = "Expiration time of the partner topic. If this timer expires while the partner topic is still never activated, the partner topic and corresponding event channel are deleted.";
+        public const string MessageForActivationHelp = "Context or helpful message that can be used during the approval process by the subscriber.";
+        public const string EventTypeKindHelp = "The kind of event type used. Possible values include: 'Inline'";
+        public const string InlineEventHelp = "Hashtable representing information on inline events. The inline event keys are of type string which represents the name of the event." +
+                                              "The inline event values are Hashtables containing the optional keys description, displayName, documentationUrl, and dataSchemaUrl which define the information about the inline event.";
+        public const string ChannelTypeHelp = "The type of the event channel which represents the direction flow of events. Possible values include: 'PartnerTopic'";
+        public const string PartnerTopicSourceHelp = "Source information provided by the publisher to determine the scope or context from which the events are originating.";
+        
         public const string EventSubscriptionFullUrlHelp = "Include the full endpoint URL of the event subscription destination.";
         public const string EventSubscriptionFullUrlInResponseHelp = "If specified, include the full endpoint URL of the event subscription destination in the response.";
 
@@ -91,6 +141,9 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string InboundIpRuleHelp = "Hashtable which represents list of inbound IP rules. Each rule specifies the IP Address in CIDR notation e.g., 10.0.0.0/8 along with the corresponding Action to be performed based on the match or no match of the IpMask. Possible Action values include Allow only";
         public const string PublicNetworkAccessHelp = "This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring InboundIpRule parameters. Allowed values are disabled and enabled.";
 
+        public const string DisableLocalAuthHelp = "Switch param to disable local auth.";
+        public const string AutoCreateTopicWithFirstSubscriptionHelp = "Switch param to auto create topic with first subscription";
+        public const string AutoDeleteTopicWithLastSubscriptionHelp = "Switch param to auto delete topic with last subscription";
         // Event Subscription destination types
         public const string Webhook = "webhook";
         public const string EventHub = "eventhub";

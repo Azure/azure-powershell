@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayconnectiondraining
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayconnectiondraining
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **Remove-AzApplicationGatewayConnectionDraining** cmdlet removes the connect
 ### Example 1
 ```powershell
 $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-$Settings  = Get-AzApplicationGatewayBackendHttpSettings -Name "Settings01" -ApplicationGateway $AppGw
+$Settings  = Get-AzApplicationGatewayBackendHttpSetting -Name "Settings01" -ApplicationGateway $AppGw
 Remove-AzApplicationGatewayConnectionDraining -BackendHttpSettings $Settings
 Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```

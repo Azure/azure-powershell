@@ -31,7 +31,7 @@ The **Get-AzCosmosDBMongoDBDatabase** cmdlet gets the CosmosDB MongoDB Database.
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBMongoDBDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {dbName}
+Get-AzCosmosDBMongoDBDatabase -ResourceGroupName "rgName" -AccountName "accountName" -Name "dbName"
 ```
 
 ```output

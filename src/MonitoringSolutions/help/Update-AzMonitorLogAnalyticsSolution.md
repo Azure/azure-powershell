@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MonitoringSolutions
-online version: https://docs.microsoft.com/powershell/module/az.monitoringsolutions/update-azmonitorloganalyticssolution
+online version: https://learn.microsoft.com/powershell/module/az.monitoringsolutions/update-azmonitorloganalyticssolution
 schema: 2.0.0
 ---
 
@@ -202,7 +202,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMonitoringSolutionsIdentity>: Identity Parameter
+INPUTOBJECT `<IMonitoringSolutionsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ManagementAssociationName <String>]`: User ManagementAssociation Name.
   - `[ManagementConfigurationName <String>]`: User Management Configuration Name.

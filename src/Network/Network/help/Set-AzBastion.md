@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azbastion
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azbastion
 schema: 2.0.0
 ---
 
@@ -63,6 +63,7 @@ Scale Units          : 10
 Updates BastionHost resource with Basic Sku and 2 Scale Units to Standard Sku and 10 Scale Units
 
 ### Example 2
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $bastionObj = Get-AzBastion -ResourceGroupName "MyRg" -Name "MyBastion"
 $bastionObj

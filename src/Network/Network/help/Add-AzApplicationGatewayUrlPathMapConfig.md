@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 9D9D079C-5557-40DC-8CFB-1DCD446D9109
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig
 schema: 2.0.0
 ---
 
@@ -55,7 +55,7 @@ The **Add-AzApplicationGatewayUrlPathMapConfig** cmdlet adds an array of URL pat
 ```powershell
 $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
 $pool = Get-AzApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name "pool01"
-$poolSettings = Get-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $appgw -Name "poolSettings01"
+$poolSettings = Get-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $appgw -Name "poolSettings01"
 $pathRule = New-AzApplicationGatewayPathRuleConfig -Name "rule01" -Paths "/path" -BackendAddressPool $pool -BackendHttpSettings $poolSettings
 $appgw = Add-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "url01" -PathRules $pathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSettings
 $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw

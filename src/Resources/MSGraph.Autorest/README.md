@@ -51,6 +51,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
 input-file:
+  - ../OpenApiSpecs/v1.0/Identity.DirectoryManagement.yml
   - ../OpenApiSpecs/v1.0/Applications.yml
   - ../OpenApiSpecs/v1.0/Groups.yml
   - ../OpenApiSpecs/beta/Groups.yml
@@ -136,9 +137,46 @@ directive:
     remove: true
 
   - where:
-      subject: ^application$|^group$|^serviceprincipal$|^user$
-      variant: ^Update$
+      subject: ^serviceprincipalfederatedidentitycredentials$
     remove: true
+
+  - where:
+      subject: ^application$|^group$|^serviceprincipal$|^user$|^applicationfederatedidentitycredentials$
+      variant: ^Update$|^Create$
+    remove: true
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+      parameter-name: applicationid
+    set:
+      parameter-name: ApplicationObjectId
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+      parameter-name: FederatedIdentityCredentialId
+    set:
+      parameter-name: FederatedCredentialId 
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+      verb: ^Update$
+      parameter-name: Name
+    hide: true
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+      verb: Get|New
+    hide: true
+
+  - where:
+      subject: ^applicationfederatedidentitycredential$|GroupGraphRefMember$|grouprefmember$|groupmember$
+    set:
+      preview-message: This cmdlet is using API version beta which is under preview.
+
+  - where:
+      subject: ^applicationfederatedidentitycredentials$
+    set: 
+      subject: AppFederatedCredential
 
   - where:
       subject: ^application$|^serviceprincipal$|^group$
@@ -154,7 +192,10 @@ directive:
   - where:
       subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$
     hide: true
-
+  - where:
+      subject: organization
+      verb: New
+    hide: true
   - where:
       subject: ^group$
       verb: ^Update$

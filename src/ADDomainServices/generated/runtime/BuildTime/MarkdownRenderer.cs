@@ -53,13 +53,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.PowerShell
                         sb.Append(parameter.ToHelpParameterOutput());
                     }
                 }
-                if (markdownInfo.SupportsPaging)
-                {
-                    foreach (var parameter in SupportsPagingParameters)
-                    {
-                        sb.Append(parameter.ToHelpParameterOutput());
-                    }
-                }
 
                 sb.Append($"### CommonParameters{Environment.NewLine}This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).{Environment.NewLine}{Environment.NewLine}");
 
@@ -79,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.PowerShell
                 sb.Append($"ALIASES{Environment.NewLine}{Environment.NewLine}");
                 foreach (var alias in markdownInfo.Aliases)
                 {
-                    sb.Append($"### {alias}{Environment.NewLine}{Environment.NewLine}");
+                    sb.Append($"{alias}{Environment.NewLine}{Environment.NewLine}");
                 }
                 if (markdownInfo.ComplexInterfaceInfos.Any())
                 {

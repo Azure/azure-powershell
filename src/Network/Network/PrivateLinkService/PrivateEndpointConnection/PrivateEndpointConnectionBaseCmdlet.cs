@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -25,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "ByResourceId",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [ValidateParentResourceNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Alias("ResourceName")]
@@ -62,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter namedParameter;
-            if (ProviderConfiguration.TryGetProvideServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
+            if (ProviderConfiguration.TryGetEndpointConnectionServiceParameter(privateEndpointTypeName, NamedContextParameterSet, out namedParameter))
             {
                 parameters.Add(privateEndpointTypeName, namedParameter);
             }
@@ -76,7 +80,26 @@ namespace Microsoft.Azure.Commands.Network
 
         protected IPrivateLinkProvider BuildProvider(string subscription, string privateLinkResourceType)
         {
+            if (!GenericProvider.SupportsPrivateLinkFeature(privateLinkResourceType))
+                throw new AzPSApplicationException(string.Format(Properties.Resources.UnsupportPrivateEndpointConnectionType, privateLinkResourceType));
             return PrivateLinkProviderFactory.CreatePrivateLinkProvder(this, subscription, privateLinkResourceType);
+        }
+
+        /// <summary>
+        /// Validate parent resource of the resource id not null or empty.
+        /// </summary>
+        [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
+        internal sealed class ValidateParentResourceNotNullOrEmptyAttribute : ValidateArgumentsAttribute
+        {
+            protected override void Validate(object arguments, EngineIntrinsics engineIntrinsics)
+            {
+                string resourceId = (string)arguments;
+                var resourceIdentifier = new ResourceIdentifier(resourceId);
+                if (string.IsNullOrEmpty(resourceIdentifier.ParentResource))
+                {
+                    throw new AzPSApplicationException(string.Format(Properties.Resources.InvalidResourceId, resourceId));
+                }
+            }
         }
     }
 }

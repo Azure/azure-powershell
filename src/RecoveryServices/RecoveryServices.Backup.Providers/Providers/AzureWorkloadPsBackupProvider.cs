@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ?
                 (bool)ProviderData[ItemParams.DeleteBackupData] : false;
-
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
             string containerUri = "";
             string protectedItemUri = "";
@@ -110,8 +110,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ValidateAzureWorkloadSQLDatabaseDisableProtectionRequest(itemBase);
             }
 
-            // AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();                 
-
             Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
             containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
             protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
@@ -120,7 +118,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 containerUri,
                                 protectedItemUri,
                                 vaultName: vaultName,
-                                resourceGroupName: vaultResourceGroupName);
+                                resourceGroupName: vaultResourceGroupName,
+                                auxiliaryAccessToken,
+                                item.Id);
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
@@ -642,21 +642,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             string policyName = ProviderData.ContainsKey(PolicyParams.PolicyName) ?
                 (string)ProviderData[PolicyParams.PolicyName] : null;
-            RetentionPolicyBase retentionPolicy =
-                ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
-                (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
-                null;
-            SchedulePolicyBase schedulePolicy =
-                ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ?
-                (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
-                null;
-            PolicyBase policy =
-                ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ?
-                (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] :
-                null;
-            bool fixForInconsistentItems = ProviderData.ContainsKey(PolicyParams.FixForInconsistentItems) ?
-                (bool)ProviderData[PolicyParams.FixForInconsistentItems] : false;
+            
+            RetentionPolicyBase retentionPolicy = ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ? (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] : null;
+            SchedulePolicyBase schedulePolicy = ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ? (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] : null;
+            PolicyBase policy = ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ? (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] : null;           
+
+            bool fixForInconsistentItems = ProviderData.ContainsKey(PolicyParams.FixForInconsistentItems) ? (bool)ProviderData[PolicyParams.FixForInconsistentItems] : false;
+
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource();
+
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+            ProtectionPolicyResource existingPolicy = ProviderData.ContainsKey(PolicyParams.ExistingPolicy) ? (ProtectionPolicyResource)ProviderData[PolicyParams.ExistingPolicy] : null;
+
+            CmdletModel.TieringPolicy tieringDetails = ProviderData.ContainsKey(PolicyParams.TieringPolicy) ? (CmdletModel.TieringPolicy)ProviderData[PolicyParams.TieringPolicy] : null;
+            bool isSmartTieringEnabled = ProviderData.ContainsKey(PolicyParams.IsSmartTieringEnabled) ? (bool)ProviderData[PolicyParams.IsSmartTieringEnabled] : false;
 
             if (policy != null)
             {
@@ -665,19 +665,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Validation of Protection Policy is successful");
 
                 // RetentionPolicy and SchedulePolicy both should not be empty
-                if (retentionPolicy == null && schedulePolicy == null)
+                if (retentionPolicy == null && schedulePolicy == null && tieringDetails == null)
                 {
                     if (fixForInconsistentItems == false)
                     {
                         throw new ArgumentException(Resources.BothRetentionAndSchedulePoliciesEmpty);
                     }
                     AzureVmWorkloadProtectionPolicy azureVmWorkloadModifyPolicy = new AzureVmWorkloadProtectionPolicy();
-                    azureVmWorkloadModifyPolicy.Settings = new Settings("UTC",
+                    azureVmWorkloadModifyPolicy.Settings = new Settings(((CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy).ScheduleRunTimeZone,
                         ((AzureVmWorkloadPolicy)policy).IsCompression,
                         ((AzureVmWorkloadPolicy)policy).IsCompression);
                     azureVmWorkloadModifyPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
                     azureVmWorkloadModifyPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
-                    azureVmWorkloadModifyPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
+                    azureVmWorkloadModifyPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy, isSmartTieringEnabled);
                     azureVmWorkloadModifyPolicy.MakePolicyConsistent = true;
                     serviceClientRequest.Properties = azureVmWorkloadModifyPolicy;
                 }
@@ -701,22 +701,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     AzureWorkloadProviderHelper.CopyScheduleTimeToRetentionTimes(
                         (CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy,
                         (CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy);
-                    Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
+                    Logger.Instance.WriteDebug("Copy of RetentionTime from SchedulePolicy to RetentionPolicy is successful");
 
                     // Now validate both RetentionPolicy and SchedulePolicy matches or not
-                    PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                    PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                         (CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy,
                         (CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy);
                     Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
+                                        
+                    if (tieringDetails != null)
+                    {
+                        PolicyHelpers.ValidateFullBackupRetentionPolicyWithTieringPolicy((CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy, tieringDetails);
+                        AzureWorkloadProviderHelper.GetUpdatedTieringPolicy(policy, tieringDetails);
+                        Logger.Instance.WriteDebug("Validation of Tiering policy is successful");
+                    }
+                    else if (((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy != null)
+                    {
+                        PolicyHelpers.ValidateFullBackupRetentionPolicyWithTieringPolicy((CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy, ((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy, true);
+                    }
+
+                    string timeZone = (((CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy).ScheduleRunTimeZone != null) ? ((CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy).ScheduleRunTimeZone  : "UTC";
 
                     // construct Service Client policy request
                     AzureVmWorkloadProtectionPolicy azureVmWorkloadProtectionPolicy = new AzureVmWorkloadProtectionPolicy();
-                    azureVmWorkloadProtectionPolicy.Settings = new Settings("UTC",
+                    azureVmWorkloadProtectionPolicy.Settings = new Settings(timeZone,
                         ((AzureVmWorkloadPolicy)policy).IsCompression,
                         ((AzureVmWorkloadPolicy)policy).IsCompression);
                     azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
                     azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
-                    azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
+                    azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy, isSmartTieringEnabled);
                     serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
                 }
             }
@@ -740,29 +753,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
 
                 // Now validate both RetentionPolicy and SchedulePolicy together
-                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                                     (SQLRetentionPolicy)retentionPolicy,
                                     (SQLSchedulePolicy)schedulePolicy);
                 Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
+                // validate tiering policy
+                PolicyHelpers.ValidateFullBackupRetentionPolicyWithTieringPolicy(((SQLRetentionPolicy)retentionPolicy).FullBackupRetentionPolicy, tieringDetails);
+                Logger.Instance.WriteDebug("Validation of Retention policy with Tiering policy is successful");
+
+                string timeZone = (((SQLSchedulePolicy)schedulePolicy).FullBackupSchedulePolicy.ScheduleRunTimeZone != null) ? ((SQLSchedulePolicy)schedulePolicy).FullBackupSchedulePolicy.ScheduleRunTimeZone : "UTC";
+
                 // construct Service Client policy request            
                 AzureVmWorkloadProtectionPolicy azureVmWorkloadProtectionPolicy = new AzureVmWorkloadProtectionPolicy();
-                azureVmWorkloadProtectionPolicy.Settings = new Settings("UTC",
+                azureVmWorkloadProtectionPolicy.Settings = new Settings(timeZone, 
                     ((SQLSchedulePolicy)schedulePolicy).IsCompression,
                     ((SQLSchedulePolicy)schedulePolicy).IsCompression);
                 azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(workloadType.ToString());
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy(
                                                     (SQLRetentionPolicy)retentionPolicy,
-                                                    (SQLSchedulePolicy)schedulePolicy);
+                                                    (SQLSchedulePolicy)schedulePolicy, tieringDetails, isSmartTieringEnabled);
                 serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
+            }
+
+            // check for MUA
+            bool isMUAProtected = false;
+            if (existingPolicy != null)
+            {
+                isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(existingPolicy, serviceClientRequest, isMUAOperation);
             }
 
             return ServiceClientAdapter.CreateOrUpdateProtectionPolicy(
                 policyName = policyName ?? policy.Name,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected);
         }
 
         private RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableOrModifyProtection(bool disableWithRetentionData = false)
@@ -797,7 +825,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
             }
-            
+
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+
+            ProtectionPolicyResource oldPolicy = null;
+            ProtectionPolicyResource newPolicy = null;
+            if (isMUAOperation && item != null && item.PolicyId != null && policy != null && policy.Id != null)
+            {
+                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.PolicyId);
+                string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, item.PolicyId);
+
+                keyValueDict = HelperUtils.ParseUri(policy.Id);
+                string newPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policy.Id);
+
+                // fetch old and new Policy 
+                oldPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                    oldPolicyName,
+                    vaultName: vaultName,
+                    resourceGroupName: vaultResourceGroupName);
+
+                newPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                    newPolicyName,
+                    vaultName: vaultName,
+                    resourceGroupName: vaultResourceGroupName);
+            }
+
             string containerUri = "";
             string protectedItemUri = "";
 
@@ -844,12 +897,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Properties = properties
             };
 
+            // check for MUA
+            bool isMUAProtected = false;
+            if (isMUAOperation && oldPolicy != null && newPolicy != null)
+            {
+                isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(oldPolicy, newPolicy, isMUAOperation);
+            }
+
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(
                 containerUri,
                 protectedItemUri,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: vaultResourceGroupName);
+                resourceGroupName: vaultResourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected);
         }
 
         public void RegisterContainer()

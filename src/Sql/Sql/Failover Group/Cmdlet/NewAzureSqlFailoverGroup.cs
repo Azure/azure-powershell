@@ -50,6 +50,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public string FailoverGroupName { get; set; }
 
         /// <summary>
+        /// Gets or sets the partner subscription id for Azure SQL Database Failover Group
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the secondary subscription id of the Azure SQL Database Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerSubscriptionId { get; set; }
+
+        /// <summary>
         /// Gets or sets the partner resource group name for Azure SQL Database Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
@@ -136,6 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 ServerName = ServerName,
                 Location = location,
                 FailoverGroupName = FailoverGroupName,
+                PartnerSubscriptionId = MyInvocation.BoundParameters.ContainsKey("PartnerSubscriptionId") ? PartnerSubscriptionId : null,
                 PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
                 PartnerServerName = PartnerServerName,
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),

@@ -35,17 +35,15 @@ This is expected service behavior.
 
 ### Example 1: Remove-AzConnectedNetworkFunction via Resource Group and Resource name
 ```powershell
-PS C:\> Remove-AzConnectedNetworkFunction -ResourceGroupName myResources -Name myVnf
-
+Remove-AzConnectedNetworkFunction -ResourceGroupName myResources -Name myVnf
 ```
 
 Deleting the Network Function in Resource Group myResources with name myVnf.
 
 ### Example 2: Remove-AzConnectedNetworkFunction via Identity
 ```powershell
-PS C:\> $vnf = Get-AzConnectedNetworkFunction -ResourceGroupName myResources -Name myVnf1
-PS C:\> Remove-AzConnectedNetworkFunction -InputObject $vnf
-
+$vnf = Get-AzConnectedNetworkFunction -ResourceGroupName myResources -Name myVnf1
+Remove-AzConnectedNetworkFunction -InputObject $vnf
 ```
 
 Creating an identity with name myVnf1 and resource group name myResources.
@@ -226,7 +224,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

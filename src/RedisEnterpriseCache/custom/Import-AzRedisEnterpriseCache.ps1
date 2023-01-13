@@ -24,7 +24,7 @@ PS C:\> Import-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGrou
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/import-azredisenterprisecache
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/import-azredisenterprisecache
 #>
 function Import-AzRedisEnterpriseCache {
     [Alias('Import-AzRedisEnterpriseCacheDatabase')]
@@ -54,8 +54,8 @@ function Import-AzRedisEnterpriseCache {
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [System.String]
-        # SAS URI for the target blob to import from
+        [System.String[]]
+        # SAS URIs for the target blobs to import from
         ${SasUri},
 
         [Parameter()]

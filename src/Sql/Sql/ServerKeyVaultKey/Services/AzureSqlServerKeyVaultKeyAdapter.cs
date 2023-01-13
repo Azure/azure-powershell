@@ -114,6 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// </summary>
         /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
+        /// <param name="keyName">Server Key Vault Key name</param>
         /// <param name="resp">The management client server key response to convert</param>
         /// <returns>The converted server key vault key model</returns>
         private static AzureSqlServerKeyVaultKeyModel CreateServerKeyModelFromResponse(string resourceGroup, string serverName, string keyName, Microsoft.Azure.Management.Sql.LegacySdk.Models.ServerKey resp)

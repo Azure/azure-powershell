@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/Az.storage/new-azstorageblobqueryconfig
+online version: https://learn.microsoft.com/powershell/module/Az.storage/new-azstorageblobqueryconfig
 schema: 2.0.0
 ---
 
@@ -29,6 +29,7 @@ The **New-AzStorageBlobQueryConfig** cmdlet creates a blob query configuration o
 ## EXAMPLES
 
 ### Example 1: Create blob query configures , and query a blob
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> $inputconfig = New-AzStorageBlobQueryConfig -AsCsv -ColumnSeparator "," -QuotationCharacter """" -EscapeCharacter "\" -RecordSeparator "`n" -HasHeader
 

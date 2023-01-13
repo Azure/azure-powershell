@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <summary>
         /// Constructs a Transparent Data Encryption adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlDatabaseTransparentDataEncryptionAdapter(IAzureContext context)
         {
             Context = context;
@@ -68,8 +67,6 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <summary>
         /// Upserts a Transparent Data Encryption
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of ther server</param>
         /// <param name="model">The Transparent Data Encryption to create</param>
         /// <returns>The updated server model</returns>
         public AzureSqlDatabaseTransparentDataEncryptionModel UpsertTransparentDataEncryption(AzureSqlDatabaseTransparentDataEncryptionModel model)
@@ -123,6 +120,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// </summary>
         /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
+        /// <param name="databaseName">The name of the database</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
         private static AzureSqlDatabaseTransparentDataEncryptionModel CreateTransparentDataEncryptionModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.LogicalDatabaseTransparentDataEncryption resp)

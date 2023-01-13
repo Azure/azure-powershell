@@ -142,6 +142,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// Create a storage context usign cloud storage account
         /// </summary>
         /// <param name="account">cloud storage account</param>
+        /// <param name="accountName">Storage account name</param>
+        /// <param name="DefaultContext"></param>
+        /// <param name="logWriter"></param>
         public AzureStorageContext(CloudStorageAccount account, string accountName = null, IAzureContext DefaultContext = null, DebugLogWriter logWriter = null)
         {
             StorageAccount = account;

@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// We clear these properties so that during piping scenarios we can ensure we initialize the minimum properties
         /// for either getting, starting, stopping the current job execution.
         /// Resource group name, server name, agent name, target group name, and name are cleared
-        /// so that during the next iteration in list, they will be initialized properly during <see cref="InitializeInputObjectProperties"/>
+        /// so that during the next iteration in list, they will be initialized properly during <see cref="AzureSqlElasticJobsCmdletBase{TInputObject, TModel, TAdapter}.InitializeInputObjectProperties(TInputObject)"/>
+        /// </remarks>
         protected void ClearProperties()
         {
             this.ResourceGroupName = null;

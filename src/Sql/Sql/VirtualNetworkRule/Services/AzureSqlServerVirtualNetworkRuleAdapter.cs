@@ -38,8 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Adapter
         /// <summary>
         /// Constructs a virtual network rule adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerVirtualNetworkRuleAdapter(IAzureContext context)
         {
             Context = context;
@@ -77,8 +76,6 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Adapter
         /// <summary>
         /// Upserts a virtual network rule
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of ther server</param>
         /// <param name="model">The virtual network rule to create</param>
         /// <returns>The updated virtual network rule model</returns>
         public AzureSqlServerVirtualNetworkRuleModel UpsertVirtualNetworkRule(AzureSqlServerVirtualNetworkRuleModel model)

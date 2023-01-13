@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle
+online version: https://learn.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle
 schema: 2.0.0
 ---
 
@@ -80,6 +80,7 @@ PS C:\> Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recu
 This command lists all file handles on a file directory recursively, filters out the handles which are opened 1 day ago, and then closes them.
 
 ### Example 3: Close all file handles on a file directory recursively and show the closed file handle count
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive -CloseAll -PassThru
 10

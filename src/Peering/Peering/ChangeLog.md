@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
 ## Version 0.3.0
 * Added support for cdn peering prefixes
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **Enable-AzHDInsightMonitoring** cmdlet enables the Classic Azure Monitor lo
 
 ### Example 1
 ```powershell
-Enable-AzHDInsightMonitoring -Name testcluster -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
+Enable-AzHDInsightMonitoring -Name testcluster -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey 'key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd'
 ```
 
 ```output
@@ -36,7 +36,7 @@ Monitoring will be enabled on the HDInsight cluster and relevant logs will be se
 
 ### Example 2
 ```powershell
-Enable-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
+Enable-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey 'key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd'
 ```
 
 ```output

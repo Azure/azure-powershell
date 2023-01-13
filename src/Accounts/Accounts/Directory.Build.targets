@@ -1,9 +1,10 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., Directory.Build.targets))\Directory.Build.targets" />
-  <Target Name ="BuildAssemblyLoadContextProject" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+  <!-- Skip in live unit testing https://docs.microsoft.com/en-us/visualstudio/test/live-unit-testing-faq?view=vs-2022#can-i-customize-my-live-unit-testing-builds- -->
+  <Target Name ="BuildAssemblyLoadContextProject" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug' And '$(BuildingForLiveUnitTesting)' != 'true'">
     <Exec Command="dotnet build ../AuthenticationAssemblyLoadContext/AuthenticationAssemblyLoadContext.csproj"/>
   </Target>
-  <Target Name="AddAccountsPsm1Dependency" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+  <Target Name="AddAccountsPsm1Dependency" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug' And '$(BuildingForLiveUnitTesting)' != 'true'">
     <Exec Command="pwsh -NonInteractive -NoLogo -NoProfile -Command &quot;. '$(OutDir)../../../tools/AddModulePsm1Dependency.ps1' -ModuleFolder '$(OutDir)' -IgnorePwshVersion &quot;" />
   </Target>
 </Project>

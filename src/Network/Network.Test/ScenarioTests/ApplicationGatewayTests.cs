@@ -14,8 +14,8 @@
 
 using System;
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -42,6 +42,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestAvailableWafRuleSets()
         {
             TestRunner.RunTestScript("Test-AvailableWafRuleSets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestWafDynamicManifest()
+        {
+            TestRunner.RunTestScript("Test-WafDynamicManifest");
         }
 
         [Fact]
@@ -151,6 +159,23 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayWithTCPResources()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayWithTCPResources -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayWithTLSResources()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayWithTLSResources -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
         public void TestTopLevelWafPolicyExclusions()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyExclusions -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
@@ -202,6 +227,31 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationGatewayCRUDWithMutualAuthentication()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDWithMutualAuthentication -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithCustomRules()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCustomRules");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithUppercaseTransform()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithUppercaseTransform");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithCustomBlockResponse()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCustomBlockResponse");
         }
     }
 }

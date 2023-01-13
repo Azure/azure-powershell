@@ -24,11 +24,9 @@ namespace Commands.StorageSync.Interop.Clients
 {
     /// <summary>
     /// Function performs server certificate rollover
-    /// Implements the <see cref="StorageSync.Management.PowerShell.Cmdlets.CertificateRollover.ISyncServerCertificateRollover" />
     /// Implements the <see cref="Commands.StorageSync.Interop.Interfaces.ISyncServerCertificateRollover" />
     /// </summary>
     /// <seealso cref="Commands.StorageSync.Interop.Interfaces.ISyncServerCertificateRollover" />
-    /// <seealso cref="StorageSync.Management.PowerShell.Cmdlets.CertificateRollover.ISyncServerCertificateRollover" />
     public class SyncServerCertificateRolloverClient : ISyncServerCertificateRollover
     {
         /// <summary>

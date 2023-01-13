@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabaseledgerdigestupload
+online version: https://learn.microsoft.com/powershell/module/az.sql/disable-azsqldatabaseledgerdigestupload
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The Disable-AzSqlDatabaseLedgerDigestUpload cmdlet disables uploading ledger dig
 
 ### Example 1
 ```powershell
-Disable-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" 
+Disable-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 ```output
@@ -45,6 +45,7 @@ ResourceGroupName ServerName DatabaseName State    Endpoint
 ----------------- ---------- ------------ -----    --------
 ResourceGroup01   Server01   Database01   Disabled
 ```
+
 ## PARAMETERS
 
 ### -DatabaseName

@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         ClientProxy<RecoveryServicesNS.RecoveryServicesClient> RSAdapter;
 
         ClientProxy<ResourcesNS.ResourceManagementClient> RMAdapter;
+        ClientProxy<ResourcesNS.FeatureClient> FeatureAdapter;
 
         public string SubscriptionId;
 
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             CrrAdapter = new ClientProxy<RecoveryServicesBackupCRRNS.RecoveryServicesBackupClient>(context);
             RSAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesClient>(context);
             RMAdapter = new ClientProxy<ResourcesNS.ResourceManagementClient>(context);
+            FeatureAdapter = new ClientProxy<ResourcesNS.FeatureClient>(context);
             SubscriptionId = context.Subscription.Id;
         }
     }

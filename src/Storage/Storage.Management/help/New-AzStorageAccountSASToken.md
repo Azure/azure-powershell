@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: BCCBB05B-A5D7-4796-BE55-6BE5E18E07FC
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccountsastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstorageaccountsastoken
 schema: 2.0.0
 ---
 
@@ -23,6 +23,7 @@ New-AzStorageAccountSASToken -Service <SharedAccessAccountServices>
 ## DESCRIPTION
 The **New-AzStorageAccountSASToken** cmdlet creates an account-level shared access signature (SAS) token for an Azure Storage account.
 You can use the SAS token to delegate permissions for multiple services, or to delegate permissions for services not available with an object-level SAS token.
+An account SAS is secured using the storage account key. To create an account SAS, a client application must possess the account key.
 
 ## EXAMPLES
 

@@ -4,7 +4,7 @@
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -ResourceGroupName MyResourceGroupName `
                   -Location centralUS `
-                  -StorageAccount MyStorageAccountName `
+                  -StorageAccountName MyStorageAccountName `
                   -Runtime PowerShell
 ```
 
@@ -17,7 +17,7 @@ This command creates a consumption PowerShell function app in Central US.
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -ResourceGroupName MyResourceGroupName `
                   -PlanName MyPlanName `
-                  -StorageAccount MyStorageAccountName `
+                  -StorageAccountName MyStorageAccountName `
                   -Runtime PowerShell
 ```
 
@@ -31,7 +31,7 @@ Note that the service plan and storage account must exist before this operation.
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -ResourceGroupName MyResourceGroupName `
                   -PlanName MyPlanName `
-                  -StorageAccount MyStorageAccountName `
+                  -StorageAccountName MyStorageAccountName `
                   -DockerImageName myacr.azurecr.io/myimage:tag
 ```
 

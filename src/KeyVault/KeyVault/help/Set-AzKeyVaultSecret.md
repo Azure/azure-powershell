@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 9FC72DE9-46BB-4CB5-9880-F53756DBE012
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultsecret
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -93,6 +93,23 @@ The next commands define custom attributes for the expiry date, tags, and contex
 the attributes in variables.
 The final command modifies values of the secret named ITSecret in the key vault named Contoso, by
 using the values specified previously as variables.
+
+### Example 3: Create a secret in azure key vault by command Set-Secret in module Microsoft.PowerShell.SecretManagement
+```powershell
+# Install module Microsoft.PowerShell.SecretManagement
+Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -AllowPrerelease
+# Register vault for Secret Management
+Register-SecretVault -Name AzKeyVault -ModuleName Az.KeyVault -VaultParameters @{ AZKVaultName = 'test-kv'; SubscriptionId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
+# Set secret for vault AzKeyVault
+$secure = ConvertTo-SecureString -String "Password" -AsPlainText -Force
+Set-Secret -Name secureSecret -SecureStringSecret $secure -Vault AzKeyVault
+```
+
+```output
+None
+```
+
+This example sets a secret named `secureSecret` in azure key vault `test-kv` by command `Set-Secret` in module `Microsoft.PowerShell.SecretManagement`.
 
 ## PARAMETERS
 

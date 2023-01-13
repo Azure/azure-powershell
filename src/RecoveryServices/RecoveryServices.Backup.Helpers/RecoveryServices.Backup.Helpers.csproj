@@ -12,7 +12,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="4.4.0-preview" />
+		<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="5.0.0-preview" />
 		<PackageReference Include="TimeZoneConverter" Version="3.0.0" />
 	</ItemGroup>
 
@@ -20,5 +20,7 @@
 		<ProjectReference Include="..\RecoveryServices.Backup.Logger\RecoveryServices.Backup.Logger.csproj" />
 		<ProjectReference Include="..\RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
 	</ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

@@ -24,7 +24,7 @@ The New-AzDataMigrationConnectionInfo cmdlet creates new a Connection Info objec
 
 ### Example 1
 ```powershell
-New-AzDataMigrationConnectionInfo -ServerType SQL -DataSource mySourceServer -AuthType SqlAuthentication -TrustServerCertificate:$true
+New-AzDataMigrationConnectionInfo -ServerType SQL
 ```
 
 The preceding example creates a new Connection Info object providing SQL as ServerType parameter.

@@ -30,17 +30,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Initializes a new instance of the Subnet class.
         /// </summary>
-        /// <param name="id">Resource ID of Virtual Network Subnet</param>
+        /// <param name="subnet">Subnet properties</param>
         public PSSubnetAttributes(Subnet subnet)
         {
             Id = subnet.Id;
         }
 
-        
         /// <summary>
         /// Gets or sets resource ID of Virtual Network Subnet
         /// </summary>
         public string Id { get; set; }
-        
+
     }
 }

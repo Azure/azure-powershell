@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherflowlog
+online version: https://learn.microsoft.com/powershell/module/az.network/set-aznetworkwatcherflowlog
 schema: 2.0.0
 ---
 
@@ -99,6 +99,7 @@ $flowLog.Format.Version = 2
 $flowLog | Set-AzNetworkWatcherFlowLog -Force
 ```
 
+```output
 Name                       : pstest
 Id                         : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NetworkWatcherRG/provid
                              ers/Microsoft.Network/networkWatchers/NetworkWatcher_eastus/FlowLogs/pstest
@@ -119,6 +120,7 @@ Format                     : {
                                "Version": 2
                              }
 FlowAnalyticsConfiguration : {}
+```
 
 ### Example 2
 

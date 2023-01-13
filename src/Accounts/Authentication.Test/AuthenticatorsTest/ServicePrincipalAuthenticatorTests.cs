@@ -18,19 +18,17 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
-using Xunit;
-using Xunit.Abstractions;
 using System;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
-
-
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Common.Authenticators.Test
 {
@@ -73,7 +71,7 @@ namespace Common.Authenticators.Test
             //Setup
             var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
             mockAzureCredentialFactory.Setup(f => f.CreateClientSecretCredential(
-                 It.IsAny<string>(), It.IsAny<string>(), It.IsAny<SecureString>(), It.IsAny<ClientCertificateCredentialOptions>())).Returns(() => new TokenCredentialMock());
+                 It.IsAny<string>(), It.IsAny<string>(), It.IsAny<SecureString>(), It.IsAny<ClientSecretCredentialOptions>())).Returns(() => new TokenCredentialMock());
 
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
             InMemoryTokenCacheProvider cacheProvider = new InMemoryTokenCacheProvider();
@@ -103,7 +101,7 @@ namespace Common.Authenticators.Test
             var token = await authenticator.Authenticate(parameter);
 
             //Verify
-            mockAzureCredentialFactory.Verify(f => f.CreateClientSecretCredential(TestTenantId, accountId, securePassword, It.IsAny<ClientCertificateCredentialOptions>()), Times.Once());
+            mockAzureCredentialFactory.Verify(f => f.CreateClientSecretCredential(TestTenantId, accountId, securePassword, It.IsAny<ClientSecretCredentialOptions>()), Times.Once());
             Assert.Equal(fakeToken, token.AccessToken);
             Assert.Equal(TestTenantId, token.TenantId);
         }

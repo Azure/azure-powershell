@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsesparkpool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsesparkpool
 schema: 2.0.0
 ---
 
@@ -16,32 +16,38 @@ Creates a Synapse Analytics Spark pool.
 ```
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
  -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32> [-EnableAutoPause]
- [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
+ [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>]
+ [-SparkConfiguration <PSSparkConfigurationResource>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByNameAndDisableAutoScaleParameterSet
 ```
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
  -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
- -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
+ -SparkVersion <String> [-SparkConfigFilePath <String>] [-SparkConfiguration <PSSparkConfigurationResource>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectAndEnableAutoScaleParameterSet
 ```
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
  -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32> [-EnableAutoPause]
- [-AutoPauseDelayInMinute <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
+ [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>]
+ [-SparkConfiguration <PSSparkConfigurationResource>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectAndDisableAutoScaleParameterSet
 ```
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
  -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
- -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
+ -SparkVersion <String> [-SparkConfigFilePath <String>] [-SparkConfiguration <PSSparkConfigurationResource>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,12 +71,20 @@ This command creates an Azure Synapse Analytics Spark pool with auto-scale enabl
 
 ### Example 3
 ```powershell
-New-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small -SparkConfigFilePath "c:\sparkproperties.txt"
+New-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableDynamicExecutorAllocation -MinExecutorCount 1 -MaxExecutorCount 4  -NodeCount 10 -SparkVersion 2.4 -NodeSize Small
 ```
 
-This command creates an Azure Synapse Analytics Spark pool  and upload a spark configuration file.
+This command creates an Azure Synapse Analytics Spark pool with dynamic executor allocation enabled and specify min executor count and max executor count.
 
 ### Example 4
+```powershell
+$config = Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfig1
+New-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small -SparkConfiguration $config
+```
+
+This command creates an Azure Synapse Analytics Spark pool and specify a Spark configuration for Spark pool.
+
+### Example 5
 ```powershell
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small
@@ -78,7 +92,7 @@ $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2
 
 This command creates an Azure Synapse Analytics Spark pool through pipeline.
 
-### Example 5
+### Example 6
 ```powershell
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 10 -SparkVersion 2.4 -NodeSize Small
@@ -180,6 +194,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableDynamicExecutorAllocation
+Indicates whether dynamic executor allocation should be enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxExecutorCount
+Maximum number of executors to be allocated in the specified Spark pool. This parameter can be specified when DynamicExecutorAllocation is enabled. The value should lie between 1 (inclusive) and maximumNodeCount (exclusive). If it is not specified manually, the default value will be 2.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinExecutorCount
+Minimum number of executors to be allocated in the specified Spark pool. This parameter can be specified when DynamicExecutorAllocation is enabled. The value should lie between 1 (inclusive) and maxExecutors (exclusive). If it is not specified manually, the default value will be 1.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of Synapse Spark pool.
 
@@ -243,10 +302,25 @@ Accept wildcard characters: False
 ```
 
 ### -SparkConfigFilePath
-Spark pool properties configuration file.
+[Deprecated] Spark pool properties configuration file. This parameter is deprecated, please use "-SparkConfiguration" instead.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SparkConfiguration
+Apache Spark configuration. When a job is submitted to the pool, the properties specified in the selected configuration will be referenced.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSparkConfigurationResource
 Parameter Sets: (All)
 Aliases:
 

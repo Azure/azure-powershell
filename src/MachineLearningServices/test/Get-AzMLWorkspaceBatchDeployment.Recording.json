@@ -1,0 +1,92 @@
+{
+  "Get-AzMLWorkspaceBatchDeployment+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-cli02/deployments?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-cli02/deployments?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "b76e3e0a-b1a6-4704-bdb1-b905300fea2f" ],
+        "CommandName": [ "Get-AzMLWorkspaceBatchDeployment" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceBatchDeployment_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "be2e428b-4887-4806-b0fd-0f8d1c1fd73f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "1.155" ],
+        "x-ms-correlation-request-id": [ "be2e428b-4887-4806-b0fd-0f8d1c1fd73f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094002Z:be2e428b-4887-4806-b0fd-0f8d1c1fd73f" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2587" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-cli02/deployments/nonmlflowdp\",\n      \"name\": \"nonmlflowdp\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints/deployments\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/be:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:dec778d6-85b6-43fa-9a6e-832274b3e1e4?api-version=2022-05-01\"\n        },\n        \"codeConfiguration\": {\n          \"codeId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/bd430754-fba7-4a63-a6b8-8ea8635767f3/versions/1\",\n          \"scoringScript\": \"digit_identification.py\"\n        },\n        \"environmentId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/CliV2AnonymousEnvironment/versions/5d230430f302e7876f9b64710733f68e\",\n        \"environmentVariables\": {},\n        \"compute\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/batch-cluster\",\n        \"errorThreshold\": -1,\n        \"retrySettings\": {\n          \"maxRetries\": 3,\n          \"timeout\": \"PT30S\"\n        },\n        \"miniBatchSize\": 10,\n        \"loggingLevel\": \"Info\",\n        \"model\": {\n          \"referenceType\": \"Id\",\n          \"assetId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/c9436a28-a25c-4e36-ab9d-43be313629fc/versions/1\"\n        },\n        \"maxConcurrencyPerInstance\": 2,\n        \"outputAction\": \"AppendRow\",\n        \"outputFileName\": \"predictions.csv\",\n        \"resources\": {\n          \"instanceCount\": 1,\n          \"instanceType\": null,\n          \"properties\": null\n        },\n        \"provisioningState\": \"Succeeded\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-06-01T06:19:16.9626393Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-06-01T06:19:16.9626393Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\"\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMLWorkspaceBatchDeployment+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-cli02/deployments/nonmlflowdp?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-cli02/deployments/nonmlflowdp?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "adba9c44-80a5-41a2-a797-97f03339cd83" ],
+        "CommandName": [ "Get-AzMLWorkspaceBatchDeployment" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceBatchDeployment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "96e74317-4daa-4b48-ab9f-c9b26e503cc8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "1.578" ],
+        "x-ms-correlation-request-id": [ "96e74317-4daa-4b48-ab9f-c9b26e503cc8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094004Z:96e74317-4daa-4b48-ab9f-c9b26e503cc8" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2386" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-cli02/deployments/nonmlflowdp\",\n  \"name\": \"nonmlflowdp\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints/deployments\",\n  \"properties\": {\n    \"description\": null,\n    \"properties\": {\n      \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/be:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:dec778d6-85b6-43fa-9a6e-832274b3e1e4?api-version=2022-05-01\"\n    },\n    \"codeConfiguration\": {\n      \"codeId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/bd430754-fba7-4a63-a6b8-8ea8635767f3/versions/1\",\n      \"scoringScript\": \"digit_identification.py\"\n    },\n    \"environmentId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/CliV2AnonymousEnvironment/versions/5d230430f302e7876f9b64710733f68e\",\n    \"environmentVariables\": {},\n    \"compute\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/batch-cluster\",\n    \"errorThreshold\": -1,\n    \"retrySettings\": {\n      \"maxRetries\": 3,\n      \"timeout\": \"PT30S\"\n    },\n    \"miniBatchSize\": 10,\n    \"loggingLevel\": \"Info\",\n    \"model\": {\n      \"referenceType\": \"Id\",\n      \"assetId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/c9436a28-a25c-4e36-ab9d-43be313629fc/versions/1\"\n    },\n    \"maxConcurrencyPerInstance\": 2,\n    \"outputAction\": \"AppendRow\",\n    \"outputFileName\": \"predictions.csv\",\n    \"resources\": {\n      \"instanceCount\": 1,\n      \"instanceType\": null,\n      \"properties\": null\n    },\n    \"provisioningState\": \"Succeeded\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-06-01T06:19:16.9626393Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"lastModifiedAt\": \"2022-06-01T06:19:16.9626393Z\"\n  },\n  \"tags\": {},\n  \"location\": \"eastus\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

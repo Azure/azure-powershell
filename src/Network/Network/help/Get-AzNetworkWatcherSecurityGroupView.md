@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatchersecuritygroupview
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkwatchersecuritygroupview
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The Get-AzNetworkWatcherSecurityGroupView enables you to view the configured and
 
 ### Example 1: Make a Security Group View call on a VM
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$nw = Get-AzResource | Where-Object {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 $VM = Get-AzVM -ResourceGroupName ContosoResourceGroup -Name VM0 
 Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id

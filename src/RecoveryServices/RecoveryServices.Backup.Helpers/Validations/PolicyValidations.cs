@@ -23,11 +23,115 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     /// Backup policy validation helpers.
     /// </summary>
     public partial class PolicyHelpers
-    {
-        // <summary>
+    {        
+        /// <summary>
+        /// validates LTRP with tiering policy
+        /// </summary>
+        /// <param name="ltrPolicy"></param>
+        /// <param name="tieringPolicy"></param>
+        /// <param name="isPreviousTieringPolicy"> is an existing tiering policy</param>
+        /// <exception cref="ArgumentException"></exception>
+        public static void ValidateLongTermRetentionPolicyWithTieringPolicy(LongTermRetentionPolicy ltrPolicy, TieringPolicy tieringPolicy, bool isPreviousTieringPolicy = false) 
+        {
+            // To enable Archive(either TierRecommended or TierAfter), Monthly or Yearly retention needs to be set
+            if(tieringPolicy != null && tieringPolicy.TieringMode != TieringMode.DoNotTier )
+            {
+                if (!ltrPolicy.IsMonthlyScheduleEnabled && !ltrPolicy.IsYearlyScheduleEnabled)
+                {
+                    if (!isPreviousTieringPolicy)
+                    {
+                        throw new ArgumentException(Resources.MissingMonthlyOrYearlyRetention);
+                    }
+                    else
+                    {
+                        throw new ArgumentException(Resources.IncompatibleRetentionAndTieringPolicy);
+                    }                    
+                }
+
+                // For TierRecommended policy:  At least one of monthly or yearly retention should be >= 9 months.
+                if (tieringPolicy.TieringMode == TieringMode.TierRecommended)
+                {
+                    if ((!ltrPolicy.IsMonthlyScheduleEnabled || ltrPolicy.MonthlySchedule == null || ltrPolicy.MonthlySchedule.DurationCountInMonths < 9) && (!ltrPolicy.IsYearlyScheduleEnabled || ltrPolicy.YearlySchedule == null || (ltrPolicy.YearlySchedule.DurationCountInYears * 12) < 9))                    
+                    {
+                        if (!isPreviousTieringPolicy)
+                        {
+                            throw new ArgumentException(Resources.IncompatibleRetentionPolicyForTierRecommended);
+                        }
+                        else
+                        {
+                            throw new ArgumentException(Resources.RetentionShouldBeGreaterThan9MonthsOrDisableSmartTiering);
+                        }
+                    }
+                }
+
+                // For TierAfter policy:   TierAfter duration needs to be >= 3 months,  At least one of monthly or yearly retention should be >= (TierAfter + 6) months.
+                // e.g. if TierAfter is specified as 6 months, at least one of monthly or yearly retention should be at least 12 months.
+                if(tieringPolicy.TieringMode == TieringMode.TierAllEligible)
+                {
+                    // TierAfterDuration for AzureVM should be in Months 
+                    if (tieringPolicy.TierAfterDurationType != "Months" && !isPreviousTieringPolicy)
+                    {
+                        throw new ArgumentException(Resources.InvalidDurationTypeForAzureVM);
+                    }
+
+                    if(tieringPolicy.TierAfterDuration < 3  || ((ltrPolicy.MonthlySchedule == null || ltrPolicy.MonthlySchedule.DurationCountInMonths < tieringPolicy.TierAfterDuration + 6) && (ltrPolicy.YearlySchedule == null ||    (ltrPolicy.YearlySchedule.DurationCountInYears * 12) < tieringPolicy.TierAfterDuration + 6)))
+                    {
+                        if (!isPreviousTieringPolicy)
+                        {
+                            throw new ArgumentException(Resources.InvalidDurationForTierAllEligiblePolicy);
+                        }
+                        else
+                        {
+                            throw new ArgumentException(Resources.IncompatibleRetentionDurationWithTierAfterDuration);
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void ValidateFullBackupRetentionPolicyWithTieringPolicy(LongTermRetentionPolicy ltrPolicy, TieringPolicy tieringPolicy, bool isPreviousTieringPolicy = false)
+        {
+            if (tieringPolicy != null && tieringPolicy.TieringMode != TieringMode.DoNotTier)
+            {
+                // To enable Archive, Full Backup Policy needs to be set.
+                if (ltrPolicy == null && !isPreviousTieringPolicy)
+                {
+                    throw new ArgumentException(Resources.FullBackupRetentionPolicyCantBeNull);
+                }
+
+                // For TierAfter policy: TierAfter duration needs to be >= 45 days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days.
+                //  e.g. if TierAfter is specified as 100 days, at least one retention policy for Full Backup needs to be greater than or equal to 280 days.
+                if (tieringPolicy.TieringMode == TieringMode.TierAllEligible)
+                {
+                    // TierAfterDuration for AzureWorkload should be in Days 
+                    if (tieringPolicy.TierAfterDurationType != "Days" && !isPreviousTieringPolicy)
+                    {
+                        throw new ArgumentException(Resources.InvalidDurationTypeForAzureWorkload);
+                    }
+
+                    if (tieringPolicy.TierAfterDuration < 45 || 
+                        ((!ltrPolicy.IsDailyScheduleEnabled || ltrPolicy.DailySchedule == null || ltrPolicy.DailySchedule.DurationCountInDays < tieringPolicy.TierAfterDuration + 180) 
+                        && (!ltrPolicy.IsWeeklyScheduleEnabled || ltrPolicy.WeeklySchedule == null || (ltrPolicy.WeeklySchedule.DurationCountInWeeks * 7) < tieringPolicy.TierAfterDuration + 180) 
+                        && (!ltrPolicy.IsMonthlyScheduleEnabled || ltrPolicy.MonthlySchedule == null || (ltrPolicy.MonthlySchedule.DurationCountInMonths * 30) < tieringPolicy.TierAfterDuration + 180) 
+                        && (!ltrPolicy.IsYearlyScheduleEnabled || ltrPolicy.YearlySchedule == null || (ltrPolicy.YearlySchedule.DurationCountInYears * 365) < tieringPolicy.TierAfterDuration + 180)))
+                    {
+                        if (!isPreviousTieringPolicy)
+                        {
+                            throw new ArgumentException(Resources.IncompatibleRetentionPolicyWithTierAfterDuration);
+                        }
+                        else
+                        {
+                            throw new ArgumentException(Resources.TierAfterDurationCheckFailedWithRetentionDuration);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Helper function to validate long term rentention policy and simple schedule policy.
         /// </summary>
-        public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+        public static void ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
             LongTermRetentionPolicy ltrPolicy,
             SimpleSchedulePolicy schPolicy)
         {
@@ -121,10 +225,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to validate long term rentention policy and simple schedule policy.
         /// </summary>
-        public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+        public static void ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
             LongTermRetentionPolicy ltrPolicy,
             SimpleSchedulePolicyV2 schPolicy)
         {
@@ -226,7 +330,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
         }
 
-        public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+        public static void ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
             SQLRetentionPolicy ltrPolicy,
             SQLSchedulePolicy schPolicy)
         {

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <remarks>
         /// The creation date of the backup
         /// </remarks>
-        public DateTime? CreationDate { get; }
+        public DateTime? CreationDate { get; set; }
 
         /// <summary>
         /// Gets Size

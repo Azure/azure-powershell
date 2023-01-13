@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: EAFB9C98-000C-4EAC-A32D-6B0F1939AA2F
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azmetric
 schema: 2.0.0
 ---
 
@@ -173,7 +173,7 @@ This command gets detailed output for the Requests metric.
 ```powershell
 $dimFilter = @((New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","Toronto"), (New-AzMetricFilter -Dimension AuthenticationType -Operator eq -Value User))
 
-Get-AzMetric -ResourceId <resourceId> -MetricName PageViews -TimeGrain 00:05:00 -MetricFilter $dimFilter -StartTime 2018-02-01T12:00:00Z -EndTime 2018-02-01T12:10:00Z -AggregationType -Average
+Get-AzMetric -ResourceId <resourceId> -MetricName PageViews -TimeGrain 00:05:00 -MetricFilter $dimFilter -StartTime 2018-02-01T12:00:00Z -EndTime 2018-02-01T12:10:00Z -AggregationType Average
 ```
 
 ```output

@@ -19,9 +19,10 @@ New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <Strin
  [-SubjectEndsWith <String>] [-SubjectCaseSensitive] [-IncludedEventType <String[]>] [-Label <String[]>]
  [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>] [-DeliverySchema <String>] [-DeadLetterEndpoint <String>]
  [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>]
- [-PreferredBatchSizeInKiloBytes <Int32>] [-AzureActiveDirectoryTenantId <String>]
- [-AzureActiveDirectoryApplicationIdOrUri <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryTenantId <String>]
+ [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AdvancedFilteringOnArray]
+ [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
@@ -30,8 +31,9 @@ New-AzEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <Str
  [-EndpointType <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-SubjectCaseSensitive]
  [-IncludedEventType <String[]>] [-Label <String[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
  [-DeliverySchema <String>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
- [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloBytes <Int32>]
+ [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
  [-AzureActiveDirectoryTenantId <String>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
+ [-AdvancedFilteringOnArray] [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,8 +43,9 @@ New-AzEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionName] <S
  [-EndpointType <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-SubjectCaseSensitive]
  [-IncludedEventType <String[]>] [-Label <String[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
  [-DeliverySchema <String>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
- [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloBytes <Int32>]
+ [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
  [-AzureActiveDirectoryTenantId <String>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
+ [-AdvancedFilteringOnArray] [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -53,9 +56,10 @@ New-AzEventGridSubscription [-DomainInputObject] <PSDomain> [-EventSubscriptionN
  [-SubjectCaseSensitive] [-IncludedEventType <String[]>] [-Label <String[]>] [-EventTtl <Int32>]
  [-MaxDeliveryAttempt <Int32>] [-DeliverySchema <String>] [-DeadLetterEndpoint <String>]
  [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>]
- [-PreferredBatchSizeInKiloBytes <Int32>] [-AzureActiveDirectoryTenantId <String>]
- [-AzureActiveDirectoryApplicationIdOrUri <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryTenantId <String>]
+ [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AdvancedFilteringOnArray]
+ [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EventSubscriptionDomainTopicInputObjectParameterSet
@@ -65,9 +69,10 @@ New-AzEventGridSubscription [-DomainTopicInputObject] <PSDomainTopic> [-EventSub
  [-SubjectCaseSensitive] [-IncludedEventType <String[]>] [-Label <String[]>] [-EventTtl <Int32>]
  [-MaxDeliveryAttempt <Int32>] [-DeliverySchema <String>] [-DeadLetterEndpoint <String>]
  [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>]
- [-PreferredBatchSizeInKiloBytes <Int32>] [-AzureActiveDirectoryTenantId <String>]
- [-AzureActiveDirectoryApplicationIdOrUri <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryTenantId <String>]
+ [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AdvancedFilteringOnArray]
+ [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomTopicEventSubscriptionParameterSet
@@ -77,9 +82,10 @@ New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <Strin
  [-SubjectEndsWith <String>] [-SubjectCaseSensitive] [-IncludedEventType <String[]>] [-Label <String[]>]
  [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>] [-DeliverySchema <String>] [-DeadLetterEndpoint <String>]
  [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>]
- [-PreferredBatchSizeInKiloBytes <Int32>] [-AzureActiveDirectoryTenantId <String>]
- [-AzureActiveDirectoryApplicationIdOrUri <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryTenantId <String>]
+ [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AdvancedFilteringOnArray]
+ [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DomainEventSubscriptionParameterSet
@@ -89,9 +95,10 @@ New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <Strin
  [-SubjectEndsWith <String>] [-SubjectCaseSensitive] [-IncludedEventType <String[]>] [-Label <String[]>]
  [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>] [-DeliverySchema <String>] [-DeadLetterEndpoint <String>]
  [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>]
- [-PreferredBatchSizeInKiloBytes <Int32>] [-AzureActiveDirectoryTenantId <String>]
- [-AzureActiveDirectoryApplicationIdOrUri <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryTenantId <String>]
+ [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AdvancedFilteringOnArray]
+ [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DomainTopicEventSubscriptionParameterSet
@@ -101,8 +108,9 @@ New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <Strin
  [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-SubjectCaseSensitive]
  [-IncludedEventType <String[]>] [-Label <String[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
  [-DeliverySchema <String>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
- [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloBytes <Int32>]
+ [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
  [-AzureActiveDirectoryTenantId <String>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
+ [-AdvancedFilteringOnArray] [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -173,6 +181,33 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdvancedFilteringOnArray
+The presence of this parameter denotes that advanced filtering on arrays is enabled
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -272,6 +307,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeliveryAttributeMapping
+The delivery attribute mappings for this system topic event subscription
+
+```yaml
+Type: System.String[]
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DeliverySchema
 The schema to be used when delivering events to the destination. The possible values are: eventgridschema, CustomInputSchema, or cloudeventv01schema. Default value is CustomInputSchema.
 
@@ -279,7 +341,7 @@ The schema to be used when delivering events to the destination. The possible va
 Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
+Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0, EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
 
 Required: False
 Position: Named
@@ -292,7 +354,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
-Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
+Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0, EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
 
 Required: False
 Position: Named
@@ -398,7 +460,7 @@ This can be webhook, eventhub, storagequeue, hybridconnection or servicebusqueue
 Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction, webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
 
 Required: False
 Position: Named
@@ -411,7 +473,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction, webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
 
 Required: False
 Position: Named
@@ -612,7 +674,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PreferredBatchSizeInKiloBytes
+### -PreferredBatchSizeInKiloByte
 The preferred batch size in kilobytes. This value must be between 1 and 1024. This parameter is valid when Endpint Type is webhook only.
 
 ```yaml
@@ -676,6 +738,33 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageQueueMessageTtl
+The time in milliseconds for time to live of a storage queue message
+
+```yaml
+Type: System.Int64
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Int64
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

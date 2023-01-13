@@ -29,6 +29,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.ResourceGraph;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.ResourceGraph.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -53,6 +59,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "SharedGalleryParameterSet":
                         SharedGalleryGet();
+                        return;
+                    case "CommunityGalleryParameterSet":
+                        CommunityGalleryGet();
+                        return;
+                    case "ListCommunityGalleryParameterSet":
+                        ListCommunityGallery();
                         return;
                     default:
                         resourceGroupName = this.ResourceGroupName;
@@ -104,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             else
             {
-                Rest.Azure.IPage<SharedGalleryImage> result = new Page<SharedGalleryImage>();
+                Rest.Azure.IPage<SharedGalleryImage> result = new Microsoft.Azure.Management.Compute.Models.Page<SharedGalleryImage>();
 
                 if (this.IsParameterBound(c => c.Scope) && this.Scope != "subscription")
                 {
@@ -135,6 +147,61 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public void CommunityGalleryGet()
+        {
+            if (this.IsParameterBound(c => c.Name))
+            {
+                CommunityGalleryImage result = CommunityGalleryImagesClient.Get(this.Location, this.GalleryPublicName, this.Name);
+                var psObject = new PSCommunityGalleryImage();
+                ComputeAutomationAutoMapperProfile.Mapper.Map<CommunityGalleryImage, PSCommunityGalleryImage>(result, psObject);
+                WriteObject(psObject);
+            }
+            else
+            {
+                Rest.Azure.IPage<CommunityGalleryImage> result = new Microsoft.Azure.Management.Compute.Models.Page<CommunityGalleryImage>();
+
+                result = CommunityGalleryImagesClient.List(this.Location, this.GalleryPublicName);
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
+                {
+                    var pageResult = CommunityGalleryImagesClient.ListNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
+                var psObject = new List<PSCommunityGalleryImageList>();
+                foreach (var r in resultList)
+                {
+                    psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<CommunityGalleryImage, PSCommunityGalleryImageList>(r));
+                }
+                WriteObject(psObject);
+            }
+        }
+
+        public void ListCommunityGallery()
+        {
+            ResourceGraphClient rgClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceGraphClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            QueryRequest request = new QueryRequest();
+            string query;
+            if (this.IsParameterBound(c => c.Location))
+            {
+                query = "communitygalleryresources | where type == 'microsoft.compute/locations/communitygalleries/images' | where location =='" + this.Location + "' | project name, type, id, location";
+            }
+            //find out if its ok to create client locally
+            else
+            {
+                query = "communitygalleryresources | where type == 'microsoft.compute/locations/communitygalleries/images' | project name, type, id, location";
+            }
+            request.Query = query;
+            QueryResponse response = rgClient.Resources(request);
+            Dictionary<string, string> output = new Dictionary<string, string>();
+            var data = JsonConvert.DeserializeObject<List<PSCommunityGallery>>(response.Data.ToString());
+            WriteObject(data);
+        }
+
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 0,
@@ -158,6 +225,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "SharedGalleryParameterSet",
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = "CommunityGalleryParameterSet",
+            ValueFromPipelineByPropertyName = true)]
         [SupportsWildcards]
         public string Name { get; set; }
 
@@ -176,6 +246,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string GalleryUniqueName { get; set; }
 
         [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = "CommunityGalleryParameterSet",
+           HelpMessage = "The public name of the Shared Image Gallery.")]
+        public string GalleryPublicName { get; set; }
+
+        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "SharedGalleryParameterSet",
@@ -187,8 +264,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "SharedGalleryParameterSet")]
-        [LocationCompleter("Microsoft.Compute/Galleries")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = "CommunityGalleryParameterSet")]
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = "ListCommunityGalleryParameterSet")]
+        [LocationCompleter("Microsoft.Compute/Galleries", "Microsoft.Compute/CommunityGalleries")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = "ListCommunityGalleryParameterSet",
+           HelpMessage = "List community galleries.")]
+        public SwitchParameter Community { get; set; }
     }
 }

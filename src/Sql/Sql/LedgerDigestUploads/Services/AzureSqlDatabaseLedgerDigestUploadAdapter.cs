@@ -40,8 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
         /// <summary>
         /// Constructs a database backup adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlDatabaseLedgerDigestUploadAdapter(IAzureContext context)
         {
             Context = context;
@@ -62,8 +61,8 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
             string databaseName)
         {
             Management.Sql.Models.LedgerDigestUploads configuration = Communicator.GetLedgerDigestUpload(
-                resourceGroup, 
-                serverName, 
+                resourceGroup,
+                serverName,
                 databaseName);
 
             return new AzureSqlDatabaseLedgerDigestUploadModel(resourceGroup, serverName, databaseName, configuration);
@@ -72,9 +71,6 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
         /// <summary>
         /// Create or update a ledger digest upload configuration for a Azure SQL Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL Database</param>
         /// <param name="model">AzureSqlDatabaseLedgerDigestUploadModel model</param>
         /// <returns>A ledger digest upload</returns>
         internal AzureSqlDatabaseLedgerDigestUploadModel SetLedgerDigestUpload(AzureSqlDatabaseLedgerDigestUploadModel model)
@@ -85,8 +81,8 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
             };
 
             Communicator.SetLedgerDigestUpload(
-                model.ResourceGroupName, 
-                model.ServerName, 
+                model.ResourceGroupName,
+                model.ServerName,
                 model.DatabaseName,
                 config);
 
@@ -96,9 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
         /// <summary>
         /// Disables ledger digest upload configuration for a Azure SQL Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="model">AzureSqlDatabaseLedgerDigestUploadModel model</param>
         /// <returns>A ledger digest upload</returns>
         internal AzureSqlDatabaseLedgerDigestUploadModel DisableLedgerDigestUpload(AzureSqlDatabaseLedgerDigestUploadModel model)
         {

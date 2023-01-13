@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvmgroup
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvmgroup
 schema: 2.0.0
 ---
 
@@ -256,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountUrl
-Primary key of the witness storage account
+Storage account url of the witness storage account
 
 ```yaml
 Type: System.String

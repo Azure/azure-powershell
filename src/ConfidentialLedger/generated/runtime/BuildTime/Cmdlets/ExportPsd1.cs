@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.PowerShe
                     throw new ArgumentException($"Custom folder '{CustomFolder}' does not exist");
                 }
 
-                string version = Convert.ToString(@"0.1.0");
+                string version = Convert.ToString(@"1.0.0");
                 // Validate the module version should be semantic version
                 // Following regex is official from https://semver.org/
                 Regex rx = new Regex(@"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$", RegexOptions.Compiled);

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D7065B04-1A01-4BB4-A519-1DA9002CDE02
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnection
 schema: 2.0.0
 ---
 
@@ -116,7 +116,7 @@ TunnelConnectionStatus  : []
 ### Example 3: Add/Remove natRules to an existing VirtualNetworkGatewayConnection
 ```powershell
 $conn = Get-AzVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
-$egressNatrule = get-azVirtualNetworkGatewayNatRule -ResourceGroupName myRG -Name "natRule1" -ParentResourceName "gw1"
+$egressNatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName myRG -Name "natRule1" -ParentResourceName "gw1"
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn -IngressNatRule @() -EgressNatRule $egressNatrule
 ```
 

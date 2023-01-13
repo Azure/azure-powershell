@@ -1,13 +1,15 @@
-﻿using Azure.Security.KeyVault.Keys;
+﻿using Azure.Security.KeyVault.Certificates;
+using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Keys.Cryptography;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
@@ -22,6 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         // todo: consider caching clients
         private KeyClient CreateKeyClient(string vaultName) => new KeyClient(_vaultUriHelper.CreateVaultUri(vaultName), _credential);
         private CryptographyClient CreateCryptographyClient(string keyId) => new CryptographyClient(new Uri(keyId), _credential);
+        private CertificateClient CreateCertificateClient(string vaultName) => new CertificateClient(_vaultUriHelper.CreateVaultUri(vaultName), _credential);
 
         public Track2VaultClient(IAuthenticationFactory authFactory, IAzureContext context)
         {
@@ -48,7 +51,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
             else if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
             {
-                options = new CreateEcKeyOptions(keyName, isHsm) { CurveName = string.IsNullOrEmpty(curveName) ? (KeyCurveName?) null : new KeyCurveName(curveName) };
+                options = new CreateEcKeyOptions(keyName, isHsm) { CurveName = string.IsNullOrEmpty(curveName) ? (KeyCurveName?)null : new KeyCurveName(curveName) };
             }
             else
             {
@@ -58,6 +61,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             options.NotBefore = keyAttributes.NotBefore;
             options.ExpiresOn = keyAttributes.Expires;
             options.Enabled = keyAttributes.Enabled;
+            options.Exportable = keyAttributes.Exportable;
+            options.ReleasePolicy = keyAttributes.ReleasePolicy?.ToKeyReleasePolicy(); ;
+
             if (keyAttributes.KeyOps != null)
             {
                 foreach (var keyOp in keyAttributes.KeyOps)
@@ -75,11 +81,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
             if (keyAttributes.KeyType == KeyType.Rsa || keyAttributes.KeyType == KeyType.RsaHsm)
             {
-                return new PSKeyVaultKey(client.CreateRsaKey(options as CreateRsaKeyOptions).Value, _vaultUriHelper);
+                return new PSKeyVaultKey(client.CreateRsaKey(options as CreateRsaKeyOptions).Value, _vaultUriHelper, false);
             }
             else if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
             {
-                return new PSKeyVaultKey(client.CreateEcKey(options as CreateEcKeyOptions).Value, _vaultUriHelper);
+                return new PSKeyVaultKey(client.CreateEcKey(options as CreateEcKeyOptions).Value, _vaultUriHelper, false);
             }
             else
             {
@@ -121,7 +127,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private PSKeyVaultKey GetKey(KeyClient client, string keyName, string keyVersion)
         {
-            return new PSKeyVaultKey(client.GetKey(keyName, keyVersion).Value, _vaultUriHelper);
+            return new PSKeyVaultKey(client.GetKey(keyName, keyVersion).Value, _vaultUriHelper, false);
         }
 
         internal PSKeyOperationResult UnwrapKey(string vaultName, string keyName, string keyVersion, string wrapAlgorithm, byte[] value)
@@ -162,7 +168,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private PSKeyVaultKey RotateKey(KeyClient client, string keyName)
         {
-            return new PSKeyVaultKey(client.RotateKey(keyName), _vaultUriHelper);
+            return new PSKeyVaultKey(client.RotateKey(keyName), _vaultUriHelper, false);
         }
 
         internal PSKeyRotationPolicy GetKeyRotationPolicy(string vaultName, string keyName)
@@ -182,14 +188,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             var policy = new KeyRotationPolicy()
             {
                 ExpiresIn = psKeyRotationPolicy.ExpiresIn,
-                LifetimeActions = {}
+                LifetimeActions = { }
             };
 
             psKeyRotationPolicy.LifetimeActions?.ForEach(
                 psKeyRotationLifetimeAction => policy.LifetimeActions.Add(
-                    new KeyRotationLifetimeAction()
+                    new KeyRotationLifetimeAction(psKeyRotationLifetimeAction.Action)
                     {
-                        Action = psKeyRotationLifetimeAction.Action,
                         TimeAfterCreate = psKeyRotationLifetimeAction.TimeAfterCreate,
                         TimeBeforeExpiry = psKeyRotationLifetimeAction.TimeBeforeExpiry
                     }
@@ -203,6 +208,47 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyRotationPolicy(client.UpdateKeyRotationPolicy(keyName, policy), vaultName, keyName);
         }
 
+        #endregion
+
+        #region Certificate actions
+        internal PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException(nameof(vaultName));
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException(nameof(certName));
+            if (null == certificate)
+                throw new ArgumentNullException(nameof(certificate));
+
+            var certClient = CreateCertificateClient(vaultName);
+            return ImportCertificate(certClient, certName, certificate, password, tags, contentType);
+        }
+
+        private PSKeyVaultCertificate ImportCertificate(CertificateClient certClient, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        {
+            var options = new ImportCertificateOptions(certName, certificate)
+            {
+                Policy = new CertificatePolicy()
+                {
+                    ContentType = contentType
+                },
+                Password = password?.ConvertToString()
+            };
+            tags?.ForEach((entry) =>
+            {
+                options.Tags.Add(entry.Key.ToString(), entry.Value.ToString());
+            });
+            return new PSKeyVaultCertificate(certClient.ImportCertificate(options));
+        }
+
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, byte[] certificate, IDictionary<string, string> tags)
+        {
+            var certClient = CreateCertificateClient(vaultName);
+            var options = new MergeCertificateOptions(certName, new List<byte[]> { certificate });
+            tags?.ForEach((entry) => { options.Tags.Add(entry.Key.ToString(), entry.Value.ToString()); });
+            var cert = certClient.MergeCertificate(options);
+            return new PSKeyVaultCertificate(cert);
+        }
         #endregion
     }
 }

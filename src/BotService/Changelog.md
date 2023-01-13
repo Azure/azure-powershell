@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.0
+* Upgraded API version to 2022-06-15-preview.
+
+## Version 0.4.0
+* Fixed issue of `-Location` in `New-AzBotService`[#17185]
+
 ## Version 0.3.2
 * Fixed issue where New-AzBotService fails to convert ApplicationSecret to plain text on Windows PowerShell [#16131]
 

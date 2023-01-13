@@ -21,12 +21,12 @@ Create an in-memory object for AADBasedSecurityPrincipal.
 Create an in-memory object for AADBasedSecurityPrincipal.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.AADBasedSecurityPrincipal
+Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AADBasedSecurityPrincipal
 .Link
 https://docs.microsoft.com/powershell/module/az.ConfidentialLedger/new-AzConfidentialLedgerAADBasedSecurityPrincipalObject
 #>
 function New-AzConfidentialLedgerAADBasedSecurityPrincipalObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.AADBasedSecurityPrincipal')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AADBasedSecurityPrincipal')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +43,7 @@ function New-AzConfidentialLedgerAADBasedSecurityPrincipalObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20210513Preview.AADBasedSecurityPrincipal]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AADBasedSecurityPrincipal]::New()
 
         if ($PSBoundParameters.ContainsKey('LedgerRoleName')) {
             $Object.LedgerRoleName = $LedgerRoleName

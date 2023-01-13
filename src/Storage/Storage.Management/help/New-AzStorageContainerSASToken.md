@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 6FF04E82-4921-4F7B-83D0-6997316BC5FD
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainersastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragecontainersastoken
 schema: 2.0.0
 ---
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 
 ### -Permission
 Specifies permissions for a storage container.
-It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete). The permissions that are supported for container resource type are described [here](https://learn.microsoft.com/rest/api/storageservices/create-service-sas#permissions-for-a-directory-container-or-blob).
 
 ```yaml
 Type: System.String

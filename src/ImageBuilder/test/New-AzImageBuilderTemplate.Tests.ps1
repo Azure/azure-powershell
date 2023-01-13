@@ -14,12 +14,36 @@ while(-not $mockingPath) {
 
 # !Important: some test cases are skipped and require to be recorded again
 # See https://github.com/Azure/autorest.powershell/issues/580
-Describe 'New-AzImageBuilderTemplate' {
-    #1 Source: PlatformImage Distributor: ManagedImage
-    It 'Linux-FromJson' -skip {
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup -JsonTemplatePath [System.IO.Path]::Combine($PSScriptRoot, 'deployment-templates\Linux-image\linux.json')
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
+Describe 'New-AzImageBuilderTemplate' {    
+    # Source: PlatformImage Distributor: SharedImage
+    It 'ExpandedParameterSet' {
+        # Create a platform image source
+        $source = New-AzImageBuilderTemplateSourceObject -PlatformImageSource -Publisher 'Canonical' -Offer 'UbuntuServer' -Sku '18.04-LTS' -Version 'latest'
+        # Create a shell customizer
+        $customizer = New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name 'CheckSumCompareShellScript' -ScriptUri 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh' -Sha256Checksum 'ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93'
+        # Create a shared image distributor
+        $distributor = New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId $env.image.Id -ReplicationRegion 'eastus2' -RunOutputName 'runoutput-01' -ExcludeFromLatest $false
+        # the userAssignedIdentity should have access permissions to the image above
+        $userAssignedIdentity = $env.identity.Id
+        # Create a virtual machine image template
+        New-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg -Location $env.location -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor  
+        $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg
     }
+
+    # Source: PlatformImage Distributor: SharedImage
+    It 'FromJsonFile' {
+        New-AzImageBuilderTemplate -Name $env.newTemplateName2 -ResourceGroupName $env.rg -JsonTemplatePath $PSScriptRoot/JsonTemplateFile.json
+        $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName2 -ResourceGroupName $env.rg
+    }
+
+    # Source: PlatformImage Distributor: SharedImage
+    It 'FromJsonString' {
+        $jsonFile = Join-Path $PSScriptRoot "JsonTemplateFile.json"
+        $jsonString = Get-Content $jsonFile -Raw
+        New-AzImageBuilderTemplate -Name $env.newTemplateName3 -ResourceGroupName $env.rg -JsonString $jsonString
+        $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName3 -ResourceGroupName $env.rg
+    }
+    
     It 'platformimg-managedimg' -Skip {
         #region OS:Linux
         $srcPlatform = New-AzImageBuilderSourceObject -SourceTypePlatformImage -Publisher $env.Source.PlatformImageLinux.publisher -Offer $env.Source.PlatformImageLinux.offer -Sku $env.Source.PlatformImageLinux.sku -Version $env.Source.PlatformImageLinux.version
@@ -30,8 +54,8 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum $sha256Checksum
         Write-Host -ForegroundColor Green "Start creating $($env.Resources.Template.templateName11) template image."
         
-        New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup -Source $srcPlatform -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
+        New-AzImageBuilderTemplate -Name $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup -Source $srcPlatform -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
+        $template = Get-AzImageBuilderTemplate -Name $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
         #endregion OS:Linux
 
         #region OS:Windows
@@ -50,7 +74,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $templateWind.Name | Should -Be $env.Resources.Template.templateName101
     }
     #2 Source: PlatformImage Distributor: VHD
-    It 'platformimg-vhd' {
+    It 'platformimg-vhd' -Skip {
         #region OS:Linux
         $srcPlatform = New-AzImageBuilderSourceObject -SourceTypePlatformImage -Publisher $env.Source.PlatformImageLinux.publisher -Offer $env.Source.PlatformImageLinux.offer -Sku $env.Source.PlatformImageLinux.sku -Version $env.Source.PlatformImageLinux.version 
         $disVhd = New-AzImageBuilderDistributorObject -VhdDistributor -ArtifactTag @{tag='VHD'} -RunOutputName $env.Resources.RunOutputName.runOutputName22

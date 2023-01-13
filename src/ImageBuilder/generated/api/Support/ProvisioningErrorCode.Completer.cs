@@ -28,47 +28,63 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BadSourceType".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BadSourceType", "BadSourceType", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadSourceType");
+                yield return new global::System.Management.Automation.CompletionResult("'BadSourceType'", "BadSourceType", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadSourceType");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BadPIRSource".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BadPIRSource", "BadPIRSource", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadPIRSource");
+                yield return new global::System.Management.Automation.CompletionResult("'BadPIRSource'", "BadPIRSource", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadPIRSource");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BadManagedImageSource".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BadManagedImageSource", "BadManagedImageSource", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadManagedImageSource");
+                yield return new global::System.Management.Automation.CompletionResult("'BadManagedImageSource'", "BadManagedImageSource", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadManagedImageSource");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BadSharedImageVersionSource".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BadSharedImageVersionSource", "BadSharedImageVersionSource", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadSharedImageVersionSource");
+                yield return new global::System.Management.Automation.CompletionResult("'BadSharedImageVersionSource'", "BadSharedImageVersionSource", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadSharedImageVersionSource");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BadCustomizerType".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BadCustomizerType", "BadCustomizerType", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadCustomizerType");
+                yield return new global::System.Management.Automation.CompletionResult("'BadCustomizerType'", "BadCustomizerType", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadCustomizerType");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnsupportedCustomizerType".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UnsupportedCustomizerType", "UnsupportedCustomizerType", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnsupportedCustomizerType");
+                yield return new global::System.Management.Automation.CompletionResult("'UnsupportedCustomizerType'", "UnsupportedCustomizerType", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnsupportedCustomizerType");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoCustomizerScript".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NoCustomizerScript", "NoCustomizerScript", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoCustomizerScript");
+                yield return new global::System.Management.Automation.CompletionResult("'NoCustomizerScript'", "NoCustomizerScript", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoCustomizerScript");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "BadValidatorType".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'BadValidatorType'", "BadValidatorType", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadValidatorType");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnsupportedValidatorType".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'UnsupportedValidatorType'", "UnsupportedValidatorType", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnsupportedValidatorType");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoValidatorScript".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'NoValidatorScript'", "NoValidatorScript", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoValidatorScript");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BadDistributeType".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BadDistributeType", "BadDistributeType", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadDistributeType");
+                yield return new global::System.Management.Automation.CompletionResult("'BadDistributeType'", "BadDistributeType", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadDistributeType");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BadSharedImageDistribute".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BadSharedImageDistribute", "BadSharedImageDistribute", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadSharedImageDistribute");
+                yield return new global::System.Management.Automation.CompletionResult("'BadSharedImageDistribute'", "BadSharedImageDistribute", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadSharedImageDistribute");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "BadStagingResourceGroup".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'BadStagingResourceGroup'", "BadStagingResourceGroup", global::System.Management.Automation.CompletionResultType.ParameterValue, "BadStagingResourceGroup");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ServerError".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ServerError", "ServerError", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServerError");
+                yield return new global::System.Management.Automation.CompletionResult("'ServerError'", "ServerError", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServerError");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Other".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Other", "Other", global::System.Management.Automation.CompletionResultType.ParameterValue, "Other");
+                yield return new global::System.Management.Automation.CompletionResult("'Other'", "Other", global::System.Management.Automation.CompletionResultType.ParameterValue, "Other");
             }
         }
     }

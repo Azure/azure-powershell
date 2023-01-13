@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -17,6 +17,7 @@ Creates a key in a key vault or imports a key into a key vault.
 ```
 Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] [-KeyType <String>]
+ [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
  [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,6 +33,7 @@ Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String>
 ```
 Add-AzKeyVaultKey -HsmName <String> [-Name] <String> [-Disable] [-KeyOps <String[]>] [-Expires <DateTime>]
  [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] -KeyType <String> [-CurveName <String>]
+ [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,6 +48,7 @@ Add-AzKeyVaultKey -HsmName <String> [-Name] <String> -KeyFilePath <String> [-Key
 ```
 Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <String> [-Disable]
  [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
+ [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
  [-KeyType <String>] [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -62,7 +65,8 @@ Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <Str
 ```
 Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] -KeyType <String>
- [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CurveName <String>] [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### HsmInputObjectImport
@@ -77,6 +81,7 @@ Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> -KeyFilePath <Str
 ```
 Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] [-KeyType <String>]
+ [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
  [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -92,7 +97,8 @@ Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
 ```
 Add-AzKeyVaultKey -HsmResourceId <String> [-Name] <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] -KeyType <String>
- [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CurveName <String>] [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### HsmResourceIdImport
@@ -329,6 +335,87 @@ $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination HSM -
 Generates a key (referred to as a Key Exchange Key (KEK)). The KEK must be an RSA-HSM key that has only the import key operation. Only Key Vault Premium SKU supports RSA-HSM keys.
 For more details please refer to https://docs.microsoft.com/azure/key-vault/keys/hsm-protected-keys
 
+### Example 9: Create a secure key in managed hsm
+
+```powershell
+<# release_policy_template.json
+{
+  "anyOf": [
+    {
+      "allOf": [
+        {
+          "claim": "<claim name>",
+          "equals": "<value to match>"
+        }
+      ],
+      "authority": "<issuer>"
+    }
+  ],
+  "version": "1.0.0"
+}
+#>
+Add-AzKeyVaultKey -HsmName testmhsm -Name test-key -KeyType RSA -Exportable -ReleasePolicyPath release_policy.json
+```
+
+```output
+Vault/HSM Name : testmhsm
+Name           : test-key
+Key Type       : RSA
+Key Size       : 2048
+Curve Name     : 
+Version        : ed6b026bf0a605042006635713d33ef6
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/test-key/ed6b026bf0a605042006635713d33ef6
+Enabled        : True
+Expires        : 
+Not Before     : 
+Created        : 6/2/2022 7:14:37 AM
+Updated        : 6/2/2022 7:14:37 AM
+Recovery Level : Recoverable+Purgeable
+Release Policy : 
+                 Content Type   : application/json; charset=utf-8
+                 Policy Content : {"anyOf":[{"allOf":[{"claim":"x-ms-sgx-is-debuggable","equals":"true"}],"authority":"htt 
+                 ps://sharedeus.eus.attest.azure.net/"}],"version":"1.0.0"}
+                 Immutable      : False
+
+
+Tags           : 
+```
+
+Create a secure key in managed hsm named testmhsm. Its name is test-key and type is RSA. 
+
+### Example 10: Add a key for a Confidential VM to a key vault. 
+```powershell
+New-AzKeyVault -Name $keyVaultName -Location $location -ResourceGroupName $resourceGroupName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+$cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -ObjectId $cvmAgent.id -PermissionsToKeys get,release;
+
+$keySize = 3072;
+Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Size $keySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -Exportable -UseDefaultCVMPolicy;
+        
+```
+
+```output
+Vault/HSM Name : <Vault Name>
+Name           : <Key Name>
+Key Type       : RSA
+Key Size       : 3072
+Curve Name     :
+Version        : <Version>
+Id             : <Id>
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 9/9/2022 8:36:00 PM
+Updated        : 9/9/2022 8:36:00 PM
+Recovery Level : Recoverable
+Release Policy :
+                 Content Type   : application/json; charset=utf-8
+                 Policy Content : <Policy Content>
+                 Immutable      : False
+Tags           :
+
+```
+
 ## PARAMETERS
 
 ### -CurveName
@@ -435,6 +522,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Exportable
+Indicates if the private key can be exported.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate, HsmInteractiveCreate, HsmInputObjectCreate, HsmResourceIdCreate
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HsmName
 HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
 
@@ -477,6 +579,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Immutable
+Sets the release policy as immutable state. Once marked immutable, this flag cannot be reset and the policy cannot be changed under any circumstances.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate, HsmInteractiveCreate, HsmInputObjectCreate, HsmResourceIdCreate
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -621,6 +738,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReleasePolicyPath
+A path to a file containing JSON policy definition. The policy rules under which a key can be exported.
+
+```yaml
+Type: System.String
+Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate, HsmInteractiveCreate, HsmInputObjectCreate, HsmResourceIdCreate
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Vault Resource Id.
 
@@ -659,6 +791,21 @@ Key-value pairs in the form of a hash table. For example:
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseDefaultCVMPolicy
+Specifies to use default policy under which the key can be exported for CVM disk encryption.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate, HsmInteractiveCreate, HsmInputObjectCreate, HsmResourceIdCreate
+Aliases:
 
 Required: False
 Position: Named
@@ -720,6 +867,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
 
 ### System.String
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzWebAppAccessRestrictionConfig
 
 ## SYNOPSIS
-Gets Access Restiction configuration for an Azure Web App.
+Gets Access Restriction configuration for an Azure Web App.
 
 ## SYNTAX
 

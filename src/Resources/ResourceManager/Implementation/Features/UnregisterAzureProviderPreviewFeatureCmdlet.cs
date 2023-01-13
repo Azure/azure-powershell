@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string ProviderNamespace { get; set; }
 
-        [Parameter(Mandatory = false)]
         /// <summary>
         /// Gets or sets the pass thru.
         /// </summary>
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>

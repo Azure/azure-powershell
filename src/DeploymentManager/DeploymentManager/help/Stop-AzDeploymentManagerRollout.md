@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/stop-azdeploymentmanagerrollout
+online version: https://learn.microsoft.com/powershell/module/az.deploymentmanager/stop-azdeploymentmanagerrollout
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ Note that once a rollout is stopped, it cannot be resumed or restarted. You can 
 
 ### Example 1
 ```powershell
-Stop-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -SkipSucceeded
+Stop-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout
 ```
 
 This command stops a rollout named ContosoRollout in the ContosoResourceGroup. 

@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.13.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="2.0.0-beta" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">

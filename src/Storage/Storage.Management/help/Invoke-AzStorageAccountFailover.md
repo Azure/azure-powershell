@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/Az.storage/invoke-Azstorageaccountfailover
+online version: https://learn.microsoft.com/powershell/module/Az.storage/invoke-Azstorageaccountfailover
 schema: 2.0.0
 ---
 
@@ -35,6 +35,7 @@ Please understand the following impact to your storage account before you initia
 ## EXAMPLES
 
 ### Example 1: Invoke failover of a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
 PS C:\>$account.GeoReplicationStats

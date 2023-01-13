@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Add network rule
-    /// NOTE: Define VaultName & ResourceGroupName in this class instead of base one because TAB order for input.
+    /// NOTE: Define VaultName &amp; ResourceGroupName in this class instead of base one because TAB order for input.
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultNetworkRule",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVault))]

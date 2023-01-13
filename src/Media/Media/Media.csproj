@@ -14,4 +14,6 @@
     <PackageReference Include="Microsoft.Azure.Management.Media" Version="0.1.1" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

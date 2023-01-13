@@ -12,147 +12,141 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class AlertsTests : RMTestBase
+    public class AlertsTests : MonitorTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public AlertsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AlertsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureRmAlertRuleWebhook()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmAlertRuleWebhook");
+            TestRunner.RunTestScript("Test-NewAzureRmAlertRuleWebhook");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureRmAlertRuleEmail()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmAlertRuleEmail");
+            TestRunner.RunTestScript("Test-NewAzureRmAlertRuleEmail");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmMetricAlertRule()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRule");
+            TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmWebtestAlertRule()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmWebtestAlertRule");
+            TestRunner.RunTestScript("Test-AddAzureRmWebtestAlertRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmAlertRule()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmAlertRule");
+            TestRunner.RunTestScript("Test-GetAzureRmAlertRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmAlertRuleByName()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmAlertRuleByName");
+            TestRunner.RunTestScript("Test-GetAzureRmAlertRuleByName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmAlertRule()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmAlertRule");
+            TestRunner.RunTestScript("Test-RemoveAzureRmAlertRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmAlertHistory()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmAlertHistory");
+            TestRunner.RunTestScript("Test-GetAzureRmAlertHistory");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmMetricAlertRuleV2()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmMetricAlertRuleV2");
+            TestRunner.RunTestScript("Test-GetAzureRmMetricAlertRuleV2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmMetricAlertRuleV2()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmAlertRuleV2");
+            TestRunner.RunTestScript("Test-RemoveAzureRmAlertRuleV2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmMetricAlertRuleV2()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2");
+            TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRuleV2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmMetricAlertRuleV2WithoutActionGroup()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2-NoActionGroup");
+            TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRuleV2-NoActionGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmMetricAlertRuleV2WithActionGroupId()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2-ActionGroupId");
+            TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRuleV2-ActionGroupId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmMetricAlertRuleV2WithSkipMetricValidation()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2-SkipMetricValidation");
+            TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRuleV2-SkipMetricValidation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmMetricAlertRuleV2WithAutoMitigate()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2-autoMitigate");
+            TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRuleV2-autoMitigate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAzureRmMetricAlertRuleV2WithActionGroups()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-DisableAzureRmMetricAlertRuleV2WithActionGroups");
+            TestRunner.RunTestScript("Test-DisableAzureRmMetricAlertRuleV2WithActionGroups");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmDynamicMetricAlertRuleV2()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2-DynamicThreshold");
+            TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRuleV2-DynamicThreshold");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAddAzureRmWebtestAlertRuleV2()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2-Webtest");
+            TestRunner.RunTestScript("Test-AddAzureRmMetricAlertRuleV2-Webtest");
         }
     }
 }

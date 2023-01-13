@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlDataSourceObject
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create an in-memory object for AzurePostgreSqlDataSource.
 
 ### Example 1: Create Azure PostgreSQL data source object
 ```powershell
-PS C:\> New-AzPurviewAzurePostgreSqlDataSourceObject -Kind 'AzurePostgreSql' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 5432 -ServerEndpoint 'nause.postgres.database.azure.com'
+New-AzPurviewAzurePostgreSqlDataSourceObject -Kind 'AzurePostgreSql' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Port 5432 -ServerEndpoint 'nause.postgres.database.azure.com'
+```
 
+```output
 CollectionLastModifiedAt :
 CollectionReferenceName  : parv-brs-2
 CollectionType           : CollectionReference

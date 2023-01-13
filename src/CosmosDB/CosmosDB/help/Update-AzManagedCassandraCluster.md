@@ -47,28 +47,28 @@ The **Update-AzManagedCassandraCluster** cmdlet alters an existing managed Cassa
 ### Example 1
 ```powershell
 Update-AzManagedCassandraCluster `
- -ResourceGroupName {resourceGroupName} `
- -ClusterName {clusterName} `
- -ExternalGossipCertificate {certificates} `
- -ClientCertificate {certificates} `
- -RepairEnabled {boolean}
+ -ResourceGroupName "resourceGroupName" `
+ -ClusterName "clusterName" `
+ -ExternalGossipCertificate "certificates" `
+ -ClientCertificate "certificates" `
+ -RepairEnabled $true
 ```
 
 ### Example 2
 ```powershell
 Update-AzManagedCassandraCluster `
- -ResourceId {clusterResourceId} `
- -ExternalGossipCertificate {certificates} `
- -ClientCertificate {certificates} `
- -RepairEnabled {boolean}
+ -ResourceId "clusterResourceId" `
+ -ExternalGossipCertificate "certificates" `
+ -ClientCertificate "certificates" `
+ -RepairEnabled $true
 ```
 
 ### Example 3
 ```powershell
 $clusterResource | Update-AzManagedCassandraCluster `
- -ExternalGossipCertificate {certificates} `
- -ClientCertificate {certificates} `
- -RepairEnabled {boolean}
+ -ExternalGossipCertificate "certificates" `
+ -ClientCertificate "certificates" `
+ -RepairEnabled $true
 ```
 
 ## PARAMETERS

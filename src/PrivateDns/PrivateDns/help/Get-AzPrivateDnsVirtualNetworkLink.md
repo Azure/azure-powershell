@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
 ms.assetid: B831ABE6-348C-4DD6-9295-18D23A1FDF63
-online version: https://docs.microsoft.com/powershell/module/az.privatedns/get-azprivatednsvirtualnetworklink
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/get-azprivatednsvirtualnetworklink
 schema: 2.0.0
 ---
 
@@ -28,7 +28,7 @@ You can use the **PSPrivateDnsVirtualNetworkLink** object to update the link.
 
 ### Example 1: Get a virtual network link.
 ```powershell
- $Link = Get-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "mylink"
+$Link = Get-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "mylink"
 ```
 
 ```output
@@ -53,7 +53,7 @@ This example gets the virtual network link mylink associated with the Private DN
 
 ### Example 2: Get all of the links associated with a zone in a resource group.
 ```powershell
- $Links = Get-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+$Links = Get-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
 ```
 
 ```output

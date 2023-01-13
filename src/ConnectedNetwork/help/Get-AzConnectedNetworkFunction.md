@@ -42,9 +42,10 @@ Gets information about the specified network function resource.
 
 ### Example 1: Get-AzConnectedNetworkFunction via Resource group and Resource name
 ```powershell
-PS C:\> Get-AzConnectedNetworkFunction -Name myVnf -ResourceGroupName myResources
+Get-AzConnectedNetworkFunction -Name myVnf -ResourceGroupName myResources
+```
 
-
+```output
 ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
 DeviceId                     : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMec
 Etag                         : "0000a530-0000-3400-0000-615c10fa0000"
@@ -76,10 +77,11 @@ Getting information about the network function in resource group myResources wit
 
 ### Example 2: Get-AzConnectedNetworkFunction via Identity
 ```powershell
-PS C:\> $vnf = @{ NetworkFunctionName = "myVnf1"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
-PS C:\> Get-AzConnectedNetworkFunction -InputObject $vnf
+$vnf = @{ NetworkFunctionName = "myVnf1"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
+Get-AzConnectedNetworkFunction -InputObject $vnf
+```
 
-
+```output
 ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
 DeviceId                     : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMec1
 Etag                         : "sampleEtagValue"
@@ -209,7 +211,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

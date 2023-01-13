@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 60E0D10F-9B93-45A9-A1FF-5C943B8CA09C
-online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator
+online version: https://learn.microsoft.com/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ We recommend that you provision a dedicated Azure AD group as an administrator.
 
 ### Example 1: Provision an administrator group for a server
 ```powershell
-Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DisplayName "DBAs" 
+Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DisplayName "DBAs"
 ```
 
 ```output

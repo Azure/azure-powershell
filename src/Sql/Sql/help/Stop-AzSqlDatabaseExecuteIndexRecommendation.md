@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 4D2E0956-FBFA-43CC-ABE3-A6CBB9409263
-online version: https://docs.microsoft.com/powershell/module/az.sql/stop-azsqldatabaseexecuteindexrecommendation
+online version: https://learn.microsoft.com/powershell/module/az.sql/stop-azsqldatabaseexecuteindexrecommendation
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ The **Stop-AzSqlDatabaseExecuteIndexRecommendation** cmdlet stops the workflow t
 
 ### Example 1: Stop running an index recommendation
 ```powershell
-Stop-AzSqlDatabaseExecuteIndexRecommendation -ResourceGroup "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -IndexRecommendationName "INDEX_NAME"
+Stop-AzSqlDatabaseExecuteIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -IndexRecommendationName "INDEX_NAME"
 ```
 
 This command stops running an index recommendation.

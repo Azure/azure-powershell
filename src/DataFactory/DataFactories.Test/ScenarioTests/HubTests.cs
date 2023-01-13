@@ -12,20 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataFactories.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
-    public class HubTests : DataFactoriesScenarioTestsBase
+    public class HubTests : DataFactoriesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public HubTests(Xunit.Abstractions.ITestOutputHelper output)
+        public HubTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD
@@ -37,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHub()
         {
-            RunPowerShellTest(_logger, "Test-Hub");
+            TestRunner.RunTestScript("Test-Hub");
         }
 
 #if NETSTANDARD
@@ -49,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 #endif
         public void TestHubWithDataFactoryParameter()
         {
-            RunPowerShellTest(_logger, "Test-HubWithDataFactoryParameter");
+            TestRunner.RunTestScript("Test-HubWithDataFactoryParameter");
         }
 
 #if NETSTANDARD
@@ -61,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 #endif
         public void TestHubPiping()
         {
-            RunPowerShellTest(_logger, "Test-HubPiping");
+            TestRunner.RunTestScript("Test-HubPiping");
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/Get-AzSqlInstanceKeyVaultKey
+online version: https://learn.microsoft.com/powershell/module/Az.sql/Get-AzSqlInstanceKeyVaultKey
 schema: 2.0.0
 ---
 
@@ -72,7 +72,7 @@ This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/key
 ### Example 3: Using instance object
 ```powershell
 $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-Get-AzSqlInstanceKeyVaultKey -ManagedInstance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+Get-AzSqlInstanceKeyVaultKey -Instance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 ```
 
 ```output

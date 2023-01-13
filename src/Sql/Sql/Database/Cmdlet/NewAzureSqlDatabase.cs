@@ -212,8 +212,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the database backup storage redundancy.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
-        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone, Geo, and GeoZone.")]
+        [ValidateSet("Local", "Zone", "Geo", "GeoZone", IgnoreCase = false)]
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
@@ -237,6 +237,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Creates a ledger database, in which the integrity of all data is protected by the ledger feature. All tables in the ledger database must be ledger tables. Note: the value of this property cannot be changed after the database has been created.")]
         public SwitchParameter EnableLedger { get; set; }
+
+        /// <summary>
+        /// Gets or sets the preferred enclave type requested on the database.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The preferred enclave type for the Azure Sql database. Possible values are Default and VBS.")]
+        [PSArgumentCompleter(
+            "Default",
+            "VBS")]
+        public string PreferredEnclaveType { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -323,6 +333,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
                 EnableLedger = this.IsParameterBound(p => p.EnableLedger) ? EnableLedger.ToBool() : (bool?)null,
+                PreferredEnclaveType = this.PreferredEnclaveType,
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)

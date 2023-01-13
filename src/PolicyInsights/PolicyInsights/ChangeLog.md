@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.1
+* Updated parameter documentation for Get-AzPolicyState 
+
 ## Version 1.5.0
 * Added support for new remediation properties allowing the remediation of more resources with better control over the remediation rate and error handling
 * Added support of fetching very large sets of results by internally using paginated API calls for policy states and policy events commands

@@ -128,8 +128,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             };
                             if (t["Encryption"] != null)
                             {
-                                var osDiskEncryptionSetId = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["DiskEncryptionSetId"];
-                                var osDiskImageEncryption = new OSDiskImageEncryption(osDiskEncryptionSetId);
+                                OSDiskImageEncryption osDiskImageEncryption = new OSDiskImageEncryption();
+                                if (((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"]) != null)
+                                {
+                                    var osDiskEncryptionSetId = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["DiskEncryptionSetId"];
+                                    osDiskImageEncryption.DiskEncryptionSetId = osDiskEncryptionSetId;
+
+                                    var cVMEncryptionType = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["CVMEncryptionType"];
+                                    var cVMDiskEncryptionSetID = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["CVMDiskEncryptionSetID"];
+                                    if (cVMEncryptionType != null || cVMDiskEncryptionSetID != null)
+                                    {
+                                        OSDiskImageSecurityProfile osDiskImageSecurityProfile = new OSDiskImageSecurityProfile(cVMEncryptionType, cVMDiskEncryptionSetID);
+                                        osDiskImageEncryption.SecurityProfile = osDiskImageSecurityProfile;
+                                    }
+
+                                }
 
                                 List<DataDiskImageEncryption> dataDiskImageEncryption = null;
                                 var dataDiskImage = (object[])((Hashtable)t["Encryption"])["dataDiskImages"];

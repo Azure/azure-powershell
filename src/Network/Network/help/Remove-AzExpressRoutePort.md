@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azexpressrouteport
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azexpressrouteport
 schema: 2.0.0
 ---
 
@@ -44,14 +44,14 @@ Removes $PortName ExpressRoutePort resource in $rg resource group in your subscr
 
 ### Example 2
 ```powershell
-Remove-AzExpressRoutePort -InputObject $erPort
+Remove-AzExpressRoutePort -InputObject $Port
 ```
 
 Removes the ExpressRoutePort resource in InputObject.
 
 ### Example 3
 ```powershell
-Remove-AzExpressRoutePort -Name $ResourceId $id
+Remove-AzExpressRoutePort -ResourceId $id
 ```
 
 Removes the ExpressRoutePort resource with ResourceId $id.

@@ -41,5 +41,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //     Gets or sets list of disk resource ids that the customer wishes to exclude from
         //     the restore point. If no disks are specified, all disks will be included.
         public IList<ApiEntityReference> ExcludeDisks { get; set; }
+
+        public RestorePointInstanceView InstanceView { get; set; }
+
+        public DateTime? TimeCreated { get; set; }
+
+        public ApiEntityReference SourceRestorePoint { get; set; }
+
     }
 }

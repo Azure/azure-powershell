@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Authorization
-Module Guid: 6ecaa7be-41f0-40c8-8246-8b97f7e15a95
-Download Help Link: https://docs.microsoft.com/powershell/module/az.authorization
+Module Guid: 6fd3fa0e-907d-4510-9563-4edf3773736d
+Download Help Link: https://learn.microsoft.com/powershell/module/az.authorization
 Help Version: 1.0.0.0
 Locale: en-US
 ---

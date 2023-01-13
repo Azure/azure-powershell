@@ -14,7 +14,6 @@
 
 
 using ScenarioTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -24,20 +23,14 @@ namespace StorageSyncTests
     /// <summary>
     /// Class SyncGroupTests.
     /// </summary>
-    public class SyncGroupTests
+    public class SyncGroupTests : StorageSyncTestRunner
     {
-        /// <summary>
-        /// The logger
-        /// </summary>
-        private readonly XunitTracingInterceptor _logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SyncGroupTests"/> class.
         /// </summary>
         /// <param name="output">The output.</param>
-        public SyncGroupTests(ITestOutputHelper output)
+        public SyncGroupTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(_logger = new XunitTracingInterceptor(output));
         }
 
         /// <summary>
@@ -47,7 +40,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncGroup()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-SyncGroup");
+            TestRunner.RunTestScript("Test-SyncGroup");
         }
 
         /// <summary>
@@ -57,7 +50,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSyncGroup()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-NewSyncGroup");
+            TestRunner.RunTestScript("Test-NewSyncGroup");
         }
 
         /// <summary>
@@ -67,7 +60,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSyncGroup()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetSyncGroup");
+            TestRunner.RunTestScript("Test-GetSyncGroup");
         }
 
         /// <summary>
@@ -77,7 +70,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSyncGroupParentObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetSyncGroupParentObject");
+            TestRunner.RunTestScript("Test-GetSyncGroupParentObject");
         }
 
         /// <summary>
@@ -87,7 +80,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSyncGroupParentResourceId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetSyncGroupParentResourceId");
+            TestRunner.RunTestScript("Test-GetSyncGroupParentResourceId");
         }
 
 
@@ -98,7 +91,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSyncGroups()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetSyncGroups");
+            TestRunner.RunTestScript("Test-GetSyncGroups");
         }
 
         /// <summary>
@@ -108,7 +101,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSyncGroup()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveSyncGroup");
+            TestRunner.RunTestScript("Test-RemoveSyncGroup");
         }
 
         /// <summary>
@@ -118,7 +111,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSyncGroupResourceId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveSyncGroupResourceId");
+            TestRunner.RunTestScript("Test-RemoveSyncGroupResourceId");
         }
 
         /// <summary>
@@ -128,7 +121,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSyncGroupInputObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveSyncGroupInputObject");
+            TestRunner.RunTestScript("Test-RemoveSyncGroupInputObject");
         }
 
     }

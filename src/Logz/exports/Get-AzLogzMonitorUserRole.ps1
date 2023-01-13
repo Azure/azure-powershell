@@ -29,7 +29,7 @@ None
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IUserRoleResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitoruserrole
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitoruserrole
 #>
 function Get-AzLogzMonitorUserRole {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IUserRoleResponse])]

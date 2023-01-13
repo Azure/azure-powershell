@@ -31,7 +31,7 @@ The **Get-AzCosmosDBCassandraKeyspace** cmdlet creates a new or updates an exist
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBCassandraKeyspace -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Name {name}
+Get-AzCosmosDBCassandraKeyspace -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "name"
 ```
 
 ```output

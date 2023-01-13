@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
         /// <summary>
         /// Initializes a new instance of the <see cref="CmdletInfoHandler" /> class.
         /// </summary>
-        /// <param name="headerValues">The product info to add as headers.</param>
+        /// <param name="cmdletHeaderValues">The product info to add as headers.</param>
         public CmdletInfoHandler(Dictionary<string, string> cmdletHeaderValues)
         {
             this.cmdletHeaderValues = cmdletHeaderValues;

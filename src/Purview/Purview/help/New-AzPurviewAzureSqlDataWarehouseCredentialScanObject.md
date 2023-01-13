@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseCredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseCredentialScanObject
 schema: 2.0.0
 ---
 
@@ -27,8 +27,10 @@ Create an in-memory object for AzureSqlDataWarehouseCredentialScan.
 
 ### Example 1: Create Azure Sql Data Warehouse Credential scan object
 ```powershell
-PS C:\>  New-AzPurviewAzureSqlDataWarehouseCredentialScanObject -Kind 'AzureSqlDataWarehouseCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDataWarehouse' -ScanRulesetType 'System' -ServerEndpoint 'canstzn.database.windows.net' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth'
+New-AzPurviewAzureSqlDataWarehouseCredentialScanObject -Kind 'AzureSqlDataWarehouseCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDataWarehouse' -ScanRulesetType 'System' -ServerEndpoint 'canstzn.database.windows.net' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

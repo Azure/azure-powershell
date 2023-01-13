@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// master components and an auto-created user assigned identity in MC_
         /// resource group in agent nodes. Type 'None' will not use MSI for the
         /// managed cluster, service principal will be used instead. Possible
-        /// values include: 'SystemAssigned', 'None'
+        /// values include: 'SystemAssigned', 'None', 'UserAssigned'
         /// </summary>
         public PSResourceIdentityType? Type { get; set; }
     }

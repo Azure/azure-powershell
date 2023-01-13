@@ -15,4 +15,6 @@
     <PackageReference Include="Microsoft.Azure.Commerce.UsageAggregates" Version="1.5.3" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

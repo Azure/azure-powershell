@@ -34,6 +34,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         public const long sizeTB = (long)1024 * 1024 * 1024 * 1024;
 
+        protected const int size4MB = 4 * 1024 * 1024;
+
         /// <summary>
         /// Stores the transfer manager instance.
         /// </summary>

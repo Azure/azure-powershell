@@ -31,27 +31,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSPrivateEndpointCustomDnsConfig> CustomDnsConfigs { get; set; }
         public PSExtendedLocation ExtendedLocation { get; set; }
 
-        /// <summary>
-        /// Need this interim property due to a bug in AutoMapper 6.6.2
-        /// https://github.com/AutoMapper/AutoMapper/issues/2507 - Not able to map null to null for IEnumerable/IReadOnlyList object except for IList
-        /// </summary>
-        internal List<PSApplicationSecurityGroup> _psApplicationSecurityGroups { get; set; }
+        public List<PSApplicationSecurityGroup> ApplicationSecurityGroups { get; set; }
 
-        /// <summary>
-        /// IReadOnlyList object due to ApplicationSecurityGroups is not applicable for Set-AzPrivateEndpoint
-        /// </summary>
-        public IReadOnlyList<PSApplicationSecurityGroup> ApplicationSecurityGroups => _psApplicationSecurityGroups.AsReadOnly();
-
-        /// <summary>
-        /// Need this interim property due to a bug in AutoMapper 6.6.2
-        /// https://github.com/AutoMapper/AutoMapper/issues/2507 - Not able to map null to null for IEnumerable/IReadOnlyList object except for IList
-        /// </summary>
-        internal List<PSPrivateEndpointIPConfiguration> _psIpConfigurations { get; set; }
-
-        /// <summary>
-        /// IReadOnlyList object due to PrivateEndpointIPConfigurations is not applicable for Set-AzPrivateEndpoint
-        /// </summary>
-        public IReadOnlyList<PSPrivateEndpointIPConfiguration> IpConfigurations => _psIpConfigurations.AsReadOnly();
+        public List<PSPrivateEndpointIPConfiguration> IpConfigurations { get; set; }
 
         public string CustomNetworkInterfaceName { get; internal set; }
 

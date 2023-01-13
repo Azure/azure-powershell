@@ -295,6 +295,7 @@ namespace Microsoft.Azure.Commands.Common
         /// </summary>
         /// <param name="target"></param>
         /// <param name="searchValue"></param>
+        /// <param name="comparison"></param>
         /// <returns></returns>
         internal static bool ContainsNotNull(this string target, string searchValue, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
         {

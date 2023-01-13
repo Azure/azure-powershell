@@ -43,6 +43,7 @@ Start-AzAutomationDscNodeConfigurationDeployment `
             -ResourceGroupName "ResourceGroup01" `
             -NodeName $nodes
 ```
+
 ```output
 Starting a node configuration deployment.
 Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
@@ -78,6 +79,7 @@ Start-AzAutomationDscNodeConfigurationDeployment `
             -NodeName $nodes `
             -Schedule $sched
 ```
+
 ```output
 Starting a node configuration deployment.
 Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
@@ -262,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

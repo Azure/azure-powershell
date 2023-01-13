@@ -86,21 +86,27 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         public string AadTenantId { get; set; }
 
         /// <summary>
-        /// Gets or sets the Service Principal Client Id.
+        /// Gets or sets the values for AadAudience.
         /// </summary>
         [DataMember(Order = 11)]
+        public string AadAudience { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Service Principal Client Id.
+        /// </summary>
+        [DataMember(Order = 12)]
         public string ServicePrincipalClientId { get; set; }
 
         /// <summary>
         /// Gets or sets the Id Management Endpoint.
         /// </summary>
-        [DataMember(Order = 12)]
+        [DataMember(Order = 13)]
         public string IdMgmtRestEndpoint { get; set; }
 
         /// <summary>
         /// Gets or sets the agent links
         /// </summary>
-        [DataMember(Order = 13)]
+        [DataMember(Order = 14)]
         public string AgentLinks { get; set; }
     }
 }

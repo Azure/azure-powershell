@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Management.Automation;
 using CNM = Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
@@ -67,6 +68,16 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Virtual Hub Routing Preference to route traffic")]
+        [ValidateSet(
+            MNM.HubRoutingPreference.ExpressRoute,
+            MNM.HubRoutingPreference.VpnGateway,
+            MNM.HubRoutingPreference.ASPath,
+            IgnoreCase = true)]
+        public string HubRoutingPreference { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -80,6 +91,12 @@ namespace Microsoft.Azure.Commands.Network
 
             var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouteServerName);
             virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.IsPresent;
+
+            if (!string.IsNullOrWhiteSpace(this.HubRoutingPreference))
+            {
+                virtualHub.HubRoutingPreference = this.HubRoutingPreference;
+            }
+
             this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, virtualHub);
 
             var psVirtualHub = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualHub>(virtualHub);

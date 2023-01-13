@@ -60,11 +60,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 PSListKeysAttributes listkeys;
                 if (identifier.ParentResource1 != null)
                 {
-                    listkeys =  Client.GetEventHubListKeys(identifier.ResourceGroupName, identifier.ParentResource, identifier.ParentResource1, identifier.ResourceName);
+                    listkeys =  UtilityClient.GetEventHubListKeys(identifier.ResourceGroupName, identifier.ParentResource, identifier.ParentResource1, identifier.ResourceName);
                 }
                 else
                 {
-                    listkeys = Client.GetNamespaceListKeys(identifier.ResourceGroupName, identifier.ParentResource, identifier.ResourceName);
+                    listkeys = UtilityClient.GetNamespaceListKeys(identifier.ResourceGroupName, identifier.ParentResource, identifier.ResourceName);
                 }
 
                 string[] connectionstring = KeyType == "Primary" ? listkeys.PrimaryConnectionString.Split(';') : listkeys.SecondaryConnectionString.Split(';');
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                                                 HttpUtility.UrlEncode(resourceUri),
                                                 HttpUtility.UrlEncode(signature),
                                                 expiry,
-                                                KeyType);
+                                                identifier.ResourceName);
 
                 PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
 

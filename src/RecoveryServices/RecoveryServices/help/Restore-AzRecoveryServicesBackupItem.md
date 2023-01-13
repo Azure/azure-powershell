@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: F49FA524-28BC-464F-BD0A-F898E99C83D8
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem
 schema: 2.0.0
 ---
 
@@ -32,9 +32,9 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <String>] [-RestoreToSecondaryRegion]
  [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
  [-UserAssignedIdentityId <String>] [-TargetVMName <String>] [-TargetVNetName <String>]
- [-TargetVNetResourceGroup <String>] [-TargetSubnetName <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TargetVNetResourceGroup <String>] [-TargetSubnetName <String>] [-TargetSubscriptionId <String>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureFileShareParameterSet
@@ -122,7 +122,7 @@ $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -Target
 ```
 
 ```output
-    WorkloadName    Operation       Status          StartTime              EndTime
+WorkloadName    Operation       Status          StartTime              EndTime
     ------------    ---------       ------          ---------              -------
     V2VM            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
@@ -134,7 +134,7 @@ The fourth command gets the current date, and then stores it in the $EndDate var
 The fifth command gets a list of recovery points for the specific backup item filtered by $StartDate and $EndDate.
 The last command restores all the disks to the target Resource group Target_RG, and then provides the VM configuration information and the deployment template in the storage account DestAccount in the DestRG resource group.
 
-### Example 2: Restore a Managed AzureVM from a given recovery point to original/alternate location 
+### Example 2: Restore a Managed AzureVM from a given recovery point to original/alternate location
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
@@ -143,11 +143,11 @@ $StartDate = (Get-Date).AddDays(-7)
 $EndDate = Get-Date
 $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
 $AlternateLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -TargetVMName "TagetVirtualMachineName" -TargetVNetName "Target_VNet" -TargetVNetResourceGroup "" -TargetSubnetName "subnetName" -VaultId $vault.ID -VaultLocation $vault.Location 
-$OriginalLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -VaultId $vault.ID -VaultLocation $vault.Location 
+$OriginalLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -VaultId $vault.ID -VaultLocation $vault.Location
 ```
 
 ```output
-    WorkloadName    Operation       Status          StartTime              EndTime
+WorkloadName    Operation       Status          StartTime              EndTime
     ------------    ---------       ------          ---------              -------
     V2VM            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
@@ -173,7 +173,7 @@ $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -Target
 ```
 
 ```output
-    WorkloadName    Operation       Status          StartTime              EndTime
+WorkloadName    Operation       Status          StartTime              EndTime
     ------------    ---------       ------          ---------              -------
     V2VM            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
@@ -198,7 +198,7 @@ $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -Restor
 ```
 
 ```output
-    WorkloadName    Operation       Status          StartTime              EndTime
+WorkloadName    Operation       Status          StartTime              EndTime
     ------------    ---------       ------          ---------              -------
     V2VM            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
@@ -222,7 +222,7 @@ $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -UseOri
 ```
 
 ```output
-    WorkloadName    Operation       Status          StartTime              EndTime
+WorkloadName    Operation       Status          StartTime              EndTime
     ------------    ---------       ------          ---------              -------
     V2VM            Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
@@ -245,7 +245,7 @@ $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -Multip
 ```
 
 ```output
-    WorkloadName    Operation       Status          StartTime              EndTime
+WorkloadName    Operation       Status          StartTime              EndTime
     ------------    ---------       ------          ---------              -------
     fileshareitem   Restore         InProgress      26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
@@ -270,7 +270,7 @@ Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogCo
 ```
 
 ```output
-    WorkloadName       Operation        Status            StartTime                 EndTime          JobID
+WorkloadName       Operation        Status            StartTime                 EndTime          JobID
     ------------       ---------        ------            ---------                 -------          -----
     MSSQLSERVER/m...   Restore          InProgress        3/17/2019 10:02:45 AM                      3274xg2b-e4fg-5952-89b4-8cb566gc1748
 ```
@@ -287,7 +287,7 @@ Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogCo
 ```
 
 ```output
-    WorkloadName     Operation      Status           StartTime                 EndTime           JobID
+WorkloadName     Operation      Status           StartTime                 EndTime           JobID
     ------------     ---------      ------           ---------                 -------           -----
     MSSQLSERVER/m... Restore        InProgress       3/17/2019 10:02:45 AM                       3274xg2b-e4fg-5952-89b4-8cb566gc1748
 ```
@@ -302,6 +302,17 @@ $restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -Rehydr
 ```
 
 Here we filter the recovery points present in the VaultArchive tier and trigger a restore with rehydration priority and rehydration duration.
+
+### Example 10: Cross zonal restore for non-ZonePinned VM in a ZRS vault
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-29).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $item[3] -Tier VaultStandard
+$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location -RecoveryPoint $rp[0] -StorageAccountName "saName" -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName "targetVMName" -TargetVNetName "targetVNet" -TargetVNetResourceGroup $vault.ResourceGroupName -TargetSubnetName "default" -TargetZoneNumber 2 
+```
+
+Here we filter the recovery points present in the VaultStandard tier and trigger a cross zonal restore for non-ZonePinned VM in a ZRS vault. For CZR we pass -TargetZoneNumber parameter. For Non-ZonedPinned VM, CZR is supported only for ZRS vaults. For ZonePinned VMs CZR is supported for ZRS vaults and cross region restore to secondary region for CRR enabled vaults.
 
 ## PARAMETERS
 
@@ -636,6 +647,21 @@ Accept wildcard characters: False
 
 ### -TargetSubnetName
 Name of the subnet in which the target VM should be created, in the case of Alternate Location restore to a new VM
+
+```yaml
+Type: System.String
+Parameter Sets: AzureManagedVMCreateNewParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSubscriptionId
+ID of the target subscription to which the resource should be restored. Use this parameter for Cross subscription restore
 
 ```yaml
 Type: System.String

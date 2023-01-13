@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 .Returns(
                     (Dictionary<string, List<string>> ch, CancellationToken token) =>
                         {
-                            var tenants = _tenants.Select((k) => new TenantIdDescription(id: k, tenantId: k));
+                            var tenants = _tenants?.Select((k) => new TenantIdDescription(id: k, tenantId: k));
                             var mockPage = new MockPage<TenantIdDescription>(tenants.ToList());
 
                             AzureOperationResponse<IPage<TenantIdDescription>> r = new AzureOperationResponse<IPage<TenantIdDescription>>

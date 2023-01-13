@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azresourcemanagementprivatelink
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azresourcemanagementprivatelink
 schema: 2.0.0
 ---
 
@@ -24,9 +24,10 @@ The Get-AzResourceManagementPrivateLink cmdlet gets a specific resource manageme
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL
+Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL
+```
 
-
+```output
 Id                         : /subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/PrivateLinkTestRG/provi
                              ders/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL
 Type                       : Microsoft.Authorization/resourceManagementPrivateLinks
@@ -39,9 +40,10 @@ Get the resource management private link with the private endpoint connections a
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzResourceManagementPrivateLink
+Get-AzResourceManagementPrivateLink
+```
 
-
+```output
 Id                         : /subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/PrivateLinkTestRG/provi
                              ders/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL
 Type                       : Microsoft.Authorization/resourceManagementPrivateLinks
@@ -61,9 +63,10 @@ Gets all of the resoure management private links at the subscription scope.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG
+Get-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG
+```
 
-
+```output
 Id                         : /subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/PrivateLinkTestRG/provi
                              ders/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL
 Type                       : Microsoft.Authorization/resourceManagementPrivateLinks

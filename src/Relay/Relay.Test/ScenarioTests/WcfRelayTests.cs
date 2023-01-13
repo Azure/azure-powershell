@@ -15,25 +15,19 @@
 namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class WcfRelayTests : RMTestBase
+    public class WcfRelayTests : RelayTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public WcfRelayTests(ITestOutputHelper output)
+        public WcfRelayTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WcfRelayCRUD()
         {
-            RelayController.NewInstance.RunPsTest(_logger, "WcfRelayTests");
+            TestRunner.RunTestScript("WcfRelayTests");
         }        
     }
 }

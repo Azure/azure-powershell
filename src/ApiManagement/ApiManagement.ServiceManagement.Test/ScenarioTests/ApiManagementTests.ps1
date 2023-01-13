@@ -165,6 +165,246 @@ function Api-CrudTest {
     }
 }
 
+function Api-CrudGraphQlTest {
+    Param($resourceGroupName, $serviceName)
+
+    $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+
+    # create new api
+    $newApiId = getAssetName
+    try {
+        $newApiName = getAssetName
+        $newApiDescription = getAssetName
+        $newApiPath = getAssetName
+        $newApiServiceUrl = "http://newechoapi.cloudapp.net/newapi"
+        $subscriptionKeyParametersHeader = getAssetName
+        $subscriptionKeyQueryStringParamName = getAssetName
+        $newApiType = "graphql"
+        $newApiTermsOfServiceUrl = "microsoft.com"
+        $newApiContactName = getAssetName
+        $newApiContactUrl = "microsoft.com"
+        $newApiContactEmail = "contoso@microsoft.com"
+        $newApiLicenseName = getAssetName
+        $newApiLicenseUrl = "microsoft.com"
+
+        $newApi = New-AzApiManagementApi -Context $context -ApiId $newApiId -Name $newApiName -Description $newApiDescription `
+            -Protocols @("http", "https") -Path $newApiPath -ServiceUrl $newApiServiceUrl `
+            -SubscriptionKeyHeaderName $subscriptionKeyParametersHeader -SubscriptionKeyQueryParamName $subscriptionKeyQueryStringParamName  `
+            -ApiType $newApiType -TermsOfServiceUrl $newApiTermsOfServiceUrl -ContactName $newApiContactName -ContactUrl $newApiContactUrl `
+            -ContactEmail $newApiContactEmail -LicenseName $newApiLicenseName -LicenseUrl $newApiLicenseUrl
+
+        Assert-AreEqual $newApiId $newApi.ApiId
+        Assert-AreEqual $newApiName $newApi.Name
+        Assert-AreEqual $newApiDescription.Description
+        Assert-AreEqual $newApiServiceUrl $newApi.ServiceUrl
+        Assert-AreEqual $newApiPath $newApi.Path
+        Assert-AreEqual 2 $newApi.Protocols.Length
+        Assert-AreEqual http $newApi.Protocols[0]
+        Assert-AreEqual https $newApi.Protocols[1]
+        Assert-Null $newApi.AuthorizationServerId
+        Assert-Null $newApi.AuthorizationScope
+        Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
+        Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
+        Assert-AreEqual $newApiType $newApi.ApiType
+        Assert-AreEqual $newApiTermsOfServiceUrl $newApi.TermsOfServiceUrl
+        Assert-AreEqual $newApiContactName $newApi.ContactName
+        Assert-AreEqual $newApiContactUrl $newApi.ContactUrl
+        Assert-AreEqual $newApiContactEmail $newApi.ContactEmail
+        Assert-AreEqual $newApiLicenseName $newApi.LicenseName
+        Assert-AreEqual $newApiLicenseUrl $newApi.LicenseUrl
+
+        # set api
+        $newApiName = getAssetName
+        $newApiDescription = getAssetName
+        $newApiPath = getAssetName
+        $newApiServiceUrl = "http://newechoapi.cloudapp.net/newapinew"
+        $subscriptionKeyParametersHeader = getAssetName
+        $subscriptionKeyQueryStringParamName = getAssetName
+        $newApiType = "graphql"
+        $newApiTermsOfServiceUrl = "changed.microsoft.com"
+        $newApiContactName = getAssetName
+        $newApiContactUrl = "changed.microsoft.com"
+        $newApiContactEmail = "changed.contoso@microsoft.com"
+        $newApiLicenseName = getAssetName
+        $newApiLicenseUrl = "changed.microsoft.com"
+
+        $newApi = Set-AzApiManagementApi -Context $context -ApiId $newApiId -Name $newApiName -Description $newApiDescription `
+            -Protocols @("https") -Path $newApiPath -ServiceUrl $newApiServiceUrl `
+            -SubscriptionKeyHeaderName $subscriptionKeyParametersHeader -SubscriptionKeyQueryParamName $subscriptionKeyQueryStringParamName `
+            -PassThru `
+            -ApiType $newApiType -TermsOfServiceUrl $newApiTermsOfServiceUrl -ContactName $newApiContactName -ContactUrl $newApiContactUrl `
+            -ContactEmail $newApiContactEmail -LicenseName $newApiLicenseName -LicenseUrl $newApiLicenseUrl
+
+        Assert-AreEqual $newApiId $newApi.ApiId
+        Assert-AreEqual $newApiName $newApi.Name
+        Assert-AreEqual $newApiDescription $newApi.Description
+        Assert-AreEqual $newApiServiceUrl $newApi.ServiceUrl
+        Assert-AreEqual $newApiPath $newApi.Path
+        Assert-AreEqual 1 $newApi.Protocols.Length
+        Assert-AreEqual https $newApi.Protocols[0]
+        Assert-Null $newApi.AuthorizationServerId
+        Assert-Null $newApi.AuthorizationScope
+        Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
+        Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
+        Assert-AreEqual $newApiType $newApi.ApiType
+        Assert-AreEqual $newApiTermsOfServiceUrl $newApi.TermsOfServiceUrl
+        Assert-AreEqual $newApiContactName $newApi.ContactName
+        Assert-AreEqual $newApiContactUrl $newApi.ContactUrl
+        Assert-AreEqual $newApiContactEmail $newApi.ContactEmail
+        Assert-AreEqual $newApiLicenseName $newApi.LicenseName
+        Assert-AreEqual $newApiLicenseUrl $newApi.LicenseUrl
+
+
+        $product = Get-AzApiManagementProduct -Context $context | Select-Object -First 1
+        Add-AzApiManagementApiToProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
+
+        #get by product id
+        $found = 0
+        $apis = Get-AzApiManagementApi -Context $context -ProductId $product.ProductId
+        for ($i = 0; $i -lt $apis.Count; $i++) {
+            if ($apis[$i].ApiId -eq $newApiId) {
+                $found = 1
+            }
+        }
+        Assert-AreEqual 1 $found
+
+        Remove-AzApiManagementApiFromProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
+        $found = 0
+        $apis = Get-AzApiManagementApi -Context $context -ProductId $product.ProductId
+        for ($i = 0; $i -lt $apis.Count; $i++) {
+            if ($apis[$i].ApiId -eq $newApiId) {
+                $found = 1
+            }
+        }
+        Assert-AreEqual 0 $found
+    }
+    finally {
+        # remove created api
+        $removed = Remove-AzApiManagementApi -Context $context -ApiId $newApiId -PassThru
+        Assert-True { $removed }
+    }
+}
+
+function Api-CrudWebsocketTest {
+    Param($resourceGroupName, $serviceName)
+
+    $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+
+    # create new api
+    $newApiId = getAssetName
+    try {
+        $newApiName = getAssetName
+        $newApiDescription = getAssetName
+        $newApiPath = getAssetName
+        $newApiServiceUrl = "ws://newechoapi.cloudapp.net/newapi"
+        $subscriptionKeyParametersHeader = getAssetName
+        $subscriptionKeyQueryStringParamName = getAssetName
+        $newApiType = "websocket"
+        $newApiTermsOfServiceUrl = "microsoft.com"
+        $newApiContactName = getAssetName
+        $newApiContactUrl = "microsoft.com"
+        $newApiContactEmail = "contoso@microsoft.com"
+        $newApiLicenseName = getAssetName
+        $newApiLicenseUrl = "microsoft.com"
+
+        $newApi = New-AzApiManagementApi -Context $context -ApiId $newApiId -Name $newApiName -Description $newApiDescription `
+            -Protocols @("ws", "wss") -Path $newApiPath -ServiceUrl $newApiServiceUrl `
+            -SubscriptionKeyHeaderName $subscriptionKeyParametersHeader -SubscriptionKeyQueryParamName $subscriptionKeyQueryStringParamName  `
+            -ApiType $newApiType -TermsOfServiceUrl $newApiTermsOfServiceUrl -ContactName $newApiContactName -ContactUrl $newApiContactUrl `
+            -ContactEmail $newApiContactEmail -LicenseName $newApiLicenseName -LicenseUrl $newApiLicenseUrl
+
+        Assert-AreEqual $newApiId $newApi.ApiId
+        Assert-AreEqual $newApiName $newApi.Name
+        Assert-AreEqual $newApiDescription.Description
+        Assert-AreEqual $newApiServiceUrl $newApi.ServiceUrl
+        Assert-AreEqual $newApiPath $newApi.Path
+        Assert-AreEqual 2 $newApi.Protocols.Length
+        Assert-AreEqual ws $newApi.Protocols[0]
+        Assert-AreEqual wss $newApi.Protocols[1]
+        Assert-Null $newApi.AuthorizationServerId
+        Assert-Null $newApi.AuthorizationScope
+        Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
+        Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
+        Assert-AreEqual $newApiType $newApi.ApiType
+        Assert-AreEqual $newApiTermsOfServiceUrl $newApi.TermsOfServiceUrl
+        Assert-AreEqual $newApiContactName $newApi.ContactName
+        Assert-AreEqual $newApiContactUrl $newApi.ContactUrl
+        Assert-AreEqual $newApiContactEmail $newApi.ContactEmail
+        Assert-AreEqual $newApiLicenseName $newApi.LicenseName
+        Assert-AreEqual $newApiLicenseUrl $newApi.LicenseUrl
+
+        # set api
+        $newApiName = getAssetName
+        $newApiDescription = getAssetName
+        $newApiPath = getAssetName
+        $newApiServiceUrl = "ws://newechoapi.cloudapp.net/newapinew"
+        $subscriptionKeyParametersHeader = getAssetName
+        $subscriptionKeyQueryStringParamName = getAssetName
+        $newApiType = "websocket"
+        $newApiTermsOfServiceUrl = "changed.microsoft.com"
+        $newApiContactName = getAssetName
+        $newApiContactUrl = "changed.microsoft.com"
+        $newApiContactEmail = "changed.contoso@microsoft.com"
+        $newApiLicenseName = getAssetName
+        $newApiLicenseUrl = "changed.microsoft.com"
+
+        $newApi = Set-AzApiManagementApi -Context $context -ApiId $newApiId -Name $newApiName -Description $newApiDescription `
+            -Protocols @("ws") -Path $newApiPath -ServiceUrl $newApiServiceUrl `
+            -SubscriptionKeyHeaderName $subscriptionKeyParametersHeader -SubscriptionKeyQueryParamName $subscriptionKeyQueryStringParamName `
+            -PassThru `
+            -ApiType $newApiType -TermsOfServiceUrl $newApiTermsOfServiceUrl -ContactName $newApiContactName -ContactUrl $newApiContactUrl `
+            -ContactEmail $newApiContactEmail -LicenseName $newApiLicenseName -LicenseUrl $newApiLicenseUrl
+
+        Assert-AreEqual $newApiId $newApi.ApiId
+        Assert-AreEqual $newApiName $newApi.Name
+        Assert-AreEqual $newApiDescription $newApi.Description
+        Assert-AreEqual $newApiServiceUrl $newApi.ServiceUrl
+        Assert-AreEqual $newApiPath $newApi.Path
+        Assert-AreEqual 1 $newApi.Protocols.Length
+        Assert-AreEqual ws $newApi.Protocols[0]
+        Assert-Null $newApi.AuthorizationServerId
+        Assert-Null $newApi.AuthorizationScope
+        Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
+        Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
+        Assert-AreEqual $newApiType $newApi.ApiType
+        Assert-AreEqual $newApiTermsOfServiceUrl $newApi.TermsOfServiceUrl
+        Assert-AreEqual $newApiContactName $newApi.ContactName
+        Assert-AreEqual $newApiContactUrl $newApi.ContactUrl
+        Assert-AreEqual $newApiContactEmail $newApi.ContactEmail
+        Assert-AreEqual $newApiLicenseName $newApi.LicenseName
+        Assert-AreEqual $newApiLicenseUrl $newApi.LicenseUrl
+
+
+        $product = Get-AzApiManagementProduct -Context $context | Select-Object -First 1
+        Add-AzApiManagementApiToProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
+
+        #get by product id
+        $found = 0
+        $apis = Get-AzApiManagementApi -Context $context -ProductId $product.ProductId
+        for ($i = 0; $i -lt $apis.Count; $i++) {
+            if ($apis[$i].ApiId -eq $newApiId) {
+                $found = 1
+            }
+        }
+        Assert-AreEqual 1 $found
+
+        Remove-AzApiManagementApiFromProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
+        $found = 0
+        $apis = Get-AzApiManagementApi -Context $context -ProductId $product.ProductId
+        for ($i = 0; $i -lt $apis.Count; $i++) {
+            if ($apis[$i].ApiId -eq $newApiId) {
+                $found = 1
+            }
+        }
+        Assert-AreEqual 0 $found
+    }
+    finally {
+        # remove created api
+        $removed = Remove-AzApiManagementApi -Context $context -ApiId $newApiId -PassThru
+        Assert-True { $removed }
+    }
+}
+
 <#
 .SYNOPSIS
 Tests CRUD operations for Cloning an API into a ApiVersionSet.
@@ -789,7 +1029,6 @@ function Operations-CrudTest {
         $newOperationRequestParamType = "string"
 
         $newOperationRequestRepresentationContentType = "application/json"
-        $newOperationRequestRepresentationSample = getAssetName
 
         $newOperationResponseDescription = getAssetName
         $newOperationResponseStatusCode = 1980785443;
@@ -834,7 +1073,15 @@ function Operations-CrudTest {
         #create request representation
         $requestRepresentation = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
         $requestRepresentation.ContentType = $newOperationRequestRepresentationContentType
-        $requestRepresentation.Sample = $newOperationRequestRepresentationSample
+        $requestRepresentation.TypeName = "the type name"
+
+        $exp = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameterExample
+        $exp.Value = "default"
+        $exp.Description  = "My default request example"
+        $exp.ExternalValue  = "https://contoso.com"
+        $exp.Summary  = "default"
+        $requestRepresentation.Examples = @($exp)
+        
         $request.Representations = @($requestRepresentation)
 
         #create response
@@ -845,12 +1092,12 @@ function Operations-CrudTest {
         #create response representation
         $responseRepresentation = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
         $responseRepresentation.ContentType = $newOperationResponseRepresentationContentType
-        $responseRepresentation.Sample = $newOperationResponseRepresentationSample
+        $responseRepresentation.Examples = @($exp)
         $response.Representations = @($responseRepresentation)
 
         $newOperation = New-AzApiManagementOperation –Context $context –ApiId $api.ApiId –OperationId $newOperationId –Name $newOperationName `
             –Method $newOperationMethod –UrlTemplate $newperationUrlTemplate –Description $newOperationDescription –TemplateParameters @($rid, $query) –Request $request –Responses @($response)
-
+          
         Assert-AreEqual $api.ApiId $newOperation.ApiId
         Assert-AreEqual $newOperationId $newOperation.OperationId
         Assert-AreEqual $newOperationName $newOperation.Name
@@ -891,7 +1138,12 @@ function Operations-CrudTest {
         Assert-NotNull $newOperation.Responses[0].Representations
         Assert-AreEqual 1 $newOperation.Responses[0].Representations.Count
         Assert-AreEqual $newOperationResponseRepresentationContentType $newOperation.Responses[0].Representations[0].ContentType
-        Assert-AreEqual $newOperationResponseRepresentationSample $newOperation.Responses[0].Representations[0].Sample
+
+        Assert-NotNull $newOperation.Responses[0].Representations[0].Examples
+        Assert-AreEqual $exp.Value $newOperation.Responses[0].Representations[0].Examples[0].Value
+        Assert-AreEqual $exp.Description $newOperation.Responses[0].Representations[0].Examples[0].Description
+        Assert-AreEqual $exp.ExternalValue $newOperation.Responses[0].Representations[0].Examples[0].ExternalValue
+        Assert-AreEqual $exp.Summary $newOperation.Responses[0].Representations[0].Examples[0].Summary
 
         #change operation
 
@@ -959,7 +1211,7 @@ function Operations-CrudTest {
         #create request representation
         $requestRepresentation = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
         $requestRepresentation.ContentType = $newOperationRequestRepresentationContentType
-        $requestRepresentation.Sample = $newOperationRequestRepresentationSample
+        $requestRepresentation.Examples = @($exp)
         $request.Representations = @($requestRepresentation)
 
         #create response
@@ -970,7 +1222,7 @@ function Operations-CrudTest {
         #create response representation
         $responseRepresentation = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
         $responseRepresentation.ContentType = $newOperationResponseRepresentationContentType
-        $responseRepresentation.Sample = $newOperationResponseRepresentationSample
+        $responseRepresentation.Examples = @($exp)
         $response.Representations = @($responseRepresentation)
 
         $newOperation = Set-AzApiManagementOperation –Context $context –ApiId $api.ApiId –OperationId $newOperationId –Name $newOperationName `
@@ -1016,7 +1268,12 @@ function Operations-CrudTest {
         Assert-NotNull $newOperation.Responses[0].Representations
         Assert-AreEqual 1 $newOperation.Responses[0].Representations.Count
         Assert-AreEqual $newOperationResponseRepresentationContentType $newOperation.Responses[0].Representations[0].ContentType
-        Assert-AreEqual $newOperationResponseRepresentationSample $newOperation.Responses[0].Representations[0].Sample
+
+        Assert-NotNull $newOperation.Responses[0].Representations[0].Examples
+        Assert-AreEqual $exp.Value $newOperation.Responses[0].Representations[0].Examples[0].Value
+        Assert-AreEqual $exp.Description $newOperation.Responses[0].Representations[0].Examples[0].Description
+        Assert-AreEqual $exp.ExternalValue $newOperation.Responses[0].Representations[0].Examples[0].ExternalValue
+        Assert-AreEqual $exp.Summary $newOperation.Responses[0].Representations[0].Examples[0].Summary
     }
     finally {
         #remove created operation
@@ -2288,6 +2545,7 @@ function Logger-CrudTest {
         $newLoggerDescription = getAssetName
         $eventHubName = "powershell"
         # Replace the Connection string with actual EventHub connection string when recording tests
+        # Remove after finished
         $eventHubConnectionString = "Test-ConnectionString"
 
         $logger = New-AzApiManagementLogger -Context $context -LoggerId $loggerId -Name $eventHubName -ConnectionString $eventHubConnectionString -Description $newLoggerDescription
@@ -2682,7 +2940,7 @@ function TenantGitConfiguration-CrudTest {
 
         Assert-NotNull $tenantGitAccess
         Assert-AreEqual $true $tenantGitAccess.Enabled
-        Assert-AreEqual "git" $tenantGitAccess.id
+        Assert-AreEqual "/tenant/gitAccess" $tenantGitAccess.id
         Assert-Null $tenantGitAccess.PrimaryKey
         Assert-Null $tenantGitAccess.SecondaryKey
 

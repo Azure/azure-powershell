@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceDataSourceObject
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create an in-memory object for AzureFileServiceDataSource.
 
 ### Example 1: Create Azure File Service data source object
 ```powershell
-PS C:\> New-AzPurviewAzureFileServiceDataSourceObject -Kind 'AzureFileService' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://0cb22.file.core.windows.net/'
+New-AzPurviewAzureFileServiceDataSourceObject -Kind 'AzureFileService' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://0cb22.file.core.windows.net/'
+```
 
+```output
 CollectionLastModifiedAt :
 CollectionReferenceName  : parv-brs-2
 CollectionType           : CollectionReference

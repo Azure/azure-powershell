@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class CloudTieringCachePerformanceConverter.
-    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringCachePerformance, StorageSyncModels.CloudTieringCachePerformance}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringCachePerformance, CloudTieringCachePerformance}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSCloudTieringCachePerformance, StorageSyncModels.CloudTieringCachePerformance}" />
+    /// <seealso cref="Converters.ConverterBase{PSCloudTieringCachePerformance, CloudTieringCachePerformance}" />
     public class CloudTieringCachePerformanceConverter : ConverterBase<PSCloudTieringCachePerformance, StorageSyncModels.CloudTieringCachePerformance>
     {
         /// <summary>

@@ -26,9 +26,9 @@ function CreateDnsForwardingRuleset([String]$DnsForwardingRulesetName, [String]$
         $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
     }
 
-    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
 
-    $outboundEndpoint = New-AzDnsResolverOutboundEndpoint -Name $OutboundEndpointName -DnsResolverName $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnet.Id -Location $LOCATION
+    $outboundEndpoint = New-AzDnsResolverOutboundEndpoint -Name $OutboundEndpointName -DnsResolverName $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnetId -Location $LOCATION
 
     New-AzDnsForwardingRuleset -Name $DnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $LOCATION -DnsResolverOutboundEndpoint  @{id = $outboundEndpoint.id;}
 }
@@ -41,7 +41,8 @@ Describe 'Get-AzDnsForwardingRuleset' {
         $dnsForwardingRulesetName = "psdnsforwardingrulesetname28"
         $virtualNetworkName = "psvirtualnetworkname28";
         $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        
+        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
+
         CreateDnsForwardingRuleset -DnsForwardingRulesetName $dnsForwardingRulesetName -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
 
         # ACT
@@ -58,6 +59,7 @@ Describe 'Get-AzDnsForwardingRuleset' {
         $dnsForwardingRulesetName = "psdnsforwardingrulesetname29"
         $virtualNetworkName = "psvirtualnetworkname29";
         $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
         
         CreateDnsForwardingRuleset -DnsForwardingRulesetName $dnsForwardingRulesetName -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
 

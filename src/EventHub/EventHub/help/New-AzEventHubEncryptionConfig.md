@@ -24,7 +24,7 @@ The **New-AzEventHubEncryptionConfig** creates an in memory object. This command
 
 ### Example 1
 ```powershell
-PS C:\> New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2
+New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2'
 ```
 
 Refer the doc for New-AzEventHubNamespace and Set-AzEventHubNamespace on how to use this further

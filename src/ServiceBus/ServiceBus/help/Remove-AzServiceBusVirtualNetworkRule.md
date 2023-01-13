@@ -32,18 +32,17 @@ Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namesp
 
 ### Example 1
 ```powershell
-Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01"
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-2389 -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01"
 ```
 
 Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namespace
 
 ### Example 2
 ```powershell
-Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -VirtualNetworkRuleObject $virtualruleset1
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-2389 -VirtualNetworkRuleObject $virtualruleset1
 ```
 
 Remove the $virtualruleset1 of NetworkRuleSet for the given Namespace
-
 
 ## PARAMETERS
 
@@ -184,8 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

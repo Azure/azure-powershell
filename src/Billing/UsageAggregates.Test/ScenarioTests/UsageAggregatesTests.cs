@@ -12,29 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
-    public class UsageAggregatesTests : RMTestBase
+    public class UsageAggregatesTests : UsageAggregatesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public UsageAggregatesTests(ITestOutputHelper output)
+        public UsageAggregatesTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUsageAggregatesWithDefaultParameters()
         {
-            UsageAggregatesTestController.NewInstance.RunPsTest(_logger, "Test-GetUsageAggregatesWithDefaultParameters");
+            TestRunner.RunTestScript("Test-GetUsageAggregatesWithDefaultParameters");
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/invoke-azkeyvaultkeyoperation
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/invoke-azkeyvaultkeyoperation
 schema: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ Invoke-AzKeyVaultKeyOperation cmdlet supports
 
 ### Encrypts using an encryption key
 ```powershell
-$result = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force) ult
+$result = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force)
 $result | Format-List
 ```
 
@@ -59,7 +59,7 @@ Encrypts string "test" using test-key stored in test-kv. The returned result is 
 ### Decrypt encrypted data
 ```powershell
 $result
-$result = Invoke-AzKeyVaultKeyOperation -Operation Decrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String $result.Result -AsPlainText -Force) ult
+$result = Invoke-AzKeyVaultKeyOperation -Operation Decrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String $result.Result -AsPlainText -Force)
 $result | Format-List
 ```
 

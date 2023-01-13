@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azvhubroute
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvhubroute
 schema: 2.0.0
 ---
 
@@ -63,9 +63,10 @@ The above command will create a VHubRoute object with nextHop as the specified h
 
 
 ### Example 3
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-$hub = Get-AzVirtualHub -ResourceGroupName {rgname} -Name {virtual-hub-name}
-$hubVnetConn = Get-AzVirtualHubVnetConnection -ParentObject $hub -Name {connection-name}
+$hub = Get-AzVirtualHub -ResourceGroupName "rgname" -Name "virtual-hub-name"
+$hubVnetConn = Get-AzVirtualHubVnetConnection -ParentObject $hub -Name "connection-name"
 $hubVnetConn
 
 Name                   : conn_2

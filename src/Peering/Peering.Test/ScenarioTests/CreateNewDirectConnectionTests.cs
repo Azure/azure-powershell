@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
@@ -23,23 +22,16 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The create new direct connection tests.
     /// </summary>
-    public class CreateNewDirectConnectionTests
+    public class CreateNewDirectConnectionTests : PeeringTestRunner
     {
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private XunitTracingInterceptor logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateNewDirectConnectionTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public CreateNewDirectConnectionTests(ITestOutputHelper output)
+        public CreateNewDirectConnectionTests(ITestOutputHelper output) : base(output)
         {
-            this.logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>
@@ -49,7 +41,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionHighBandwidth()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionHighBandwidth");
+            TestRunner.RunTestScript("Test-NewDirectConnectionHighBandwidth");
         }
 
         /// <summary>
@@ -59,7 +51,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionLowBandwidth()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionLowBandwidth");
+            TestRunner.RunTestScript("Test-NewDirectConnectionLowBandwidth");
         }
 
         /// <summary>
@@ -69,7 +61,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionNoSession()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionNoSession");
+            TestRunner.RunTestScript("Test-NewDirectConnectionNoSession");
         }
 
         /// <summary>
@@ -79,7 +71,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWithV4()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithV4");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWithV4");
         }
 
         /// <summary>
@@ -89,7 +81,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWithV4V6()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithV4V6");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWithV4V6");
         }
 
         /// <summary>
@@ -99,7 +91,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWithV6()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithV6");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWithV6");
         }
 
         /// <summary>
@@ -109,7 +101,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWrongV4()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWrongV4");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWrongV4");
         }
 
         /// <summary>
@@ -119,7 +111,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWrongV6()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWrongV6");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWrongV6");
         }
 
         /// <summary>
@@ -129,7 +121,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWithMicrosoftSession()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftSession");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWithMicrosoftSession");
         }
 
         /// <summary>
@@ -139,7 +131,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWithMicrosoftSessionWithPeeringService()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftSessionWithPeeringService");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWithMicrosoftSessionWithPeeringService");
         }
 
         /// <summary>
@@ -149,7 +141,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWithMicrosoftSessionInvalidV4()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftSessionInvalidV4");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWithMicrosoftSessionInvalidV4");
         }
 
         /// <summary>
@@ -159,7 +151,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWithMicrosoftSessionInvalidV6()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftSessionInvalidV6");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWithMicrosoftSessionInvalidV6");
         }
 
         /// <summary>
@@ -169,7 +161,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWithNoPeeringFacility()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithNoPeeringFacility");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWithNoPeeringFacility");
         }
 
         /// <summary>
@@ -179,7 +171,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWithNoBgpSession()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithNoBgpSession");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWithNoBgpSession");
         }
 
         /// <summary>
@@ -189,7 +181,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWithMicrosoftIpProvidedAddress()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftIpProvidedAddress");
+            TestRunner.RunTestScript("Test-NewDirectConnectionWithMicrosoftIpProvidedAddress");
         }
     }
 }

@@ -31,7 +31,7 @@ The **Get-AzCosmosDBSqlDatabase** cmdlet gets the list of all existing CosmosDB 
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBSqlDatabase -AccountName {accountName} -ResourceGroupName {resourceGroupName} -Name {databaseName}
+Get-AzCosmosDBSqlDatabase -AccountName "accountName" -ResourceGroupName "resourceGroupName" -Name "databaseName"
 ```
 
 ```output

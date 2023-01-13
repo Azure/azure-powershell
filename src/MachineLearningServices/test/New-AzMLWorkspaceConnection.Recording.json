@@ -1,0 +1,85 @@
+{
+  "New-AzMLWorkspaceConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/connections/test01?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/connections/test01?api-version=2022-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"authType\": \"None\",\r\n    \"category\": \"ContainerRegistry\",\r\n    \"target\": \"www.facebook.com\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "125" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "1c129425-44a7-4f8b-84c2-54d124611fc7" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.369" ],
+        "x-ms-correlation-request-id": [ "1c129425-44a7-4f8b-84c2-54d124611fc7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T122631Z:1c129425-44a7-4f8b-84c2-54d124611fc7" ],
+        "Date": [ "Sun, 05 Jun 2022 12:26:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "470" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"tags\": null,\n  \"location\": null,\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/connections/test01\",\n  \"name\": \"test01\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/connections\",\n  \"properties\": {\n    \"authType\": \"None\",\n    \"category\": \"ContainerRegistry\",\n    \"target\": \"www.facebook.com\",\n    \"metadata\": null\n  },\n  \"systemData\": null\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMLWorkspaceConnection+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/connections/test01?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/connections/test01?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "41f214e3-f187-4b32-92f9-39799fd0a833" ],
+        "CommandName": [ "Remove-AzMLWorkspaceConnection" ],
+        "FullCommandName": [ "Remove-AzMLWorkspaceConnection_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.698" ],
+        "x-ms-request-id": [ "ee8b4e01-6020-43fc-b1aa-fc37bfb9380f" ],
+        "x-ms-correlation-request-id": [ "ee8b4e01-6020-43fc-b1aa-fc37bfb9380f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T122634Z:ee8b4e01-6020-43fc-b1aa-fc37bfb9380f" ],
+        "Date": [ "Sun, 05 Jun 2022 12:26:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

@@ -450,6 +450,69 @@ function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
 
 <#
 	.SYNOPSIS
+	Tests creating a secondary database
+#>
+function Test-CreateCopyDatabaseWithGeoZoneBackupStorageRedundancy()
+{
+	# Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "Brazil South"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$database = Create-HyperscaleDatabaseForTest $rg $server
+
+	$copyRg = Create-ResourceGroupForTest $location
+	$copyServer = Create-ServerForTest $copyRg $location
+	$copyDatabaseName = Get-DatabaseName
+
+	try
+	{
+		# Create Readable Secondary
+		$dbLocalCopy = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -CopyDatabaseName $copyDatabaseName -BackupStorageRedundancy 'GeoZone'
+
+		$newDb = Get-AzSqlDatabase -ResourceGroupName $dbLocalCopy.ResourceGroupName -ServerName $dbLocalCopy.ServerName -DatabaseName $copyDatabaseName
+		Assert-AreEqual $newDb.CurrentBackupStorageRedundancy "GeoZone"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg 
+		Remove-ResourceGroupForTest $copyRg 
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a secondary database
+#>
+function Test-CreateSecondaryDatabaseWithGeoZoneBackupStorageRedundancy()
+{
+	# Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "Brazil South"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$database = Create-HyperscaleDatabaseForTest $rg $server
+
+	$partRg = Create-ResourceGroupForTest $location
+	$partServer = Create-ServerForTest $partRg $location
+
+	try
+	{
+		# Create Readable Secondary
+		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -BackupStorageRedundancy 'GeoZone'
+
+		$secondaryDb = Get-AzSqlDatabase -ResourceGroupName $readSecondary.PartnerResourceGroupName -ServerName $readSecondary.PartnerServerName -DatabaseName $readSecondary.DatabaseName
+		Assert-AreEqual $secondaryDb.CurrentBackupStorageRedundancy "GeoZone"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg 
+		Remove-ResourceGroupForTest $partRg 
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests creating a vldb copy with source zone redundant == false
 	1. Copy source vldb passing in zone redundant == true and backup storage redundancy == Zone,
 	   Verify copied vldb has zone redundant == true and backup storage redundancy == Zone

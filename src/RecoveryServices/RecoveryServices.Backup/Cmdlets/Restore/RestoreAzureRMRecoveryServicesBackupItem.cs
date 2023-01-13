@@ -314,6 +314,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetSubnetName)]
         public string TargetSubnetName { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.TargetSubscriptionId)]
+        public string TargetSubscriptionId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -328,6 +332,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string secondaryRegion = "";
                 if (RestoreToSecondaryRegion.IsPresent)
                 {
+                    if(TargetSubscriptionId != null)
+                    {                        
+                        throw new ArgumentException(Resources.CRRNotSupportedWIthCSR);
+                    }
                     if(VaultLocation != null)
                     {
                         secondaryRegion = BackupUtils.regionMap[VaultLocation];
@@ -400,6 +408,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreVMBackupItemParams.TargetVNetName, TargetVNetName);
                 providerParameters.Add(RestoreVMBackupItemParams.TargetVNetResourceGroup, TargetVNetResourceGroup);
                 providerParameters.Add(RestoreVMBackupItemParams.TargetSubnetName, TargetSubnetName);
+                providerParameters.Add(RestoreVMBackupItemParams.TargetSubscriptionId, TargetSubscriptionId);
 
                 if (DiskEncryptionSetId != null)
                 {
@@ -407,7 +416,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     ServiceClientModel.BackupResourceEncryptionConfigExtendedResource vaultEncryptionSettings = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
                     
-                    if ((vaultEncryptionSettings.Properties.EncryptionAtRestType == "CustomerManaged") && rp.IsManagedVirtualMachine && !(rp.EncryptionEnabled) && !(RestoreToSecondaryRegion.IsPresent))
+                    if ((vaultEncryptionSettings.Properties.EncryptionAtRestType == "CustomerManaged") && rp.IsManagedVirtualMachine && !(rp.EncryptionEnabled))
                     {
                         providerParameters.Add(RestoreVMBackupItemParams.DiskEncryptionSetId, DiskEncryptionSetId);
                     }
@@ -420,26 +429,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     string storageType = getStorageResponse.Properties.StorageType;
                     bool crrEnabled = (bool)getStorageResponse.Properties.CrossRegionRestoreFlag;
 
-                    if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.ZoneRedundant.ToString() ||
-                    (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled))
+                    AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
+
+                    // eliminate LRS/GRS
+                    if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.ZoneRedundant.ToString() ||                     
+                        (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled))
                     {
-                        AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
-                        if (rp.RecoveryPointTier == RecoveryPointTier.VaultStandard)  // RP recovery type should be vault only
-                        {
-                            if (rp.Zones != null)
-                            {
-                                //target region should support Zones 
-                                /*if (RestoreToSecondaryRegion.IsPresent)
+                        // eliminate non-vault tier RPs 
+                        if (rp.RecoveryPointTier == RecoveryPointTier.VaultStandard)
+                        {                               
+                            // check CZR eligibility for RA-GRS
+                            if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled)
+                            {                                
+                                if(rp.Zones == null)
                                 {
-                                    FeatureSupportRequest iaasvmFeatureRequest = new FeatureSupportRequest();
-                                    ServiceClientAdapter.BmsAdapter.Client.FeatureSupport.ValidateWithHttpMessagesAsync(secondaryRegion, iaasvmFeatureRequest);
-                                }*/
-                                providerParameters.Add(RecoveryPointParams.TargetZone, TargetZoneNumber);
+                                    throw new ArgumentException(Resources.UnsupportedCZRWithNonZonePinnedVMForCRRVault);
+                                }
+                                else if (!RestoreToSecondaryRegion.IsPresent)
+                                {
+                                    throw new ArgumentException(Resources.UnsupportedCZRForCRRVaultToPrimaryRegion);
+                                }
                             }
-                            else
-                            {
-                                throw new ArgumentException(string.Format(Resources.RecoveryPointZonePinnedException));
-                            }
+
+                            providerParameters.Add(RecoveryPointParams.TargetZone, TargetZoneNumber);
                         }
                         else
                         {
@@ -447,7 +459,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }
                     }
                     else
-                    {
+                    {   
                         throw new ArgumentException(string.Format(Resources.ZonalRestoreVaultStorageRedundancyException));
                     }
                 }

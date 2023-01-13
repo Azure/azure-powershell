@@ -48,8 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Database ledger digest upload REST endpoints.
         /// </summary>
-        /// <param name="profile">Azure profile</param>
-        /// <param name="subscription">Associated subscription</param>
+        /// <param name="context">Azure context</param>
         public AzureSqlDatabaseLedgerDigestUploadCommunicator(IAzureContext context)
         {
             Context = context;

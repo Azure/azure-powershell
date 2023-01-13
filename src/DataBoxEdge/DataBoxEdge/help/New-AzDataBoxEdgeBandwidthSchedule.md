@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/new-azdataboxedgebandwidthschedule
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/new-azdataboxedgebandwidthschedule
 schema: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ bandwidthSchedule  Sunday, Tuesday, Saturday    30         11:00:00  12:00:00
 
 ### Example 2
 ```powershell
-New-AzDataBoxEdgeBandwidthSchedule -DaysOfWeek Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthScheduleUnlimited -StartTime 11:00 -StopTime 12:00 -UnlimitedBandwidth
+New-AzDataBoxEdgeBandwidthSchedule -DaysOfWeek Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthScheduleUnlimited -StartTime 11:00 -StopTime 12:00 -UnlimitedBandwidth $ture
 ```
 
 ```output

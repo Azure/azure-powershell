@@ -77,5 +77,27 @@
         </CustomEntries>
       </CustomControl>
     </View>
+    <View>
+      <Name>Link Connection Query Table Status</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionQueryTableStatus</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Value</Label>
+                <PropertyName>ValueText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ContinuationToken</Label>
+                <PropertyName>ContinuationToken</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

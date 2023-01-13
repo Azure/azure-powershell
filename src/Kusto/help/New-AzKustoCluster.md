@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/powershell/module/az.kusto/new-azkustocluster
+online version: https://learn.microsoft.com/powershell/module/az.kusto/new-azkustocluster
 schema: 2.0.0
 ---
 
@@ -36,7 +36,7 @@ Create or update a Kusto cluster.
 
 ### Example 1: Create a new Kusto cluster
 ```powershell
-New-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -Location 'East US' -SkuName Standard_D11_v2 -SkuTier Standard -EnableDoubleEncryption true -EngineType 'V2'
+New-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster -Location 'East US' -SkuName Standard_D11_v2 -SkuTier Standard -EnableDoubleEncryption -EngineType 'V2'
 ```
 
 ```output

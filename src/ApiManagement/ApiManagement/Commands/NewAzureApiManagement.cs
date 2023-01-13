@@ -18,6 +18,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using System;
+    using Microsoft.Azure.Management.ApiManagement.Models;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement"), OutputType(typeof(PsApiManagement))]
     public class NewAzureApiManagement : AzureApiManagementCmdletBase
@@ -61,9 +64,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Consumption, Basic, Standard and Premium . Default value is Developer")]
+            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Basic, Standard, Premium and Consumption. The default value is Developer. ")]
         [ValidateSet("Developer", "Basic", "Standard", "Premium", "Consumption"), PSDefaultValue(Value = "Developer")]
-        public PsApiManagementSku? Sku { get; set; }
+        public string Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -153,6 +156,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Minimal Control Plane Apis version  to allow for managing the API Management service.")]
         public string MinimalControlPlaneApiVersion { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether or not public endpoint access is allowed for this service.Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments")]
+        public string PublicIpAddressId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var apiManagementService = Client.CreateApiManagementService(
@@ -163,7 +173,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     AdminEmail,
                     Tag,
                     EnableClientCertificate.IsPresent,
-                    Sku ?? PsApiManagementSku.Developer,
+                    Sku ?? SkuType.Developer,
                     Capacity,
                     VpnType,
                     VirtualNetwork,
@@ -175,7 +185,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     UserAssignedIdentity,
                     Zone,
                     DisableGateway,
-                    MinimalControlPlaneApiVersion);
+                    MinimalControlPlaneApiVersion,
+                    PublicNetworkAccess,
+                    PublicIpAddressId);
 
             this.WriteObject(apiManagementService);
         }

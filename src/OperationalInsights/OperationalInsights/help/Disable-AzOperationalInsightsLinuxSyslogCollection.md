@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 4A91EEDA-D8F0-4109-A32E-B83694952C06
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/disable-azoperationalinsightslinuxsyslogcollection
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/disable-azoperationalinsightslinuxsyslogcollection
 schema: 2.0.0
 ---
 
@@ -42,8 +42,9 @@ WorkspaceName     : OperationalInsights-1
 ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
                     rkspaces/OperationalInsights-1/datasources/DataSource_LinuxSyslogCollection
 Kind              : LinuxSyslogCollection
-Properties        : {"state":"Disabled"} 
+Properties        : {"state":"Disabled"}
 ```
+
 Stops collection of syslog data from connected Linux computers in a workspace.
 
 ## PARAMETERS

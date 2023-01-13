@@ -14,83 +14,22 @@
 
 <#
 .SYNOPSIS
-Gets the location for the Lab. Default to West US if none found.
+Gets valid resource group name
 #>
-function Get-Location
+function Get-ResourceGroupName
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
-        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-		$namespace = "Microsoft.DevTestLab"
-		$type = "sites"
-		$location = Get-AzResourceProvider -ProviderNamespace $namespace `
-        | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+    param([string] $prefix = [string]::Empty)
 
-		if ($location -eq $null)
-		{
-			return "West US"
-		} else
-		{
-			return $location.Locations[0]
-		}
-	}
-
-	return "WestUS"
+	return getAssetName $prefix
 }
 
 <#
 .SYNOPSIS
-Invoke a script block twice, once with param1 and once with param2.
+Gets valid resource name
 #>
-function Invoke-For-Both
+function Get-ResourceName
 {
-    Param($param1,
-        $param2,
-        [scriptblock]$functionToCall)
+    param([string] $prefix = [string]::Empty)
 
-    $functionToCall.Invoke($param1);
-    $functionToCall.Invoke($param2);
-}
-
-<#
-.SYNOPSIS
-Create a resource group and lab.
-#>
-function Setup-Test-ResourceGroup
-{
-    Param($_resourceGroupName,
-        $_labName)
-    $global:rgname = $_resourceGroupName;
-    $global:labName = $_labName;
-
-    $location = Get-Location
-
-    #Setup
-    New-AzResourceGroup -Name $rgname -Location $location
-    New-AzResourceGroupDeployment -Name $labName -ResourceGroupName $rgname `
-    -TemplateParameterObject @{ newLabName = "$labName" } `
-    -TemplateFile https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/101-dtl-create-lab/azuredeploy.json
-}
-
-<#
-.SYNOPSIS
-Set global variables.
-#>
-function Setup-Test-Vars
-{
-    Param($_resourceGroupName,
-        $_labName)
-    $global:rgname = $_resourceGroupName;
-    $global:labName = $_labName;
-}
-
-<#
-.SYNOPSIS
-Destroy the lab resource group.
-#>
-function Destroy-Test-ResourceGroup
-{
-    Param($_resourceGroupName)
-
-    Remove-AzResourceGroup -Name $_resourceGroupName -Force
+    return getAssetName $prefix
 }

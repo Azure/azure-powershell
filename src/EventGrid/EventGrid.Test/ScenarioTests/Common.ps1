@@ -107,6 +107,15 @@ function Get-EventSubscriptionWebhookBaseEndpointWithCloudEvent
 
 <#
 .SYNOPSIS
+Get EventSubscription Storage QueueFunction Endpoint
+#>
+function Get-EventSubscriptionStorageQueueEndpoint
+{
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.Storage/storageAccounts/devexpstg/queueServices/default/queues/stogqueuedestination"
+}
+
+<#
+.SYNOPSIS
 Get location
 #>
 function Get-LocationForEventGrid
@@ -366,6 +375,16 @@ function Get-DeadletterResourceId($ResourceGroupName, $StorageAccountName, $Cont
 
 <#
 .SYNOPSIS
+Get Storage Account ResourceId
+#>
+function Get-StorageAccountResourceId($ResourceGroupName, $StorageAccountName)
+{
+    $subId = Get-SubscriptionID
+    return "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.Storage/storageAccounts/$StorageAccountName"
+}
+
+<#
+.SYNOPSIS
 Create new Storage Blob
 #>
 function New-StorageBlob($ResourceGroupName, $StorageAccountName, $ContainerName, $Location)
@@ -420,4 +439,49 @@ Get domain topic name
 function Get-DomainTopicName
 {
     return "PSTestDomainTopic-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get partner registration name
+#>
+function Get-PartnerRegistrationName
+{
+    return "PSTestPartnerRegistration-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get partner namespace name
+#>
+function Get-PartnerNamespaceName
+{
+    return "PSTestPartnerNamespace-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get channel name
+#>
+function Get-ChannelName
+{
+    return "PSTestChannel-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get partner topic name
+#>
+function Get-PartnerTopicName
+{
+    return "PSTestPartnerTopic-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get partner topic source
+#>
+function Get-PartnerTopicSource
+{
+    return "PSTestPartnerTopicSource" + (getAssetName) 
 }

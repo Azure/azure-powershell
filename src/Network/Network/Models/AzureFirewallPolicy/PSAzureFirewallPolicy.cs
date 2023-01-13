@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallPolicySNAT Snat { get; set; }
 
+        public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
+
         private const string IANAPrivateRanges = "IANAPrivateRanges";
 
         public string[] PrivateRange
@@ -65,8 +67,10 @@ namespace Microsoft.Azure.Commands.Network.Models
             set
             {
                 if (value != null)
+                {
                     ValidatePrivateRange(value);
-                Snat = new PSAzureFirewallPolicySNAT() { PrivateRanges = value };
+                    Snat = new PSAzureFirewallPolicySNAT() { PrivateRanges = value };
+                }
             }
         }
 
@@ -117,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             // validated that unmasked bits are 0
             var splittedIp = split[0].Split('.');
             var ip = Int32.Parse(splittedIp[0]) << 24;
-            ip = ip + Int32.Parse(splittedIp[1]) << 16 + Int32.Parse(splittedIp[2]) << 8 + Int32.Parse(splittedIp[3]);
+            ip += (Int32.Parse(splittedIp[1]) << 16) + (Int32.Parse(splittedIp[2]) << 8) + Int32.Parse(splittedIp[3]);
             if (ip << bit != 0)
                 throw new AzPSArgumentException(String.Format(Resources.InvalidPrivateIPRangeUnmaskedBits, ipAddress), nameof(ipAddress), ErrorKind.UserError);
         }

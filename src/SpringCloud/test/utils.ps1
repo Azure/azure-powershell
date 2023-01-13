@@ -23,16 +23,12 @@ function setupEnv() {
     $env.location2 = 'eastus2'
     
     # Resource Group
-    $env.resourceGroup = 'appplatform-rg-' + (RandomString -allChars $false -len 6)
+    $env.resourceGroup = 'springcloud-rg-' + (RandomString -allChars $false -len 6)
     # App Platform
-    $springName00 = 'spring-' + (RandomString -allChars $false -len 6)
-    $springName01 = 'spring-' + (RandomString -allChars $false -len 6)
-    $springName02 = 'spring-' + (RandomString -allChars $false -len 6)
-    $springName03 = 'spring-' + (RandomString -allChars $false -len 6)
-    $env.add('springName00', $springName00)
-    $env.add('springName01', $springName01)
-    $env.add('springName02', $springName02)
-    $env.add('springName03', $springName03)
+    $env.standardSpringName01 = 'spring-' + (RandomString -allChars $false -len 6)
+    $env.enterpriseSpringName01 = 'spring-' + (RandomString -allChars $false -len 6)
+    $env.springName01 = 'spring-' + (RandomString -allChars $false -len 6)
+    $env.springName02 = 'spring-' + (RandomString -allChars $false -len 6)
 
     $appGateway = 'gateway'
     $appAccount = 'account'
@@ -40,11 +36,15 @@ function setupEnv() {
     $env.add('appGateway', $appGateway)
     $env.add('appAccount', $appAccount)
     $env.add('appAuth', $appAuth)
+    $env.springAppName01 = 'spring-' + (RandomString -allChars $false -len 6)
+    $env.springAppName02 = 'spring-' + (RandomString -allChars $false -len 6)
+    $env.springAppName03 = 'spring-' + (RandomString -allChars $false -len 6)
 
-    $deployTest = 'test'
-    $deployProd = 'prod'
-    $env.add('deployTest', $deployTest)
-    $env.add('deployProd', $deployProd)
+    $env.greenDeploymentName = 'green'
+    $env.buleDeploymentName = 'bule'
+    $env.deploymentName01 = 'spring-' + (RandomString -allChars $false -len 6)
+    $env.deploymentName02 = 'spring-' + (RandomString -allChars $false -len 6)
+    $env.deploymentName03 = 'spring-' + (RandomString -allChars $false -len 6)
 
     # Key Vault 
     $keyVaultName = 'app-keyvault-' + (RandomString -allChars $false -len 6)
@@ -58,10 +58,10 @@ function setupEnv() {
     $env.add('certificateName22', $certificateName22);
     $env.add('certificateName23', $certificateName23);
 
-    $certSubjectName30 = 'CN=' + $env.springName00 + '.com'
-    $certSubjectName31 = 'CN=' + $env.springName00 + '.com'
-    $certSubjectName32 = 'CN=' + $env.springName01 + '.com'
-    $certSubjectName33 = 'CN=' + $env.springName01 + '.com'
+    $certSubjectName30 = 'CN=' + $env.springName01 + '.com'
+    $certSubjectName31 = 'CN=' + $env.springName01 + '.com'
+    $certSubjectName32 = 'CN=' + $env.springName02 + '.com'
+    $certSubjectName33 = 'CN=' + $env.springName02 + '.com'
     $env.add('certSubjectName30', $certSubjectName30);
     $env.add('certSubjectName31', $certSubjectName31);
     $env.add('certSubjectName32', $certSubjectName32);
@@ -81,31 +81,43 @@ function setupEnv() {
     # Create spring server for test.
     Write-Host -ForegroundColor Green "Start create app platform for test..."
     
-    New-AzSpringCloud -ResourceGroupName $env.resourceGroup -Name $env.springName00 -Location $env.location
-
-    New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -Name $env.appGateway -Location $env.location `
+    New-AzSpringCloud -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01 -Location $env.location
+    New-AzSpringCloud -ResourceGroupName $env.resourceGroup -Name $env.enterpriseSpringName01 -Location $env.location -SkuTier "Enterprise" -SkuName "E0"
+    $jarSource = New-AzSpringCloudAppDeploymentJarUploadedObject -RuntimeVersion "Java_8"
+    
+    New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -Name $env.appGateway -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     
-    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appGateway -Name $env.deployTest `
-    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
-    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appGateway -Name $env.deployProd `
-    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"}
+    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name $env.greenDeploymentName `
+    -Source $jarSource -EnvironmentVariable @{"env" = "test"}
+    
+    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name $env.buleDeploymentName `
+    -Source $jarSource -EnvironmentVariable @{"env" = "prod"}
 
-    New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -Name $env.appAccount -Location $env.location `
+    New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -Name $env.appAccount -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     
-    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appAccount -Name $env.deployTest `
-    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
-    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appAccount -Name $env.deployProd `
-    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"}
+    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appAccount -Name $env.greenDeploymentName `
+    -Source $jarSource -EnvironmentVariable @{"env" = "test"}
+    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appAccount -Name $env.buleDeploymentName `
+    -Source $jarSource -EnvironmentVariable @{"env" = "prod"}
 
-    New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -Name $env.appAuth -Location $env.location `
+    New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -Name $env.appGateway -Location $env.location `
+    -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
+    $buildSource = New-AzSpringCloudAppDeploymentBuildResultObject
+    
+    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appGateway -Name $env.greenDeploymentName `
+    -Source $buildSource -EnvironmentVariable @{"env" = "test"}
+    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appGateway -Name $env.buleDeploymentName `
+    -Source $buildSource -EnvironmentVariable @{"env" = "prod"}
+
+    New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -Name $env.appAccount -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     
-    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appAuth -Name $env.deployTest `
-    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "test"}
-    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName00 -AppName $env.appAuth -Name $env.deployProd `
-    -Cpu 1 -MemoryInGb 3 -RuntimeVersion "Java_8" -EnvironmentVariable @{"env" = "prod"}
+    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appAccount -Name $env.greenDeploymentName `
+    -Source $buildSource -EnvironmentVariable @{"env" = "test"}
+    New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appAccount -Name $env.buleDeploymentName `
+    -Source $buildSource -EnvironmentVariable @{"env" = "prod"}
     
     Write-Host -ForegroundColor Green "App platform created successfully."
    

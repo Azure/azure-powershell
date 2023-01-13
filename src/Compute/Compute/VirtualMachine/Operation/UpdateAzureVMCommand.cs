@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
         public string[] IdentityId { get; set; }
 
         [Parameter(
@@ -234,11 +235,11 @@ namespace Microsoft.Azure.Commands.Compute
 
                         }
 
-                        parameters.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>();
+                        parameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
 
                         foreach (var id in this.IdentityId)
                         {
-                            parameters.Identity.UserAssignedIdentities.Add(id, new VirtualMachineIdentityUserAssignedIdentitiesValue());
+                            parameters.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
                         }
                     }
 

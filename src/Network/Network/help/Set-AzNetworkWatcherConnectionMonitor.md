@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconnectionmonitor
+online version: https://learn.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconnectionmonitor
 schema: 2.0.0
 ---
 
@@ -91,7 +91,7 @@ The Set-AzNetworkWatcherConnectionMonitor cmdlet updates connection monitor reso
 
 ### Example 1: Update a connection monitor
 ```powershell
-Set-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm -SourceResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/RgCentralUSEUAP/providers/Microsoft.Compute/virtualMachines/vm
+Set-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm -SourceResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/RgCentralUSEUAP/providers/Microsoft.Compute/virtualMachines/vm `
 -DestinationAddress google.com -DestinationPort 80 -Tag @{"key1" = "value1"}
 ```
 

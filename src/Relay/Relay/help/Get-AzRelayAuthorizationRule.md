@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/powershell/module/az.relay/get-azrelayauthorizationrule
+online version: https://learn.microsoft.com/powershell/module/az.relay/get-azrelayauthorizationrule
 schema: 2.0.0
 ---
 
@@ -67,7 +67,7 @@ Returns the specified authorization rule description for a given WcfRelay.
 
 ### Example 3: HybridConnection
 ```powershell
-Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
+Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
 ```
 
 ```output

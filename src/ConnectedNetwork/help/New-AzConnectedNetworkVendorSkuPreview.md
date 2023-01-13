@@ -25,8 +25,10 @@ Creates or updates preview information of a vendor sku.
 
 ### Example 1: New-AzConnectedNetworkVendorSkuPreview using preview subscription, sku name, vendor name and subscription
 ```powershell
-PS C:\> New-AzConnectedNetworkVendorSkuPreview -PreviewSubscription xxxxx-00000-xxxxx-00000 -SkuName mySku -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222
+New-AzConnectedNetworkVendorSkuPreview -PreviewSubscription xxxxx-00000-xxxxx-00000 -SkuName mySku -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222
+```
 
+```output
 Id                           : /subscriptions/xxxxx-22222-xxxxx-22222/providers/Microsoft.HybridNetwork/vendors/myVendor/vendorSkus/mySku/previewSubscriptions/xxxxx-00000-xxxxx-00000
 Name                         : xxxxx-00000-xxxxx-00000
 ProvisioningState            : Succeeded

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrprotectioncontainermapping
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrprotectioncontainermapping
 schema: 2.0.0
 ---
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryProtectionContainer
-Specifies the ASR protection container object for the  primary protection container to be used in the mapping.
+Specifies the ASR protection container object for the  primary protection container to be used in the mapping. To get the ASR protection container in the Recovery Service Container run the [Get-AzRecoveryServicesAsrProtectionContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesasrprotectioncontainer) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer

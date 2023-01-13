@@ -30,15 +30,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  object with the specified name.
         /// </summary>
         /// <param name="shareName">A string containing the name of the share.</param>
+        /// <param name="snapshotTime">Snapshot time to append.</param>
         /// <returns>A reference to a share.</returns>
         CloudFileShare GetShareReference(string shareName, DateTimeOffset? snapshotTime = null);
 
         /// <summary>
         /// Get share permissions.
         /// </summary>
-        /// <param name="container">A CloudFileShare instance.</param>
+        /// <param name="share">A CloudFileShare instance.</param>
         /// <param name="accessCondition">Access condition</param>
-        /// <param name="options">File request option</param>
+        /// <param name="options">File request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>The share's permission</returns>
         FileSharePermissions GetSharePermissions(CloudFileShare share, AccessCondition accessCondition = null, FileRequestOptions options = null, OperationContext operationContext = null);
@@ -46,10 +47,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Set share permissions.
         /// </summary>
-        /// <param name="container">A CloudFileShare object.</param>
+        /// <param name="share">A CloudFileShare object.</param>
         /// <param name="permissions">The share's permission.</param>
         /// <param name="accessCondition">Access condition</param>
-        /// <param name="options">File request option</param>
+        /// <param name="options">File request options</param>
         /// <param name="operationContext">Operation context</param>
         void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions, AccessCondition accessCondition = null, FileRequestOptions options = null, OperationContext operationContext = null);
 
@@ -138,7 +139,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// Enumerates the shares for a given prefix.
         /// </summary>
         /// <param name="prefix">Indicating the prefix.</param>
-        /// <param name="listingDetails">
+        /// <param name="detailsIncluded">
         /// A value that indicates whether to return share metadata with the listing.
         /// </param>
         /// <param name="enumerationAction">Indicating the action for enumerated items.</param>
@@ -310,6 +311,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="share">
         /// Indicating the reference of the share to be deleted.
         /// </param>
+        /// <param name="deleteShareSnapshotsOption"></param>
         /// <param name="accessCondition">
         ///  A Microsoft.WindowsAzure.Storage.AccessCondition object that represents
         ///  the access conditions for the share. If null, no condition is used.
@@ -361,9 +363,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Async get share permissions.
         /// </summary>
-        /// <param name="container">A CloudFileShare instance.</param>
+        /// <param name="share">A CloudFileShare instance.</param>
         /// <param name="accessCondition">Access condition</param>
-        /// <param name="options">File request option</param>
+        /// <param name="options">File request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <param name="cancellationToken">User cancellation token</param>
         /// <returns>A task object which retrieve the permission of the specified container</returns>
@@ -400,7 +402,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// Return a task that asynchronously abort the file copy operation
         /// </summary>
         /// <param name="file">CloudFile object</param>
-        /// <param name="abortCopyId">Copy id</param>
+        /// <param name="copyId">Copy id</param>
         /// <param name="accessCondition">Access condition</param>
         /// <param name="requestOptions">File request options</param>
         /// <param name="operationContext">Operation context</param>

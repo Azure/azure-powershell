@@ -28,35 +28,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AllKeysLFU".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AllKeysLFU", "AllKeysLFU", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllKeysLFU");
+                yield return new global::System.Management.Automation.CompletionResult("'AllKeysLFU'", "AllKeysLFU", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllKeysLFU");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AllKeysLRU".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AllKeysLRU", "AllKeysLRU", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllKeysLRU");
+                yield return new global::System.Management.Automation.CompletionResult("'AllKeysLRU'", "AllKeysLRU", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllKeysLRU");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AllKeysRandom".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AllKeysRandom", "AllKeysRandom", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllKeysRandom");
+                yield return new global::System.Management.Automation.CompletionResult("'AllKeysRandom'", "AllKeysRandom", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllKeysRandom");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VolatileLRU".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("VolatileLRU", "VolatileLRU", global::System.Management.Automation.CompletionResultType.ParameterValue, "VolatileLRU");
+                yield return new global::System.Management.Automation.CompletionResult("'VolatileLRU'", "VolatileLRU", global::System.Management.Automation.CompletionResultType.ParameterValue, "VolatileLRU");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VolatileLFU".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("VolatileLFU", "VolatileLFU", global::System.Management.Automation.CompletionResultType.ParameterValue, "VolatileLFU");
+                yield return new global::System.Management.Automation.CompletionResult("'VolatileLFU'", "VolatileLFU", global::System.Management.Automation.CompletionResultType.ParameterValue, "VolatileLFU");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VolatileTTL".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("VolatileTTL", "VolatileTTL", global::System.Management.Automation.CompletionResultType.ParameterValue, "VolatileTTL");
+                yield return new global::System.Management.Automation.CompletionResult("'VolatileTTL'", "VolatileTTL", global::System.Management.Automation.CompletionResultType.ParameterValue, "VolatileTTL");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VolatileRandom".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("VolatileRandom", "VolatileRandom", global::System.Management.Automation.CompletionResultType.ParameterValue, "VolatileRandom");
+                yield return new global::System.Management.Automation.CompletionResult("'VolatileRandom'", "VolatileRandom", global::System.Management.Automation.CompletionResultType.ParameterValue, "VolatileRandom");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoEviction".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NoEviction", "NoEviction", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoEviction");
+                yield return new global::System.Management.Automation.CompletionResult("'NoEviction'", "NoEviction", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoEviction");
             }
         }
     }

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
     }
 
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
     public class DoNotExportAttribute : Attribute
     {
     }

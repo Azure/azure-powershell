@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaselongtermretentionbackup
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldatabaselongtermretentionbackup
 schema: 2.0.0
 ---
 
@@ -97,7 +97,7 @@ This command gets all long term retention backups for all databases (which may b
 
 ### Example 2: Get all backups for a location under a resource group
 ```powershell
-Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ResourceGroup resourceGroup01
+Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ResourceGroupName resourceGroup01
 ```
 
 ```output

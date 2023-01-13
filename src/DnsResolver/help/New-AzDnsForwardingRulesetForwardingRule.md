@@ -14,10 +14,10 @@ Creates or updates a forwarding rule in a DNS forwarding ruleset.
 
 ```
 New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DomainName <String>] [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>]
- [-TargetDnsServer <ITargetDnsServer[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> -DomainName <String> -TargetDnsServer <ITargetDnsServer[]>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +93,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -214,11 +214,11 @@ DNS servers to forward the DNS query to.
 To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ITargetDnsServer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ITargetDnsServer[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -263,7 +263,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule
 
 ## NOTES
 
@@ -274,8 +274,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
-  - `[IPAddress <String>]`: DNS server IP address.
+`TARGETDNSSERVER <ITargetDnsServer[]>`: DNS servers to forward the DNS query to.
+  - `IPAddress <String>`: DNS server IP address.
   - `[Port <Int32?>]`: DNS server port.
 
 ## RELATED LINKS

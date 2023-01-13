@@ -89,6 +89,10 @@ namespace Microsoft.Azure.Commands.Aks
         [ValidateNotNullOrEmpty]
         public string[] CommandContextAttachment { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Path of the zip file containing the files required by the command.")]
+        [ValidateNotNullOrEmpty]
+        public string CommandContextAttachmentZip { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -97,6 +101,11 @@ namespace Microsoft.Azure.Commands.Aks
 
         private string GetCommandContext()
         {
+            if (this.IsParameterBound(c => c.CommandContextAttachmentZip))
+            {
+                var zipContent = File.ReadAllBytes(CommandContextAttachmentZip);
+                return Convert.ToBase64String(zipContent);
+            }
             if (CommandContextAttachment == null || CommandContextAttachment.Length == 0)
             {
                 return "";
@@ -156,6 +165,7 @@ namespace Microsoft.Azure.Commands.Aks
                     }
                 }
                 memoryStream.Flush();
+
                 return Convert.ToBase64String(memoryStream.ToArray());
             }
         }

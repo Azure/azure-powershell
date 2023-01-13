@@ -40,7 +40,7 @@ Updates the throughput value of a CosmosDB Sql Container.
 
 ### Example 1
 ```powershell
-Update-AzCosmosDBSqlContainerThroughput -AccountName {myAccountName} -ResourceGroupName {myResourceGroupName} -DatabaseName {myDatabaseName} -Name {myContainerName} -Throughput {updatedThroughputValue}
+Update-AzCosmosDBSqlContainerThroughput -AccountName "myAccountName" -ResourceGroupName "myResourceGroupName" -DatabaseName "myDatabaseName" -Name "myContainerName" -Throughput $updatedThroughputValue
 ```
 
 ```output

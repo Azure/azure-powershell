@@ -12,146 +12,141 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
-    public class ZoneTests : DnsTestsBase
+    public class ZoneTests : DnsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ZoneTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ZoneTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneCrud()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneCrud");
+            TestRunner.RunTestScript("Test-ZoneCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneWithDelegation()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneWithDelegation");
+            TestRunner.RunTestScript("Test-ZoneWithDelegation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrud()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-PrivateZoneCrud");
+            TestRunner.RunTestScript("Test-PrivateZoneCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrudRegistrationVirtualNetwork()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-PrivateZoneCrudRegistrationVnet");
+            TestRunner.RunTestScript("Test-PrivateZoneCrudRegistrationVnet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrudResolutionVirtualNetwork()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-PrivateZoneCrudResolutionVnet");
+            TestRunner.RunTestScript("Test-PrivateZoneCrudResolutionVnet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrudByVirtualNetworkIds()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-PrivateZoneCrudByVirtualNetworkIds");
+            TestRunner.RunTestScript("Test-PrivateZoneCrudByVirtualNetworkIds");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrudByVirtualNetworkObjects()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-PrivateZoneCrudByVirtualNetworkObjects");
+            TestRunner.RunTestScript("Test-PrivateZoneCrudByVirtualNetworkObjects");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneCrudTrimsDot()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneCrudTrimsDot");
+            TestRunner.RunTestScript("Test-ZoneCrudTrimsDot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneCrudWithPiping()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneCrudWithPiping");
+            TestRunner.RunTestScript("Test-ZoneCrudWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneCrudWithPipingTrimsDot()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneCrudWithPipingTrimsDot");
+            TestRunner.RunTestScript("Test-ZoneCrudWithPipingTrimsDot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneList()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneList");
+            TestRunner.RunTestScript("Test-ZoneList");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneListSubscription()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneListSubscription");
+            TestRunner.RunTestScript("Test-ZoneListSubscription");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneNewAlreadyExists()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneNewAlreadyExists");
+            TestRunner.RunTestScript("Test-ZoneNewAlreadyExists");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneSetEtagMismatch()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneSetEtagMismatch");
+            TestRunner.RunTestScript("Test-ZoneSetEtagMismatch");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneSetNotFound()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneSetNotFound");
+            TestRunner.RunTestScript("Test-ZoneSetNotFound");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneRemoveEtagMismatch()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneRemoveEtagMismatch");
+            TestRunner.RunTestScript("Test-ZoneRemoveEtagMismatch");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneRemoveNotFound()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneRemoveNonExisting");
+            TestRunner.RunTestScript("Test-ZoneRemoveNonExisting");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneAddRemoveRecordSet()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-AddRemoveRecordSet");
+            TestRunner.RunTestScript("Test-AddRemoveRecordSet");
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewaytrustedclientcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewaytrustedclientcertificate
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **Set-AzApplicationGatewayTrustedClientCertificate** cmdlet modifies the tru
 ### Example 1
 ```powershell
 $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-$gw = Set-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $gw -Name $certName --CertificateFile ".\clientCAUpdated.cer"
+$gw = Set-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $gw -Name $certName -CertificateFile ".\clientCAUpdated.cer"
 $gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 

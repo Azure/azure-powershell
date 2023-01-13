@@ -1,50 +1,55 @@
-### Example 1: Get all BotServices
+### Example 1: List by subscription
 ```powershell
-PS C:\> Get-AzBotService
-
-Etag                                   Kind Location Name             SkuName SkuTier Type
-----                                   ---- -------- ----             ------- ------- ----
-"06008351-0000-0200-0000-5fd732870000" sdk  global   youri-apptest  F0              Microsoft.BotService/botServices
-"060085fb-0000-1800-0000-5fd71d7c0000" bot  global   youri-bot1       F0              Microsoft.BotService/botServices
-"05000ef7-0000-0200-0000-5fd7065a0000" sdk  global   youriechobottest S1              Microsoft.BotService/botServices
-"0600ef2b-0000-0200-0000-5fd727a70000" sdk  global   youritest1314    S1              Microsoft.BotService/botServices
+Get-AzBotService
 ```
 
-Get all BotServices 
-
-### Example 2: Get the BotService by ResourceGroupName and Name
-```powershell
-PS C:\> Get-AzBotService -Name 'youri-bot1' -ResourceGroupName 'youriBotTest'
-
-Etag                                   Kind Location Name       SkuName SkuTier Type
-----                                   ---- -------- ----       ------- ------- ----
-"060085fb-0000-1800-0000-5fd71d7c0000" bot  global   youri-bot F0              Microsoft.BotService/botServices
+```output
+Etag                                   Kind Location Name      SkuName SkuTier Zone
+----                                   ---- -------- ----      ------- ------- ----
+"4f003041-0000-1800-0000-6281fec80000" bot  global   botTest1  F0              {}
+"0d0018e1-0000-1800-0000-6371e9540000" bot  global   botTest2  F0              {}
+"05000ef7-0000-0200-0000-5fd7065a0000" sdk  global   botTest3  S1              {}
+"0600ef2b-0000-0200-0000-5fd727a70000" sdk  global   botTest4  S1              {}
 ```
 
-Get the BotService by ResourceGroupName and Name
+Returns BotService resources belonging to current subscription.
 
-### Example 3: Get all BotServices by ResourceGroupName
+### Example 2: Get by Name and ResourceGroupName
 ```powershell
-PS C:\> Get-AzBotService -ResourceGroupName 'youriBotTest'
-
-Etag                                   Kind Location Name             SkuName SkuTier Type
-----                                   ---- -------- ----             ------- ------- ----
-"06008351-0000-0200-0000-5fd732870000" sdk  global   youri-apptest  F0              Microsoft.BotService/botServices
-"060085fb-0000-1800-0000-5fd71d7c0000" bot  global   youri-bot1       F0              Microsoft.BotService/botServices
-"05000ef7-0000-0200-0000-5fd7065a0000" sdk  global   youriechobottest S1              Microsoft.BotService/botServices
-"0600ef2b-0000-0200-0000-5fd727a70000" sdk  global   youritest1314    S1              Microsoft.BotService/botServices
+Get-AzBotService -Name botTest1 -ResourceGroupName botTest-rg
 ```
 
-Get all BotServices by ResourceGroupName
-
-### Example 4: Get the BotService by inputObject
-```powershell
-PS C:\> $getAzbot = Get-AzBotService -Name 'youri-bot1' -ResourceGroupName 'youriBotTest'
-Get-AzBotService -InputObject $getAzbot
-
-Etag                                   Kind Location Name       SkuName SkuTier Type
-----                                   ---- -------- ----       ------- ------- ----
-"060085fb-0000-1800-0000-5fd71d7c0000" bot  global   youri-bot1 F0              Microsoft.BotService/botServices
+```output
+Etag                                   Kind Location Name      SkuName SkuTier Zone
+----                                   ---- -------- ----      ------- ------- ----
+"4f003041-0000-1800-0000-6281fec80000" bot  global   botTest1  F0              {}
 ```
 
-Get the BotService by inputObject
+Returns a BotService specified by Name and ResourceGroupName.
+
+### Example 3: GetViaIdentity
+```powershell
+Get-AzBotService -InputObject $botTest1
+```
+
+```output
+Etag                                   Kind Location Name      SkuName SkuTier Zone
+----                                   ---- -------- ----      ------- ------- ----
+"4f003041-0000-1800-0000-6281fec80000" bot  global   botTest1  F0              {}
+```
+
+Returns a BotService specified by the input IBotServiceIdentity.
+
+### Example 4: List by resource group
+```powershell
+Get-AzBotService -ResourceGroupName botTest-rg
+```
+
+```output
+Etag                                   Kind Location Name      SkuName SkuTier Zone
+----                                   ---- -------- ----      ------- ------- ----
+"4f003041-0000-1800-0000-6281fec80000" bot  global   botTest1  F0              {}
+"05000ef7-0000-0200-0000-5fd7065a0000" sdk  global   botTest3  S1              {}
+```
+
+Returns all the resources of a particular type belonging to a resource group.

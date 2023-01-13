@@ -30,7 +30,7 @@ The **Get-AzCosmosDBAccount** cmdlet gets the list of all existing CosmosDB acco
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBAccount -ResourceGroupName {resourceGroupName} -Name {databaseAccountName}
+Get-AzCosmosDBAccount -ResourceGroupName "resourceGroupName" -Name "databaseAccountName"
 ```
 
 ```output

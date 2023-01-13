@@ -165,6 +165,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 SecondaryType = model.Database.SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),
                 IsLedgerOn = model.Database.EnableLedger,
+                PreferredEnclaveType = model.Database.PreferredEnclaveType,
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
@@ -395,7 +396,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
-        /// Map external BackupStorageRedundancy value (Geo/Local/Zone) to internal (GRS/LRS/ZRS)
+        /// Map external BackupStorageRedundancy value (GeoZone/Geo/Local/Zone) to internal (GZRS/GRS/LRS/ZRS)
         /// </summary>
         /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
         /// <returns>internal backupStorageRedundancy</returns>
@@ -409,6 +410,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
 
             switch (backupStorageRedundancy.ToLower())
             {
+                case "geozone":
+                    return "GZRS";
                 case "geo":
                     return "GRS";
                 case "local":

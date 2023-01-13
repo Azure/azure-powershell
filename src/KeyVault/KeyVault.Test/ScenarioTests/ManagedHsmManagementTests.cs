@@ -58,5 +58,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-UpdateManagedHsmWithPublicNetworkAccess");
         }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUndoManagedHsmRemoval()
+        {
+            TestRunner.RunTestScript("Test-UndoManagedHsmRemoval");
+        }
     }
 }

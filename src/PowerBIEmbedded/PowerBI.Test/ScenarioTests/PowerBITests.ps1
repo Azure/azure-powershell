@@ -236,3 +236,73 @@ function Test-NegativePowerBIEmbeddedCapacity
 		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
+
+<#
+.SYNOPSIS
+Tests PowerBI Embedded Capacity lifecycle for large skus (A7,A8) (Create, Update, Scale, Get, Delete).
+#>
+function Test-PowerBIEmbeddedCapacityLargeSku
+{
+	try
+	{  
+		# Creating capacity
+		$RGlocation = Get-RG-Location
+		$location = Get-Location
+		$resourceGroupName = Get-ResourceGroupName
+		$capacityName = Get-PowerBIEmbeddedCapacityName
+
+		New-AzResourceGroup -Name $resourceGroupName -Location $RGlocation
+		
+		$capacityCreated = New-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Location $location -Sku 'A7' -Administrator 'aztest0@stabletest.ccsctp.net','aztest1@stabletest.ccsctp.net'
+    
+		Assert-AreEqual $capacityName $capacityCreated.Name
+		Assert-AreEqual $location $capacityCreated.Location
+		Assert-AreEqual "Microsoft.PowerBIDedicated/capacities" $capacityCreated.Type
+		Assert-AreEqual 2 $capacityCreated.Administrator.Count
+		Assert-True {$capacityCreated.Id -like "*$resourceGroupName*"}
+	
+		[array]$capacityGet = Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName
+		$capacityGetItem = $capacityGet[0]
+		Assert-True {$capacityGetItem.State -like "Succeeded"}
+
+		# Test to make sure the capacity does exist
+		Assert-True {Test-AzPowerBIEmbeddedCapacity -Name $capacityName}
+		# Test it without specifying a resource group
+		Assert-True {Test-AzPowerBIEmbeddedCapacity -Name $capacityName}
+		
+		# Updating capacity and Scale up A7 -> A8
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
+		$capacityUpdated = Update-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -Tag $tagsToUpdate -Sku 'A8' -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
+		Assert-NotNull $capacityUpdated.Tag "Tag do not exists"
+		Assert-NotNull $capacityUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
+		Assert-AreEqual $capacityUpdated.Administrator.Count 1
+		Assert-AreEqual A8 $capacityUpdated.Sku
+		Assert-NotNull $capacityUpdated.Administrator "Capacity Administrator list is empty"
+
+		# Suspend PowerBI Embedded capacity
+		$capacityGetItem = Suspend-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
+		[array]$capacityGet = Get-AzPowerBIEmbeddedCapacity -ResourceId $capacityGetItem.Id
+		$capacityGetItem = $capacityGet[0]
+		Assert-AreEqual $capacityGetItem.Name $capacityGetItem.Name
+		Assert-True {$capacityGetItem.State -like "Paused"}
+
+		# Resume PowerBI Embedded capacity
+		$capacityGetItem = Resume-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
+		[array]$capacityGet = Get-AzPowerBIEmbeddedCapacity -ResourceId $capacityGetItem.Id
+		$capacityGetItem = $capacityGet[0]
+		Assert-AreEqual $capacityGetItem.Name $capacityGetItem.Name
+		Assert-True {$capacityGetItem.State -like "Succeeded"}
+		
+		# Delete PowerBI Embedded capacity
+		Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName | Remove-AzPowerBIEmbeddedCapacity -PassThru
+
+		# Verify that it is gone by trying to get it again
+		Assert-Throws {Get-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName}
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}

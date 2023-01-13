@@ -248,4 +248,7 @@ Are you sure you want to continue?</value>
   <data name="WorkspaceRemoving" xml:space="preserve">
     <value>Removing workspace '{0}' in resource group '{1}'.</value>
   </data>
+  <data name="BadDateTimeFormat" xml:space="preserve">
+    <value>"Input DateTime: {{0}} value for variable {{1}}, failed to parse into DateTime, please use a string in the format of: \"Sat, 28 Aug 2021 05:29:18 GMT\""</value>
+  </data>
 </root>

@@ -74,7 +74,7 @@ function Test-ExpressRoutePortMacSecConfigCRUD
         $keyVaultParametersJson | ConvertTo-Json | set-content $pathToJson
         
         New-AzResourceGroupDeployment -Name $rgname -ResourceGroupName $rgname -TemplateParameterFile .\..\..\..\ScenarioTests\CreateKeyVaultParameters.json -TemplateFile .\..\..\..\ScenarioTests\CreateKeyVaultTemplate.json
-        Start-Sleep -Seconds 60
+        Start-TestSleep -Seconds 60
         
         # Get key vault deployed via ARM 
         $keyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname 

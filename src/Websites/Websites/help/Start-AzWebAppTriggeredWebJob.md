@@ -1,7 +1,7 @@
 ---
 external help file: Az.Websites-help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/start-azwebapptriggeredwebjob
+online version: https://learn.microsoft.com/powershell/module/az.websites/start-azwebapptriggeredwebjob
 schema: 2.0.0
 ---
 
@@ -31,14 +31,14 @@ Run a triggered web job for an app.
 
 ### Example 1: Run a triggered web job for an app
 ```powershell
-PS C:\> Start-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
+Start-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
 ```
 
 This command runs a triggered web job for an app.
 
 ### Example 2: Run a triggered web job for an app by pipeline
 ```powershell
-PS C:\> Get-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01 | Start-AzWebAppTriggeredWebJob
+Get-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01 | Start-AzWebAppTriggeredWebJob
 ```
 
 This command runs a triggered web job for an app by pipeline.
@@ -204,7 +204,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+INPUTOBJECT `<IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.

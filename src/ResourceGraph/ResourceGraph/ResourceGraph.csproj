@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>ResourceGraph</PsModuleName>
@@ -14,5 +14,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceGraph" Version="2.1.0" />
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

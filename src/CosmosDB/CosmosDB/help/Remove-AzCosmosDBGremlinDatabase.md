@@ -31,7 +31,7 @@ The **Remove-AzCosmosDBGremlinDatabase** cmdlet deletes a CosmosDB Gremlin Datab
 
 ### Example 1
 ```powershell
-Remove-AzCosmosDBGremlinDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {dbName}
+Remove-AzCosmosDBGremlinDatabase -ResourceGroupName "rgName" -AccountName "accountName" -Name "dbName"
 ```
 
 The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.

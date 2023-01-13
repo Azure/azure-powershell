@@ -11,8 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\**" />
+    <EmbeddedResource Remove="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\**" />
+    <None Remove="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="5.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
   </ItemGroup>
 

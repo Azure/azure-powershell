@@ -49,30 +49,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
             }
         }
 
-        public static string MapSku(PsApiManagementSku sku)
-        {
-            switch (sku)
-            {
-                case PsApiManagementSku.Developer: return SkuType.Developer;
-                case PsApiManagementSku.Standard: return SkuType.Standard;
-                case PsApiManagementSku.Premium: return SkuType.Premium;
-                case PsApiManagementSku.Basic: return SkuType.Basic;
-                case PsApiManagementSku.Consumption: return SkuType.Consumption;
-                case PsApiManagementSku.Isolated: return SkuType.Isolated;
-                default: throw new ArgumentException($"Unrecognized Sku '{sku.ToString()}'");
-            }
-        }
+        //public static string MapSku(string sku)
+        //{
+        //    switch (sku)
+        //    {
+        //        case PsApiManagementSku.Developer: return SkuType.Developer;
+        //        case PsApiManagementSku.Standard: return SkuType.Standard;
+        //        case PsApiManagementSku.Premium: return SkuType.Premium;
+        //        case PsApiManagementSku.Basic: return SkuType.Basic;
+        //        case PsApiManagementSku.Consumption: return SkuType.Consumption;
+        //        case PsApiManagementSku.Isolated: return SkuType.Isolated;
+        //        default: throw new ArgumentException($"Unrecognized Sku '{sku.ToString()}'");
+        //    }
+        //}
 
-        public static PsApiManagementSku MapSku(string sku)
+        public static string MapSku(string sku)
         {
             switch (sku)
             {
-                case SkuType.Developer: return PsApiManagementSku.Developer;
-                case SkuType.Standard: return PsApiManagementSku.Standard;
-                case SkuType.Premium: return PsApiManagementSku.Premium;
-                case SkuType.Basic: return PsApiManagementSku.Basic;
-                case SkuType.Consumption: return PsApiManagementSku.Consumption;
-                case SkuType.Isolated: return PsApiManagementSku.Isolated;
+                case SkuType.Developer: return SkuType.Developer;
+                case SkuType.Standard: return SkuType.Standard;
+                case SkuType.Premium: return SkuType.Premium;
+                case SkuType.Basic: return SkuType.Basic;
+                case SkuType.Consumption: return SkuType.Consumption;
+                case SkuType.Isolated: return SkuType.Isolated;
                 default: throw new ArgumentException($"Unrecognized Sku '{sku}'");
             }
         }
@@ -152,7 +152,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 Tags = apiManagement.Tags,
                 EnableClientCertificate = apiManagement.EnableClientCertificate,
                 Zones = apiManagement.Zone,
-                DisableGateway = apiManagement.DisableGateway
+                DisableGateway = apiManagement.DisableGateway,
+                PublicNetworkAccess = apiManagement.PublicNetworkAccess
             };
 
             if (apiManagement.VirtualNetwork != null)
@@ -161,6 +162,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 {
                     SubnetResourceId = apiManagement.VirtualNetwork.SubnetResourceId
                 };
+
+                parameters.PublicIpAddressId = apiManagement.PublicIpAddressId;
             }
 
             if (apiManagement.AdditionalRegions != null && apiManagement.AdditionalRegions.Any())
@@ -183,7 +186,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                                         SubnetResourceId = region.VirtualNetwork.SubnetResourceId
                                     },
                                 Zones = region.Zone,
-                                DisableGateway = region.DisableGateway
+                                DisableGateway = region.DisableGateway,
+                                PublicIpAddressId = region.PublicIpAddressId
                             })
                         .ToList();
             }

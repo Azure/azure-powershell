@@ -12,45 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
-    public class AlertPRuleTests : RMTestBase
+    public class AlertPRuleTests : AlertsManagementTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public AlertPRuleTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AlertPRuleTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAlertProcessingRulesByResourceGroupName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAlertProcessingRulesByResourceGroupName");
+            TestRunner.RunTestScript("Test-GetAlertProcessingRulesByResourceGroupName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateUpdateAndDeleteSuppressionRule()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateUpdateAndDeleteSuppressionRule");
+            TestRunner.RunTestScript("Test-CreateUpdateAndDeleteSuppressionRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateUpdateAndDeleteActionGroupRule()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateUpdateAndDeleteActionGroupRule");
+            TestRunner.RunTestScript("Test-CreateUpdateAndDeleteActionGroupRule");
         }
-
     }
 }

@@ -1,6 +1,9 @@
-### Example 1: Update Spring Cloud App by name.
+### Example 1: Update Spring Cloud App by name
 ```powershell
-PS C:\> Update-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -ActiveDeploymentName default
+Update-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -AddonConfig @{'test' = 'value1'}
+```
+
+```output
 ActiveDeploymentName    : default
 CreatedTime             : 2020-08-08 15:37:43
 Fqdn                    : spring-cloud-service.azuremicroservices.io
@@ -28,9 +31,12 @@ TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.
 
 Update Spring Cloud App by name.
 
-### Example 2: Update Spring Cloud App from pipe.
+### Example 2: Update Spring Cloud App by pipeline
 ```powershell
-PS C:\> Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway | Update-AzSpringCloudApp -ActiveDeploymentName default
+Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway | Update-AzSpringCloudApp -AddonConfig @{'test' = 'value1'}
+```
+
+```output
 ActiveDeploymentName    : default
 CreatedTime             : 2020-08-08 15:37:43
 Fqdn                    : spring-cloud-service.azuremicroservices.io
@@ -56,4 +62,4 @@ Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.
 TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TemporaryDisk
 ```
 
-Update Spring Cloud App from pipe.
+Update Spring Cloud App by pipeline.

@@ -12,30 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Xunit;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class BatchApplicationTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class BatchApplicationTests : BatchTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public BatchApplicationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public BatchApplicationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddApplication()
         {
-            BatchController.NewInstance.RunPsTest(_logger, string.Format("Test-AddApplication"));
+            TestRunner.RunTestScript("Test-AddApplication");
         }
     }
 }

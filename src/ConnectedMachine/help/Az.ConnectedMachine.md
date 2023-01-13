@@ -49,6 +49,9 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
 The operation to Upgrade Machine Extensions.
 
+### [Update-AzConnectedMachine](Update-AzConnectedMachine.md)
+The operation to update a hybrid machine.
+
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
 

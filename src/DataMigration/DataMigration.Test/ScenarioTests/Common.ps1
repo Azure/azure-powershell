@@ -181,15 +181,6 @@ function New-ProjectDbInfos
 	return $dbInfo
 }
 
-function SleepTask($value){
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-		Start-Sleep -s $value
-	}else{
-		Start-Sleep -s 0
-	}
-}
-
 function New-TargetSqlMiSyncConnectionInfo
 {
 	$miResourceId = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_RESOURCE_ID")

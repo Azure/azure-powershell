@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5784FD44-91D4-4537-84F3-4F03CCBA355F
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgateway
 schema: 2.0.0
 ---
 
@@ -16,9 +16,10 @@ Creates a Virtual Network Gateway
 ```
 New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
  [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>] [-VpnType <String>]
- [-EnableBgp <Boolean>] [-EnableActiveActiveFeature] [-EnablePrivateIpAddress] [-GatewaySku <String>]
- [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
- [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
+ [-ExtendedLocation <String>] [-VNetExtendedLocationResourceId <String>] [-VpnType <String>]
+ [-EnableBgp <Boolean>] [-DisableIPsecProtection <Boolean>] [-EnableActiveActiveFeature]
+ [-EnablePrivateIpAddress] [-GatewaySku <String>] [-GatewayDefaultSite <PSLocalNetworkGateway>]
+ [-VpnClientAddressPool <String[]>] [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
@@ -26,7 +27,8 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-EnableBgpRouteTranslationForNat] [-Tag <Hashtable>]
  [-Force] [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>]
  [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>] [-AadAudienceId <String>]
- [-AadIssuerUri <String>] [-CustomRoute <String[]>] [-VpnGatewayGeneration <String>] [-AsJob]
+ [-AadIssuerUri <String>] [-CustomRoute <String[]>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>]  [-VpnGatewayGeneration <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -89,7 +91,7 @@ $vnet = New-AzVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" 
 $subnet = Get-AzVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
 $ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ngwipconfig -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
 $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
-$vpnclientipsecpolicy = New-AzVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86471 -SADataSizeKilobytes 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
+$vpnclientipsecpolicy = New-AzVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86471 -SADataSize 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
 
 New-AzVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw1" -VpnClientProtocol IkeV2 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientIpsecPolicy $vpnclientipsecpolicy -CustomRoute 192.168.0.0/24
 ```
@@ -146,7 +148,7 @@ $vnet = New-AzVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" 
 $subnet = Get-AzVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
 $ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
 
-$ipconfigurationId1 = ngwipconfig.id
+$ipconfigurationId1 = $ngwipconfig.Id
 $addresslist1 = @('169.254.21.10')
 $gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
 
@@ -259,6 +261,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ClientConnectionConfiguration
+P2S Client Connection Configuration that assiociate between address and policy group
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSClientConnectionConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkGatewayPolicyGroup
+P2S policy group added to this gateway
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayPolicyGroup[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -CustomRoute
 Custom routes AddressPool specified by customer
 
@@ -319,6 +351,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DisableIPsecProtection 
+The Flag disables IPsec Protection on VirtualNetworkGateway.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableBgpRouteTranslationForNat
 Flag to enable BgpRouteTranslationForNat on this VirtualNetworkGateway.
 
@@ -346,6 +393,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocation
+The extended location of this virtual network gateway
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: MicrosoftRRDCLab3
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -402,7 +465,7 @@ The type of this virtual network gateway: Vpn, ExpressRoute
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Vpn, ExpressRoute
+Accepted values: Vpn, ExpressRoute, LocalGateway
 
 Required: False
 Position: Named
@@ -566,6 +629,36 @@ A hashtable which represents resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkGatewayPolicyGroup
+P2S policy group added to this gateway
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayPolicyGroup[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VNetExtendedLocationResourceId
+VNetExtendedLocationResourceId for Virtual network gateway.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

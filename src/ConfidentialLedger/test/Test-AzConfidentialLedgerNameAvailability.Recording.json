@@ -1,9 +1,9 @@
 {
-  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview+1": {
+  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2022-05-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview",
-      "Content": "{\n  \"name\": \"pwsh-khzelpxmvu673\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2022-05-13",
+      "Content": "{\n  \"name\": \"pwsh-eh8mo7pj1cq50\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -19,12 +19,12 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "06b1ed14-22ec-43f2-a680-1c5c8e62f770" ],
-        "x-ms-correlation-request-id": [ "01fc93e9-d904-422a-81c2-b052c9bcf379" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20220225T050941Z:01fc93e9-d904-422a-81c2-b052c9bcf379" ],
+        "x-ms-request-id": [ "344f3bc4-31bd-4cde-8317-abb9838d3d96" ],
+        "x-ms-correlation-request-id": [ "386e7a3b-4f66-4415-9343-f0a93fadacdf" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220621T185034Z:386e7a3b-4f66-4415-9343-f0a93fadacdf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 25 Feb 2022 05:09:41 GMT" ]
+        "Date": [ "Tue, 21 Jun 2022 18:50:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "89" ],
@@ -35,11 +35,11 @@
       "isContentBase64": false
     }
   },
-  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview+2": {
+  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2022-05-13+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview",
-      "Content": "{\n  \"name\": \"pwsh-avail-hbq6pjw\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2022-05-13",
+      "Content": "{\n  \"name\": \"pwsh-avail-qguz8v1\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -55,12 +55,12 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "20694cfa-7c6a-429a-83a1-7b6cb20eaf8b" ],
-        "x-ms-correlation-request-id": [ "c8fe9fc1-8cd9-4c3d-ba58-de052285dec5" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20220225T050942Z:c8fe9fc1-8cd9-4c3d-ba58-de052285dec5" ],
+        "x-ms-request-id": [ "45ff7323-affc-4767-acce-9154ad17bd2e" ],
+        "x-ms-correlation-request-id": [ "af07eb7f-b6a7-47af-a307-925578af84d5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220621T185035Z:af07eb7f-b6a7-47af-a307-925578af84d5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 25 Feb 2022 05:09:41 GMT" ]
+        "Date": [ "Tue, 21 Jun 2022 18:50:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
@@ -71,10 +71,10 @@
       "isContentBase64": false
     }
   },
-  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview+1": {
+  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2022-05-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2022-05-13",
       "Content": "{\n  \"name\": \"pwsh-xyr1iozn65wkl\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
       "isContentBase64": false,
       "Headers": {
@@ -107,10 +107,10 @@
       "isContentBase64": false
     }
   },
-  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview+2": {
+  "Test-AzConfidentialLedgerNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2022-05-13+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2021-05-13-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/027da7f8-2fc6-46d4-9be9-560706b60fec/providers/Microsoft.ConfidentialLedger/checkNameAvailability?api-version=2022-05-13",
       "Content": "{\n  \"name\": \"pwsh-avail-vyrf650\",\n  \"type\": \"Microsoft.ConfidentialLedger/ledgers\"\n}",
       "isContentBase64": false,
       "Headers": {

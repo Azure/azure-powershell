@@ -35,6 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
     {
         /// <summary>
         /// Gets or sets the legacy InputObject.
+        /// </summary>
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,

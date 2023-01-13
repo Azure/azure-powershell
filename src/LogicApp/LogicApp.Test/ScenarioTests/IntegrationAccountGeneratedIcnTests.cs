@@ -15,21 +15,15 @@
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
     /// <summary>
     /// Scenario tests for integration account generated control number commands.
     /// </summary>
-    public class IntegrationAccountGeneratedIcnTests : RMTestBase
+    public class IntegrationAccountGeneratedIcnTests : LogicAppTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IntegrationAccountGeneratedIcnTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationAccountGeneratedIcnTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -39,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetGeneratedControlNumber");
+            TestRunner.RunTestScript("Test-GetGeneratedControlNumber");
         }
 
         /// <summary>
@@ -49,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateGeneratedControlNumber");
+            TestRunner.RunTestScript("Test-UpdateGeneratedControlNumber");
         }
 
         /// <summary>
@@ -59,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListGeneratedControlNumber");
+            TestRunner.RunTestScript("Test-ListGeneratedControlNumber");
         }
     }
 }

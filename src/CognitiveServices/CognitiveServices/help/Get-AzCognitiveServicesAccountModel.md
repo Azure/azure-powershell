@@ -31,8 +31,10 @@ Get Models available for a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountModel -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
+Get-AzCognitiveServicesAccountModel -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
+```
 
+```output
 BaseModel    :
 MaxCapacity  : 3
 Capabilities : {[fineTune, true]}
@@ -131,4 +133,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzCognitiveServicesAccountDeployment](./New-AzCognitiveServicesAccountDeployment)
+[New-AzCognitiveServicesAccountDeployment](./New-AzCognitiveServicesAccountDeployment.md)

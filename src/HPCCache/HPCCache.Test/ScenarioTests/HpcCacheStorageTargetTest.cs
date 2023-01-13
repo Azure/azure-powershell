@@ -24,13 +24,8 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
     /// HpcCacheTest.
     /// </summary>
     [Collection("HpcCacheCollection")]
-    public class HpcCacheStorageTargetTest : IClassFixture<StorageAccountFixture>
+    public class HpcCacheStorageTargetTest : HPCCacheTestRunner, IClassFixture<StorageAccountFixture>
     {
-        /// <summary>
-        /// Defines the testOutputHelper.
-        /// </summary>
-        private readonly ITestOutputHelper testOutputHelper;
-
         /// <summary>
         /// Defines the Fixture.
         /// </summary>
@@ -42,23 +37,15 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         private readonly StorageAccountFixture storageAccountFixture;
 
         /// <summary>
-        /// XunitTracingInterceptor.
-        /// </summary>
-        private readonly XunitTracingInterceptor logger;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="HpcCacheStorageTargetTest"/> class.
         /// </summary>
         /// <param name="testOutputHelper">The testOutputHelper<see cref="ITestOutputHelper"/>.</param>
         /// <param name="fixture">The Fixture<see cref="HpcCacheTestFixture"/>.</param>
         /// <param name="storageAccountFixture">Storage account fixture<see cref="StorageAccountFixture"/>.</param>
-        public HpcCacheStorageTargetTest(ITestOutputHelper testOutputHelper, HpcCacheTestFixture fixture, StorageAccountFixture storageAccountFixture)
+        public HpcCacheStorageTargetTest(ITestOutputHelper testOutputHelper, HpcCacheTestFixture fixture, StorageAccountFixture storageAccountFixture) : base(testOutputHelper)
         {
             this.fixture = fixture;
-            this.testOutputHelper = testOutputHelper;
             this.storageAccountFixture = storageAccountFixture;
-            this.logger = new XunitTracingInterceptor(this.testOutputHelper);
-            XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>
@@ -68,16 +55,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzHPCCacheStorageTargetByNameAndResourceGroup()
         {
-            var scripts = new string[]
-            {
-                string.Format(
-                    "{0} {1} {2} {3}",
-                    "Test-GetAzHPCCacheStorageTargetByNameAndResourceGroup",
-                    this.fixture.ResourceGroup.Name,
-                    this.fixture.Cache.Name,
-                    this.storageAccountFixture.StorageTarget.Name),
-            };
-            HpcCacheController.NewInstance.RunPsTest(this.logger, scripts);
+            TestRunner.RunTestScript($"Test-GetAzHPCCacheStorageTargetByNameAndResourceGroup {this.fixture.ResourceGroup.Name} {this.fixture.Cache.Name} {this.storageAccountFixture.StorageTarget.Name}");
         }
 
         /// <summary>
@@ -87,16 +65,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetStorgeTarget()
         {
-            var scripts = new string[]
-            {
-                string.Format(
-                    "{0} {1} {2} {3}",
-                    "Test-SetStorageTarget",
-                    this.fixture.ResourceGroup.Name,
-                    this.fixture.Cache.Name,
-                    this.storageAccountFixture.StorageTarget.Name),
-            };
-            HpcCacheController.NewInstance.RunPsTest(this.logger, scripts);
+            TestRunner.RunTestScript($"Test-SetStorageTarget {this.fixture.ResourceGroup.Name} {this.fixture.Cache.Name} {this.storageAccountFixture.StorageTarget.Name}");
         }
 
         /// <summary>
@@ -106,16 +75,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewGetSetRemoveST()
         {
-            var scripts = new string[]
-            {
-                string.Format(
-                    "{0} {1} {2} {3}",
-                    "Test-New-Get-Remove-StorageTarget",
-                    this.fixture.ResourceGroup.Name,
-                    this.fixture.Cache.Name,
-                    this.fixture.SubscriptionID),
-            };
-            HpcCacheController.NewInstance.RunPsTest(this.logger, scripts);
+            TestRunner.RunTestScript($"Test-New-Get-Remove-StorageTarget {this.fixture.ResourceGroup.Name} {this.fixture.Cache.Name} {this.fixture.SubscriptionID}");
         }
     }
 }

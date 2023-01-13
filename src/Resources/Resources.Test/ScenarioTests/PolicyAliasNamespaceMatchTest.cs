@@ -18,7 +18,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class PolicyAliasNamespaceMatchTest : ResourceTestRunner
+    public class PolicyAliasNamespaceMatchTest : ResourcesTestRunner
     {
         public PolicyAliasNamespaceMatchTest(ITestOutputHelper output) : base(output)
         {

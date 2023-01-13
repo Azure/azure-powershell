@@ -80,14 +80,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Subscription primary key. This parameter is optional. If not specified will be generated automatically." +
-                          " Must be 1 to 300 characters long.")]
+                          " Must be 1 to 256 characters long.")]
         public String PrimaryKey { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Subscription secondary key. This parameter is optional. If not specified will be generated automatically." +
-                          " Must be 1 to 300 characters long.")]
+                          " Must be 1 to 256 characters long.")]
         public String SecondaryKey { get; set; }
 
         [Parameter(

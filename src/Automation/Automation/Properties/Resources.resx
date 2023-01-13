@@ -501,4 +501,10 @@
     <value>Insufficient user permissions. Please refer https://docs.microsoft.com/azure/role-based-access-control/built-in-roles for more details.</value>
     <comment>Automation</comment>
   </data>
+  <data name="HybridRunbookWorkerNotFound" xml:space="preserve">
+    <value>Hybrid Runbook Worker Not Found</value>
+  </data>
+  <data name="MoveAzureAutomationHybridRunbookWorkerDescription" xml:space="preserve">
+    <value>Moving the hybrid runbook worker {0} from {1} worker group to {2} worker group</value>
+  </data>
 </root>

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationsecuritygroup
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationsecuritygroup
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ The **Remove-AzApplicationSecurityGroup** cmdlet removes an application security
 Remove-AzApplicationSecurityGroup -Name "MyApplicationSecurityGrouo" -ResourceGroupName "MyResourceGroup"
 ```
 
-This command deletes an application security group named MyApplicationSecurityGrouo in the resource group named MyResourceGroup.
+This command deletes an application security group named MyApplicationSecurityGroup in the resource group named MyResourceGroup.
 
 ## PARAMETERS
 

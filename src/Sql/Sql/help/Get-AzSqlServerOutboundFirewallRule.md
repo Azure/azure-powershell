@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveroutboundfirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlserveroutboundfirewallrule
 schema: 2.0.0
 ---
 
@@ -25,6 +25,7 @@ If you specify the name of an allowed FQDN, this cmdlet gets information about t
 ## EXAMPLES
 
 ### Example 1: Get outbound firewall rule(s) for a server
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzSqlServerOutboundFirewallRule -ServerName "Server01" -ResourceGroupName "ResourceGroup01" -AllowedFQDN "OutboundFirewallRule01"
 

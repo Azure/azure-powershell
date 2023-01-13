@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Services;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Commands.Sql.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -120,7 +119,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
             base.ExecuteCmdlet();
         }
     }

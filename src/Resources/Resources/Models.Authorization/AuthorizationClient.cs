@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Rest.Azure.OData;
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Gets a single role definition by the role Id guid.
         /// </summary>
         /// <param name="roleId">RoleId guid</param>
+        /// <param name="scope">The scope of the role definition</param>
         public PSRoleDefinition GetRoleDefinition(Guid roleId, string scope)
         {
             return AuthorizationManagementClient.RoleDefinitions.Get(scope, roleId.ToString()).ToPSRoleDefinition();
@@ -72,6 +74,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Otherwise  will fetch Roledefinitions with provided name
         /// </summary>
         /// <param name="name">The role name</param>
+        /// <param name="scope">The scope of the role definition</param>
+        /// <param name="first"></param>
+        /// <param name="skip"></param>
         /// <returns>The matched role Definitions</returns>
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitions(string name, string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
@@ -125,6 +130,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Creates new role assignment.
         /// </summary>
         /// <param name="parameters">The create parameters</param>
+        /// <param name="roleAssignmentId">The name of the role assignment. It can be any valid GUID.</param>
         /// <returns>The created role assignment object</returns>
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters, Guid roleAssignmentId = default(Guid))
         {
@@ -173,6 +179,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// </summary>
         /// <param name="options">The filtering options</param>
         /// <param name="currentSubscription">The current subscription</param>
+        /// <param name="first"></param>
+        /// <param name="skip"></param>
         /// <returns>The filtered role assignments</returns>
         public List<PSRoleAssignment> FilterRoleAssignments(FilterRoleAssignmentsOptions options, string currentSubscription, ulong first = ulong.MaxValue, ulong skip = 0)
         {
@@ -180,7 +188,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             string principalId = null;
             PSADObject adObject = null;
             ODataQuery<RoleAssignmentFilter> odataQuery = null;
-
+            // Reference:
+            // https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-rest
+            // https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin#elevate-access-for-a-global-administrator-1
+            // scope is path variable in REST API. When scope is '/', query '$filter=atScope()' is required, or else it will throw BadRequest.
+            Boolean isRootScope = "/".Equals(options.Scope);
+            Boolean needsFilterPrincipalId = false;
             if (options.ADObjectFilter?.HasFilter ?? false)
             {
                 if (string.IsNullOrEmpty(options.ADObjectFilter.Id) || options.ExpandPrincipalGroups || options.IncludeClassicAdministrators)
@@ -202,13 +215,37 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     }
 
                     principalId = adObject.Id.ToString();
-                    odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(principalId));
+                    if (isRootScope)
+                    {
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => (f.AtScope() && f.AssignedTo(principalId)));
+                    }
+                    else
+                    {
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(principalId));
+                    }
                 }
                 else
                 {
                     principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
-                    odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
+                    if (isRootScope)
+                    {
+                        /* $filter = principalId + eq + '{objectId}' Lists role assignments for a specified user, group, or service principal.
+                         * If you use atScope() and principalId+eq + '{objectId}' together, it will throw exception because the API doesn't allow it.
+                         * objectId could represent a group, so can't use atScope() and assignedTo('{objectId}') as alternative,
+                         * must filter after the results return from server.
+                         */
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
+                        needsFilterPrincipalId = true;
+                    } 
+                    else
+                    {
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
+                    }
                 }
+            }
+            else if (isRootScope)
+            {
+                odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
             }
 
             // list role assignments by principalId and scope first
@@ -225,6 +262,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             if (!string.IsNullOrEmpty(options.RoleDefinitionName))
             {
                 result = result.Where(r => r.RoleDefinitionName?.Equals(options.RoleDefinitionName, StringComparison.OrdinalIgnoreCase) ?? false).ToList();
+            }
+
+            if (needsFilterPrincipalId)
+            {
+                result = result.Where(r => r.ObjectId?.Equals(principalId, StringComparison.OrdinalIgnoreCase) ?? false).ToList();
             }
 
             if (options.IncludeClassicAdministrators)
@@ -382,7 +424,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Deletes a role definition based on the id.
         /// </summary>
         /// <param name="roleDefinitionId">The role definition id to delete</param>
-        /// <param name="subscriptionId">Current subscription id</param>
+        /// <param name="scope">The scope of the role definition</param>
         /// <returns>The deleted role definition.</returns>
         public PSRoleDefinition RemoveRoleDefinition(Guid roleDefinitionId, string scope)
         {
@@ -401,6 +443,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Deletes a role definition based on the name.
         /// </summary>
         /// <param name="roleDefinitionName">The role definition name.</param>
+        /// <param name="scope">The scope of the role definition</param>
         /// <returns>The deleted role definition.</returns>
         public PSRoleDefinition RemoveRoleDefinition(string roleDefinitionName, string scope)
         {
@@ -467,6 +510,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Creates a new role definition.
         /// </summary>
         /// <param name="roleDefinition">The role definition to create.</param>
+        /// <param name="roleDefinitionId">The role definition id to create.</param>
         /// <returns>The created role definition.</returns>
         public PSRoleDefinition CreateRoleDefinition(PSRoleDefinition roleDefinition, Guid roleDefinitionId = default(Guid))
         {

@@ -34,12 +34,12 @@ For example, if user wants to restore the database account to a timestamp when a
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBMongoDBRestorableDatabase -Location {location} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId}
+Get-AzCosmosDBMongoDBRestorableDatabase -Location "location" -DatabaseAccountInstanceId "DatabaseAccountInstanceId"
 ```
 
 ```output
 Name            : cb04fbfc-4142-413d-b2c5-c91723a17e28
-Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{DatabaseAccountInstanceIdInstanceId}/restorableMongoDBDatabases/cb04fbfc-4142-413d-b2c5-c91723
+Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{DatabaseAccountInstanceId}/restorableMongoDBDatabases/cb04fbfc-4142-413d-b2c5-c91723
                   a17e28
 Type            : Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableMongoDBDatabases
 _rid            : a+35ZwAAAA==

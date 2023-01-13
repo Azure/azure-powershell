@@ -1,22 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourcegroups/RGName-ps6252?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1wczYyNTI/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourcegroups/RGName-ps5323?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1wczUzMjM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "78136798-d177-4d96-afb1-2f59c8da7e69"
+          "2c9b6808-ceca-4d2c-a907-c4335e6f5fe1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.17"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.62"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -25,6 +24,7 @@
           "35"
         ]
       },
+      "RequestBody": "{\r\n  \"location\": \"westcentralus\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1199"
         ],
         "x-ms-request-id": [
-          "5c6bb582-a995-4391-985a-095c448318b6"
+          "28be2005-6b47-4a67-ae95-8abbdc407d4d"
         ],
         "x-ms-correlation-request-id": [
-          "5c6bb582-a995-4391-985a-095c448318b6"
+          "28be2005-6b47-4a67-ae95-8abbdc407d4d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204919Z:5c6bb582-a995-4391-985a-095c448318b6"
+          "WESTUS2:20221005T230403Z:28be2005-6b47-4a67-ae95-8abbdc407d4d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:19 GMT"
+          "Wed, 05 Oct 2022 23:04:02 GMT"
         ],
         "Content-Length": [
           "186"
@@ -63,26 +63,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252\",\r\n  \"name\": \"RGName-ps6252\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323\",\r\n  \"name\": \"RGName-ps5323\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7521?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczYyNTIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzUyMT9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323/providers/Microsoft.EventGrid/topics/PSTestTopic-ps4051?api-version=2022-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczUzMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNDA1MT9hcGktdmVyc2lvbj0yMDIyLTA2LTE1",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"inputSchema\": \"EventGridSchema\",\r\n    \"publicNetworkAccess\": \"enabled\"\r\n  },\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "19f333b1-3925-4c5f-a07e-1093dd59b99f"
+          "1b91b99a-bc63-4fad-a06b-bfb9899f21c2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/8.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -91,6 +90,7 @@
           "137"
         ]
       },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"inputSchema\": \"EventGridSchema\",\r\n    \"publicNetworkAccess\": \"enabled\"\r\n  },\r\n  \"location\": \"westcentralus\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -105,10 +105,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com:443/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/F1B691C9-93F3-4FA5-ACBD-75D5D2CF3CF9?api-version=2020-06-01"
+          "https://management.azure.com:443/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/4B0EB214-6775-4F72-8397-EF45A265602C?api-version=2022-06-15"
         ],
         "x-ms-request-id": [
-          "2885b782-0cf1-4818-8253-a155d8313bfc"
+          "92d107dd-9a26-450c-8ff6-1621a26f76bb"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -117,19 +117,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "c17477bf-7330-4a08-a5e2-9cce0b8dc2ed"
+          "d487a2bd-1090-4b6f-99ed-e15c1accb4c5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204922Z:c17477bf-7330-4a08-a5e2-9cce0b8dc2ed"
+          "WESTUS2:20221005T230404Z:d487a2bd-1090-4b6f-99ed-e15c1accb4c5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:22 GMT"
+          "Wed, 05 Oct 2022 23:04:04 GMT"
         ],
         "Content-Length": [
-          "374"
+          "392"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -138,22 +138,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"endpoint\": null,\r\n    \"inputSchema\": \"EventGridSchema\",\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": null,\r\n  \"id\": \"/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7521\",\r\n  \"name\": \"PSTestTopic-ps7521\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"endpoint\": null,\r\n    \"inputSchema\": \"EventGridSchema\",\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"systemData\": null,\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": null,\r\n  \"id\": \"/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323/providers/Microsoft.EventGrid/topics/PSTestTopic-ps4051\",\r\n  \"name\": \"PSTestTopic-ps4051\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/F1B691C9-93F3-4FA5-ACBD-75D5D2CF3CF9?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvbnNTdGF0dXMvRjFCNjkxQzktOTNGMy00RkE1LUFDQkQtNzVENUQyQ0YzQ0Y5P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/4B0EB214-6775-4F72-8397-EF45A265602C?api-version=2022-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvbnNTdGF0dXMvNEIwRUIyMTQtNjc3NS00RjcyLTgzOTctRUY0NUEyNjU2MDJDP2FwaS12ZXJzaW9uPTIwMjItMDYtMTU=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1b91b99a-bc63-4fad-a06b-bfb9899f21c2"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/8.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -165,7 +168,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "980803c6-c65a-4aeb-b097-39e06cb42d05"
+          "80c93c3f-716a-4b71-9c3e-6e8f743f6742"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -174,16 +177,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "2acaf280-9b41-47a7-8944-299ee2561ab0"
+          "360550ca-90fa-436f-b207-cb848694af3e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204932Z:2acaf280-9b41-47a7-8944-299ee2561ab0"
+          "WESTUS2:20221005T230414Z:360550ca-90fa-436f-b207-cb848694af3e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:32 GMT"
+          "Wed, 05 Oct 2022 23:04:14 GMT"
         ],
         "Content-Length": [
           "286"
@@ -195,22 +198,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/F1B691C9-93F3-4FA5-ACBD-75D5D2CF3CF9?api-version=2020-06-01\",\r\n  \"name\": \"f1b691c9-93f3-4fa5-acbd-75d5d2cf3cf9\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/4B0EB214-6775-4F72-8397-EF45A265602C?api-version=2022-06-15\",\r\n  \"name\": \"4b0eb214-6775-4f72-8397-ef45a265602c\",\r\n  \"status\": \"Succeeded\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7521?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczYyNTIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzUyMT9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323/providers/Microsoft.EventGrid/topics/PSTestTopic-ps4051?api-version=2022-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczUzMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNDA1MT9hcGktdmVyc2lvbj0yMDIyLTA2LTE1",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1b91b99a-bc63-4fad-a06b-bfb9899f21c2"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/8.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -222,7 +228,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "14445a86-7b45-4c92-894f-ee341ef45453"
+          "df77598a-0bdb-4d99-aa45-ded84a774ee8"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -231,19 +237,19 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "fc75d993-34d0-4b6f-896c-4954a5dc774a"
+          "d64fe7d8-1bd1-4707-9ed7-369c7229f1b4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204932Z:fc75d993-34d0-4b6f-896c-4954a5dc774a"
+          "WESTUS2:20221005T230415Z:d64fe7d8-1bd1-4707-9ed7-369c7229f1b4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:32 GMT"
+          "Wed, 05 Oct 2022 23:04:14 GMT"
         ],
         "Content-Length": [
-          "504"
+          "562"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -252,28 +258,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps7521.westcentralus-1.eventgrid.azure.net/api/events\",\r\n    \"inputSchema\": \"EventGridSchema\",\r\n    \"metricResourceId\": \"08982c7e-46fc-4173-80b9-c2cbac2e5d42\",\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": null,\r\n  \"id\": \"/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7521\",\r\n  \"name\": \"PSTestTopic-ps7521\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps4051.westcentralus-1.eventgrid.azure.net/api/events\",\r\n    \"inputSchema\": \"EventGridSchema\",\r\n    \"metricResourceId\": \"28ebdee5-f964-47f0-9598-90907d06f23f\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"dataResidencyBoundary\": \"WithinGeopair\"\r\n  },\r\n  \"systemData\": null,\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": null,\r\n  \"id\": \"/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323/providers/Microsoft.EventGrid/topics/PSTestTopic-ps4051\",\r\n  \"name\": \"PSTestTopic-ps4051\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7521?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczYyNTIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzUyMT9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323/providers/Microsoft.EventGrid/topics/PSTestTopic-ps4051?api-version=2022-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczUzMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNDA1MT9hcGktdmVyc2lvbj0yMDIyLTA2LTE1",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "69dbedd8-2057-4215-8eb4-3cbcd8391726"
+          "e955073d-ede9-489a-b1a0-49fe16c03760"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/8.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -285,28 +291,28 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "4ccdcc15-a3ba-449e-ae01-a62c80bc0d60"
+          "4460411c-583e-4de3-ba50-7f7321496e41"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "5b22226b-2209-405d-8f33-d104fd66cfb9"
+          "c51fb3b8-ae09-4c6d-87d6-942daa0771e9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204933Z:5b22226b-2209-405d-8f33-d104fd66cfb9"
+          "WESTUS2:20221005T230416Z:c51fb3b8-ae09-4c6d-87d6-942daa0771e9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:33 GMT"
+          "Wed, 05 Oct 2022 23:04:15 GMT"
         ],
         "Content-Length": [
-          "504"
+          "562"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -315,28 +321,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps7521.westcentralus-1.eventgrid.azure.net/api/events\",\r\n    \"inputSchema\": \"EventGridSchema\",\r\n    \"metricResourceId\": \"08982c7e-46fc-4173-80b9-c2cbac2e5d42\",\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": null,\r\n  \"id\": \"/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7521\",\r\n  \"name\": \"PSTestTopic-ps7521\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"endpoint\": \"https://pstesttopic-ps4051.westcentralus-1.eventgrid.azure.net/api/events\",\r\n    \"inputSchema\": \"EventGridSchema\",\r\n    \"metricResourceId\": \"28ebdee5-f964-47f0-9598-90907d06f23f\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"dataResidencyBoundary\": \"WithinGeopair\"\r\n  },\r\n  \"systemData\": null,\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": null,\r\n  \"id\": \"/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323/providers/Microsoft.EventGrid/topics/PSTestTopic-ps4051\",\r\n  \"name\": \"PSTestTopic-ps4051\",\r\n  \"type\": \"Microsoft.EventGrid/topics\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7521/listKeys?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczYyNTIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzUyMS9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323/providers/Microsoft.EventGrid/topics/PSTestTopic-ps4051/listKeys?api-version=2022-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczUzMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNDA1MS9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDIyLTA2LTE1",
       "RequestMethod": "POST",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "475a25cb-f39a-4433-b8e3-3c0f8bbc04e4"
+          "ba6729de-d524-422e-8ac3-f1f164ed12ab"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/8.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -348,7 +354,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a2659b9f-1fb1-496d-805d-095e6ea5f8dc"
+          "f1c0ae09-3f39-418b-b5bd-818086e1c953"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -357,16 +363,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "86909e81-efb3-42d9-a0ae-f8324e1b44c6"
+          "c9c2c12c-7f7c-4ad5-a9fe-476fed74a649"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204933Z:86909e81-efb3-42d9-a0ae-f8324e1b44c6"
+          "WESTUS2:20221005T230415Z:c9c2c12c-7f7c-4ad5-a9fe-476fed74a649"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:32 GMT"
+          "Wed, 05 Oct 2022 23:04:15 GMT"
         ],
         "Content-Length": [
           "109"
@@ -378,28 +384,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"<HIDDEN>\",\r\n  \"key2\": \"<HIDDEN>\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"bmik3O7pKVgCyAwG8NDgkgnjtgGjtsweM9pYKGw+KDo=\",\r\n  \"key2\": \"JYm0iCOL/Mcu2ZNCD6VPGnWDL2bL96A4Oz9WL9HvBX8=\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7521/listKeys?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczYyNTIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzUyMS9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323/providers/Microsoft.EventGrid/topics/PSTestTopic-ps4051/listKeys?api-version=2022-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczUzMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNDA1MS9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDIyLTA2LTE1",
       "RequestMethod": "POST",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "205a9fcd-713c-4e9a-8166-8c3edffdf21d"
+          "88cd865f-7d59-4948-9e4a-1b157d7fa4f7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/8.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -411,25 +417,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d88f49de-14cf-42aa-967f-89c485e1bd7e"
+          "21bf5d21-55d9-4905-ab07-aeecc7b32209"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "a305e538-08df-442a-a8b5-a7446d8c797c"
+          "c17233cf-f395-4397-bb16-117df1039e12"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204933Z:a305e538-08df-442a-a8b5-a7446d8c797c"
+          "WESTUS2:20221005T230416Z:c17233cf-f395-4397-bb16-117df1039e12"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:33 GMT"
+          "Wed, 05 Oct 2022 23:04:15 GMT"
         ],
         "Content-Length": [
           "109"
@@ -441,28 +447,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"<HIDDEN>\",\r\n  \"key2\": \"<HIDDEN>\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"bmik3O7pKVgCyAwG8NDgkgnjtgGjtsweM9pYKGw+KDo=\",\r\n  \"key2\": \"JYm0iCOL/Mcu2ZNCD6VPGnWDL2bL96A4Oz9WL9HvBX8=\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7521/listKeys?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczYyNTIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzUyMS9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323/providers/Microsoft.EventGrid/topics/PSTestTopic-ps4051/listKeys?api-version=2022-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczUzMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNDA1MS9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDIyLTA2LTE1",
       "RequestMethod": "POST",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e38485f5-7a04-4710-8e19-d0cf04087095"
+          "e955073d-ede9-489a-b1a0-49fe16c03760"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/8.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -474,25 +480,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "bc4fea4e-9777-414a-bcaa-98833f3f142a"
+          "7302f9fe-a4b0-4f58-94e1-a991b7b2f225"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "63dd2cac-5957-42bd-ad1d-0f35a7977433"
+          "7ac3fb4f-b929-428b-85e3-43f9bc7cc3be"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204933Z:63dd2cac-5957-42bd-ad1d-0f35a7977433"
+          "WESTUS2:20221005T230417Z:7ac3fb4f-b929-428b-85e3-43f9bc7cc3be"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:33 GMT"
+          "Wed, 05 Oct 2022 23:04:16 GMT"
         ],
         "Content-Length": [
           "109"
@@ -504,28 +510,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"<HIDDEN>\",\r\n  \"key2\": \"<HIDDEN>\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"bmik3O7pKVgCyAwG8NDgkgnjtgGjtsweM9pYKGw+KDo=\",\r\n  \"key2\": \"JYm0iCOL/Mcu2ZNCD6VPGnWDL2bL96A4Oz9WL9HvBX8=\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps6252/providers/Microsoft.EventGrid/topics/PSTestTopic-ps7521?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczYyNTIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNzUyMT9hcGktdmVyc2lvbj0yMDIwLTA2LTAx",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps5323/providers/Microsoft.EventGrid/topics/PSTestTopic-ps4051?api-version=2022-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczUzMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEdyaWQvdG9waWNzL1BTVGVzdFRvcGljLXBzNDA1MT9hcGktdmVyc2lvbj0yMDIyLTA2LTE1",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e0b73e7d-2068-46bc-bc7f-b93e672c8ed4"
+          "9c223876-447b-490b-ac7c-3150164f64e8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/8.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -534,7 +540,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationResults/B917CBA0-5D62-48AE-A8EB-563E8915C9A4?api-version=2020-06-01"
+          "https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationResults/70660E1A-D899-49EF-AF16-FFBC0102CC9D?api-version=2022-06-15"
         ],
         "Retry-After": [
           "10"
@@ -543,28 +549,28 @@
           "max-age=31536000; includeSubDomains"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com:443/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/B917CBA0-5D62-48AE-A8EB-563E8915C9A4?api-version=2020-06-01"
+          "https://management.azure.com:443/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/70660E1A-D899-49EF-AF16-FFBC0102CC9D?api-version=2022-06-15"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-request-id": [
-          "36ecd5b9-e78e-4588-8d94-2b778a706b43"
+          "82ebe7ec-3539-452a-a351-97891fc93dda"
         ],
         "x-ms-correlation-request-id": [
-          "36ecd5b9-e78e-4588-8d94-2b778a706b43"
+          "82ebe7ec-3539-452a-a351-97891fc93dda"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204933Z:36ecd5b9-e78e-4588-8d94-2b778a706b43"
+          "WESTUS2:20221005T230417Z:82ebe7ec-3539-452a-a351-97891fc93dda"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:33 GMT"
+          "Wed, 05 Oct 2022 23:04:17 GMT"
         ],
         "Expires": [
           "-1"
@@ -577,18 +583,21 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/B917CBA0-5D62-48AE-A8EB-563E8915C9A4?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvbnNTdGF0dXMvQjkxN0NCQTAtNUQ2Mi00OEFFLUE4RUItNTYzRTg5MTVDOUE0P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/70660E1A-D899-49EF-AF16-FFBC0102CC9D?api-version=2022-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvbnNTdGF0dXMvNzA2NjBFMUEtRDg5OS00OUVGLUFGMTYtRkZCQzAxMDJDQzlEP2FwaS12ZXJzaW9uPTIwMjItMDYtMTU=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9c223876-447b-490b-ac7c-3150164f64e8"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/8.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -600,25 +609,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2ed0f623-0a2e-4b84-b9fc-26f6c46da946"
+          "c029aba6-bf86-4314-9d45-2f55c51bc3e1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "027fdf38-8e16-41fb-b84a-09a5496dc256"
+          "200aa0a6-4cba-452f-bf22-e536a42a7f16"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204943Z:027fdf38-8e16-41fb-b84a-09a5496dc256"
+          "WESTUS2:20221005T230427Z:200aa0a6-4cba-452f-bf22-e536a42a7f16"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:43 GMT"
+          "Wed, 05 Oct 2022 23:04:27 GMT"
         ],
         "Content-Length": [
           "286"
@@ -630,22 +639,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/B917CBA0-5D62-48AE-A8EB-563E8915C9A4?api-version=2020-06-01\",\r\n  \"name\": \"b917cba0-5d62-48ae-a8eb-563e8915c9a4\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationsStatus/70660E1A-D899-49EF-AF16-FFBC0102CC9D?api-version=2022-06-15\",\r\n  \"name\": \"70660e1a-d899-49ef-af16-ffbc0102cc9d\",\r\n  \"status\": \"Succeeded\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationResults/B917CBA0-5D62-48AE-A8EB-563E8915C9A4?api-version=2020-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvblJlc3VsdHMvQjkxN0NCQTAtNUQ2Mi00OEFFLUE4RUItNTYzRTg5MTVDOUE0P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDE=",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/providers/Microsoft.EventGrid/locations/westcentralus/operationResults/70660E1A-D899-49EF-AF16-FFBC0102CC9D?api-version=2022-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL29wZXJhdGlvblJlc3VsdHMvNzA2NjBFMUEtRDg5OS00OUVGLUFGMTYtRkZCQzAxMDJDQzlEP2FwaS12ZXJzaW9uPTIwMjItMDYtMTU=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9c223876-447b-490b-ac7c-3150164f64e8"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/8.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -657,25 +669,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "3d90b2a7-419e-4b24-ad8c-bedf3c5c7475"
+          "bd9b5136-4144-4978-a431-b19962a080bd"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "1ec5a8bb-af7a-49ae-aa24-07a5d0dbf8dc"
+          "a0045936-0c78-4513-a1d1-95e24840d576"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204943Z:1ec5a8bb-af7a-49ae-aa24-07a5d0dbf8dc"
+          "WESTUS2:20221005T230427Z:a0045936-0c78-4513-a1d1-95e24840d576"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:43 GMT"
+          "Wed, 05 Oct 2022 23:04:27 GMT"
         ],
         "Expires": [
           "-1"
@@ -688,24 +700,24 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourcegroups/RGName-ps6252?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1wczYyNTI/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourcegroups/RGName-ps5323?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1wczUzMjM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "207aa8aa-6f73-48c7-bfc1-6771a4e627ac"
+          "7bc73a22-9724-4a57-ad65-49192a2c5258"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.17"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.62"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -714,22 +726,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzYyNTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzUzMjMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14999"
         ],
         "x-ms-request-id": [
-          "b49b4a69-4b1a-4c44-9f5f-5bb7a4ff6b82"
+          "44886811-1f96-4359-a99d-f8d19753be0b"
         ],
         "x-ms-correlation-request-id": [
-          "b49b4a69-4b1a-4c44-9f5f-5bb7a4ff6b82"
+          "44886811-1f96-4359-a99d-f8d19753be0b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T204944Z:b49b4a69-4b1a-4c44-9f5f-5bb7a4ff6b82"
+          "WESTUS2:20221005T230429Z:44886811-1f96-4359-a99d-f8d19753be0b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -738,7 +750,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:49:43 GMT"
+          "Wed, 05 Oct 2022 23:04:29 GMT"
         ],
         "Expires": [
           "-1"
@@ -751,132 +763,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzYyNTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JRVXpZeU5USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzUzMjMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JRVXpVek1qTXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.17"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.62"
         ]
       },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzYyNTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-request-id": [
-          "b5a31210-6128-456d-913a-6b424f46d2d0"
-        ],
-        "x-ms-correlation-request-id": [
-          "b5a31210-6128-456d-913a-6b424f46d2d0"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200702T204959Z:b5a31210-6128-456d-913a-6b424f46d2d0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 02 Jul 2020 20:49:59 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzYyNTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JRVXpZeU5USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
-      "RequestMethod": "GET",
       "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28928.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.17"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzYyNTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
-        "x-ms-request-id": [
-          "24c7f140-7509-4d4a-bc88-2f3e0ef65887"
-        ],
-        "x-ms-correlation-request-id": [
-          "24c7f140-7509-4d4a-bc88-2f3e0ef65887"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20200702T205014Z:24c7f140-7509-4d4a-bc88-2f3e0ef65887"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 02 Jul 2020 20:50:14 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzYyNTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JRVXpZeU5USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.28928.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.17"
-        ]
-      },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -885,16 +783,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11999"
         ],
         "x-ms-request-id": [
-          "c302a14e-dacf-4756-a127-9e2d7b01544a"
+          "5e4d3fb5-bb15-4e17-8103-e6a334357f6a"
         ],
         "x-ms-correlation-request-id": [
-          "c302a14e-dacf-4756-a127-9e2d7b01544a"
+          "5e4d3fb5-bb15-4e17-8103-e6a334357f6a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T205029Z:c302a14e-dacf-4756-a127-9e2d7b01544a"
+          "WESTUS2:20221005T230444Z:5e4d3fb5-bb15-4e17-8103-e6a334357f6a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -903,7 +801,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:50:29 GMT"
+          "Wed, 05 Oct 2022 23:04:44 GMT"
         ],
         "Expires": [
           "-1"
@@ -916,18 +814,18 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzYyNTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JRVXpZeU5USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRQUzUzMjMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JRVXpVek1qTXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.17"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.62"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -936,16 +834,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11998"
         ],
         "x-ms-request-id": [
-          "0ed1c9a0-86fe-435f-965d-8f92238c24b3"
+          "8962cfa6-8e43-44ff-923d-1f5ffef35a9a"
         ],
         "x-ms-correlation-request-id": [
-          "0ed1c9a0-86fe-435f-965d-8f92238c24b3"
+          "8962cfa6-8e43-44ff-923d-1f5ffef35a9a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200702T205029Z:0ed1c9a0-86fe-435f-965d-8f92238c24b3"
+          "WESTUS2:20221005T230444Z:8962cfa6-8e43-44ff-923d-1f5ffef35a9a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -954,7 +852,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 02 Jul 2020 20:50:29 GMT"
+          "Wed, 05 Oct 2022 23:04:44 GMT"
         ],
         "Expires": [
           "-1"
@@ -969,8 +867,8 @@
   ],
   "Names": {
     "": [
-      "ps7521",
-      "ps6252"
+      "ps4051",
+      "ps5323"
     ]
   },
   "Variables": {

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlserver
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlserver
 schema: 2.0.0
 ---
 
@@ -28,7 +28,7 @@ Creates a new server.
 
 ### Example 1: Create a new PostgreSql server
 ```powershell
- New-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -Location eastus -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku GP_Gen5_4
+New-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -Location eastus -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku GP_Gen5_4
 ```
 
 ```output

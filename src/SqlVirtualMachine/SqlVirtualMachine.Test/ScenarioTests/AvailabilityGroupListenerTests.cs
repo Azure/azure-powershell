@@ -20,7 +20,7 @@ using Xunit.Abstractions;
 namespace Microsoft.Azure.Commands.AvailabilityGroupListener.Test.ScenarioTests
 {
     [Collection("SqlVirtualMachineTests")]
-    public class AvailabilityGroupListenerTests : SqlVirtualMachineTestsBase
+    public class AvailabilityGroupListenerTests : SqlVirtualMachineTestRunner
     {
         public AvailabilityGroupListenerTests(ITestOutputHelper output) : base(output)
         {
@@ -30,28 +30,28 @@ namespace Microsoft.Azure.Commands.AvailabilityGroupListener.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAvailabilityGroupListenerCreate()
         {
-            RunPowerShellTest("Test-CreateAvailabilityGroupListener");
+            TestRunner.RunTestScript("Test-CreateAvailabilityGroupListener");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAvailabilityGroupListenerGet()
         {
-            RunPowerShellTest("Test-GetAvailabilityGroupListener");
+            TestRunner.RunTestScript("Test-GetAvailabilityGroupListener");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAvailabilityGroupListenerUpdate()
         {
-            RunPowerShellTest("Test-UpdateAvailabilityGroupListener");
+            TestRunner.RunTestScript("Test-UpdateAvailabilityGroupListener");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAvailabilityGroupListenerRemove()
         {
-            RunPowerShellTest("Test-RemoveAvailabilityGroupListener");
+            TestRunner.RunTestScript("Test-RemoveAvailabilityGroupListener");
         }
     }
 }

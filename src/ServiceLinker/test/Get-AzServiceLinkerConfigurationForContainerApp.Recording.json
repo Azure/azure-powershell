@@ -1,0 +1,43 @@
+{
+  "Get-AzServiceLinkerConfigurationForContainerApp+[NoContext]+List+$POST+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "c77f0223-bc4a-44b0-ab98-38d5e771e8c5" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinkerConfiguration" ],
+        "FullCommandName": [ "Get-AzServiceLinkerConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "0188fb0c-6eac-451a-a23e-a3d736cb773e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "740cb3db-59f0-4fa5-a09d-81ff77ef6a66" ],
+        "x-ms-correlation-request-id": [ "fd94b62a-ad29-414f-9e9b-695e026603c3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T064256Z:fd94b62a-ad29-414f-9e9b-695e026603c3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:42:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "78" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"configurations\":[{\"name\":\"AZURE_POSTGRESQL_CONNECTIONSTRING\",\"value\":null}]}"
+    }
+  }
+}

@@ -32,9 +32,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// Initializes a new instance of the NWRuleSetVirtualNetworkRules
         /// class.
         /// </summary>
-        /// <param name="subnet">Subnet properties</param>
-        /// <param name="ignoreMissingVnetServiceEndpoint">Value that indicates
-        /// whether to ignore missing VNet Service Endpoint</param>
+        /// <param name="nwVirtualNetworkRules"></param>
         public static IList<PSNWRuleSetVirtualNetworkRulesAttributes> PSNWRuleSetVirtualNetworkRulesAttributesCollection(IList<NWRuleSetVirtualNetworkRules> nwVirtualNetworkRules)
         {
             List<PSNWRuleSetVirtualNetworkRulesAttributes> VNetRules = new List<PSNWRuleSetVirtualNetworkRulesAttributes>(); 

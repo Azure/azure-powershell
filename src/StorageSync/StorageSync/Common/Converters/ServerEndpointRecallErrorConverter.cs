@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class ServerEndpointRecallErrorConverter.
-    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointRecallError, StorageSyncModels.ServerEndpointRecallError}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointRecallError, ServerEndpointRecallError}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSServerEndpointRecallError, StorageSyncModels.ServerEndpointRecallError}" />
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpointRecallError, ServerEndpointRecallError}" />
     public class ServerEndpointRecallErrorConverter : ConverterBase<PSServerEndpointRecallError, StorageSyncModels.ServerEndpointRecallError>
     {
         /// <summary>

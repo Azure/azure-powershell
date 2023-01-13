@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    using System;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
@@ -22,24 +21,16 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The create new peering tests.
     /// </summary>
-    public class CreateNewDirectPeeringTests
+    public class CreateNewDirectPeeringTests : PeeringTestRunner
     {
-        /// <summary>
-        /// The _logger.
-        /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateNewDirectPeeringTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public CreateNewDirectPeeringTests(Xunit.Abstractions.ITestOutputHelper output)
+        public CreateNewDirectPeeringTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
-            
         }
 
         /// <summary>
@@ -49,7 +40,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectPeering()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeering");
+            TestRunner.RunTestScript("Test-NewDirectPeering");
         }
 
         /// <summary>
@@ -59,7 +50,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectPeeringWithPipe()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeeringWithPipe");
+            TestRunner.RunTestScript("Test-NewDirectPeeringWithPipe");
         }
 
         /// <summary>
@@ -69,7 +60,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectPeeringPipeTwoConnections()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeeringPipeTwoConnections");
+            TestRunner.RunTestScript("Test-NewDirectPeeringPipeTwoConnections");
         }
 
         /// <summary>
@@ -79,7 +70,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectPeeringPremiumDirectFree()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeeringPremiumDirectFree");
+            TestRunner.RunTestScript("Test-NewDirectPeeringPremiumDirectFree");
         }
 
         /// <summary>
@@ -89,7 +80,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectPeeringPremiumDirectUnlimited()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeeringPremiumDirectUnlimited");
+            TestRunner.RunTestScript("Test-NewDirectPeeringPremiumDirectUnlimited");
         }
     }
 }

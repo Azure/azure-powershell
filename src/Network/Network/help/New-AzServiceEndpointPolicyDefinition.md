@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azserviceendpointpolicydefinition
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azserviceendpointpolicydefinition
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **New-AzServiceEndpointPolicyDefinition** cmdlet create a service endpoint p
 
 ### Example 1: Creates a service endpoint policy
 ```powershell
-$policydef= New-AzServiceEndpointPolicyDefinition -Name "ServiceEndpointPolicyDefinition1" -ResourceGroupName "ResourceGroup01" -Service "Microsoft.Storage" -ServiceResources "subscriptions/sub1" -Description "New Definition"
+$policydef= New-AzServiceEndpointPolicyDefinition -Name "ServiceEndpointPolicyDefinition1" -Service "Microsoft.Storage" -ServiceResource "subscriptions/sub1" -Description "New Definition"
 ```
 
 This command creates the service endpoint policy definition with name ServiceEndpointPolicyDefinition1,  service Microsoft.Storage, service resources subscriptions/sub1 and 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseledgerdigestupload
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldatabaseledgerdigestupload
 schema: 2.0.0
 ---
 
@@ -37,14 +37,15 @@ The Get-AzSqlDatabaseLedgerDigestUpload cmdlet gets the ledger digest upload set
 
 ### Example 1
 ```powershell
-Get-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" 
+Get-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 ```output
 ResourceGroupName ServerName DatabaseName State   Endpoint
 ----------------- ---------- ------------ -----   --------
-ResourceGroup01   Server01   Database01   Enabled https://mystorage.blob.core.windows.net 
+ResourceGroup01   Server01   Database01   Enabled https://mystorage.blob.core.windows.net
 ```
+
 ## PARAMETERS
 
 ### -DatabaseName

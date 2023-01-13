@@ -36,9 +36,10 @@ Gets information about the specified vendor.
 
 ### Example 1: Get-AzConnectedNetworkVendor using vendor name
 ```powershell
-PS C:\> Get-AzConnectedNetworkVendor -Name myVendor
+Get-AzConnectedNetworkVendor -Name myVendor
+```
 
-
+```output
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor
 Name                         : myVendor
 ProvisioningState            : Succeeded
@@ -58,10 +59,11 @@ Getting information about the vendor with vendor name myVendor.
 
 ### Example 2: Get-AzConnectedNetworkVendor using Identity
 ```powershell
-PS C:\> $vendor = @{ VendorName = "myVendor1"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
-PS C:\> Get-AzConnectedNetworkVendor -InputObject $vendor
+$vendor = @{ VendorName = "myVendor1"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
+Get-AzConnectedNetworkVendor -InputObject $vendor
+```
 
-
+```output
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor1
 Name                         : myVendor1
 ProvisioningState            : Succeeded
@@ -163,7 +165,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

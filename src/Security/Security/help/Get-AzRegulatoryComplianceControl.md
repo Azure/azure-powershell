@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzRegulatoryComplianceControl
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzRegulatoryComplianceControl
 schema: 2.0.0
 ---
 
@@ -108,8 +108,7 @@ Get specific control details according to control id.
 
 ### Example 3
 ```powershell
-Get-AzRegulatoryComplianceControl -ResourceId "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplia
-                     nceStandards/SOC-TSP/regulatoryComplianceControls/C1.2"
+Get-AzRegulatoryComplianceControl -ResourceId "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/SOC-TSP/regulatoryComplianceControls/C1.2"
 ```
 
 ```output

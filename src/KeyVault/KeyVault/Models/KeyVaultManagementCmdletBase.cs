@@ -374,49 +374,17 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected readonly string[] DefaultPermissionsToSecrets =
         {
-            SecretPerms.Get,
-            SecretPerms.List,
-            SecretPerms.Set,
-            SecretPerms.Delete,
-            SecretPerms.Backup,
-            SecretPerms.Restore,
-            SecretPerms.Recover
+            SecretPerms.All
         };
 
         protected readonly string[] DefaultPermissionsToCertificates =
         {
-            CertPerms.Get,
-            CertPerms.Delete,
-            CertPerms.List,
-            CertPerms.Create,
-            CertPerms.Import,
-            CertPerms.Update,
-            CertPerms.Deleteissuers,
-            CertPerms.Getissuers,
-            CertPerms.Listissuers,
-            CertPerms.Managecontacts,
-            CertPerms.Manageissuers,
-            CertPerms.Setissuers,
-            CertPerms.Recover,
-            CertPerms.Backup,
-            CertPerms.Restore
+            CertPerms.All
         };
 
         protected readonly string[] DefaultPermissionsToStorage =
         {
-            StoragePerms.Delete,
-            StoragePerms.Deletesas,
-            StoragePerms.Get,
-            StoragePerms.Getsas,
-            StoragePerms.List,
-            StoragePerms.Listsas,
-            StoragePerms.Regeneratekey,
-            StoragePerms.Set,
-            StoragePerms.Setsas,
-            StoragePerms.Update,
-            StoragePerms.Recover,
-            StoragePerms.Backup,
-            StoragePerms.Restore
+            StoragePerms.All
         };
 
         protected readonly string DefaultSkuFamily = "A";

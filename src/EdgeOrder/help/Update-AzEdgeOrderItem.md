@@ -302,14 +302,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-FORWARDADDRESSCONTACTDETAIL <IContactDetails>: Contact details for the address
+FORWARDADDRESSCONTACTDETAIL `<IContactDetails>`: Contact details for the address
   - `ContactName <String>`: Contact name of the person.
   - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
   - `Phone <String>`: Phone number of the contact person.
   - `[Mobile <String>]`: Mobile number of the contact person.
   - `[PhoneExtension <String>]`: Phone extension number of the contact person.
 
-FORWARDADDRESSSHIPPINGADDRESS <IShippingAddress>: Shipping details for the address
+FORWARDADDRESSSHIPPINGADDRESS `<IShippingAddress>`: Shipping details for the address
   - `Country <String>`: Name of the Country.
   - `StreetAddress1 <String>`: Street Address line 1.
   - `[AddressType <AddressType?>]`: Type of address.
@@ -321,7 +321,7 @@ FORWARDADDRESSSHIPPINGADDRESS <IShippingAddress>: Shipping details for the addre
   - `[StreetAddress3 <String>]`: Street Address line 3.
   - `[ZipExtendedCode <String>]`: Extended Zip Code.
 
-INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
+INPUTOBJECT `<IEdgeOrderIdentity>`: Identity Parameter
   - `[AddressName <String>]`: The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of Azure region.
@@ -330,7 +330,7 @@ INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-PREFERENCE <IPreferences>: Customer preference.
+PREFERENCE `<IPreferences>`: Customer preference.
   - `[EncryptionPreference <IEncryptionPreferences>]`: Preferences related to the Encryption.
     - `[DoubleEncryptionStatus <DoubleEncryptionStatus?>]`: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
   - `[ManagementResourcePreference <IManagementResourcePreferences>]`: Preferences related to the Management resource.

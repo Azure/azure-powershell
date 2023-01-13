@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/disable-azstorageblobdeleteretentionpolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/disable-azstorageblobdeleteretentionpolicy
 schema: 2.0.0
 ---
 
@@ -36,6 +36,7 @@ The **Disable-AzStorageBlobDeleteRetentionPolicy** cmdlet disables delete retent
 ## EXAMPLES
 
 ### Example 1: Disable delete retention policy for the Blob service
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Disable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PassThru
 

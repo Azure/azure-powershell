@@ -97,7 +97,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Tags = netAppAccount.Tags,
                 Etag = netAppAccount.Etag,
                 ActiveDirectories = (netAppAccount.ActiveDirectories != null) ? netAppAccount.ActiveDirectories.ConvertToPs(resourceGroupName, netAppAccount.Name) : null,
-                ProvisioningState = netAppAccount.ProvisioningState
+                ProvisioningState = netAppAccount.ProvisioningState,
+                Identity = netAppAccount.Identity.ConvertToPs(),
+                SystemData =  netAppAccount.SystemData?.ToPsSystemData()
             };
         }
 
@@ -119,7 +121,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 QosType = capacityPool.QosType,
                 TotalThroughputMibps = capacityPool.TotalThroughputMibps,
                 UtilizedThroughputMibps = capacityPool.UtilizedThroughputMibps,
-                CoolAccess = capacityPool.CoolAccess
+                CoolAccess = capacityPool.CoolAccess,
+                SystemData = capacityPool.SystemData?.ToPsSystemData()
             };
         }
 
@@ -350,7 +353,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 CapacityPoolResourceId = volume.CapacityPoolResourceId,
                 T2Network = volume.T2Network,
                 ProximityPlacementGroup = volume.ProximityPlacementGroup,
-                PlacementRules = volume.PlacementRules?.ToPPSKeyValuePairs()
+                PlacementRules = volume.PlacementRules?.ToPPSKeyValuePairs(),
+                SystemData = volume.SystemData?.ToPsSystemData(),
+                MaximumNumberOfFiles = volume.MaximumNumberOfFiles,
+                EnableSubvolumes = volume.EnableSubvolumes,
+                Encrypted = volume.Encrypted,
+                Zones = volume.Zones,
+                KeyVaultPrivateEndpointResourceId = volume.KeyVaultPrivateEndpointResourceId,
+                DeleteBaseSnapshot = volume.DeleteBaseSnapshot,
+                SmbAccessBasedEnumeration = volume.SmbAccessBasedEnumeration,
+                SmbNonBrowsable = volume.SmbNonBrowsable,
+                EncryptionKeySource = volume.EncryptionKeySource,
+                VolumeSpecName = volume.VolumeSpecName
             };
         }
 
@@ -387,6 +401,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 MirrorState = replicationStatus.MirrorState,
                 TotalProgress = replicationStatus.TotalProgress,
                 ErrorMessage = replicationStatus.ErrorMessage
+            };
+        }
+
+        public static PSSystemData ToPsSystemData(this SystemData systemData)
+        {
+            return new PSSystemData
+            {
+                CreatedAt = systemData.CreatedAt,
+                CreatedBy = systemData.CreatedBy,
+                CreatedByType = systemData.CreatedByType,
+                LastModifiedAt = systemData.LastModifiedAt,
+                LastModifiedBy = systemData.LastModifiedBy,
+                LastModifiedByType = systemData.LastModifiedByType
             };
         }
     }

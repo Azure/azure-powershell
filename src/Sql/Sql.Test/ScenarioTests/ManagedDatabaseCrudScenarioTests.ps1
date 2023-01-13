@@ -401,3 +401,71 @@ function Test-GeoRestoreManagedDatabase
 		Remove-ResourceGroupForTest $rg2
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests creating a managed database
+#>
+function Test-SetManagedDatabase
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+
+	$managedInstance = Create-ManagedInstanceForTest $rg
+	
+	try
+	{
+		# Create with all values
+		$managedDatabaseName = Get-ManagedDatabaseName
+		$collation = "SQL_Latin1_General_CP1_CI_AS"
+		$job1 = New-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Collation $collation -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-Null $db.Tags
+
+		$tags = @{tag1= "value1"}
+
+		$db = Set-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Tags $tags
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("tag1")
+
+		$tags = @{managedDatabaseTag= "valueInputObject"}
+		# Set by using ManagedDatabase as input
+		$db = Set-AzSqlInstanceDatabase -InputObject $db -Tags $tags
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("managedDatabaseTag")
+
+		$tags = @{managedInstanceTag= "managedInstanceInputObject"}
+		# Set by using ManagedInstance as input
+		$db = Set-AzSqlInstanceDatabase -InstanceObject $managedInstance -Name $db.Name -Tags $tags
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("managedInstanceTag")
+		
+		# Set tags via piping
+		$tags = @{piping= "valuePiping"}
+		$db = $db | Set-AzSqlInstanceDatabase -Tags $tags
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("piping")
+
+		# Set tags via resourceId
+		$tags = @{resourceIdTag= "resourceIdTagValue"}
+		$db = Set-AzSqlInstanceDatabase -ResourceId $db.Id -Tags $tags
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("resourceIdTag")
+
+		# Expect exception when setting on db that doesn't exists
+		Assert-Throws { Set-AzSqlInstanceDatabase -Name "nonexisting_db" -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Tags $tags }
+
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageserviceproperty
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageserviceproperty
 schema: 2.0.0
 ---
 
@@ -23,6 +23,7 @@ The **Get-AzStorageServiceProperty** cmdlet gets the properties for Azure Storag
 ## EXAMPLES
 
 ### Example 1: Get  Azure Storage services property of the Blob service
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Get-AzStorageServiceProperty -ServiceType Blob
 

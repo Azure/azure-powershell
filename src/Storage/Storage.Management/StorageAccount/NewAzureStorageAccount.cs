@@ -38,6 +38,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         private const string ActiveDirectoryDomainServicesForFileParameterSet = "ActiveDirectoryDomainServicesForFile";
 
+        /// <summary>
+        /// Set AzureActiveDirectoryKerberosForFile parameter set name
+        /// </summary>
+        private const string AzureActiveDirectoryKerberosForFileParameterSet = "AzureActiveDirectoryKerberosForFile";        
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -177,6 +182,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Set ClientId of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account.")]
+        [ValidateNotNull]
+        public string KeyVaultFederatedClientId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Storage Account encryption keySource KeyVault KeyName")]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
@@ -200,6 +211,40 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             get; set;
         }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Secure File Transfer Protocol for the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSftp
+        {
+            get
+            {
+                return enableSftp != null ? enableSftp.Value : false;
+            }
+            set
+            {
+                enableSftp = value;
+            }
+        }
+        private bool? enableSftp = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable local users feature for the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableLocalUser
+        {
+            get
+            {
+                return enableLocalUser != null ? enableLocalUser.Value : false;
+            }
+            set
+            {
+                enableLocalUser = value;
+            }
+        }
+        private bool? enableLocalUser = null;
 
         [Parameter(
             Mandatory = false,
@@ -280,6 +325,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? publishInternetEndpoint = null;
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Enable Azure Files Active Directory Domain Service Kerberos Authentication for the storage account.",
+            ParameterSetName = AzureActiveDirectoryKerberosForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public bool EnableAzureActiveDirectoryKerberosForFile
+        {
+            get
+            {
+                return enableAzureActiveDirectoryKerberosForFile.HasValue ? enableAzureActiveDirectoryKerberosForFile.Value : false;
+            }
+            set
+            {
+                enableAzureActiveDirectoryKerberosForFile = value;
+            }
+        }
+        private bool? enableAzureActiveDirectoryKerberosForFile = null;
 
         [Parameter(
             Mandatory = false,
@@ -301,8 +363,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies the primary domain that the AD DNS server is authoritative for. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            HelpMessage = "Specifies the primary domain that the AD DNS server is authoritative for. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile or -EnableAzureActiveDirectoryKerberosForFile is set to true.",
             ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the primary domain that the AD DNS server is authoritative for. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile or -EnableAzureActiveDirectoryKerberosForFile is set to true.",
+            ParameterSetName = AzureActiveDirectoryKerberosForFileParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ActiveDirectoryDomainName { get; set; }
 
@@ -322,8 +388,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies the domain GUID. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.",
+            HelpMessage = "Specifies the domain GUID. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile or -EnableAzureActiveDirectoryKerberosForFile is set to true.",
             ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the domain GUID. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile or -EnableAzureActiveDirectoryKerberosForFile is set to true.",
+            ParameterSetName = AzureActiveDirectoryKerberosForFileParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ActiveDirectoryDomainGuid { get; set; }
 
@@ -539,6 +609,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string ImmutabilityPolicyState { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
+        [PSArgumentCompleter("PrivateLink", "AAD")]
+        [ValidateNotNullOrEmpty]
+        public string AllowedCopyScope { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -608,7 +683,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.IsHnsEnabled = enableHierarchicalNamespace;
             }
-            if (enableAzureActiveDirectoryDomainServicesForFile !=null || enableActiveDirectoryDomainServicesForFile != null)
+            if (enableAzureActiveDirectoryDomainServicesForFile !=null || enableActiveDirectoryDomainServicesForFile != null || enableAzureActiveDirectoryKerberosForFile != null)
             {
                 createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                 if (enableAzureActiveDirectoryDomainServicesForFile != null && enableAzureActiveDirectoryDomainServicesForFile.Value)
@@ -640,6 +715,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         SamAccountName = this.ActiveDirectorySamAccountName,
                         AccountType = this.ActiveDirectoryAccountType
                     };
+                }
+                else if (enableAzureActiveDirectoryKerberosForFile != null && enableAzureActiveDirectoryKerberosForFile.Value)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADKERB;
+                    if (this.ActiveDirectoryDomainName != null || this.ActiveDirectoryDomainGuid != null)
+                    {
+                        createParameters.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties = new ActiveDirectoryProperties()
+                        {
+                            DomainName = this.ActiveDirectoryDomainName,
+                            DomainGuid = this.ActiveDirectoryDomainGuid
+                        };
+                    }
                 }
                 else
                 {
@@ -689,7 +776,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                 }
             }
-            if (this.KeyVaultUri !=null || this.KeyName != null || this.KeyVersion != null || this.KeyVaultUserAssignedIdentityId != null)
+            if (this.KeyVaultUri !=null || this.KeyName != null || this.KeyVersion != null || this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null)
             {
                 if ((this.KeyVaultUri != null && this.KeyName == null) || (this.KeyVaultUri == null && this.KeyName != null))
                 {
@@ -701,9 +788,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     throw new ArgumentException("KeyVersion can only be specified when specify KeyVaultUri and KeyName together.", "KeyVersion"); 
                 }
 
-                if (this.KeyVaultUserAssignedIdentityId != null && (this.KeyVaultUri == null || this.KeyName == null))
+                if ((this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null) && (this.KeyVaultUri == null || this.KeyName == null))
                 {
-                    throw new ArgumentException("KeyVaultUserAssignedIdentityId can only be specified when specify KeyVaultUri and KeyName together.", "KeyVaultUserAssignedIdentityId");
+                    throw new ArgumentException("KeyVaultUserAssignedIdentityId, KeyVaultFederatedClientId can only be specified when specify KeyVaultUri and KeyName together.", "KeyVaultUserAssignedIdentityId, KeyVaultFederatedClientId");
                 }
 
                 if (createParameters.Encryption == null)
@@ -724,10 +811,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     createParameters.Encryption.KeyVaultProperties = new KeyVaultProperties(this.KeyName, this.KeyVersion, this.KeyVaultUri);
                 }
 
-                if (this.KeyVaultUserAssignedIdentityId != null)
+                if (this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null)
                 {
                     createParameters.Encryption.EncryptionIdentity = new EncryptionIdentity();
                     createParameters.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity = this.KeyVaultUserAssignedIdentityId;
+                    createParameters.Encryption.EncryptionIdentity.EncryptionFederatedIdentityClientId = this.KeyVaultFederatedClientId;
                 }
             }
             if (this.minimumTlsVersion != null)
@@ -788,6 +876,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
                 }
+            }
+            if (this.enableSftp != null)
+            {
+                createParameters.IsSftpEnabled = this.enableSftp;
+            }
+            if (this.enableLocalUser != null)
+            {
+                createParameters.IsLocalUserEnabled = this.enableLocalUser;
+            }
+            if(this.AllowedCopyScope != null)
+            {
+                createParameters.AllowedCopyScope = this.AllowedCopyScope;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

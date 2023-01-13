@@ -59,6 +59,10 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
         [ValidateNotNullOrEmpty]
         public Guid TenantId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.LastCommitId)]
+        [ValidateNotNullOrEmpty]
+        public string LastCommitId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.RepositoryType == SynapseConstants.RepositoryType.AzureDevOpsGit && this.ProjectName == null)
@@ -83,6 +87,7 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
                 RepositoryName = this.RepositoryName,
                 CollaborationBranch = this.CollaborationBranch,
                 TenantId = this.TenantId,
+                LastCommitId = this.LastCommitId,
                 RootFolder = this.RootFolder
             };
 

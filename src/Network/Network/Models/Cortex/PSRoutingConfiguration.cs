@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSVnetRoute
     {
         public List<PSStaticRoute> StaticRoutes { get; set; }
+        public PSStaticRoutesConfig StaticRoutesConfig { get; set; }
     }
 
     public class PSStaticRoute
@@ -65,5 +66,14 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "NextHopIpAddress", Target = ViewControl.Table)]
         public string NextHopIpAddress { get; set; }
+    }
+
+    public class PSStaticRoutesConfig
+    {
+        [Ps1Xml(Label = "PropagateStaticRoutes", Target = ViewControl.Table)]
+        public bool PropagateStaticRoutes { get; } = true;
+
+        [Ps1Xml(Label = "VnetLocalRouteOverrideCriteria", Target = ViewControl.Table)]
+        public string VnetLocalRouteOverrideCriteria { get; set; }
     }
 }

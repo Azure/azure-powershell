@@ -12,151 +12,146 @@
 
 namespace Microsoft.Azure.Commands.PrivateDns.Test.ScenarioTests
 {
-    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class LinkTests : PrivateDnsTestsBase
+    public class LinkTests : PrivateDnsTestRunner
     {
-        public XunitTracingInterceptor Logger;
-
-        public LinkTests(Xunit.Abstractions.ITestOutputHelper output)
+        public LinkTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            Logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(Logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkCrud()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-LinkCrud");
+            TestRunner.RunTestScript("Test-LinkCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkCrudWithPiping()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-LinkCrudWithPiping");
+            TestRunner.RunTestScript("Test-LinkCrudWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRegistrationLinkCreate()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-RegistrationLinkCreate");
+            TestRunner.RunTestScript("Test-RegistrationLinkCreate");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkAlreadyExistsCreateThrow()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-LinkAlreadyExistsCreateThrow");
+            TestRunner.RunTestScript("Test-LinkAlreadyExistsCreateThrow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateLinkWithVirtualNetworkObject()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-CreateLinkWithVirtualNetworkObject");
+            TestRunner.RunTestScript("Test-CreateLinkWithVirtualNetworkObject");
         }
 
         [Fact(Skip = "Test framework doesn't support using tokens for multiple tenants at the moment.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateLinkWithRemoteVirtualId()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-CreateLinkWithRemoteVirtualId");
+            TestRunner.RunTestScript("Test-CreateLinkWithRemoteVirtualId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkRegistrationStatusWithPiping()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-UpdateLinkRegistrationStatusWithPiping");
+            TestRunner.RunTestScript("Test-UpdateLinkRegistrationStatusWithPiping");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkRegistrationStatusWithPipingResourceId()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-UpdateLinkRegistrationStatusWithResourceId");
+            TestRunner.RunTestScript("Test-UpdateLinkRegistrationStatusWithResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkWithEtagMismatchThrow()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-UpdateLinkWithEtagMismatchThrow");
+            TestRunner.RunTestScript("Test-UpdateLinkWithEtagMismatchThrow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteLinkWithResourceId()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-DeleteLinkWithResourceId");
+            TestRunner.RunTestScript("Test-DeleteLinkWithResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkWithEtagMismatchOverwrite()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-UpdateLinkWithEtagMismatchOverwrite");
+            TestRunner.RunTestScript("Test-UpdateLinkWithEtagMismatchOverwrite");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkZoneNotExistsThrow()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-UpdateLinkZoneNotExistsThrow");
+            TestRunner.RunTestScript("Test-UpdateLinkZoneNotExistsThrow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkLinkNotExistsThrow()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-UpdateLinkLinkNotExistsThrow");
+            TestRunner.RunTestScript("Test-UpdateLinkLinkNotExistsThrow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkWithNoChangesShouldNotThrow()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-UpdateLinkWithNoChangesShouldNotThrow");
+            TestRunner.RunTestScript("Test-UpdateLinkWithNoChangesShouldNotThrow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLinkZoneNotExistsThrow()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-GetLinkZoneNotExistsThrow");
+            TestRunner.RunTestScript("Test-GetLinkZoneNotExistsThrow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLinkLinkNotExistsThrow()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-GetLinkLinkNotExistsThrow");
+            TestRunner.RunTestScript("Test-GetLinkLinkNotExistsThrow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveLinkZoneNotExistsShouldNotThrow()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-RemoveLinkZoneNotExistsShouldNotThrow");
+            TestRunner.RunTestScript("Test-RemoveLinkZoneNotExistsShouldNotThrow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveLinkLinkNotExistsShouldNotThrow()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-RemoveLinkLinkNotExistsShouldNotThrow");
+            TestRunner.RunTestScript("Test-RemoveLinkLinkNotExistsShouldNotThrow");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListLinks()
         {
-            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-ListLinks");
+            TestRunner.RunTestScript("Test-ListLinks");
         }
     }
 }

@@ -20,12 +20,12 @@ Create a in-memory object for Target DNS server
 Create a in-memory object for Target DNS server
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.TargetDnsServer
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.TargetDnsServer
 .Link
 https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolvertargetdnsserverobject
 #>
 function New-AzDnsResolverTargetDnsServerObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.TargetDnsServer')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.TargetDnsServer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,7 +38,7 @@ function New-AzDnsResolverTargetDnsServerObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.TargetDnsServer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.TargetDnsServer]::New()
 
         $Object.IPAddress = $IPAddress
         $Object.Port = $Port

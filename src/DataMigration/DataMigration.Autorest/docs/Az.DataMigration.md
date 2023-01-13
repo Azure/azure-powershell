@@ -47,6 +47,9 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 ### [Invoke-AzDataMigrationCutoverToSqlVM](Invoke-AzDataMigrationCutoverToSqlVM.md)
 Initiate cutover for in-progress online database migration to SQL VM.
 
+### [New-AzDataMigrationLoginsMigration](New-AzDataMigrationLoginsMigration.md)
+Migrate logins from the source Sql Servers to the target Azure Sql Servers.
+
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
 Create or Update Database Migration Service.
 

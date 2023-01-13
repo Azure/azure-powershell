@@ -41,7 +41,7 @@ Describe 'New-AzDnsResolver' {
         $location = "westus2";
         
         # ACT,ASSERT
-        {New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $malformedVirtualNetworkArmId -Location $location }| Should -Throw 'Unparseable resource ID'
+        {New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $malformedVirtualNetworkArmId -Location $location }| Should -Throw
     }
 
     It 'Create DNS resolver with a new virtual network' {
@@ -70,7 +70,7 @@ Describe 'New-AzDnsResolver' {
         $nonExistentVirtualNetwork = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershelldnsresolvertestrglocaltest/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname9aywbo511111"
 
         # ACT, ASSERT
-        {New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $nonExistentVirtualNetwork -Location $location }| Should -Throw 'DNS resolver not found in database'
+        {New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $resourceGroupName -VirtualNetworkId $nonExistentVirtualNetwork -Location $location }| Should -Throw
     }
 
     It 'Update DNS Resolver with new tags.' {

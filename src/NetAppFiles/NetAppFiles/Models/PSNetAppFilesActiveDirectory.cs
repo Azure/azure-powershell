@@ -177,5 +177,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <value>If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted
         /// </value>
         public bool? EncryptDCConnections { get; set; }
+
+        /// <summary>
+        /// Gets or sets LdapSearchScope
+        /// </summary>
+        /// <value>LDAP Search scope options
+        /// </value>
+        public PSNetAppFilesLdapSearchScopeOpt LdapSearchScope { get; set; }
+
+
     }
 }

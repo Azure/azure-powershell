@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <summary>Creates the module instance.</summary>
         private Module()
         {
-            /// constructor
+            // constructor
             ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.DataMigration();
             _handler.Proxy = _webProxy;
             _pipeline = new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient()));

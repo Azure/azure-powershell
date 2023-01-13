@@ -32,7 +32,7 @@ The **Get-AzCosmosDBMongoDBCollectionThroughput** cmdlet gets the throughput pro
 
 ### Example 1
 ```powershell
-Get-AzCosmosDBMongoDBCollectionThroughput -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {databaseName} -Name {collectionName}
+Get-AzCosmosDBMongoDBCollectionThroughput -ResourceGroupName "rgName" -AccountName "accountName" -DatabaseName "databaseName" -Name "collectionName"
 ```
 
 ```output

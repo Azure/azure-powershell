@@ -30,7 +30,10 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Removes a given role assignment.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", 
+        SupportsShouldProcess = true, 
+        DefaultParameterSetName = ParameterSet.Empty), 
+        OutputType(typeof(PSRoleAssignment))]
     public class RemoveAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
@@ -160,8 +163,6 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             IEnumerable<PSRoleAssignment> roleAssignments = null;
             if (this.IsParameterBound(c => c.InputObject))
             {
@@ -196,7 +197,6 @@ namespace Microsoft.Azure.Commands.Resources
             };
 
             AuthorizationClient.ValidateScope(options.Scope, true);
-
             ConfirmAction(
                 string.Format(ProjectResources.RemovingRoleAssignment, ObjectId, Scope, RoleDefinitionName),
                 ObjectId,
@@ -207,9 +207,12 @@ namespace Microsoft.Azure.Commands.Resources
                     if (PassThru)
                     {
                         WriteObject(roleAssignments, enumerateCollection: true);
+                    } 
+                    else // If customer does not need the RA object print regular success method
+                    {
+                        WriteObject(string.Format(ProjectResources.SuccessfullRARemove, ObjectId, Scope, RoleDefinitionName));
                     }
                 });
-
         }
     }
 }

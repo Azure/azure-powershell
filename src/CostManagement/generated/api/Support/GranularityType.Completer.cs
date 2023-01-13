@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Daily".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Daily", "Daily", global::System.Management.Automation.CompletionResultType.ParameterValue, "Daily");
+                yield return new global::System.Management.Automation.CompletionResult("'Daily'", "Daily", global::System.Management.Automation.CompletionResultType.ParameterValue, "Daily");
             }
         }
     }

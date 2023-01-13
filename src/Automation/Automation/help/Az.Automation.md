@@ -147,7 +147,10 @@ Creates an Automation schedule.
 Creates a scheduled azure automation software update configuration.
 
 ### [New-AzAutomationSourceControl](New-AzAutomationSourceControl.md)
-Creates an A Automation source control.
+Creates an Azure Automation source control.
+
+### [New-AzAutomationUpdateManagementAzureQuery](New-AzAutomationUpdateManagementAzureQuery.md)
+Creates an Update Management Azure Query object.
 
 ### [New-AzAutomationVariable](New-AzAutomationVariable.md)
 Creates an Automation variable.
@@ -159,7 +162,7 @@ Creates a webhook for an Automation runbook.
 Publishes a runbook.
 
 ### [Register-AzAutomationDscNode](Register-AzAutomationDscNode.md)
-Registers an Azure virtual machine as a DSC node for an Automation account.
+Registers an Azure virtual machine running Windows OS as a DSC node for an Automation account.
 
 ### [Register-AzAutomationScheduledRunbook](Register-AzAutomationScheduledRunbook.md)
 Associates a runbook to a schedule.

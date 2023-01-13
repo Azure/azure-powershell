@@ -12,83 +12,72 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
-using System.Diagnostics;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Storage;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
-    public class StorageDataPlaneTests : RMTestBase
+    public class StorageDataPlaneTests : StorageTestRunner
     {
-        public XunitTracingInterceptor _logger;
         private string resourceGroupName;
         private string storageAccountName;
 
         public StorageDataPlaneTests(ITestOutputHelper output)
+            : base(output)
         {
             resourceGroupName = TestUtilities.GenerateName();
             storageAccountName = "sto" + resourceGroupName;
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestBlob()
         {
-            TestController.NewInstance.RunPsTest(_logger, $"Test-Blob -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
+            TestRunner.RunTestScript($"Test-Blob -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestFile()
         {
-            TestController.NewInstance.RunPsTest(_logger, $"Test-File -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
+            TestRunner.RunTestScript($"Test-File -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestBlobFileCopy()
         {
-            TestController.NewInstance.RunPsTest(_logger, $"Test-BlobFileCopy -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
+            TestRunner.RunTestScript($"Test-BlobFileCopy -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestTable()
         {
-            TestController.NewInstance.RunPsTest(_logger, $"Test-Table -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
+            TestRunner.RunTestScript($"Test-Table -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestQueue()
         {
-            TestController.NewInstance.RunPsTest(_logger, $"Test-Queue -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
+            TestRunner.RunTestScript($"Test-Queue -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestCommon()
         {
-            TestController.NewInstance.RunPsTest(_logger, $"Test-Common -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
+            TestRunner.RunTestScript($"Test-Common -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestDatalakeGen2()
         {
-            TestController.NewInstance.RunPsTest(_logger, $"Test-DatalakeGen2 -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
+            TestRunner.RunTestScript($"Test-DatalakeGen2 -ResourceGroupName \"{resourceGroupName}\" -StorageAccountName \"{storageAccountName}\"");
         }
     }
 }

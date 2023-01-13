@@ -1,14 +1,14 @@
 ---
-external help file: Az.StackHCI-help.xml
+external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
 schema: 2.0.0
 ---
 
 # Unregister-AzStackHCI
 
 ## SYNOPSIS
-Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and unregisters the on-premise cluster with Azure.
+Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
 The registered information available on the cluster is used to unregister the cluster if no parameters are passed.
 
 ## SYNTAX
@@ -17,17 +17,17 @@ The registered information available on the cluster is used to unregister the cl
 Unregister-AzStackHCI [[-SubscriptionId] <String>] [[-ResourceName] <String>] [[-TenantId] <String>]
  [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>] [[-GraphAccessToken] <String>]
  [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-Region] <String>] [[-ComputerName] <String>]
- [-UseDeviceAuthentication] [-DisableOnlyAzureArcServer] [[-Credential] <PSCredential>] [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-Credential] <PSCredential>] [-DisableOnlyAzureArcServer] [-Force] [-UseDeviceAuthentication] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and unregisters the on-premise cluster with Azure.
+Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
 The registered information available on the cluster is used to unregister the cluster if no parameters are passed.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1: 
 ```powershell
 Unregister-AzStackHCI
 ```
@@ -38,7 +38,7 @@ Result: Success
 
 Invoking on one of the cluster node
 
-### EXAMPLE 2
+### Example 2:
 ```powershell
 Unregister-AzStackHCI -ComputerName ClusterNode1
 ```
@@ -49,9 +49,9 @@ Result: Success
 
 Invoking from the management node
 
-### EXAMPLE 3
+### Example 3: 
 ```powershell
-Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
 ```
 
 ```output
@@ -60,9 +60,9 @@ Result: Success
 
 Invoking from WAC
 
-### EXAMPLE 4
+### Example 4: 
 ```powershell
-Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
 ```
 
 ```output
@@ -74,8 +74,8 @@ Invoking with all the parameters
 ## PARAMETERS
 
 ### -AccountId
-Specifies the ARM access token.
-Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+Specifies the AccoundId.
+Specifying this along with ArmAccessToken will avoid Azure interactive logon.
 
 ```yaml
 Type: System.String
@@ -83,7 +83,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 
 ### -ArmAccessToken
 Specifies the ARM access token.
-Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+Specifying this along with AccountId will avoid Azure interactive logon.
 
 ```yaml
 Type: System.String
@@ -99,7 +99,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -114,7 +114,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -130,7 +130,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 11
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -146,7 +146,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 ### -EnvironmentName
 Specifies the Azure Environment.
 Default is AzureCloud.
-Valid values are AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud, AzurePPE
+Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
 ```yaml
 Type: System.String
@@ -162,8 +162,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
-Default value: $AzureCloud
+Position: 7
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -178,14 +178,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -GraphAccessToken
-Specifies the Graph access token.
-Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+GraphAccessToken is deprecated.
 
 ```yaml
 Type: System.String
@@ -193,7 +192,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -208,7 +207,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -224,7 +223,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -232,7 +231,7 @@ Accept wildcard characters: False
 
 ### -ResourceName
 Specifies the resource name of the resource created in Azure.
-If not specified, on-premise cluster name is used.
+If not specified, on-premises cluster name is used.
 
 ```yaml
 Type: System.String
@@ -240,7 +239,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -255,7 +254,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -270,7 +269,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -286,7 +285,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -330,7 +329,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### PSCustomObject. Returns following Properties in PSCustomObject
-### Result: Success or Failed or Cancelled.
+Result: Success or Failed or Cancelled.
+
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
+

@@ -16,11 +16,10 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServerCrudTests : SqlTestsBase
+    public class ServerCrudTests : SqlTestRunner
     {
         public ServerCrudTests(ITestOutputHelper output) : base(output)
         {
@@ -30,105 +29,105 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCreate()
         {
-            RunPowerShellTest("Test-CreateServer");
+            TestRunner.RunTestScript("Test-CreateServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdate()
         {
-            RunPowerShellTest("Test-UpdateServer");
+            TestRunner.RunTestScript("Test-UpdateServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerGet()
         {
-            RunPowerShellTest("Test-GetServer");
+            TestRunner.RunTestScript("Test-GetServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerRemove()
         {
-            RunPowerShellTest("Test-RemoveServer");
+            TestRunner.RunTestScript("Test-RemoveServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCreateWithIdentity()
         {
-            RunPowerShellTest("Test-CreateServerWithIdentity");
+            TestRunner.RunTestScript("Test-CreateServerWithIdentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdateWithIdentity()
         {
-            RunPowerShellTest("Test-UpdateServerWithIdentity");
+            TestRunner.RunTestScript("Test-UpdateServerWithIdentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCreateWithFederatedClientId()
         {
-            RunPowerShellTest("Test-CreateServerWithFederatedClientId");
+            TestRunner.RunTestScript("Test-CreateServerWithFederatedClientId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdateWithFederatedClientId()
         {
-            RunPowerShellTest("Test-UpdatingServerWithFederatedClientId");
+            TestRunner.RunTestScript("Test-UpdatingServerWithFederatedClientId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdateWithoutIdentity()
         {
-            RunPowerShellTest("Test-UpdateServerWithoutIdentity");
+            TestRunner.RunTestScript("Test-UpdateServerWithoutIdentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCreateAndGetWithPublicNetworkAccess()
         {
-            RunPowerShellTest("Test-CreateAndGetServerWithPublicNetworkAccess");
+            TestRunner.RunTestScript("Test-CreateAndGetServerWithPublicNetworkAccess");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdateWithPublicNetworkAccess()
         {
-            RunPowerShellTest("Test-UpdateServerWithPublicNetworkAccess");
+            TestRunner.RunTestScript("Test-UpdateServerWithPublicNetworkAccess");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestOutboundFirewallRulesCRUD()
         {
-            RunPowerShellTest("Test-OutboundFirewallRulesCRUD");
+            TestRunner.RunTestScript("Test-OutboundFirewallRulesCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCreateAndGetWithRestrictOutboundNetworkAccess()
         {
-            RunPowerShellTest("Test-CreateAndGetServerWithRestrictOutboundNetworkAccess");
+            TestRunner.RunTestScript("Test-CreateAndGetServerWithRestrictOutboundNetworkAccess");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdateWithRestrictOutboundNetworkAccess()
         {
-            RunPowerShellTest("Test-UpdateServerWithRestrictOutboundNetworkAccess");
+            TestRunner.RunTestScript("Test-UpdateServerWithRestrictOutboundNetworkAccess");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateandUpdateServerWithMinimalTlsVersion()
         {
-            RunPowerShellTest("Test-CreateandUpdateServerWithMinimalTlsVersion");
+            TestRunner.RunTestScript("Test-CreateandUpdateServerWithMinimalTlsVersion");
         }
     }
 }

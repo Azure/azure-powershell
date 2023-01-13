@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -84,12 +85,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, HelpMessage = "Indicates whether AutoInflate is enabled")]
         public SwitchParameter EnableAutoInflate { get; set; }
 
+
         /// <summary>
         /// Upper limit of throughput units when AutoInflate is enabled.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 7, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]
-        [ValidateRange(0, 20)]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]
+        [ValidateRange(0, 40)]
         public int? MaximumThroughputUnits { get; set; }
+
 
         /// <summary>
         /// Indicates whether Kafka is enabled.
@@ -97,6 +100,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
         public SwitchParameter EnableKafka { get; set; }
+
 
         /// <summary>
         /// Indicates whether ZoneRedundant is enabled.
@@ -114,12 +118,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [ValidateNotNullOrEmpty]
         public string ClusterARMId { get; set; }
 
-        /// <summary>
-        /// Indicates whether Identity is enabled.
-        /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
-        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Identity for namespace")]
-        public SwitchParameter Identity { get; set; }
 
         /// <summary>
         /// Indicates whether DisableLocalAuth is enabled.
@@ -128,54 +126,155 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling SAS authentication for namespace")]
         public SwitchParameter DisableLocalAuth { get; set; }
 
+
+        /// <summary>
+        /// Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')")]
         [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
         public string IdentityType { get; set; }
 
+
+        /// <summary>
+        /// User Assigned Identity Id's
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
         public string[] IdentityId { get; set; }
 
+
+        /// <summary>
+        /// List of KeyVaultProperties
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
         public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
+
+
+        /// <summary>
+        /// List of KeyVaultProperties
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The minimum TLS version for the namespace to support, e.g. '1.2'")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The minimum TLS version for the namespace to support, e.g. '1.2'")]
+        [ValidateSet("1.0", "1.1", "1.2", IgnoreCase = true)]
+        public string MinimumTlsVersion { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            // Create a new EventHub namespaces
-            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamespace, Name, ResourceGroupName)))
             {
                 try
                 {
-                    WriteObject(Client.BeginCreateNamespace(
-                        ResourceGroupName,
-                        Name,
-                        Location,
-                        SkuName,
-                        SkuCapacity,
-                        tagDictionary,
-                        EnableAutoInflate.IsPresent,
-                        MaximumThroughputUnits,
-                        EnableKafka.IsPresent,
-                        ClusterARMId,
-                        ZoneRedundant.IsPresent,
-                        DisableLocalAuth.IsPresent,
-                        Identity.IsPresent,
-                        IdentityType,
-                        IdentityId,
-                        EncryptionConfig));
+                    EHNamespace createNamespacePayload = CreateNamespacePayload();
+                    PSNamespaceAttributes createdNamespace = UtilityClient.SendNamespaceCreateOrUpdateRequest(ResourceGroupName, Name, createNamespacePayload);
+                    WriteObject(createdNamespace);
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {
                     WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
                 }
             }
+        }
+
+        internal EHNamespace CreateNamespacePayload()
+        {
+            EHNamespace createNamespacePayload = new EHNamespace();
+
+            createNamespacePayload.Location = Location;
+
+            if (this.IsParameterBound(c => c.SkuName))
+            {
+                createNamespacePayload.Sku = new Sku()
+                {
+                    Name = SkuName,
+                    Tier = SkuName
+                };
+            }
+
+            if (this.IsParameterBound(c => c.SkuCapacity))
+            {
+                if (createNamespacePayload.Sku == null)
+                {
+                    throw new System.Exception("Missing -SkuName");
+                }
+
+                createNamespacePayload.Sku.Capacity = SkuCapacity;
+            }
+
+            if (this.IsParameterBound(c => c.Tag))
+            {
+                Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+
+                createNamespacePayload.Tags = tagDictionary;
+            }
+
+            if (this.IsParameterBound(c => c.EnableAutoInflate))
+            {
+                createNamespacePayload.IsAutoInflateEnabled = EnableAutoInflate.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.EnableKafka))
+            {
+                createNamespacePayload.KafkaEnabled = EnableKafka.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.ZoneRedundant))
+            {
+                createNamespacePayload.ZoneRedundant = ZoneRedundant.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.DisableLocalAuth))
+            {
+                createNamespacePayload.DisableLocalAuth = DisableLocalAuth.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.MaximumThroughputUnits))
+            {
+                createNamespacePayload.MaximumThroughputUnits = MaximumThroughputUnits;
+            }
+
+            if (this.IsParameterBound(c => c.ClusterARMId))
+            {
+                createNamespacePayload.ClusterArmId = ClusterARMId;
+            }
+
+            if (this.IsParameterBound(c => c.MinimumTlsVersion))
+            {
+                createNamespacePayload.MinimumTlsVersion = MinimumTlsVersion;
+            }
+
+            if (this.IsParameterBound(c => c.IdentityType))
+            {
+                createNamespacePayload.Identity = new Identity()
+                {
+                    Type = UtilityClient.FindIdentity(IdentityType)
+                };
+            }
+
+            if (this.IsParameterBound(c => c.IdentityId))
+            {
+                if (createNamespacePayload.Identity == null || createNamespacePayload.Identity.Type == ManagedServiceIdentityType.SystemAssigned || createNamespacePayload.Identity.Type == ManagedServiceIdentityType.None)
+                {
+                    UtilityClient.InvalidArgumentException("-IdentityType must be set to 'UserAssigned' or 'SystemAssigned, UserAssigned' to enable User Assigned Identitites");
+                }
+
+                createNamespacePayload.Identity.UserAssignedIdentities = UtilityClient.MapIdentityId(IdentityId);
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionConfig))
+            {
+                createNamespacePayload.Encryption = new Encryption()
+                {
+                    KeyVaultProperties = UtilityClient.MapEncryptionConfig(EncryptionConfig),
+                    KeySource = KeySource.MicrosoftKeyVault
+                };
+            }
+
+            return createNamespacePayload;
         }
     }
 }

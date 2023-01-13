@@ -24,13 +24,19 @@ namespace Microsoft.Azure.Commands.Automation.Model
     public class NodeConfiguration
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DscNodeConfiguration"/> class.
+        /// Initializes a new instance of the <see cref="NodeConfiguration"/> class.
         /// </summary>
+        /// <param name="resourceGroupName">
+        /// The resource group name.
+        /// </param>
         /// <param name="accountName">
         /// The account name.
         /// </param>
         /// <param name="nodeConfiguration">
         /// The NodeConfiguration.
+        /// </param>
+        /// <param name="rollUpStatus">
+        /// The roll up status.
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>

@@ -57,6 +57,7 @@ contosopool2                   Idle: 1, Rebooting: 1, Total: 2                  
 List node counts per node state for pools under current batch account context.
 
 ### Example 2
+<!-- Skip: Output cannot be splitted from code -->
 
 ```powershell
 Get-AzBatchPoolNodeCount -BatchContext $batchContext -PoolId "contosopool1"

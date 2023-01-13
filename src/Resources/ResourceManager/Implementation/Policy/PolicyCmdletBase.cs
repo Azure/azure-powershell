@@ -70,7 +70,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Converts the resource object collection to a PsPolicyAssignment collection.
         /// </summary>
-        /// <param name="resourceType">The resource type of the objects to create</param>
         /// <param name="resources">The policy definition resource object.</param>
         protected PsPolicyAssignment[] GetOutputPolicyAssignments(params JToken[] resources)
         {
@@ -107,7 +106,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Converts the resource object collection to a PsPolicyExemption collection.
         /// </summary>
-        /// <param name="resourceType">The resource type of the objects to create</param>
         /// <param name="resources">The policy definition resource object.</param>
         protected PsPolicyExemption[] GetOutputPolicyExemptions(params JToken[] resources)
         {

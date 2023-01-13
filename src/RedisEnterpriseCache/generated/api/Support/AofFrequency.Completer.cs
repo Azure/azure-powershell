@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "1s".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("1s", "1s", global::System.Management.Automation.CompletionResultType.ParameterValue, "1s");
+                yield return new global::System.Management.Automation.CompletionResult("'1s'", "1s", global::System.Management.Automation.CompletionResultType.ParameterValue, "1s");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "always".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("always", "always", global::System.Management.Automation.CompletionResultType.ParameterValue, "always");
+                yield return new global::System.Management.Automation.CompletionResult("'always'", "always", global::System.Management.Automation.CompletionResultType.ParameterValue, "always");
             }
         }
     }

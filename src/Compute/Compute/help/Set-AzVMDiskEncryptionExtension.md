@@ -48,12 +48,22 @@ Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
 
 ### MigrateADEVersionParameterSet
 ```
-Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String> [-Migrate]
+Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
+ [[-KeyEncryptionAlgorithm] <String>] [[-VolumeType] <String>] [[-SequenceVersion] <String>]
+ [[-TypeHandlerVersion] <String>] [[-Name] <String>] [[-Passphrase] <String>] [-Force]
+ [-DisableAutoUpgradeMinorVersion] [-SkipVmBackup] [-ExtensionType <String>] [-ExtensionPublisherName <String>]
+ [-EncryptFormatAll] [-Migrate] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### MigrateADEVersionRecoveryParameterSet
 ```
-Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String> [-MigrationRecovery]
+Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
+ [[-KeyEncryptionAlgorithm] <String>] [[-VolumeType] <String>] [[-SequenceVersion] <String>]
+ [[-TypeHandlerVersion] <String>] [[-Name] <String>] [[-Passphrase] <String>] [-Force]
+ [-DisableAutoUpgradeMinorVersion] [-SkipVmBackup] [-ExtensionType <String>] [-ExtensionPublisherName <String>]
+ [-EncryptFormatAll] [-MigrationRecovery] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +105,7 @@ $params = New-Object PSObject -Property @{
     VolumeType = "All"
 }
 
-$params | Set-AzVmDiskEncryptionExtension
+$params | Set-AzVMDiskEncryptionExtension
 ```
 
 This example sends parameters using pipelined input to enable encryption on a VM, without specifying AD credentials.
@@ -140,7 +150,7 @@ $aadClientCertThumbprint= $cert.Thumbprint
 
 #Upload pfx to KeyVault 
 $KeyVaultSecretName = "MyAADCert"
-$FileContentBytes = get-content $CertPath -Encoding Byte
+$FileContentBytes = Get-Content $CertPath -Encoding Byte
 $FileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $JSONObject = @"
     { 
@@ -219,7 +229,7 @@ $AADClientCertThumbprint= $Cert.Thumbprint
 
 #Upload pfx to KeyVault 
 $KeyVaultSecretName = "MyAADCert"
-$FileContentBytes = get-content $CertPath -Encoding Byte
+$FileContentBytes = Get-Content $CertPath -Encoding Byte
 $FileContentEncoded = [System.Convert]::ToBase64String($FileContentBytes)
 $JSONObject = @"
     { 
@@ -333,7 +343,7 @@ Specifies the resource ID of the **KeyVault** to which the virtual machine encry
 
 ```yaml
 Type: System.String
-Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
+Parameter Sets: SinglePassParameterSet, AADClientSecretParameterSet, AADClientCertParameterSet
 Aliases:
 
 Required: True
@@ -348,7 +358,7 @@ Specifies the **KeyVault** URL to which the virtual machine encryption keys shou
 
 ```yaml
 Type: System.String
-Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
+Parameter Sets: SinglePassParameterSet, AADClientSecretParameterSet, AADClientCertParameterSet
 Aliases:
 
 Required: True
@@ -418,36 +428,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Migrate
-Initiates migration of the VM to latest Azure Disk Encryption extension version (ADE without AAD credentials).
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: MigrateADEVersionParameterSet
-Aliases:
-
-Required: true
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MigrationRecovery
-Initiates migration recovery for failures during migration of ADE extension version with AAD to ADE extension version without AAD.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: MigrateADEVersionRecoveryParameterSet
-Aliases:
-
-Required: true
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -KeyEncryptionAlgorithm
 Specifies the algorithm that is used to wrap and unwrap the key encryption key of the virtual machine.
 The default value is RSA-OAEP.
@@ -471,7 +451,7 @@ This must be the full versioned URL.
 
 ```yaml
 Type: System.String
-Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
+Parameter Sets: SinglePassParameterSet, AADClientSecretParameterSet, AADClientCertParameterSet
 Aliases:
 
 Required: False
@@ -487,7 +467,7 @@ This must be a full versioned URL.
 
 ```yaml
 Type: System.String
-Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
+Parameter Sets: SinglePassParameterSet, AADClientSecretParameterSet, AADClientCertParameterSet
 Aliases:
 
 Required: False
@@ -497,8 +477,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Migrate
+Initiates migration of the VM to latest Azure Disk Encryption extension version (ADE without AAD credentials).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: MigrateADEVersionParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MigrationRecovery
+Initiates migration recovery for failures during migration of ADE extension version with AAD to ADE extension version without AAD.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: MigrateADEVersionRecoveryParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
-Specifies the name of the Azure Resource Manager resource that represents the extension. If the *Name* parameter is omitted, the installed extension will be named AzureDiskEncryption on Windows virtual machines and AzureDiskEncryptionForLinux on Linux virtual machines.
+Specifies the name of the Azure Resource Manager resource that represents the extension. If the *Name* parameter is omitted, the installed extension will be named AzureDiskEncryption on Windows virtual machines and AzureDiskEncryptionForLinux on Linux virtual machines.
 
 
 ```yaml

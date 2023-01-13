@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewscanruleset
+online version: https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewscanruleset
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Deletes a scan ruleset
 
 ### Example 1: Remove custom scanruleset by name
 ```powershell
-PS C:\> Remove-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
+Remove-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
+```
 
+```output
 CreatedAt                            : 2/17/2022 2:30:15 PM
 Description                          : test desc
 ExcludedSystemClassification         : {MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER, MICROSOFT.SECURITY.COMMON_PASSWORDS, MICROSOFT.MISCELLANEOUS.IPADDRESS}

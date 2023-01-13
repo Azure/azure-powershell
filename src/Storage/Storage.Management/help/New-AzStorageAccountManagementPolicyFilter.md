@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/Az.storage/new-Azstorageaccountmanagementpolicyfilter
+online version: https://learn.microsoft.com/powershell/module/Az.storage/new-Azstorageaccountmanagementpolicyfilter
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Creates a ManagementPolicy rule filter object, which can be used in New-AzStorag
 
 ```
 New-AzStorageAccountManagementPolicyFilter [-PrefixMatch <String[]>] [-BlobType <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-BlobIndexMatch <PSTagFilter[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,13 +23,16 @@ The **New-AzStorageAccountManagementPolicyFilter** cmdlet creates a ManagementPo
 ## EXAMPLES
 
 ### Example 1: Creates a ManagementPolicy rule filter object, then add it to a management policy rule and set to a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
-PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch blobprefix1,blobprefix2 -BlobType appendBlob,blockBlob
+PS C:\>$blobindexmatch1 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag1" -Value "value1"
+PS C:\>$blobindexmatch2 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag2" -Value "value2"
+PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch blobprefix1,blobprefix2 -BlobType appendBlob,blockBlob -BlobIndexMatch $blobindexmatch1,$blobindexmatch2
 PS C:\>$filter 
 
-PrefixMatch                BlobTypes  
------------                ---------  
-{blobprefix1, blobprefix2} {appendBlob, blockBlob}
+PrefixMatch                BlobTypes               BlobIndexMatch
+-----------                ---------               --------------
+{blobprefix1, blobprefix2} {appendBlob, blockBlob} {tag1, tag2}  
 
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
 PS C:\>$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
@@ -39,6 +42,21 @@ PS C:\>$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myreso
 This command create a ManagementPolicy rule filter object. Then add it to a management policy rule and set to a Storage account.
 
 ## PARAMETERS
+
+### -BlobIndexMatch
+An array of blob index tag based filters, there can be at most 10 tag filters.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSTagFilter[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BlobType
 An array of strings for blobtypes to be match. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
@@ -88,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

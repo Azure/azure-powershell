@@ -79,6 +79,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public KeyVaultAndSecretReference DiskEncryptionKey { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
@@ -101,6 +107,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Additional authentication requirements when exporting or uploading to a disk or snapshot.")]
+        [PSArgumentCompleter("AzureActiveDirectory", "None")]
+        public string DataAccessAuthMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
+        [PSArgumentCompleter("X64", "Arm64")]
+        public string Architecture { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("SnapshotUpdate", "New"))
@@ -117,8 +137,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // Encryption
             Encryption vEncryption = null;
 
+            // ExtendedLocation
+            ExtendedLocation vExtendedLocation = null;
+
             // Sku
             SnapshotSku vSku = null;
+
+            SupportedCapabilities vSupportedCapabilities = null;
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
@@ -127,6 +152,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
                 vEncryptionSettingsCollection.Enabled = (bool) this.EncryptionSettingsEnabled;
+            }
+
+            if (this.IsParameterBound(c => c.EdgeZone))
+            {
+                vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
             }
 
             if (this.IsParameterBound(c => c.DiskEncryptionKey))
@@ -193,6 +223,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
+            if (this.IsParameterBound(c => c.Architecture))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.Architecture = this.Architecture;
+            }
+
             var vSnapshotUpdate = new PSSnapshotUpdate
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -202,7 +241,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Encryption = vEncryption,
                 Sku = vSku,
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
-                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null
+                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null,
+                SupportedCapabilities = vSupportedCapabilities
             };
 
             WriteObject(vSnapshotUpdate);

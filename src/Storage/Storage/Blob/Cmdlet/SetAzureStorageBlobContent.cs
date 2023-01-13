@@ -244,6 +244,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// upload file to azure blob
         /// </summary>
         /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="filePath">local file path</param>
         /// <param name="blob">destination azure blob object</param>
         internal virtual async Task Upload2Blob(long taskId, IStorageBlobManagement localChannel, string filePath, StorageBlob.CloudBlob blob)
@@ -330,7 +331,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// set azure blob content
         /// </summary>
         /// <param name="fileName">local file path</param>
-        /// <param name="containerName">container name</param>
         /// <param name="blobName">blob name</param>
         /// <returns>null if user cancel the overwrite operation, otherwise return destination blob object</returns>
         internal void SetAzureBlobContent(string fileName, string blobName)
@@ -406,9 +406,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// set blob AccessTier
         /// </summary>
-        /// <param name="azureBlob">CloudBlob object</param>
-        /// <param name="blockBlobTier">Block Blob Tier</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <param name="pageBlobTier">Page Blob Tier</param>
+        /// <param name="standardBlobTier">Access condition to source if it's file/blob in azure.</param>
         private async Task SetBlobTier(IStorageBlobManagement localChannel, StorageBlob.CloudBlob blob, PremiumPageBlobTier? pageBlobTier = null, StandardBlobTier? standardBlobTier = null)
         {
             if (pageBlobTier == null && standardBlobTier == null)

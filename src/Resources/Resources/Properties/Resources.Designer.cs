@@ -1025,6 +1025,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Succesfully removed role assignment for AD object &apos;{0}&apos; on scope &apos;{1}&apos; with role definition &apos;{2}&apos;.
+        /// </summary>
+        internal static string SuccessfullRARemove {
+            get {
+                return ResourceManager.GetString("SuccessfullRARemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Template is valid..
         /// </summary>
         internal static string TemplateValid {

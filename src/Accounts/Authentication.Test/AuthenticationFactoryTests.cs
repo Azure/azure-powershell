@@ -37,6 +37,7 @@ using Azure.Identity;
 using Moq;
 using System.ServiceModel.Channels;
 using Azure.Core;
+using Microsoft.Azure.Commands.TestFx.Mocks;
 
 namespace Common.Authentication.Test
 {

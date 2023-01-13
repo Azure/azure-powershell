@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/Get-AzSqlInstanceTransparentDataEncryptionProtector
+online version: https://learn.microsoft.com/powershell/module/Az.sql/Get-AzSqlInstanceTransparentDataEncryptionProtector
 schema: 2.0.0
 ---
 
@@ -53,7 +53,7 @@ This command gets the TDE protector for the managed instance named ContosoManage
 ### Example 2: Using managed instance object
 ```powershell
 $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-Get-AzSqlInstanceTransparentDataEncryptionProtector -Instance $managedInstance 'ContosoManagedInstanceName'
+Get-AzSqlInstanceTransparentDataEncryptionProtector -Instance $managedInstance
 ```
 
 ```output

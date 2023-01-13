@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/powershell/module/az.peering/set-azpeerasn
+online version: https://learn.microsoft.com/powershell/module/az.peering/set-azpeerasn
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Allows you to update contact information for a PeerAsn on the subscription.
 ### Example 1
 ```powershell
 #Get the Peer ASN object
-Get-AzPeerAsn -PeerName Contoso | Set-AzPeerAsn -Email noc1@contoso.com
+Get-AzPeerAsn -Name Contoso | Set-AzPeerAsn
 ```
 
 ```output

@@ -20,13 +20,9 @@ Cancel a ScriptExecution in a private cloud
 .Description
 Cancel a ScriptExecution in a private cloud
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -64,7 +60,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwarescriptexecution
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwarescriptexecution
 #>
 function Remove-AzVMwareScriptExecution {
 [OutputType([System.Boolean])]
@@ -177,6 +173,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareScriptExecution_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareScriptExecution_DeleteViaIdentity';
@@ -190,6 +187,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -198,15 +196,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

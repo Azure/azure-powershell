@@ -120,7 +120,7 @@ Function Move-Generation2Master {
         #EndRegion
 
         #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
-        $generateInfo = @{}
+        $generateInfo = [ordered]@{}
         $repo = "https://github.com/Azure/azure-rest-api-specs"
         $commit = git ls-remote $repo HEAD
         $generateInfo.Add("swagger_commit", $commit.Substring(0, 40))
@@ -135,7 +135,7 @@ Function Move-Generation2Master {
             $info = $ex.Name.Split('@')
             $packageName = $info[1]
             $version = $info[2]
-            if ($generateInfo.ContainsKey($packageName)) {
+            if ($generateInfo.Contains($packageName)) {
                 $preVersion = $generateInfo[$packageName]
                 $versionFields = $version.Split('.')
                 $preVersionFields = $preVersion.Split('.')
@@ -361,11 +361,11 @@ Function Update-MappingJson {
         $MappingPath = Join-Path -Path (Join-Path -Path $PSScriptRoot -ChildPath '..') -ChildPath "CreateMappings_rules.json"
         $MappingObject = Get-Content -Path $MappingPath | ConvertFrom-Json
         Foreach ($Item in $MappingObject) {
-            If ($ModuleName -eq $Item.regex) {
+            If ($ModuleName -eq $Item.regex -or $ModuleName -eq $Item.module) {
                 return
             }
         }
-        $MappingObject = $MappingObject + @{regex = $ModuleName; alias = $ModuleName }
+        $MappingObject = $MappingObject + @{module = $ModuleName; alias = $ModuleName }
         ConvertTo-Json $MappingObject -Depth 1 | Set-Content -Path $MappingPath
     }
 }

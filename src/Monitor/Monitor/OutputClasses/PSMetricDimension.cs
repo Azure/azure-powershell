@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Initializes a new instance of the MetricDimension class.
         /// </summary>
-        /// <param name="dimension">Name of the dimension.</param>
-        /// <param name="includeValues">List dimension includeValues.</param>
-        /// <param name="excludeValues">List of dimension excludeValues.</param>
+        /// <param name="dimensionName">Name of the dimension.</param>
+        /// <param name="valuesToInclude">List dimension includeValues.</param>
+        /// <param name="valuesToExclude">List of dimension excludeValues.</param>
 
         public PSMetricDimension(string dimensionName, string[] valuesToInclude, string[] valuesToExclude)
         {

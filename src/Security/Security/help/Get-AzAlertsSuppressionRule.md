@@ -35,14 +35,14 @@ Gets or list alerts suppression rules.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAlertsSuppressionRule
+Get-AzAlertsSuppressionRule
 ```
 
 List all alerts suppression rules in the subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAlertsSuppressionRule -Name "Example"
+Get-AzAlertsSuppressionRule -Name "Example"
 ```
 
 Gets an alerts suppression rule with the name "Example".

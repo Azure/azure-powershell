@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C83A0465-45EF-4FCC-B706-D5DF819664F0
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkinterface
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworkinterface
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **Remove-AzNetworkInterface** cmdlet removes an Azure network interface.
 
 ### Example 1: Remove a network interface
 ```powershell
-Remove-AzNetworkInterface -Name "NetworkInterface1" -ResourceGroup "ResourceGroup1"
+Remove-AzNetworkInterface -Name "NetworkInterface1" -ResourceGroupName "ResourceGroup1"
 ```
 
 This command removes the network interface NetworkInterface1 in resource group ResourceGroup1.

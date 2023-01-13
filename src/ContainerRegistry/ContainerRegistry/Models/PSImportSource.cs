@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="PSArgumentNullException">
         /// Thrown if validation fails
         /// </exception>
         private void Validate()

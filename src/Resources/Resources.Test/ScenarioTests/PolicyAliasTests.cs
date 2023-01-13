@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.TestFx;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Azure.ServiceManagement.Common.Models;

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageblobinventorypolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageblobinventorypolicy
 schema: 2.0.0
 ---
 
@@ -36,6 +36,7 @@ The **Get-AzStorageBlobInventoryPolicy** cmdlet gets blob inventory policy from 
 ## EXAMPLES
 
 ### Example 1: Get blob inventory policy from a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $policy = Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 

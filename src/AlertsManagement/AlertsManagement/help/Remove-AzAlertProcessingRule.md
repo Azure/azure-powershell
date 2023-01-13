@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/remove-azactionrule
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/remove-azactionrule
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Remove-AzAlertProcessingRule -InputObject <PSActionRule> [-DefaultProfile <IAzur
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AlertProcessingRuleName"
+Remove-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AlertProcessingRuleName"
 ```
 
 This cmdlet deletes the alert processing rule with name AlertProcessingRuleName in resource group test-rg

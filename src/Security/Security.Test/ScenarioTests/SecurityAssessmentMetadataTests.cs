@@ -12,36 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecurityAssessmentMetadataTests
+    public class SecurityAssessmentMetadataTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecurityAssessmentMetadataTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecurityAssessmentMetadataTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAllAssessmentMetadata()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AllSecurityAssessmentMetadata");
+            TestRunner.RunTestScript("Get-AllSecurityAssessmentMetadata");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAndDeleteAssessmentMetadata()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "CreateAndDelete-AzSecurityAssessmentMetadata");
+            TestRunner.RunTestScript("CreateAndDelete-AzSecurityAssessmentMetadata");
         }
     }
 }

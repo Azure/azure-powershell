@@ -18,30 +18,52 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSKeyVaultProperties
     {
-        public PSKeyVaultProperties(string keyVaultUri = default, string keyName = default, string keyVersion = default, int keyRsaSize = default)
+        private PSKeyVaultProperties(string keyVaultUri, string keyName, string keyVersion)
         {
             KeyVaultUri = keyVaultUri;
             KeyName = keyName;
             KeyVersion = keyVersion;
-            KeyRsaSize = keyRsaSize;
         }
 
-        public static PSKeyVaultProperties CreateProperties(string keyVaultUri = default, string keyName = default, string keyVersion = default, int keyRsaSize = default)
-        {
-            if (keyVaultUri == null && keyName == null && keyVersion == null && keyRsaSize == 0)
-            {
-                return null;
-            }
-
-            return new PSKeyVaultProperties(keyVaultUri, keyName, keyVersion, keyRsaSize);
-        }
-
-        public PSKeyVaultProperties(KeyVaultProperties kv)
+        /// <summary>
+        /// Creates an instance of PSKeyVaultProperties taht serves the response from the SDK only
+        /// KeyRsaSize property can be set with a value only from the SDK response - not user configurable
+        /// </summary>
+        /// <param name="kv"></param>
+        private PSKeyVaultProperties(KeyVaultProperties kv)
         {
             this.KeyVaultUri = kv.KeyVaultUri;
             this.KeyName = kv.KeyName;
             this.KeyVersion = kv.KeyVersion;
+            this.KeyRsaSize = kv.KeyRsaSize;
         }
+
+        /// <summary>
+        /// Creates an instance of PSKeyVaultProperties
+        /// </summary>
+        /// <param name="keyVaultUri"></param>
+        /// <param name="keyName"></param>
+        /// <param name="keyVersion"></param>
+        /// <returns>PSKeyVaultProperties object ,if no value was passed a null will be returned</returns>
+        public static PSKeyVaultProperties CreateKVProperties(string keyVaultUri = null, string keyName = null, string keyVersion = null)
+        {
+            if (keyVaultUri == null && keyName == null && keyVersion == null)
+            {
+                return null;
+            }
+
+            return new PSKeyVaultProperties(keyVaultUri, keyName, keyVersion);
+        }
+
+        /// <summary>
+        /// Creates an instance of PSKeyVaultProperties taht serves the response from the SDK only
+        /// </summary>
+        /// <returns>An instance of PSKeyVaultProperties</returns>
+        public static PSKeyVaultProperties GetKVPropertiesFromSDK(KeyVaultProperties kv)
+        {
+            return new PSKeyVaultProperties(kv);
+        }
+
 
         public string KeyVaultUri { get; set; }
 
@@ -49,11 +71,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public string KeyVersion { get; set; }
 
-        public int KeyRsaSize { get; set; }
+        public int? KeyRsaSize { get; set; }
 
         public KeyVaultProperties GetKeyVaultProperties()
         {
-            return new KeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion, this.KeyRsaSize);
+            return new KeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion);
         }
     }
 }

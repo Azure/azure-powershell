@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ResourceGraph",
-  "ModuleVersion": "0.12.0",
+  "ModuleVersion": "0.13.0",
   "Cmdlets": [
     {
       "VerbName": "Search",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceGraph.Models",
             "Name": "Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse`1[System.Management.Automation.PSObject]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse`1[[System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse`1[[System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "GenericTypeArguments": [
               "System.Management.Automation.PSObject"
             ]
@@ -53,6 +53,15 @@
             "Name": "System.String[]",
             "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "UseTenantScope",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -325,7 +334,7 @@
           ]
         },
         {
-          "Name": "TenantScopedQuery",
+          "Name": "ManagementGroupScopedQuery",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -338,7 +347,132 @@
                 },
                 "ValidateNotNullOrEmpty": false
               },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AllowPartialScope",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
               "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Query",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "First",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 1000,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Skip",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SkipToken",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "TenantScopedQuery",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "UseTenantScope",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -466,7 +600,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResultKind": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind]",
               "TimeModified": "System.Nullable`1[System.DateTime]",
@@ -513,7 +647,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -550,7 +684,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -560,7 +694,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -683,7 +817,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -699,7 +833,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -830,7 +964,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -846,7 +980,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -912,7 +1046,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -967,7 +1101,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -983,7 +1117,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1083,7 +1217,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1099,7 +1233,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1172,7 +1306,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResultKind": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind]",
               "TimeModified": "System.Nullable`1[System.DateTime]",
@@ -1285,7 +1419,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1295,7 +1429,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1492,7 +1626,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1508,7 +1642,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1621,7 +1755,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -1658,7 +1792,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1668,7 +1802,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1799,7 +1933,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1815,7 +1949,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1896,7 +2030,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -1951,7 +2085,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1967,7 +2101,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2082,7 +2216,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2098,7 +2232,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2186,7 +2320,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResultKind": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind]",
               "TimeModified": "System.Nullable`1[System.DateTime]",
@@ -2232,7 +2366,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -2305,7 +2439,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2315,7 +2449,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2497,7 +2631,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2513,7 +2647,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2579,7 +2713,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -2694,7 +2828,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2710,7 +2844,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2870,7 +3004,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2886,7 +3020,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep[], Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3135,7 +3269,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind"
       ]
@@ -3143,7 +3277,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -3239,7 +3373,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep, Az.ResourceGraph.private, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.SendAsyncStep, Az.ResourceGraph.private, Version=0.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: BB513A53-48A0-4F8F-93F0-D3DFA2C3D523
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverrecommendedaction
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlserverrecommendedaction
 schema: 2.0.0
 ---
 
@@ -121,8 +121,7 @@ This command gets a list of all recommended actions of for the SQL Server Adviso
 
 ### Example 2: Get a single recommended action for an Advisor
 ```powershell
-Get-AzSqlServerRecommendedAction -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex" -RecommendedActionName 
-IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
+Get-AzSqlServerRecommendedAction -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex" -RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
 ```
 
 ```output

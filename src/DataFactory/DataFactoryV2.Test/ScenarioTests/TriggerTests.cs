@@ -12,76 +12,72 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataFactoryV2.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
-    public class TriggerTests : DataFactoriesScenarioTestsBase
+    public class TriggerTests : DataFactoryV2TestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public TriggerTests(Xunit.Abstractions.ITestOutputHelper output)
+        public TriggerTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTrigger()
         {
-            RunPowerShellTest(_logger, "Test-Trigger");
+            TestRunner.RunTestScript("Test-Trigger");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartTriggerThrowsWithoutPipeline()
         {
-            RunPowerShellTest(_logger, "Test-StartTriggerThrowsWithoutPipeline");
+            TestRunner.RunTestScript("Test-StartTriggerThrowsWithoutPipeline");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestInvokeAndStopTriggerRun()
         {
-            RunPowerShellTest(_logger, "Test-TriggerInvokeAndStop");
+            TestRunner.RunTestScript("Test-TriggerInvokeAndStop");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTriggerRun()
         {
-            RunPowerShellTest(_logger, "Test-TriggerRun");
+            TestRunner.RunTestScript("Test-TriggerRun");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTriggerWithResourceId()
         {
-            RunPowerShellTest(_logger, "Test-TriggerWithResourceId");
+            TestRunner.RunTestScript("Test-TriggerWithResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobEventTriggerSubscriptions()
         {
-            RunPowerShellTest(_logger, "Test-BlobEventTriggerSubscriptions");
+            TestRunner.RunTestScript("Test-BlobEventTriggerSubscriptions");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobEventTriggerSubscriptionsByInputObject()
         {
-            RunPowerShellTest(_logger, "Test-BlobEventTriggerSubscriptionsByInputObject");
+            TestRunner.RunTestScript("Test-BlobEventTriggerSubscriptionsByInputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobEventTriggerSubscriptionsByResourceId()
         {
-            RunPowerShellTest(_logger, "Test-BlobEventTriggerSubscriptionsByResourceId");
+            TestRunner.RunTestScript("Test-BlobEventTriggerSubscriptionsByResourceId");
         }
     }
 }

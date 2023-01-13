@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class ServerEndpointRecallStatusConverter.
-    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointRecallStatus, StorageSyncModels.ServerEndpointRecallStatus}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointRecallStatus, ServerEndpointRecallStatus}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSServerEndpointRecallStatus, StorageSyncModels.ServerEndpointRecallStatus}" />
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpointRecallStatus, ServerEndpointRecallStatus}" />
     public class ServerEndpointRecallStatusConverter : ConverterBase<PSServerEndpointRecallStatus, StorageSyncModels.ServerEndpointRecallStatus>
     {
         /// <summary>
