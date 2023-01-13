@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void QueryError()
+        public void QueryError() // fails
         {
             TestRunner.RunTestScript("Search-AzureRmGraph-QueryError");
         }

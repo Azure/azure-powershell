@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestLinkedStorageAccount()
+        public void TestLinkedStorageAccount() // fails
         {
             TestRunner.RunTestScript("Test-LinkedStorageAccount");
         }
