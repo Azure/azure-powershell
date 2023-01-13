@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringRpUnbilledPrefix
 }
 
 Describe 'Get-AzPeeringRpUnbilledPrefix' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $prefixes =  Get-AzPeeringRpUnbilledPrefix -PeeringName CdnPeering -ResourceGroupName Seattle
+            $prefixes.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 }
