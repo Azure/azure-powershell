@@ -14,7 +14,7 @@ trigger:
       - .github
 
 variables:
-  GithubToken: $(GITHUB_TOKEN)
+  NugetSecurityAnalysisWarningLevel: $(NugetSecurityAnalysisWarningLevel)
 jobs:
 - job: UpdateJson
   displayName: Update Json
