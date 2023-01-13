@@ -23,6 +23,7 @@
 * Added a parameter named `UseIdentity` for `Set-AzSqlServerAudit`, `Set-AzSqlDatabaseAudit`, `Set-AzSqlServerMSSupportAudit`
 * Added `IsManagedIdentityInUse` property to the output of `Get-AzSqlServerMSSupportAudit`
 * Added `PreferredEnclaveType` parameter to `New-AzSqlDatabase`, `Get-AzSqlDatabase` and `Set-AzSqlDatabase` cmdlet
+* Added optional property `HAReplicaCount` to `Restore-AzSqlDatabase`
 
 ## Version 4.1.0
 * Added new cmdlets for CRUD operations on SQL server IPv6 Firewall rules
