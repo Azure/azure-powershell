@@ -40,7 +40,8 @@ jobs:
       buildType: 'specific'
       project: $(ProjectToDownloadArtifacts)
       definition: $(BuildPipelineDefinitionId)
-      buildVersionToDownload: 'latest'
+      buildVersionToDownload: 'latestFromBranch'
+      branchName: 'refs/heads/main'
       artifactName: 'artifacts'
       targetPath: $(Pipeline.Workspace)
 

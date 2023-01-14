@@ -39,8 +39,8 @@ param (
 Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -Force
 
 $liveTestDir = Join-Path -Path $DataLocation -ChildPath "LiveTestAnalysis" | Join-Path -ChildPath "Raw"
-if (Test-Path -LiteralPath $liveTestDir) {
-    $liveTestResults = Get-ChildItem -Path $liveTestDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
+$liveTestResults = Get-ChildItem -Path $liveTestDir -Filter "*.csv" -File -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
+if (![string]::IsNullOrWhiteSpace($liveTestResults) -and (Test-Path -LiteralPath $liveTestResults -PathType Leaf)) {
     Import-KustoDataFromCsv `
         -ServicePrincipalTenantId $ServicePrincipalTenantId `
         -ServicePrincipalId $ServicePrincipalId `
@@ -52,12 +52,12 @@ if (Test-Path -LiteralPath $liveTestDir) {
         -CsvFile $liveTestResults
 }
 else {
-    Write-Warning "No live test data generated."
+    Write-Host "##[warning]No live test data was found."
 }
 
 $testCoverageDir = Join-Path -Path $DataLocation -ChildPath "TestCoverageAnalysis" | Join-Path -ChildPath "Raw"
-if (Test-Path -LiteralPath $testCoverageDir) {
-    $testCoverageResults = Get-ChildItem -Path $testCoverageDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
+$testCoverageResults = Get-ChildItem -Path $testCoverageDir -Filter "*.csv" -File -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
+if (![string]::IsNullOrWhiteSpace($testCoverageResults) -and (Test-Path -LiteralPath $testCoverageResults -PathType Leaf)) {
     Import-KustoDataFromCsv `
         -ServicePrincipalTenantId $ServicePrincipalTenantId `
         -ServicePrincipalId $ServicePrincipalId `
@@ -69,5 +69,5 @@ if (Test-Path -LiteralPath $testCoverageDir) {
         -CsvFile $testCoverageResults
 }
 else {
-    Write-Warning "No test coverage data generated."
+    Write-Host "##[warning]No test coverage data was found."
 }
