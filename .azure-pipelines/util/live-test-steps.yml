@@ -40,7 +40,8 @@ jobs:
       buildType: 'specific'
       project: $(ProjectToDownloadArtifacts)
       definition: $(BuildPipelineDefinitionId)
-      buildVersionToDownload: 'latest'
+      buildVersionToDownload: 'latestFromBranch'
+      branchName: 'refs/heads/main'
       artifactName: 'artifacts'
       targetPath: $(Pipeline.Workspace)
 
@@ -91,10 +92,11 @@ jobs:
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
       arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -BuildId $(Build.BuildId) -OSVersion ${{ parameters.vmImage }} -PSVersion ${{ parameters.psVersion }} -RepoLocation $(Build.SourcesDirectory)'
-      failOnStderr: true
 
   - task: PowerShell@2
     displayName: Save live test results to Kusto
+    condition: succeededOrFailed()
+    retryCountOnTaskFailure: 3
     inputs:
       pwsh: true
       targetType: filePath
