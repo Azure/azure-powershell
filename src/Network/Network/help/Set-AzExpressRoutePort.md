@@ -46,6 +46,13 @@ $erport.SciState = 'Disabled'
 Set-AzExpressRoutePort -ExpressRoutePort $erport
 ```
 
+### Example 4
+```powershell
+$erport = Get-AzExpressRoutePort -Name $PortName -ResourceGroupName $rg
+$erport.BillingType = 'UnlimitedData'
+Set-AzExpressRoutePort -ExpressRoutePort $erport
+```
+
 ## PARAMETERS
 
 ### -AsJob
