@@ -17,46 +17,46 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzRelayAuthorizationRule'
 Describe 'New-AzRelayAuthorizationRule' {
     It 'RelayNamespace' {
         {
-            New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -Name $env.authRuleName01 -Rights 'Listen'
-            Get-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName
-            Get-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -Name $env.authRuleName01
-            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -Name $env.authRuleName01 -Rights 'Listen','Send'
-            Remove-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -Name $env.authRuleName01
+            New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.authRuleName02 -Rights 'Listen'
+            Get-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01
+            Get-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.authRuleName02
+            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.authRuleName02 -Rights 'Listen','Send'
+            Remove-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName01 -Name $env.authRuleName02
 
-            $authRule = New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -Name $env.authRuleName02 -Rights 'Listen'
+            $authRule = New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.authRuleName02 -Rights 'Listen'
             Get-AzRelayAuthorizationRule -InputObject $authRule
             $authRule.Rights += 'Send'
-            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -Name $env.authRuleName02 -InputObject $authRule
+            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.authRuleName02 -InputObject $authRule
             Remove-AzRelayAuthorizationRule -InputObject $authRule
         } | Should -Not -Throw
     }
 
-    It 'CreateExpanded1' {
+    It 'HybridConnection' {
         {
-            New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -HybridConnection $env.hybridConnectionName02 -Name $env.authRuleName01 -Rights 'Listen'
-            Get-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -Name $env.authRuleName01 -HybridConnection $env.hybridConnectionName02
-            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -Name $env.authRuleName01 -HybridConnection $env.hybridConnectionName02 -Rights 'Listen','Send'
-            Remove-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -HybridConnection $env.hybridConnectionName02 -Name $env.authRuleName01
+            New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -HybridConnection $env.hybridConnectionName01 -Name $env.authRuleName02 -Rights 'Listen'
+            Get-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.authRuleName02 -HybridConnection $env.hybridConnectionName01
+            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.authRuleName02 -HybridConnection $env.hybridConnectionName01 -Rights 'Listen','Send'
+            Remove-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -HybridConnection $env.hybridConnectionName01 -Name $env.authRuleName02
 
-            $authRule = New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -HybridConnection $env.hybridConnectionName02 -Name $env.authRuleName02 -Rights 'Listen'
+            $authRule = New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -HybridConnection $env.hybridConnectionName01 -Name $env.authRuleName02 -Rights 'Listen'
             Get-AzRelayAuthorizationRule -InputObject $authRule
             $authRule.Rights += 'Send'
-            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -HybridConnection $env.hybridConnectionName02 -Name $env.authRuleName02 -InputObject $authRule
+            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -HybridConnection $env.hybridConnectionName01 -Name $env.authRuleName02 -InputObject $authRule
             Remove-AzRelayAuthorizationRule -InputObject $authRule
         } | Should -Not -Throw
     }
 
-    It 'CreateExpanded2' {
+    It 'WcfRelay' {
         {
-            New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -WcfRelay $env.wcfRelayName02 -Name $env.authRuleName01 -Rights 'Listen'
-            Get-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -Name $env.authRuleName01 -WcfRelay $env.wcfRelayName02
-            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -Name $env.authRuleName01 -WcfRelay $env.wcfRelayName02 -Rights 'Listen','Send'
-            Remove-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -WcfRelay $env.wcfRelayName02 -Name $env.authRuleName01
+            New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -WcfRelay $env.wcfRelayName01 -Name $env.authRuleName02 -Rights 'Listen'
+            Get-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.authRuleName02 -WcfRelay $env.wcfRelayName01
+            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.authRuleName02 -WcfRelay $env.wcfRelayName01 -Rights 'Listen','Send'
+            Remove-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -WcfRelay $env.wcfRelayName01 -Name $env.authRuleName02
 
-            $authRule = New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -WcfRelay $env.wcfRelayName02 -Name $env.authRuleName02 -Rights 'Listen'
+            $authRule = New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -WcfRelay $env.wcfRelayName01 -Name $env.authRuleName02 -Rights 'Listen'
             Get-AzRelayAuthorizationRule -InputObject $authRule
             $authRule.Rights += 'Send'
-            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName -WcfRelay $env.wcfRelayName02 -Name $env.authRuleName02 -InputObject $authRule
+            Set-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName-Namespace $env.namespaceName01 -WcfRelay $env.wcfRelayName01 -Name $env.authRuleName02 -InputObject $authRule
             Remove-AzRelayAuthorizationRule -InputObject $authRule
         } | Should -Not -Throw
     }

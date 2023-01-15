@@ -17,18 +17,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzRelayHybridConnection')
 Describe 'New-AzRelayHybridConnection' {
     It 'CreateExpanded' {
         {
-            New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02 -UserMetadata "test 01"
-            Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01
-            Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01
-            Set-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "Test UserMetadata updated"
+            New-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName02 -UserMetadata "test 01"
+            Get-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01
+            Get-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName02
+            Set-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName02 -UserMetadata "Test UserMetadata updated"
+            Remove-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName02
         } | Should -Not -Throw
     }
 
     It 'Create' {
         {
-            $connection = New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "test 01"
-            $connection = New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02 -InputObject $connection
+            $connection = New-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName03 -UserMetadata "test 01"
+            $connection = New-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName03 -InputObject $connection
             $connection = Get-AzRelayHybridConnection -InputObject $connection
+            $connection.UserMetadata = "testHybirdConnection"
+            Set-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName03 -InputObject $connection
+            Remove-AzRelayHybridConnection -InputObject $connection
         } | Should -Not -Throw
     }
 }

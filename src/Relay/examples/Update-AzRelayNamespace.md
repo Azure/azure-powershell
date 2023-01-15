@@ -1,6 +1,6 @@
 ### Example 1: Updates a Relay namespace
 ```powershell
-Set-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Tag @{'k'='v'}
+Update-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Tag @{'k'='v'}
 ```
 
 ```output
@@ -13,7 +13,7 @@ This cmdlet updates a Relay namespace.
 
 ### Example 2: Updates a Relay namespace by pipeline
 ```powershell
-Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 | Set-AzRelayNamespace -Tag @{'k'='v'}
+Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 | Update-AzRelayNamespace -Tag @{'k'='v'}
 ```
 
 ```output

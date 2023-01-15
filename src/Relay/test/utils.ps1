@@ -19,6 +19,41 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+
+    $env.location = 'eastus'
+    $env.resourceGroupName = "relay-" + (RandomString -allChars $false -len 6)
+    $env.namespaceName01 = "namespace-" + (RandomString -allChars $false -len 6)
+    $env.namespaceName02 = "namespace-" + (RandomString -allChars $false -len 6)
+    $env.namespaceName03 = "namespace-" + (RandomString -allChars $false -len 6)
+    $env.namespaceName04 = "namespace-" + (RandomString -allChars $false -len 6)
+    $env.namespaceName05 = "namespace-" + (RandomString -allChars $false -len 6)
+
+    $env.authRuleName01 = "authRule-" + (RandomString -allChars $false -len 6)
+    $env.authRuleName02 = "authRule-" + (RandomString -allChars $false -len 6)
+    $env.authRuleName03 = "authRule-" + (RandomString -allChars $false -len 6)
+    $env.authRuleName04 = "authRule-" + (RandomString -allChars $false -len 6)
+
+    $env.hybridConnectionName01 = "hybridConnection-" + (RandomString -allChars $false -len 6)
+    $env.hybridConnectionName02 = "hybridConnection-" + (RandomString -allChars $false -len 6)
+    $env.hybridConnectionName03 = "hybridConnection-" + (RandomString -allChars $false -len 6)
+    $env.hybridConnectionName04 = "hybridConnection-" + (RandomString -allChars $false -len 6)
+    
+    $env.wcfRelayName01 = "wcfRelay-" + (RandomString -allChars $false -len 6)
+    $env.wcfRelayName02 = "wcfRelay-" + (RandomString -allChars $false -len 6)
+    $env.wcfRelayName03 = "wcfRelay-" + (RandomString -allChars $false -len 6)
+    $env.wcfRelayName04 = "wcfRelay-" + (RandomString -allChars $false -len 6)
+
+    Write-Host "start to create test group"
+    New-AzResourceGroup -Name $env.resourceGroupName -Location $env.location
+
+    Write-Host "Create RelayNamespace, HybridConnection, WcfRelay for testing"
+    New-AzRelayNamespace -ResourceGroupName $env.resourceGroupName -Name $env.namespaceName01 -Location $env.location
+    New-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName01 -UserMetadata "test"
+    New-AzWcfRelay -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.wcfRelayName01 -WcfRelayType 'NetTcp' -UserMetadata "test"
+    New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.authRuleName01 -Rights 'Listen','Send'
+    New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -WcfRelay $env.wcfRelayName01 -Name $env.authRuleName01 -Rights 'Listen','Send'
+    New-AzRelayAuthorizationRule -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -HybridConnection $env.hybridConnectionName01 -Name $env.authRuleName01 -Rights 'Listen','Send'
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -27,5 +62,7 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Write-Host "Delete resource group"
+    Remove-AzResourceGroup -Name $env.resourceGroupName
 }
 

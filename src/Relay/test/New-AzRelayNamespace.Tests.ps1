@@ -15,7 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzRelayNamespace'))
 }
 
 Describe 'New-AzRelayNamespace' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        {
+            New-AzRelayNamespace -ResourceGroupName $env.resourceGroupName  -Name $env.namespaceName02  -Location $env.location
+            Get-AzRelayNamespace
+            Get-AzRelayNamespace -ResourceGroupName $env.resourceGroupName 
+            Get-AzRelayNamespace -ResourceGroupName $env.resourceGroupName  -Name $env.namespaceName02 
+            Update-AzRelayNamespace -ResourceGroupName $env.resourceGroupName  -Name $env.namespaceName02  -Tag @{'k'='v'}
+        } | Should -Not -Throw
+    }
+    It 'CreateExpanded2' {
+        {
+            $namespace = New-AzRelayNamespace -ResourceGroupName $env.resourceGroupName  -Name $env.namespaceName03  -Location $env.location
+            Get-AzRelayNamespace -InputObject $namespace
+            Update-AzRelayNamespace -InputObject $namespace -Tag @{'k'='v'}
+        } | Should -Not -Throw
     }
 }

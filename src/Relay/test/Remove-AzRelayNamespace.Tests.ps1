@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRelayNamespace'))
 }
 
 Describe 'Remove-AzRelayNamespace' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { 
+            Remove-AzRelayNamespace -ResourceGroupName $env.resourceGroupName -Name $env.namespaceName02
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        { 
+            $namespace = Get-AzRelayNamespace -ResourceGroupName $env.resourceGroupName -Name $env.namespaceName03
+            Remove-AzRelayNamespace -InputObject $namespace
+        } | Should -Not -Throw
     }
 }

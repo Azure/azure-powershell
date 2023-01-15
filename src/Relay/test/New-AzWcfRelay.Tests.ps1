@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWcfRelay'))
 }
 
 Describe 'New-AzWcfRelay' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' {
+        {
+            $wcf = New-AzWcfRelay -ResourceGroupName $env.resourceGroupName  -Namespace $env.namespaceName01  -Name $env.wcfRelayName03  -WcfRelayType 'NetTcp' -UserMetadata "test 01"
+            $wcf = Get-AzWcfRelay -InputObject $wcf
+            $wcf.UserMetadata = "test"
+            Set-AzWcfRelay -ResourceGroupName $env.resourceGroupName  -Namespace $env.namespaceName01  -Name $env.wcfRelayName03  -InputObject $wcf
+            Remove-AzWcfRelay -InputObject $wcf
+        } | Should -Not -Throw
     }
 }

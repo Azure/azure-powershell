@@ -159,11 +159,6 @@ directive:
       subject: ^Namespace$
       variant: ^Update$|^UpdateViaIdentity$
     remove: true
-  # Hide for change Update verb to Set.
-  - where:
-      verb: Update
-      subject: ^Namespace$
-    hide: true
     
   - where:
       verb: New

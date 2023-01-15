@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Relay
-online version: https://learn.microsoft.com/powershell/module/az.relay/set-azrelaynamespace
+online version: https://learn.microsoft.com/powershell/module/az.relay/update-azrelaynamespace
 schema: 2.0.0
 ---
 
-# Set-AzRelayNamespace
+# Update-AzRelayNamespace
 
 ## SYNOPSIS
 Creates or updates a namespace.
@@ -16,14 +16,14 @@ This operation is idempotent.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzRelayNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzRelayNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Set-AzRelayNamespace -InputObject <IRelayIdentity> [-PublicNetworkAccess <PublicNetworkAccess>]
+Update-AzRelayNamespace -InputObject <IRelayIdentity> [-PublicNetworkAccess <PublicNetworkAccess>]
  [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -37,7 +37,7 @@ This operation is idempotent.
 
 ### Example 1: Updates a Relay namespace
 ```powershell
-Set-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Tag @{'k'='v'}
+Update-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Tag @{'k'='v'}
 ```
 
 ```output
@@ -50,7 +50,7 @@ This cmdlet updates a Relay namespace.
 
 ### Example 2: Updates a Relay namespace by pipeline
 ```powershell
-Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 | Set-AzRelayNamespace -Tag @{'k'='v'}
+Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 | Update-AzRelayNamespace -Tag @{'k'='v'}
 ```
 
 ```output
@@ -247,6 +247,18 @@ To create the parameters described below, construct a hash table containing the 
   - `[RelayName <String>]`: The relay name.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+`PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>`: List of private endpoint connections.
+  - `[PrivateEndpointId <String>]`: The ARM identifier for Private Endpoint.
+  - `[PrivateLinkServiceConnectionStateDescription <String>]`: Description of the connection state.
+  - `[PrivateLinkServiceConnectionStateStatus <PrivateLinkConnectionStatus?>]`: Status of the connection.
+  - `[ProvisioningState <EndPointProvisioningState?>]`: Provisioning state of the Private Endpoint Connection.
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 ## RELATED LINKS
 

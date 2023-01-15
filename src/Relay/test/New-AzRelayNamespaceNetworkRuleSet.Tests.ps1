@@ -15,7 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzRelayNamespaceNetworkRu
 }
 
 Describe 'New-AzRelayNamespaceNetworkRuleSet' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        {
+            $rules = @()
+            $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.1"
+            $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.2"
+            $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.3"
+            New-AzRelayNamespaceNetworkRuleSet -ResourceGroupName $env.resourceGroupName  -NamespaceName $env.namespaceName01  -DefaultAction 'Deny' -IPRule $rules
+        } | Should -Not -Throw
     }
 }
