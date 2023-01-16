@@ -111,21 +111,19 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                         continue;
                     }
                     string moduleName = Path.GetFileName(directory);
-
+                    string moduleFolder = Path.Combine(savedDirectory, "src", moduleName.Replace("Az.", ""));
                     Directory.SetCurrentDirectory(directory);
 
                     var moduleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
 
-                    string UXFolder = Path.Combine(directory, "UX");
-                    if (!Directory.Exists(UXFolder))
+                    string[] UXFolders = Directory.GetDirectories(moduleFolder, "UX", SearchOption.AllDirectories);
+                    foreach (var UXFolder in UXFolders)
                     {
-                        continue;
-                    }
-
-                    var UXMetadataPathList = Directory.EnumerateFiles(UXFolder, "*.json", SearchOption.AllDirectories);
-                    foreach (var UXMetadataPath in UXMetadataPathList)
-                    {
-                        ValidateUXMetadata(moduleName, UXMetadataPath, moduleMetadata, issueLogger);
+                        var UXMetadataPathList = Directory.EnumerateFiles(UXFolder, "*.json", SearchOption.AllDirectories);
+                        foreach (var UXMetadataPath in UXMetadataPathList)
+                        {
+                            ValidateUXMetadata(moduleName, UXMetadataPath, moduleMetadata, issueLogger);
+                        }
                     }
                     Directory.SetCurrentDirectory(savedDirectory);
                 }
@@ -261,8 +259,15 @@ namespace StaticAnalysis.UXMetadataAnalyzer
         private void ValidateParametersInExampleDefinedInPath(IssueLoggerContext context, HashSet<string> parametersFromHttpPath, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
         {
             var exampleParameterPathRegex = new Regex(@"path\.([\w]+)");
-            foreach (string parameterInExample in example.Parameters.Select(x => x.Value))
+            foreach (var parameter in example.Parameters)
             {
+                string parameterInExample = parameter.Value;
+                if (parameterInExample == null)
+                {
+                    string description = string.Format("The value of {0} is not defined.", parameter.Name);
+                    issueLogger.LogUXMetadataIssue(context, 1, description);
+                    continue;
+                }
                 var match = exampleParameterPathRegex.Match(parameterInExample);
                 if (!match.Success)
                 {
