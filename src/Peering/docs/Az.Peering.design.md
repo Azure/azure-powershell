@@ -1,3 +1,8 @@
+## Syntax-Changes
+
+### Swagger Link:
+https://github.com/Azure/azure-rest-api-specs/tree/main/specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01
+
 #### New-AzPeering
 
 #### SYNOPSIS
