@@ -299,7 +299,10 @@ Function Move-Generation2MasterHybrid {
             dotnet sln $SolutionPath add (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath Az.$submoduleName.csproj)
 
             # Update psd1
-            $Psd1FolderPostfix = (Test-Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1")) ? '' : '.Management'
+            $Psd1FolderPostfix = '';
+            if (-not (Test-Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1"))) {
+                $Psd1FolderPostfix = '.Management'
+            }
             $DestPsd1Path = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName$Psd1FolderPostfix) -ChildPath "Az.$ModuleName.psd1"
             $Psd1Metadata = Import-LocalizedData -BaseDirectory (Join-Path -Path $DestPath -ChildPath $ModuleName$Psd1FolderPostfix) -FileName "Az.$ModuleName.psd1"
             $SubModulePsd1MetaData = Import-LocalizedData -BaseDirectory (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -FileName "Az.$submoduleName.psd1"
