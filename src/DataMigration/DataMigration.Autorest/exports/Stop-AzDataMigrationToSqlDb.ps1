@@ -28,7 +28,7 @@ Get-AzDataMigrationToSqlDb -InputObject $dbMigration
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqldb
+https://learn.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqldb
 #>
 function Stop-AzDataMigrationToSqlDb {
 [OutputType([System.Boolean])]
