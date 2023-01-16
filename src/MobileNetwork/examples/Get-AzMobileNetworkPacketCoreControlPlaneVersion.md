@@ -1,22 +1,29 @@
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified packet core control plane version by sub.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkPacketCoreControlPlaneVersion
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+PMN-4-9-0
+......
+pmn-2301-0-1
+......
+...
 ```
 
-{{ Add description here }}
+List information about the specified packet core control plane version by sub.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified packet core control plane version by VersionName.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkPacketCoreControlPlaneVersion -VersionName pmn-2301-0-1
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+pmn-2301-0-1
 ```
 
-{{ Add description here }}
-
+Get information about the specified packet core control plane version by VersionName.

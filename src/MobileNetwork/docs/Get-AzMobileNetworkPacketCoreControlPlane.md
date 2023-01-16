@@ -41,27 +41,44 @@ Gets information about the specified packet core control plane.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified packet core control plane by Sub.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkPacketCoreControlPlane
 ```
 
 ```output
-{{ Add output here }}
+Location Name         ResourceGroupName ProvisioningState
+-------- ----         ----------------- -----------------
+eastus   azps-mn-pccp azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
+List information about the specified packet core control plane by Sub.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified packet core control plane by ResourceGroup.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroup azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name         ResourceGroupName ProvisioningState
+-------- ----         ----------------- -----------------
+eastus   azps-mn-pccp azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
+Get information about the specified packet core control plane by ResourceGroup.
+
+### Example 3: Get information about the specified packet core control plane by Name.
+```powershell
+Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroup azps_test_group -Name azps-mn-pccp
+```
+
+```output
+Location Name         ResourceGroupName ProvisioningState
+-------- ----         ----------------- -----------------
+eastus   azps-mn-pccp azps_test_group   Succeeded
+```
+
+Get information about the specified packet core control plane by Name.
 
 ## PARAMETERS
 
@@ -162,7 +179,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+`INPUTOBJECT <IMobileNetworkIdentity>`: Identity Parameter
   - `[AttachedDataNetworkName <String>]`: The name of the attached data network.
   - `[DataNetworkName <String>]`: The name of the data network.
   - `[Id <String>]`: Resource identity path
