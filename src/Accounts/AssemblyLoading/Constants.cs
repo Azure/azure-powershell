@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-
-namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.Mocks
+namespace Microsoft.Azure.PowerShell.AssemblyLoading
 {
-    internal class MockConditionalAssemblyContext : IConditionalAssemblyContext
+    public class Constants
     {
-        public string PSEdition { get; set; }
-        public Version PSVersion { get; set; }
-        public Architecture OSArchitecture { get; set; }
-        public OSPlatform OS { get; set; }
-
-        public bool IsOSPlatform(OSPlatform os)
-        {
-            return OS.Equals(os);
-        }
+        public const string PSEditionDesktop = "Desktop";
+        public const string PSEditionCore = "Core";
     }
 }
