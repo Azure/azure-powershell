@@ -29,7 +29,7 @@ New-AzServiceLinkerSecretAuthInfoObject -Name user -SecretNameInKeyVault test-se
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.SecretAuthInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersecretauthinfoobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersecretauthinfoobject
 #>
 function New-AzServiceLinkerSecretAuthInfoObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.SecretAuthInfo])]

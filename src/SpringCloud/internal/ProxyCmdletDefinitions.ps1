@@ -55,7 +55,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [StackName <String>]: The name of the stack resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudappresourceuploadurl
+https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudappresourceuploadurl
 #>
 function Get-AzSpringCloudAppResourceUploadUrl {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceUploadDefinition])]
@@ -202,7 +202,7 @@ Get a KPack build result log download URL.
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuildresultlog
+https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuildresultlog
 #>
 function Get-AzSpringCloudBuildServiceBuildResultLog {
 [OutputType([System.String])]
@@ -381,7 +381,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [StackName <String>]: The name of the stack resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuildresult
+https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuildresult
 #>
 function Get-AzSpringCloudBuildServiceBuildResult {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildResult])]
@@ -574,7 +574,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [StackName <String>]: The name of the stack resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuild
+https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuild
 #>
 function Get-AzSpringCloudBuildServiceBuild {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuild])]
@@ -760,7 +760,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [StackName <String>]: The name of the stack resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildserviceresourceuploadurl
+https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildserviceresourceuploadurl
 #>
 function Get-AzSpringCloudBuildServiceResourceUploadUrl {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceUploadDefinition])]
@@ -907,7 +907,7 @@ Lists all of the available REST API operations of the Microsoft.AppPlatform prov
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IOperationDetail
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudoperation
+https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudoperation
 #>
 function Get-AzSpringCloudOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IOperationDetail])]
@@ -1022,7 +1022,7 @@ LOADEDCERTIFICATE <ILoadedCertificate[]>: Collection of loaded certificates
   ResourceId <String>: Resource Id of loaded certificate
   [LoadTrustStore <Boolean?>]: Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudapp
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudapp
 #>
 function New-AzSpringCloudApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource])]
@@ -1262,7 +1262,7 @@ Create or update a KPack build.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuild
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildservicebuild
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildservicebuild
 #>
 function New-AzSpringCloudBuildServiceBuild {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuild])]
@@ -1432,7 +1432,7 @@ New-AzSpringCloud -ResourceGroupName springcloudrg -Name espring-pwsh01 -Locatio
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloud
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloud
 #>
 function New-AzSpringCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource])]
@@ -1673,7 +1673,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [StackName <String>]: The name of the stack resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/remove-azspringcloudregistry
+https://learn.microsoft.com/powershell/module/az.springcloud/remove-azspringcloudregistry
 #>
 function Remove-AzSpringCloudRegistry {
 [OutputType([System.Boolean])]
