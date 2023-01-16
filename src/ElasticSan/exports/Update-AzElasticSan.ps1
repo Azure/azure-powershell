@@ -47,7 +47,7 @@ PARAMETER <IElasticSanUpdate>: Response for ElasticSan update request.
   [Tag <IElasticSanUpdateTags>]: Update tags
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/update-azelasticsan
+https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsan
 #>
 function Update-AzElasticSan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]
