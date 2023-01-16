@@ -1,0 +1,39 @@
+{
+  "New-AzRelayNamespaceNetworkRuleSet+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/networkRuleSets/default?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/networkRuleSets/default?api-version=2021-11-01",
+      "Content": "{\n  \"properties\": {\n    \"defaultAction\": \"Deny\",\n    \"ipRules\": [\n      {\n        \"ipMask\": \"1.1.1.1\",\n        \"action\": \"Allow\"\n      },\n      {\n        \"ipMask\": \"1.1.1.2\",\n        \"action\": \"Allow\"\n      },\n      {\n        \"ipMask\": \"1.1.1.3\",\n        \"action\": \"Allow\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "292" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "42e3cd95-5574-48dc-a96b-ab1953d13c9c_M5CH3_M5CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "3fa97116-8971-4de5-a84e-85876adcc1f9" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T115619Z:3fa97116-8971-4de5-a84e-85876adcc1f9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:56:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "477" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/networkRuleSets/default\",\"name\":\"default\",\"type\":\"Microsoft.Relay/Namespaces/NetworkRuleSets\",\"location\":\"East US\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Deny\",\"virtualNetworkRules\":[],\"ipRules\":[{\"ipMask\":\"1.1.1.1\",\"action\":\"Allow\"},{\"ipMask\":\"1.1.1.2\",\"action\":\"Allow\"},{\"ipMask\":\"1.1.1.3\",\"action\":\"Allow\"}]}}",
+      "isContentBase64": false
+    }
+  }
+}

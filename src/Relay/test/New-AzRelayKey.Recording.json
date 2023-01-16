@@ -1,0 +1,233 @@
+{
+  "New-AzRelayKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/authorizationRules/authRule-ibsycn/regenerateKeys?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/authorizationRules/authRule-ibsycn/regenerateKeys?api-version=2021-11-01",
+      "Content": "{\n  \"keyType\": \"PrimaryKey\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "29" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "7a850aee-5c77-4261-a6b2-0fcfd9084c4e" ],
+        "x-ms-correlation-request-id": [ "7a850aee-5c77-4261-a6b2-0fcfd9084c4e" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T115151Z:7a850aee-5c77-4261-a6b2-0fcfd9084c4e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:51:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "513" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=Ql2KCmB97ikx2tG1y63SIrbNE7EHsj3QDxDxjCH8unE=\",\"secondaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=rglgrYgPISgLoeA08gCPDqiSabzsimHfKGHpFTuc4Uk=\",\"primaryKey\":\"Ql2KCmB97ikx2tG1y63SIrbNE7EHsj3QDxDxjCH8unE=\",\"secondaryKey\":\"rglgrYgPISgLoeA08gCPDqiSabzsimHfKGHpFTuc4Uk=\",\"keyName\":\"authRule-ibsycn\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/authorizationRules/authRule-ibsycn/listKeys?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/authorizationRules/authRule-ibsycn/listKeys?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "ba5ae0fa-3688-4b78-a291-6dfd4ff486b9" ],
+        "CommandName": [ "Get-AzRelayKey" ],
+        "FullCommandName": [ "Get-AzRelayKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "0a14f6f8-2f99-47aa-b11c-d42ead7ab9fc" ],
+        "x-ms-correlation-request-id": [ "0a14f6f8-2f99-47aa-b11c-d42ead7ab9fc" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T115152Z:0a14f6f8-2f99-47aa-b11c-d42ead7ab9fc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:51:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "513" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=Ql2KCmB97ikx2tG1y63SIrbNE7EHsj3QDxDxjCH8unE=\",\"secondaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=rglgrYgPISgLoeA08gCPDqiSabzsimHfKGHpFTuc4Uk=\",\"primaryKey\":\"Ql2KCmB97ikx2tG1y63SIrbNE7EHsj3QDxDxjCH8unE=\",\"secondaryKey\":\"rglgrYgPISgLoeA08gCPDqiSabzsimHfKGHpFTuc4Uk=\",\"keyName\":\"authRule-ibsycn\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayKey+[NoContext]+RegenerateExpanded1+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-a52oe7/authorizationRules/authRule-ibsycn/regenerateKeys?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-a52oe7/authorizationRules/authRule-ibsycn/regenerateKeys?api-version=2021-11-01",
+      "Content": "{\n  \"keyType\": \"PrimaryKey\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "29" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "0814494a-c1a7-472c-84ab-2e12d94df625" ],
+        "x-ms-correlation-request-id": [ "0814494a-c1a7-472c-84ab-2e12d94df625" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T115153Z:0814494a-c1a7-472c-84ab-2e12d94df625" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:51:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "583" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=fV8X9DQYuKKXJ4uiXa1hhOidxyMpbsnJ5IjkUmlK/II=;EntityPath=hybridConnection-a52oe7\",\"secondaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=ZGx3fMPQQDZAtw8t3a6xAfqbzNhtqUtrIQGZU/duZq0=;EntityPath=hybridConnection-a52oe7\",\"primaryKey\":\"fV8X9DQYuKKXJ4uiXa1hhOidxyMpbsnJ5IjkUmlK/II=\",\"secondaryKey\":\"ZGx3fMPQQDZAtw8t3a6xAfqbzNhtqUtrIQGZU/duZq0=\",\"keyName\":\"authRule-ibsycn\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayKey+[NoContext]+RegenerateExpanded1+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-a52oe7/authorizationRules/authRule-ibsycn/listKeys?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-a52oe7/authorizationRules/authRule-ibsycn/listKeys?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "24bb1408-2f91-4511-afb8-3b8ba641290e" ],
+        "CommandName": [ "Get-AzRelayKey" ],
+        "FullCommandName": [ "Get-AzRelayKey_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "660fdeac-eaca-4240-a16b-6cc8b34315a4" ],
+        "x-ms-correlation-request-id": [ "660fdeac-eaca-4240-a16b-6cc8b34315a4" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T115154Z:660fdeac-eaca-4240-a16b-6cc8b34315a4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:51:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "583" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=fV8X9DQYuKKXJ4uiXa1hhOidxyMpbsnJ5IjkUmlK/II=;EntityPath=hybridConnection-a52oe7\",\"secondaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=ZGx3fMPQQDZAtw8t3a6xAfqbzNhtqUtrIQGZU/duZq0=;EntityPath=hybridConnection-a52oe7\",\"primaryKey\":\"fV8X9DQYuKKXJ4uiXa1hhOidxyMpbsnJ5IjkUmlK/II=\",\"secondaryKey\":\"ZGx3fMPQQDZAtw8t3a6xAfqbzNhtqUtrIQGZU/duZq0=\",\"keyName\":\"authRule-ibsycn\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayKey+[NoContext]+RegenerateExpanded2+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/wcfRelays/wcfRelay-x7g5fs/authorizationRules/authRule-ibsycn/regenerateKeys?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/wcfRelays/wcfRelay-x7g5fs/authorizationRules/authRule-ibsycn/regenerateKeys?api-version=2021-11-01",
+      "Content": "{\n  \"keyType\": \"PrimaryKey\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "29" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "91c93be6-670f-4fe9-9970-00ee998bcf3c" ],
+        "x-ms-correlation-request-id": [ "91c93be6-670f-4fe9-9970-00ee998bcf3c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T115155Z:91c93be6-670f-4fe9-9970-00ee998bcf3c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:51:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "567" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=8uAEgS/7mVDH6Ydo+bR7lV1IAVB/ySpRvxMUR8f1Nm0=;EntityPath=wcfRelay-x7g5fs\",\"secondaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=TYd6f5763Or/SgVFZDKFbFJ22HWz0PdSjkcGxiyQkxc=;EntityPath=wcfRelay-x7g5fs\",\"primaryKey\":\"8uAEgS/7mVDH6Ydo+bR7lV1IAVB/ySpRvxMUR8f1Nm0=\",\"secondaryKey\":\"TYd6f5763Or/SgVFZDKFbFJ22HWz0PdSjkcGxiyQkxc=\",\"keyName\":\"authRule-ibsycn\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayKey+[NoContext]+RegenerateExpanded2+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/wcfRelays/wcfRelay-x7g5fs/authorizationRules/authRule-ibsycn/listKeys?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/wcfRelays/wcfRelay-x7g5fs/authorizationRules/authRule-ibsycn/listKeys?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "ec715d05-e720-492c-b3c9-44896e6257d9" ],
+        "CommandName": [ "Get-AzRelayKey" ],
+        "FullCommandName": [ "Get-AzRelayKey_List2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "52647852-ffa9-444f-aa36-90ae39e838fa" ],
+        "x-ms-correlation-request-id": [ "52647852-ffa9-444f-aa36-90ae39e838fa" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T115156Z:52647852-ffa9-444f-aa36-90ae39e838fa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:51:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "567" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=8uAEgS/7mVDH6Ydo+bR7lV1IAVB/ySpRvxMUR8f1Nm0=;EntityPath=wcfRelay-x7g5fs\",\"secondaryConnectionString\":\"Endpoint=sb://namespace-ircjqk.servicebus.windows.net/;SharedAccessKeyName=authRule-ibsycn;SharedAccessKey=TYd6f5763Or/SgVFZDKFbFJ22HWz0PdSjkcGxiyQkxc=;EntityPath=wcfRelay-x7g5fs\",\"primaryKey\":\"8uAEgS/7mVDH6Ydo+bR7lV1IAVB/ySpRvxMUR8f1Nm0=\",\"secondaryKey\":\"TYd6f5763Or/SgVFZDKFbFJ22HWz0PdSjkcGxiyQkxc=\",\"keyName\":\"authRule-ibsycn\"}",
+      "isContentBase64": false
+    }
+  }
+}
