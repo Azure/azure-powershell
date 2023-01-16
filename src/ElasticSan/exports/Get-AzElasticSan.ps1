@@ -43,7 +43,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/get-azelasticsan
+https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsan
 #>
 function Get-AzElasticSan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]

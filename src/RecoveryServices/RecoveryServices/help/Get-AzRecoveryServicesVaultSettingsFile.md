@@ -16,20 +16,20 @@ Gets the Azure Site Recovery vault settings file.
 ### ForSiteWithCertificate
 ```
 Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] -SiteIdentifier <String>
- -Certificate <String> -SiteFriendlyName <String> [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>]
+ [-Certificate <String>] -SiteFriendlyName <String> [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByDefaultWithCertificate
 ```
-Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] -Certificate <String>
+Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] [-Certificate <String>]
  [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ForBackupVaultTypeWithCertificate
 ```
-Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] -Certificate <String> [-Backup]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] [-Certificate <String>]
+ [-Backup] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +80,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

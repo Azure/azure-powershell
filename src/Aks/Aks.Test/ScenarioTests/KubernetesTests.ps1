@@ -638,7 +638,7 @@ function Test-LinuxOSConfig {
              }
             }
 '@
-        $linuxOsConfig = [Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig] ($linuxOsConfigJsonStr | ConvertFrom-Json)
+        $linuxOsConfig = [Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig] ($linuxOsConfigJsonStr | ConvertFrom-Json) 
         $kubeletConfigStr = @'
             {
              "failSwapOn": false
@@ -934,7 +934,6 @@ function Test-GpuInstanceProfile {
     }
 }
 
-
 function Test-EnableUptimeSLA {
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName
@@ -950,7 +949,7 @@ function Test-EnableUptimeSLA {
         Assert-AreEqual "Basic" $cluster.Sku.Name
         Assert-AreEqual "Paid" $cluster.Sku.Tier
 
-        # create a 2nd nodepool
+        # update the aks cluster
         Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -EnableUptimeSLA:$false
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual "Basic" $cluster.Sku.Name
@@ -965,5 +964,76 @@ function Test-EnableUptimeSLA {
     }
     finally {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-EdgeZone {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus2euap'
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -EdgeZone 'microsoftrrdclab1'
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "microsoftrrdclab1" $cluster.ExtendedLocation.Name
+        Assert-AreEqual "edgezone" $cluster.ExtendedLocation.Type
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-AadProfile {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    #$AdGroupName = 'TestAksGroup'
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        #New-AzADGroup -DisplayName $AdGroupName -MailNickname $AdGroupName
+        #$adGroup = Get-AzADGroup -DisplayName $AdGroupName
+        #$adGroupId = $adGroup.Id
+        $adGroupId = 'e74a0087-33b6-4144-977d-f9802b0031d4'
+        $AadProfile=@{
+            managed=$true
+            enableAzureRBAC=$false
+            adminGroupObjectIDs=[System.Collections.Generic.List[string]]@($adGroupId)
+        }
+        $AadProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile]$AadProfile
+
+        # create aks cluster with AadProfile
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -AadProfile $AadProfile
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-ObjectEquals $AadProfile.managed $cluster.AadProfile.managed
+        Assert-ObjectEquals $AadProfile.enableAzureRBAC $cluster.AadProfile.enableAzureRBAC
+        Assert-ObjectEquals $AadProfile.adminGroupObjectIDs $cluster.AadProfile.adminGroupObjectIDs
+        Assert-ObjectEquals '54826b22-38d6-4fb2-bad9-b7b93a3e9c5a' $cluster.AadProfile.TenantID
+        $cluster | Remove-AzAksCluster -Force
+
+        # create aks cluster without AadProfile
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-Null $cluster.AadProfile
+        # update the aks cluster with AadProfile
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AadProfile $AadProfile
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-ObjectEquals $AadProfile.managed $cluster.AadProfile.managed
+        #Assert-ObjectEquals $AadProfile.enableAzureRBAC $cluster.AadProfile.enableAzureRBAC
+        Assert-ObjectEquals "" $cluster.AadProfile.enableAzureRBAC
+        Assert-ObjectEquals $AadProfile.adminGroupObjectIDs $cluster.AadProfile.adminGroupObjectIDs
+        Assert-ObjectEquals '54826b22-38d6-4fb2-bad9-b7b93a3e9c5a' $cluster.AadProfile.TenantID
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+        #Remove-AzADGroup -DisplayName $AdGroupName
     }
 }
