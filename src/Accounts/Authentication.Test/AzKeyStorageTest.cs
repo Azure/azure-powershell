@@ -96,6 +96,26 @@ namespace Common.Authenticators.Test
             storageMocker.Verify();
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FindFallbackKey()
+        {
+            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secretFallback\""""}]";
+            storageChecker.AddRange(Encoding.UTF8.GetBytes(EXPECTED));
+            using (var store = new AzKeyStore(dummpyPath, keyStoreFileName, false, true, storageMocker.Object))
+            {
+                AzKeyStore.RegisterJsonConverter(typeof(ServicePrincipalKey), typeof(ServicePrincipalKey).Name);
+                AzKeyStore.RegisterJsonConverter(typeof(SecureString), typeof(SecureString).Name, new SecureStringConverter());
+                storageMocker.Setup(f => f.ReadData()).Returns(storageChecker.ToArray());
+                store.LoadStorage();
+
+                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("ServicePrincipalSecret", "6c984d31-5b4f-4734-b548-e230a248e347", "54826b22-38d6-0000-bad9-b7b93a3e9c5a");
+                var secret = store.GetKey<SecureString>(servicePrincipalKey);
+                Assert.Equal("secretFallback", secret.ConvertToString());
+            }
+            storageMocker.Verify();
+        }
+
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -210,7 +210,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (!_credentials.ContainsKey(key))
             {
-                throw new ArgumentException($"{key.ToString()} is not stored in AzKeyStore yet.");
+                try
+                {
+                    var fallBackKey = _credentials.Keys.First(x => x.BeEquivalent(key));
+                    return (T)_credentials[fallBackKey];
+                }
+                catch (InvalidOperationException)
+                {
+                    throw new ArgumentException($"{key.ToString()} is not stored in AzKeyStore yet.");
+                }
             }
             return (T)_credentials[key];
         }

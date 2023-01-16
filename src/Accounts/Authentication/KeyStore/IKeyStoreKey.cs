@@ -23,5 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public override abstract bool Equals(object obj);
 
         public override abstract int GetHashCode();
+
+        public abstract bool BeEquivalent(object obj);
     }
 }
