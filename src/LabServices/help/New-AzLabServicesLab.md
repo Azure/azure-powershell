@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/new-azlabserviceslab
+online version: https://learn.microsoft.com/powershell/module/az.labservices/new-azlabserviceslab
 schema: 2.0.0
 ---
 

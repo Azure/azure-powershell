@@ -25,7 +25,7 @@ Get-AzKustoClusterFollowerDatabase  -ResourceGroupName testrg -ClusterName testn
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IFollowerDatabaseDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclusterfollowerdatabase
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterfollowerdatabase
 #>
 function Get-AzKustoClusterFollowerDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IFollowerDatabaseDefinition])]

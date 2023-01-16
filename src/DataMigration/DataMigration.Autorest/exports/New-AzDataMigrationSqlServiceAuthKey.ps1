@@ -25,7 +25,7 @@ New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMi
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserviceauthkey
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserviceauthkey
 #>
 function New-AzDataMigrationSqlServiceAuthKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys])]

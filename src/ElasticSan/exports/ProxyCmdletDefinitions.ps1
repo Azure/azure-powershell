@@ -25,7 +25,7 @@ Get-AzElasticSanSkuList
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformation
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanskulist
+https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanskulist
 #>
 function Get-AzElasticSanSkuList {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformation])]
@@ -196,7 +196,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolumegroup
+https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolumegroup
 #>
 function Get-AzElasticSanVolumeGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup])]
@@ -393,7 +393,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolume
+https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolume
 #>
 function Get-AzElasticSanVolume {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume])]
@@ -599,7 +599,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/get-azelasticsan
+https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsan
 #>
 function Get-AzElasticSan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]
@@ -820,7 +820,7 @@ PARAMETER <IVolumeGroup>: Response for Volume Group request.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolumegroup
+https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolumegroup
 #>
 function New-AzElasticSanVolumeGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup])]
@@ -1087,7 +1087,7 @@ PARAMETER <IVolume>: Response for Volume request.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolume
+https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolume
 #>
 function New-AzElasticSanVolume {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume])]
@@ -1361,7 +1361,7 @@ PARAMETER <IElasticSan>: Response for ElasticSan request.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/new-azelasticsan
+https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsan
 #>
 function New-AzElasticSan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]
@@ -1625,7 +1625,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolumegroup
+https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolumegroup
 #>
 function Remove-AzElasticSanVolumeGroup {
 [OutputType([System.Boolean])]
@@ -1834,7 +1834,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolume
+https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolume
 #>
 function Remove-AzElasticSanVolume {
 [OutputType([System.Boolean])]
@@ -2049,7 +2049,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsan
+https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsan
 #>
 function Remove-AzElasticSan {
 [OutputType([System.Boolean])]
@@ -2277,7 +2277,7 @@ PARAMETER <IVolumeGroupUpdate>: Volume Group request.
   [Tag <IVolumeGroupUpdateTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
+https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
 #>
 function Update-AzElasticSanVolumeGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup])]
@@ -2535,7 +2535,7 @@ PARAMETER <IVolumeUpdate>: Response for Volume request.
   [Tag <IVolumeUpdateTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolume
+https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolume
 #>
 function Update-AzElasticSanVolume {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume])]
@@ -2783,7 +2783,7 @@ PARAMETER <IElasticSanUpdate>: Response for ElasticSan update request.
   [Tag <IElasticSanUpdateTags>]: Update tags
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/update-azelasticsan
+https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsan
 #>
 function Update-AzElasticSan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]
@@ -3020,7 +3020,7 @@ NETWORKACLSVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: The list of virtual netwo
   VirtualNetworkResourceId <String>: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
   [Action <Action?>]: The action of virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
+https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
 #>
 function Add-AzElasticSanVolumeGroupNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]])]
@@ -3215,7 +3215,7 @@ New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId  "/subscripti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule
 .Link
-https://docs.microsoft.com/powershell/module/az.ElasticSan/new-AzElasticSanVirtualNetworkRuleObject
+https://learn.microsoft.com/powershell/module/az.ElasticSan/new-AzElasticSanVirtualNetworkRuleObject
 #>
 function New-AzElasticSanVirtualNetworkRuleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule])]
@@ -3349,7 +3349,7 @@ NETWORKACLSVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: The list of virtual netwo
   VirtualNetworkResourceId <String>: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
   [Action <Action?>]: The action of virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/add-azelasticsanvolumegroupnetworkrule
+https://learn.microsoft.com/powershell/module/az.elasticsan/add-azelasticsanvolumegroupnetworkrule
 #>
 function Remove-AzElasticSanVolumeGroupNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]])]

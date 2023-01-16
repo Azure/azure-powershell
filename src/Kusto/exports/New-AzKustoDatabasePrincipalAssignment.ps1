@@ -25,7 +25,7 @@ New-AzKustoDatabasePrincipalAssignment -ResourceGroupName testrg -ClusterName te
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipalAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodatabaseprincipalassignment
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodatabaseprincipalassignment
 #>
 function New-AzKustoDatabasePrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipalAssignment])]

@@ -46,7 +46,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewaccount
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewaccount
 #>
 function Get-AzPurviewAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount])]

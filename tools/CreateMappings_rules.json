@@ -787,5 +787,17 @@
   {
     "alias": "Automanage",
     "module": "Automanage"
+  },
+  {
+    "alias": "VoiceServices",
+    "module": "VoiceServices"
+  },
+  {
+    "module": "BillingBenefits",
+    "alias": "BillingBenefits"
+  },
+  {
+    "module": "LoadTesting",
+    "alias": "LoadTesting"
   }
 ]

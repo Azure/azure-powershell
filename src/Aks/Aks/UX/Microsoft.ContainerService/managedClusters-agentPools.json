@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-            "description": "Get the agentpool in the managed cluster and resource group..",
+            "description": "Get the agentpool in the managed cluster and resource group.",
             "parameters": [
                 {
                     "name": "-ResourceGroupName",
@@ -34,7 +34,7 @@
                 },
                 {
                     "name": "-ClusterName",
-                    "value": "[path.clusterName]"
+                    "value": "[path.resourceName]"
                 },
                 {
                     "name": "-Name",

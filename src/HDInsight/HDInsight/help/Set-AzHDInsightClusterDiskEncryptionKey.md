@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 5141D84C-3C58-42B9-890F-C3C9049BC1C5
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclusterdiskencryptionkey
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclusterdiskencryptionkey
 schema: 2.0.0
 ---
 

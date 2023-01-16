@@ -36,7 +36,7 @@ PARAMETER <IDatabase>: Class representing a Kusto database.
   [AzureAsyncOperation <String>]: 
   [Location <String>]: Resource location.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 #>
 function New-AzKustoDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase])]

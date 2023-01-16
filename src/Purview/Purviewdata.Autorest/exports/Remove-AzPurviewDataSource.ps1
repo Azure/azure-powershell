@@ -40,7 +40,7 @@ SubscriptionId           : 4348d67b-ffc5-465d-b5dd-xxxxxxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewdatasource
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewdatasource
 #>
 function Remove-AzPurviewDataSource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource])]

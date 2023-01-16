@@ -204,7 +204,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 ConfigKeys.TestCoverageLocation,
                 new[] { AppliesTo.Az }));
 #endif
-
+            
+            configManager.RegisterConfig(new EnableLoginByWamConfig());
             configManager.RegisterConfig(new EnableInterceptSurveyConfig());
             configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
         }

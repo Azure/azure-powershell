@@ -25,7 +25,7 @@ Get-AzStaticWebAppSecret -ResourceGroupName resourceGroup -Name staticweb-portal
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappsecret
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappsecret
 #>
 function Get-AzStaticWebAppSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
