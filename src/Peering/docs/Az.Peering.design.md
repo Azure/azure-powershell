@@ -1206,10 +1206,6 @@ Initialize-AzPeeringServiceConnectionMonitor -InputObject <IPeeringIdentity> [-D
 Initialize-AzPeeringServiceConnectionMonitor 
 ```
 
-```output
-// no output
-```
-
 Initialize connection monitor functionality
 
 
