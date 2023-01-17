@@ -31,8 +31,8 @@ Deletes an existing peer ASN with the specified name under the given subscriptio
 
 ### Example 1: Remove peer asn
 ```powershell
- Remove-AzPeeringAsn -Name PsTestAsn
- ```
+Remove-AzPeeringAsn -Name PsTestAsn
+```
 
 Removes peer asn with the name specified
 

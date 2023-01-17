@@ -44,6 +44,7 @@ Gets an existing connection monitor test with the specified name under the given
 SourceAgent Destination DestinationPort TestFrequency Sucessful ProvisioningState
 ----------- ----------- --------------- ------------- --------- -----------------
 Agent 1     1.1.1.1     80              30            True      Succeeded
+Agent 2     8.8.8.8     80              30            True      Succeeded
 ```
 
 Lists all connection monitor test objects
@@ -54,7 +55,9 @@ Lists all connection monitor test objects
 ```
 
 ```output
-Connection Monitor Test Object
+SourceAgent Destination DestinationPort TestFrequency Sucessful ProvisioningState
+----------- ----------- --------------- ------------- --------- -----------------
+Agent 1     1.1.1.1     80              30            True      Succeeded
 ```
 
 Gets a single connection monitor test

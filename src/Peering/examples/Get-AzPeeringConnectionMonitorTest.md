@@ -4,7 +4,10 @@
 ```
 
 ```output
-List of Connection Monitor Tests
+SourceAgent Destination DestinationPort TestFrequency Sucessful ProvisioningState
+----------- ----------- --------------- ------------- --------- -----------------
+Agent 1     1.1.1.1     80              30            True      Succeeded
+Agent 2     8.8.8.8     80              30            True      Succeeded
 ```
 
 Lists all connection monitor test objects

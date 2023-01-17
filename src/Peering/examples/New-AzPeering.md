@@ -6,9 +6,9 @@ New-AzPeering -Name TestPeeringPs -ResourceGroupName DemoRG -Kind Direct -Locati
 ```
 
 ```output
-Name        SkuName             Kind   PeeringLocation ProvisioningState Location
-----        -------             ----   --------------- ----------------- --------
-TestPeering Premium_Direct_Free Direct Dallas          Succeeded         South Central US
+Name        SkuName                  Kind   PeeringLocation ProvisioningState Location
+----        -------                  ----   --------------- ----------------- --------
+TestPeering Premium_Direct_Unlimited Direct Dallas          Succeeded         South Central US
 ```
 
 Create a new direct peering object

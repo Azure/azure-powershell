@@ -1,7 +1,7 @@
 ### Example 1: Invoke looking glass command
 ```powershell
- Start-AzPeeringInvokeLookingGlass -Command Ping -DestinationIp 1.1.1.1 -SourceLocation Seattle -SourceType EdgeSite
- ```
+Start-AzPeeringInvokeLookingGlass -Command Ping -DestinationIp 1.1.1.1 -SourceLocation Seattle -SourceType EdgeSite
+```
 
 ```output
 Command Output
