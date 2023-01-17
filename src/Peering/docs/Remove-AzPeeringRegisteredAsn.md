@@ -34,10 +34,6 @@ Deletes an existing registered ASN with the specified name under the given subsc
 Remove-AzPeeringRegisteredAsn -Name TestAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo
 ```
 
-```output
-// no output
-```
-
 Remove a registered asn from the peering object
 
 ## PARAMETERS

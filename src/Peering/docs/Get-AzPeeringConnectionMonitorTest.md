@@ -41,7 +41,9 @@ Gets an existing connection monitor test with the specified name under the given
 ```
 
 ```output
-List of Connection Monitor Tests
+SourceAgent Destination DestinationPort TestFrequency Sucessful ProvisioningState
+----------- ----------- --------------- ------------- --------- -----------------
+Agent 1     1.1.1.1     80              30            True      Succeeded
 ```
 
 Lists all connection monitor test objects

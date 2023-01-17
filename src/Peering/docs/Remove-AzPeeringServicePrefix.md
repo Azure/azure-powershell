@@ -34,10 +34,6 @@ Deletes an existing prefix with the specified name under the given subscription,
 Remove-AzPeeringServicePrefix -Name TestPrefix -PeeringServiceName TestDRInterCloudZurich -ResourceGroup DemoRG
 ```
 
-```output
-// no output
-```
-
 Removes peering service prefix from peering
 
 ## PARAMETERS

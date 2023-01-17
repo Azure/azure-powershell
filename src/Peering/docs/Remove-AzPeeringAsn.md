@@ -36,10 +36,6 @@ Deletes an existing peer ASN with the specified name under the given subscriptio
 
 ```
 
-```output
-// no output
-```
-
 Removes peer asn with the name specified
 
 ## PARAMETERS

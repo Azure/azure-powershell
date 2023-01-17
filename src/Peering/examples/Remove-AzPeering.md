@@ -3,9 +3,5 @@
 Remove-AzPeering -Name TestPeering -ResourceGroupName DemoRG
 ```
 
-```output
-// no output
-```
-
 Remove a peering from the given resource group
 

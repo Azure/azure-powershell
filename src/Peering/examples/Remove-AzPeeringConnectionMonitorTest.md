@@ -3,9 +3,5 @@
 Remove-AzPeeringConnectionMonitorTest -Name TestName -PeeringServiceName TestDRInterCloudZurich -ResourceGroupName DemoRG
 ```
 
-```output
-// no output
-```
-
 Removes the given connection monitor test from the peering service
 

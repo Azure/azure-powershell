@@ -34,10 +34,6 @@ Deletes an existing peering with the specified name under the given subscription
 Remove-AzPeering -Name TestPeering -ResourceGroupName DemoRG
 ```
 
-```output
-// no output
-```
-
 Remove a peering from the given resource group
 
 ## PARAMETERS

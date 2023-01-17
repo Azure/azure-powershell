@@ -1,7 +1,6 @@
 ### Example 1: Create a check service provider availability object
 ```powershell
-$providerAvailability = New-AzPeeringCheckServiceProviderAvailabilityInputObject -PeeringServiceLocation Osaka -PeeringServiceProvider IIJ
-$providerAvailability
+New-AzPeeringCheckServiceProviderAvailabilityInputObject -PeeringServiceLocation Osaka -PeeringServiceProvider IIJ
 ```
 
 ```output

@@ -34,10 +34,6 @@ Deletes an existing connection monitor test with the specified name under the gi
 Remove-AzPeeringConnectionMonitorTest -Name TestName -PeeringServiceName TestDRInterCloudZurich -ResourceGroupName DemoRG
 ```
 
-```output
-// no output
-```
-
 Removes the given connection monitor test from the peering service
 
 ## PARAMETERS

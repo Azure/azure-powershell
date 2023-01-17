@@ -34,10 +34,6 @@ Deletes an existing peering service with the specified name under the given subs
 Remove-AzPeeringService -Name TestPeeringService -ResourceGroupName DemoRG
 ```
 
-```output
-// no output
-```
-
 Removes a peering service from the given resource group
 
 ## PARAMETERS

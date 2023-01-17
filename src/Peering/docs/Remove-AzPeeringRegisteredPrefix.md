@@ -34,10 +34,6 @@ Deletes an existing registered prefix with the specified name under the given su
 Remove-AzPeeringRegisteredPrefix -Name accessibilityTesting6 -PeeringName DemoPeering -ResourceGroupName DemoRG
 ```
 
-```output
-// no output
-```
-
 Removes the specified registered prefix from peering
 
 ## PARAMETERS

@@ -4,7 +4,9 @@ New-AzPeeringConnectionMonitorTest -Name TestName -PeeringServiceName DRTest -Re
 ```
 
 ```output
-//Connection Monitor Test Object
+SourceAgent Destination DestinationPort TestFrequency Sucessful ProvisioningState
+----------- ----------- --------------- ------------- --------- -----------------
+Agent 1     1.1.1.1     80              30            True      Succeeded
 ```
 
 Creates a connection monitor test for the peering service

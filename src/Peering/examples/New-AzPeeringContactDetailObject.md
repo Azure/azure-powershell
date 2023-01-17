@@ -1,7 +1,6 @@
 ### Example 1: Create a Contact Detail object
 ```powershell
-$contactDetail = New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
-$contactDetail
+New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
 ```
 
 ```output
