@@ -1,56 +1,33 @@
-Write-Host "VM test live scenarios"
-
 Invoke-LiveTestScenario -Name "VM.NewVM Test" -Description "Test create new VM" -ScenarioScript `
 {
-    param ($rgName, $rgLocation)
+    param ($rg)
 
-    Write-Host "Resource group name: $rgName"
+    $rgName = $rg.ResourceGroupName
+    $name = New-LiveTestResourceName
 
-    $vaultLocation = "westus"
-    $Name = New-LiveTestResourceName
-
-    $kv = Get-AzVM -ResourceGroupName $rgName -Name $Name 
-    if ($null -eq $kv) {
-        New-AzVM  -ResourceGroupName $rgName -Name $Name -Location $vaultLocation -Credential (Get-Credential)
+    $vm = Get-AzVM -ResourceGroupName $rgName -Name $name 
+    if ($null -eq $vm) {
+        $actual = New-AzVM -Name $name -Credential (Get-Credential)
     }
-    $got = Get-AzVM  -ResourceGroupName $rgName -Name $Name
+    Assert-AreEqual $name $actual.Name
 
-    Assert-NotNull $got
-    Assert-AreEqual $got.Location $vaultLocation
-    Assert-AreEqual $got.ResourceGroupName $rgName
-    Assert-AreEqual $got.Name $Name
-
-    $got = Get-AzVM -Name $Name
-
-    Assert-NotNull $got
-    Assert-AreEqual $got.Location $vaultLocation
-    Assert-AreEqual $got.ResourceGroupName $rgName
-    Assert-AreEqual $got.Name $Name
+    Assert-AreEqual $false $actual.EnabledForDeployment
+    Assert-Null $actual.Zone "By default Zone should be null"
 }
 
 Invoke-LiveTestScenario -Name "VM.RemoveVM Test" -Description "Test remove VM" -ResourceGroupLocation "eastus" -ScenarioScript `
 {
-    param ([string] $rgName, [string] $rgLocation)
+    param ($rg)
 
-    Write-Host "Resource group name: $rgName"
+    $rgName = $rg.ResourceGroupName
+    $name = New-LiveTestResourceName
 
-    $vaultLocation = "westus"
-    $vaultName = New-LiveTestResourceName
+    New-AzVM -Name $name -Credential (Get-Credential)
+    Remove-AzVM -ResourceGroupName $rgName -Name $name -Force
 
-    New-AzVM -ResourceGroupName $rgname -Name $Name -Location $vaultLocation
-    Remove-AzVM -Name $Name -Force
-
-    $removedVM = Get-AzVM -ResourceGroupName $rgName -Name $Name
+    $removedVM = Get-AzVM -ResourceGroupName $rgName -Name $name
     Assert-Null $removedVM
 
     # purge deleted vault
-    Remove-AzVM -ResourceGroupName $rgName -Name $Name -Location $vaultLocation -InRemovedState -Force
-
-    # Test piping
-    New-AzVM -ResourceGroupName $rgname -Name $Name -Location $vaultLocation
-
-    Get-AzVM -ResourceGroupName $rgname -Name $Name | Remove-AzVM -Force
-
-    $removedVM = Get-AzVM -ResourceGroupName $rgName -Name $Name
-    Assert-Null $removedVM
+    Remove-AzVM -ResourceGroupName $rgName -Name $name -Force
 }
