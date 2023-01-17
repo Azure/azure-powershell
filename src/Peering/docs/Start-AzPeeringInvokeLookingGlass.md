@@ -36,8 +36,6 @@ Run looking glass functionality
  Start-AzPeeringInvokeLookingGlass -Command Ping -DestinationIp 1.1.1.1 -SourceLocation Seattle -SourceType EdgeSite
  ```
 
-```
-
 ```output
 Command Output
 ------- ------
