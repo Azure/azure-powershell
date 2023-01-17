@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int? BytesToCapturePerPacket { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public int? TotalBytesPerSession { get; set; }
+        public uint? TotalBytesPerSession { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public int? TimeLimitInSeconds { get; set; }

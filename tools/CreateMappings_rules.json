@@ -791,5 +791,17 @@
   {
     "alias": "VoiceServices",
     "module": "VoiceServices"
+  },
+  {
+    "module": "BillingBenefits",
+    "alias": "BillingBenefits"
+  },
+  {
+    "module": "LoadTesting",
+    "alias": "LoadTesting"
+  },
+  {
+    "alias": "MobileNetwork",
+    "module": "MobileNetwork"
   }
 ]

@@ -33,7 +33,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <ICertificateProperties>: Properties of the certificate resource payload.
   Type <String>: The type of the certificate source.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudcertificate
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudcertificate
 #>
 function New-AzSpringCloudCertificate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICertificateResource])]

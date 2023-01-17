@@ -43,7 +43,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationtosqldb
+https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationtosqldb
 #>
 function Remove-AzDataMigrationToSqlDb {
 [OutputType([System.Boolean])]
