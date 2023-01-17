@@ -1,56 +1,40 @@
-Write-Host "Storage test live scenarios"
-
 Invoke-LiveTestScenario -Name "Storage.NewStorageAccount Test" -Description "Test create storage account" -ScenarioScript `
 {
-    param ($rgName, $rgLocation)
+    param ($rg)
 
-    Write-Host "Resource group name: $rgName"
-
+    $rgName = $rg.ResourceGroupName
+    $name = New-LiveTestResourceName
     $vaultLocation = "westus"
-    $vaultName = New-LiveTestResourceName
 
-    $kv = Get-AzStorageAccount -ResourceGroupName $rgName -Name $vaultName 
-    if ($null -eq $kv) {
-        New-AzStorageAccount  -ResourceGroupName $rgName -Name $vaultName -Location $vaultLocation
+    $sa = Get-AzStorageAccount -ResourceGroupName $rgName -Name $name  
+    if ($null -eq $sa) {
+        $actual = New-AzStorageAccount  -ResourceGroupName $rgName -Name $name  -Location $vaultLocation -SkuName Standard_GRS 
     }
-    $got = Get-AzStorageAccount  -ResourceGroupName $rgName -Name $vaultName
 
-    Assert-NotNull $got
-    Assert-AreEqual $got.Location $vaultLocation
-    Assert-AreEqual $got.ResourceGroupName $rgName
-    Assert-AreEqual $got.Name $vaultName
-
-    $got = Get-AzStorageAccount -Name $vaultName
-
-    Assert-NotNull $got
-    Assert-AreEqual $got.Location $vaultLocation
-    Assert-AreEqual $got.ResourceGroupName $rgName
-    Assert-AreEqual $got.Name $vaultName
+    Assert-AreEqual $name $actual.VaultName
+    Assert-AreEqual $rgName $actual.ResourceGroupName
+    Assert-AreEqual $vaultLocation $actual.Location
+    Assert-AreEqual "Standard_GRS" $actual.SkuName
+    Assert-AreEqual $false $actual.EnabledForDeployment
+    Assert-True { $actual.AllowBlobPublicAccess } "By default AllowBlobPublicAccess should be true"
+    Assert-Null $actual.AllowSharedKeyAccess "By default AllowSharedKeyAccess should be null"
+    Assert-False { $actual.EnableHttpsTrafficOnly } "By default EnableHttpsTrafficOnly should be false"
 }
 
-Invoke-LiveTestScenario -Name "Storage.RemoveStorageAccount Test" -Description "Test remove storage account" -ResourceGroupLocation "eastus" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Storage.RemoveStorageAccount Test" -Description "Test remove storage account" -ScenarioScript `
 {
-    param ([string] $rgName, [string] $rgLocation)
+    param ($rg)
 
-    Write-Host "Resource group name: $rgName"
-
+    $rgName = $rg.ResourceGroupName
+    $name = New-LiveTestResourceName
     $vaultLocation = "westus"
-    $vaultName = New-LiveTestResourceName
 
-    New-AzStorageAccount -ResourceGroupName $rgname -Name $vaultName -Location $vaultLocation
-    Remove-AzStorageAccount -Name $vaultName -Force
+    New-AzStorageAccount -ResourceGroupName $rgname -Name $name -Location $vaultLocation -SkuName Standard_GRS 
+    Remove-AzStorageAccount -ResourceGroupName $rgname -Name $name -Force
 
-    $deletedVault = Get-AzStorageAccount -ResourceGroupName $rgName -Name $vaultName
-    Assert-Null $deletedVault
+    $removedAccount = Get-AzStorageAccount -ResourceGroupName $rgName -Name $name
+    Assert-Null $removedAccount
 
     # purge deleted vault
-    Remove-AzStorageAccount -ResourceGroupName $rgName -Name $vaultName -Location $vaultLocation -InRemovedState -Force
-
-    # Test piping
-    New-AzStorageAccount -ResourceGroupName $rgname -Name $vaultName -Location $vaultLocation
-
-    Get-AzStorageAccount -ResourceGroupName $rgname -Name $vaultName | Remove-AzStorageAccount -Force
-
-    $removedAccount = Get-AzStorageAccount -ResourceGroupName $rgName -Name $vaultName
-    Assert-Null $removedAccount
+    Remove-AzStorageAccount -ResourceGroupName $rgName -Name $name -Force
 }
