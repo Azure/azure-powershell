@@ -26,7 +26,7 @@ Creates an object that represent an Azure Storage path to be mounted inside a We
 ### Example 1
 ```powershell
 $storagePath1 = New-AzWebAppAzureStoragePath -Name "RemoteStorageAccount1" -AccountName "myaccount" -Type AzureFiles -ShareName "someShareName" -AccessKey "some access key" `
--MountPath "\mounts\myFolderInsideTheContainerWebApp"
+-MountPath "\mount\myFolderInsideTheContainerWebApp"
 
 $storagePath2 = New-AzWebAppAzureStoragePath -Name "RemoteStorageAccount2" -AccountName "myaccount2" -Type AzureFiles -ShareName "someShareName2" -AccessKey "some access key 2" `
 -MountPath "\mounts\myFolderInsideTheContainerWebApp2"

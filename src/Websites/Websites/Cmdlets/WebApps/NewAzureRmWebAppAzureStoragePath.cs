@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string AccessKey { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Path in the container where the share specified by ShareName will be exposed. MountPath must be sub-directory of "\mounts".")]
+        [Parameter(Mandatory = true, HelpMessage = "Path in the container where the share specified by ShareName will be exposed. MountPath must be sub-directory of \"mounts\".")]
         [ValidateNotNullOrEmpty]
         public string MountPath { get; set; }
 
