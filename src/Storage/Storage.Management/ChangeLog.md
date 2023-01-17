@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Add a warning message for the upcoming breaking change when creating a Storage account 
+    - `New-AzStorageAccount`
 ## Version 5.3.0
 * Return ListBlobProperties in blob list result
     - `Get-AzStorageBlob`
