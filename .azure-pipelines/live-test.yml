@@ -41,10 +41,17 @@ parameters:
   default: 7.0.x
 
 variables:
-  LiveTestArtifactsName: LiveTestArtifacts
-  LiveTestDataLocation: $(Pipeline.Workspace)/$(LiveTestArtifactsName)
+  ArtifactsName: LiveTestArtifacts
+  DataLocation: $(Pipeline.Workspace)/$(ArtifactsName)
   EnableTestCoverage: true
-  TestCoverageLocation: $(LiveTestDataLocation)
+  TestCoverageLocation: $(DataLocation)
+
+schedules:
+- cron: "0 19 * * *"
+  displayName: Daily Live Test
+  branches:
+    include:
+    - shared/livetest
 
 pr: none
 trigger: none
