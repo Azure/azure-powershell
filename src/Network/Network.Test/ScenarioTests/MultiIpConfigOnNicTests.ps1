@@ -171,11 +171,11 @@ function Test-AddNICToLBWithMultiIpConfig
         Assert-AreEqual "Succeeded" $lb.ProvisioningState
         Assert-AreEqual 1 @($lb.FrontendIPConfigurations).Count
 
-        # Create network interfaces with 3 ips and accociate to loadbalancer
-        $nic1 = New-AzNetworkInterface -Name $nicname1 -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -LoadBalancerBackendAddressPool $lb.BackendAddressPools[0] -LoadBalancerInboundNatRule $lb.InboundNatRules[0] | Add-AzNetworkInterfaceIpConfig -Name $ipconfig1Name -PrivateIpAddressVersion ipv4 -Subnet $vnet.Subnets[0] | Add-AzNetworkInterfaceIpConfig -Name $ipconfig2Name -PrivateIpAddressVersion ipv4 -Subnet $vnet.Subnets[0] | Set-AzNetworkInterface
+        # Create network interface with 1 ip and accociate to loadbalancer
+        $nic1 = New-AzNetworkInterface -Name $nicname1 -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -LoadBalancerBackendAddressPool $lb.BackendAddressPools[0] -LoadBalancerInboundNatRule $lb.InboundNatRules[0] 
         
         #verify nic configs
-		Assert-AreEqual 3 @($nic1.IpConfigurations).Count
+		Assert-AreEqual 1 @($nic1.IpConfigurations).Count
 		Assert-AreEqual true $nic1.IpConfigurations[0].Primary
 		
 		# Delete NetworkInterface

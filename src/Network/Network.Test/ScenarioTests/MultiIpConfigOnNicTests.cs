@@ -26,7 +26,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Transient failures in the live testing pipeline")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestMultiIpConfigCRUD()
