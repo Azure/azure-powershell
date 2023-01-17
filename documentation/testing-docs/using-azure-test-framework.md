@@ -1,4 +1,4 @@
-# Using Microsoft.Rest.ClientRuntime.Azure.TestFramework
+# Using Azure PowerShell Test Framework
 
 - [Using Microsoft.Rest.ClientRuntime.Azure.TestFramework](#using-microsoftrestclientruntimeazuretestframework)
   - [Getting Started](#getting-started)
