@@ -1,8 +1,3 @@
-## Syntax-Changes
-
-### Swagger Link:
-https://github.com/Azure/azure-rest-api-specs/tree/main/specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01
-
 #### New-AzPeering
 
 #### SYNOPSIS
@@ -125,10 +120,6 @@ Remove-AzPeering -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>] [-
 + Example 1: Remove peering
 ```powershell
 Remove-AzPeering -Name TestPeering -ResourceGroupName DemoRG
-```
-
-```output
-// no output
 ```
 
 Remove a peering from the given resource group
@@ -279,12 +270,6 @@ Remove-AzPeeringAsn -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>]
  Remove-AzPeeringAsn -Name PsTestAsn
  ```
 
-```
-
-```output
-// no output
-```
-
 Removes peer asn with the name specified
 
 
@@ -339,8 +324,7 @@ New-AzPeeringCheckServiceProviderAvailabilityInputObject [-PeeringServiceLocatio
 
 + Example 1: Create a check service provider availability object
 ```powershell
-$providerAvailability = New-AzPeeringCheckServiceProviderAvailabilityInputObject -PeeringServiceLocation Osaka -PeeringServiceProvider IIJ
-$providerAvailability
+New-AzPeeringCheckServiceProviderAvailabilityInputObject -PeeringServiceLocation Osaka -PeeringServiceProvider IIJ
 ```
 
 ```output
@@ -373,7 +357,9 @@ New-AzPeeringConnectionMonitorTest -Name TestName -PeeringServiceName DRTest -Re
 ```
 
 ```output
-//Connection Monitor Test Object
+SourceAgent Destination DestinationPort TestFrequency Sucessful ProvisioningState
+----------- ----------- --------------- ------------- --------- -----------------
+Agent 1     1.1.1.1     80              30            True      Succeeded
 ```
 
 Creates a connection monitor test for the peering service
@@ -412,7 +398,9 @@ Get-AzPeeringConnectionMonitorTest -InputObject <IPeeringIdentity> [-DefaultProf
 ```
 
 ```output
-List of Connection Monitor Tests
+SourceAgent Destination DestinationPort TestFrequency Sucessful ProvisioningState
+----------- ----------- --------------- ------------- --------- -----------------
+Agent 1     1.1.1.1     80              30            True      Succeeded
 ```
 
 Lists all connection monitor test objects
@@ -455,10 +443,6 @@ Remove-AzPeeringConnectionMonitorTest -InputObject <IPeeringIdentity> [-DefaultP
 Remove-AzPeeringConnectionMonitorTest -Name TestName -PeeringServiceName TestDRInterCloudZurich -ResourceGroupName DemoRG
 ```
 
-```output
-// no output
-```
-
 Removes the given connection monitor test from the peering service
 
 
@@ -477,8 +461,7 @@ New-AzPeeringContactDetailObject [-Email <String>] [-Phone <String>] [-Role <Rol
 
 + Example 1: Create a Contact Detail object
 ```powershell
-$contactDetail = New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
-$contactDetail
+New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
 ```
 
 ```output
@@ -511,7 +494,7 @@ New-AzPeeringDirectConnectionObject [-BandwidthInMbps <Int32>] [-BgpSessionMaxPr
 
 + Example 1: Create a direct connection object
 ```powershell
-$DirectConnection = New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 1.1.1.1 -BgpSessionPeerSessionIPv4Address 1.1.1.0 -BgpSessionPrefixV4 1.1.1.1/31 -PeeringDbFacilityId 82 -SessionAddressProvider Peer -ConnectionIdentifier c111111111111
+New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 1.1.1.1 -BgpSessionPeerSessionIPv4Address 1.1.1.0 -BgpSessionPrefixV4 1.1.1.1/31 -PeeringDbFacilityId 82 -SessionAddressProvider Peer -ConnectionIdentifier c111111111111
 ```
 
 ```output
@@ -615,7 +598,11 @@ Get-AzPeeringLegacy -Kind Direct -PeeringLocation Seattle
 ```
 
 ```output
-{{ Add output here }}
+Name           SkuName             Kind     PeeringLocation ProvisioningState Location
+----           -------             ----     --------------- ----------------- --------
+DemoComp1      Premium_Direct_Free Direct   Dallas          Succeeded         South Central US
+DemoPeering    Premium_Direct_Free Direct   Dallas          Succeeded         South Central US
+TestEdgeZone   Premium_Direct_Free Direct   Atlanta         Succeeded         East US 2
 ```
 
 Gets legacy peering object
@@ -831,10 +818,6 @@ Remove-AzPeeringRegisteredAsn -InputObject <IPeeringIdentity> [-DefaultProfile <
 Remove-AzPeeringRegisteredAsn -Name TestAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo
 ```
 
-```output
-// no output
-```
-
 Remove a registered asn from the peering object
 
 
@@ -949,10 +932,6 @@ Remove-AzPeeringRegisteredPrefix -InputObject <IPeeringIdentity> [-DefaultProfil
 + Example 1: Remove registered prefix
 ```powershell
 Remove-AzPeeringRegisteredPrefix -Name accessibilityTesting6 -PeeringName DemoPeering -ResourceGroupName DemoRG
-```
-
-```output
-// no output
 ```
 
 Removes the specified registered prefix from peering
@@ -1162,10 +1141,6 @@ Remove-AzPeeringService -InputObject <IPeeringIdentity> [-DefaultProfile <PSObje
 + Example 1: Remove peering service
 ```powershell
 Remove-AzPeeringService -Name TestPeeringService -ResourceGroupName DemoRG
-```
-
-```output
-// no output
 ```
 
 Removes a peering service from the given resource group
@@ -1464,10 +1439,6 @@ Remove-AzPeeringServicePrefix -InputObject <IPeeringIdentity> [-DefaultProfile <
 + Example 1: Remove peering service prefix
 ```powershell
 Remove-AzPeeringServicePrefix -Name TestPrefix -PeeringServiceName TestDRInterCloudZurich -ResourceGroup DemoRG
-```
-
-```output
-// no output
 ```
 
 Removes peering service prefix from peering
