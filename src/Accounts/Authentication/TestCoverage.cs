@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -71,8 +69,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 Directory.CreateDirectory(s_testCoveragePath);
             }
-
-            WriteDebug($"Test coverage data location: ${s_testCoveragePath}");
         }
 
         private string GenerateCsvHeader()
@@ -153,15 +149,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 s_lock.ExitWriteLock();
             }
 #endif
-        }
-
-        private static void WriteDebug(string message)
-        {
-            EventHandler<StreamEventArgs> writeWarningEvent;
-            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out writeWarningEvent))
-            {
-                writeWarningEvent(null, new StreamEventArgs() { Message = message });
-            }
         }
     }
 }
