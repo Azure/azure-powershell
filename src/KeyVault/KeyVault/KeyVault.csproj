@@ -39,6 +39,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\skr-policy.json" />
+    <EmbeddedResource Include="Resources\keyvaultTemplate.json" />
   </ItemGroup>
   
   <ItemGroup>

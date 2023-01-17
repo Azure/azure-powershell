@@ -19,13 +19,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Common.Exceptions;
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models;
+    using PSKeyVaultPropertiesResources = Microsoft.Azure.Commands.KeyVault.Properties.Resources;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
 
     public class PSDeploymentWhatIfCmdletParameters
     {
+        #region Constants
+
+        private const string DefaultTemplatePath = "Microsoft.Azure.Commands.KeyVault.Resources.keyvaultTemplate.json";
+
+        #endregion
         public PSDeploymentWhatIfCmdletParameters(
             string deploymentName = null,
             DeploymentMode mode = DeploymentMode.Incremental,
@@ -97,9 +105,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 WhatIfSettings = new DeploymentWhatIfSettings(this.ResultFormat)
             };
 
-            string templateContent = !string.IsNullOrEmpty(this.TemplateUri)
-                ? FileUtilities.DataStore.ReadFileAsText(this.TemplateUri)
-                : PSJsonSerializer.Serialize(this.TemplateObject);
+            string templateContent = null;
+            try
+            {
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultTemplatePath))
+                using (var reader = new StreamReader(stream))
+                {
+                    templateContent = reader.ReadToEnd();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new AzPSArgumentException(string.Format(PSKeyVaultPropertiesResources.FileNotFound, ex.Message), "TemplateFile");
+            };
             var temp = JObject.Parse(templateContent);
             temp["resources"][0]["name"] = this.deploymentName;
             properties.Template = temp;

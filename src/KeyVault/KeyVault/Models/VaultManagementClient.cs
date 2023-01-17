@@ -44,6 +44,14 @@ using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources;
 using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using System.Reflection;
+using ProvisioningState = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.ProvisioningState;
+using System.Text;
+using Microsoft.Azure.Commands.KeyVault.Extensions;
+using Microsoft.Azure.Commands.KeyVault.Progress;
+using System.Security.Cryptography;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -106,6 +114,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             set;
         }
 
+        #region Constants
+
+        private const string DefaultTemplatePath = "Microsoft.Azure.Commands.KeyVault.Resources.keyvaultTemplate.json";
+
+        #endregion
+
         #region Vault-related METHODS
         /// <summary>
         /// Create a new vault
@@ -113,9 +127,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="parameters">vault creation parameters</param>
         /// <param name="graphClient">the active directory client</param>
         /// <param name="networkRuleSet">the network rule set of the vault</param>
+        /// <param name="cmdlet"></param>
         /// <returns></returns>
-        
-        public PSKeyVault CreateNewVault(VaultCreationOrUpdateParameters parameters, IMicrosoftGraphClient graphClient = null, PSKeyVaultNetworkRuleSet networkRuleSet = null)
+
+        public PSKeyVault CreateNewVault(VaultCreationOrUpdateParameters parameters, IMicrosoftGraphClient graphClient = null, PSKeyVaultNetworkRuleSet networkRuleSet = null, KeyVaultManagementCmdletBase cmdlet = null)
         {
             if (parameters == null)
                 throw new ArgumentNullException("parameters");
@@ -180,9 +195,208 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.BeginDeployment(parameters, deployment);
 
             WriteVerbose(string.Format("CreatedDeployment", parameters.Name));
-
+            var dep = ProvisionDeploymentStatus(parameters, deployment, cmdlet).ToPSDeployment(resourceGroupName: parameters.ResourceGroupName);
+            
             return GetVault(parameters.Name, parameters.ResourceGroupName);
         }
+
+        public DeploymentExtended ProvisionDeploymentStatus(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
+        {
+            int step = 5;
+            int phaseOne = 400;
+            operations = new List<DeploymentOperation>();
+            ProvisioningState[] status = new ProvisioningState[] { ProvisioningState.Canceled, ProvisioningState.Succeeded, ProvisioningState.Failed };
+            var getDeploymentFunc = this.GetDeploymentAction(parameters);
+
+            var deploymentOperationError = new DeploymentOperationErrorInfo();
+
+
+            DeploymentExtended deploymentExtended = null;
+            var downloadStatus = new ProgressStatus(0, 50, new ComputeStats());
+            Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
+            ProgressTracker progressTracker = new ProgressTracker(downloadStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
+            do
+            {
+                var getDeploymentTask = getDeploymentFunc();
+                var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult();
+                var response = getResult.Response;
+                deploymentExtended = getResult.Body;
+
+                if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
+                {
+                    step = response.Headers.RetryAfter.Delta.Value.Seconds;
+                }
+                else
+                {
+                    step = phaseOne > 0 ? 5 : 60;
+                }
+                progressTracker.Update();
+            } while (!status.Any(s => s.ToString().Equals(deploymentExtended.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
+
+
+            Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deployment, deploymentOperationError);
+
+            /*
+            var deploymentExtended = this.WaitDeploymentStatus(
+                getDeploymentFunc,
+                writeProgressAction,
+                ProvisioningState.Canceled,
+                ProvisioningState.Succeeded,
+                ProvisioningState.Failed);
+            */
+
+            if (deploymentOperationError.ErrorMessages.Count > 0)
+            {
+                WriteError(GetDeploymentErrorMessagesWithOperationId(deploymentOperationError,
+                    parameters.Name,
+                    deploymentExtended?.Properties?.CorrelationId));
+            }
+
+            return deploymentExtended;
+        }
+
+        Func<Task<AzureOperationResponse<DeploymentExtended>>> GetDeploymentAction(VaultCreationOrUpdateParameters parameters)
+        {
+            return () => ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(parameters.ResourceGroupName, parameters.Name);
+        }
+
+        private DeploymentExtended WaitDeploymentStatus(
+            Func<Task<AzureOperationResponse<DeploymentExtended>>> getDeployment,
+            Action listDeploymentOperations,
+            params ProvisioningState[] status)
+        {
+            DeploymentExtended deployment;
+
+            // Poll deployment state and deployment operations after RetryAfter.
+            // If no RetryAfter provided: In phase one, poll every 5 seconds. Phase one
+            // takes 400 seconds. In phase two, poll every 60 seconds.
+            const int counterUnit = 1000;
+            int step = 5;
+            int phaseOne = 400;
+
+            do
+            {
+                WriteVerbose(string.Format("CheckingDeploymentStatus", step)); //PSKeyVaultPropertiesResources.add #todo
+                TestMockSupport.Delay(step * counterUnit);
+
+                if (phaseOne > 0)
+                {
+                    phaseOne -= step;
+                }
+
+                if (listDeploymentOperations != null)
+                {
+                    // Action
+                    listDeploymentOperations();
+                }
+
+                var getDeploymentTask = getDeployment();
+
+                using (var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult())
+                {
+                    deployment = getResult.Body;
+                    var response = getResult.Response;
+
+                    if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
+                    {
+                        step = response.Headers.RetryAfter.Delta.Value.Seconds;
+                    }
+                    else
+                    {
+                        step = phaseOne > 0 ? 5 : 60;
+                    }
+                }
+            } while (!status.Any(s => s.ToString().Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
+
+            return deployment;
+        }
+
+        private void WriteDeploymentProgress(VaultCreationOrUpdateParameters parameters, Deployment deployment, DeploymentOperationErrorInfo deploymentOperationError)
+        {
+            const string normalStatusFormat = "Resource {0} '{1}' provisioning status is {2}";
+            List<DeploymentOperation> newOperations;
+
+            var result = ResourceManagementClient.DeploymentOperations.List(parameters.ResourceGroupName, parameters.Name);
+
+            newOperations = GetNewOperations(operations, result);
+            operations.AddRange(newOperations);
+
+            /*
+            while (!string.IsNullOrEmpty(result.NextPageLink))
+            {
+                result = this.ListNextDeploymentOperations(parameters, result.NextPageLink);
+                newOperations = GetNewOperations(operations, result);
+                operations.AddRange(newOperations);
+            }
+            */
+
+            foreach (DeploymentOperation operation in newOperations)
+            {
+                string statusMessage;
+
+                if (operation.Properties.ProvisioningState != ProvisioningState.Failed.ToString())
+                {
+                    if (operation.Properties.TargetResource != null)
+                    {
+                        statusMessage = string.Format(normalStatusFormat,
+                            operation.Properties.TargetResource.ResourceType,
+                            operation.Properties.TargetResource.ResourceName,
+                            operation.Properties.ProvisioningState.ToLower());
+
+                        WriteVerbose(statusMessage);
+                    }
+                }
+                else
+                {
+                    deploymentOperationError.ProcessError(operation);
+                }
+            }
+        }
+
+        public string GetDeploymentErrorMessagesWithOperationId(DeploymentOperationErrorInfo errorInfo, string deploymentName = null, string correlationId = null)
+        {
+            if (errorInfo.ErrorMessages.Count == 0)
+                return String.Empty;
+
+            var sb = new StringBuilder();
+
+            int maxErrors = errorInfo.ErrorMessages.Count > DeploymentOperationErrorInfo.MaxErrorsToShow
+               ? DeploymentOperationErrorInfo.MaxErrorsToShow
+               : errorInfo.ErrorMessages.Count;
+
+            // Add outer message showing the total number of errors.
+            sb.AppendFormat(PSKeyVaultPropertiesResources.DeploymentOperationOuterError, deploymentName, maxErrors, errorInfo.ErrorMessages.Count);
+
+            // Add each error message
+            errorInfo.ErrorMessages
+                .Take(maxErrors).ToList()
+                .ForEach(m => sb
+                    .AppendLine()
+                    .AppendFormat(PSKeyVaultPropertiesResources.DeploymentOperationResultError, m
+                            .ToFormattedString())
+                    .AppendLine());
+
+            // Add correlationId
+            sb.AppendLine().AppendFormat(PSKeyVaultPropertiesResources.DeploymentCorrelationId, correlationId);
+
+            return sb.ToString();
+        }
+
+        private List<DeploymentOperation> GetNewOperations(List<DeploymentOperation> old, IPage<DeploymentOperation> current)
+        {
+            List<DeploymentOperation> newOperations = new List<DeploymentOperation>();
+            foreach (DeploymentOperation operation in current)
+            {
+                DeploymentOperation operationWithSameIdAndProvisioningState = old.Find(o => o.OperationId.Equals(operation.OperationId) && o.Properties.ProvisioningState.Equals(operation.Properties.ProvisioningState));
+                if (operationWithSameIdAndProvisioningState == null)
+                {
+                    newOperations.Add(operation);
+                }
+            }
+
+            return newOperations;
+        }
+
         private void WriteVerbose(string progress)
         {
             if (VerboseLogger != null)
@@ -197,10 +411,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 return parameters.Name;
             }
+            /*
             else if (!string.IsNullOrEmpty(parameters.TemplateFile))
             {
                 return Path.GetFileNameWithoutExtension(parameters.TemplateFile);
             }
+            */
             else
             {
                 return Guid.NewGuid().ToString();
@@ -208,7 +424,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
         private void BeginDeployment(VaultCreationOrUpdateParameters parameters, Deployment deployment)
         {
-            ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
+            ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
         }
         private void RunDeploymentValidation(VaultCreationOrUpdateParameters parameters, Deployment deployment)
         {
@@ -272,7 +488,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private DeploymentValidateResult ValidateDeployment(VaultCreationOrUpdateParameters parameters, Deployment deployment)
         {
-            return ResourceManagementClient.Deployments.Validate(parameters.ResourceGroupName, parameters.Name, deployment);
+            return ResourceManagementClient.Deployments.BeginValidate(parameters.ResourceGroupName, parameters.Name, deployment);
         }
         private void WriteError(string error)
         {
@@ -309,8 +525,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     DetailLevel = debugSetting
                 };
             }
-            
-            var jsonInfo = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
+
+            string templateContent = null;
+            try
+            {
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultTemplatePath))
+                using (var reader = new StreamReader(stream))
+                {
+                    templateContent = reader.ReadToEnd();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new AzPSArgumentException(string.Format(PSKeyVaultPropertiesResources.FileNotFound, ex.Message), "TemplateFile");
+            };
+            var jsonInfo = JObject.Parse(templateContent);
 
             jsonInfo["resources"][0]["name"] = parameters.Name;
             jsonInfo["resources"][0]["location"] = parameters.Location;

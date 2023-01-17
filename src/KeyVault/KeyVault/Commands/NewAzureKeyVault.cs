@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
@@ -22,7 +23,10 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
+using System.IO;
+using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -69,18 +73,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [LocationCompleter("Microsoft.KeyVault/vaults")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
-
-        /// <summary>
-        /// Location
-        /// </summary>
-        [Parameter(Mandatory = false,
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the Azure region in which to create the key vault. Use the command Get-AzResourceProvider with the ProviderNamespace parameter to see your choices.")]
-        [LocationCompleter("Microsoft.KeyVault/vaults")]
-        [ValidateNotNullOrEmpty()]
-        public string TemplateFile = "E:/Azure/kv1.json";
-
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
@@ -132,8 +124,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
         protected PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
             deploymentName: this.Name,
-            resourceGroupName: this.ResourceGroupName,
-            templateUri: this.TemplateFile
+            resourceGroupName: this.ResourceGroupName
+            // templateUri: Path.GetDirectoryName(new System.Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
+            //Assembly.GetExecutingAssembly().GetManifestResourceNames().FirstOrDefault(r => r.Contains("Template"))
             );
         protected PSWhatIfOperationResult ExecuteWhatIf()
         {
@@ -197,6 +190,21 @@ namespace Microsoft.Azure.Commands.KeyVault
                     };
                 }
 
+                /*
+                try
+                {
+                    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultTemplatePath))
+                    using (var reader = new StreamReader(stream))
+                    {
+                        this.TemplateFile = reader.ReadToEnd();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new AzPSArgumentException(string.Format(Resources.FileNotFound, ex.Message), nameof(this.TemplateFile));
+                };
+                */
+
                 var VaultCreationParameter = new VaultCreationOrUpdateParameters()
                 {
                     Name = this.Name,
@@ -224,14 +232,13 @@ namespace Microsoft.Azure.Commands.KeyVault
                     // New key-vault takes in default network rule set
                     NetworkAcls = new NetworkRuleSet(),
                     PublicNetworkAccess = this.PublicNetworkAccess,
-                    Tags = this.Tag,
-                    TemplateFile = "E:/Azure/kv1.json"
+                    Tags = this.Tag
 
                 };
 
                 var newVault = KeyVaultCreationClient.CreateNewVault(VaultCreationParameter,
                     GraphClient,
-                    NetworkRuleSet);
+                    NetworkRuleSet, this);
 
                 this.WriteObject(newVault);
 

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public MHSMNetworkRuleSet MhsmNetworkAcls { get; set; }
         public CreateMode? CreateMode { get; set; }
         public string[] Administrator { get; set; }
-        public string TemplateFile { get; set; }
+        // public string TemplateFile { get; set; }
         public DeploymentMode DeploymentMode { get; set; }
         public string QueryString { get; set; }
         public Hashtable TemplateObject { get; set; }
