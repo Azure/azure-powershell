@@ -105,6 +105,7 @@ Marketplace Ordering                  | `Az.MarketplaceOrdering`                
 Media                                 | `Az.Media`                              | [![Media]][MediaGallery]
 Migrate                               | `Az.Migrate`                            | [![Migrate]][MigrateGallery]
 Mixed Reality                         | `Az.MixedReality`                       | [![MixedReality]][MixedRealityGallery]
+Mobile Network                        | `Az.MobileNetwork`                      | [![MobileNetwork]][MobileNetworkGallery]
 Monitor                               | `Az.Monitor`                            | [![Monitor]][MonitorGallery]
 Monitoring Solutions                  | `Az.MonitoringSolutions`                | [![MonitoringSolutions]][MonitoringSolutionsGallery]
 Database for MySQL                    | `Az.MySql`                              | [![MySql]][MySqlGallery]
@@ -257,6 +258,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Media]:                      https://img.shields.io/powershellgallery/v/Az.Media.svg?style=flat-square&label=Az.Media
 [Migrate]:                    https://img.shields.io/powershellgallery/v/Az.Migrate.svg?style=flat-square&label=Az.Migrate
 [MixedReality]:               https://img.shields.io/powershellgallery/v/Az.MixedReality.svg?style=flat-square&label=Az.MixedReality
+[MobileNetwork]:              https://img.shields.io/powershellgallery/v/Az.MobileNetwork.svg?style=flat-square&label=Az.MobileNetwork
 [Monitor]:                    https://img.shields.io/powershellgallery/v/Az.Monitor.svg?style=flat-square&label=Az.Monitor
 [MonitoringSolutions]:        https://img.shields.io/powershellgallery/v/Az.MonitoringSolutions.svg?style=flat-square&label=Az.MonitoringSolutions
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
@@ -407,6 +409,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [MediaGallery]:                      https://www.powershellgallery.com/packages/Az.Media/
 [MigrateGallery]:                    https://www.powershellgallery.com/packages/Az.Migrate/
 [MixedRealityGallery]:               https://www.powershellgallery.com/packages/Az.MixedReality/
+[MobileNetworkGallery]:              https://www.powershellgallery.com/packages/Az.MobileNetwork/
 [MonitorGallery]:                    https://www.powershellgallery.com/packages/Az.Monitor/
 [MonitoringSolutionsGallery]:        https://www.powershellgallery.com/packages/Az.MonitoringSolutions/
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
