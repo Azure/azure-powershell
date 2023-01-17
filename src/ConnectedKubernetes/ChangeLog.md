@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.1
 * Made `New-AzConnectedKubernetes` support PowerShell 5.
 
 ## Version 0.7.0
