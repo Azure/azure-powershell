@@ -50,14 +50,14 @@ The **Set-AzStorageBlobContent** cmdlet uploads a local file to an Azure Storage
 
 ### Example 1: Upload a named file
 ```
-PS C:\>Set-AzStorageBlobContent -Container "ContosoUpload" -File ".\PlanningData" -Blob "Planning2015"
+Set-AzStorageBlobContent -Container "ContosoUpload" -File ".\PlanningData" -Blob "Planning2015"
 ```
 
 This command uploads the file that is named PlanningData to a blob named Planning2015.
 
 ### Example 2: Upload all files under the current folder
 ```
-PS C:\>Get-ChildItem -File -Recurse | Set-AzStorageBlobContent -Container "ContosoUploads"
+Get-ChildItem -File -Recurse | Set-AzStorageBlobContent -Container "ContosoUploads"
 ```
 
 This command uses the core Windows PowerShell cmdlet Get-ChildItem to get all the files in the current folder and in subfolders, and then passes them to the current cmdlet by using the pipeline operator.
@@ -65,7 +65,7 @@ The **Set-AzStorageBlobContent** cmdlet uploads the files to the container named
 
 ### Example 3: Overwrite an existing blob
 ```
-PS C:\>Get-AzStorageBlob -Container "ContosoUploads" -Blob "Planning2015" | Set-AzStorageBlobContent -File "ContosoPlanning"
+Get-AzStorageBlob -Container "ContosoUploads" -Blob "Planning2015" | Set-AzStorageBlobContent -File "ContosoPlanning"
 ```
 
 This command gets the blob named Planning2015 in the ContosoUploads container by using the Get-AzStorageBlob cmdlet, and then passes that blob to the current cmdlet.
@@ -76,7 +76,7 @@ If you confirm the command, the cmdlet overwrites the existing blob.
 
 ### Example 4: Upload a file to a container by using the pipeline
 ```
-PS C:\>Get-AzStorageContainer -Container "ContosoUpload*" | Set-AzStorageBlobContent -File "ContosoPlanning" -Blob "Planning2015"
+Get-AzStorageContainer -Container "ContosoUpload*" | Set-AzStorageBlobContent -File "ContosoPlanning" -Blob "Planning2015"
 ```
 
 This command gets the container that starts with the string ContosoUpload by using the **Get-AzStorageContainer** cmdlet, and then passes that blob to the current cmdlet.
@@ -84,8 +84,8 @@ The command uploads the file that is named ContosoPlanning as Planning2015.
 
 ### Example 5: Upload a file to page blob with metadata and PremiumPageBlobTier as P10
 ```
-PS C:\>$Metadata = @{"key" = "value"; "name" = "test"}
-PS C:\> Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Metadata $Metadata -BlobType Page -PremiumPageBlobTier P10
+$Metadata = @{"key" = "value"; "name" = "test"}
+Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Metadata $Metadata -BlobType Page -PremiumPageBlobTier P10
 ```
 
 The first command creates a hash table that contains metadata for a blob, and stores that hash table in the $Metadata variable.
