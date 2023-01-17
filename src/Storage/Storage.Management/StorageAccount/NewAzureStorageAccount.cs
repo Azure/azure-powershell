@@ -26,8 +26,11 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [GenericBreakingChange("Default behavior of AllowBlobPublicAccess will be changed", OldWay = "AllowBlobPublicAccess is set to True by defult.", 
-        NewWay = "AllowBlobPublicAccess is set to False by default")]
+    [GenericBreakingChange("Default behavior of AllowBlobPublicAccess will be changed in a future release. The default value of the property will be " +
+        "changed from True to False. With AllowBlobPublicAccess set to False for the Storage account, a container's public access level cannot be set. " +
+        "If you attempt to set the public access level, it will error out indicating that the container's public access level cannot be set.", 
+        OldWay = "AllowBlobPublicAccess is set to True by defult.", 
+        NewWay = "AllowBlobPublicAccess is set to False by default.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount", DefaultParameterSetName = AzureActiveDirectoryDomainServicesForFileParameterSet), OutputType(typeof(PSStorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
