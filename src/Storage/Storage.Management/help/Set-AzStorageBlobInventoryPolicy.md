@@ -57,6 +57,8 @@ The **Set-AzStorageBlobInventoryPolicy** cmdlet creates or updates blob inventor
 
 ### Example 1: Create or update the blob inventory policy with BlobInventoryPolicy rule objects.
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
 
@@ -93,6 +95,8 @@ The following command sets blob inventory policy to a Storage account with the 2
 
 ### Example 2: Create or update the blob inventory policy of a Storage account with a Json format policy.
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName $resourceGroupName  -StorageAccountName $accountName -Policy (@{
                 Enabled=$true;
@@ -171,6 +175,8 @@ This command creates or updates the blob inventory policy of a Storage account w
 
 ### Example 3: Get the blob inventory policy from a Storage account, then set it to another Storage account.
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>$policy = Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2"
 ```
@@ -180,6 +186,8 @@ The proeprties： Destination, Enabled, and Rules of the policy will be set to t
 
 ### Example 4: Get the blob inventory policy rules from a Storage account, then set it to another Storage account.
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>$policy = ,((Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").Rules) | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2" -Disabled
 ```
@@ -341,7 +349,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

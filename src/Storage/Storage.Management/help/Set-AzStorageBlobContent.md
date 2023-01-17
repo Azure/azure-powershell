@@ -94,6 +94,8 @@ The blob includes the metadata stored in $Metadata, and has PremiumPageBlobTier 
 
 ### Example 6: Upload a file to blob with specified blob properties, and set StandardBlobTier as Cool
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $filepath = "c:\temp\index.html"
 PS C:\> Set-AzStorageBlobContent -File $filepath -Container "contosouploads" -Properties @{"ContentType" = [System.Web.MimeMapping]::GetMimeMapping($filepath); "ContentMD5" = "i727sP7HigloQDsqadNLHw=="} -StandardBlobTier Cool
@@ -110,6 +112,8 @@ This command gets ContentType value set to blob properties by [System.Web.MimeMa
 
 ### Example 7: Upload a file to a blob with Encryption Scope
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $blob = Set-AzStorageBlobContent  -File "mylocalfile" -Container "mycontainer" -Blob "myblob"  -EncryptionScope "myencryptscope"
 
@@ -492,7 +496,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

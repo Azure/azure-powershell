@@ -26,7 +26,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: List all deleted files or directories from a Filesystem
 ```powershell
-Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" 
+Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1"
 ```
 
 ```output
@@ -45,7 +45,8 @@ This command lists all deleted files or directories from a Filesystem.
 ```powershell
 Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" -Path dir0/dir2
 ```
-```output 
+
+```output
 FileSystem Name: filesystem1
 
 Path                 DeletionId           DeletedOn            RemainingRetentionDays
@@ -165,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

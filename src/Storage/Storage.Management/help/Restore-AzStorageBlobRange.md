@@ -41,6 +41,8 @@ The start range is included, and the end range is excluded in blob restore.
 
 ### Example 1: Start restores blobs in a Storage account with specific blob ranges
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\> $range1 = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange container2/blob2
 PS C:\> $range2 = New-AzStorageBlobRangeToRestore -StartRange container3/blob3 -EndRange container4/blob4
@@ -61,6 +63,8 @@ This command first creates 2 blob ranges, then start restores blobs in a Storage
 
 ### Example 2: Restores all blobs in a Storage account in the backend
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\> $job = Restore-AzStorageBlobRange -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -TimeToRestore (Get-Date).AddMinutes(-30) -WaitForComplete -asjob
 
@@ -77,6 +81,8 @@ This command restores all blobs in a Storage account from 30 minutes ago, and wa
 
 ### Example 3: Restores blobs by input blob ranges directly, and wait for complete
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\> Restore-AzStorageBlobRange -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -WaitForComplete `
     -TimeToRestore (Get-Date).AddSeconds(-1) `
@@ -259,7 +265,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

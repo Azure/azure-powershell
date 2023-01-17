@@ -34,6 +34,8 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: Move a fold in same Filesystem
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Move-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/" -DestFileSystem "filesystem1" -DestPath "dir3/"
 
@@ -48,6 +50,8 @@ This command move directory 'dir1' to directory 'dir3' in the same Filesystem.
 
 ### Example 2: Move a file by pipeline, to another Filesystem in the same Storage account without prompt
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" | Move-AzDataLakeGen2Item -DestFileSystem "filesystem2" -DestPath "dir2/file2" -Force
 
@@ -62,6 +66,8 @@ This command move file 'dir1/file1' in 'filesystem1' to file 'dir2/file2' in 'fi
 
 ### Example 3: Move an item with Sas token
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $sas = New-AzStorageContainerSASToken -Name $filesystemName -Permission rdw -Context $ctx
 
@@ -234,7 +240,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

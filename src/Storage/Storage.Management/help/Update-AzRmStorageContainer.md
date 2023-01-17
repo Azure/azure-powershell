@@ -61,6 +61,8 @@ This command set public access as Blob for all Storage blob containers in a Stor
 
 ### Example 4: Update an Azure storage container with RootSquash
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $container = Update-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash NoRootSquash
 

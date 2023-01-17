@@ -49,6 +49,8 @@ The **Get-AzRmStorageShare** cmdlet gets or lists Storage file shares.
 
 ### Example 1: Get a Storage file share with Storage account name and share name
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare"
 
@@ -63,6 +65,8 @@ This command gets a Storage file share with Storage account name and share name.
 
 ### Example 2: List all Storage file shares of a Storage account
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount"
 
@@ -78,6 +82,8 @@ This command lists all Storage file shares of a Storage account with Storage acc
 
 ### Example 3: Get a Storage blob container with Storage account object and container name.
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" | Get-AzRmStorageShare -Name "myshare"
 
@@ -92,6 +98,8 @@ This command gets a Storage blob container with Storage account object and conta
 
 ### Example 4: Get a Storage file share with the share usage in bytes
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -GetShareUsage
 
@@ -106,6 +114,8 @@ This command gets a Storage file share with Storage account name and share name,
 
 ### Example 5: List all Storage file shares of a Storage account, include the deleted shares, include the share snapshots
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -IncludeDeleted -IncludeSnapshot 
 
@@ -122,6 +132,8 @@ This command lists all Storage file shares include the deleted shares and share 
 
 ### Example 6: Get a single share snapshot
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "testshare1" -SnapshotTime "2021-05-10T08:04:08Z"
 

@@ -27,6 +27,8 @@ The ACL entries in original ACL, which has same AccessControlType, DefaultScope 
 
 ### Example 1: Remove ACL recursively on a root directiry of filesystem
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -DefaultScope
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -InputObject $acl
@@ -44,6 +46,8 @@ This command first creates an ACL object with 2 acl entries, then removes ACL re
 
 ### Example 2: Remove ACL recursively on a directory
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $result = Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -Context $ctx
 WARNING: To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.
@@ -80,6 +84,8 @@ This command first removes ACL recursively on a directory and failed, then resum
 
 ### Example 3: Remove ACL recursively chunk by chunk
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 $token = $null
 $TotalDirectoriesSuccess = 0
@@ -110,6 +116,8 @@ This script will remove ACL rescursively on directory chunk by chunk, with chunk
 
 ### Example 4: Remove ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $result = Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
 
@@ -330,7 +338,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

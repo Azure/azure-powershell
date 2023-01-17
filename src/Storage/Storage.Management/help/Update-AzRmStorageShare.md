@@ -47,6 +47,8 @@ The **New-AzRmStorageShare** cmdlet modifies a Storage file share.
 
 ### Example 1: Modifies a Storage file share's metadata and share quota with Storage account name and share name
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -QuotaGiB 200 -Metadata @{tag0="value0";tag1="value1"}
 
@@ -78,6 +80,8 @@ This command modifies metadata on a Storage file share with Storage account obje
 
 ### Example 3: Modifies share quota for all Storage file shares in a Storage account with pipeline
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" | Update-AzRmStorageShare -QuotaGiB 5000
 
@@ -93,6 +97,8 @@ This command modifies share quota as 5000 GiB for all Storage file shares in a S
 
 ### Example 4: Modify a Storage file share with accesstier as Cool
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -AccessTier Cool
 
@@ -107,6 +113,8 @@ This command modifies a Storage file share with accesstier as Cool.
 
 ### Example 5: Modifies rootsquash for a file shares in a Storage account
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -RootSquash NoRootSquash 
 

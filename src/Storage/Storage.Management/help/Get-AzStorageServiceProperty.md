@@ -24,6 +24,8 @@ The **Get-AzStorageServiceProperty** cmdlet gets the properties for Azure Storag
 
 ### Example 1: Get  Azure Storage services property of the Blob service
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 C:\PS>Get-AzStorageServiceProperty -ServiceType Blob
 
@@ -100,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

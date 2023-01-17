@@ -31,6 +31,8 @@ The **Get-AzStorageObjectReplicationPolicy** cmdlet gets or lists object replica
 
 ### Example 1: Get an object replication policy with specific policy Id and show its rules.
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $policy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId 56bfa11c-81ef-4f8d-b307-5e5386e16fba
 
@@ -52,6 +54,8 @@ This command gets an object replication policy with specific policy Id and show 
 
 ### Example 2:List object replication policy from a Storage account
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $policies = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" 
 
@@ -143,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
