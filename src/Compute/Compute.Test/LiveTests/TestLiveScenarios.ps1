@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "VM.NewVM Test" -Description "Test create new VM" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test create new VM" -ScenarioScript `
 {
     param ($rg)
 
@@ -55,7 +55,7 @@ Invoke-LiveTestScenario -Name "VM.NewVM Test" -Description "Test create new VM" 
     Assert-AreEqual "MySubnet" $actual.NICName
 }
 
-Invoke-LiveTestScenario -Name "VM.RemoveVM Test" -Description "Test remove VM" -ResourceGroupLocation "eastus" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Description "Test removes a virtual machine from Azure."  -ScenarioScript `
 {
     param ($rg)
 
@@ -110,6 +110,6 @@ Invoke-LiveTestScenario -Name "VM.RemoveVM Test" -Description "Test remove VM" -
     $removedVM = Get-AzVM -ResourceGroupName $rgName -Name $name
     Assert-Null $removedVM
 
-    # purge deleted vault
+
     Remove-AzVM -ResourceGroupName $rgName -Name $name -Force
 }

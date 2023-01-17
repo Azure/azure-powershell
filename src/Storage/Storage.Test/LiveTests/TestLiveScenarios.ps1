@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "Storage.NewStorageAccount Test" -Description "Test create storage account" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Creates a Storage account" -Description "Test create storage account" -ScenarioScript `
 {
     param ($rg)
 
@@ -21,7 +21,7 @@ Invoke-LiveTestScenario -Name "Storage.NewStorageAccount Test" -Description "Tes
     Assert-False { $actual.EnableHttpsTrafficOnly } "By default EnableHttpsTrafficOnly should be false"
 }
 
-Invoke-LiveTestScenario -Name "Storage.RemoveStorageAccount Test" -Description "Test remove storage account" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Removes a Storage account" -Description "Test removes a Storage account from Azure." -ScenarioScript `
 {
     param ($rg)
 
@@ -35,6 +35,6 @@ Invoke-LiveTestScenario -Name "Storage.RemoveStorageAccount Test" -Description "
     $removedAccount = Get-AzStorageAccount -ResourceGroupName $rgName -Name $name
     Assert-Null $removedAccount
 
-    # purge deleted vault
+
     Remove-AzStorageAccount -ResourceGroupName $rgName -Name $name -Force
 }
