@@ -34,10 +34,6 @@ Initialize Peering Service for Connection Monitor functionality
 Initialize-AzPeeringServiceConnectionMonitor 
 ```
 
-```output
-// no output
-```
-
 Initialize connection monitor functionality
 
 ## PARAMETERS

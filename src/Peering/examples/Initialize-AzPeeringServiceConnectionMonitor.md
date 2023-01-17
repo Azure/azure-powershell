@@ -3,9 +3,5 @@
 Initialize-AzPeeringServiceConnectionMonitor 
 ```
 
-```output
-// no output
-```
-
 Initialize connection monitor functionality
 
