@@ -8,7 +8,20 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     $kubeClusterName = New-LiveTestResourceName
 	
     # step 1: create a default aks cluster with default node pool
-    New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+    
+    ssh-keygen -t rsa -f id_rsa -q -N '"123456"'
+    $sshKeyValue = Get-Content id_rsa.pub -Raw
+	
+    $kvName = "LiveTestKeyVault"
+    $aksSPIdKey = "AKSSPId"
+    $aksSPSecretKey = "AKSSPSecret"
+    $ServicePrincipalId = Get-AzKeyVaultSecret -VaultName $kvName -Name $aksSPIdKey -AsPlainText
+    $ServicePrincipalSecret = Get-AzKeyVaultSecret -VaultName $kvName -Name $aksSPSecretKey -AsPlainText
+    $servicePrincipalSecureSecret = ConvertTo-SecureString -String $ServicePrincipalSecret -AsPlainText -Force
+    $servicePrincipalCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ServicePrincipalId, $servicePrincipalSecureSecret
+
+    New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -SshKeyValue $sshKeyValue -ServicePrincipalIdAndSecret $servicePrincipalCredential
+    
     $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
     Assert-NotNull $cluster.Fqdn
     Assert-NotNull $cluster.KubernetesVersion
