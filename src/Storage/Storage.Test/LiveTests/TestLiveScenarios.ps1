@@ -11,7 +11,7 @@ Invoke-LiveTestScenario -Name "Storage.NewStorageAccount Test" -Description "Tes
         $actual = New-AzStorageAccount  -ResourceGroupName $rgName -Name $name  -Location $vaultLocation -SkuName Standard_GRS 
     }
 
-    Assert-AreEqual $name $actual.VaultName
+    Assert-AreEqual $name $actual.Name
     Assert-AreEqual $rgName $actual.ResourceGroupName
     Assert-AreEqual $vaultLocation $actual.Location
     Assert-AreEqual "Standard_GRS" $actual.SkuName
