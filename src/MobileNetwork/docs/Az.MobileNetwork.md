@@ -87,12 +87,6 @@ Creates or updates a SIM.
 ### [New-AzMobileNetworkSimGroup](New-AzMobileNetworkSimGroup.md)
 Creates or updates a SIM group.
 
-### [New-AzMobileNetworkSimNameAndEncryptedPropertiesObject](New-AzMobileNetworkSimNameAndEncryptedPropertiesObject.md)
-Create an in-memory object for SimNameAndEncryptedProperties.
-
-### [New-AzMobileNetworkSimNameAndPropertiesObject](New-AzMobileNetworkSimNameAndPropertiesObject.md)
-Create an in-memory object for SimNameAndProperties.
-
 ### [New-AzMobileNetworkSimPolicy](New-AzMobileNetworkSimPolicy.md)
 Creates or updates a SIM policy.
 Must be created in the same location as its parent mobile network.
@@ -119,9 +113,6 @@ Deletes the specified mobile network.
 
 ### [Remove-AzMobileNetworkAttachedDataNetwork](Remove-AzMobileNetworkAttachedDataNetwork.md)
 Deletes the specified attached data network.
-
-### [Remove-AzMobileNetworkBulkSimDelete](Remove-AzMobileNetworkBulkSimDelete.md)
-Bulk delete SIMs from a SIM group.
 
 ### [Remove-AzMobileNetworkDataNetwork](Remove-AzMobileNetworkDataNetwork.md)
 Deletes the specified data network.
@@ -151,32 +142,11 @@ This will also delete any network functions that are a part of this site.
 ### [Remove-AzMobileNetworkSlice](Remove-AzMobileNetworkSlice.md)
 Deletes the specified network slice.
 
-### [Reset-AzMobileNetworkReinstallPacketCoreControlPlane](Reset-AzMobileNetworkReinstallPacketCoreControlPlane.md)
-Reinstall the specified packet core control plane.
-This action will remove any transaction state from the packet core to return it to a known state.
-This action will cause a service outage.
-
-### [Revoke-AzMobileNetworkRollbackPacketCoreControlPlane](Revoke-AzMobileNetworkRollbackPacketCoreControlPlane.md)
-Roll back the specified packet core control plane to the previous version, \"rollbackVersion\".
-Multiple consecutive rollbacks are not possible.
-This action may cause a service outage.
-
 ### [Update-AzMobileNetwork](Update-AzMobileNetwork.md)
 Updates mobile network tags.
 
 ### [Update-AzMobileNetworkAttachedDataNetwork](Update-AzMobileNetworkAttachedDataNetwork.md)
 Updates an attached data network tags.
-
-### [Update-AzMobileNetworkBulkSimUpload](Update-AzMobileNetworkBulkSimUpload.md)
-Bulk upload SIMs to a SIM group.
-
-### [Update-AzMobileNetworkBulkSimUploadEncrypted](Update-AzMobileNetworkBulkSimUploadEncrypted.md)
-Bulk upload SIMs in encrypted form to a SIM group.
-The SIM credentials must be encrypted.
-
-### [Update-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage](Update-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage.md)
-Collect a diagnostics package for the specified packet core control plane.
-This action will upload the diagnostics to a storage account.
 
 ### [Update-AzMobileNetworkDataNetwork](Update-AzMobileNetworkDataNetwork.md)
 Updates data network tags.

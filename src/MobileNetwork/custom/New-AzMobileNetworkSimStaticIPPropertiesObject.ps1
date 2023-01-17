@@ -35,7 +35,7 @@ function New-AzMobileNetworkSimStaticIPPropertiesObject {
         $AttachedDataNetworkId,
         [Parameter(HelpMessage="Slice resource ID.")]
         [string]
-        $SlouseId,
+        $SliceId,
         [Parameter(HelpMessage="The IPv4 address assigned to the SIM at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.")]
         [string]
         $StaticIPIpv4Address
@@ -47,8 +47,8 @@ function New-AzMobileNetworkSimStaticIPPropertiesObject {
         if ($PSBoundParameters.ContainsKey('AttachedDataNetworkId')) {
             $Object.AttachedDataNetworkId = $AttachedDataNetworkId
         }
-        if ($PSBoundParameters.ContainsKey('SlouseId')) {
-            $Object.SlouseId = $SlouseId
+        if ($PSBoundParameters.ContainsKey('SliceId')) {
+            $Object.SlouseId = $SliceId
         }
         if ($PSBoundParameters.ContainsKey('StaticIPIpv4Address')) {
             $Object.StaticIPIpv4Address = $StaticIPIpv4Address

@@ -17,8 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzMobileNetworkSimGroup'))
 Describe 'AzMobileNetworkSimGroup' {
     It 'CreateExpanded' {
         {
-            $ManagedIdentity = @{"/subscriptions/$($env.SubscriptionId)/resourcegroups/azps_test_group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mn-mi"="{}"}
-            $config = New-AzMobileNetworkSimGroup -Name $env.testSimGroup -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType 'UserAssigned' -EncryptionKeyUrl "https://azps-keyvault.vault.azure.net/keys/keyvault" -IdentityUserAssignedIdentity $ManagedIdentity -MobileNetworkId "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.MobileNetwork/mobileNetworks/$($env.testNetwork2)"
+            $config = New-AzMobileNetworkSimGroup -Name $env.testSimGroup -ResourceGroupName $env.resourceGroup -Location $env.location -MobileNetworkId "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.MobileNetwork/mobileNetworks/$($env.testNetwork2)"
             $config.Name | Should -Be $env.testSimGroup
         } | Should -Not -Throw
     }

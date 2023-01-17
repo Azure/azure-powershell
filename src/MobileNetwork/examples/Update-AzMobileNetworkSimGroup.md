@@ -4,9 +4,9 @@ Update-AzMobileNetworkSimGroup -SimGroupName azps-mn-simgroup -ResourceGroupName
 ```
 
 ```output
-Location Name             ResourceGroupName ProvisioningState IdentityType
--------- ----             ----------------- ----------------- ------------
-eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
+Location Name             ResourceGroupName ProvisioningState
+-------- ----             ----------------- -----------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded
 ```
 
 Updates SIM group tags.

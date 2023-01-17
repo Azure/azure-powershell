@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified attached data network by PacketCoreControlPlaneName and PacketCoreDataPlaneName.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName azps=mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name        ResourceGroupName ProvisioningState
+-------- ----        ----------------- -----------------
+eastus   azps-mn-adn azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
+List information about the specified attached data network by PacketCoreControlPlaneName and PacketCoreDataPlaneName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified attached data network by Name.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName azps=mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group -Name azps-mn-adn
 ```
 
 ```output
-{{ Add output here }}
+Location Name        ResourceGroupName ProvisioningState
+-------- ----        ----------------- -----------------
+eastus   azps-mn-adn azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
-
+Get information about the specified attached data network by Name.
