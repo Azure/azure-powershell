@@ -18,7 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2021-11-01.
 
-## Version 0.1.0
-* First preview release for module Az.Relay
+## Version 1.0.3
+* Update references in .psd1 to use relative path
 
+## Version 1.0.2
+* Fixed miscellaneous typos across module
+
+## Version 1.0.1
+* Fix typos in customer-facing messages
+
+## Version 1.0.0
+* General availability of `Az.Relay` module
