@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppSettingsOverrides
-App Settings Overrides HashTable
+App Settings Overrides HashTable. It works only with SourceWebApp parameter.
 
 ```yaml
 Type: System.Collections.Hashtable
