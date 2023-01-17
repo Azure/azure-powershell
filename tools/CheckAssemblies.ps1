@@ -27,7 +27,7 @@ function Get-PreloadAssemblies{
     Write-Host "Getting preload assemblies in $BuildFolder for $ModuleFolder"
     Add-Type -Path ([System.IO.Path]::Combine($BuildFolder, "Az.Accounts", "Microsoft.Azure.PowerShell.AssemblyLoading.dll"))
     $assemblyRootPath = [System.IO.Path]::Combine($BuildFolder, "Az.Accounts", "lib")
-    $conditionalAssemblyContext = [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyContext]::new($Host.Version)
+    $conditionalAssemblyContext = [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyContext]::new($PSVersionTable.PSEdition, $PSVersionTable.PSVersion)
     [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyProvider]::Initialize($assemblyRootPath, $conditionalAssemblyContext)
     $assemblyDict = [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyProvider]::GetAssemblies()
     return $assemblyDict.Keys

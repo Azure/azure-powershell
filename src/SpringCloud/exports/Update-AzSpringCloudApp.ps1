@@ -59,7 +59,7 @@ LOADEDCERTIFICATE <ILoadedCertificate[]>: Collection of loaded certificates
   ResourceId <String>: Resource Id of loaded certificate
   [LoadTrustStore <Boolean?>]: Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/update-azspringcloudapp
+https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudapp
 #>
 function Update-AzSpringCloudApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource])]

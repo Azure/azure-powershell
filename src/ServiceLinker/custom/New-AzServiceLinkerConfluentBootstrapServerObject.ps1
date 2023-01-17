@@ -23,7 +23,7 @@ Create an in-memory object for ConfluentBootstrapServer.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ConfluentBootstrapServer
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentbootstrapserverobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentbootstrapserverobject
 #>
 function New-AzServiceLinkerConfluentBootstrapServerObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ConfluentBootstrapServer')]

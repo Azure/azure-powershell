@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `-AadProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
 
 ## Version 5.2.0
 * Added parameter `-EnableEncryptionAtHost` for `New-AzAksCluster` and `New-AzAksNodePool`
