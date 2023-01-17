@@ -1,0 +1,386 @@
+{
+  "New-AzRelayHybridConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-p0jh17?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-p0jh17?api-version=2021-11-01",
+      "Content": "{\n  \"properties\": {\n    \"userMetadata\": \"test 01\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "55" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "77b996bd-d4ac-44a5-be40-0d73e9033046" ],
+        "x-ms-correlation-request-id": [ "77b996bd-d4ac-44a5-be40-0d73e9033046" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T113618Z:77b996bd-d4ac-44a5-be40-0d73e9033046" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:36:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "470" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridconnections/hybridConnection-p0jh17\",\"name\":\"hybridConnection-p0jh17\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2023-01-15T11:36:18.4163336Z\",\"updatedAt\":\"2023-01-15T11:36:18.4163336Z\",\"listenerCount\":0,\"requiresClientAuthorization\":true,\"userMetadata\":\"test 01\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayHybridConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "23b32ab2-9495-4870-8653-4961bb009f69" ],
+        "CommandName": [ "Get-AzRelayHybridConnection" ],
+        "FullCommandName": [ "Get-AzRelayHybridConnection_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-inline-count": [ "" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "5b6c3646-e3fe-4060-bede-6b8b12afefef" ],
+        "x-ms-correlation-request-id": [ "5b6c3646-e3fe-4060-bede-6b8b12afefef" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T113619Z:5b6c3646-e3fe-4060-bede-6b8b12afefef" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:36:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "950" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridconnections/hybridconnection-a52oe7\",\"name\":\"hybridconnection-a52oe7\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2023-01-15T11:27:16.2826669Z\",\"updatedAt\":\"2023-01-15T11:33:00.9663751Z\",\"listenerCount\":0,\"requiresClientAuthorization\":true,\"userMetadata\":\"test\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridconnections/hybridconnection-p0jh17\",\"name\":\"hybridconnection-p0jh17\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2023-01-15T11:36:18.4163336Z\",\"updatedAt\":\"2023-01-15T11:36:18.4163336Z\",\"listenerCount\":0,\"requiresClientAuthorization\":true,\"userMetadata\":\"test 01\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayHybridConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-p0jh17?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-p0jh17?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "2bbf7619-c88c-47cc-ab3e-c3c5f9e9f47f" ],
+        "CommandName": [ "Get-AzRelayHybridConnection" ],
+        "FullCommandName": [ "Get-AzRelayHybridConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "f1c59faf-3da9-4bf8-9b6a-db6743154b22" ],
+        "x-ms-correlation-request-id": [ "f1c59faf-3da9-4bf8-9b6a-db6743154b22" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T113620Z:f1c59faf-3da9-4bf8-9b6a-db6743154b22" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:36:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "470" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridconnections/hybridConnection-p0jh17\",\"name\":\"hybridConnection-p0jh17\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2023-01-15T11:36:18.4163336Z\",\"updatedAt\":\"2023-01-15T11:36:18.4163336Z\",\"listenerCount\":0,\"requiresClientAuthorization\":true,\"userMetadata\":\"test 01\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayHybridConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-p0jh17?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-p0jh17?api-version=2021-11-01",
+      "Content": "{\n  \"properties\": {\n    \"userMetadata\": \"Test UserMetadata updated\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "73" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "c96af06f-df6d-4e88-9483-34747504c52f" ],
+        "x-ms-correlation-request-id": [ "c96af06f-df6d-4e88-9483-34747504c52f" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T113620Z:c96af06f-df6d-4e88-9483-34747504c52f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:36:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "470" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridconnections/hybridConnection-p0jh17\",\"name\":\"hybridConnection-p0jh17\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"0001-01-01T00:00:00\",\"updatedAt\":\"0001-01-01T00:00:00\",\"listenerCount\":0,\"requiresClientAuthorization\":true,\"userMetadata\":\"Test UserMetadata updated\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayHybridConnection+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-p0jh17?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-p0jh17?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "90e948cb-f160-4107-9dc8-f4958b2eb076" ],
+        "CommandName": [ "Remove-AzRelayHybridConnection" ],
+        "FullCommandName": [ "Remove-AzRelayHybridConnection_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "fdcfe253-6395-45aa-8700-415c6a3eee40" ],
+        "x-ms-correlation-request-id": [ "fdcfe253-6395-45aa-8700-415c6a3eee40" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T113621Z:fdcfe253-6395-45aa-8700-415c6a3eee40" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:36:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayHybridConnection+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z?api-version=2021-11-01",
+      "Content": "{\n  \"properties\": {\n    \"userMetadata\": \"test 01\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "55" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "13e0a98a-6db5-4936-8d0c-891e3971c9ea" ],
+        "x-ms-correlation-request-id": [ "13e0a98a-6db5-4936-8d0c-891e3971c9ea" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T113624Z:13e0a98a-6db5-4936-8d0c-891e3971c9ea" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:36:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "470" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridconnections/hybridConnection-0tiy1z\",\"name\":\"hybridConnection-0tiy1z\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2023-01-15T11:36:23.6819501Z\",\"updatedAt\":\"2023-01-15T11:36:23.6819501Z\",\"listenerCount\":0,\"requiresClientAuthorization\":true,\"userMetadata\":\"test 01\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayHybridConnection+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z?api-version=2021-11-01",
+      "Content": "{\n  \"properties\": {\n    \"requiresClientAuthorization\": true,\n    \"userMetadata\": \"test 01\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "96" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "5479ce6d-2223-4594-aef3-8ada4571d905" ],
+        "x-ms-correlation-request-id": [ "5479ce6d-2223-4594-aef3-8ada4571d905" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T113624Z:5479ce6d-2223-4594-aef3-8ada4571d905" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:36:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "414" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z\",\"name\":\"hybridConnection-0tiy1z\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections\",\"properties\":{\"createdAt\":\"0001-01-01T00:00:00\",\"updatedAt\":\"0001-01-01T00:00:00\",\"requiresClientAuthorization\":true,\"userMetadata\":\"test 01\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayHybridConnection+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "d0e461d3-8124-4d35-af2e-670adb83a6f1" ],
+        "CommandName": [ "Get-AzRelayHybridConnection" ],
+        "FullCommandName": [ "Get-AzRelayHybridConnection_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "54d48058-dc4c-4eaa-b52e-387505ae6f78" ],
+        "x-ms-correlation-request-id": [ "54d48058-dc4c-4eaa-b52e-387505ae6f78" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T113625Z:54d48058-dc4c-4eaa-b52e-387505ae6f78" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:36:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "470" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridconnections/hybridConnection-0tiy1z\",\"name\":\"hybridConnection-0tiy1z\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2023-01-15T11:36:23.6819501Z\",\"updatedAt\":\"2023-01-15T11:36:23.6819501Z\",\"listenerCount\":0,\"requiresClientAuthorization\":true,\"userMetadata\":\"test 01\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayHybridConnection+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z?api-version=2021-11-01",
+      "Content": "{\n  \"properties\": {\n    \"requiresClientAuthorization\": true,\n    \"userMetadata\": \"testHybirdConnection\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "109" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "1ecc3864-504b-4139-bc69-c2398ff1aaa9" ],
+        "x-ms-correlation-request-id": [ "1ecc3864-504b-4139-bc69-c2398ff1aaa9" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T113625Z:1ecc3864-504b-4139-bc69-c2398ff1aaa9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:36:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "465" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridconnections/hybridConnection-0tiy1z\",\"name\":\"hybridConnection-0tiy1z\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"0001-01-01T00:00:00\",\"updatedAt\":\"0001-01-01T00:00:00\",\"listenerCount\":0,\"requiresClientAuthorization\":true,\"userMetadata\":\"testHybirdConnection\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayHybridConnection+[NoContext]+Create+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-17oduk/providers/Microsoft.Relay/namespaces/namespace-ircjqk/hybridConnections/hybridConnection-0tiy1z?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "efe8f500-1669-4155-9388-7a198c62f00d" ],
+        "CommandName": [ "Remove-AzRelayHybridConnection" ],
+        "FullCommandName": [ "Remove-AzRelayHybridConnection_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "065c0699-9157-4681-8b8c-d477c1fd947b" ],
+        "x-ms-correlation-request-id": [ "065c0699-9157-4681-8b8c-d477c1fd947b" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T113626Z:065c0699-9157-4681-8b8c-d477c1fd947b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 11:36:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "Test-AzRelayName+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Relay/checkNameAvailability?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Relay/checkNameAvailability?api-version=2021-11-01",
+      "Content": "{\n  \"name\": \"relaynamespace-01\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "33" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "6f30ef3e-03f8-4525-9128-7e66ad09bdd8_M9SN1_M9SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "83d2449b-1d50-4ec0-afd0-56225105ad6a" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230115T120643Z:83d2449b-1d50-4ec0-afd0-56225105ad6a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 15 Jan 2023 12:06:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "53" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true,\"reason\":\"None\",\"message\":null}",
+      "isContentBase64": false
+    }
+  }
+}
