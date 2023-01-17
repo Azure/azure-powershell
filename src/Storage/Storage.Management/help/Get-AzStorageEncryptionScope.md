@@ -33,6 +33,8 @@ The **Get-AzStorageEncryptionScope** cmdlet gets or lists encryption scopes from
 
 ### Example 1: Get a single encryption scope
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName $scopename
 
@@ -48,6 +50,8 @@ This command gets a single encryption scope.
 
 ### Example 2: List all encryption scopes of a Storage account
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" 
 
@@ -68,29 +72,31 @@ Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "
 ```
 
 ```output
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name      State    Source             KeyVaultKeyUri                                         
 ----      -----    ------             --------------                                         
 scope1    Enabled  Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname
 scope2    Enabled  Microsoft.Storage
 ```
+
 This command lists all enabled encryption scopes of a Storage account, with a max page size of 10 encryption scopes included in each list response. 
 If there are more than 10 encryption scopes to be listed, the command will still list all the encryption scopes, but with multiple requests sent and responses received.
 
-### Example 4: List all disabled encryption scopes with names starting with "test" of a Storage account 
+### Example 4: List all disabled encryption scopes with names starting with "test" of a Storage account
 ```powershell
 Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Include Disabled -Filter "startswith(name, test)"
 ```
 
 ```output
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name          State      Source             KeyVaultKeyUri                                         
 ----          -----      ------             --------------                                         
 testscope1    Disabled   Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname
 testscope2    Disabled   Microsoft.Storage
 ```
+
 This command lists all disabled encryption scopes with names starting with "test" of a Storage account. 
 The parameter "Filter" specifies the prefix of the encryption scopes listed, and it should be in format of "startswith(name, {prefixValue})".
 

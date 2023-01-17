@@ -41,6 +41,8 @@ The **Update-AzStorageBlobServiceProperty** cmdlet modifies the service properti
 
 ### Example 1: Set Blob service DefaultServiceVersion to 2018-03-28
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -DefaultServiceVersion 2018-03-28 
 
@@ -60,6 +62,8 @@ This command sets the DefaultServiceVersion of Blob Service to 2018-03-28.
 
 ### Example 2: Enable Changefeed on Blob service of a Storage account with ChangeFeedRetentionInDays as 5 days
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableChangeFeed $true -ChangeFeedRetentionInDays 5
 
@@ -83,6 +87,8 @@ If not specify ChangeFeedRetentionInDays, will get null value in service propert
 
 ### Example 3: Enable Versioning on Blob service of a Storage account
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IsVersioningEnabled $true
 
@@ -270,7 +276,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

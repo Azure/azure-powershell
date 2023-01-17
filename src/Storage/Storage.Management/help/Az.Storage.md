@@ -63,7 +63,7 @@ Enable delete retention policy  for the Azure Storage Blob service.
 Enable static website for the Azure Storage account.
 
 ### [Get-AzDataLakeGen2ChildItem](Get-AzDataLakeGen2ChildItem.md)
-Lists sub directorys and files from a directory or filesystem root.
+Lists sub directories and files from a directory or filesystem root.
 
 ### [Get-AzDataLakeGen2DeletedItem](Get-AzDataLakeGen2DeletedItem.md)
 List all deleted files or directories from a directory or filesystem root.
@@ -88,12 +88,6 @@ Gets a Storage account.
 
 ### [Get-AzStorageAccountKey](Get-AzStorageAccountKey.md)
 Gets the access keys for an Azure Storage account.
-
-### [Get-AzStorageLocalUser](Get-AzStorageLocalUser.md)
-Gets a specified local user or lists all local users in a storage account.
-
-### [Get-AzStorageLocalUserKey](Get-AzStorageLocalUserKey.md)
-Lists SSH authorized keys and shared key of a specified local user.
 
 ### [Get-AzStorageAccountManagementPolicy](Get-AzStorageAccountManagementPolicy.md)
 Gets the management policy of an Azure Storage account.
@@ -155,6 +149,15 @@ Lists file handles of a file share, a file directory or a file.
 ### [Get-AzStorageFileServiceProperty](Get-AzStorageFileServiceProperty.md)
 Gets service properties for Azure Storage File services.
 
+### [Get-AzStorageLocalUser](Get-AzStorageLocalUser.md)
+Gets a specified local user or lists all local users in a storage account.
+
+### [Get-AzStorageLocalUserKey](Get-AzStorageLocalUserKey.md)
+Lists SSH authorized keys and shared key of a specified local user.
+
+### [Get-AzStorageNetworkSecurityPerimeterConfiguration](Get-AzStorageNetworkSecurityPerimeterConfiguration.md)
+Gets effective NetworkSecurityPerimeterConfiguration for association
+
 ### [Get-AzStorageObjectReplicationPolicy](Get-AzStorageObjectReplicationPolicy.md)
 Gets or lists object replication policy of a Storage account.
 
@@ -197,6 +200,9 @@ Invokes failover of a Storage account.
 ### [Invoke-AzStorageAccountHierarchicalNamespaceUpgrade](Invoke-AzStorageAccountHierarchicalNamespaceUpgrade.md)
 Validates if a storage account can be upgraded to enable HierarchicalNamespace, or upgrades a Storage account to enabled HierarchicalNamespace.
 
+### [Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration.md)
+Refreshes any information about the association.
+
 ### [Lock-AzRmStorageContainerImmutabilityPolicy](Lock-AzRmStorageContainerImmutabilityPolicy.md)
 Locks ImmutabilityPolicy of a Storage blob containers
 
@@ -223,15 +229,6 @@ Regenerates a storage key for an Azure Storage account.
 
 ### [New-AzStorageAccountManagementPolicyBlobIndexMatchObject](New-AzStorageAccountManagementPolicyBlobIndexMatchObject.md)
 Creates a ManagementPolicy BlobIndexMatch object, which can be used in New-AzStorageAccountManagementPolicyFilter.
-
-### [New-AzStorageLocalUserPermissionScope](New-AzStorageLocalUserPermissionScope.md)
-Creates a permission scope object, which can be used in Set-AzStorageLocalUser.
-
-### [New-AzStorageLocalUserSshPassword](New-AzStorageLocalUserSshPassword.md)
-Regenerate SSH password of a specified local user in a storage account.
-
-### [New-AzStorageLocalUserSshPublicKey](New-AzStorageLocalUserSshPublicKey.md)
-Creates a SSH public key object, which can be used in Set-AzStorageLocalUser.
 
 ### [New-AzStorageAccountManagementPolicyFilter](New-AzStorageAccountManagementPolicyFilter.md)
 Creates a ManagementPolicy rule filter object, which can be used in New-AzStorageAccountManagementPolicyRule.
@@ -274,6 +271,15 @@ Creates an encryption scope for a Storage account.
 
 ### [New-AzStorageFileSASToken](New-AzStorageFileSASToken.md)
 Generates a shared access signature token for a Storage file.
+
+### [New-AzStorageLocalUserPermissionScope](New-AzStorageLocalUserPermissionScope.md)
+Creates a permission scope object, which can be used in Set-AzStorageLocalUser.
+
+### [New-AzStorageLocalUserSshPassword](New-AzStorageLocalUserSshPassword.md)
+Regenerate SSH password of a specified local user in a storage account.
+
+### [New-AzStorageLocalUserSshPublicKey](New-AzStorageLocalUserSshPublicKey.md)
+Creates a SSH public key object, which can be used in Set-AzStorageLocalUser.
 
 ### [New-AzStorageObjectReplicationPolicyRule](New-AzStorageObjectReplicationPolicyRule.md)
 Creates an object replication policy rule.
@@ -326,9 +332,6 @@ Removes a Storage file share.
 ### [Remove-AzStorageAccount](Remove-AzStorageAccount.md)
 Removes a Storage account from Azure.
 
-### [Remove-AzStorageLocalUser](Remove-AzStorageLocalUser.md)
-Removes a specified local user in a storage account.
-
 ### [Remove-AzStorageAccountManagementPolicy](Remove-AzStorageAccountManagementPolicy.md)
 Removes the management policy of an Azure Storage account.
 
@@ -358,6 +361,9 @@ Deletes a directory.
 
 ### [Remove-AzStorageFile](Remove-AzStorageFile.md)
 Deletes a file.
+
+### [Remove-AzStorageLocalUser](Remove-AzStorageLocalUser.md)
+Removes a specified local user in a storage account.
 
 ### [Remove-AzStorageObjectReplicationPolicy](Remove-AzStorageObjectReplicationPolicy.md)
 Removes the specified object replication policy from a Storage account.
@@ -410,9 +416,6 @@ Creates or updates ImmutabilityPolicy of a Storage blob containers
 ### [Set-AzStorageAccount](Set-AzStorageAccount.md)
 Modifies a Storage account.
 
-### [Set-AzStorageLocalUser](Set-AzStorageLocalUser.md)
-Creates or updates a specified local user in a storage account.
-
 ### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
 Creates or modifies the management policy of an Azure Storage account.
 
@@ -442,6 +445,9 @@ Sets the CORS rules for a type of Storage service.
 
 ### [Set-AzStorageFileContent](Set-AzStorageFileContent.md)
 Uploads the contents of a file.
+
+### [Set-AzStorageLocalUser](Set-AzStorageLocalUser.md)
+Creates or updates a specified local user in a storage account.
 
 ### [Set-AzStorageObjectReplicationPolicy](Set-AzStorageObjectReplicationPolicy.md)
 Creates or updates the specified object replication policy in a Storage account.

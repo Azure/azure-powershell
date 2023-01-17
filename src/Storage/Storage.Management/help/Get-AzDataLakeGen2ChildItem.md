@@ -26,6 +26,8 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: List the direct sub items from a Filesystem
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
 
@@ -41,6 +43,8 @@ This command lists the direct sub items from a Filesystem
 
 ### Example 2: List recursively from a directory, and fetch Properties/ACL
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchProperty
 
@@ -235,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

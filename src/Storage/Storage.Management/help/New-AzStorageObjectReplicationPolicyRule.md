@@ -25,6 +25,8 @@ The **Get-AzStorageObjectReplicationPolicy** cmdlet creates an object replicatio
 
 ### Example 1: Create an object replication policy rule with only source and destination account, and show its properties
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src1 -DestinationContainer dest1 
 
@@ -39,6 +41,8 @@ This command creates an object replication policy rule with only source and dest
 
 ### Example 2: Create an object replication policy rule with all properties, and show its properties
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime 2019-01-01T16:00:00Z -PrefixMatch a,abc,dd
 
@@ -144,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

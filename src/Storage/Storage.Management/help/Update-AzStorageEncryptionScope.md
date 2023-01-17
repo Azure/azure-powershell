@@ -59,6 +59,8 @@ The **Update-AzStorageEncryptionScope** cmdlet modifies an encryption scope for 
 
 ### Example 1: Disable an encryption scope
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Disabled 
 
@@ -73,6 +75,8 @@ This command disables an encryption scope.
 
 ### Example 2: Enable an encryption scope
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -State Enabled 
 
@@ -87,6 +91,8 @@ This command enables an encryption scope.
 
 ### Example 3: Update an encryption scope to use Storage Encryption
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -StorageEncryption
 
@@ -101,6 +107,8 @@ This command updates an encryption scope to use Storage Encryption.
 
 ### Example 4: Update an encryption scope to use Keyvault Encryption
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName testscope -KeyvaultEncryption -KeyUri "https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57"
 
@@ -299,7 +307,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

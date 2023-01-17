@@ -81,6 +81,8 @@ This command lists all file handles on a file directory recursively, filters out
 
 ### Example 3: Close all file handles on a file directory recursively and show the closed file handle count
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive -CloseAll -PassThru
 10
@@ -88,7 +90,7 @@ PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Re
 
 This command closes all file handles on a file directory and shows the closed file handle count.
 
-### Example 4: Close all file handles on a file share 
+### Example 4: Close all file handles on a file share
 ```
 PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -CloseAll -Recursive
 ```
@@ -356,7 +358,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

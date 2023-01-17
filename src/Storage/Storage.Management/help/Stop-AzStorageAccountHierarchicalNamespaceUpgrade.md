@@ -31,6 +31,8 @@ The **Stop-AzStorageAccountHierarchicalNamespaceUpgrade** cmdlet can aborts an o
 
 ### Example 1: Abort HierarchicalNamespace upgrade task on a stroage account
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Stop-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $rgname -Name $accountName -Force -PassThru
 True

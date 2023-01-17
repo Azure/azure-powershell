@@ -24,6 +24,8 @@ The **Get-AzStorageUsage** cmdlet gets the resource usage for Azure Storage for 
 
 ### Example 1: Get the storage resources usage of specified location
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>Get-AzStorageUsage -Location 'West US'
 
@@ -70,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

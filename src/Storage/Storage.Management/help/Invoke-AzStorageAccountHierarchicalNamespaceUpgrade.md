@@ -32,6 +32,8 @@ The **Invoke-AzStorageAccountHierarchicalNamespaceUpgrade** cmdlet can validate 
 
 ### Example 1: Validate a stroage account can be upgrade to enable HierarchicalNamespace, then upgrade it to enabled HierarchicalNamespace
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $rgname -Name $accountName -RequestType Validation
 True
