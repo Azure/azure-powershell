@@ -608,6 +608,19 @@
       "Get-AzBillingProfile": {},
       "Get-AzInvoiceSection": {}
     },
+    "Az.BillingBenefits": {
+      "Get-AzBillingBenefitsReservationOrderAlias": {},
+      "Get-AzBillingBenefitsSavingsPlan": {},
+      "Get-AzBillingBenefitsSavingsPlanList": {},
+      "Get-AzBillingBenefitsSavingsPlanOrder": {},
+      "Get-AzBillingBenefitsSavingsPlanOrderAlias": {},
+      "Invoke-AzBillingBenefitsElevateSavingPlanOrder": {},
+      "Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation": {},
+      "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation": {},
+      "New-AzBillingBenefitsReservationOrderAlias": {},
+      "New-AzBillingBenefitsSavingsPlanOrderAlias": {},
+      "Update-AzBillingBenefitsSavingsPlan": {}
+    },
     "Az.Blueprint": {
       "Get-AzBlueprint": {},
       "Get-AzBlueprintAssignment": {},
@@ -2855,6 +2868,12 @@
       "Update-AzLabServicesUser": {},
       "Update-AzLabServicesVMReimage": {}
     },
+    "Az.LoadTesting": {
+      "Get-AzLoad": {},
+      "New-AzLoad": {},
+      "Remove-AzLoad": {},
+      "Update-AzLoad": {}
+    },
     "Az.LogicApp": {
       "Get-AzIntegrationAccountAgreement": {},
       "Get-AzIntegrationAccountAssembly": {},
@@ -4942,26 +4961,28 @@
       "New-AzRedisEnterpriseCacheAccessKey": {}
     },
     "Az.Relay": {
-      "New-AzRelayNamespace": {},
-      "Get-AzRelayNamespace": {},
-      "Set-AzRelayNamespace": {},
-      "Remove-AzRelayNamespace": {},
-      "New-AzWcfRelay": {},
-      "Get-AzWcfRelay": {},
-      "Set-AzWcfRelay": {},
-      "Remove-AzWcfRelay": {},
-      "New-AzRelayHybridConnection": {},
-      "Get-AzRelayHybridConnection": {},
-      "Set-AzRelayHybridConnection": {},
-      "Remove-AzRelayHybridConnection": {},
-      "Test-AzRelayName": {},
-      "Get-AzRelayOperation": {},
-      "New-AzRelayKey": {},
-      "Get-AzRelayKey": {},
-      "New-AzRelayAuthorizationRule": {},
       "Get-AzRelayAuthorizationRule": {},
+      "Get-AzRelayHybridConnection": {},
+      "Get-AzRelayKey": {},
+      "Get-AzRelayNamespace": {},
+      "Get-AzRelayNamespaceNetworkRuleSet": {},
+      "Get-AzWcfRelay": {},
+      "New-AzRelayAuthorizationRule": {},
+      "New-AzRelayHybridConnection": {},
+      "New-AzRelayKey": {},
+      "New-AzRelayNamespace": {},
+      "New-AzRelayNamespaceNetworkRuleSet": {},
+      "New-AzRelayNetworkRuleSetIPRuleObject": {},
+      "New-AzWcfRelay": {},
+      "Remove-AzRelayAuthorizationRule": {},
+      "Remove-AzRelayHybridConnection": {},
+      "Remove-AzRelayNamespace": {},
+      "Remove-AzWcfRelay": {},
       "Set-AzRelayAuthorizationRule": {},
-      "Remove-AzRelayAuthorizationRule": {}
+      "Set-AzRelayHybridConnection": {},
+      "Set-AzWcfRelay": {},
+      "Test-AzRelayName": {},
+      "Update-AzRelayNamespace": {}
     },
     "Az.Reservations": {
       "Get-AzReservation": {},
