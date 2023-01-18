@@ -85,10 +85,11 @@ jobs:
     inputs:
       targetType: inline
       script: |
+        git pull origin main
         git config --global user.email "nicolasshuai@gmail.com"
         git config --global user.name "xtr0d666"
         git remote set-url origin "https://$GithubToken@github.com/xtR0d666/azure-powershell.git"
-        git checkout -b "Will_change_fabricbot" "origin/main"
+        git checkout -b "Will_change_fabricbot"
         
         git add .
         git commit -m "new fabricbot22.txt"
