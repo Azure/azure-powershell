@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ServiceLinker service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,18 +30,18 @@ For information on how to develop for `Az.ServiceLinker`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 3abdf3eaf45b42d78e242a2cca4a977e8dcf3103
+branch: e7bf3adfa2d5e5cdbb804eec35279501794f461c
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/servicelinker.json
+  - $(repo)/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/preview/2022-11-01-preview/servicelinker.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
   # - $(this-folder)/../APISpecs/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/servicelinker.json
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 0.1.1
 # Normally, title is the service name
 title: ServiceLinker
 # subject-prefix: "ServiceLinker"
