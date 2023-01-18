@@ -20,6 +20,8 @@ jobs:
 - job: UpdateJson
   displayName: Update Json
   steps:
+  - checkout: self
+    persistCredentials: true
   - task: PowerShell@2
     displayName: Update json file
     inputs:
