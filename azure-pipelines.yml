@@ -96,3 +96,19 @@ jobs:
         
         git remote set-url origin "https://$(GITHUB_TOKEN)@github.com/xtR0d666/azure-powershell.git"
         git push origin Will_change_fabricbot --force
+  - task: PowerShell@2
+    displayName: Create Pull Request
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+        $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $BotAccessToken"}
+        Write-Host "Hello World"
+
+  - pwsh: |
+      $Title = "Change Fabricbot.json According To Wiki Page"
+      $HeadBranch = "Will_change_fabricbot"
+      $BaseBranch = "main"
+      $Description = "Sort fabricbot.json parts according to wiki page"
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
+    displayName: Create PR to main branch
