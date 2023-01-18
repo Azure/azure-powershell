@@ -799,5 +799,9 @@
   {
     "module": "LoadTesting",
     "alias": "LoadTesting"
+  },
+  {
+    "alias": "MobileNetwork",
+    "module": "MobileNetwork"
   }
 ]
