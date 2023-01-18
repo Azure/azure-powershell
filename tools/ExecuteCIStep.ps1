@@ -327,7 +327,6 @@ If ($StaticAnalysisUX)
     If ("" -Ne $UXModuleList)
     {
         Write-Host "Running static analysis for UX metadata..."
-        .("$PSScriptRoot/StaticAnalysis/UXMetadataAnalyzer/PrepareUXMetadata.ps1") -RepoArtifacts $RepoArtifacts -Configuration $Configuration
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers ux -u -m $UXModuleList
     }
     Return
