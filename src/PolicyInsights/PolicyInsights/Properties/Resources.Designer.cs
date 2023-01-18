@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating a new attestation at scope &apos;{0}&apos; with name &apos;{1}&apos;..
+        /// </summary>
+        internal static string CreatingAttestation {
+            get {
+                return ResourceManager.GetString("CreatingAttestation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating a new remediation at scope &apos;{0}&apos; with name &apos;{1}&apos;..
         /// </summary>
         internal static string CreatingRemediation {
@@ -79,11 +88,47 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting attestation &apos;{0}&apos; from scope &apos;{1}&apos;.
+        /// </summary>
+        internal static string DeletingAttestation {
+            get {
+                return ResourceManager.GetString("DeletingAttestation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting remediation &apos;{0}&apos; from scope &apos;{1}&apos;..
         /// </summary>
         internal static string DeletingRemediation {
             get {
                 return ResourceManager.GetString("DeletingRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;An attestion with name &apos;{0}&apos; in scope &apos;{1}&apos; already exists. Please use Set-AzAttestation to update an existing Attestation.&quot;.
+        /// </summary>
+        internal static string Error_AttestationAlreadyExists {
+            get {
+                return ResourceManager.GetString("Error_AttestationAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;An attestion with name &apos;{0}&apos; in scope &apos;{1}&apos; does not exist. Please use New-AzAttestation to create a new Attestation with these properties.&quot;.
+        /// </summary>
+        internal static string Error_AttestationDoesNotExists {
+            get {
+                return ResourceManager.GetString("Error_AttestationDoesNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given metadata &apos;{0}&apos; is invalid.
+        /// </summary>
+        internal static string Error_InvalidMetadata {
+            get {
+                return ResourceManager.GetString("Error_InvalidMetadata", resourceCulture);
             }
         }
         
@@ -120,6 +165,15 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
         internal static string StartComplianceScan {
             get {
                 return ResourceManager.GetString("StartComplianceScan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating an attestation with name &apos;{0}&apos; in scope &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdatingAttestation {
+            get {
+                return ResourceManager.GetString("UpdatingAttestation", resourceCulture);
             }
         }
         
