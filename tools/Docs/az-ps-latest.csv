@@ -117,7 +117,7 @@ pac115,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac116,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.6.1.2.nupkg;sourceType=sa]Az.RecoveryServices,6.1.2
 pac117,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.7.0.nupkg;sourceType=sa]Az.RedisCache,1.7.0
 pac118,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.1.0.nupkg;sourceType=sa]Az.RedisEnterpriseCache,1.1.0
-pac119,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.0.1.0.nupkg;sourceType=sa]Az.Relay,0.1.0
+pac119,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.2.0.0.nupkg;sourceType=sa]Az.Relay,2.0.0
 pac120,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.11.0.nupkg;sourceType=sa]Az.Reservations,0.11.0
 pac121,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.0.13.0.nupkg;sourceType=sa]Az.ResourceGraph,0.13.0
 pac122,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceMover.1.1.0.nupkg;sourceType=sa]Az.ResourceMover,1.1.0
