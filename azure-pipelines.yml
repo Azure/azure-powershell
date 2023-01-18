@@ -99,5 +99,5 @@ jobs:
         git add .
         git commit -m "new fabricbot22.txt"
         
-        git remote set-url origin "https://$GithubToken@github.com/xtR0d666/azure-powershell.git"
+        git remote set-url origin "https://$(GITHUB_TOKEN)@github.com/xtR0d666/azure-powershell.git"
         git push origin Will_change_fabricbot --force
