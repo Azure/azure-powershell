@@ -1,0 +1,42 @@
+{
+  "Test-AzPeeringRegisteredPrefix+[NoContext]+Validate+$POST+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering/registeredPrefixes/accessibilityTesting2/validate?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering/registeredPrefixes/accessibilityTesting2/validate?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "aa270764-29ff-4d9d-8630-64e7aeb89a6b" ],
+        "CommandName": [ "Test-AzPeeringRegisteredPrefix" ],
+        "FullCommandName": [ "Test-AzPeeringRegisteredPrefix_Validate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "238d7391-5835-4632-81d4-56dc15b7d99b" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "b9308f43-ab16-48da-9e71-b94896657799" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T015707Z:b9308f43-ab16-48da-9e71-b94896657799" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:57:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "528" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"prefix\": \"240.0.1.0/24\",\r\n    \"prefixValidationState\": \"Pending\",\r\n    \"peeringServicePrefixKey\": \"249aa0dd-6177-4105-94fe-dfefcbf5ab48\",\r\n    \"errorMessage\": \"Internal server error\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"name\": \"accessibilityTesting2\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering/registeredPrefixes/accessibilityTesting2\",\r\n  \"type\": \"Microsoft.Peering/peerings/registeredPrefixes\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}
