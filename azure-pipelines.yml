@@ -13,6 +13,9 @@ trigger:
       - .azure-pipelines
       - .github
 
+variables:
+  GithubToken: $(GITHUB_TOKEN)
+  
 jobs:
 - job: UpdateJson
   displayName: Update Json
