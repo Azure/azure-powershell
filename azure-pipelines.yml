@@ -115,8 +115,6 @@ jobs:
         $Description = "Sort fabricbot.json parts according to wiki page"
 
           $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $(GITHUB_TOKEN)"}
-          $PrBody = @"
-            ${Description} paste the link below. -->
-          "@
+          $PrBody = "$Description paste the link below. -->"
         $RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
         Invoke-WebRequest -Uri https://api.github.com/repos/xtR0d666/azure-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
