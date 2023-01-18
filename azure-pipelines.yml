@@ -86,6 +86,10 @@ jobs:
       targetType: inline
       script: |
         git pull origin main
+        Write-Host "just before list!!!"
+        git config --list
+        Write-Host "just after list!!!"
+        git remote -v
         git config --global user.email "nicolasshuai@gmail.com"
         git config --global user.name "xtr0d666"
         git remote set-url origin "https://$GithubToken@github.com/xtR0d666/azure-powershell.git"
