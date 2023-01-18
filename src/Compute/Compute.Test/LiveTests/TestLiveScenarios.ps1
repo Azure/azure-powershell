@@ -37,9 +37,9 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
     $VnetAddressPrefix = "10.0.0.0/16"
 
     $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
-    $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
-    $PIP = New-AzPublicIpAddress -Name $PublicIPAddressName -DomainNameLabel $DNSNameLabel -ResourceGroupName $ResourceGroupName -Location $LocationName -AllocationMethod Dynamic
-    $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $PIP.Id
+    $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $rgName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+    $PIP = New-AzPublicIpAddress -Name $PublicIPAddressName -DomainNameLabel $DNSNameLabel -ResourceGroupName $rgName -Location $LocationName -AllocationMethod Dynamic
+    $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $PIP.Id
 
     $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
@@ -93,9 +93,9 @@ Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Descriptio
     $VnetAddressPrefix = "10.0.0.0/16"
 
     $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
-    $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
-    $PIP = New-AzPublicIpAddress -Name $PublicIPAddressName -DomainNameLabel $DNSNameLabel -ResourceGroupName $ResourceGroupName -Location $LocationName -AllocationMethod Dynamic
-    $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $PIP.Id
+    $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $rgName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+    $PIP = New-AzPublicIpAddress -Name $PublicIPAddressName -DomainNameLabel $DNSNameLabel -ResourceGroupName $rgName -Location $LocationName -AllocationMethod Dynamic
+    $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $PIP.Id
 
     $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
