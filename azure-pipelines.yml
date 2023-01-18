@@ -92,10 +92,10 @@ jobs:
         git config --global user.email "nicolasshuai@gmail.com"
         git config --global user.name "xtr0d666"
         git config --global credential.helper store
-        git remote set-url origin "https://$GithubToken@github.com/xtR0d666/azure-powershell.git"
         git checkout -b "Will_change_fabricbot"
         
         git add .
         git commit -m "new fabricbot22.txt"
         
+        git remote set-url origin "https://$GithubToken@github.com/xtR0d666/azure-powershell.git"
         git push origin Will_change_fabricbot --force
