@@ -47,10 +47,10 @@ This command deletes the attestation named 'attestation1' in subscription "My Su
 ```powershell
 $rgName = "myRG"
 
-Get-PolicyAttestation -Name "attestation2" -ResourceGroupName $rgName | Remove-AzPolicyAttestation
+Get-AzPolicyAttestation -Name "attestation2" -ResourceGroupName $rgName | Remove-AzPolicyAttestation
 ```
 
-This command deletes the attestation named 'attestation2' at resource group 'myRG' using input object given by the **Get-PolicyAttestation** cmdlet.
+This command deletes the attestation named 'attestation2' at resource group 'myRG' using input object given by the **Get-AzPolicyAttestation** cmdlet.
 
 ### Example 3: Delete a policy remediation using ResourceId.
 ```powershell

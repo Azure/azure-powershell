@@ -64,7 +64,7 @@ This command gets the attestation named 'attestation1' at the resource group 'my
 ### Example 3: Get 5 policy attestations in a subscription with optional filters
 ```powershell
 Set-AzContext -Subscription "MySubscription"
-Get-PolicyAttestation -Top 5 -Filter "PolicyAssignmentId eq '/subscriptions/49c37404-cef8-46b2-ba72-fa8419c82ed5/providers/Microsoft.Authorization/policyAssignments/0774f87b3af94c1399d3ee52"
+Get-AzPolicyAttestation -Top 5 -Filter "PolicyAssignmentId eq '/subscriptions/49c37404-cef8-46b2-ba72-fa8419c82ed5/providers/Microsoft.Authorization/policyAssignments/0774f87b3af94c1399d3ee52"
 ```
 
 This command gets a max of 5 policy attestations underneath the subscription named 'My Subscription'. Only policy attestations for the given policy assignment will be retrieved.
