@@ -28,7 +28,7 @@ jobs:
       targetType: inline
       script: |
         $username="v-hongtzhang"
-        $password='pm7jvt5ejjwhaxox7sr3vneuc5iuuxttopb7ebps4bzsnfrmaluq'
+        $password='my7asty2sxlbderojgogn6ycunffw6omymi4pnvs7ytqno22ckxa'
         $pair="{0}:{1}" -f ($username,$password)
         $bytes = [System.Text.Encoding]::ASCII.GetBytes($pair)
         $token = [System.Convert]::ToBase64String($bytes)
