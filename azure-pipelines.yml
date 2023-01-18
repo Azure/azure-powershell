@@ -77,7 +77,7 @@ jobs:
                 
             }
         }
-        ($whole_json | ConvertTo-Json -Depth 32) | Out-File  -FilePath .github/fabricbot22.json
+        ($whole_json | ConvertTo-Json -Depth 32) | Out-File  -FilePath .github/fabricbot.json
       pwsh: true
       
   - task: PowerShell@2
