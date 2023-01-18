@@ -83,7 +83,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-FRONTENDIPCONFIGURATION <ILoadBalancerFrontendIPConfiguration[]>: FrontendIPConfiguration.
+`FRONTENDIPCONFIGURATION <ILoadBalancerFrontendIPConfiguration[]>`: FrontendIPConfiguration.
   - `Name <String>`: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
   - `[PrivateIPAddress <String>]`: The virtual network private IP address of the IP configuration.
   - `[PublicIPAddressId <String>]`: Resource Id

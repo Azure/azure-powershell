@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the CloudService service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -46,18 +46,18 @@ In this directory, run AutoRest:
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
-``` yaml
-branch: b69b3fa5c26c94aa6efe6dadb76f599c204f297b
+```yaml
+tag: package-2021-03-01
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
-input-file:
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json
-  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServiceNetworkInterface.json
-  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServicePublicIpAddress.json
+  - $(this-folder)/../readme.azure.noprofile.md
+  - /Users/aitest/Documents/LucasGitHub/azure-rest-api-specs/specification/compute/resource-manager/readme.md
+  - /Users/aitest/Documents/LucasGitHub/azure-rest-api-specs/specification/network/resource-manager/readme.md
+try-require:
+  - /Users/aitest/Documents/LucasGitHub/azure-rest-api-specs/specification/compute/resource-manager/readme.powershell.md
+  - /Users/aitest/Documents/LucasGitHub/azure-rest-api-specs/specification/network/resource-manager/readme.powershell.md
 
 title: CloudService
 module-version: 0.1.0
-
 identity-correction-for-post: true
 
 directive:
