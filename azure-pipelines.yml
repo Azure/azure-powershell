@@ -97,10 +97,31 @@ jobs:
         git remote set-url origin "https://$(GITHUB_TOKEN)@github.com/xtR0d666/azure-powershell.git"
         git push origin Will_change_fabricbot --force
   
-  - pwsh: |
-      $Title = "Change Fabricbot.json According To Wiki Page"
-      $HeadBranch = "Will_change_fabricbot"
-      $BaseBranch = "main"
-      $Description = "Sort fabricbot.json parts according to wiki page"
-      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GITHUB_TOKEN) -Description $Description
-    displayName: Create PR to main branch
+  # - pwsh: |
+  #     $Title = "Change Fabricbot.json According To Wiki Page"
+  #     $HeadBranch = "Will_change_fabricbot"
+  #     $BaseBranch = "main"
+  #     $Description = "Sort fabricbot.json parts according to wiki page"
+  #     ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GITHUB_TOKEN) -Description $Description
+  #   displayName: Create PR to main branch
+  - task: PowerShell@2
+    displayName: create PR
+    inputs:
+      targetType: inline
+      script: |
+        $Title = "Change Fabricbot.json According To Wiki Page"
+        $HeadBranch = "Will_change_fabricbot"
+        $BaseBranch = "main"
+        $Description = "Sort fabricbot.json parts according to wiki page"
+
+          $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $(GITHUB_TOKEN)"}
+          $PrBody = @"
+          <!-- DO NOT DELETE THIS TEMPLATE -->
+
+          $Description
+
+          <!-- Please add a brief description of the changes made in this PR. If you have an ongoing or finished cmdlet design, please paste the link below. -->
+
+          "@
+        $RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
+        Invoke-WebRequest -Uri https://api.github.com/repos/xtR0d666/azure-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
