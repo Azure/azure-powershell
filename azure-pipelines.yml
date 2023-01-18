@@ -84,4 +84,13 @@ jobs:
     displayName: Commit and Push
     inputs:
       targetType: inline
-      script: Write-Host "at the end!!!"
+      script: |
+        git config --global user.email "nicolasshuai@gmail.com"
+        git config --global user.name "xtr0d666"
+        git remote set-url origin "https://$GithubToken@github.com/xtR0d666/azure-powershell.git"
+        git checkout -b "Will_change_fabricbot" "origin/main"
+        
+        git add .
+        git commit -m "new fabricbot22.txt"
+        
+        git push origin Will_change_fabricbot --force
