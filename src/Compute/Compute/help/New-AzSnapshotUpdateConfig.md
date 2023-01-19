@@ -251,7 +251,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportsHibernation
-{{ Fill SupportsHibernation Description }}
+Indicates if the OS on the snapshot supports hibernation with $true or $false
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

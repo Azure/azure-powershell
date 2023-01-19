@@ -362,7 +362,7 @@ Accept wildcard characters: False
 ```
 
 ### -PurchasePlan
-{{ Fill PurchasePlan Description }}
+Sets the purchase plan for the snapshot. Used for establishing the purchase context of any 3rd Party artifact through Marketplace.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSPurchasePlan
@@ -437,7 +437,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportsHibernation
-{{ Fill SupportsHibernation Description }}
+Indicates if the OS on the snapshot supports hibernation with $true or $false
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

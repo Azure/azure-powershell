@@ -14,7 +14,7 @@ This cmdlet can create a New Restore Point
 
 ```
 New-AzRestorePoint [-ResourceGroupName] <String> [-RestorePointCollectionName] <String> [-Name] <String>
- [[-Location] <String>] [-RestorePointId <String>] [-DisksToExclude <String[]>] [-ConsistencyMode <String>]
+ [[-Location] <String>] [-RestorePointId <String>] [-DisksToExclude <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,21 +32,6 @@ Creates a new Restore Point
 
 ## PARAMETERS
 
-### -ConsistencyMode
-ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -63,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisksToExclude
-List of disk resource ids that the customer wishes to exclude from the restorepoint. If no disks are specified, all disks will be included.
+List of disk resource Id values that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
 
 ```yaml
 Type: System.String[]
@@ -78,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-{{ Fill Location Description }}
+Set the region of the restore point
 
 ```yaml
 Type: System.String
@@ -93,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Name
+The name of the restore point
 
 ```yaml
 Type: System.String
@@ -108,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Resource group name this resource belongs to
 
 ```yaml
 Type: System.String
@@ -123,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -RestorePointCollectionName
-Restore Point Collection Name
+Name of the restore point collection this restore point is part of
 
 ```yaml
 Type: System.String
@@ -138,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -RestorePointId
-{{ Fill RestorePointId Description }}
+ARM Id of the source restore point
 
 ```yaml
 Type: System.String

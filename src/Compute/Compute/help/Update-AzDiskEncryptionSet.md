@@ -171,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -RotationToLatestKeyVersionEnabled
-{{ Fill RotationToLatestKeyVersionEnabled Description }}
+Set this flag to true to enable auto-updating of this disk encryption set to the latest key version
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
