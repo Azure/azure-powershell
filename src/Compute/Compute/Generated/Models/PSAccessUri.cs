@@ -29,5 +29,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
     {
         public string AccessSAS { get; set; }
 
+        //
+        // Summary:
+        //     Gets a SAS uri for accessing a VM guest state.
+        public string SecurityDataAccessSAS { get; private set; }
+
     }
 }

@@ -1752,12 +1752,11 @@ function Test-DiskImportSecureUploadPreparedSecure
 {
     $rgname = Get-ComputeTestResourceName;
 	$loc = 'northeurope';
-    #$snapLoc = 'Central US';
 
 	try
     {
-        #$rgname = "adsandtld3";
-        #$loc = 'northeurope';
+        $rgname = "adsandtld14";
+        $loc = 'northeurope';
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -1772,7 +1771,6 @@ function Test-DiskImportSecureUploadPreparedSecure
         $OSDiskName = $vmname + "-osdisk";
         $NICName = $vmname+ "-nic";
         $NSGName = $vmname + "-NSG";
-        #$OSDiskSizeinGB = 128;
         $VMSize = "Standard_DS2_v2";
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
@@ -1780,13 +1778,11 @@ function Test-DiskImportSecureUploadPreparedSecure
         $securityType = "TrustedLaunch";
         $secureboot = $true;
         $vtpm = $true;
-        #$extDefaultName = "GuestAttestation";
-        #$vmGADefaultIdentity = "SystemAssigned";
 
         # Create a Trusted Launch VM
-        $password = Get-PasswordForVM;
+        $password = "Testing1234567";#Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = Get-ComputeTestResourceName;
+        $user = "adminuser";#Get-ComputeTestResourceName;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
@@ -1805,17 +1801,54 @@ function Test-DiskImportSecureUploadPreparedSecure
         $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
         $vmConfig = Set-AzVmUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
-        New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig ;
+        New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
 
+        # disk made for that VM
+        $disk = Get-AzDisk -ResourceGroupName $rgname;
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname;
+        
+        # StorageAccount for the TL VM scenario
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS'; # likely has to be Premium
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        $stoContext = $stoaccount.Context;
+        $containerName = "con" + $rgname;
+        $conPerm = "Blob";
+        New-AzStorageContainer -Name $containerName -Context $stoContext -Permission $conPerm;
+
+        # Disk access
+        #New-AzDiskAccess -ResourceGroupName $rgname -Location $loc -Name $disk.Name;
+        $gda = Grant-AzDiskaccess -ResourceGroupName $rgname -DiskName $disk.Name -Access "Read" -GetSecureVMGuestStateSAS;
+        # need to add new parameter here
+        #$gda.AccessSAS, $gda.SecurityDataAccessSAS, still don't know if either of these are SourceURI.
+        #$diskAccess = Get-AzDiskAccess -ResourceGroupName $rgname ;
+        $osVhdUrl = "https://$($stoName).blob.core.windows.net/$containerName/$($disk.Name).vhd";
+        $vmgsVhdUrl = "https://$($stoName).blob.core.windows.net/$containerName/$($disk.Name)-vmgs.vhd";
+        azcopy copy $gda.AccessSAS $osVhdUrl;
+        azcopy copy $gda.SecurityDataAccessSAS $vmgsVhdUrl;
+
+        <#
         # Create Snapshot from TL VM
         $snapshotName = “sn” + $rgname;
         $snapshot =  New-AzSnapshotConfig -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id -Location $loc -CreateOption copy;
         $snapshotObj = New-AzSnapshot -Snapshot $snapshot -SnapshotName $snapshotName -ResourceGroupName $rgname;
         $snapshotObj = Get-AzSnapshot -ResourceGroupName $rgname -Name $snapshotName;
+        #>
 
-        Assert-NotNull $snapshotObj.SecurityProfile;
-        Assert-AreEqual $snapshotObj.SecurityProfile.SecurityType $securityType;
+        # CreateOption ImportSecure in a TL Disk
+        #$storacct = Get-AzStorageAccount -ResourceGroupName $rgname;
+        
+        $sourceUri = $gda.AccessSAS;
+        $securitydatauri = $gda.SecurityDataAccessSAS;
+        $storageaccountid = $stoaccount.Id;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 140 -AccountType Premium_LRS -Location EastUS2 -OsType Windows -hypervgeneration V2 `
+            -CreateOption ImportSecure -SourceUri $sourceUri -Securitydatauri $securitydatauri -StorageAccountId $storageaccountid;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType $securityType;
+        $diskName = "di" + $rgname;
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
+
 	}
     finally 
     {

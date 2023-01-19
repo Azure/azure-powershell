@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var grantAccessData = new GrantAccessData();
                     grantAccessData.Access = this.Access;
                     grantAccessData.DurationInSeconds = this.DurationInSecond;
-
+                    grantAccessData.GetSecureVMGuestStateSAS = (GetSecureVMGuestStateSAS == true) ? true : false;
+                    
                     var result = DisksClient.GrantAccess(resourceGroupName, diskName, grantAccessData);
                     var psObject = new PSAccessUri();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
@@ -88,5 +89,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = false,
+            HelpMessage = "Gets or sets set this flag to true to get additional SAS for VM guest state")]
+        public SwitchParameter GetSecureVMGuestStateSAS { get; set; }
     }
 }
