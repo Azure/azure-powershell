@@ -1078,7 +1078,7 @@
             <Label>CommitmentAmount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>CommitmentCurrency</Label>
+            <Label>CommitmentCurrencyCode</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1103,16 +1103,16 @@
                 <PropertyName>UserFriendlyAppliedScopeType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>AppliedScopePropertiesDisplayName</PropertyName>
+                <PropertyName>AppliedScopePropertyDisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SkuName1</PropertyName>
+                <PropertyName>SkuName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Amount</PropertyName>
+                <PropertyName>CommitmentAmount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>CurrencyCode</PropertyName>
+                <PropertyName>CommitmentCurrencyCode</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

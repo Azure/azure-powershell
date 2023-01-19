@@ -21,14 +21,14 @@ function ExecuteTestCases([object]$response) {
     $response.BillingAccountId | Should -Not -Be $null
     $response.Term | Should -Not -Be $null
     $response.BillingScopeId | Should -Be "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
-    $response.CurrencyCode | Should -Be "USD"
+    $response.CommitmentCurrencyCode | Should -Be "USD"
     $response.DisplayName | Should -Not -Be $null
     $response.EffectiveDateTime | Should -Not -Be $null
     $response.ExpiryDateTime | Should -Not -Be $null
     $response.PurchaseDateTime | Should -Not -Be $null
     $response.DisplayProvisioningState | Should -Be "Succeeded"
     $response.ProvisioningState | Should -Be "Succeeded"
-    $response.Grain | Should -Be "Hourly"
+    $response.CommitmentGrain | Should -Be "Hourly"
     $response.UtilizationTrend | Should -Be "SAME"
     $response.UtilizationAggregate | Should -Not -Be $null
     $response.Renew | Should -Not -Be $null
