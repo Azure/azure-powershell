@@ -49,11 +49,7 @@ New-Variable -Name LiveTestRawCsvFile -Value (Join-Path -Path $script:LiveTestRa
 
 function InitializeLiveTestModule {
     [CmdletBinding()]
-    param (
-        [Parameter(Mandatory, Position = 0)]
-        [ValidateNotNullOrEmpty()]
-        [string] $ModuleName
-    )
+    param ()
 
     if (!(Test-Path -LiteralPath $script:LiveTestAnalysisDirectory -PathType Container)) {
         New-Item -Path $script:LiveTestAnalysisDirectory -ItemType Directory -Force
@@ -235,7 +231,7 @@ function Invoke-LiveTestScenario {
 
         do {
             try {
-                $ScenarioScript.InvokeWithContext($null, [PSVariable]::new("ErrorActionPreference", "Stop"), $snrResourceGroup)
+                $ScenarioScript.InvokeWithContext($null, @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None")), $snrResourceGroup)
                 Write-Host "##[section]Successfully executed the live scenario `"$Name`"." -ForegroundColor Green
                 break
             }
@@ -246,7 +242,14 @@ function Invoke-LiveTestScenario {
 
                 $snrInvocationInfo = $snrErrorRecord.InvocationInfo
                 if ($null -ne $snrInvocationInfo) {
-                    $snrErrorDetails += " thrown at line:$($snrInvocationInfo.ScriptLineNumber) char:$($snrInvocationInfo.OffsetInLine) by cmdlet `"$($snrInvocationInfo.InvocationName)`" on `"$($snrInvocationInfo.Line.ToString().Trim())`"."
+                    $snrScriptName = Split-Path -Path $snrInvocationInfo.ScriptName -Leaf -ErrorAction SilentlyContinue
+                    if ($snrScriptName -eq "Assert.ps1") {
+                        Write-Host "##[error]Exception was thrown from the Assert.ps1. The stack trace is:" -ForegroundColor Red
+                        Write-Host "##[error]$($snrErrorRecord.ScriptStackTrace)" -ForegroundColor Red
+                    }
+                    else {
+                        $snrErrorDetails += " thrown at line:$($snrInvocationInfo.ScriptLineNumber) char:$($snrInvocationInfo.OffsetInLine) by cmdlet '$($snrInvocationInfo.MyCommand)' on '$($snrInvocationInfo.Line.ToString().Trim())'"
+                    }
                 }
 
                 $snrRetryErrors += $snrErrorDetails
@@ -254,7 +257,7 @@ function Invoke-LiveTestScenario {
                 if ($snrRetryCount -lt $script:ScenarioMaxRetryCount) {
                     $snrRetryCount++
                     $exponentialDelay = [Math]::Min((1 -shl ($snrRetryCount - 1)) * [int](Get-Random -Minimum ($script:ScenarioDelay * 0.8) -Maximum ($script:ScenarioDelay * 1.2)), $script:ScenarioMaxDelay)
-                    Write-Host "##[warning]Error occurred when executing the live scenario `"$Name`" with error message `"$snrErrorMessage`"." -ForegroundColor Yellow
+                    Write-Host "##[warning]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorDetails`"." -ForegroundColor Yellow
                     Write-Host "##[warning]Live test will retry automatically in $exponentialDelay seconds." -ForegroundColor Yellow
                     Write-Host
 
@@ -262,7 +265,7 @@ function Invoke-LiveTestScenario {
                     Write-Host "##[warning]Retry #$snrRetryCount to execute the live scenario `"$Name`"." -ForegroundColor Yellow
                 }
                 else {
-                    Write-Host "##[error]Failed to execute the live scenario `"$Name`" with error message `"$snrErrorMessage`"." -ForegroundColor Red
+                    Write-Host "##[error]Failed to execute the live scenario `"$Name`" with error details `"$snrErrorDetails`"." -ForegroundColor Red
                     Write-Host
                     $snrCsvData.IsSuccess = $false
                     $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrRetryErrors
@@ -274,7 +277,7 @@ function Invoke-LiveTestScenario {
     }
     catch {
         $snrErrorMessage = $_.Exception.Message
-        Write-Host "##[error]Error occurred when executing the live scenario `"$Name`" with error message `"$snrErrorMessage`"" -ForegroundColor Red
+        Write-Host "##[error]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorDetails`"" -ForegroundColor Red
         Write-Host
         $snrCsvData.IsSuccess = $false
         $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrErrorMessage
@@ -327,4 +330,4 @@ function ConvertToLiveTestJsonErrors {
     (ConvertTo-Json $errorsObj -Compress)
 }
 
-InitializeLiveTestModule -ModuleName $ModuleName
+InitializeLiveTestModule
