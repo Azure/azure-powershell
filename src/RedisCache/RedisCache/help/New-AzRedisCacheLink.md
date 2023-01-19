@@ -31,6 +31,10 @@ New-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache
         PrimaryServerName   : mycache1
         SecondaryServerName : mycache2
         ProvisioningState   : Creating
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command creates geo-replication link between Redis Cache mycache1 and mycache2.
