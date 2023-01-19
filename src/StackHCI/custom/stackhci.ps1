@@ -5331,7 +5331,7 @@ function Enable-AzStackHCIRemoteSupport{
 
     if ($AgreeToRemoteSupportConsent -ne $true)
     {
-        if($PSCmdlet.ShouldContinue($RemoteSupportConsentText, "Remote Support: Terms & Conditions"))
+        if($PSCmdlet.ShouldContinue("`r`nProceed with enabling remote support?", $RemoteSupportConsentText))
         {
             $AgreeToRemoteSupportConsent = $true
         }
