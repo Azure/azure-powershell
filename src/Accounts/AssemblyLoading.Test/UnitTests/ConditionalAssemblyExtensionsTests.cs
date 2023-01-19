@@ -28,6 +28,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
         {
             var windowsPSContext = new MockConditionalAssemblyContext()
             {
+                PSEdition = Constants.PSEditionDesktop,
                 PSVersion = Version.Parse("5.1.22621.608")
             };
             var windowsPSAssembly = new MockConditionalAssembly(windowsPSContext)
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
 
             var ps7Context = new MockConditionalAssemblyContext()
             {
+                PSEdition = Constants.PSEditionCore,
                 PSVersion = Version.Parse("7.3.0")
             };
             windowsPSAssembly = new MockConditionalAssembly(
@@ -50,6 +52,23 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
                 .WithPowerShellCore();
             Assert.True(psCoreAssembly.ShouldLoad);
             Assert.False(windowsPSAssembly.ShouldLoad);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanWorkWithEmptyPSEdition()
+        {
+            var windowsPSContext = new MockConditionalAssemblyContext()
+            {
+                PSVersion = Version.Parse("1.0.0.0")
+            };
+            var windowsPSAssembly = new MockConditionalAssembly(windowsPSContext)
+                .WithWindowsPowerShell();
+            var psCoreAssembly = new MockConditionalAssembly(
+                windowsPSContext)
+                .WithPowerShellCore();
+            Assert.True(windowsPSAssembly.ShouldLoad);
+            Assert.False(psCoreAssembly.ShouldLoad);
         }
 
         [Fact]

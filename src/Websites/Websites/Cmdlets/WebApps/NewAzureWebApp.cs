@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public SwitchParameter IgnoreCustomHostNames { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Overrides all application settings in new web app", ParameterSetName = CopyWebAppParameterSet)]
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Overrides all application settings in new web app. It works only with SourceWebApp parameter", ParameterSetName = CopyWebAppParameterSet)]
         [ValidateNotNullOrEmpty]
         public Hashtable AppSettingsOverrides { get; set; }
 

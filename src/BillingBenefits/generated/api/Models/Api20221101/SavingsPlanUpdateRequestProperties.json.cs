@@ -78,10 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
                 return;
             }
             {_appliedScopeProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonObject>("appliedScopeProperties"), out var __jsonAppliedScopeProperties) ? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.AppliedScopeProperties.FromJson(__jsonAppliedScopeProperties) : AppliedScopeProperty;}
-            {_renewProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonObject>("renewProperties"), out var __jsonRenewProperties) ? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.RenewProperties.FromJson(__jsonRenewProperties) : RenewProperty;}
             {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)DisplayName;}
             {_appliedScopeType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString>("appliedScopeType"), out var __jsonAppliedScopeType) ? (string)__jsonAppliedScopeType : (string)AppliedScopeType;}
             {_renew = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonBoolean>("renew"), out var __jsonRenew) ? (bool?)__jsonRenew : Renew;}
+            {_renewProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonObject>("renewProperties"), out var __jsonRenewProperties) ? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.RenewProperties.FromJson(__jsonRenewProperties) : RenewProperty;}
             AfterFromJson(json);
         }
 
@@ -106,10 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
                 return container;
             }
             AddIf( null != this._appliedScopeProperty ? (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonNode) this._appliedScopeProperty.ToJson(null,serializationMode) : null, "appliedScopeProperties" ,container.Add );
-            AddIf( null != this._renewProperty ? (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonNode) this._renewProperty.ToJson(null,serializationMode) : null, "renewProperties" ,container.Add );
             AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
             AddIf( null != (((object)this._appliedScopeType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonString(this._appliedScopeType.ToString()) : null, "appliedScopeType" ,container.Add );
             AddIf( null != this._renew ? (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonBoolean((bool)this._renew) : null, "renew" ,container.Add );
+            AddIf( null != this._renewProperty ? (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json.JsonNode) this._renewProperty.ToJson(null,serializationMode) : null, "renewProperties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

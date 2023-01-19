@@ -34,29 +34,31 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <ISavingsPlanUpdateRequest>: Savings plan patch request
-  [AppliedScopePropertiesDisplayName <String>]: Display name
-  [AppliedScopePropertiesManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-  [AppliedScopePropertiesResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-  [AppliedScopePropertiesSubscriptionId <String>]: Fully-qualified identifier of the subscription.
-  [AppliedScopePropertiesTenantId <String>]: Tenant ID where the benefit is applied.
+  [AppliedScopePropertyDisplayName <String>]: Display name
+  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+  [AppliedScopePropertyTenantId <String>]: Tenant ID where the benefit is applied.
   [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-  [BillingScopeId <String>]: Subscription that will be charged for purchasing the benefit
-  [CommitmentAmount <Double?>]: 
-  [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-  [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
   [DisplayName <String>]: Display name
   [Renew <Boolean?>]: Setting this to true will automatically purchase a new benefit on the expiration date time.
-  [RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName <String>]: Display name
-  [RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-  [RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-  [RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId <String>]: Fully-qualified identifier of the subscription.
-  [RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId <String>]: Tenant ID where the benefit is applied.
-  [RenewPropertiesPurchasePropertiesAppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [RenewPropertiesPurchasePropertiesDisplayName <String>]: Friendly name of the savings plan
-  [RenewPropertiesPurchasePropertiesRenew <Boolean?>]: Setting this to true will automatically purchase a new benefit on the expiration date time.
-  [SkuName <String>]: Name of the SKU to be applied
-  [Term <Term?>]: Represent benefit term in ISO 8601 format.
+  [RenewProperty <IRenewProperties>]: 
+    [PurchaseProperty <IPurchaseRequest>]: 
+      [AppliedScopePropertyDisplayName <String>]: Display name
+      [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+      [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+      [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+      [AppliedScopePropertyTenantId <String>]: Tenant ID where the benefit is applied.
+      [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
+      [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+      [BillingScopeId <String>]: Subscription that will be charged for purchasing the benefit
+      [CommitmentAmount <Double?>]: 
+      [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
+      [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
+      [DisplayName <String>]: Friendly name of the savings plan
+      [Renew <Boolean?>]: Setting this to true will automatically purchase a new benefit on the expiration date time.
+      [SkuName <String>]: Name of the SKU to be applied
+      [Term <Term?>]: Represent benefit term in ISO 8601 format.
 
 INPUTOBJECT <IBillingBenefitsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -64,6 +66,24 @@ INPUTOBJECT <IBillingBenefitsIdentity>: Identity Parameter
   [SavingsPlanId <String>]: ID of the savings plan
   [SavingsPlanOrderAliasName <String>]: Name of the savings plan order alias
   [SavingsPlanOrderId <String>]: Order ID of the savings plan
+
+RENEWPROPERTY <IRenewProperties>: .
+  [PurchaseProperty <IPurchaseRequest>]: 
+    [AppliedScopePropertyDisplayName <String>]: Display name
+    [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+    [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+    [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+    [AppliedScopePropertyTenantId <String>]: Tenant ID where the benefit is applied.
+    [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
+    [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+    [BillingScopeId <String>]: Subscription that will be charged for purchasing the benefit
+    [CommitmentAmount <Double?>]: 
+    [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
+    [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
+    [DisplayName <String>]: Friendly name of the savings plan
+    [Renew <Boolean?>]: Setting this to true will automatically purchase a new benefit on the expiration date time.
+    [SkuName <String>]: Name of the SKU to be applied
+    [Term <Term?>]: Represent benefit term in ISO 8601 format.
 .Link
 https://learn.microsoft.com/powershell/module/az.billingbenefits/update-azbillingbenefitssavingsplan
 #>
@@ -108,35 +128,35 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Display name
-    ${AppliedScopePropertiesDisplayName},
+    ${AppliedScopePropertyDisplayName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Fully-qualified identifier of the management group where the benefit must be applied.
-    ${AppliedScopePropertiesManagementGroupId},
+    ${AppliedScopePropertyManagementGroupId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Fully-qualified identifier of the resource group.
-    ${AppliedScopePropertiesResourceGroupId},
+    ${AppliedScopePropertyResourceGroupId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Fully-qualified identifier of the subscription.
-    ${AppliedScopePropertiesSubscriptionId},
+    ${AppliedScopePropertySubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
     [System.String]
     # Tenant ID where the benefit is applied.
-    ${AppliedScopePropertiesTenantId},
+    ${AppliedScopePropertyTenantId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -145,44 +165,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType]
     # Type of the Applied Scope.
     ${AppliedScopeType},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan])]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan]
-    # Represents the billing plan in ISO 8601 format.
-    # Required only for monthly billing plans.
-    ${BillingPlan},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.String]
-    # Subscription that will be charged for purchasing the benefit
-    ${BillingScopeId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.Double]
-    # .
-    ${CommitmentAmount},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.String]
-    # The ISO 4217 3-letter currency code for the currency used by this purchase record.
-    ${CommitmentCurrencyCode},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain])]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain]
-    # Commitment grain.
-    ${CommitmentGrain},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -201,74 +183,10 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.String]
-    # Display name
-    ${RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.String]
-    # Fully-qualified identifier of the management group where the benefit must be applied.
-    ${RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.String]
-    # Fully-qualified identifier of the resource group.
-    ${RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.String]
-    # Fully-qualified identifier of the subscription.
-    ${RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.String]
-    # Tenant ID where the benefit is applied.
-    ${RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType]
-    # Type of the Applied Scope.
-    ${RenewPropertiesPurchasePropertiesAppliedScopeType},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.String]
-    # Friendly name of the savings plan
-    ${RenewPropertiesPurchasePropertiesDisplayName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Setting this to true will automatically purchase a new benefit on the expiration date time.
-    ${RenewPropertiesPurchasePropertiesRenew},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [System.String]
-    # Name of the SKU to be applied
-    ${SkuName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term])]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term]
-    # Represent benefit term in ISO 8601 format.
-    ${Term},
+    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties]
+    # .
+    # To construct, see NOTES section for RENEWPROPERTY properties and create a hash table.
+    ${RenewProperty},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

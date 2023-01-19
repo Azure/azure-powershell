@@ -18,6 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Azure.Commands.Common.Authentication.Abstractions;
     using Commands.Common.Storage.ResourceModel;
     using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
     using global::Azure.Storage.Blobs.Specialized;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Storage.Blob;
@@ -99,28 +100,30 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public string DestBlobType { get; set; }
 
         [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Hot", "Cool", "Archive")]
-        [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
         public string StandardBlobTier
         {
             get
             {
-                return standardBlobTier is null ? null : standardBlobTier.Value.ToString();
+                return accesstier?.ToString();
             }
 
             set
             {
                 if (value != null)
                 {
-                    standardBlobTier = ((StandardBlobTier)Enum.Parse(typeof(StandardBlobTier), value, true));
+                    accesstier = new AccessTier(value);
+                    isBlockBlobAccessTier = true;
                 }
                 else
                 {
-                    standardBlobTier = null;
+                    accesstier = null;
                 }
             }
         }
-        private StandardBlobTier? standardBlobTier = null;
+        private bool? isBlockBlobAccessTier = null;
+        private AccessTier? accesstier = null;
 
         [Parameter(HelpMessage = "Block Blob RehydratePriority. Indicates the priority with which to rehydrate an archived blob. Valid values are High/Standard.", Mandatory = false)]
         [ValidateSet("Standard", "High", IgnoreCase = true)]
@@ -372,7 +375,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (destBlobType != null)
             {
-                ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(destBlobType), null, standardBlobTier, rehydratePriority);
+                ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(destBlobType), null, isBlockBlobAccessTier, rehydratePriority);
+                if (this.rehydratePriority != null && this.accesstier == null)
+                {
+                    throw new ArgumentException("RehydratePriority should only be specified when StandardBlobTier is specified.");
+                }
             }
 
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
@@ -483,9 +490,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                             Track2Models.BlobCopyFromUriOptions options = new Track2Models.BlobCopyFromUriOptions();
 
                             // The Blob Type and Blob Tier must match, since already checked before
-                            if (standardBlobTier != null || rehydratePriority != null)
+                            if (accesstier != null || rehydratePriority != null)
                             {
-                                options.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier);
+                                options.AccessTier = accesstier;
                                 options.RehydratePriority = Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority);
                             }
                             options.SourceConditions = this.BlobRequestConditions;
@@ -495,10 +502,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                             destBlobClient.SyncCopyFromUri(srcUri, options, this.CmdletCancellationToken);
 
                             // Set rehydrate priority
-                            if (rehydratePriority != null)
+                            if (rehydratePriority != null && accesstier != null)
                             {
-                                destBlobClient.SetAccessTier(Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier) == null ? null : (Track2Models.AccessTier)Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier), 
-                                    rehydratePriority: Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority), cancellationToken: this.CmdletCancellationToken);
+                                destBlobClient.SetAccessTier(accesstier.Value,
+                                        rehydratePriority: Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority), cancellationToken: this.CmdletCancellationToken);
                             }
                             break;
                         }
@@ -510,9 +517,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         commitBlockListOptions.Metadata = srcProperties.Metadata;
                         commitBlockListOptions.Tags = blobTags ?? null;
 
-                        if (standardBlobTier != null)
+                        if (accesstier != null)
                         {
-                            commitBlockListOptions.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier);
+                            commitBlockListOptions.AccessTier = accesstier;
                         }
 
                         long blockLength = GetBlockLength(srcProperties.ContentLength);
@@ -534,10 +541,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         destBlockBlob.CommitBlockList(blockIDs, commitBlockListOptions, this.CmdletCancellationToken);
 
                         // Set rehydrate priority
-                        if (rehydratePriority != null)
+                        if (rehydratePriority != null && accesstier != null)
                         {
-                            destBlockBlob.SetAccessTier(Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier) == null ? null : (Track2Models.AccessTier)Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier),
-                            rehydratePriority: Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority), cancellationToken: this.CmdletCancellationToken);
+                            destBlockBlob.SetAccessTier(accesstier.Value,
+                                rehydratePriority: Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority), cancellationToken: this.CmdletCancellationToken);
                         }
                         break;
                 }

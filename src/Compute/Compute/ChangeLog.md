@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `ConsistencyMode` parameter to `New-AzRestorePoint`
 
 ## Version 5.3.0
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
