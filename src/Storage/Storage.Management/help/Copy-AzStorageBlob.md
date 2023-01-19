@@ -43,38 +43,38 @@ The **Copy-AzStorageBlob** cmdlet copies a blob synchronously, currently only su
 
 ### Example 1: Copy a named blob to another
 ```
-C:\PS> $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname"
+$destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname"
 ```
 
 This command copies a blob from source container to the destination container with a new blob name. 
 
 ### Example 2: Copy blob from a blob object
 ```
-C:\PS> $srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
-C:\PS> $destBlob =  $srcBlob | Copy-AzStorageBlob  -DestContainer "destcontainername" -DestBlob "destblobname"
+$srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
+$destBlob =  $srcBlob | Copy-AzStorageBlob  -DestContainer "destcontainername" -DestBlob "destblobname"
 ```
 
 This command copies a blob from source blob object to the destination container with a new blob name.
 
 ### Example 3: Copy blob from a blob Uri
 ```
-C:\PS> $srcBlobUri = New-AzStorageBlobSASToken -Container $srcContainerName -Blob $srcBlobName -Permission rt -ExpiryTime (Get-Date).AddDays(7) -FullUri 
-C:\PS> $destBlob = Copy-AzStorageBlob -AbsoluteUri $srcBlobUri -DestContainer "destcontainername" -DestBlob "destblobname"
+$srcBlobUri = New-AzStorageBlobSASToken -Container $srcContainerName -Blob $srcBlobName -Permission rt -ExpiryTime (Get-Date).AddDays(7) -FullUri 
+$destBlob = Copy-AzStorageBlob -AbsoluteUri $srcBlobUri -DestContainer "destcontainername" -DestBlob "destblobname"
 ```
 
 The first command creates a blob Uri of the source blob, with sas token of permission "rt". The second command copies from source blob Uri to the destination blob.
 
 ### Example 4: Update a block blob encryption scope
 ```
-C:\PS> $blob = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobname -DestContainer $containername -EncryptionScope $newScopeName -Force
+$blob = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobname -DestContainer $containername -EncryptionScope $newScopeName -Force
 ```
 
 This command update a block blob encryption scope by copy it to itself with a new encryption scope.
 
-### Example 5: Copy a blob to a new append blob 
+### Example 5: Copy a blob to a new append blob
 ```
-C:\PS> $srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
-C:\PS> $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname" -DestBlobType "Append" -DestContext $destCtx
+$srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
+$destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname" -DestBlobType "Append" -DestContext $destCtx
 ```
 
 ## PARAMETERS
@@ -325,7 +325,6 @@ See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Hot, Cool, Archive
 
 Required: False
 Position: Named

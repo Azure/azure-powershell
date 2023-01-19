@@ -44,7 +44,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
 TARGETSERVICE <ITargetServiceBase>: The target service properties
   Type <TargetServiceType>: The target service type.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/update-azservicelinkerforspringcloud
+https://learn.microsoft.com/powershell/module/az.servicelinker/update-azservicelinkerforspringcloud
 #>
 function Update-AzServiceLinkerForSpringCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]

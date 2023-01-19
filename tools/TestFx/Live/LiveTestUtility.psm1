@@ -156,7 +156,7 @@ function Invoke-LiveTestCommand {
             $cmdErrorMessage = $_.Exception.Message
             if ($cmdRetryCount -le $script:CommandMaxRetryCount) {
                 Write-Warning "Error occurred when executing the command '$Command' with error message '$cmdErrorMessage'."
-                Write-Warning "Live test will retry automatically in $script:CommandMaxRetryCount seconds."
+                Write-Warning "Live test will retry automatically in $script:CommandDelay seconds."
                 Write-Host
 
                 Start-Sleep -Seconds $script:CommandDelay
