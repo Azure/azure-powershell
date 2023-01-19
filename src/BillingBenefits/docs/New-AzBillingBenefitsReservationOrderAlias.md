@@ -62,8 +62,7 @@ New-AzBillingBenefitsReservationOrderAlias -Name "PSRITest1" -AppliedScopeType "
 ```output
 Name      DisplayName SkuName       Location Term BillingPlan ReservedResourceType ReservationOrderId   ProvisioningState BillingScopeId                                      AppliedScopeType                 
 ----      ----------- -------       -------- ---- ----------- -------------------- ------------------   ----------------- --------------                                      --------
-PSRITest1 PSRITest1   Standard_B1ls westus   P1Y  P1M         VirtualMachines      /providers/Micro...
-Created           /subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47 Shared  
+PSRITest1 PSRITest1   Standard_B1ls westus   P1Y  P1M         VirtualMachines      /providers/Micro...  Created           /subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47 Shared  
 ```
 
 Create a reservation order alias.
