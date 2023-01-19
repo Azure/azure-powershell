@@ -28,9 +28,9 @@ New-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache
 ```
 
 ```output
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Creating
+        PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Creating
         LinkedRedisCacheLocation     : East US
         ServerRole                   : Secondary
         PrimaryHostName              : mycache1.redis.cache.windows.net
