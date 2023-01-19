@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     existingSparkPool.SparkConfigProperties = new SparkConfigProperties()
                     {
                         Filename = SparkConfiguration.Name,
-                        ConfigurationType = ConfigurationType.Artifact,                       
+                        ConfigurationType = ConfigurationType.File,                       
                         Content = Newtonsoft.Json.JsonConvert.SerializeObject(SparkConfiguration)
                     };
                 }
