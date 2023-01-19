@@ -26,3 +26,4 @@
 -->
 
 # Upcoming Breaking Changes
+* Removed workspace collection cmdlets
