@@ -18,8 +18,8 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
     ## VM
     $OSDiskName = "MyClient"
     $ComputerName = "MyClientVM"
-    $OSDiskUri = "https://Mydisk.blob.core.windows.net/disks/MyOSDisk.vhd"
-    $SourceImageUri = "https://Mydisk.blob.core.windows.net/vhds/MyOSImage.vhd"
+    ##$OSDiskUri = "https://Mydisk.blob.core.windows.net/disks/MyOSDisk.vhd"
+    ##$SourceImageUri = "https://Mydisk.blob.core.windows.net/vhds/MyOSImage.vhd"
 
     # Modern hardware environment with fast disk, high IOPs performance.
     # Required to run a client VM with efficiency and performance
@@ -46,7 +46,8 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
     $VirtualMachine = New-AzVMConfig -VMName $name -VMSize $VMSize
     $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
     $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-    $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -SourceImageUri $SourceImageUri -Caching $OSDiskCaching -CreateOption $OSCreateOption -Windows
+    ##$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -SourceImageUri $SourceImageUri -Caching $OSDiskCaching -CreateOption $OSCreateOption -Windows
+    $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -Caching $OSDiskCaching -CreateOption $OSCreateOption -Windows
 
     $actual =  New-AzVM -ResourceGroupName $rgName -Location $LocationName -VM $VirtualMachine -Verbose
 
@@ -74,8 +75,8 @@ Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Descriptio
     ## VM
     $OSDiskName = "MyClient"
     $ComputerName = "MyClientVM"
-    $OSDiskUri = "https://Mydisk.blob.core.windows.net/disks/MyOSDisk.vhd"
-    $SourceImageUri = "https://Mydisk.blob.core.windows.net/vhds/MyOSImage.vhd"
+    ##$OSDiskUri = "https://Mydisk.blob.core.windows.net/disks/MyOSDisk.vhd"
+    ##$SourceImageUri = "https://Mydisk.blob.core.windows.net/vhds/MyOSImage.vhd"
 
     # Modern hardware environment with fast disk, high IOPs performance.
     # Required to run a client VM with efficiency and performance
@@ -102,7 +103,8 @@ Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Descriptio
     $VirtualMachine = New-AzVMConfig -VMName $name -VMSize $VMSize
     $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
     $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-    $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -SourceImageUri $SourceImageUri -Caching $OSDiskCaching -CreateOption $OSCreateOption -Windows
+    ##$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -SourceImageUri $SourceImageUri -Caching $OSDiskCaching -CreateOption $OSCreateOption -Windows
+    $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -Caching $OSDiskCaching -CreateOption $OSCreateOption -Windows
 
     New-AzVM -ResourceGroupName $rgName -Location $LocationName -VM $VirtualMachine -Verbose
     Remove-AzVM -ResourceGroupName $rgName -Name $name -Force
