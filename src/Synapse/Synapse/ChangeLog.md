@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+Fixed 'Update-AzSynapseSparkPool' to send 'File' as configurationType.
 
 ## Version 2.2.0
 * Added breaking change message for  `-SparkConfigFilePath`. It will be deprecated around the middle of December.
