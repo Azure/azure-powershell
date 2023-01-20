@@ -61,7 +61,7 @@ STORAGEPROFILEDATADISK <IDataDisk[]>: Specifies the parameters that are used to 
   [DiskSizeGb <Int32?>]: Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
   [Name <String>]: The name of data disk.
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionRoleConfigurationObject
+https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionRoleConfigurationObject
 #>
 function New-AzConnectedNetworkFunctionRoleConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleConfiguration])]

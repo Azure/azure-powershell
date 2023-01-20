@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkF
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ISkuOverview
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunctionvendorsku
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunctionvendorsku
 #>
 function Get-AzConnectedNetworkFunctionVendorSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ISkuOverview], [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionSkuRoleDetails])]

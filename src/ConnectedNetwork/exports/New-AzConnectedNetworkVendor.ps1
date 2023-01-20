@@ -55,7 +55,7 @@ Type                         : microsoft.hybridnetwork/vendors
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendor
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendor
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendor
 #>
 function New-AzConnectedNetworkVendor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendor])]
