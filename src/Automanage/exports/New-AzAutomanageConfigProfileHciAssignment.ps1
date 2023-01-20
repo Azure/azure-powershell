@@ -25,7 +25,7 @@ New-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -Clust
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehciassignment
+https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehciassignment
 #>
 function New-AzAutomanageConfigProfileHciAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
