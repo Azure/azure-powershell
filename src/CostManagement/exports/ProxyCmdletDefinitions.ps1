@@ -46,7 +46,7 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementexportexecutionhistory
+https://learn.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementexportexecutionhistory
 #>
 function Get-AzCostManagementExportExecutionHistory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExportExecution])]
@@ -225,7 +225,7 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementexport
+https://learn.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementexport
 #>
 function Get-AzCostManagementExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport])]
@@ -415,7 +415,7 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementexecuteexport
+https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementexecuteexport
 #>
 function Invoke-AzCostManagementExecuteExport {
 [OutputType([System.Boolean])]
@@ -584,7 +584,7 @@ Invoke-AzCostManagementReservationDetailReport -BillingAccountId "00000000-0000-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementreservationdetailreport
+https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementreservationdetailreport
 #>
 function Invoke-AzCostManagementReservationDetailReport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus])]
@@ -774,7 +774,7 @@ New-AzCostManagementDetailReport -Scope "/subscriptions/9e223dbe-3399-4e19-88eb-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ICostDetailsOperationResults
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementdetailreport
+https://learn.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementdetailreport
 #>
 function New-AzCostManagementDetailReport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ICostDetailsOperationResults])]
@@ -995,7 +995,7 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/remove-azcostmanagementexport
+https://learn.microsoft.com/powershell/module/az.costmanagement/remove-azcostmanagementexport
 #>
 function Remove-AzCostManagementExport {
 [OutputType([System.Boolean])]
@@ -1182,7 +1182,7 @@ DATASETGROUPING <IQueryGrouping[]>: Array of group by expression to use in the q
   Name <String>: The name of the column to group.
   Type <QueryColumnType>: Has type of the column to group.
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementquery
+https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementquery
 #>
 function Invoke-AzCostManagementQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryResult])]
@@ -1407,7 +1407,7 @@ New-AzCostManagementExport -Scope "subscriptions/***********" -Name "CostManagem
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementexport
+https://learn.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementexport
 #>
 function New-AzCostManagementExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport])]
@@ -1656,7 +1656,7 @@ New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Va
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression
 .Link
-https://docs.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
+https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
 #>
 function New-AzCostManagementQueryComparisonExpressionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression])]
@@ -1807,7 +1807,7 @@ TAG <IQueryComparisonExpression>: Has comparison expression for a tag.
   Name <String>: The name of the column to use in comparison.
   Value <String[]>: Array of values to use for comparison
 .Link
-https://docs.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
+https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
 #>
 function New-AzCostManagementQueryFilterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter])]
@@ -1963,7 +1963,7 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/update-azcostmanagementexport
+https://learn.microsoft.com/powershell/module/az.costmanagement/update-azcostmanagementexport
 #>
 function Update-AzCostManagementExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport])]
