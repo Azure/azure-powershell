@@ -14,7 +14,7 @@ This cmdlet can create a New Restore Point
 
 ```
 New-AzRestorePoint [-ResourceGroupName] <String> [-RestorePointCollectionName] <String> [-Name] <String>
- [[-Location] <String>] [-RestorePointId <String>] [-DisksToExclude <String[]>]
+ [[-Location] <String>] [-RestorePointId <String>] [-DisksToExclude <String[]>] [-ConsistencyMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,6 +31,21 @@ New-AzRestorePoint -ResourceGroupName "myRG" -RestorePointCollectionName "myColl
 Creates a new Restore Point
 
 ## PARAMETERS
+
+### -ConsistencyMode
+ConsistencyMode of the restore point. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
