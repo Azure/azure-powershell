@@ -442,16 +442,6 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IIPv6FirewallRulesOperations IPv6FirewallRules { get; private set; }
 
         /// <summary>
-        /// Gets the IManagedDatabaseRestoreDetailsOperations.
-        /// </summary>
-        public virtual IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; private set; }
-
-        /// <summary>
-        /// Gets the IManagedDatabasesOperations.
-        /// </summary>
-        public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
-
-        /// <summary>
         /// Gets the IReplicationLinksOperations.
         /// </summary>
         public virtual IReplicationLinksOperations ReplicationLinks { get; private set; }
@@ -485,6 +475,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IManagedServerDnsAliasesOperations.
         /// </summary>
         public virtual IManagedServerDnsAliasesOperations ManagedServerDnsAliases { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabasesOperations.
+        /// </summary>
+        public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseRestoreDetailsOperations.
+        /// </summary>
+        public virtual IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
@@ -802,8 +802,6 @@ namespace Microsoft.Azure.Management.Sql
             SensitivityLabels = new SensitivityLabelsOperations(this);
             RecommendedSensitivityLabels = new RecommendedSensitivityLabelsOperations(this);
             IPv6FirewallRules = new IPv6FirewallRulesOperations(this);
-            ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
-            ManagedDatabases = new ManagedDatabasesOperations(this);
             ReplicationLinks = new ReplicationLinksOperations(this);
             VirtualClusters = new VirtualClustersOperations(this);
             ManagedDatabaseAdvancedThreatProtectionSettings = new ManagedDatabaseAdvancedThreatProtectionSettingsOperations(this);
@@ -811,6 +809,8 @@ namespace Microsoft.Azure.Management.Sql
             DatabaseAdvancedThreatProtectionSettings = new DatabaseAdvancedThreatProtectionSettingsOperations(this);
             ServerAdvancedThreatProtectionSettings = new ServerAdvancedThreatProtectionSettingsOperations(this);
             ManagedServerDnsAliases = new ManagedServerDnsAliasesOperations(this);
+            ManagedDatabases = new ManagedDatabasesOperations(this);
+            ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
