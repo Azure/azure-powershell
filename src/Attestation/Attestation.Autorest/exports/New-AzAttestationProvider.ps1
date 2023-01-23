@@ -27,7 +27,7 @@ New-AzAttestationProvider -Name testprovider2 -ResourceGroupName test-rg -Locati
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/new-azattestationprovider
+https://learn.microsoft.com/powershell/module/az.attestation/new-azattestationprovider
 #>
 function New-AzAttestationProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]

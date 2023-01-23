@@ -31,7 +31,7 @@ eyJNZWNEZXZpY2VUcmFuc2llbnRBdXRoS2V5IjoiMTIzNCIsIk1lY0RldmljZUF1dGhLZXlTdGFydFRp
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdeviceregistrationkey
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdeviceregistrationkey
 #>
 function Get-AzConnectedNetworkDeviceRegistrationKey {
 [OutputType([System.String])]

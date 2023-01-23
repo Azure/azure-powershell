@@ -19,36 +19,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.Resource();
 
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.FormatTable(Index = 8, Label = @"CommitmentAmount")]
-        public double? Amount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).Amount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).Amount = value ?? default(double); }
-
         /// <summary>Display name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.FormatTable(Index = 6, Label = @"AppliedScopeDisplayName")]
-        public string AppliedScopePropertiesDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertiesDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertiesDisplayName = value ?? null; }
+        public string AppliedScopePropertyDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertyDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertyDisplayName = value ?? null; }
 
         /// <summary>
         /// Fully-qualified identifier of the management group where the benefit must be applied.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string AppliedScopePropertiesManagementGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertiesManagementGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertiesManagementGroupId = value ?? null; }
+        public string AppliedScopePropertyManagementGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertyManagementGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertyManagementGroupId = value ?? null; }
 
         /// <summary>Fully-qualified identifier of the resource group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string AppliedScopePropertiesResourceGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertiesResourceGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertiesResourceGroupId = value ?? null; }
+        public string AppliedScopePropertyResourceGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertyResourceGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertyResourceGroupId = value ?? null; }
 
         /// <summary>Fully-qualified identifier of the subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string AppliedScopePropertiesSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertiesSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertiesSubscriptionId = value ?? null; }
+        public string AppliedScopePropertySubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertySubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertySubscriptionId = value ?? null; }
 
         /// <summary>Tenant ID where the benefit is applied.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string AppliedScopePropertiesTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertiesTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertiesTenantId = value ?? null; }
+        public string AppliedScopePropertyTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertyTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).AppliedScopePropertyTenantId = value ?? null; }
 
         /// <summary>Type of the Applied Scope.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
@@ -88,12 +84,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
         public string BillingScopeId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).BillingScopeId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).BillingScopeId = value ?? null; }
 
+        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.FormatTable(Index = 8)]
+        public double? CommitmentAmount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).CommitmentAmount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).CommitmentAmount = value ?? default(double); }
+
         /// <summary>
         /// The ISO 4217 3-letter currency code for the currency used by this purchase record.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.FormatTable(Index = 9, Label = @"CommitmentCurrency")]
-        public string CurrencyCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).CurrencyCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).CurrencyCode = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.FormatTable(Index = 9)]
+        public string CommitmentCurrencyCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).CommitmentCurrencyCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).CommitmentCurrencyCode = value ?? null; }
+
+        /// <summary>Commitment grain.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
+        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain? CommitmentGrain { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).CommitmentGrain; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).CommitmentGrain = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain)""); }
 
         /// <summary>
         /// Fully-qualified identifier of the customer where the savings plan is applied. Present only for Partner-led customers.
@@ -131,11 +136,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
         public string ExtendedStatusInfoStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).ExtendedStatusInfoStatusCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).ExtendedStatusInfoStatusCode = value ?? null; }
-
-        /// <summary>Commitment grain.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain? Grain { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).Grain; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).Grain = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain)""); }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -180,27 +180,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         /// <summary>Internal Acessors for PurchaseDateTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal.PurchaseDateTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).PurchaseDateTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).PurchaseDateTime = value; }
 
-        /// <summary>Internal Acessors for PurchaseProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IPurchaseRequestProperties Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal.PurchaseProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).PurchaseProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).PurchaseProperty = value; }
-
-        /// <summary>Internal Acessors for PurchasePropertySku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISku Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal.PurchasePropertySku { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).PurchasePropertySku; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).PurchasePropertySku = value; }
-
-        /// <summary>Internal Acessors for RenewPropertiesPurchasePropertiesAppliedScopeProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IAppliedScopeProperties Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal.RenewPropertiesPurchasePropertiesAppliedScopeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopeProperty = value; }
-
-        /// <summary>Internal Acessors for RenewPropertiesPurchasePropertiesCommitment</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ICommitment Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal.RenewPropertiesPurchasePropertiesCommitment { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesCommitment; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesCommitment = value; }
-
-        /// <summary>Internal Acessors for RenewPropertiesPurchasePropertiesEffectiveDateTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal.RenewPropertiesPurchasePropertiesEffectiveDateTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesEffectiveDateTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesEffectiveDateTime = value; }
-
-        /// <summary>Internal Acessors for RenewProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal.RenewProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewProperty = value; }
-
-        /// <summary>Internal Acessors for RenewPropertyPurchaseProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IPurchaseRequest Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal.RenewPropertyPurchaseProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertyPurchaseProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertyPurchaseProperty = value; }
-
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISku Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.Sku()); set { {_sku = value;} } }
 
@@ -229,11 +208,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResourceInternal)__resource).Name; }
-
-        /// <summary>Name of the SKU to be applied</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string PropertiesRenewPropertiesPurchasePropertiesSkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).SkuName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).SkuName = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelProperties _property;
@@ -265,87 +239,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
         public string RenewDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewDestination; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewDestination = value ?? null; }
 
-        /// <summary>Display name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName = value ?? null; }
-
-        /// <summary>
-        /// Fully-qualified identifier of the management group where the benefit must be applied.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId = value ?? null; }
-
-        /// <summary>Fully-qualified identifier of the resource group.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId = value ?? null; }
-
-        /// <summary>Fully-qualified identifier of the subscription.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId = value ?? null; }
-
-        /// <summary>Tenant ID where the benefit is applied.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId = value ?? null; }
-
-        /// <summary>Type of the Applied Scope.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType? RenewPropertiesPurchasePropertiesAppliedScopeType { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopeType; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesAppliedScopeType = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType)""); }
-
-        /// <summary>
-        /// Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan? RenewPropertiesPurchasePropertiesBillingPlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesBillingPlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesBillingPlan = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan)""); }
-
-        /// <summary>Subscription that will be charged for purchasing the benefit</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string RenewPropertiesPurchasePropertiesBillingScopeId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesBillingScopeId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesBillingScopeId = value ?? null; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public double? RenewPropertiesPurchasePropertiesCommitmentAmount { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesCommitmentAmount; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesCommitmentAmount = value ?? default(double); }
-
-        /// <summary>
-        /// The ISO 4217 3-letter currency code for the currency used by this purchase record.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string RenewPropertiesPurchasePropertiesCommitmentCurrencyCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesCommitmentCurrencyCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesCommitmentCurrencyCode = value ?? null; }
-
-        /// <summary>Commitment grain.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain? RenewPropertiesPurchasePropertiesCommitmentGrain { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesCommitmentGrain; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesCommitmentGrain = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain)""); }
-
-        /// <summary>Friendly name of the savings plan</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string RenewPropertiesPurchasePropertiesDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesDisplayName = value ?? null; }
-
-        /// <summary>DateTime of the savings plan starts providing benefit from.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public global::System.DateTime? RenewPropertiesPurchasePropertiesEffectiveDateTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesEffectiveDateTime; }
-
-        /// <summary>
-        /// Setting this to true will automatically purchase a new benefit on the expiration date time.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public bool? RenewPropertiesPurchasePropertiesRenew { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesRenew; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesRenew = value ?? default(bool); }
-
-        /// <summary>Represent benefit term in ISO 8601 format.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term? RenewPropertiesPurchasePropertiesTerm { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesTerm; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewPropertiesPurchasePropertiesTerm = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term)""); }
+        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties RenewProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelPropertiesInternal)Property).RenewProperty = value ?? null /* model class */; }
 
         /// <summary>SavingsPlan Id of the SavingsPlan from which this SavingsPlan is renewed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
@@ -368,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         /// <summary>Name of the SKU to be applied</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.FormatTable(Index = 7, Label = @"ProductName")]
-        public string SkuName1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISkuInternal)Sku).Name = value ?? null; }
+        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISkuInternal)Sku).Name = value ?? null; }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -457,13 +353,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResource
     {
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"amount",
-        PossibleTypes = new [] { typeof(double) })]
-        double? Amount { get; set; }
         /// <summary>Display name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
@@ -471,7 +360,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         Description = @"Display name",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
-        string AppliedScopePropertiesDisplayName { get; set; }
+        string AppliedScopePropertyDisplayName { get; set; }
         /// <summary>
         /// Fully-qualified identifier of the management group where the benefit must be applied.
         /// </summary>
@@ -481,7 +370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         Description = @"Fully-qualified identifier of the management group where the benefit must be applied.",
         SerializedName = @"managementGroupId",
         PossibleTypes = new [] { typeof(string) })]
-        string AppliedScopePropertiesManagementGroupId { get; set; }
+        string AppliedScopePropertyManagementGroupId { get; set; }
         /// <summary>Fully-qualified identifier of the resource group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
@@ -489,7 +378,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         Description = @"Fully-qualified identifier of the resource group.",
         SerializedName = @"resourceGroupId",
         PossibleTypes = new [] { typeof(string) })]
-        string AppliedScopePropertiesResourceGroupId { get; set; }
+        string AppliedScopePropertyResourceGroupId { get; set; }
         /// <summary>Fully-qualified identifier of the subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
@@ -497,7 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         Description = @"Fully-qualified identifier of the subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
-        string AppliedScopePropertiesSubscriptionId { get; set; }
+        string AppliedScopePropertySubscriptionId { get; set; }
         /// <summary>Tenant ID where the benefit is applied.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
@@ -505,7 +394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         Description = @"Tenant ID where the benefit is applied.",
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
-        string AppliedScopePropertiesTenantId { get; set; }
+        string AppliedScopePropertyTenantId { get; set; }
         /// <summary>Type of the Applied Scope.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
@@ -562,6 +451,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         SerializedName = @"billingScopeId",
         PossibleTypes = new [] { typeof(string) })]
         string BillingScopeId { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"amount",
+        PossibleTypes = new [] { typeof(double) })]
+        double? CommitmentAmount { get; set; }
         /// <summary>
         /// The ISO 4217 3-letter currency code for the currency used by this purchase record.
         /// </summary>
@@ -571,7 +468,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         Description = @"The ISO 4217 3-letter currency code for the currency used by this purchase record.",
         SerializedName = @"currencyCode",
         PossibleTypes = new [] { typeof(string) })]
-        string CurrencyCode { get; set; }
+        string CommitmentCurrencyCode { get; set; }
+        /// <summary>Commitment grain.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Commitment grain.",
+        SerializedName = @"grain",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain) })]
+        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain? CommitmentGrain { get; set; }
         /// <summary>
         /// Fully-qualified identifier of the customer where the savings plan is applied. Present only for Partner-led customers.
         /// </summary>
@@ -630,22 +535,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         SerializedName = @"statusCode",
         PossibleTypes = new [] { typeof(string) })]
         string ExtendedStatusInfoStatusCode { get; set; }
-        /// <summary>Commitment grain.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Commitment grain.",
-        SerializedName = @"grain",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain) })]
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain? Grain { get; set; }
-        /// <summary>Name of the SKU to be applied</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Name of the SKU to be applied",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        string PropertiesRenewPropertiesPurchasePropertiesSkuName { get; set; }
         /// <summary>Provisioning state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
@@ -680,134 +569,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         SerializedName = @"renewDestination",
         PossibleTypes = new [] { typeof(string) })]
         string RenewDestination { get; set; }
-        /// <summary>Display name</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Display name",
-        SerializedName = @"displayName",
-        PossibleTypes = new [] { typeof(string) })]
-        string RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName { get; set; }
-        /// <summary>
-        /// Fully-qualified identifier of the management group where the benefit must be applied.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Fully-qualified identifier of the management group where the benefit must be applied.",
-        SerializedName = @"managementGroupId",
-        PossibleTypes = new [] { typeof(string) })]
-        string RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId { get; set; }
-        /// <summary>Fully-qualified identifier of the resource group.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Fully-qualified identifier of the resource group.",
-        SerializedName = @"resourceGroupId",
-        PossibleTypes = new [] { typeof(string) })]
-        string RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId { get; set; }
-        /// <summary>Fully-qualified identifier of the subscription.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Fully-qualified identifier of the subscription.",
-        SerializedName = @"subscriptionId",
-        PossibleTypes = new [] { typeof(string) })]
-        string RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId { get; set; }
-        /// <summary>Tenant ID where the benefit is applied.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Tenant ID where the benefit is applied.",
-        SerializedName = @"tenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        string RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId { get; set; }
-        /// <summary>Type of the Applied Scope.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of the Applied Scope.",
-        SerializedName = @"appliedScopeType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType? RenewPropertiesPurchasePropertiesAppliedScopeType { get; set; }
-        /// <summary>
-        /// Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.",
-        SerializedName = @"billingPlan",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan) })]
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan? RenewPropertiesPurchasePropertiesBillingPlan { get; set; }
-        /// <summary>Subscription that will be charged for purchasing the benefit</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Subscription that will be charged for purchasing the benefit",
-        SerializedName = @"billingScopeId",
-        PossibleTypes = new [] { typeof(string) })]
-        string RenewPropertiesPurchasePropertiesBillingScopeId { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"",
-        SerializedName = @"amount",
-        PossibleTypes = new [] { typeof(double) })]
-        double? RenewPropertiesPurchasePropertiesCommitmentAmount { get; set; }
-        /// <summary>
-        /// The ISO 4217 3-letter currency code for the currency used by this purchase record.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The ISO 4217 3-letter currency code for the currency used by this purchase record.",
-        SerializedName = @"currencyCode",
-        PossibleTypes = new [] { typeof(string) })]
-        string RenewPropertiesPurchasePropertiesCommitmentCurrencyCode { get; set; }
-        /// <summary>Commitment grain.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Commitment grain.",
-        SerializedName = @"grain",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain) })]
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain? RenewPropertiesPurchasePropertiesCommitmentGrain { get; set; }
-        /// <summary>Friendly name of the savings plan</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Friendly name of the savings plan",
-        SerializedName = @"displayName",
-        PossibleTypes = new [] { typeof(string) })]
-        string RenewPropertiesPurchasePropertiesDisplayName { get; set; }
-        /// <summary>DateTime of the savings plan starts providing benefit from.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Description = @"DateTime of the savings plan starts providing benefit from.",
-        SerializedName = @"effectiveDateTime",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? RenewPropertiesPurchasePropertiesEffectiveDateTime { get;  }
-        /// <summary>
-        /// Setting this to true will automatically purchase a new benefit on the expiration date time.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Setting this to true will automatically purchase a new benefit on the expiration date time.",
-        SerializedName = @"renew",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? RenewPropertiesPurchasePropertiesRenew { get; set; }
-        /// <summary>Represent benefit term in ISO 8601 format.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Represent benefit term in ISO 8601 format.",
-        SerializedName = @"term",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term) })]
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term? RenewPropertiesPurchasePropertiesTerm { get; set; }
+        SerializedName = @"renewProperties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties) })]
+        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties RenewProperty { get; set; }
         /// <summary>SavingsPlan Id of the SavingsPlan from which this SavingsPlan is renewed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
@@ -823,7 +592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         Description = @"Name of the SKU to be applied",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        string SkuName1 { get; set; }
+        string SkuName { get; set; }
         /// <summary>Represent benefit term in ISO 8601 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
@@ -862,21 +631,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
     internal partial interface ISavingsPlanModelInternal :
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResourceInternal
     {
-        double? Amount { get; set; }
+        /// <summary>Properties specific to applied scope type. Not required if not applicable.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IAppliedScopeProperties AppliedScopeProperty { get; set; }
         /// <summary>Display name</summary>
-        string AppliedScopePropertiesDisplayName { get; set; }
+        string AppliedScopePropertyDisplayName { get; set; }
         /// <summary>
         /// Fully-qualified identifier of the management group where the benefit must be applied.
         /// </summary>
-        string AppliedScopePropertiesManagementGroupId { get; set; }
+        string AppliedScopePropertyManagementGroupId { get; set; }
         /// <summary>Fully-qualified identifier of the resource group.</summary>
-        string AppliedScopePropertiesResourceGroupId { get; set; }
+        string AppliedScopePropertyResourceGroupId { get; set; }
         /// <summary>Fully-qualified identifier of the subscription.</summary>
-        string AppliedScopePropertiesSubscriptionId { get; set; }
+        string AppliedScopePropertySubscriptionId { get; set; }
         /// <summary>Tenant ID where the benefit is applied.</summary>
-        string AppliedScopePropertiesTenantId { get; set; }
-        /// <summary>Properties specific to applied scope type. Not required if not applicable.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IAppliedScopeProperties AppliedScopeProperty { get; set; }
+        string AppliedScopePropertyTenantId { get; set; }
         /// <summary>Type of the Applied Scope.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType? AppliedScopeType { get; set; }
         /// <summary>This is the DateTime when the savings plan benefit started.</summary>
@@ -899,10 +667,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         string BillingScopeId { get; set; }
         /// <summary>Commitment towards the benefit.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ICommitment Commitment { get; set; }
+
+        double? CommitmentAmount { get; set; }
         /// <summary>
         /// The ISO 4217 3-letter currency code for the currency used by this purchase record.
         /// </summary>
-        string CurrencyCode { get; set; }
+        string CommitmentCurrencyCode { get; set; }
+        /// <summary>Commitment grain.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain? CommitmentGrain { get; set; }
         /// <summary>
         /// Fully-qualified identifier of the customer where the savings plan is applied. Present only for Partner-led customers.
         /// </summary>
@@ -921,78 +693,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         string ExtendedStatusInfoMessage { get; set; }
         /// <summary>Status code providing additional information.</summary>
         string ExtendedStatusInfoStatusCode { get; set; }
-        /// <summary>Commitment grain.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain? Grain { get; set; }
-        /// <summary>Name of the SKU to be applied</summary>
-        string PropertiesRenewPropertiesPurchasePropertiesSkuName { get; set; }
         /// <summary>Savings plan properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelProperties Property { get; set; }
         /// <summary>Provisioning state</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.ProvisioningState? ProvisioningState { get; set; }
         /// <summary>Date time when the savings plan was purchased</summary>
         global::System.DateTime? PurchaseDateTime { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IPurchaseRequestProperties PurchaseProperty { get; set; }
-        /// <summary>The SKU to be applied for this resource</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISku PurchasePropertySku { get; set; }
         /// <summary>
         /// Setting this to true will automatically purchase a new benefit on the expiration date time.
         /// </summary>
         bool? Renew { get; set; }
         /// <summary>SavingsPlan Id of the SavingsPlan which is purchased because of renew.</summary>
         string RenewDestination { get; set; }
-        /// <summary>Display name</summary>
-        string RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName { get; set; }
-        /// <summary>
-        /// Fully-qualified identifier of the management group where the benefit must be applied.
-        /// </summary>
-        string RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId { get; set; }
-        /// <summary>Fully-qualified identifier of the resource group.</summary>
-        string RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId { get; set; }
-        /// <summary>Fully-qualified identifier of the subscription.</summary>
-        string RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId { get; set; }
-        /// <summary>Tenant ID where the benefit is applied.</summary>
-        string RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId { get; set; }
-        /// <summary>Properties specific to applied scope type. Not required if not applicable.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IAppliedScopeProperties RenewPropertiesPurchasePropertiesAppliedScopeProperty { get; set; }
-        /// <summary>Type of the Applied Scope.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType? RenewPropertiesPurchasePropertiesAppliedScopeType { get; set; }
-        /// <summary>
-        /// Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan? RenewPropertiesPurchasePropertiesBillingPlan { get; set; }
-        /// <summary>Subscription that will be charged for purchasing the benefit</summary>
-        string RenewPropertiesPurchasePropertiesBillingScopeId { get; set; }
-        /// <summary>Commitment towards the benefit.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ICommitment RenewPropertiesPurchasePropertiesCommitment { get; set; }
-
-        double? RenewPropertiesPurchasePropertiesCommitmentAmount { get; set; }
-        /// <summary>
-        /// The ISO 4217 3-letter currency code for the currency used by this purchase record.
-        /// </summary>
-        string RenewPropertiesPurchasePropertiesCommitmentCurrencyCode { get; set; }
-        /// <summary>Commitment grain.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain? RenewPropertiesPurchasePropertiesCommitmentGrain { get; set; }
-        /// <summary>Friendly name of the savings plan</summary>
-        string RenewPropertiesPurchasePropertiesDisplayName { get; set; }
-        /// <summary>DateTime of the savings plan starts providing benefit from.</summary>
-        global::System.DateTime? RenewPropertiesPurchasePropertiesEffectiveDateTime { get; set; }
-        /// <summary>
-        /// Setting this to true will automatically purchase a new benefit on the expiration date time.
-        /// </summary>
-        bool? RenewPropertiesPurchasePropertiesRenew { get; set; }
-        /// <summary>Represent benefit term in ISO 8601 format.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term? RenewPropertiesPurchasePropertiesTerm { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties RenewProperty { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IPurchaseRequest RenewPropertyPurchaseProperty { get; set; }
         /// <summary>SavingsPlan Id of the SavingsPlan from which this SavingsPlan is renewed.</summary>
         string RenewSource { get; set; }
         /// <summary>Savings plan SKU</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISku Sku { get; set; }
         /// <summary>Name of the SKU to be applied</summary>
-        string SkuName1 { get; set; }
+        string SkuName { get; set; }
         /// <summary>Represent benefit term in ISO 8601 format.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term? Term { get; set; }
         /// <summary>The applied scope type of the savings plan for display, e.g. Shared</summary>

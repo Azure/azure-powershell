@@ -41,55 +41,59 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BENEFIT <ISavingsPlanUpdateRequestProperties[]>: .
-  [AppliedScopePropertiesDisplayName <String>]: Display name
-  [AppliedScopePropertiesManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-  [AppliedScopePropertiesResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-  [AppliedScopePropertiesSubscriptionId <String>]: Fully-qualified identifier of the subscription.
-  [AppliedScopePropertiesTenantId <String>]: Tenant ID where the benefit is applied.
+  [AppliedScopePropertyDisplayName <String>]: Display name
+  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+  [AppliedScopePropertyTenantId <String>]: Tenant ID where the benefit is applied.
   [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-  [BillingScopeId <String>]: Subscription that will be charged for purchasing the benefit
-  [CommitmentAmount <Double?>]: 
-  [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-  [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
   [DisplayName <String>]: Display name
   [Renew <Boolean?>]: Setting this to true will automatically purchase a new benefit on the expiration date time.
-  [RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName <String>]: Display name
-  [RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-  [RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-  [RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId <String>]: Fully-qualified identifier of the subscription.
-  [RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId <String>]: Tenant ID where the benefit is applied.
-  [RenewPropertiesPurchasePropertiesAppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [RenewPropertiesPurchasePropertiesDisplayName <String>]: Friendly name of the savings plan
-  [RenewPropertiesPurchasePropertiesRenew <Boolean?>]: Setting this to true will automatically purchase a new benefit on the expiration date time.
-  [SkuName <String>]: Name of the SKU to be applied
-  [Term <Term?>]: Represent benefit term in ISO 8601 format.
+  [RenewProperty <IRenewProperties>]: 
+    [PurchaseProperty <IPurchaseRequest>]: 
+      [AppliedScopePropertyDisplayName <String>]: Display name
+      [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+      [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+      [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+      [AppliedScopePropertyTenantId <String>]: Tenant ID where the benefit is applied.
+      [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
+      [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+      [BillingScopeId <String>]: Subscription that will be charged for purchasing the benefit
+      [CommitmentAmount <Double?>]: 
+      [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
+      [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
+      [DisplayName <String>]: Friendly name of the savings plan
+      [Renew <Boolean?>]: Setting this to true will automatically purchase a new benefit on the expiration date time.
+      [SkuName <String>]: Name of the SKU to be applied
+      [Term <Term?>]: Represent benefit term in ISO 8601 format.
 
 BODY <ISavingsPlanUpdateValidateRequest>: .
   [Benefit <ISavingsPlanUpdateRequestProperties[]>]: 
-    [AppliedScopePropertiesDisplayName <String>]: Display name
-    [AppliedScopePropertiesManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-    [AppliedScopePropertiesResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-    [AppliedScopePropertiesSubscriptionId <String>]: Fully-qualified identifier of the subscription.
-    [AppliedScopePropertiesTenantId <String>]: Tenant ID where the benefit is applied.
+    [AppliedScopePropertyDisplayName <String>]: Display name
+    [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+    [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+    [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+    [AppliedScopePropertyTenantId <String>]: Tenant ID where the benefit is applied.
     [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-    [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-    [BillingScopeId <String>]: Subscription that will be charged for purchasing the benefit
-    [CommitmentAmount <Double?>]: 
-    [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-    [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
     [DisplayName <String>]: Display name
     [Renew <Boolean?>]: Setting this to true will automatically purchase a new benefit on the expiration date time.
-    [RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName <String>]: Display name
-    [RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-    [RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-    [RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId <String>]: Fully-qualified identifier of the subscription.
-    [RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId <String>]: Tenant ID where the benefit is applied.
-    [RenewPropertiesPurchasePropertiesAppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-    [RenewPropertiesPurchasePropertiesDisplayName <String>]: Friendly name of the savings plan
-    [RenewPropertiesPurchasePropertiesRenew <Boolean?>]: Setting this to true will automatically purchase a new benefit on the expiration date time.
-    [SkuName <String>]: Name of the SKU to be applied
-    [Term <Term?>]: Represent benefit term in ISO 8601 format.
+    [RenewProperty <IRenewProperties>]: 
+      [PurchaseProperty <IPurchaseRequest>]: 
+        [AppliedScopePropertyDisplayName <String>]: Display name
+        [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+        [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+        [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+        [AppliedScopePropertyTenantId <String>]: Tenant ID where the benefit is applied.
+        [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
+        [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+        [BillingScopeId <String>]: Subscription that will be charged for purchasing the benefit
+        [CommitmentAmount <Double?>]: 
+        [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
+        [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
+        [DisplayName <String>]: Friendly name of the savings plan
+        [Renew <Boolean?>]: Setting this to true will automatically purchase a new benefit on the expiration date time.
+        [SkuName <String>]: Name of the SKU to be applied
+        [Term <Term?>]: Represent benefit term in ISO 8601 format.
 
 INPUTOBJECT <IBillingBenefitsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
