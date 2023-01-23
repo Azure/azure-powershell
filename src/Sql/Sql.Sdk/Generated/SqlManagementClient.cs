@@ -487,6 +487,11 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedServerDnsAliasesOperations ManagedServerDnsAliases { get; private set; }
 
         /// <summary>
+        /// Gets the IManagedInstanceDtcsOperations.
+        /// </summary>
+        public virtual IManagedInstanceDtcsOperations ManagedInstanceDtcs { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -811,6 +816,7 @@ namespace Microsoft.Azure.Management.Sql
             DatabaseAdvancedThreatProtectionSettings = new DatabaseAdvancedThreatProtectionSettingsOperations(this);
             ServerAdvancedThreatProtectionSettings = new ServerAdvancedThreatProtectionSettingsOperations(this);
             ManagedServerDnsAliases = new ManagedServerDnsAliasesOperations(this);
+            ManagedInstanceDtcs = new ManagedInstanceDtcsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

@@ -107,6 +107,7 @@ input-file:
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/DatabaseAdvancedThreatProtectionSettings.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/ServerAdvancedThreatProtectionSettings.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json
+  - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/ManagedInstanceDtcs.json
 
 
 output-folder: Generated

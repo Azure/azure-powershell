@@ -483,5 +483,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         IManagedServerDnsAliasesOperations ManagedServerDnsAliases { get; }
 
+        /// <summary>
+        /// Gets the IManagedInstanceDtcsOperations.
+        /// </summary>
+        IManagedInstanceDtcsOperations ManagedInstanceDtcs { get; }
+
     }
 }
