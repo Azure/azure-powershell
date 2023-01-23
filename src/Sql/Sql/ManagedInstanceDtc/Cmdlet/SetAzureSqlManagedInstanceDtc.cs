@@ -153,7 +153,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            System.Diagnostics.Debugger.Launch();
             switch (ParameterSetName)
             {
                 case SetByNameParameterSet:
