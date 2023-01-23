@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.4.0
 * Fixed bug for `Remove-AzDataCollectionRuleAssociation` [#20207]
 * Added support for test notifications cmdlets
   * `Test-AzActionGroup`

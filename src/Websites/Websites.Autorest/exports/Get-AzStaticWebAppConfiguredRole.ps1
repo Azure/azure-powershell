@@ -25,7 +25,7 @@ Get-AzStaticWebAppConfiguredRole -ResourceGroupName azure-rg-test -Name staticwe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringList
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappconfiguredrole
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappconfiguredrole
 #>
 function Get-AzStaticWebAppConfiguredRole {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringList])]

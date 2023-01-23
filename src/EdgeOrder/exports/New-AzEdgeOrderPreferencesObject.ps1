@@ -42,7 +42,7 @@ NOTIFICATIONPREFERENCE <INotificationPreference[]>: Notification preferences.
 TRANSPORTPREFERENCE <ITransportPreferences>: Preferences related to the shipment logistics of the order.
   PreferredShipmentType <TransportShipmentTypes>: Indicates Shipment Logistics type that the customer preferred.
 .Link
-https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderPreferencesObject
+https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderPreferencesObject
 #>
 function New-AzEdgeOrderPreferencesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Preferences])]

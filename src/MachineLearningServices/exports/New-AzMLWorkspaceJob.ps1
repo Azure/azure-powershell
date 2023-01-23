@@ -55,7 +55,7 @@ JOB <IJobBaseProperties>: [Required] Additional attributes of the entity.
   [Service <IJobBaseServices>]: List of JobEndpoints.         For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
     [(Any) <IJobService>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacejob
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacejob
 #>
 function New-AzMLWorkspaceJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBase])]

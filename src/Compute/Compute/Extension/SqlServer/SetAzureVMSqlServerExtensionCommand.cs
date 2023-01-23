@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
+            bool autoUpgradeMinorVersion = true;
 
             VirtualMachine vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
             if (vm != null && vm.Resources != null)
@@ -113,6 +113,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     this.Name = extension.Name;
                     this.Version = extension.TypeHandlerVersion;
+                    autoUpgradeMinorVersion = extension.AutoUpgradeMinorVersion ?? autoUpgradeMinorVersion;
                 }
 
                 this.Location = vm.Location;
@@ -124,6 +125,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Publisher = VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace,
                 VirtualMachineExtensionType = VirtualMachineSqlServerExtensionContext.ExtensionPublishedType,
                 TypeHandlerVersion = string.IsNullOrEmpty(this.Version) ? VirtualMachineSqlServerExtensionContext.ExtensionDefaultVersion : this.Version,
+                AutoUpgradeMinorVersion = autoUpgradeMinorVersion,
                 Settings = this.GetPublicConfiguration(),
                 ProtectedSettings = this.GetPrivateConfiguration(),
             };

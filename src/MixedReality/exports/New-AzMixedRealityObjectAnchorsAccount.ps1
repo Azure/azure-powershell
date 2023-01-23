@@ -25,7 +25,7 @@ New-AzMixedRealityObjectAnchorsAccount -Name azpstestanchorsaccount-object -Reso
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityobjectanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityobjectanchorsaccount
 #>
 function New-AzMixedRealityObjectAnchorsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount])]

@@ -64,7 +64,7 @@ PARAMETER <IVolumeGroupUpdate>: Volume Group request.
   [Tag <IVolumeGroupUpdateTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
+https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
 #>
 function Update-AzElasticSanVolumeGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup])]

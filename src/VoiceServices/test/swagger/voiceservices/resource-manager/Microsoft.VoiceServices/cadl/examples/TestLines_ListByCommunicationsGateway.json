@@ -1,0 +1,28 @@
+{
+  "operationId": "TestLines_ListByCommunicationsGateway",
+  "title": "ListTestLineResource",
+  "parameters": {
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "testrg",
+    "api-version": "2022-12-01-preview",
+    "communicationsGatewayName": "myname"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.VoiceService/communicationsGateway/myname/TestLines/myline",
+            "name": "myline",
+            "type": "Microsoft.Voiceservice/communicationsGateways/testLines",
+            "location": "useast",
+            "properties": {
+              "phoneNumber": "+1-555-1234",
+              "purpose": "Automated"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

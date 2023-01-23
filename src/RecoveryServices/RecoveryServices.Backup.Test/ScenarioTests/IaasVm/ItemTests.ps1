@@ -12,6 +12,38 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureVMCRRWithDES
+{
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaCRRDES-testvault"
+	$saName = "hiagawestussa"
+	$desId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/diskEncryptionSets/hiagaDES-wus"
+	$restoredDiskName = "hiagacrrdesvm"
+	$recoveryPointId = "923327220026724684" # latest vaultStandard recovery point
+
+	try
+	{	
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName  
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $vault.ID   
+
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID  -RecoveryPointId $recoveryPointId
+
+		$crrDESJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location -RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $resourceGroupName -TargetResourceGroupName $resourceGroupName -RestoreToSecondaryRegion -DiskEncryptionSetId $desId
+
+		$crrDESJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		# get job
+		$crrDESJob = Get-AzRecoveryServicesBackupJob -VaultId $vault.ID  | where { $_.Operation -eq "CrossRegionRestore"  }
+		Assert-True { $crrDESJob[0].Status -eq "Completed" }
+	}
+	finally
+	{
+		# remove disk
+		Delete-AllDisks $resourceGroupName $restoredDiskName
+	}
+}
+
 function Test-AzureCrossZonalRestore
 {
 	$location = "eastus"

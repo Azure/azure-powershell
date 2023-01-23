@@ -25,7 +25,7 @@ New-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName tes
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IClusterPrincipalAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustoclusterprincipalassignment
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoclusterprincipalassignment
 #>
 function New-AzKustoClusterPrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IClusterPrincipalAssignment])]

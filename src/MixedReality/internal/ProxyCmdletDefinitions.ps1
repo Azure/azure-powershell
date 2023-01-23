@@ -27,7 +27,7 @@ Exposing Available Operations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityoperation
+https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityoperation
 #>
 function Get-AzMixedRealityOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IOperation])]

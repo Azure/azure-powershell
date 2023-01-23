@@ -29,7 +29,7 @@ Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name winwe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachine
+https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachine
 #>
 function Get-AzConnectedMachine {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachine])]

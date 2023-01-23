@@ -26,7 +26,7 @@ Get-AzStaticWebAppFunction -ResourceGroupName azure-rg-test -Name staticweb-port
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteFunctionOverviewArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappfunction
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappfunction
 #>
 function Get-AzStaticWebAppFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteFunctionOverviewArmResource])]
