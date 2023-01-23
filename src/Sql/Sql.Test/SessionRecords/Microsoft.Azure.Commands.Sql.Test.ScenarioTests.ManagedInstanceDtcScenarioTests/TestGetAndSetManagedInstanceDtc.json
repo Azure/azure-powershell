@@ -1,0 +1,1559 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2?api-version=2021-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjI/YXBpLXZlcnNpb249MjAyMS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "557774a1-0bcd-4a5f-9f98-3232863fe764"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7605bd2a-94f7-4e89-a308-54624fb77c37"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "f51a01b7-c22e-4997-b033-7c9d14be8517"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193653Z:f51a01b7-c22e-4997-b033-7c9d14be8517"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:36:52 GMT"
+        ],
+        "Content-Length": [
+          "1393"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"principalId\": \"7e5a0d1e-02b9-4cd1-a011-fcaf39540a5d\",\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"BC_Gen5\",\r\n    \"tier\": \"BusinessCritical\",\r\n    \"family\": \"Gen5\",\r\n    \"capacity\": 8\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"fullyQualifiedDomainName\": \"skrivokapic-paasv2.f1d03b4768ef.database.windows.net\",\r\n    \"administratorLogin\": \"krivi\",\r\n    \"subnetId\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Network/virtualNetworks/vnet-skrivokapic-multiaz-paasv2/subnets/ManagedInstance\",\r\n    \"state\": \"Ready\",\r\n    \"licenseType\": \"BasePrice\",\r\n    \"vCores\": 8,\r\n    \"storageSizeInGB\": 256,\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"dnsZone\": \"f1d03b4768ef\",\r\n    \"publicDataEndpointEnabled\": false,\r\n    \"proxyOverride\": \"Proxy\",\r\n    \"timezoneId\": \"UTC\",\r\n    \"maintenanceConfigurationId\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default\",\r\n    \"privateEndpointConnections\": [],\r\n    \"minimalTlsVersion\": \"1.2\",\r\n    \"currentBackupStorageRedundancy\": \"Zone\",\r\n    \"requestedBackupStorageRedundancy\": \"Zone\",\r\n    \"zoneRedundant\": true\r\n  },\r\n  \"location\": \"southafricanorth\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2\",\r\n  \"name\": \"skrivokapic-paasv2\",\r\n  \"type\": \"Microsoft.Sql/managedInstances\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8d24861e-e273-4869-ae09-5c0fb81c7aba"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7750b342-5e2e-4dd4-98c1-2bb9e3748b96"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "64aa3917-209b-4cc7-9180-e37f7f246618"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193654Z:64aa3917-209b-4cc7-9180-e37f7f246618"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:36:54 GMT"
+        ],
+        "Content-Length": [
+          "722"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8fe447fc-562c-4d40-81b2-676a4079c6cd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e14d74f3-6462-4d23-8dea-fcd65ffcb412"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "ec247281-ae68-4836-ae52-b75ec579f41a"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193655Z:ec247281-ae68-4836-ae52-b75ec579f41a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:36:55 GMT"
+        ],
+        "Content-Length": [
+          "722"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b0b96fb2-a7fa-460f-810c-619ab5173776"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "700d67b6-7140-4743-b58a-70cbb8106e9a"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193757Z:700d67b6-7140-4743-b58a-70cbb8106e9a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:37:57 GMT"
+        ],
+        "Content-Length": [
+          "723"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c1bf61ff-ab7a-48dd-a21c-028221bbdfde"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "63a2b71d-0170-4e15-bca3-2d1913c4a9d8"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "129141f4-1ebd-4101-a780-c1ae6d423d19"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193758Z:129141f4-1ebd-4101-a780-c1ae6d423d19"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:37:57 GMT"
+        ],
+        "Content-Length": [
+          "723"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c1bf61ff-ab7a-48dd-a21c-028221bbdfde"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3342149b-c6f5-4ed7-831f-a01fb121fb60"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "d487aae6-41a1-4d7a-b533-b7f9a3973749"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193900Z:d487aae6-41a1-4d7a-b533-b7f9a3973749"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:38:59 GMT"
+        ],
+        "Content-Length": [
+          "722"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f8433752-9430-4694-b1da-d8e010809d95"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "55264aca-d614-40c2-a82b-01b9dd92526f"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "4874fc4e-cadf-4a3b-af90-4b5d4b3d44dc"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193900Z:4874fc4e-cadf-4a3b-af90-4b5d4b3d44dc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:38:59 GMT"
+        ],
+        "Content-Length": [
+          "722"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bea539df-eda6-4743-a5b0-e1ce20d810be"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ee8cf2b1-d13b-4614-9b7f-66b2fe392d42"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "1052967c-1f55-44c1-949d-4d2bae36864c"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193901Z:1052967c-1f55-44c1-949d-4d2bae36864c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:39:00 GMT"
+        ],
+        "Content-Length": [
+          "722"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bea539df-eda6-4743-a5b0-e1ce20d810be"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fcd84809-00d4-47d9-b6c8-2bc1965536fc"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-correlation-request-id": [
+          "815f1f2a-a929-440c-bf3e-6dc86400a006"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194003Z:815f1f2a-a929-440c-bf3e-6dc86400a006"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:40:02 GMT"
+        ],
+        "Content-Length": [
+          "724"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": false,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "497c5402-6395-4fcb-bc4b-9eec5d99be62"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "27a63f69-bd42-41f3-9acf-322f350b4d3e"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-correlation-request-id": [
+          "e2dc436d-a07f-40a1-8896-da088c54caec"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194003Z:e2dc436d-a07f-40a1-8896-da088c54caec"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:40:03 GMT"
+        ],
+        "Content-Length": [
+          "724"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": false,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "497c5402-6395-4fcb-bc4b-9eec5d99be62"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7b784dd0-6d8b-41c2-8076-111a7f24ad6e"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-correlation-request-id": [
+          "24b138c9-1b07-4380-8386-790f8e9df7a2"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194105Z:24b138c9-1b07-4380-8386-790f8e9df7a2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:41:05 GMT"
+        ],
+        "Content-Length": [
+          "752"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": false,\r\n        \"allowOutboundEnabled\": false,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": false,\r\n      \"xaTransactionsDefaultTimeout\": 1000,\r\n      \"xaTransactionsMaximumTimeout\": 2000\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\",\r\n      \"newSuffix.test.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "582fa244-9823-4fa2-9d0e-3e5cd0348cee"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "479629a9-b54e-4729-8b61-70435a182e04"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-correlation-request-id": [
+          "f8fba01c-626b-4e5c-870c-f0a4e058ba61"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194105Z:f8fba01c-626b-4e5c-870c-f0a4e058ba61"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:41:05 GMT"
+        ],
+        "Content-Length": [
+          "752"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": false,\r\n        \"allowOutboundEnabled\": false,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": false,\r\n      \"xaTransactionsDefaultTimeout\": 1000,\r\n      \"xaTransactionsMaximumTimeout\": 2000\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\",\r\n      \"newSuffix.test.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3df87f0b-37c5-439e-ac06-f4820f948b9f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e754c074-4fd7-4430-b6ef-25f1242e9069"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "x-ms-correlation-request-id": [
+          "fe168255-93cb-4573-bb9d-1f102ccf8694"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194106Z:fe168255-93cb-4573-bb9d-1f102ccf8694"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:41:06 GMT"
+        ],
+        "Content-Length": [
+          "752"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": false,\r\n        \"allowOutboundEnabled\": false,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": false,\r\n      \"xaTransactionsDefaultTimeout\": 1000,\r\n      \"xaTransactionsMaximumTimeout\": 2000\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\",\r\n      \"newSuffix.test.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3df87f0b-37c5-439e-ac06-f4820f948b9f"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "18651cf1-314f-4d7f-ba02-ff62d6afe808"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11982"
+        ],
+        "x-ms-correlation-request-id": [
+          "105d9fa6-c3f2-4b9f-ab65-dca432a6e40d"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194208Z:105d9fa6-c3f2-4b9f-ab65-dca432a6e40d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:42:07 GMT"
+        ],
+        "Content-Length": [
+          "723"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"dtcHostNameDnsSuffix\": \"chnmvkvk7etugue.hjctg3kijkkx.database.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4d9e8871-809d-4771-9dd8-c095d7a15594"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "521"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/locations/southafricanorth/managedInstanceDtcAzureAsyncOperation/e814e4f4-4ed8-48e2-b09f-0b47e715d905?api-version=2022-05-01-preview"
+        ],
+        "x-ms-request-id": [
+          "e814e4f4-4ed8-48e2-b09f-0b47e715d905"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "060ea000-e392-4efd-8c38-ff30ae91480a"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193656Z:060ea000-e392-4efd-8c38-ff30ae91480a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:36:56 GMT"
+        ],
+        "Content-Length": [
+          "647"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c1bf61ff-ab7a-48dd-a21c-028221bbdfde"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "520"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/locations/southafricanorth/managedInstanceDtcAzureAsyncOperation/4dbbb78f-fe59-4a94-bf13-a5d7947045ae?api-version=2022-05-01-preview"
+        ],
+        "x-ms-request-id": [
+          "4dbbb78f-fe59-4a94-bf13-a5d7947045ae"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "af89c6d0-99b6-4daa-89b7-916c9203043f"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193759Z:af89c6d0-99b6-4daa-89b7-916c9203043f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:37:58 GMT"
+        ],
+        "Content-Length": [
+          "646"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bea539df-eda6-4743-a5b0-e1ce20d810be"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "522"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": false,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/locations/southafricanorth/managedInstanceDtcAzureAsyncOperation/7169ea2b-539a-47d3-b092-6e84bbf347f8?api-version=2022-05-01-preview"
+        ],
+        "x-ms-request-id": [
+          "7169ea2b-539a-47d3-b092-6e84bbf347f8"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "4bc113c7-679b-4f39-9658-690c358576e9"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193901Z:4bc113c7-679b-4f39-9658-690c358576e9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:39:00 GMT"
+        ],
+        "Content-Length": [
+          "648"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": false,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "497c5402-6395-4fcb-bc4b-9eec5d99be62"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "558"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": false,\r\n        \"allowOutboundEnabled\": false,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": false,\r\n      \"xaTransactionsDefaultTimeout\": 1000,\r\n      \"xaTransactionsMaximumTimeout\": 2000\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\",\r\n      \"newSuffix.test.net\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/locations/southafricanorth/managedInstanceDtcAzureAsyncOperation/ac0b1856-64eb-40b7-aa6a-0400d28c7e62?api-version=2022-05-01-preview"
+        ],
+        "x-ms-request-id": [
+          "ac0b1856-64eb-40b7-aa6a-0400d28c7e62"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "27ccb1b9-9b26-4e2e-8d62-6a0985411c8b"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194004Z:27ccb1b9-9b26-4e2e-8d62-6a0985411c8b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:40:03 GMT"
+        ],
+        "Content-Length": [
+          "676"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": true,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": false,\r\n        \"allowOutboundEnabled\": false,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": false,\r\n      \"xaTransactionsDefaultTimeout\": 1000,\r\n      \"xaTransactionsMaximumTimeout\": 2000\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\",\r\n      \"newSuffix.test.net\"\r\n    ],\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9za3Jpdm9rYXBpYy1wYWFzdjIvZHRjL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3df87f0b-37c5-439e-ac06-f4820f948b9f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "521"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/locations/southafricanorth/managedInstanceDtcAzureAsyncOperation/8665a2b8-f389-4d26-9548-1c48fd533f24?api-version=2022-05-01-preview"
+        ],
+        "x-ms-request-id": [
+          "8665a2b8-f389-4d26-9548-1c48fd533f24"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "faa31a55-5d15-46a2-b7fc-032cbb7d05f1"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194106Z:faa31a55-5d15-46a2-b7fc-032cbb7d05f1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:41:06 GMT"
+        ],
+        "Content-Length": [
+          "647"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"dtcEnabled\": false,\r\n    \"securitySettings\": {\r\n      \"transactionManagerCommunicationSettings\": {\r\n        \"allowInboundEnabled\": true,\r\n        \"allowOutboundEnabled\": true,\r\n        \"authentication\": \"NoAuth\"\r\n      },\r\n      \"xaTransactionsEnabled\": true,\r\n      \"snaLu6point2TransactionsEnabled\": true,\r\n      \"xaTransactionsDefaultTimeout\": 0,\r\n      \"xaTransactionsMaximumTimeout\": 0\r\n    },\r\n    \"externalDnsSuffixSearchList\": [\r\n      \"hjctg3kijkkx.database.windows.net\"\r\n    ],\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/managedInstances/skrivokapic-paasv2/dtc/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/dtc\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/locations/southafricanorth/managedInstanceDtcAzureAsyncOperation/e814e4f4-4ed8-48e2-b09f-0b47e715d905?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoYWZyaWNhbm9ydGgvbWFuYWdlZEluc3RhbmNlRHRjQXp1cmVBc3luY09wZXJhdGlvbi9lODE0ZTRmNC00ZWQ4LTQ4ZTItYjA5Zi0wYjQ3ZTcxNWQ5MDU/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "c756f815-17ea-49fc-944c-867c9aa7dd5a"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "d0be62f8-e451-4f3d-a2c2-db8d1c123537"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193757Z:d0be62f8-e451-4f3d-a2c2-db8d1c123537"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:37:56 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e814e4f4-4ed8-48e2-b09f-0b47e715d905\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-01-23T19:36:56.583Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/locations/southafricanorth/managedInstanceDtcAzureAsyncOperation/4dbbb78f-fe59-4a94-bf13-a5d7947045ae?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoYWZyaWNhbm9ydGgvbWFuYWdlZEluc3RhbmNlRHRjQXp1cmVBc3luY09wZXJhdGlvbi80ZGJiYjc4Zi1mZTU5LTRhOTQtYmYxMy1hNWQ3OTQ3MDQ1YWU/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c1bf61ff-ab7a-48dd-a21c-028221bbdfde"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "9fa9cef1-30b9-4b95-ab29-9e7cade8115b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "df647f9c-8df2-4b96-b0a0-37908393bf61"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T193859Z:df647f9c-8df2-4b96-b0a0-37908393bf61"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:38:58 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"4dbbb78f-fe59-4a94-bf13-a5d7947045ae\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-01-23T19:37:58.887Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/locations/southafricanorth/managedInstanceDtcAzureAsyncOperation/7169ea2b-539a-47d3-b092-6e84bbf347f8?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoYWZyaWNhbm9ydGgvbWFuYWdlZEluc3RhbmNlRHRjQXp1cmVBc3luY09wZXJhdGlvbi83MTY5ZWEyYi01MzlhLTQ3ZDMtYjA5Mi02ZTg0YmJmMzQ3Zjg/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bea539df-eda6-4743-a5b0-e1ce20d810be"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "bce6b539-32f5-4f5b-95ea-33f4ef28fefd"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "f7b54d0d-e6d9-4c71-a4db-56c5bbf5ff36"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194002Z:f7b54d0d-e6d9-4c71-a4db-56c5bbf5ff36"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:40:01 GMT"
+        ],
+        "Content-Length": [
+          "106"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"7169ea2b-539a-47d3-b092-6e84bbf347f8\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-01-23T19:39:01.64Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/locations/southafricanorth/managedInstanceDtcAzureAsyncOperation/ac0b1856-64eb-40b7-aa6a-0400d28c7e62?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoYWZyaWNhbm9ydGgvbWFuYWdlZEluc3RhbmNlRHRjQXp1cmVBc3luY09wZXJhdGlvbi9hYzBiMTg1Ni02NGViLTQwYjctYWE2YS0wNDAwZDI4YzdlNjI/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "497c5402-6395-4fcb-bc4b-9eec5d99be62"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "cc2d3bff-195c-4622-97c9-d63993a612f1"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "x-ms-correlation-request-id": [
+          "16860ad6-4e61-48c7-879e-692f658f7d84"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194104Z:16860ad6-4e61-48c7-879e-692f658f7d84"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:41:04 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ac0b1856-64eb-40b7-aa6a-0400d28c7e62\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-01-23T19:40:04.137Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Sql/locations/southafricanorth/managedInstanceDtcAzureAsyncOperation/8665a2b8-f389-4d26-9548-1c48fd533f24?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL0N1c3RvbWVyRXhwZXJpZW5jZVRlYW1fUkcvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3NvdXRoYWZyaWNhbm9ydGgvbWFuYWdlZEluc3RhbmNlRHRjQXp1cmVBc3luY09wZXJhdGlvbi84NjY1YTJiOC1mMzg5LTRkMjYtOTU0OC0xYzQ4ZmQ1MzNmMjQ/YXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3df87f0b-37c5-439e-ac06-f4820f948b9f"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/4.2.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "7de00c49-29c8-47a6-aa9a-fa79dc79d875"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "x-ms-correlation-request-id": [
+          "02d643cf-b8ff-4e16-a82b-c3a9079f0cf7"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20230123T194207Z:02d643cf-b8ff-4e16-a82b-c3a9079f0cf7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 23 Jan 2023 19:42:07 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"8665a2b8-f389-4d26-9548-1c48fd533f24\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-01-23T19:41:06.543Z\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "8313371e-0879-428e-b1da-6353575a9192"
+  }
+}

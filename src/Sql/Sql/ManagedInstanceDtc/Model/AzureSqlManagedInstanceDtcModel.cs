@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Model
         /// <summary>
         /// Gets or sets the external DNS suffix search list.
         /// </summary>
-        public IList<string> ExternalDnsSuffixSearchList { get; set; }
+        public List<string> ExternalDnsSuffixSearchList { get; set; }
 
         /// <summary>
         /// Gets or sets the DTC security settings.

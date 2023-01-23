@@ -1,18 +1,28 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
-using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Cmdlet
 {
@@ -81,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Cmdlet
         [Parameter(Mandatory = false, ParameterSetName = SetByParentObjectParameterSet, Position = 2, HelpMessage = "External DNS suffix search list.")]
         [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet, HelpMessage = "External DNS suffix search list.")]
         [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet, Position = 2, HelpMessage = "External DNS suffix search list.")]
-        public string[] ExternalDnsSuffixSearchList { get; set; }
+        public List<string> ExternalDnsSuffixSearchList { get; set; }
 
         /// <summary>
         /// Gets or sets allow XA Transactions to managed instance DTC.
@@ -146,6 +156,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Cmdlet
         [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet, Position = 3, HelpMessage = "Authentication type.")]
         public string Authentication { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background.")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Defines whether it is ok to skip the requesting of confirmation
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Skip confirmation message for performing the action.")]
+        public SwitchParameter Force { get; set; }
+
         protected override AzureSqlManagedInstanceDtcModel GetEntity()
         {
             return ModelAdapter.GetManagedInstanceDtc(ResourceGroupName, InstanceName);
@@ -188,16 +210,29 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Cmdlet
 
         protected override AzureSqlManagedInstanceDtcModel ApplyUserInputToModel(AzureSqlManagedInstanceDtcModel model)
         {
-            model.DtcEnabled = this.IsParameterBound(c => c.DtcEnabled)? DtcEnabled : model.DtcEnabled;
-            model.ExternalDnsSuffixSearchList = this.IsParameterBound(c => c.ExternalDnsSuffixSearchList) ? ExternalDnsSuffixSearchList : model.ExternalDnsSuffixSearchList;
-            model.SecuritySettings.XaTransactionsEnabled = this.IsParameterBound(c => c.XaTransactionsEnabled) ? XaTransactionsEnabled : model.SecuritySettings.XaTransactionsEnabled;
-            model.SecuritySettings.SnaLu6point2TransactionsEnabled = this.IsParameterBound(c => c.SnaLu6point2TransactionsEnabled) ? SnaLu6point2TransactionsEnabled : model.SecuritySettings.SnaLu6point2TransactionsEnabled;
-            model.SecuritySettings.XaTransactionsDefaultTimeout = this.IsParameterBound(c => c.XaTransactionsDefaultTimeout) ? XaTransactionsDefaultTimeout : model.SecuritySettings.XaTransactionsDefaultTimeout;
-            model.SecuritySettings.XaTransactionsMaximumTimeout = this.IsParameterBound(c => c.XaTransactionsMaximumTimeout) ? XaTransactionsMaximumTimeout : model.SecuritySettings.XaTransactionsMaximumTimeout;
-            model.SecuritySettings.TransactionManagerCommunicationSettings.AllowOutboundEnabled = this.IsParameterBound(c => c.AllowOutboundEnabled) ? AllowOutboundEnabled : model.SecuritySettings.TransactionManagerCommunicationSettings.AllowOutboundEnabled;
-            model.SecuritySettings.TransactionManagerCommunicationSettings.AllowInboundEnabled = this.IsParameterBound(c => c.AllowInboundEnabled) ? AllowInboundEnabled : model.SecuritySettings.TransactionManagerCommunicationSettings.AllowInboundEnabled;
-            model.SecuritySettings.TransactionManagerCommunicationSettings.Authentication = this.IsParameterBound(c => c.Authentication) ? Authentication : model.SecuritySettings.TransactionManagerCommunicationSettings.Authentication;
-
+            if (!ParameterSetName.Equals(SetByInputObjectParameterSet))
+            {
+                model.DtcEnabled = this.IsParameterBound(c => c.DtcEnabled) ? DtcEnabled : model.DtcEnabled;
+                model.ExternalDnsSuffixSearchList = this.IsParameterBound(c => c.ExternalDnsSuffixSearchList) ? ExternalDnsSuffixSearchList : model.ExternalDnsSuffixSearchList;
+                model.SecuritySettings.XaTransactionsEnabled = this.IsParameterBound(c => c.XaTransactionsEnabled) ? XaTransactionsEnabled : model.SecuritySettings.XaTransactionsEnabled;
+                model.SecuritySettings.SnaLu6point2TransactionsEnabled = this.IsParameterBound(c => c.SnaLu6point2TransactionsEnabled) ? SnaLu6point2TransactionsEnabled : model.SecuritySettings.SnaLu6point2TransactionsEnabled;
+                model.SecuritySettings.XaTransactionsDefaultTimeout = this.IsParameterBound(c => c.XaTransactionsDefaultTimeout) ? XaTransactionsDefaultTimeout : model.SecuritySettings.XaTransactionsDefaultTimeout;
+                model.SecuritySettings.XaTransactionsMaximumTimeout = this.IsParameterBound(c => c.XaTransactionsMaximumTimeout) ? XaTransactionsMaximumTimeout : model.SecuritySettings.XaTransactionsMaximumTimeout;
+                model.SecuritySettings.TransactionManagerCommunicationSettings.AllowOutboundEnabled = this.IsParameterBound(c => c.AllowOutboundEnabled) ? AllowOutboundEnabled : model.SecuritySettings.TransactionManagerCommunicationSettings.AllowOutboundEnabled;
+                model.SecuritySettings.TransactionManagerCommunicationSettings.AllowInboundEnabled = this.IsParameterBound(c => c.AllowInboundEnabled) ? AllowInboundEnabled : model.SecuritySettings.TransactionManagerCommunicationSettings.AllowInboundEnabled;
+                model.SecuritySettings.TransactionManagerCommunicationSettings.Authentication = this.IsParameterBound(c => c.Authentication) ? Authentication : model.SecuritySettings.TransactionManagerCommunicationSettings.Authentication;
+            } else
+            {
+                model.DtcEnabled = this.IsParameterBound(c => c.DtcEnabled) ? DtcEnabled : InputObject.DtcEnabled;
+                model.ExternalDnsSuffixSearchList = this.IsParameterBound(c => c.ExternalDnsSuffixSearchList) ? ExternalDnsSuffixSearchList : InputObject.ExternalDnsSuffixSearchList;
+                model.SecuritySettings.XaTransactionsEnabled = this.IsParameterBound(c => c.XaTransactionsEnabled) ? XaTransactionsEnabled : InputObject.SecuritySettings.XaTransactionsEnabled;
+                model.SecuritySettings.SnaLu6point2TransactionsEnabled = this.IsParameterBound(c => c.SnaLu6point2TransactionsEnabled) ? SnaLu6point2TransactionsEnabled : InputObject.SecuritySettings.SnaLu6point2TransactionsEnabled;
+                model.SecuritySettings.XaTransactionsDefaultTimeout = this.IsParameterBound(c => c.XaTransactionsDefaultTimeout) ? XaTransactionsDefaultTimeout : InputObject.SecuritySettings.XaTransactionsDefaultTimeout;
+                model.SecuritySettings.XaTransactionsMaximumTimeout = this.IsParameterBound(c => c.XaTransactionsMaximumTimeout) ? XaTransactionsMaximumTimeout : InputObject.SecuritySettings.XaTransactionsMaximumTimeout;
+                model.SecuritySettings.TransactionManagerCommunicationSettings.AllowOutboundEnabled = this.IsParameterBound(c => c.AllowOutboundEnabled) ? AllowOutboundEnabled : InputObject.SecuritySettings.TransactionManagerCommunicationSettings.AllowOutboundEnabled;
+                model.SecuritySettings.TransactionManagerCommunicationSettings.AllowInboundEnabled = this.IsParameterBound(c => c.AllowInboundEnabled) ? AllowInboundEnabled : InputObject.SecuritySettings.TransactionManagerCommunicationSettings.AllowInboundEnabled;
+                model.SecuritySettings.TransactionManagerCommunicationSettings.Authentication = this.IsParameterBound(c => c.Authentication) ? Authentication : InputObject.SecuritySettings.TransactionManagerCommunicationSettings.Authentication;
+            }
             return base.ApplyUserInputToModel(model);
         }
 

@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Services
             // However, we can extract the suffix from the host name.
             managedInstanceDtcModel.DtcHostName = managedInstanceDtc.DtcHostNameDnsSuffix;
             managedInstanceDtcModel.DtcHostNameDnsSuffix = managedInstanceDtc.DtcHostNameDnsSuffix.Substring(managedInstanceDtc.DtcHostNameDnsSuffix.IndexOf('.') + 1);
-            managedInstanceDtcModel.ExternalDnsSuffixSearchList = managedInstanceDtc.ExternalDnsSuffixSearchList.ToArray();
+            managedInstanceDtcModel.ExternalDnsSuffixSearchList = managedInstanceDtc.ExternalDnsSuffixSearchList.ToList<string>();
             managedInstanceDtcModel.SecuritySettings = managedInstanceDtc.SecuritySettings;
 
             return managedInstanceDtcModel;
