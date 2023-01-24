@@ -37,7 +37,7 @@ CSMPUBLISHINGACCESSPOLICIESENTITY <ICsmPublishingCredentialsPoliciesEntity>: Pub
   [Kind <String>]: Kind of resource.
   [Allow <Boolean?>]: <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappscmallowed
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappscmallowed
 #>
 function Set-AzWebAppScmAllowed {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity])]

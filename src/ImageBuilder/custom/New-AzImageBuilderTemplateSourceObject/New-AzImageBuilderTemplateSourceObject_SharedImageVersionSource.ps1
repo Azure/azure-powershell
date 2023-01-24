@@ -23,7 +23,7 @@ Create an in-memory object for ImageTemplateSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateSharedImageVersionSource
 .Link
-https://docs.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatesourceobject
+https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatesourceobject
 #>
 function New-AzImageBuilderTemplateSourceObject_SharedImageVersionSource {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateSharedImageVersionSource')]

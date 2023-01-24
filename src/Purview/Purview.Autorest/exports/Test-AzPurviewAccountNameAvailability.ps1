@@ -25,7 +25,7 @@ Test-AzPurviewAccountNameAvailability -Name test-pa -Type Tenant
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ICheckNameAvailabilityResult
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/test-azpurviewaccountnameavailability
+https://learn.microsoft.com/powershell/module/az.purview/test-azpurviewaccountnameavailability
 #>
 function Test-AzPurviewAccountNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ICheckNameAvailabilityResult])]

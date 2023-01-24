@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 (string.Equals(parameters.TenantId, OrganizationsTenant, StringComparison.OrdinalIgnoreCase) ? null : parameters.TenantId);
             var resource = parameters.Environment.GetEndpoint(parameters.ResourceId) ?? parameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
-            var clientId = AuthenticationHelpers.PowerShellClientId;
+            var clientId = Constants.PowerShellClientId;
             var authority = parameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes);

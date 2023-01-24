@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IOperationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/get-azquotaoperation
+https://learn.microsoft.com/powershell/module/az.quota/get-azquotaoperation
 #>
 function Get-AzQuotaOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IOperationResponse])]
@@ -154,7 +154,7 @@ Name                                 ProvisioningState ErrorMessage    Code
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IQuotaRequestDetails
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/get-azquotarequeststatus
+https://learn.microsoft.com/powershell/module/az.quota/get-azquotarequeststatus
 #>
 function Get-AzQuotaRequestStatus {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IQuotaRequestDetails])]
@@ -321,7 +321,7 @@ MinPublicIpInterNetworkPrefixLength Public IPv4 Prefix Length                 0
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentUsagesBase
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/get-azquotausage
+https://learn.microsoft.com/powershell/module/az.quota/get-azquotausage
 #>
 function Get-AzQuotaUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentUsagesBase])]
@@ -473,7 +473,7 @@ INPUTOBJECT <IQuotaIdentity>: Identity Parameter
   [ResourceName <String>]: Resource name for a given resource provider. For example:         - SKU name for Microsoft.Compute         - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices          For Microsoft.Network PublicIPAddresses.
   [Scope <String>]: The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/get-azquota
+https://learn.microsoft.com/powershell/module/az.quota/get-azquota
 #>
 function Get-AzQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase])]
@@ -620,7 +620,7 @@ PublicIPAddresses Public IP Addresses - Basic Count
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/new-azquota
+https://learn.microsoft.com/powershell/module/az.quota/new-azquota
 #>
 function New-AzQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase])]
@@ -805,7 +805,7 @@ INPUTOBJECT <IQuotaIdentity>: Identity Parameter
   [ResourceName <String>]: Resource name for a given resource provider. For example:         - SKU name for Microsoft.Compute         - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices          For Microsoft.Network PublicIPAddresses.
   [Scope <String>]: The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/update-azquota
+https://learn.microsoft.com/powershell/module/az.quota/update-azquota
 #>
 function Update-AzQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase])]
@@ -969,7 +969,7 @@ LimitValue                1003
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject
 .Link
-https://docs.microsoft.com/powershell/module/az.Quota/New-AzQuotaLimitObject
+https://learn.microsoft.com/powershell/module/az.Quota/New-AzQuotaLimitObject
 #>
 function New-AzQuotaLimitObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject])]

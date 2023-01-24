@@ -72,6 +72,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string[] DisksToExclude { get; set; }
 
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.")]
+        [PSArgumentCompleter("CrashConsistent", "FileSystemConsistent", "ApplicationConsistent")]
+        public string ConsistencyMode { get; set; }
+
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -101,6 +109,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                         restorePoint.ExcludeDisks = disksExclude;
                     }
+
+                    restorePoint.ConsistencyMode = this.ConsistencyMode;
 
                     var result = RestorePointClient.Create(resourceGroup, restorePointCollectionName, restorePointName, restorePoint);
                         

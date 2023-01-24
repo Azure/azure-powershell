@@ -27,7 +27,7 @@ Lists all of the available Microsoft.MarketplaceOrdering REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceoperation
+https://learn.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceoperation
 #>
 function Get-AzMarketplaceOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IOperation])]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlflexibleserverdatabase
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlflexibleserverdatabase
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ Remove a database by name
 
 ### Example 2: Remove a database by Id
 ```powershell
-Remove-AzPostgreSqlFlexibleServerDatabase-InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
+Remove-AzPostgreSqlFlexibleServerDatabase -InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
 
 ```
 

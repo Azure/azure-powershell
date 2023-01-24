@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/set-azsignalrupstream
+online version: https://learn.microsoft.com/powershell/module/az.signalr/set-azsignalrupstream
 schema: 2.0.0
 ---
 
@@ -247,4 +247,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[How to use splatting to pass parameters to commands in PowerShell](/powershell/module/microsoft.powershell.core/about/about_splatting)
+[How to use splatting to pass parameters to commands in PowerShell](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_splatting?view=powershell-7)

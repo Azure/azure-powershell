@@ -1,3 +1,101 @@
+## 9.3.0 - January 2023
+#### Az.Accounts
+* Supported Web Account Manager (WAM) as an opt-in interactive login experience. Enable it by 'Update-AzConfig -EnableLoginByWam True'.
+* Optimized the mechanism for assembly loading.
+* Enabled AzKeyStore with keyring in Linux.
+* Fixed a typo in GetAzureRmContextAutosaveSetting.cs changing the cmdlet class name to GetAzureRmContextAutosaveSetting
+* Removed survey on error message in 'Resolve-AzError'. [#20398]
+
+#### Az.Aks
+* Added parameter '-EnableEncryptionAtHost' for 'New-AzAksCluster' and 'New-AzAksNodePool'
+* Added parameter '-EnableUltraSSD' for 'New-AzAksCluster' and 'New-AzAksNodePool'
+* Added parameter '-NodeKubeletConfig' for 'New-AzAksCluster', '-KubeletConfig' for 'New-AzAksNodePool'
+* Added parameter '-NodeLinuxOSConfig' for 'New-AzAksCluster', '-LinuxOSConfig' and 'New-AzAksNodePool'
+* Added parameter '-NodeMaxSurge' for 'New-AzAksCluster', '-MaxSurge' for 'New-AzAksNodePool' and 'Update-AzAksNodePool'
+* Added parameter '-PPG' for 'New-AzAksCluster' and 'New-AzAksNodePool'
+* Added parameter '-SpotMaxPrice' for 'New-AzAksNodePool'
+* Added parameter '-EnableFIPS' for 'New-AzAksCluster' and 'New-AzAksNodePool'
+* Added parameter '-AutoScalerProfile' for 'New-AzAksCluster' and 'Set-AzAksCluster'
+* Added parameter '-GpuInstanceProfile' for 'New-AzAksCluster' and 'New-AzAksNodePool'
+* Added parameter '-EnableUptimeSLA' for 'New-AzAksCluster' and 'Set-AzAksCluster'
+* Added parameter '-EdgeZone' for 'New-AzAksCluster'
+
+#### Az.ApiManagement
+* Updated description of ResourceId param 'New-AzApiManagementBackend' and 'Set-AzApiManagementBackend' cmdlet [#16868]
+
+#### Az.ApplicationInsights
+* Enabled output object enumerating for 'Get-AzApplicationInsights' [#20225]
+
+#### Az.Automation
+* Updated Example: Start-AzAutomationRunbook should pass ordered dictionary for parameters [#20408]
+
+#### Az.Batch
+* Added new properties 'CurrentNodeCommunicationMode' (read only) and 'TargetCommunicationMode' of type 'NodeCommunicationMode' to 'PSCloudPool'.
+  - Valid values for 'NodeCommunicationMode': Default, Classic, Simplified
+  - When the 'PSCloudPool' is updated with a new 'TargetCommunicationMode' value, the Batch service will attempt to update the pool to the new value the next time the pool is resized down to zero compute nodes and back up.
+* 'PSPrivateLinkServiceConnectionState''s 'ActionRequired' property required has been renamed to 'ActionsRequired'. The old property has been marked as obsolete, and now just returns the new property. This should not impact existing consumers.
+
+#### Az.Compute
+* Removed the image 'Win2008R2SP1' from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
+* Fixed a bug for creating Linux VM's from SIG/Community Gallery Images
+* Added 'ImageReferenceId' string parameter to the 'New-AzVmssConfig' cmdlet. This allows gallery image references to be added for the Confidential VM feature.
+* Added 'SecurityEncryptionType' and 'SecureVMDiskEncryptionSet' string parameters to the 'Set-AzVmssStorageProfile' cmdlet for the Confidential VM feature.
+
+#### Az.ContainerRegistry
+* Fixed bug in 'Get-AzContainerRegistryTag' to show correct tags [#20528]
+
+#### Az.Monitor
+* Fixed bug for 'Remove-AzDataCollectionRuleAssociation' [#20207]
+* Added support for test notifications cmdlets
+  * 'Test-AzActionGroup'
+* Fixed start time parameter description of 'Get-AzActivityLog' [#20409]
+
+#### Az.Network
+* Added samples for retrieving Private Link IP Configuration using 'New-AzApplicationGatewayPrivateLinkIpConfiguration' with fix [#20440]
+* Added 'DdosProtectionPlan' property in 'AzPublicIpAddress'
+* Updated mapping in 'AzPublicIpAddress' to always show/create DdosSettings
+* Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
+* Fixed a Bug for Set-AzIpGroup cmdlet to support the '-WhatIf' parameter
+* Fixed a Bug for 'Add-AzLoadBalancerFrontendIpConfig', 'Add-AzLoadBalancerProbeConfig', 'Add-AzLoadBalancerBackendAddressPoolConfig', 'Set-AzLoadBalancer', 'New-AzLoadBalancerRuleConfig', 'Remove-AzLoadBalancerInboundNatRuleConfig' cmdlets to support the '-WhatIf' parameter. [#20416]
+* Fixed a bug for DestinationPortBehavior in 'Get-AzNetworkWatcherConnectionMonitor', 'New-AzNetworkWatcherConnectionMonitor' powershell command by adding this properties to get and set the DestinationPortBehavior information. [#15996]
+
+#### Az.RedisCache
+* Added optional parameter 'PreferredDataArchiveAuthMethod' in 'Export-AzRedisCache'  
+* Added optional parameter 'PreferredDataArchiveAuthMethod' in 'Import-AzRedisCache'  
+* Added 4 additional properties for a geo replication link: 'PrimaryHostName', 'GeoReplicatedPrimaryHostName', 'ServerRole', and 'LinkedRedisCacheLocation'in 'Get-AzRedisCacheLink' and 'New-AzRedisCacheLink' 
+
+#### Az.Resources
+* Fixed issue introduced in previous fix for 'Set-AzPolicySetDefinition' InternalServerError when the initiative is too large [#20238], which will remove space in value.
+* Fixed 'Get-AzRoleAssignment' BadRequest when scope is '/' [#20323]
+
+#### Az.SecurityInsights
+* Fixed for 'Update-AzSentinelAlertRule' fails when using '-TriggerThreshold 0' [#20417]
+
+#### Az.Sql
+* Added a parameter named 'UseIdentity' for 'Set-AzSqlServerAudit', 'Set-AzSqlDatabaseAudit', 'Set-AzSqlServerMSSupportAudit'
+* Added 'IsManagedIdentityInUse' property to the output of 'Get-AzSqlServerMSSupportAudit'
+* Added 'PreferredEnclaveType' parameter to 'New-AzSqlDatabase', 'Get-AzSqlDatabase' and 'Set-AzSqlDatabase' cmdlet
+
+#### Az.StackHCI
+* Added support for arc extensions which depend on HCI cluster's IMDS endpoints.
+
+#### Az.Storage
+* Return ListBlobProperties in blob list result
+    - 'Get-AzStorageBlob'
+* Output AllowedCopyScope in get account result
+    - 'Get-AzStorageAccount'
+
+#### Az.Websites
+* Fixed 'Import-AzWebAppKeyVaultCertificate' to use certificate naming convention same as portal [#19592]
+
+### Thanks to our community contributors
+* Pavel Lyalyakin (@bahrep), New-AzDiskConfig.md: fixed a copy-pasto (#20514)
+* Eugene Ogongo (@eugeneogongo), Update Images.json (#18654)
+* Hiroshi Yoshioka (@hyoshioka0128), Typo "resouce"→"resource" (#20441)
+* Paul Gledhill (@pmgledhill102), Spelling mistake 'Accpeted' (#20380)
+* Cameron Sowder (@sowderca), Fixed typo in Get-AzContextAutosaveSetting class name: GetzureRmContextAutosaveSetting -> GetAzureRmContextAutosaveSetting (#20420)
+
+
 ## 9.2.0 - December 2022
 #### Az.Accounts
 * Enabled caching tokens when logging in with a client assertion. This fixed the incorrectly short lifespan of tokens.

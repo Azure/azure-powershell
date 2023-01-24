@@ -15,28 +15,8 @@ Update or create a managed Kubernetes cluster.
 ### defaultParameterSet (Default)
 ```
 Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImageOnly] [-ControlPlaneOnly]
- [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-ResourceGroupName] <String>
- [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>]
- [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>] [-KubernetesVersion <String>]
- [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling]
- [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>]
- [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
- [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
- [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
- [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
- [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
- [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>] [-EnableManagedIdentity]
- [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
- [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
- [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-AcrNameToDetach <String>]
- [-NodeImageOnly] [-ControlPlaneOnly] [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>]
+ [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-EnableUptimeSLA]
+ [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
  [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
  [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
  [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
@@ -49,28 +29,51 @@ Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-A
  [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
  [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-AcrNameToDetach <String>]
+ [-NodeImageOnly] [-ControlPlaneOnly] [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>]
+ [-EnableUptimeSLA] [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
+ [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
+ [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
+ [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
+ [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
+ [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
+ [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
+ [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
+ [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
 Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImageOnly] [-ControlPlaneOnly]
- [-Id] <String> [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-Location <String>]
- [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>] [-KubernetesVersion <String>]
- [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling]
- [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>]
- [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
- [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
- [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
- [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
- [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
- [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>] [-EnableManagedIdentity]
- [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
- [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
+ [-Id] <String> [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-EnableUptimeSLA]
+ [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
+ [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
+ [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
+ [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
+ [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
+ [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
+ [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +101,37 @@ $AutoScalerProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedCl
 Get-AzAksCluster -ResourceGroupName group -Name myCluster | Set-AzAksCluster -AutoScalerProfile $AutoScalerProfile
 ```
 
+### Update an AKS cluster with AadProfile.
+When you update an AKS cluster, you can configure the AAD profile.
+
+```powershell
+$AKSAdminGroup=New-AzADGroup -DisplayName myAKSAdminGroup -MailNickname myAKSAdminGroup
+$AadProfile=@{
+    managed=$true
+    enableAzureRBAC=$false
+    adminGroupObjectIDs=[System.Collections.Generic.List[string]]@($AKSAdminGroup.Id)
+}
+$AadProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile]$AadProfile
+
+Set-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -AadProfile $AadProfile
+```
+
 ## PARAMETERS
+
+### -AadProfile
+The Azure Active Directory configuration.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AcrNameToAttach
 Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr
@@ -357,6 +390,21 @@ Accept wildcard characters: False
 
 ### -EnableNodeAutoScaling
 Whether to enable auto-scaler
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableUptimeSLA
+Whether to use use Uptime SLA.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

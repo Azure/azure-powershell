@@ -27,7 +27,7 @@ List the operations for Dynatrace.Observability
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatraceoperation
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatraceoperation
 #>
 function Get-AzDynatraceOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20.IOperation])]

@@ -65,7 +65,7 @@ THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATION <ILightHouseAuthorization[]>: .
   PrincipalId <String>: 
   RoleDefinitionId <String>: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration
 #>
 function New-AzProviderHubProviderRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration])]

@@ -122,6 +122,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to use a FIPS-enabled OS")]
         public SwitchParameter EnableFIPS { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The GpuInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.")]
+        [PSArgumentCompleter("MIG1g", "MIG2g", "MIG3g", "MIG4g", "MIG7g")]
+        public string GpuInstanceProfile { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -270,6 +276,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (EnableFIPS.IsPresent)
             {
                 agentPool.EnableFIPS = EnableFIPS.ToBool();
+            }
+            if (this.IsParameterBound(c => c.GpuInstanceProfile))
+            {
+                agentPool.GpuInstanceProfile = GpuInstanceProfile;
             }
 
             return agentPool;
