@@ -16,7 +16,7 @@ Sets properties for an Azure SQL Managed Instance DTC
 ```
 Set-AzSqlInstanceDtc [-ResourceGroupName] <String> [-InstanceName] <String> [[-DtcEnabled] <Boolean>]
  [[-ExternalDnsSuffixSearchList] <System.Collections.Generic.List`1[System.String]>]
- [[-XaTransactionsEnabled] <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
+ [-XaTransactionsEnabled <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
  [-XaTransactionsDefaultTimeout <Int32>] [-XaTransactionsMaximumTimeout <Int32>]
  [-AllowInboundEnabled <Boolean>] [-AllowOutboundEnabled <Boolean>] [-Authentication <String>] [-AsJob]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -26,7 +26,7 @@ Set-AzSqlInstanceDtc [-ResourceGroupName] <String> [-InstanceName] <String> [[-D
 ```
 Set-AzSqlInstanceDtc [-InstanceObject] <AzureSqlManagedInstanceModel> [[-DtcEnabled] <Boolean>]
  [[-ExternalDnsSuffixSearchList] <System.Collections.Generic.List`1[System.String]>]
- [[-XaTransactionsEnabled] <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
+ [-XaTransactionsEnabled <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
  [-XaTransactionsDefaultTimeout <Int32>] [-XaTransactionsMaximumTimeout <Int32>]
  [-AllowInboundEnabled <Boolean>] [-AllowOutboundEnabled <Boolean>] [-Authentication <String>] [-AsJob]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -36,7 +36,7 @@ Set-AzSqlInstanceDtc [-InstanceObject] <AzureSqlManagedInstanceModel> [[-DtcEnab
 ```
 Set-AzSqlInstanceDtc [-InputObject] <AzureSqlManagedInstanceDtcModel> [[-DtcEnabled] <Boolean>]
  [[-ExternalDnsSuffixSearchList] <System.Collections.Generic.List`1[System.String]>]
- [[-XaTransactionsEnabled] <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
+ [-XaTransactionsEnabled <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
  [-XaTransactionsDefaultTimeout <Int32>] [-XaTransactionsMaximumTimeout <Int32>]
  [-AllowInboundEnabled <Boolean>] [-AllowOutboundEnabled <Boolean>] [-Authentication <String>] [-AsJob]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -46,7 +46,7 @@ Set-AzSqlInstanceDtc [-InputObject] <AzureSqlManagedInstanceDtcModel> [[-DtcEnab
 ```
 Set-AzSqlInstanceDtc [-ResourceId] <String> [[-DtcEnabled] <Boolean>]
  [[-ExternalDnsSuffixSearchList] <System.Collections.Generic.List`1[System.String]>]
- [[-XaTransactionsEnabled] <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
+ [-XaTransactionsEnabled <Boolean>] [-SnaLu6point2TransactionsEnabled <Boolean>]
  [-XaTransactionsDefaultTimeout <Int32>] [-XaTransactionsMaximumTimeout <Int32>]
  [-AllowInboundEnabled <Boolean>] [-AllowOutboundEnabled <Boolean>] [-Authentication <String>] [-AsJob]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -381,7 +381,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

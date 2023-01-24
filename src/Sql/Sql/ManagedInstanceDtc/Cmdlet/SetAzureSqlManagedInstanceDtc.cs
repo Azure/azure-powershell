@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Cmdlet
         /// <summary>
         /// Gets or sets allow XA Transactions to managed instance DTC.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = SetByNameParameterSet, Position = 4, HelpMessage = "XA transactions enabled status.")]
+        [Parameter(Mandatory = false, ParameterSetName = SetByNameParameterSet, HelpMessage = "XA transactions enabled status.")]
         [Parameter(Mandatory = false, ParameterSetName = SetByParentObjectParameterSet, Position = 3, HelpMessage = "XA transactions enabled status.")]
         [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet, HelpMessage = "XA transactions enabled status.")]
         [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet, Position = 3, HelpMessage = "XA transactions enabled status.")]
