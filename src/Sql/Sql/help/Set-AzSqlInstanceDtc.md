@@ -93,7 +93,7 @@ This command enables XA transactions for managed instance DTC
 
 ### Example 3 Enable DTC for a previously fetched managed instance
 ```powershell
-$managedInstance = Get-AzSqlInstance -ResourceGroupName ResourceGroup1 -Name ManagedInstance1
+$managedInstance = Get-AzSqlInstance -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1
 Set-AzSqlInstanceDtc -InstanceObject $managedInstance
 ```
 
@@ -112,7 +112,7 @@ This command enables managed instance DTC by passing managed instance object.
 
 ### Example 4 Enable XA transactions for a previously fetched DTC object
 ```powershell
-$dtc = Get-AzSqlInstanceDtc -ResourceGroupName ResourceGroup1 -Name ManagedInstance1
+$dtc = Get-AzSqlInstanceDtc -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1
 $dtc = Set-AzSqlInstanceDtc -InputObject $dtc -DtcEnabled $true
 Write-Output $dtc.SecuritySettings
 ```

@@ -54,7 +54,7 @@ This command gets the managed instance DTC of the managed instance.
 
 ### Example 2 Get the managed instance DTC of the previously fetched managed instance
 ```powershell
-$managedInstance = Get-AzSqlInstance -ResourceGroupName ResourceGroup1 -Name ManagedInstance1
+$managedInstance = Get-AzSqlInstance -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1
 Get-AzSqlInstanceDtc -InstanceObject $managedInstance
 ```
 
