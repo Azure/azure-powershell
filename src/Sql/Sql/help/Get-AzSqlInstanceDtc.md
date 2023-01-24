@@ -95,7 +95,7 @@ This command gets the managed instance DTC by passing the resource ID of the DTC
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Name of the managed instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Input object of the managed instance.
 
 ```yaml
-Type: AzureSqlManagedInstanceModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 Parameter Sets: GetByParentObjectParameterSet
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Resource ID of the managed instance DTC.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 

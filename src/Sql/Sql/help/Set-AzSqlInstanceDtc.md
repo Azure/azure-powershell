@@ -151,7 +151,7 @@ This command enables managed instance DTC by passing the resource ID of the DTC.
 Enable inbound traffic.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Enable outbound traffic.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 Run cmdlet in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 Authentication type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +211,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 DTC enabled status.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -256,7 +256,7 @@ Accept wildcard characters: False
 Skip confirmation message for performing the action.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -271,7 +271,7 @@ Accept wildcard characters: False
 Input object of the managed instance DTC.
 
 ```yaml
-Type: AzureSqlManagedInstanceDtcModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Model.AzureSqlManagedInstanceDtcModel
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
@@ -286,7 +286,7 @@ Accept wildcard characters: False
 Name of the managed instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -301,7 +301,7 @@ Accept wildcard characters: False
 Input object of the managed instance.
 
 ```yaml
-Type: AzureSqlManagedInstanceModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 Parameter Sets: SetByParentObjectParameterSet
 Aliases:
 
@@ -316,7 +316,7 @@ Accept wildcard characters: False
 Name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -331,7 +331,7 @@ Accept wildcard characters: False
 Resource ID of the managed instance DTC.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
@@ -346,7 +346,7 @@ Accept wildcard characters: False
 SNA LU 6.2 transactions enabled status.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -361,7 +361,7 @@ Accept wildcard characters: False
 XA transactions default timeout.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -376,7 +376,7 @@ Accept wildcard characters: False
 XA transactions enabled status.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -391,7 +391,7 @@ Accept wildcard characters: False
 XA transactions maximum timeout.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -406,7 +406,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -422,7 +422,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -451,6 +451,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzSqlInstanceDtc](./Get-AzSqlInstanceDtc.md)
 
 [SQL Managed Instance DTC Documentation](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/distributed-transaction-coordinator-dtc?view=azuresql)
