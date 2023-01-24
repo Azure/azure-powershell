@@ -661,6 +661,7 @@ Useful for scripts where the error needs to be caught inside the Invoke-Command.
 Note: The parameters variable used inside $ScriptBlock should be named $Params or the method won't work as expected
 #>
 function Run-InvokeCommand {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param (
         [parameter(Mandatory=$true)]
         [scriptblock] $ScriptBlock,
@@ -1516,6 +1517,7 @@ function Assign-ArcRoles {
 }
 
 function Verify-ArcSettings{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [string] $ArcResourceId,
         [System.Management.Automation.Runspaces.PSSession] $Session
@@ -1556,6 +1558,7 @@ function Verify-ArcSettings{
 }
 
 function Verify-ArcRegistration{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [string] $ArcResourceId,
         [System.Management.Automation.Runspaces.PSSession] $Session,
@@ -1601,6 +1604,7 @@ function Verify-ArcRegistration{
 }
 
 function Verify-NodesArcRegistrationState{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         $ClusterNodes,
         [string] $SubscriptionId,
@@ -3287,6 +3291,7 @@ param(
 }
 
 function Set-ArcRoleforRPSpn {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $RPObjectId,
         [String] $ArcServerResourceGroupName
@@ -3333,6 +3338,7 @@ function Set-ArcRoleforRPSpn {
 }
 
 function New-ClusterWithRetries {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $ResourceIdWithAPI, 
         [String] $Payload
@@ -3733,6 +3739,7 @@ param(
 }
 
 function Remove-ArcRoleAssignments {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $ResourceGroupName,
         [String] $ResourceId
@@ -3777,6 +3784,7 @@ function Remove-ArcRoleAssignments {
 }
 
 function Remove-ResourceGroup {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $ResourceGroupName 
     )
