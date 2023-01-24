@@ -102,7 +102,7 @@ Accept wildcard characters: False
 
 ### -ArcServerResourceGroupName
 Specifies the Arc Resource Group name.
-If not specified, service will generate a unique Resource Group name
+If not specified, cluster resource group name will be used.
 
 ```yaml
 Type: System.String

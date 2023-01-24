@@ -74,6 +74,9 @@ Removes Remote Support.
 ### [Remove-AzStackHCIVMAttestation](Remove-AzStackHCIVMAttestation.md)
 Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.
 
+### [Run-InvokeCommand](Run-InvokeCommand.md)
+
+
 ### [Set-AzStackHCI](Set-AzStackHCI.md)
 Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster to enable or disable features.
 
