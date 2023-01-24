@@ -225,11 +225,13 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 			-TargetResourceGroupName "targetResourceGroupName" `
 			-TargetSubscriptionId "targetSubscriptionId"
 ```
-Or using pipping:
+The command restores database backup from instance in one subscription to database `targetDatabaseName` on instance `targetManagedInstanceName` to different subscription `targetSubscriptionId`.
 
+### Example 8. Restore database from different subscription using source object and pipping
 ```powershell
 Az-SetContext -SubscriptionId "sourceSubscriptionId"
 $sourceDatabase = Get-AzSqlInstanceDatabase -Name "sourceDatabaseName" -InstanceName "sourceManagedInstanceName" -ResourceGroupName "sourceRGName"
+
 Az-SetContext -SubscriptionId "targetSubscriptionId"
 $sourceDatabase | Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 			-PointInTime $pointInTime `
@@ -238,8 +240,8 @@ $sourceDatabase | Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 			-TargetResourceGroupName "targetResourceGroupName" `
 			-TargetSubscriptionId "targetSubscriptionId"
 ```
-
-The command restores database backup from instance in one subscription to database `targetDatabaseName` on instance `targetManagedInstanceName` to different subscription `targetSubscriptionId`.
+First command gets source managed database object and stores in variable sourceDatabase.
+Second command executes restore from source to the given target database using point in time restore.
 
 ## PARAMETERS
 
