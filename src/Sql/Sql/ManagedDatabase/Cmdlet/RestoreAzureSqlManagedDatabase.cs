@@ -317,7 +317,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             HelpMessage = "The deletion date of deleted database.")]
         [Parameter(ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
             Mandatory = true,
-            Position = 4,
             HelpMessage = "The deletion date of deleted database.")]
         public DateTime DeletionDate { get; set; }
 
