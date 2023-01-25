@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         if (galleryImageVersion.PublishingProfile == null)
                         {
-                            galleryImageVersion.SafetyProfile = new GalleryImageVersionSafetyProfile;
+                            galleryImageVersion.SafetyProfile = new GalleryImageVersionSafetyProfile();
                         }
 
                         galleryImageVersion.SafetyProfile.AllowDeletionOfReplicatedLocations = this.AllowDeletionOfReplicatedLocation;
