@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.3.3-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="25.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="58.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="60.0.0" />
 	<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="5.0.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="14.3.0" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery" Version="2.2.0-preview" />
