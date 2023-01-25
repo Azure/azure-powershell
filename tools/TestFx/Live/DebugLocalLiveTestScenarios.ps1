@@ -4,7 +4,7 @@ param (
     [string] $RepoLocation
 )
 
-New-Variable -Name LocalRepoLocation -Value $RepoLocation -Scope Script -Option ReadOnly
+New-Variable -Name LocalRepoLocation -Value $RepoLocation -Scope Script -Option ReadOnly -Force
 
 function ImportLocalAzModules {
     param ()
@@ -17,7 +17,7 @@ function ImportLocalAzModules {
     Write-Host "Importing Az.Accounts." -ForegroundColor Green
     Import-Module (Join-Path -Path $accountsModuleDirectory -ChildPath "Az.Accounts.psd1")
     Get-ChildItem -Path $debugDirectory -Directory -Exclude "Az.Accounts" | Get-ChildItem -File -Filter "*.psd1" | ForEach-Object {
-        Write-Host "Importing $($_.FullName)." -ForegroundColor Green
+        Write-Host "Importing $($_.FullName)" -ForegroundColor Green
         Import-Module $_.FullName -Force
     }
     Write-Host "Successfully imported Azure PowerShell modules from artifacts/Debug" -ForegroundColor Green
