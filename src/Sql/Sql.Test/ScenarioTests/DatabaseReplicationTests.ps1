@@ -842,3 +842,38 @@ function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedund
 		Remove-ResourceGroupForTest $rgSecondary
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests creating a database copy with per db cmk
+#>
+function Test-CreateDatabaseCopyWithPerDBCMK()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$database = Create-DatabaseForTest $rg $server "Standard"
+
+	$copyRg = Create-ResourceGroupForTest $location
+	$copyServer = Create-ServerForTest $copyRg $location
+	$copyDatabaseName = Get-DatabaseName
+
+	$encryptionProtector = "https://test-kv1.vault-int.azure-int.net/keys/testkey1/7a2e7ce2e39046e09a00dde90ddcb250"
+	$umi = "/subscriptions/b3aa7e07-6dfc-48a2-b682-3ec83ef8e307/resourceGroups/viparek/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testumi"
+
+	try
+	{
+		# Create a cross server copy
+		$dbCrossServerCopy = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -CopyResourceGroupName $copyRg.ResourceGroupName -CopyServerName $copyServer.ServerName -CopyDatabaseName $copyDatabaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+		Assert-AreEqual $dbCrossServerCopy.CopyServerName $copyServer.ServerName
+		Assert-AreEqual $dbCrossServerCopy.CopyDatabaseName $copyDatabaseName
+		Assert-AreEqual $dbCrossServerCopy.EncryptionProtector $encryptionProtector
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $copyRg
+	}
+}

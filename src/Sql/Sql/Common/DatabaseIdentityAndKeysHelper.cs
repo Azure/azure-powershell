@@ -86,11 +86,14 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             Dictionary<string, DatabaseKey> akvKeysResult = new Dictionary<string, DatabaseKey>();
 
-            foreach (string akvKey in akvKeys)
+            if (akvKeys != null && akvKeys.Any())
             {
-                if (!akvKeysResult.ContainsKey(akvKey))
+                foreach (string akvKey in akvKeys)
                 {
-                    akvKeysResult.Add(akvKey, new DatabaseKey());
+                    if (!akvKeysResult.ContainsKey(akvKey))
+                    {
+                        akvKeysResult.Add(akvKey, new DatabaseKey());
+                    }
                 }
             }
 

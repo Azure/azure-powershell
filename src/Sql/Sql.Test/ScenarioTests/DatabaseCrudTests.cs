@@ -193,5 +193,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-DatabaseCreateWithLedgerEnabled");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithPerDBCMK()
+        {
+            TestRunner.RunTestScript("Test-DatabaseCreateWithPerDBCMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateWithPerDBCMK()
+        {
+            TestRunner.RunTestScript("Test-DatabaseUpdateWithPerDBCMK");
+        }
     }
 }
