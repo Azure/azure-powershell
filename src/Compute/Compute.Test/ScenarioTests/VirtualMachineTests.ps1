@@ -6660,14 +6660,14 @@ function Test-50PlusVMs
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $vmsize = "Standard_B1s"; 
         
-        for ($i=1; $i -le 60; $i++)
+        for ($i=1; $i -le 40; $i++)
         {
             # VM Profile & Hardware
-            $vmname = 'v' + $rgname + $i;
-            $domainNameLabel = "d" + $rgname + $i;
+            $vmname = 'b2v' + $rgname + $i ;
+            $domainNameLabel = "b2d" + $rgname + $i;
 
             # Creating a VM using simple parameter set
-            $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel;
+            $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmsize;
 
         }
 
