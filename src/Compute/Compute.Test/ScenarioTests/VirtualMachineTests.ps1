@@ -6642,3 +6642,41 @@ function Test-VirtualMachineHibernate
         Clean-ResourceGroup $rgname;
     }
 }
+
+function Test-50PlusVMs
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $rgname = "adsandvms";
+        $loc = "eastus";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $vmsize = "Standard_B1s"; 
+        
+        for ($i=1; $i -le 60; $i++)
+        {
+            # VM Profile & Hardware
+            $vmname = 'v' + $rgname + $i;
+            $domainNameLabel = "d" + $rgname + $i;
+
+            # Creating a VM using simple parameter set
+            $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel;
+
+        }
+
+        
+        
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
