@@ -229,11 +229,13 @@ function Test-RestoreDeletedManagedDatabase
 	$sub = (Get-AzContext).Subscription.Id
 	$rg = Create-ResourceGroupForTest
 	$rg2 = Create-ResourceGroupForTest
-	$managedInstance = Create-ManagedInstanceForTest $rg
-	$managedInstance2 = Create-ManagedInstanceForTest $rg2
-
+	
+	Wait-Seconds 60
 	try
 	{
+		$managedInstance = Create-ManagedInstanceForTest $rg
+		$managedInstance2 = Create-ManagedInstanceForTest $rg2
+
 		# Create with all values
 		$managedDatabaseName = Get-ManagedDatabaseName
 		$collation = "SQL_Latin1_General_CP1_CI_AS"
@@ -249,13 +251,14 @@ function Test-RestoreDeletedManagedDatabase
 		$targetManagedDatabaseName4 = Get-ManagedDatabaseName
 		$targetManagedDatabaseName5 = Get-ManagedDatabaseName
 
-		# Once database is created, backup service will automatically take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Wait-Seconds 800
-		}
+		# Once database is created, backup service will automatically take log backups every 5 minutes. We are waiting 600s to ensure backups are taken to which we can restore.
+		Wait-Seconds 600
 
 		# Test remove using all parameters
 		Remove-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Force
+		
+		# Wait to stabilaze
+		Wait-Seconds 60
 
 		# Get deleted database
 		$deletedDatabases = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName 
@@ -486,9 +489,7 @@ function Test-CrossSubscriptionRestoreManagedDatabase
 		$targetManagedDatabaseName = Get-ManagedDatabaseName
 
 		# Wait for mi to stabilize
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Wait-Seconds 60
-		}
+		Wait-Seconds 60
 
 		# Creating managed instance on different subscription would take more then 6 hours, so using existing one for sake of testing.
 		$sourceSub = "62e48210-5e43-423e-889b-c277f3e08c39"
@@ -564,9 +565,8 @@ function Test-CrossSubscriptionRestoreDeletedManagedDatabase
 		$targetManagedDatabaseName = Get-ManagedDatabaseName
 
 		# Wait for mi to stabilize
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Wait-Seconds 60
-		}
+		Wait-Seconds 60
+
 		# restore managed database from another instance in different subscription using all parameters
 		$restoredDb = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 			-SubscriptionId $sourceSub `

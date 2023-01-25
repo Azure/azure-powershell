@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
@@ -620,7 +621,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                     var sourceResourceInfo = new ResourceIdentifier(ResourceId);
                     SubscriptionId = sourceResourceInfo.Subscription;
                     ResourceGroupName = sourceResourceInfo.ResourceGroupName;
-                    InstanceName = sourceResourceInfo.ParentResource.Split(new[] { '/' })[1];
+                    InstanceName = sourceResourceInfo.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                     if (sourceResourceInfo.ResourceType.Equals("Microsoft.Sql/managedInstances/restorableDroppedDatabases", StringComparison.InvariantCulture))
                     {
                         model.CrossSubscriptionRestorableDroppedDatabaseId = ResourceId;

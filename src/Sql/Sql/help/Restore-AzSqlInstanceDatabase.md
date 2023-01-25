@@ -229,10 +229,10 @@ The command restores database backup from instance in one subscription to databa
 
 ### Example 8. Restore database from different subscription using source object and pipping
 ```powershell
-Az-SetContext -SubscriptionId "sourceSubscriptionId"
+Set-AzContext -SubscriptionId "sourceSubscriptionId"
 $sourceDatabase = Get-AzSqlInstanceDatabase -Name "sourceDatabaseName" -InstanceName "sourceManagedInstanceName" -ResourceGroupName "sourceRGName"
 
-Az-SetContext -SubscriptionId "targetSubscriptionId"
+Set-AzContext -SubscriptionId "targetSubscriptionId"
 $sourceDatabase | Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 			-PointInTime $pointInTime `
 			-TargetInstanceDatabaseName "targetDatabaseName" `
