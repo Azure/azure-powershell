@@ -20,7 +20,9 @@
 
 -->
 ## Upcoming Release
-* Added `ConsistencyMode` parameter to `New-AzRestorePoint`
+* Added `-ConsistencyMode` parameter to `New-AzRestorePoint`
+* Added `-TargetExtendedLocation` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion`
+* Added `-AllowDeletionOfReplicatedLocation` to `Update-AzGalleryImageVersion`
 
 ## Version 5.3.0
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
