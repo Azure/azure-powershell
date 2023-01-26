@@ -162,8 +162,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                             galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
                         }
+                    }
 
-                        if (this.IsParameterBound(c => c.TargetExtendedLocation))
+                    if (this.IsParameterBound(c => c.TargetExtendedLocation))
                         {
                             if (galleryImageVersion.PublishingProfile == null)
                             {
@@ -176,7 +177,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 // initialize Gallery Target Extended Location 
                                 var targetExtendedLocation = new GalleryTargetExtendedLocation()
                                 {
-                                    Name = (string)t["Name"],
+                                    Name = (string)t["Name"] != null ? (string)t["Name"] : (string)t["Location"],
                                     ExtendedLocationReplicaCount = (int?)t["ReplicaCount"],
                                     StorageAccountType = (string)t["StorageAccountType"],
                                 };
@@ -186,8 +187,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 {
                                     GalleryExtendedLocation extendedLocation = new GalleryExtendedLocation()
                                     {
-                                        Name = (string)t["Name"],
-                                        Type = (string)t["Type"]
+                                        Name = (string)((Hashtable)t["ExtendedLocation"])["Name"],
+                                        Type = (string)((Hashtable)t["ExtendedLocation"])["Type"]
                                     };
                                     targetExtendedLocation.ExtendedLocation = extendedLocation;
                                 }
@@ -231,56 +232,56 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             }
                         }
 
-                        Dictionary<string, List<string>> auxAuthHeader = null;
-                        if (this.IsParameterBound(c => c.SourceImageId))
+                    Dictionary<string, List<string>> auxAuthHeader = null;
+                    if (this.IsParameterBound(c => c.SourceImageId))
+                    {
+                        if (galleryImageVersion.StorageProfile == null)
                         {
-                            if (galleryImageVersion.StorageProfile == null)
-                            {
-                                galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
-                            }
-                            if (galleryImageVersion.StorageProfile.Source == null)
-                            {
-                                galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionFullSource();
-                            }
-                            galleryImageVersion.StorageProfile.Source.Id = this.SourceImageId;
+                            galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
+                        }
+                        if (galleryImageVersion.StorageProfile.Source == null)
+                        {
+                            galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionFullSource();
+                        }
+                        galleryImageVersion.StorageProfile.Source.Id = this.SourceImageId;
 
-                            var resourceId = ResourceId.TryParse(this.SourceImageId);
+                        var resourceId = ResourceId.TryParse(this.SourceImageId);
 
-                            if (string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
-                             && !string.Equals(this.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                        if (string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                         && !string.Equals(this.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                        {
+                            List<string> resourceIds = new List<string>();
+                            resourceIds.Add(this.SourceImageId);
+                            var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                            if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
                             {
-                                List<string> resourceIds = new List<string>();
-                                resourceIds.Add(this.SourceImageId);
-                                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
-                                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
-                                {
-                                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
-                                }
+                                auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
                             }
                         }
-
-                        GalleryImageVersion result;
-                        if (auxAuthHeader != null)
-                        {
-                            var res = GalleryImageVersionsClient.CreateOrUpdateWithHttpMessagesAsync(
-                                this.ResourceGroupName,
-                                galleryName,
-                                galleryImageName,
-                                galleryImageVersionName, galleryImageVersion,
-                                auxAuthHeader).GetAwaiter().GetResult();
-
-                            result = res.Body;
-                        }
-                        else
-                        {
-                            result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
-                        }
-
-                        var psObject = new PSGalleryImageVersion();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
-                        WriteObject(psObject);
                     }
+
+                    GalleryImageVersion result;
+                    if (auxAuthHeader != null)
+                    {
+                        var res = GalleryImageVersionsClient.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            galleryName,
+                            galleryImageName,
+                            galleryImageVersionName, galleryImageVersion,
+                            auxAuthHeader).GetAwaiter().GetResult();
+
+                        result = res.Body;
+                    }
+                    else
+                    {
+                        result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
+                    }
+
+                    var psObject = new PSGalleryImageVersion();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
+                    WriteObject(psObject);
                 }
+                
             });
         }
 
@@ -504,13 +505,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             galleryImageVersion.PublishingProfile = new GalleryImageVersionPublishingProfile();
                         }
 
-                        galleryImageVersion.PublishingProfile.TargetExtendedLocations = new List<GalleryTargetExtendedLocation>();
+                        List<GalleryTargetExtendedLocation> targetExtendedLocations = new List<GalleryTargetExtendedLocation>();
                         foreach (var t in this.TargetExtendedLocation)
                         {
                             // initialize Gallery Target Extended Location 
                             var targetExtendedLocation = new GalleryTargetExtendedLocation()
                             {
-                                Name = (string)t["Name"],
+                                Name = (string)t["Name"] != null ? (string)t["Name"] : (string)t["Location"],
                                 ExtendedLocationReplicaCount = (int?)t["ReplicaCount"],
                                 StorageAccountType = (string)t["StorageAccountType"],
                             };
@@ -520,8 +521,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             {
                                 GalleryExtendedLocation extendedLocation = new GalleryExtendedLocation()
                                 {
-                                    Name = (string)t["Name"],
-                                    Type = (string)t["Type"]
+                                    Name = (string)((Hashtable)t["ExtendedLocation"])["Name"],
+                                    Type = (string)((Hashtable)t["ExtendedLocation"])["Type"]
                                 };
                                 targetExtendedLocation.ExtendedLocation = extendedLocation;
                             }
@@ -561,8 +562,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 targetExtendedLocation.Encryption = new EncryptionImages(osDiskImageEncryption, dataDiskImageEncryption);
                             }
 
-                            galleryImageVersion.PublishingProfile.TargetExtendedLocations.Add(targetExtendedLocation);
+                            targetExtendedLocations.Add(targetExtendedLocation);
                         }
+
+                        galleryImageVersion.PublishingProfile.TargetExtendedLocations = targetExtendedLocations;
                     }
 
                     if (this.IsParameterBound(c => c.AllowDeletionOfReplicatedLocation))

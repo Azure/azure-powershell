@@ -495,7 +495,7 @@ function Get-DefaultCRPImage
         $defaultOffer = $result[0];
     }
 
-    $result = (Get-AzVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus;
+    $result = (Get-AzVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus| where { $_ -like '*2022-datacenter*'};
     if ($result.Count -eq 1)
     {
         $defaultSku = $result;
