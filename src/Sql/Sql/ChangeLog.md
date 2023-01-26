@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added an optional parameter `HAReplicaCount` to `Restore-AzSqlDatabase`
+* Updated the max value for 'HAReplicaCount' parameter to max int value
 
 ## Version 4.2.0
 * Added a parameter named `UseIdentity` for `Set-AzSqlServerAudit`, `Set-AzSqlDatabaseAudit`, `Set-AzSqlServerMSSupportAudit`
