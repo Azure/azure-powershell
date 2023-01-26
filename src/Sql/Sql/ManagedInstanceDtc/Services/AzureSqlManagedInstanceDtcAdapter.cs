@@ -66,10 +66,25 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceDtc.Services
             managedInstanceDtcModel.ResourceGroupName= resourceGroup;
             managedInstanceDtcModel.DtcEnabled = managedInstanceDtc.DtcEnabled.GetValueOrDefault();
 
-            // Due to a bug in DTC workflows, the full host name is returned as a DTC host name DNS suffix.
-            // However, we can extract the suffix from the host name.
-            managedInstanceDtcModel.DtcHostName = managedInstanceDtc.DtcHostNameDnsSuffix;
-            managedInstanceDtcModel.DtcHostNameDnsSuffix = managedInstanceDtc.DtcHostNameDnsSuffix.Substring(managedInstanceDtc.DtcHostNameDnsSuffix.IndexOf('.') + 1);
+            // Due to a bug in the API, the dtcHostName is returned as the DtcHostNameDnsSuffix property. Also the DtcHostName doesn't exist as a property of the response currently.
+            // The new API versions (with a fix) should return DtcHostName property and the correct value for DtcHostNameDnsSuffix.
+            // Currently, as a workaround we check if the DtcHostName property exists on the response.
+            // If it doesn't exist, we use the DtcHostNameDnsSuffix from the response as the DtcHostName. The model's DtcHostNameDnsSuffix (the actual suffix) needs to be
+            // extracted from the response's DtcHostNameDnsSuffix.
+            // If it exists, we just take those values from the API response directly.
+            var managedInstanceDtcHostName = managedInstanceDtc.GetType().GetProperty("DtcHostName");
+            if (managedInstanceDtcHostName == null)
+            {
+                managedInstanceDtcModel.DtcHostName = managedInstanceDtc.DtcHostNameDnsSuffix;
+                managedInstanceDtcModel.DtcHostNameDnsSuffix = managedInstanceDtc.DtcHostNameDnsSuffix.Substring(managedInstanceDtc.DtcHostNameDnsSuffix.IndexOf('.') + 1);
+            }
+            else
+            {
+                // After the new version of API gets released, next line should be changed to:
+                // managedInstanceDtcModel.DtcHostName = managedInstanceDtc.DtcHostName
+                managedInstanceDtcModel.DtcHostName = (string)managedInstanceDtcHostName.GetValue(managedInstanceDtc);
+                managedInstanceDtcModel.DtcHostNameDnsSuffix = managedInstanceDtc.DtcHostNameDnsSuffix;
+            }
             managedInstanceDtcModel.ExternalDnsSuffixSearchList = managedInstanceDtc.ExternalDnsSuffixSearchList.ToList<string>();
             managedInstanceDtcModel.SecuritySettings = managedInstanceDtc.SecuritySettings;
 
