@@ -52,6 +52,8 @@ using Microsoft.Azure.Commands.KeyVault.Extensions;
 using Microsoft.Azure.Commands.KeyVault.Progress;
 using System.Security.Cryptography;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Strategies;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -129,7 +131,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="networkRuleSet">the network rule set of the vault</param>
         /// <param name="cmdlet"></param>
         /// <returns></returns>
-
         public PSKeyVault CreateNewVault(VaultCreationOrUpdateParameters parameters, IMicrosoftGraphClient graphClient = null, PSKeyVaultNetworkRuleSet networkRuleSet = null, KeyVaultManagementCmdletBase cmdlet = null)
         {
             if (parameters == null)
@@ -141,87 +142,56 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (string.IsNullOrWhiteSpace(parameters.Location))
                 throw new ArgumentNullException("parameters.Location");
 
-            /*
-            var properties = new VaultProperties();
-            if (parameters.CreateMode != CreateMode.Recover)
-            {
-                if (string.IsNullOrWhiteSpace(parameters.SkuFamilyName))
-                    throw new ArgumentNullException("parameters.SkuFamilyName");
-                if (parameters.TenantId == Guid.Empty)
-                    throw new ArgumentException("parameters.TenantId");
-                if (!string.IsNullOrWhiteSpace(parameters.SkuName))
-                {
-                    if (Enum.TryParse(parameters.SkuName, true, out SkuName skuName))
-                    {
-                        properties.Sku = new Sku(skuName);
-                    }
-                    else
-                    {
-                        throw new InvalidEnumArgumentException("parameters.SkuName");
-                    }
-                }
-
-                properties.EnabledForDeployment = parameters.EnabledForDeployment;
-                properties.EnabledForTemplateDeployment = parameters.EnabledForTemplateDeployment;
-                properties.EnabledForDiskEncryption = parameters.EnabledForDiskEncryption;
-                properties.EnableSoftDelete = parameters.EnableSoftDelete;
-                properties.EnablePurgeProtection = parameters.EnablePurgeProtection;
-                properties.EnableRbacAuthorization = parameters.EnableRbacAuthorization;
-                properties.SoftDeleteRetentionInDays = parameters.SoftDeleteRetentionInDays;
-                properties.TenantId = parameters.TenantId;
-                properties.VaultUri = "";
-                properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { };
-
-                properties.NetworkAcls = parameters.NetworkAcls;
-                properties.PublicNetworkAccess = parameters.PublicNetworkAccess;
-                if (networkRuleSet != null)
-                {
-                    UpdateVaultNetworkRuleSetProperties(properties, networkRuleSet);
-                }
-            }
-            else
-            {
-                properties.CreateMode = CreateMode.Recover;
-            }
-            */
-            
-
             parameters.Name = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel, networkRuleSet);
-
             parameters.Location = null;
+            var existed = ResourceManagementClient.Deployments.CheckExistence(parameters.ResourceGroupName, parameters.Name);
 
-            this.RunDeploymentValidation(parameters, deployment);
+            WriteInfo("Validating KeyVault creation...", cmdlet);
+            this.RunDeploymentValidation(parameters, deployment, cmdlet);
             this.BeginDeployment(parameters, deployment);
 
             WriteVerbose(string.Format("CreatedDeployment", parameters.Name));
-            var dep = ProvisionDeploymentStatus(parameters, deployment, cmdlet).ToPSDeployment(resourceGroupName: parameters.ResourceGroupName);
+            var dep = ProvisionDeploymentStatus(parameters, deployment, cmdlet, existed).ToPSDeployment(resourceGroupName: parameters.ResourceGroupName);
             
             return GetVault(parameters.Name, parameters.ResourceGroupName);
         }
-
-        public DeploymentExtended ProvisionDeploymentStatus(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
+        private void WriteInfo(string s, Cmdlet cmdlet)
         {
-            int step = 5;
-            int phaseOne = 400;
+            string statusMessage = s;
+            var clearMessage = new string(' ', statusMessage.Length);
+            var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
+            var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
+            var tags = new[] { "PSHOST" };
+            cmdlet.WriteInformation(information, tags);
+        }
+        public DeploymentExtended ProvisionDeploymentStatus(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null, bool existed = false)
+        {
             operations = new List<DeploymentOperation>();
             ProvisioningState[] status = new ProvisioningState[] { ProvisioningState.Canceled, ProvisioningState.Succeeded, ProvisioningState.Failed };
             var getDeploymentFunc = this.GetDeploymentAction(parameters);
 
             var deploymentOperationError = new DeploymentOperationErrorInfo();
 
-
             DeploymentExtended deploymentExtended = null;
             var downloadStatus = new ProgressStatus(0, 50, new ComputeStats());
             Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
-            ProgressTracker progressTracker = new ProgressTracker(downloadStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
+
+            // Poll deployment state and deployment operations after RetryAfter.
+            // If no RetryAfter provided: In phase one, poll every 5 seconds. Phase one
+            // takes 400 seconds. In phase two, poll every 60 seconds.
+            // const int counterUnit = 1000;
+            int step = 5;
+            int phaseOne = 400;
+            int speed = 1;
+            if (existed) { speed = 8; }
+            ProgressTracker progressTracker = new ProgressTracker(downloadStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete, speed);
             do
             {
                 var getDeploymentTask = getDeploymentFunc();
                 var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult();
                 var response = getResult.Response;
                 deploymentExtended = getResult.Body;
-
                 if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
                 {
                     step = response.Headers.RetryAfter.Delta.Value.Seconds;
@@ -426,9 +396,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
         }
-        private void RunDeploymentValidation(VaultCreationOrUpdateParameters parameters, Deployment deployment)
+        private void RunDeploymentValidation(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
         {
-            var validationResult = this.GetTemplateValidationResult(parameters, deployment);
+            TemplateValidationInfo validationResult = null;
+            var downloadStatus = new ProgressStatus(0, 50, new ComputeStats());
+            Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
+            var count = 50;
+            int speed = 5;
+            
+            validationResult = this.GetTemplateValidationResult(parameters, deployment);
+            ProgressTracker progressTracker = new ProgressTracker(downloadStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete, speed);
+            while (--count >= 0)
+            {
+                progressTracker.Update();
+                Thread.Sleep(500); //Time is 1 second
+            }
+
+            
+            
             if (validationResult.Errors.Count != 0)
             {
                 foreach (var error in validationResult.Errors)
@@ -453,7 +438,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             try
             {
+                // WriteVerbose("Start validating");
                 var validationResult = this.ValidateDeployment(parameters, deployment);
+                // WriteVerbose("Got result.");
                 return new TemplateValidationInfo(validationResult);
             }
             catch (Exception ex)
@@ -488,7 +475,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private DeploymentValidateResult ValidateDeployment(VaultCreationOrUpdateParameters parameters, Deployment deployment)
         {
-            return ResourceManagementClient.Deployments.BeginValidate(parameters.ResourceGroupName, parameters.Name, deployment);
+            return ResourceManagementClient.Deployments.Validate(parameters.ResourceGroupName, parameters.Name, deployment);
         }
         private void WriteError(string error)
         {
@@ -564,6 +551,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 jsonInfo["resources"][0]["properties"]["enabledForTemplateDeployment"] = parameters.EnabledForTemplateDeployment;
             if (parameters.EnabledForDiskEncryption is true)
                 jsonInfo["resources"][0]["properties"]["enabledForDiskEncryption"] = parameters.EnabledForDiskEncryption;
+            if (parameters.EnableRbacAuthorization is true)
+                jsonInfo["resources"][0]["properties"]["enableRbacAuthorization"] = parameters.EnableRbacAuthorization;
             if (parameters.EnableSoftDelete is true)
             {
                 jsonInfo["resources"][0]["properties"]["enableSoftDelete"] = parameters.EnableSoftDelete;
@@ -624,11 +613,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// Executes deployment What-If at the specified scope.
         /// </summary>
         /// <param name="parameters"></param>
+        /// <param name="kvParameters"></param>
         /// <returns></returns>
-        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters)
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, VaultCreationOrUpdateParameters kvParameters)
         {
             IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
-            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
+            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf(parameters, kvParameters);
             ScopedDeploymentWhatIf scopedDeploymentWhatIf = new ScopedDeploymentWhatIf(deploymentWhatIf.Location, deploymentWhatIf.Properties);
 
             try

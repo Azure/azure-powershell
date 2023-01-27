@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
         private readonly ProgressStatus progressStatus;
         private readonly Action<ProgressRecord> progressAction;
         private readonly Action<TimeSpan> completionAction;
+        public int speed;
         private Stopwatch stopWatch;
         private bool isDisposed;
 
@@ -30,18 +31,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
         {
         }
 
-        public ProgressTracker(ProgressStatus progressStatus, Action<ProgressRecord> progressAction, Action<TimeSpan> completionAction)
+        public ProgressTracker(ProgressStatus progressStatus, Action<ProgressRecord> progressAction, Action<TimeSpan> completionAction, int speed = 5)
         {
             this.progressStatus = progressStatus;
             this.progressAction = progressAction;
             this.completionAction = completionAction;
+            this.speed = speed;
             this.stopWatch = Stopwatch.StartNew();
         }
 
         public void Update()
         {
             ProgressRecord progressRecord;
-            progressStatus.AddToProcessedBytes(5);
+            progressStatus.AddToProcessedBytes(speed);
             if (progressStatus.TryGetProgressRecord(out progressRecord))
             {
                 this.progressAction(progressRecord);

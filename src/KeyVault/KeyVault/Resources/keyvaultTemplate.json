@@ -168,16 +168,16 @@
             }
           }
         ],
-        "enabledForDeployment": "[parameters('enabledForDeployment')]",
-        "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+        "enabledForDeployment": "[null()]",
+        "enabledForDiskEncryption": "[null()]",
         "enabledForTemplateDeployment": "[if(equals(parameters('enabledForTemplateDeployment'), 'NotSpecified'), null(), if(equals(parameters('enabledForTemplateDeployment'), 'Enabled'), true(), false()))]",
         "enableSoftDelete": "[parameters('enableSoftDelete')]",
         "softDeleteRetentionInDays": "[if(parameters('enableSoftDelete'), parameters('softDeleteRetentionInDays'), json('null'))]",
-        "enableRbacAuthorization": "[parameters('enableRbacAuthorization')]",
+        "enableRbacAuthorization": "[null()]",
         "enablePurgeProtection": "[if(parameters('enablePurgeProtection'), parameters('enablePurgeProtection'), json('null'))]",
         "networkAcls": {
-          "bypass": "[parameters('networkRuleBypassOptions')]",
-          "defaultAction": "[parameters('networkRuleAction')]",
+          "bypass": "[null()]",
+          "defaultAction": "[null()]",
           "copy": [
             {
               "name": "ipRules",

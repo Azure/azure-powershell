@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     using PSKeyVaultPropertiesResources = Microsoft.Azure.Commands.KeyVault.Properties.Resources;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
+    using System.ComponentModel;
+    using Microsoft.Azure.Management.KeyVault.Models;
 
     public class PSDeploymentWhatIfCmdletParameters
     {
@@ -97,7 +99,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public IEnumerable<ChangeType> ExcludeChangeTypes { get; }
 
-        public DeploymentWhatIf ToDeploymentWhatIf()
+        public DeploymentWhatIf ToDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, VaultCreationOrUpdateParameters kvparameters)
         {
             var properties = new DeploymentWhatIfProperties
             {
@@ -118,9 +120,61 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 throw new AzPSArgumentException(string.Format(PSKeyVaultPropertiesResources.FileNotFound, ex.Message), "TemplateFile");
             };
-            var temp = JObject.Parse(templateContent);
-            temp["resources"][0]["name"] = this.deploymentName;
-            properties.Template = temp;
+
+            var jsonInfo = JObject.Parse(templateContent);
+            jsonInfo["resources"][0]["name"] = kvparameters.Name;
+            jsonInfo["resources"][0]["location"] = parameters.Location;
+            if (string.IsNullOrWhiteSpace(kvparameters.SkuFamilyName))
+                throw new ArgumentNullException("parameters.SkuFamilyName");
+            if (kvparameters.TenantId == Guid.Empty)
+                throw new ArgumentException("parameters.TenantId");
+            if (!string.IsNullOrWhiteSpace(kvparameters.SkuName))
+            {
+                if (Enum.TryParse(kvparameters.SkuName, true, out SkuName _))
+                {
+                    jsonInfo["resources"][0]["properties"]["sku"]["skuName"] = kvparameters.SkuName;
+                }
+                else
+                {
+                    throw new InvalidEnumArgumentException("parameters.SkuName");
+                }
+            }
+            if (kvparameters.EnabledForDeployment is true)
+                jsonInfo["resources"][0]["properties"]["enabledForDeployment"] = kvparameters.EnabledForDeployment;
+            if (kvparameters.EnabledForTemplateDeployment is true)
+                jsonInfo["resources"][0]["properties"]["enabledForTemplateDeployment"] = kvparameters.EnabledForTemplateDeployment;
+            if (kvparameters.EnabledForDiskEncryption is true)
+                jsonInfo["resources"][0]["properties"]["enabledForDiskEncryption"] = kvparameters.EnabledForDiskEncryption;
+            if (kvparameters.EnableRbacAuthorization is true)
+                jsonInfo["resources"][0]["properties"]["enableRbacAuthorization"] = kvparameters.EnableRbacAuthorization;
+            if (kvparameters.EnableSoftDelete is true)
+            {
+                jsonInfo["resources"][0]["properties"]["enableSoftDelete"] = kvparameters.EnableSoftDelete;
+                jsonInfo["resources"][0]["properties"]["softDeleteRetentionInDays"] = kvparameters.SoftDeleteRetentionInDays;
+            }
+            if (kvparameters.EnabledForDeployment is true)
+                jsonInfo["resources"][0]["properties"]["enabledForDeployment"] = kvparameters.EnabledForDeployment;
+            jsonInfo["resources"][0]["properties"]["publicNetworkAccess"] = kvparameters.PublicNetworkAccess;
+            /*
+            if (networkRuleSet != null)
+            {
+                jsonInfo["resources"][0]["properties"]["networkAcls"]["bypass"] = networkRuleSet.Bypass.ToString();
+                jsonInfo["resources"][0]["properties"]["networkAcls"]["defaultAction"] = networkRuleSet.DefaultAction.ToString();
+                if (networkRuleSet.IpAddressRanges != null && networkRuleSet.IpAddressRanges.Count > 0)
+                {
+                    var ipAddresses = JToken.FromObject(networkRuleSet.IpAddressRanges);
+                    jsonInfo["parameters"]["ipRules"]["defaultValue"] = ipAddresses;
+                }
+                if (networkRuleSet.VirtualNetworkResourceIds != null && networkRuleSet.VirtualNetworkResourceIds.Count > 0)
+                {
+                    var virtualNetworkIds = JToken.FromObject(networkRuleSet.VirtualNetworkResourceIds);
+                    jsonInfo["parameters"]["virtualNetworkRules"]["defaultValue"] = virtualNetworkIds;
+                }
+            }
+            */
+
+
+            properties.Template = jsonInfo;
 
             // Populate template parameters properties.
             if (Uri.IsWellFormedUriString(this.TemplateParametersUri, UriKind.Absolute))

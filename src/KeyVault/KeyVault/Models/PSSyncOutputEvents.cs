@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         private void LogProgress(int activityId, string activity, double precentComplete, TimeSpan remainingTime, double avgThroughputMbps)
         {
             
-            var message = string.Format("PSSyncOutputEventsLogProgress",
+            var message = string.Format("Logging Progress",
                                         precentComplete,
                                         FormatDuration(remainingTime),
                                         avgThroughputMbps);
             
             ProgressRecord progressRecord = new ProgressRecord(activityId, activity, message);
             progressRecord.SecondsRemaining = (int)remainingTime.TotalSeconds;
-            progressRecord.PercentComplete = (int)precentComplete;
+            progressRecord.PercentComplete = (int)precentComplete < 100 ? (int)precentComplete : 100;
 
             cmdlet.WriteProgress(progressRecord);
         }
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public void ProgressOperationStatus(double percentComplete, double avgThroughputMbps, TimeSpan remainingTime)
         {
-            LogProgress(1, "CreatingKeyVaults", percentComplete, remainingTime, avgThroughputMbps);
+            LogProgress(1, "Creating KeyVaults", percentComplete, remainingTime, avgThroughputMbps);
         }
 
         public void ProgressOperationComplete(TimeSpan elapsed)

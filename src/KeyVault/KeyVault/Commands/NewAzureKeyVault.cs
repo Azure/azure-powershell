@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             // templateUri: Path.GetDirectoryName(new System.Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
             //Assembly.GetExecutingAssembly().GetManifestResourceNames().FirstOrDefault(r => r.Contains("Template"))
             );
-        protected PSWhatIfOperationResult ExecuteWhatIf()
+        protected PSWhatIfOperationResult ExecuteWhatIf(VaultCreationOrUpdateParameters VaultCreationParameter)
         {
             const string statusMessage = "Getting the latest status of all resources...";
             var clearMessage = new string(' ', statusMessage.Length);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 // Write status message.
                 this.WriteInformation(information, tags);
                 // this.WhatIfParameters
-                PSWhatIfOperationResult whatIfResult = KeyVaultCreationClient.ExecuteDeploymentWhatIf(this.WhatIfParameters);
+                PSWhatIfOperationResult whatIfResult = KeyVaultCreationClient.ExecuteDeploymentWhatIf(this.WhatIfParameters, VaultCreationParameter);
                 // Clear status before returning result.
                 this.WriteInformation(clearInformation, tags);
 
@@ -158,84 +158,83 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
+            var userObjectId = string.Empty;
+            AccessPolicyEntry accessPolicy = null;
+
+            try
             {
-                var userObjectId = string.Empty;
-                AccessPolicyEntry accessPolicy = null;
+                userObjectId = GetCurrentUsersObjectId();
+            }
+            catch (Exception ex)
+            {
+                // Show the graph exceptions as a warning, but still proceed to create a vault with no access policy
+                // This is to unblock Key Vault in Fairfax as Graph has issues in this environment.
+                WriteWarning(ex.Message);
+            }
 
-                try
+            if (!string.IsNullOrWhiteSpace(userObjectId))
+            {
+                accessPolicy = new AccessPolicyEntry()
                 {
-                    userObjectId = GetCurrentUsersObjectId();
-                }
-                catch (Exception ex)
-                {
-                    // Show the graph exceptions as a warning, but still proceed to create a vault with no access policy
-                    // This is to unblock Key Vault in Fairfax as Graph has issues in this environment.
-                    WriteWarning(ex.Message);
-                }
-
-                if (!string.IsNullOrWhiteSpace(userObjectId))
-                {
-                    accessPolicy = new AccessPolicyEntry()
+                    TenantId = GetTenantId(),
+                    ObjectId = userObjectId,
+                    Permissions = new Permissions
                     {
-                        TenantId = GetTenantId(),
-                        ObjectId = userObjectId,
-                        Permissions = new Permissions
-                        {
-                            Keys = DefaultPermissionsToKeys,
-                            Secrets = DefaultPermissionsToSecrets,
-                            Certificates = DefaultPermissionsToCertificates,
-                            Storage = DefaultPermissionsToStorage
-                        }
-                    };
+                        Keys = DefaultPermissionsToKeys,
+                        Secrets = DefaultPermissionsToSecrets,
+                        Certificates = DefaultPermissionsToCertificates,
+                        Storage = DefaultPermissionsToStorage
+                    }
+                };
+            }
+
+            /*
+            try
+            {
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultTemplatePath))
+                using (var reader = new StreamReader(stream))
+                {
+                    this.TemplateFile = reader.ReadToEnd();
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new AzPSArgumentException(string.Format(Resources.FileNotFound, ex.Message), nameof(this.TemplateFile));
+            };
+            */
+
+            var VaultCreationParameter = new VaultCreationOrUpdateParameters()
+            {
+                Name = this.Name,
+                ResourceGroupName = this.ResourceGroupName,
+                Location = this.Location,
+
+                EnabledForDeployment = this.EnabledForDeployment.IsPresent ? true : null as bool?,
+                EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent ? true : null as bool?,
+                EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent ? true : null as bool?,
+                EnableSoftDelete = null,
+                EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
+                EnableRbacAuthorization = EnableRbacAuthorization.IsPresent ? true : null as bool?,
 
                 /*
-                try
-                {
-                    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultTemplatePath))
-                    using (var reader = new StreamReader(stream))
-                    {
-                        this.TemplateFile = reader.ReadToEnd();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new AzPSArgumentException(string.Format(Resources.FileNotFound, ex.Message), nameof(this.TemplateFile));
-                };
-                */
+                 * If retention days is not specified, use the default value,
+                 * else use the vault user provides
+                 */
+                SoftDeleteRetentionInDays = this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
+                        ? SoftDeleteRetentionInDays
+                        : Constants.DefaultSoftDeleteRetentionDays,
+                SkuFamilyName = DefaultSkuFamily,
+                SkuName = this.Sku,
+                TenantId = GetTenantId(),
+                AccessPolicy = accessPolicy,
+                // New key-vault takes in default network rule set
+                NetworkAcls = new NetworkRuleSet(),
+                PublicNetworkAccess = this.PublicNetworkAccess,
+                Tags = this.Tag
 
-                var VaultCreationParameter = new VaultCreationOrUpdateParameters()
-                {
-                    Name = this.Name,
-                    ResourceGroupName = this.ResourceGroupName,
-                    Location = this.Location,
-                    
-                    EnabledForDeployment = this.EnabledForDeployment.IsPresent ? true : null as bool?,
-                    EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent ? true : null as bool?,
-                    EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent ? true : null as bool?,
-                    EnableSoftDelete = null,
-                    EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
-                    EnableRbacAuthorization = EnableRbacAuthorization.IsPresent ? true : null as bool?,
-                    
-                    /*
-                     * If retention days is not specified, use the default value,
-                     * else use the vault user provides
-                     */
-                    SoftDeleteRetentionInDays = this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
-                            ? SoftDeleteRetentionInDays
-                            : Constants.DefaultSoftDeleteRetentionDays,
-                    SkuFamilyName = DefaultSkuFamily,
-                    SkuName = this.Sku,
-                    TenantId = GetTenantId(),
-                    AccessPolicy = accessPolicy,
-                    // New key-vault takes in default network rule set
-                    NetworkAcls = new NetworkRuleSet(),
-                    PublicNetworkAccess = this.PublicNetworkAccess,
-                    Tags = this.Tag
-
-                };
-
+            };
+            if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
+            {
                 var newVault = KeyVaultCreationClient.CreateNewVault(VaultCreationParameter,
                     GraphClient,
                     NetworkRuleSet, this);
@@ -252,7 +251,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 string whatIfMessage = null;
                 string warningMessage = null;
                 string captionMessage = null;
-                PSWhatIfOperationResult whatIfResult = this.ExecuteWhatIf();
+                PSWhatIfOperationResult whatIfResult = this.ExecuteWhatIf(VaultCreationParameter);
                 string whatIfFormattedOutput = WhatIfOperationResultFormatter.Format(whatIfResult);
                 string cursorUp = $"{(char)27}[1A";
 
