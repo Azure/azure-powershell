@@ -27,7 +27,7 @@ Gets test subscription ID.
 #>
 function Get-TestSubscriptionId {
    # Reminder: The subscription ID in the test context (created via PS command or by creating an env variable) should be the same as this subscription ID.
-   "0b40be06-04e8-4f70-abde-a502b2646fe8" # This is the Azure Governance Perf 21 subscription
+   "086aecf4-23d6-4dfd-99a8-a5c6299f0322" # This is the Azure Governance Perf 21 subscription
 }
 
 <#
