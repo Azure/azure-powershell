@@ -157,9 +157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("SkuName1"))
+            if (content.Contains("SkuName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).SkuName1 = (string) content.GetValueForProperty("SkuName1",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).SkuName1, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).SkuName, global::System.Convert.ToString);
             }
             if (content.Contains("Commitment"))
             {
@@ -168,10 +168,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             if (content.Contains("Utilization"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Utilization = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IUtilization) content.GetValueForProperty("Utilization",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Utilization, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.UtilizationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("RenewProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewProperty = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties) content.GetValueForProperty("RenewProperty",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewProperty, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.RenewPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("DisplayName"))
             {
@@ -204,6 +200,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             if (content.Contains("RenewDestination"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewDestination = (string) content.GetValueForProperty("RenewDestination",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewDestination, global::System.Convert.ToString);
+            }
+            if (content.Contains("RenewProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewProperty = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties) content.GetValueForProperty("RenewProperty",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewProperty, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.RenewPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("AppliedScopeProperty"))
             {
@@ -253,21 +253,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).BenefitStartTime = (global::System.DateTime?) content.GetValueForProperty("BenefitStartTime",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).BenefitStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("AppliedScopePropertiesTenantId"))
+            if (content.Contains("AppliedScopePropertyTenantId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesTenantId = (string) content.GetValueForProperty("AppliedScopePropertiesTenantId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesTenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyTenantId = (string) content.GetValueForProperty("AppliedScopePropertyTenantId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyTenantId, global::System.Convert.ToString);
             }
-            if (content.Contains("AppliedScopePropertiesSubscriptionId"))
+            if (content.Contains("AppliedScopePropertySubscriptionId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesSubscriptionId = (string) content.GetValueForProperty("AppliedScopePropertiesSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesSubscriptionId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertySubscriptionId = (string) content.GetValueForProperty("AppliedScopePropertySubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertySubscriptionId, global::System.Convert.ToString);
             }
-            if (content.Contains("AppliedScopePropertiesDisplayName"))
+            if (content.Contains("AppliedScopePropertyDisplayName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesDisplayName = (string) content.GetValueForProperty("AppliedScopePropertiesDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesDisplayName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyDisplayName = (string) content.GetValueForProperty("AppliedScopePropertyDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyDisplayName, global::System.Convert.ToString);
             }
-            if (content.Contains("Grain"))
+            if (content.Contains("CommitmentGrain"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Grain = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain?) content.GetValueForProperty("Grain",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Grain, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentGrain = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain?) content.GetValueForProperty("CommitmentGrain",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentGrain, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain.CreateFrom);
             }
             if (content.Contains("ExtendedStatusInfoStatusCode"))
             {
@@ -285,105 +285,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).UtilizationAggregate = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IUtilizationAggregates[]) content.GetValueForProperty("UtilizationAggregate",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).UtilizationAggregate, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IUtilizationAggregates>(__y, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.UtilizationAggregatesTypeConverter.ConvertFrom));
             }
-            if (content.Contains("AppliedScopePropertiesManagementGroupId"))
+            if (content.Contains("AppliedScopePropertyManagementGroupId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesManagementGroupId = (string) content.GetValueForProperty("AppliedScopePropertiesManagementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesManagementGroupId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyManagementGroupId = (string) content.GetValueForProperty("AppliedScopePropertyManagementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyManagementGroupId, global::System.Convert.ToString);
             }
-            if (content.Contains("AppliedScopePropertiesResourceGroupId"))
+            if (content.Contains("AppliedScopePropertyResourceGroupId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesResourceGroupId = (string) content.GetValueForProperty("AppliedScopePropertiesResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesResourceGroupId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyResourceGroupId = (string) content.GetValueForProperty("AppliedScopePropertyResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyResourceGroupId, global::System.Convert.ToString);
             }
-            if (content.Contains("CurrencyCode"))
+            if (content.Contains("CommitmentCurrencyCode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CurrencyCode = (string) content.GetValueForProperty("CurrencyCode",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CurrencyCode, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentCurrencyCode = (string) content.GetValueForProperty("CommitmentCurrencyCode",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentCurrencyCode, global::System.Convert.ToString);
             }
-            if (content.Contains("Amount"))
+            if (content.Contains("CommitmentAmount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Amount = (double?) content.GetValueForProperty("Amount",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Amount, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            }
-            if (content.Contains("RenewPropertyPurchaseProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertyPurchaseProperty = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IPurchaseRequest) content.GetValueForProperty("RenewPropertyPurchaseProperty",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertyPurchaseProperty, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.PurchaseRequestTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PurchasePropertySku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PurchasePropertySku = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISku) content.GetValueForProperty("PurchasePropertySku",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PurchasePropertySku, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.SkuTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PurchaseProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PurchaseProperty = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IPurchaseRequestProperties) content.GetValueForProperty("PurchaseProperty",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PurchaseProperty, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.PurchaseRequestPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PropertiesRenewPropertiesPurchasePropertiesSkuName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PropertiesRenewPropertiesPurchasePropertiesSkuName = (string) content.GetValueForProperty("PropertiesRenewPropertiesPurchasePropertiesSkuName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PropertiesRenewPropertiesPurchasePropertiesSkuName, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesCommitment"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitment = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ICommitment) content.GetValueForProperty("RenewPropertiesPurchasePropertiesCommitment",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitment, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.CommitmentTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesTerm"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesTerm = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesTerm",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesTerm, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term.CreateFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesBillingPlan"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesBillingPlan = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesBillingPlan",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesBillingPlan, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan.CreateFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesRenew"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesRenew = (bool?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesRenew",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesRenew, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopeProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopeProperty = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IAppliedScopeProperties) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopeProperty",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopeProperty, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.AppliedScopePropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesDisplayName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesDisplayName = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesDisplayName, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesBillingScopeId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesBillingScopeId = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesBillingScopeId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesBillingScopeId, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopeType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopeType = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopeType",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopeType, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType.CreateFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesEffectiveDateTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesEffectiveDateTime = (global::System.DateTime?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesEffectiveDateTime",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesEffectiveDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesCommitmentGrain"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentGrain = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesCommitmentGrain",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentGrain, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain.CreateFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesCommitmentCurrencyCode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentCurrencyCode = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesCommitmentCurrencyCode",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentCurrencyCode, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesCommitmentAmount"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentAmount = (double?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesCommitmentAmount",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentAmount, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentAmount = (double?) content.GetValueForProperty("CommitmentAmount",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentAmount, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -450,9 +366,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("SkuName1"))
+            if (content.Contains("SkuName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).SkuName1 = (string) content.GetValueForProperty("SkuName1",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).SkuName1, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).SkuName, global::System.Convert.ToString);
             }
             if (content.Contains("Commitment"))
             {
@@ -461,10 +377,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             if (content.Contains("Utilization"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Utilization = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IUtilization) content.GetValueForProperty("Utilization",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Utilization, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.UtilizationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("RenewProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewProperty = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties) content.GetValueForProperty("RenewProperty",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewProperty, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.RenewPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("DisplayName"))
             {
@@ -497,6 +409,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             if (content.Contains("RenewDestination"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewDestination = (string) content.GetValueForProperty("RenewDestination",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewDestination, global::System.Convert.ToString);
+            }
+            if (content.Contains("RenewProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewProperty = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties) content.GetValueForProperty("RenewProperty",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewProperty, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.RenewPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("AppliedScopeProperty"))
             {
@@ -546,21 +462,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).BenefitStartTime = (global::System.DateTime?) content.GetValueForProperty("BenefitStartTime",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).BenefitStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("AppliedScopePropertiesTenantId"))
+            if (content.Contains("AppliedScopePropertyTenantId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesTenantId = (string) content.GetValueForProperty("AppliedScopePropertiesTenantId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesTenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyTenantId = (string) content.GetValueForProperty("AppliedScopePropertyTenantId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyTenantId, global::System.Convert.ToString);
             }
-            if (content.Contains("AppliedScopePropertiesSubscriptionId"))
+            if (content.Contains("AppliedScopePropertySubscriptionId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesSubscriptionId = (string) content.GetValueForProperty("AppliedScopePropertiesSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesSubscriptionId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertySubscriptionId = (string) content.GetValueForProperty("AppliedScopePropertySubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertySubscriptionId, global::System.Convert.ToString);
             }
-            if (content.Contains("AppliedScopePropertiesDisplayName"))
+            if (content.Contains("AppliedScopePropertyDisplayName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesDisplayName = (string) content.GetValueForProperty("AppliedScopePropertiesDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesDisplayName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyDisplayName = (string) content.GetValueForProperty("AppliedScopePropertyDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyDisplayName, global::System.Convert.ToString);
             }
-            if (content.Contains("Grain"))
+            if (content.Contains("CommitmentGrain"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Grain = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain?) content.GetValueForProperty("Grain",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Grain, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentGrain = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain?) content.GetValueForProperty("CommitmentGrain",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentGrain, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain.CreateFrom);
             }
             if (content.Contains("ExtendedStatusInfoStatusCode"))
             {
@@ -578,105 +494,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).UtilizationAggregate = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IUtilizationAggregates[]) content.GetValueForProperty("UtilizationAggregate",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).UtilizationAggregate, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IUtilizationAggregates>(__y, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.UtilizationAggregatesTypeConverter.ConvertFrom));
             }
-            if (content.Contains("AppliedScopePropertiesManagementGroupId"))
+            if (content.Contains("AppliedScopePropertyManagementGroupId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesManagementGroupId = (string) content.GetValueForProperty("AppliedScopePropertiesManagementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesManagementGroupId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyManagementGroupId = (string) content.GetValueForProperty("AppliedScopePropertyManagementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyManagementGroupId, global::System.Convert.ToString);
             }
-            if (content.Contains("AppliedScopePropertiesResourceGroupId"))
+            if (content.Contains("AppliedScopePropertyResourceGroupId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesResourceGroupId = (string) content.GetValueForProperty("AppliedScopePropertiesResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertiesResourceGroupId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyResourceGroupId = (string) content.GetValueForProperty("AppliedScopePropertyResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).AppliedScopePropertyResourceGroupId, global::System.Convert.ToString);
             }
-            if (content.Contains("CurrencyCode"))
+            if (content.Contains("CommitmentCurrencyCode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CurrencyCode = (string) content.GetValueForProperty("CurrencyCode",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CurrencyCode, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentCurrencyCode = (string) content.GetValueForProperty("CommitmentCurrencyCode",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentCurrencyCode, global::System.Convert.ToString);
             }
-            if (content.Contains("Amount"))
+            if (content.Contains("CommitmentAmount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Amount = (double?) content.GetValueForProperty("Amount",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).Amount, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            }
-            if (content.Contains("RenewPropertyPurchaseProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertyPurchaseProperty = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IPurchaseRequest) content.GetValueForProperty("RenewPropertyPurchaseProperty",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertyPurchaseProperty, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.PurchaseRequestTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PurchasePropertySku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PurchasePropertySku = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISku) content.GetValueForProperty("PurchasePropertySku",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PurchasePropertySku, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.SkuTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PurchaseProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PurchaseProperty = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IPurchaseRequestProperties) content.GetValueForProperty("PurchaseProperty",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PurchaseProperty, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.PurchaseRequestPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PropertiesRenewPropertiesPurchasePropertiesSkuName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PropertiesRenewPropertiesPurchasePropertiesSkuName = (string) content.GetValueForProperty("PropertiesRenewPropertiesPurchasePropertiesSkuName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).PropertiesRenewPropertiesPurchasePropertiesSkuName, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesCommitment"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitment = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ICommitment) content.GetValueForProperty("RenewPropertiesPurchasePropertiesCommitment",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitment, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.CommitmentTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesTerm"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesTerm = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesTerm",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesTerm, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term.CreateFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesBillingPlan"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesBillingPlan = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesBillingPlan",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesBillingPlan, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan.CreateFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesRenew"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesRenew = (bool?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesRenew",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesRenew, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopeProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopeProperty = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IAppliedScopeProperties) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopeProperty",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopeProperty, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.AppliedScopePropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesDisplayName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesDisplayName = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesDisplayName, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesBillingScopeId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesBillingScopeId = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesBillingScopeId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesBillingScopeId, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopeType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopeType = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopeType",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopeType, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType.CreateFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesEffectiveDateTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesEffectiveDateTime = (global::System.DateTime?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesEffectiveDateTime",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesEffectiveDateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesCommitmentGrain"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentGrain = (Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesCommitmentGrain",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentGrain, Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain.CreateFrom);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesCommitmentCurrencyCode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentCurrencyCode = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesCommitmentCurrencyCode",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentCurrencyCode, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesCommitmentAmount"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentAmount = (double?) content.GetValueForProperty("RenewPropertiesPurchasePropertiesCommitmentAmount",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesCommitmentAmount, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId, global::System.Convert.ToString);
-            }
-            if (content.Contains("RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId = (string) content.GetValueForProperty("RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentAmount = (double?) content.GetValueForProperty("CommitmentAmount",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModelInternal)this).CommitmentAmount, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
             }
             AfterDeserializePSObject(content);
         }

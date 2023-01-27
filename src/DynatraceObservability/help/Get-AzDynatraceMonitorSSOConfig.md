@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorssoconfig
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorssoconfig
 schema: 2.0.0
 ---
 

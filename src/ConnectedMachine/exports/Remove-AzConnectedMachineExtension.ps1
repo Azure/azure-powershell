@@ -45,7 +45,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachineextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachineextension
 #>
 function Remove-AzConnectedMachineExtension {
 [OutputType([System.Boolean])]

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Cmdlets
         Description = @"Display name",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppliedScopePropertiesDisplayName { get => _body.AppliedScopePropertiesDisplayName ?? null; set => _body.AppliedScopePropertiesDisplayName = value; }
+        public string AppliedScopePropertyDisplayName { get => _body.AppliedScopePropertyDisplayName ?? null; set => _body.AppliedScopePropertyDisplayName = value; }
 
         /// <summary>
         /// Fully-qualified identifier of the management group where the benefit must be applied.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Cmdlets
         Description = @"Fully-qualified identifier of the management group where the benefit must be applied.",
         SerializedName = @"managementGroupId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppliedScopePropertiesManagementGroupId { get => _body.AppliedScopePropertiesManagementGroupId ?? null; set => _body.AppliedScopePropertiesManagementGroupId = value; }
+        public string AppliedScopePropertyManagementGroupId { get => _body.AppliedScopePropertyManagementGroupId ?? null; set => _body.AppliedScopePropertyManagementGroupId = value; }
 
         /// <summary>Fully-qualified identifier of the resource group.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully-qualified identifier of the resource group.")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Cmdlets
         Description = @"Fully-qualified identifier of the resource group.",
         SerializedName = @"resourceGroupId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppliedScopePropertiesResourceGroupId { get => _body.AppliedScopePropertiesResourceGroupId ?? null; set => _body.AppliedScopePropertiesResourceGroupId = value; }
+        public string AppliedScopePropertyResourceGroupId { get => _body.AppliedScopePropertyResourceGroupId ?? null; set => _body.AppliedScopePropertyResourceGroupId = value; }
 
         /// <summary>Fully-qualified identifier of the subscription.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully-qualified identifier of the subscription.")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Cmdlets
         Description = @"Fully-qualified identifier of the subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppliedScopePropertiesSubscriptionId { get => _body.AppliedScopePropertiesSubscriptionId ?? null; set => _body.AppliedScopePropertiesSubscriptionId = value; }
+        public string AppliedScopePropertySubscriptionId { get => _body.AppliedScopePropertySubscriptionId ?? null; set => _body.AppliedScopePropertySubscriptionId = value; }
 
         /// <summary>Tenant ID where the benefit is applied.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Tenant ID where the benefit is applied.")]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Cmdlets
         Description = @"Tenant ID where the benefit is applied.",
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppliedScopePropertiesTenantId { get => _body.AppliedScopePropertiesTenantId ?? null; set => _body.AppliedScopePropertiesTenantId = value; }
+        public string AppliedScopePropertyTenantId { get => _body.AppliedScopePropertyTenantId ?? null; set => _body.AppliedScopePropertyTenantId = value; }
 
         /// <summary>Type of the Applied Scope.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of the Applied Scope.")]
@@ -105,31 +105,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Cmdlets
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType))]
         public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType AppliedScopeType { get => _body.AppliedScopeType ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType)""); set => _body.AppliedScopeType = value; }
 
-        /// <summary>
-        /// Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.",
-        SerializedName = @"billingPlan",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan))]
-        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan BillingPlan { get => _body.BillingPlan ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan)""); set => _body.BillingPlan = value; }
-
-        /// <summary>Subscription that will be charged for purchasing the benefit</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Subscription that will be charged for purchasing the benefit")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Subscription that will be charged for purchasing the benefit",
-        SerializedName = @"billingScopeId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string BillingScopeId { get => _body.BillingScopeId ?? null; set => _body.BillingScopeId = value; }
-
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Runtime)]
@@ -137,42 +112,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.BillingBenefits Client => Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Module.Instance.ClientAPI;
-
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @".",
-        SerializedName = @"amount",
-        PossibleTypes = new [] { typeof(double) })]
-        public double CommitmentAmount { get => _body.CommitmentAmount ?? default(double); set => _body.CommitmentAmount = value; }
-
-        /// <summary>
-        /// The ISO 4217 3-letter currency code for the currency used by this purchase record.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ISO 4217 3-letter currency code for the currency used by this purchase record.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The ISO 4217 3-letter currency code for the currency used by this purchase record.",
-        SerializedName = @"currencyCode",
-        PossibleTypes = new [] { typeof(string) })]
-        public string CommitmentCurrencyCode { get => _body.CommitmentCurrencyCode ?? null; set => _body.CommitmentCurrencyCode = value; }
-
-        /// <summary>Commitment grain.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Commitment grain.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Commitment grain.",
-        SerializedName = @"grain",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain))]
-        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain CommitmentGrain { get => _body.CommitmentGrain ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain)""); set => _body.CommitmentGrain = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -288,121 +227,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter Renew { get => _body.Renew ?? default(global::System.Management.Automation.SwitchParameter); set => _body.Renew = value; }
 
-        /// <summary>Display name</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Display name")]
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Display name",
-        SerializedName = @"displayName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName { get => _body.RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName ?? null; set => _body.RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName = value; }
-
-        /// <summary>
-        /// Fully-qualified identifier of the management group where the benefit must be applied.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully-qualified identifier of the management group where the benefit must be applied.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Fully-qualified identifier of the management group where the benefit must be applied.",
-        SerializedName = @"managementGroupId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId { get => _body.RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId ?? null; set => _body.RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId = value; }
-
-        /// <summary>Fully-qualified identifier of the resource group.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully-qualified identifier of the resource group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Fully-qualified identifier of the resource group.",
-        SerializedName = @"resourceGroupId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId { get => _body.RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId ?? null; set => _body.RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId = value; }
-
-        /// <summary>Fully-qualified identifier of the subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully-qualified identifier of the subscription.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Fully-qualified identifier of the subscription.",
-        SerializedName = @"subscriptionId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId { get => _body.RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId ?? null; set => _body.RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId = value; }
-
-        /// <summary>Tenant ID where the benefit is applied.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Tenant ID where the benefit is applied.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Tenant ID where the benefit is applied.",
-        SerializedName = @"tenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId { get => _body.RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId ?? null; set => _body.RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId = value; }
-
-        /// <summary>Type of the Applied Scope.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of the Applied Scope.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of the Applied Scope.",
-        SerializedName = @"appliedScopeType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType RenewPropertiesPurchasePropertiesAppliedScopeType { get => _body.RenewPropertiesPurchasePropertiesAppliedScopeType ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType)""); set => _body.RenewPropertiesPurchasePropertiesAppliedScopeType = value; }
-
-        /// <summary>Friendly name of the savings plan</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Friendly name of the savings plan")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Friendly name of the savings plan",
-        SerializedName = @"displayName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string RenewPropertiesPurchasePropertiesDisplayName { get => _body.RenewPropertiesPurchasePropertiesDisplayName ?? null; set => _body.RenewPropertiesPurchasePropertiesDisplayName = value; }
-
-        /// <summary>
-        /// Setting this to true will automatically purchase a new benefit on the expiration date time.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Setting this to true will automatically purchase a new benefit on the expiration date time.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Setting this to true will automatically purchase a new benefit on the expiration date time.",
-        SerializedName = @"renew",
-        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter RenewPropertiesPurchasePropertiesRenew { get => _body.RenewPropertiesPurchasePropertiesRenew ?? default(global::System.Management.Automation.SwitchParameter); set => _body.RenewPropertiesPurchasePropertiesRenew = value; }
-
-        /// <summary>Name of the SKU to be applied</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the SKU to be applied")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Name of the SKU to be applied",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        public string SkuName { get => _body.SkuName ?? null; set => _body.SkuName = value; }
-
-        /// <summary>Represent benefit term in ISO 8601 format.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Represent benefit term in ISO 8601 format.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Represent benefit term in ISO 8601 format.",
-        SerializedName = @"term",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term))]
-        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term Term { get => _body.Term ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term)""); set => _body.Term = value; }
+        Description = @".",
+        SerializedName = @"renewProperties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties RenewProperty { get => _body.RenewProperty ?? null /* object */; set => _body.RenewProperty = value; }
 
         /// <summary>
         /// <c>overrideOnAccepted</c> will be called before the regular onAccepted has been processed, allowing customization of what
