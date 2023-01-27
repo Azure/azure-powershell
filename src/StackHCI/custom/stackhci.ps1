@@ -2671,7 +2671,7 @@ param(
             {
                 if (($null -ne $arcres) -and ($arcres.Properties.arcInstanceResourceGroup -ne $ArcServerResourceGroupName))
                 {
-                    $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage = $ArcAlreadyRegisteredInDifferentResourceGroupError -f $arcResourceGroupName
+                    $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage = $ArcAlreadyRegisteredInDifferentResourceGroupError -f $ArcServerResourceGroupName
                     Write-ErrorLog -Message $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage -ErrorAction Continue
                     $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
                     $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage
