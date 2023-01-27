@@ -77,7 +77,7 @@ $VerifyingArcMessage = "Verifying Azure Arc for Servers registration"
 $WaitingUnregisterMessage = "Disabling Azure Arc integration on every clustered node"
 $CleanArcMessage = "Cleaning up Azure Arc integration"
 
-$ArcAlreadyEnabledInADifferentResourceError = "Below mentioned cluster nodes are already Arc enabled with a different ARM Resource Id:`n{0}`nDisconnect Arc agent on these nodes and run Register-AzStackHCI again."
+$ArcAlreadyEnabledInADifferentResourceError = "Below mentioned cluster node(s) are already Arc enabled with a different ARM Resource Id:`n{0}`nDisconnect Arc agent on these nodes and run Register-AzStackHCI again."
 
 $ArcAgentRolesInsufficientPreviligeMessage = "Failed to assign required roles for Azure Arc integration. Your Azure AD account must be an Owner or User Access Administrator in the subscription to enable Azure Arc integration."
 $RegisterArcFailedWarningMessage = "Some clustered nodes couldn't be Arc-enabled right now. This can happen if some of the nodes are down. We'll automatically try again in an hour. In the meantime, you can use Get-AzureStackHCIArcIntegration to check status on each node."
