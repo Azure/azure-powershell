@@ -33,7 +33,11 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
+using Microsoft.Rest.Azure.OData;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
+using Microsoft.Rest.Azure;
+using System.Data.Common;
 
 namespace Microsoft.Azure.Commands.Ssh
 {
@@ -64,6 +68,13 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal string proxyPath;
         protected internal string relayInfo;
         protected internal EndpointAccessResource relayInformationResource;
+
+        protected internal readonly string[] supportedResourceTypes = {
+            "Microsoft.HybridCompute/machines",
+            "Microsoft.Compute/virtualMachines",
+            "Microsoft.ConnectedVMwarevSphere/virtualMachines",
+            "Microsoft.ScVmm/virtualMachines",
+            "Microsoft.AzureStackHCI/virtualMachines"};
         #endregion
 
         #region Properties
@@ -81,20 +92,6 @@ namespace Microsoft.Azure.Commands.Ssh
         }
         private IpUtils _ipUtils;
 
-        internal ResourceTypeUtils ResourceTypeUtils
-        {
-            get
-            {
-                if (_typeUtils == null)
-                {
-                    _typeUtils = new ResourceTypeUtils(DefaultProfile.DefaultContext);
-                }
-
-                return _typeUtils;
-            }
-        }
-        private ResourceTypeUtils _typeUtils;
-
         internal RelayInformationUtils RelayInformationUtils
         {
             get
@@ -109,6 +106,18 @@ namespace Microsoft.Azure.Commands.Ssh
         }
         private RelayInformationUtils _relayUtils;
 
+        private ResourceManagementClient ResourceManagementClient
+        {
+            get
+            {
+                if (_resourceManagementClient == null)
+                {
+                    _resourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                }
+                return _resourceManagementClient;
+            }
+        }
+        private ResourceManagementClient _resourceManagementClient;
         #endregion
 
         #region Parameters
@@ -130,7 +139,15 @@ namespace Microsoft.Azure.Commands.Ssh
             ParameterSetName = InteractiveParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [SshResourceNameCompleter(new string[] { "Microsoft.Compute/virtualMachines", "Microsoft.HybridCompute/machines" }, "ResourceGroupName")]
+        [SshResourceNameCompleter(
+            new string[] { 
+                "Microsoft.Compute/virtualMachines",
+                "Microsoft.HybridCompute/machines",
+                "Microsoft.ConnectedVMwarevSphere/virtualMachines",
+                "Microsoft.ScVmm/virtualMachines",
+                "Microsoft.AzureStackHCI/virtualMachines"
+            }, 
+            "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -151,7 +168,13 @@ namespace Microsoft.Azure.Commands.Ssh
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [SshResourceIdCompleter(new string[] { "Microsoft.HybridCompute/machines", "Microsoft.Compute/virtualMachines" })]
+        [SshResourceIdCompleter(new string[] { 
+            "Microsoft.HybridCompute/machines",
+            "Microsoft.Compute/virtualMachines",
+            "Microsoft.ConnectedVMwarevSphere/virtualMachines",
+            "Microsoft.ScVmm/virtualMachines",
+            "Microsoft.AzureStackHCI/virtualMachines"
+        })]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -222,8 +245,20 @@ namespace Microsoft.Azure.Commands.Ssh
         /// Either Microsoft.Compute/virtualMachines or Microsoft.HybridCompute/machines.
         /// </summary>
         [Parameter(ParameterSetName = InteractiveParameterSet)]
-        [PSArgumentCompleter("Microsoft.Compute/virtualMachines", "Microsoft.HybridCompute/machines")]
-        [ValidateSet("Microsoft.Compute/virtualMachines", "Microsoft.HybridCompute/machines")]
+        [PSArgumentCompleter(
+            "Microsoft.HybridCompute/machines",
+            "Microsoft.Compute/virtualMachines",
+            "Microsoft.ConnectedVMwarevSphere/virtualMachines",
+            "Microsoft.ScVmm/virtualMachines",
+            "Microsoft.AzureStackHCI/virtualMachines"
+        )]
+        [ValidateSet(
+            "Microsoft.HybridCompute/machines",
+            "Microsoft.Compute/virtualMachines",
+            "Microsoft.ConnectedVMwarevSphere/virtualMachines",
+            "Microsoft.ScVmm/virtualMachines",
+            "Microsoft.AzureStackHCI/virtualMachines"
+        )]
         [ValidateNotNullOrEmpty]
         public string ResourceType { get; set; }
 
@@ -271,31 +306,45 @@ namespace Microsoft.Azure.Commands.Ssh
 
         #region Protected Internal Methods
 
-
         protected internal void SetResourceType()
         {
-            string _resourceTypeException = "";
+            var resourcetypefilter = supportedResourceTypes.Select(type => $"resourceType eq '{type}'").ToArray();
+            String filter = $"$filter=name eq '{Name}' and (" + String.Join(" or ", resourcetypefilter) + ")";
+            ODataQuery<GenericResourceFilter> query = new ODataQuery<GenericResourceFilter>(filter);
 
-            switch (ParameterSetName)
+            String[] types;
+            try
             {
-                case IpAddressParameterSet:
-                    ResourceType = "Microsoft.Compute/virtualMachines";
-                    break;
-                case ResourceIdParameterSet:
-                    ResourceIdentifier parsedId = new ResourceIdentifier(ResourceId);
-                    Name = parsedId.ResourceName;
-                    ResourceGroupName = parsedId.ResourceGroupName;
-                    ResourceType = ResourceTypeUtils.GetResourceType(Name, ResourceGroupName, parsedId.ResourceType, out _resourceTypeException);
-                    break;
-                case InteractiveParameterSet:
-                    ResourceType = ResourceTypeUtils.GetResourceType(Name, ResourceGroupName, ResourceType, out _resourceTypeException);
-                    break;
+                var resources = ResourceManagementClient.Resources.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName, query).GetAwaiter().GetResult().Body;
+                types = resources.Select(resource => resource.Type).ToArray();
+            }
+            catch(CloudException exception)
+            {
+                throw new AzPSCloudException($"Failed to list resources in the {ResourceGroupName} Resource Group with error: \"{exception.Message}\". Ensure that the Resource Group Name is correct and that you have Read role on that resource group.");
+            }
+            catch
+            {
+                throw;
             }
 
-            if (string.IsNullOrEmpty(this.ResourceType))
+            if (ResourceType != null)
             {
-                throw new AzPSCloudException($"Unable to determine the Resource Type of the target resource: {_resourceTypeException}");
+                if (!types.Contains(ResourceType))
+                {
+                    throw new AzPSResourceNotFoundCloudException($"Unable to find Resource \"{Name}\" of type \"{ResourceType}\" in the Resource Group \"{ResourceGroupName}\". Make sure the resource exists and that you have Read rights.");
+                }
+                return;
             }
+
+            if (types.Count() > 1)
+            {
+                throw new AzPSArgumentException($"There is more than one resource named \"{Name}\" in the Resource Group \"{ResourceGroupName}\". Please provide a ResourceType.", ResourceType);
+            }
+            else if (types.Count() < 1)
+            {
+                throw new AzPSResourceNotFoundCloudException($"Unable to find Resource \"{Name}\" in the ResourceGroup \"{ResourceGroupName}\". Make sure the resource exists, that you have Read rights, and that the target resource is of one of the Resource Types supported by this cmdlet.");
+            }
+            ResourceType = types.ElementAt(0);
         }
 
         protected internal void ValidateParameters()
@@ -356,14 +405,13 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal void GetRelayInformation()
         {
             string _exception = "";
-
             if (ResourceId != null)
             {
                 relayInformationResource = RelayInformationUtils.GetRelayInformation(ResourceId, out _exception);
             }
             else
             {
-                relayInformationResource = RelayInformationUtils.GetRelayInformation(ResourceGroupName, Name, out _exception);
+                relayInformationResource = RelayInformationUtils.GetRelayInformation(ResourceGroupName, Name, ResourceType, out _exception);
             }
 
             relayInfo = RelayInformationUtils.ConvertEndpointAccessToBase64String(relayInformationResource);
@@ -540,6 +588,7 @@ namespace Microsoft.Azure.Commands.Ssh
         #endregion
 
         #region Private Methods
+
 
         /* This method gets the full path of items that already exist. It checks if the file exist and fails if it doesn't*/
         private string GetResolvedPath(string path, string paramName)
