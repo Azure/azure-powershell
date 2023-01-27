@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 server.Identity = ResourceIdentityHelper.GetIdentityObjectFromType(true, ResourceIdentityType.SystemAssigned.ToString(), null, null);
                 server = GetCurrentSqlClient().Servers.CreateOrUpdate(resourceGroupName, serverName, server);
             }
-            else if (server.Identity.Type.Contains("UserAssigned")) 
+            else if (server.Identity.Type != null && server.Identity.Type.Contains("UserAssigned")) 
             {
                 return null;
             }
