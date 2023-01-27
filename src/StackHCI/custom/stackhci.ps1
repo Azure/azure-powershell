@@ -63,7 +63,7 @@ $DeletingArcCloudResourceMessage = "Deleting Azure resource with ID {0} represen
 $DeletingExtensionMessage = "Deleting extension {0} on cluster {1}"
 $RegisterArcMessage = "Arc for servers registration triggered"
 $UnregisterArcMessage = "Arc for servers unregistration triggered"
-$ArcMachineAlreadyExistsInResourceGroupError = "One or more arc machines with names {0} already exists in the Resource Group {1}. Use a different Arc for Server Resource Group"
+$ArcMachineAlreadyExistsInResourceGroupError = "Arc machine(s) with names: {0} already exists in the Resource Group {1}. Use a different Resource group for registration or specify a different Arc for Servers Resource Group."
 $SetAzureStackHCIRegistrationErrorMessage = "Exception occurred in Set-AzureStackHCIRegistration. ErrorMessage: {0}"
 $ArcAlreadyRegisteredInDifferentResourceGroupError = "Arc servers are already registered in Resource Group: {0}. To change resource groups, please unregister and register again"
 $ClusterCreationFailureMessage = "Failed to create cluster resource"
@@ -77,7 +77,7 @@ $VerifyingArcMessage = "Verifying Azure Arc for Servers registration"
 $WaitingUnregisterMessage = "Disabling Azure Arc integration on every clustered node"
 $CleanArcMessage = "Cleaning up Azure Arc integration"
 
-$ArcAlreadyEnabledInADifferentResourceError = "One or more cluster nodes are already Arc enabled with a different ARM Resource Id:`n{0}"
+$ArcAlreadyEnabledInADifferentResourceError = "Below mentioned cluster nodes are already Arc enabled with a different ARM Resource Id:`n{0}`nDisconnect Arc agent on these nodes and run Register-AzStackHCI again."
 
 $ArcAgentRolesInsufficientPreviligeMessage = "Failed to assign required roles for Azure Arc integration. Your Azure AD account must be an Owner or User Access Administrator in the subscription to enable Azure Arc integration."
 $RegisterArcFailedWarningMessage = "Some clustered nodes couldn't be Arc-enabled right now. This can happen if some of the nodes are down. We'll automatically try again in an hour. In the meantime, you can use Get-AzureStackHCIArcIntegration to check status on each node."
@@ -1631,7 +1631,7 @@ function Verify-NodesArcRegistrationState{
         }
         catch 
         {
-            if($_.Exception.Message.Contains($clusterNode) -and $_.Exception.Message.Contains("Subscription Id") -and $_.Exception.Message.Contains("Resource Group"))
+            if(($null -ne $_.Exception.Message) -and $_.Exception.Message.Contains($clusterNode) -and $_.Exception.Message.Contains("Subscription Id") -and $_.Exception.Message.Contains("Resource Group"))
             {
                 $NodesAlreadyArcEnabledDifferentResource.Add($_.Exception.Message) | Out-Null
             }
@@ -2257,7 +2257,6 @@ enum OperationStatus {
     Unused;
     Failed;
     Success;
-    PendingForAdminConsent;
     Cancelled;
     RegisterSucceededButArcFailed
 }
@@ -2593,13 +2592,6 @@ param(
         {
             $ResourceGroupName = $ResourceName + "-rg"
             Write-VerboseLog ("using cluster Name as resourcegroup name: $ResourceGroupName")
-        }
-
-        #USE CLUSTER RG AS ARC RG
-        if ([string]::IsNullOrEmpty($ArcServerResourceGroupName)) 
-        {
-            $ArcServerResourceGroupName = $resourceGroupName
-            Write-VerboseLog ("using cluster rg as arcserver resourcegroup name: $ResourceGroupName")
         }
 
         $registrationBeginMsg="Register-AzStackHCI triggered - Region: $Region ResourceName: $ResourceName `
@@ -3918,7 +3910,7 @@ function Remove-ResourceGroup {
     FailedNodes: Node1inClus2, Node2inClus3
 #>
 function Test-AzStackHCIConnection{
-    [Obsolete("Test-AzStackhHCIConnection is deprecated. Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests. For more information, see https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker.")]
+    [Obsolete("Test-AzStackhHCIConnection is deprecated. Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests. For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/manage/use-environment-checker.")]
 param(
     [Parameter(Mandatory = $false)]
     [string] $EnvironmentName = $AzureCloud,
