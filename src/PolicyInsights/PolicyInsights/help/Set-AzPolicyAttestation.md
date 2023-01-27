@@ -17,15 +17,15 @@ Modifies a policy attestation.
 Set-AzPolicyAttestation -Name <String> [-Scope <String>] [-ResourceGroupName <String>]
  [-PolicyAssignmentId <String>] [-ComplianceState <String>] [-PolicyDefinitionReferenceId <String>]
  [-ExpiresOn <DateTime>] [-Owner <String>] [-Comment <String>] [-Evidence <PSAttestationEvidence[]>]
- [-AssessmentDate <DateTime>] [-Metadata <Object>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AssessmentDate <DateTime>] [-Metadata <PSAttestationMetadata>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzPolicyAttestation -ResourceId <String> [-PolicyAssignmentId <String>] [-ComplianceState <String>]
  [-PolicyDefinitionReferenceId <String>] [-ExpiresOn <DateTime>] [-Owner <String>] [-Comment <String>]
- [-Evidence <PSAttestationEvidence[]>] [-AssessmentDate <DateTime>] [-Metadata <Object>]
+ [-Evidence <PSAttestationEvidence[]>] [-AssessmentDate <DateTime>] [-Metadata <PSAttestationMetadata>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Set-AzPolicyAttestation -ResourceId <String> [-PolicyAssignmentId <String>] [-Co
 ```
 Set-AzPolicyAttestation -InputObject <PSAttestation> [-PolicyAssignmentId <String>] [-ComplianceState <String>]
  [-PolicyDefinitionReferenceId <String>] [-ExpiresOn <DateTime>] [-Owner <String>] [-Comment <String>]
- [-Evidence <PSAttestationEvidence[]>] [-AssessmentDate <DateTime>] [-Metadata <Object>]
+ [-Evidence <PSAttestationEvidence[]>] [-AssessmentDate <DateTime>] [-Metadata <PSAttestationMetadata>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -47,37 +47,77 @@ The **Set-AzPolicyAttestation** cmdlet modifies a policy attestation. Specify an
 
 ### Example 1: Update an attestation by name
 ```powershell
-Set-AzContext -Subscription "My Subscription"
-# Update the existing attestation by resource name at subscription scope (default)   
+Set-AzContext -Subscription "d1acb22b-c876-44f7-b08e-3fcf9f6767f4"
+# Update the existing attestation by resource name at subscription scope (default)
 $comment = "Setting the state to non compliant"
-$attestationName = "attestation1"
-
+$attestationName = "attestation-subscription"
+$policyAssignmentId = "/subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/Microsoft.Authorization/policyAssignments/PSAttestationSubAssignment"
 Set-AzPolicyAttestation -PolicyAssignmentId $policyAssignmentId -Name $attestationName -ComplianceState "NonCompliant" -Comment $comment
 ```
 
-The command here sets the compliance state and adds a comment to an existing attestation with name 'attestation1' in the subscription named 'My Subscription'
+```output
+Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.policyinsights/attestations/
+                              attestation-subscription
+Name                        : attestation-subscription
+Type                        : Microsoft.PolicyInsights/attestations
+PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignme
+                              nts/psattestationsubassignment
+PolicyDefinitionReferenceId :
+ComplianceState             : NonCompliant
+ExpiresOn                   :
+Owner                       :
+Comment                     : Setting the state to non compliant
+Evidence                    :
+ProvisioningState           : Succeeded
+LastComplianceStateChangeAt : 1/27/2023 4:00:04 PM
+AssessmentDate              :
+Metadata                    :
+SystemData                  :
+```
+
+The command here sets the compliance state and adds a comment to an existing attestation with name 'attestation-subscription' in the subscription with id 'd1acb22b-c876-44f7-b08e-3fcf9f6767f4'
 
 ### Example 2: Update an attestation by ResourceId
 ```powershell
 # Get an attestation
-$rgName = "myRG"
-$attestationName = "attestation2"
+$rgName = "ps-attestation-test-rg"
+$attestationName = "attestation-RG"
 $attestation = Get-AzPolicyAttestation -ResourceGroupName $rgName -Name $attestationName
 
 # Update the existing attestation by resource ID at RG
 $expiresOn = [System.DateTime]::UtcNow.AddYears(1)
-$updatedAttestation = Set-AzPolicyAttestation -Id $attestation.Id -ExpiresOn $expiresOn
+Set-AzPolicyAttestation -Id $attestation.Id -ExpiresOn $expiresOn
 ```
 
-The first command gets an existing attestation at the resource group 'myRG' with the name 'attestation2'.
+```output
+Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourcegroups/ps-attestation-test-rg/providers/
+                              microsoft.policyinsights/attestations/attestation-rg
+Name                        : attestation-rg
+Type                        : Microsoft.PolicyInsights/attestations
+PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignme
+                              nts/psattestationrgassignment
+PolicyDefinitionReferenceId :
+ComplianceState             :
+ExpiresOn                   : 1/27/2024 4:04:24 PM
+Owner                       :
+Comment                     :
+Evidence                    :
+ProvisioningState           : Succeeded
+LastComplianceStateChangeAt : 1/27/2023 4:04:11 PM
+AssessmentDate              :
+Metadata                    :
+SystemData                  :
+```
+
+The first command gets an existing attestation at the resource group 'ps-attestation-test-rg' with the name 'attestation-RG'.
 
 The final command updates the expiry time of the policy attestation by the **ResourceId** property of the existing attestation.
 
 ### Example 3: Update an attestation by input object
 ```powershell
 # Get an attestation
-$attestationName = "attestation3"
-$scope = "/subscriptions/49c37404-cef8-46b2-ba72-fa8419c82ed5/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/Test-VN"
+$attestationName = "attestation-resource"
+$scope = "/subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourceGroups/ps-attestation-test-rg/providers/Microsoft.Network/networkSecurityGroups/pstests0"
 $attestation = Get-AzPolicyAttestation -Name $attestationName -Scope $scope
 
 # Update attestation by input object
@@ -85,7 +125,28 @@ $newOwner = "Test Owner 2"
 $attestation | Set-AzPolicyAttestation -Owner $newOwner
 ```
 
-The first command gets an existing attestation with name 'attestation3' for the given resource using its resource id as the scope
+```output
+Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourcegroups/ps-attestation-test-rg/providers/
+                              microsoft.network/networksecuritygroups/pstests0/providers/microsoft.policyinsights/attestations/att
+                              estation-resource
+Name                        : attestation-resource
+Type                        : Microsoft.PolicyInsights/attestations
+PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignme
+                              nts/psattestationresourceassignment
+PolicyDefinitionReferenceId :
+ComplianceState             : NonCompliant
+ExpiresOn                   :
+Owner                       : Test Owner 2
+Comment                     :
+Evidence                    :
+ProvisioningState           : Succeeded
+LastComplianceStateChangeAt : 1/27/2023 2:38:17 AM
+AssessmentDate              :
+Metadata                    :
+SystemData                  :
+```
+
+The first command gets an existing attestation with name 'attestation-resource' for the given resource using its resource id as the scope
 
 The final command updates the owner of the policy attestation by using piping.
 
@@ -202,7 +263,7 @@ Accept wildcard characters: False
 Additional metadata for the attestation.
 
 ```yaml
-Type: System.Object
+Type: Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationMetadata
 Parameter Sets: (All)
 Aliases:
 

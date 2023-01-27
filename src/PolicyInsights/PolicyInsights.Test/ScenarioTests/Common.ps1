@@ -27,7 +27,7 @@ Gets test subscription ID.
 #>
 function Get-TestSubscriptionId {
    # Reminder: The subscription ID in the test context (created via PS command or by creating an env variable) should be the same as this subscription ID.
-   "086aecf4-23d6-4dfd-99a8-a5c6299f0322" # This is the Azure Governance Perf 21 subscription
+   "0b40be06-04e8-4f70-abde-a502b2646fe8" # This is the Azure Governance Perf 21 subscription
 }
 
 <#
@@ -283,7 +283,7 @@ function Validate-PolicyStateSummary {
    Assert-NotNull $policyStateSummary.Results.NonCompliantPolicies
 
    Assert-NotNull $policyStateSummary.PolicyAssignments
-   Assert-True { $policyStateSummary.PolicyAssignments.Count -gt 0 } 
+   Assert-True { $policyStateSummary.PolicyAssignments.Count -gt 0 }
 
    Foreach ($policyAssignmentSummary in $policyStateSummary.PolicyAssignments) {
       Assert-NotNull $policyAssignmentSummary
@@ -321,7 +321,7 @@ function Validate-SummaryResults {
    param([Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults] $results,
       [switch]$nonCompliantPoliciesAssertNull = $true
    )
-   
+
    Assert-NotNull $results.NonCompliantResources
    if ($nonCompliantPoliciesAssertNull) {
       Assert-Null $results.NonCompliantPolicies
@@ -641,10 +641,10 @@ function Validate-AttestationProperties {
       [Parameter(Mandatory = $false)]$expectedAssessmentDate = $null
    )
    if ($null -ne $expectedName) {
-      Assert-AreEqual $expectedName $attestation.Name 
+      Assert-AreEqual $expectedName $attestation.Name
    }
    if ($null -ne $expectedProvisioningState) {
-      Assert-AreEqual $expectedProvisioningState $attestation.ProvisioningState     
+      Assert-AreEqual $expectedProvisioningState $attestation.ProvisioningState
    }
    if ($null -ne $expectedPolicyAssignmentId) {
       Assert-AreEqual $expectedPolicyAssignmentId $attestation.PolicyAssignmentId
@@ -660,7 +660,7 @@ function Validate-AttestationProperties {
    }
    if ($null -ne $expectedMetadata) {
       $expectedMetadataJson = [Newtonsoft.Json.Linq.JObject]::Parse($expectedMetadata)
-      Assert-AreEqual $expectedMetadataJson.ToString() $attestation.metadata.ToString()
+      Assert-AreEqual $expectedMetadataJson.ToString() $attestation.metadata.metadata.ToString()
    }
    if ($null -ne $expectedEvidence) {
       Validate-PolicyAttestationEvidence($attestation.Evidence, $expectedEvidence)
@@ -682,7 +682,7 @@ Validates an attestation evidence.
 #>
 function Validate-AttestationEvidence {
    param($actualEvidence, $expectedEvidence)
-   
+
    Assert-NotNullOrEmpty $actualEvidence
    for ($i = 0; $i -lt $actualEvidence.Count; $i++) {
       Assert-AreEqual $expectedEvidence[$i].Description $actualEvidence[$i].Description

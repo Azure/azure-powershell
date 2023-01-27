@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
         public DateTime? AssessmentDate { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AttestationMetadata)]
-        public object Metadata { get; set; }
+        public PSAttestationMetadata Metadata { get; set; }
 
         public override void Execute()
         {

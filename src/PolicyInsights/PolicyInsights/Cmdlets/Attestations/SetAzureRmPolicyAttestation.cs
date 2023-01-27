@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
         public DateTime? AssessmentDate { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AttestationMetadata)]
-        public object Metadata { get; set; }
+        public PSAttestationMetadata Metadata { get; set; }
 
         public override void Execute()
         {
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
                 this.Comment = this.IsParameterBound(c => c.Comment) ? this.Comment : this.InputObject?.Comment;
                 this.Evidence = this.IsParameterBound(c => c.Evidence) ? this.Evidence : this.InputObject?.Evidence;
                 this.AssessmentDate = this.IsParameterBound(c => c.AssessmentDate) ? this.AssessmentDate : this.InputObject?.AssessmentDate;
-                this.Metadata = this.IsParameterBound(c => c.Metadata) ? ConvertToMetadataJObject(this.Metadata) : this.InputObject?.Metadata;
+                this.Metadata = this.IsParameterBound(c => c.Metadata) ? this.Metadata : this.InputObject?.Metadata;
             }
 
             if (this.IsParameterBound(c => c.ResourceId))

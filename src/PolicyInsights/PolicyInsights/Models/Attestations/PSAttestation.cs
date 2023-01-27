@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models.Attestations
     using Newtonsoft.Json;
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class PSAttestation{
 
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models.Attestations
         /// <summary>
         /// Gets or sets additional metadata for this attestation
         /// </summary>
-        public object Metadata { get; set; }
+        public PSAttestationMetadata Metadata { get; set; }
 
         /// <summary>
         /// Gets azure Resource Manager metadata containing createdBy and
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models.Attestations
             this.ExpiresOn = attestation.ExpiresOn;
             this.Owner = attestation.Owner;
             this.Comment = attestation.Comments;
-            this.Metadata = attestation.Metadata;
+            this.Metadata = attestation.Metadata != null? new PSAttestationMetadata(attestation.Metadata): null;
             this.LastComplianceStateChangeAt = attestation.LastComplianceStateChangeAt;
             this.AssessmentDate = attestation.AssessmentDate;
             this.Evidence = attestation.Evidence?.Select(evidence => new PSAttestationEvidence(evidence)).ToArray();

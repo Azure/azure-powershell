@@ -17,15 +17,15 @@ Creates a new policy attestation for a policy assignment.
 New-AzPolicyAttestation -Name <String> [-Scope <String>] [-ResourceGroupName <String>]
  -PolicyAssignmentId <String> [-ComplianceState <String>] [-PolicyDefinitionReferenceId <String>]
  [-ExpiresOn <DateTime>] [-Owner <String>] [-Comment <String>] [-Evidence <PSAttestationEvidence[]>]
- [-AssessmentDate <DateTime>] [-Metadata <Object>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AssessmentDate <DateTime>] [-Metadata <PSAttestationMetadata>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 New-AzPolicyAttestation -ResourceId <String> -PolicyAssignmentId <String> [-ComplianceState <String>]
  [-PolicyDefinitionReferenceId <String>] [-ExpiresOn <DateTime>] [-Owner <String>] [-Comment <String>]
- [-Evidence <PSAttestationEvidence[]>] [-AssessmentDate <DateTime>] [-Metadata <Object>]
+ [-Evidence <PSAttestationEvidence[]>] [-AssessmentDate <DateTime>] [-Metadata <PSAttestationMetadata>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,35 +36,74 @@ The **New-AzPolicyAttestation** cmdlet creates a policy attestation for a partic
 
 ### Example 1: Create an attestation at subscription scope
 ```powershell
-Set-AzContext -Subscription "My Subscription"
-$policyAssignmentId = "/subscriptions/49c37404-cef8-46b2-ba72-fa8419c82ed5/providers/Microsoft.Authorization/policyAssignments/0774f87b3af94c1399d3ee52"
+Set-AzContext -Subscription "d1acb22b-c876-44f7-b08e-3fcf9f6767f4"
+$policyAssignmentId = "/subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignments/psattestationsubassignment"
 $attestationName = "attestation-subscription"
 New-AzPolicyAttestation -PolicyAssignmentId $policyAssignmentId -Name $attestationName -ComplianceState "Compliant"
 ```
 
-This command creates a new policy attestation at subscription 'My Subscription' for the given policy assignment.
+```output
+Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.policyinsights
+                              /attestations/attestation-subscription
+Name                        : attestation-subscription
+Type                        : Microsoft.PolicyInsights/attestations
+PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/
+                              policyassignments/psattestationsubassignment
+PolicyDefinitionReferenceId :
+ComplianceState             : Compliant
+ExpiresOn                   :
+Owner                       :
+Comment                     :
+Evidence                    :
+ProvisioningState           : Succeeded
+LastComplianceStateChangeAt : 1/27/2023 2:26:24 AM
+AssessmentDate              :
+Metadata                    :
+SystemData                  :
+```
+
+This command creates a new policy attestation at subscription 'd1acb22b-c876-44f7-b08e-3fcf9f6767f4' for the given policy assignment.
 
 >**Note:**
 >This command creates an attestation for the subscription and not the resources underneath it. For ease of management, manual policies should be designed to target the scope which defines the boundary of resources whose compliance state needs to be attested. In this case, the manual policy should be targeting `Microsoft.Resources/subscriptions`. For more information, go to https://learn.microsoft.com/en-us/azure/governance/policy/concepts/attestation-structure to understand the best practices for creating attestations.
 
 ### Example 2: Create an attestation at resource group
 ```powershell
-$policyAssignmentId = "/subscriptions/49c37404-cef8-46b2-ba72-fa8419c82ed5/providers/Microsoft.Authorization/policyAssignments/0774f87b3af94c1399d3ee52"
+$policyAssignmentId = "/subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignments/psattestationrgassignment"
 $attestationName = "attestation-RG"
-$rgName = "myRG"
+$rgName = "ps-attestation-test-rg"
 New-AzPolicyAttestation -ResourceGroupName $RGName -PolicyAssignmentId $policyAssignmentId -Name $attestationName -ComplianceState "Compliant"
 ```
 
-This command creates a new policy attestation at the resource group 'myRG' for the given policy assignment.
+```output
+Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourcegroups/ps-attestation-test
+                              -rg/providers/microsoft.policyinsights/attestations/attestation-rg
+Name                        : attestation-RG
+Type                        : Microsoft.PolicyInsights/attestations
+PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/
+                              policyassignments/psattestationrgassignment
+PolicyDefinitionReferenceId :
+ComplianceState             : Compliant
+ExpiresOn                   :
+Owner                       :
+Comment                     :
+Evidence                    :
+ProvisioningState           : Succeeded
+LastComplianceStateChangeAt : 1/27/2023 2:35:28 AM
+AssessmentDate              :
+Metadata                    :
+SystemData                  :
+```
+This command creates a new policy attestation at the resource group 'ps-attestation-test-rg' for the given policy assignment.
 
 >**Note:**
 >This command creates an attestation for the resource group and not the resources underneath it. For ease of management, manual policies should be designed to target the scope which defines the boundary of resources whose compliance state needs to be attested. In this case, the manual policy should be targeting `Microsoft.Resources/subscriptions/resourceGroups`. For more information, go to https://learn.microsoft.com/en-us/azure/governance/policy/concepts/attestation-structure to understand the best practices for creating attestations.
 
 ### Example 3: Create an attestation at resource
 ```powershell
-$policyAssignmentId = "/subscriptions/49c37404-cef8-46b2-ba72-fa8419c82ed5/providers/Microsoft.Authorization/policyAssignments/0774f87b3af94c1399d3ee52"
+$policyAssignmentId = "/subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignments/psattestationresourceassignment"
 $attestationName = "attestation-resource"
-$scope = "/subscriptions/49c37404-cef8-46b2-ba72-fa8419c82ed5/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/Test-VN"
+$scope = "/subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourceGroups/ps-attestation-test-rg/providers/Microsoft.Network/networkSecurityGroups/pstests0"
 New-AzPolicyAttestation `
     -PolicyAssignmentId $policyAssignmentId `
     -Name $attestationName `
@@ -72,23 +111,47 @@ New-AzPolicyAttestation `
     -ComplianceState "NonCompliant"
 ```
 
-This command creates an attestation for the resource 'Test-VN' for the given policy assignment.
+```output
+Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourcegroups/ps-attestation-test
+                              -rg/providers/microsoft.network/networksecuritygroups/pstests0/providers/microsoft.pol
+                              icyinsights/attestations/attestation-resource
+Name                        : attestation-resource
+Type                        : Microsoft.PolicyInsights/attestations
+PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/
+                              policyassignments/psattestationresourceassignment
+PolicyDefinitionReferenceId :
+ComplianceState             : NonCompliant
+ExpiresOn                   :
+Owner                       :
+Comment                     :
+Evidence                    :
+ProvisioningState           : Succeeded
+LastComplianceStateChangeAt : 1/27/2023 2:38:17 AM
+AssessmentDate              :
+Metadata                    :
+SystemData                  :
+```
+
+This command creates an attestation for the resource 'pstests0' for the given policy assignment.
 
 ### Example 4: Create an attestation with all properties at resource group
-```
-$attestationName = "attestationRG"
-$policyInitiativeAssignmentId = "/subscriptions/49c37404-cef8-46b2-ba72-fa8419c82ed5/resourceGroups/myRG/providers/Microsoft.Authorization/policyAssignments/74067f0991764e9882a046e0"
-$policyDefinitionReferenceId = "PS: Manual Policy (RG)_1"
+```powershell
+$attestationName = "attestationRGAllProps"
+$policyInitiativeAssignmentId = "/subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignments/psattestationinitiativergassignment"
 
+$policyDefinitionReferenceId = "PSTestAttestationRG_1"
+$RGName = "ps-attestation-test-rg"
 $description = "This is a test description"
 $sourceURI = "https://contoso.org/test.pdf"
-$owner = "Test Owner"
 $evidence = @{
-    "Description"=$description 
+    "Description"=$description
     "SourceUri"=$sourceURI
 }
 $policyEvidence = @($evidence)
+$owner = "Test Owner"
+$expiresOn = [datetime]::UtcNow.AddYears(1)
 $metadata = '{"TestKey":"TestValue"}'
+
 New-AzPolicyAttestation `
     -Name $attestationName `
     -ResourceGroupName $RGName `
@@ -103,6 +166,26 @@ New-AzPolicyAttestation `
     -Metadata $metadata
 ```
 
+```output
+Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourcegroups/ps-attestation-test
+                              -rg/providers/microsoft.policyinsights/attestations/attestationrgallprops
+Name                        : attestationRGAllProps
+Type                        : Microsoft.PolicyInsights/attestations
+PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/
+                              policyassignments/psattestationinitiativergassignment
+PolicyDefinitionReferenceId : pstestattestationrg_1
+ComplianceState             :
+ExpiresOn                   : 1/27/2024 2:51:54 AM
+Owner                       : Test Owner
+Comment                     :
+Evidence                    : {Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence}
+ProvisioningState           : Succeeded
+LastComplianceStateChangeAt : 1/27/2023 2:51:57 AM
+AssessmentDate              : 1/25/2024 2:51:54 AM
+Metadata                    : Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationMetadata
+SystemData                  :
+
+```
 ## PARAMETERS
 
 ### -AssessmentDate
@@ -201,7 +284,7 @@ Accept wildcard characters: False
 Additional metadata for the attestation.
 
 ```yaml
-Type: System.Object
+Type: Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationMetadata
 Parameter Sets: (All)
 Aliases:
 

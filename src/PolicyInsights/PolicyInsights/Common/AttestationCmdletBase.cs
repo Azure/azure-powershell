@@ -99,13 +99,13 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
             return attestationName;
         }
 
-        protected static JObject ConvertToMetadataJObject(object metadata)
+        protected static JObject ConvertToMetadataJObject(PSAttestationMetadata metadata)
         {
             if (metadata != null)
             {
                 try
                 {
-                    return JObject.Parse(metadata.ToString());
+                    return JObject.Parse(metadata.Metadata.ToString());
                 }
                 catch
                 {

@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models.Attestations
 {
     public class PSAttestationEvidence
     {
-        
         /// <summary>
         /// Gets or sets the description for this piece of evidence.
         /// </summary>
