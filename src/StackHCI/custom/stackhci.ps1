@@ -2605,14 +2605,22 @@ param(
         }
 
         $registrationBeginMsg="Register-AzStackHCI triggered - Region: $Region ResourceName: $ResourceName `
-            SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName ArcServerResourceGroupName: $ArcServerResourceGroupName`
+            SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName `
             AccountId: $AccountId EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
             RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC"
-        Write-VerboseLog ($registrationBeginMsg)
+
         $registrationBeginMsgPIIScrubbed="Register-AzStackHCI triggered - Region: $Region ResourceName: $ResourceName `
-            SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName ArcServerResourceGroupName: $ArcServerResourceGroupName`
+            SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName `
             EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
             RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC"
+        
+        if ([string]::IsNullOrEmpty($ArcServerResourceGroupName))
+        {
+            $registrationBeginMsg = $registrationBeginMsg + " ArcServerResourceGroupName: $ArcServerResourceGroupName"
+            $registrationBeginMsgPIIScrubbed = $registrationBeginMsgPIIScrubbed + " ArcServerResourceGroupName: $ArcServerResourceGroupName"
+        }
+            
+        Write-VerboseLog ($registrationBeginMsg)
         Write-NodeEventLog -Message $registrationBeginMsgPIIScrubbed -EventID 9001 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
 
         if(($EnableAzureArcServer -eq $false) -and ($EnvironmentName -ne $AzureChinaCloud))
@@ -2650,6 +2658,39 @@ param(
         if($resource -ne $null)
         {
             Write-VerboseLog ("Cluster resource is already created")
+
+            # Fetching Arc settings resource
+            $arcResourceId = $resourceId + $HCIArcInstanceName
+            $arcres = Get-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
+            # Setting the value for ArcServerResourceGroupName
+            if ([string]::IsNullOrEmpty($ArcServerResourceGroupName)) 
+            {
+                if($null -ne $arcres)
+                {
+                    $ArcServerResourceGroupName = $arcres.Properties.arcInstanceResourceGroup
+                    Write-VerboseLog ("Arc for servers resource already exist. Resolved Arc for servers Resource group name from Arc for servers resource: $ArcServerResourceGroupName")
+                }
+                # Use Cluster RG as Arc RG if Arc RG is empty and Arc settings is not set
+                else
+                {
+                    $ArcServerResourceGroupName = $resourceGroupName
+                    Write-VerboseLog ("Using Cluster Resource group as Arc for Servers Resource group name: $ArcServerResourceGroupName")
+                }
+            }
+            else 
+            {
+                if (($null -ne $arcres) -and ($arcres.Properties.arcInstanceResourceGroup -ne $ArcServerResourceGroupName))
+                {
+                    $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage = $ArcAlreadyRegisteredInDifferentResourceGroupError -f $arcResourceGroupName
+                    Write-ErrorLog -Message $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage -ErrorAction Continue
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage
+                    Write-Output $registrationOutput | Format-List
+                    Write-NodeEventLog -Message $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage -EventID 9129 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning 
+                    throw
+                }
+            }
+
             $resourceLocation = Normalize-RegionName -Region $resource.Location
             Write-VerboseLog ("Location resolved from  cloud resource: $resourceLocation")
             if([string]::IsNullOrEmpty($Region))
@@ -2704,6 +2745,13 @@ param(
                     }
                 }
             }
+        }
+
+        #USE CLUSTER RG AS ARC RG
+        if ([string]::IsNullOrEmpty($ArcServerResourceGroupName)) 
+        {
+            $ArcServerResourceGroupName = $resourceGroupName
+            Write-VerboseLog ("using cluster rg as arcserver resourcegroup name: $ResourceGroupName")
         }
 
         $arcResGroup = Get-AzResourceGroup -Name $ArcServerResourceGroupName -ErrorAction Ignore
@@ -3022,7 +3070,16 @@ param(
                 throw
             }
 
+            $isCloudManagementFeatureEnabled = $false
             if ($isCloudManagementSupported -eq $true)
+            {
+                $cloudManagementFeatureDetectoid = { $null -ne (Get-AzureStackHCI).NextSync }
+                $isCloudManagementFeatureEnabled = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementFeatureDetectoid -ErrorAction Ignore
+                Write-VerboseLog ("Cloud Management supported: {0}" -f $isCloudManagementSupported)
+                Write-VerboseLog ("Cloud Management enabled:   {0}" -f $isCloudManagementFeatureEnabled)
+            }
+
+            if ($isCloudManagementSupported -eq $true -AND $isCloudManagementFeatureEnabled -eq $true)
             {
                 Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $ConfiguringCloudManagementMessage -percentcomplete 91
                 Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementMessage -percentcomplete 10
@@ -3088,7 +3145,7 @@ param(
                     {
                         Write-VerboseLog ("Cloud Management cluster resource: $($svcResource | Format-List |Out-String)")
                         Write-VerboseLog ("Starting Cluster Group $ClusterAgentGroupName")
-                        $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Start-ClusterGroup -Name $using:ClusterAgentGroupName -ErrorAction Ignore }
+                        $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Start-ClusterGroup -Name $using:ClusterAgentGroupName -Wait 120 -ErrorAction Ignore }
                         if ($group.State -ne "Online")
                         {
                             $serviceError = "Failed to start {0} clustered role." -f $ClusterAgentGroupName
@@ -3210,7 +3267,6 @@ param(
                         $arcResourceId = $resourceId + $HCIArcInstanceName
 
                         Write-VerboseLog ("checking if Arc resource $arcResourceId already exists")
-                        $arcres = Get-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
                         
                         if($null -eq $arcres)
                         {
@@ -3221,7 +3277,6 @@ param(
                         else
                         {
                             Write-VerboseLog ("Arc Resource already exists")
-                            $arcResourceGroupName = $arcres.Properties.arcInstanceResourceGroup
                             if ($arcres.Properties.aggregateState -eq $ArcSettingsDisableInProgressState)
                             {
                                 Write-ErrorLog -Message $ArcRegistrationDisableInProgressError -Category OperationStopped -ErrorAction Continue
@@ -3230,22 +3285,11 @@ param(
                                 Write-NodeEventLog -Message $ArcRegistrationDisableInProgressError  -EventID 9113 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                                 throw
                             }
-                            if ($arcResourceGroupName -ne $ArcServerResourceGroupName)
-                            {
-                                $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage = $ArcAlreadyRegisteredInDifferentResourceGroupError -f $arcResourceGroupName
-                                Write-ErrorLog -Message $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage -ErrorAction Continue
-                                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-                                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage
-                                Write-Output $registrationOutput | Format-List
-                                Write-NodeEventLog -Message $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage -EventID 9129 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning 
-                                return
-                            }
                         }
 
-                        $arcResourceGroupName = $arcres.Properties.arcInstanceResourceGroup
-                        Write-VerboseLog ("Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $arcResourceGroupName")
-                        $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres
-
+                        Write-VerboseLog ("Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $ArcServerResourceGroupName")
+                        $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres
+                        
                         if($arcResult -ne [ErrorDetail]::Success)
                         {
                             $operationStatus = [OperationStatus]::RegisterSucceededButArcFailed
