@@ -18,6 +18,7 @@ using System.IO;
 using System.Reflection;
 using System.Linq;
 using Tools.Common.Loggers;
+using System.Management.Automation;
 
 namespace StaticAnalysis
 {
@@ -190,6 +191,11 @@ namespace StaticAnalysis
                     var analyzer = new IssueChecker.IssueChecker();
                     analyzer.Analyze(new[] { reportsDirectory });
                 }
+            }
+            catch (Exception ex)
+            {
+                PipelineStoppedException exception = new PipelineStoppedException("123", ex);
+                throw exception;
             }
             finally
             {

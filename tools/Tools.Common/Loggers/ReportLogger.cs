@@ -83,10 +83,10 @@ namespace Tools.Common.Loggers
                 for (int i = 1; i < records.Length; ++i)
                 {
                     string recordContent = records[i];
-                    if (recordContent == "")
-                    {
-                        continue;
-                    }
+                    //if (recordContent == "")
+                    //{
+                    //    continue;
+                    //}
                     var record = new T();
                     _exceptionRecords.Add(record.Parse(recordContent) as T);
                 }
