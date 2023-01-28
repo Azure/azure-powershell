@@ -168,22 +168,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             operations = new List<DeploymentOperation>();
             ProvisioningState[] status = new ProvisioningState[] { ProvisioningState.Canceled, ProvisioningState.Succeeded, ProvisioningState.Failed };
             var getDeploymentFunc = this.GetDeploymentAction(parameters);
-
             var deploymentOperationError = new DeploymentOperationErrorInfo();
 
             DeploymentExtended deploymentExtended = null;
-            int totalTime = 200;
-            if (existed) { totalTime = 20; }
-            var downloadStatus = new ProgressStatus(0, totalTime);
+            int progressBarTimeSpan = 220;
+            if (existed) { progressBarTimeSpan = 20; }
+            var downloadStatus = new ProgressStatus(0, progressBarTimeSpan);
             Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
-
-            // Poll deployment state and deployment operations after RetryAfter.
-            // If no RetryAfter provided: In phase one, poll every 5 seconds. Phase one
-            // takes 400 seconds. In phase two, poll every 60 seconds.
-            // const int counterUnit = 1000;
             int step = 5;
             int phaseOne = 400;
-
             ProgressTracker progressTracker = new ProgressTracker(downloadStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
             do
             {
@@ -261,12 +254,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 return parameters.Name;
             }
-            /*
-            else if (!string.IsNullOrEmpty(parameters.TemplateFile))
-            {
-                return Path.GetFileNameWithoutExtension(parameters.TemplateFile);
-            }
-            */
             else
             {
                 return Guid.NewGuid().ToString();
@@ -275,8 +262,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         private void BeginDeployment(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
         {
             bool threadCompleted = false;
+            var progressBarTimeSpan = 65;
             Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
-            var creationStatus = new ProgressStatus(0, 70);
+            var creationStatus = new ProgressStatus(0, progressBarTimeSpan);
             var actionName = "Starting creating KeyVault...";
             Action onComplete = () =>
             {
@@ -311,7 +299,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         private void RunDeploymentValidation(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
         {
             TemplateValidationInfo validationResult = null;
-            var downloadStatus = new ProgressStatus(0, 60);
+            var progressBarTimeSpan = 50;
+            var downloadStatus = new ProgressStatus(0, progressBarTimeSpan);
             var actionName = "Validating KeyVault";
             Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
             bool threadCompleted = false;
@@ -333,7 +322,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     }
                 });
             validationThread.Start();
-            // validationResult = this.GetTemplateValidationResult(parameters, deployment);
             ProgressTracker progressTracker = new ProgressTracker(downloadStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
             while (!threadCompleted)
             {
