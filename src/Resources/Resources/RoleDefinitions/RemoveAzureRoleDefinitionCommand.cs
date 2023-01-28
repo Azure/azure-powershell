@@ -99,17 +99,15 @@ namespace Microsoft.Azure.Commands.Resources
 
             AuthorizationClient.ValidateScope(options.Scope, true);
 
-            if (!string.IsNullOrEmpty(Name))
-            {
-                string roleDefinitionId = PoliciesClient.GetSingleRoleDefinitionByName(Name, options.Scope).Id;
-                Id = new Guid(roleDefinitionId);
-            }
+            string targetRoleDefinitionId = !string.IsNullOrEmpty(Name)
+                ? PoliciesClient.GetSingleRoleDefinitionByName(Name, options.Scope).Id
+                : Id.ToString();
 
             ConfirmAction(
                 Force.IsPresent,
                 confirmMessage,
                 processMessage,
-                Id.ToString(),
+                targetRoleDefinitionId,
                 () =>
                 {
                     roleDefinition = PoliciesClient.RemoveRoleDefinition(options);
