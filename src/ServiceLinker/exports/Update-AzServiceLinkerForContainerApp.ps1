@@ -44,7 +44,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
 TARGETSERVICE <ITargetServiceBase>: The target service properties
   Type <TargetServiceType>: The target service type.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/update-azservicelinkerforcontainerapp
+https://learn.microsoft.com/powershell/module/az.servicelinker/update-azservicelinkerforcontainerapp
 #>
 function Update-AzServiceLinkerForContainerApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]

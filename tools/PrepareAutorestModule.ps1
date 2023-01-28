@@ -49,7 +49,7 @@ if ($ModuleSet.Contains($ALL_MODULE))
     $Null = $ModuleSet.Remove($ALL_MODULE)
     $CIConfig = Get-Content "$PSScriptRoot\..\.ci-config.json" | ConvertFrom-Json
     $SelectedModuleList = (Get-ChildItem "$PSScriptRoot\..\src\").Name | Where-Object { $CIConfig.selectModuleList -contains $_ }
-    $Null = $ModuleSet.Add($SelectedModuleList)
+    $SelectedModuleList | ForEach-Object { $Null = $ModuleSet.Add($_) }
     $ModuleList = $ModuleSet | Where-Object { $SKIP_MODULES -notcontains $_ }
 }
 else

@@ -39,7 +39,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsan
+https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsan
 #>
 function Remove-AzElasticSan {
 [OutputType([System.Boolean])]

@@ -1,5 +1,7 @@
 ﻿$assemblyRootPath = [System.IO.Path]::Combine($PSScriptRoot, "..", "lib")
-$conditionalAssemblyContext = [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyContext]::new($Host.Version)
+Write-Debug "Initializing ConditionalAssemblyContext. PSEdition is [$($PSVersionTable.PSEdition)]. PSVersion is [$($PSVersionTable.PSVersion)]."
+$conditionalAssemblyContext = [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyContext]::new($PSVersionTable.PSEdition, $PSVersionTable.PSVersion)
+Write-Debug "Initializing ConditionalAssemblyProvider. AssemblyRootPath is [$assemblyRootPath]."
 [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyProvider]::Initialize($assemblyRootPath, $conditionalAssemblyContext)
 
 if ($PSEdition -eq 'Desktop') {

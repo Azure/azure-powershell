@@ -25,7 +25,7 @@ New-AzServiceLinkerUserAssignedIdentityAuthInfoObject -ClientId 00000000-0000-00
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.UserAssignedIdentityAuthInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkeruserassignedidentityauthinfoobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkeruserassignedidentityauthinfoobject
 #>
 function New-AzServiceLinkerUserAssignedIdentityAuthInfoObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.UserAssignedIdentityAuthInfo])]

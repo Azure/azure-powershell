@@ -19,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.Mocks
 {
     internal class MockConditionalAssemblyContext : IConditionalAssemblyContext
     {
+        public string PSEdition { get; set; }
         public Version PSVersion { get; set; }
         public Architecture OSArchitecture { get; set; }
         public OSPlatform OS { get; set; }
