@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added an optional parameter `HAReplicaCount` to `Restore-AzSqlDatabase`
-* Fixed 'Set-AzSqlServerAudit' missing WorkSpaceId parameter
+* Fixed WorkspaceResourceId parameter value in `Set-AzSqlServerAudit`
 
 ## Version 4.2.0
 * Added a parameter named `UseIdentity` for `Set-AzSqlServerAudit`, `Set-AzSqlDatabaseAudit`, `Set-AzSqlServerMSSupportAudit`
