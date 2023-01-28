@@ -27,7 +27,7 @@ Get-AzDataMigrationToSqlVM -InputObject $vmMigration
 .Outputs
 System.Boolean
 .Link
-https://learn.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlvm
+https://docs.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlvm
 #>
 function Stop-AzDataMigrationToSqlVM {
 [OutputType([System.Boolean])]

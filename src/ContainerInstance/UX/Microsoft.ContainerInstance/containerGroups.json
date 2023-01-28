@@ -35,10 +35,6 @@
                   {
                      "name":"-ResourceGroupName",
                      "value":"[path.resourceGroupName]"
-                  },
-                  {
-                     "name":"-Name",
-                     "value":"[path.containerGroupName]"
                   }
                ]
             }

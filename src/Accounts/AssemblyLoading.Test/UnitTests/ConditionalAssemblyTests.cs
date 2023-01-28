@@ -37,10 +37,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
         {
             // windows powershell
             var context = new MockConditionalAssemblyContext()
-            {
-                PSEdition = Constants.PSEditionDesktop,
-                PSVersion = Version.Parse("5.1.22621.608")
-            };
+            { PSVersion = Version.Parse("5.1.22621.608") };
             var windowsPSAssembly = NewDummyAssembly(context).WithWindowsPowerShell();
             var psCoreAssembly = NewDummyAssembly(context).WithPowerShellCore();
             var neturalAssembly = NewDummyAssembly(context);
@@ -49,7 +46,6 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
             Assert.True(neturalAssembly.ShouldLoad);
 
             // powershell core and 7+
-            context.PSEdition = Constants.PSEditionCore;
             context.PSVersion = Version.Parse("7.3.0");
             windowsPSAssembly = NewDummyAssembly(context).WithWindowsPowerShell();
             psCoreAssembly = NewDummyAssembly(context).WithPowerShellCore();

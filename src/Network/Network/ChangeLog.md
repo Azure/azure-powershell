@@ -19,7 +19,6 @@
 --->
 
 ## Upcoming Release
-* Fixed a bug that does not enable to set Perform SNAT to Always
 * Fixed the incorrect type of `-TotalBytesPerSession` in `New-AzNetworkWatcherPacketCapture`
 
 ## Version 5.3.0

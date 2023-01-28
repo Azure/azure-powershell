@@ -59,7 +59,7 @@ SOURCE <IUserSourceInfo>: Uploaded source information of the deployment.
   Type <String>: Type of the source uploaded
   [Version <String>]: Version of the source
 .Link
-https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudappdeployment
+https://docs.microsoft.com/powershell/module/az.springcloud/update-azspringcloudappdeployment
 #>
 function Update-AzSpringCloudAppDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IDeploymentResource])]

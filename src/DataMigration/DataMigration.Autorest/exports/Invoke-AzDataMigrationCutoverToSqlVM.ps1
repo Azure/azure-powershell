@@ -27,7 +27,7 @@ Get-AzDataMigrationToSqlVM -InputObject $vmMigration
 .Outputs
 System.Boolean
 .Link
-https://learn.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlvm
+https://docs.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlvm
 #>
 function Invoke-AzDataMigrationCutoverToSqlVM {
 [OutputType([System.Boolean])]

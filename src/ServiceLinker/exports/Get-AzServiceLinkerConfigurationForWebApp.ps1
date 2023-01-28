@@ -25,7 +25,7 @@ Get-AzServiceLinkerConfigurationForWebApp -WebApp servicelinker-webapp -Resource
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforwebapp
+https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforwebapp
 #>
 function Get-AzServiceLinkerConfigurationForWebApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration])]

@@ -25,7 +25,7 @@ Get-AzSpringCloudSku
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceSku
 .Link
-https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudsku
+https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudsku
 #>
 function Get-AzSpringCloudSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceSku])]

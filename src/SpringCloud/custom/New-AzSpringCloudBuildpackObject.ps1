@@ -23,7 +23,7 @@ Create an in-memory object for BuildpackProperties.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildpackProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpackObject
+https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpackObject
 #>
 function New-AzSpringCloudBuildpackObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildpackProperties')]

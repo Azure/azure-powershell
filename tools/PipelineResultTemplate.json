@@ -1,42 +1,42 @@
 {
     "build": {
-        "PhaseName": "Build",
+        "Name": "Build",
         "Order": 1,
         "Details": [
         ]
     },
     "breaking-change": {
-        "PhaseName": "Breaking Change Check",
+        "Name": "Breaking Change Check",
         "Order": 2,
         "Details": [
         ]
     },
     "signature": {
-        "PhaseName": "Signature Check",
+        "Name": "Signature Check",
         "Order": 3,
         "Details": [
         ]
     },
     "help-example": {
-        "PhaseName": "Help Example Check",
+        "Name": "Help Example Check",
         "Order": 4,
         "Details": [
         ]
     },
     "help": {
-        "PhaseName": "Help File Existence Check",
+        "Name": "Help File Existence Check",
         "Order": 5,
         "Details": [
         ]
     },
     "file-change": {
-        "PhaseName": "File Change Check",
+        "Name": "File Change Check",
         "Order": 6,
         "Details": [
         ]
     },
     "test": {
-        "PhaseName": "Test",
+        "Name": "Test",
         "Order": 100,
         "Details": [
         ]

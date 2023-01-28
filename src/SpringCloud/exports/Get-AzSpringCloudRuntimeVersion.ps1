@@ -25,7 +25,7 @@ Get-AzSpringCloudRuntimeVersion
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ISupportedRuntimeVersion
 .Link
-https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudruntimeversion
+https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudruntimeversion
 #>
 function Get-AzSpringCloudRuntimeVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ISupportedRuntimeVersion])]
