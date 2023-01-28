@@ -255,7 +255,15 @@ If ($StaticAnalysisBreakingChange)
     If ("" -Ne $BreakingChangeCheckModuleList)
     {
         Write-Host "Running static analysis for breaking change..."
-        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+        try
+        {
+            dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+        }
+        catch
+        {
+            Write-Warning "======================"
+            throw
+        }
     }
     Return
 }

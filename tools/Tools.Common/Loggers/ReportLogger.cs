@@ -82,7 +82,7 @@ namespace Tools.Common.Loggers
                 var records = File.ReadAllLines(exceptionsFileName);
                 for (int i = 1; i < records.Length; ++i)
                 {
-                    string recordContent = records[i];
+                    string recordContent = records[i].Trim();
                     //if (recordContent == "")
                     //{
                     //    continue;
