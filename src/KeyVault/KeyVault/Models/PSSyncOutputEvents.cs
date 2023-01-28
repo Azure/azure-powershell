@@ -28,13 +28,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
 
-        private void LogProgress(int activityId, string activity, double precentComplete, TimeSpan remainingTime, double avgThroughputMbps)
+        private void LogProgress(int activityId, string activity, double precentComplete, TimeSpan remainingTime)
         {
             
             var message = string.Format("Logging Progress",
                                         precentComplete,
-                                        FormatDuration(remainingTime),
-                                        avgThroughputMbps);
+                                        FormatDuration(remainingTime));
             
             ProgressRecord progressRecord = new ProgressRecord(activityId, activity, message);
             progressRecord.SecondsRemaining = (int)remainingTime.TotalSeconds;
@@ -65,15 +64,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             cmdlet.WriteError(errorRecord);
         }
 
-
-        public void ProgressOperationStatus(Progress.ProgressRecord record)
+        public void ProgressOperationStatus(Progress.ProgressRecord record, string actionName)
         {
-            ProgressOperationStatus(record.PercentComplete, record.AvgThroughputMbPerSecond, record.RemainingTime);
+            ProgressOperationStatus(record.PercentComplete, record.RemainingTime, actionName);
         }
 
-        public void ProgressOperationStatus(double percentComplete, double avgThroughputMbps, TimeSpan remainingTime)
+        public void ProgressOperationStatus(double percentComplete, TimeSpan remainingTime, string actionName)
         {
-            LogProgress(1, "Creating KeyVaults", percentComplete, remainingTime, avgThroughputMbps);
+            LogProgress(1, actionName, percentComplete, remainingTime);
         }
 
         public void ProgressOperationComplete(TimeSpan elapsed)

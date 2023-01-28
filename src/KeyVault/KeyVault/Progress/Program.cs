@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
 
     public interface ISyncOutputEvents
     {
-        void ProgressOperationStatus(ProgressRecord record);
-        void ProgressOperationStatus(double percentComplete, double avgThroughputMbps, TimeSpan remainingTime);
+        void ProgressOperationStatus(ProgressRecord record, string actionName);
+        void ProgressOperationStatus(double percentComplete, TimeSpan remainingTime, string actionName);
         void ProgressOperationComplete(TimeSpan elapsed);
 
         void MessageCalculatingMD5Hash(string filePath);

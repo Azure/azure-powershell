@@ -20,18 +20,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
     public class ProgressTracker : IDisposable
     {
         private readonly ProgressStatus progressStatus;
-        private readonly Action<ProgressRecord> progressAction;
+        private readonly Action<ProgressRecord, string> progressAction;
         private readonly Action<TimeSpan> completionAction;
         public int speed;
         private Stopwatch stopWatch;
         private bool isDisposed;
 
-        public ProgressTracker(ProgressStatus progressStatus) :
-            this(progressStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete)
-        {
-        }
-
-        public ProgressTracker(ProgressStatus progressStatus, Action<ProgressRecord> progressAction, Action<TimeSpan> completionAction, int speed = 5)
+        public ProgressTracker(ProgressStatus progressStatus, Action<ProgressRecord, string> progressAction, Action<TimeSpan> completionAction, int speed = 5)
         {
             this.progressStatus = progressStatus;
             this.progressAction = progressAction;
@@ -40,13 +35,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
             this.stopWatch = Stopwatch.StartNew();
         }
 
-        public void Update()
+        public void Update(string actionName)
         {
             ProgressRecord progressRecord;
             progressStatus.AddToProcessedBytes(speed);
             if (progressStatus.TryGetProgressRecord(out progressRecord))
             {
-                this.progressAction(progressRecord);
+                this.progressAction(progressRecord, actionName);
             }
         }
 

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
     public class ProgressRecord
     {
         public double PercentComplete { get; set; }
-        public double AvgThroughputMbPerSecond { get; set; }
+        //public double AvgThroughputMbPerSecond { get; set; }
         public TimeSpan RemainingTime { get; set; }
     }
 }

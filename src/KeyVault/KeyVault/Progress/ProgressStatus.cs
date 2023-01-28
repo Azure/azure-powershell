@@ -18,19 +18,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
 {
     public class ProgressStatus
     {
-        const double MB = 1024.0 * 1024.0;
         readonly object thisLock = new object();
 
-        public ProgressStatus(long alreadyProcessedBytes, long totalLength) : this(alreadyProcessedBytes, totalLength, new ComputeStats())
-        {
-        }
-
-        public ProgressStatus(long alreadyProcessedBytes, long totalLength, ComputeStats computeStats)
+        public ProgressStatus(long alreadyProcessedBytes, long totalLength) //, ComputeStats computeStats
         {
             this.PreExistingBytes = alreadyProcessedBytes;
             this.BytesProcessed = alreadyProcessedBytes;
             this.TotalLength = totalLength;
-            this.ThrougputStats = computeStats;
+            // this.ThrougputStats = computeStats;
             this.StartTime = DateTime.UtcNow;
         }
 
@@ -38,7 +33,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
         internal long BytesProcessed { get; private set; }
         long TotalLength { get; set; }
         DateTime StartTime { get; set; }
-        ComputeStats ThrougputStats { get; set; }
+        //ComputeStats ThrougputStats { get; set; }
 
         public bool TryGetProgressRecord(out ProgressRecord record)
         {
@@ -69,26 +64,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
 
         ProgressRecord Progress()
         {
-            double computeAvg = ThrougputStats.ComputeAvg(ThroughputMBs());
-            double avtThroughputMbps = 8.0 * computeAvg;
-            double remainingSeconds = (RemainingMB() / computeAvg);
+            //double computeAvg = ThrougputStats.ComputeAvg(ThroughputMBs());
+            //double avtThroughputMbps = 8.0 * computeAvg;
+            double remainingSeconds = ( 1 - PercentComplete() / 100 ) * TotalLength / 9;
             var pr = new ProgressRecord
             {
                 PercentComplete = PercentComplete(),
-                AvgThroughputMbPerSecond = avtThroughputMbps,
+                //AvgThroughputMbPerSecond = avtThroughputMbps,
                 RemainingTime = TimeSpan.FromSeconds(remainingSeconds)
             };
             return pr;
-        }
-
-        double RemainingMB()
-        {
-            return (this.TotalLength - this.BytesProcessed) / MB;
-        }
-
-        double ThroughputMBs()
-        {
-            return (this.BytesProcessed - this.PreExistingBytes) / MB / ProcessTime().TotalSeconds;
         }
 
         TimeSpan ProcessTime()
