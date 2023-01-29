@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorsku
+online version: https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorsku
 schema: 2.0.0
 ---
 

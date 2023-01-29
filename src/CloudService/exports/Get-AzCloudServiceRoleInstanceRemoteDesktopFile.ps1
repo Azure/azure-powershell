@@ -25,7 +25,7 @@ Get-AzCloudServiceRoleInstanceRemoteDesktopFile -ResourceGroupName "ContosOrg" -
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceremotedesktopfile
+https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceremotedesktopfile
 #>
 function Get-AzCloudServiceRoleInstanceRemoteDesktopFile {
 [OutputType([System.Boolean])]
