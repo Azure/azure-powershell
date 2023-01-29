@@ -57,9 +57,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with public IP address" -D
     Assert-AreEqual "Succeeded" $nicList[0].ProvisioningState
     Assert-AreEqual $actualNic.Etag $nicList[0].Etag
 
-    $job = Remove-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -PassThru -Force -AsJob
-    $job | Wait-Job
-    $deleteResult = $job | Receive-Job
+    $deleteResult = Remove-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -PassThru -Force
     Assert-AreEqual true $deleteResult
 
     $nicList = Get-AzNetworkInterface -ResourceGroupName $rgName
@@ -235,4 +233,42 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with accelerated networkin
 
     $nicList = Get-AzNetworkInterface -ResourceGroupName $rgname
     Assert-AreEqual 0 @($nicList).Count
+}
+
+Invoke-LiveTestScenario -Name "Network private link service" -Description "Test CRUD for network private link service" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "westus"
+    $vnetName = New-LiveTestResourceName
+    $feSnetName = New-LiveTestResourceName
+    $beSnetName = New-LiveTestResourceName
+    $oSnetName = New-LiveTestResourceName
+    $lbIpCfgName = New-LiveTestResourceName
+    $lbPoolCfgName = New-LiveTestResourceName
+    $lbName = New-LiveTestResourceName
+    $plsIpCfgName = New-LiveTestResourceName
+    $plsName = New-LiveTestResourceName
+
+    $feSubnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix 10.0.1.0/24
+    $beSubnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix 10.0.2.0/24
+    $oSubnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix 10.0.3.0/24 -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $feSubnet,$beSubnet,$oSubnet
+
+    $lbIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $lbIpCfgName -PrivateIpAddress 10.0.1.5 -Subnet $vnet.Subnets[0]
+    $lbPoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $lbPoolCfgName
+    $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgName -Location $location -FrontendIpConfiguration $lbIpCfg -BackendAddressPool $lbPoolCfg -Sku Standard
+
+    $plsIpCfg = New-AzPrivateLinkServiceIpConfig -Name $plsIpCfgName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.Subnets[2]
+
+    $actualPls = New-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName -Location $location -LoadBalancerFrontendIpConfiguration $lbIpCfg -IpConfiguration $plsIpCfg
+
+    Assert-AreEqual $actualPls.Name $plsName
+    Assert-AreEqual $actualPls.ResourceGroupName $rgName
+    Assert-AreEqual $actualPls.Location $location
+
+    Remove-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName -Force
+    $actualPls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName -ErrorAction SilentlyContinue
+    Assert-Null $actualPls
 }

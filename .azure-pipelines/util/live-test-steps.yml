@@ -6,6 +6,7 @@ parameters:
 
 jobs:
 - job: ${{ parameters.name }}
+  timeoutInMinutes: 180
   pool:
     vmImage: ${{ parameters.vmImage }}
 
@@ -84,6 +85,8 @@ jobs:
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
       arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/ConnectLiveTestServicePrincipal.ps1 $(LiveTestServicePrincipalSubscriptionId) $(LiveTestServicePrincipalTenantId) $(LiveTestServicePrincipalId) $(LiveTestServicePrincipalSecret)'
+    failOnStderr: true
+    retryCountOnTaskFailure: 3
 
   - task: PowerShell@2
     displayName: Run top E2E live scenarios
@@ -96,12 +99,13 @@ jobs:
   - task: PowerShell@2
     displayName: Save live test results to Kusto
     condition: succeededOrFailed()
-    retryCountOnTaskFailure: 3
     inputs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/SaveLiveTestResult.ps1
       arguments: $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion) $(LiveTestDatabaseName) $(LiveTestTableName) $(TestCoverageTableName) $(DataLocation)
+    failOnStderr: true
+    retryCountOnTaskFailure: 3
 
   - task: PublishPipelineArtifact@1
     displayName: Publish live test results to pipeline artifact

@@ -52,6 +52,7 @@ schedules:
   branches:
     include:
     - shared/livetest
+  always: true
 
 pr: none
 trigger: none
