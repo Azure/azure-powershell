@@ -85,7 +85,7 @@ jobs:
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
       arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/ConnectLiveTestServicePrincipal.ps1 $(LiveTestServicePrincipalSubscriptionId) $(LiveTestServicePrincipalTenantId) $(LiveTestServicePrincipalId) $(LiveTestServicePrincipalSecret)'
-    failOnStderr: true
+      failOnStderr: true
     retryCountOnTaskFailure: 3
 
   - task: PowerShell@2
@@ -104,7 +104,7 @@ jobs:
       targetType: filePath
       filePath: ./tools/TestFx/Live/SaveLiveTestResult.ps1
       arguments: $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion) $(LiveTestDatabaseName) $(LiveTestTableName) $(TestCoverageTableName) $(DataLocation)
-    failOnStderr: true
+      failOnStderr: true
     retryCountOnTaskFailure: 3
 
   - task: PublishPipelineArtifact@1
