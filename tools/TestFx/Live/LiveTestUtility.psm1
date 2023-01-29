@@ -33,9 +33,9 @@ param (
     [string] $DataLocation
 )
 
-New-Variable -Name ResourceGroupPrefix -Value "azpsliverg" -Scope Script -Option Constant
-New-Variable -Name ResourcePrefix -Value "azpslive" -Scope Script -Option Constant
-New-Variable -Name StorageAccountPrefix -Value "azpslivesa" -Scope Script -Option Constant
+New-Variable -Name ResourceGroupPrefix -Value "azpslrg" -Scope Script -Option Constant
+New-Variable -Name ResourcePrefix -Value "azpsl" -Scope Script -Option Constant
+New-Variable -Name StorageAccountPrefix -Value "azpslsa" -Scope Script -Option Constant
 
 New-Variable -Name CommandMaxRetryCount -Value 3 -Scope Script -Option Constant
 New-Variable -Name CommandDelay -Value 10 -Scope Script -Option Constant
