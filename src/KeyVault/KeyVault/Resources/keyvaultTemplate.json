@@ -62,7 +62,7 @@
     },
     "softDeleteRetentionInDays": {
       "type": "int",
-      "defaultValue": 7,
+      "defaultValue": 90,
       "minValue": 7,
       "maxValue": 90,
       "metadata": {

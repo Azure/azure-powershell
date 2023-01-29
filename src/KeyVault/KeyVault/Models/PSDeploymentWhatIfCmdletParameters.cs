@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public IEnumerable<ChangeType> ExcludeChangeTypes { get; }
 
-        public DeploymentWhatIf ToDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, VaultCreationOrUpdateParameters kvparameters)
+        public DeploymentWhatIf ToDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, VaultCreationOrUpdateParameters kvparameters, PSKeyVaultNetworkRuleSet networkRuleSet = null)
         {
             var properties = new DeploymentWhatIfProperties
             {
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (kvparameters.EnabledForDeployment is true)
                 jsonInfo["resources"][0]["properties"]["enabledForDeployment"] = kvparameters.EnabledForDeployment;
             jsonInfo["resources"][0]["properties"]["publicNetworkAccess"] = kvparameters.PublicNetworkAccess;
-            /*
+            
             if (networkRuleSet != null)
             {
                 jsonInfo["resources"][0]["properties"]["networkAcls"]["bypass"] = networkRuleSet.Bypass.ToString();
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     jsonInfo["parameters"]["virtualNetworkRules"]["defaultValue"] = virtualNetworkIds;
                 }
             }
-            */
+            
 
 
             properties.Template = jsonInfo;

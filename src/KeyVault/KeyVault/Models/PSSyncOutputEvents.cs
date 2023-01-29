@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         private void LogProgress(int activityId, string activity, double precentComplete, TimeSpan remainingTime)
         {
             
-            var message = string.Format("Logging Progress",
+            var message = string.Format(activity,
                                         precentComplete,
                                         FormatDuration(remainingTime));
             
-            ProgressRecord progressRecord = new ProgressRecord(activityId, activity, message);
+            ProgressRecord progressRecord = new ProgressRecord(activityId, "In Progress", message);
             progressRecord.SecondsRemaining = (int)remainingTime.TotalSeconds;
             progressRecord.PercentComplete = (int)precentComplete < 100 ? (int)precentComplete : 100;
 

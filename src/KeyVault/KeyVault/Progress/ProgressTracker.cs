@@ -17,14 +17,13 @@ using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Progress
 {
-    public class ProgressTracker : IDisposable
+    public class ProgressTracker
     {
         private readonly ProgressStatus progressStatus;
         private readonly Action<ProgressRecord, string> progressAction;
         private readonly Action<TimeSpan> completionAction;
         public int speed;
         private Stopwatch stopWatch;
-        private bool isDisposed;
 
         public ProgressTracker(ProgressStatus progressStatus, Action<ProgressRecord, string> progressAction, Action<TimeSpan> completionAction, int speed = 5)
         {
@@ -42,30 +41,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
             if (progressStatus.TryGetProgressRecord(out progressRecord))
             {
                 this.progressAction(progressRecord, actionName);
-            }
-        }
-
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!isDisposed)
-            {
-                if (disposing)
-                {
-                    stopWatch.Stop();
-                    if (stopWatch.Elapsed != TimeSpan.Zero)
-                    {
-                        this.completionAction(stopWatch.Elapsed);
-                    }
-
-                    this.isDisposed = true;
-                }
             }
         }
     }

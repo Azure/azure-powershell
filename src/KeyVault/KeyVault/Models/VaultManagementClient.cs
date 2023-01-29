@@ -531,11 +531,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="parameters"></param>
         /// <param name="kvParameters"></param>
+        /// <param name="networkRuleSet"></param>
         /// <returns></returns>
-        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, VaultCreationOrUpdateParameters kvParameters)
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, VaultCreationOrUpdateParameters kvParameters, PSKeyVaultNetworkRuleSet networkRuleSet = null)
         {
             IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
-            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf(parameters, kvParameters);
+            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf(parameters, kvParameters, networkRuleSet);
             ScopedDeploymentWhatIf scopedDeploymentWhatIf = new ScopedDeploymentWhatIf(deploymentWhatIf.Location, deploymentWhatIf.Properties);
 
             try
@@ -543,7 +544,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 WhatIfOperationResult whatIfOperationResult = null;
                 whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf.Properties);
 
-                if (parameters.ExcludeChangeTypes != null)
+               if (parameters.ExcludeChangeTypes != null)
                 {
                     whatIfOperationResult.Changes = whatIfOperationResult.Changes
                         .Where(change => parameters.ExcludeChangeTypes.All(changeType => changeType != change.ChangeType))
