@@ -274,7 +274,7 @@ function Bump-AzVersion
     {
         $moduleMetadata = $(Get-ModuleMetadata -Module $updatedModule -RootPath $rootPath)
         $moduleReleaseNotes = $moduleMetadata.PrivateData.PSData.ReleaseNotes
-        $releaseNotes += $updatedModule
+        $releaseNotes += "$updatedModule $($moduleMetadata.ModuleVersion)"
         $releaseNotes += $moduleReleaseNotes + "`n"
 
         $changeLog += "#### $updatedModule $($moduleMetadata.ModuleVersion)"
