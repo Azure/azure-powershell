@@ -4,6 +4,7 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
 
     $rgName = $rg.ResourceGroupName
     $name = New-LiveTestResourceName
+    $NICName = New-LiveTestResourceName
 
     ## VM Account
     # Credentials for Local Admin account you created in the sysprepped (generalized) vhd image
@@ -13,11 +14,14 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
     $LocationName = "westus"
     # This a Premium_LRS storage account.
     # It is required in order to run a client VM with efficiency and high performance.
-    $StorageAccount = "Mydisk"
+    # $StorageAccount = "Mydisk"
+    $StorageAccount = New-LiveTestResourceName
 
     ## VM
-    $OSDiskName = "MyClient"
-    $ComputerName = "MyClientVM"
+    # $OSDiskName = "MyClient"
+    # $ComputerName = "MyClientVM"
+    $OSDiskName = New-LiveTestResourceName
+    $ComputerName = New-LiveTestResourceName
     ##$OSDiskUri = "https://Mydisk.blob.core.windows.net/disks/MyOSDisk.vhd"
     ##$SourceImageUri = "https://Mydisk.blob.core.windows.net/vhds/MyOSImage.vhd"
 
@@ -28,11 +32,17 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
     $OSCreateOption = "FromImage"
 
     ## Networking
-    $DNSNameLabel = "mydnsname" # mydnsname.westus.cloudapp.azure.com
-    $NetworkName = "MyNet"
-    $NICName = "MyNIC"
-    $PublicIPAddressName = "MyPIP"
-    $SubnetName = "MySubnet"
+    # $DNSNameLabel = "mydnsname" # mydnsname.westus.cloudapp.azure.com
+    # $NetworkName = "MyNet"
+    # $NICName = "MyNIC"
+    # $PublicIPAddressName = "MyPIP"
+    # $SubnetName = "MySubnet"
+
+    $DNSNameLabel = New-LiveTestResourceName
+    $NetworkName = New-LiveTestResourceName
+    $NICName = New-LiveTestResourceName
+    $PublicIPAddressName = New-LiveTestResourceName
+    $SubnetName = New-LiveTestResourceName
     $SubnetAddressPrefix = "10.0.0.0/24"
     $VnetAddressPrefix = "10.0.0.0/16"
 
@@ -52,8 +62,8 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
     $actual =  New-AzVM -ResourceGroupName $rgName -Location $LocationName -VM $VirtualMachine -Verbose
 
     Assert-AreEqual $name $actual.Name
-    Assert-AreEqual "MyNIC" $actual.NICName
-    Assert-AreEqual "MySubnet" $actual.NICName
+    Assert-AreEqual $NICName $actual.NICName
+    Assert-AreEqual $SubnetName $actual.NICName
 }
 
 Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Description "Test removes a virtual machine from Azure."  -ScenarioScript `
@@ -70,11 +80,14 @@ Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Descriptio
     $LocationName = "westus"
     # This a Premium_LRS storage account.
     # It is required in order to run a client VM with efficiency and high performance.
-    $StorageAccount = "Mydisk"
+    # $StorageAccount = "Mydisk"
+    $StorageAccount = New-LiveTestResourceName
 
     ## VM
-    $OSDiskName = "MyClient"
-    $ComputerName = "MyClientVM"
+    # $OSDiskName = "MyClient"
+    # $ComputerName = "MyClientVM"
+    $OSDiskName = New-LiveTestResourceName
+    $ComputerName = New-LiveTestResourceName
     ##$OSDiskUri = "https://Mydisk.blob.core.windows.net/disks/MyOSDisk.vhd"
     ##$SourceImageUri = "https://Mydisk.blob.core.windows.net/vhds/MyOSImage.vhd"
 
@@ -85,11 +98,17 @@ Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Descriptio
     $OSCreateOption = "FromImage"
 
     ## Networking
-    $DNSNameLabel = "mydnsname" # mydnsname.westus.cloudapp.azure.com
-    $NetworkName = "MyNet"
-    $NICName = "MyNIC"
-    $PublicIPAddressName = "MyPIP"
-    $SubnetName = "MySubnet"
+    # $DNSNameLabel = "mydnsname" # mydnsname.westus.cloudapp.azure.com
+    # $NetworkName = "MyNet"
+    # $NICName = "MyNIC"
+    # $PublicIPAddressName = "MyPIP"
+    # $SubnetName = "MySubnet"
+
+    $DNSNameLabel = New-LiveTestResourceName 
+    $NetworkName = New-LiveTestResourceName
+    $NICName = New-LiveTestResourceName
+    $PublicIPAddressName = New-LiveTestResourceName
+    $SubnetName = New-LiveTestResourceName
     $SubnetAddressPrefix = "10.0.0.0/24"
     $VnetAddressPrefix = "10.0.0.0/16"
 
