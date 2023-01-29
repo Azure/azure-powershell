@@ -235,35 +235,37 @@ If ($StaticAnalysis)
         $Parameters["TargetModule"] = $TargetModule
     }
     $FailedTasks = @()
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters
+    $ErrorLogPath = "$StaticAnalysisOutputDirectory/error.log"
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters 2>$ErrorLogPath
     If ($LASTEXITCODE -ne 0)
     {
         $FailedTasks += "BreakingChange"
     }
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisDependency @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisDependency @Parameters 2>>$ErrorLogPath
     If ($LASTEXITCODE -ne 0)
     {
         $FailedTasks += "Dependency"
     }
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisSignature @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisSignature @Parameters 2>>$ErrorLogPath
     If ($LASTEXITCODE -ne 0)
     {
         $FailedTasks += "Signature"
     }
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters 2>>$ErrorLogPath
     If ($LASTEXITCODE -ne 0)
     {
         $FailedTasks += "Help"
     }
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters 2>>$ErrorLogPath
     If ($LASTEXITCODE -ne 0)
     {
         $FailedTasks += "UXMetadata"
     }
     If ($FailedTasks.Length -ne 0)
     {
-        Write-Error "There are failed tasks: $FailedTasks"
-        Return 1
+        Write-Host "There are failed tasks: $FailedTasks"
+        $ErrorLog = Get-Content -Path $ErrorLogPath | Join-String -Separator "`n"
+        Write-Error $ErrorLog
     }
     Return
 }
