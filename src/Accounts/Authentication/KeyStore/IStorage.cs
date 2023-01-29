@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     public interface IStorage
     {
         IStorage Create();
-       
+
         void Clear();
 
         byte[] ReadData();
@@ -26,12 +26,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         void VerifyPersistence();
 
         void WriteData(byte[] data);
-
-        Exception GetLastError();
-
-        bool IsProtected
-        {
-            get;
-        }
     }
 }

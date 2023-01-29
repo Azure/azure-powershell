@@ -11,19 +11,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public abstract class IKeyStoreKey
+    public interface IStorageHelper
     {
-        protected abstract string CreateKey();
+        void Clear();
 
-        public override abstract string ToString();
+        byte[] LoadUnencryptedTokenCache();
 
-        public override abstract bool Equals(object obj);
+        void SaveUnencryptedTokenCache(byte[] tokenCache);
 
-        public override abstract int GetHashCode();
+        void LoadFromCachedStorage(IKeyStore keystore);
 
-        public abstract bool BeEquivalent(object obj);
+        void WriteToCachedStorage(KeyStoreNotificationArgs args);
+
+        bool IsProtected
+        {
+            get;
+        }
     }
 }

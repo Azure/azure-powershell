@@ -14,16 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public abstract class IKeyStoreKey
+    public class KeyStoreNotificationArgs
     {
-        protected abstract string CreateKey();
-
-        public override abstract string ToString();
-
-        public override abstract bool Equals(object obj);
-
-        public override abstract int GetHashCode();
-
-        public abstract bool BeEquivalent(object obj);
+        public IKeyStore KeyStore;
     }
+
+    public delegate void KeyStoreCallbak(KeyStoreNotificationArgs args);
 }

@@ -14,16 +14,21 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public abstract class IKeyStoreKey
+    public interface IKeyStore
     {
-        protected abstract string CreateKey();
+        void SaveKey<T>(IKeyStoreKey key, T value);
 
-        public override abstract string ToString();
+        T GetKey<T>(IKeyStoreKey key);
 
-        public override abstract bool Equals(object obj);
+        bool DeleteKey(IKeyStoreKey key);
 
-        public override abstract int GetHashCode();
+        void Clear();
 
-        public abstract bool BeEquivalent(object obj);
+        void SetBeforeAccess(KeyStoreCallbak beforeAccess);
+
+        void SetOnUpdate(KeyStoreCallbak onUpdate);
+        void Deserialize(byte[] Data, bool shouldClearExistingCache);
+
+        byte[] Serialize();
     }
 }

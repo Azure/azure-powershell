@@ -127,6 +127,24 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
         }
 
         /// <summary>
+        /// Try to reset value and fail if value is locked.
+        /// </summary>
+        /// <returns></returns>
+        public bool TryClearValue()
+        {
+            lock (_syncObj)
+            {
+                if (!_isLocked)
+                {
+                    _value = default(T);
+                    _hasValue = false;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Release the lock and allow next waiter acquire it
         /// </summary>
         private void Reset()
