@@ -6,7 +6,7 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
     $name = New-LiveTestResourceName
 
     $VMLocalAdminUser = New-LiveTestResourceName;
-    $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force;
+    $VMLocalAdminSecurePassword = ConvertTo-SecureString "Aa851015!" -AsPlainText -Force;
     $LocationName = "eastus";
     $domainNameLabel = New-LiveTestResourceName;
     $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
