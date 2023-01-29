@@ -234,11 +234,37 @@ If ($StaticAnalysis)
     {
         $Parameters["TargetModule"] = $TargetModule
     }
+    $FailedTasks = @()
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters
+    If ($LASTEXITCODE -ne 0)
+    {
+        $FailedTasks += "BreakingChange"
+    }
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisDependency @Parameters
+    If ($LASTEXITCODE -ne 0)
+    {
+        $FailedTasks += "Dependency"
+    }
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisSignature @Parameters
+    If ($LASTEXITCODE -ne 0)
+    {
+        $FailedTasks += "Signature"
+    }
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters
+    If ($LASTEXITCODE -ne 0)
+    {
+        $FailedTasks += "Help"
+    }
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters
+    If ($LASTEXITCODE -ne 0)
+    {
+        $FailedTasks += "UXMetadata"
+    }
+    If ($FailedTasks.Length -ne 0)
+    {
+        Write-Error "There are failed tasks: $FailedTasks"
+        Return 1
+    }
     Return
 }
 
@@ -256,6 +282,10 @@ If ($StaticAnalysisBreakingChange)
     {
         Write-Host "Running static analysis for breaking change..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
     }
     Return
 }
@@ -273,6 +303,10 @@ If ($StaticAnalysisDependency)
     {
         Write-Host "Running static analysis for dependency..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
         .($PSScriptRoot + "/CheckAssemblies.ps1") -BuildConfig $Configuration
     }
     Return
@@ -292,6 +326,10 @@ If ($StaticAnalysisSignature)
     {
         Write-Host "Running static analysis for signature..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers signature -u -m $SignatureCheckModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
     }
     Return
 }
@@ -310,6 +348,10 @@ If ($StaticAnalysisHelp)
     {
         Write-Host "Running static analysis for help..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers help -u -m $HelpCheckModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
     }
     Return
 }
@@ -328,6 +370,10 @@ If ($StaticAnalysisUX)
     {
         Write-Host "Running static analysis for UX metadata..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers ux -u -m $UXModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
     }
     Return
 }
