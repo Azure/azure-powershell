@@ -548,7 +548,7 @@ function Test-GalleryImageVersion
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Virtual Machine
