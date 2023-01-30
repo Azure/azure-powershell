@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.Api20210401.IResourceProviderOperationDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.changeanalysis/get-azchangeanalysisoperation
+https://learn.microsoft.com/powershell/module/az.changeanalysis/get-azchangeanalysisoperation
 #>
 function Get-AzChangeAnalysisOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.Api20210401.IResourceProviderOperationDefinition])]

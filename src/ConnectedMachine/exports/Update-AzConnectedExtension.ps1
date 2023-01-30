@@ -50,7 +50,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedextension
 #>
 function Update-AzConnectedExtension {
 [OutputType([System.Boolean])]

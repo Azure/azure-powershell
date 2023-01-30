@@ -26,7 +26,7 @@ $response
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerAttachResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/add-azcontainerinstanceoutput
+https://learn.microsoft.com/powershell/module/az.containerinstance/add-azcontainerinstanceoutput
 #>
 function Add-AzContainerInstanceOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerAttachResponse])]
@@ -218,7 +218,7 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainergroup
 #>
 function Get-AzContainerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup])]
@@ -394,7 +394,7 @@ Get-AzContainerInstanceCachedImage -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICachedImages
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecachedimage
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecachedimage
 #>
 function Get-AzContainerInstanceCachedImage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICachedImages])]
@@ -550,7 +550,7 @@ Get-AzContainerInstanceCapability -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICapabilities
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecapability
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecapability
 #>
 function Get-AzContainerInstanceCapability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICapabilities])]
@@ -722,7 +722,7 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecontainergroupoutboundnetworkdependencyendpoint
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecontainergroupoutboundnetworkdependencyendpoint
 #>
 function Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint {
 [Alias('Get-AzContainerGroupOutboundNetworkDependencyEndpoint')]
@@ -895,7 +895,7 @@ Get-AzContainerInstanceLog -ContainerGroupName test-cg -ContainerName test-conta
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancelog
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancelog
 #>
 function Get-AzContainerInstanceLog {
 [OutputType([System.String])]
@@ -1077,7 +1077,7 @@ Get-AzContainerInstanceUsage -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstanceusage
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstanceusage
 #>
 function Get-AzContainerInstanceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IUsage])]
@@ -1251,7 +1251,7 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/remove-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/remove-azcontainergroup
 #>
 function Remove-AzContainerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup])]
@@ -1458,7 +1458,7 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/restart-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/restart-azcontainergroup
 #>
 function Restart-AzContainerGroup {
 [OutputType([System.Boolean])]
@@ -1665,7 +1665,7 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/start-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/start-azcontainergroup
 #>
 function Start-AzContainerGroup {
 [OutputType([System.Boolean])]
@@ -1872,7 +1872,7 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/stop-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/stop-azcontainergroup
 #>
 function Stop-AzContainerGroup {
 [OutputType([System.Boolean])]
@@ -2067,7 +2067,7 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/update-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/update-azcontainergroup
 #>
 function Update-AzContainerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup])]
@@ -2258,7 +2258,7 @@ Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName tes
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
+https://learn.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
 #>
 function Invoke-AzContainerInstanceCommand {
 [OutputType([System.String])]
@@ -2578,7 +2578,7 @@ VOLUME <IVolume[]>: The list of volumes that can be mounted by containers in thi
   [Secret <ISecretVolume>]: The secret volume.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 #>
 function New-AzContainerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup])]
@@ -2952,7 +2952,7 @@ New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Userna
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ImageRegistryCredential
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupImageRegistryCredentialObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupImageRegistryCredentialObject
 #>
 function New-AzContainerGroupImageRegistryCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ImageRegistryCredential])]
@@ -3068,7 +3068,7 @@ New-AzContainerGroupPortObject -Port 8000 -Protocol TCP
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Port
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupPortObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupPortObject
 #>
 function New-AzContainerGroupPortObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Port])]
@@ -3185,7 +3185,7 @@ EMPTYDIR <IVolumeEmptyDir>: The empty directory volume.
 SECRET <ISecretVolume>: The secret volume.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
 #>
 function New-AzContainerGroupVolumeObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Volume])]
@@ -3344,7 +3344,7 @@ New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (Conv
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.EnvironmentVariable
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
 #>
 function New-AzContainerInstanceEnvironmentVariableObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.EnvironmentVariable])]
@@ -3454,7 +3454,7 @@ New-AzContainerInstanceHttpHeaderObject -name foo -value bar
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.HttpHeader
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceHttpHeaderObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceHttpHeaderObject
 #>
 function New-AzContainerInstanceHttpHeaderObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.HttpHeader])]
@@ -3572,7 +3572,7 @@ VOLUMEMOUNT <IVolumeMount[]>: The volume mounts available to the init container.
   Name <String>: The name of the volume mount.
   [ReadOnly <Boolean?>]: The flag indicating whether the volume mount is read-only.
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
 #>
 function New-AzContainerInstanceInitDefinitionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.InitContainerDefinition])]
@@ -3727,7 +3727,7 @@ VOLUMEMOUNT <IVolumeMount[]>: The volume mounts available to the container insta
   Name <String>: The name of the volume mount.
   [ReadOnly <Boolean?>]: The flag indicating whether the volume mount is read-only.
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
 #>
 function New-AzContainerInstanceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Container])]
@@ -4032,7 +4032,7 @@ New-AzContainerInstancePortObject -Port 8000 -Protocol TCP
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ContainerPort
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstancePortObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstancePortObject
 #>
 function New-AzContainerInstancePortObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ContainerPort])]
@@ -4138,7 +4138,7 @@ New-AzContainerInstanceVolumeMountObject -Name
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.VolumeMount
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceVolumeMountObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceVolumeMountObject
 #>
 function New-AzContainerInstanceVolumeMountObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.VolumeMount])]

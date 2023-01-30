@@ -223,11 +223,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         public Guid? AssignServerIdentityIfNotAssigned(string resourceGroupName, string serverName)
         {
             var server = GetCurrentSqlClient().Servers.Get(resourceGroupName, serverName);
-            if (server.Identity == null ||
-                server.Identity.Type != ResourceIdentityType.SystemAssigned.ToString())
+            if (server.Identity == null)
             {
                 server.Identity = ResourceIdentityHelper.GetIdentityObjectFromType(true, ResourceIdentityType.SystemAssigned.ToString(), null, null);
                 server = GetCurrentSqlClient().Servers.CreateOrUpdate(resourceGroupName, serverName, server);
+            }
+            else if (server.Identity.Type != null && server.Identity.Type.Contains("UserAssigned")) 
+            {
+                return null;
             }
 
             return server.Identity.PrincipalId;

@@ -29,7 +29,7 @@ Name                                                             Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.IEnabledResourceType
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationenabledresourcetype
+https://learn.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationenabledresourcetype
 #>
 function Get-AzCustomLocationEnabledResourceType {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.IEnabledResourceType])]

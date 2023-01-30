@@ -25,7 +25,7 @@ New-AzCdnDeliveryRuleRequestMethodConditionObject -Name RequestMethod -Parameter
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestMethodCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestMethodConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestMethodConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestMethodConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestMethodCondition])]

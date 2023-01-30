@@ -27,7 +27,7 @@ Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -M
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineextension
 #>
 function Get-AzConnectedMachineExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension])]
@@ -207,7 +207,7 @@ Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name winwe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachine
+https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachine
 #>
 function Get-AzConnectedMachine {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachine])]
@@ -383,7 +383,7 @@ Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedprivatelinkscope
+https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedprivatelinkscope
 #>
 function Get-AzConnectedPrivateLinkScope {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope])]
@@ -611,7 +611,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedmachineextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedmachineextension
 #>
 function New-AzConnectedMachineExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension])]
@@ -983,7 +983,7 @@ PARAMETER <IHybridComputePrivateLinkScope>: An Azure Arc PrivateLinkScope defini
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedprivatelinkscope
+https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedprivatelinkscope
 #>
 function New-AzConnectedPrivateLinkScope {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope])]
@@ -1212,7 +1212,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachineextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachineextension
 #>
 function Remove-AzConnectedMachineExtension {
 [OutputType([System.Boolean])]
@@ -1427,7 +1427,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachine
+https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachine
 #>
 function Remove-AzConnectedMachine {
 [OutputType([System.Boolean])]
@@ -1623,7 +1623,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedprivatelinkscope
+https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedprivatelinkscope
 #>
 function Remove-AzConnectedPrivateLinkScope {
 [OutputType([System.Boolean])]
@@ -1851,7 +1851,7 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [TypeHandlerVersion <String>]: Specifies the version of the script handler.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/set-azconnectedmachineextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/set-azconnectedmachineextension
 #>
 function Set-AzConnectedMachineExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension])]
@@ -2176,7 +2176,7 @@ PARAMETER <IHybridComputePrivateLinkScope>: An Azure Arc PrivateLinkScope defini
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/set-azconnectedprivatelinkscope
+https://learn.microsoft.com/powershell/module/az.connectedmachine/set-azconnectedprivatelinkscope
 #>
 function Set-AzConnectedPrivateLinkScope {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope])]
@@ -2393,7 +2393,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedextension
 #>
 function Update-AzConnectedExtension {
 [OutputType([System.Boolean])]
@@ -2666,7 +2666,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachineextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachineextension
 #>
 function Update-AzConnectedMachineExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension])]
@@ -2976,7 +2976,7 @@ PARAMETER <IMachineUpdate>: Describes a hybrid machine Update.
   [WindowsConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes?>]: Specifies the assessment mode.
   [WindowsConfigurationPatchSettingsPatchMode <PatchModeTypes?>]: Specifies the patch mode.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachine
+https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachine
 #>
 function Update-AzConnectedMachine {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachine])]
@@ -3284,7 +3284,7 @@ PRIVATELINKSCOPETAG <ITagsResource>: A container holding only the Tags for a res
   [Tag <ITagsResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedprivatelinkscopetag
+https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedprivatelinkscopetag
 #>
 function Update-AzConnectedPrivateLinkScopeTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope])]
@@ -3478,7 +3478,7 @@ $session = Connect-PSSession -ComputerName WINBOX
 Connect-AzConnectedMachine -ResourceGroupName contoso-rg -Name win_eastus1_1 -Location eastus -PSSession $session
 
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/connect-azconnectedmachine
+https://learn.microsoft.com/powershell/module/az.connectedmachine/connect-azconnectedmachine
 #>
 function Connect-AzConnectedMachine {
 [CmdletBinding(PositionalBinding=$false)]

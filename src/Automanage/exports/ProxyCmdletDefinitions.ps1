@@ -27,7 +27,7 @@ Get-AzAutomanageBestPractice -Name AzureBestPracticesProduction
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IBestPractice
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanagebestpractice
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanagebestpractice
 #>
 function Get-AzAutomanageBestPractice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IBestPractice])]
@@ -197,7 +197,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofileassignment
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofileassignment
 #>
 function Get-AzAutomanageConfigProfileAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
@@ -416,7 +416,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofilehciassignment
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofilehciassignment
 #>
 function Get-AzAutomanageConfigProfileHciAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
@@ -612,7 +612,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofilehcrpassignment
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofilehcrpassignment
 #>
 function Get-AzAutomanageConfigProfileHcrpAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
@@ -808,7 +808,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofile
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofile
 #>
 function Get-AzAutomanageConfigProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile])]
@@ -1005,7 +1005,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanagehcireport
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanagehcireport
 #>
 function Get-AzAutomanageHciReport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport])]
@@ -1209,7 +1209,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanagehcrpreport
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanagehcrpreport
 #>
 function Get-AzAutomanageHcrpReport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport])]
@@ -1413,7 +1413,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanagereport
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanagereport
 #>
 function Get-AzAutomanageReport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport])]
@@ -1597,7 +1597,7 @@ New-AzAutomanageConfigProfileAssignment -ResourceGroupName automangerg -VMName a
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofileassignment
+https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofileassignment
 #>
 function New-AzAutomanageConfigProfileAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
@@ -1768,7 +1768,7 @@ New-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -Clust
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehciassignment
+https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehciassignment
 #>
 function New-AzAutomanageConfigProfileHciAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
@@ -1939,7 +1939,7 @@ New-AzAutomanageConfigProfileHcrpAssignment -ResourceGroupName automangerg -Mach
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehcrpassignment
+https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehcrpassignment
 #>
 function New-AzAutomanageConfigProfileHcrpAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
@@ -2121,7 +2121,7 @@ New-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name confpro-pwsh0
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofile
+https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofile
 #>
 function New-AzAutomanageConfigProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile])]
@@ -2325,7 +2325,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofileassignment
+https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofileassignment
 #>
 function Remove-AzAutomanageConfigProfileAssignment {
 [OutputType([System.Boolean])]
@@ -2525,7 +2525,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofilehciassignment
+https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofilehciassignment
 #>
 function Remove-AzAutomanageConfigProfileHciAssignment {
 [OutputType([System.Boolean])]
@@ -2725,7 +2725,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofilehcrpassignment
+https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofilehcrpassignment
 #>
 function Remove-AzAutomanageConfigProfileHcrpAssignment {
 [OutputType([System.Boolean])]
@@ -2925,7 +2925,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofile
+https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofile
 #>
 function Remove-AzAutomanageConfigProfile {
 [OutputType([System.Boolean])]
@@ -3123,7 +3123,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofile
+https://learn.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofile
 #>
 function Update-AzAutomanageConfigProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile])]

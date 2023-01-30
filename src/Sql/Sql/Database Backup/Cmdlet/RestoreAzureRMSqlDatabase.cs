@@ -284,8 +284,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the HA Replica Count option.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The HA Replica Count used to store backups for the SQL Database. Options are: 0, 1, 2.")]
-        [ValidateRange(0, 2)]
+            HelpMessage = "The HA Replica Count used to store backups for the SQL Database.")]
+        [ValidateRange(0, int.MaxValue)]
         public int HAReplicaCount { get; set; }
 
         /// <summary>

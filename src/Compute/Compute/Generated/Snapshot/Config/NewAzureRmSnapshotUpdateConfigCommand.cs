@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify if Disk Supports Hibernation with $true of $false")]
+            HelpMessage = "Indicates if the OS on the snapshot supports hibernation with $true or $false")]
         public bool? SupportsHibernation { get; set; }
 
 
