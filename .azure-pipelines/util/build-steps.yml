@@ -38,7 +38,7 @@ steps:
 
 - task: AzureKeyVault@2
   inputs:
-    azureSubscription: '6b085460-5f21-477e-ba44-1035046e9101'
+    azureSubscription: 'azureps-infra-sp'
     KeyVaultName: 'azurepsdev'
     SecretsFilter: 'azps-test'
     RunAsPreJob: true
