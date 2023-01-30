@@ -48,9 +48,14 @@
         [ValidateSet('Disabled','Enabled', 'PermanentlyDisabled')]
         ${CrossSubscriptionRestoreState},
         
-        [Parameter(Mandatory=$false, HelpMessage='Soft delete related settings')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ISoftDeleteSettings]
-        ${SoftDeleteSetting},
+        [Parameter(Mandatory=$false, HelpMessage='Soft delete retention duration in days')]
+        [System.Double]
+        ${SoftDeleteRetentionDurationInDay},
+
+        [Parameter(Mandatory=$false, HelpMessage='Soft delete state of the vault. Allowed values are Off, On, AlwaysOn')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState]
+        [ValidateSet('Off','On', 'AlwaysOn')]  
+        ${SoftDeleteState},
 
         [Parameter(HelpMessage='Resource tags.')]
         [System.Collections.Hashtable]

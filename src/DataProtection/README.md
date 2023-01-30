@@ -67,6 +67,18 @@ directive:
       parameter-description: Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.
     clear-alias: true
   - where:      
+      parameter-name: SoftDeleteSettingRetentionDurationInDay
+    set:
+      parameter-name: SoftDeleteRetentionDurationInDay
+      parameter-description: Soft delete retention duration in days.
+    clear-alias: true
+  - where:      
+      parameter-name: SoftDeleteSettingState
+    set:
+      parameter-name: SoftDeleteState
+      parameter-description: Soft delete state of the vault. Allowed values are Off, On, AlwaysOn.
+    clear-alias: true
+  - where:      
       parameter-name: SecuritySettingSoftDeleteSetting
     set:
       parameter-name: SoftDeleteSetting
@@ -250,6 +262,14 @@ directive:
     set:
       property-name: CrossSubscriptionRestoreState
   - where:
+      property-name: SoftDeleteSettingRetentionDurationInDay
+    set:
+      property-name: SoftDeleteRetentionDurationInDay
+  - where:
+      property-name: SoftDeleteSettingState
+    set:
+      property-name: SoftDeleteState
+  - where:
       model-name: BackupVaultResource
     set:
       format-table:
@@ -268,8 +288,7 @@ directive:
     - RestoreTargetInfoBase
     - PolicyParameters
     - SecretStoreBasedAuthCredentials
-    - SecretStoreResource
-    - SoftDeleteSettings
+    - SecretStoreResource    
     - SystemData
     - UserFacingError    
   - from: source-file-csharp

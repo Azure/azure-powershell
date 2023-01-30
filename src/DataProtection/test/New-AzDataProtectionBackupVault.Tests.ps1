@@ -23,9 +23,8 @@ Describe 'New-AzDataProtectionBackupVault' {
 
     It 'ImmutabilityCSRSoftDelete' {
         $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -Type LocallyRedundant -DataStoreType VaultStore
-        $softDelete = New-AzDataProtectionSoftDeleteSettingObject -RetentionDurationInDay 100 -State On
-
-        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName -Location centraluseuap -StorageSetting $storagesetting  -SoftDeleteSetting $softDelete -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked
+        
+        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName -Location centraluseuap -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState On
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName
         
@@ -33,17 +32,16 @@ Describe 'New-AzDataProtectionBackupVault' {
         $vault.Name | Should be $env.TestBackupVault.NewVaultName
         
         $vault.CrossSubscriptionRestoreState | Should be "Enabled"        
-        $vault.SoftDeleteSetting.RetentionDurationInDay |  Should be 100
-        $vault.SoftDeleteSetting.State |  Should be "On"
+        $vault.SoftDeleteRetentionDurationInDay |  Should be 100
+        $vault.SoftDeleteState |  Should be "On"
         $vault.ImmutabilityState | Should be "Unlocked"
 
-        # update immutability, soft delete, CSR flag
-        $softDelete = New-AzDataProtectionSoftDeleteSettingObject -RetentionDurationInDay 99 -State Off
-        $vault = Update-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName -SoftDeleteSetting $softDelete -CrossSubscriptionRestoreState Disabled -ImmutabilityState Disabled
+        # update immutability, soft delete, CSR flag        
+        $vault = Update-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName -CrossSubscriptionRestoreState Disabled -ImmutabilityState Disabled -SoftDeleteRetentionDurationInDay 99 -SoftDeleteState Off
 
         $vault.CrossSubscriptionRestoreState | Should be "Disabled"        
-        $vault.SoftDeleteSetting.RetentionDurationInDay |  Should be 99
-        $vault.SoftDeleteSetting.State |  Should be "Off"
+        $vault.SoftDeleteRetentionDurationInDay |  Should be 99
+        $vault.SoftDeleteState |  Should be "Off"
         $vault.ImmutabilityState | Should be "Disabled"
         
         Remove-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName

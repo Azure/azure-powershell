@@ -18,8 +18,8 @@ New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
  [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
  [-ETag <String>] [-IdentityType <String>] [-ImmutabilityState <ImmutabilityState>] [-NoWait]
- [-SoftDeleteSetting <ISoftDeleteSettings>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +41,21 @@ ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
 ```
 
 This command creates a new backup vault.
+
+### Example 2: Create a new backup vault with ImmutabilityState, CrossSubscriptionRestoreState, soft delete settings
+```powershell
+$sub = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
+New-AzDataProtectionBackupVault -SubscriptionId $sub "resourceGroupName" -VaultName "vaultName" -Location westus -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState On
+```
+
+```output
+ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
+---- ------------------- ---------------- ------------ -------- ----    ----
+                                                       westus   MyVault Microsoft.DataProtection/backupVaults
+```
+
+This command creates a new backup vault while setting Immutability state, cross subscription restore state, soft delete settings of the vault at creation time.
 
 ## PARAMETERS
 
@@ -197,12 +212,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SoftDeleteSetting
-Soft delete related settings
-To construct, see NOTES section for SOFTDELETESETTING properties and create a hash table.
+### -SoftDeleteRetentionDurationInDay
+Soft delete retention duration in days
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ISoftDeleteSettings
+Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteState
+Soft delete state of the vault.
+Allowed values are Off, On, AlwaysOn
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState
 Parameter Sets: (All)
 Aliases:
 
@@ -323,10 +353,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`SOFTDELETESETTING <ISoftDeleteSettings>`: Soft delete related settings
-  - `[RetentionDurationInDay <Double?>]`: Soft delete retention duration
-  - `[State <SoftDeleteState?>]`: State of soft delete
 
 `STORAGESETTING <IStorageSetting[]>`: Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
   - `[DatastoreType <StorageSettingStoreTypes?>]`: Gets or sets the type of the datastore.

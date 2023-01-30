@@ -18,8 +18,9 @@ For example, updating tags for a resource.
 Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
  [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
- [-ImmutabilityState <ImmutabilityState>] [-SoftDeleteSetting <ISoftDeleteSettings>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ImmutabilityState <ImmutabilityState>] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -27,8 +28,9 @@ Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <Strin
 Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity>
  [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
- [-ImmutabilityState <ImmutabilityState>] [-SoftDeleteSetting <ISoftDeleteSettings>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ImmutabilityState <ImmutabilityState>] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +68,20 @@ vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
 This command disables the monitor alerts for all the job failures for the backup vault.
 Allowed values are: Enabled, Disabled.
 Note that by default this setting is enabled.
+
+### Example 3: Update vault ImmutabilityState, CrossSubscriptionRestoreState, soft delete settings
+```powershell
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CrossSubscriptionRestoreState Disabled -ImmutabilityState Disabled -SoftDeleteRetentionDurationInDay 99 -SoftDeleteState Off
+```
+
+```output
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
+```
+
+This command is used to modify Immutability state, cross subscription restore state, soft delete settings of the vault.
+These parameters are optional and can be used independently.
 
 ## PARAMETERS
 
@@ -209,12 +225,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SoftDeleteSetting
-Soft delete related settings
-To construct, see NOTES section for SOFTDELETESETTING properties and create a hash table.
+### -SoftDeleteRetentionDurationInDay
+Soft delete retention duration in days.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ISoftDeleteSettings
+Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteState
+Soft delete state of the vault.
+Allowed values are Off, On, AlwaysOn.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState
 Parameter Sets: (All)
 Aliases:
 
@@ -335,10 +366,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGuardsName <String>]`: The name of ResourceGuard
   - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
   - `[VaultName <String>]`: The name of the backup vault.
-
-`SOFTDELETESETTING <ISoftDeleteSettings>`: Soft delete related settings
-  - `[RetentionDurationInDay <Double?>]`: Soft delete retention duration
-  - `[State <SoftDeleteState?>]`: State of soft delete
 
 ## RELATED LINKS
 

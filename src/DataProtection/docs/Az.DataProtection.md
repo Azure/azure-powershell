@@ -80,9 +80,6 @@ Creates a resource guard under a resource group
 ### [New-AzDataProtectionRetentionLifeCycleClientObject](New-AzDataProtectionRetentionLifeCycleClientObject.md)
 Creates new Lifecycle object
 
-### [New-AzDataProtectionSoftDeleteSettingObject](New-AzDataProtectionSoftDeleteSettingObject.md)
-Get Backup Vault soft delete setting object
-
 ### [Remove-AzDataProtectionBackupInstance](Remove-AzDataProtectionBackupInstance.md)
 Delete a backupInstances
 
