@@ -105,8 +105,8 @@ input-file:
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/DatabaseAdvancedThreatProtectionSettings.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/ServerAdvancedThreatProtectionSettings.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json
-  - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/ManagedDatabases.json
-  - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/ManagedDatabaseRestoreDetails.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/e2ff786ad8b5739e9efe9e56649bce88721d56bd/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/ManagedDatabases.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/e2ff786ad8b5739e9efe9e56649bce88721d56bd/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/ManagedDatabaseRestoreDetails.json
 
 
 output-folder: Generated

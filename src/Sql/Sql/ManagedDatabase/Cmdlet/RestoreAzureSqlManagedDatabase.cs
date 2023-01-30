@@ -546,7 +546,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
             Mandatory = true,
             HelpMessage = "The name of the target subscription id to restore to.")]
-        [ResourceGroupCompleter]
         public string TargetSubscriptionId { get; set; }
 
         /// <summary>
