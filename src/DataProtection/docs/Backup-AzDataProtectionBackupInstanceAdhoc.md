@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackupInstanceName
-The name of the backup instance
+The name of the backup instance.
 
 ```yaml
 Type: System.String
@@ -152,7 +152,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the backup vault is present.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -167,7 +168,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -251,7 +253,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IOperationJobExtendedInfo
 
 ## NOTES
 
@@ -263,7 +265,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IDataProtectionIdentity>`: Identity Parameter
-  - `[BackupInstanceName <String>]`: The name of the backup instance
+  - `[BackupInstanceName <String>]`: The name of the backup instance.
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
@@ -271,9 +273,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
   - `[RequestName <String>]`: 
-  - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceGuardsName <String>]`: The name of ResourceGuard
-  - `[SubscriptionId <String>]`: The subscription Id.
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS

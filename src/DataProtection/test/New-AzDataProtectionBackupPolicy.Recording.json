@@ -1,9 +1,10 @@
 {
-  "New-AzDataProtectionBackupPolicy+[NoContext]+__AllParameterSets+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive?api-version=2022-05-01+1": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+__AllParameterSets+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive?api-version=2022-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive?api-version=2022-12-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"datasourceTypes\": [ \"Microsoft.DBforPostgreSQL/servers/databases\" ],\r\n    \"objectType\": \"BackupPolicy\",\r\n    \"policyRules\": [\r\n      {\r\n        \"name\": \"BackupWeekly\",\r\n        \"objectType\": \"AzureBackupRule\",\r\n        \"backupParameters\": {\r\n          \"objectType\": \"AzureBackupParams\",\r\n          \"backupType\": \"Full\"\r\n        },\r\n        \"dataStore\": {\r\n          \"dataStoreType\": \"VaultStore\",\r\n          \"objectType\": \"DataStoreInfoBase\"\r\n        },\r\n        \"trigger\": {\r\n          \"objectType\": \"ScheduleBasedTriggerContext\",\r\n          \"schedule\": {\r\n            \"repeatingTimeIntervals\": [ \"R/2021-08-18T10:00:00+05:30/P1W\", \"R/2021-08-22T10:00:00+05:30/P1W\" ],\r\n            \"timeZone\": \"India Standard Time\"\r\n          },\r\n          \"taggingCriteria\": [\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Default\"\r\n              },\r\n              \"isDefault\": true,\r\n              \"taggingPriority\": 99\r\n            },\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Monthly\"\r\n              },\r\n              \"criteria\": [\r\n                {\r\n                  \"objectType\": \"ScheduleBasedBackupCriteria\",\r\n                  \"absoluteCriteria\": [ \"FirstOfMonth\" ]\r\n                }\r\n              ],\r\n              \"isDefault\": false,\r\n              \"taggingPriority\": 15\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P3M\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            },\r\n            \"targetDataStoreCopySettings\": [\r\n              {\r\n                \"copyAfter\": {\r\n                  \"objectType\": \"CopyOnExpiryOption\"\r\n                },\r\n                \"dataStore\": {\r\n                  \"dataStoreType\": \"ArchiveStore\",\r\n                  \"objectType\": \"DataStoreInfoBase\"\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P6M\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"ArchiveStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Monthly\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": false,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P6M\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            },\r\n            \"targetDataStoreCopySettings\": [\r\n              {\r\n                \"copyAfter\": {\r\n                  \"objectType\": \"CopyOnExpiryOption\"\r\n                },\r\n                \"dataStore\": {\r\n                  \"dataStoreType\": \"ArchiveStore\",\r\n                  \"objectType\": \"DataStoreInfoBase\"\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P12M\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"ArchiveStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -22,108 +23,32 @@
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
-        "x-ms-correlation-request-id": [ "a22e0d0d-ad9b-4ba1-801f-19eaa7bfa617" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220629T142540Z:a22e0d0d-ad9b-4ba1-801f-19eaa7bfa617" ],
-        "Date": [ "Wed, 29 Jun 2022 14:25:39 GMT" ]
+        "x-ms-correlation-request-id": [ "423775ea-3da9-4401-8f33-55ce0bb7ce68" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230122T131336Z:423775ea-3da9-4401-8f33-55ce0bb7ce68" ],
+        "Date": [ "Sun, 22 Jan 2023 13:13:36 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2217" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-18T10:00:00+05:30/P1W\",\"R/2021-08-22T10:00:00+05:30/P1W\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true},{\"tagInfo\":{\"tagName\":\"Monthly\",\"id\":\"Monthly_\"},\"taggingPriority\":15,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfMonth\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P12M\"},\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Monthly\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive\",\"name\":\"oss-pstest-policy-archive\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}"
+      "Content": "{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-18T10:00:00+05:30/P1W\",\"R/2021-08-22T10:00:00+05:30/P1W\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true},{\"tagInfo\":{\"tagName\":\"Monthly\",\"id\":\"Monthly_\"},\"taggingPriority\":15,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfMonth\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P12M\"},\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Monthly\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive\",\"name\":\"oss-pstest-policy-archive\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}",
+      "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies?api-version=2022-05-01+2": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies?api-version=2022-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies?api-version=2022-12-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "184" ],
-        "x-ms-client-request-id": [ "d8b79753-d178-4cc5-87a9-a5127fe512a0" ],
+        "x-ms-unique-id": [ "246" ],
+        "x-ms-client-request-id": [ "ee647569-2b48-415d-870a-65ade4bee225" ],
         "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataProtection/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "198" ],
-        "x-ms-correlation-request-id": [ "1381fdb2-9803-48e3-9578-9b9011c7b2cf" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220629T142540Z:1381fdb2-9803-48e3-9578-9b9011c7b2cf" ],
-        "Date": [ "Wed, 29 Jun 2022 14:25:40 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "5157" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"value\":[{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-29T10:00:00+05:30/P1W\",\"R/2021-09-02T10:00:00+05:30/P1W\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"name\":\"oss-pstest-policy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-18T10:00:00+05:30/P1W\",\"R/2021-08-22T10:00:00+05:30/P1W\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true},{\"tagInfo\":{\"tagName\":\"Monthly\",\"id\":\"Monthly_\"},\"taggingPriority\":15,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfMonth\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P12M\"},\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Monthly\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive\",\"name\":\"oss-pstest-policy-archive\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-09-19T05:30:00+00:00/P1W\"],\"timeZone\":\"UTC\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/newOssPol\",\"name\":\"newOssPol\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}]}"
-    }
-  },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+__AllParameterSets+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive?api-version=2022-05-01+3": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive?api-version=2022-05-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "185" ],
-        "x-ms-client-request-id": [ "be83b1ca-b4d0-45cb-beeb-27eceb55791b" ],
-        "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
-        "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataProtection/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "49" ],
-        "x-ms-correlation-request-id": [ "f7cf3475-4da0-488a-81c6-c2ca63fca8f1" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220629T142541Z:f7cf3475-4da0-488a-81c6-c2ca63fca8f1" ],
-        "Date": [ "Wed, 29 Jun 2022 14:25:40 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null
-    }
-  },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies?api-version=2022-05-01+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies?api-version=2022-05-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "186" ],
-        "x-ms-client-request-id": [ "0fa57d7b-cea4-4dc1-98d6-00fc5c6ac0bb" ],
-        "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
-        "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataProtection/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.DataProtection/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -140,16 +65,99 @@
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "197" ],
-        "x-ms-correlation-request-id": [ "1d8d8050-79fb-47b6-83c6-6a5b8416fe62" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220629T142541Z:1d8d8050-79fb-47b6-83c6-6a5b8416fe62" ],
-        "Date": [ "Wed, 29 Jun 2022 14:25:41 GMT" ]
+        "x-ms-correlation-request-id": [ "fd8a1f0e-5398-44cb-8d42-d09430e6e598" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230122T131336Z:fd8a1f0e-5398-44cb-8d42-d09430e6e598" ],
+        "Date": [ "Sun, 22 Jan 2023 13:13:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5157" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-18T10:00:00+05:30/P1W\",\"R/2021-08-22T10:00:00+05:30/P1W\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true},{\"tagInfo\":{\"tagName\":\"Monthly\",\"id\":\"Monthly_\"},\"taggingPriority\":15,\"isDefault\":false,\"criteria\":[{\"absoluteCriteria\":[\"FirstOfMonth\"],\"objectType\":\"ScheduleBasedBackupCriteria\"}]}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P12M\"},\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":false,\"name\":\"Monthly\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive\",\"name\":\"oss-pstest-policy-archive\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-29T10:00:00+05:30/P1W\",\"R/2021-09-02T10:00:00+05:30/P1W\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"name\":\"oss-pstest-policy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-09-19T05:30:00+00:00/P1W\"],\"timeZone\":\"UTC\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/newOssPol\",\"name\":\"newOssPol\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupPolicy+[NoContext]+__AllParameterSets+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive?api-version=2022-12-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy-archive?api-version=2022-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "247" ],
+        "x-ms-client-request-id": [ "94612b92-a620-4d96-bf3c-fc7d7057dfc0" ],
+        "CommandName": [ "Remove-AzDataProtectionBackupPolicy" ],
+        "FullCommandName": [ "Remove-AzDataProtectionBackupPolicy_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "49" ],
+        "x-ms-correlation-request-id": [ "5c218cbd-6ec6-4fdc-80f6-9ecdbbd12efb" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230122T131337Z:5c218cbd-6ec6-4fdc-80f6-9ecdbbd12efb" ],
+        "Date": [ "Sun, 22 Jan 2023 13:13:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupPolicy+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies?api-version=2022-12-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies?api-version=2022-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "248" ],
+        "x-ms-client-request-id": [ "b8dea2dc-b4e7-43a3-a6ab-fb90d0ee52c3" ],
+        "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "196" ],
+        "x-ms-correlation-request-id": [ "dea42e36-c120-484a-b134-f24bc5672b7c" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230122T131338Z:dea42e36-c120-484a-b134-f24bc5672b7c" ],
+        "Date": [ "Sun, 22 Jan 2023 13:13:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2939" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-29T10:00:00+05:30/P1W\",\"R/2021-09-02T10:00:00+05:30/P1W\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"name\":\"oss-pstest-policy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-09-19T05:30:00+00:00/P1W\"],\"timeZone\":\"UTC\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/newOssPol\",\"name\":\"newOssPol\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}]}"
+      "Content": "{\"value\":[{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-29T10:00:00+05:30/P1W\",\"R/2021-09-02T10:00:00+05:30/P1W\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"name\":\"oss-pstest-policy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"},{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-09-19T05:30:00+00:00/P1W\"],\"timeZone\":\"UTC\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/newOssPol\",\"name\":\"newOssPol\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}]}",
+      "isContentBase64": false
     }
   }
 }

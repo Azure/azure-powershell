@@ -111,7 +111,7 @@ Triggers restore for a BackupInstance
 This operation will stop protection of a backup instance and data will be held forever
 
 ### [Suspend-AzDataProtectionBackupInstanceBackup](Suspend-AzDataProtectionBackupInstanceBackup.md)
-This operation will stop backups for backup instance
+This operation will stop backup for a backup instance and retains the backup data as per the policy (except latest Recovery point, which will be retained forever)
 
 ### [Sync-AzDataProtectionBackupInstance](Sync-AzDataProtectionBackupInstance.md)
 Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
