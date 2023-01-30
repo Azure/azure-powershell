@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.SecurityCenter.Models.SecurityContact;
-
 namespace Microsoft.Azure.Commands.Security.Models.SecurityContacts
 {
     public class PSSecurityContact
