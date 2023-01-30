@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 9EE192A5-4E3F-41ED-A539-8E0A5D5EA4C9
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azvmss
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azvmss
 schema: 2.0.0
 ---
 
@@ -468,8 +468,8 @@ Accept wildcard characters: False
 ### -ManagedDiskStorageAccountType
 Specifies the storage account type for managed disk.
 The acceptable values for this parameter are:
-- StandardLRS
-- PremiumLRS
+- Standard_LRS
+- Premium_LRS
 
 ```yaml
 Type: System.String

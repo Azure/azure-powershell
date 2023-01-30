@@ -57,7 +57,7 @@ PARAMETER <IElasticSan>: Response for ElasticSan request.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/new-azelasticsan
+https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsan
 #>
 function New-AzElasticSan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]

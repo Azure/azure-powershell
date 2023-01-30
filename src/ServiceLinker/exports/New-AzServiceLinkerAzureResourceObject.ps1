@@ -25,7 +25,7 @@ New-AzServiceLinkerAzureResourceObject -Id /subscriptions/00000000-0000-0000-000
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.AzureResource
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerazureresourceobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerazureresourceobject
 #>
 function New-AzServiceLinkerAzureResourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.AzureResource])]

@@ -25,7 +25,7 @@ New-AzServiceLinkerServicePrincipalSecretAuthInfoObject -ClientId 00000000-0000-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ServicePrincipalSecretAuthInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerserviceprincipalsecretauthinfoobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerserviceprincipalsecretauthinfoobject
 #>
 function New-AzServiceLinkerServicePrincipalSecretAuthInfoObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ServicePrincipalSecretAuthInfo])]

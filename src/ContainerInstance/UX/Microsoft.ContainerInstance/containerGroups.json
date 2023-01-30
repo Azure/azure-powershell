@@ -20,8 +20,26 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
-          }
-        ]
+         },
+         "examples":[
+            {
+               "description":"Gets the properties of the specified container group in the specified subscription and resource group.",
+               "parameters":[
+                  {
+                     "name":"SubscriptionId",
+                     "value":"subscriptionId"
+                  },
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-Name",
+                     "value":"[path.containerGroupName]"
+                  }
+               ]
+            }
+         ]
       },
       "examples": [
         {

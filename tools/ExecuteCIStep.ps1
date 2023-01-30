@@ -189,11 +189,12 @@ If ($Build)
             {
                 $ModuleInfoList += @{
                     Module = "Az.$ModuleName";
-                    Status = $DependencyStepStatus;
+                    Status = "Running";
                     Content = "";
                 }
             }
             $Detail = @{
+                Platform = $Platform;
                 Modules = $ModuleInfoList;
             }
             $Template.$DependencyStep.Details += $Detail

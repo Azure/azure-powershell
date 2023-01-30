@@ -41,7 +41,7 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/clear-azappconfigurationdeletedstore
+https://learn.microsoft.com/powershell/module/az.appconfiguration/clear-azappconfigurationdeletedstore
 #>
 function Clear-AzAppConfigurationDeletedStore {
 [OutputType([System.Boolean])]

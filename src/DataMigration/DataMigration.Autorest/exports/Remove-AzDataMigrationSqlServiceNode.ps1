@@ -41,7 +41,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservicenode
+https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservicenode
 #>
 function Remove-AzDataMigrationSqlServiceNode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode])]
