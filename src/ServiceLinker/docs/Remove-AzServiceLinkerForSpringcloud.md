@@ -36,6 +36,10 @@ Delete a link in spring cloud.
 Remove-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group -Name testLinker
 ```
 
+```output
+
+```
+
 Remove linker
 
 ## PARAMETERS
@@ -273,7 +277,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IServiceLinkerIdentity>`: Identity Parameter
+INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   - `[ConnectorName <String>]`: The name of resource.
   - `[DryrunName <String>]`: The name of dryrun.
   - `[Id <String>]`: Resource identity path

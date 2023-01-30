@@ -21,10 +21,12 @@ New-AzServiceLinkerConnector -Location <String> -ResourceGroupName <String> [-Na
  [-FirewallRuleCallerClientIP <AllowType>] [-FirewallRuleIPRange <String[]>]
  [-PublicNetworkSolutionAction <ActionType>]
  [-PublicNetworkSolutionDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-Scope <String>]
- [-SecretStoreKeyVaultId <String>] [-SecretStoreKeyVaultSecretName <String>]
- [-TargetService <ITargetServiceBase>] [-VNetSolutionDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>]
- [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SecretStoreKeyVaultId <String>] [-SecretStoreKeyVaultSecretName <String>] [-SystemDataCreatedAt <DateTime>]
+ [-SystemDataCreatedBy <String>] [-SystemDataCreatedByType <CreatedByType>]
+ [-SystemDataLastModifiedAt <DateTime>] [-SystemDataLastModifiedBy <String>]
+ [-SystemDataLastModifiedByType <CreatedByType>] [-TargetService <ITargetServiceBase>]
+ [-VNetSolutionDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-VNetSolutionType <VNetSolutionType>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,7 +165,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "213123"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -384,6 +386,96 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SystemDataCreatedAt
+The timestamp of resource creation (UTC).
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemDataCreatedBy
+The identity that created the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemDataCreatedByType
+The type of identity that created the resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.CreatedByType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemDataLastModifiedAt
+The timestamp of resource last modification (UTC)
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemDataLastModifiedBy
+The identity that last modified the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemDataLastModifiedByType
+The type of identity that last modified the resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.CreatedByType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetService
 The target service properties
 To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
@@ -479,10 +571,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`AUTHINFO <IAuthInfoBase>`: The authentication type.
+AUTHINFO <IAuthInfoBase>: The authentication type.
   - `AuthType <AuthType>`: The authentication type.
 
-`TARGETSERVICE <ITargetServiceBase>`: The target service properties
+TARGETSERVICE <ITargetServiceBase>: The target service properties
   - `Type <TargetServiceType>`: The target service type.
 
 ## RELATED LINKS

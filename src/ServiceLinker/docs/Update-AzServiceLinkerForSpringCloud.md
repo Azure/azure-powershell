@@ -361,10 +361,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`AUTHINFO <IAuthInfoBase>`: The authentication type.
+AUTHINFO <IAuthInfoBase>: The authentication type.
   - `AuthType <AuthType>`: The authentication type.
 
-`INPUTOBJECT <IServiceLinkerIdentity>`: Identity Parameter
+INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   - `[ConnectorName <String>]`: The name of resource.
   - `[DryrunName <String>]`: The name of dryrun.
   - `[Id <String>]`: Resource identity path
@@ -374,7 +374,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource to be connected.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-`TARGETSERVICE <ITargetServiceBase>`: The target service properties
+TARGETSERVICE <ITargetServiceBase>: The target service properties
   - `Type <TargetServiceType>`: The target service type.
 
 ## RELATED LINKS

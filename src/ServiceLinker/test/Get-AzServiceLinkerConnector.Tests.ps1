@@ -16,14 +16,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceLinkerConnector'
 
 Describe 'Get-AzServiceLinkerConnector' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $linkers = Get-AzServiceLinkerConnector -ResourceGroupName $env.resourceGroup -Location $env.location
+        $linkers.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $linker = Get-AzServiceLinkerConnector -ResourceGroupName $env.resourceGroup -Location $env.location -LinkerName $env.preparedLinker
+        $linker.Name | Should -Be $env.preparedLinker
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $identity = @{
+            ResourceGroupName = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.App/containerApps/$($env.containerApp)"
+            LinkerName = $env.preparedLinker
+        }
+        $linker = $identity | Get-AzServiceLinkerForContainerApp
+        $linker.Name | Should -Be $env.preparedLinker
     }
 }
