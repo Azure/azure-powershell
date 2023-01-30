@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug that reverts classic fw private ranges to default when doing get & set
 * Fixed a bug that does not enable to set Perform SNAT to Always
 * Fixed the incorrect type of `-TotalBytesPerSession` in `New-AzNetworkWatcherPacketCapture`
 
