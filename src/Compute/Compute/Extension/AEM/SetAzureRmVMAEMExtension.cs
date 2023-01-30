@@ -125,17 +125,8 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Enable debug mode for the VM Extension.")]
         public SwitchParameter DebugExtension { get; set; }
 
-        //[Parameter(
-        //    Mandatory = false,
-        //    Position = 9,
-        //    ParameterSetName = "NewExtension",
-        //    ValueFromPipelineByPropertyName = false,
-        //    HelpMessage = "Configures client_id.")]
-        //public string ClientId { get; set; }
-
         [Parameter(
             Mandatory = false,
-            Position = 9,
             ParameterSetName = "NewExtension",
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "Path to user assigned identity.")]
@@ -143,7 +134,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            Position = 11,
             ParameterSetName = "NewExtension",
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "Skip VM identity assignment.")]
@@ -151,7 +141,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            Position = 12,
             ParameterSetName = "NewExtension",
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "Deploy test extension.")]
@@ -284,7 +273,6 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            //pUserAssignedList[szPath] = new UserAssignedIdentitiesValue(null, szClientId);
             pUserAssignedList[szPath] = new UserAssignedIdentitiesValue();
 
         }
@@ -361,8 +349,6 @@ namespace Microsoft.Azure.Commands.Compute
             // give VM idenity access to resources/resource groups
             // deploy extension on VM
 
-
-            //TODO should we allow user assigned identity?
             bool blnIsUserAssigned = !string.IsNullOrEmpty(this.PathUserIdentity);
 
             if (!this.SkipIdentity)
@@ -372,93 +358,11 @@ namespace Microsoft.Azure.Commands.Compute
              
                 if (blnIsUserAssigned)
                 {
-                    //assureClientId(pVmIdentity, this.PathIdentity, this.ClientId);
                     assureClientId(pVmIdentity, this.PathUserIdentity);
                 }
 
-                //for (; ; )
-                //{
-                //    VirtualMachineIdentity pVmIdentity = selectedVM.Identity;
-                //    if (!string.IsNullOrEmpty(this.ClientId))
-                //    {
-                //        // assure identity
-                //        //
-                //        if (null == pVmIdentity)
-                //        {
-                //            pVmIdentity = new VirtualMachineIdentity(type: ResourceIdentityType.UserAssigned);
-                //            selectedVM.Identity = pVmIdentity;
-                //        }
-
-                //        // assure user assigned list
-                //        //
-                //        IDictionary<string, UserAssignedIdentitiesValue> pUserAssignedList = pVmIdentity.UserAssignedIdentities;
-                //        if (null == pUserAssignedList)
-                //        {
-                //            pUserAssignedList = new Dictionary<string, UserAssignedIdentitiesValue>(1);
-                //            pVmIdentity.UserAssignedIdentities = pUserAssignedList;
-                //        }
-
-                //        // -) identity cannot be duplicated in the provided userAssignedIdentities list
-                //        // -) ContainsKey, TryGetValue don't work
-                //        //
-                //        bool blnFound = false;
-                //        foreach (string szKey in pUserAssignedList.Keys)
-                //        {
-                //            if (0 == string.Compare(szKey, this.PathIdentity, true))
-                //            {
-                //                blnFound = true;
-                //                break;
-                //            }
-                //        }
-
-                //        if (!blnFound)
-                //        {
-                //            pUserAssignedList[this.PathIdentity] = new UserAssignedIdentitiesValue(null, this.ClientId);
-                //        }
-
-                //        //// assure client_id in user assigned list
-                //        ////
-                //        //UserAssignedIdentitiesValue uav = new UserAssignedIdentitiesValue(null, this.ClientId);
-                //        //string szPath = this.PathIdentity;
-                //        //pUserAssignedList[this.PathIdentity] = uav;
-
-                //        //pUserAssignedList["blablabla"] = new UserAssignedIdentitiesValue(null, this.ClientId);
-                //        break;
-                //    }
-
-                //    // old behaviour when no client_id
-                //    //
-                //    if (null == selectedVM.Identity)
-                //    {
-                //        selectedVM.Identity = new VirtualMachineIdentity(type: ResourceIdentityType.SystemAssigned);
-                //        break;
-                //    }
-                //    if (ResourceIdentityType.UserAssigned == selectedVM.Identity.Type)
-                //    {
-                //        selectedVM.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
-                //        break;
-                //    }
-
-                //    break;
-                //}
-
-                //assureVmIdentityType(selectedVM, blnIsUserAssigned);
-
                 selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.
                        CreateOrUpdate(this.ResourceGroupName, this.VMName, selectedVM);
-
-                //if (selectedVM.Identity == null)
-                //{
-                //    selectedVM.Identity = new VirtualMachineIdentity(type: ResourceIdentityType.SystemAssigned);
-                //    selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.
-                //        CreateOrUpdate(this.ResourceGroupName, this.VMName, selectedVM);
-                //}
-                //else if (selectedVM.Identity.Type == ResourceIdentityType.UserAssigned)
-                //{
-                //    selectedVM.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
-                //    selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.
-                //        CreateOrUpdate(this.ResourceGroupName, this.VMName, selectedVM);
-                //}
 
                 HashSet<string> scopes = new HashSet<string>();
 
@@ -494,14 +398,12 @@ namespace Microsoft.Azure.Commands.Compute
                         string roleDefinitionId = $"/subscriptions/{this.DefaultContext.Subscription.Id}/providers/Microsoft.Authorization/roleDefinitions/{AEMExtensionConstants.NewExtensionRole}";
                         var existingRoleAssignments = AuthClient.RoleAssignments.ListForScope(scope);
                         var existingRoleAssignment = existingRoleAssignments.FirstOrDefault(assignmentTest =>
-                            //assignmentTest.Properties.PrincipalId.EqualsInsensitively(selectedVM.Identity.PrincipalId)
                             assignmentTest.Properties.PrincipalId.EqualsInsensitively(szPrincipalId)
                                 && assignmentTest.Properties.RoleDefinitionId.EqualsInsensitively(roleDefinitionId)
                                 && assignmentTest.Properties.Scope.EqualsInsensitively(scope));
 
                         if (existingRoleAssignment != null)
                         {
-                            //this._Helper.WriteVerbose($"Role Assignment for scope {scope} already exists for principal {selectedVM.Identity.PrincipalId}");
                             this._Helper.WriteVerbose($"Role Assignment for scope {scope} already exists for principal {szPrincipalId}");
                             created = true;
                             break;
@@ -513,8 +415,6 @@ namespace Microsoft.Azure.Commands.Compute
                             Properties = new RoleAssignmentProperties()
                             {
                                 RoleDefinitionId = scopedRoleId,
-                                //TODO: do we want to support user assigned identity?
-                                //PrincipalId = selectedVM.Identity.PrincipalId
                                 PrincipalId = szPrincipalId
                             }
                         };
@@ -573,17 +473,6 @@ namespace Microsoft.Azure.Commands.Compute
                 sapmonPublicConfig.Add(new KeyValuePair("client_id", szClientId));
             }
 
-            //if (!String.IsNullOrEmpty(szClientId))
-            //{
-            //    sapmonPublicConfig.Add(new KeyValuePair("client_id", szClientId));
-            //}
-            
-
-            //if (!String.IsNullOrEmpty(this.ClientId))
-            //{
-            //    sapmonPublicConfig.Add(new KeyValuePair() { Key = "client_id", Value = this.ClientId });
-            //}
-
             ExtensionConfig jsonPublicConfig = new ExtensionConfig();
             jsonPublicConfig.Config = sapmonPublicConfig;
 
@@ -600,7 +489,6 @@ namespace Microsoft.Azure.Commands.Compute
 
             var vmExtensionConfig = new VirtualMachineExtension()
             {
-                //Publisher = AEMExtensionConstants.AEMExtensionPublisherv2[OSType],
                 Publisher = szPublisher,
                 VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionTypev2[OSType],
                 TypeHandlerVersion = AEMExtensionConstants.AEMExtensionVersionv2[OSType].ToString(2),
