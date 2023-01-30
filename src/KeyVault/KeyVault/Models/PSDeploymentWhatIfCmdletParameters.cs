@@ -152,6 +152,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 jsonInfo["resources"][0]["properties"]["enableSoftDelete"] = kvparameters.EnableSoftDelete;
                 jsonInfo["resources"][0]["properties"]["softDeleteRetentionInDays"] = kvparameters.SoftDeleteRetentionInDays;
             }
+            jsonInfo["resources"][0]["properties"]["softDeleteRetentionInDays"] = kvparameters.SoftDeleteRetentionInDays;
             if (kvparameters.EnabledForDeployment is true)
                 jsonInfo["resources"][0]["properties"]["enabledForDeployment"] = kvparameters.EnabledForDeployment;
             jsonInfo["resources"][0]["properties"]["publicNetworkAccess"] = kvparameters.PublicNetworkAccess;

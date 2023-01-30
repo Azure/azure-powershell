@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -74,5 +77,96 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             return ("/", relativeResourceId);
         }
+        /// <summary>
+        /// Gets the deployment name
+        /// </summary>
+        /// <param name="resourceId">The resource Id.</param>
+        public static string GetDeploymentName(string resourceId)
+        {
+            return ResourceIdUtility.GetResourceTypeOrName(resourceId: resourceId, getResourceName: true, useLastSegment: true);
+        }
+        /// <summary>
+        /// Gets the name of the resource group from the resource id.
+        /// </summary>
+        /// <param name="resourceId">The resource id.</param>
+        public static string GetResourceGroupName(string resourceId)
+        {
+            return ResourceIdUtility.GetNextSegmentAfter(resourceId: resourceId, segmentName: Constants.ResourceGroups);
+        }
+
+        /// <summary>
+        /// Gets the next segment after the one specified in <paramref name="segmentName"/>.
+        /// </summary>
+        /// <param name="resourceId">The resource Id.</param>
+        /// <param name="segmentName">The segment name.</param>
+        /// <param name="selectLastSegment">When set to true, gets the last segment (default) otherwise gets the first one.</param>
+        private static string GetNextSegmentAfter(string resourceId, string segmentName, bool selectLastSegment = false)
+        {
+            var segment = ResourceIdUtility
+                .GetSubstringAfterSegment(
+                    resourceId: resourceId,
+                    segmentName: segmentName,
+                    selectLastSegment: selectLastSegment)
+                .SplitRemoveEmpty('/')
+                .FirstOrDefault();
+
+            return string.IsNullOrWhiteSpace(segment)
+                ? null
+                : segment;
+        }
+
+        /// <summary>
+        /// Gets a the substring after a segment.
+        /// </summary>
+        /// <param name="resourceId">The resource Id.</param>
+        /// <param name="segmentName">The segment name.</param>
+        /// <param name="selectLastSegment">When set to true, gets the last segment (default) otherwise gets the first one.</param>
+        private static string GetSubstringAfterSegment(string resourceId, string segmentName, bool selectLastSegment = true)
+        {
+            var segment = string.Format("/{0}/", segmentName.Trim('/').ToUpperInvariant());
+
+            var index = selectLastSegment
+                ? resourceId.LastIndexOf(segment, StringComparison.InvariantCultureIgnoreCase)
+                : resourceId.IndexOf(segment, StringComparison.InvariantCultureIgnoreCase);
+
+            return index < 0
+                ? null
+                : resourceId.Substring(index + segment.Length);
+        }
+        /// <summary>
+        /// Gets either a resource type or resource Id based on the value of the <paramref name="getResourceName"/> parameter.
+        /// </summary>
+        /// <param name="resourceId">The resource Id.</param>
+        /// <param name="getResourceName">When set to true returns a resource name, otherwise a resource type.</param>
+        /// <param name="includeProviderNamespace">Indicates if the provider namespace should be included in the resource name.</param>
+        /// <param name="useLastSegment">Seek the last segment instead of the first match.</param>
+        private static string GetResourceTypeOrName(string resourceId, bool getResourceName, bool includeProviderNamespace = true, bool useLastSegment = false)
+        {
+            var substring = ResourceIdUtility.GetSubstringAfterSegment(
+                resourceId: resourceId,
+                segmentName: Constants.Providers,
+                selectLastSegment: useLastSegment);
+
+            var segments = substring.CoalesceString().SplitRemoveEmpty('/');
+
+            if (!segments.Any())
+            {
+                return null;
+            }
+
+            var providerNamespace = segments.First();
+
+            var segmentString = segments.Skip(1)
+                .TakeWhile(segment => !segment.EqualsInsensitively(Constants.Providers))
+                .Where((segment, index) => getResourceName ? index % 2 != 0 : index % 2 == 0)
+                .ConcatStrings("/");
+
+            return getResourceName
+                ? segmentString
+                : includeProviderNamespace
+                    ? string.Format("{0}/{1}", providerNamespace, segmentString)
+                    : segmentString;
+        }
+
     }
 }

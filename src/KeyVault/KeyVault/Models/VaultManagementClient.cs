@@ -54,6 +54,7 @@ using System.Security.Cryptography;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
 using System.Threading;
+using Microsoft.Azure.Commands.KeyVault.Utilities;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -78,14 +79,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     {
         public readonly string VaultsResourceType = "Microsoft.KeyVault/vaults";
         public readonly string ManagedHsmResourceType = "Microsoft.KeyVault/managedHSMs";
-        /// <summary>
-        /// Used when provisioning the deployment status.
-        /// </summary>
-        private List<DeploymentOperation> operations = new List<DeploymentOperation>();
         public Action<string> ErrorLogger { get; set; }
         public Action<string> WarningLogger { get; set; }
         public Action<string> VerboseLogger { get; set; }
         public const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
+        /// <summary>
+        /// Used when provisioning the deployment status.
+        /// </summary>
+        private List<DeploymentOperation> operations;
         public VaultManagementClient(IAzureContext context)
         {
             KeyVaultManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
@@ -163,28 +164,50 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             var tags = new[] { "PSHOST" };
             cmdlet.WriteInformation(information, tags);
         }
+        private void WriteDeploymentProgress(VaultCreationOrUpdateParameters parameters, DeploymentOperationErrorInfo deploymentOperationError)
+        {
+            var result = ListDeploymentOperations(parameters.ResourceGroupName, parameters.Name);
+            var newOperations = GetNewOperations(operations, result);
+            operations.AddRange(newOperations);
+
+            foreach (DeploymentOperation operation in newOperations)
+            {
+                if (operation.Properties.ProvisioningState == ProvisioningState.Failed.ToString())
+                {
+                    deploymentOperationError.ProcessError(operation);
+                }
+            }
+        }
         public DeploymentExtended ProvisionDeploymentStatus(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null, bool existed = false)
         {
             operations = new List<DeploymentOperation>();
             ProvisioningState[] status = new ProvisioningState[] { ProvisioningState.Canceled, ProvisioningState.Succeeded, ProvisioningState.Failed };
             var getDeploymentFunc = this.GetDeploymentAction(parameters);
             var deploymentOperationError = new DeploymentOperationErrorInfo();
+            Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deploymentOperationError);
 
-            DeploymentExtended deploymentExtended = null;
             int progressBarTimeSpan = 220;
             if (existed) { progressBarTimeSpan = 20; }
-            var downloadStatus = new ProgressStatus(0, progressBarTimeSpan);
-            Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
             int step = 5;
             int phaseOne = 400;
+            var downloadStatus = new ProgressStatus(0, progressBarTimeSpan);
+            Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
+
+            DeploymentExtended deploymentExtended = null;
+
             ProgressTracker progressTracker = new ProgressTracker(downloadStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
             do
             {
+                if (writeProgressAction != null)
+                {
+                    writeProgressAction();
+                }
                 var getDeploymentTask = getDeploymentFunc();
                 var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult();
-                var response = getResult.Response;
+                
                 var actionName = "Creation in progress...";
                 deploymentExtended = getResult.Body;
+                var response = getResult.Response;
                 if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
                 {
                     step = response.Headers.RetryAfter.Delta.Value.Seconds;
@@ -194,13 +217,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     step = phaseOne > 0 ? 5 : 60;
                 }
                 progressTracker.Update(actionName);
-            } while (!status.Any(s => s.ToString().Equals(deploymentExtended.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
+            } while (!status.Any(s => s.ToString().Equals(deploymentExtended.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase))); 
 
             if (deploymentOperationError.ErrorMessages.Count > 0)
             {
                 WriteError(GetDeploymentErrorMessagesWithOperationId(deploymentOperationError,
                     parameters.Name,
                     deploymentExtended?.Properties?.CorrelationId));
+                throw new InvalidOperationException(deploymentOperationError.ErrorMessages.FirstOrDefault().Message);
             }
 
             return deploymentExtended;
@@ -223,21 +247,75 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                : errorInfo.ErrorMessages.Count;
 
             // Add outer message showing the total number of errors.
-            sb.AppendFormat(PSKeyVaultPropertiesResources.DeploymentOperationOuterError, deploymentName, maxErrors, errorInfo.ErrorMessages.Count);
+            sb.AppendFormat("DeploymentOperationOuterError", deploymentName, maxErrors, errorInfo.ErrorMessages.Count);
 
             // Add each error message
             errorInfo.ErrorMessages
                 .Take(maxErrors).ToList()
                 .ForEach(m => sb
                     .AppendLine()
-                    .AppendFormat(PSKeyVaultPropertiesResources.DeploymentOperationResultError, m
+                    .AppendFormat("DeploymentOperationOuterError", m
                             .ToFormattedString())
                     .AppendLine());
 
             // Add correlationId
-            sb.AppendLine().AppendFormat(PSKeyVaultPropertiesResources.DeploymentCorrelationId, correlationId);
+            sb.AppendLine().AppendFormat("DeploymentCorrelationId", correlationId);
 
             return sb.ToString();
+        }
+
+        private List<DeploymentOperation> GetNewOperations(List<DeploymentOperation> old, IPage<DeploymentOperation> current)
+        {
+            List<DeploymentOperation> newOperations = new List<DeploymentOperation>();
+            foreach (DeploymentOperation operation in current)
+            {
+                DeploymentOperation operationWithSameIdAndProvisioningState = old.Find(o => o.OperationId.Equals(operation.OperationId) && o.Properties.ProvisioningState.Equals(operation.Properties.ProvisioningState));
+                if (operationWithSameIdAndProvisioningState == null)
+                {
+                    newOperations.Add(operation);
+                }
+
+                //If nested deployment, get the operations under those deployments as well
+                if (operation.Properties.TargetResource?.ResourceType?.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    HttpStatusCode statusCode;
+                    Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
+                    if (!statusCode.IsClientFailureRequest())
+                    {
+                        var nestedDeploymentOperations = this.GetNestedDeploymentOperations(operation.Properties.TargetResource.Id);
+
+                        foreach (DeploymentOperation op in nestedDeploymentOperations)
+                        {
+                            DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
+
+                            if (nestedOperationWithSameIdAndProvisioningState == null)
+                            {
+                                newOperations.Add(op);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return newOperations;
+        }
+        private IPage<DeploymentOperation> ListDeploymentOperations(string resourceGroupName, string deploymentName)
+        {
+            return ResourceManagementClient.DeploymentOperations.List(resourceGroupName, deploymentName, null);
+        }
+        private List<DeploymentOperation> GetNestedDeploymentOperations(string deploymentId)
+        {
+            var resourceGroupName = ResourceIdUtility.GetResourceGroupName(deploymentId);
+            var deploymentName = ResourceIdUtility.GetDeploymentName(deploymentId);
+            
+            if (ResourceManagementClient.Deployments.CheckExistence(resourceGroupName, deploymentName) == true)
+            {
+                var result = this.ListDeploymentOperations(resourceGroupName, deploymentName);
+
+                return GetNewOperations(operations, result);
+            }
+
+            return new List<DeploymentOperation>();
         }
 
         private void WriteVerbose(string progress)
@@ -470,11 +548,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 jsonInfo["resources"][0]["properties"]["enabledForDiskEncryption"] = parameters.EnabledForDiskEncryption;
             if (parameters.EnableRbacAuthorization is true)
                 jsonInfo["resources"][0]["properties"]["enableRbacAuthorization"] = parameters.EnableRbacAuthorization;
-            if (parameters.EnableSoftDelete is true)
-            {
-                jsonInfo["resources"][0]["properties"]["enableSoftDelete"] = parameters.EnableSoftDelete;
-                jsonInfo["resources"][0]["properties"]["softDeleteRetentionInDays"] = parameters.SoftDeleteRetentionInDays;
-            }
+            jsonInfo["resources"][0]["properties"]["softDeleteRetentionInDays"] = parameters.SoftDeleteRetentionInDays;
             if (parameters.EnabledForDeployment is true)
                 jsonInfo["resources"][0]["properties"]["enabledForDeployment"] = parameters.EnabledForDeployment;
             jsonInfo["resources"][0]["properties"]["publicNetworkAccess"] = parameters.PublicNetworkAccess;
@@ -494,12 +568,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 }
             }
 
-
             deployment.Properties.Template = jsonInfo;
-            // deployment.Properties.Template =
-              //          FileUtilities.DataStore.ReadFileAsStream(parameters.TemplateFile).FromJson<JObject>();
             
-
             if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
             {
                 deployment.Properties.ParametersLink = new ParametersLink
