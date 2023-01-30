@@ -28,6 +28,7 @@ To see the current rules, use the Get-AzStorageCORSRule cmdlet.
 ## EXAMPLES
 
 ### Example 1: Assign CORS rules to the blob service
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$CorsRules = (@{
     AllowedHeaders=@("x-ms-blob-content-type","x-ms-blob-content-disposition");
@@ -48,6 +49,7 @@ This command uses standard extends over several lines in this code block.
 The second command assigns the rules in $CorsRules to the Blob service type.
 
 ### Example 2: Change properties of a CORS rule for blob service
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$CorsRules = Get-AzStorageCORSRule -ServiceType Blob
 PS C:\> $CorsRules[0].AllowedHeaders = @("x-ms-blob-content-type", "x-ms-blob-content-disposition")

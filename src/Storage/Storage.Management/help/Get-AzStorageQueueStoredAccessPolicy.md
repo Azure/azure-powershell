@@ -24,6 +24,7 @@ The **Get-AzStorageQueueStoredAccessPolicy** cmdlet lists the stored access poli
 ## EXAMPLES
 
 ### Example 1: Get a stored access policy in the queue
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy12"
 ```
@@ -31,6 +32,7 @@ PS C:\>Get-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy12"
 This command gets the access policy named Policy12 in the storage queue named MyQueue.
 
 ### Example 2: Get all stored access policies in the queue
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageQueueStoredAccessPolicy -Queue "MyQueue"
 ```

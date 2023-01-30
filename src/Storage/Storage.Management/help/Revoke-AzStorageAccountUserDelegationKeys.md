@@ -36,6 +36,7 @@ The **Revoke-AzStorageAccountUserDelegationKeys** cmdlet revokes all User Delega
 ## EXAMPLES
 
 ### Example 1: Revoke all User Delegation keys of a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\>Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 ```

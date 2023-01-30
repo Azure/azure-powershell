@@ -25,6 +25,7 @@ The **Set-AzStorageContainerAcl** cmdlet sets the public access permission to th
 ## EXAMPLES
 
 ### Example 1: Set azure storage container ACL by name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Set-AzStorageContainerAcl -Container "Container01" -Permission Off -PassThru
 ```
@@ -32,6 +33,7 @@ PS C:\>Set-AzStorageContainerAcl -Container "Container01" -Permission Off -PassT
 This command creates a container that has no public access.
 
 ### Example 2: Set azure storage container ACL by using the pipeline
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageContainer container* | Set-AzStorageContainerAcl -Permission Blob -PassThru
 ```

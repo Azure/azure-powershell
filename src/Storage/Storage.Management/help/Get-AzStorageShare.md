@@ -33,6 +33,7 @@ The **Get-AzStorageShare** cmdlet gets a list of file shares for a storage accou
 ## EXAMPLES
 
 ### Example 1: Get a file share
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageShare -Name "ContosoShare06"
 ```
@@ -40,6 +41,7 @@ PS C:\>Get-AzStorageShare -Name "ContosoShare06"
 This command gets the file share named ContosoShare06.
 
 ### Example 2: Get all file shares that begin with a string
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageShare -Prefix "Contoso"
 ```
@@ -47,6 +49,7 @@ PS C:\>Get-AzStorageShare -Prefix "Contoso"
 This command gets all file shares that have names that begin with Contoso.
 
 ### Example 3: Get all file shares in a specified context
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$Context = New-AzStorageContext -Local
 PS C:\> Get-AzStorageShare -Context $Context
@@ -56,6 +59,7 @@ The first command uses the **New-AzStorageContext** cmdlet to create a context b
 The second command gets the file shares for the context object stored in $Context.
 
 ### Example 4: Get a file share snapshot with specific share name and SnapshotTime
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
 ```

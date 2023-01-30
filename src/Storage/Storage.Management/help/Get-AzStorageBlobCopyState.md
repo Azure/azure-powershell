@@ -41,6 +41,7 @@ It should run on the copy destination blob.
 ## EXAMPLES
 
 ### Example 1: Get the copy status of a blob
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Get-AzStorageBlobCopyState -Blob "ContosoPlanning2015" -Container "ContosoUploads"
 ```
@@ -48,6 +49,7 @@ C:\PS>Get-AzStorageBlobCopyState -Blob "ContosoPlanning2015" -Container "Contoso
 This command gets the copy status of the blob named ContosoPlanning2015 in the container ContosoUploads.
 
 ### Example 2: Get the copy status for of a blob by using the pipeline
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Get-AzStorageBlob -Blob "ContosoPlanning2015" -Container "ContosoUploads" | Get-AzStorageBlobCopyState
 ```
@@ -56,6 +58,7 @@ This command gets the blob named ContosoPlanning2015 in the container named Cont
 The **Get-AzStorageBlobCopyState** cmdlet gets the copy status for that blob.
 
 ### Example 3: Get the copy status for a blob in a container by using the pipeline
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Get-AzStorageContainer -Name "ContosoUploads" | Get-AzStorageBlobCopyState -Blob "ContosoPlanning2015"
 ```
@@ -64,6 +67,7 @@ This command gets the container named by using the **Get-AzStorageBlob** cmdlet,
 The **Get-AzStorageContainer** cmdlet gets the copy status for the blob named ContosoPlanning2015 in that container.
 
 ### Example 4: Start Copy and pipeline to get the copy status
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS> $destBlob = Start-AzStorageBlobCopy -SrcContainer "contosouploads" -SrcBlob "ContosoPlanning2015" -DestContainer "contosouploads2" -DestBlob "ContosoPlanning2015_copy"
 

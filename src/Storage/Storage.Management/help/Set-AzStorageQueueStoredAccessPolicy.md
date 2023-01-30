@@ -25,6 +25,7 @@ The **Set-AzStorageQueueStoredAccessPolicy** cmdlet sets a stored access policy 
 ## EXAMPLES
 
 ### Example 1: Set a stored access policy in the queue with full permission
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Set-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy07" -Permission arup
 ```

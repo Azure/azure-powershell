@@ -350,6 +350,7 @@ Rules              : [
 This command creates or updates the management policy of a Storage account with a json format policy.
 
 ### Example 3: Get the management policy from a Storage account, then set it to another Storage account.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$outputPolicy = Get-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" | Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2"
 ```

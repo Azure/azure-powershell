@@ -27,6 +27,7 @@ The **Set-AzStorageContainerStoredAccessPolicy** cmdlet sets a stored access pol
 ## EXAMPLES
 
 ### Example 1: Set a stored access policy in a storage container with full permission
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Set-AzStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy06" -Permission rwdl
 ```

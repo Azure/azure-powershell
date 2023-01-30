@@ -69,6 +69,7 @@ tag1 value1
 This command modifies a Storage file share's metadata and share quota with Storage account name and share name, and show the modify result with the returned file share object.
 
 ### Example 2: Modifies metadata on a Storage file share with Storage account object and share name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount"
 PS C:\>$share = Update-AzRmStorageShare -StorageAccount $accountObject -Name "myshare" -Metadata @{tag0="value0";tag1="value1"}

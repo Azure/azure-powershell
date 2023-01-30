@@ -42,6 +42,7 @@ The **Copy-AzStorageBlob** cmdlet copies a blob synchronously, currently only su
 ## EXAMPLES
 
 ### Example 1: Copy a named blob to another
+<!-- Skip: Output cannot be splitted from code -->
 ```
 $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname"
 ```
@@ -49,6 +50,7 @@ $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "src
 This command copies a blob from source container to the destination container with a new blob name. 
 
 ### Example 2: Copy blob from a blob object
+<!-- Skip: Output cannot be splitted from code -->
 ```
 $srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
 $destBlob =  $srcBlob | Copy-AzStorageBlob  -DestContainer "destcontainername" -DestBlob "destblobname"
@@ -57,6 +59,7 @@ $destBlob =  $srcBlob | Copy-AzStorageBlob  -DestContainer "destcontainername" -
 This command copies a blob from source blob object to the destination container with a new blob name.
 
 ### Example 3: Copy blob from a blob Uri
+<!-- Skip: Output cannot be splitted from code -->
 ```
 $srcBlobUri = New-AzStorageBlobSASToken -Container $srcContainerName -Blob $srcBlobName -Permission rt -ExpiryTime (Get-Date).AddDays(7) -FullUri 
 $destBlob = Copy-AzStorageBlob -AbsoluteUri $srcBlobUri -DestContainer "destcontainername" -DestBlob "destblobname"
@@ -65,6 +68,7 @@ $destBlob = Copy-AzStorageBlob -AbsoluteUri $srcBlobUri -DestContainer "destcont
 The first command creates a blob Uri of the source blob, with sas token of permission "rt". The second command copies from source blob Uri to the destination blob.
 
 ### Example 4: Update a block blob encryption scope
+<!-- Skip: Output cannot be splitted from code -->
 ```
 $blob = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobname -DestContainer $containername -EncryptionScope $newScopeName -Force
 ```
@@ -72,6 +76,7 @@ $blob = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobname -Dest
 This command update a block blob encryption scope by copy it to itself with a new encryption scope.
 
 ### Example 5: Copy a blob to a new append blob
+<!-- Skip: Output cannot be splitted from code -->
 ```
 $srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
 $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname" -DestBlobType "Append" -DestContext $destCtx

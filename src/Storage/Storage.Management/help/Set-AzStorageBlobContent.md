@@ -49,6 +49,7 @@ The **Set-AzStorageBlobContent** cmdlet uploads a local file to an Azure Storage
 ## EXAMPLES
 
 ### Example 1: Upload a named file
+<!-- Skip: Output cannot be splitted from code -->
 ```
 Set-AzStorageBlobContent -Container "ContosoUpload" -File ".\PlanningData" -Blob "Planning2015"
 ```
@@ -56,6 +57,7 @@ Set-AzStorageBlobContent -Container "ContosoUpload" -File ".\PlanningData" -Blob
 This command uploads the file that is named PlanningData to a blob named Planning2015.
 
 ### Example 2: Upload all files under the current folder
+<!-- Skip: Output cannot be splitted from code -->
 ```
 Get-ChildItem -File -Recurse | Set-AzStorageBlobContent -Container "ContosoUploads"
 ```
@@ -64,6 +66,7 @@ This command uses the core Windows PowerShell cmdlet Get-ChildItem to get all th
 The **Set-AzStorageBlobContent** cmdlet uploads the files to the container named ContosoUploads.
 
 ### Example 3: Overwrite an existing blob
+<!-- Skip: Output cannot be splitted from code -->
 ```
 Get-AzStorageBlob -Container "ContosoUploads" -Blob "Planning2015" | Set-AzStorageBlobContent -File "ContosoPlanning"
 ```
@@ -75,6 +78,7 @@ The command prompts you for confirmation.
 If you confirm the command, the cmdlet overwrites the existing blob.
 
 ### Example 4: Upload a file to a container by using the pipeline
+<!-- Skip: Output cannot be splitted from code -->
 ```
 Get-AzStorageContainer -Container "ContosoUpload*" | Set-AzStorageBlobContent -File "ContosoPlanning" -Blob "Planning2015"
 ```
@@ -83,6 +87,7 @@ This command gets the container that starts with the string ContosoUpload by usi
 The command uploads the file that is named ContosoPlanning as Planning2015.
 
 ### Example 5: Upload a file to page blob with metadata and PremiumPageBlobTier as P10
+<!-- Skip: Output cannot be splitted from code -->
 ```
 $Metadata = @{"key" = "value"; "name" = "test"}
 Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Metadata $Metadata -BlobType Page -PremiumPageBlobTier P10

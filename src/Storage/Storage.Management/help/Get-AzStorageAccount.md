@@ -37,6 +37,7 @@ The **Get-AzStorageAccount** cmdlet gets a specified Storage account or all of t
 ## EXAMPLES
 
 ### Example 1: Get a specified Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```
@@ -44,6 +45,7 @@ PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
 This command gets the specified Storage account.
 
 ### Example 2: Get all Storage accounts in a resource group
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01"
 ```
@@ -51,6 +53,7 @@ PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01"
 This command gets all of the Storage accounts in a resource group.
 
 ### Example 3:  Get all Storage accounts in the subscription
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageAccount
 ```

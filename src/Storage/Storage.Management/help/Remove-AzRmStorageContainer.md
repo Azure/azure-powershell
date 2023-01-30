@@ -36,6 +36,7 @@ The **Remove-AzRmStorageContainer** cmdlet removes a Storage blob container
 ## EXAMPLES
 
 ### Example 1: Remove a Storage blob container with Storage account name and container name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Remove-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
 ```
@@ -43,6 +44,7 @@ PS C:\>Remove-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -Account
 This command removes a Storage blob container with Storage account name and container name.
 
 ### Example 2: Remove a Storage blob container with Storage account object and container name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
 PS C:\>Remove-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer"
@@ -51,6 +53,7 @@ PS C:\>Remove-AzRmStorageContainer -StorageAccount $accountObject -ContainerName
 This command removes a Storage blob container with Storage account object and container name.
 
 ### Example 3: Remove all Storage blob containers in a Storage account with pipeline
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Remove-AzRmStorageContainer -Force
 ```

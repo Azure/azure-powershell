@@ -23,6 +23,7 @@ The **Get-AzStorageAccountNetworkRuleSet** cmdlet gets the NetworkRule property 
 ## EXAMPLES
 
 ### Example 1: Get NetworkRule property of a specified Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Get-AzStorageAccountNetworkRuleSet  -ResourceGroupName "rg1" -Name "mystorageaccount"
 ```

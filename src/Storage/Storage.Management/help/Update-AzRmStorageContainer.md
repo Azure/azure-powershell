@@ -38,6 +38,7 @@ The **Update-AzRmStorageContainer** cmdlet modifies a Storage blob container
 ## EXAMPLES
 
 ### Example 1: Modifies a Storage blob container's metadata and public access with Storage account name and container name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Update-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -PublicAccess Container -Metadata @{tag0="value0";tag1="value1"}
 ```
@@ -45,6 +46,7 @@ PS C:\>Update-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -Account
 This command modifies a Storage blob container's metadata and public access with Storage account name and container name.
 
 ### Example 2: Disable public access on a Storage blob container with Storage account object and container name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
 PS C:\>Update-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer" -PublicAccess None
@@ -53,6 +55,7 @@ PS C:\>Update-AzRmStorageContainer -StorageAccount $accountObject -ContainerName
 This command disables public access on a Storage blob container with Storage account object and container name.
 
 ### Example 3: Set public access as Blob for all Storage blob containers in a Storage account with pipeline
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Update-AzRmStorageContainer -PublicAccess Blob
 ```

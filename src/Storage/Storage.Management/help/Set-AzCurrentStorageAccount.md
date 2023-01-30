@@ -32,6 +32,7 @@ The current Storage account is used as the default when you access Storage witho
 ## EXAMPLES
 
 ### Example 1: Set the current Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Set-AzCurrentStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```

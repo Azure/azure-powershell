@@ -25,6 +25,7 @@ The **New-AzStorageTableStoredAccessPolicy** cmdlet creates a stored access poli
 ## EXAMPLES
 
 ### Example 1: Create a stored access policy in a table
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>New-AzStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy02"
 ```

@@ -25,6 +25,7 @@ The **Remove-AzStorageTableStoredAccessPolicy** cmdlet removes a stored access p
 ## EXAMPLES
 
 ### Example 1: Remove a stored access policy from a storage table
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Remove-AzStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy05"
 ```

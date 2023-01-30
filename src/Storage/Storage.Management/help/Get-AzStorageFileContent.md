@@ -52,6 +52,7 @@ This cmdlet does not return the contents of the file.
 ## EXAMPLES
 
 ### Example 1: Download a file from a folder
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageFileContent -ShareName "ContosoShare06" -Path "ContosoWorkingFolder/CurrentDataFile"
 ```
@@ -59,6 +60,7 @@ PS C:\>Get-AzStorageFileContent -ShareName "ContosoShare06" -Path "ContosoWorkin
 This command downloads a file that is named CurrentDataFile in the folder ContosoWorkingFolder from the file share ContosoShare06 to current folder.
 
 ### Example 2: Downloads the files under sample file share
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageFile -ShareName sample | Where-Object {$_.GetType().Name -eq "CloudFile"} | Get-AzStorageFileContent
 ```
@@ -66,6 +68,7 @@ PS C:\>Get-AzStorageFile -ShareName sample | Where-Object {$_.GetType().Name -eq
 This example downloads the files under sample file share
 
 ### Example 3: Download an Azure file to a local file, and perserve the Azure File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the local file.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageFileContent -ShareName sample -Path "dir1/file1" -Destination $localFilePath -PreserveSMBAttribute
 ```

@@ -31,6 +31,7 @@ The **Get-AzStorageTable** cmdlet lists the storage tables associated with the s
 ## EXAMPLES
 
 ### Example 1: List all Azure Storage tables
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageTable
 ```
@@ -38,6 +39,7 @@ PS C:\>Get-AzStorageTable
 This command gets all storage tables for a Storage account.
 
 ### Example 2: List Azure Storage tables using a wildcard character
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageTable -Name table*
 ```
@@ -45,6 +47,7 @@ PS C:\>Get-AzStorageTable -Name table*
 This command uses a wildcard character to get storage tables whose name starts with table.
 
 ### Example 3: List Azure Storage tables using table name prefix
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageTable -Prefix "table"
 ```

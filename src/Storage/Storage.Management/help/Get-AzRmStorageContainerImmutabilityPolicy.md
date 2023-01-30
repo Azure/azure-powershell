@@ -36,6 +36,7 @@ The **Get-AzRmStorageContainerImmutabilityPolicy** cmdlet gets ImmutabilityPolic
 ## EXAMPLES
 
 ### Example 1: Get ImmutabilityPolicy of a Storage blob container with Storage account name and container name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
 ```
@@ -43,6 +44,7 @@ PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResource
 This command gets ImmutabilityPolicy of a Storage blob container with Storage account name and container name.
 
 ### Example 2: Get ImmutabilityPolicy of a Storage blob container with Storage account object and container name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
 PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject -ContainerName "myContainer"
@@ -51,6 +53,7 @@ PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject
 This command gets ImmutabilityPolicy of a Storage blob containers with Storage account object and container name.
 
 ### Example 3: Get ImmutabilityPolicy of a Storage blob container with Storage container object
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$containerObject = Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
 PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -Container $containerObject

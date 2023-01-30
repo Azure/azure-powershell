@@ -33,6 +33,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Removes a directory
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Remove-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
 ```
@@ -40,6 +41,7 @@ PS C:\>Remove-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
 This command removes a directory from a Filesystem.
 
 ### Example 2: Removes a file without prompt
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Remove-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" -Force
 ```
@@ -47,6 +49,7 @@ PS C:\>Remove-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" -F
 This command removes a directory from a Filesystem, without prompt.
 
 ### Example 3: Remove all items in a Filesystem with pipeline
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" | Remove-AzDataLakeGen2Item -Force
 ```

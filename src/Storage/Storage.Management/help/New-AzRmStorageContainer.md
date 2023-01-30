@@ -48,6 +48,7 @@ The **New-AzRmStorageContainer** cmdlet creates a Storage blob container
 ## EXAMPLES
 
 ### Example 1: Create a Storage blob container with Storage account name and container name, with metadata
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -Metadata @{tag0="value0";tag1="value1";tag2="value2"}
 ```
@@ -55,6 +56,7 @@ PS C:\>New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountNam
 This command creates a Storage blob container with Storage account name and container name, with metadata.
 
 ### Example 2: Create a Storage blob container with Storage account object and container name, with public access as Blob
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
 PS C:\>New-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer" -PublicAccess Blob

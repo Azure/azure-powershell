@@ -24,6 +24,7 @@ The **Enable-AzStorageStaticWebsite** cmdlet enables static website for the Azur
 ## EXAMPLES
 
 ### Example 1: Enable static website for the Azure Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Enable-AzStorageStaticWebsite -IndexDocument $indexdoc -ErrorDocument404Path $errordoc
 ```

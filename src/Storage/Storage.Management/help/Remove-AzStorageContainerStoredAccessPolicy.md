@@ -26,6 +26,7 @@ The **Remove-AzStorageContainerStoredAccessPolicy** cmdlet removes a stored acce
 ## EXAMPLES
 
 ### Example 1: Remove a stored access policy from a storage container
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Remove-AzStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy03"
 ```

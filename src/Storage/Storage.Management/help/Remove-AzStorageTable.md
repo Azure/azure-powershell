@@ -24,6 +24,7 @@ The **Remove-AzStorageTable** cmdlet removes one or more storage tables from a s
 ## EXAMPLES
 
 ### Example 1: Remove a table
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Remove-AzStorageTable -Name "TableABC"
 ```
@@ -31,6 +32,7 @@ PS C:\>Remove-AzStorageTable -Name "TableABC"
 This command removes a table.
 
 ### Example 2: Remove several tables
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageTable table* | Remove-AzStorageTable
 ```

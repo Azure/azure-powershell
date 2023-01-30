@@ -43,6 +43,7 @@ The **Set-AzStorageFileContent** cmdlet uploads the contents of a file to a file
 ## EXAMPLES
 
 ### Example 1: Upload a file in the current folder
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Set-AzStorageFileContent -ShareName "ContosoShare06" -Source "DataFile37" -Path "ContosoWorkingFolder/CurrentDataFile"
 ```
@@ -50,6 +51,7 @@ PS C:\>Set-AzStorageFileContent -ShareName "ContosoShare06" -Source "DataFile37"
 This command uploads a file that is named DataFile37 in the current folder as a file that is named CurrentDataFile in the folder named ContosoWorkingFolder.
 
 ### Example 2: Upload all the files in the current folder
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$CurrentFolder = (Get-Item .).FullName
 PS C:\> $Container = Get-AzStorageShare -Name "ContosoShare06"

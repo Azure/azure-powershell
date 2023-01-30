@@ -23,6 +23,7 @@ The **Disable-AzStorageStaticWebsite** cmdlet disables static website for the Az
 ## EXAMPLES
 
 ### Example 1: Disable static website for a Azure Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Disable-AzStorageStaticWebsite
 ```

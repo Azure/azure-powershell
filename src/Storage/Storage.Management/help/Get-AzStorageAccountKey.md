@@ -24,6 +24,7 @@ The **Get-AzStorageAccountKey** cmdlet gets the access keys for an Azure Storage
 ## EXAMPLES
 
 ### Example 1: Get the access keys for a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```
@@ -47,6 +48,7 @@ PS C:\>(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccoun
 ```
 
 ### Example 3: Lists the access keys for a Storage account, include the Kerberos keys (if active directory enabled)
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount" -ListKerbKey
 ```

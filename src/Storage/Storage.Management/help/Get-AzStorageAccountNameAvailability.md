@@ -24,6 +24,7 @@ The **Get-AzStorageAccountNameAvailability** cmdlet checks whether the name of a
 ## EXAMPLES
 
 ### Example 1: Check availability of a Storage account name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageAccountNameAvailability -Name 'contosostorage03'
 ```

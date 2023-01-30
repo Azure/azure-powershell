@@ -26,6 +26,7 @@ The **Remove-AzStorageContainer** cmdlet removes the specified storage container
 ## EXAMPLES
 
 ### Example 1: Remove a container
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Remove-AzStorageContainer -Name "MyTestContainer"
 ```

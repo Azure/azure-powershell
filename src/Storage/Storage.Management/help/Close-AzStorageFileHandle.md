@@ -66,6 +66,7 @@ The **Close-AzStorageFileHandle** cmdlet closes file handles of a  file share, o
 ## EXAMPLES
 
 ### Example 1: Close all file handles on a file
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -CloseAll
 ```
@@ -73,6 +74,7 @@ PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test
 This command closes all file handles on a file.
 
 ### Example 2: Close all file handles which is opened 1 day ago on a file directory
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive | Where-Object {$_.OpenTime.DateTime.AddDays(1) -lt (Get-Date)} | Close-AzStorageFileHandle -ShareName "mysharename"
 ```
@@ -89,6 +91,7 @@ PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Re
 This command closes all file handles on a file directory and shows the closed file handle count.
 
 ### Example 4: Close all file handles on a file share 
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -CloseAll -Recursive
 ```

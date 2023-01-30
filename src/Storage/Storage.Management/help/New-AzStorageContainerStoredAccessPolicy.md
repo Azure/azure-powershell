@@ -26,6 +26,7 @@ The **New-AzStorageContainerStoredAccessPolicy** cmdlet creates a stored access 
 ## EXAMPLES
 
 ### Example 1: Create a stored access policy in a storage container
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>New-AzStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy01"
 ```

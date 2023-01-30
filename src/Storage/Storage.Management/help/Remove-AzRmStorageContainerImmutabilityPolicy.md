@@ -43,6 +43,7 @@ The **Remove-AzRmStorageContainerImmutabilityPolicy** cmdlet removes Immutabilit
 ## EXAMPLES
 
 ### Example 1: Remove unlocked ImmutabilityPolicy of a Storage blob container with Storage account name and container name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
 PS C:\>Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -Etag $policy.Etag
@@ -51,6 +52,7 @@ PS C:\>Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResou
 This command removes unlocked ImmutabilityPolicy of a Storage blob container with Storage account name and container name.
 
 ### Example 2: Remove unlocked ImmutabilityPolicy of a Storage blob container, with Storage account object
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
 PS C:\>$policy = Get-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject -ContainerName "myContainer"
@@ -60,6 +62,7 @@ PS C:\>Remove-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObj
 This command removes unlocked ImmutabilityPolicy of a Storage blob container, with Storage account object. 
 
 ### Example 3: Remove unlocked ImmutabilityPolicy of a Storage blob container, with container object
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$containerObject = Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
 PS C:\>$policy = Get-AzRmStorageContainerImmutabilityPolicy -Container $containerObject
@@ -69,6 +72,7 @@ PS C:\>Remove-AzRmStorageContainerImmutabilityPolicy -Container $containerObject
 This command removes unlocked ImmutabilityPolicy of a Storage blob container with Storage container object.
 
 ### Example 4: Remove unlocked ImmutabilityPolicy of a Storage blob container, with ImmutabilityPolicy object
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" | Remove-AzRmStorageContainerImmutabilityPolicy
 ```

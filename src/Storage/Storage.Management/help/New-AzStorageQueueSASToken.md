@@ -33,6 +33,7 @@ The **New-AzStorageQueueSASToken** cmdlet generates shared access signature toke
 ## EXAMPLES
 
 ### Example 1: Generate a queue SAS token with full permission
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>New-AzStorageQueueSASToken -Name "Test" -Permission raup
 ```

@@ -25,6 +25,7 @@ The **Set-AzStorageServiceMetricsProperty** cmdlet modifies metrics properties f
 ## EXAMPLES
 
 ### Example 1: Modify metrics properties for the Blob service
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -MetricsLevel Service -PassThru -RetentionDays 10 -Version 1.0
 ```

@@ -30,6 +30,7 @@ The **Get-AzRmStorageContainer** cmdlet gets or lists  Storage blob containers
 ## EXAMPLES
 
 ### Example 1: Get a Storage blob container with Storage account name and container name
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
 ```
@@ -37,6 +38,7 @@ PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountNam
 This command gets a Storage blob container with Storage account name and container name.
 
 ### Example 2: List  all Storage blob containers of a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
 ```
@@ -44,6 +46,7 @@ PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountNam
 This command lists all Storage blob containers of a Storage account with Storage account name.
 
 ### Example 3: Get a Storage blob container with Storage account object and container name.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
 PS C:\>Get-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer"
