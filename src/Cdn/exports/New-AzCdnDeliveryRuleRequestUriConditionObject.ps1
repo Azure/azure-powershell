@@ -25,7 +25,7 @@ New-AzCdnDeliveryRuleRequestUriConditionObject -Name RequestUri -ParameterOperat
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestUriCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestUriConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestUriConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestUriConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestUriCondition])]

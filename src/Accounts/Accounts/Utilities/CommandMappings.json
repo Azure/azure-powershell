@@ -608,6 +608,19 @@
       "Get-AzBillingProfile": {},
       "Get-AzInvoiceSection": {}
     },
+    "Az.BillingBenefits": {
+      "Get-AzBillingBenefitsReservationOrderAlias": {},
+      "Get-AzBillingBenefitsSavingsPlan": {},
+      "Get-AzBillingBenefitsSavingsPlanList": {},
+      "Get-AzBillingBenefitsSavingsPlanOrder": {},
+      "Get-AzBillingBenefitsSavingsPlanOrderAlias": {},
+      "Invoke-AzBillingBenefitsElevateSavingPlanOrder": {},
+      "Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation": {},
+      "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation": {},
+      "New-AzBillingBenefitsReservationOrderAlias": {},
+      "New-AzBillingBenefitsSavingsPlanOrderAlias": {},
+      "Update-AzBillingBenefitsSavingsPlan": {}
+    },
     "Az.Blueprint": {
       "Get-AzBlueprint": {},
       "Get-AzBlueprintAssignment": {},
@@ -2854,6 +2867,12 @@
       "Update-AzLabServicesSchedule": {},
       "Update-AzLabServicesUser": {},
       "Update-AzLabServicesVMReimage": {}
+    },
+    "Az.LoadTesting": {
+      "Get-AzLoad": {},
+      "New-AzLoad": {},
+      "Remove-AzLoad": {},
+      "Update-AzLoad": {}
     },
     "Az.LogicApp": {
       "Get-AzIntegrationAccountAgreement": {},

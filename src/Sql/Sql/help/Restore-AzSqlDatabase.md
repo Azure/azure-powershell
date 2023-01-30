@@ -17,7 +17,7 @@ Restores a SQL database.
 ```
 Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
  -ServerName <String> -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>]
- [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>] [-BackupStorageRedundancy <String>]
+ [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>] [-HAReplicaCount <Int>] [-BackupStorageRedundancy <String>]
  [-ZoneRedundant] [-Tag <Hashtable>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Resource
 ```
 Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
  -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String>
- -VCore <Int32> [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
+ -VCore <Int32> [-LicenseType <String>] [-HAReplicaCount <Int>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -36,7 +36,7 @@ Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Resource
 Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> [-Edition <String>]
  [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>]
- [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-ResourceGroupName] <String>
+ [-HAReplicaCount <Int>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -De
 ```
 Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob]
- -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>] [-BackupStorageRedundancy <String>]
+ -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>] [-HAReplicaCount <Int>] [-BackupStorageRedundancy <String>]
  [-ZoneRedundant] [-Tag <Hashtable>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -53,7 +53,7 @@ Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -De
 ```
 Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String> -TargetDatabaseName <String>
  [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob]
- [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
+ [-LicenseType <String>] [-HAReplicaCount <Int>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -61,7 +61,7 @@ Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
 ### FromGeoBackupWithVcore
 ```
 Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String> -TargetDatabaseName <String>
- -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>]
+ -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>] [-HAReplicaCount <Int>]
  [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -70,7 +70,7 @@ Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
 ```
 Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>]
- [-AsJob] [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
+ [-AsJob] [-LicenseType <String>] [-HAReplicaCount <Int>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -79,7 +79,7 @@ Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -Serve
 ```
 Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
- [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
+ [-LicenseType <String>] [-HAReplicaCount <Int>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackupStorageRedundancy
-The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.
+The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone, Geo and GeoZone.
 
 ```yaml
 Type: System.String
@@ -324,6 +324,20 @@ Parameter Sets: FromPointInTimeBackup, FromPointInTimeBackupWithVcore
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -HAReplicaCount
+The high availability replica count to associate with the Azure Sql Database.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

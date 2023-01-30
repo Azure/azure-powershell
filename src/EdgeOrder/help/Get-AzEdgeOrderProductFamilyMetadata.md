@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamilymetadata
+online version: https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamilymetadata
 schema: 2.0.0
 ---
 

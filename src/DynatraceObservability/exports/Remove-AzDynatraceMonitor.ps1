@@ -41,7 +41,7 @@ INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
   [RuleSetName <String>]: Monitor resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitor
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitor
 #>
 function Remove-AzDynatraceMonitor {
 [OutputType([System.Boolean])]

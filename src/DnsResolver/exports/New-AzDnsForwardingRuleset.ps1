@@ -36,7 +36,7 @@ To create the parameters described below, construct a hash table containing the 
 DNSRESOLVEROUTBOUNDENDPOINT <ISubResource[]>: The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
   Id <String>: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingruleset
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingruleset
 #>
 function New-AzDnsForwardingRuleset {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset])]

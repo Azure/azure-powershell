@@ -86,7 +86,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdevice
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdevice
 #>
 function Get-AzConnectedNetworkDevice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice])]

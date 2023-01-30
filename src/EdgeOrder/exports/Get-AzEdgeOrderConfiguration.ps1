@@ -74,7 +74,7 @@ CUSTOMERSUBSCRIPTIONDETAIL <ICustomerSubscriptionDetails>: Customer subscription
     [Name <String>]: Name of subscription registered feature
     [State <String>]: State of subscription registered feature
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderconfiguration
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderconfiguration
 #>
 function Get-AzEdgeOrderConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfiguration])]
