@@ -468,8 +468,8 @@ Accept wildcard characters: False
 ### -ManagedDiskStorageAccountType
 Specifies the storage account type for managed disk.
 The acceptable values for this parameter are:
-- StandardLRS
-- PremiumLRS
+- Standard_LRS
+- Premium_LRS
 
 ```yaml
 Type: System.String

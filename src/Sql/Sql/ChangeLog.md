@@ -22,6 +22,8 @@
 * Added new cmdlets for managed instance DTC
     `Get-AzSqlInstanceDtc`
     `Set-AzSqlInstanceDtc`
+* Enabled support for UserAssignedManagedIdentity in Auditing
+* Fixed WorkspaceResourceId parameter value in `Set-AzSqlServerAudit`
 
 ## Version 4.2.0
 * Added a parameter named `UseIdentity` for `Set-AzSqlServerAudit`, `Set-AzSqlDatabaseAudit`, `Set-AzSqlServerMSSupportAudit`

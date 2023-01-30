@@ -99,9 +99,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Update-AzCosmosDBMongoDBRoleDefinition](./Update-AzCosmosDBMongoDBRoleDefinition.md)
 
-[Update-AzCosmosDBMongoDBPrivilege](./Update-AzCosmosDBMongoDBPrivilege.md)
-
 [New-AzCosmosDBMongoDBUserDefinition](./New-AzCosmosDBMongoDBUserDefinition.md)
 
 [Update-AzCosmosDBMongoDBUserDefinition](./Update-AzCosmosDBMongoDBUserDefinition.md)
-
