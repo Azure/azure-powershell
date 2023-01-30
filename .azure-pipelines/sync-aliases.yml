@@ -79,15 +79,15 @@ jobs:
       targetType: inline
       script: |
         git pull origin main
-        git config --global user.email "nicolasshuai@gmail.com"
-        git config --global user.name "xtr0d666"
+        git config --global user.email "azurepowershell@ms.com"
+        git config --global user.name "azurepowershell"
         git config --global credential.helper store
         git checkout -b "Will_change_fabricbot"
         
         git add .
         git commit -m "pipeline to change fabricbot22.json"
         
-        git remote set-url origin "https://$(GITHUB_TOKEN)@github.com/xtR0d666/azure-powershell.git"
+        git remote set-url origin "https://$(GITHUB_TOKEN)@github.com/Azure/azure-powershell.git"
         git push origin Will_change_fabricbot --force
   
   - pwsh: |
