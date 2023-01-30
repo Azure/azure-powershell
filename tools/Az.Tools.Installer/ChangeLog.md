@@ -1,4 +1,5 @@
 ## Upcoming Release
+* Remove the usage of `Get-InstalledModule` from product codes.
 ## 0.2.1
 * Fixed the issue of installation and updating when Repository is not provided (#20209)
 * Updated telemetry assembly to 2.13.1
