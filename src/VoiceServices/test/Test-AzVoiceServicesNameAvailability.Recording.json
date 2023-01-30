@@ -1,0 +1,38 @@
+{
+  "Test-AzVoiceServicesNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VoiceServices/locations/eastus/checkNameAvailability?api-version=2023-01-31+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VoiceServices/locations/eastus/checkNameAvailability?api-version=2023-01-31",
+      "Content": "{\n  \"name\": \"VoiceServicesTestName\",\n  \"type\": \"Microsoft.VoiceServices/CommunicationsGateways\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "97" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "d3728f0b-5b52-4c94-a711-b061c24f646d" ],
+        "x-ms-correlation-request-id": [ "4c842499-0fbf-423c-9812-cf089692c72f" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230130T032127Z:4c842499-0fbf-423c-9812-cf089692c72f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Jan 2023 03:21:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}

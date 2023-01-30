@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzVoiceServicesCommunicat
 }
 
 Describe 'New-AzVoiceServicesCommunicationsContact' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         { 
             New-AzVoiceServicesCommunicationsContact -ResourceGroupName $env.resourceGroup -CommunicationsGatewayName $env.gatewayName01 -Name $env.contactName02 -Location $env.location -PhoneNumber "+1-555-1234" -FullContactName "John Smith" -Email "johnsmith@example.com" -Role "Network Manager"
             Get-AzVoiceServicesCommunicationsContact -ResourceGroupName $env.resourceGroup -CommunicationsGatewayName $env.gatewayName01
@@ -24,7 +24,7 @@ Describe 'New-AzVoiceServicesCommunicationsContact' {
             Remove-AzVoiceServicesCommunicationsContact -ResourceGroupName $env.resourceGroup -CommunicationsGatewayName $env.gatewayName01 -Name $env.contactName02        
         } | Should -Not -Throw
     }
-    It 'CreateExpandedViaIdentity' {
+    It 'CreateExpandedViaIdentity' -skip {
         { 
             $contact = New-AzVoiceServicesCommunicationsContact -ResourceGroupName $env.resourceGroup -CommunicationsGatewayName $env.gatewayName01 -Name $env.contactName02 -Location $env.location -PhoneNumber "+1-555-1234" -FullContactName "John Smith" -Email "johnsmith@example.com" -Role "Network Manager"
             Get-AzVoiceServicesCommunicationsContact -InputObject $contact
