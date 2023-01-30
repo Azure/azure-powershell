@@ -15,8 +15,8 @@ Exports data from Azure Redis Cache to a container.
 
 ```
 Export-AzRedisCache [-ResourceGroupName <String>] -Name <String> -Prefix <String> -Container <String>
- [-Format <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Format <String>] [-PreferredDataArchiveAuthMethod <String>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,14 @@ Export-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -P
 ```
 
 This command exports data from an Azure Redis Cache instance into the container that is specified by the SAS URL.
+
+### Example 2: Export data using managed identity
+
+```powershell
+Export-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -Prefix "blobprefix" -Container "https://mystorageaccount.blob.core.windows.net/container18" -PreferredDataArchiveAuthMethod ManagedIdentity
+```
+
+This command exports data from an Azure Redis Cache instance into the container using managed identity as the authorization method. It assumes that both the cache and storage account have been configured to use managed identity. 
 
 ## PARAMETERS
 
@@ -110,6 +118,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferredDataArchiveAuthMethod
+Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

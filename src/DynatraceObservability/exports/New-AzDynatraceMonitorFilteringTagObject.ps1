@@ -25,7 +25,7 @@ New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.FilteringTag
 .Link
-https://docs.microsoft.com/powershell/module/az.Dynatrace/new-AzDynatraceMonitorFilteringTagObject
+https://learn.microsoft.com/powershell/module/az.Dynatrace/new-AzDynatraceMonitorFilteringTagObject
 #>
 function New-AzDynatraceMonitorFilteringTagObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.FilteringTag])]

@@ -29,7 +29,7 @@ New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlfirewallrule
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlfirewallrule
 #>
 function New-AzMySqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]

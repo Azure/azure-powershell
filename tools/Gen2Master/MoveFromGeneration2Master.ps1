@@ -259,7 +259,12 @@ Function Move-Generation2MasterHybrid {
             }
 
             #copy generated docs to help folder
-            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName\help" -Filter *-*
+            #Assume psd1 and help are in the same folder.
+            $Psd1FolderPostfix = '';
+            if (-not (Test-Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1"))) {
+                $Psd1FolderPostfix = '.Management'
+            }
+            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName$Psd1FolderPostfix\help" -Filter *-*
 
             #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
             $generateInfo = @{}
@@ -299,8 +304,8 @@ Function Move-Generation2MasterHybrid {
             dotnet sln $SolutionPath add (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath Az.$submoduleName.csproj)
 
             # Update psd1
-            $DestPsd1Path = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1"
-            $Psd1Metadata = Import-LocalizedData -BaseDirectory (Join-Path -Path $DestPath -ChildPath $ModuleName) -FileName "Az.$ModuleName.psd1"
+            $DestPsd1Path = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName$Psd1FolderPostfix) -ChildPath "Az.$ModuleName.psd1"
+            $Psd1Metadata = Import-LocalizedData -BaseDirectory (Join-Path -Path $DestPath -ChildPath $ModuleName$Psd1FolderPostfix) -FileName "Az.$ModuleName.psd1"
             $SubModulePsd1MetaData = Import-LocalizedData -BaseDirectory (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -FileName "Az.$submoduleName.psd1"
             if (!@($Psd1Metadata.RequiredAssemblies).Contains(("{0}\bin\Az.${submoduleName}.private.dll" -f $submoduleDir.Name))) {
                 $Psd1Metadata.RequiredAssemblies = @($Psd1Metadata.RequiredAssemblies) + ("{0}\bin\Az.${submoduleName}.private.dll" -f $submoduleDir.Name)
@@ -339,11 +344,12 @@ Function Move-Generation2MasterHybrid {
         $job = start-job {
             param(
                 [string] $ModuleName,
-                [string] $DestPath
+                [string] $DestPath,
+                [string] $Psd1FolderPostfix
             )
             Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
-            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow         
-        } -ArgumentList $ModuleName, $DestPath
+            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow         
+        } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job
         # Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"

@@ -25,7 +25,7 @@ Set-AzCloudServiceUpdateDomain -CloudServiceName "ContosoCS" -ResourceGroupName 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/set-azcloudserviceupdatedomain
+https://learn.microsoft.com/powershell/module/az.cloudservice/set-azcloudserviceupdatedomain
 #>
 function Set-AzCloudServiceUpdateDomain {
 [OutputType([System.Boolean])]

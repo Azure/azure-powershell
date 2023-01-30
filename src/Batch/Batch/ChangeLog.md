@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.3.0
 * Added new properties `CurrentNodeCommunicationMode` (read only) and `TargetCommunicationMode` of type `NodeCommunicationMode` to `PSCloudPool`.
   - Valid values for `NodeCommunicationMode`: Default, Classic, Simplified
   - When the `PSCloudPool` is updated with a new `TargetCommunicationMode` value, the Batch service will attempt to update the pool to the new value the next time the pool is resized down to zero compute nodes and back up.
