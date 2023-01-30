@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             var psVault = new PSNetAppFilesVault
             {
-                ResourceGroupName = new ResourceIdentifier(vault.Id).ResourceGroupName,
-                Location = vault.Location,
+                ResourceGroupName = new ResourceIdentifier(vault.Id).ResourceGroupName,                
                 Id = vault.Id,
                 Name = vault.Name,                
                 Type = vault.Type,

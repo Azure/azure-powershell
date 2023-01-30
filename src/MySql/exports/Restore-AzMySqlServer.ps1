@@ -61,7 +61,7 @@ INPUTOBJECT <IServer>: The source server object to restore from.
   [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/restore-azmysqlserver
+https://learn.microsoft.com/powershell/module/az.mysql/restore-azmysqlserver
 #>
 function Restore-AzMySqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]

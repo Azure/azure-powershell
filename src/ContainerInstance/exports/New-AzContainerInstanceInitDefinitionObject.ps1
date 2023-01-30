@@ -39,7 +39,7 @@ VOLUMEMOUNT <IVolumeMount[]>: The volume mounts available to the init container.
   Name <String>: The name of the volume mount.
   [ReadOnly <Boolean?>]: The flag indicating whether the volume mount is read-only.
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
 #>
 function New-AzContainerInstanceInitDefinitionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.InitContainerDefinition])]

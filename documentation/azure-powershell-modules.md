@@ -105,6 +105,7 @@ Marketplace Ordering                  | `Az.MarketplaceOrdering`                
 Media                                 | `Az.Media`                              | [![Media]][MediaGallery]
 Migrate                               | `Az.Migrate`                            | [![Migrate]][MigrateGallery]
 Mixed Reality                         | `Az.MixedReality`                       | [![MixedReality]][MixedRealityGallery]
+Mobile Network                        | `Az.MobileNetwork`                      | [![MobileNetwork]][MobileNetworkGallery]
 Monitor                               | `Az.Monitor`                            | [![Monitor]][MonitorGallery]
 Monitoring Solutions                  | `Az.MonitoringSolutions`                | [![MonitoringSolutions]][MonitoringSolutionsGallery]
 Database for MySQL                    | `Az.MySql`                              | [![MySql]][MySqlGallery]
@@ -154,6 +155,7 @@ Synapse Analytics                     | `Az.Synapse`                            
 Time Series Insights                  | `Az.TimeSeriesInsights`                 | [![TimeSeriesInsights]][TimeSeriesInsightsGallery]
 Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery]
 Azure VMware Solution                 | `Az.VMware`                             | [![VMware]][VMwareGallery]
+Voice Services                        | `Az.VoiceServices`                      | [![VoiceServices]][VMwareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
 Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
 
@@ -256,6 +258,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [Media]:                      https://img.shields.io/powershellgallery/v/Az.Media.svg?style=flat-square&label=Az.Media
 [Migrate]:                    https://img.shields.io/powershellgallery/v/Az.Migrate.svg?style=flat-square&label=Az.Migrate
 [MixedReality]:               https://img.shields.io/powershellgallery/v/Az.MixedReality.svg?style=flat-square&label=Az.MixedReality
+[MobileNetwork]:              https://img.shields.io/powershellgallery/v/Az.MobileNetwork.svg?style=flat-square&label=Az.MobileNetwork
 [Monitor]:                    https://img.shields.io/powershellgallery/v/Az.Monitor.svg?style=flat-square&label=Az.Monitor
 [MonitoringSolutions]:        https://img.shields.io/powershellgallery/v/Az.MonitoringSolutions.svg?style=flat-square&label=Az.MonitoringSolutions
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
@@ -305,6 +308,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [TimeSeriesInsights]:         https://img.shields.io/powershellgallery/v/Az.TimeSeriesInsights.svg?style=flat-square&label=Az.TimeSeriesInsights
 [TrafficManager]:             https://img.shields.io/powershellgallery/v/Az.TrafficManager.svg?style=flat-square&label=Az.TrafficManager
 [VMware]:                     https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware
+[VoiceServices]:              https://img.shields.io/powershellgallery/v/Az.VoiceServices.svg?style=flat-square&label=Az.VoiceServices
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
 [WindowsIotServices]:         https://img.shields.io/powershellgallery/v/Az.WindowsIotServices.svg?style=flat-square&label=Az.WindowsIotServices
 
@@ -405,6 +409,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [MediaGallery]:                      https://www.powershellgallery.com/packages/Az.Media/
 [MigrateGallery]:                    https://www.powershellgallery.com/packages/Az.Migrate/
 [MixedRealityGallery]:               https://www.powershellgallery.com/packages/Az.MixedReality/
+[MobileNetworkGallery]:              https://www.powershellgallery.com/packages/Az.MobileNetwork/
 [MonitorGallery]:                    https://www.powershellgallery.com/packages/Az.Monitor/
 [MonitoringSolutionsGallery]:        https://www.powershellgallery.com/packages/Az.MonitoringSolutions/
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
@@ -454,5 +459,6 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [TimeSeriesInsightsGallery]:         https://www.powershellgallery.com/packages/Az.TimeSeriesInsights/
 [TrafficManagerGallery]:             https://www.powershellgallery.com/packages/Az.TrafficManager/
 [VMwareGallery]:                     https://www.powershellgallery.com/packages/Az.VMware/
+[VoiceServices]:                     https://www.powershellgallery.com/packages/Az.VoiceServices/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
 [WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/

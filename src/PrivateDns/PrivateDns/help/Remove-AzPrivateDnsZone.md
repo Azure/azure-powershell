@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version: https://docs.microsoft.com/powershell/module/az.privatedns/remove-azprivatednszone
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/remove-azprivatednszone
 schema: 2.0.0
 ---
 

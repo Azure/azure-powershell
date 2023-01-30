@@ -25,7 +25,7 @@ New-AzFrontDoorCdnRulePostArgsConditionObject -Name PostArgs -ParameterOperator 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRulePostArgsCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRulePostArgsConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRulePostArgsConditionObject
 #>
 function New-AzFrontDoorCdnRulePostArgsConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRulePostArgsCondition])]

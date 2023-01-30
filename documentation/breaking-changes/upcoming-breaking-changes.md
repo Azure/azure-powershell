@@ -421,7 +421,7 @@
 ### `Get-AzNetAppFilesVault`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - The output type is changing from the existing type :'Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy' to the new type :'PSNetAppFilesVault'
+  - The cmdlet is being deprecated. There will be no replacement for it.
 
 ### `New-AzNetAppFilesBackupPolicy`
 

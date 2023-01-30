@@ -86,7 +86,7 @@ function Install-AzModuleInternal {
                     }
                     $downloader.WaitForAllTasks()
                     $file = $null
-                    foreach($file in $fileList) {
+                    foreach ($file in $fileList) {
                         if (!(Test-Path -Path $file.Path)) {
                             Throw "[$Invoker] Fail to download $($file.Name) to $tempRepo. Please check your network connection and retry."
                         }

@@ -50,7 +50,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitorssoconfiguration
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitorssoconfiguration
 #>
 function Get-AzLogzMonitorSSOConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnResource])]

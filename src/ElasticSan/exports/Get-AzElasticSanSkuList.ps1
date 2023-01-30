@@ -25,7 +25,7 @@ Get-AzElasticSanSkuList
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformation
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanskulist
+https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanskulist
 #>
 function Get-AzElasticSanSkuList {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformation])]

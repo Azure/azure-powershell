@@ -38,7 +38,7 @@ APPSETTING <IStringDictionary>: String dictionary resource.
   [Property <IStringDictionaryProperties>]: Settings.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsetting
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsetting
 #>
 function Set-AzWebAppApplicationSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]

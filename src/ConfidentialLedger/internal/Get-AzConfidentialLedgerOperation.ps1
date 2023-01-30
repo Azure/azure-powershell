@@ -27,7 +27,7 @@ Retrieves a list of available API operations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IResourceProviderOperationDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.confidentialledger/get-azconfidentialledgeroperation
+https://learn.microsoft.com/powershell/module/az.confidentialledger/get-azconfidentialledgeroperation
 #>
 function Get-AzConfidentialLedgerOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IResourceProviderOperationDefinition])]

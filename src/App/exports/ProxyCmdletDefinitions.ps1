@@ -3404,7 +3404,7 @@ Create or update a Container App.
 .Description
 Create or update a Container App.
 .Example
-$trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
+$trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
 $secretObject = New-AzContainerAppSecretObject -Name "facebook-secret" -Value "facebook-password"
 
 $containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
@@ -3413,7 +3413,11 @@ $image = New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.mic
 
 $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azpstest_gp -EnvName azps-env).Id
 
-New-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
+$scaleRule = @()
+$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName1 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName2 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+
+New-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp
@@ -5951,7 +5955,7 @@ $customDomain = New-AzContainerAppCustomDomainObject -CertificateId $certificate
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappcustomdomainobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappcustomdomainobject
 #>
 function New-AzContainerAppCustomDomainObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain])]
@@ -6063,7 +6067,7 @@ New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappdaprmetadataobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappdaprmetadataobject
 #>
 function New-AzContainerAppDaprMetadataObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata])]
@@ -6173,7 +6177,7 @@ New-AzContainerAppEnvironmentVarObject -Name "envVarName" -SecretRef "facebook-s
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappenvironmentvarobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappenvironmentvarobject
 #>
 function New-AzContainerAppEnvironmentVarObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar])]
@@ -6290,7 +6294,7 @@ To create the parameters described below, construct a hash table containing the 
 CUSTOMOPENIDCONNECTPROVIDER <IIdentityProvidersCustomOpenIdConnectProviders>: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
   [(Any) <ICustomOpenIdConnectProvider>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappidentityproviderobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappidentityproviderobject
 #>
 function New-AzContainerAppIdentityProviderObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProviders])]
@@ -6648,7 +6652,7 @@ New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappprobeheaderobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeheaderobject
 #>
 function New-AzContainerAppProbeHeaderObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem])]
@@ -6760,7 +6764,7 @@ HTTPGETHTTPHEADER <IContainerAppProbeHttpGetHttpHeadersItem[]>: Custom headers t
   Name <String>: The header field name
   Value <String>: The header field value
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
 #>
 function New-AzContainerAppProbeObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe])]
@@ -6969,7 +6973,7 @@ New-AzContainerAppRegistryCredentialObject -Identity system -PasswordSecretRef "
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappregistrycredentialobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappregistrycredentialobject
 #>
 function New-AzContainerAppRegistryCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials])]
@@ -7087,7 +7091,7 @@ New-AzContainerAppScaleRuleAuthObject -SecretRef "facebook-secret" -TriggerParam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappscaleruleauthobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappscaleruleauthobject
 #>
 function New-AzContainerAppScaleRuleAuthObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth])]
@@ -7186,7 +7190,9 @@ Create an in-memory object for ScaleRule.
 .Description
 Create an in-memory object for ScaleRule.
 .Example
-New-AzContainerAppScaleRuleObject -Name scaleRuleName -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+$scaleRule = @()
+$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName1 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName2 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule
@@ -7213,7 +7219,7 @@ HTTPAUTH <IScaleRuleAuth[]>: Authentication secrets for the custom scale rule.
 HTTPMETADATA <IHttpScaleRuleMetadata>: Metadata properties to describe http scale rule.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappscaleruleobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappscaleruleobject
 #>
 function New-AzContainerAppScaleRuleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule])]
@@ -7365,7 +7371,7 @@ New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappsecretobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappsecretobject
 #>
 function New-AzContainerAppSecretObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret])]
@@ -7504,7 +7510,7 @@ VOLUMEMOUNT <IVolumeMount[]>: Container volume mounts.
   [MountPath <String>]: Path within the container at which the volume should be mounted.Must not contain ':'.
   [VolumeName <String>]: This must match the Name of a Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
 #>
 function New-AzContainerAppTemplateObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container])]
@@ -7650,12 +7656,12 @@ Create an in-memory object for TrafficWeight.
 .Description
 Create an in-memory object for TrafficWeight.
 .Example
-New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
+New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerapptrafficweightobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerapptrafficweightobject
 #>
 function New-AzContainerAppTrafficWeightObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight])]
@@ -7771,7 +7777,7 @@ New-AzContainerAppVolumeMountObject -MountPath "/mountPath" -VolumeName "VolumeN
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappvolumemountobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappvolumemountobject
 #>
 function New-AzContainerAppVolumeMountObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount])]
@@ -7875,7 +7881,7 @@ New-AzContainerAppVolumeObject -Name "volumeName" -StorageName "azpssa"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappvolumeobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappvolumeobject
 #>
 function New-AzContainerAppVolumeObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume])]

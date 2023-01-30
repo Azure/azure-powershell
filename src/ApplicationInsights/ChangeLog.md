@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.1
+* Enabled output object enumerating for `Get-AzApplicationInsights` [#20225]
+
 ## Version 2.2.0
 * Supported Workbook function. Below is the new cmdlet
     * `Get-AzApplicationInsightsMyWorkbook`

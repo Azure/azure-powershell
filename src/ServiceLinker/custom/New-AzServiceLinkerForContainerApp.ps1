@@ -20,7 +20,7 @@ Create or update linker resource in container app.
 .Description
 Create or update linker resource in container app.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforcontainerapp
+https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforcontainerapp
 #>
 function New-AzServiceLinkerForContainerApp {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]

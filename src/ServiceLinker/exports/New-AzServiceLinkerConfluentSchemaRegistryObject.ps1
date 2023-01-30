@@ -25,7 +25,7 @@ New-AzServiceLinkerConfluentSchemaRegistryObject -Endpoint "https://psrc-xxxx.we
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ConfluentSchemaRegistry
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentschemaregistryobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentschemaregistryobject
 #>
 function New-AzServiceLinkerConfluentSchemaRegistryObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ConfluentSchemaRegistry])]

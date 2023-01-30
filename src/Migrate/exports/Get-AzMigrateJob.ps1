@@ -78,7 +78,7 @@ INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
     [TaskId <String>]: The Id.
     [TaskType <String>]: The type of task. Details in CustomDetails property depend on this type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratejob
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzMigrateJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]

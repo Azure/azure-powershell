@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorvmhostpayload
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorvmhostpayload
 schema: 2.0.0
 ---
 

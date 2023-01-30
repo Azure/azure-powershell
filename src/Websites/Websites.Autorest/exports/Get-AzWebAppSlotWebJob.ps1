@@ -32,7 +32,7 @@ appService-test01/slot01/slotcontinuousjob-04                 webjob-rg-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IWebJob
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebappslotwebjob
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslotwebjob
 #>
 function Get-AzWebAppSlotWebJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IWebJob])]

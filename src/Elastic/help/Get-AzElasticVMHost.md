@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticvmhost
+online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticvmhost
 schema: 2.0.0
 ---
 

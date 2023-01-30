@@ -1447,7 +1447,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to ScheduleRunTimes in Schedule Policy should be in UTC Timezone.
+        ///   Looks up a localized string similar to ScheduleRunTimes in Schedule Policy should be in UTC Time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute
         /// </summary>
         public static string ScheduleTimeNotInUTCTimeZoneException
         {

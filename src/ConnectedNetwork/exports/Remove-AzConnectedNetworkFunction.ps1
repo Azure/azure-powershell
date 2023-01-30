@@ -54,7 +54,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkfunction
+https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkfunction
 #>
 function Remove-AzConnectedNetworkFunction {
 [OutputType([System.Boolean])]

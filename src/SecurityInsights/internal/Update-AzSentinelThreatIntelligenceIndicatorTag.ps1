@@ -80,7 +80,7 @@ PARSEDPATTERN <IThreatIntelligenceParsedPattern[]>: Parsed patterns
     [Value <String>]: Value of parsed pattern
     [ValueType <String>]: Type of the value
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelthreatintelligenceindicatortag
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelthreatintelligenceindicatortag
 #>
 function Update-AzSentinelThreatIntelligenceIndicatorTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation])]

@@ -281,6 +281,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the HA Replica Count option.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The HA Replica Count used to store backups for the SQL Database.")]
+        [ValidateRange(0, int.MaxValue)]
+        public int HAReplicaCount { get; set; }
+
+        /// <summary>
         /// Gets or sets the database backup storage redundancy.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -382,6 +390,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
+                HighAvailabilityReplicaCount = HAReplicaCount,
             };
 
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||

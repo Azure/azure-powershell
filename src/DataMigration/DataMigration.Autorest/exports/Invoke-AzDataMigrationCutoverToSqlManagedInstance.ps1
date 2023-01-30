@@ -27,7 +27,7 @@ Get-AzDataMigrationToSqlManagedInstance -InputObject $miMigration
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlmanagedinstance
+https://learn.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlmanagedinstance
 #>
 function Invoke-AzDataMigrationCutoverToSqlManagedInstance {
 [OutputType([System.Boolean])]

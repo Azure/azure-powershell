@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConfidentialLedger
-online version: https://docs.microsoft.com/powershell/module/az.confidentialledger/test-azconfidentialledgernameavailability
+online version: https://learn.microsoft.com/powershell/module/az.confidentialledger/test-azconfidentialledgernameavailability
 schema: 2.0.0
 ---
 
