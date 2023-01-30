@@ -27,6 +27,7 @@ Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Descriptio
 
     $rgName = $rg.ResourceGroupName
     $name = New-LiveTestResourceName
+
     $VMLocalAdminUser = New-LiveTestResourceName;
     $VMLocalAdminSecurePassword = ConvertTo-SecureString "Aalexwdy5#" -AsPlainText -Force;
     $LocationName = "eastus";
@@ -37,8 +38,8 @@ Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Descriptio
     $userData = [Convert]::ToBase64String($bytes);
 
     New-AzVM -ResourceGroupName $rgName -Name $name -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData;
-    Remove-AzVM -ResourceGroupName $rgName -Name $name -Force
+    Remove-AzVM -ResourceGroupName $rgName -Name $name -Force 
 
-    $removedVM = Get-AzVM -ResourceGroupName $rgName -Name $name
+    $removedVM = Get-AzVM -ResourceGroupName $rgName -Name $name -ErrorAction SilentlyContinue
     Assert-Null $removedVM
 }
