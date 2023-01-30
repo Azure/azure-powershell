@@ -45,7 +45,7 @@ Name                                 ProvisioningState ErrorMessage    Code
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IQuotaRequestDetails
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/get-azquotarequeststatus
+https://learn.microsoft.com/powershell/module/az.quota/get-azquotarequeststatus
 #>
 function Get-AzQuotaRequestStatus {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IQuotaRequestDetails])]

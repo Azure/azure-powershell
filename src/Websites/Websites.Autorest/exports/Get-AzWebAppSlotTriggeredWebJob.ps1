@@ -66,7 +66,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebappslottriggeredwebjob
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslottriggeredwebjob
 #>
 function Get-AzWebAppSlotTriggeredWebJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredWebJob])]

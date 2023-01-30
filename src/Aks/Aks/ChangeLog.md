@@ -18,10 +18,21 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `-AadProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
+
+## Version 5.2.0
 * Added parameter `-EnableEncryptionAtHost` for `New-AzAksCluster` and `New-AzAksNodePool`
 * Added parameter `-EnableUltraSSD` for `New-AzAksCluster` and `New-AzAksNodePool`
 * Added parameter `-NodeKubeletConfig` for `New-AzAksCluster`, `-KubeletConfig` for `New-AzAksNodePool`
 * Added parameter `-NodeLinuxOSConfig` for `New-AzAksCluster`, `-LinuxOSConfig` and `New-AzAksNodePool`
+* Added parameter `-NodeMaxSurge` for `New-AzAksCluster`, `-MaxSurge` for `New-AzAksNodePool` and `Update-AzAksNodePool`
+* Added parameter `-PPG` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-SpotMaxPrice` for `New-AzAksNodePool`
+* Added parameter `-EnableFIPS` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-AutoScalerProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-GpuInstanceProfile` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-EnableUptimeSLA` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-EdgeZone` for `New-AzAksCluster`
 
 ## Version 5.1.0
 * Bumped API version to 2022-09-01

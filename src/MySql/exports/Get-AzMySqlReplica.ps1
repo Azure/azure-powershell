@@ -25,7 +25,7 @@ Get-AzMySqlReplica -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlreplica
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlreplica
 #>
 function Get-AzMySqlReplica {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]

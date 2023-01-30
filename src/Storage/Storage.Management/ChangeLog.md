@@ -18,8 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-*Return ListBlobProperties in blob list result
+* Removed the ValidateSet of StandardBlobTier parameter
+    - `Copy-AzStorageBlob`
+    - `Set-AzStorageBlobContent` 
+    - `Start-AzStorageBlobCopy`
+
+## Version 5.3.0
+* Returned ListBlobProperties in blob list result
     - `Get-AzStorageBlob`
+* Returned AllowedCopyScope in get account result
+    - `Get-AzStorageAccount`
 
 ## Version 5.2.0
 * Supported MaxPageSize, Include, and Filter parameters for listing encryption scopes 

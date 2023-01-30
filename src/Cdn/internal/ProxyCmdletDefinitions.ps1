@@ -48,7 +48,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticlocation
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticlocation
 #>
 function Get-AzCdnLogAnalyticLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IContinentsResponse])]
@@ -209,7 +209,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticmetric
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticmetric
 #>
 function Get-AzCdnLogAnalyticMetric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IMetricsResponse])]
@@ -433,7 +433,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticranking
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticranking
 #>
 function Get-AzCdnLogAnalyticRanking {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRankingsResponse])]
@@ -635,7 +635,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticresource
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticresource
 #>
 function Get-AzCdnLogAnalyticResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourcesResponse])]
@@ -796,7 +796,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticwafloganalyticmetric
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticwafloganalyticmetric
 #>
 function Get-AzCdnLogAnalyticWafLogAnalyticMetric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IWafMetricsResponse])]
@@ -1008,7 +1008,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticwafloganalyticranking
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticwafloganalyticranking
 #>
 function Get-AzCdnLogAnalyticWafLogAnalyticRanking {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IWafRankingsResponse])]
@@ -1198,7 +1198,7 @@ Lists all of the available CDN REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnoperation
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnoperation
 #>
 function Get-AzCdnOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOperation])]
@@ -1330,7 +1330,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
 #>
 function Get-AzCdnProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile])]
@@ -1503,7 +1503,7 @@ VALIDATESECRETINPUT <IValidateSecretInput>: Input of the secret to be validated.
   [SecretSourceId <String>]: Resource ID.
   [SecretVersion <String>]: Secret version, if customer is using a specific version.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/invoke-azcdnsecretvalidate
+https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdnsecretvalidate
 #>
 function Invoke-AzCdnSecretValidate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateSecretOutput])]
@@ -1689,7 +1689,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnprofilessouri
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnprofilessouri
 #>
 function New-AzCdnProfileSsoUri {
 [OutputType([System.String])]
@@ -1826,7 +1826,7 @@ New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Stand
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnprofile
 #>
 function New-AzCdnProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile])]
@@ -2020,7 +2020,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnprofile
 #>
 function Remove-AzCdnProfile {
 [OutputType([System.Boolean])]
@@ -2207,7 +2207,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnprofile
 #>
 function Update-AzCdnProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile])]

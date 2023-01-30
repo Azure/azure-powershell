@@ -194,6 +194,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Aks custom headers used for building Kubernetes network.")]
         public Hashtable AksCustomHeader { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The Azure Active Directory configuration.")]
+        public ManagedClusterAADProfile AadProfile { get; set; }
+
         protected void BeforeBuildNewCluster()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Location))

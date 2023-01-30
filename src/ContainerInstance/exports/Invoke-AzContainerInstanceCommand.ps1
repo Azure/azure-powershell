@@ -25,7 +25,7 @@ Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName tes
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
+https://learn.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
 #>
 function Invoke-AzContainerInstanceCommand {
 [OutputType([System.String])]

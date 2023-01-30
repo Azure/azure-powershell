@@ -46,7 +46,7 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: The list of private en
   [PrivateLinkServiceConnectionStateDescription <String>]: The reason for approval/rejection of the connection.
   [PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisservice
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisservice
 #>
 function New-AzHealthcareApisService {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]

@@ -49,7 +49,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudservicereimage
+https://learn.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudservicereimage
 #>
 function Invoke-AzCloudServiceReimage {
 [OutputType([System.Boolean])]

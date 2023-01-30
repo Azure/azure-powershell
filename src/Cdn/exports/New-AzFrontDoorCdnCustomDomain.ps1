@@ -38,7 +38,7 @@ TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enab
   [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
     [Id <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdncustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdncustomdomain
 #>
 function New-AzFrontDoorCdnCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdDomain])]

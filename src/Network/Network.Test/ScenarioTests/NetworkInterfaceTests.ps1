@@ -1079,7 +1079,7 @@ function Test-NetworkInterfaceTapConfigurationCRUD
 
         # Create source Nic which is getting tapped
         $sourceIpConfig = New-AzNetworkInterfaceIpConfig -Name $sourceIpConfigName -Subnet $vnet.Subnets[0]
-        $sourceNic = New-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname -Location $location -IpConfiguration $sourceIpConfig -Tag @{ testtag = "testval" }
+        $sourceNic = New-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname -Location $location -IpConfiguration $sourceIpConfig -Tag @{ testtag = "testval" } -EnableAcceleratedNetworking
 
         # Add tap configuration
         Add-AzNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name $rname

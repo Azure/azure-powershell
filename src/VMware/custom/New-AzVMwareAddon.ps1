@@ -37,7 +37,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IAddonProperties>: The properties of an addon resource
   AddonType <AddonType>: The type of private cloud addon
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
 #>
 function New-AzVMwareAddon {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon])]

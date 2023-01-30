@@ -27,7 +27,7 @@ Update the state of the specified private endpoint connection associated with th
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateEndpointConnectionDescription
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareworkspaceprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareworkspaceprivateendpointconnection
 #>
 function New-AzHealthcareWorkspacePrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateEndpointConnectionDescription])]

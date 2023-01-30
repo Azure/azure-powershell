@@ -23,7 +23,7 @@ Create an in-memory object for ValueSecretInfo.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ValueSecretInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkervaluesecretinfoobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkervaluesecretinfoobject
 #>
 function New-AzServiceLinkerValueSecretInfoObject {
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.DoNotExportAttribute()]
