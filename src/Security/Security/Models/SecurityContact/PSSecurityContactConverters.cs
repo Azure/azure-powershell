@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.Security.Models.SecurityContacts
                 Name = value.Name,
                 Email = value.Emails,
                 Phone = value.Phone,
-                AlertNotifications = value.AlertNotifications?.ConvertToPSType(),
-                NotificationsByRole = value.NotificationsByRole?.ConvertToPSType()
+                AlertNotifications = value.AlertNotifications?.State,
+                AlertsToAdmins = (value.NotificationsByRole?.Roles?.Contains("Owner") ?? false) ? value.NotificationsByRole?.State : "Off"
             };
         }
 
@@ -40,24 +40,24 @@ namespace Microsoft.Azure.Commands.Security.Models.SecurityContacts
             return value.Select(sc => sc.ConvertToPSType()).ToList();
         }
 
-        public static PSSecurityContactPropertiesAlertNotifications ConvertToPSType(this SecurityContactPropertiesAlertNotifications value)
-        {
-            return new PSSecurityContactPropertiesAlertNotifications
-            {
-                MinimalSeverity = value.MinimalSeverity,
-                State = value.State
+        //public static PSSecurityContactPropertiesAlertNotifications ConvertToPSType(this SecurityContactPropertiesAlertNotifications value)
+        //{
+        //    return new PSSecurityContactPropertiesAlertNotifications
+        //    {
+        //        MinimalSeverity = value.MinimalSeverity,
+        //        State = value.State
                 
-            };
-        }
+        //    };
+        //}
 
-        public static PSSecurityContactPropertiesNotificationsByRole ConvertToPSType(this SecurityContactPropertiesNotificationsByRole value)
-        {
-            return new PSSecurityContactPropertiesNotificationsByRole
-            {
-                State = value.State,
-                Roles = value.Roles?.ToList() ?? new List<string>(),
+        //public static PSSecurityContactPropertiesNotificationsByRole ConvertToPSType(this SecurityContactPropertiesNotificationsByRole value)
+        //{
+        //    return new PSSecurityContactPropertiesNotificationsByRole
+        //    {
+        //        State = value.State,
+        //        Roles = value.Roles?.ToList() ?? new List<string>(),
 
-            };
-        }
+        //    };
+        //}
     }
 }

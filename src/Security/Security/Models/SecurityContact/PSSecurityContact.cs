@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.Security.Models.SecurityContacts
 
         public string Phone { get; set; }
 
-        public PSSecurityContactPropertiesAlertNotifications AlertNotifications { get; set; }
+        public string AlertNotifications { get; set; }
 
-        public PSSecurityContactPropertiesNotificationsByRole NotificationsByRole { get; set; }
+        public string AlertsToAdmins { get; set; }
     }
 }
