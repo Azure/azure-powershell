@@ -22,6 +22,8 @@
 * Added property 'BillingType' to ExpressRoutePort
 * Fixed a bug that does not enable to set Perform SNAT to Always
 * Fixed the incorrect type of `-TotalBytesPerSession` in `New-AzNetworkWatcherPacketCapture`
+* Added support for connection flushing in network security group which when enabled, re-evaluates flows when rules are updated
+    - `New-AzNetworkSecurityGroup`
 
 ## Version 5.3.0
 * Added samples for retrieving Private Link IP Configuration using 'New-AzApplicationGatewayPrivateLinkIpConfiguration' with fix [#20440]
