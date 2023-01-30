@@ -36,17 +36,6 @@ steps:
     packageType: sdk
     version: 6.0.x
 
-- task: AzureKeyVault@2
-  inputs:
-    azureSubscription: 'azureps-infra-sp'
-    KeyVaultName: 'azurepsdev'
-    SecretsFilter: 'azps-test'
-    RunAsPreJob: true
-
-- task: CmdLine@2
-  inputs:
-    script: 'echo $(azps-test) > artifacts/secret.txt'
-
 - task: PowerShell@2
   displayName: Setup global.json
   inputs:

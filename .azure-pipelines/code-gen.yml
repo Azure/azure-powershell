@@ -22,6 +22,16 @@ jobs:
   pool: pool-windows-2019
   steps:
   - checkout: self
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: 'azureps-infra-sp'
+      KeyVaultName: 'azurepsdev'
+      SecretsFilter: 'azps-test'
+      RunAsPreJob: true
+
+  - task: CmdLine@2
+    inputs:
+      script: 'echo $(azps-test) > artifacts/secret.txt'
   - task: NodeTool@0
     displayName: Use Node 14.15.5
     inputs:
