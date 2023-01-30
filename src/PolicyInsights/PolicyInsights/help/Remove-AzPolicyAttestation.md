@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
 Module Name: Az.PolicyInsights
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.policyinsights/remove-policyattestation
 schema: 2.0.0
 ---
 
@@ -44,6 +44,7 @@ Remove-AzPolicyAttestation -Name "attestation-subscription" -PassThru
 ```output
 True
 ```
+
 This command deletes the attestation named 'attestation-subscription' in subscription "d1acb22b-c876-44f7-b08e-3fcf9f6767f4". The `-PassThru` switch forces the cmdlet to return the status of the operation.
 
 ### Example 2: Delete a policy remediation via piping at resource group.
@@ -220,3 +221,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Attestation Overview](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/attestation-structure)

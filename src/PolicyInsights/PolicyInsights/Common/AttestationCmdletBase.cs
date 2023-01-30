@@ -12,12 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.PolicyInsights.Models.Attestations;
 using Microsoft.Azure.Commands.PolicyInsights.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Management.Automation;
 using System.Text;
 
@@ -45,7 +49,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
                 rootScope = ResourceIdHelper.GetRootScope(resourceId: resourceId, fullyQualifiedResourceType: AttestationCmdletBase.AttestationsFullyQualifiedResourceType);
                 if (rootScope == null)
                 {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_InvalidResourceId, AttestationCmdletBase.AttestationsFullyQualifiedResourceType), paramName: "ResourceId");
+                    throw new AzPSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_InvalidResourceId, AttestationCmdletBase.AttestationsFullyQualifiedResourceType), paramName: "ResourceId");
                 }
             }
             else if (!string.IsNullOrEmpty(scope))
@@ -88,7 +92,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
                 attestationName = ResourceIdHelper.GetResourceName(resourceId: resourceId);
                 if (attestationName == null)
                 {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_InvalidResourceId, AttestationCmdletBase.AttestationsFullyQualifiedResourceType), paramName: "ResourceId");
+                    throw new AzPSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_InvalidResourceId, AttestationCmdletBase.AttestationsFullyQualifiedResourceType), paramName: "ResourceId");
                 }
             }
             else if (inputObject != null)
@@ -99,20 +103,63 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
             return attestationName;
         }
 
-        protected static JObject ConvertToMetadataJObject(PSAttestationMetadata metadata)
+        protected JObject ConvertToMetadataJObject(string metadata)
         {
-            if (metadata != null)
+            Uri outUri = null;
+            JObject result;
+            if (Uri.TryCreate(metadata, UriKind.Absolute, out outUri))
             {
-                try
+                if (outUri.Scheme == Uri.UriSchemeFile)
                 {
-                    return JObject.Parse(metadata.Metadata.ToString());
+                    string filePath = this.TryResolvePath(metadata);
+                    if (File.Exists(filePath))
+                    {
+                        result = JToken.Parse(FileUtilities.DataStore.ReadFileAsText(filePath)) as JObject;
+                    }
+                    else
+                    {
+                        throw new AzPSInvalidOperationException(string.Format(Resources.InvalidFilePath, metadata));
+                    }
                 }
-                catch
+                else if (outUri.Scheme != Uri.UriSchemeHttp && outUri.Scheme != Uri.UriSchemeHttps)
                 {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_InvalidMetadata, metadata.ToString()));
+                    throw new AzPSInvalidOperationException(Resources.InvalidUriScheme);
+                }
+                else if (!Uri.IsWellFormedUriString(outUri.AbsoluteUri, UriKind.Absolute))
+                {
+                    throw new AzPSInvalidOperationException(string.Format(Resources.InvalidUriString, metadata));
+                }
+                else
+                {
+                    string contents = GeneralUtilities.DownloadFile(outUri.AbsoluteUri);
+                    if (string.IsNullOrEmpty(contents))
+                    {
+                        throw new AzPSInvalidOperationException(string.Format(Resources.InvalidUriContent, metadata));
+                    }
+
+                    result = JToken.Parse(contents) as JObject;
                 }
             }
-            return null;
+            else
+            {
+                //for non absolute file paths
+                string path = this.TryResolvePath(metadata);
+
+                if (File.Exists(path))
+                {
+                    result = JToken.Parse(FileUtilities.DataStore.ReadFileAsText(path)) as JObject;
+                }
+                else
+                {
+                    result = JToken.Parse(metadata) as JObject;
+                }
+
+                if (result == null)
+                {
+                    throw new AzPSArgumentException(string.Format(Resources.JsonObjectExpected, nameof(metadata)), nameof(metadata));
+                }
+            }
+            return result;
         }
     }
 }

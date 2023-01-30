@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
 Module Name: Az.PolicyInsights
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.policyinsights/set-azpolicyattestation
 schema: 2.0.0
 ---
 
@@ -17,15 +17,15 @@ Modifies a policy attestation.
 Set-AzPolicyAttestation -Name <String> [-Scope <String>] [-ResourceGroupName <String>]
  [-PolicyAssignmentId <String>] [-ComplianceState <String>] [-PolicyDefinitionReferenceId <String>]
  [-ExpiresOn <DateTime>] [-Owner <String>] [-Comment <String>] [-Evidence <PSAttestationEvidence[]>]
- [-AssessmentDate <DateTime>] [-Metadata <PSAttestationMetadata>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AssessmentDate <DateTime>] [-Metadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzPolicyAttestation -ResourceId <String> [-PolicyAssignmentId <String>] [-ComplianceState <String>]
  [-PolicyDefinitionReferenceId <String>] [-ExpiresOn <DateTime>] [-Owner <String>] [-Comment <String>]
- [-Evidence <PSAttestationEvidence[]>] [-AssessmentDate <DateTime>] [-Metadata <PSAttestationMetadata>]
+ [-Evidence <PSAttestationEvidence[]>] [-AssessmentDate <DateTime>] [-Metadata <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Set-AzPolicyAttestation -ResourceId <String> [-PolicyAssignmentId <String>] [-Co
 ```
 Set-AzPolicyAttestation -InputObject <PSAttestation> [-PolicyAssignmentId <String>] [-ComplianceState <String>]
  [-PolicyDefinitionReferenceId <String>] [-ExpiresOn <DateTime>] [-Owner <String>] [-Comment <String>]
- [-Evidence <PSAttestationEvidence[]>] [-AssessmentDate <DateTime>] [-Metadata <PSAttestationMetadata>]
+ [-Evidence <PSAttestationEvidence[]>] [-AssessmentDate <DateTime>] [-Metadata <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -263,7 +263,7 @@ Accept wildcard characters: False
 Additional metadata for the attestation.
 
 ```yaml
-Type: Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationMetadata
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -438,3 +438,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Attestation Overview](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/attestation-structure)

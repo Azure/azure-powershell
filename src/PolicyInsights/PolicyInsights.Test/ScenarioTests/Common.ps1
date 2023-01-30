@@ -660,7 +660,7 @@ function Validate-AttestationProperties {
    }
    if ($null -ne $expectedMetadata) {
       $expectedMetadataJson = [Newtonsoft.Json.Linq.JObject]::Parse($expectedMetadata)
-      Assert-AreEqual $expectedMetadataJson.ToString() $attestation.metadata.metadata.ToString()
+      Assert-AreEqual $expectedMetadataJson.ToString() $attestation.metadata.ToString()
    }
    if ($null -ne $expectedEvidence) {
       Validate-PolicyAttestationEvidence($attestation.Evidence, $expectedEvidence)

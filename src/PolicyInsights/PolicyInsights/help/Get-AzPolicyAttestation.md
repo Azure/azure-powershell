@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
 Module Name: Az.PolicyInsights
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.policyinsights/get-azpolicyattestation
 schema: 2.0.0
 ---
 
@@ -333,3 +333,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Attestation Overview](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/attestation-structure)

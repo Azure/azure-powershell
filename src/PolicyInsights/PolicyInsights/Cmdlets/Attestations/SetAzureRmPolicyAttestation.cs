@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Core;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.PolicyInsights.Common;
 using Microsoft.Azure.Commands.PolicyInsights.Models.Attestations;
 using Microsoft.Azure.Commands.PolicyInsights.Properties;
@@ -84,13 +85,13 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
         public DateTime? AssessmentDate { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AttestationMetadata)]
-        public PSAttestationMetadata Metadata { get; set; }
+        public string Metadata { get; set; }
 
         public override void Execute()
         {
             if (!string.IsNullOrEmpty(this.Name) && new[] { this.Scope, this.ResourceGroupName }.Count(s => s != null) > 1)
             {
-                throw new PSArgumentException(Resources.Error_TooManyScopes);
+                throw new AzPSArgumentException(Resources.Error_TooManyScopes, nameof(Scope));
             }
             if (this.IsParameterBound(c => c.InputObject))
             {
@@ -106,7 +107,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
                 this.Comment = this.IsParameterBound(c => c.Comment) ? this.Comment : this.InputObject?.Comment;
                 this.Evidence = this.IsParameterBound(c => c.Evidence) ? this.Evidence : this.InputObject?.Evidence;
                 this.AssessmentDate = this.IsParameterBound(c => c.AssessmentDate) ? this.AssessmentDate : this.InputObject?.AssessmentDate;
-                this.Metadata = this.IsParameterBound(c => c.Metadata) ? this.Metadata : this.InputObject?.Metadata;
+                this.Metadata = this.IsParameterBound(c => c.Metadata) ? this.Metadata : this.InputObject?.Metadata?.ToString();
             }
 
             if (this.IsParameterBound(c => c.ResourceId))
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
 
             if (existingAttestation == null)
             {
-                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_AttestationDoesNotExists, attestationName, rootScope));
+                throw new AzPSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_AttestationDoesNotExists, attestationName, rootScope), attestationName);
             }
 
             existingAttestation.PolicyAssignmentId = this.PolicyAssignmentId ?? existingAttestation.PolicyAssignmentId;
@@ -141,7 +142,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
             existingAttestation.Evidence = this.Evidence?.Select((e) => e.ToModel()).ToList();
             existingAttestation.Owner = this.Owner;
             existingAttestation.AssessmentDate = this.AssessmentDate;
-            existingAttestation.Metadata = this.Metadata != null ? AttestationCmdletBase.ConvertToMetadataJObject(this.Metadata) : null;
+            existingAttestation.Metadata = this.Metadata == null ? null : this.ConvertToMetadataJObject(this.Metadata);
 
             if (this.ShouldProcess(target: attestationName, action: String.Format(CultureInfo.InvariantCulture, Resources.UpdatingAttestation, rootScope, attestationName)))
             {

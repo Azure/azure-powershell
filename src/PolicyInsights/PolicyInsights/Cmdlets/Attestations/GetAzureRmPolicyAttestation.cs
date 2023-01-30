@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.PolicyInsights.Properties;
 using Microsoft.Azure.Commands.PolicyInsights.Models;
 using System.Linq;
 using Microsoft.Azure.Commands.PolicyInsights.Models.Attestations;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
 {
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
 
             if (!string.IsNullOrEmpty(this.Name) && new[] { this.Scope, this.ResourceGroupName }.Count(s => s != null) > 1)
             {
-                throw new PSArgumentException(Resources.Error_TooManyScopes);
+                throw new AzPSArgumentException(Resources.Error_TooManyScopes, nameof(Scope));
             }
 
             // Determine the scope of the request and whether this is an individual GET or a list

@@ -160,6 +160,51 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided file {0} doesn&apos;t exist.
+        /// </summary>
+        internal static string InvalidFilePath {
+            get {
+                return ResourceManager.GetString("InvalidFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The uri {0} is inaccessible, or the content is invalid..
+        /// </summary>
+        internal static string InvalidUriContent {
+            get {
+                return ResourceManager.GetString("InvalidUriContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please make sure the uri starts with http:// or https://..
+        /// </summary>
+        internal static string InvalidUriScheme {
+            get {
+                return ResourceManager.GetString("InvalidUriScheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified uri string {0} is invalid..
+        /// </summary>
+        internal static string InvalidUriString {
+            get {
+                return ResourceManager.GetString("InvalidUriString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided value for parameter &apos;{0}&apos; is not a valid JSON object.
+        /// </summary>
+        internal static string JsonObjectExpected {
+            get {
+                return ResourceManager.GetString("JsonObjectExpected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Triggering a policy compliance scan at scope &apos;{0}&apos;..
         /// </summary>
         internal static string StartComplianceScan {

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.PolicyInsights.Common;
 using Microsoft.Azure.Commands.PolicyInsights.Models;
 using Microsoft.Azure.Commands.PolicyInsights.Models.Attestations;
@@ -79,13 +80,13 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
         public DateTime? AssessmentDate { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AttestationMetadata)]
-        public PSAttestationMetadata Metadata { get; set; }
+        public string Metadata { get; set; }
 
         public override void Execute()
         {
             if (!string.IsNullOrEmpty(this.Name) && new[] { this.Scope, this.ResourceGroupName }.Count(s => s != null) > 1)
             {
-                throw new PSArgumentException(Resources.Error_TooManyScopes);
+                throw new AzPSArgumentException(Resources.Error_TooManyScopes, nameof(this.Scope));
             }
             Attestation existingAttestation = null;
             var rootScope = this.GetRootScope(scope: this.Scope, resourceId: this.ResourceId, resourceGroupName: this.ResourceGroupName);
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
 
             if (existingAttestation != null)
             {
-                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_AttestationAlreadyExists, attestationName, rootScope));
+                throw new AzPSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.Error_AttestationAlreadyExists, attestationName, rootScope), attestationName);
             }
 
             var attestation = new Attestation(
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
                 evidence: Evidence?.Select(e => e.ToModel()).ToList(),
                 comments: Comment,
                 assessmentDate: AssessmentDate,
-                metadata: this.Metadata != null ? AttestationCmdletBase.ConvertToMetadataJObject(this.Metadata) : null
+                metadata: this.Metadata == null ? null : this.ConvertToMetadataJObject(this.Metadata)
                 );
 
             if (this.ShouldProcess(target: attestationName, action: String.Format(CultureInfo.InvariantCulture, Resources.CreatingAttestation, rootScope, attestationName)))

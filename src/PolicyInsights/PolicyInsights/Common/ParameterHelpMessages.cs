@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string Comment = "Comments describing why this attestation was created.";
         public const string Evidence = "The evidence supporting the compliance state set in this attestation.";
         public const string AssessmentDate = "The time the evidence of an attestation was assessed.";
-        public const string AttestationMetadata = "Additional metadata for the attestation.";
+        public const string AttestationMetadata = "Additional metadata for the attestation. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
         public const string AttestationObject = "The Attestation object.";
     }
 }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.PolicyInsights.Common;
 using Microsoft.Azure.Commands.PolicyInsights.Models.Attestations;
 using Microsoft.Azure.Commands.PolicyInsights.Models.Remediation;
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
         {
             if (!string.IsNullOrEmpty(this.Name) && new[] { this.Scope, this.ResourceGroupName }.Count(s => s != null) > 1)
             {
-                throw new PSArgumentException(Resources.Error_TooManyScopes);
+                throw new AzPSArgumentException(Resources.Error_TooManyScopes, nameof(this.Scope));
             }
 
             var rootScope = this.GetRootScope(scope: this.Scope, resourceId: this.ResourceId, resourceGroupName: this.ResourceGroupName, inputObject: this.InputObject);
