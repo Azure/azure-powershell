@@ -16,205 +16,6 @@
 
 <#
 .Synopsis
-Get a Contact
-.Description
-Get a Contact
-.Example
-Get-AzVoiceServicesCommunicationsContact -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01
-.Example
-Get-AzVoiceServicesCommunicationsContact -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01
-.Example
-New-AzVoiceServicesCommunicationsContact -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01 -Location 'westcentralus' -PhoneNumber "+1-555-1234" -FullContactName "John Smith" -Email "johnsmith@example.com" -Role "Network Manager" | Get-AzVoiceServicesCommunicationsContact
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
-  [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [TestLineName <String>]: Unique identifier for this test line
-.Link
-https://learn.microsoft.com/powershell/module/az.voiceservices/get-azvoiceservicescommunicationscontact
-#>
-function Get-AzVoiceServicesCommunicationsContact {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # Unique identifier for this deployment
-    ${CommunicationsGatewayName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('ContactName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # Unique identifier for this contact
-    ${Name},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.VoiceServices.private\Get-AzVoiceServicesCommunicationsContact_Get';
-            GetViaIdentity = 'Az.VoiceServices.private\Get-AzVoiceServicesCommunicationsContact_GetViaIdentity';
-            List = 'Az.VoiceServices.private\Get-AzVoiceServicesCommunicationsContact_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Get a CommunicationsGateway
 .Description
 Get a CommunicationsGateway
@@ -234,7 +35,7 @@ New-AzVoiceServicesCommunicationsGateway -ResourceGroupName 'vtest-communication
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -242,8 +43,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
   [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
   [Id <String>]: Resource identity path
+  [Location <String>]: The location in which uniqueness will be verified.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TestLineName <String>]: Unique identifier for this test line
@@ -251,7 +52,7 @@ INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.voiceservices/get-azvoiceservicescommunicationsgateway
 #>
 function Get-AzVoiceServicesCommunicationsGateway {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -428,7 +229,7 @@ New-AzVoiceServicesCommunicationsTestLine -ResourceGroupName vtest-communication
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -436,8 +237,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
   [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
   [Id <String>]: Resource identity path
+  [Location <String>]: The location in which uniqueness will be verified.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TestLineName <String>]: Unique identifier for this test line
@@ -445,7 +246,7 @@ INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.voiceservices/get-azvoiceservicescommunicationstestline
 #>
 function Get-AzVoiceServicesCommunicationsTestLine {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -614,224 +415,6 @@ end {
 
 <#
 .Synopsis
-Create a Contact
-.Description
-Create a Contact
-.Example
-New-AzVoiceServicesCommunicationsContact -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name contact-01 -Location 'westcentralus' -PhoneNumber "+1-555-1234" -FullContactName "John Smith" -Email "johnsmith@example.com" -Role "Network Manager"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact
-.Link
-https://learn.microsoft.com/powershell/module/az.voiceservices/new-azvoiceservicescommunicationscontact
-#>
-function New-AzVoiceServicesCommunicationsContact {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # Unique identifier for this deployment
-    ${CommunicationsGatewayName},
-
-    [Parameter(Mandatory)]
-    [Alias('ContactName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # Unique identifier for this contact
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [System.String]
-    # Email address of contact
-    ${Email},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [System.String]
-    # Full name of contact
-    ${FullContactName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [System.String]
-    # Telephone number of contact
-    ${PhoneNumber},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [System.String]
-    # Job title of contact
-    ${Role},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.VoiceServices.private\New-AzVoiceServicesCommunicationsContact_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Create a CommunicationsGateway
 .Description
 Create a CommunicationsGateway
@@ -843,7 +426,7 @@ $region += New-AzVoiceServicesCommunicationsGatewayServiceRegionObject -Name use
 New-AzVoiceServicesCommunicationsGateway -ResourceGroupName 'vtest-communication-rg' -Name vsc-gateway-pwsh01 -Location 'westcentralus' -Codec 'PCMA' -E911Type 'Standard' -Platform 'OperatorConnect' -ServiceLocation $region
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -852,12 +435,14 @@ To create the parameters described below, construct a hash table containing the 
 SERVICELOCATION <IServiceRegionProperties[]>: The regions in which to deploy the resources needed for Teams Calling
   Name <String>: The name of the region in which the resources needed for Teams Calling will be deployed.
   PrimaryRegionPropertyOperatorAddress <String[]>: IP address to use to contact the operator network from this region
+  [PrimaryRegionPropertyAllowedMediaSourceAddressPrefix <String[]>]: The allowed source IP address or CIDR ranges for media
+  [PrimaryRegionPropertyAllowedSignalingSourceAddressPrefix <String[]>]: The allowed source IP address or CIDR ranges for signaling
   [PrimaryRegionPropertyEsrpAddress <String[]>]: IP address to use to contact the ESRP from this region
 .Link
 https://learn.microsoft.com/powershell/module/az.voiceservices/new-azvoiceservicescommunicationsgateway
 #>
 function New-AzVoiceServicesCommunicationsGateway {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -888,7 +473,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IApiBridgeProperties]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.IApiBridgeProperties]))]
     [System.Collections.Hashtable]
     # Details of API bridge functionality, if required
     ${ApiBridge},
@@ -902,11 +487,31 @@ param(
     ${Codec},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.AutoGeneratedDomainNameLabelScope])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.AutoGeneratedDomainNameLabelScope]
+    # The scope at which the auto-generated domain name can be re-used
+    ${DomainNameLabelScope},
+
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.E911Type])]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.E911Type]
     # How to handle 911 calls
     ${E911Type},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
+    [System.String[]]
+    # A list of dial strings used for emergency calling.
+    ${EmergencyDialString},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether an on-premises Mobile Control Point is in use.
+    ${OnPremMcpEnabled},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -919,7 +524,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IServiceRegionProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.IServiceRegionProperties[]]
     # The regions in which to deploy the resources needed for Teams Calling
     # To construct, see NOTES section for SERVICELOCATION properties and create a hash table.
     ${ServiceLocation},
@@ -930,6 +535,12 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
+    [System.String]
+    # This number is used in Teams Phone Mobile scenarios for access to the voicemail IVR from the native dialer.
+    ${TeamsVoicemailPilotNumber},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1077,12 +688,12 @@ Create a TestLine
 New-AzVoiceServicesCommunicationsTestLine -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01 -Location westcentralus -Purpose 'Automated' -PhoneNumber "+1-555-1234"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine
 .Link
 https://learn.microsoft.com/powershell/module/az.voiceservices/new-azvoiceservicescommunicationstestline
 #>
 function New-AzVoiceServicesCommunicationsTestLine {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1278,217 +889,6 @@ end {
 
 <#
 .Synopsis
-Delete a Contact
-.Description
-Delete a Contact
-.Example
-Remove-AzVoiceServicesCommunicationsContact -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01
-.Example
-Get-AzVoiceServicesCommunicationsContact -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01 | Remove-AzVoiceServicesCommunicationsContact
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
-  [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [TestLineName <String>]: Unique identifier for this test line
-.Link
-https://learn.microsoft.com/powershell/module/az.voiceservices/remove-azvoiceservicescommunicationscontact
-#>
-function Remove-AzVoiceServicesCommunicationsContact {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # Unique identifier for this deployment
-    ${CommunicationsGatewayName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('ContactName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # Unique identifier for this contact
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Delete = 'Az.VoiceServices.private\Remove-AzVoiceServicesCommunicationsContact_Delete';
-            DeleteViaIdentity = 'Az.VoiceServices.private\Remove-AzVoiceServicesCommunicationsContact_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Delete a CommunicationsGateway
 .Description
 Delete a CommunicationsGateway
@@ -1508,8 +908,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
   [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
   [Id <String>]: Resource identity path
+  [Location <String>]: The location in which uniqueness will be verified.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TestLineName <String>]: Unique identifier for this test line
@@ -1713,8 +1113,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
   [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
   [Id <String>]: Resource identity path
+  [Location <String>]: The location in which uniqueness will be verified.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TestLineName <String>]: Unique identifier for this test line
@@ -1905,77 +1305,45 @@ end {
 
 <#
 .Synopsis
-Update a Contact
+Check whether the resource name is available in the given region.
 .Description
-Update a Contact
+Check whether the resource name is available in the given region.
 .Example
-Update-AzVoiceServicesCommunicationsContact -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01 -Tag @{'key1'='value1'}
-.Example
-Get-AzVoiceServicesCommunicationsContact -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01 | Update-AzVoiceServicesCommunicationsContact -Tag @{'key1'='value1'}
+Test-AzVoiceServicesNameAvailability -Location eastus -Name 'VoiceServicesTestName' -Type "Microsoft.VoiceServices/CommunicationsGateways"
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
-  [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [TestLineName <String>]: Unique identifier for this test line
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICheckNameAvailabilityResponse
 .Link
-https://learn.microsoft.com/powershell/module/az.voiceservices/update-azvoiceservicescommunicationscontact
+https://learn.microsoft.com/powershell/module/az.voiceservices/test-azvoiceservicesnameavailability
 #>
-function Update-AzVoiceServicesCommunicationsContact {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Test-AzVoiceServicesNameAvailability {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICheckNameAvailabilityResponse])]
+[CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
     [System.String]
-    # Unique identifier for this deployment
-    ${CommunicationsGatewayName},
+    # The location in which uniqueness will be verified.
+    ${Location},
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('ContactName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # Unique identifier for this contact
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
+    [System.String]
+    # The name of the resource for which availability needs to be checked.
+    ${Name},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContactUpdateTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
+    [System.String]
+    # The resource type.
+    ${Type},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2051,10 +1419,9 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.VoiceServices.private\Update-AzVoiceServicesCommunicationsContact_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.VoiceServices.private\Update-AzVoiceServicesCommunicationsContact_UpdateViaIdentityExpanded';
+            CheckExpanded = 'Az.VoiceServices.private\Test-AzVoiceServicesNameAvailability_CheckExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -2116,7 +1483,7 @@ Get-AzVoiceServicesCommunicationsGateway -ResourceGroupName vtest-communication-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2124,8 +1491,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
   [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
   [Id <String>]: Resource identity path
+  [Location <String>]: The location in which uniqueness will be verified.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TestLineName <String>]: Unique identifier for this test line
@@ -2133,7 +1500,7 @@ INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.voiceservices/update-azvoiceservicescommunicationsgateway
 #>
 function Update-AzVoiceServicesCommunicationsGateway {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2166,7 +1533,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -2310,7 +1677,7 @@ Get-AzVoiceServicesCommunicationsTestLine -ResourceGroupName vtest-communication
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2318,8 +1685,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
   [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
   [Id <String>]: Resource identity path
+  [Location <String>]: The location in which uniqueness will be verified.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TestLineName <String>]: Unique identifier for this test line
@@ -2327,7 +1694,7 @@ INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.voiceservices/update-azvoiceservicescommunicationstestline
 #>
 function Update-AzVoiceServicesCommunicationsTestLine {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2366,7 +1733,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLineUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -2503,19 +1870,19 @@ Create an in-memory object for ServiceRegionProperties.
 .Description
 Create an in-memory object for ServiceRegionProperties.
 .Example
-region = @()
+$region = @()
 $region += New-AzVoiceServicesCommunicationsGatewayServiceRegionObject -Name useast -PrimaryRegionOperatorAddress '198.51.100.1'
 $region += New-AzVoiceServicesCommunicationsGatewayServiceRegionObject -Name useast2 -PrimaryRegionOperatorAddress '198.51.100.2'
 
 New-AzVoiceServicesCommunicationsGateway -ResourceGroupName 'vtest-communication-rg' -Name vsc-gateway-pwsh01 -Location 'westcentralus' -Codec 'PCMA' -E911Type 'Standard' -Platform 'OperatorConnect' -ServiceLocation $region
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ServiceRegionProperties
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ServiceRegionProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.VoiceServices/new-AzVoiceServicesCommunicationsGatewayServiceRegionObject
 #>
 function New-AzVoiceServicesCommunicationsGatewayServiceRegionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ServiceRegionProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ServiceRegionProperties])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

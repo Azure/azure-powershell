@@ -27,7 +27,7 @@ Get-AzVoiceServicesCommunicationsGateway -ResourceGroupName vtest-communication-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,8 +35,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
   [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
   [Id <String>]: Resource identity path
+  [Location <String>]: The location in which uniqueness will be verified.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TestLineName <String>]: Unique identifier for this test line
@@ -44,7 +44,7 @@ INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.voiceservices/update-azvoiceservicescommunicationsgateway
 #>
 function Update-AzVoiceServicesCommunicationsGateway {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -77,7 +77,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

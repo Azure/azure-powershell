@@ -11,17 +11,11 @@ Locale: en-US
 Microsoft Azure PowerShell: VoiceServices cmdlets
 
 ## Az.VoiceServices Cmdlets
-### [Get-AzVoiceServicesCommunicationsContact](Get-AzVoiceServicesCommunicationsContact.md)
-Get a Contact
-
 ### [Get-AzVoiceServicesCommunicationsGateway](Get-AzVoiceServicesCommunicationsGateway.md)
 Get a CommunicationsGateway
 
 ### [Get-AzVoiceServicesCommunicationsTestLine](Get-AzVoiceServicesCommunicationsTestLine.md)
 Get a TestLine
-
-### [New-AzVoiceServicesCommunicationsContact](New-AzVoiceServicesCommunicationsContact.md)
-Create a Contact
 
 ### [New-AzVoiceServicesCommunicationsGateway](New-AzVoiceServicesCommunicationsGateway.md)
 Create a CommunicationsGateway
@@ -32,17 +26,14 @@ Create an in-memory object for ServiceRegionProperties.
 ### [New-AzVoiceServicesCommunicationsTestLine](New-AzVoiceServicesCommunicationsTestLine.md)
 Create a TestLine
 
-### [Remove-AzVoiceServicesCommunicationsContact](Remove-AzVoiceServicesCommunicationsContact.md)
-Delete a Contact
-
 ### [Remove-AzVoiceServicesCommunicationsGateway](Remove-AzVoiceServicesCommunicationsGateway.md)
 Delete a CommunicationsGateway
 
 ### [Remove-AzVoiceServicesCommunicationsTestLine](Remove-AzVoiceServicesCommunicationsTestLine.md)
 Delete a TestLine
 
-### [Update-AzVoiceServicesCommunicationsContact](Update-AzVoiceServicesCommunicationsContact.md)
-Update a Contact
+### [Test-AzVoiceServicesNameAvailability](Test-AzVoiceServicesNameAvailability.md)
+Check whether the resource name is available in the given region.
 
 ### [Update-AzVoiceServicesCommunicationsGateway](Update-AzVoiceServicesCommunicationsGateway.md)
 Update a CommunicationsGateway

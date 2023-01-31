@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add a warning message for the upcoming breaking change when creating a Storage account
+* Added a warning message for the upcoming breaking change when creating a Storage account
     - `New-AzStorageAccount`
 * Removed the ValidateSet of StandardBlobTier parameter
     - `Copy-AzStorageBlob`
