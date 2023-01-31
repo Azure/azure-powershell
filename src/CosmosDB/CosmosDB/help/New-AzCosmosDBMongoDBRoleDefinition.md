@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Role Definition Unique Id(Format is <databaseName>.<roleName>).
+Role Definition Unique Id(Format is `<databaseName>.<roleName>`).
 
 ```yaml
 Type: System.String
