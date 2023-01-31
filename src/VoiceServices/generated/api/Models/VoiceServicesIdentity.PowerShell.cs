@@ -137,9 +137,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).CommunicationsGatewayName = (string) content.GetValueForProperty("CommunicationsGatewayName",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).CommunicationsGatewayName, global::System.Convert.ToString);
             }
-            if (content.Contains("ContactName"))
+            if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).ContactName = (string) content.GetValueForProperty("ContactName",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).ContactName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("TestLineName"))
             {
@@ -178,9 +178,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).CommunicationsGatewayName = (string) content.GetValueForProperty("CommunicationsGatewayName",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).CommunicationsGatewayName, global::System.Convert.ToString);
             }
-            if (content.Contains("ContactName"))
+            if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).ContactName = (string) content.GetValueForProperty("ContactName",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).ContactName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentityInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("TestLineName"))
             {
