@@ -1,0 +1,166 @@
+---
+external help file:
+Module Name: Az.ContainerRegistry
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrywebhookevent
+schema: 2.0.0
+---
+
+# Get-AzContainerRegistryWebhookEvent
+
+## SYNOPSIS
+Lists recent events for the specified webhook.
+
+## SYNTAX
+
+```
+Get-AzContainerRegistryWebhookEvent -RegistryName <String> -ResourceGroupName <String> -WebhookName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Lists recent events for the specified webhook.
+
+## EXAMPLES
+
+### Example 1: Gets events of a container registry webhook.
+```powershell
+Get-AzContainerRegistryWebhookEvent  -ResourceGroupName lnxtest -RegistryName lnxcr -WebhookName webhook001
+```
+
+```output
+ContentAction ContentTimestamp     ResponseMessageStatusCode
+------------- ----------------     -------------------------
+ping          1/19/2023 6:57:21 AM 200
+ping          1/16/2023 9:30:18 PM 200
+ping          1/16/2023 9:27:30 PM 200
+ping          1/16/2023 9:23:50 PM 200
+ping          1/16/2023 9:13:47 PM 200
+ping          1/16/2023 9:04:55 PM 200
+
+```
+
+Gets events of a container registry webhook.
+
+## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegistryName
+The name of the container registry.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group to which the container registry belongs.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The Microsoft Azure subscription ID.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WebhookName
+The name of the webhook.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20220201Preview.IEvent
+
+## NOTES
+
+ALIASES
+
+## RELATED LINKS
+
