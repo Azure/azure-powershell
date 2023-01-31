@@ -327,11 +327,10 @@ function Attestation-ResourceGroupScope-Crud {
       "SourceUri"   = $sourceURI
    }
    $policyEvidence = @($evidence)
+   $fileContent = '{"TestKey": "TestValue"}'
 
-   $metadata =
-   '{
-      "TestKey":"TestValue"
-   }'
+   Set-Content -Path ".\AttestationMetadata.json" -Value $fileContent
+   $metadata = Join-Path . "AttestationMetadata.json"
 
    $fullAttestation = New-AzPolicyAttestation `
       -Name $attestationName `
@@ -356,7 +355,7 @@ function Attestation-ResourceGroupScope-Crud {
       -expectedComplianceState $Compliant `
       -expectedComment $comment `
       -expectedExpiresOn $expiresOn `
-      -expectedMetadata $metadata `
+      -expectedMetadata $fileContent `
       -expectedOwner $owner `
       -expectedAssessmentDate $expiresOn.AddDays(-2)
 
@@ -395,7 +394,7 @@ function Attestation-ResourceGroupScope-Crud {
       -expectedComplianceState $Compliant `
       -expectedComment $comment `
       -expectedExpiresOn $expiresOn `
-      -expectedMetadata $metadata `
+      -expectedMetadata $fileContent `
       -expectedOwner $owner `
       -expectedAssessmentDate $expiresOn.AddDays(-2)
 
@@ -439,7 +438,7 @@ function Attestation-ResourceGroupScope-Crud {
       -expectedComplianceState $NonCompliant `
       -expectedComment $comment `
       -expectedExpiresOn $expiresOn `
-      -expectedMetadata $metadata `
+      -expectedMetadata $fileContent `
       -expectedOwner $owner `
       -expectedAssessmentDate $expiresOn.AddDays(-2)
 
@@ -457,7 +456,7 @@ function Attestation-ResourceGroupScope-Crud {
       -expectedComplianceState $NonCompliant `
       -expectedComment $comment `
       -expectedExpiresOn $expiresOn `
-      -expectedMetadata $metadata `
+      -expectedMetadata $fileContent `
       -expectedOwner $newOwner `
       -expectedAssessmentDate $expiresOn.AddDays(-2)
 
@@ -484,6 +483,8 @@ function Attestation-ResourceGroupScope-Crud {
    Assert-AreEqual 0 $attestations.Count
 
    #endregion
+
+   Remove-Item ".\AttestationMetadata.json" -Force
 }
 
 function Attestation-ResourceScope-Crud {
