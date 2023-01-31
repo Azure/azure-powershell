@@ -41,9 +41,6 @@ Create an in-memory object for ConfluentBootstrapServer.
 ### [New-AzServiceLinkerConfluentSchemaRegistryObject](New-AzServiceLinkerConfluentSchemaRegistryObject.md)
 Create an in-memory object for ConfluentSchemaRegistry.
 
-### [New-AzServiceLinkerConnectorConfiguration](New-AzServiceLinkerConnectorConfiguration.md)
-Generate configurations for a Connector.
-
 ### [New-AzServiceLinkerForContainerApp](New-AzServiceLinkerForContainerApp.md)
 Create or update linker resource in container app.
 

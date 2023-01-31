@@ -62,10 +62,7 @@ directive:
       verb: Set
     remove: true
   - where:
-      subject: ConnectorDryrun
-    remove: true
-  - where:
-      subject: Connector
+      subject: ConnectorDryrun|Connector|ConnectorConfiguration
     remove: true
   - where:
       verb: New|Update
