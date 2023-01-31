@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         /// <summary>Backing field for <see cref="BackupInstanceName" /> property.</summary>
         private string _backupInstanceName;
 
-        /// <summary>The name of the backup instance</summary>
+        /// <summary>The name of the backup instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string BackupInstanceName { get => this._backupInstanceName; set => this._backupInstanceName = value; }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group where the backup vault is present.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The subscription Id.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -103,11 +103,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
     public partial interface IDataProtectionIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IJsonSerializable
     {
-        /// <summary>The name of the backup instance</summary>
+        /// <summary>The name of the backup instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the backup instance",
+        Description = @"The name of the backup instance.",
         SerializedName = @"backupInstanceName",
         PossibleTypes = new [] { typeof(string) })]
         string BackupInstanceName { get; set; }
@@ -169,11 +169,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         SerializedName = @"requestName",
         PossibleTypes = new [] { typeof(string) })]
         string RequestName { get; set; }
-        /// <summary>The name of the resource group where the backup vault is present.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the resource group where the backup vault is present.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
@@ -185,11 +185,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         SerializedName = @"resourceGuardsName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGuardsName { get; set; }
-        /// <summary>The subscription Id.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The subscription Id.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
     internal partial interface IDataProtectionIdentityInternal
 
     {
-        /// <summary>The name of the backup instance</summary>
+        /// <summary>The name of the backup instance.</summary>
         string BackupInstanceName { get; set; }
 
         string BackupPolicyName { get; set; }
@@ -224,11 +224,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         string RecoveryPointId { get; set; }
 
         string RequestName { get; set; }
-        /// <summary>The name of the resource group where the backup vault is present.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of ResourceGuard</summary>
         string ResourceGuardsName { get; set; }
-        /// <summary>The subscription Id.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The name of the backup vault.</summary>
         string VaultName { get; set; }
