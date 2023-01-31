@@ -312,3 +312,62 @@ function Test-ImageCapture
     }
 }
 
+function Test-DefaultImagesExist
+{
+    
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $rgname = "";
+        $Region = "eastus";
+        
+        $imagesFile = Get-Content -Path "..\..\Compute\Strategies\ComputeRp\Images.json";
+        $imagesObj = $imagesFile | ConvertFrom-Json;
+        # $imagesObj =  ConvertFrom-Json -InputObject $imagesObjTest -AsHashtable;
+        $windows = $imagesObj.Windows;
+        $linux = $imagesObj.Linux;
+        
+        foreach ($OS in $imagesObj)
+        {
+            $OS
+        }
+        
+        foreach ($SkuName in $VMSKUs.Name)
+        {
+            $LocRestriction = if ((($VMSKUs | where Name -EQ $SkuName).Restrictions.Type | Out-String).Contains("Location")){"NotAvailableInRegion"}else{"Available - No region restrictions applied" }
+            $ZoneRestriction = if ((($VMSKUs | where Name -EQ $SkuName).Restrictions.Type | Out-String).Contains("Zone")){"NotAvailableInZone: "+(((($VMSKUs | where Name -EQ $SkuName).Restrictions.RestrictionInfo.Zones)| Where-Object {$_}) -join ",")}else{"Available - No zone restrictions applied"}
+
+
+            $OutTable += New-Object PSObject -Property @{
+                                                         "Name" = $SkuName
+                                                         "Location" = $Region
+                                                         "Applies to SubscriptionID" = $SubId
+                                                         "Subscription Restriction" = $LocRestriction
+                                                         "Zone Restriction" = $ZoneRestriction
+                                                         }
+         }
+
+
+        $publisher = ;
+        $offer = ;
+        $sku = ;
+        $version = "latest";
+        
+        $images = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $images;
+
+        
+        
+        
+
+        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
