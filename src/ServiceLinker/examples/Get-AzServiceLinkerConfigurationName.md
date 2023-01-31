@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get expected configuration names of difference connection
 ```powershell
 Get-AzServiceLinkerConfigurationName
 ```
