@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Supported Web Account Manager on ARM64-based Windows systems. Fixed an issue where `Connect-AzAccount` failed with error "Unable to load DLL 'msalruntime_arm64'". [#20700]
 
 ## Version 2.11.1
 * Fixed an issue where Az.Accounts cannot be imported correctly. [#20615]
