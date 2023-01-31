@@ -22,6 +22,7 @@
 * Added new cmdlets for managed instance DTC
     `Get-AzSqlInstanceDtc`
     `Set-AzSqlInstanceDtc`
+* Added `TargetSubscriptionId` to `Restore-AzSqlInstanceDatabase` in order to enable cross subscription restore
 * Enabled support for UserAssignedManagedIdentity in Auditing
 * Fixed WorkspaceResourceId parameter value in `Set-AzSqlServerAudit`
 

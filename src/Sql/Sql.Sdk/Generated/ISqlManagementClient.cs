@@ -439,16 +439,6 @@ namespace Microsoft.Azure.Management.Sql
         IIPv6FirewallRulesOperations IPv6FirewallRules { get; }
 
         /// <summary>
-        /// Gets the IManagedDatabaseRestoreDetailsOperations.
-        /// </summary>
-        IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; }
-
-        /// <summary>
-        /// Gets the IManagedDatabasesOperations.
-        /// </summary>
-        IManagedDatabasesOperations ManagedDatabases { get; }
-
-        /// <summary>
         /// Gets the IReplicationLinksOperations.
         /// </summary>
         IReplicationLinksOperations ReplicationLinks { get; }
@@ -487,6 +477,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IManagedInstanceDtcsOperations.
         /// </summary>
         IManagedInstanceDtcsOperations ManagedInstanceDtcs { get; }
+
+        /// <summary>
+        /// Gets the IManagedDatabasesOperations.
+        /// </summary>
+        IManagedDatabasesOperations ManagedDatabases { get; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseRestoreDetailsOperations.
+        /// </summary>
+        IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; }
 
     }
 }

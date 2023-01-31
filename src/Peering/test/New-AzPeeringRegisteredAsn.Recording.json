@@ -1,0 +1,37 @@
+{
+  "New-AzPeeringRegisteredAsn+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs/registeredAsns/TestAsn?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs/registeredAsns/TestAsn?api-version=2022-10-01",
+      "Content": "{\n  \"properties\": {\n    \"asn\": 65001\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "42" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "8b1aeaa3-3b09-43d6-aec8-0f01766791cc" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "ea29bfdf-0fdb-436f-8575-f81209cf5107" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012526Z:ea29bfdf-0fdb-436f-8575-f81209cf5107" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "392" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"asn\": 65001,\r\n    \"peeringServicePrefixKey\": \"9aa88d64-fd78-47b7-8f4a-854dbc76b8a5\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"name\": \"TestAsn\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs/registeredAsns/TestAsn\",\r\n  \"type\": \"Microsoft.Peering/peerings/registeredAsns\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}
