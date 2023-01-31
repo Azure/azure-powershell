@@ -1,22 +1,14 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzServiceLinkerConfigurationName
 ```
 
 ```output
-{{ Add output here }}
+systemAssignedIdentity none                    {Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.Config…
+userAssignedIdentity   none                    {Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.Config…
+servicePrincipalSecret none                    {Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.Config…
+secret                 none                    {Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.Config…
+accessKey              none                    {Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.Config…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Get the expected configuration names of connection with each auth type and client type.
