@@ -315,7 +315,7 @@ function New-AzConnectedKubernetes {
             $HeaderParameter = @{
                 "Authorization" = "Bearer $AccessToken"
             }
-            $Response = Invoke-WebRequest -Uri $Uri -Headers $HeaderParameter -Method Post
+            $Response = Invoke-WebRequest -Uri $Uri -Headers $HeaderParameter -Method Post -UseBasicParsing
             if ($Response.StatusCode -eq 200) {
                 $RegisteryPath = ($Response.Content | ConvertFrom-Json).repositoryPath
             } else {
