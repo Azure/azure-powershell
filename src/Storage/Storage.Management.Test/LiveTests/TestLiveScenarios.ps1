@@ -9,7 +9,7 @@ Invoke-LiveTestScenario -Name "Creates a Storage account" -Description "Test cre
     
     Assert-AreEqual $name $actual.StorageAccountName
     Assert-AreEqual $rgName $actual.ResourceGroupName
-    Assert-AreEqual $vaultLocation $actual.Location
+    Assert-AreEqual $vaultLocation $actual.PrimaryLocation
     Assert-AreEqual "Standard_GRS" $actual.SkuName
     # Assert-AreEqual $false $actual.EnabledForDeployment
     # Assert-True { $actual.AllowBlobPublicAccess } "By default AllowBlobPublicAccess should be true"
