@@ -20,10 +20,15 @@
 
 -->
 ## Upcoming Release
-* new parameter -SkipIdentity for `Set-AzVMAEMExtension`
-* new parameter -PathUserIdentity for `Set-AzVMAEMExtension` 
-* new parameter -IsTest for `Set-AzVMAEMExtension` 
-* Added `ConsistencyMode` parameter to `New-AzRestorePoint`
+* Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
+* Added `ConsistencyMode` parameter to `New-AzRestorePoint`.
+* Updated the storage account type value in several locations from the outdated `StandardLRS` to the current `Standard_LRS`.
+* Filled in missing parameter descriptions across multiple parameters and improved some existing parameter descriptions.
+* Updated Compute PS to use the new .Net SDK version 59.0.0. This includes an approved breaking change for a non-functional feature. 
+  - The type of the property `Source` of type `Microsoft.Azure.Management.Compute.Models.GalleryDataDiskImage`, `Microsoft.Azure.Management.Compute.Models.GalleryOSDiskImage`, and `Microsoft.Azure.Management.Compute.Models.GalleryImageVersionStorageProfile` has changed from `Microsoft.Azure.Management.Compute.Models.GalleryArtifactVersionSource` to `Microsoft.Azure.Management.Compute.Models.GalleryDiskImageSource`.
+* Updated Set-AzVMRunCommand and Set-AzVmssRunCommand ScriptLocalPath parameter set to work with Linux and with files that have comments.
+* Added `-TargetExtendedLocation` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion`
+* Added `-AllowDeletionOfReplicatedLocation` to `Update-AzGalleryImageVersion`
 
 ## Version 5.3.0
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.

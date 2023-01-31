@@ -124,8 +124,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             if (WorkspaceResourceId != null)
             {
-                model.LogAnalyticsTargetState = LogAnalyticsTargetState == SecurityConstants.Enabled ?
-                    AuditStateType.Enabled : AuditStateType.Disabled;
+                model.WorkspaceResourceId = WorkspaceResourceId;
             }
 
             if (UseIdentity != null)
