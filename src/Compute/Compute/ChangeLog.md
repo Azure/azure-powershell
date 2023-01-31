@@ -25,6 +25,7 @@
 * Filled in missing parameter descriptions across multiple parameters and improved some existing parameter descriptions.
 * Updated Compute PS to use the new .Net SDK version 59.0.0. This includes an approved breaking change for a non-functional feature. 
   - The type of the property `Source` of type `Microsoft.Azure.Management.Compute.Models.GalleryDataDiskImage`, `Microsoft.Azure.Management.Compute.Models.GalleryOSDiskImage`, and `Microsoft.Azure.Management.Compute.Models.GalleryImageVersionStorageProfile` has changed from `Microsoft.Azure.Management.Compute.Models.GalleryArtifactVersionSource` to `Microsoft.Azure.Management.Compute.Models.GalleryDiskImageSource`.
+* Updated Set-AzVMRunCommand and Set-AzVmssRunCommand ScriptLocalPath parameter set to work with Linux and with files that have comments.
 * Added `-TargetExtendedLocation` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion`
 * Added `-AllowDeletionOfReplicatedLocation` to `Update-AzGalleryImageVersion`
 
