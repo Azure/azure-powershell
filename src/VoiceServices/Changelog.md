@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2023-01-31
 
 ## Version 0.1.0
 * First preview release for module Az.VoiceServices
