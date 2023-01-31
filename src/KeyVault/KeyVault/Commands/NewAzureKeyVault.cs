@@ -140,8 +140,17 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 // Write status message.
                 this.WriteInformation(information, tags);
+                PSWhatIfOperationResult whatIfResult;
                 // this.WhatIfParameters
-                PSWhatIfOperationResult whatIfResult = KeyVaultCreationClient.ExecuteDeploymentWhatIf(this.WhatIfParameters, VaultCreationParameter);
+                if (NetworkRuleSet != null)
+                {
+                    whatIfResult = KeyVaultCreationClient.ExecuteDeploymentWhatIf(this.WhatIfParameters, VaultCreationParameter, NetworkRuleSet);
+                }
+                else
+                {
+                    whatIfResult = KeyVaultCreationClient.ExecuteDeploymentWhatIf(this.WhatIfParameters, VaultCreationParameter);
+                }
+                
                 // Clear status before returning result.
                 this.WriteInformation(clearInformation, tags);
 
