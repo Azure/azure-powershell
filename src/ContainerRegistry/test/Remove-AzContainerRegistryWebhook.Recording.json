@@ -1,0 +1,42 @@
+{
+  "Remove-AzContainerRegistryWebhook+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.ContainerRegistry/registries/lnxcr/webhooks/webhook002?api-version=2022-02-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.ContainerRegistry/registries/lnxcr/webhooks/webhook002?api-version=2022-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "440005ec-a237-427a-aca9-2310dbea9bf1" ],
+        "CommandName": [ "Remove-AzContainerRegistryWebhook" ],
+        "FullCommandName": [ "Remove-AzContainerRegistryWebhook_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.ContainerRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "0eda992c-e568-4420-8686-183b35b2bfbb" ],
+        "x-ms-correlation-request-id": [ "0eda992c-e568-4420-8686-183b35b2bfbb" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230119T065716Z:0eda992c-e568-4420-8686-183b35b2bfbb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 19 Jan 2023 06:57:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "393" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ScopeLocked\",\"message\":\"The scope \u0027/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.ContainerRegistry/registries/lnxcr/webhooks/webhook002\u0027 cannot perform delete operation because following scope(s) are locked: \u0027/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest\u0027. Please remove the lock and try again.\"}}",
+      "isContentBase64": false
+    }
+  }
+}
