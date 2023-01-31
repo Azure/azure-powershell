@@ -272,6 +272,6 @@ if ($testInfo.FailedTests.Count -gt 0)
     throw ("Test run failed with " + $testInfo.FailedTests.Count + " failures.")
 }
 
-# Resolve-AzError
+Resolve-AzError
 # $DebugPreference = $oldDebug
 # $VerbosePreference = $oldVerbose
