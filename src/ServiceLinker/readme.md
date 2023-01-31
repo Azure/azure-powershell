@@ -42,7 +42,7 @@ input-file:
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.1
-# Normally, title is the service name                                                                                           
+# Normally, title is the service name
 title: ServiceLinker
 # subject-prefix: "ServiceLinker"
 
