@@ -55,7 +55,7 @@ function Test-AzureCrossZonalRestore
 	$targetVNetName = "hiagaNZPVNet"
 	$targetVNetRG = "hiagarg"
 	$targetSubnetName = "custom"
-	$recoveryPointId = "175071499837856" # latest vaultStandard recovery point
+	$recoveryPointId = "166059983345323" # latest vaultStandard recovery point
 
 	try
 	{	

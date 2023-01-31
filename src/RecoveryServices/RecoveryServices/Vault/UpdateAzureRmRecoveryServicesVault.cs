@@ -94,13 +94,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Enables or disables public network access for RS vault.
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Parameter to Enable/Disable public network access of the vault. This setting is useful with Private Endpoints.")]
         public PublicNetworkAccess? PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Enables or disables Immutability for RS vault. Allowed values are Disabled, Unlocked, Locked.
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Immutability State of the vault. Allowed values are \"Disabled\", \"Unlocked\", \"Locked\". \r\nUnlocked means Enabled and can be changed, Locked means Enabled and can't be changed.")]
         [ValidateSet("Disabled", "Unlocked", "Locked")]
         public ImmutabilityState? ImmutabilityState { get; set; }
 

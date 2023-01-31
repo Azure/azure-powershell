@@ -206,7 +206,7 @@ function Test-AzureVMEnhancedPolicy
 
 function Test-AzureVMPolicy
 {
-	$location = "eastasia"
+	$location = "centraluseuap" # "eastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try

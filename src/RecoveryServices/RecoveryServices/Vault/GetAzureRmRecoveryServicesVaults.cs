@@ -68,13 +68,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
-        /// <summary>
-        /// Filters RS vault based on Immutability State. Allowed values are Disabled, Unlocked, Locked.
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        [ValidateSet("Disabled", "Unlocked", "Locked")]
-        public ImmutabilityState? ImmutabilityState { get; set; }
-
         #endregion Parameters
 
         /// <summary>
@@ -174,23 +167,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     }
                 }
             }
-
-            // filter based on immutabilityState
-            if(ImmutabilityState != null)
-            {
-                filteredVaults = filteredVaults.Where(
-                filteredVault =>
-                {
-                    if(filteredVault != null && filteredVault.Properties != null && filteredVault.Properties.SecuritySettings != null && filteredVault.Properties.SecuritySettings.ImmutabilitySettings != null
-                         && filteredVault.Properties.SecuritySettings.ImmutabilitySettings.State == ImmutabilityState.ToString())
-                    {
-                        return true;
-                    }
-
-                    return false;
-                }).ToList();
-            }
-            
 
             if (string.IsNullOrEmpty(this.Name))
             {

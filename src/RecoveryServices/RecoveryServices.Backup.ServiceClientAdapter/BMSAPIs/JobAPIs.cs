@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             CrrModel.CrrJobRequest jobRequest
             )
         {
-            return CrrAdapter.Client.BackupCrrJobDetails.GetWithHttpMessagesAsync(secondaryRegion, jobRequest.ResourceId, jobRequest.JobName).Result.Body; // track1
+            return CrrAdapter.Client.BackupCrrJobDetails.GetWithHttpMessagesAsync(secondaryRegion, jobRequest.ResourceId, jobRequest.JobName).Result.Body;
         }
 
         public List<CrrModel.JobResource> GetCrrJobs(string vaultId,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             CrrModel.CrrJobRequest crrJobRequest = new CrrModel.CrrJobRequest();
             crrJobRequest.ResourceId = vaultId;
             Func<RestAzureNS.IPage<CrrModel.JobResource>> listAsync =
-                () => CrrAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, queryFilter, resourceId: crrJobRequest.ResourceId, jobName: crrJobRequest.JobName, cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body; // track1
+                () => CrrAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, queryFilter, resourceId: crrJobRequest.ResourceId, jobName: crrJobRequest.JobName, cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body; 
 
             Func<string, RestAzureNS.IPage<CrrModel.JobResource>> listNextAsync =
                 nextLink => CrrAdapter.Client.BackupCrrJobs.ListNextWithHttpMessagesAsync(

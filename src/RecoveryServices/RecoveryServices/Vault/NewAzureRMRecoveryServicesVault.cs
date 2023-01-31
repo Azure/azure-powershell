@@ -77,13 +77,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Enables or disables public network access for RS vault.
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Parameter to Enable/Disable public network access of the vault. This setting is useful with Private Endpoints.")]
         public PublicNetworkAccess? PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Enables or disables Immutability for RS vault. Allowed values are Disabled, Unlocked.
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Immutability State of the vault. Allowed values are \"Disabled\", \"Unlocked\", \"Locked\". \r\nUnlocked means Enabled and can be changed, Locked means Enabled and can't be changed.")]
         [ValidateSet("Disabled", "Unlocked")]
         public ImmutabilityState? ImmutabilityState { get; set; }
 
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     else
                     {
                         vaultCreateArgs.Properties.PublicNetworkAccess = "Enabled";
-                        // throw warning - saying PNA enabled by default
+                        Logger.Instance.WriteWarning("Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesBackupVault cmdlet");// resx
                     }
 
                     if (ImmutabilityState != null)

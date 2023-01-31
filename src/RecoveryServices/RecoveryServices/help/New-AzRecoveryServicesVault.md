@@ -16,6 +16,7 @@ Creates a new Recovery Services vault.
 ```
 New-AzRecoveryServicesVault -Name <String> -ResourceGroupName <String> -Location <String> [-Tag <Hashtable>]
  [-DisableClassicAlerts <Boolean>] [-DisableAzureMonitorAlertsForJobFailure <Boolean>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-ImmutabilityState <ImmutabilityState>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,6 +79,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImmutabilityState
+Immutability State of the vault. Allowed values are "Disabled", "Unlocked", "Locked". 
+Unlocked means Enabled and can be changed, Locked means Enabled and can't be changed.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.ImmutabilityState]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Unlocked
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the name of the geographic location of the vault.
 
@@ -102,6 +120,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Parameter to Enable/Disable public network access of the vault. This setting is useful with Private Endpoints.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.PublicNetworkAccess]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
