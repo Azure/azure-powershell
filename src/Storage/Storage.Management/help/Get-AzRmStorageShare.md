@@ -48,10 +48,10 @@ The **Get-AzRmStorageShare** cmdlet gets or lists Storage file shares.
 ## EXAMPLES
 
 ### Example 1: Get a Storage file share with Storage account name and share name
-<!-- Skip: Output cannot be splitted from code -->
-```
+```powershell
 PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare"
-
+```
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
@@ -62,10 +62,10 @@ myshare  5120
 This command gets a Storage file share with Storage account name and share name.
 
 ### Example 2: List all Storage file shares of a Storage account
-<!-- Skip: Output cannot be splitted from code -->
+```powershell
+Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount"
 ```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount"
-
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name     QuotaGiB EnabledProtocols AccessTier           Deleted Version ShareUsageBytes

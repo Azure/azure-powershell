@@ -35,9 +35,8 @@ The **Remove-AzStorageShare** cmdlet deletes a file share.
 ## EXAMPLES
 
 ### Example 1: Remove a file share
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>Remove-AzStorageShare -Name "ContosoShare06"
+```powershell
+Remove-AzStorageShare -Name "ContosoShare06"
 ```
 
 This command removes the file share named ContosoShare06.

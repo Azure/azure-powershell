@@ -45,41 +45,36 @@ The **Remove-AzStorageBlob** cmdlet removes the specified blob from a storage ac
 ## EXAMPLES
 
 ### Example 1: Remove a storage blob by name
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>Remove-AzStorageBlob -Container "ContainerName" -Blob "BlobName"
+```powershell
+Remove-AzStorageBlob -Container "ContainerName" -Blob "BlobName"
 ```
 
 This command removes a blob identified by its name.
 
 ### Example 2: Remove a storage blob using the pipeline
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>Get-AzStorageBlob -Container "ContainerName" -Blob "BlobName" | Remove-AzStorageBlob
+```powershell
+Get-AzStorageBlob -Container "ContainerName" -Blob "BlobName" | Remove-AzStorageBlob
 ```
 
 This command uses the pipeline.
 
 ### Example 3: Remove storage blobs using the pipeline
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>Get-AzStorageContainer -Container container* | Remove-AzStorageBlob -Blob "BlobName"
+```powershell
+Get-AzStorageContainer -Container container* | Remove-AzStorageBlob -Blob "BlobName"
 ```
 
 This command uses the asterisk (*) wildcard character and the pipeline to retrieve the blob or blobs and then removes them.
 
 ### Example 4: Remove a single blob version
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> Remove-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z"
+```powershell
+Remove-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z"
 ```
 
 This command removes a single blobs verion with VersionId.
 
 ### Example 5: Remove a single blob snapshot
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> Remove-AzStorageBlob -Container "containername" -Blob blob1 -SnapshotTime "2020-07-06T06:56:06.8588431Z"
+```powershell
+Remove-AzStorageBlob -Container "containername" -Blob blob1 -SnapshotTime "2020-07-06T06:56:06.8588431Z"
 ```
 
 This command removes a single blobs snapshot with SnapshotTime.

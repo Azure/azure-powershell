@@ -24,17 +24,15 @@ The **New-AzStorageQueue** cmdlet creates a storage queue in Azure.
 ## EXAMPLES
 
 ### Example 1: Create an Azure storage queue
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>New-AzStorageQueue -Name "queueabc"
+```powershell
+New-AzStorageQueue -Name "queueabc"
 ```
 
 This example creates a storage queue named queueabc.
 
 ### Example 2: Create multiple azure storage queues
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>"queue1 queue2 queue3".split() | New-AzStorageQueue
+```powershell
+"queue1 queue2 queue3".split() | New-AzStorageQueue
 ```
 
 This example creates multiple storage queues.

@@ -24,9 +24,8 @@ The **Get-AzStorageServiceMetricsProperty** cmdlet gets metrics properties for t
 ## EXAMPLES
 
 ### Example 1: Get metrics properties for the Blob service
-<!-- Skip: Output cannot be splitted from code -->
-```
-C:\PS>Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour
+```powershell
+Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour
 ```
 
 This command gets metrics properties for blob storage for the Hour metrics type.

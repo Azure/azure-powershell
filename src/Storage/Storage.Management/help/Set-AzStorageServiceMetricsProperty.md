@@ -25,9 +25,8 @@ The **Set-AzStorageServiceMetricsProperty** cmdlet modifies metrics properties f
 ## EXAMPLES
 
 ### Example 1: Modify metrics properties for the Blob service
-<!-- Skip: Output cannot be splitted from code -->
-```
-C:\PS>Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -MetricsLevel Service -PassThru -RetentionDays 10 -Version 1.0
+```powershell
+Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -MetricsLevel Service -PassThru -RetentionDays 10 -Version 1.0
 ```
 
 This command modifies version 1.0 metrics for blob storage to a level of Service.

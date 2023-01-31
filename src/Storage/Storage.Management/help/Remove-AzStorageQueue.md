@@ -24,17 +24,15 @@ The **Remove-AzStorageQueue** cmdlet removes a storage queue.
 ## EXAMPLES
 
 ### Example 1: Remove a storage queue by name
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>Remove-AzStorageQueue "ContosoQueue01"
+```powershell
+Remove-AzStorageQueue "ContosoQueue01"
 ```
 
 This command removes a queue named ContosoQueue01.
 
 ### Example 2: Remove multiple storage queues
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>Get-AzStorageQueue "Contoso*" | Remove-AzStorageQueue
+```powershell
+Get-AzStorageQueue "Contoso*" | Remove-AzStorageQueue
 ```
 
 This command removes all queues with names that start with Contoso.

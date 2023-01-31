@@ -35,17 +35,15 @@ The **Get-AzStorageContainer** cmdlet lists the storage containers associated wi
 ## EXAMPLES
 
 ### Example 1: Get Azure Storage container by name
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>Get-AzStorageContainer -Name container*
+```powershell
+Get-AzStorageContainer -Name container*
 ```
 
 This example uses a wildcard character to return a list of all containers with a name that starts with container.
 
 ### Example 2: Get Azure Storage container by container name prefix
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>Get-AzStorageContainer -Prefix "container"
+```powershell
+Get-AzStorageContainer -Prefix "container"
 ```
 
 This example uses the *Prefix* parameter to return a list of all containers with a name that starts with container.
