@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxMD_D");
         }
 
-        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestWithUserAssignedIdentity()
         {
@@ -548,21 +548,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SkipIdentity");
         }
 
-        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestUserIdentityOnlyWin()
         {
             TestRunner.RunTestScript("Test-UserIdentityOnlyWin");
         }
 
-        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestUserIdentityOnlyLnx()
         {
             TestRunner.RunTestScript("Test-UserIdentityOnlyLnx");
         }
 
-        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestUserIdentityWithSystemLnx()
         {
