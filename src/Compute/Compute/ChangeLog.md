@@ -28,6 +28,7 @@
 * Updated Set-AzVMRunCommand and Set-AzVmssRunCommand ScriptLocalPath parameter set to work with Linux and with files that have comments.
 * Added `-TargetExtendedLocation` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion`
 * Added `-AllowDeletionOfReplicatedLocation` to `Update-AzGalleryImageVersion`
+* Added ''MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand 
 
 ## Version 5.3.0
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
