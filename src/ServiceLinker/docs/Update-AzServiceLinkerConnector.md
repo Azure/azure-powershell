@@ -17,13 +17,10 @@ Operation to update an existing Connector.
 Update-AzServiceLinkerConnector -Location <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AuthInfo <IAuthInfoBase>] [-ClientType <ClientType>]
  [-ConfigurationInfoAction <ActionType>] [-ConfigurationInfoAdditionalConfiguration <Hashtable>]
- [-ConfigurationInfoCustomizedKey <Hashtable>]
- [-ConfigurationInfoDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-FirewallRuleAzureService <AllowType>]
+ [-ConfigurationInfoCustomizedKey <Hashtable>] [-FirewallRuleAzureService <AllowType>]
  [-FirewallRuleCallerClientIP <AllowType>] [-FirewallRuleIPRange <String[]>]
- [-PublicNetworkSolutionAction <ActionType>]
- [-PublicNetworkSolutionDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-Scope <String>]
- [-SecretStoreKeyVaultId <String>] [-SecretStoreKeyVaultSecretName <String>]
- [-TargetService <ITargetServiceBase>] [-VNetSolutionDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>]
+ [-PublicNetworkSolutionAction <ActionType>] [-Scope <String>] [-SecretStoreKeyVaultId <String>]
+ [-SecretStoreKeyVaultSecretName <String>] [-TargetService <ITargetServiceBase>]
  [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -33,14 +30,11 @@ Update-AzServiceLinkerConnector -Location <String> -Name <String> -ResourceGroup
 Update-AzServiceLinkerConnector -InputObject <IServiceLinkerIdentity> [-AuthInfo <IAuthInfoBase>]
  [-ClientType <ClientType>] [-ConfigurationInfoAction <ActionType>]
  [-ConfigurationInfoAdditionalConfiguration <Hashtable>] [-ConfigurationInfoCustomizedKey <Hashtable>]
- [-ConfigurationInfoDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-FirewallRuleAzureService <AllowType>]
- [-FirewallRuleCallerClientIP <AllowType>] [-FirewallRuleIPRange <String[]>]
- [-PublicNetworkSolutionAction <ActionType>]
- [-PublicNetworkSolutionDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-Scope <String>]
+ [-FirewallRuleAzureService <AllowType>] [-FirewallRuleCallerClientIP <AllowType>]
+ [-FirewallRuleIPRange <String[]>] [-PublicNetworkSolutionAction <ActionType>] [-Scope <String>]
  [-SecretStoreKeyVaultId <String>] [-SecretStoreKeyVaultSecretName <String>]
- [-TargetService <ITargetServiceBase>] [-VNetSolutionDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>]
- [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TargetService <ITargetServiceBase>] [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,21 +153,6 @@ If not specified, default key name will be used for generate configurations
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationInfoDeleteOrUpdateBehavior
-Indicates whether to clean up previous operation when Linker is updating or deleting
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior
 Parameter Sets: (All)
 Aliases:
 
@@ -325,21 +304,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkSolutionDeleteOrUpdateBehavior
-Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -432,21 +396,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VNetSolutionDeleteOrUpdateBehavior
-Indicates whether to clean up previous operation when Linker is updating or deleting
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VNetSolutionType
 Type of VNet solution.
 
@@ -513,10 +462,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-AUTHINFO <IAuthInfoBase>: The authentication type.
+`AUTHINFO <IAuthInfoBase>`: The authentication type.
   - `AuthType <AuthType>`: The authentication type.
 
-INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+`INPUTOBJECT <IServiceLinkerIdentity>`: Identity Parameter
   - `[ConnectorName <String>]`: The name of resource.
   - `[DryrunName <String>]`: The name of dryrun.
   - `[Id <String>]`: Resource identity path
@@ -526,7 +475,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource to be connected.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-TARGETSERVICE <ITargetServiceBase>: The target service properties
+`TARGETSERVICE <ITargetServiceBase>`: The target service properties
   - `Type <TargetServiceType>`: The target service type.
 
 ## RELATED LINKS

@@ -16,9 +16,8 @@ Generate configurations for a Connector.
 ```
 New-AzServiceLinkerConnectorConfiguration -ConnectorName <String> -Location <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Action <ActionType>]
- [-AdditionalConfiguration <Hashtable>] [-CustomizedKey <Hashtable>]
- [-DeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AdditionalConfiguration <Hashtable>] [-CustomizedKey <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Generate
@@ -37,9 +36,8 @@ New-AzServiceLinkerConnectorConfiguration -InputObject <IServiceLinkerIdentity>
 ### GenerateViaIdentityExpanded
 ```
 New-AzServiceLinkerConnectorConfiguration -InputObject <IServiceLinkerIdentity> [-Action <ActionType>]
- [-AdditionalConfiguration <Hashtable>] [-CustomizedKey <Hashtable>]
- [-DeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AdditionalConfiguration <Hashtable>] [-CustomizedKey <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,21 +142,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeleteOrUpdateBehavior
-Indicates whether to clean up previous operation when Linker is updating or deleting
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior
-Parameter Sets: GenerateExpanded, GenerateViaIdentityExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -298,7 +281,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+`INPUTOBJECT <IServiceLinkerIdentity>`: Identity Parameter
   - `[ConnectorName <String>]`: The name of resource.
   - `[DryrunName <String>]`: The name of dryrun.
   - `[Id <String>]`: Resource identity path
@@ -308,7 +291,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource to be connected.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-PARAMETER <IConfigurationInfo>: The configuration information, used to generate configurations or save to applications
+`PARAMETER <IConfigurationInfo>`: The configuration information, used to generate configurations or save to applications
   - `[Action <ActionType?>]`: Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
   - `[AdditionalConfiguration <IConfigurationInfoAdditionalConfigurations>]`: A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
     - `[(Any) <String>]`: This indicates any property can be added to this object.

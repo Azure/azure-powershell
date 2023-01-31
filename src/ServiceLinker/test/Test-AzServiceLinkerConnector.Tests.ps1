@@ -16,10 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzServiceLinkerConnector
 
 Describe 'Test-AzServiceLinkerConnector' {
     It 'Validate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $result = Test-AzServiceLinkerConnector -ResourceGroupName $env.resourceGroup -Location $env.location -ConnectorName $env.preparedLinker
     }
 
-    It 'ValidateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

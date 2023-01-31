@@ -15,19 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceLinkerConnectorC
 }
 
 Describe 'New-AzServiceLinkerConnectorConfiguration' {
-    It 'GenerateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Generate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GenerateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GenerateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $configs = New-AzServiceLinkerConnectorConfiguration -ResourceGroupName $env.resourceGroup -Location $env.location -ConnectorName $env.preparedLinker
+        $configs.Count | Should -BeGreaterOrEqual 1
     }
 }

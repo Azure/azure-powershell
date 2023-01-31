@@ -16,10 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzServiceLinkerConnect
 
 Describe 'Remove-AzServiceLinkerConnector' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $null = Remove-AzServiceLinkerConnector -ResourceGroupName $env.resourceGroup -Location $env.location -ConnectorName $env.newLinker
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

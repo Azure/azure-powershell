@@ -18,7 +18,7 @@ Describe 'New-AzServiceLinkerConnector' {
     It 'New local storage connection' -skip {
         $target = New-AzServiceLinkerAzureResourceObject -Id $env.postgresqId
         $authInfo = New-AzServiceLinkerSecretAuthInfoObject
-        $newConnector = New-AzServiceLinkerConnector -Location $env.resourceGroup -Location $env.location -Name $env.newLinker -TargetService $target -AuthInfo $authInfo
+        $newConnector = New-AzServiceLinkerConnector -ResourceGroupName $env.resourceGroup -Location $env.location -Name $env.newLinker -TargetService $target -AuthInfo $authInfo
         # assert the linker create successfully
         $connectors = Get-AzServiceLinkerConnector -ResourceGroupName $env.resourceGroup -Location $env.location
         $connectors.Name.Contains($env.newConnector) | Should -Be $true

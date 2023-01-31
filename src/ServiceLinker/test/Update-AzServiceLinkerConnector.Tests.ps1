@@ -16,10 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzServiceLinkerConnect
 
 Describe 'Update-AzServiceLinkerConnector' {
     It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $linker = Get-AzServiceLinkerConnector -ResourceGroupName $env.resourceGroup -Location $env.containerApp -Name $env.preparedLinker
+
+        $updateLinker = Update-AzServiceLinkerConnector -ResourceGroupName $env.resourceGroup -Location $env.location -Name $linker.Name -TargetService $linker.TargetService -AuthInfo $linker.AuthInfo -ClientType dotnet
+        $updateLinker.ClientType | Should -Be dotnet
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

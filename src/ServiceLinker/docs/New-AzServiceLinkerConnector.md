@@ -16,17 +16,12 @@ Create or update Connector resource.
 New-AzServiceLinkerConnector -Location <String> -ResourceGroupName <String> [-Name <String>]
  [-SubscriptionId <String>] [-AuthInfo <IAuthInfoBase>] [-ClientType <ClientType>]
  [-ConfigurationInfoAction <ActionType>] [-ConfigurationInfoAdditionalConfiguration <Hashtable>]
- [-ConfigurationInfoCustomizedKey <Hashtable>]
- [-ConfigurationInfoDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-FirewallRuleAzureService <AllowType>]
+ [-ConfigurationInfoCustomizedKey <Hashtable>] [-FirewallRuleAzureService <AllowType>]
  [-FirewallRuleCallerClientIP <AllowType>] [-FirewallRuleIPRange <String[]>]
- [-PublicNetworkSolutionAction <ActionType>]
- [-PublicNetworkSolutionDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-Scope <String>]
- [-SecretStoreKeyVaultId <String>] [-SecretStoreKeyVaultSecretName <String>] [-SystemDataCreatedAt <DateTime>]
- [-SystemDataCreatedBy <String>] [-SystemDataCreatedByType <CreatedByType>]
- [-SystemDataLastModifiedAt <DateTime>] [-SystemDataLastModifiedBy <String>]
- [-SystemDataLastModifiedByType <CreatedByType>] [-TargetService <ITargetServiceBase>]
- [-VNetSolutionDeleteOrUpdateBehavior <DeleteOrUpdateBehavior>] [-VNetSolutionType <VNetSolutionType>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PublicNetworkSolutionAction <ActionType>] [-Scope <String>] [-SecretStoreKeyVaultId <String>]
+ [-SecretStoreKeyVaultSecretName <String>] [-TargetService <ITargetServiceBase>]
+ [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,21 +146,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationInfoDeleteOrUpdateBehavior
-Indicates whether to clean up previous operation when Linker is updating or deleting
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "213123"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -295,21 +275,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkSolutionDeleteOrUpdateBehavior
-Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -386,117 +351,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SystemDataCreatedAt
-The timestamp of resource creation (UTC).
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedBy
-The identity that created the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedByType
-The type of identity that created the resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.CreatedByType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedAt
-The timestamp of resource last modification (UTC)
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedBy
-The identity that last modified the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedByType
-The type of identity that last modified the resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.CreatedByType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -TargetService
 The target service properties
 To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VNetSolutionDeleteOrUpdateBehavior
-Indicates whether to clean up previous operation when Linker is updating or deleting
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior
 Parameter Sets: (All)
 Aliases:
 
@@ -571,10 +431,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-AUTHINFO <IAuthInfoBase>: The authentication type.
+`AUTHINFO <IAuthInfoBase>`: The authentication type.
   - `AuthType <AuthType>`: The authentication type.
 
-TARGETSERVICE <ITargetServiceBase>: The target service properties
+`TARGETSERVICE <ITargetServiceBase>`: The target service properties
   - `Type <TargetServiceType>`: The target service type.
 
 ## RELATED LINKS
