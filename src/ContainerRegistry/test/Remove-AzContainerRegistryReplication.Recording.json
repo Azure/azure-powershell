@@ -1,0 +1,42 @@
+{
+  "Remove-AzContainerRegistryReplication+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.ContainerRegistry/registries/lnxcr/replications/eastus?api-version=2022-02-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.ContainerRegistry/registries/lnxcr/replications/eastus?api-version=2022-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "15766da2-2eaf-418f-8c93-79e877c5026a" ],
+        "CommandName": [ "remove-azContainerRegistryReplication" ],
+        "FullCommandName": [ "Remove-AzContainerRegistryReplication_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.ContainerRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "d30d5725-9db8-44bb-9afd-cb5defc931de" ],
+        "x-ms-correlation-request-id": [ "d30d5725-9db8-44bb-9afd-cb5defc931de" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230119T065711Z:d30d5725-9db8-44bb-9afd-cb5defc931de" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 19 Jan 2023 06:57:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "393" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ScopeLocked\",\"message\":\"The scope \u0027/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.ContainerRegistry/registries/lnxcr/replications/eastus\u0027 cannot perform delete operation because following scope(s) are locked: \u0027/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest\u0027. Please remove the lock and try again.\"}}",
+      "isContentBase64": false
+    }
+  }
+}
