@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added an optional parameter `HAReplicaCount` to `Restore-AzSqlDatabase`
+* Added `TargetSubscriptionId` to `Restore-AzSqlInstanceDatabase` in order to enable cross subscription restore
 * Enabled support for UserAssignedManagedIdentity in Auditing
 * Fixed WorkspaceResourceId parameter value in `Set-AzSqlServerAudit`
 
