@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Immutable backup vaults
+* Added Cross subscription restore flag for backup vaults
+* Added Soft delete setting for backup vaults
+* Fixed issue with Set-AzDataProtectionMSIPermission command
+* Replaced Get-InstalledModule with Get-Module -ListAvailable
+* Added New-AzDataProtectionSoftDeleteSettingObject command
 
 ## Version 1.0.1
 * Fixed spacing issues in Set-AzDataProtectionMSIPermission.ps1
