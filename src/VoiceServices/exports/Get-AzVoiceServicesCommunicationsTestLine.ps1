@@ -29,7 +29,7 @@ New-AzVoiceServicesCommunicationsTestLine -ResourceGroupName vtest-communication
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,8 +37,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
   [CommunicationsGatewayName <String>]: Unique identifier for this deployment
-  [ContactName <String>]: Unique identifier for this contact
   [Id <String>]: Resource identity path
+  [Location <String>]: The location in which uniqueness will be verified.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TestLineName <String>]: Unique identifier for this test line
@@ -46,7 +46,7 @@ INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.voiceservices/get-azvoiceservicescommunicationstestline
 #>
 function Get-AzVoiceServicesCommunicationsTestLine {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
