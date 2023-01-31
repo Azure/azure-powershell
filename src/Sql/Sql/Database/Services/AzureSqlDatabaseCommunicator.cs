@@ -22,6 +22,9 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure.OData;
+using System.Threading;
+using Microsoft.Rest.Azure;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -78,9 +81,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="serverName">Name of the server</param>
         /// <param name="databaseName">Name of the database</param>
-        public void RevalidateDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        public async Task<Rest.Azure.AzureOperationResponse> RevalidateDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
         {
-            GetCurrentSqlClient().DatabaseEncryptionProtectors.BeginRevalidate(resourceGroupName, serverName, databaseName);
+            Rest.Azure.AzureOperationResponse _response = await GetCurrentSqlClient().DatabaseEncryptionProtectors.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName).ConfigureAwait(false);
+            return await GetCurrentSqlClient().GetPostOrDeleteOperationResultAsync(_response, null, default(CancellationToken)).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -89,9 +93,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="serverName">Name of the server</param>
         /// <param name="databaseName">Name of the database</param>
-        public void RevertDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        public async Task<Rest.Azure.AzureOperationResponse> RevertDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
         {
-            GetCurrentSqlClient().DatabaseEncryptionProtectors.BeginRevert(resourceGroupName, serverName, databaseName);
+            Rest.Azure.AzureOperationResponse _response = await GetCurrentSqlClient().DatabaseEncryptionProtectors.BeginRevertWithHttpMessagesAsync(resourceGroupName, serverName, databaseName).ConfigureAwait(false);
+            return await GetCurrentSqlClient().GetPostOrDeleteOperationResultAsync(_response, null, default(CancellationToken)).ConfigureAwait(false);
         }
 
         /// <summary>

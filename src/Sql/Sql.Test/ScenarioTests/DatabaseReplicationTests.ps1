@@ -847,10 +847,9 @@ function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedund
 	.SYNOPSIS
 	Tests creating a database copy with per db cmk
 #>
-function Test-CreateDatabaseCopyWithPerDBCMK()
+function Test-CreateDatabaseCopyWithPerDBCMK($location = "eastus2euap")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server "Standard"
@@ -859,8 +858,8 @@ function Test-CreateDatabaseCopyWithPerDBCMK()
 	$copyServer = Create-ServerForTest $copyRg $location
 	$copyDatabaseName = Get-DatabaseName
 
-	$encryptionProtector = "https://test-kv1.vault-int.azure-int.net/keys/testkey1/7a2e7ce2e39046e09a00dde90ddcb250"
-	$umi = "/subscriptions/b3aa7e07-6dfc-48a2-b682-3ec83ef8e307/resourceGroups/viparek/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testumi"
+	$encryptionProtector = "https://pstestkv.vault.azure.net/keys/testkey/f62d937858464f329ab4a8c2dc7e0fa4"
+	$umi = "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
 
 	try
 	{

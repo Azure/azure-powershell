@@ -15,7 +15,11 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Sql;
+using Microsoft.Rest.Azure;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
 {
@@ -88,9 +92,18 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// <summary>
         /// Revalidates Azure Sql Server Transparent Data Encryption Protector
         /// </summary>
-        public void RevalidateEncryptionProtector(string resourceGroupName, string serverName)
+        public async Task<Rest.Azure.AzureOperationResponse> RevalidateEncryptionProtector(string resourceGroupName, string serverName)
         {
-            GetCurrentSqlClient().EncryptionProtectors.BeginRevalidate(resourceGroupName, serverName);
+            //GetCurrentSqlClient().EncryptionProtectors.BeginRevalidate(resourceGroupName, serverName);
+            //await GetCurrentSqlClient().EncryptionProtectors.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName).ConfigureAwait(false);
+            /*
+            using (var _result = await GetCurrentSqlClient().EncryptionProtectors.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName).ConfigureAwait(false))
+            {
+                return _result;
+            }
+            */
+            Rest.Azure.AzureOperationResponse _response = await GetCurrentSqlClient().EncryptionProtectors.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName).ConfigureAwait(false);
+            return await GetCurrentSqlClient().GetPostOrDeleteOperationResultAsync(_response, null, default(CancellationToken)).ConfigureAwait(false);
         }
 
         /// <summary>

@@ -154,3 +154,24 @@ function Test-SetTransparentDataEncryptionProtector
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests revalidating a server transparent data encryption protector
+#>
+function Test-RevalidateTransparentDataEncryptionProtector ($location = "eastus2euap")
+{
+	# Setup
+	$rg = 'pstest'
+	$server = 'pstestsvr'
+
+	try
+	{
+		# Revalidate
+		Revalidate-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $rg -ServerName $server
+	}
+	finally
+	{
+		# Remove-ResourceGroupForTest $rg
+	}
+}

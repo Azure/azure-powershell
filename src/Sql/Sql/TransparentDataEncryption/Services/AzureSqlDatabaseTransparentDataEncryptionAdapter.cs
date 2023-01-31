@@ -23,6 +23,8 @@ using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
 {
@@ -120,9 +122,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// </summary>
         /// <param name="resourceGroupName">Resource group of the server</param>
         /// <param name="serverName">Name of the server</param>
-        public void RevalidateEncryptionProtector(string resourceGroupName, string serverName)
+        public Rest.Azure.AzureOperationResponse RevalidateEncryptionProtector(string resourceGroupName, string serverName)
         {
-            Communicator.RevalidateEncryptionProtector(resourceGroupName, serverName);
+            return Communicator.RevalidateEncryptionProtector(resourceGroupName, serverName).GetAwaiter().GetResult();
         }
 
         /// <summary>

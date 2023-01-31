@@ -207,5 +207,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-DatabaseUpdateWithPerDBCMK");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK()
+        {
+            TestRunner.RunTestScript("Test-RevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK");
+        }
     }
 }

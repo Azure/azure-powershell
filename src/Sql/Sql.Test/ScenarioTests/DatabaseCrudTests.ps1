@@ -1149,42 +1149,31 @@ function Test-DatabaseCreateWithPerDBCMK ($location = "eastus2euap")
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
-	$encryptionProtector = "https://test-kv1.vault-int.azure-int.net/keys/testkey1/7a2e7ce2e39046e09a00dde90ddcb250"
-	$umi = "/subscriptions/b3aa7e07-6dfc-48a2-b682-3ec83ef8e307/resourceGroups/viparek/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testumi"
+	$encryptionProtector = "https://pstestkv.vault.azure.net/keys/testkey/f62d937858464f329ab4a8c2dc7e0fa4"
+	$umi = "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
 
-	try
-	{
-		# Create with per db cmk enabled
-		$databaseName = Get-DatabaseName
-		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
-		
-		# -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+	# Create with per db cmk enabled
+	$databaseName = Get-DatabaseName
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
 
-		# Validate Get-AzSqlDatabase returns cmk properties
-		$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
-		Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
-	}
-	Catch
-	{
-		$ErrorMessage = $_.Exception.Message
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
+	# Validate Get-AzSqlDatabase returns cmk properties
+	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
+
+	Remove-ResourceGroupForTest $rg
 }
 
 <#
 	.SYNOPSIS
 	Tests updating a database with db level cmk and identity
 #>
-function Test-DatabaseUpdateWithPerDBCMK ($location = "southeastasia")
+function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
-	$encryptionProtector = "https://test-kv1.vault-int.azure-int.net/keys/testkey1/7a2e7ce2e39046e09a00dde90ddcb250"
-	$umi = "/subscriptions/b3aa7e07-6dfc-48a2-b682-3ec83ef8e307/resourceGroups/viparek/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testumi"
+	$encryptionProtector = "https://pstestkv.vault.azure.net/keys/testkey/f62d937858464f329ab4a8c2dc7e0fa4"
+	$umi = "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
 
 	# Create with per db cmk enabled
 	$databaseName = Get-DatabaseName
@@ -1195,11 +1184,43 @@ function Test-DatabaseUpdateWithPerDBCMK ($location = "southeastasia")
 	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
 
 	# Update the db with new EncryptionProtector
-	$encryptionProtector2 = "https://test-kv1.vault-int.azure-int.net/keys/testkey2/f53094ed33f94655910dc654c378d153"
+	$encryptionProtector2 = "https://pstestkv.vault.azure.net/keys/testkey1/6218d117492a42eda0b6a9334c9a989d"
 	$dbAfterUpdate = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EncryptionProtector $encryptionProtector2
 	
 	$databaseGetAfterUpdate = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 	Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtector $encryptionProtector2
+
+	Remove-ResourceGroupForTest $rg
+}
+
+<#
+	.SYNOPSIS
+	Test to revalidae the encryption protector of a database with db level cmk and identity
+#>
+function Test-RevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK ($location = "eastus2euap")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+	$encryptionProtector = "https://pstestkv.vault.azure.net/keys/testkey/f62d937858464f329ab4a8c2dc7e0fa4"
+	$umi = "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+	$akvRg =  "pstest"
+	$akvName = "pstestkv"
+	$umiObjectId = "781be676-54b8-46e5-ba30-4d9a18b13bf6"
+
+	# Create with per db cmk enabled
+	$databaseName = Get-DatabaseName
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+
+	# Validate Get-AzSqlDatabase returns cmk properties
+	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
+
+	# Revalidate AKV key
+	Revalidate-AzSqlDatabaseTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+
+	# Revert encryption protector
+	Revert-AzSqlDatabaseTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 
 	Remove-ResourceGroupForTest $rg
 }

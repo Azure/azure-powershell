@@ -216,6 +216,10 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.LicenseType = database.LicenseType;
             model.RequestedBackupStorageRedundancy = database.RequestedBackupStorageRedundancy;
             model.ZoneRedundant = database.ZoneRedundant;
+            model.EncryptionProtector = database.EncryptionProtector;
+            model.Keys = database.Keys;
+            model.Identity = database.Identity;
+            model.FederatedClientId = database.FederatedClientId;
 
             return model;
         }

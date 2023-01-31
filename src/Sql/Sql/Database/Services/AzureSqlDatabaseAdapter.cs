@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="databaseName">The name of the Azure Sql Database</param>
-        internal void RevalidateDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        internal Rest.Azure.AzureOperationResponse RevalidateDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
         {
-            Communicator.RevalidateDatabaseEncryptionProtector(resourceGroupName, serverName, databaseName);
+            return Communicator.RevalidateDatabaseEncryptionProtector(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -97,9 +97,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="databaseName">The name of the Azure Sql Database</param>
-        internal void RevertDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        internal Rest.Azure.AzureOperationResponse RevertDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
         {
-            Communicator.RevertDatabaseEncryptionProtector(resourceGroupName, serverName, databaseName);
+            return Communicator.RevertDatabaseEncryptionProtector(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
