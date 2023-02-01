@@ -59,6 +59,15 @@ nested-object-to-string: true
 
 directive:
   - from: swagger-document 
+    where: $.definitions.PacketCoreControlPlanePropertiesFormat.properties.interopSettings
+    transform: >-
+      return {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "Settings to allow interoperability with third party components e.g. RANs and UEs."
+      }
+
+  - from: swagger-document 
     where: $.definitions
     transform: delete $.CoreNetworkTypeRm
   - from: swagger-document 
