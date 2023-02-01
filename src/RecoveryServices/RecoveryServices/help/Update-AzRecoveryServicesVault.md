@@ -87,6 +87,23 @@ The third cmdlet fetches all the user MSIs as a list from the vault.
 The fourth cmdlet removes all the user MSIs from the vault. In case you want, you can provide selected user identities to be removed as comma separated, like in previous example.
 The fifth cmdlet shows the identities in the vault, as we removed all the identites, Type is displayed as None.
 
+### Example 4: Update PublicNetworkAccess, ImmutabilityState of recovery services vault
+```powershell
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -PublicNetworkAccess "Disabled" -ImmutabilityState "Unlocked"
+$updatedVault.Properties.PublicNetworkAccess
+$updatedVault.Properties.ImmutabilitySettings.ImmutabilityState
+```
+
+```output
+Disabled
+Unlocked
+```
+
+The first cmdlet fetches the recovery services vault.
+The second cmdlet updates  PublicNetworkAccess, ImmutabilityState properties of the recovery services vault.
+The third and fourth command are used to fetch the public network access and immutability state of the vault.
+
 ## PARAMETERS
 
 ### -DefaultProfile

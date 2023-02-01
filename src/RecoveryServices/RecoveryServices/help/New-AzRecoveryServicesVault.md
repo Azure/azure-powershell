@@ -32,6 +32,14 @@ New-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "rg" -Location 
 
 Create recovery service vault in resource group and given location.
 
+### Example 2: reate recovery service vault with ImmutabilityState, PublicNetworkAccess options
+```powershell
+$tag= @{"tag1"="value1";"tag2"="value2"}
+New-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName" -Location "westus" -Tag $tag -ImmutabilityState "Unlocked" -PublicNetworkAccess "Disabled"
+```
+
+Create recovery service vault with options like ImmutabilityState, PublicNetworkAccess. Please note Public Network Access is by default enabled for RS vault (if not specified) and can be updated using Update-AzRecoveryServicesVault cmdlet.
+
 ## PARAMETERS
 
 ### -DefaultProfile
