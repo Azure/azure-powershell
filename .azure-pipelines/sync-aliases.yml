@@ -9,7 +9,7 @@ trigger: none
 
 jobs:
 - job: UpdateJson
-  displayName: Update Json
+  displayName: Update fabricbot.json
   steps:
   - checkout: self
   - pwsh: |
@@ -24,19 +24,19 @@ jobs:
         git pull origin main
         git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
         git config --global user.name "azure-powershell-bot"
-        git checkout -b "Change_fabricbot.json_aliases"
+        git checkout -b "internal/sync-fabricbot-json"
         
         git add .
         git commit -m "Use pipeline to sync fabricbot22.json"
         
         git remote set-url origin https://$(BotAccessToken)@github.com/Azure/azure-powershell.git;
-        git push origin Change_fabricbot.json_aliases --force
+        git push origin internal/sync-fabricbot-json --force
   
   - pwsh: |
-      $Title = "Change Fabricbot.json According To Wiki Page"
-      $HeadBranch = "Change_fabricbot.json_aliases"
+      $Title = "Sync fabricbot.json According To ADO Wiki Page"
+      $HeadBranch = "internal/sync-fabricbot-json"
       $BaseBranch = "main"
-      $Description = "Use powershell to sort taskType: scheduledAndTrigger part of fabricbot.json according to table of Service-Team-Label-and-Contact-List in wiki page"
+      $Description = "This PR sync taskType: scheduledAndTrigger part of fabricbot.json from table of Service-Team-Label-and-Contact-List in ADO wiki page"
       ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
     displayName: Create PR to main branch
   
