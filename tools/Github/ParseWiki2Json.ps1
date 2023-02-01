@@ -77,4 +77,4 @@ $whole_json.tasks | ForEach-Object {
     }
 }
 
-($whole_json | ConvertTo-Json -Depth 32) | Out-File  -FilePath ../.github/fabricbot.json
+($whole_json | ConvertTo-Json -Depth 32) | Out-File  -FilePath .github/fabricbot.json
