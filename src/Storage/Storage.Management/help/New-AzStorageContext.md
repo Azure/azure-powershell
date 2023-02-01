@@ -192,23 +192,23 @@ This command creates a context by using the OAuth (Azure AD) Authentication.
 New-AzStorageContext -StorageAccountName "myaccountname" -StorageAccountKey "< Storage Key for myaccountname ends with == >" -BlobEndpoint "https://myaccountname.blob.core.windows.net/"
 ```
 
-This command creates a context for the account named myaccountname with a key for the account, and specified blob endpoint and table endpoint.
+This command creates a context for the account named myaccountname with a key for the account, and specified blob endpoint. 
 
-### Example 12: Create a context for an anonymous storage accouont with specified file and queue endpoints
+### Example 12: Create a context for an anonymous storage account with specified blob endpoint
 ```powershell
-New-AzStorageContext -StorageAccountName "myaccountname" -Anonymous -Protocol "http" -FileEndpoint "https://myaccountname.file.core.windows.net/" -QueueEndpoint "https://myaccountname.queue.core.windows.net/"
+New-AzStorageContext -Anonymous -Protocol "http" -BlobEndpoint "https://myaccountname.blob.core.windows.net/"
 ```
 
-This command creates a context for anonymous use for the account named myaccountname, with specified file and queue endpoints.
+This command creates a context for anonymous use for the account named myaccountname, with specified blob enpoint. 
 
 ### Example 13: Create a context by using an SAS token with specified endpoints
 ```powershell
 $SasToken = New-AzStorageContainerSASToken -Name "MyContainer" -Permission "rad"
-New-AzStorageContext -StorageAccountName "myaccountname" -SasToken $SasToken -BlobEndpoint "https://myaccountname.blob.core.windows.net/" -TableEndpoint "https://myaccountname.table.core.windows.net/" -FileEndpoint "https://myaccountname.file.core.windows.net/" -QueueEndpoint "https://myaccountname.queue.core.windows.net/"
+New-AzStorageContext -SasToken $SasToken -BlobEndpoint "https://myaccountname.blob.core.windows.net/" -TableEndpoint "https://myaccountname.table.core.windows.net/" -FileEndpoint "https://myaccountname.file.core.windows.net/" -QueueEndpoint "https://myaccountname.queue.core.windows.net/"
 ```
 
 The first command generates an SAS token by using the New-AzStorageContainerSASToken cmdlet for the container named MyContainer, and then stores that token in the $SasToken variable.
-The second command creates a context for the account named myaccountname that uses the SAS token and a specified blob endpoint, table endpoint, file endpoint, and queue endpoint. 
+The second command creates a context that uses the SAS token and a specified blob endpoint, table endpoint, file endpoint, and queue endpoint. 
 
 ### Example 14: Create ea context by using the OAuth Authentication with a specified blob endpoint
 ```powershell

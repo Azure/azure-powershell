@@ -31,9 +31,8 @@ The **Get-AzStorageQueue** cmdlet lists storage queues associated with an Azure 
 ## EXAMPLES
 
 ### Example 1: List all Azure Storage queues
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>Get-AzStorageQueue
+```powershell
+Get-AzStorageQueue
 ```
 
 This command gets a list of all storage queues for the current Storage account.

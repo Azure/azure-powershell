@@ -38,8 +38,9 @@ The **Enable-AzStorageBlobDeleteRetentionPolicy** cmdlet enables delete retentio
 
 ### Example 1: Enable delete retention policy for the Blob service
 ```powershell
-C:\PS>Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -AllowPermanentDelete -PassThru -RetentionDays 4
+Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -AllowPermanentDelete -PassThru -RetentionDays 4
 ```
+
 ```output
 Enabled Days AllowPermanentDelete
 ------- ---- --------------------

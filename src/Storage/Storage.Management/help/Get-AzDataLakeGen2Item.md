@@ -94,7 +94,7 @@ This command gets a directory from a Filesystem, and show the details.
 
 ### Example 2: Get a file from a Filesystem
 ```powershell
-PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
+Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
 ```
 ```output
    FileSystem Name: filesystem1

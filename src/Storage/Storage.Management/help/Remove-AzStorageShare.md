@@ -42,9 +42,8 @@ Remove-AzStorageShare -Name "ContosoShare06"
 This command removes the file share named ContosoShare06.
 
 ### Example 2: Remove a file share and all its snapshots
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\>Remove-AzStorageShare -Name "ContosoShare06" -IncludeAllSnapshot
+```powershell
+Remove-AzStorageShare -Name "ContosoShare06" -IncludeAllSnapshot
 ```
 
 This command removes the file share named ContosoShare06 and all its snapshots.

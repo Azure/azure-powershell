@@ -34,7 +34,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: Download a file without prompt
 ```powershell
-PS C:\> Get-AzDataLakeGen2ItemContent -FileSystem "filesystem1" -Path "dir1/file1" -Destination $localDestFile -Force
+Get-AzDataLakeGen2ItemContent -FileSystem "filesystem1" -Path "dir1/file1" -Destination $localDestFile -Force
 ```
 ```output
    FileSystem Name: filesystem1
@@ -48,7 +48,7 @@ This command downloads a file to a local file without prompt.
 
 ### Example 2: Get a file, then pipeline to download the file to a local file
 ```powershell
-PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" |  Get-AzDataLakeGen2ItemContent -Destination $localDestFile 
+Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" |  Get-AzDataLakeGen2ItemContent -Destination $localDestFile 
 ```
 ```output
    FileSystem Name: filesystem1

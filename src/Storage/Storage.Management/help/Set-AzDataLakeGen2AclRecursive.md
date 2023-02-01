@@ -78,6 +78,7 @@ ContinuationToken               :
 This command first sets ACL recursively to a root directory and failed, then resume with ContinuationToken after user fix the failed file.
 
 ### Example 3: Set ACL recursively chunk by chunk
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $token = $null
 $TotalDirectoriesSuccess = 0

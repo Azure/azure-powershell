@@ -78,6 +78,7 @@ ContinuationToken               :
 This command first updateds ACL recursively to a directory and failed, then resume with ContinuationToken after user fix the failed file.
 
 ### Example 3: Update ACL recursively chunk by chunk
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $ContinueOnFailure = $true # Set it to $false if want to terminate the operation quickly on encountering failures
 $token = $null

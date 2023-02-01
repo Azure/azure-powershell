@@ -26,8 +26,9 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: List the direct sub items from a Filesystem
 ```powershell
-PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
+Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
 ```
+
 ```output
    FileSystem Name: filesystem1
 
@@ -41,8 +42,9 @@ This command lists the direct sub items from a Filesystem
 
 ### Example 2: List recursively from a directory, and fetch Properties/ACL
 ```powershell
-PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchProperty
+Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchProperty
 ```
+
 ```output
    FileSystem Name: filesystem1
 

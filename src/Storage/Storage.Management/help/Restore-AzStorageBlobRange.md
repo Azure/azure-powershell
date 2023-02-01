@@ -77,7 +77,6 @@ Complete 0387953a-bbe6-4602-818d-e661581ee44b               2020-08-28T07:11:33.
 This command restores all blobs in a Storage account from 30 minutes ago, and wait for the restore complete. Since restore blobs might take a long time, run it in the backend with -Asjob parameter, and then wait for the job complete and show the result.
 
 ### Example 3: Restores blobs by input blob ranges directly, and wait for complete
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Restore-AzStorageBlobRange -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -WaitForComplete `
     -TimeToRestore (Get-Date).AddSeconds(-1) `

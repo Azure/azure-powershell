@@ -42,7 +42,7 @@ The **Set-AzStorageBlobTag** sets blob tags of a specific blob.
 ## EXAMPLES
 
 ### Example 1: Set blob tags on a specific blob
-```poewrshell
+```powershell
 Set-AzStorageBlobTag -Container "containername" -Blob testblob -Tag @{"tag1" = "value1"; "tag2" = "value2" }
 ```
 
