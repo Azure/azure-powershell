@@ -24,17 +24,17 @@ jobs:
         git pull origin main
         git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
         git config --global user.name "azure-powershell-bot"
-        git checkout -b "Will_change_fabricbot"
+        git checkout -b "Change_fabricbot.json_aliases"
         
         git add .
         git commit -m "Use pipeline to sync fabricbot22.json"
         
         git remote set-url origin https://$(BotAccessToken)@github.com/Azure/azure-powershell.git;
-        git push origin Will_change_fabricbot --force
+        git push origin Change_fabricbot.json_aliases --force
   
   - pwsh: |
       $Title = "Change Fabricbot.json According To Wiki Page"
-      $HeadBranch = "Will_change_fabricbot"
+      $HeadBranch = "Change_fabricbot.json_aliases"
       $BaseBranch = "main"
       $Description = "Use powershell to sort taskType: scheduledAndTrigger part of fabricbot.json according to table of Service-Team-Label-and-Contact-List in wiki page"
       ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
