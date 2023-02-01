@@ -221,4 +221,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-[Attestation Overview](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/attestation-structure)
+[Get-AzPolicyAttestation](./Get-AzPolicyAttestation.md)

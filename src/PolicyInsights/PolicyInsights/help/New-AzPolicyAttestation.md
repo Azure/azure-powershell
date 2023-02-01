@@ -183,7 +183,9 @@ Evidence                    : {Microsoft.Azure.Commands.PolicyInsights.Models.At
 ProvisioningState           : Succeeded
 LastComplianceStateChangeAt : 1/27/2023 2:51:57 AM
 AssessmentDate              : 1/25/2024 2:51:54 AM
-Metadata                    : Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationMetadata
+Metadata                    : {
+                                "TestKey": "TestValue"
+                              }
 SystemData                  :
 ```
 
@@ -458,4 +460,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-[Attestation Overview](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/attestation-structure)
+[Get-AzPolicyAttestation](./Get-AzPolicyAttestation.md)
+
+[Set-AzPolicyAttestation](./Set-AzPolicyAttestation.md)
+
+[Remove-AzPolicyAttestation](./Remove-AzPolicyAttestation.md)
