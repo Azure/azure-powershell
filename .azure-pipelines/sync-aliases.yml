@@ -12,24 +12,22 @@ jobs:
   displayName: Update Json
   steps:
   - checkout: self
-    persistCredentials: true
   - pwsh: |
-      ./tools/Github/GetWiki2Json.ps1 -AzureToken $(AzureToken)
-    displayName: Update json file
+      ./tools/Github/ParseWiki2Json.ps1 -AzureToken $(AzureToken)
+    displayName: Update fabricbot.json file locally
       
   - task: PowerShell@2
-    displayName: Commit and Push
+    displayName: Commit and push
     inputs:
       targetType: inline
       script: |
         git pull origin main
         git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
         git config --global user.name "azure-powershell-bot"
-        git config --global credential.helper store
         git checkout -b "Will_change_fabricbot"
         
         git add .
-        git commit -m "pipeline to change fabricbot22.json"
+        git commit -m "Use pipeline to sync fabricbot22.json"
         
         git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
         git push origin Will_change_fabricbot --force
