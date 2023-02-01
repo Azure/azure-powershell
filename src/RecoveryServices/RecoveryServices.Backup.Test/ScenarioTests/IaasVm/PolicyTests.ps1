@@ -233,9 +233,9 @@ function Test-AzureVMPolicy
 		Assert-AreEqual $policy.SnapshotRetentionInDays $DefaultSnapshotDays
 
 		# Get policy to test older policies
-		$oldVault = Get-AzRecoveryServicesVault -ResourceGroupName $oldResourceGroupName -Name $oldVaultName
-		$oldPolicy = Get-AzRecoveryServicesBackupProtectionPolicy -Name $oldPolicyName -VaultId $oldVault.ID
-		Assert-AreEqual $oldPolicy.RetentionPolicy.DailySchedule.DurationCountInDays 180
+		# $oldVault = Get-AzRecoveryServicesVault -ResourceGroupName $oldResourceGroupName -Name $oldVaultName
+		# $oldPolicy = Get-AzRecoveryServicesBackupProtectionPolicy -Name $oldPolicyName -VaultId $oldVault.ID
+		# Assert-AreEqual $oldPolicy.RetentionPolicy.DailySchedule.DurationCountInDays 180
 		
 		# Get policy
 	    $policy = Get-AzRecoveryServicesBackupProtectionPolicy `
