@@ -794,6 +794,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
             }
 
+            // to uncomment while adding expiry time for CRR RPs
             /*if (recoveryPoint.RecoveryPointProperties != null)
             {
                 rpBase.RecoveryPointExpiryTime = (recoveryPoint.RecoveryPointProperties.ExpiryTime != null) ? DateTime.Parse(recoveryPoint.RecoveryPointProperties.ExpiryTime): (DateTime?)null;

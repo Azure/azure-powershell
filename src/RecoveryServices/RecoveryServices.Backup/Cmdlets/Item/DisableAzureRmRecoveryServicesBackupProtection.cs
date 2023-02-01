@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Rest.Azure.OData;
 using System;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -58,8 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// If this option is used, all the data backed up for this item will 
         /// expire as per the protection policy retention settings
         /// </summary>
-        [Parameter(Mandatory = false,  HelpMessage = ParamHelpMsgs.Item.SuspendBackupOption)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false,  HelpMessage = ParamHelpMsgs.Item.SuspendBackupOption)]        
         public SwitchParameter RetainRecoveryPointsAsPerPolicy { get; set; }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         if(DeleteBackupData && RetainRecoveryPointsAsPerPolicy.IsPresent)
                         {
-                            throw new ArgumentException(String.Format(Resources.CantRemoveAndRetainRPsSimultaneously));
+                            throw new AzPSArgumentException(String.Format(Resources.CantRemoveAndRetainRPsSimultaneously), "RetainRecoveryPointsAsPerPolicy");
                         }
 
                         PsBackupProviderManager providerManager =
