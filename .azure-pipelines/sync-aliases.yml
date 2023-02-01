@@ -29,7 +29,7 @@ jobs:
         git add .
         git commit -m "Use pipeline to sync fabricbot22.json"
         
-        git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
+        git remote set-url origin https://$(BotAccessToken)@github.com/xtR0d666/azure-powershell.git;
         git push origin Will_change_fabricbot --force
   
   - pwsh: |
