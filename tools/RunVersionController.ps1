@@ -129,7 +129,7 @@ function Update-AzurePowerShellFile
     } | Set-Content -Path $AzurePowerShellFile.FullName -Encoding UTF8
 }
 
-function Get-ReleaseNotes
+function Get-ModuleMetadata
 {
     Param(
         [Parameter(Mandatory = $true)]
@@ -155,7 +155,7 @@ function Get-ReleaseNotes
         $ModuleManifestFile = $ModuleManifestFile[0]
     }
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifestFile.DirectoryName -FileName $ModuleManifestFile.Name
-    return $ModuleMetadata.PrivateData.PSData.ReleaseNotes
+    return $ModuleMetadata
 }
 
 function Update-ChangeLog
@@ -272,11 +272,13 @@ function Bump-AzVersion
     $changeLog += "## $newVersion - $Release"
     foreach ($updatedModule in $updatedModules)
     {
+        $moduleMetadata = $(Get-ModuleMetadata -Module $updatedModule -RootPath $rootPath)
+        $moduleReleaseNotes = $moduleMetadata.PrivateData.PSData.ReleaseNotes
         $releaseNotes += $updatedModule
-        $releaseNotes += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
+        $releaseNotes += $moduleReleaseNotes + "`n"
 
-        $changeLog += "#### $updatedModule"
-        $changeLog += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
+        $changeLog += "#### $updatedModule $($moduleMetadata.ModuleVersion)"
+        $changeLog += $moduleReleaseNotes + "`n"
     }
     
     $resolvedArtifactsOutputPath = (Resolve-Path $ArtifactsOutputPath).Path

@@ -1,0 +1,37 @@
+{
+  "New-AzPeering+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/TestPeeringPs?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/TestPeeringPs?api-version=2022-10-01",
+      "Content": "{\n  \"sku\": {\n    \"name\": \"Premium_Direct_Unlimited\"\n  },\n  \"properties\": {\n    \"direct\": {\n      \"peerAsn\": {\n        \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"\n      },\n      \"connections\": [\n        {\n          \"bgpSession\": {\n            \"sessionPrefixV4\": \"12.90.152.60/30\",\n            \"microsoftSessionIPv4Address\": \"12.90.152.62\",\n            \"peerSessionIPv4Address\": \"12.90.152.61\",\n            \"maxPrefixesAdvertisedV4\": 20000,\n            \"maxPrefixesAdvertisedV6\": 0,\n            \"md5AuthenticationKey\": \"\"\n          },\n          \"bandwidthInMbps\": 10000,\n          \"sessionAddressProvider\": \"Peer\",\n          \"peeringDBFacilityId\": 86,\n          \"connectionIdentifier\": \"d1111111111111111111111111111111\"\n        }\n      ],\n      \"directPeeringType\": \"Cdn\"\n    },\n    \"peeringLocation\": \"Seattle\"\n  },\n  \"kind\": \"Direct\",\n  \"location\": \"West US 2\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "932" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d3ddd2b1-bd1b-4be3-8aff-14b6a50cce85" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "8fbf0904-b6af-46a4-853e-bcacca2e3be8" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T014927Z:8fbf0904-b6af-46a4-853e-bcacca2e3be8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:49:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1575" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium_Direct_Unlimited\",\r\n    \"tier\": \"Premium\",\r\n    \"family\": \"Direct\",\r\n    \"size\": \"Unlimited\"\r\n  },\r\n  \"kind\": \"Direct\",\r\n  \"properties\": {\r\n    \"direct\": {\r\n      \"connections\": [\r\n        {\r\n          \"billableBandwidthInMbps\": 0,\r\n          \"bandwidthInMbps\": 10000,\r\n          \"provisionedBandwidthInMbps\": 0,\r\n          \"sessionAddressProvider\": \"Peer\",\r\n          \"useForPeeringService\": false,\r\n          \"peeringDBFacilityId\": 86,\r\n          \"connectionState\": \"PendingApproval\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"12.90.152.60/30\",\r\n            \"microsoftSessionIPv4Address\": \"12.90.152.62\",\r\n            \"peerSessionIPv4Address\": \"12.90.152.61\",\r\n            \"sessionStateV4\": \"None\",\r\n            \"sessionStateV6\": \"None\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 0,\r\n            \"md5AuthenticationKey\": \"\"\r\n          },\r\n          \"connectionIdentifier\": \"d1111111111111111111111111111111\"\r\n        }\r\n      ],\r\n      \"useForPeeringService\": false,\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"\r\n      },\r\n      \"directPeeringType\": \"Cdn\"\r\n    },\r\n    \"peeringLocation\": \"Seattle\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"West US 2\",\r\n  \"name\": \"TestPeeringPs\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/TestPeeringPs\",\r\n  \"type\": \"Microsoft.Peering/peerings\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

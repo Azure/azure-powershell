@@ -25,7 +25,7 @@ New-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 -Location eas
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
 .Link
-https://docs.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitor
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitor
 #>
 function New-AzDynatraceMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource])]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnorigingroup
+online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnorigingroup
 schema: 2.0.0
 ---
 

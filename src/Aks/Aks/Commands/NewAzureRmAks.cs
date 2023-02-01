@@ -170,6 +170,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
         public SwitchParameter EnableUptimeSLA { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The name of the Edge Zone.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set.")]
+        public string NodeHostGroupID { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -344,8 +350,6 @@ namespace Microsoft.Azure.Commands.Aks
                 acsServicePrincipal.SpId,
                 acsServicePrincipal.ClientSecret);
 
-            var aadProfile = GetAadProfile();
-
             var defaultAgentPoolProfile = GetAgentPoolProfile();
 
             var windowsProfile = GetWindowsProfile();
@@ -373,7 +377,7 @@ namespace Microsoft.Azure.Commands.Aks
                 linuxProfile: linuxProfile,
                 windowsProfile: windowsProfile,
                 servicePrincipalProfile: spProfile,
-                aadProfile: aadProfile,
+                aadProfile: AadProfile,
                 addonProfiles: addonProfiles,
                 networkProfile: networkProfile,
                 apiServerAccessProfile: apiServerAccessProfile,
@@ -416,6 +420,10 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     managedCluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Free");
                 }
+            }
+            if (this.IsParameterBound(c => c.EdgeZone))
+            {
+                managedCluster.ExtendedLocation = new ExtendedLocation(name: EdgeZone, type: "EdgeZone");
             }
 
             return managedCluster;
@@ -564,22 +572,13 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.GpuInstanceProfile = GpuInstanceProfile;
             }
+            if (this.IsParameterBound(c => c.NodeHostGroupID)) {
+                defaultAgentPoolProfile.HostGroupID = NodeHostGroupID;
+            } 
 
             defaultAgentPoolProfile.Mode = NodePoolMode;
 
             return defaultAgentPoolProfile;
-        }
-
-        private ManagedClusterAADProfile GetAadProfile()
-        {
-            ManagedClusterAADProfile aadProfile = null;
-            //if (!string.IsNullOrEmpty(AadProfileClientAppId) || !string.IsNullOrEmpty(AadProfileServerAppId) ||
-            //    !string.IsNullOrEmpty(AadProfileServerAppSecret) || !string.IsNullOrEmpty(AadProfileTenantId))
-            //{
-            //    aadProfile = new ManagedClusterAADProfile(clientAppID: AadProfileClientAppId, serverAppID: AadProfileServerAppId,
-            //        serverAppSecret: AadProfileServerAppSecret, tenantID: AadProfileTenantId); 
-            //}
-            return aadProfile;
         }
 
         private IDictionary<string, ManagedClusterAddonProfile> CreateAddonsProfiles()

@@ -111,8 +111,8 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Total bytes per session.")]
         [ValidateNotNull]
-        [ValidateRange(1, int.MaxValue)]
-        public int? TotalBytesPerSession { get; set; }
+        [ValidateRange(1, uint.MaxValue)]
+        public uint? TotalBytesPerSession { get; set; }
 
         [Parameter(
             Mandatory = false,

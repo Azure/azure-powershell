@@ -25,7 +25,7 @@ Test-AzAppConfigurationStoreNameAvailability -Name appconfig-test01
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationstorenameavailability
+https://learn.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationstorenameavailability
 #>
 function Test-AzAppConfigurationStoreNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus])]

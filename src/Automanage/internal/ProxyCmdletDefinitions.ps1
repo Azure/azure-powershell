@@ -27,7 +27,7 @@ Lists all of the available Automanage REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanageoperation
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageoperation
 #>
 function Get-AzAutomanageOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.IOperation])]

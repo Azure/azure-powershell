@@ -50,7 +50,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [WorkspaceName <String>]: The name of workspace resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareapisworkspace
+https://learn.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareapisworkspace
 #>
 function Remove-AzHealthcareApisWorkspace {
 [OutputType([System.Boolean])]

@@ -51,32 +51,32 @@ ForEach ($Step In $DependencyStepList)
 
 $Steps = @(
     @{
-        StepName = "breaking-change"
+        PhaseName = "breaking-change"
         IssuePath = "$StaticAnalysisOutputDirectory/BreakingChangeIssues.csv"
     },
     @{
-        StepName = "help"
+        PhaseName = "help"
         IssuePath = "$StaticAnalysisOutputDirectory/HelpIssues.csv"
     },
     @{
-        StepName = "help-example"
+        PhaseName = "help-example"
         IssuePath = "$StaticAnalysisOutputDirectory/ExampleIssues.csv"
     },
     @{
-        StepName = "signature"
+        PhaseName = "signature"
         IssuePath = "$StaticAnalysisOutputDirectory/SignatureIssues.csv"
     },
     @{
-        StepName = "file-change"
+        PhaseName = "file-change"
         IssuePath = "$StaticAnalysisOutputDirectory/FileChangeIssue.csv"
     }
 )
 
 ForEach ($Step In $Steps)
 {
-    $StepName = $Step.StepName
+    $PhaseName = $Step.PhaseName
     $IssuePath = $Step.IssuePath
-    $Details = $Template.$StepName.Details
+    $Details = $Template.$PhaseName.Details
     If ($Details.Length -Ne 0)
     {
         $Details = $Details[0]
@@ -115,11 +115,11 @@ ForEach ($Step In $Steps)
             {
                 #Region generate table head of each step
                 $NormalSteps = [System.Collections.Generic.HashSet[String]]@("breaking-change", "help", "signature", "file-change")
-                If ($NormalSteps.Contains($StepName))
+                If ($NormalSteps.Contains($PhaseName))
                 {
                     $Content = "|Type|Cmdlet|Description|Remediation|`n|---|---|---|---|`n"
                 }
-                ElseIf ($StepName -Eq "help-example")
+                ElseIf ($PhaseName -Eq "help-example")
                 {
                     $Content = "|Type|Cmdlet|Example|Line|RuleName|Description|Extent|Remediation|`n|---|---|---|---|---|---|---|---|`n"
                 }
@@ -136,11 +136,11 @@ ForEach ($Step In $Steps)
                         $ErrorTypeEmoji = "⚠️"
                     }
                     #Region generate table content of each step
-                    If ($NormalSteps.Contains($StepName))
+                    If ($NormalSteps.Contains($PhaseName))
                     {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Description)|$($Issue.Remediation)|`n"
                     }
-                    ElseIf ($StepName -Eq "help-example")
+                    ElseIf ($PhaseName -Eq "help-example")
                     {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Example)|$($Issue.Line)|$($Issue.RuleName)|$($Issue.Description)|$($Issue.Extent)|$($Issue.Remediation)|`n"
                     }

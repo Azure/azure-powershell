@@ -229,11 +229,13 @@ function Test-RestoreDeletedManagedDatabase
 	$sub = (Get-AzContext).Subscription.Id
 	$rg = Create-ResourceGroupForTest
 	$rg2 = Create-ResourceGroupForTest
-	$managedInstance = Create-ManagedInstanceForTest $rg
-	$managedInstance2 = Create-ManagedInstanceForTest $rg2
-
+	
+	Wait-Seconds 60
 	try
 	{
+		$managedInstance = Create-ManagedInstanceForTest $rg
+		$managedInstance2 = Create-ManagedInstanceForTest $rg2
+
 		# Create with all values
 		$managedDatabaseName = Get-ManagedDatabaseName
 		$collation = "SQL_Latin1_General_CP1_CI_AS"
@@ -249,13 +251,14 @@ function Test-RestoreDeletedManagedDatabase
 		$targetManagedDatabaseName4 = Get-ManagedDatabaseName
 		$targetManagedDatabaseName5 = Get-ManagedDatabaseName
 
-		# Once database is created, backup service will automatically take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
-		if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-			Wait-Seconds 800
-		}
+		# Once database is created, backup service will automatically take log backups every 5 minutes. We are waiting 600s to ensure backups are taken to which we can restore.
+		Wait-Seconds 600
 
 		# Test remove using all parameters
 		Remove-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Force
+		
+		# Wait to stabilaze
+		Wait-Seconds 60
 
 		# Get deleted database
 		$deletedDatabases = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName 
@@ -467,5 +470,122 @@ function Test-SetManagedDatabase
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests restoring a managed database
+#>
+function Test-CrossSubscriptionRestoreManagedDatabase
+{
+
+	try
+	{
+		# Setup
+		$targetSub = (Get-AzContext).Subscription.Id
+		$targetRg = Create-ResourceGroupForTest
+		$targetManagedInstance = Create-ManagedInstanceForTest $targetRg
+		$targetManagedDatabaseName = Get-ManagedDatabaseName
+
+		# Wait for mi to stabilize
+		Wait-Seconds 60
+
+		# Creating managed instance on different subscription would take more then 6 hours, so using existing one for sake of testing.
+		$sourceSub = "62e48210-5e43-423e-889b-c277f3e08c39"
+		$sourceRg = "gen4-testing-RG"
+		$soruceManagedInstance = "filiptanic-gen4-on-gen7-different-subnet"
+		$sourceManagedDatabaseName = "cross-sub-restored"
+		$sourceDbId = "/subscriptions/62e48210-5e43-423e-889b-c277f3e08c39/resourceGroups/gen4-testing-RG/providers/Microsoft.Sql/managedInstances/filiptanic-gen4-on-gen7-different-subnet/databases/cross-sub-restored"
+
+		$pointInTime = (Get-date).AddMinutes(-10)
+
+		# restore managed database from another instance in different subscription using all parameters
+		$restoredDb = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
+			-SubscriptionId $sourceSub `
+			-ResourceGroupName $sourceRg `
+			-InstanceName $soruceManagedInstance `
+			-Name $sourceManagedDatabaseName `
+			-PointInTime $pointInTime `
+			-TargetInstanceDatabaseName $targetManagedDatabaseName `
+			-TargetInstanceName $targetManagedInstance.ManagedInstanceName `
+			-TargetResourceGroupName $targetRg.ResourceGroupName `
+			-TargetSubscriptionId $targetSub
+		Assert-NotNull $restoredDb
+		Assert-AreEqual $restoredDb.Name $targetManagedDatabaseName
+		Assert-AreEqual $restoredDb.ResourceGroupName $targetRg.ResourceGroupName
+		Assert-AreEqual $restoredDb.ManagedInstanceName $targetManagedInstance.ManagedInstanceName
+		
+		$targetManagedDatabaseName = Get-ManagedDatabaseName
+		# restore managed database from another sub in different subscription using resourceid
+		$restoredDb = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
+			-ResourceId $sourceDbId `
+			-PointInTime $pointInTime `
+			-TargetInstanceDatabaseName $targetManagedDatabaseName `
+			-TargetInstanceName $targetManagedInstance.ManagedInstanceName `
+			-TargetResourceGroupName $targetRg.ResourceGroupName `
+			-TargetSubscriptionId $targetSub
+		Assert-NotNull $restoredDb
+		Assert-AreEqual $restoredDb.Name $targetManagedDatabaseName
+		Assert-AreEqual $restoredDb.ResourceGroupName $targetRg.ResourceGroupName
+		Assert-AreEqual $restoredDb.ManagedInstanceName $targetManagedInstance.ManagedInstanceName
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $targetRg
+	}
+}
+
+
+<#
+	.SYNOPSIS
+	Tests restoring a managed database
+#>
+function Test-CrossSubscriptionRestoreDeletedManagedDatabase
+{
+
+	try
+	{
+		# Creating managed instance on different subscription would take more then 6 hours, so using existing one for sake of testing.
+		$sourceSub = "62e48210-5e43-423e-889b-c277f3e08c39"
+		$sourceRg = "gen4-testing-RG"
+		$soruceManagedInstance = "filiptanic-gen4-on-gen7-different-subnet"
+		$sourceManagedDatabaseName = "cross-sub-pipe-restored"
+
+		#> $deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "gen4-testing-RG" -InstanceName "filiptanic-gen4-on-gen7-different-subnet" -DatabaseName "cross-sub-pipe-restored"
+		#> $deletedDatabase.DeletionDate
+		# execute script above to get deletion date
+		$deletionDate = "01/23/2023 14:46:01";
+
+		$pointInTime = ([DateTime]$deletionDate).AddMinutes(-10)
+		
+		$targetSub = (Get-AzContext).Subscription.Id
+		$targetRg = Create-ResourceGroupForTest
+		$targetManagedInstance = Create-ManagedInstanceForTest $targetRg
+		$targetManagedDatabaseName = Get-ManagedDatabaseName
+
+		# Wait for mi to stabilize
+		Wait-Seconds 60
+
+		# restore managed database from another instance in different subscription using all parameters
+		$restoredDb = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
+			-SubscriptionId $sourceSub `
+			-ResourceGroupName $sourceRg `
+			-InstanceName $soruceManagedInstance `
+			-Name $sourceManagedDatabaseName `
+			-PointInTime $pointInTime `
+			-DeletionDate $deletionDate `
+			-TargetInstanceDatabaseName $targetManagedDatabaseName `
+			-TargetInstanceName $targetManagedInstance.ManagedInstanceName `
+			-TargetResourceGroupName $targetRg.ResourceGroupName `
+			-TargetSubscriptionId $targetSub
+		Assert-NotNull $restoredDb
+		Assert-AreEqual $restoredDb.Name $targetManagedDatabaseName
+		Assert-AreEqual $restoredDb.ResourceGroupName $targetRg.ResourceGroupName
+		Assert-AreEqual $restoredDb.ManagedInstanceName $targetManagedInstance.ManagedInstanceName
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $targetRg
 	}
 }

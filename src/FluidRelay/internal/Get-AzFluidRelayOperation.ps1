@@ -27,7 +27,7 @@ List all operations provided by Microsoft.FluidRelay.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IOperationResult
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayoperation
+https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayoperation
 #>
 function Get-AzFluidRelayOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IOperationResult])]
