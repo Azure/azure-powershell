@@ -65,7 +65,7 @@ $whole_json.tasks | ForEach-Object {
             if ($entry.Value -eq "") {
                 continue
             }
-            $labels = @("Service Attention!!!!!!", $entry.Key)
+            $labels = @("Service Attention", $entry.Key)
             $mentionees = @($entry.Value -split "," | ForEach-Object { $_.Trim() })
             $item = [PSCustomObject]@{
                 labels = $labels

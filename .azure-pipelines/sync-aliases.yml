@@ -17,7 +17,7 @@ jobs:
     displayName: Update fabricbot.json file locally
       
   - task: PowerShell@2
-    displayName: Commit and push
+    displayName: Git commit and push
     inputs:
       targetType: inline
       script: |
