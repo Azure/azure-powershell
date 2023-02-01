@@ -1,3 +1,4 @@
+# Variable 'AzureToken' and 'BotAccessToken' was defined in the Variables tab
 resources:
   repositories:
   - repository: self
@@ -6,72 +7,15 @@ resources:
 
 trigger: none
 
-variables:
-  GithubToken: $(GITHUB_TOKEN)
-  
 jobs:
 - job: UpdateJson
   displayName: Update Json
   steps:
   - checkout: self
     persistCredentials: true
-  - task: PowerShell@2
+  - pwsh: |
+      ./tools/Github/GetWiki2Json.ps1 -AzureToken $(AzureToken)
     displayName: Update json file
-    inputs:
-      targetType: inline
-      script: |
-        $username="v-hongtzhang"
-        $password='$(AZURE-PASS)'
-        $pair="{0}:{1}" -f ($username,$password)
-        $bytes = [System.Text.Encoding]::ASCII.GetBytes($pair)
-        $token = [System.Convert]::ToBase64String($bytes)
-        $headers = @{
-          Authorization = "Basic {0}" -f ($token)
-        }
-        $response = Invoke-RestMethod 'https://dev.azure.com/azure-sdk/internal/_apis/wiki/wikis/internal.wiki/pages?api-version=7.1-preview.1&path=/Engineering%20System/GitHub%20Repos/Issue%20Management/Service%20Team%20Label%20and%20Contact%20List&includeContent=True' -Headers $headers
-
-        $rows = ($response.content -split "\n") | Select-Object -Skip 6
-        $aliases = [System.Collections.SortedList]::new()
-
-        foreach ($item in $rows)
-        {
-            $list = $item -split "\|"
-            if ($list.Count -eq 1) { continue }
-            if ($list[1].Trim().Length -gt 0)
-            {
-                if ($list.Count -gt 3)
-                {
-                    $aliases.Add($list[1].Trim(), $list[3].Trim())
-                }
-                else
-                {
-                    $aliases.Add($list[1].Trim(), "")
-                }
-            }
-        }
-        $whole_json = Get-Content -Raw -Path .github/fabricbot.json | ConvertFrom-Json
-
-        $whole_json.tasks | ForEach-Object {
-            if($_.taskType -eq 'scheduledAndTrigger') {
-                $labelsAndMentionsArrayList = New-Object System.Collections.ArrayList
-                foreach ($entry in $aliases.GetEnumerator()) {
-                    if ($entry.Value -eq "") {
-                        continue
-                    }
-                    $labels = @("Service Attention", $entry.Key)
-                    $mentionees = @($entry.Value -split "," | ForEach-Object { $_.Trim() })
-                    $item = [PSCustomObject]@{
-                        labels = $labels
-                        mentionees = $mentionees
-                    }
-                    [void]$labelsAndMentionsArrayList.Add($item)
-                }
-                $_.config.labelsAndMentions = $labelsAndMentionsArrayList.ToArray()
-                
-            }
-        }
-        ($whole_json | ConvertTo-Json -Depth 32) | Out-File  -FilePath .github/fabricbot.json
-      pwsh: true
       
   - task: PowerShell@2
     displayName: Commit and Push
@@ -79,15 +23,15 @@ jobs:
       targetType: inline
       script: |
         git pull origin main
-        git config --global user.email "azurepowershell@ms.com"
-        git config --global user.name "azurepowershell"
+        git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+        git config --global user.name "azure-powershell-bot"
         git config --global credential.helper store
         git checkout -b "Will_change_fabricbot"
         
         git add .
         git commit -m "pipeline to change fabricbot22.json"
         
-        git remote set-url origin "https://$(GITHUB_TOKEN)@github.com/Azure/azure-powershell.git"
+        git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
         git push origin Will_change_fabricbot --force
   
   - pwsh: |
@@ -95,6 +39,6 @@ jobs:
       $HeadBranch = "Will_change_fabricbot"
       $BaseBranch = "main"
       $Description = "Use powershell to sort taskType: scheduledAndTrigger part of fabricbot.json according to table of Service-Team-Label-and-Contact-List in wiki page"
-      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GITHUB_TOKEN) -Description $Description
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
     displayName: Create PR to main branch
   
