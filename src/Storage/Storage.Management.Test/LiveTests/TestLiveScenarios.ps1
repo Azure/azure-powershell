@@ -3,7 +3,8 @@ Invoke-LiveTestScenario -Name "Creates a Storage account" -Description "Test cre
     param ($rg)
 
     $rgName = $rg.ResourceGroupName
-    $name = "alex12391d87"
+    # $name = "alex12391d87"
+    $name = New-LiveTestResourceName
     $location = "westus"
     $actual = New-AzStorageAccount  -ResourceGroupName $rgName -Name $name  -Location $location -SkuName Standard_GRS 
     
@@ -22,7 +23,8 @@ Invoke-LiveTestScenario -Name "Removes a Storage account" -Description "Test rem
     param ($rg)
 
     $rgName = $rg.ResourceGroupName
-    $name = "alex12391d87"
+    # $name = "alex12391d87"
+    $name = New-LiveTestResourceName
     $location = "westus"
 
     New-AzStorageAccount -ResourceGroupName $rgname -Name $name -Location $location -SkuName Standard_GRS 
