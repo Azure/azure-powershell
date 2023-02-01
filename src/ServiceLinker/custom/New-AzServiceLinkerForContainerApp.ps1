@@ -102,14 +102,7 @@ function New-AzServiceLinkerForContainerApp {
         # A dictionary of default key name and customized key name mapping.
         # If not specified, default key name will be used for generate configurations
         ${ConfigurationInfoCustomizedKey},
-    
-        [Parameter(DontShow)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior]
-        # Indicates whether to clean up previous operation when Linker is updating or deleting
-        ${ConfigurationInfoDeleteOrUpdateBehavior},
-    
+
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
@@ -142,14 +135,7 @@ function New-AzServiceLinkerForContainerApp {
         # Default is enable.
         # If optOut, opt out public network access configuration.
         ${PublicNetworkSolutionAction},
-    
-        [Parameter(DontShow)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior]
-        # Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
-        ${PublicNetworkSolutionDeleteOrUpdateBehavior},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
         [System.String]
@@ -174,14 +160,7 @@ function New-AzServiceLinkerForContainerApp {
         # The target service properties
         # To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
         ${TargetService},
-    
-        [Parameter(DontShow)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DeleteOrUpdateBehavior]
-        # Indicates whether to clean up previous operation when Linker is updating or deleting
-        ${VNetSolutionDeleteOrUpdateBehavior},
-    
+
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType])]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
