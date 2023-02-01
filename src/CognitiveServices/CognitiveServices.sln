@@ -24,6 +24,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CognitiveServices.Management.Sdk", "CognitiveServices.Management.Sdk\CognitiveServices.Management.Sdk.csproj", "{1C0493A6-FF2F-4072-9498-F4BD08B2AB73}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{6C243585-16A9-4231-8B2C-778B353CC37B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{1C0493A6-FF2F-4072-9498-F4BD08B2AB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C0493A6-FF2F-4072-9498-F4BD08B2AB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C0493A6-FF2F-4072-9498-F4BD08B2AB73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C243585-16A9-4231-8B2C-778B353CC37B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C243585-16A9-4231-8B2C-778B353CC37B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C243585-16A9-4231-8B2C-778B353CC37B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C243585-16A9-4231-8B2C-778B353CC37B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

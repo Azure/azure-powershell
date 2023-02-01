@@ -97,7 +97,13 @@ CmdletsToExport = 'Get-AzCognitiveServicesAccount',
                'New-AzCognitiveServicesAccountDeployment', 
                'Remove-AzCognitiveServicesAccountDeployment', 
                'New-AzCognitiveServicesObject', 
-               'Get-AzCognitiveServicesAccountModel'
+               'Get-AzCognitiveServicesAccountModel', 
+               'New-AzCognitiveServicesCommitmentPlan',
+               'Remove-AzCognitiveServicesCommitmentPlan',
+               'Get-AzCognitiveServicesCommitmentPlan', 
+               'New-AzCognitiveServicesCommitmentPlanAssociation',
+               'Remove-AzCognitiveServicesCommitmentPlanAssociation',
+               'Get-AzCognitiveServicesCommitmentPlanAssociation'
 
 # Variables to export from this module
 # VariablesToExport = @()

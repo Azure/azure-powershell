@@ -26,6 +26,9 @@ Get Deployment of a Cognitive Services account
 ### [Get-AzCognitiveServicesAccountKey](Get-AzCognitiveServicesAccountKey.md)
 Gets the API keys for an account.
 
+### [Get-AzCognitiveServicesAccountModel](Get-AzCognitiveServicesAccountModel.md)
+Get Models available for a Cognitive Services account
+
 ### [Get-AzCognitiveServicesAccountNetworkRuleSet](Get-AzCognitiveServicesAccountNetworkRuleSet.md)
 Get the NetworkRule property of a Cognitive Services account
 
