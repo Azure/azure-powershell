@@ -33,7 +33,6 @@ $headers = @{
 }
 
 $response = Invoke-RestMethod 'https://dev.azure.com/azure-sdk/internal/_apis/wiki/wikis/internal.wiki/pages?api-version=7.1-preview.1&path=/Engineering%20System/GitHub%20Repos/Issue%20Management/Service%20Team%20Label%20and%20Contact%20List&includeContent=True' -Headers $headers
-Write-Host $response
 
 $rows = ($response.content -split "\n") | Select-Object -Skip 6
 $aliases = [System.Collections.SortedList]::new()
@@ -56,9 +55,9 @@ foreach ($item in $rows)
 }
 
 # change json file
-$whole_json = Get-Content -Raw -Path .github/fabricbot.json | ConvertFrom-Json
+$WholeJson = Get-Content -Raw -Path .github/fabricbot.json | ConvertFrom-Json
 
-$whole_json.tasks | ForEach-Object {
+$WholeJson.tasks | ForEach-Object {
     if($_.taskType -eq 'scheduledAndTrigger') {
         $labelsAndMentionsArrayList = New-Object System.Collections.ArrayList
         foreach ($entry in $aliases.GetEnumerator()) {
@@ -77,4 +76,4 @@ $whole_json.tasks | ForEach-Object {
     }
 }
 
-($whole_json | ConvertTo-Json -Depth 32) | Out-File  -FilePath .github/fabricbot.json
+($WholeJson | ConvertTo-Json -Depth 32) | Out-File  -FilePath .github/fabricbot.json
