@@ -196,7 +196,7 @@ This command creates a context for the account named myaccountname with a key fo
 
 ### Example 12: Create a context for an anonymous storage account with specified blob endpoint
 ```powershell
-New-AzStorageContext -Anonymous -Protocol "http" -BlobEndpoint "https://myaccountname.blob.core.windows.net/"
+New-AzStorageContext -Anonymous -BlobEndpoint "https://myaccountname.blob.core.windows.net/"
 ```
 
 This command creates a context for anonymous use for the account named myaccountname, with specified blob enpoint. 
