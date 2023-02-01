@@ -24,7 +24,7 @@ param(
 
 # get wiki content
 $username=""
-$password='$(AzureToken)'
+$password='$AzureToken'
 $pair="{0}:{1}" -f ($username,$password)
 $bytes = [System.Text.Encoding]::ASCII.GetBytes($pair)
 $token = [System.Convert]::ToBase64String($bytes)
