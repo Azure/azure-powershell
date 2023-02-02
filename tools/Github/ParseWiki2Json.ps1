@@ -32,7 +32,7 @@ $headers = @{
     Authorization = "Basic {0}" -f ($token)
 }
 
-$response = Invoke-RestMethod 'https://dev.azure.com/azure-sdk/internal/_apis/wiki/wikis/internal.wiki/pages?api-version=7.1-preview.1&path=/Engineering%20System/GitHub%20Repos/Issue%20Management/Service%20Team%20Label%20and%20Contact%20List&includeContent=True' -Headers $headers
+$response = Invoke-RestMethod 'https://dev.azure.com/azure-sdk/internal/_apis/wiki/wikis/internal.wiki/pages?path=/Engineering%20System/GitHub%20Repos/Issue%20Management/Service%20Team%20Label%20and%20Contact%20List' -Headers $headers
 $rows = ($response.content -split "\n") | Where-Object { $_ -like '|*'} | Select-Object -Skip 2
 $aliases = [System.Collections.SortedList]::new()
 
