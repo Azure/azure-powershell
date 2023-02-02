@@ -22,24 +22,18 @@ param(
     [string]$ADOToken
 )
 
-# # get wiki content
-# $username=""
-# $password=$ADOToken
-# $pair="{0}:{1}" -f ($username,$password)
-# $bytes = [System.Text.Encoding]::ASCII.GetBytes($pair)
-# $token = [System.Convert]::ToBase64String($bytes)
-# $headers = @{
-#     Authorization = "Basic {0}" -f ($token)
-# }
+# get wiki content
+$username=""
+$password=$ADOToken
+$pair="{0}:{1}" -f ($username,$password)
+$bytes = [System.Text.Encoding]::ASCII.GetBytes($pair)
+$token = [System.Convert]::ToBase64String($bytes)
+$headers = @{
+    Authorization = "Basic {0}" -f ($token)
+}
 
-# $response = Invoke-RestMethod 'https://dev.azure.com/azure-sdk/internal/_apis/wiki/wikis/internal.wiki/pages?api-version=7.1-preview.1&path=/Engineering%20System/GitHub%20Repos/Issue%20Management/Service%20Team%20Label%20and%20Contact%20List&includeContent=True' -Headers $headers
-
-# $rows = ($response.content -split "\n") | Where-Object { $_ -like '|*'} | Select-Object -Skip 2
-
-git clone https://azure-sdk@dev.azure.com/azure-sdk/internal/_git/internal.wiki
-$wikiContent = Get-Content -Raw -Path ./internal.wiki/Engineering-System/GitHub-Repos/Issue-Management/Service-Team-Label-and-Contact-List.md
-$rows = ($wikiContent -split "\n") | Where-Object { $_ -like '|*'} | Select-Object -Skip 2
-
+$response = Invoke-RestMethod 'https://dev.azure.com/azure-sdk/internal/_apis/wiki/wikis/internal.wiki/pages?api-version=7.1-preview.1&path=/Engineering%20System/GitHub%20Repos/Issue%20Management/Service%20Team%20Label%20and%20Contact%20List&includeContent=True' -Headers $headers
+$rows = ($response.content -split "\n") | Where-Object { $_ -like '|*'} | Select-Object -Skip 2
 $aliases = [System.Collections.SortedList]::new()
 
 foreach ($item in $rows)
