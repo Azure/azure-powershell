@@ -37,7 +37,7 @@ param(
 # $rows = ($response.content -split "\n") | Where-Object { $_ -like '|*'} | Select-Object -Skip 2
 
 git clone https://azure-sdk@dev.azure.com/azure-sdk/internal/_git/internal.wiki
-$wikiContent = Get-Content -Raw -Path internal.wiki/Engineering\ System/GitHub\ Repos/Issue\ Management/Service\ Team\ Label\ and\ Contact\ List
+$wikiContent = Get-Content -Raw -Path internal.wiki/Engineering-System/GitHub-Repos/Issue-Management/Service-Team-Label-and-Contact-List
 $rows = ($wikiContent -split "\n") | Where-Object { $_ -like '|*'} | Select-Object -Skip 2
 
 $aliases = [System.Collections.SortedList]::new()
