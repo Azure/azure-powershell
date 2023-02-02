@@ -65,7 +65,6 @@ Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "myst
 This command add several IpRules with IPAddressOrRange.
 
 ### Example 2: Add a VirtualNetworkRule with VirtualNetworkResourceID
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $subnet = Get-AzVirtualNetwork -ResourceGroupName "myResourceGroup" -Name "myvirtualnetwork" | Get-AzVirtualNetworkSubnetConfig
 Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet[0].Id
