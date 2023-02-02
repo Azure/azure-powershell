@@ -1,10 +1,4 @@
 # Variable 'ADOToken' and 'BotAccessToken' was defined in the Variables tab
-resources:
-  repositories:
-  - repository: self
-    type: git
-    ref: main
-
 jobs:
 - job: UpdateJson
   displayName: Update fabricbot.json
@@ -19,7 +13,6 @@ jobs:
     inputs:
       targetType: inline
       script: |
-        git pull origin main
         git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
         git config --global user.name "azure-powershell-bot"
         git checkout -b "internal/sync-fabricbot-json"
@@ -27,7 +20,7 @@ jobs:
         git add .
         git commit -m "Sync fabricbot22.json"
         
-        git remote set-url origin https://$(BotAccessToken)@github.com/xtR0d666/azure-powershell.git;
+        git remote set-url origin https://$(BotAccessToken)@github.com/Azure/azure-powershell.git;
         git push origin internal/sync-fabricbot-json --force
   
   - pwsh: |
