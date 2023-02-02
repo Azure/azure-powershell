@@ -11,7 +11,6 @@ Invoke-LiveTestScenario -Name "Create new registration bot service" -Description
     Assert-AreEqual $botName $actual.Name
     Assert-AreEqual $botLocation $actual.Location
     Assert-AreEqual "F0" $actual.Sku.Name
-    Remove-AzBotService -ResourceGroupName $rgName -Name $botName
 }
 
 Invoke-LiveTestScenario -Name "List bot service" -Description "Test listing bot services in a resourcegroup" -ScenarioScript `
@@ -26,7 +25,6 @@ Invoke-LiveTestScenario -Name "List bot service" -Description "Test listing bot 
     $null = New-AzBotService -ResourceGroupName $rgName -Name $botName -ApplicationId $WebApplication1 -Location $botLocation -Sku F0 -Description "description" -Registration
     $actual = Get-AzBotService -ResourceGroupName $rgName
     Assert-AreEqual 1 $actual.Count
-    Remove-AzBotService -ResourceGroupName $rgName -Name $botName
 }
 
 Invoke-LiveTestScenario -Name "Get bot service" -Description "Test getting one specific bot service" -ScenarioScript `
@@ -41,7 +39,6 @@ Invoke-LiveTestScenario -Name "Get bot service" -Description "Test getting one s
     $null = New-AzBotService -ResourceGroupName $rgName -Name $botName -ApplicationId $WebApplication1 -Location $botLocation -Sku F0 -Description "description" -Registration
     $actual = Get-AzBotService -ResourceGroupName $rgName -Name $botName
     Assert-AreEqual $botName $actual.Name
-    Remove-AzBotService -ResourceGroupName $rgName -Name $botName
 }
 
 Invoke-LiveTestScenario -Name "Update bot service" -Description "Test Updating one specific bot service" -ScenarioScript `
@@ -56,7 +53,6 @@ Invoke-LiveTestScenario -Name "Update bot service" -Description "Test Updating o
     $null = New-AzBotService -ResourceGroupName $rgName -Name $botName -ApplicationId $WebApplication1 -Location $botLocation -Sku F0 -Description "description" -Registration
     $actual = Update-AzBotService -Name $botName -ResourceGroupName $rgName -Kind bot
     Assert-AreEqual "bot" $actual.Kind
-    Remove-AzBotService -ResourceGroupName $rgName -Name $botName
 }
 
 Invoke-LiveTestScenario -Name "Remove bot servcie" -Description "Test Removing a bot service" -ScenarioScript `
@@ -69,7 +65,7 @@ Invoke-LiveTestScenario -Name "Remove bot servcie" -Description "Test Removing a
     $WebApplication1 = "ae96ba8b-3711-4464-abc4-9aeec3531a87"
 
     $null = New-AzBotService -ResourceGroupName $rgName -Name $botName -ApplicationId $WebApplication1 -Location $botLocation -Sku F0 -Description "description" -Registration
-    Remove-AzBotService -ResourceGroupName $rgName -Name $botName
+    Invoke-LiveTestCommand -Command "Remove-AzBotService -ResourceGroupName $rgName -Name $botName"
     $GetServiceList = Get-AzBotService
     Assert-False { $GetServiceList.Name -contains $botName}
 }
