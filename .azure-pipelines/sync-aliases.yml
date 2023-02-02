@@ -27,7 +27,7 @@ jobs:
         git checkout -b "internal/sync-fabricbot-json"
         
         git add .
-        git commit -m "Use pipeline to sync fabricbot22.json"
+        git commit -m "Sync fabricbot22.json"
         
         git remote set-url origin https://$(BotAccessToken)@github.com/Azure/azure-powershell.git;
         git push origin internal/sync-fabricbot-json --force
