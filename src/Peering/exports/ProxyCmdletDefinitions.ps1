@@ -4006,8 +4006,9 @@ Creates a new peering or updates an existing peering with the specified name und
 .Description
 Creates a new peering or updates an existing peering with the specified name under the given subscription and resource group.
 .Example
-$connection1 = New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000 ...
-$directConnections = ,$connection1
+$peerAsnId = "/subscriptions/{subId}/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest"
+$directConnections = New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000
+
 New-AzPeering -Name TestPeeringPs -ResourceGroupName DemoRG -Kind Direct -Location "South Central US" -DirectConnection $directConnections -DirectPeeringType Cdn -DirectPeerAsnId $peerAsnId -PeeringLocation Dallas -Sku Premium_Direct_Unlimited
 
 .Outputs
@@ -5059,7 +5060,7 @@ Deletes an existing prefix with the specified name under the given subscription,
 .Description
 Deletes an existing prefix with the specified name under the given subscription, resource group and peering service.
 .Example
-Remove-AzPeeringServicePrefix -Name TestPrefix -PeeringServiceName TestDRInterCloudZurich -ResourceGroup DemoRG
+Remove-AzPeeringServicePrefix -Name TestPrefix -PeeringServiceName TestDRInterCloudZurich -ResourceGroupName DemoRG
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
@@ -6857,6 +6858,8 @@ Create an in-memory object for DirectConnection.
 .Description
 Create an in-memory object for DirectConnection.
 .Example
+$md5Key = "******"
+
 New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 1.1.1.1 -BgpSessionPeerSessionIPv4Address 1.1.1.0 -BgpSessionPrefixV4 1.1.1.1/31 -PeeringDbFacilityId 82 -SessionAddressProvider Peer -ConnectionIdentifier c111111111111
 
 .Outputs
@@ -7034,6 +7037,8 @@ Create an in-memory object for ExchangeConnection.
 .Description
 Create an in-memory object for ExchangeConnection.
 .Example
+$md5Key = "******"
+
 New-AzPeeringExchangeConnectionObject -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 1.1.1.1 -BgpSessionPeerSessionIPv4Address 1.1.1.0 -BgpSessionPrefixV4 1.1.1.1/31 -PeeringDbFacilityId 82 -ConnectionIdentifier c111111111111
 
 .Outputs
