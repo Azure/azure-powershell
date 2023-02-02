@@ -1,4 +1,4 @@
-# Variable 'AzureToken' and 'BotAccessToken' was defined in the Variables tab
+# Variable 'ADOToken' and 'BotAccessToken' was defined in the Variables tab
 resources:
   repositories:
   - repository: self
@@ -13,7 +13,7 @@ jobs:
   steps:
   - checkout: self
   - pwsh: |
-      ./tools/Github/ParseWiki2Json.ps1 -AzureToken $(AzureToken)
+      ./tools/Github/ParseWiki2Json.ps1 -ADOToken $(ADOToken)
     displayName: Update fabricbot.json file locally
       
   - task: PowerShell@2
