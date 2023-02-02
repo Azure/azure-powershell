@@ -20,7 +20,7 @@ Deletes an existing prefix with the specified name under the given subscription,
 .Description
 Deletes an existing prefix with the specified name under the given subscription, resource group and peering service.
 .Example
-Remove-AzPeeringServicePrefix -Name TestPrefix -PeeringServiceName TestDRInterCloudZurich -ResourceGroup DemoRG
+Remove-AzPeeringServicePrefix -Name TestPrefix -PeeringServiceName TestDRInterCloudZurich -ResourceGroupName DemoRG
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
