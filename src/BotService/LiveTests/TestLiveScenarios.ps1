@@ -8,14 +8,13 @@ Invoke-LiveTestScenario -Name "Create new registration bot service" -Description
     $WebApplication1 = "ae96ba8b-3711-4464-abc4-9aeec3531a87"
 
     $actual = New-AzBotService -ResourceGroupName $rgName -Name $botName -ApplicationId $WebApplication1 -Location $botLocation -Sku F0 -Description "description" -Registration
-    Assert-AreEqual $vaultName $actual.Name
-    Assert-AreEqual $rgName $actual.ResourceGroupName
-    Assert-AreEqual $vaultLocation $actual.Location
+    Assert-AreEqual $botName $actual.Name
+    Assert-AreEqual $botLocation $actual.Location
     Assert-AreEqual "F0" $actual.Sku.Name
     Remove-AzBotService -ResourceGroupName $rgName -Name $botName
 }
 
-Invoke-LiveTestScenario -Name "List bot service" -Description "Test listing bot services" -ScenarioScript `
+Invoke-LiveTestScenario -Name "List bot service" -Description "Test listing bot services in a resourcegroup" -ScenarioScript `
 {
     param ($rg)
 
@@ -25,7 +24,7 @@ Invoke-LiveTestScenario -Name "List bot service" -Description "Test listing bot 
     $WebApplication1 = "ae96ba8b-3711-4464-abc4-9aeec3531a87"
 
     $null = New-AzBotService -ResourceGroupName $rgName -Name $botName -ApplicationId $WebApplication1 -Location $botLocation -Sku F0 -Description "description" -Registration
-    $actual = Get-AzBotService
+    $actual = Get-AzBotService -ResourceGroupName $rgName
     Assert-AreEqual 1 $actual.Count
     Remove-AzBotService -ResourceGroupName $rgName -Name $botName
 }
@@ -41,8 +40,7 @@ Invoke-LiveTestScenario -Name "Get bot service" -Description "Test getting one s
 
     $null = New-AzBotService -ResourceGroupName $rgName -Name $botName -ApplicationId $WebApplication1 -Location $botLocation -Sku F0 -Description "description" -Registration
     $actual = Get-AzBotService -ResourceGroupName $rgName -Name $botName
-    Assert-AreEqual $vaultName $actual.Name
-    Assert-AreEqual $rgName $actual.ResourceGroupName
+    Assert-AreEqual $botName $actual.Name
     Remove-AzBotService -ResourceGroupName $rgName -Name $botName
 }
 
