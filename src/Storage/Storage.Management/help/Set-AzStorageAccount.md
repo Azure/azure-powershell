@@ -136,23 +136,23 @@ PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystora
 The command sets the custom domain and tags for a Storage account.
 
 ### Example 5: Set Encryption KeySource to Keyvault
-<!-- Skip: Output cannot be splitted from code -->
+
 
 
 
 ```
-PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AssignIdentity
-PS C:\> $account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount"
+Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AssignIdentity
+$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount"
 
-PS C:\> $keyVault = New-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyResourceGroup" -Location "EastUS2"
-PS C:\> $key = Add-AzKeyVaultKey -VaultName "MyKeyVault" -Name "MyKey" -Destination 'Software'
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName "MyKeyVault" -ObjectId $account.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+$keyVault = New-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyResourceGroup" -Location "EastUS2"
+$key = Add-AzKeyVaultKey -VaultName "MyKeyVault" -Name "MyKey" -Destination 'Software'
+Set-AzKeyVaultAccessPolicy -VaultName "MyKeyVault" -ObjectId $account.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
 
 # In case to enable key auto rotation, don't set KeyVersion
-PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 
 # In case to enable key auto rotation after set keyvault proeprites with KeyVersion, can update account by set KeyVersion to empty
-PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion "" -KeyVaultUri $keyVault.VaultUri
+Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion "" -KeyVaultUri $keyVault.VaultUri
 ```
 
 This command set Encryption KeySource with a new created Keyvault.
