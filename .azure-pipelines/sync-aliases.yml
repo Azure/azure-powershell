@@ -1,4 +1,10 @@
 # Variable 'ADOToken' and 'BotAccessToken' was defined in the Variables tab
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: main
+
 jobs:
 - job: UpdateJson
   displayName: Update fabricbot.json
