@@ -27,7 +27,7 @@ namespace Common.Authenticators.Test
     public class StorageHelperTest
     {
         private Mock<IStorage> storageMocker = null;
-        private Mock<IKeyStore> keystoreMocker = null; 
+        private Mock<IKeyCache> keystoreMocker = null; 
         private string profilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Resources.AzureDirectoryName);
         private string keyStoreFileName = "azkeystore";
 
@@ -35,7 +35,7 @@ namespace Common.Authenticators.Test
         {
             storageMocker = new Mock<IStorage>();
             storageMocker.Setup(f => f.Create()).Returns(storageMocker.Object);
-            keystoreMocker = new Mock<IKeyStore>();
+            keystoreMocker = new Mock<IKeyCache>();
         }
 
         [Fact]
@@ -72,11 +72,7 @@ namespace Common.Authenticators.Test
 
             var helper = StorageHelper.GetStorageHelperAsync(true, keyStoreFileName, profilePath
                 , keystoreMocker.Object, storageMocker.Object).GetAwaiter().GetResult();
-            var args = new KeyStoreNotificationArgs()
-            {
-                KeyStore = keystoreMocker.Object
-            };
-            helper.WriteToCachedStorage(args);
+            helper.WriteToCachedStorage(keystoreMocker.Object);
 
             string actual = Encoding.UTF8.GetString(storageChecker.ToArray());
             Assert.Equal(EXPECTED, actual);

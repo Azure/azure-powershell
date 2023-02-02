@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.CertificatePath, resolvedPath);
                 if (CertificatePassword != null)
                 {
-                    keyStore?.SaveCredential(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, azureAccount.Id, Tenant), CertificatePassword);
+                    keyStore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, azureAccount.Id, Tenant), CertificatePassword);
                     if (GetContextModificationScope() == ContextModificationScope.CurrentUser && !keyStore.IsProtected)
                     {
                         WriteWarning(string.Format(Resources.ServicePrincipalWarning, AzureSession.Instance.KeyStoreFile, AzureSession.Instance.ARMProfileDirectory));
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && password != null)
             {
-                keyStore?.SaveCredential(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
+                keyStore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
                     ,azureAccount.Id, Tenant), password);
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser && !keyStore.IsProtected)
                 {
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 AzKeyStore keyStore = null;
-                keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.KeyStoreFile);
+                keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.KeyStoreFile, autoSaveEnabled);
                 AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore);
 
                 if (!InitializeProfileProvider(autoSaveEnabled))

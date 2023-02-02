@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public string FileName { get; set; }
         public string Directory { get; set; }
 
-        private IKeyStore _inMemoryStore = null;
-        public IKeyStore InMemoryStore
+        private IKeyCache _inMemoryKeyCache = null;
+        public IKeyCache InMemoryKeyCache
         {
-            get => _inMemoryStore;
-            set => _inMemoryStore = value;
+            get => _inMemoryKeyCache;
+            set => _inMemoryKeyCache = value;
         }
 
         private IStorage inputStorage = null;
@@ -38,31 +38,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             private set;
         }
 
-        public AzKeyStore(string directory, string fileName, IStorage storage = null)
+        public AzKeyStore(string directory, string fileName, bool enableContextAutoSaving = true, IStorage storage = null)
         {
-            InMemoryStore = new InMemoryKeyStore();
-            InMemoryStore.SetBeforeAccess(LoadStorage);
+            InMemoryKeyCache = new InMemoryKeyCache();
+
+            if (enableContextAutoSaving)
+            {
+                InMemoryKeyCache.SetBeforeAccess(LoadStorage);
+                InMemoryKeyCache.SetOnUpdate(UpdateStorage);
+            }
 
             FileName = fileName;
             Directory = directory;
 
             inputStorage = storage;
 
-            InMemoryKeyStore.RegisterJsonConverter(typeof(ServicePrincipalKey), typeof(ServicePrincipalKey).Name);
-            InMemoryKeyStore.RegisterJsonConverter(typeof(SecureString), typeof(SecureString).Name, new SecureStringConverter());
+            Common.InMemoryKeyCache.RegisterJsonConverter(typeof(ServicePrincipalKey), typeof(ServicePrincipalKey).Name);
+            Common.InMemoryKeyCache.RegisterJsonConverter(typeof(SecureString), typeof(SecureString).Name, new SecureStringConverter());
         }
 
 
         private void LoadStorage(KeyStoreNotificationArgs args)
         {
-            var asyncHelper = StorageHelper.GetStorageHelperAsync(true, FileName, Directory, args.KeyStore, inputStorage);
+            var asyncHelper = StorageHelper.GetStorageHelperAsync(true, FileName, Directory, args.KeyCache, inputStorage);
             var helper = asyncHelper.GetAwaiter().GetResult();
             IsProtected = helper.IsProtected;
         }
 
+        private void UpdateStorage(KeyStoreNotificationArgs args)
+        {
+            var asyncHelper = StorageHelper.GetStorageHelperAsync(false, FileName, Directory, args.KeyCache, inputStorage);
+            var helper = asyncHelper.GetAwaiter().GetResult();
+            helper.WriteToCachedStorage(args.KeyCache);
+        }
+
         public void Clear()
         {
-            InMemoryStore.Clear();
+            InMemoryKeyCache.Clear();
         }
 
         public void Dispose()
@@ -70,19 +82,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             StorageHelper.TryClearLockedStorageHelper();
         }
 
-        public void SaveCredential(IKeyStoreKey key, SecureString value)
+        public void SaveSecureString(IKeyStoreKey key, SecureString value)
         {
-            InMemoryStore.SaveKey(key, value);
+            InMemoryKeyCache.SaveKey(key, value);
         }
 
-        public SecureString GetCredential(IKeyStoreKey key)
+        public SecureString GetSecureString(IKeyStoreKey key)
         {
-            return InMemoryStore.GetKey<SecureString>(key);
+            return InMemoryKeyCache.GetKey<SecureString>(key);
         }
 
-        public bool RemoveCredential(IKeyStoreKey key)
+        public bool RemoveSecureString(IKeyStoreKey key)
         {
-            return InMemoryStore.DeleteKey(key);
+            return InMemoryKeyCache.DeleteKey(key);
+        }
+
+        public void EnableSyncToStorage()
+        {
+            InMemoryKeyCache.SetBeforeAccess(LoadStorage);
+            InMemoryKeyCache.SetOnUpdate(UpdateStorage);
+        }
+
+        public void DisableSyncToStorage()
+        {
+            InMemoryKeyCache.SetBeforeAccess(null);
+            InMemoryKeyCache.SetOnUpdate(null);
         }
     }
 }

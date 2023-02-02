@@ -11,7 +11,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using Microsoft.Azure.PowerShell.Authenticators.Identity;
 using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.IdentityModel.Abstractions;
 using System;
@@ -21,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public class StorageHelper : IStorageHelper
+    internal class StorageHelper : IStorageHelper
     {
         private const string KeyChainServiceName = "Microsoft.Azure.PowerShell";
 
@@ -89,7 +88,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         }
 
         #region Public API
-        public static async Task<IStorageHelper> GetStorageHelperAsync(bool async, string fileName, string directory, IKeyStore keystore, IStorage storage = null)
+        public static async Task<IStorageHelper> GetStorageHelperAsync(bool async, string fileName, string directory, IKeyCache keycache, IStorage storage = null)
         {
             StorageHelper storageHelper = null;
 
@@ -110,8 +109,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     storageHelper = GetFallbackStorageHelper(fileName, directory, storage);
                     storageHelper.VerifyPersistence();
                 }
-                storageHelper.RegisterCache(keystore);
-                storageHelper.LoadFromCachedStorage(keystore);
+                storageHelper.LoadFromCachedStorage(keycache);
                 asyncLock.SetValue(storageHelper);
             }
             return storageHelper;
@@ -130,48 +128,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        public byte[] LoadUnencryptedTokenCache()
+        public void LoadFromCachedStorage(IKeyCache keycache)
         {
-            using (CreateCrossPlatLock(_storageCreationProperties))
-            {
-                return PersistanceStore.ReadData();
-            }
-        }
-
-        public void SaveUnencryptedTokenCache(byte[] tokenCache)
-        {
-            using (CreateCrossPlatLock(_storageCreationProperties))
-            {
-                PersistanceStore.WriteData(tokenCache);
-            }
-        }
-
-        public void RegisterCache(IKeyStore keystore)
-        {
-            if (keystore == null)
-            {
-                throw new ArgumentNullException(nameof(keystore));
-            }
-
-            _logger.LogInformation($"Registering token cache with on disk storage");
-
-            keystore.SetOnUpdate(WriteToCachedStorage);
-
-            _logger.LogInformation($"Done initializing");
-        }
-
-        public void UnregisterCache(IKeyStore keystore)
-        {
-            if (keystore == null)
-            {
-                throw new ArgumentNullException(nameof(keystore));
-            }
-            keystore.SetOnUpdate(null);
-        }
-
-        public void LoadFromCachedStorage(IKeyStore keystore)
-        {
-            LogMessage(EventLogLevel.Verbose, $"Before access\nAcquiring lock for token cache");
+            LogMessage(EventLogLevel.Verbose, $"Before access\nAcquiring lock for keystore");
 
             using (CreateCrossPlatLock(_storageCreationProperties))
             {
@@ -184,7 +143,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
                 catch (Exception ex)
                 {
-                    LogMessage(EventLogLevel.Error, $"Could not read the token cache. Ignoring. Exception: {ex}");
+                    LogMessage(EventLogLevel.Error, $"Could not read the keystore. Ignoring. Exception: {ex}");
                     return;
 
                 }
@@ -193,7 +152,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 try
                 {
                     LogMessage(EventLogLevel.Verbose, $"Deserializing the store");
-                    keystore.Deserialize(cachedStoreData, false);
+                    keycache.Deserialize(cachedStoreData, false);
                 }
                 catch (Exception e)
                 {
@@ -206,7 +165,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        public void WriteToCachedStorage(KeyStoreNotificationArgs args)
+        public void WriteToCachedStorage(IKeyCache keycache)
         {
             using (CreateCrossPlatLock(_storageCreationProperties))
             {
@@ -215,7 +174,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 LogMessage(EventLogLevel.Verbose, $"After access, cache in memory HasChanged");
                 try
                 {
-                    data = args.KeyStore.Serialize();
+                    data = keycache.Serialize();
                 }
                 catch (Exception e)
                 {

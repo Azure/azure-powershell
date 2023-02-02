@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
-
+using Microsoft.Azure.PowerShell.Authenticators.Identity;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.PowerShell.Authenticators.Identity
+namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     /// <summary>
     /// Primitive that combines async lock and value cache
@@ -124,6 +124,24 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
             {
                 waiters.Dequeue().TrySetResult(new Lock(value));
             }
+        }
+
+        /// <summary>
+        /// Try to reset value and fail if value is locked.
+        /// </summary>
+        /// <returns></returns>
+        public bool TryClearValue()
+        {
+            lock (_syncObj)
+            {
+                if (!_isLocked)
+                {
+                    _value = default(T);
+                    _hasValue = false;
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>

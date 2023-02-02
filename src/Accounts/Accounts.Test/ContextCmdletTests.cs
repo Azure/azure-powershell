@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Mock<IStorage> storageMocker = new Mock<IStorage>();
             AzKeyStore azKeyStore = null;
             string profilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Resources.AzureDirectoryName);
-        azKeyStore = new AzKeyStore(profilePath, AzureSession.Instance.KeyStoreFile, storageMocker.Object);
+            azKeyStore = new AzKeyStore(profilePath, AzureSession.Instance.KeyStoreFile, true, storageMocker.Object);
             AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => azKeyStore, true);
         }
 

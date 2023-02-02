@@ -225,13 +225,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 var account = context.Account;
                 if (account.IsPropertySet(AzureAccount.Property.ServicePrincipalSecret))
                 {
-                    keystore?.SaveCredential(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, account.GetTenants().First())
+                    keystore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, account.GetTenants().First())
                         , account.ExtendedProperties.GetProperty(AzureAccount.Property.ServicePrincipalSecret).ConvertToSecureString());
                     account.ExtendedProperties.Remove(AzureAccount.Property.ServicePrincipalSecret);
                 }
                 if (account.IsPropertySet(AzureAccount.Property.CertificatePassword))
                 {
-                    keystore?.SaveCredential(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, account.GetTenants().First())
+                    keystore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, account.GetTenants().First())
     , account.ExtendedProperties.GetProperty(AzureAccount.Property.CertificatePassword).ConvertToSecureString());
                     account.ExtendedProperties.Remove(AzureAccount.Property.CertificatePassword);
                 }

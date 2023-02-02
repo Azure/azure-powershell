@@ -11,18 +11,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using Microsoft.Identity.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    internal class InMemoryKeyStore : IKeyStore
+    internal class InMemoryKeyCache : IKeyCache
     {
         internal class KeyStoreElement
         {
@@ -48,7 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             var args = new KeyStoreNotificationArgs()
             {
-                KeyStore = this
+                KeyCache = this
             };
             BeforeAccess?.Invoke(args) ;
             if (!_typeNameMap.ContainsKey(key.GetType()) || !_typeNameMap.ContainsKey(value.GetType()))
@@ -63,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             var args = new KeyStoreNotificationArgs()
             {
-                KeyStore = this
+                KeyCache = this
             };
             BeforeAccess?.Invoke(args);
 
@@ -88,7 +86,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             var args = new KeyStoreNotificationArgs()
             {
-                KeyStore = this
+                KeyCache = this
             };
             BeforeAccess?.Invoke(args);
             bool ret = false;
@@ -159,7 +157,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             var args = new KeyStoreNotificationArgs()
             {
-                KeyStore = this
+                KeyCache = this
             };
             BeforeAccess?.Invoke(args);
             _credentials.Clear();

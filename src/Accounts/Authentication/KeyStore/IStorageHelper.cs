@@ -11,7 +11,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -19,13 +18,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     {
         void Clear();
 
-        byte[] LoadUnencryptedTokenCache();
+        void LoadFromCachedStorage(IKeyCache keycache);
 
-        void SaveUnencryptedTokenCache(byte[] tokenCache);
-
-        void LoadFromCachedStorage(IKeyStore keystore);
-
-        void WriteToCachedStorage(KeyStoreNotificationArgs args);
+        void WriteToCachedStorage(IKeyCache keycache);
 
         bool IsProtected
         {

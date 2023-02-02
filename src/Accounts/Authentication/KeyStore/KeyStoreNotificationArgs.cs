@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class KeyStoreNotificationArgs
     {
-        public IKeyStore KeyStore;
+        public IKeyCache KeyCache;
     }
 
     public delegate void KeyStoreCallbak(KeyStoreNotificationArgs args);

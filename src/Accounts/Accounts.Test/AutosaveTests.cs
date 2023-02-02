@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new MockCommandRuntime();
             dataStore = new MemoryDataStore();
-            ResetState();
             keyStore = SetMockedAzKeyStore();
         }
 
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             storageMocker.Setup(f => f.Create()).Returns(storageMocker.Object);
             storageMocker.Setup(f => f.ReadData()).Returns(new byte[0]);
             storageMocker.Setup(f => f.WriteData(It.IsAny<byte[]>())).Callback((byte[] s) => {});
-            var keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, "azkeystore", storageMocker.Object);
+            var keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, "azkeystore", true, storageMocker.Object);
             return keyStore;
         }
 

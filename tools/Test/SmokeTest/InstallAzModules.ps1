@@ -44,7 +44,8 @@ Write-Host "Installing Az..."
 Install-Module -Name Az -Repository $gallery -Scope CurrentUser -AllowClobber -Force 
 
 $file = Get-ChildItem $localRepoLocation | Where-Object {$_.Name -like "ThreadJob*"}
-if ($file -ne $null) {
+$installedModule = Get-Module -ListAVailable -Name ThreadJob
+if ($file -ne $null -and $installedModule -ne $null) {
   Write-Host "Install ThreadJob..."
   Install-Module -Name ThreadJob -Repository $gallery -Scope CurrentUser -AllowClobber -Force
 }

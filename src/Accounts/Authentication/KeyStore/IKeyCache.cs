@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public interface IKeyStore
+    public interface IKeyCache
     {
         void SaveKey<T>(IKeyStoreKey key, T value);
 

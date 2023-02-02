@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => newCacheProvider, true);
             }
 
+            if (AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keystore))
+            {
+                keystore.EnableSyncToStorage();
+            }
+
             if (writeAutoSaveFile)
             {
                 try

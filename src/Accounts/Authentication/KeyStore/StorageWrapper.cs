@@ -16,7 +16,7 @@ using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    class StorageWrapper : IStorage
+    internal class StorageWrapper : IStorage
     {
         public StorageCreationProperties StorageCreationProperties { get; set; }
 
