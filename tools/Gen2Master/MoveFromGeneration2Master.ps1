@@ -122,7 +122,7 @@ Function Move-Generation2Master {
         #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
         $generateInfo = [ordered]@{}
         $content = Get-Content README.md
-        $commitId = [System.Text.RegularExpressions.Regex]::New("(?i)\bbranch\b:[ ]*([0-9a-zA-Z]+)").Matches($content) | % {$_.groups[1].Value}
+        $commitId = [System.Text.RegularExpressions.Regex]::New("(?i)\bbranch\b:[ \t]*([0-9a-zA-Z]+)").Matches($content) | % {$_.groups[1].Value}
         if ($commitId -eq $null -or $commitId -eq "main")
         {
             $repo = "https://github.com/Azure/azure-rest-api-specs"
