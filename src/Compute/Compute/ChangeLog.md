@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 5.4.0
 * Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
 * Added `ConsistencyMode` parameter to `New-AzRestorePoint`.
 * Updated the storage account type value in several locations from the outdated `StandardLRS` to the current `Standard_LRS`.

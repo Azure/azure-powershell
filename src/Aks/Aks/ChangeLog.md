@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.3.0
 * Added parameter `-AadProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
 * Added parameter `-NodeHostGroupID` for `New-AzAksCluster` and parameter `-HostGroupID` for `New-AzAksNodePool`
 

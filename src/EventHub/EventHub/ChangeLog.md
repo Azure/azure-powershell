@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.2.1
 * Fixed 'New-AzEventHubAuthorizationRuleSASToken' cmdlet which was returning wrong skn value
 
 ## Version 3.2.0

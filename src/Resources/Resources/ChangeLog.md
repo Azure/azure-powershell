@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.5.2
 * Fixed query issue when objectId in assignment is empty for `Get-DenyAssignment`
 * Fixed an issue where running deployment cmdlets with `-WhatIf` throws exception when formatting results with nested array changes
 
