@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.2
 * Added Remote Support terms and conditions for HCI device types.
 * Unified Resource Group support for both Azure Stack HCI and Arc for server resources.
 * Enhanced error feedback and logging in the Register-AzStackHCI cmdlet.

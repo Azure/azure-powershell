@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
 * Added an optional parameter `HAReplicaCount` to `Restore-AzSqlDatabase`
 * Added new cmdlets for managed instance DTC
     `Get-AzSqlInstanceDtc`

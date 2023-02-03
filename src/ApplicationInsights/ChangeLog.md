@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.2
 * Added parameter validation for `Get-AzApplicationInsights` [#20697]
 
 ## Version 2.2.1
