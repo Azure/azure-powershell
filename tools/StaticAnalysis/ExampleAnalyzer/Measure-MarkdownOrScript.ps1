@@ -42,7 +42,7 @@ param (
 
 . $PSScriptRoot\utils.ps1
 
-Write-Host $PSVersionTable
+Write-Output $PSVersionTable
 
 $analysisResultsTable = @()
 $codeMap = @()
