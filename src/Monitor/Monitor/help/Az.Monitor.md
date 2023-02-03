@@ -217,6 +217,9 @@ Creates a new or updates an existing action group.
 ### [Set-AzDataCollectionRule](Set-AzDataCollectionRule.md)
 Updates (full replacement) a data collection rule.
 
+### [Test-AzActionGroup](Test-AzActionGroup.md)
+Sends test notifications
+
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.
 This method is used to update the Alert rule tags, and to enable or disable the Alert rule.
