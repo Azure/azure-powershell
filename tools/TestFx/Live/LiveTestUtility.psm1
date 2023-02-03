@@ -39,8 +39,8 @@ New-Variable -Name StorageAccountPrefix -Value "azpslsa" -Scope Script -Option C
 
 New-Variable -Name CommandMaxRetryCount -Value 3 -Scope Script -Option Constant
 New-Variable -Name CommandDelay -Value 10 -Scope Script -Option Constant
-New-Variable -Name ScenarioMaxRetryCount -Value 5 -Scope Script -Option Constant
-New-Variable -Name ScenarioMaxDelay -Value 60 -Scope Script -Option Constant
+New-Variable -Name ScenarioMaxRetryCount -Value 3 -Scope Script -Option Constant
+New-Variable -Name ScenarioMaxDelay -Value 20 -Scope Script -Option Constant
 New-Variable -Name ScenarioDelay -Value 5 -Scope Script -Option Constant
 
 New-Variable -Name LiveTestAnalysisDirectory -Value (Join-Path -Path $DataLocation -ChildPath "LiveTestAnalysis") -Scope Script -Option Constant
@@ -287,7 +287,6 @@ function Invoke-LiveTestScenario {
             try {
                 Write-Host "##[section]Start to clean up the resource group `"$snrResourceGroupName`"." -ForegroundColor Green
                 Clear-LiveTestResources -Name $snrResourceGroupName
-                Write-Host "##[section]Successfully cleaned up the resource group `"$snrResourceGroupName`"" -ForegroundColor Green
             }
             catch {
                 # Ignore exception for clean up

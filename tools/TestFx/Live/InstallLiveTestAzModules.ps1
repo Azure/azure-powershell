@@ -16,4 +16,4 @@ switch ($Source) {
     }
 }
 
-Install-Module -Name Az -Repository $Source -Scope CurrentUser -AllowClobber -Force
+Install-Module -Name AzPreview -Repository $Source -Scope CurrentUser -AllowClobber -Force
