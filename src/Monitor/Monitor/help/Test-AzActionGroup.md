@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/test-azactiongroup
+online version: https://learn.microsoft.com/powershell/module/az.monitor/test-azactiongroup
 schema: 2.0.0
 ---
 
