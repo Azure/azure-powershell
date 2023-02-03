@@ -54,12 +54,49 @@ function New-AzConnectedKubernetes {
         # The ID of the target subscription.
         ${SubscriptionId},
 
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
+        [System.String]
+        # The URI for the proxy server to use (http)
+        ${ProxyHttp},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
+        [System.String]
+        # The URI for the proxy server to use (https)
+        ${ProxyHttps},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
+        [System.String]
+        # The URI for the proxy server to use (skip)
+        ${ProxyNo},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
+        [ValidateRange(0,3600)]
+        [Int]
+        # The timeout for onboarding azure-arc
+        ${OnboardingTimeout} = 600,
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
+        [System.Management.Automation.SwitchParameter]
+        # Disable auto upgrade of arc agents
+        ${DisableAutoUpgrade},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
+        [System.String]
+        # The container log path for fluent-bit
+        ${ContainerLogPath},
+
         [Parameter(HelpMessage="Path to the kube config file")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # Path to the kube config file
         ${KubeConfig},
-    
+
         [Parameter(HelpMessage="Kubconfig context from current machine")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
@@ -224,7 +261,7 @@ function New-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey('KubeContext')) {
             $Null = $PSBoundParameters.Remove('KubeContext')
         }
-        if (($KubeContext -eq $null) -or ($KubeContext -eq '')) {
+        if (($null -eq $KubeContext) -or ($KubeContext -eq '')) {
             $KubeContext = kubectl config current-context
         }
         
@@ -370,11 +407,79 @@ function New-AzConnectedKubernetes {
             $ChartPath = $HelmChartPath
         }
 
+        $options = ""
+        $proxyEnableState = $false
+        if (-not ([string]::IsNullOrEmpty($ProxyHttp))) {
+            $ProxyHttp = $ProxyHttp -replace ',','\,'
+            $ProxyHttp = $ProxyHttp -replace '/','\/'    
+            $options += " --set global.httpProxy=$ProxyHttp"
+            $proxyEnableState = $true
+            $Null = $PSBoundParameters.Remove('ProxyHttp')
+        }
+
+        if (-not ([string]::IsNullOrEmpty($ProxyHttps))) {
+            $ProxyHttps = $ProxyHttps -replace ',','\,'
+            $ProxyHttps = $ProxyHttps -replace '/','\/'   
+            $options += " --set global.httpsProxy=$ProxyHttps"
+            $proxyEnableState = $true
+            $Null = $PSBoundParameters.Remove('ProxyHttps')
+        }
+
+        if (-not ([string]::IsNullOrEmpty($ProxyNo))) {
+            $ProxyNo = $ProxyNo -replace ',','\,'
+            $ProxyNo = $ProxyNo -replace '/','\/'   
+            $options += " --set global.noProxy=$ProxyNo"
+            $proxyEnableState = $true
+            $Null = $PSBoundParameters.Remove('ProxyNo')
+        }
+
+        if($proxyEnableState) {
+            $options += " --set global.isProxyEnabled=true"
+        }
+
+        try {
+            if (($PSBoundParameters.ContainsKey('ProxyCredential')) -and (Test-Path $ProxyCredential)) {
+                $options += " --set-file global.proxyCert=$ProxyCredential"
+                $options += " --set global.isCustomCert=true"
+            }
+        } catch {
+            Write-Error "Unable to find ProxyCrendial"
+            throw
+        }
+
+        if($DisableAutoUpgrade) {
+            $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
+            $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
+        }
+
+        if(-not ([string]::IsNullOrEmpty($ContainerLogPath))) {
+            $options += " --set systemDefaultValues.fluent-bit.containerLogPath=$ContainerLogPath"
+            $Null = $PSBoundParameters.Remove('ContainerLogPath')
+        }
+
+	    if (-not ([string]::IsNullOrEmpty($KubeConfig))) {
+            $options += " --kubeconfig $KubeConfig"
+        }
+
+	    if (-not ([string]::IsNullOrEmpty($KubeContext))) {
+            $options += " --kube-context $KubeContext"
+        }
+
+	    if (!$NoWait) {
+            $options += " --wait --timeout $OnboardingTimeout"
+            $options += "s"
+        }
+
+        if ($PSBoundParameters.ContainsKey('OnboardingTimeout')) {
+            $PSBoundParameters.Remove('OnboardingTimeout')
+        }
+
         $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
-        helm upgrade --install azure-arc $ChartPath --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure --kubeconfig $KubeConfig --kube-context $KubeContext --wait --timeout 600s
+
+	    helm upgrade --install azure-arc $ChartPath --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure (-split $options)
         Return $Response
     }
 }
