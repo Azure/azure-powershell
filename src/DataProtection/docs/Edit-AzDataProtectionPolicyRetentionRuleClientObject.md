@@ -21,7 +21,7 @@ Edit-AzDataProtectionPolicyRetentionRuleClientObject -Name <RetentionRuleName> -
 ### AddRetention
 ```
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]>
- -Name <RetentionRuleName> -Policy <IBackupPolicy> [<CommonParameters>]
+ -Name <RetentionRuleName> -Policy <IBackupPolicy> [-OverwriteLifeCycle <Boolean?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,6 +107,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OverwriteLifeCycle
+Specifies whether to modify an existing LifeCycle.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: AddRetention
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Policy
 Backup Policy Object
 To construct, see NOTES section for POLICY properties and create a hash table.
@@ -156,7 +171,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`LIFECYCLES <ISourceLifeCycle[]>`: Life cycles associated with the retention rule.
+LIFECYCLES <ISourceLifeCycle[]>: Life cycles associated with the retention rule.
   - `DeleteAfterDuration <String>`: Duration of deletion after given timespan
   - `DeleteAfterObjectType <String>`: Type of the specific object - used for deserializing
   - `SourceDataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
@@ -166,7 +181,7 @@ To create the parameters described below, construct a hash table containing the 
     - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
     - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
 
-`POLICY <IBackupPolicy>`: Backup Policy Object
+POLICY <IBackupPolicy>: Backup Policy Object
   - `DatasourceType <String[]>`: Type of datasource for the backup management
   - `ObjectType <String>`: 
   - `PolicyRule <IBasePolicyRule[]>`: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc

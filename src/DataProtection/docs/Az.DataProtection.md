@@ -41,6 +41,9 @@ Gets a job with id in a backup vault
 ### [Get-AzDataProtectionOperation](Get-AzDataProtectionOperation.md)
 Returns the list of available operations.
 
+### [Get-AzDataProtectionOperationStatus](Get-AzDataProtectionOperationStatus.md)
+Gets the operation status for a resource.
+
 ### [Get-AzDataProtectionPolicyTemplate](Get-AzDataProtectionPolicyTemplate.md)
 Gets default policy template for a selected datasource type.
 

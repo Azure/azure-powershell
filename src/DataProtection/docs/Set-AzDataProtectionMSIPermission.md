@@ -258,7 +258,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BACKUPINSTANCE <IBackupInstanceResource>`: Backup instance request object which will be used to configure backup
+BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which will be used to configure backup
   - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Property <IBackupInstance>]`: BackupInstanceResource properties
@@ -292,7 +292,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
     - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 
-`RESTOREREQUEST <IAzureBackupRestoreRequest>`: Restore request object which will be used for restore
+RESTOREREQUEST <IAzureBackupRestoreRequest>: Restore request object which will be used for restore
   - `ObjectType <String>`: 
   - `RestoreTargetInfo <IRestoreTargetInfoBase>`: Gets or sets the restore target information.
     - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type

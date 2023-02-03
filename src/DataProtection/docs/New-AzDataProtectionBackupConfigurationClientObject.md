@@ -14,9 +14,10 @@ Creates new backup configuration object
 
 ```
 New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceTypes>
- [-ExcludedNamespace <String[]>] [-ExcludedResourceType <String[]>] [-IncludeClusterScopeResource <Boolean?>]
- [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>] [-LabelSelector <String[]>]
- [-SnapshotVolume <Boolean?>] [<CommonParameters>]
+ [-ExcludedNamespace <String[]>] [-ExcludedResourceType <String[]>] [-IncludeAllContainer]
+ [-IncludeClusterScopeResource <Boolean?>] [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>]
+ [-LabelSelector <String[]>] [-SnapshotVolume <Boolean?>] [-StorageAccountName <String>]
+ [-StorageAccountResourceGroupName <String>] [-VaultedBackupContainer <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +75,22 @@ List of resource types to be excluded from backup
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeAllContainer
+Switch parameter to include all containers to be backed up inside the VaultStore.
+Use this parameter for DatasourceType AzureBlob.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -151,6 +168,54 @@ By default this is taken as true.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountName
+Storage account where the Datasource is present.
+Use this parameter for DatasourceType AzureBlob.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountResourceGroupName
+Storage account resource group name where the Datasource is present.
+Use this parameter for DatasourceType AzureBlob.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultedBackupContainer
+List of containers to be backed up inside the VaultStore.
+Use this parameter for DatasourceType AzureBlob.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
