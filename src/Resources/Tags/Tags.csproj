@@ -13,7 +13,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
-  </ItemGroup>  
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Resources.Management.Sdk\Resources.Management.Sdk.csproj" />
+  </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 

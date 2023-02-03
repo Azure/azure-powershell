@@ -20,10 +20,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Commands.Tags.Model;
-using SDKTagsObject = Microsoft.Azure.Management.ResourceManager.Models.Tags;
+using Microsoft.Azure.Management.Resources.Models;
+using SDKTagsObject = Microsoft.Azure.Management.Resources.Models.Tags;
+
 
 namespace Microsoft.Azure.Commands.Tags.Client
 {
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.Tags.Client
     {
         public const string ExecludedTagPrefix = "hidden-related:/";
 
-        public IResourceManagementClient ResourceManagementClient { get; set; }
+        public Microsoft.Azure.Management.Resources.IResourceManagementClient ResourceManagementClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
 
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.Tags.Client
         /// Creates new TagsClient instance
         /// </summary>
         /// <param name="resourceManagementClient">The IResourceManagementClient instance</param>
-        public TagsClient(IResourceManagementClient resourceManagementClient)
+        public TagsClient(Microsoft.Azure.Management.Resources.IResourceManagementClient resourceManagementClient)
         {
             ResourceManagementClient = resourceManagementClient;
         }
@@ -135,8 +136,8 @@ namespace Microsoft.Azure.Commands.Tags.Client
         /// <returns>PS object PSTagResource</returns>
         public PSTagResource CreateOrUpdateTagAtScope(string scope, IDictionary<string, string> parameters)
         {
-            var tagResource = new TagsResource(properties: new SDKTagsObject(parameters));
-            return ResourceManagementClient.Tags.CreateOrUpdateAtScope(scope: scope, parameters: tagResource)?.ToPSTagResource();
+            var tagResource = new SDKTagsObject(tagsProperty: parameters);
+            return ResourceManagementClient.Tags.CreateOrUpdateAtScope(scope: scope, properties: tagResource)?.ToPSTagResource();
         }
 
         /// <summary>
@@ -157,8 +158,8 @@ namespace Microsoft.Azure.Commands.Tags.Client
         /// <returns></returns>
         public PSTagResource UpdateTagAtScope(string scope, TagPatchOperation operation, IDictionary<string, string> parameters)
         {
-            var tagPatchResource = new TagsPatchResource(operation: operation.ToString(), properties: new SDKTagsObject(parameters));
-            return ResourceManagementClient.Tags.UpdateAtScope(scope: scope, parameters: tagPatchResource)?.ToPSTagResource();
+            var tagResource = new SDKTagsObject(parameters);
+            return ResourceManagementClient.Tags.UpdateAtScope(scope: scope, operation: operation.ToString(), properties: tagResource)?.ToPSTagResource();
         }
 
         /// <summary>
