@@ -152,7 +152,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 try
                 {
                     LogMessage(EventLogLevel.Verbose, $"Deserializing the store");
-                    keycache.Deserialize(cachedStoreData, false);
+                    //Overwrite in memory cache always
+                    keycache.Deserialize(cachedStoreData, true);
                 }
                 catch (Exception e)
                 {
