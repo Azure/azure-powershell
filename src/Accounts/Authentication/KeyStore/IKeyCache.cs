@@ -14,16 +14,21 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public interface IStorage
+    public interface IKeyCache
     {
-        IStorage Create();
+        void SaveKey<T>(IKeyStoreKey key, T value);
+
+        T GetKey<T>(IKeyStoreKey key);
+
+        bool DeleteKey(IKeyStoreKey key);
 
         void Clear();
 
-        byte[] ReadData();
+        void SetBeforeAccess(KeyStoreCallbak beforeAccess);
 
-        void VerifyPersistence();
+        void SetOnUpdate(KeyStoreCallbak onUpdate);
+        void Deserialize(byte[] Data, bool shouldClearExistingCache);
 
-        void WriteData(byte[] data);
+        byte[] Serialize();
     }
 }

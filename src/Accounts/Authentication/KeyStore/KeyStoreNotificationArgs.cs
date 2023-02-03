@@ -14,16 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public interface IStorage
+    public class KeyStoreNotificationArgs
     {
-        IStorage Create();
-
-        void Clear();
-
-        byte[] ReadData();
-
-        void VerifyPersistence();
-
-        void WriteData(byte[] data);
+        public IKeyCache KeyCache;
     }
+
+    public delegate void KeyStoreCallbak(KeyStoreNotificationArgs args);
 }

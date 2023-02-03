@@ -14,16 +14,17 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public interface IStorage
+    public interface IStorageHelper
     {
-        IStorage Create();
-
         void Clear();
 
-        byte[] ReadData();
+        void LoadFromCachedStorage(IKeyCache keycache);
 
-        void VerifyPersistence();
+        void WriteToCachedStorage(IKeyCache keycache);
 
-        void WriteData(byte[] data);
+        bool IsProtected
+        {
+            get;
+        }
     }
 }

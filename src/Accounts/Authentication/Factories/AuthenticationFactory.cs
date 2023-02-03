@@ -433,9 +433,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     case AzureAccount.AccountType.ServicePrincipal:
                         try
                         {
-                            KeyStore.DeleteKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret,
+                            KeyStore.RemoveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret,
                                 account.Id, account.GetTenants().FirstOrDefault()));
-                            KeyStore.DeleteKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword,
+                            KeyStore.RemoveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword,
     account.Id, account.GetTenants().FirstOrDefault()));
                         }
                         catch
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     {
                         try
                         {
-                            password = KeyStore.GetKey<SecureString>(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
+                            password = KeyStore.GetSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
 , account.Id, tenant));
                         }
                         catch
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     {
                         try
                         {
-                            certificatePassword = KeyStore.GetKey<SecureString>(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword
+                            certificatePassword = KeyStore.GetSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword
                             , account.Id, tenant));
                         }
                         catch
