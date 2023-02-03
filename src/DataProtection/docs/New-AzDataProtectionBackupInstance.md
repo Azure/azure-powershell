@@ -88,7 +88,7 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource
 Parameter Sets: (All)
 Aliases:
 
@@ -252,6 +252,8 @@ To create the parameters described below, construct a hash table containing the 
     - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
       - `PolicyId <String>`: 
       - `[PolicyParameter <IPolicyParameters>]`: Policy parameters for the backup instance
+        - `[BackupDatasourceParametersList <IBackupDatasourceParameters[]>]`: Gets or sets the Backup Data Source Parameters
+          - `ObjectType <String>`: Type of the specific object - used for deserializing
         - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
           - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
           - `ObjectType <String>`: Type of the specific object - used for deserializing

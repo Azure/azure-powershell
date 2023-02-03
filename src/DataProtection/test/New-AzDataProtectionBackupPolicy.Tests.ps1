@@ -24,9 +24,8 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         Write-Debug  -Message $vaultName
         $DebugPreference = "SilentlyContinue"
 
-
         $pol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDatabaseForPostgreSQL
-                
+        
         $lifeCycle1 = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore ArchiveStore -SourceRetentionDurationType Months -SourceRetentionDurationCount 6
         $lifeCycle = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Months -SourceRetentionDurationCount 3 -TargetDataStore ArchiveStore -CopyOption CopyOnExpiryOption
          

@@ -172,7 +172,7 @@ Azure backup restore request
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -204,7 +204,7 @@ Gets or sets the restore target information.
 To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IRestoreTargetInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -312,11 +312,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IOperationJobExtendedInfo
 
 ## NOTES
 

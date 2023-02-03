@@ -62,7 +62,7 @@ Backup Instance
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupInstance
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +188,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IOperationJobExtendedInfo
 
 ## NOTES
 
@@ -212,6 +212,8 @@ To create the parameters described below, construct a hash table containing the 
   - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
     - `PolicyId <String>`: 
     - `[PolicyParameter <IPolicyParameters>]`: Policy parameters for the backup instance
+      - `[BackupDatasourceParametersList <IBackupDatasourceParameters[]>]`: Gets or sets the Backup Data Source Parameters
+        - `ObjectType <String>`: Type of the specific object - used for deserializing
       - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
         - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
         - `ObjectType <String>`: Type of the specific object - used for deserializing
