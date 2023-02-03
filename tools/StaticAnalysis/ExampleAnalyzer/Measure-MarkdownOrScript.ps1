@@ -42,6 +42,8 @@ param (
 
 . $PSScriptRoot\utils.ps1
 
+Write-Host $PSVersionTable
+
 $analysisResultsTable = @()
 $codeMap = @()
 $totalLine = 1
