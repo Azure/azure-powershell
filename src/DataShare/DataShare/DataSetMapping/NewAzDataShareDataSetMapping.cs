@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Azure Storage Account ResourceId",
+            HelpMessage = "Azure Storage Account ResourceId that is the source of the data being shared.",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter(ResourceTypes.StorageAccount)]
