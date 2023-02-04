@@ -149,6 +149,11 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "Explicit Proxy Settings in Firewall Policy.")]
         public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
 
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "The private IP addresses/IP ranges to which traffic will not be SNAT in Firewall Policy.")]
+        public PSAzureFirewallPolicySNAT Snat { get; set; }
+
         public override void Execute()
         {
 
@@ -183,7 +188,8 @@ namespace Microsoft.Azure.Commands.Network
                 },
                 IntrusionDetection = this.IntrusionDetection,
                 PrivateRange = this.PrivateRange,
-                ExplicitProxy = this.ExplicitProxy
+                ExplicitProxy = this.ExplicitProxy,
+                Snat = this.Snat
             };
 
             if (this.UserAssignedIdentityId != null)

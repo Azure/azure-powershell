@@ -167,6 +167,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Explicit Proxy Settings in Firewall Policy.")]
         public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The private IP addresses/IP ranges to which traffic will not be SNAT in Firewall Policy.")]
+        public PSAzureFirewallPolicySNAT Snat { get; set; }
 
         private void AddPremiumProperties(PSAzureFirewallPolicy firewallPolicy)
         {
@@ -253,6 +257,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.PrivateRange = this.IsParameterBound(c => c.PrivateRange) ? PrivateRange : InputObject.PrivateRange;
                 this.ExplicitProxy = this.IsParameterBound(c => c.ExplicitProxy) ? ExplicitProxy : InputObject.ExplicitProxy;
                 this.Tag = this.IsParameterBound(c => c.Tag) ? Tag : InputObject.Tag;
+                this.Snat = this.IsParameterBound(c => c.Snat) ? Snat : InputObject.Snat;
 
                 var firewallPolicy = new PSAzureFirewallPolicy()
                 {
@@ -265,7 +270,8 @@ namespace Microsoft.Azure.Commands.Network
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
                     PrivateRange = this.PrivateRange,
-                    ExplicitProxy = this.ExplicitProxy
+                    ExplicitProxy = this.ExplicitProxy,
+                    Snat = this.Snat
                 };
 
                 AddPremiumProperties(firewallPolicy);
@@ -291,7 +297,8 @@ namespace Microsoft.Azure.Commands.Network
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
                     PrivateRange = this.PrivateRange,
-                    ExplicitProxy = this.ExplicitProxy
+                    ExplicitProxy = this.ExplicitProxy,
+                    Snat = this.Snat
                 };
 
                 AddPremiumProperties(firewallPolicy);
