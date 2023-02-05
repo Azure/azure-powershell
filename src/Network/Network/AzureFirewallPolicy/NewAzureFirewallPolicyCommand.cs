@@ -171,6 +171,10 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSAzureFirewallPolicy CreateAzureFirewallPolicy()
         {
+            if (this.Snat != null && this.PrivateRange != null && this.PrivateRange.Length > 0)
+            {
+                throw new ArgumentException("Please use Snat parameter to set PrivateRange. Private ranges can not be provided on both Snat and PrivateRange parameters at the same time.");
+            }
 
             var firewallPolicy = new PSAzureFirewallPolicy()
             {
