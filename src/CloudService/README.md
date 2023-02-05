@@ -47,14 +47,15 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ```yaml
+branch: b78855377a830ccc7d3f035eac48f3b7282b02b1
 tag: package-2021-03-01
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
-  - /Users/aitest/Documents/LucasGitHub/azure-rest-api-specs/specification/compute/resource-manager/readme.md
-  - /Users/aitest/Documents/LucasGitHub/azure-rest-api-specs/specification/network/resource-manager/readme.md
+  - $(this-folder)/../readme.azure.noprofile.md
+  - $(repo)/specification/compute/resource-manager/readme.md
+  - $(repo)/specification/network/resource-manager/readme.md
 try-require:
-  - /Users/aitest/Documents/LucasGitHub/azure-rest-api-specs/specification/compute/resource-manager/readme.powershell.md
-  - /Users/aitest/Documents/LucasGitHub/azure-rest-api-specs/specification/network/resource-manager/readme.powershell.md
+  - $(repo)/specification/compute/resource-manager/readme.powershell.md
+  - $(repo)/specification/network/resource-manager/readme.powershell.md
 
 title: CloudService
 module-version: 0.1.0
