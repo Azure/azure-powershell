@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AEMExtensionAdvancedLinuxMD");
         }
 
-        [Fact]
+        [Fact (Skip = "TestAEMExtensionAdvancedLinuxMD_ESeries.json causes out of memory.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinuxMD_ESeries()
         {
