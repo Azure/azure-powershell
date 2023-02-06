@@ -64,4 +64,11 @@ $Description
 * **SHOULD NOT** adjust version of module manually in pull request
 "@
 $RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
-Invoke-WebRequest -Uri https://api.github.com/repos/xtR0d666/azure-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
+$Uri = "https://api.github.com/repos/xtR0d666/azure-powershell/pulls"
+$PullRequests = Invoke-WebRequest -Uri $Uri -Headers $Headers | ConvertFrom-Json
+$ExistingPr = $PullRequests | Where-Object { $_.title -eq $Title }
+if ($ExistingPr) {
+    Write-Host "The PR named $Title already exists"
+    exit 0
+}
+Invoke-WebRequest -Uri $Uri -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
