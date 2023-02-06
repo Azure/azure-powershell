@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             List<PSADObject> adObjects = null;
             try
             {
-                adObjects = objectIds.Count > 1 ? activeDirectoryClient.GetObjectsByObjectIds(objectIds) : new List<PSADObject>() { activeDirectoryClient.GetObjectByObjectId(objectIds.FirstOrDefault()) };
+                adObjects = GetAdObjectsByObjectIds(objectIds, activeDirectoryClient);
             }
             catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException)
             {
@@ -220,6 +220,21 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
 
             return psAssignments;
+        }
+
+        private static List<PSADObject> GetAdObjectsByObjectIds(List<string> objectIds, ActiveDirectoryClient activeDirectoryClient)
+        {
+            if (null == objectIds || 0 == objectIds.Count())
+            {
+                return new List<PSADObject>();
+            }
+            else if (1 == objectIds.Count())
+            {
+                return new List<PSADObject>() { activeDirectoryClient.GetObjectByObjectId(objectIds.FirstOrDefault()) };
+            }else
+            {
+                return activeDirectoryClient.GetObjectsByObjectIds(objectIds);
+            }
         }
 
         private static IEnumerable<PSPrincipal> ToPSPrincipals(this IEnumerable<Principal> principals, IEnumerable<PSADObject> adObjects)
@@ -265,7 +280,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             try
             {
-                adObjects = objectIds.Count() <= 1 ? new List<PSADObject>() { activeDirectoryClient.GetObjectByObjectId(objectIds.FirstOrDefault()) } : activeDirectoryClient.GetObjectsByObjectIds(objectIds);
+                adObjects = GetAdObjectsByObjectIds(objectIds, activeDirectoryClient);
             }
             catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException)
             {
@@ -306,7 +321,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             List<PSADObject> adObjects = null;
             try
             {
-                adObjects = objectIds.Count() <= 1 ? new List<PSADObject>() { activeDirectoryClient.GetObjectByObjectId(objectIds.FirstOrDefault()) } : activeDirectoryClient.GetObjectsByObjectIds(objectIds);
+                adObjects = GetAdObjectsByObjectIds(objectIds, activeDirectoryClient);
             }
             catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException)
             {

@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Management.Sql
                 new Tuple<string, string, string>("Sql", "ManagedInstanceAdministrators", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedInstanceAdvancedThreatProtectionSettings", "2022-02-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedInstanceAzureADOnlyAuthentications", "2020-11-01-preview"),
+                new Tuple<string, string, string>("Sql", "ManagedInstanceDtcs", "2022-05-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedInstanceEncryptionProtectors", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedInstanceKeys", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedInstanceLongTermRetentionPolicies", "2020-11-01-preview"),

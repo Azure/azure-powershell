@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Fixed the issue that Invoke-AzAksRunCommand will fail when the directory for parameter CommandContextAttachment contains sub-directories. [#20734]
+
+## Version 5.3.0
 * Added parameter `-AadProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
 * Added parameter `-NodeHostGroupID` for `New-AzAksCluster` and parameter `-HostGroupID` for `New-AzAksNodePool`
 
