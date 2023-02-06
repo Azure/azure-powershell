@@ -1784,7 +1784,7 @@ function Test-AzureFirewallSnat {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
-        $snat = New-AzFirewallPolicySnat -PrivateRange $privateRange -AutoLearnPrivateRanges
+        $snat = New-AzFirewallPolicySnat -PrivateRange $privateRange -AutoLearnPrivateRange
 
         # Create AzureFirewallPolicy (with SNAT)
         $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -Snat $snat

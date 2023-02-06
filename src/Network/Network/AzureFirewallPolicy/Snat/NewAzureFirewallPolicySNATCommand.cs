@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable/disable auto learn private ranges. By default it is disabled.")]
-        public SwitchParameter AutoLearnPrivateRanges { get; set; }
+        public SwitchParameter AutoLearnPrivateRange { get; set; }
 
         public override void Execute()
         {
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var firewallPolicySNAT = new PSAzureFirewallPolicySNAT
             {
-                AutoLearnPrivateRanges = this.AutoLearnPrivateRanges.IsPresent ? "Enabled" : "Disabled",
+                AutoLearnPrivateRanges = this.AutoLearnPrivateRange.IsPresent ? "Enabled" : "Disabled",
                 PrivateRanges = this.PrivateRange
             };
             WriteObject(firewallPolicySNAT);

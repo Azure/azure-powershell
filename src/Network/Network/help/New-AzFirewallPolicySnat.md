@@ -13,7 +13,7 @@ Creates SNAT configuration of PrivateRange and AutoLearnPrivateRanges for the fi
 ## SYNTAX
 
 ```
-New-AzFirewallPolicySnat [-PrivateRange <String[]>] [-AutoLearnPrivateRanges]
+New-AzFirewallPolicySnat [-PrivateRange <String[]>] [-AutoLearnPrivateRange]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The New-AzFirewallPolicySnat is used to configure Private Ranges and auto learn 
 
 ### Example 1
 ```powershell
-New-AzFirewallPolicySnat -PrivateRange @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20") -AutoLearnPrivateRanges
+New-AzFirewallPolicySnat -PrivateRange @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20") -AutoLearnPrivateRange
 ```
 ```output
 		PrivateRange	            : ["3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20"]	
@@ -46,7 +46,7 @@ This example configures private IP addresses/IP ranges to which traffic will not
 
 ## PARAMETERS
 
-### -AutoLearnPrivateRanges
+### -AutoLearnPrivateRange
 Enable/disable auto learn private ranges.
 By default it is disabled.
 
