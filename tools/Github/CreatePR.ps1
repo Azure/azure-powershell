@@ -64,4 +64,4 @@ $Description
 * **SHOULD NOT** adjust version of module manually in pull request
 "@
 $RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
-Invoke-WebRequest -Uri https://api.github.com/repos/Azure/azure-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
+Invoke-WebRequest -Uri https://api.github.com/repos/xtR0d666/azure-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
