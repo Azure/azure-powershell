@@ -1,6 +1,6 @@
 # Variable 'ADOToken' and 'BotAccessToken' was defined in the Variables tab
 schedules:
-- cron: "50 23 * * *"
+- cron: "50 15 * * *"
   displayName: 11:50 PM (UTC + 8:00) China Daily Build
   branches:
     include:
@@ -26,7 +26,7 @@ jobs:
         git add .
         git commit -m "Sync fabricbot.json"
         
-        git remote set-url origin https://$(BotAccessToken)@github.com/xtR0d666/azure-powershell.git;
+        git remote set-url origin https://$(BotAccessToken)@github.com/Azure/azure-powershell.git;
         git push origin internal/sync-fabricbot-json --force
   
   - pwsh: |
