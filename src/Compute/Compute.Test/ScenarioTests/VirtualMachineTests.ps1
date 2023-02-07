@@ -6838,7 +6838,7 @@ function Test-diskfileUPload
     try
     {
         # Common
-        $rgname = "adsanddiskf1";
+        $rgname = "adsanddiskf2";
         $loc = "eastus";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -6870,7 +6870,7 @@ function Test-diskfileUPload
 
         # Virtual Machine
         $diskFile = "C:\Users\adsandor\Downloads\abcdOrig";
-        New-AzVM -ResourceGroupName $rgname -Name $vmname -DomainNameLabel $domainNameLabel -DiskFile $diskFile -AsJob;
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Location $loc -DomainNameLabel $domainNameLabel -DiskFile $diskFile -AsJob;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         
     }
