@@ -39,10 +39,10 @@ The cmdlet only works when the Storage account has already enabled blob versioni
 ## EXAMPLES
 
 ### Example 1: Migrates an existing Storage blob containers to enable immutable Storage with versioning.
-```
-PS C:\> $t = Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -asjob
+```powershell
+$t = Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -asjob
 
-PS C:\> $t | Wait-Job
+$t | Wait-Job
 ```
 
 This command migrates an existing Storage blob containers to enable immutable Storage with versioning.
