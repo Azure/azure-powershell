@@ -43,12 +43,20 @@ Register-Gallery $gallery $localRepoLocation
 Write-Host "Installing Az..."
 Install-Module -Name Az -Repository $gallery -Scope CurrentUser -AllowClobber -Force 
 
-$file = Get-ChildItem $localRepoLocation | Where-Object {$_.Name -like "ThreadJob*"}
-$installedModule = Get-Module -ListAVailable -Name ThreadJob
-if ($file -ne $null -and $installedModule -eq $null) {
-  Write-Host "Install ThreadJob..."
-  Install-Module -Name ThreadJob -Repository $gallery -Scope CurrentUser -AllowClobber -Force
+if ($PSVersionTable.PSEdition -eq 'Desktop') {
+  $installedModule = Get-Module -ListAVailable -Name ThreadJob
+  if ($installedModule -eq $null) {
+    try {
+      Install-Module -Name ThreadJob -Repository $gallery -Scope CurrentUser -AllowClobber -Force
+      Write-Host "Install ThreadJob successfully."
+    }
+    catch {
+      Write-Host "Fail to install ThreadJob from ${gallery}."
+      Write-Host $_
+    }
+  }
 }
+
       
 # Check version
 Import-Module -MinimumVersion '2.6.0' -Name 'Az' -Force
