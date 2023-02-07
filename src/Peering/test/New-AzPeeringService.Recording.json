@@ -1,0 +1,37 @@
+{
+  "New-AzPeeringService+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestPeeringService?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestPeeringService?api-version=2022-10-01",
+      "Content": "{\n  \"properties\": {\n    \"peeringServiceLocation\": \"Georgia\",\n    \"peeringServiceProvider\": \"MicrosoftEdge\",\n    \"providerPrimaryPeeringLocation\": \"Atlanta\"\n  },\n  \"location\": \"East US 2\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "188" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "3d8aeaf1-5247-4554-b34e-2732edcf0f4f" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "6f7c9691-62a2-41f5-82c7-e68f4d7578ed" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012528Z:6f7c9691-62a2-41f5-82c7-e68f4d7578ed" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "464" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Georgia\",\r\n    \"peeringServiceProvider\": \"MicrosoftEdge\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"providerPrimaryPeeringLocation\": \"Atlanta\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"name\": \"TestPeeringService\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestPeeringService\",\r\n  \"type\": \"Microsoft.Peering/peeringServices\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

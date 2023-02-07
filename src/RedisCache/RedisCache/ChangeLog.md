@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.7.1
+* Updated `Get-AzRedisCacheLink` and `New-AzRedisCacheLink` to print `PrimaryHostName`, `GeoReplicatedPrimaryHostName`, `ServerRole`, and `LinkedRedisCacheLocation`.
+
 ## Version 1.7.0
 * Added optional parameter `PreferredDataArchiveAuthMethod` in `Export-AzRedisCache`  
 * Added optional parameter `PreferredDataArchiveAuthMethod` in `Import-AzRedisCache`  

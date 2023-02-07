@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 
+## Version 2.11.2
+* Supported Web Account Manager on ARM64-based Windows systems. Fixed an issue where `Connect-AzAccount` failed with error "Unable to load DLL 'msalruntime_arm64'". [#20700]
+* Enabled credential to be found only by applicationId while tenant was not matched when accquire token. [#20484]
+* When Az.Accounts ran in parallel, the waiters were allowed to wait infinitely to avoid throw exception in automation enviroment. [#20455]
+
 ## Version 2.11.1
 * Fixed an issue where Az.Accounts cannot be imported correctly. [#20615]
 

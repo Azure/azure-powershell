@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug: Runbooks Name Pattern failures. 
 
 ## Version 1.9.0
 * Updated Example: Start-AzAutomationRunbook should pass ordered dictionary for parameters [#20408]

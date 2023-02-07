@@ -2610,5 +2610,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("UnsupportedCZRForCRRVaultToPrimaryRegion", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to RemoveRecoveryPoints and RetainRecoveryPointsAsPerPolicy parameters can't be used simultaneously.
+        /// </summary>
+        public static string CantRemoveAndRetainRPsSimultaneously
+        {
+            get
+            {
+                return ResourceManager.GetString("CantRemoveAndRetainRPsSimultaneously", resourceCulture);
+            }
+        }
     }
 }

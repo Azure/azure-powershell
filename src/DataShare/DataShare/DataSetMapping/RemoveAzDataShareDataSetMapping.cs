@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         [Parameter(
             Mandatory = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
-            HelpMessage = "Azure data share account name")]
+            HelpMessage = "The name of the Azure storage account that is the source of the data being shared.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
         public string AccountName { get; set; }
