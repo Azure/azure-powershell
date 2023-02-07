@@ -31,7 +31,9 @@ param(
     [string]$BaseBranch,
 
     [Parameter(Mandatory = $false)]
-    [string]$Description
+    [string]$Description,
+
+    [switch]$FailOnPRExisted = $false
 )
 
 $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $BotAccessToken"}
@@ -64,11 +66,17 @@ $Description
 * **SHOULD NOT** adjust version of module manually in pull request
 "@
 $RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
-$Uri = "https://api.github.com/repos/Azure/azure-powershell/pulls"
+
+$Uri = "https://api.github.com/repos/xtR0d666/azure-powershell/pulls"
 $PullRequests = Invoke-WebRequest -Uri $Uri -Headers $Headers | ConvertFrom-Json
 $ExistingPr = $PullRequests | Where-Object { $_.title -eq $Title }
+
+if ($ExistingPr -and $FailOnPRExisted) {
+    Write-Error "The PR named $Title already exists."
+    exit 1
+}
 if ($ExistingPr) {
-    Write-Host "The PR named $Title already exists"
+    Write-Host "The PR named $Title already exists. Skipping creation because FailOnPRExisted is set to $FailOnPRExisted."
     exit 0
 }
 Invoke-WebRequest -Uri $Uri -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
