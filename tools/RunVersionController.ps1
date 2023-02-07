@@ -280,20 +280,20 @@ function Bump-AzVersion
         $changeLog += "#### $updatedModule $($moduleMetadata.ModuleVersion)"
         $changeLog += $moduleReleaseNotes + "`n"
     }
-    
+
     $resolvedArtifactsOutputPath = (Resolve-Path $ArtifactsOutputPath).Path
     if(!(Test-Path $resolvedArtifactsOutputPath))
     {
         throw "Please check artifacts output path: $resolvedArtifactsOutputPath whether exists."
     }
-    
+
     # Update-ModuleManifest requires all required modules in Az.psd1 installed in local
     # Add artifacts as PSModulePath to skip installation
     if(!($env:PSModulePath.Split(";").Contains($resolvedArtifactsOutputPath)))
     {
         $env:PSModulePath += ";$resolvedArtifactsOutputPath"
     }
-    
+
     Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
     Update-ChangeLog -Content $changeLog -RootPath $rootPath
     return $versionBump
@@ -402,7 +402,7 @@ switch ($PSCmdlet.ParameterSetName)
     }
 
     {$PSItem.StartsWith("ReleaseAz")}
-    {        
+    {
         # clean the unnecessary SerializedCmdlets json file
         $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
         $ExpectJsonHashSet = @{}
@@ -429,7 +429,7 @@ switch ($PSCmdlet.ParameterSetName)
                 Write-Host "Module ${ModuleName} is not GA yet. The json file: ${JsonFile} is for reference"
             }
         }
-        
+
         Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
