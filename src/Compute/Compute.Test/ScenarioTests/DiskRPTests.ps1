@@ -1755,7 +1755,7 @@ function Test-DiskImportSecureUploadPreparedSecure
 
 	try
     {
-        $rgname = "adsandtld14";
+        $rgname = "adsandtld03";
         $loc = 'northeurope';
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
@@ -1810,7 +1810,7 @@ function Test-DiskImportSecureUploadPreparedSecure
         
         # StorageAccount for the TL VM scenario
         $stoname = 'sto' + $rgname;
-        $stotype = 'Premium_LRS'; # likely has to be Premium
+        $stotype = 'Standard_LRS';# try standard to get around unsupported header. #'Premium_LRS'; # likely has to be Premium
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
         $stoContext = $stoaccount.Context;
@@ -1826,6 +1826,11 @@ function Test-DiskImportSecureUploadPreparedSecure
         #$diskAccess = Get-AzDiskAccess -ResourceGroupName $rgname ;
         $osVhdUrl = "https://$($stoName).blob.core.windows.net/$containerName/$($disk.Name).vhd";
         $vmgsVhdUrl = "https://$($stoName).blob.core.windows.net/$containerName/$($disk.Name)-vmgs.vhd";
+        <#
+        azcopy: The term 'azcopy' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+        #>
+
         azcopy copy $gda.AccessSAS $osVhdUrl;
         azcopy copy $gda.SecurityDataAccessSAS $vmgsVhdUrl;
 
