@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicySnat", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicySNAT))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicySnat"), OutputType(typeof(PSAzureFirewallPolicySNAT))]
     public class NewAzureFirewallPolicySNATCommand : NetworkBaseCmdlet
     {
 
