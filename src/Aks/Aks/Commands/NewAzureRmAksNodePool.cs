@@ -78,7 +78,8 @@ namespace Microsoft.Azure.Commands.Aks
         public string NodePublicIPPrefixID { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.")]
-        [PSArgumentCompleter("Low", "Regular")]
+
+        [PSArgumentCompleter("Low", "Regular", "Spot")]
         public string ScaleSetPriority { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
@@ -96,6 +97,36 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "Create node pool even if it already exists")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable host based OS and data drive")]
+        public SwitchParameter EnableEncryptionAtHost { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "whether to enable UltraSSD")]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The OS configuration of Linux agent nodes.")]
+        public LinuxOSConfig LinuxOSConfig { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The Kubelet configuration on the agent pool nodes.")]
+        public KubeletConfig KubeletConfig { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
+        public string MaxSurge { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The ID for Proximity Placement Group.")]
+        public string PPG { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand.")]
+        public double? SpotMaxPrice { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use a FIPS-enabled OS")]
+        public SwitchParameter EnableFIPS { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The GpuInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.")]
+        [PSArgumentCompleter("MIG1g", "MIG2g", "MIG3g", "MIG4g", "MIG7g")]
+        public string GpuInstanceProfile { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -213,6 +244,42 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.NodeTaint))
             {
                 agentPool.NodeTaints = NodeTaint;
+            }
+            if (EnableEncryptionAtHost.IsPresent)
+            {
+                agentPool.EnableEncryptionAtHost = EnableEncryptionAtHost.ToBool();
+            }
+            if (EnableUltraSSD.IsPresent)
+            {
+                agentPool.EnableUltraSSD = EnableUltraSSD.ToBool(); 
+            }
+            if (this.IsParameterBound(c => c.LinuxOSConfig))
+            {
+                agentPool.LinuxOSConfig = LinuxOSConfig;
+            }
+            if (this.IsParameterBound(c => c.KubeletConfig))
+            {
+                agentPool.KubeletConfig = KubeletConfig;
+            }
+            if (this.IsParameterBound(c => c.MaxSurge))
+            {
+                agentPool.UpgradeSettings = new AgentPoolUpgradeSettings(MaxSurge);
+            }
+            if (this.IsParameterBound(c => c.PPG))
+            {
+                agentPool.ProximityPlacementGroupID = PPG;
+            }
+            if (this.IsParameterBound(c => c.SpotMaxPrice))
+            {
+                agentPool.SpotMaxPrice = SpotMaxPrice;
+            }
+            if (EnableFIPS.IsPresent)
+            {
+                agentPool.EnableFIPS = EnableFIPS.ToBool();
+            }
+            if (this.IsParameterBound(c => c.GpuInstanceProfile))
+            {
+                agentPool.GpuInstanceProfile = GpuInstanceProfile;
             }
 
             return agentPool;

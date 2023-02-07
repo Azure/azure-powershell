@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+*Return ListBlobProperties in blob list result
+    - `Get-AzStorageBlob`
+*Output AllowedCopyScope in get account result
+    - `Get-AzStorageAccount`
 
 ## Version 5.2.2
 * Supported Planned and Unplanned types in Storage account failover type 

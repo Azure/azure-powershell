@@ -221,7 +221,6 @@ namespace Microsoft.Azure.Commands.Compute
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
-            "Win2008R2SP1",
             "Win10")]
         [Alias("ImageName")]
         public string Image { get; set; } = "Win2016Datacenter";
