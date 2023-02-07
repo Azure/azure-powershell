@@ -297,9 +297,10 @@ function New-AzConnectedKubernetes {
         #EndRegion
 
         #Region get release namespace
+        Set-Variable ReleaseInstallNamespace -option Constant -value "azure-arc-release"
         $ReleaseNamespace = $null
         try {
-            $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext | ConvertFrom-Json).namespace
+            $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace | ConvertFrom-Json).namespace
         } catch {
             Write-Error "Fail to find the namespace for azure-arc."
         }
@@ -477,9 +478,8 @@ function New-AzConnectedKubernetes {
         $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
-        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
-
-	    helm upgrade --install azure-arc $ChartPath --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure (-split $options)
+        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id        
+	    helm upgrade --install azure-arc $ChartPath --namespace $ReleaseInstallNamespace --create-namespace --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure (-split $options)
         Return $Response
     }
 }
