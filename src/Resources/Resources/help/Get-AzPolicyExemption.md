@@ -41,7 +41,7 @@ Identify a policy exemption to get by name and scope or by ID.
 Get-AzPolicyExemption
 ```
 
-This command gets all the policy exemptions.
+This command gets all the policy exemptions in the current subscription. If you need to list all the exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes you need to pass the `-IncludeDescendent` parameter.
 
 ### Example 2: Get a specific policy exemption
 ```powershell

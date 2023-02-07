@@ -399,7 +399,7 @@ class ModuleInfo
 function Remove-AzureRM {
     process {
         try {
-            $azureModuleNames = (Get-InstalledModule -Name Azure* -ErrorAction Stop).Name | Where-Object {$_ -match "Azure(\.[a-zA-Z0-9]+)?" -or $_ -match "AzureRM(\.[a-zA-Z0-9]+)?"}
+            $azureModuleNames = (Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name Azure* -ErrorAction Stop).Name | Where-Object {$_ -match "Azure(\.[a-zA-Z0-9]+)?" -or $_ -match "AzureRM(\.[a-zA-Z0-9]+)?"}
             foreach ($moduleName in $azureModuleNames) {
                 PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction Continue
             }

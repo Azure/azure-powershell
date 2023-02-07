@@ -68,7 +68,7 @@ INPUTOBJECT <IConfluentIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Resource group name
   [SubscriptionId <String>]: Microsoft Azure subscription id
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/get-azconfluentorganization
+https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentorganization
 #>
 function Get-AzConfluentOrganization {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResource])]

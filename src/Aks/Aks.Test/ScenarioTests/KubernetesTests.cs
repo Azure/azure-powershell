@@ -184,5 +184,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AadProfile");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHostGroupID()
+        {
+            TestRunner.RunTestScript("Test-HostGroupID");
+        }
     }
 }

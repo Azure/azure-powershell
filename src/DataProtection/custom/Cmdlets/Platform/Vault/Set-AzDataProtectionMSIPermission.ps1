@@ -5,7 +5,7 @@
 
     param(
         [Parameter(Mandatory, HelpMessage='Backup instance request object which will be used to configure backup')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupInstanceResource]
         ${BackupInstance},
         
         [Parameter(Mandatory=$false, HelpMessage='ID of the keyvault')]
@@ -41,7 +41,7 @@
           $ResourceArray = $DataSourceId.Split("/")
           $ResourceRG = GetResourceGroupIdFromArmId -Id $DataSourceId
           $SubscriptionName = GetSubscriptionNameFromArmId -Id $DataSourceId
-          $vault = Get-AzDataProtectionBackupVault -VaultName $VaultName -ResourceGroupName $VaultResourceGroup -SubscriptionId $ResourceArray[2]
+          $vault = Az.DataProtection\Get-AzDataProtectionBackupVault -VaultName $VaultName -ResourceGroupName $VaultResourceGroup -SubscriptionId $ResourceArray[2]
           
           $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.IdentityPrincipalId
 
