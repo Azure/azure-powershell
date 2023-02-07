@@ -210,7 +210,7 @@ New-AzStorageContext -SasToken $SasToken -BlobEndpoint "https://myaccountname.bl
 The first command generates an SAS token by using the New-AzStorageContainerSASToken cmdlet for the container named MyContainer, and then stores that token in the $SasToken variable.
 The second command creates a context that uses the SAS token and a specified blob endpoint, table endpoint, file endpoint, and queue endpoint. 
 
-### Example 14: Create ea context by using the OAuth Authentication with a specified blob endpoint
+### Example 14: Create a context by using the OAuth Authentication with a specified blob endpoint
 ```powershell
 New-AzStorageContext -UseConnectedAccount -BlobEndpoint  "https://myaccountname.blob.core.windows.net/"
 ```
