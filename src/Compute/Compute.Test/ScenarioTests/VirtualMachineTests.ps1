@@ -6543,6 +6543,42 @@ function Test-ConfVMSetAzDiskEncryptionSetConfig
 
 <#
 .SYNOPSIS
+Test New-AzVM with Edgezone using Simple Parameter set
+#>
+function Test-VirtualMachineEdgeZoneSimpleParameterSet
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmname = "v" + $rgname;
+        $edgezone = "microsoftmiami1";
+        $ConfirmPreference = "Low";
+
+        $user = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $domainNameLabel = "d" + $rgname;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -edgezone $edgezone -credential $cred -DomainNameLabel $domainNameLabel -Confirm:$false;
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-AreEqual $vm.ExtendedLocation.Name $EdgeZone;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $ResourceGroup;
+    }
+}
+
+<#
+.SYNOPSIS
 Test EncryptionAtHost Virtual Machine Default Param Set
 #>
 function Test-diskfileMAkeVMSuccess
@@ -6651,12 +6687,12 @@ function Test-diskfileMAkeVMSuccess
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         <#
         New-AzVM: The specified platform image is not supported for creating a Virtual Machine with unmanaged disks. Please refer to the disallowed VM disk types at https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages/get#vmdisktypes. 
-ErrorCode: OperationNotAllowed
-ErrorMessage: The specified platform image is not supported for creating a Virtual Machine with unmanaged disks. Please refer to the disallowed VM disk types at https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages/get#vmdisktypes. 
-ErrorTarget: 
-StatusCode: 409
-ReasonPhrase: Conflict
-OperationID : 567134f2-6928-470e-bec4-defe96b87be5
+        ErrorCode: OperationNotAllowed
+        ErrorMessage: The specified platform image is not supported for creating a Virtual Machine with unmanaged disks. Please refer to the disallowed VM disk types at https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages/get#vmdisktypes. 
+        ErrorTarget: 
+        StatusCode: 409
+        ReasonPhrase: Conflict
+        OperationID : 567134f2-6928-470e-bec4-defe96b87be5
         #>
     }
     finally
@@ -6776,12 +6812,12 @@ function Test-diskfile
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         <#
         New-AzVM: The specified platform image is not supported for creating a Virtual Machine with unmanaged disks. Please refer to the disallowed VM disk types at https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages/get#vmdisktypes. 
-ErrorCode: OperationNotAllowed
-ErrorMessage: The specified platform image is not supported for creating a Virtual Machine with unmanaged disks. Please refer to the disallowed VM disk types at https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages/get#vmdisktypes. 
-ErrorTarget: 
-StatusCode: 409
-ReasonPhrase: Conflict
-OperationID : 567134f2-6928-470e-bec4-defe96b87be5
+        ErrorCode: OperationNotAllowed
+        ErrorMessage: The specified platform image is not supported for creating a Virtual Machine with unmanaged disks. Please refer to the disallowed VM disk types at https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages/get#vmdisktypes. 
+        ErrorTarget: 
+        StatusCode: 409
+        ReasonPhrase: Conflict
+        OperationID : 567134f2-6928-470e-bec4-defe96b87be5
         #>
     }
     finally
@@ -6790,40 +6826,57 @@ OperationID : 567134f2-6928-470e-bec4-defe96b87be5
         Clean-ResourceGroup $rgname
     }
 }
-}
 
 <#
 .SYNOPSIS
-Test New-AzVM with Edgezone using Simple Parameter set
+Test EncryptionAtHost Virtual Machine Default Param Set
 #>
-function Test-VirtualMachineEdgeZoneSimpleParameterSet
-{
-    $rgname = Get-ComputeTestResourceName;
-    $loc = "eastus2";
+function Test-diskfileUPload
+    # Setup
+    $rgname = Get-ComputeTestResourceName
 
     try
     {
+        # Common
+        $rgname = "adsanddiskf1";
+        $loc = "eastus";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $vmname = "v" + $rgname;
-        $edgezone = "microsoftmiami1";
-        $ConfirmPreference = "Low";
+        # VM Profile & Hardware
+        $vmname = 'vm' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
 
-        $user = Get-ComputeTestResourceName;
-        $password = Get-PasswordForVM;
+        $vnetname = "vnet" + $rgname;
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $OSDiskName = $vmname + "-osdisk";
+        $NICName = $vmname+ "-nic";
+        $NSGName = $vmname + "-NSG";
+        $OSDiskSizeinGB = 128;
+        $VMSize = "Standard_DS2_v2";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2019-datacenter-smalldisk-g2";
+        #$p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+        
+        # OS & Image
+        $user = "usertest";
+        $password = "Testing1234567";
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-        $domainNameLabel = "d" + $rgname;
+        $computerName = 'c' + $rgname;
 
-        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -edgezone $edgezone -credential $cred -DomainNameLabel $domainNameLabel -Confirm:$false;
-
-        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
-
-        Assert-AreEqual $vm.ExtendedLocation.Name $EdgeZone;
+        # Virtual Machine
+        $diskFile = "C:\Users\adsandor\Downloads\abcdOrig";
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -DomainNameLabel $domainNameLabel -DiskFile $diskFile -AsJob;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $ResourceGroup;
+        Clean-ResourceGroup $rgname
     }
 }

@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Commands.Compute
             // Information message if the default Size value is used. 
             if (!this.IsParameterBound(c => c.Size))
             {
-                WriteInformation("No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.", new string[] { "PSHOST" });
+                //WriteInformation("No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.", new string[] { "PSHOST" });
             }
             if (DiskFile != null)
             {
