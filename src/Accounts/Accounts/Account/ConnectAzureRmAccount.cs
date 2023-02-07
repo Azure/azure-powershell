@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Commands.Profile
                            if (IsUsingInteractiveAuthentication())
                            {
                                //Display only if user is using Interactive auth
-                               WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
+                               Host.UI.WriteLine(Resources.SuggestToUseDeviceCodeAuth);
                            }
                            WriteDebug(ex.ToString());
                            throw;
