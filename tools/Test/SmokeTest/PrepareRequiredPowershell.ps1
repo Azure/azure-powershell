@@ -45,7 +45,7 @@ function Install-PowerShell {
   # Workaround is from https://github.com/PowerShell/PowerShell/issues/19055 
   Write-Host $requiredPsVersion, $AgentOS
 
-  if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "MacOS*"){
+  if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "Darwin"){
     Write-Host $AgentOS
     copy-item $PSHOME/Microsoft.ApplicationInsights.dll $HOME/.dotnet/tools/.store/powershell/$requiredPsVersion/powershell/$requiredPsVersion/tools/net6.0/any/unix
   }
