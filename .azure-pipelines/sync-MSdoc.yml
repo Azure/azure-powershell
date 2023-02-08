@@ -50,6 +50,6 @@ jobs:
       <!-- Please add a brief description of the changes made in this PR. If you have an ongoing or finished cmdlet design, please paste the link below. -->
       "@
       $RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
-      Invoke-WebRequest -Uri https://api.github.com/repos/MicrosoftDocs/azure-docs-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
+      Invoke-WebRequest -Uri https://api.github.com/repos/NoriZC/azure-docs-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
 
     displayName: Create PR to main branch
