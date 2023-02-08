@@ -14,12 +14,12 @@ param(
 
 ls
 #The location of repos
-$WorkSpace = Join-Path $PSScriptRoot "../../"
+$WorkSpace = (Resolve-Path (Join-Path $PSScriptRoot "../../")).Path
 Write-Host "WorkSpace Location:" $WorkSpace
 
 $RepoCloneLink = "https://github.com/$OrgName/$RepoName.git"
 $Config = Get-Content (Join-Path $PSScriptRoot "../.azure-pipelines/SyncDocsConfig.json") | ConvertFrom-Json
-$TmpFolder = New-Item -ItemType Directory -Path tmp
+$TmpFolder = Resolve-Path (New-Item -ItemType Directory -Path tmp)
 
 foreach ($SyncPath in $Config.SyncPath)
 {
