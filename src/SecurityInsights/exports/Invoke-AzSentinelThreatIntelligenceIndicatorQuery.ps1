@@ -33,7 +33,7 @@ SORTBY <IThreatIntelligenceSortingCriteria[]>: Columns to sort by and sorting or
   [ItemKey <String>]: Column name
   [SortOrder <ThreatIntelligenceSortingCriteriaEnum?>]: Sorting order (ascending/descending/unsorted).
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/invoke-azsentinelthreatintelligenceindicatorquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/invoke-azsentinelthreatintelligenceindicatorquery
 #>
 function Invoke-AzSentinelThreatIntelligenceIndicatorQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation])]

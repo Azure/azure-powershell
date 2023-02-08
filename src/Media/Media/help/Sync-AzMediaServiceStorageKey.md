@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: F395E192-80FA-421D-A389-8C5C0C2267E4
-online version: https://docs.microsoft.com/powershell/module/az.media/sync-azmediaservicestoragekey
+online version: https://learn.microsoft.com/powershell/module/az.media/sync-azmediaservicestoragekey
 schema: 2.0.0
 ---
 

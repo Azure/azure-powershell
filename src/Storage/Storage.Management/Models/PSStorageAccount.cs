@@ -163,10 +163,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string PublicNetworkAccess { get; set; }
 
+        public string AllowedCopyScope { get; set; }
+
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
         public PSStorageAccountSkuConversionStatus StorageAccountSkuConversionStatus { get; set; }
 
-        public string AllowedCopyScope { get; set; }
         public string DnsEndpointType { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)

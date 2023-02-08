@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ContainerRegistry
 Module Guid: b3ca459c-feb9-41cc-a954-46222505acb3
-Download Help Link: https://docs.microsoft.com/powershell/module/az.containerregistry
+Download Help Link: https://learn.microsoft.com/powershell/module/az.containerregistry
 Help Version: 1.0.0.0
 Locale: en-US
 ---

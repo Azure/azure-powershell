@@ -28,7 +28,7 @@ eastus   confluentorg-02-pwsh Microsoft.Confluent/organizations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResource
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/new-azconfluentorganization
+https://learn.microsoft.com/powershell/module/az.confluent/new-azconfluentorganization
 #>
 function New-AzConfluentOrganization {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResource])]

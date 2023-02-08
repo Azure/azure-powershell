@@ -23,7 +23,7 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VmHostPlacementPolicyProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareVmHostPlacementPolicyPropertiesObject
+https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareVmHostPlacementPolicyPropertiesObject
 #>
 function New-AzVMwareVmHostPlacementPolicyPropertiesObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VmHostPlacementPolicyProperties')]

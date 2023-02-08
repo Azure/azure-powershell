@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/enable-azstoragestaticwebsite
+online version: https://learn.microsoft.com/powershell/module/az.storage/enable-azstoragestaticwebsite
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Enable-AzStorageStaticWebsite** cmdlet enables static website for the Azur
 ## EXAMPLES
 
 ### Example 1: Enable static website for the Azure Storage account
-```
-C:\PS>Enable-AzStorageStaticWebsite -IndexDocument $indexdoc -ErrorDocument404Path $errordoc
+```powershell
+Enable-AzStorageStaticWebsite -IndexDocument $indexdoc -ErrorDocument404Path $errordoc
 ```
 
 This command enables static website for the Azure Storage account.

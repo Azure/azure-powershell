@@ -20,6 +20,17 @@
 
 ## Upcoming Release
 
+## Version 4.4.1
+* Removed default value for time window for autoscale profile [#20660]
+  * `Get-AzAutoscaleSetting`
+  * `New-AzAutoscaleSetting`
+
+## Version 4.4.0
+* Fixed bug for `Remove-AzDataCollectionRuleAssociation` [#20207]
+* Added support for test notifications cmdlets
+  * `Test-AzActionGroup`
+* Fixed start time parameter description of `Get-AzActivityLog` [#20409]
+
 ## Version 4.3.0
 * Fixed bug for `New-AzActivityLogAlert` and `Update-AzActivityLogAlert` [#19927]
 

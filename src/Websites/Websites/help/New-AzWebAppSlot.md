@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: D23BBF34-80C0-48B1-8E1C-6F345DEC61AD
-online version: https://docs.microsoft.com/powershell/module/az.websites/new-azwebappslot
+online version: https://learn.microsoft.com/powershell/module/az.websites/new-azwebappslot
 schema: 2.0.0
 ---
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppSettingsOverrides
-App Settings Overrides Hashtable
+App Settings Overrides Hashtable. It works only with SourceWebApp parameter.
 
 ```yaml
 Type: System.Collections.Hashtable

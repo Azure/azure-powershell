@@ -421,7 +421,7 @@
 ### `Get-AzNetAppFilesVault`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - The output type is changing from the existing type :'Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy' to the new type :'PSNetAppFilesVault'
+  - The cmdlet is being deprecated. There will be no replacement for it.
 
 ### `New-AzNetAppFilesBackupPolicy`
 
@@ -1204,6 +1204,13 @@
   - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel' is changing
   - The following properties in the output type are being deprecated : 'BackupStorageRedundancy'
   - The following properties are being added to the output type : 'CurrentBackupStorageRedundancy' 'RequestedBackupStorageRedundancy'
+
+## Az.Storage
+
+### `New-AzStorageAccount`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Default value of AllowBlobPublicAccess will be changed from True to False in a future release. When AllowBlobPublicAccess is False on a storage account, it is not permitted to configure container ACLs to allow anonymous access to blobs within the storage account.
 
 ## Az.StorageSync
 

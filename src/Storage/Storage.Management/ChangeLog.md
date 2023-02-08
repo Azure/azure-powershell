@@ -19,11 +19,19 @@
 -->
 ## Upcoming Release
 
-## Version 5.2.2
-* Supported Planned and Unplanned types in Storage account failover type 
-    - `Invoke-AzStorageAccountFailover`
-* Supported TierToCold and TierToHot in Storage account management policy 
-    - `Add-AzStorageAccountManagementPolicyAction`
+## Version 5.4.0
+* Added a warning message for the upcoming breaking change when creating a Storage account
+    - `New-AzStorageAccount`
+* Removed the ValidateSet of StandardBlobTier parameter
+    - `Copy-AzStorageBlob`
+    - `Set-AzStorageBlobContent` 
+    - `Start-AzStorageBlobCopy`
+
+## Version 5.3.0
+* Returned ListBlobProperties in blob list result
+    - `Get-AzStorageBlob`
+* Returned AllowedCopyScope in get account result
+    - `Get-AzStorageAccount`
 
 ## Version 5.2.0
 * Supported MaxPageSize, Include, and Filter parameters for listing encryption scopes 

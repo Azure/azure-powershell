@@ -59,7 +59,7 @@ RETURNADDRESSSHIPPINGADDRESS <IShippingAddress>: Shipping details for the addres
   [StreetAddress3 <String>]: Street Address line 3.
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/invoke-azedgeorderreturnorderitem
+https://learn.microsoft.com/powershell/module/az.edgeorder/invoke-azedgeorderreturnorderitem
 #>
 function Invoke-AzEdgeOrderReturnOrderItem {
 [OutputType([System.Boolean])]

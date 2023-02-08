@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkmanagermanagementgroupconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkmanagermanagementgroupconnection
 schema: 2.0.0
 ---
 

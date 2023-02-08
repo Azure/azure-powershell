@@ -29,7 +29,7 @@ Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1 -Integrat
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/register-azdatamigrationintegrationruntime
+https://learn.microsoft.com/powershell/module/az.datamigration/register-azdatamigrationintegrationruntime
 #>
 function Register-AzDataMigrationIntegrationRuntime {
 [OutputType([System.Boolean])]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstanceusage
+online version: https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstanceusage
 schema: 2.0.0
 ---
 

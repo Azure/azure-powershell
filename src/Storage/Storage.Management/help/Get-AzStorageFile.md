@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 38207027-FD76-45EE-8817-88599735C0B0
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefile
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstoragefile
 schema: 2.0.0
 ---
 
@@ -43,16 +43,16 @@ You can use the **IsDirectory** property to distinguish between folders and file
 ## EXAMPLES
 
 ### Example 1: List directories in a share
-```
-PS C:\>Get-AzStorageFile -ShareName "ContosoShare06" | Where-Object {$_.GetType().Name -eq "AzureStorageFileDirectory"}
+```powershell
+Get-AzStorageFile -ShareName "ContosoShare06" | Where-Object {$_.GetType().Name -eq "AzureStorageFileDirectory"}
 ```
 
 This command lists only the directories in the share ContosoShare06.
 It first retrieves both files and directories, passes them to the **where** operator by using the pipeline operator, then discards any objects whose type is not "AzureStorageFileDirectory".
 
 ### Example 2: List a File Directory
-```
-PS C:\> Get-AzStorageFile -ShareName "ContosoShare06" -Path "ContosoWorkingFolder" | Get-AzStorageFile
+```powershell
+Get-AzStorageFile -ShareName "ContosoShare06" -Path "ContosoWorkingFolder" | Get-AzStorageFile
 ```
 
 This command lists the files and folders in the directory ContosoWorkingFolder under the share ContosoShare06.

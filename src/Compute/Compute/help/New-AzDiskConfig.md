@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azdiskconfig
 schema: 2.0.0
 ---
 
@@ -253,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskMBpsReadOnly
-"description": "The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
+The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
 
 ```yaml
 Type: System.Int64

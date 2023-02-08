@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 26E06BA3-C550-40A5-B8E3-FEC8E9BF3867
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragecorsrule
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragecorsrule
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ The types of storage services for this cmdlet are Blob, Table, Queue, and File.
 ## EXAMPLES
 
 ### Example 1: Remove CORS rules for the blob service
-```
-PS C:\>Remove-AzStorageCORSRule -ServiceType Blob
+```powershell
+Remove-AzStorageCORSRule -ServiceType Blob
 ```
 
 This command removes CORS rules for the Blob service type.

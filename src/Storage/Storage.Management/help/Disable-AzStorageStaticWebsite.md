@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/disable-azstoragestaticwebsite
+online version: https://learn.microsoft.com/powershell/module/az.storage/disable-azstoragestaticwebsite
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Disable-AzStorageStaticWebsite** cmdlet disables static website for the Az
 ## EXAMPLES
 
 ### Example 1: Disable static website for a Azure Storage account
-```
-C:\PS>Disable-AzStorageStaticWebsite
+```powershell
+Disable-AzStorageStaticWebsite
 ```
 
 This command disables static website for a Azure Storage account.

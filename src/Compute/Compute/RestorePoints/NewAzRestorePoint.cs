@@ -34,20 +34,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource group name this resource belongs to")]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Name of the restore point collection this restore point is part of")]
         public string RestorePointCollectionName{ get; set; }
 
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the restore point")]
         [Alias("RestorePointName")]
         public string Name { get; set; }
 
@@ -55,21 +58,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 3,
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = "Set the region of the Restore Point")]
+            HelpMessage = "Set the region of the restore point")]
         public string Location { get; set; }
 
 
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
-            HelpMessage = "ARM Id of the source Restore Point")]
+            HelpMessage = "ARM Id of the source restore point")]
         public string RestorePointId { get; set; }
 
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipeline = true)]
+            ValueFromPipeline = true,
+            HelpMessage = "List of disk resource Id values that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.")]
         public string[] DisksToExclude { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "ConsistencyMode of the restore point. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.")]
+        [PSArgumentCompleter("CrashConsistent", "FileSystemConsistent", "ApplicationConsistent")]
+        public string ConsistencyMode { get; set; }
 
 
         public override void ExecuteCmdlet()
@@ -101,6 +113,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                         restorePoint.ExcludeDisks = disksExclude;
                     }
+
+                    restorePoint.ConsistencyMode = this.ConsistencyMode;
 
                     var result = RestorePointClient.Create(resourceGroup, restorePointCollectionName, restorePointName, restorePoint);
                         

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrprotectioncontainermapping
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrprotectioncontainermapping
 schema: 2.0.0
 ---
 
@@ -48,7 +48,7 @@ Start the operation to disable enable auto update for container.
 ## PARAMETERS
 
 ### -AutomationAccountId
-Specifies the automation accountId used for auto udpate.
+Specifies the automation accountId used for auto update.
 
 ```yaml
 Type: System.String

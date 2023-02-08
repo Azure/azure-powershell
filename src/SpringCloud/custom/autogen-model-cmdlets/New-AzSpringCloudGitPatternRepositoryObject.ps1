@@ -23,7 +23,7 @@ Create an in-memory object for GitPatternRepository.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.GitPatternRepository
 .Link
-https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudGitPatternRepositoryObject
+https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudGitPatternRepositoryObject
 #>
 function New-AzSpringCloudGitPatternRepositoryObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.GitPatternRepository')]

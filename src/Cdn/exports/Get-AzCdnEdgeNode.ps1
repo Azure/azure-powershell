@@ -25,7 +25,7 @@ Get-AzCdnEdgeNode
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEdgeNode
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnedgenode
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgenode
 #>
 function Get-AzCdnEdgeNode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEdgeNode])]

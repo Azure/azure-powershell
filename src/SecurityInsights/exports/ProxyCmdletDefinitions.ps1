@@ -55,7 +55,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelalertruleaction
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelalertruleaction
 #>
 function Get-AzSentinelAlertRuleAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse])]
@@ -275,7 +275,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelalertruletemplate
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelalertruletemplate
 #>
 function Get-AzSentinelAlertRuleTemplate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAlertRuleTemplate])]
@@ -491,7 +491,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelalertrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelalertrule
 #>
 function Get-AzSentinelAlertRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAlertRule])]
@@ -703,7 +703,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelautomationrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelautomationrule
 #>
 function Get-AzSentinelAutomationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule])]
@@ -919,7 +919,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelbookmarkrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelbookmarkrelation
 #>
 function Get-AzSentinelBookmarkRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]
@@ -1167,7 +1167,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelbookmark
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelbookmark
 #>
 function Get-AzSentinelBookmark {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark])]
@@ -1380,7 +1380,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentineldataconnector
 #>
 function Get-AzSentinelDataConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IDataConnector])]
@@ -1556,9 +1556,9 @@ Get geodata for a single IP address
 .Description
 Get geodata for a single IP address
 .Example
- Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -Domain "microsoft.com
+ Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -Domain "microsoft.com"
 .Example
- Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" IPAddress "1.1.1.1"
+ Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -IPAddress "1.1.1.1"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -1595,7 +1595,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelenrichment
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelenrichment
 #>
 function Get-AzSentinelEnrichment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEnrichmentIPGeodata], [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEnrichmentDomainWhois])]
@@ -1773,7 +1773,7 @@ Get Insights and Activities for an entity.
 .Description
 Get Insights and Activities for an entity.
 .Example
- Get-AzSentinelEntityAcivity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
+ Get-AzSentinelEntityActivity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
 .Example
  $Entity = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "4ebb68f3-a435-fac0-d3b6-94712d246f0a"
  $Entity | Get-AzSentinelEntityActivity
@@ -1781,7 +1781,7 @@ Get Insights and Activities for an entity.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryItem
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityactivity
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityactivity
 #>
 function Get-AzSentinelEntityActivity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryItem])]
@@ -1944,19 +1944,19 @@ Execute Insights for an entity.
 .Description
 Execute Insights for an entity.
 .Example
- $startTime = (get-date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
- $endTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ $startTime = (Get-Date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ $endTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  Get-AzSentinelEntityInsight -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -EndTime $endTime -StartTime $startTime
 .Example
- $startTime = (get-date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
- $endTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ $startTime = (Get-Date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ $endTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  $Entity = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "8d036a2d-f37d-e936-6cca-4e172687cb79"
  $Entity | Get-AzSentinelEntityInsight -EndTime $endTime -StartTime $startTime
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityGetInsightsResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityinsight
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityinsight
 #>
 function Get-AzSentinelEntityInsight {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityGetInsightsResponse])]
@@ -2186,7 +2186,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityquerytemplate
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityquerytemplate
 #>
 function Get-AzSentinelEntityQueryTemplate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryTemplate])]
@@ -2408,7 +2408,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityquery
 #>
 function Get-AzSentinelEntityQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQuery])]
@@ -2592,7 +2592,7 @@ Gets an entity relation.
 .Example
  Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
 .Example
- Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -Id "myEntityRelationId"
+ Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -RelationName "myEntityRelationId"
 .Example
  $EntityRelations = Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
  $EntityRelations[0] | Get-AzSentinelEntityRelation
@@ -2630,7 +2630,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityrelation
 #>
 function Get-AzSentinelEntityRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]
@@ -2841,14 +2841,14 @@ Timeline for an entity.
 .Description
 Timeline for an entity.
 .Example
- $startTime = (get-date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
- $endTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
- Get-AzSentinelEntityTime -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -EndTime $endTime -StartTime $startTime
+ $startTime = (Get-Date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ $endTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ Get-AzSentinelEntityTimeline -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -EndTime $endTime -StartTime $startTime
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityTimelineResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentitytimeline
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentitytimeline
 #>
 function Get-AzSentinelEntityTimeline {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityTimelineResponse])]
@@ -3079,7 +3079,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentity
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentity
 #>
 function Get-AzSentinelEntity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntity])]
@@ -3260,7 +3260,7 @@ Gets all incident alerts.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISecurityAlert
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentalert
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentalert
 #>
 function Get-AzSentinelIncidentAlert {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISecurityAlert])]
@@ -3428,7 +3428,7 @@ Gets all incident bookmarks.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IHuntingBookmark
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentbookmark
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentbookmark
 #>
 function Get-AzSentinelIncidentBookmark {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IHuntingBookmark])]
@@ -3628,7 +3628,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentcomment
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentcomment
 #>
 function Get-AzSentinelIncidentComment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment])]
@@ -3845,7 +3845,7 @@ Gets all incident related entities.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentEntitiesResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidententity
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidententity
 #>
 function Get-AzSentinelIncidentEntity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentEntitiesResponse])]
@@ -4010,7 +4010,7 @@ Gets an incident relation.
 .Example
  Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
 .Example
- Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Id "myIncidentRelationId"
+ Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId" -RelationName "myIncidentRelationId"
 .Example
  $Incidentrelations = Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
  $Incidentrelations[0] | Get-AzSentinelIncidentRelation
@@ -4048,7 +4048,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentrelation
 #>
 function Get-AzSentinelIncidentRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]
@@ -4296,7 +4296,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincident
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincident
 #>
 function Get-AzSentinelIncident {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident])]
@@ -4536,7 +4536,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelmetadata
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelmetadata
 #>
 function Get-AzSentinelMetadata {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IMetadataModel])]
@@ -4777,7 +4777,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelonboardingstate
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelonboardingstate
 #>
 function Get-AzSentinelOnboardingState {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState])]
@@ -4994,7 +4994,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelsetting
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelsetting
 #>
 function Get-AzSentinelSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISettings])]
@@ -5175,7 +5175,7 @@ Get threat intelligence indicators metrics (Indicators counts by Type, Threat Ty
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceMetrics
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelthreatintelligenceindicatormetric
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelthreatintelligenceindicatormetric
 #>
 function Get-AzSentinelThreatIntelligenceIndicatorMetric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceMetrics])]
@@ -5371,7 +5371,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelthreatintelligenceindicator
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelthreatintelligenceindicator
 #>
 function Get-AzSentinelThreatIntelligenceIndicator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation])]
@@ -5588,7 +5588,7 @@ SORTBY <IThreatIntelligenceSortingCriteria[]>: Columns to sort by and sorting or
   [ItemKey <String>]: Column name
   [SortOrder <ThreatIntelligenceSortingCriteriaEnum?>]: Sorting order (ascending/descending/unsorted).
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/invoke-azsentinelthreatintelligenceindicatorquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/invoke-azsentinelthreatintelligenceindicatorquery
 #>
 function Invoke-AzSentinelThreatIntelligenceIndicatorQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation])]
@@ -5837,7 +5837,7 @@ New-AzSentinelAlertRuleAction -ResourceGroupName "mySentinelResourceGroupName" -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertruleaction
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertruleaction
 #>
 function New-AzSentinelAlertRuleAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse])]
@@ -6075,7 +6075,7 @@ AUTOMATIONRULE <IAutomationRule>: Represents an automation rule.
   [TriggeringLogicExpirationTimeUtc <DateTime?>]: Determines when the automation rule should automatically expire and be disabled.
   [TriggeringLogicIsEnabled <Boolean?>]: Determines whether the automation rule is enabled or disabled.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelautomationrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelautomationrule
 #>
 function New-AzSentinelAutomationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule])]
@@ -6312,7 +6312,7 @@ RELATION <IRelation>: Represents a relation between two resources
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [RelatedResourceId <String>]: The resource ID of the related resource
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelbookmarkrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelbookmarkrelation
 #>
 function New-AzSentinelBookmarkRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]
@@ -6537,7 +6537,7 @@ BOOKMARK <IBookmark>: Represents a bookmark in Azure Security Insights.
   [Updated <DateTime?>]: The last time the bookmark was updated
   [UpdatedByObjectId <String>]: The object id of the user.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelbookmark
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelbookmark
 #>
 function New-AzSentinelBookmark {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark])]
@@ -6787,7 +6787,7 @@ Creates or updates the incident comment.
 .Description
 Creates or updates the incident comment.
 .Example
- New-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Message "IncidentCommentGoesHere"
+ New-AzSentinelIncidentComment -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Message "IncidentCommentGoesHere"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
@@ -6812,7 +6812,7 @@ INCIDENTCOMMENT <IIncidentComment>: Represents an incident comment
   [AuthorUserPrincipalName <String>]: The user principal name of the client.
   [Message <String>]: The comment message
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentcomment
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentcomment
 #>
 function New-AzSentinelIncidentComment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment])]
@@ -7022,7 +7022,7 @@ RELATION <IRelation>: Represents a relation between two resources
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [RelatedResourceId <String>]: The resource ID of the related resource
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentrelation
 #>
 function New-AzSentinelIncidentRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]
@@ -7227,7 +7227,7 @@ TEAMPROPERTY <ITeamProperties>: Describes team properties
   [MemberId <String[]>]: List of member IDs to add to the team
   [TeamDescription <String>]: The description of the team
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentteam
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentteam
 #>
 function New-AzSentinelIncidentTeam {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamInformation])]
@@ -7464,7 +7464,7 @@ INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
 LABEL <IIncidentLabel[]>: List of labels relevant to this incident
   LabelName <String>: The name of the label
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincident
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincident
 #>
 function New-AzSentinelIncident {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident])]
@@ -7742,7 +7742,7 @@ Create Sentinel onboarding state
 .Description
 Create Sentinel onboarding state
 .Example
-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
+New-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState
@@ -7763,7 +7763,7 @@ SENTINELONBOARDINGSTATEPARAMETER <ISentinelOnboardingState>: Sentinel onboarding
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [CustomerManagedKey <Boolean?>]: Flag that indicates the status of the CMK setting
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelonboardingstate
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelonboardingstate
 #>
 function New-AzSentinelOnboardingState {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState])]
@@ -7942,7 +7942,7 @@ Delete the action of alert rule.
 .Description
 Delete the action of alert rule.
 .Example
-Remove-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -RuleId "29d2523f-84ce-42d3-b5f1-9e63c85aaed1" -Id "1a33301b-fb83-416a-8d58-3873c7c2dc86"
+Remove-AzSentinelAlertRuleAction -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -RuleId "29d2523f-84ce-42d3-b5f1-9e63c85aaed1" -Id "1a33301b-fb83-416a-8d58-3873c7c2dc86"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -7977,7 +7977,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelalertruleaction
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelalertruleaction
 #>
 function Remove-AzSentinelAlertRuleAction {
 [OutputType([System.Boolean])]
@@ -8196,7 +8196,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelalertrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelalertrule
 #>
 function Remove-AzSentinelAlertRule {
 [OutputType([System.Boolean])]
@@ -8408,7 +8408,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelautomationrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelautomationrule
 #>
 function Remove-AzSentinelAutomationRule {
 [OutputType([System.Boolean])]
@@ -8621,7 +8621,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelbookmarkrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelbookmarkrelation
 #>
 function Remove-AzSentinelBookmarkRelation {
 [OutputType([System.Boolean])]
@@ -8839,7 +8839,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelbookmark
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelbookmark
 #>
 function Remove-AzSentinelBookmark {
 [OutputType([System.Boolean])]
@@ -9052,7 +9052,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentineldataconnector
 #>
 function Remove-AzSentinelDataConnector {
 [OutputType([System.Boolean])]
@@ -9268,7 +9268,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelentityquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelentityquery
 #>
 function Remove-AzSentinelEntityQuery {
 [OutputType([System.Boolean])]
@@ -9481,7 +9481,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelincidentcomment
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelincidentcomment
 #>
 function Remove-AzSentinelIncidentComment {
 [OutputType([System.Boolean])]
@@ -9665,9 +9665,7 @@ Delete the incident relation.
 .Description
 Delete the incident relation.
 .Example
-
-.Example
-Remove-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7cc984fe-61a2-43c2-a1a4-3583c8a89da2" -RelatedResourceId "7cc984fe-61a2-43c2-a1a4-3583c8a89db4"
+Remove-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7cc984fe-61a2-43c2-a1a4-3583c8a89da2" -RelationName "7cc984fe-61a2-43c2-a1a4-3583c8a89db4"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -9702,7 +9700,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelincidentrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelincidentrelation
 #>
 function Remove-AzSentinelIncidentRelation {
 [OutputType([System.Boolean])]
@@ -9922,7 +9920,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelincident
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelincident
 #>
 function Remove-AzSentinelIncident {
 [OutputType([System.Boolean])]
@@ -10135,7 +10133,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelonboardingstate
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelonboardingstate
 #>
 function Remove-AzSentinelOnboardingState {
 [OutputType([System.Boolean])]
@@ -10351,7 +10349,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertruleaction
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertruleaction
 #>
 function Update-AzSentinelAlertRuleAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse])]
@@ -10586,7 +10584,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelautomationrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelautomationrule
 #>
 function Update-AzSentinelAutomationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule])]
@@ -10832,7 +10830,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelbookmarkrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelbookmarkrelation
 #>
 function Update-AzSentinelBookmarkRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]
@@ -11015,8 +11013,8 @@ Creates or updates the bookmark.
 .Description
 Creates or updates the bookmark.
 .Example
- $queryStartTime = (get-date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
- $queryEndTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ $queryStartTime = (Get-Date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ $queryEndTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  Update-AzSentinelBookmark -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -DisplayName "Incident Evidence" -Query "SecurityEvent | take 1" -QueryStartTime $queryStartTime -QueryEndTime $queryEndTime -EventTime $queryEndTime
 
 .Inputs
@@ -11052,7 +11050,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelbookmark
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelbookmark
 #>
 function Update-AzSentinelBookmark {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark])]
@@ -11333,7 +11331,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincidentcomment
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincidentcomment
 #>
 function Update-AzSentinelIncidentComment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment])]
@@ -11553,7 +11551,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincidentrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincidentrelation
 #>
 function Update-AzSentinelIncidentRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]
@@ -11736,7 +11734,7 @@ Creates or updates the incident.
 .Description
 Creates or updates the incident.
 .Example
-Update-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -OwnerAssignedTo "user@mydomain.local"
+Update-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -OwnerAssignedTo "user@mydomain.local"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -11774,7 +11772,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
 LABEL <IIncidentLabel[]>: List of labels relevant to this incident
   LabelName <String>: The name of the label
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincident
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincident
 #>
 function Update-AzSentinelIncident {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident])]
@@ -12058,11 +12056,11 @@ Creates or updates the alert rule.
  New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind ThreatIntelligence -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
 .Example
  $AlertRuleTemplateName = "a2e0eb51-1f11-461a-999b-cd0ebe5c7a72"
- New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind MicrosoftSecurityIncidentCreation -Enabled -AlertRuleTemplateName $AlertRuleTemplateName -DisplayName "Create incidents based on Microsoft Defender for IoT" -ProductFilter "Azure Security Center for IoT"
+ New-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind MicrosoftSecurityIncidentCreation -Enabled -AlertRuleTemplateName $AlertRuleTemplateName -ProductFilter "Azure Security Center for IoT"
 .Example
-PS C:> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind Scheduled -Enabled -DisplayName "Powershell Exection Alert (Several Times per Hour)" -Severity Low -Query "SecurityEvent | where EventId == 4688" -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Hours 1) -TriggerThreshold 10
+New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind Scheduled -Enabled -DisplayName "Powershell Exection Alert (Several Times per Hour)" -Severity Low -Query "SecurityEvent | where EventId == 4688" -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Hours 1) -TriggerThreshold 10
 .Example
-PS C:> New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind NRT -Enabled -DisplayName "Break glass account accessed" -Severity High -Query "let Break_Glass_Account = _GetWatchlist('break_glass_account')\n|project UPN;\nSigninLogs\n| where UserPrincipalName in (Break_Glass_Account)"
+New-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Kind NRT -Enabled -DisplayName "Break glass account accessed" -Severity High -Query "let Break_Glass_Account = _GetWatchlist('break_glass_account')\n|project UPN;\nSigninLogs\n| where UserPrincipalName in (Break_Glass_Account)"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule
@@ -12077,7 +12075,7 @@ ENTITYMAPPING <EntityMapping>: 'Account', 'Host', 'IP', 'Malware', 'File', 'Proc
     [ColumnName <String>]: the column name to be mapped to the identifier
     [Identifier <String>]: the V3 identifier of the entity
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertrule
 #>
 function New-AzSentinelAlertRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]
@@ -12473,9 +12471,7 @@ Creates or updates the data connector.
 .Description
 Creates or updates the data connector.
 .Example
-
-.Example
-New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
+New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector
@@ -12522,7 +12518,7 @@ UICONFIGSAMPLEQUERY <SampleQueries[]>: [Parameter(ParameterSetName = 'APIPolling
   [Description <String>]: The sample query description
   [Query <String>]: the sample query
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
 #>
 function New-AzSentinelDataConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]
@@ -12985,7 +12981,7 @@ Creates or updates the entity query.
  $template = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryTemplateId"
  New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind Activity -Title ($template.title) -InputEntityType ($template.inputEntityType) -TemplateName ($template.Name)
 .Example
- New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Kind Activity -Title 'An account was deleted on this host' -InputEntityType 'Host' -Content "On '{{Computer}}' the account '{{TargetAccount}}' was deleted by '{{AddedBy}}'" -Description "Account deleted on host" -QueryDefinitionQuery 'let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\nSecurityEvent\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\n// parsing for Host to handle variety of conventions coming from data\n| extend Host_HostName = case(\nComputer has ''@'', tostring(split(Computer, ''@'')[0]),\nComputer has ''\\'', tostring(split(Computer, ''\\'')[1]),\nComputer has ''.'', tostring(split(Computer, ''.'')[0]),\nComputer\n)\n| extend Host_NTDomain = case(\nComputer has ''\\'', tostring(split(Computer, ''\\'')[0]), \nComputer has ''.'', tostring(split(Computer, ''.'')[-2]), \nComputer\n)\n| extend Host_DnsDomain = case(\nComputer has ''\\'', tostring(split(Computer, ''\\'')[0]), \nComputer has ''.'', strcat_array(array_slice(split(Computer,''.''),-2,-1),''.''), \nComputer\n)\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \nor v_Host_AzureID =~ _ResourceId \nor v_Host_OMSAgentID == SourceComputerId\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid, _ResourceId, SourceComputerId\n| extend AddedBy = SubjectUserName\n// Future support for Activities\n| extend timestamp = TimeGenerated, HostCustomEntity = Computer, AccountCustomEntity = TargetAccount\n};\nGetAccountActions(''{{Host_HostName}}'', ''{{Host_NTDomain}}'', ''{{Host_DnsDomain}}'', ''{{Host_AzureID}}'', ''{{Host_OMSAgentID}}'')\n \n| where EventID == 4726' -RequiredInputFieldsSet @(@("Host_HostName","Host_NTDomain"),@("Host_HostName","Host_DnsDomain"),@("Host_AzureID"),@("Host_OMSAgentID")) -EntitiesFilter @{"Host_OsFamily" = @("Windows")}
+ New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Kind Activity -Title 'An account was deleted on this host' -InputEntityType 'Host' -Content "On 'SomeCompute' the account 'SomeAccount' was deleted by 'SomeUser'" -Description "Account deleted on host" -QueryDefinitionQuery 'let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\nSecurityEvent\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\n// parsing for Host to handle variety of conventions coming from data\n| extend Host_HostName = case(\nComputer has ''@'', tostring(split(Computer, ''@'')[0]),\nComputer has ''\\'', tostring(split(Computer, ''\\'')[1]),\nComputer has ''.'', tostring(split(Computer, ''.'')[0]),\nComputer\n)\n| extend Host_NTDomain = case(\nComputer has ''\\'', tostring(split(Computer, ''\\'')[0]), \nComputer has ''.'', tostring(split(Computer, ''.'')[-2]), \nComputer\n)\n| extend Host_DnsDomain = case(\nComputer has ''\\'', tostring(split(Computer, ''\\'')[0]), \nComputer has ''.'', strcat_array(array_slice(split(Computer,''.''),-2,-1),''.''), \nComputer\n)\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \nor v_Host_AzureID =~ _ResourceId \nor v_Host_OMSAgentID == SourceComputerId\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid, _ResourceId, SourceComputerId\n| extend AddedBy = SubjectUserName\n// Future support for Activities\n| extend timestamp = TimeGenerated, HostCustomEntity = Computer, AccountCustomEntity = TargetAccount\n};\nGetAccountActions(''someHost'', ''SomeNTDomain'', ''SomeDNSDomain'', ''SomeID'', ''SomeOMSAgentID'')\n \n| where EventID == 4726' -RequiredInputFieldsSet @(@("Host_HostName","Host_NTDomain"),@("Host_HostName","Host_DnsDomain"),@("Host_AzureID"),@("Host_OMSAgentID")) -EntitiesFilter @{"Host_OsFamily" = @("Windows")}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CustomEntityQuery
@@ -12997,7 +12993,7 @@ To create the parameters described below, construct a hash table containing the 
 ENTITIESFILTER <ActivityEntityQueriesPropertiesEntitiesFilter>: 
   [(Any) <String[]>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelentityquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelentityquery
 #>
 function New-AzSentinelEntityQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CustomEntityQuery])]
@@ -13231,7 +13227,7 @@ Test-AzSentinelDataConnectorCheckRequirement -ResourceGroupName "myResourceGroup
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnectorsCheckRequirements
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/test-azsentineldataconnectorcheckrequirement
+https://learn.microsoft.com/powershell/module/az.securityinsights/test-azsentineldataconnectorcheckrequirement
 #>
 function Test-AzSentinelDataConnectorCheckRequirement {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnectorsCheckRequirements])]
@@ -13469,7 +13465,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/Update-azsentinelalertrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/Update-azsentinelalertrule
 #>
 function Update-AzSentinelAlertRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]
@@ -14024,7 +14020,7 @@ UICONFIGSAMPLEQUERY <SampleQueries[]>:
   [Description <String>]: The sample query description
   [Query <String>]: the sample query
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentineldataconnector
 #>
 function Update-AzSentinelDataConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]
@@ -14739,7 +14735,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
 #>
 function Update-AzSentinelEntityQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CustomEntityQuery])]
@@ -14975,7 +14971,7 @@ Updates setting.
 .Description
 Updates setting.
 .Example
- Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName 'Anomalies' -Enabled $true
+ Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -SettingsName "Anomalies" -Enabled $true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -15010,7 +15006,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelsetting
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelsetting
 #>
 function Update-AzSentinelSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.Settings])]
