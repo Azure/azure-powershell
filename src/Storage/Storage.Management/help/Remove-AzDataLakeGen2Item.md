@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azdatalakegen2item
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azdatalakegen2item
 schema: 2.0.0
 ---
 
@@ -33,22 +33,22 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Removes a directory
-```
-PS C:\>Remove-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
+```powershell
+Remove-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
 ```
 
 This command removes a directory from a Filesystem.
 
 ### Example 2: Removes a file without prompt
-```
-PS C:\>Remove-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" -Force
+```powershell
+Remove-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" -Force
 ```
 
 This command removes a directory from a Filesystem, without prompt.
 
 ### Example 3: Remove all items in a Filesystem with pipeline
-```
-PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" | Remove-AzDataLakeGen2Item -Force
+```powershell
+Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" | Remove-AzDataLakeGen2Item -Force
 ```
 
 This command removes all items in a Filesystem with pipeline.

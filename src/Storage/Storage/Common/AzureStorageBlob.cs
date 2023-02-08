@@ -235,7 +235,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             this.privateClientOptions = options;
             AccessTier = blob.Properties.StandardBlobTier is null ?
                 (blob.Properties.PremiumPageBlobTier is null ? null : blob.Properties.PremiumPageBlobTier.ToString())
-                : blob.Properties.StandardBlobTier.ToString();
+                : (blob.Properties.StandardBlobTier == StandardBlobTier.Unknown ? this.BlobProperties.AccessTier : blob.Properties.StandardBlobTier.ToString());
         }
 
         /// <summary>
@@ -254,6 +254,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 return;
             }
 
+            this.ListBlobProperties = listBlobItem;
             this.privateBlobBaseClient = track2BlobClient;
             Name = track2BlobClient.Name;
             this.Context = storageContext;

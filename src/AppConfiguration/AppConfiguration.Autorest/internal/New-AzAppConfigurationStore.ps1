@@ -33,7 +33,7 @@ New-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupNa
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstore
+https://learn.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstore
 #>
 function New-AzAppConfigurationStore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore])]

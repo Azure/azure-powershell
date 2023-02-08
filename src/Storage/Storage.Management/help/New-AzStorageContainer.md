@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 2B12BC19-EF8F-43F5-AF04-C570FEEA1AE6
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragecontainer
 schema: 2.0.0
 ---
 
@@ -34,15 +34,15 @@ The **New-AzStorageContainer** cmdlet creates an Azure storage container.
 ## EXAMPLES
 
 ### Example 1: Create an Azure storage container
-```
-PS C:\>New-AzStorageContainer -Name "ContainerName" -Permission Off
+```powershell
+New-AzStorageContainer -Name "ContainerName" -Permission Off
 ```
 
 This command creates a storage container.
 
 ### Example 2: Create multiple Azure storage containers
-```
-PS C:\>"container1 container2 container3".split() | New-AzStorageContainer -Permission Container
+```powershell
+"container1 container2 container3".split() | New-AzStorageContainer -Permission Container
 ```
 
 This example creates multiple storage containers.

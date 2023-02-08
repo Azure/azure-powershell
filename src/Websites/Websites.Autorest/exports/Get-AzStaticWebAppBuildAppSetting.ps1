@@ -25,7 +25,7 @@ Get-AzStaticWebAppBuildAppSetting -ResourceGroupName azure-rg-test -Name staticw
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildappsetting
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildappsetting
 #>
 function Get-AzStaticWebAppBuildAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]

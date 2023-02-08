@@ -31,7 +31,7 @@ eyJNZWNEZXZpY2VUcmFuc2llbnRBdXRoS2V5IjoiMTIzNCIsIk1lY0RldmljZUF1dGhLZXlTdGFydFRp
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdeviceregistrationkey
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdeviceregistrationkey
 #>
 function Get-AzConnectedNetworkDeviceRegistrationKey {
 [OutputType([System.String])]
@@ -218,7 +218,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdevice
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdevice
 #>
 function Get-AzConnectedNetworkDevice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice])]
@@ -371,7 +371,7 @@ SkuList                                                                         
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendor
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunctionvendor
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunctionvendor
 #>
 function Get-AzConnectedNetworkFunctionVendor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendor])]
@@ -561,7 +561,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunction
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunction
 #>
 function Get-AzConnectedNetworkFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction])]
@@ -752,7 +752,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorfunctionroleinstance
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorfunctionroleinstance
 #>
 function Get-AzConnectedNetworkVendorFunctionRoleInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IRoleInstance])]
@@ -962,7 +962,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorfunction
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorfunction
 #>
 function Get-AzConnectedNetworkVendorFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorNetworkFunction])]
@@ -1161,7 +1161,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorskupreview
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorskupreview
 #>
 function Get-AzConnectedNetworkVendorSkuPreview {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription])]
@@ -1362,7 +1362,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorsku
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorsku
 #>
 function Get-AzConnectedNetworkVendorSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku])]
@@ -1551,7 +1551,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendor
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendor
 #>
 function Get-AzConnectedNetworkVendor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendor])]
@@ -1728,7 +1728,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IDevicePropertiesFormat>: Device properties.
   DeviceType <DeviceType>: The type of the device.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkdevice
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkdevice
 #>
 function New-AzConnectedNetworkDevice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice])]
@@ -1930,7 +1930,7 @@ USERCONFIGURATION <INetworkFunctionUserConfiguration[]>: The network function co
   [RoleName <String>]: The name of the network function role.
   [UserDataParameter <IAny>]: The user data parameters from the customer.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkfunction
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkfunction
 #>
 function New-AzConnectedNetworkFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction])]
@@ -2166,7 +2166,7 @@ VENDORCONFIGURATION <INetworkFunctionVendorConfiguration[]>: An array of network
     [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorfunction
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorfunction
 #>
 function New-AzConnectedNetworkVendorFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorNetworkFunction])]
@@ -2344,7 +2344,7 @@ Type                         : microsoft.hybridnetwork/vendors/vendorskus/previe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorskupreview
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorskupreview
 #>
 function New-AzConnectedNetworkVendorSkuPreview {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription])]
@@ -2535,7 +2535,7 @@ NETWORKFUNCTIONROLECONFIGURATIONTYPE <INetworkFunctionRoleConfiguration[]>: An a
   [VhdUri <String>]: Specifies the virtual hard disk's uri.
   [VirtualMachineSize <VirtualMachineSizeTypes?>]: The size of the virtual machine.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorsku
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorsku
 #>
 function New-AzConnectedNetworkVendorSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku])]
@@ -2751,7 +2751,7 @@ Type                         : microsoft.hybridnetwork/vendors
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendor
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendor
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendor
 #>
 function New-AzConnectedNetworkVendor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendor])]
@@ -2908,7 +2908,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkdevice
+https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkdevice
 #>
 function Remove-AzConnectedNetworkDevice {
 [OutputType([System.Boolean])]
@@ -3090,7 +3090,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkfunction
+https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkfunction
 #>
 function Remove-AzConnectedNetworkFunction {
 [OutputType([System.Boolean])]
@@ -3268,7 +3268,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorskupreview
+https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorskupreview
 #>
 function Remove-AzConnectedNetworkVendorSkuPreview {
 [OutputType([System.Boolean])]
@@ -3454,7 +3454,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorsku
+https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorsku
 #>
 function Remove-AzConnectedNetworkVendorSku {
 [OutputType([System.Boolean])]
@@ -3630,7 +3630,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendor
+https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendor
 #>
 function Remove-AzConnectedNetworkVendor {
 [OutputType([System.Boolean])]
@@ -3801,7 +3801,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/restart-azconnectednetworkvendorfunctionroleinstance
+https://learn.microsoft.com/powershell/module/az.connectednetwork/restart-azconnectednetworkvendorfunctionroleinstance
 #>
 function Restart-AzConnectedNetworkVendorFunctionRoleInstance {
 [OutputType([System.Boolean])]
@@ -3990,7 +3990,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/start-azconnectednetworkvendorfunctionroleinstance
+https://learn.microsoft.com/powershell/module/az.connectednetwork/start-azconnectednetworkvendorfunctionroleinstance
 #>
 function Start-AzConnectedNetworkVendorFunctionRoleInstance {
 [OutputType([System.Boolean])]
@@ -4179,7 +4179,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/stop-azconnectednetworkvendorfunctionroleinstance
+https://learn.microsoft.com/powershell/module/az.connectednetwork/stop-azconnectednetworkvendorfunctionroleinstance
 #>
 function Stop-AzConnectedNetworkVendorFunctionRoleInstance {
 [OutputType([System.Boolean])]
@@ -4404,7 +4404,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/update-azconnectednetworkdevicetag
+https://learn.microsoft.com/powershell/module/az.connectednetwork/update-azconnectednetworkdevicetag
 #>
 function Update-AzConnectedNetworkDeviceTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice])]
@@ -4578,7 +4578,7 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   [VendorName <String>]: The name of the vendor.
   [VendorSkuName <String>]: The name of the network function sku.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/update-azconnectednetworkfunctiontag
+https://learn.microsoft.com/powershell/module/az.connectednetwork/update-azconnectednetworkfunctiontag
 #>
 function Update-AzConnectedNetworkFunctionTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction])]
@@ -4723,7 +4723,7 @@ AzureStackEdge
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeObject
+https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeObject
 #>
 function New-AzConnectedNetworkAzureStackEdgeObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat])]
@@ -4821,7 +4821,7 @@ STORAGEPROFILEDATADISK <IDataDisk[]>: Specifies the parameters that are used to 
   [DiskSizeGb <Int32?>]: Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
   [Name <String>]: The name of data disk.
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionRoleConfigurationObject
+https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionRoleConfigurationObject
 #>
 function New-AzConnectedNetworkFunctionRoleConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleConfiguration])]
@@ -5063,7 +5063,7 @@ NETWORKINTERFACE <INetworkInterface[]>: The network interface configuration.
   [Name <String>]: The name of the network interface.
   [VMSwitchType <VMSwitchType?>]: The type of the VM switch.
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionUserConfigurationObject
+https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionUserConfigurationObject
 #>
 function New-AzConnectedNetworkFunctionUserConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfiguration])]
@@ -5184,7 +5184,7 @@ SSHPUBLICKEY <ISshPublicKey[]>: The list of SSH public keys used to authenticate
   [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
   [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionVendorConfigurationObject
+https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionVendorConfigurationObject
 #>
 function New-AzConnectedNetworkFunctionVendorConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorConfiguration])]
@@ -5310,7 +5310,7 @@ DnsServer Gateway IPAddress IPAllocationMethod IPVersion Subnet
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceIPConfigurationObject
+https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceIPConfigurationObject
 #>
 function New-AzConnectedNetworkInterfaceIPConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration])]
@@ -5418,7 +5418,7 @@ IPCONFIGURATION <INetworkInterfaceIPConfiguration[]>: A list of IP configuration
   [IPVersion <IPVersion?>]: IP address version.
   [Subnet <String>]: The value of the subnet.
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
+https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
 #>
 function New-AzConnectedNetworkInterfaceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface])]

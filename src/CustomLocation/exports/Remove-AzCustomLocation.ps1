@@ -41,7 +41,7 @@ INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
   [ResourceName <String>]: Custom Locations name.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/remove-azcustomlocation
+https://learn.microsoft.com/powershell/module/az.customlocation/remove-azcustomlocation
 #>
 function Remove-AzCustomLocation {
 [OutputType([System.Boolean])]

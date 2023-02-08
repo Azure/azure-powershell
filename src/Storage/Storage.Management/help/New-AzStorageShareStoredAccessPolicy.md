@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 37E76360-B683-407C-9AEF-7138374562D8
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragesharestoredaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragesharestoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **New-AzStorageShareStoredAccessPolicy** cmdlet creates a stored access poli
 ## EXAMPLES
 
 ### Example 1: Create a stored access policy in a share
-```
-PS C:\>New-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy" -Permission "rwdl"
+```powershell
+New-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy" -Permission "rwdl"
 ```
 
 This command creates a stored access policy that has full permission in a share.

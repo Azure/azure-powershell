@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections;
@@ -186,6 +187,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 pool.ApplicationLicenses = parameters.ApplicationLicenses;
             }
+
+            pool.TargetNodeCommunicationMode = (NodeCommunicationMode)parameters.TargetCommunicationMode;
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
             pool.Commit(parameters.AdditionalBehaviors);

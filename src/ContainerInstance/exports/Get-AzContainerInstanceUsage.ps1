@@ -25,7 +25,7 @@ Get-AzContainerInstanceUsage -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstanceusage
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstanceusage
 #>
 function Get-AzContainerInstanceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IUsage])]

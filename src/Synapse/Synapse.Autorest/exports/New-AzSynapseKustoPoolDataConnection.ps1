@@ -43,7 +43,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnec
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldataconnection
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldataconnection
 #>
 function New-AzSynapseKustoPoolDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection])]
