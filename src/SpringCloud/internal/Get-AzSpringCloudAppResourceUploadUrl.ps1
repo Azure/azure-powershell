@@ -55,7 +55,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [StackName <String>]: The name of the stack resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudappresourceuploadurl
+https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudappresourceuploadurl
 #>
 function Get-AzSpringCloudAppResourceUploadUrl {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceUploadDefinition])]

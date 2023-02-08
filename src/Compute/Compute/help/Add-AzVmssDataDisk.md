@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmssdatadisk
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmssdatadisk
 schema: 2.0.0
 ---
 
@@ -28,7 +28,7 @@ The **Add-AzVmssDataDisk** cmdlet adds a data disk to the Virtual Machine Scale 
 ### Example 1: Add a data disk
 ```powershell
 $vmss = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic"
-$vmss = Add-AzVmssDataDisk -VirtualMachineScaleSet $vmss -Name 'DataDisk1' -Lun 0 -Caching 'ReadOnly' -CreateOption Empty -DiskSizeGB 10 -StorageAccountType StandardLRS
+$vmss = Add-AzVmssDataDisk -VirtualMachineScaleSet $vmss -Name 'DataDisk1' -Lun 0 -Caching 'ReadOnly' -CreateOption Empty -DiskSizeGB 10 -StorageAccountType Standard_LRS
 ```
 
 This command adds an empty data disk to the VMSS object.

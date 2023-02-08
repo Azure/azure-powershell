@@ -27,7 +27,7 @@ Lists the available ServiceLinker REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkeroperation
+https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkeroperation
 #>
 function Get-AzServiceLinkerOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20.IOperation])]

@@ -76,6 +76,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             HelpMessage = AuditingHelpMessages.PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = AuditingHelpMessages.UseIdentityMessage)]
+        [ValidateSet(SecurityConstants.True, SecurityConstants.False, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public String UseIdentity { get; set; }
+
         public Guid RoleAssignmentId { get; set; } = default(Guid);
 
         protected override ServerAuditModelType ApplyUserInputToModel(ServerAuditModelType model)
@@ -118,6 +125,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (WorkspaceResourceId != null)
             {
                 model.WorkspaceResourceId = WorkspaceResourceId;
+            }
+
+            if (UseIdentity != null)
+            {
+                model.UseIdentity = UseIdentity.ToString().ToUpper() == SecurityConstants.True ?
+                    BoolType.True : BoolType.False;
             }
 
             return model;

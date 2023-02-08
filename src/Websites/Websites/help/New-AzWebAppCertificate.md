@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/new-AzWebAppCertificate
+online version: https://learn.microsoft.com/powershell/module/az.websites/new-AzWebAppCertificate
 schema: 2.0.0
 ---
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostName
-Custom hostnames associated with web app/slot.
+Custom hostname associated with web app/slot.
 
 ```yaml
 Type: System.String

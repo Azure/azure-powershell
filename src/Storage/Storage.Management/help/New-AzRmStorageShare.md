@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azrmstorageshare
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azrmstorageshare
 schema: 2.0.0
 ---
 
@@ -32,10 +32,10 @@ The **New-AzRmStorageShare** cmdlet creates a Storage file share.
 ## EXAMPLES
 
 ### Example 1: Create a Storage file share with Storage account name and share name, with metadata and share quota as 100 GiB.
-<!-- Skip: Output cannot be splitted from code -->
+```powershell
+New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -QuotaGiB 100 -Metadata @{"tag1" = "value1"; "tag2" = "value2" } 
 ```
-PS C:\>New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -QuotaGiB 100 -Metadata @{"tag1" = "value1"; "tag2" = "value2" } 
-
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
@@ -46,10 +46,10 @@ myshare
 This command creates a Storage file share with metadata and share quota as 100 GiB.
 
 ### Example 2: Create a Storage file share with Storage account object
-<!-- Skip: Output cannot be splitted from code -->
-```
+```powershell
 Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" | New-AzRmStorageShare -Name "myshare"
-
+```
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes

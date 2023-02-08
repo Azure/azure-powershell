@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: FF3AD436-CA33-4A52-8580-D2345D80A231
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageshare
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstorageshare
 schema: 2.0.0
 ---
 
@@ -35,15 +35,15 @@ The **Remove-AzStorageShare** cmdlet deletes a file share.
 ## EXAMPLES
 
 ### Example 1: Remove a file share
-```
-PS C:\>Remove-AzStorageShare -Name "ContosoShare06"
+```powershell
+Remove-AzStorageShare -Name "ContosoShare06"
 ```
 
 This command removes the file share named ContosoShare06.
 
 ### Example 2: Remove a file share and all its snapshots
-```
-PS C:\>Remove-AzStorageShare -Name "ContosoShare06" -IncludeAllSnapshot
+```powershell
+Remove-AzStorageShare -Name "ContosoShare06" -IncludeAllSnapshot
 ```
 
 This command removes the file share named ContosoShare06 and all its snapshots.

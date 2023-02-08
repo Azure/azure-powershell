@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Return whether the specified backup policy was successfully removed")]
+            HelpMessage = "Return whether the specified VolumeGroup was successfully removed")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()

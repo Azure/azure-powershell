@@ -47,7 +47,7 @@ INPUTOBJECT <IBareMetalIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.baremetal/update-azbaremetal
+https://learn.microsoft.com/powershell/module/az.baremetal/update-azbaremetal
 #>
 function Update-AzBareMetal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance])]

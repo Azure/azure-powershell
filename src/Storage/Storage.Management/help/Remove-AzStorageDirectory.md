@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 53988D79-1F8B-4138-9F92-2912D418C121
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragedirectory
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragedirectory
 schema: 2.0.0
 ---
 
@@ -43,8 +43,8 @@ The **Remove-AzStorageDirectory** cmdlet deletes a directory.
 ## EXAMPLES
 
 ### Example 1: Delete a folder
-```
-PS C:\>Remove-AzStorageDirectory -ShareName "ContosoShare06" -Path "ContosoWorkingFolder"
+```powershell
+Remove-AzStorageDirectory -ShareName "ContosoShare06" -Path "ContosoWorkingFolder"
 ```
 
 This command deletes the folder named ContosoWorkingFolder from the file share named ContosoShare06.

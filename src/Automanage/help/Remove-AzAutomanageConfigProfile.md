@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Automanage
-online version: https://docs.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofile
+online version: https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofile
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion
 schema: 2.0.0
 ---
 
@@ -17,6 +17,7 @@ Update a gallery image version.
 Update-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
  [-GalleryImageDefinitionName] <String> [-Name] <String> [-AsJob] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
+ [-TargetExtendedLocation <Hashtable[]>] [-AllowDeletionOfReplicatedLocation <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,6 +25,7 @@ Update-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <Strin
 ```
 Update-AzGalleryImageVersion [-ResourceId] <String> [-AsJob] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
+ [-TargetExtendedLocation <Hashtable[]>] [-AllowDeletionOfReplicatedLocation <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,8 +33,9 @@ Update-AzGalleryImageVersion [-ResourceId] <String> [-AsJob] [-PublishingProfile
 ```
 Update-AzGalleryImageVersion [-InputObject] <PSGalleryImageVersion> [-AsJob]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
- [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>] [-TargetExtendedLocation <Hashtable[]>]
+ [-AllowDeletionOfReplicatedLocation <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +84,35 @@ Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryNam
 
 Update a gallery image version's end-of-life date. The image version can still be used to create virtual machines after the end-of-life date.
 
+### Example 4: Update to remove TargetExtendedLocations.
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$imageName = "myImage"
+$versionName = "1.0.0"
+
+Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name $versionName -TargetExtendedLocation @() -AllowDeletionOfReplicatedLocation $True
+```
+
+Update a gallery image version to remove existing target extended locations. Pass in an empty array for -TargetExtendedLocation and set -AllowDeletionOfReplicatedLocation to true. 
+
 ## PARAMETERS
+
+### -AllowDeletionOfReplicatedLocation
+Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -253,6 +284,21 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TargetExtendedLocation
+The target extended locations where the Image Version is going to be replicated to. This property is updatable.
+
+```yaml
+Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases:
 

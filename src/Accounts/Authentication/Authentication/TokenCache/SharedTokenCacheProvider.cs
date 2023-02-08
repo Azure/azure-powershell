@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                     catch (Exception)
                     {
-                        //TODO: 
+                        //TODO:
                     }
                     finally
                     {
@@ -106,8 +106,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             var client = CreatePublicClient();
             var accounts = client.GetAccountsAsync().GetAwaiter().GetResult();
-            foreach(var account in accounts)
+            foreach (var account in accounts)
             {
+                // RemoveAsync() removes all account information from MSAL's token cache
+                // (this includes MSA - i.e. personal accounts - account info and other account information copied by MSAL into its cache).
+                // Removes app-only (not OS-wide) accounts.
+                // Apps cannot remove OS accounts. Only users can do that.
+                // see https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/wam#removeasync
                 client.RemoveAsync(account).GetAwaiter().GetResult();
             }
         }

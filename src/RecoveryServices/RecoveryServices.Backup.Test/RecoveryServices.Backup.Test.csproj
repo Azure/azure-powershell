@@ -12,12 +12,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="25.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="58.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.3.3-preview" />
-	  <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="5.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="60.0.0" />
   </ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\RecoveryServices.Management.Sdk\RecoveryServices.Management.Sdk.csproj" />
+		<ProjectReference Include="..\RecoveryServices.Backup.Management.Sdk\RecoveryServices.Backup.Management.Sdk.csproj" />
+		<ProjectReference Include="..\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj" />
 		<ProjectReference Include="..\RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
 		<ProjectReference Include="..\..\Compute\Compute.Helpers\Compute.Helpers.csproj" />
 	</ItemGroup>

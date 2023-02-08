@@ -25,7 +25,7 @@ Get-AzMixedRealityRemoteRenderingAccountKey -AccountName azpstestrenderingaccoun
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityremoterenderingaccountkey
+https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityremoterenderingaccountkey
 #>
 function Get-AzMixedRealityRemoteRenderingAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys])]

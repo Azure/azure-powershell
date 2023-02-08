@@ -30,7 +30,7 @@ eastus2  azpshcws/azpsiotconnector azps_test_group
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnector
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnector
 #>
 function New-AzHealthcareIotConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector])]
