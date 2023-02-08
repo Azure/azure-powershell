@@ -23,9 +23,9 @@ param(
 )
 
 # get wiki content
-$username=""
-$password=$ADOToken
-$pair="{0}:{1}" -f ($username,$password)
+$username = ""
+$password = $ADOToken
+$pair = "{0}:{1}" -f ($username, $password)
 $bytes = [System.Text.Encoding]::ASCII.GetBytes($pair)
 $token = [System.Convert]::ToBase64String($bytes)
 $headers = @{
@@ -33,21 +33,17 @@ $headers = @{
 }
 
 $response = Invoke-RestMethod 'https://dev.azure.com/azure-sdk/internal/_apis/wiki/wikis/internal.wiki/pages?path=/Engineering%20System/GitHub%20Repos/Issue%20Management/Service%20Team%20Label%20and%20Contact%20List&includeContent=True' -Headers $headers
-$rows = ($response.content -split "\n") | Where-Object { $_ -like '|*'} | Select-Object -Skip 2
+$rows = ($response.content -split "\n") | Where-Object { $_ -like '|*' } | Select-Object -Skip 2
 $aliases = [System.Collections.SortedList]::new()
 
-foreach ($item in $rows)
-{
+foreach ($item in $rows) {
     $list = $item -split "\|"
     if ($list.Count -eq 1) { continue }
-    if ($list[1].Trim().Length -gt 0)
-    {
-        if ($list.Count -gt 3)
-        {
+    if ($list[1].Trim().Length -gt 0) {
+        if ($list.Count -gt 3) {
             $aliases.Add($list[1].Trim(), $list[3].Trim())
         }
-        else
-        {
+        else {
             $aliases.Add($list[1].Trim(), "")
         }
     }
@@ -57,7 +53,7 @@ foreach ($item in $rows)
 $WholeJson = Get-Content -Raw -Path .github/fabricbot.json | ConvertFrom-Json
 
 $WholeJson.tasks | ForEach-Object {
-    if($_.taskType -eq 'scheduledAndTrigger') {
+    if ($_.taskType -eq 'scheduledAndTrigger') {
         $labelsAndMentionsArrayList = New-Object System.Collections.ArrayList
         foreach ($entry in $aliases.GetEnumerator()) {
             if ($entry.Value -eq "") {
@@ -66,7 +62,7 @@ $WholeJson.tasks | ForEach-Object {
             $labels = @("Service Attention", $entry.Key)
             $mentionees = @($entry.Value -split "," | ForEach-Object { $_.Trim() })
             $item = [PSCustomObject]@{
-                labels = $labels
+                labels     = $labels
                 mentionees = $mentionees
             }
             [void]$labelsAndMentionsArrayList.Add($item)
