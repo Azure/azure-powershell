@@ -45,7 +45,7 @@ git checkout -b $BranchName
 foreach ($SyncPath in $Config.SyncPath)
 {
     Copy-Item $TmpFolder\$SyncFile (Join-Path $WorkSpace $RepoName/docs-conceptual/azps-9.3.0) -Force
-    git add $WorkSpace\$RepoName\docs-conceptual\azps-9.3.0
+    git add (Join-Path $WorkSpace $RepoName/docs-conceptual/azps-9.3.0)
 }
 
 git commit -m "Sync upcoming breaking changes doc from azure-powershell to $RepoName"
