@@ -39,7 +39,7 @@ git config --global user.name "NoriZC"  #"azurepowershell"
 cd $WorkSpace
 git clone $RepoCloneLink
 cd $RepoName
-git checkout -b "$BranchName" "origin/main"\
+git checkout -b $BranchName origin/main
 
 
 foreach ($SyncPath in $Config.SyncPath)
