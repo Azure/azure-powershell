@@ -39,12 +39,12 @@ git config --global user.name "NoriZC"  #"azurepowershell"
 cd $WorkSpace
 git clone $RepoCloneLink
 cd $RepoName
-git checkout -b $BranchName origin/main
+git checkout -b $BranchName
 
 
 foreach ($SyncPath in $Config.SyncPath)
 {
-    Copy-Item $TmpFolder\$SyncFile $WorkSpace\$RepoName\docs-conceptual\azps-9.3.0 -Force
+    Copy-Item $TmpFolder\$SyncFile (Join-Path $WorkSpace $RepoName/docs-conceptual/azps-9.3.0) -Force
     git add $WorkSpace\$RepoName\docs-conceptual\azps-9.3.0
 }
 
