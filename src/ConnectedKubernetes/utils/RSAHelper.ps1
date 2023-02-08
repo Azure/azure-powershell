@@ -30,20 +30,7 @@ function ExportRSAPrivateKeyBase64{
 
         $base64 = [Convert]::ToBase64String($stream.GetBuffer(), 0, ([int]($stream.Length)))
 
-        $offset = 0
-        $line_length = 64
-
-        $sb = [System.Text.StringBuilder]::new()
-        [void]$sb.AppendLine("-----BEGIN RSA PRIVATE KEY-----")
-        while ($offset -lt $base64.Length) {
-            $line_end = [Math]::Min($offset + $line_length, $base64.Length)
-            [void]$sb.AppendLine($base64.Substring($offset, $line_end - $offset))
-            $offset = $line_end
-        }
-    
-        [void]$sb.AppendLine("-----END RSA PRIVATE KEY-----")
-    
-        return $sb.ToString()
+        return $base64
     }
 }
 
@@ -58,7 +45,7 @@ function ExportRSAPublicKeyBase64{
         [byte]$Sequence = 0x30 
         $stream = [System.IO.MemoryStream]::new()
         $writer = [System.IO.BinaryWriter]::new($stream)
-        $writer.Write($Sequence); # SEQUENCE
+        $writer.Write($Sequence);
         $innerStream = [System.IO.MemoryStream]::new()
         $innerWriter = [System.IO.BinaryWriter]::new($innerStream)
         EncodeIntegerBigEndian $innerWriter $RSAParams.Modulus
@@ -70,18 +57,7 @@ function ExportRSAPublicKeyBase64{
         
         $base64 = [Convert]::ToBase64String($stream.GetBuffer(), 0, ([int]($stream.Length)))
 
-        $offset = 0
-        $line_length = 64
-
-        $sb = [System.Text.StringBuilder]::new()
-
-        while ($offset -lt $base64.Length) {
-            $line_end = [Math]::Min($offset + $line_length, $base64.Length)
-            [void]$sb.AppendLine($base64.Substring($offset, $line_end - $offset))
-            $offset = $line_end
-        }
-
-        return $sb.ToString()
+        return $base64
     }
 }
 
