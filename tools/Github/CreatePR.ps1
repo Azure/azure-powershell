@@ -67,7 +67,7 @@ $Description
 "@
 
 $RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
-$Uri = "https://api.github.com/repos/Azure/azure-powershell/pulls"
+$Uri = "https://api.github.com/repos/xtr0d666/azure-powershell/pulls"
 
 $PrUri = "https://api.github.com/repos/xtr0d666/azure-powershell/pulls?head=Azure:$HeadBranch&base=$BaseBranch"
 $PullRequests = Invoke-RestMethod -Uri $PrUri -Method GET -Headers $Headers 
