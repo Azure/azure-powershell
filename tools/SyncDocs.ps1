@@ -20,12 +20,18 @@ Write-Host "WorkSpace Location:" $WorkSpace
 $RepoCloneLink = "https://github.com/$OrgName/$RepoName.git"
 $Config = Get-Content (Join-Path $PSScriptRoot "../.azure-pipelines/SyncDocsConfig.json") | ConvertFrom-Json
 $TmpFolder = Resolve-Path (New-Item -ItemType Directory -Path tmp)
+ls
+Write-Host "Temp location:" $TmpFolder
 
 foreach ($SyncPath in $Config.SyncPath)
 {
     Write-Host "Back up $SyncPath from main branch."
-    Copy-Item -Path $SyncPath -Destination "$TmpFolder/$SyncPath" -Recurse -Force
+    Copy-Item -Path $SyncPath -Destination $TmpFolder -Recurse -Force
 }
+
+ls $TmpFolder
+$SyncFile = Split-Path $SyncPath -Leaf
+Write-Host $SyncFile
 
 git config --global user.email "norizhang@microsoft.com"  #"azurepowershell@ms.com"
 git config --global user.name "NoriZC"  #"azurepowershell"
@@ -38,7 +44,7 @@ git checkout -b "$BranchName" "origin/main"\
 
 foreach ($SyncPath in $Config.SyncPath)
 {
-    Copy-Item $TmpFolder\$SyncPath $WorkSpace\$RepoName\docs-conceptual\azps-9.3.0 -Force
+    Copy-Item $TmpFolder\$SyncFile $WorkSpace\$RepoName\docs-conceptual\azps-9.3.0 -Force
     git add $WorkSpace\$RepoName\docs-conceptual\azps-9.3.0
 }
 
