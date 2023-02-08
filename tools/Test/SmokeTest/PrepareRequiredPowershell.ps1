@@ -43,6 +43,8 @@ function Install-PowerShell {
 
   # To fix 'Microsoft.ApplicationInsights' assembly on MacOS and PowerShell 7.2.*,
   # Workaround is from https://github.com/PowerShell/PowerShell/issues/19055 
+  Write-Host $requiredPsVersion, $AgentOS
+
   if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "MacOS*"){
     Write-Host $AgentOS
     copy-item $PSHOME/Microsoft.ApplicationInsights.dll $HOME/.dotnet/tools/.store/powershell/$requiredPsVersion/powershell/$requiredPsVersion/tools/net6.0/any/unix
