@@ -1755,7 +1755,7 @@ function Test-DiskImportSecureUploadPreparedSecure
 
 	try
     {
-        $rgname = "adsandtld03";
+        $rgname = "adsandtld04";
         $loc = 'northeurope';
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
@@ -1827,8 +1827,17 @@ function Test-DiskImportSecureUploadPreparedSecure
         $osVhdUrl = "https://$($stoName).blob.core.windows.net/$containerName/$($disk.Name).vhd";
         $vmgsVhdUrl = "https://$($stoName).blob.core.windows.net/$containerName/$($disk.Name)-vmgs.vhd";
         <#
-        azcopy: The term 'azcopy' is not recognized as a name of a cmdlet, function, script file, or executable program.
+        PS C:\repos\ps3>  azcopy copy $gda.AccessSAS $osVhdUrl;
+azcopy: The term 'azcopy' is not recognized as a name of a cmdlet, function, script file, or executable program.
 Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+
+Suggestion [3,General]: The command azcopy was not found, but does exist in the current location. PowerShell does not load commands from the current location by default. If you trust this command, instead type: ".\azcopy". See "get-help about_Command_Precedence" for more details.
+PS C:\repos\ps3> .\azcopy copy $gda.AccessSAS $osVhdUrl;
+INFO: Scanning...
+INFO: Autologin not specified.
+
+failed to perform copy command due to error: Login Credentials missing. No SAS token or OAuth token is present and the resource is not public
+PS C:\repos\ps3>
         #>
 
         azcopy copy $gda.AccessSAS $osVhdUrl;
