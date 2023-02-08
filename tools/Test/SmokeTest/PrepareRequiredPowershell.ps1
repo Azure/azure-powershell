@@ -41,6 +41,13 @@ function Install-PowerShell {
     Write-Host "Powershell", $requiredPsVersion, "has been installed"
   }
 
+  # To fix 'Microsoft.ApplicationInsights' assembly on MacOS and PowerShell 7.2.*,
+  # Workaround is from https://github.com/PowerShell/PowerShell/issues/19055 
+  if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "MacOS*"){
+    Write-Host $AgentOS
+    copy-item $PSHOME/Microsoft.ApplicationInsights.dll $HOME/.dotnet/tools/.store/powershell/$requiredPsVersion/powershell/$requiredPsVersion/tools/net6.0/any/unix
+  }
+
   # Update PowershellGet to the latest one
   Write-Host "Updating PowershellGet to lastest version"
   if ($requiredPsVersion -eq $windowsPowershellVersion) {
@@ -72,10 +79,3 @@ Remove-AzModules "AzureRM"
 
 # Prepare PowerShell as required
 Install-PowerShell $requiredPsVersion
-
-# To fix 'Microsoft.ApplicationInsights' assembly on MacOS and PowerShell 7.2.*,
-# Workaround is from https://github.com/PowerShell/PowerShell/issues/19055 
-if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "MacOS*"){
-  Write-Host $AgentOS
-  copy-item $PSHOME/Microsoft.ApplicationInsights.dll $HOME/.dotnet/tools/.store/powershell/$requiredPsVersion/powershell/$requiredPsVersion/tools/net6.0/any/unix
-}
