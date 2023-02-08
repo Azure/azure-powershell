@@ -26,7 +26,7 @@ parameters:
 - name: ps_7_2_x
   displayName: PowerShell 7.2.x Version
   type: string
-  default: 7.2.7
+  default: 7.2.9
 - name: ps_latest
   displayName: PowerShell Latest Version
   type: string
@@ -67,20 +67,6 @@ jobs:
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_7_0_x_win'
-    vmImage: ${{ parameters.win_image }}
-    psVersion: ${{ parameters.ps_7_0_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/live-test-steps.yml
-  parameters:
-    name: 'ps_7_1_x_win'
-    vmImage: ${{ parameters.win_image }}
-    psVersion: ${{ parameters.ps_7_1_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/live-test-steps.yml
-  parameters:
     name: 'ps_7_2_x_win'
     vmImage: ${{ parameters.win_image }}
     psVersion: ${{ parameters.ps_7_2_x }}
@@ -92,20 +78,6 @@ jobs:
     vmImage: ${{ parameters.win_image }}
     psVersion: ${{ parameters.ps_latest }}
     dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
-
-- template: util/live-test-steps.yml
-  parameters:
-    name: 'ps_7_0_x_linux'
-    vmImage: ${{ parameters.linux_image }}
-    psVersion: ${{ parameters.ps_7_0_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/live-test-steps.yml
-  parameters:
-    name: 'ps_7_1_x_linux'
-    vmImage: ${{ parameters.linux_image }}
-    psVersion: ${{ parameters.ps_7_1_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
 - template: util/live-test-steps.yml
   parameters:
