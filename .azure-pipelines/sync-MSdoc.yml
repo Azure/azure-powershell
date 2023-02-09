@@ -36,9 +36,9 @@ jobs:
       pwsh: true
 
   - pwsh: |
-      $Title = "Sync upcoming breaking changes docs from Azure/azure-powershell repo to MSdocs"
-      $HeadBranch = "main"
-      $BaseBranch = "$(BranchName)"
+      $Title = "Sync upcoming breaking changes docs from Azure/azure-powershell repo"
+      $HeadBranch = "$(BranchName)"
+      $BaseBranch = "main"
       $Description = "Migrate upcoming breaking changes doc from Azure/azure-powershell repo to MSdoc/azure-docs-powershell"
       $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $(GithubToken)"}
       $PrBody = @"
