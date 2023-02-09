@@ -56,39 +56,45 @@ function New-AzConnectedKubernetes {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-        [System.String]
-        # The URI for the proxy server to use (http)
+        [System.Uri]
+        # The http URI of the proxy server for the kubernetes cluster to use
         ${ProxyHttp},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-        [System.String]
-        # The URI for the proxy server to use (https)
+        [System.Uri]
+        # The https URI of the proxy server for the kubernetes cluster to use
         ${ProxyHttps},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
-        # The URI for the proxy server to use (skip)
+        # The comma-separated list of hostnames that should be excluded from the proxy server for the kubernetes cluster to use
         ${ProxyNo},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
+        [System.String]
+        # The path to the certificate file for proxy or custom Certificate Authority.
+        ${ProxyCert},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [ValidateRange(0,3600)]
         [Int]
-        # The timeout for onboarding azure-arc
+        # The time required (in seconds) for the arc-agent pods to be installed on the kubernetes cluster.
         ${OnboardingTimeout} = 600,
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.Management.Automation.SwitchParameter]
-        # Disable auto upgrade of arc agents
+        # Flag to disable auto upgrade of arc agents.
         ${DisableAutoUpgrade},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
-        # The container log path for fluent-bit
+        # Override the default container log path to enable fluent-bit logging.
         ${ContainerLogPath},
 
         [Parameter(HelpMessage="Path to the kube config file")]
@@ -209,14 +215,14 @@ function New-AzConnectedKubernetes {
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
         [System.Uri]
-        # The URI for the proxy server to use
+        # The URI of the proxy server for host os to use
         ${Proxy},
 
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
         [System.Management.Automation.PSCredential]
-        # Credentials for a proxy server to use for the remote call
+        # The credential of the proxy server for host os to use
         ${ProxyCredential},
 
         [Parameter(DontShow)]
@@ -392,14 +398,14 @@ function New-AzConnectedKubernetes {
                 . "$PSScriptRoot/../utils/RSAHelper.ps1"
                 $AgentPublicKey = ExportRSAPublicKeyBase64($RSA)
                 $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA)
-                $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $AgentPrivateKey + "`n-----END RSA PRIVATE KEY-----"
+                $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $AgentPrivateKey + "`n-----END RSA PRIVATE KEY-----"                
             } catch {
                 Write-Error "Unable to generate RSA keys"
                 throw
             }
         } else {
             $AgentPublicKey = [System.Convert]::ToBase64String($RSA.ExportRSAPublicKey())
-            $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey()) + "`n-----END RSA PRIVATE KEY-----"	  
+            $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey()) + "`n-----END RSA PRIVATE KEY-----"
         }
 
         $HelmChartPath = Join-Path -Path $ChartExportPath -ChildPath 'azure-arc-k8sagents'
@@ -409,71 +415,80 @@ function New-AzConnectedKubernetes {
             $ChartPath = $HelmChartPath
         }
 
+        #Region helm options
         $options = ""
         $proxyEnableState = $false
         if (-not ([string]::IsNullOrEmpty($ProxyHttp))) {
-            $ProxyHttp = $ProxyHttp -replace ',','\,'
-            $ProxyHttp = $ProxyHttp -replace '/','\/'    
-            $options += " --set global.httpProxy=$ProxyHttp"
+            $ProxyHttpStr = $ProxyHttp.ToString()
+            $ProxyHttpStr = $ProxyHttpStr -replace ',','\,'
+            $ProxyHttpStr = $ProxyHttpStr -replace '/','\/'
+            $options += " --set global.httpProxy=$ProxyHttpStr"
             $proxyEnableState = $true
             $Null = $PSBoundParameters.Remove('ProxyHttp')
         }
-
         if (-not ([string]::IsNullOrEmpty($ProxyHttps))) {
-            $ProxyHttps = $ProxyHttps -replace ',','\,'
-            $ProxyHttps = $ProxyHttps -replace '/','\/'   
-            $options += " --set global.httpsProxy=$ProxyHttps"
+            $ProxyHttpsStr = $ProxyHttps.ToString()
+            $ProxyHttpsStr = $ProxyHttpsStr -replace ',','\,'
+            $ProxyHttpsStr = $ProxyHttpsStr -replace '/','\/'
+            $options += " --set global.httpsProxy=$ProxyHttpsStr"
             $proxyEnableState = $true
             $Null = $PSBoundParameters.Remove('ProxyHttps')
         }
-
         if (-not ([string]::IsNullOrEmpty($ProxyNo))) {
             $ProxyNo = $ProxyNo -replace ',','\,'
-            $ProxyNo = $ProxyNo -replace '/','\/'   
+            $ProxyNo = $ProxyNo -replace '/','\/'
             $options += " --set global.noProxy=$ProxyNo"
             $proxyEnableState = $true
             $Null = $PSBoundParameters.Remove('ProxyNo')
         }
-
-        if($proxyEnableState) {
+        if ($proxyEnableState) {
             $options += " --set global.isProxyEnabled=true"
         }
-
         try {
-            if (($PSBoundParameters.ContainsKey('ProxyCredential')) -and (Test-Path $ProxyCredential)) {
-                $options += " --set-file global.proxyCert=$ProxyCredential"
+            if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
+                $options += " --set-file global.proxyCert=$ProxyCert"
                 $options += " --set global.isCustomCert=true"
             }
         } catch {
-            Write-Error "Unable to find ProxyCrendial"
+            Write-Error "Unable to find ProxyCert from file path"
             throw
         }
-
-        if($DisableAutoUpgrade) {
+        if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
         }
-
-        if(-not ([string]::IsNullOrEmpty($ContainerLogPath))) {
+        if (-not ([string]::IsNullOrEmpty($ContainerLogPath))) {
             $options += " --set systemDefaultValues.fluent-bit.containerLogPath=$ContainerLogPath"
             $Null = $PSBoundParameters.Remove('ContainerLogPath')
         }
-
 	    if (-not ([string]::IsNullOrEmpty($KubeConfig))) {
             $options += " --kubeconfig $KubeConfig"
         }
-
 	    if (-not ([string]::IsNullOrEmpty($KubeContext))) {
             $options += " --kube-context $KubeContext"
         }
-
 	    if (!$NoWait) {
             $options += " --wait --timeout $OnboardingTimeout"
             $options += "s"
-        }
-
+        }        
+        #Endregion
         if ($PSBoundParameters.ContainsKey('OnboardingTimeout')) {
             $PSBoundParameters.Remove('OnboardingTimeout')
+        }
+        if ((-not ([string]::IsNullOrEmpty($Proxy))) -and (-not $PSBoundParameters.ContainsKey('ProxyCredential'))) {
+            if (-not ([string]::IsNullOrEmpty($Proxy.UserInfo))) {
+                try{
+                    $userInfo = $Proxy.UserInfo -Split ':'
+                    $pass = ConvertTo-SecureString $userInfo[1] -AsPlainText -Force
+                    $ProxyCredential = New-Object System.Management.Automation.PSCredential ($userInfo[0] , $pass)
+                    $PSBoundParameters.Add('ProxyCredential', $ProxyCredential)
+                } catch {
+                    Write-Warning "Please set ProxyCredential or provide username and password in the Proxy parameter"
+                    throw
+                }
+            } else {
+                Write-Warning "If the proxy is a private proxy, pass ProxyCredential parameter or provide username and password in the Proxy parameter"
+            }
         }
 
         $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
