@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed an issue that the helper message about missing modules shows up at the wrong time. [#19228]
 
 ## Version 2.11.2
 * Supported Web Account Manager on ARM64-based Windows systems. Fixed an issue where `Connect-AzAccount` failed with error "Unable to load DLL 'msalruntime_arm64'". [#20700]
