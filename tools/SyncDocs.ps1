@@ -3,7 +3,7 @@ param(
     [Parameter()]
     [string]$RepoName = "azure-docs-powershell",
     [Parameter()]
-    [string]$OrgName = "NoriZC", #"MicrosoftDocs",
+    [string]$OrgName = "MicrosoftDocs",
     [Parameter()]
     [string]$BranchName,
     [Parameter()]
@@ -12,7 +12,6 @@ param(
     [string]$GithubToken
 )
 
-ls
 #The location of repos
 $WorkSpace = (Resolve-Path (Join-Path $PSScriptRoot "../../")).Path
 Write-Host "WorkSpace Location:" $WorkSpace
@@ -20,8 +19,9 @@ Write-Host "WorkSpace Location:" $WorkSpace
 $RepoCloneLink = "https://github.com/$OrgName/$RepoName.git"
 $Config = Get-Content (Join-Path $PSScriptRoot "../.azure-pipelines/SyncDocsConfig.json") | ConvertFrom-Json
 $TmpFolder = Resolve-Path (New-Item -ItemType Directory -Path tmp)
-ls
-Write-Host "Temp location:" $TmpFolder
+$AzVersion = (Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1").ModuleVersion
+
+Write-Host "Az version:" $AzVersion
 
 foreach ($SyncPath in $Config.SyncPath)
 {
@@ -33,8 +33,8 @@ ls $TmpFolder
 $SyncFile = Split-Path $SyncPath -Leaf
 Write-Host $SyncFile
 
-git config --global user.email "norizhang@microsoft.com"  #"azurepowershell@ms.com"
-git config --global user.name "NoriZC"  #"azurepowershell"
+git config --global user.email "azurepowershell@ms.com"
+git config --global user.name "azurepowershell"
 
 cd $WorkSpace
 git clone $RepoCloneLink
@@ -44,10 +44,10 @@ git checkout -b $BranchName
 
 foreach ($SyncPath in $Config.SyncPath)
 {
-    Copy-Item $TmpFolder\$SyncFile (Join-Path $WorkSpace $RepoName/docs-conceptual/azps-9.3.0) -Force
-    git add (Join-Path $WorkSpace $RepoName/docs-conceptual/azps-9.3.0)
+    Copy-Item $TmpFolder\$SyncFile (Join-Path $WorkSpace $RepoName/docs-conceptual/azps-$AzVersion) -Force
+    git add (Join-Path $WorkSpace $RepoName/docs-conceptual/azps-$AzVersion)
 }
 
-git commit -m "Sync upcoming breaking changes doc from azure-powershell to $RepoName"
+git commit -m "Sync upcoming breaking changes doc from azure-powershell."
 git remote set-url origin "https://$GithubToken@github.com/$OrgName/$RepoName.git"
 git push origin "$BranchName" --force
