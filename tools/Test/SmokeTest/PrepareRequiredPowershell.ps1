@@ -46,6 +46,7 @@ function Install-PowerShell {
   Write-Host $requiredPsVersion, $AgentOS
 
   if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "Darwin"){
+    dotnet tool list
     copy-item $PSHOME/Microsoft.ApplicationInsights.dll  $HOME/work/1/s/.dotnet/tools/.store/powershell/7.2.9/tools/net6.0/any/unix
   }
 
@@ -59,7 +60,6 @@ function Install-PowerShell {
     if ('preview' -eq $requiredPsVersion) {
       # Change the mode of 'pwsh' to 'rwxr-xr-x' to allow execution
       if ($AgentOS -ne "Windows_NT") { chmod 755 "$PowerShellPath/pwsh" }
-       dotnet tool list
       . "$PowerShellPath/pwsh" -c $command
     } else {
       dotnet tool run pwsh -c $command
