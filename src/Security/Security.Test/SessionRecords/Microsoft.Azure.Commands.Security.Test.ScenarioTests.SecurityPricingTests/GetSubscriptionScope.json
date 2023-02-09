@@ -1,24 +1,24 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings?api-version=2018-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcHJpY2luZ3M/YXBpLXZlcnNpb249MjAxOC0wNi0wMQ==",
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings?api-version=2022-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcHJpY2luZ3M/YXBpLXZlcnNpb249MjAyMi0wMy0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ba121c01-7663-4a6b-87c4-568971724544"
+          "f1c02083-1c88-485c-9d4f-b0b97b2ebf5b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/4.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -26,32 +26,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "e318150b-cb26-4984-bdbe-61420d5610ee"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "749"
         ],
-        "x-ms-correlation-request-id": [
-          "55fec7e0-25a2-4353-9e93-8a55aba1f223"
-        ],
-        "x-ms-routing-request-id": [
-          "UKWEST:20190307T160215Z:55fec7e0-25a2-4353-9e93-8a55aba1f223"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "api-supported-versions": [
+          "1.0"
+        ],
+        "x-ms-request-id": [
+          "811a90a2-6bd8-4b10-870a-eba5f085c7c0"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "e7ab7154-94bc-4b8b-8ee8-675e107a441c"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20221117T081725Z:e7ab7154-94bc-4b8b-8ee8-675e107a441c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 Mar 2019 16:02:14 GMT"
+          "Thu, 17 Nov 2022 08:17:24 GMT"
         ],
         "Content-Length": [
-          "740"
+          "3571"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines\",\r\n      \"name\": \"VirtualMachines\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/SqlServers\",\r\n      \"name\": \"SqlServers\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/AppServices\",\r\n      \"name\": \"AppServices\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines\",\r\n      \"name\": \"VirtualMachines\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"subPlan\": \"P2\",\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/SqlServers\",\r\n      \"name\": \"SqlServers\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/AppServices\",\r\n      \"name\": \"AppServices\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/StorageAccounts\",\r\n      \"name\": \"StorageAccounts\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"subPlan\": \"PerTransaction\",\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/SqlServerVirtualMachines\",\r\n      \"name\": \"SqlServerVirtualMachines\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/KubernetesService\",\r\n      \"name\": \"KubernetesService\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Free\",\r\n        \"freeTrialRemainingTime\": \"PT0S\",\r\n        \"deprecated\": true,\r\n        \"replacedBy\": [\r\n          \"Containers\"\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/ContainerRegistry\",\r\n      \"name\": \"ContainerRegistry\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Free\",\r\n        \"freeTrialRemainingTime\": \"PT0S\",\r\n        \"deprecated\": true,\r\n        \"replacedBy\": [\r\n          \"Containers\"\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/KeyVaults\",\r\n      \"name\": \"KeyVaults\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/Dns\",\r\n      \"name\": \"Dns\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/Arm\",\r\n      \"name\": \"Arm\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/OpenSourceRelationalDatabases\",\r\n      \"name\": \"OpenSourceRelationalDatabases\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/CosmosDbs\",\r\n      \"name\": \"CosmosDbs\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/Containers\",\r\n      \"name\": \"Containers\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/CloudPosture\",\r\n      \"name\": \"CloudPosture\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
