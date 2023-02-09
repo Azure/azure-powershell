@@ -47,7 +47,9 @@ function Install-PowerShell {
 
   if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "Darwin"){
     get-content /Users/runner/work/1/s/.config/dotnet-tools.json
-    Write-Host (Get-ChildItem $HOME/work/1/s -Recurse).Name
+    Write-Host (Get-ChildItem $HOME/work/1/s/.config -Recurse).Name
+        Write-Host (Get-ChildItem $HOME/work/1/s/tooling -Recurse).Name
+
     copy-item $PSHOME/Microsoft.ApplicationInsights.dll  $HOME/work/1/s/.dotnet/tools/.store/powershell/7.2.9/tools/net6.0/any/unix
   }
 
