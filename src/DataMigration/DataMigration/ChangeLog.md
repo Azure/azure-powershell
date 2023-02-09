@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated the link of storage account for users to download LoginsMigration.zip file.
+* Renaming Azure Database Migration Service to Azure Database Migration Service (classic)
 
 ## Version 0.12.0
 * Added custom cmdlets for LoginsMigration:
