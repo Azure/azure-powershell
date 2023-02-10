@@ -16,11 +16,13 @@ using System;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Azure.Core;
 using Azure.Identity;
+using Azure.Identity.BrokeredAuthentication;
 
 using Hyak.Common;
 
@@ -30,29 +32,29 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
     /// <summary>
-    /// Authenticator for user interactive authentication
+    /// Authenticator for user interactive authentication using browser.
     /// </summary>
     public class InteractiveUserAuthenticator : DelegatingAuthenticator
     {
         // possible ports for adfs: [8405, 8408)
         // worked with stack team to pre-configure this in their deployment
-        private const int AdfsPortStart = 8405;
-        private const int AdfsPortEnd = 8408;
+        protected const int AdfsPortStart = 8405;
+        protected const int AdfsPortEnd = 8408;
         // possible ports for aad: [8400, 9000)
-        private const int AadPortStart = 8400;
-        private const int AadPortEnd = 9000;
+        protected const int AadPortStart = 8400;
+        protected const int AadPortEnd = 9000;
 
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var interactiveParameters = parameters as InteractiveParameters;
             var onPremise = interactiveParameters.Environment.OnPremise;
-            //null instead of "organizations" should be passed to Azure.Identity to support MSA account 
+            //null instead of "organizations" should be passed to Azure.Identity to support MSA account
             var tenantId = onPremise ? AdfsTenant :
                 (string.Equals(parameters.TenantId, OrganizationsTenant, StringComparison.OrdinalIgnoreCase) ? null : parameters.TenantId);
             var tokenCacheProvider = interactiveParameters.TokenCacheProvider;
             var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId) ?? interactiveParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
-            var clientId = AuthenticationHelpers.PowerShellClientId;
+            var clientId = Constants.PowerShellClientId;
 
             var requestContext = new TokenRequestContext(scopes);
             var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
@@ -63,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 TenantId = tenantId,
                 TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions(),
                 AuthorityHost = new Uri(authority),
-                RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
+                RedirectUri = GetReplyUrl(onPremise, interactiveParameters.PromptAction),
                 LoginHint = interactiveParameters.UserId,
             };
             var browserCredential = new InteractiveBrowserCredential(options);
@@ -78,13 +80,13 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 cancellationToken);
         }
 
-        private Uri GetReplyUrl(bool onPremise, InteractiveParameters interactiveParameters)
+        protected Uri GetReplyUrl(bool onPremise, Action<string> promptAction)
         {
-            var port = GetReplyUrlPort(onPremise, interactiveParameters);
+            var port = GetReplyUrlPort(onPremise, promptAction);
             return new Uri($"http://localhost:{port}");
         }
 
-        private int GetReplyUrlPort(bool onPremise, InteractiveParameters interactiveParameters)
+        private int GetReplyUrlPort(bool onPremise, Action<string> promptAction)
         {
             int portStart = onPremise ? AdfsPortStart : AadPortStart;
             int portEnd = onPremise ? AdfsPortEnd : AadPortEnd;
@@ -103,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 }
                 catch (Exception ex)
                 {
-                    interactiveParameters.PromptAction(string.Format("Port {0} is taken with exception '{1}'; trying to connect to the next port.", port, ex.Message));
+                    promptAction(string.Format("Port {0} is taken with exception '{1}'; trying to connect to the next port.", port, ex.Message));
                     listener?.Stop();
                 }
             }

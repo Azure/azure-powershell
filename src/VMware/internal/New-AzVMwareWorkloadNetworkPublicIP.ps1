@@ -27,7 +27,7 @@ Create a Public IP Block by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPublicIP
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkpublicip
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkpublicip
 #>
 function New-AzVMwareWorkloadNetworkPublicIP {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPublicIP])]

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: CBD157D2-37C5-491F-A806-6B39F1D0415A
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageblobcopystate
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageblobcopystate
 schema: 2.0.0
 ---
 
@@ -41,33 +41,33 @@ It should run on the copy destination blob.
 ## EXAMPLES
 
 ### Example 1: Get the copy status of a blob
-```
-C:\PS>Get-AzStorageBlobCopyState -Blob "ContosoPlanning2015" -Container "ContosoUploads"
+```powershell
+Get-AzStorageBlobCopyState -Blob "ContosoPlanning2015" -Container "ContosoUploads"
 ```
 
 This command gets the copy status of the blob named ContosoPlanning2015 in the container ContosoUploads.
 
 ### Example 2: Get the copy status for of a blob by using the pipeline
-```
-C:\PS>Get-AzStorageBlob -Blob "ContosoPlanning2015" -Container "ContosoUploads" | Get-AzStorageBlobCopyState
+```powershell
+Get-AzStorageBlob -Blob "ContosoPlanning2015" -Container "ContosoUploads" | Get-AzStorageBlobCopyState
 ```
 
 This command gets the blob named ContosoPlanning2015 in the container named ContosoUploads by using the **Get-AzStorageBlob** cmdlet, and then passes the result to the current cmdlet by using the pipeline operator.
 The **Get-AzStorageBlobCopyState** cmdlet gets the copy status for that blob.
 
 ### Example 3: Get the copy status for a blob in a container by using the pipeline
-```
-C:\PS>Get-AzStorageContainer -Name "ContosoUploads" | Get-AzStorageBlobCopyState -Blob "ContosoPlanning2015"
+```powershell
+Get-AzStorageContainer -Name "ContosoUploads" | Get-AzStorageBlobCopyState -Blob "ContosoPlanning2015"
 ```
 
 This command gets the container named by using the **Get-AzStorageBlob** cmdlet, and then passes the result to the current cmdlet.
 The **Get-AzStorageContainer** cmdlet gets the copy status for the blob named ContosoPlanning2015 in that container.
 
 ### Example 4: Start Copy and pipeline to get the copy status
-```
-C:\PS> $destBlob = Start-AzStorageBlobCopy -SrcContainer "contosouploads" -SrcBlob "ContosoPlanning2015" -DestContainer "contosouploads2" -DestBlob "ContosoPlanning2015_copy"
+```powershell
+$destBlob = Start-AzStorageBlobCopy -SrcContainer "contosouploads" -SrcBlob "ContosoPlanning2015" -DestContainer "contosouploads2" -DestBlob "ContosoPlanning2015_copy"
 
-C:\PS> $destBlob | Get-AzStorageBlobCopyState
+$destBlob | Get-AzStorageBlobCopyState
 ```
 
 The first command starts copy blob "ContosoPlanning2015" to "ContosoPlanning2015_copy", and output the destiantion blob object. 

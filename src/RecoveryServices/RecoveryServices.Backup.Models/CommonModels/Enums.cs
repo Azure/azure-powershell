@@ -274,7 +274,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Protection was disabled
         /// </summary>
-        ProtectionStopped
+        ProtectionStopped,
+
+        /// <summary>
+        /// Stop backup with retain data as per policy
+        /// </summary>
+        BackupsSuspended
     }
 
     #region policy

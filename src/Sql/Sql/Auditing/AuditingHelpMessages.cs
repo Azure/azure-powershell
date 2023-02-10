@@ -62,6 +62,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
 
         public const string AsJobHelpMessage = "Run cmdlet in the background";
 
+        public const string UseIdentityMessage = "Indicates whether to use managed identity or not. It is required when you want to use managed identity while target storage is not behind firewall.";
+
         public const string AuditActionHelpMessage =
 @"The set of audit actions.  
 The supported actions to audit are:  

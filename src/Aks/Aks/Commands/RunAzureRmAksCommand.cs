@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     foreach (string filepath in filesToAttach)
                     {
-                        var relativePath = filepath.Replace(rootDirectory, "").Trim('/').Trim('\\');
+                        var relativePath = filepath.Replace(rootDirectory, "").Replace('\\', '/').Trim('/');
                         var memoryZipFile = archive.CreateEntry(relativePath);
                         var fileContent = File.ReadAllText(filepath);
                         using (var entryStream = memoryZipFile.Open())

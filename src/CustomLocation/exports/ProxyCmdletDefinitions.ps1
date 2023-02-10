@@ -29,7 +29,7 @@ Name                                                             Type
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.IEnabledResourceType
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationenabledresourcetype
+https://learn.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationenabledresourcetype
 #>
 function Get-AzCustomLocationEnabledResourceType {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.IEnabledResourceType])]
@@ -189,7 +189,7 @@ INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
   [ResourceName <String>]: Custom Locations name.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/get-azcustomlocation
+https://learn.microsoft.com/powershell/module/az.customlocation/get-azcustomlocation
 #>
 function Get-AzCustomLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]
@@ -344,7 +344,7 @@ INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
   [ResourceName <String>]: Custom Locations name.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/remove-azcustomlocation
+https://learn.microsoft.com/powershell/module/az.customlocation/remove-azcustomlocation
 #>
 function Remove-AzCustomLocation {
 [OutputType([System.Boolean])]
@@ -500,7 +500,7 @@ eastus   azps_test_cluster arc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/new-azcustomlocation
+https://learn.microsoft.com/powershell/module/az.customlocation/new-azcustomlocation
 #>
 function New-AzCustomLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]
@@ -717,7 +717,7 @@ INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
   [ResourceName <String>]: Custom Locations name.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/update-azcustomlocation
+https://learn.microsoft.com/powershell/module/az.customlocation/update-azcustomlocation
 #>
 function Update-AzCustomLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]

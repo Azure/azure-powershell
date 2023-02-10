@@ -1,0 +1,37 @@
+{
+  "Update-AzPeeringService+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/DRTestInterCloud?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/DRTestInterCloud?api-version=2022-10-01",
+      "Content": "{\n  \"tags\": {\n    \"hello\": \"world\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "4418e086-7979-49b2-9972-6a9a882c6f12" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "9922e95d-6431-4c26-a77a-e83c95d6a857" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T021003Z:9922e95d-6431-4c26-a77a-e83c95d6a857" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 02:10:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "453" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Ile-de-France\",\r\n    \"peeringServiceProvider\": \"InterCloud\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"UK South\",\r\n  \"tags\": {\r\n    \"hello\": \"world\"\r\n  },\r\n  \"name\": \"DRTestInterCloud\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/DRTestInterCloud\",\r\n  \"type\": \"Microsoft.Peering/peeringServices\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -241,6 +241,17 @@ function Delete-VM(
 	Remove-AzVM -ResourceGroupName $rgName -Name $vmName -Force
 }
 
+function Delete-AllDisks(
+	[string] $resourceGroupName,
+	[string] $diskName)
+{
+	$disks = Get-AzDisk -ResourceGroupName $resourceGroupName | where { $_.Name -match $diskName }
+
+	foreach ($disk in $disks){
+		Remove-AzDisk -ResourceGroupName $resourceGroupName -DiskName $disk.Name -Force
+	}
+}
+
 function Enable-Protection(
 	$vault, 
 	$vm,

@@ -27,7 +27,7 @@ Get-AzAutomanageBestPractice -Name AzureBestPracticesProduction
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IBestPractice
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanagebestpractice
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanagebestpractice
 #>
 function Get-AzAutomanageBestPractice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IBestPractice])]

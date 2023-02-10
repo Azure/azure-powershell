@@ -592,6 +592,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     Capacity = model.Capacity
                 },
                 LicenseType = model.LicenseType,
+                HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount,
                 RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 ZoneRedundant = model.ZoneRedundant,
                 Tags = model.Tags

@@ -20,6 +20,21 @@
 
 ## Upcoming Release
 
+## Version 2.11.2
+* Supported Web Account Manager on ARM64-based Windows systems. Fixed an issue where `Connect-AzAccount` failed with error "Unable to load DLL 'msalruntime_arm64'". [#20700]
+* Enabled credential to be found only by applicationId while tenant was not matched when accquire token. [#20484]
+* When Az.Accounts ran in parallel, the waiters were allowed to wait infinitely to avoid throw exception in automation enviroment. [#20455]
+
+## Version 2.11.1
+* Fixed an issue where Az.Accounts cannot be imported correctly. [#20615]
+
+## Version 2.11.0
+* Supported Web Account Manager (WAM) as an opt-in interactive login experience. Enable it by `Update-AzConfig -EnableLoginByWam $true`.
+* Optimized the mechanism for assembly loading.
+* Enabled AzKeyStore with keyring in Linux.
+* Fixed a typo in GetAzureRmContextAutosaveSetting.cs changing the cmdlet class name to GetAzureRmContextAutosaveSetting
+* Removed survey on error message in `Resolve-AzError`. [#20398]
+
 ## Version 2.10.4
 * Enabled caching tokens when logging in with a client assertion. This fixed the incorrectly short lifespan of tokens.
 * Upgraded target framework of Microsoft.Identity.Client to net461 [#20189]

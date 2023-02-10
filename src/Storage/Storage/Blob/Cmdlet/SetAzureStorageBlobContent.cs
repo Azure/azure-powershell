@@ -30,12 +30,11 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Storage.DataMovement;
-using Azure;
 using Azure.Storage.Blobs;
-using Azure.Storage.Files.DataLake.Models;
 using Azure.Storage.Blobs.Models;
-using Azure.Storage.Blobs.Specialized;
 using Azure.Storage;
+using Azure.Storage.Blobs.Specialized;
+using Azure;
 using System.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
@@ -181,33 +180,37 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private PremiumPageBlobTier? pageBlobTier = null;
 
         [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Hot", "Cool", "Archive")]
-        [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
         public string StandardBlobTier
         {
             get
             {
-                return standardBlobTier is null ? null : standardBlobTier.Value.ToString();
+                return accesstier?.ToString();
             }
 
             set
             {
                 if (value != null)
                 {
-                    standardBlobTier = ((StandardBlobTier)Enum.Parse(typeof(StandardBlobTier), value, true));
+                    accesstier = new AccessTier(value);
+                    isBlockBlobAccessTier = true;
                 }
                 else
                 {
-                    standardBlobTier = null;
+                    accesstier = null;
                 }
             }
         }
-        private StandardBlobTier? standardBlobTier = null;
+        private bool? isBlockBlobAccessTier = null;
+        private AccessTier? accesstier = null;
 
         [Parameter(HelpMessage = "Encryption scope to be used when making requests to the blob.",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string EncryptionScope { get; set; }
+
+        private BlobUploadRequestQueue UploadRequests = new BlobUploadRequestQueue();
 
         protected override bool UseTrack2Sdk()
         {
@@ -215,15 +218,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 return true;
             }
-            if (!string.IsNullOrEmpty(this.EncryptionScope))
+            if (!string.IsNullOrEmpty(EncryptionScope))
             {
                 return true;
             }
-
-            return base.UseTrack2Sdk();
+            if (accesstier != null && accesstier.Value != AccessTier.Archive && accesstier.Value != AccessTier.Cool && accesstier.Value != AccessTier.Hot)
+            {
+                return true;
+            }
+            return false;
         }
-
-        private BlobUploadRequestQueue UploadRequests = new BlobUploadRequestQueue();
 
         /// <summary>
         /// Initializes a new instance of the SetAzureBlobContentCommand class.
@@ -288,9 +292,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 data.Record,
                 this.OutputStream).ConfigureAwait(false);
 
-            if (this.pageBlobTier != null || this.standardBlobTier != null)
+            if (this.pageBlobTier != null || this.accesstier != null)
             {
-                await this.SetBlobTier(localChannel, blob, pageBlobTier, standardBlobTier).ConfigureAwait(false);
+                await this.SetBlobTier(localChannel, blob, pageBlobTier, accesstier).ConfigureAwait(false);
             }
 
             try
@@ -411,10 +415,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="blob">CloudBlob object</param>
         /// <param name="pageBlobTier">Page Blob Tier</param>
-        /// <param name="standardBlobTier">Access condition to source if it's file/blob in azure.</param>
-        private async Task SetBlobTier(IStorageBlobManagement localChannel, StorageBlob.CloudBlob blob, PremiumPageBlobTier? pageBlobTier = null, StandardBlobTier? standardBlobTier = null)
+        /// <param name="accessTier">Access condition to source if it's file/blob in azure.</param>
+        private async Task SetBlobTier(IStorageBlobManagement localChannel, StorageBlob.CloudBlob blob, PremiumPageBlobTier? pageBlobTier = null, AccessTier? accessTier = null)
         {
-            if (pageBlobTier == null && standardBlobTier == null)
+            if (pageBlobTier == null && accessTier == null)
             {
                 return;
             }
@@ -426,10 +430,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 await Channel.SetPageBlobTierAsync((CloudPageBlob)blob, pageBlobTier.Value, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             }
-            if (standardBlobTier != null)
+            if (accessTier != null)
             {
-                AccessCondition accessCondition = null;
-                await Channel.SetStandardBlobTierAsync((CloudBlockBlob)blob, accessCondition, standardBlobTier.Value, null, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+                AzureStorageBlob.GetTrack2BlobClient(blob, localChannel.StorageContext, ClientOptions).SetAccessTier(accesstier.Value, cancellationToken: this.CmdletCancellationToken);
             }
         }
 
@@ -452,7 +455,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 BlobHttpHeaders blobHttpHeaders = CreateBlobHttpHeaders(BlobProperties);
                 IDictionary<string, string> metadata = new Dictionary<string, string>();
                 SetBlobMeta_Track2(metadata, this.Metadata);
-                AccessTier? accesstier = GetAccessTier_Track2(this.standardBlobTier, this.pageBlobTier);
+                AccessTier? accesstierToSet = this.accesstier;
+                if (accesstierToSet == null)
+                {
+                    accesstierToSet = Util.ConvertAccessTier_Track1ToTrack2(this.pageBlobTier);
+                }
 
                 //Prepare progress handler
                 long fileSize = new FileInfo(ResolvedFileName).Length;
@@ -487,7 +494,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         uploadOptions.Metadata = metadata;
                         uploadOptions.HttpHeaders = blobHttpHeaders;
                         uploadOptions.Conditions = this.BlobRequestConditions;
-                        uploadOptions.AccessTier = accesstier;
+                        uploadOptions.AccessTier = accesstierToSet;
                         uploadOptions.ProgressHandler = progressHandler;
                         uploadOptions.TransferOptions = trasnferOption;
 
@@ -582,9 +589,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                             offset += readoutcount;
                             progressHandler.Report(offset);
                         }
-                        if (string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase) && accesstier != null)
+                        if (string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase) && accesstierToSet != null)
                         {
-                            await pageblobClient.SetAccessTierAsync(accesstier.Value, cancellationToken: CmdletCancellationToken).ConfigureAwait(false);
+                            await pageblobClient.SetAccessTierAsync(accesstierToSet.Value, cancellationToken: CmdletCancellationToken).ConfigureAwait(false);
                         }
                     }
                     else
@@ -615,9 +622,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 AccessCondition accessCondition = null;
                 StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
 
-                if (this.pageBlobTier != null || this.standardBlobTier != null)
+                if (this.pageBlobTier != null || this.accesstier != null)
                 {
-                    this.SetBlobTier(localChannel, blob, pageBlobTier, standardBlobTier).Wait();
+                    this.SetBlobTier(localChannel, blob, pageBlobTier, accesstier).Wait();
                 }
 
                 try
@@ -685,7 +692,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 type = StorageBlob.BlobType.Unspecified;
             }
-            ValidateBlobTier(type, pageBlobTier, standardBlobTier);
+            ValidateBlobTier(type, pageBlobTier, this.isBlockBlobAccessTier);
 
             if (BlobProperties != null)
             {

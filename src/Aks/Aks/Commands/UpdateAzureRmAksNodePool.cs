@@ -75,6 +75,9 @@ namespace Microsoft.Azure.Commands.Aks.Commands
         [Parameter(Mandatory = false, HelpMessage = "Update node pool without prompt")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
+        public string MaxSurge { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -183,6 +186,10 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     if (this.IsParameterBound(c => c.NodeTaint))
                     {
                         pool.NodeTaints = NodeTaint;
+                    }
+                    if (this.IsParameterBound(c => c.MaxSurge))
+                    {
+                        pool.UpgradeSettings = new AgentPoolUpgradeSettings(MaxSurge);
                     }
 
                     var updatedPool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);

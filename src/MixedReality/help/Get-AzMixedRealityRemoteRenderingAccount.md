@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityremoterenderingaccount
+online version: https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityremoterenderingaccount
 schema: 2.0.0
 ---
 

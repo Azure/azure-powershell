@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="collation">Collation of the managed database.</param>
         /// <param name="status">Status of the database. Possible values
         /// include: 'Online', 'Offline', 'Shutdown', 'Creating',
-        /// 'Inaccessible', 'Restoring', 'Updating'</param>
+        /// 'Inaccessible', 'Restoring', 'Updating', 'Stopping', 'Stopped',
+        /// 'Starting', 'DbMoving', 'DbCopying'</param>
         /// <param name="creationDate">Creation date of the database.</param>
         /// <param name="earliestRestorePoint">Earliest restore point in time
         /// for point in time restore.</param>
@@ -75,9 +76,15 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="sourceDatabaseId">The resource identifier of the
         /// source database associated with create operation of this
         /// database.</param>
+        /// <param name="crossSubscriptionSourceDatabaseId">The resource
+        /// identifier of the cross-subscription source database associated
+        /// with create operation of this database.</param>
         /// <param name="restorableDroppedDatabaseId">The restorable dropped
         /// database resource id to restore when creating this
         /// database.</param>
+        /// <param name="crossSubscriptionRestorableDroppedDatabaseId">The
+        /// restorable cross-subscription dropped database resource id to
+        /// restore when creating this database.</param>
         /// <param name="storageContainerIdentity">Conditional. If createMode
         /// is RestoreExternalBackup, this value is used. Specifies the
         /// identity used for storage container authentication. Can be
@@ -99,7 +106,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// of this managed database.</param>
         /// <param name="lastBackupName">Last backup file name for restore of
         /// this managed database.</param>
-        public ManagedDatabase(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string collation = default(string), string status = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? earliestRestorePoint = default(System.DateTime?), System.DateTime? restorePointInTime = default(System.DateTime?), string defaultSecondaryLocation = default(string), string catalogCollation = default(string), string createMode = default(string), string storageContainerUri = default(string), string sourceDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string storageContainerIdentity = default(string), string storageContainerSasToken = default(string), string failoverGroupId = default(string), string recoverableDatabaseId = default(string), string longTermRetentionBackupResourceId = default(string), bool? autoCompleteRestore = default(bool?), string lastBackupName = default(string))
+        /// <param name="crossSubscriptionTargetManagedInstanceId">Target
+        /// managed instance id used in cross-subscription restore.</param>
+        public ManagedDatabase(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string collation = default(string), string status = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? earliestRestorePoint = default(System.DateTime?), System.DateTime? restorePointInTime = default(System.DateTime?), string defaultSecondaryLocation = default(string), string catalogCollation = default(string), string createMode = default(string), string storageContainerUri = default(string), string sourceDatabaseId = default(string), string crossSubscriptionSourceDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string crossSubscriptionRestorableDroppedDatabaseId = default(string), string storageContainerIdentity = default(string), string storageContainerSasToken = default(string), string failoverGroupId = default(string), string recoverableDatabaseId = default(string), string longTermRetentionBackupResourceId = default(string), bool? autoCompleteRestore = default(bool?), string lastBackupName = default(string), string crossSubscriptionTargetManagedInstanceId = default(string))
             : base(location, id, name, type, tags)
         {
             Collation = collation;
@@ -112,7 +121,9 @@ namespace Microsoft.Azure.Management.Sql.Models
             CreateMode = createMode;
             StorageContainerUri = storageContainerUri;
             SourceDatabaseId = sourceDatabaseId;
+            CrossSubscriptionSourceDatabaseId = crossSubscriptionSourceDatabaseId;
             RestorableDroppedDatabaseId = restorableDroppedDatabaseId;
+            CrossSubscriptionRestorableDroppedDatabaseId = crossSubscriptionRestorableDroppedDatabaseId;
             StorageContainerIdentity = storageContainerIdentity;
             StorageContainerSasToken = storageContainerSasToken;
             FailoverGroupId = failoverGroupId;
@@ -120,6 +131,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             LongTermRetentionBackupResourceId = longTermRetentionBackupResourceId;
             AutoCompleteRestore = autoCompleteRestore;
             LastBackupName = lastBackupName;
+            CrossSubscriptionTargetManagedInstanceId = crossSubscriptionTargetManagedInstanceId;
             CustomInit();
         }
 
@@ -137,7 +149,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Gets status of the database. Possible values include: 'Online',
         /// 'Offline', 'Shutdown', 'Creating', 'Inaccessible', 'Restoring',
-        /// 'Updating'
+        /// 'Updating', 'Stopping', 'Stopped', 'Starting', 'DbMoving',
+        /// 'DbCopying'
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
         public string Status { get; private set; }
@@ -210,11 +223,25 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string SourceDatabaseId { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource identifier of the cross-subscription
+        /// source database associated with create operation of this database.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.crossSubscriptionSourceDatabaseId")]
+        public string CrossSubscriptionSourceDatabaseId { get; set; }
+
+        /// <summary>
         /// Gets or sets the restorable dropped database resource id to restore
         /// when creating this database.
         /// </summary>
         [JsonProperty(PropertyName = "properties.restorableDroppedDatabaseId")]
         public string RestorableDroppedDatabaseId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the restorable cross-subscription dropped database
+        /// resource id to restore when creating this database.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.crossSubscriptionRestorableDroppedDatabaseId")]
+        public string CrossSubscriptionRestorableDroppedDatabaseId { get; set; }
 
         /// <summary>
         /// Gets or sets conditional. If createMode is RestoreExternalBackup,
@@ -268,6 +295,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.lastBackupName")]
         public string LastBackupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets target managed instance id used in cross-subscription
+        /// restore.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.crossSubscriptionTargetManagedInstanceId")]
+        public string CrossSubscriptionTargetManagedInstanceId { get; set; }
 
         /// <summary>
         /// Validate the object.

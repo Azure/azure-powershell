@@ -43,7 +43,7 @@ CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoin
 RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
   [Id <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnroute
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnroute
 #>
 function New-AzFrontDoorCdnRoute {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRoute])]

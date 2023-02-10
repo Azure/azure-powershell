@@ -26,7 +26,7 @@ Describe 'Install-AzModule' {
         $modules.Name | Should -Contain 'Az.Storage'
         $modules.Name | Should -Contain 'Az.Network'
         $modules.Name | Should -Contain 'Az.Compute'
-        $modules.Name | Should -Contain 'Az.KeyVault'       
+        $modules.Name | Should -Contain 'Az.KeyVault'
     }
 
     It 'InstallByNamePrerelease' {
@@ -34,7 +34,7 @@ Describe 'Install-AzModule' {
         $output.Count | Should -Be 5
         $modules = Get-AzSubModule
         $modules.Count | Should -Be 5
-        $modules.Name | Should -Contain 'Az.Accounts'        
+        $modules.Name | Should -Contain 'Az.Accounts'
         $modules.Name | Should -Contain 'Az.Storage'
         $modules.Name | Should -Contain 'Az.Network'
         $modules.Name | Should -Contain 'Az.Maps'
@@ -44,12 +44,12 @@ Describe 'Install-AzModule' {
         $output.Count | Should -Be 4
         $modules = Get-AzSubModule
         $modules.Count | Should -Be 6
-        $modules.Name | Should -Contain 'Az.Accounts'        
+        $modules.Name | Should -Contain 'Az.Accounts'
         $modules.Name | Should -Contain 'Az.Storage'
         $modules.Name | Should -Contain 'Az.Network'
         $modules.Name | Should -Contain 'Az.Maps'
         $modules.Name | Should -Contain 'Az.KeyVault'
-        $modules.Name | Should -Contain 'Az.Resources'               
+        $modules.Name | Should -Contain 'Az.Resources'
     }
 
     It 'InstallByNameLatest' {
@@ -105,7 +105,35 @@ Describe 'Install-AzModule' {
         $modules.Name | Should -Contain 'Az.Storage'
     }
 
+    It 'InstallWithoutRepository' {
+        $repos = [Array](Get-PSRepository | Where-Object {$_.Name -ne 'PSGallery'})
+        if ($repos -ne $null) {
+            $repos | Unregister-PSRepository
+        }
+        try {
+            $output = Install-AzModule -Name storage,neTwork -RequiredAzVersion 6.3 -Scope 'CurrentUser'
+            $output.Count | Should -Be 3
+            $modules = Get-AzSubModule
+            $modules.Count | Should -Be 3
+            $modules.Name | Should -Contain 'Az.Accounts'
+            $modules.Name | Should -Contain 'Az.Storage'
+            $modules.Name | Should -Contain 'Az.Network'
+        }
+        finally {
+            foreach ($repo in $repos) {
+                if ($repo.Name -ne 'PSGallery') {
+                    $parameters = @{
+                        Name = $repo.Name
+                        SourceLocation = $repo.SourceLocation
+                        InstallationPolicy = $repo.InstallationPolicy
+                    }
+                    Register-PSRepository @parameters
+                }
+            }
+        }
+    }
+
     AfterEach {
-        Remove-AllAzModule       
+        Remove-AllAzModule
     }
 }

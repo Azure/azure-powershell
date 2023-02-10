@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 3E79EE05-7E52-4C54-B985-441BC2599925
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragecontainerstoredaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragecontainerstoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **Remove-AzStorageContainerStoredAccessPolicy** cmdlet removes a stored acce
 ## EXAMPLES
 
 ### Example 1: Remove a stored access policy from a storage container
-```
-PS C:\>Remove-AzStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy03"
+```powershell
+Remove-AzStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy03"
 ```
 
 This command removes an access policy named Policy03 from the stored container named MyContainer.
