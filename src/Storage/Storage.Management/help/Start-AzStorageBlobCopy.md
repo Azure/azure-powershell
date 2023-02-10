@@ -122,14 +122,14 @@ The **Start-AzStorageBlobCopy** cmdlet starts to copy a blob.
 ## EXAMPLES
 
 ### Example 1: Copy a named blob
-```
+```powershell
 Start-AzStorageBlobCopy -SrcBlob "ContosoPlanning2015" -DestContainer "ContosoArchives" -SrcContainer "ContosoUploads"
 ```
 
 This command starts the copy operation of the blob named ContosoPlanning2015 from the container named ContosoUploads to the container named ContosoArchives.
 
 ### Example 2: Get a container to specify blobs to copy
-```
+```powershell
 Get-AzStorageContainer -Name "ContosoUploads" | Start-AzStorageBlobCopy -SrcBlob "ContosoPlanning2015" -DestContainer "ContosoArchives"
 ```
 
@@ -139,7 +139,7 @@ The previous cmdlet provides the source container.
 The *DestContainer* parameter specifies ContosoArchives as the destination container.
 
 ### Example 3: Get all blobs in a container and copy them
-```
+```powershell
 Get-AzStorageBlob -Container "ContosoUploads" | Start-AzStorageBlobCopy -DestContainer "ContosoArchives"
 ```
 
@@ -147,7 +147,7 @@ This command gets the blobs in the container named ContosoUploads, by using the 
 That cmdlet starts the copy operation of the blobs to the container named ContosoArchives.
 
 ### Example 4: Copy a blob specified as an object
-```
+```powershell
 $SrcBlob = Get-AzStorageBlob -Container "ContosoUploads" -Blob "ContosoPlanning2015"
 $DestBlob = Get-AzStorageBlob -Container "ContosoArchives" -Blob "ContosoPlanning2015Archived"
 Start-AzStorageBlobCopy -ICloudBlob $SrcBlob.ICloudBlob -DestICloudBlob $DestBlob.ICloudBlob
@@ -161,7 +161,7 @@ The last command starts the copy operation from the source container to the dest
 The command uses standard dot notation to specify the **ICloudBlob** objects for the $SrcBlob and $DestBlob blobs.
 
 ### Example 5: Copy a blob from a URI
-```
+```powershell
 $Context = New-AzStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >"
 Start-AzStorageBlobCopy -AbsoluteUri "http://www.contosointernal.com/planning" -DestContainer "ContosoArchive" -DestBlob "ContosoPlanning2015" -DestContext $Context
 ```
@@ -172,7 +172,7 @@ The command starts the copy operation to the destination context stored in $Cont
 There are no source storage context, so the source Uri must have access to the source object. E.g: if the source is a none public Azure blob, the Uri should contain SAS token which has read access to the blob.
 
 ### Example 6: Copy a block blob to destination container with a new blob name, and set destination blob StandardBlobTier as Hot, RehydratePriority as High
-```
+```powershell
 Start-AzStorageBlobCopy -SrcContainer "ContosoUploads" -SrcBlob "BlockBlobName" -DestContainer "ContosoArchives" -DestBlob "NewBlockBlobName" -StandardBlobTier Hot -RehydratePriority High
 ```
 

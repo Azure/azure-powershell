@@ -37,7 +37,7 @@ The **Revoke-AzStorageAccountUserDelegationKeys** cmdlet revokes all User Delega
 
 ### Example 1: Revoke all User Delegation keys of a Storage account
 ```powershell
-PS C:\>Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 ```
 
 This example revokes all User Delegation keys of a Storage account, so all Identity SAS token generated from the User Delegation keys will also be revoked.

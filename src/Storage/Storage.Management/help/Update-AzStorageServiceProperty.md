@@ -24,8 +24,8 @@ The **Update-AzStorageServiceProperty** cmdlet modifies the properties for the A
 ## EXAMPLES
 
 ### Example 1: Set Blob Service DefaultServiceVersion to 2017-04-17
-```
-C:\PS>Update-AzStorageServiceProperty -ServiceType Blob -DefaultServiceVersion 2017-04-17
+```powershell
+Update-AzStorageServiceProperty -ServiceType Blob -DefaultServiceVersion 2017-04-17
 ```
 
 This command Set the DefaultServiceVersion of Blob Service to 2017-04-17

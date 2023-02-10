@@ -43,8 +43,8 @@ The **Remove-AzStorageDirectory** cmdlet deletes a directory.
 ## EXAMPLES
 
 ### Example 1: Delete a folder
-```
-PS C:\>Remove-AzStorageDirectory -ShareName "ContosoShare06" -Path "ContosoWorkingFolder"
+```powershell
+Remove-AzStorageDirectory -ShareName "ContosoShare06" -Path "ContosoWorkingFolder"
 ```
 
 This command deletes the folder named ContosoWorkingFolder from the file share named ContosoShare06.
