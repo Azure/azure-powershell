@@ -144,7 +144,7 @@ VOLUME <IVolume[]>: The list of volumes that can be mounted by containers in thi
   [Secret <ISecretVolume>]: The secret volume.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 #>
 function New-AzContainerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup])]

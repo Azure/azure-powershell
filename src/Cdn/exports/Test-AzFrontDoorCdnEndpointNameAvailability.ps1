@@ -27,7 +27,7 @@ Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName testps-rg-da16jm 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckEndpointNameAvailabilityOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnendpointnameavailability
+https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnendpointnameavailability
 #>
 function Test-AzFrontDoorCdnEndpointNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckEndpointNameAvailabilityOutput])]

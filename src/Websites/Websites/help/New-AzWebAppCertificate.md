@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostName
-Custom hostnames associated with web app/slot.
+Custom hostname associated with web app/slot.
 
 ```yaml
 Type: System.String

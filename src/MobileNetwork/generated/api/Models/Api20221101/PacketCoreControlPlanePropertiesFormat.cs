@@ -82,13 +82,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101
         public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.InstallationState? InstallationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IInstallationInternal)Installation).State; set => ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IInstallationInternal)Installation).State = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.InstallationState)""); }
 
         /// <summary>Backing field for <see cref="InteropSetting" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny _interopSetting;
+        private Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings _interopSetting;
 
         /// <summary>
         /// Settings to allow interoperability with third party components e.g. RANs and UEs.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Origin(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny InteropSetting { get => (this._interopSetting = this._interopSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Any()); set => this._interopSetting = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings InteropSetting { get => (this._interopSetting = this._interopSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlanePropertiesFormatInteropSettings()); set => this._interopSetting = value; }
 
         /// <summary>How to authenticate users who access local diagnostics APIs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Origin(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PropertyOrigin.Inlined)]
@@ -345,8 +345,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101
         ReadOnly = false,
         Description = @"Settings to allow interoperability with third party components e.g. RANs and UEs.",
         SerializedName = @"interopSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny InteropSetting { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings) })]
+        Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings InteropSetting { get; set; }
         /// <summary>How to authenticate users who access local diagnostics APIs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = true,
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101
         /// <summary>
         /// Settings to allow interoperability with third party components e.g. RANs and UEs.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny InteropSetting { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings InteropSetting { get; set; }
         /// <summary>How to authenticate users who access local diagnostics APIs.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType LocalDiagnosticAccessAuthenticationType { get; set; }
         /// <summary>The HTTPS server TLS certificate used to secure local access to diagnostics.</summary>

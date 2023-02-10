@@ -51,7 +51,7 @@ This commands removes the dataset named DSM from sharesubscription WikiAds.
 ## PARAMETERS
 
 ### -AccountName
-Azure data share account name
+The name of the Azure storage account that is the source of the data being shared.
 
 ```yaml
 Type: System.String

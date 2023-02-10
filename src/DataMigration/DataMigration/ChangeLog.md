@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the link of storage account for users to download LoginsMigration.zip file.
 
 ## Version 0.12.0
 * Added custom cmdlets for LoginsMigration:

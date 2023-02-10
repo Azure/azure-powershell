@@ -64,4 +64,30 @@ Describe 'Update-AzBillingBenefitsSavingsPlan' {
         $response2.DisplayName | Should -Not -Be $null
         $response2.DisplayName | Should -Not -Be $oldName
     }
+
+    It 'UpdateWithRenewalSetting' {
+        $response1 = Get-AzBillingBenefitsSavingsPlan -Id "82a298d8-67ca-470d-ae9d-17dc39793fe8" -OrderId "6296d1ad-86dd-4959-a949-64b8a10603a6"
+        $response1.Renew | Should -Be $False
+
+        $request = @{
+            Renew = "true"
+            RenewProperty = @{
+                    PurchaseProperty = @{
+                    AppliedScopeType = "Shared"
+                    BillingPlan = "P1M"
+                    BillingScopeId = "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
+                    CommitmentAmount = 0.001
+                    CommitmentGrain = "Hourly"
+                    CommitmentCurrency = "USD"
+                    DisplayName = "newDisplayName"
+                    Term = "P1Y"
+                    SkuName = "Compute_Savings_Plan"
+                }
+            }
+        }
+
+        $response2 = Update-AzBillingBenefitsSavingsPlan -Id "0c382729-4c81-48a9-a350-5b7a8beccea5" -OrderId "e0167471-b48e-4c03-93ca-506ac67a567f" -Body $request
+        $response2 | Should -Not -Be $null
+        $response2.Renew | Should -Be $True
+    }
 }

@@ -20,7 +20,7 @@ Executes a command for a specific container instance in a specified resource gro
 .Description
 Executes a command for a specific container instance in a specified resource group and container group.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
+https://learn.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
 #>
 function Invoke-AzContainerInstanceCommand {
   [OutputType([System.String])]
