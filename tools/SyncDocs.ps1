@@ -46,15 +46,15 @@ foreach ($SyncPath in $Config.SyncPath)
 {
     $Date = Get-Date -Format MM/dd/yyyy
     $Header = @"
-    ---
-    description: Learn about upcoming breaking changes to the Azure Az PowerShell module
-    ms.custom: devx-track-azurepowershell
-    ms.date: $Date
-    ms.devlang: powershell
-    ms.service: azure-powershell
-    ms.topic: conceptual
-    title: Upcoming breaking changes in Azure PowerShell
-    ---
+---
+description: Learn about upcoming breaking changes to the Azure Az PowerShell module
+ms.custom: devx-track-azurepowershell
+ms.date: $Date
+ms.devlang: powershell
+ms.service: azure-powershell
+ms.topic: conceptual
+title: Upcoming breaking changes in Azure PowerShell
+---
 
 "@
 
