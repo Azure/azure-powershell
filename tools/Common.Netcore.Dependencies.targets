@@ -21,7 +21,7 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.Common.Share" Version="1.3.68-preview"/>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Core" Version="1.25.0"/>
+    <PackageReference Include="Azure.Core" Version="1.28.0"/>
   </ItemGroup>
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.13.1">

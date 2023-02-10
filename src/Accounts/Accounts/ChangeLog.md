@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core library to 1.28.0.
 * Fixed an issue that the helper message about missing modules shows up at the wrong time. [#19228]
 
 ## Version 2.11.2
