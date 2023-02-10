@@ -51,6 +51,6 @@ jobs:
       "@
       $RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
       Invoke-WebRequest -Uri https://api.github.com/repos/MicrosoftDocs/azure-docs-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
+      exit 0
 
     displayName: Create PR to main branch
-    allow_failure: true
