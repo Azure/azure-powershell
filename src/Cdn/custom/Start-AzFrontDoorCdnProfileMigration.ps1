@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 .Description
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 .Example
 PS C:\> {{ Add code here }}
 {{ Add output here }}
@@ -25,26 +25,26 @@ PS C:\> {{ Add code here }}
 PS C:\> {{ Add code here }}
 {{ Add output here }}
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilecanmigrateornot
+https://docs.microsoft.com/powershell/module/az.cdn/start-AzFrontDoorCdnProfileMigration
 #>
-function Test-AzFrontDoorCdnProfileCanMigrateOrNot {
+function Start-AzFrontDoorCdnProfileMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult])]
-    [CmdletBinding(DefaultParameterSetName='CanExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [OutputType([System.Boolean])]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+        [System.String]
+        # Name of the CDN profile which is unique within the resource group.
+        ${ProfileName},
+
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Resource group within the Azure subscription.
         ${ResourceGroupName},
-
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [System.String]
-        # Resource ID.
-        ${ClassicResourceReferenceId},
 
         [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
@@ -60,6 +60,12 @@ function Test-AzFrontDoorCdnProfileCanMigrateOrNot {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
@@ -80,6 +86,12 @@ function Test-AzFrontDoorCdnProfileCanMigrateOrNot {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command asynchronously
+        ${NoWait},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
@@ -102,6 +114,6 @@ function Test-AzFrontDoorCdnProfileCanMigrateOrNot {
     )
 
     process {
-        Az.Cdn.internal\Invoke-AzCdnCanProfileMigrate @PSBoundParameters
+        Az.Cdn.internal\Invoke-AzCdnCommitProfileMigration @PSBoundParameters
     }
 }

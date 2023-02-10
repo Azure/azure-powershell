@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnProfileCanMigrateOrNot'))
+if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnProfileMigration'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Test-AzFrontDoorCdnProfileCanMigrateOrNot.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Test-AzFrontDoorCdnProfileMigration.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnProfileCan
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzFrontDoorCdnProfileCanMigrateOrNot' -Tag 'LiveOnly' {
+Describe 'Test-AzFrontDoorCdnProfileMigration' -Tag 'LiveOnly' {
     It 'CanExpanded' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         {
@@ -34,7 +34,7 @@ Describe 'Test-AzFrontDoorCdnProfileCanMigrateOrNot' -Tag 'LiveOnly' {
 
                 $classicResourceReferenceId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/profiles/$frontDoorCdnProfileName"
 
-                $canMigrate = Test-AzFrontDoorCdnProfileCanMigrateOrNot -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId
+                $canMigrate = Test-AzFrontDoorCdnProfileMigration -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId
                 $canMigrate.CanMigrate | Should -BeTrue
             } Finally
             {

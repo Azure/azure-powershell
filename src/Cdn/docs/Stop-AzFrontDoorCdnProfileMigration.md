@@ -1,51 +1,48 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilecanmigrateornot
+online version: https://docs.microsoft.com/powershell/module/az.cdn/stop-AzFrontDoorCdnProfileMigration
 schema: 2.0.0
 ---
 
-# Test-AzFrontDoorCdnProfileCanMigrateOrNot
+# Stop-AzFrontDoorCdnProfileMigration
 
 ## SYNOPSIS
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Abort classic cdn migrate to AFDx.
+This will delete all the AFD Standard or Premium configurations.
 
 ## SYNTAX
 
 ```
-Test-AzFrontDoorCdnProfileCanMigrateOrNot -ResourceGroupName <String> -ClassicResourceReferenceId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzFrontDoorCdnProfileMigration -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Abort classic cdn migrate to AFDx.
+This will delete all the AFD Standard or Premium configurations.
 
 ## EXAMPLES
 
-### Example 1: Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+### Example 1: Abort classic cdn migrate to AFDx.
 ```powershell
-Test-AzFrontDoorCdnProfileCanMigrateOrNot -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxx//resourcegroups/testrg//providers/Microsoft.Network/Frontdoors/frontdoorName -SubscriptionId xxxxxxxxxxxxxxx 
+Stop-AzFrontDoorCdnProfileMigration -Name profileName-migrated -ResourceGroupName rgName
 ```
 
-```output
-CanMigrate DefaultSku
----------- ----------
-True       Standard_AzureFrontDoor
-```
-
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Abort classic cdn migrate to AFDx.
+This will delete all the AFD Standard or Premium configurations.
 
 ## PARAMETERS
 
-### -ClassicResourceReferenceId
-Resource ID.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -59,6 +56,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the new profile that created in AFDx.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ProfileName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -135,7 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult
+### System.Boolean
 
 ## NOTES
 

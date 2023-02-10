@@ -27,9 +27,9 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/stop-azfrontdoorcdnprofilemigrate
+https://docs.microsoft.com/powershell/module/az.cdn/stop-AzFrontDoorCdnProfileMigration
 #>
-function Stop-AzFrontDoorCdnProfileMigrate {
+function Stop-AzFrontDoorCdnProfileMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

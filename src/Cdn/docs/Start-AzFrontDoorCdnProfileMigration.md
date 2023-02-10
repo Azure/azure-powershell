@@ -1,36 +1,34 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/stop-azfrontdoorcdnprofilemigrate
+online version: https://docs.microsoft.com/powershell/module/az.cdn/start-AzFrontDoorCdnProfileMigration
 schema: 2.0.0
 ---
 
-# Stop-AzFrontDoorCdnProfileMigrate
+# Start-AzFrontDoorCdnProfileMigration
 
 ## SYNOPSIS
-Abort classic cdn migrate to AFDx.
-This will delete all the AFD Standard or Premium configurations.
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 
 ## SYNTAX
 
 ```
-Stop-AzFrontDoorCdnProfileMigrate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzFrontDoorCdnProfileMigration -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Abort classic cdn migrate to AFDx.
-This will delete all the AFD Standard or Premium configurations.
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 
 ## EXAMPLES
 
-### Example 1: Abort classic cdn migrate to AFDx.
+### Example 1: Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 ```powershell
-Stop-AzFrontDoorCdnProfileMigrate -Name profileName-migrated -ResourceGroupName rgName
+Start-AzFrontDoorCdnProfileMigration -ProfileName profileName-migrated -ResourceGroupName rgName
 ```
 
-Abort classic cdn migrate to AFDx.
-This will delete all the AFD Standard or Premium configurations.
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 
 ## PARAMETERS
 
@@ -64,21 +62,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the new profile that created in AFDx.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ProfileName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -88,6 +71,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProfileName
+Name of the CDN profile which is unique within the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,46 +1,51 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilemigrate
+online version: https://docs.microsoft.com/powershell/module/az.cdn/Test-AzFrontDoorCdnProfileMigration
 schema: 2.0.0
 ---
 
-# Start-AzFrontDoorCdnProfileMigrate
+# Test-AzFrontDoorCdnProfileMigration
 
 ## SYNOPSIS
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
 ## SYNTAX
 
 ```
-Start-AzFrontDoorCdnProfileMigrate -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzFrontDoorCdnProfileMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
 ## EXAMPLES
 
-### Example 1: Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+### Example 1: Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 ```powershell
-Start-AzFrontDoorCdnProfileMigrate -ProfileName profileName-migrated -ResourceGroupName rgName
+Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxx//resourcegroups/testrg//providers/Microsoft.Network/Frontdoors/frontdoorName -SubscriptionId xxxxxxxxxxxxxxx 
 ```
 
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+```output
+CanMigrate DefaultSku
+---------- ----------
+True       Standard_AzureFrontDoor
+```
+
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -ClassicResourceReferenceId
+Resource ID.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -56,36 +61,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProfileName
-Name of the CDN profile which is unique within the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -160,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult
 
 ## NOTES
 

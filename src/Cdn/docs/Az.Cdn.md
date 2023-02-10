@@ -396,7 +396,7 @@ Deletes an existing security policy within profile.
 ### [Start-AzCdnEndpoint](Start-AzCdnEndpoint.md)
 Starts an existing CDN endpoint that is on a stopped state.
 
-### [Start-AzFrontDoorCdnProfileMigrate](Start-AzFrontDoorCdnProfileMigrate.md)
+### [Start-AzFrontDoorCdnProfileMigration](Start-AzFrontDoorCdnProfileMigration.md)
 Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 
 ### [Start-AzFrontDoorCdnProfilePrepareMigration](Start-AzFrontDoorCdnProfilePrepareMigration.md)
@@ -408,7 +408,7 @@ The change need to be committed after this.
 ### [Stop-AzCdnEndpoint](Stop-AzCdnEndpoint.md)
 Stops an existing running CDN endpoint.
 
-### [Stop-AzFrontDoorCdnProfileMigrate](Stop-AzFrontDoorCdnProfileMigrate.md)
+### [Stop-AzFrontDoorCdnProfileMigration](Stop-AzFrontDoorCdnProfileMigration.md)
 Abort classic cdn migrate to AFDx.
 This will delete all the AFD Standard or Premium configurations.
 
@@ -431,11 +431,11 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a afdx endpoint.
 
-### [Test-AzFrontDoorCdnProfileCanMigrateOrNot](Test-AzFrontDoorCdnProfileCanMigrateOrNot.md)
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
-
 ### [Test-AzFrontDoorCdnProfileHostNameAvailability](Test-AzFrontDoorCdnProfileHostNameAvailability.md)
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
+
+### [Test-AzFrontDoorCdnProfileMigration](Test-AzFrontDoorCdnProfileMigration.md)
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
 ### [Test-AzFrontDoorCdnProfileSecret](Test-AzFrontDoorCdnProfileSecret.md)
 Validate a Secret in the profile.
