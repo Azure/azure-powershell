@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RedisCache.Models;
+
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
-    using Microsoft.Azure.Management.Redis.Models;
 
     public class RedisCacheAttributesWithAccessKeys : RedisCacheAttributes
     {
