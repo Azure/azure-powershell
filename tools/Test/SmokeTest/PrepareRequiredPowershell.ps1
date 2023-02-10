@@ -46,8 +46,9 @@ function Install-PowerShell {
   Write-Host $requiredPsVersion, $AgentOS
 
   if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "Darwin"){
-    dotnet tool list
-    copy-item $PSHOME/Microsoft.ApplicationInsights.dll  $HOME/work/1/s/.dotnet/tools/.store/powershell/7.2.9/tools/net6.0/any/unix
+   (Get-ChildItem $(Agent.ToolsDirectory)/dotnet -Recurse).Name
+
+    copy-item $PSHOME/Microsoft.ApplicationInsights.dll  $(Agent.ToolsDirectory)/dotnet/tools/.store/powershell/7.2.9/tools/net6.0/any/unix
   }
 
   # Update PowershellGet to the latest one
