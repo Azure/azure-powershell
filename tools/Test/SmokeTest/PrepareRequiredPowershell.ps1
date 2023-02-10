@@ -43,7 +43,7 @@ function Install-PowerShell {
 
   # To fix 'Microsoft.ApplicationInsights' assembly on MacOS and PowerShell 7.2.*,
   # Workaround is from https://github.com/PowerShell/PowerShell/issues/19055 
-  Write-Host $requiredPsVersion, $AgentOS
+  Write-Host $requiredPsVersion, $AgentOS, $env:Path
 
   if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "Darwin"){
      Write-Host "________________________________________________"
