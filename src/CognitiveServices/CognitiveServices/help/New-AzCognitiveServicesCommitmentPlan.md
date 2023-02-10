@@ -25,14 +25,14 @@ Create a Cognitive Services Commitment Plan
 
 ### Example 1
 ```powershell
-PS C:\> $properties = New-AzCognitiveServicesObject -Type CommitmentPlanProperties
-PS C:\> $properties.HostingModel = "Web"
-PS C:\> $properties.AutoRenew = $false
-PS C:\> $properties.PlanType = "STT"
-PS C:\> $properties.Current.Tier = "T1"
-PS C:\> $properties.Next = $null
-PS C:\> 
-PS C:\> New-AzCognitiveServicesCommitmentPlan -ResourceGroupName ResourceGroupName -Name CommitmentPlanName -Type SpeechServices -SkuName S0 -Location CentralUS  -Properties $properties;
+$properties = New-AzCognitiveServicesObject -Type CommitmentPlanProperties
+$properties.HostingModel = "Web"
+$properties.AutoRenew = $false
+$properties.PlanType = "STT"
+$properties.Current.Tier = "T1"
+$properties.Next = $null
+
+New-AzCognitiveServicesCommitmentPlan -ResourceGroupName ResourceGroupName -Name CommitmentPlanName -Type SpeechServices -SkuName S0 -Location CentralUS  -Properties $properties;
 ```
 
 Create a Cognitive Services Commitment Plan for SpeechServices STT T1

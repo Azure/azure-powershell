@@ -24,7 +24,7 @@ Remove a Cognitive Services Commitment Plan
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCognitiveServicesCommitmentPlan -ResourceGroupName ResourceGroupName -Name CommitmentPlanName
+Remove-AzCognitiveServicesCommitmentPlan -ResourceGroupName ResourceGroupName -Name CommitmentPlanName
 ```
 
 Remove a Cognitive Services Commitment Plan

@@ -24,7 +24,7 @@ Remove a Cognitive Services Commitment Plan Association
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCognitiveServicesCommitmentPlanAssociation -ResourceGroupName ResourceGroupName -CommitmentPlanName CommitmentPlanName -Name AssociationName
+Remove-AzCognitiveServicesCommitmentPlanAssociation -ResourceGroupName ResourceGroupName -CommitmentPlanName CommitmentPlanName -Name AssociationName
 ```
 
 Remove a Cognitive Services Commitment Plan Association

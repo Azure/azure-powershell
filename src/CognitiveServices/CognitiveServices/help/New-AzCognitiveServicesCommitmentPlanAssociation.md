@@ -25,7 +25,7 @@ Create a Cognitive Services Commitment Plan Association
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesCommitmentPlanAssociation -ResourceGroupName ResourceGroupName -CommitmentPlanName CommitmentPlanName -Name AssociationName -AccountId AccountId;
+New-AzCognitiveServicesCommitmentPlanAssociation -ResourceGroupName ResourceGroupName -CommitmentPlanName CommitmentPlanName -Name AssociationName -AccountId AccountId;
 ```
 
 Create a Cognitive Services Commitment Plan Association between a commitment plan and an account
