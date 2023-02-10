@@ -26,7 +26,7 @@ parameters:
 - name: ps_7_2_x
   displayName: PowerShell 7.2.x Version
   type: string
-  default: 7.2.9
+  default: 7.2.8
 - name: ps_latest
   displayName: PowerShell Latest Version
   type: string
