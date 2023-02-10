@@ -12,16 +12,13 @@ param(
     [string]$GithubToken
 )
 
-#The location of repos
+#The absolute location of repos
 $WorkSpace = (Resolve-Path (Join-Path $PSScriptRoot "../../")).Path
-Write-Host "WorkSpace Location:" $WorkSpace
-
 $RepoCloneLink = "https://github.com/$OrgName/$RepoName.git"
 $Config = Get-Content (Join-Path $PSScriptRoot "../.azure-pipelines/SyncDocsConfig.json") | ConvertFrom-Json
 $TmpFolder = Resolve-Path (New-Item -ItemType Directory -Path tmp)
+# Get az version to match target folder
 $AzVersion = (Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1").ModuleVersion
-
-Write-Host "Az version:" $AzVersion
 
 foreach ($SyncPath in $Config.SyncPath)
 {
@@ -29,9 +26,7 @@ foreach ($SyncPath in $Config.SyncPath)
     Copy-Item -Path $SyncPath -Destination $TmpFolder -Recurse -Force
 }
 
-ls $TmpFolder
 $SyncFile = Split-Path $SyncPath -Leaf
-Write-Host $SyncFile
 
 git config --global user.email "azurepowershell@ms.com"
 git config --global user.name "azurepowershell"
