@@ -47,7 +47,11 @@ function Install-PowerShell {
 
   if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "Darwin"){
       Write-Host "________________________________________________"
-     (Get-ChildItem $Home -Filter powershell -Recurse).FullName | (Get-ChildItem -Recurse).FullName  
+     (Get-ChildItem /Users/runner/runners/3.217.0/bin/powershell -Recurse).FullName
+     Write-Host "________________________________________________"
+     (Get-ChildItem /Users/runner/runners/3.217.1/bin/powershell -Recurse).FullName
+     Write-Host "________________________________________________"
+     (Get-ChildItem /Users/runner/runners/2.217.2/bin/powershell -Recurse).FullName
      Write-Host "________________________________________________"
 
     copy-item $PSHOME/Microsoft.ApplicationInsights.dll  $PowerShellPath/dotnet/tools/.store/powershell/7.2.9/tools/net6.0/any/unix
