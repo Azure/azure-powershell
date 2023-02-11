@@ -90,7 +90,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Custom Response Body")]
         public string CustomBlockResponseBody { get; set; }
-
+        
+        /// <summary>
+        /// The tags to associate with the Front Door Waf Policy.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The tags associate with the Front Door Waf Policy.")]
+        public Hashtable Tag { get; set; }
+        
         /// <summary>
         /// Defines if the body should be inspected by managed rules. Possible values include: 'Enabled', 'Disabled'
         /// </summary>
@@ -118,6 +124,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             }
             var updateParameters = new Management.FrontDoor.Models.WebApplicationFirewallPolicy
             {
+                Tags = Tag.ToDictionaryTags(),
                 Location = "global",
                 CustomRules = new Management.FrontDoor.Models.CustomRuleList()
                 {
