@@ -1,8 +1,8 @@
 {
-  "Split-AzReservation+[NoContext]+Split+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000002/split?api-version=2022-03-01+1": {
+  "Split-AzReservation+[NoContext]+Split+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000002/split?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000002/split?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000002/split?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"quantities\": [ 7, 3 ],\r\n    \"reservationId\": \"/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000002/reservations/10000000-aaaa-bbbb-cccc-200000000006\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,7 +17,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationorders/50000000-aaaa-bbbb-cccc-200000000002/splitoperationresults/10000000-aaaa-bbbb-cccc-200000000006_10?api-version=2022-03-01" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationorders/50000000-aaaa-bbbb-cccc-200000000002/splitoperationresults/10000000-aaaa-bbbb-cccc-200000000006_10?api-version=2022-11-01" ],
         "Retry-After": [ "10" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],

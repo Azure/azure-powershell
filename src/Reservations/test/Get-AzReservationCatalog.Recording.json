@@ -1,8 +1,8 @@
 {
-  "Get-AzReservationCatalog+[NoContext]+GetSkusWithLocation+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachine\u0026location=westus+1": {
+  "Get-AzReservationCatalog+[NoContext]+GetSkusWithLocation+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-11-01\u0026reservedResourceType=VirtualMachine\u0026location=westus+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachine\u0026location=westus",
+      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-11-01\u0026reservedResourceType=VirtualMachine\u0026location=westus",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationCatalog+[NoContext]+GetSkusWithOutLocation+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux+1": {
+  "Get-AzReservationCatalog+[NoContext]+GetSkusWithOutLocation+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-11-01\u0026reservedResourceType=SuseLinux+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux",
+      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-11-01\u0026reservedResourceType=SuseLinux",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -83,10 +83,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationCatalog+[NoContext]+Get3PPSkus+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachineSoftware\u0026publisherId=test_test_pmc2pc1\u0026offerId=mnk_vmri_test_001\u0026planId=testplan001+1": {
+  "Get-AzReservationCatalog+[NoContext]+Get3PPSkus+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-11-01\u0026reservedResourceType=VirtualMachineSoftware\u0026publisherId=test_test_pmc2pc1\u0026offerId=mnk_vmri_test_001\u0026planId=testplan001+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=VirtualMachineSoftware\u0026publisherId=test_test_pmc2pc1\u0026offerId=mnk_vmri_test_001\u0026planId=testplan001",
+      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-11-01\u0026reservedResourceType=VirtualMachineSoftware\u0026publisherId=test_test_pmc2pc1\u0026offerId=mnk_vmri_test_001\u0026planId=testplan001",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -125,10 +125,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationCatalog+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux+1": {
+  "Get-AzReservationCatalog+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-11-01\u0026reservedResourceType=SuseLinux+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-03-01\u0026reservedResourceType=SuseLinux",
+      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/providers/Microsoft.Capacity/catalogs?api-version=2022-11-01\u0026reservedResourceType=SuseLinux",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

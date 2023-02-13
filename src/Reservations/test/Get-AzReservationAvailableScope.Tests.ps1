@@ -16,40 +16,40 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzReservationAvailableSco
 
  function ExecuteTestCases([object]$response) {
     $response | Should -Not -Be $null
-    $response.Scope | Should -Be "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"
+    $response.Scope | Should -Be "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
     $response.Valid | Should -Be "True"
 }
 
 Describe 'Get-AzReservationAvailableScope' {
     It 'AvailableExpanded' {
-        $response = Get-AzReservationAvailableScope -ReservationId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationOrderId "50000000-aaaa-bbbb-cccc-100000000003" -Scope "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"
+        $response = Get-AzReservationAvailableScope -ReservationId "eee9bfda-6806-4fa0-9d0c-c5efdd597932" -ReservationOrderId "3739a91e-601d-4ac6-9dc8-fba60718b5f8" -Scope "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
 
         ExecuteTestCases($response)
     }
 
     It 'Available' {
-        $param = @{Scope = "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"}        
-        $response = Get-AzReservationAvailableScope -ReservationId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationOrderId "50000000-aaaa-bbbb-cccc-100000000003" -Body $param
+        $param = @{Scope = "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"}        
+        $response = Get-AzReservationAvailableScope -ReservationId "eee9bfda-6806-4fa0-9d0c-c5efdd597932" -ReservationOrderId "3739a91e-601d-4ac6-9dc8-fba60718b5f8" -Body $param
         
         ExecuteTestCases($response)
     }
 
     It 'AvailableViaIdentityExpanded' {
         $identity = @{
-                        SubscriptionId = "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"
-                        ReservationOrderId = "50000000-aaaa-bbbb-cccc-100000000003"
-                        ReservationId = "10000000-aaaa-bbbb-cccc-100000000001"
+                        SubscriptionId = "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
+                        ReservationOrderId = "3739a91e-601d-4ac6-9dc8-fba60718b5f8"
+                        ReservationId = "eee9bfda-6806-4fa0-9d0c-c5efdd597932"
                     } 
-        $response = Get-AzReservationAvailableScope -InputObject $identity -Scope "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"
+        $response = Get-AzReservationAvailableScope -InputObject $identity -Scope "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
 
         ExecuteTestCases($response)
     }
 
     It 'AvailableViaIdentity' {
-        $body = @{Scope = "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"} 
+        $body = @{Scope = "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"} 
         $identity = @{
-                        ReservationOrderId = "50000000-aaaa-bbbb-cccc-100000000003"
-                        ReservationId = "10000000-aaaa-bbbb-cccc-100000000001"
+                        ReservationOrderId = "3739a91e-601d-4ac6-9dc8-fba60718b5f8"
+                        ReservationId = "eee9bfda-6806-4fa0-9d0c-c5efdd597932"
                     } 
         $response = Get-AzReservationAvailableScope -InputObject $identity -Body $body
 

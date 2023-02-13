@@ -47,11 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 04efa7dde730c9eaa35bdab1681117d639522edb
+branch: 3f36931e7edfce60595fd5558a722e0230a44eb1
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/reservations.json
+  - $(repo)/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-11-01/reservations.json
 module-version: 0.1.0
 title: Reservations
 subject-prefix: $(service-name)

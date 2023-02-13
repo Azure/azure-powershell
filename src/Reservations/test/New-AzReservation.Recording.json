@@ -1,8 +1,8 @@
 {
-  "New-AzReservation+[NoContext]+PurchaseExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01+1": {
+  "New-AzReservation+[NoContext]+PurchaseExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/40000000-aaaa-bbbb-cccc-200000000006\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"TestVm1\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseExpanded+$PUT+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01+2": {
+  "New-AzReservation+[NoContext]+PurchaseExpanded+$PUT+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/40000000-aaaa-bbbb-cccc-200000000006\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"TestVm1\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -56,7 +56,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01" ],
         "Retry-After": [ "120" ],
         "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"10/3/2022 12:23:55 AM\"}" ],
         "x-ms-request-id": [ "westcentralus:26b8ee0e-c19f-484f-815f-b739de63822d" ],
@@ -78,10 +78,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01+3": {
+  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -121,10 +121,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01+4": {
+  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -164,10 +164,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01+5": {
+  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -207,10 +207,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01+6": {
+  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -250,10 +250,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01+7": {
+  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -293,10 +293,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01+8": {
+  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -336,10 +336,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01+9": {
+  "New-AzReservation+[NoContext]+PurchaseExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-200000000001?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -379,10 +379,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+Purchase+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01+1": {
+  "New-AzReservation+[NoContext]+Purchase+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/40000000-aaaa-bbbb-cccc-200000000006\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"Testvm2\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -418,10 +418,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+Purchase+$PUT+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01+2": {
+  "New-AzReservation+[NoContext]+Purchase+$PUT+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/40000000-aaaa-bbbb-cccc-200000000006\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"Testvm2\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -436,7 +436,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01" ],
         "Retry-After": [ "120" ],
         "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"10/3/2022 12:28:38 AM\"}" ],
         "x-ms-request-id": [ "westcentralus:bbde8d89-791c-4e9c-90eb-18236cc20b43" ],
@@ -458,10 +458,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01+3": {
+  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -501,10 +501,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01+4": {
+  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -544,10 +544,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01+5": {
+  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -587,10 +587,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01+6": {
+  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -630,10 +630,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01+7": {
+  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -673,10 +673,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01+8": {
+  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -716,10 +716,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01+9": {
+  "New-AzReservation+[NoContext]+Purchase+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -759,10 +759,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01+1": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/40000000-aaaa-bbbb-cccc-200000000006\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"TestVm3\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -798,10 +798,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$PUT+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01+2": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$PUT+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/40000000-aaaa-bbbb-cccc-200000000006\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"TestVm3\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -816,7 +816,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01" ],
         "Retry-After": [ "120" ],
         "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"10/3/2022 12:33:18 AM\"}" ],
         "x-ms-request-id": [ "westus:d110b49c-84b4-429e-97f8-22e39b665053" ],
@@ -838,10 +838,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01+3": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -881,10 +881,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01+4": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -924,10 +924,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01+5": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -967,10 +967,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01+6": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1010,10 +1010,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01+7": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1053,10 +1053,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01+8": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000011?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1096,10 +1096,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01+1": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/40000000-aaaa-bbbb-cccc-200000000006\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"Testvm4\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -1135,10 +1135,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$PUT+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01+2": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$PUT+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/40000000-aaaa-bbbb-cccc-200000000006\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"Testvm4\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -1153,7 +1153,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01" ],
         "Retry-After": [ "120" ],
         "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"10/3/2022 12:37:34 AM\"}" ],
         "x-ms-request-id": [ "westcentralus:40d03605-f49b-4bf2-9e2a-7fceb174edc8" ],
@@ -1175,10 +1175,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01+3": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1218,10 +1218,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01+4": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1261,10 +1261,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01+5": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1304,10 +1304,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01+6": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1347,10 +1347,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01+7": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1390,10 +1390,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01+8": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1433,10 +1433,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01+9": {
+  "New-AzReservation+[NoContext]+PurchaseViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

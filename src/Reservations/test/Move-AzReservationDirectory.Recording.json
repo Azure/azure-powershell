@@ -1,8 +1,8 @@
 {
-  "Move-AzReservationDirectory+[NoContext]+ChangeExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-100000000001/changeDirectory?api-version=2022-03-01+1": {
+  "Move-AzReservationDirectory+[NoContext]+ChangeExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-100000000001/changeDirectory?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-100000000001/changeDirectory?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-100000000001/changeDirectory?api-version=2022-11-01",
       "Content": "{\r\n  \"destinationTenantId\": \"30000000-aaaa-bbbb-cccc-100000000004\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "Move-AzReservationDirectory+[NoContext]+Change+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005/changeDirectory?api-version=2022-03-01+1": {
+  "Move-AzReservationDirectory+[NoContext]+Change+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005/changeDirectory?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005/changeDirectory?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005/changeDirectory?api-version=2022-11-01",
       "Content": "{\r\n  \"destinationTenantId\": \"30000000-aaaa-bbbb-cccc-100000000004\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -77,10 +77,10 @@
       "isContentBase64": false
     }
   },
-  "Move-AzReservationDirectory+[NoContext]+ChangeViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018/changeDirectory?api-version=2022-03-01+1": {
+  "Move-AzReservationDirectory+[NoContext]+ChangeViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018/changeDirectory?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018/changeDirectory?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018/changeDirectory?api-version=2022-11-01",
       "Content": "{\r\n  \"destinationTenantId\": \"30000000-aaaa-bbbb-cccc-100000000004\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -116,10 +116,10 @@
       "isContentBase64": false
     }
   },
-  "Move-AzReservationDirectory+[NoContext]+ChangeViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000007/changeDirectory?api-version=2022-03-01+1": {
+  "Move-AzReservationDirectory+[NoContext]+ChangeViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000007/changeDirectory?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000007/changeDirectory?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000007/changeDirectory?api-version=2022-11-01",
       "Content": "{\r\n  \"destinationTenantId\": \"30000000-aaaa-bbbb-cccc-100000000004\"\r\n}",
       "isContentBase64": false,
       "Headers": {

@@ -1,8 +1,8 @@
 {
-  "Get-AzReservationOrderId+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000005/providers/Microsoft.Capacity/appliedReservations?api-version=2022-03-01+1": {
+  "Get-AzReservationOrderId+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000005/providers/Microsoft.Capacity/appliedReservations?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000005/providers/Microsoft.Capacity/appliedReservations?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000005/providers/Microsoft.Capacity/appliedReservations?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

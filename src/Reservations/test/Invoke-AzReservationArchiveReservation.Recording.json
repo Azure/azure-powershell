@@ -1,8 +1,8 @@
 {
-  "Invoke-AzReservationArchiveReservation+[NoContext]+Archive+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-100000000003/reservations/50000000-aaaa-bbbb-cccc-100000000003/archive?api-version=2022-03-01+1": {
+  "Invoke-AzReservationArchiveReservation+[NoContext]+Archive+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-100000000003/reservations/50000000-aaaa-bbbb-cccc-100000000003/archive?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-100000000003/reservations/50000000-aaaa-bbbb-cccc-100000000003/archive?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-100000000003/reservations/50000000-aaaa-bbbb-cccc-100000000003/archive?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationArchiveReservation+[NoContext]+ArchiveViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000005/reservations/30000000-aaaa-bbbb-cccc-100000000005/archive?api-version=2022-03-01+1": {
+  "Invoke-AzReservationArchiveReservation+[NoContext]+ArchiveViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000005/reservations/30000000-aaaa-bbbb-cccc-100000000005/archive?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000005/reservations/30000000-aaaa-bbbb-cccc-100000000005/archive?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000005/reservations/30000000-aaaa-bbbb-cccc-100000000005/archive?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

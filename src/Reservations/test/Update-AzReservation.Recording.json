@@ -1,8 +1,8 @@
 {
-  "Update-AzReservation+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+1": {
+  "Update-AzReservation+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -42,10 +42,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+2": {
+  "Update-AzReservation+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"name\": \"VM_RI_06-14-2022_20-11\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -81,10 +81,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+Update+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+1": {
+  "Update-AzReservation+[NoContext]+Update+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -124,10 +124,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+Update+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+2": {
+  "Update-AzReservation+[NoContext]+Update+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"name\": \"VM_RI_06-14-2022_20-10\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -163,10 +163,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+1": {
+  "Update-AzReservation+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -206,10 +206,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+2": {
+  "Update-AzReservation+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"name\": \"VM_RI_06-14-2022_20-14\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -245,10 +245,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+1": {
+  "Update-AzReservation+[NoContext]+UpdateViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -288,10 +288,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateViaIdentity+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+2": {
+  "Update-AzReservation+[NoContext]+UpdateViaIdentity+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"name\": \"VM_RI_06-14-2022_20-18\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -327,10 +327,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+1": {
+  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"appliedScopeType\": \"Shared\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -366,10 +366,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+2": {
+  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -409,10 +409,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+3": {
+  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+3": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"appliedScopeType\": \"Single\",\r\n    \"appliedScopes\": [ \"/subscriptions/30000000-aaaa-bbbb-cccc-200000000018\" ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -448,10 +448,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+4": {
+  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -491,10 +491,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+5": {
+  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$PATCH+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+5": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"appliedScopeType\": \"Single\",\r\n    \"appliedScopes\": [ \"/subscriptions/30000000-aaaa-bbbb-cccc-200000000018/resourcegroups/testrg\" ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -530,10 +530,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01+6": {
+  "Update-AzReservation+[NoContext]+UpdateAppliedScope+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000013/reservations/10000000-aaaa-bbbb-cccc-200000000007?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

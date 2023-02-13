@@ -1,8 +1,8 @@
 {
-  "Invoke-AzReservationReturn+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01+1": {
+  "Invoke-AzReservationReturn+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01+2": {
+  "Invoke-AzReservationReturn+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-11-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"sessionId\": \"2142ab71-031b-4900-ae33-687a3e994e44\",\r\n    \"scope\": \"Reservation\",\r\n    \"returnReason\": \"Sample return reason\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -76,10 +76,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+Post+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01+1": {
+  "Invoke-AzReservationReturn+[NoContext]+Post+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -115,10 +115,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+Post+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01+2": {
+  "Invoke-AzReservationReturn+[NoContext]+Post+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-11-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"sessionId\": \"2142ab71-031b-4900-ae33-687a3e994e44\",\r\n    \"scope\": \"Reservation\",\r\n    \"returnReason\": \"Sample return reason\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -153,10 +153,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01+1": {
+  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -192,10 +192,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01+2": {
+  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-11-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"sessionId\": \"2142ab71-031b-4900-ae33-687a3e994e44\",\r\n    \"scope\": \"Reservation\",\r\n    \"returnReason\": \"Sample return reason\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -230,10 +230,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01+1": {
+  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -269,10 +269,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01+2": {
+  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-11-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"sessionId\": \"2142ab71-031b-4900-ae33-687a3e994e44\",\r\n    \"scope\": \"Reservation\",\r\n    \"returnReason\": \"Sample return reason\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {

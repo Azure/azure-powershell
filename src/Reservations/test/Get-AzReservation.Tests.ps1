@@ -22,15 +22,14 @@ Describe 'Get-AzReservation'{
     }
 
     It 'Get' {
-        $res = Get-AzReservation -ReservationOrderId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationId "50000000-aaaa-bbbb-cccc-100000000003"
+        $res = Get-AzReservation -ReservationOrderId "3739a91e-601d-4ac6-9dc8-fba60718b5f8" -ReservationId "eee9bfda-6806-4fa0-9d0c-c5efdd597932"
         $res | Should -Not -Be $null
-        $res.Location | Should -Be "westeurope"
-        $res.Id | Should -Be "/providers/microsoft.capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001/reservations/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Name | Should -Be "10000000-aaaa-bbbb-cccc-100000000001/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Name | Should -Be "10000000-aaaa-bbbb-cccc-100000000001/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Sku | Should -Be "Standard_B1ls"
+        $res.Location | Should -Be "global"
+        $res.Id | Should -Be "/providers/microsoft.capacity/reservationOrders/3739a91e-601d-4ac6-9dc8-fba60718b5f8/reservations/eee9bfda-6806-4fa0-9d0c-c5efdd597932"
+        $res.Name | Should -Be "eee9bfda-6806-4fa0-9d0c-c5efdd597932"
+        $res.SkuName | Should -Be "sles_standard_1-2_vcpu_vm"
         $res.ProvisioningState | Should -Be "Succeeded"
-        $res.SkuDescription | Should -Be "Reserved VM Instance, Standard_B1ls, EU West, 3 Years"
+        $res.SkuDescription | Should -Be "SUSE Linux Enterprise Server Standard - 1-2 vCPU VM"
     }
 
     It 'List' {
@@ -40,16 +39,15 @@ Describe 'Get-AzReservation'{
 
     It 'GetViaIdentity'  {
         $param = @{
-                    ReservationOrderId = "10000000-aaaa-bbbb-cccc-100000000001" 
-                    ReservationId = "50000000-aaaa-bbbb-cccc-100000000003"
+                    ReservationOrderId = "3739a91e-601d-4ac6-9dc8-fba60718b5f8" 
+                    ReservationId = "eee9bfda-6806-4fa0-9d0c-c5efdd597932"
                 }
         $res = Get-AzReservation -InputObject $param
         $res | Should -Not -Be $null
-        $res.Location | Should -Be "westeurope"
-        $res.Id | Should -Be "/providers/microsoft.capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001/reservations/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Name | Should -Be "10000000-aaaa-bbbb-cccc-100000000001/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Name | Should -Be "10000000-aaaa-bbbb-cccc-100000000001/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Sku | Should -Be "Standard_B1ls"
-        $res.SkuDescription | Should -Be "Reserved VM Instance, Standard_B1ls, EU West, 3 Years"
+        $res.Location | Should -Be "global"
+        $res.Id | Should -Be "/providers/microsoft.capacity/reservationOrders/3739a91e-601d-4ac6-9dc8-fba60718b5f8/reservations/eee9bfda-6806-4fa0-9d0c-c5efdd597932"
+        $res.Name | Should -Be "eee9bfda-6806-4fa0-9d0c-c5efdd597932"
+        $res.SkuName | Should -Be "sles_standard_1-2_vcpu_vm"
+        $res.SkuDescription | Should -Be "SUSE Linux Enterprise Server Standard - 1-2 vCPU VM"
     }
 }

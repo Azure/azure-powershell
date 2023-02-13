@@ -1,8 +1,8 @@
 {
-  "Get-AzReservationQuote+[NoContext]+CalculateExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01+1": {
+  "Get-AzReservationQuote+[NoContext]+CalculateExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/30000000-aaaa-bbbb-cccc-100000000005\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Monthly\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"TestVm\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationQuote+[NoContext]+Calculate+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01+1": {
+  "Get-AzReservationQuote+[NoContext]+Calculate+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-11-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/30000000-aaaa-bbbb-cccc-100000000005\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"Testvm\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "isContentBase64": false,
       "Headers": {

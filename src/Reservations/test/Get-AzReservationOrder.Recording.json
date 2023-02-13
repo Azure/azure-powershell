@@ -1,8 +1,8 @@
 {
-  "Get-AzReservationOrder+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders?api-version=2022-03-01+1": {
+  "Get-AzReservationOrder+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationOrder+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-03-01+1": {
+  "Get-AzReservationOrder+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -81,10 +81,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzReservationOrder+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-03-01+1": {
+  "Get-AzReservationOrder+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

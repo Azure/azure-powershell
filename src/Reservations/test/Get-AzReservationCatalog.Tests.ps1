@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzReservationCatalog'))
 
 Describe 'Get-AzReservationCatalog' {
     It 'GetSkusWithLocation' {
-        $response = Get-AzReservationCatalog -SubscriptionId "10000000-aaaa-bbbb-cccc-100000000001" -Location "westus" -ReservedResourceType "VirtualMachine"
+        $response = Get-AzReservationCatalog -SubscriptionId "eef82110-c91b-4395-9420-fcfcbefc5a47" -Location "westus" -ReservedResourceType "VirtualMachine"
         $response.Count | Should -BeGreaterOrEqual 1
         foreach ($sku in $response)
         {
@@ -29,7 +29,7 @@ Describe 'Get-AzReservationCatalog' {
     }
 
     It 'GetSkusWithOutLocation' {
-        $response = Get-AzReservationCatalog -SubscriptionId "10000000-aaaa-bbbb-cccc-100000000001" -ReservedResourceType "SuseLinux"
+        $response = Get-AzReservationCatalog -SubscriptionId "eef82110-c91b-4395-9420-fcfcbefc5a47" -ReservedResourceType "SuseLinux"
         $response.Count | Should -BeGreaterOrEqual 1
         foreach ($sku in $response)
         {
@@ -40,7 +40,7 @@ Describe 'Get-AzReservationCatalog' {
     }
 
     It 'Get3PPSkus' {
-        $response = Get-AzReservationCatalog -SubscriptionId "10000000-aaaa-bbbb-cccc-100000000001" -ReservedResourceType "VirtualMachineSoftware" -PublisherId "test_test_pmc2pc1" -OfferId "mnk_vmri_test_001" -PlanId "testplan001"
+        $response = Get-AzReservationCatalog -SubscriptionId "eef82110-c91b-4395-9420-fcfcbefc5a47" -ReservedResourceType "VirtualMachineSoftware" -PublisherId "canonical" -OfferId "0001-com-ubuntu-pro-jammy" -PlanId "pro-22_04-lts"
         $response.Count | Should -BeGreaterOrEqual 1
         Write-Output $response
         foreach ($sku in $response)
@@ -52,7 +52,7 @@ Describe 'Get-AzReservationCatalog' {
     }
 
     It 'GetViaIdentity' {
-        $param = @{SubscriptionId = "10000000-aaaa-bbbb-cccc-100000000001"}
+        $param = @{SubscriptionId = "eef82110-c91b-4395-9420-fcfcbefc5a47"}
         $response = Get-AzReservationCatalog -InputObject $param -ReservedResourceType "SuseLinux"
         $response.Count | Should -BeGreaterOrEqual 1
         foreach ($sku in $response)
