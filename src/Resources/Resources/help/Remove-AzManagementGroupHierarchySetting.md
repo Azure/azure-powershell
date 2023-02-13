@@ -34,10 +34,6 @@ The Remove-AzManagementGroupHierarchySetting cmdlet Removes all hierarchy settin
 Remove-AzManagementGroupHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
 ```
 
-```output
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
