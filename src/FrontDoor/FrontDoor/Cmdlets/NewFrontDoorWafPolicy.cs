@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             }
             var updateParameters = new Management.FrontDoor.Models.WebApplicationFirewallPolicy
             {
-                Tags = Tag.ToDictionaryTags(),
+                Tags = Tag?.ToDictionaryTags(),
                 Location = "global",
                 CustomRules = new Management.FrontDoor.Models.CustomRuleList()
                 {
