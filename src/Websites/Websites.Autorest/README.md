@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Websites service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,11 +30,13 @@ For information on how to develop for `Az.Websites`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: dd3e96591a49f6af644ca32a85c429f3002ed608
+tag: package-2022-03
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/StaticSites.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2b6d1985ce89c8646276e0806a738338e98bd2/specification/web/resource-manager/Microsoft.Web/stable/2021-02-01/WebApps.json
+  - $(repo)/specification/web/resource-manager/readme.md
+try-require:
+  - $(repo)/specification/web/resource-manager/readme.powershell.md
 
 title: Websites
 module-version: 0.1.0
@@ -85,7 +87,7 @@ directive:
           "default": {
             "description": "App Service error response.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+              "$ref": "./CommonDefinitions.json#/definitions/DefaultErrorResponse"
             }
           }
         }
@@ -106,7 +108,7 @@ directive:
           "default": {
             "description": "App Service error response.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+              "$ref": "./CommonDefinitions.json#/definitions/DefaultErrorResponse"
             }
           }
         }
@@ -124,7 +126,7 @@ directive:
           "default": {
             "description": "App Service error response.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+              "$ref": "./CommonDefinitions.json#/definitions/DefaultErrorResponse"
             }
           }
         }
