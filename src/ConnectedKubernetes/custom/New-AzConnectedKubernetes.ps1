@@ -346,6 +346,15 @@ function New-AzConnectedKubernetes {
             } else {
                 $ReleaseTrain = 'stable'
             }
+            
+            $AzLocation = Get-AzLocation | Where-Object { ($_.DisplayName -ieq $Location) -or ($_.Location -ieq $Location)}
+            $Region = $AzLocation.Location
+            if ($null -eq $Region) {
+                Write-Error "Invalid location: $Location"
+                return
+            } else {
+                $Location = $Region
+            }            
             $ChartLocationUrl = "https://${Location}.dp.kubernetesconfiguration.azure.com/azure-arc-k8sagents/GetLatestHelmPackagePath?api-version=2019-11-01-preview&releaseTrain=${ReleaseTrain}"
         
             $Uri = [System.Uri]::New($ChartLocationUrl)
