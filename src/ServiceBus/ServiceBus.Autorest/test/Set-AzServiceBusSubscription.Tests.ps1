@@ -64,9 +64,9 @@ Describe 'Set-AzServiceBusSubscription' {
         $sb = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3
         $currentSub = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3
         $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3 -DefaultMessageTimeToLive (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4)
-        currentSub.DefaultMessageTimeToLive = (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4) 
+        $currentSub.DefaultMessageTimeToLive = (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4) 
         AssertSubscriptionUpdates $currentSub $updatedSub
-        $currentSub = $updatedSubs
+        $currentSub = $updatedSub
 
         $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3 -LockDuration (New-TimeSpan -Minutes 1)
         $currentSub.LockDuration = (New-TimeSpan -Minutes 1)

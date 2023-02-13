@@ -1,8 +1,8 @@
 {
-  "New-AzServiceBusRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwv8mpi/providers/Microsoft.ServiceBus/namespaces/namespaceNamews0qgk/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2022-10-01-preview+1": {
+  "New-AzServiceBusRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpnv5dx/providers/Microsoft.ServiceBus/namespaces/namespaceNamerkhezt/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwv8mpi/providers/Microsoft.ServiceBus/namespaces/namespaceNamews0qgk/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpnv5dx/providers/Microsoft.ServiceBus/namespaces/namespaceNamerkhezt/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2022-10-01-preview",
       "Content": "{\n  \"properties\": {\n    \"action\": {\n      \"sqlExpression\": \"SET a=b\"\n    },\n    \"sqlFilter\": {\n      \"sqlExpression\": \"1=2\"\n    },\n    \"filterType\": \"SqlFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,27 +18,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1183" ],
-        "x-ms-request-id": [ "98771e1d-bf95-4956-ae6c-e4a216bf8e32" ],
-        "x-ms-correlation-request-id": [ "98771e1d-bf95-4956-ae6c-e4a216bf8e32" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230123T194457Z:98771e1d-bf95-4956-ae6c-e4a216bf8e32" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1182" ],
+        "x-ms-request-id": [ "346abdf4-5866-45cc-a8cb-71de76dd3c27" ],
+        "x-ms-correlation-request-id": [ "346abdf4-5866-45cc-a8cb-71de76dd3c27" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230213T084848Z:346abdf4-5866-45cc-a8cb-71de76dd3c27" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 23 Jan 2023 19:44:57 GMT" ]
+        "Date": [ "Mon, 13 Feb 2023 08:48:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "489" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwv8mpi/providers/Microsoft.ServiceBus/namespaces/namespaceNamews0qgk/topics/topic1/subscriptions/subscription1/rules/sqlRule2\",\"name\":\"sqlRule2\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{\"sqlExpression\":\"SET a=b\",\"compatibilityLevel\":20},\"filterType\":\"SqlFilter\",\"sqlFilter\":{\"sqlExpression\":\"1=2\",\"compatibilityLevel\":20}}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpnv5dx/providers/Microsoft.ServiceBus/namespaces/namespaceNamerkhezt/topics/topic1/subscriptions/subscription1/rules/sqlRule2\",\"name\":\"sqlRule2\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{\"sqlExpression\":\"SET a=b\",\"compatibilityLevel\":20},\"filterType\":\"SqlFilter\",\"sqlFilter\":{\"sqlExpression\":\"1=2\",\"compatibilityLevel\":20}}}",
       "isContentBase64": false
     }
   },
-  "New-AzServiceBusRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwv8mpi/providers/Microsoft.ServiceBus/namespaces/namespaceNamews0qgk/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2022-10-01-preview+2": {
+  "New-AzServiceBusRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpnv5dx/providers/Microsoft.ServiceBus/namespaces/namespaceNamerkhezt/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2022-10-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwv8mpi/providers/Microsoft.ServiceBus/namespaces/namespaceNamews0qgk/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpnv5dx/providers/Microsoft.ServiceBus/namespaces/namespaceNamerkhezt/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2022-10-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"a\": \"b\",\n        \"c\": \"d\"\n      },\n      \"correlationId\": \"correlationid\",\n      \"messageId\": \"messageid\",\n      \"replyTo\": \"replyto\",\n      \"label\": \"label\",\n      \"sessionId\": \"sessionid\",\n      \"replyToSessionId\": \"replytosessionid\",\n      \"contentType\": \"contenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -54,20 +54,20 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1182" ],
-        "x-ms-request-id": [ "c7ce588a-d1b1-4c87-94de-6e8bf7c71055" ],
-        "x-ms-correlation-request-id": [ "c7ce588a-d1b1-4c87-94de-6e8bf7c71055" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230123T194500Z:c7ce588a-d1b1-4c87-94de-6e8bf7c71055" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1181" ],
+        "x-ms-request-id": [ "1f5b3f27-83ec-42e4-ac3f-0ac518c075f4" ],
+        "x-ms-correlation-request-id": [ "1f5b3f27-83ec-42e4-ac3f-0ac518c075f4" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230213T084850Z:1f5b3f27-83ec-42e4-ac3f-0ac518c075f4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 23 Jan 2023 19:44:59 GMT" ]
+        "Date": [ "Mon, 13 Feb 2023 08:48:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "639" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwv8mpi/providers/Microsoft.ServiceBus/namespaces/namespaceNamews0qgk/topics/topic1/subscriptions/subscription1/rules/correlationRule1\",\"name\":\"correlationRule1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{},\"filterType\":\"CorrelationFilter\",\"correlationFilter\":{\"correlationId\":\"correlationid\",\"messageId\":\"messageid\",\"replyTo\":\"replyto\",\"label\":\"label\",\"sessionId\":\"sessionid\",\"replyToSessionId\":\"replytosessionid\",\"contentType\":\"contenttype\",\"properties\":{\"a\":\"b\",\"c\":\"d\"}}}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpnv5dx/providers/Microsoft.ServiceBus/namespaces/namespaceNamerkhezt/topics/topic1/subscriptions/subscription1/rules/correlationRule1\",\"name\":\"correlationRule1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{},\"filterType\":\"CorrelationFilter\",\"correlationFilter\":{\"correlationId\":\"correlationid\",\"messageId\":\"messageid\",\"replyTo\":\"replyto\",\"label\":\"label\",\"sessionId\":\"sessionid\",\"replyToSessionId\":\"replytosessionid\",\"contentType\":\"contenttype\",\"properties\":{\"a\":\"b\",\"c\":\"d\"}}}}",
       "isContentBase64": false
     }
   }
