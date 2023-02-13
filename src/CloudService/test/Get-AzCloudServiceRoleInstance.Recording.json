@@ -1,8 +1,8 @@
 {
-  "Get-AzCloudServiceRoleInstance+[NoContext]+List cloud service role instance+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2021-03-01+1": {
+  "Get-AzCloudServiceRoleInstance+[NoContext]+List cloud service role instance+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2022-09-04+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzCloudServiceRoleInstance+[NoContext]+List cloud service role instance InstanceView via Expand+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2021-03-01\u0026$expand=instanceView+1": {
+  "Get-AzCloudServiceRoleInstance+[NoContext]+List cloud service role instance InstanceView via Expand+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2022-09-04\u0026$expand=instanceView+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2021-03-01\u0026$expand=instanceView",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2022-09-04\u0026$expand=instanceView",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -83,10 +83,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2021-03-01+1": {
+  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2022-09-04+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -125,10 +125,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance InstanceView via Expand+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2021-03-01\u0026$expand=instanceView+1": {
+  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance InstanceView via Expand+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2022-09-04\u0026$expand=instanceView+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2021-03-01\u0026$expand=instanceView",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2022-09-04\u0026$expand=instanceView",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -167,10 +167,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance via identity+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2021-03-01+1": {
+  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance via identity+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2022-09-04+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -209,10 +209,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance via identity+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2021-03-01+2": {
+  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance via identity+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2022-09-04+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -251,10 +251,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance InstanceView via identity and Expand+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2021-03-01+1": {
+  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance InstanceView via identity and Expand+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2022-09-04+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -293,10 +293,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance InstanceView via identity and Expand+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2021-03-01\u0026$expand=instanceView+2": {
+  "Get-AzCloudServiceRoleInstance+[NoContext]+Get cloud service role instance InstanceView via identity and Expand+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2022-09-04\u0026$expand=instanceView+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2021-03-01\u0026$expand=instanceView",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0?api-version=2022-09-04\u0026$expand=instanceView",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

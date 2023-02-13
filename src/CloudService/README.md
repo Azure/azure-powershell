@@ -307,4 +307,14 @@ directive:
           - Statuses
           - RoleInstanceStatusesSummary
 
+  # Fix the issue that type of settings and protectedSettings are modified to object
+  - from: swagger-document
+    where: $.definitions.CloudServiceExtensionProperties.properties.settings.type
+    transform: >-
+      return "string"
+  - from: swagger-document
+    where: $.definitions.CloudServiceExtensionProperties.properties.protectedSettings.type
+    transform: >-
+      return "string"
+
 ```
