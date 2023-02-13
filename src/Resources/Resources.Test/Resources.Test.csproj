@@ -25,6 +25,7 @@
     <ProjectReference Include="..\..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj" />
     <ProjectReference Include="..\..\Purview\Purview\Purview.csproj" />
     <ProjectReference Include="..\..\Purview\Purview.Autorest\Az.Purview.csproj" />
+    <ProjectReference Include="..\..\Purview\Purviewdata.Autorest\Az.Purviewdata.csproj" />
   </ItemGroup>
 
   <ItemGroup>
