@@ -34,21 +34,17 @@ function Install-PowerShell {
       else {
         dotnet tool install PowerShell --version $requiredPsVersion 
       }
-      dotnet tool list 
+      dotnet tool list
+      # To fix 'Microsoft.ApplicationInsights' assembly can't be loaded on MacOS and PowerShell 7.2.9,
+      # Workaround is from https://github.com/PowerShell/PowerShell/issues/19055 
+      if("7.2.9" -eq (dotnet tool run pwsh -c "`$PSVersionTable.PSVersion.ToString()") -and $AgentOS -eq "Darwin"){
+        copy-item $PSHOME/Microsoft.ApplicationInsights.dll $HOME/.nuget/packages/powershell/7.2.9/tools/net6.0/any/unix
+      }
     }
     
   }else {
     Write-Host "Powershell", $requiredPsVersion, "has been installed"
   }
-
-  # To fix 'Microsoft.ApplicationInsights' assembly on MacOS and PowerShell 7.2.*,
-  # Workaround is from https://github.com/PowerShell/PowerShell/issues/19055 
-  Write-Host $requiredPsVersion, $AgentOS, $Path
-
-  if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "Darwin"){
-    copy-item $PSHOME/Microsoft.ApplicationInsights.dll  /Users/runner/.nuget/packages/powershell/7.2.9/tools/net6.0/any/unix
-  }
-
   # Update PowershellGet to the latest one
   Write-Host "Updating PowershellGet to lastest version"
   if ($requiredPsVersion -eq $windowsPowershellVersion) {
