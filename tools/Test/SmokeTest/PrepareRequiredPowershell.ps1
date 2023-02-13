@@ -37,11 +37,8 @@ function Install-PowerShell {
       dotnet tool list
       # To fix 'Microsoft.ApplicationInsights' assembly can't be loaded on MacOS and PowerShell 7.2.9,
       # Workaround is from https://github.com/PowerShell/PowerShell/issues/19055 
-      Write-Host "---------------------"
-      Write-Host (dotnet tool run pwsh -c "`$PSVersionTable.PSVersion.ToString()")
-      Write-Host "---------------------"
-      if("7.2.9" -eq (dotnet tool run pwsh -c "`$PSVersionTable.PSVersion.ToString()") -and $AgentOS -eq "Darwin"){
-        copy-item $PSHOME/Microsoft.ApplicationInsights.dll $HOME/.nuget/packages/powershell/7.2.9/tools/net6.0/any/unix
+      if($requiredPsVersion -match "7.2.*" -and $AgentOS -eq "Darwin"){
+        copy-item $PSHOME/Microsoft.ApplicationInsights.dll $HOME/.nuget/packages/powershell/7.2.9/tools/net6.0/any/unix -Force
       }
     }
     
