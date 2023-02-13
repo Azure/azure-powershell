@@ -1,7 +1,7 @@
 ---
 external help file: Az.ScheduledQueryRule.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/az.ScheduledQueryRule/new-AzScheduledQueryRuleConditionObject
+online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleconditionobject
 schema: 2.0.0
 ---
 
