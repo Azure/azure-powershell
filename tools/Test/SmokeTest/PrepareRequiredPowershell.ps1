@@ -51,9 +51,13 @@ function Install-PowerShell {
      Write-Host "________________________________________________"
      
      Write-Host "________________________________________________"
-     (Get-ChildItem /Users/runner/work/1/s -Force).FullName
+     (Get-ChildItem /Users/runner/.nuget/packages/powershell/7.2.9  -Force).FullName
      Write-Host "________________________________________________"
 
+     
+     Write-Host "________________________________________________"
+     (Get-ChildItem $HOME/.nuget/packages/powershell/7.2.9  -Force).FullName
+     Write-Host "________________________________________________"
     copy-item $PSHOME/Microsoft.ApplicationInsights.dll  /Users/runner/.nuget/packages/powershell/7.2.9/tools/net6.0/any/unix
   }
 
