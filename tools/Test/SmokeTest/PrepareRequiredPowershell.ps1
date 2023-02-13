@@ -54,7 +54,7 @@ function Install-PowerShell {
      (Get-ChildItem /Users/runner/work/1/s -Force).FullName
      Write-Host "________________________________________________"
 
-    copy-item $PSHOME/Microsoft.ApplicationInsights.dll  $PowerShellPath/dotnet/tools/.store/powershell/7.2.9/tools/net6.0/any/unix
+    copy-item $PSHOME/Microsoft.ApplicationInsights.dll  /Users/runner/.nuget/packages/powershell/7.2.9/tools/net6.0/any/unix
   }
 
   # Update PowershellGet to the latest one
