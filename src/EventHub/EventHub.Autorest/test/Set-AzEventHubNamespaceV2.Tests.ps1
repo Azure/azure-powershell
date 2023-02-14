@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubNamespaceV2'))
 }
 
 function assertNamespaceUpdates{
-    param([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace]$expectedNamespace,[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace]$namespace)
+    param([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace]$expectedNamespace,[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace]$namespace)
 
     $expectedNamespace.SkuName | Should -Be $namespace.SkuName
     $expectedNamespace.SkuCapacity | Should -Be $namespace.SkuCapacity

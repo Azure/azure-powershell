@@ -31,7 +31,7 @@ For information on how to develop for `Az.EventHub`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 801710fd0d14040ae46a0957190072148a6d334d
+branch: 1e790cfc5ee4e7ff98f99dd19a3174c4dd58432b
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
