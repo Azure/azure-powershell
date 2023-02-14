@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Get Cognitive Services Account by name, all accounts under resource group or all accounts under the subscription
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesCommitmentPlan"), OutputType(typeof(PSCognitiveServicesAccount))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesCommitmentPlan", DefaultParameterSetName = ResourceGroupParameterSet), OutputType(typeof(PSCognitiveServicesAccount))]
     public class GetAzureCognitiveServicesCommitmentPlanCommand : CognitiveServicesAccountBaseCmdlet
     {
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
-        protected const string AccountNameParameterSet = "AccountNameParameterSet";
+        protected const string CommitmentPlanNameParameterSet = "CommitmentPlanNameParameterSet";
 
         [Parameter(
             Position = 0,
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ParameterSetName = AccountNameParameterSet,
+            ParameterSetName = CommitmentPlanNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter()]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AccountNameParameterSet,
+            ParameterSetName = CommitmentPlanNameParameterSet,
             HelpMessage = "Cognitive Services Account Name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

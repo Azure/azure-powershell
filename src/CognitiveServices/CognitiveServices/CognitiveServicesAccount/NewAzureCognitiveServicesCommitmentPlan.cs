@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     public class NewAzureCognitiveServicesCommitmentPlanCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
-            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Name.")]
@@ -51,7 +49,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account/CommitmentPlan Type.")]
@@ -60,7 +57,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         public string Type { get; set; }
 
         [Parameter(
-            Position = 3,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account/CommitmentPlan Sku Name.")]
@@ -68,7 +64,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         public string SkuName { get; set; }
 
         [Parameter(
-            Position = 4,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services CommitmentPlan Location.")]
@@ -85,7 +80,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         public Hashtable[] Tag { get; set; }
 
         [Parameter(
-            Position = 3,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services CommitmentPlan Properties.")]

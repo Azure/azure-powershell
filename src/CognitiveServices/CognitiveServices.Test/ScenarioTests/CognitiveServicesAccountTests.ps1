@@ -1669,7 +1669,7 @@ function Test-MultiRegionSettings
         $multiRegionSettings.Regions.Add($regionSetting1)
         $multiRegionSettings.Regions.Add($regionSetting2)
 
-        Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Locations $multiRegionSettings
+        Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -MultiRegionSetting $multiRegionSettings
 
         $account = Get-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname
         Assert-NotNull $account.Properties.Locations;

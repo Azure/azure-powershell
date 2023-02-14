@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Get Cognitive Services Account by name, all accounts under resource group or all accounts under the subscription
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesCommitmentPlanAssociation"), OutputType(typeof(PSCognitiveServicesAccount))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesCommitmentPlanAssociation", DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSCognitiveServicesAccount))]
     public class GetAzureCognitiveServicesCommitmentPlanAssociationCommand : CognitiveServicesAccountBaseCmdlet
     {
         protected const string DefaultParameterSet = "DefaultParameterSet";

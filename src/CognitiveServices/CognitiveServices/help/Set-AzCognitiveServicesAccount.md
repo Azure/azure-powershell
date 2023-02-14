@@ -19,7 +19,7 @@ Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-AssignIdentity] [-UserAssignedIdentityId <String[]>]
  [-IdentityType <IdentityType>] [-StorageAccountId <String[]>] [-CognitiveServicesEncryption]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
- [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>] [-Locations <MultiRegionSettings>]
+ [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>] [-MultiRegionSetting <MultiRegionSettings>]
  [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  [-IdentityType <IdentityType>] [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String>
  -KeyVersion <String> -KeyVaultUri <String> [-KeyVaultIdentityClientId <String>]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
- [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>] [-Locations <MultiRegionSettings>]
+ [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>] [-MultiRegionSetting <MultiRegionSettings>]
  [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -274,7 +274,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Locations
+### -MultiRegionSetting
 Multi-region settings for multi-region account.
 
 ```yaml

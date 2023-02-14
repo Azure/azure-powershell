@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             HelpMessage = "Multi-region settings for multi-region account.",
             Mandatory = false)]
         [AllowEmptyCollection]
-        public MultiRegionSettings Locations { get; set; }
+        public MultiRegionSettings MultiRegionSetting { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -256,9 +256,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     createParameters.Properties.AllowedFqdnList = AllowedFqdnList;
                 }
 
-                if (Locations != null)
+                if (MultiRegionSetting != null)
                 {
-                    createParameters.Properties.Locations = Locations;
+                    createParameters.Properties.Locations = MultiRegionSetting;
                 }
 
                 if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)
