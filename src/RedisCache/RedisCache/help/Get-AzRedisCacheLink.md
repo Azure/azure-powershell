@@ -46,9 +46,13 @@ Get-AzRedisCacheLink -Name "mycache1"
 ```
 
 ```output
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Succeeded
+        PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Succeeded
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command gets all geo-replication links for Redis Cache named mycache1.
@@ -59,9 +63,13 @@ Get-AzRedisCacheLink -PrimaryServerName "mycache1"
 ```
 
 ```output
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Succeeded
+        PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Succeeded
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command gets geo-replication links where Redis Cache named mycache1 is primary.
@@ -72,9 +80,13 @@ Get-AzRedisCacheLink -SecondaryServerName "mycache2"
 ```
 
 ```output
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Succeeded
+        PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Succeeded
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command gets geo-replication links where Redis Cache named mycache2 is secondary.
@@ -85,9 +97,13 @@ Get-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache
 ```
 
 ```output
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Succeeded
+        PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Succeeded
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command gets a single geo-replication links where Redis Cache named mycache1 is primary and Redis Cache named mycache2 is secondary.

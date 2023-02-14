@@ -82,28 +82,28 @@ The **New-AzStorageAccount** cmdlet creates an Azure Storage account.
 
 ### Example 1: Create a Storage account
 ```powershell
-PS C:\>New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS
+New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS
 ```
 
 This command creates a Storage account for the resource group name MyResourceGroup.
 
 ### Example 2: Create a Blob Storage account with BlobStorage Kind and hot AccessTier
 ```powershell
-PS C:\>New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS -Kind BlobStorage -AccessTier Hot
+New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS -Kind BlobStorage -AccessTier Hot
 ```
 
 This command creates a Blob Storage account that with BlobStorage Kind and hot AccessTier
 
 ### Example 3: Create a Storage account with Kind StorageV2, and Generate and Assign an Identity for Azure KeyVault.
 ```powershell
-PS C:\>New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS -Kind StorageV2 -AssignIdentity
+New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS -Kind StorageV2 -AssignIdentity
 ```
 
 This command creates a Storage account with Kind StorageV2.  It also generates and assigns an identity that can be used to manage account keys through Azure KeyVault.
 
 ### Example 4: Create a Storage account with NetworkRuleSet from JSON
 ```powershell
-PS C:\>New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -Type Standard_LRS -NetworkRuleSet (@{bypass="Logging,Metrics";
+New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -Type Standard_LRS -NetworkRuleSet (@{bypass="Logging,Metrics";
     ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
             @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
     virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
@@ -115,21 +115,21 @@ This command creates a Storage account that has NetworkRuleSet property from JSO
 
 ### Example 5: Create a Storage account with Hierarchical Namespace enabled, Sftp enabled, and localuser enabled.
 ```powershell
-PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2  -EnableHierarchicalNamespace $true -EnableSftp $true -EnableLocalUser $true
+New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2  -EnableHierarchicalNamespace $true -EnableSftp $true -EnableLocalUser $true
 ```
 
 This command creates a Storage account with Hierarchical Namespace enabled, Sftp enabled, and localuser enabled.
 
 ### Example 6: Create a Storage account with Azure Files AAD DS Authentication, and enable large file share.
 ```powershell
-PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryDomainServicesForFile $true -EnableLargeFileShare
+New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryDomainServicesForFile $true -EnableLargeFileShare
 ```
 
 This command creates a Storage account with Azure Files AAD DS Authentication, and enable large file share.
 
 ### Example 7: Create a Storage account with enable Files Active Directory Domain Service Authentication and DefaultSharePermission.
-```
-PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableActiveDirectoryDomainServicesForFile $true `
+```powershell
+New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableActiveDirectoryDomainServicesForFile $true `
         -ActiveDirectoryDomainName "mydomain.com" `
         -ActiveDirectoryNetBiosDomainName "mydomain.com" `
         -ActiveDirectoryForestName "mydomain.com" `
@@ -291,27 +291,26 @@ LastKeyRotationTimestamp      : 4/12/2021 8:17:57 AM
 This command first create a keyvault and a user assigned identity, then create a storage account with keyvault encryption (the storage access access keyvault with the user assigned identity).
 
 ### Example 13: Create account with EnableNfsV3
-<!-- Skip: Output cannot be splitted from code -->
-
-
-```
-PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableNfsV3 $true -EnableHierarchicalNamespace $true -EnableHttpsTrafficOnly $false -NetworkRuleSet (@{bypass="Logging,Metrics";
+```powershell
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableNfsV3 $true -EnableHierarchicalNamespace $true -EnableHttpsTrafficOnly $false -NetworkRuleSet (@{bypass="Logging,Metrics";
         virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"});
         defaultAction="deny"}) 
-PS C:\> $account.EnableNfsV3
+$account.EnableNfsV3
+```
+```output
 True
 ```
 
 The command create account with EnableNfsV3 as true, and then show the EnableNfsV3 property of the created account 
 
 ### Example 14: Create account with disable PublicNetworkAccess
-<!-- Skip: Output cannot be splitted from code -->
 
+```powershell
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -PublicNetworkAccess Disabled
 
+$account.PublicNetworkAccess
 ```
-PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -PublicNetworkAccess Disabled
-
-PS C:\> $account.PublicNetworkAccess
+```output
 Disabled
 ```
 
@@ -338,8 +337,8 @@ The command creates an account and enable account level immutability with versio
 The account is also created with a default account-level immutability policy which is inherited and applied to objects that do not possess an explicit immutability policy at the object level. 
 
 ### Example 16: Create a Storage account with enable Azure Files Active Directory Domain Service Kerberos Authentication.
-```
-PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryKerberosForFile $true `
+```powershell
+New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryKerberosForFile $true `
         -ActiveDirectoryDomainName "mydomain.com" `
         -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012"
 ```

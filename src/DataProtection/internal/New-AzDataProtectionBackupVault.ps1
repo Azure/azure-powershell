@@ -23,11 +23,15 @@ Creates or updates a BackupVault resource belonging to a resource group.
 $sub = "xxxx-xxxx-xxxxx"
 $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
 New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName "MyVault" -StorageSetting $storagesetting -Location westus
+.Example
+$sub = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
+New-AzDataProtectionBackupVault -SubscriptionId $sub "resourceGroupName" -VaultName "vaultName" -Location westus -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState On
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupVaultResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,17 +41,21 @@ PARAMETER <IBackupVaultResource>: Backup Vault Resource
   StorageSetting <IStorageSetting[]>: Storage Settings
     [DatastoreType <StorageSettingStoreTypes?>]: Gets or sets the type of the datastore.
     [Type <StorageSettingTypes?>]: Gets or sets the type.
-  [ETag <String>]: Optional ETag.
   [IdentityType <String>]: The identityType which can be either SystemAssigned or None
+  [ETag <String>]: Optional ETag.
   [Location <String>]: Resource location.
-  [Tag <IDppTrackedResourceTags>]: Resource tags.
+  [Tag <IDppBaseTrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AzureMonitorAlertsForAllJobFailure <AlertsState?>]: 
+  [CrossSubscriptionRestoreState <CrossSubscriptionRestoreState?>]: CrossSubscriptionRestore state
+  [ImmutabilityState <ImmutabilityState?>]: Immutability state
   [ResourceMoveDetailCompletionTimeUtc <String>]: Completion time in UTC of latest ResourceMove operation attempted. ISO 8601 format.
   [ResourceMoveDetailOperationId <String>]: CorrelationId of latest ResourceMove operation attempted
   [ResourceMoveDetailSourceResourcePath <String>]: ARM resource path of source resource
   [ResourceMoveDetailStartTimeUtc <String>]: Start time in UTC of latest ResourceMove operation attempted. ISO 8601 format.
   [ResourceMoveDetailTargetResourcePath <String>]: ARM resource path of target resource used in latest ResourceMove operation
+  [SoftDeleteRetentionDurationInDay <Double?>]: Soft delete retention duration
+  [SoftDeleteState <SoftDeleteState?>]: State of soft delete
 
 STORAGESETTING <IStorageSetting[]>: Storage Settings
   [DatastoreType <StorageSettingStoreTypes?>]: Gets or sets the type of the datastore.
@@ -56,13 +64,14 @@ STORAGESETTING <IStorageSetting[]>: Storage Settings
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 #>
 function New-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
-    # The name of the resource group where the backup vault is present.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(Mandatory)]
@@ -75,12 +84,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription Id.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupVaultResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupVaultResource]
     # Backup Vault Resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -88,7 +98,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IStorageSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IStorageSetting[]]
     # Storage Settings
     # To construct, see NOTES section for STORAGESETTING properties and create a hash table.
     ${StorageSetting},
@@ -100,6 +110,14 @@ param(
     # Parameter to Enable or Disable built-in azure monitor alerts for job failures.
     # Security alerts cannot be disabled.
     ${AzureMonitorAlertsForAllJobFailure},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState]
+    # Cross subscription restore state of the vault.
+    # Allowed values are Disabled, Enabled, PermanentlyDisabled.
+    ${CrossSubscriptionRestoreState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -114,6 +132,14 @@ param(
     ${IdentityType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState]
+    # Immutability state of the vault.
+    # Allowed values are Disabled, Unlocked, Locked.
+    ${ImmutabilityState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Resource location.
@@ -121,7 +147,21 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IDppTrackedResourceTags]))]
+    [System.Double]
+    # Soft delete retention duration in days.
+    ${SoftDeleteRetentionDurationInDay},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState]
+    # Soft delete state of the vault.
+    # Allowed values are Off, On, AlwaysOn.
+    ${SoftDeleteState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IDppBaseTrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

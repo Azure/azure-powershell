@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Commands.RedisCache
 {
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
-    using Microsoft.Azure.Management.Redis.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using DayOfWeekEnum = System.DayOfWeek;
     using Rest.Azure;
     using ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.RedisCache.Models;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCachePatchSchedule"), OutputType(typeof(PSScheduleEntry))]
     public class GetAzureRedisCachePatchSchedule : RedisCacheCmdletBase

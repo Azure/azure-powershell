@@ -56,6 +56,22 @@ function Install-PowerShell {
       dotnet tool run pwsh -c $command
     }
   }
+
+  #Install ThreadJob for Windows PowerShell
+  if ($requiredPsVersion -eq $windowsPowershellVersion) {
+    Write-Host "Install ThreadJob for Windows PowerShell."
+    $installedModule = Get-Module -ListAVailable -Name ThreadJob
+    if ($installedModule -eq $null) {
+      try {
+        Install-Module -Name ThreadJob -Repository PSGallery -Scope CurrentUser -AllowClobber -Force
+        Write-Host "Install ThreadJob successfully."
+      }
+      catch {
+        Write-Host "Fail to install ThreadJob from PSGallery."
+        Write-Host $_
+      }
+    }
+  }
 }
 
 # Image "macOS-10.15" preinstalled Az modules

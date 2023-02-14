@@ -3141,7 +3141,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings]))]
+    [System.Collections.Hashtable]
     # Settings to allow interoperability with third party components e.g.
     # RANs and UEs.
     ${InteropSetting},

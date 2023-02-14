@@ -225,13 +225,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 var account = context.Account;
                 if (account.IsPropertySet(AzureAccount.Property.ServicePrincipalSecret))
                 {
-                    keystore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, account.GetTenants().First())
+                    keystore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, account.GetTenants().First())
                         , account.ExtendedProperties.GetProperty(AzureAccount.Property.ServicePrincipalSecret).ConvertToSecureString());
                     account.ExtendedProperties.Remove(AzureAccount.Property.ServicePrincipalSecret);
                 }
                 if (account.IsPropertySet(AzureAccount.Property.CertificatePassword))
                 {
-                    keystore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, account.GetTenants().First())
+                    keystore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, account.GetTenants().First())
     , account.ExtendedProperties.GetProperty(AzureAccount.Property.CertificatePassword).ConvertToSecureString());
                     account.ExtendedProperties.Remove(AzureAccount.Property.CertificatePassword);
                 }
@@ -336,10 +336,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     // so that previous data is overwritten
                     provider.Stream.SetLength(provider.Stream.Position);
                 }
-
-                AzKeyStore keystore = null;
-                AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out keystore);
-                keystore?.Flush();
             }
             finally
             {

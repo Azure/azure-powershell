@@ -213,7 +213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101
             }
             if (content.Contains("InteropSetting"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneInternal)this).InteropSetting = (Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny) content.GetValueForProperty("InteropSetting",((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneInternal)this).InteropSetting, Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneInternal)this).InteropSetting = (Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings) content.GetValueForProperty("InteropSetting",((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneInternal)this).InteropSetting, Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlanePropertiesFormatInteropSettingsTypeConverter.ConvertFrom);
             }
             if (content.Contains("InstallationState"))
             {
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101
             }
             if (content.Contains("InteropSetting"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneInternal)this).InteropSetting = (Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny) content.GetValueForProperty("InteropSetting",((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneInternal)this).InteropSetting, Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneInternal)this).InteropSetting = (Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings) content.GetValueForProperty("InteropSetting",((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneInternal)this).InteropSetting, Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlanePropertiesFormatInteropSettingsTypeConverter.ConvertFrom);
             }
             if (content.Contains("InstallationState"))
             {
