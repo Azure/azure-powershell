@@ -72,7 +72,7 @@ $Steps = @(
     }
     @{
         PhaseName = "cmdlet-diff"
-        IssuePath = "$StaticAnalysisOutputDirectory/CmdletDiffInformation.md"
+        IssuePath = "$StaticAnalysisOutputDirectory/CmdletChangeResult.md"
     }
 )
 
