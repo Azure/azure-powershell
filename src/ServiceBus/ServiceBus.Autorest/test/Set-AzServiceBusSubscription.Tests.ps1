@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusSubscription'
 }
 
 function AssertSubscriptionUpdates{
-    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription]$expectedSub,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription]$actualSub)
+    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription]$expectedSub,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription]$actualSub)
     $expectedSub.Name | Should -Be $actualSub.Name
     $expectedSub.ResourceGroupName | Should -Be $actualSub.ResourceGroupName
     $expectedSub.DeadLetteringOnMessageExpiration | Should -Be $actualSub.DeadLetteringOnMessageExpiration
@@ -61,14 +61,15 @@ function AssertSubscriptionUpdates{
 
 Describe 'Set-AzServiceBusSubscription' {
     It 'SetExpanded'  {
-        $currentSub = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name 'subscription3$$D'
-        $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name 'subscription3$$D' -DeadLetteringOnFilterEvaluationException:$false
-        $currentSub.DeadLetteringOnFilterEvaluationException = $false
+        $sb = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3
+        $currentSub = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3
+        $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3 -DefaultMessageTimeToLive (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4)
+        $currentSub.DefaultMessageTimeToLive = (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4) 
         AssertSubscriptionUpdates $currentSub $updatedSub
         $currentSub = $updatedSub
 
-        $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name 'subscription3$$D' -DeadLetteringOnFilterEvaluationException
-        $currentSub.DeadLetteringOnFilterEvaluationException = $true
+        $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3 -LockDuration (New-TimeSpan -Minutes 1)
+        $currentSub.LockDuration = (New-TimeSpan -Minutes 1)
         AssertSubscriptionUpdates $currentSub $updatedSub
         $currentSub = $updatedSub
     }
