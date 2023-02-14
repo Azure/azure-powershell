@@ -11,7 +11,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2022 -Month 06 -Day 29 -Hour 19 -Minute 01 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2023 -Month 01 -Day 22 -Hour 18 -Minute 13 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
         
     $BackupInstanceTestVariables = @{

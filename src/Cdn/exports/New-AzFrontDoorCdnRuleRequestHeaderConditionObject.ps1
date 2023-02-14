@@ -25,7 +25,7 @@ New-AzFrontDoorCdnRuleRequestHeaderConditionObject -Name RequestHeader -Paramete
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestHeaderConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderCondition])]

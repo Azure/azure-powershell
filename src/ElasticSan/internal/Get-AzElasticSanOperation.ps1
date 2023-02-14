@@ -27,7 +27,7 @@ Gets a list of ElasticSan operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanRpOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanoperation
+https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanoperation
 #>
 function Get-AzElasticSanOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanRpOperation])]

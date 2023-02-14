@@ -25,7 +25,7 @@ Get-AzDynatraceMonitorVMHostPayload -ResourceGroupName dyobrg -MonitorName dyob-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMExtensionPayload
 .Link
-https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorvmhostpayload
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorvmhostpayload
 #>
 function Get-AzDynatraceMonitorVMHostPayload {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMExtensionPayload])]

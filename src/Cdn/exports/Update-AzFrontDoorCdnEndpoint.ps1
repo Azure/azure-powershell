@@ -54,7 +54,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnendpoint
 #>
 function Update-AzFrontDoorCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdEndpoint])]

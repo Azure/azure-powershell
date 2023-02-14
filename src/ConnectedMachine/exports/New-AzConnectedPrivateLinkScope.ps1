@@ -59,7 +59,7 @@ PARAMETER <IHybridComputePrivateLinkScope>: An Azure Arc PrivateLinkScope defini
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedprivatelinkscope
+https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedprivatelinkscope
 #>
 function New-AzConnectedPrivateLinkScope {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope])]

@@ -26,9 +26,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CommunicationsGatewaysCreateOrUpdate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CommunicationsGatewaysCreateOrUpdate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CommunicationsGatewaysCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CommunicationsGatewaysCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.CommunicationsGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.CommunicationsGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// </returns>
         public async global::System.Threading.Tasks.Task CommunicationsGatewaysDelete(string subscriptionId, string resourceGroupName, string communicationsGatewayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// </returns>
         public async global::System.Threading.Tasks.Task CommunicationsGatewaysDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -582,9 +582,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CommunicationsGatewaysGet(string subscriptionId, string resourceGroupName, string communicationsGatewayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CommunicationsGatewaysGet(string subscriptionId, string resourceGroupName, string communicationsGatewayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -623,9 +623,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CommunicationsGatewaysGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CommunicationsGatewaysGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.CommunicationsGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.CommunicationsGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
@@ -751,9 +751,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CommunicationsGatewaysListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CommunicationsGatewaysListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -791,9 +791,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CommunicationsGatewaysListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CommunicationsGatewaysListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -844,7 +844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.CommunicationsGatewayListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.CommunicationsGatewayListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -915,9 +915,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CommunicationsGatewaysListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CommunicationsGatewaysListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -953,9 +953,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CommunicationsGatewaysListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CommunicationsGatewaysListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1021,7 +1021,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.CommunicationsGatewayListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.CommunicationsGatewayListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1073,9 +1073,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CommunicationsGatewaysUpdate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CommunicationsGatewaysUpdate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1119,9 +1119,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CommunicationsGatewaysUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CommunicationsGatewaysUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1176,7 +1176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1194,7 +1194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.CommunicationsGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.CommunicationsGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
@@ -1227,7 +1227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysUpdate_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGatewayUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CommunicationsGatewaysUpdate_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1243,12 +1243,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
             }
         }
 
-        /// <summary>Create a Contact</summary>
+        /// <summary>Check whether the resource name is available in the given region.</summary>
+        /// <param name="location">The location in which uniqueness will be verified.</param>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="communicationsGatewayName">Unique identifier for this deployment</param>
-        /// <param name="contactName">Unique identifier for this contact</param>
-        /// <param name="body">Resource create parameters.</param>
+        /// <param name="body">The check availability request body.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1257,9 +1255,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsCreateOrUpdate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string contactName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NameAvailabilityCheckLocal(string location, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1267,12 +1265,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.VoiceServices/communicationsGateways/"
-                        + global::System.Uri.EscapeDataString(communicationsGatewayName)
-                        + "/contacts/"
-                        + global::System.Uri.EscapeDataString(contactName)
+                        + "/providers/Microsoft.VoiceServices/locations/"
+                        + global::System.Uri.EscapeDataString(location)
+                        + "/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -1281,7 +1276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
 
                 // generate request object
                 var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Put, _url);
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Post, _url);
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1290,13 +1285,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ContactsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.NameAvailabilityCheckLocal_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Create a Contact</summary>
+        /// <summary>Check whether the resource name is available in the given region.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Resource create parameters.</param>
+        /// <param name="body">The check availability request body.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1305,35 +1300,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NameAvailabilityCheckLocalViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.VoiceServices/communicationsGateways/(?<communicationsGatewayName>[^/]+)/contacts/(?<contactName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.VoiceServices/locations/(?<location>[^/]+)/checkNameAvailability$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/contacts/{contactName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.VoiceServices/locations/{location}/checkNameAvailability'");
                 }
 
                 // replace URI parameters with values from identity
+                var location = _match.Groups["location"].Value;
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var communicationsGatewayName = _match.Groups["communicationsGatewayName"].Value;
-                var contactName = _match.Groups["contactName"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.VoiceServices/communicationsGateways/"
-                        + communicationsGatewayName
-                        + "/contacts/"
-                        + contactName
+                        + "/providers/Microsoft.VoiceServices/locations/"
+                        + location
+                        + "/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -1342,7 +1332,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
 
                 // generate request object
                 var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Put, _url);
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Post, _url);
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1351,11 +1341,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ContactsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.NameAvailabilityCheckLocal_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ContactsCreateOrUpdate" /> method.</summary>
+        /// <summary>Actual wire call for <see cref="NameAvailabilityCheckLocal" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1365,7 +1355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task NameAvailabilityCheckLocal_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1376,102 +1366,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
-                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var location = _response.GetFirstHeader(@"Location");
-                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                    {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
-
-                        // while we wait, let's grab the headers and get ready to poll.
-                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
-                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
-                            location = _response.GetFirstHeader(@"Location");
-                        }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
-                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Get);
-
-                        // and let's look at the current response body and see if we have some information we can give back to the listener
-                        var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
-
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the polling call
-                        _response = await sender.SendAsync(request, eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
-                                          break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
-
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
-
-                        // check for terminal status code
-                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                        {
-                            continue;
-                        }
-                        // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Get);
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                        break;
-                    }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1479,7 +1373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.Contact.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.CheckNameAvailabilityResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1501,859 +1395,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         }
 
         /// <summary>
-        /// Validation method for <see cref="ContactsCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
-        /// events back.
+        /// Validation method for <see cref="NameAvailabilityCheckLocal" /> method. Call this like the actual call, but you will get
+        /// validation events back.
         /// </summary>
+        /// <param name="location">The location in which uniqueness will be verified.</param>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="communicationsGatewayName">Unique identifier for this deployment</param>
-        /// <param name="contactName">Unique identifier for this contact</param>
-        /// <param name="body">Resource create parameters.</param>
+        /// <param name="body">The check availability request body.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string contactName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task NameAvailabilityCheckLocal_Validate(string location, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICheckNameAvailabilityRequest body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
+                await eventListener.AssertNotNull(nameof(location),location);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(communicationsGatewayName),communicationsGatewayName);
-                await eventListener.AssertRegEx(nameof(communicationsGatewayName),communicationsGatewayName,@"^[a-zA-Z0-9-]{3,24}$");
-                await eventListener.AssertNotNull(nameof(contactName),contactName);
-                await eventListener.AssertRegEx(nameof(contactName),contactName,@"^[a-zA-Z0-9-]{3,24}$");
-                await eventListener.AssertNotNull(nameof(body), body);
-                await eventListener.AssertObjectIsValid(nameof(body), body);
-            }
-        }
-
-        /// <summary>Delete a Contact</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="communicationsGatewayName">Unique identifier for this deployment</param>
-        /// <param name="contactName">Unique identifier for this contact</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsDelete(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string contactName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2022-12-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.VoiceServices/communicationsGateways/"
-                        + global::System.Uri.EscapeDataString(communicationsGatewayName)
-                        + "/contacts/"
-                        + global::System.Uri.EscapeDataString(contactName)
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ContactsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Delete a Contact</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2022-12-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.VoiceServices/communicationsGateways/(?<communicationsGatewayName>[^/]+)/contacts/(?<contactName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/contacts/{contactName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var communicationsGatewayName = _match.Groups["communicationsGatewayName"].Value;
-                var contactName = _match.Groups["contactName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.VoiceServices/communicationsGateways/"
-                        + communicationsGatewayName
-                        + "/contacts/"
-                        + contactName
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ContactsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref="ContactsDelete" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
-                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var location = _response.GetFirstHeader(@"Location");
-                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                    {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
-
-                        // while we wait, let's grab the headers and get ready to poll.
-                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
-                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
-                            location = _response.GetFirstHeader(@"Location");
-                        }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
-                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Get);
-
-                        // and let's look at the current response body and see if we have some information we can give back to the listener
-                        var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
-
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the polling call
-                        _response = await sender.SendAsync(request, eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
-                                          break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
-
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
-
-                        // check for terminal status code
-                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                        {
-                            continue;
-                        }
-                        // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Get);
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                        break;
-                    }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response);
-                            break;
-                        }
-                        case global::System.Net.HttpStatusCode.NoContent:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNoContent(_response);
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="ContactsDelete" /> method. Call this like the actual call, but you will get validation
-        /// events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="communicationsGatewayName">Unique identifier for this deployment</param>
-        /// <param name="contactName">Unique identifier for this contact</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsDelete_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string contactName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(communicationsGatewayName),communicationsGatewayName);
-                await eventListener.AssertRegEx(nameof(communicationsGatewayName),communicationsGatewayName,@"^[a-zA-Z0-9-]{3,24}$");
-                await eventListener.AssertNotNull(nameof(contactName),contactName);
-                await eventListener.AssertRegEx(nameof(contactName),contactName,@"^[a-zA-Z0-9-]{3,24}$");
-            }
-        }
-
-        /// <summary>Get a Contact</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="communicationsGatewayName">Unique identifier for this deployment</param>
-        /// <param name="contactName">Unique identifier for this contact</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsGet(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string contactName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2022-12-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.VoiceServices/communicationsGateways/"
-                        + global::System.Uri.EscapeDataString(communicationsGatewayName)
-                        + "/contacts/"
-                        + global::System.Uri.EscapeDataString(contactName)
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ContactsGet_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Get a Contact</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2022-12-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.VoiceServices/communicationsGateways/(?<communicationsGatewayName>[^/]+)/contacts/(?<contactName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/contacts/{contactName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var communicationsGatewayName = _match.Groups["communicationsGatewayName"].Value;
-                var contactName = _match.Groups["contactName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.VoiceServices/communicationsGateways/"
-                        + communicationsGatewayName
-                        + "/contacts/"
-                        + contactName
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ContactsGet_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref="ContactsGet" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.Contact.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="ContactsGet" /> method. Call this like the actual call, but you will get validation events
-        /// back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="communicationsGatewayName">Unique identifier for this deployment</param>
-        /// <param name="contactName">Unique identifier for this contact</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsGet_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string contactName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(communicationsGatewayName),communicationsGatewayName);
-                await eventListener.AssertRegEx(nameof(communicationsGatewayName),communicationsGatewayName,@"^[a-zA-Z0-9-]{3,24}$");
-                await eventListener.AssertNotNull(nameof(contactName),contactName);
-                await eventListener.AssertRegEx(nameof(contactName),contactName,@"^[a-zA-Z0-9-]{3,24}$");
-            }
-        }
-
-        /// <summary>List Contact resources by CommunicationsGateway</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="communicationsGatewayName">Unique identifier for this deployment</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsListByCommunicationsGateway(string subscriptionId, string resourceGroupName, string communicationsGatewayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContactListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2022-12-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.VoiceServices/communicationsGateways/"
-                        + global::System.Uri.EscapeDataString(communicationsGatewayName)
-                        + "/contacts"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ContactsListByCommunicationsGateway_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>List Contact resources by CommunicationsGateway</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsListByCommunicationsGatewayViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContactListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2022-12-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.VoiceServices/communicationsGateways/(?<communicationsGatewayName>[^/]+)/contacts$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/contacts'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var communicationsGatewayName = _match.Groups["communicationsGatewayName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.VoiceServices/communicationsGateways/"
-                        + communicationsGatewayName
-                        + "/contacts"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ContactsListByCommunicationsGateway_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref="ContactsListByCommunicationsGateway" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsListByCommunicationsGateway_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContactListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ContactListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="ContactsListByCommunicationsGateway" /> method. Call this like the actual call, but you
-        /// will get validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="communicationsGatewayName">Unique identifier for this deployment</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsListByCommunicationsGateway_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(communicationsGatewayName),communicationsGatewayName);
-                await eventListener.AssertRegEx(nameof(communicationsGatewayName),communicationsGatewayName,@"^[a-zA-Z0-9-]{3,24}$");
-            }
-        }
-
-        /// <summary>Update a Contact</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="communicationsGatewayName">Unique identifier for this deployment</param>
-        /// <param name="contactName">Unique identifier for this contact</param>
-        /// <param name="body">The resource properties to be updated.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsUpdate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string contactName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContactUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2022-12-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.VoiceServices/communicationsGateways/"
-                        + global::System.Uri.EscapeDataString(communicationsGatewayName)
-                        + "/contacts/"
-                        + global::System.Uri.EscapeDataString(contactName)
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Patch, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ContactsUpdate_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Update a Contact</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="body">The resource properties to be updated.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContactUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2022-12-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.VoiceServices/communicationsGateways/(?<communicationsGatewayName>[^/]+)/contacts/(?<contactName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/contacts/{contactName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var communicationsGatewayName = _match.Groups["communicationsGatewayName"].Value;
-                var contactName = _match.Groups["contactName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.VoiceServices/communicationsGateways/"
-                        + communicationsGatewayName
-                        + "/contacts/"
-                        + contactName
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Method.Patch, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ContactsUpdate_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref="ContactsUpdate" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.Contact.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="ContactsUpdate" /> method. Call this like the actual call, but you will get validation
-        /// events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="communicationsGatewayName">Unique identifier for this deployment</param>
-        /// <param name="contactName">Unique identifier for this contact</param>
-        /// <param name="body">The resource properties to be updated.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsUpdate_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string contactName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContactUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(communicationsGatewayName),communicationsGatewayName);
-                await eventListener.AssertRegEx(nameof(communicationsGatewayName),communicationsGatewayName,@"^[a-zA-Z0-9-]{3,24}$");
-                await eventListener.AssertNotNull(nameof(contactName),contactName);
-                await eventListener.AssertRegEx(nameof(contactName),contactName,@"^[a-zA-Z0-9-]{3,24}$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -2370,7 +1428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2406,7 +1464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2518,9 +1576,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TestLinesCreateOrUpdate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TestLinesCreateOrUpdate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2566,9 +1624,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TestLinesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TestLinesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2626,7 +1684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TestLinesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TestLinesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2740,7 +1798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.TestLine.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.TestLine.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
@@ -2774,7 +1832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TestLinesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task TestLinesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2808,7 +1866,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// </returns>
         public async global::System.Threading.Tasks.Task TestLinesDelete(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2852,7 +1910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// </returns>
         public async global::System.Threading.Tasks.Task TestLinesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3090,9 +2148,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TestLinesGet(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TestLinesGet(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3133,9 +2191,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TestLinesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TestLinesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3189,7 +2247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TestLinesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TestLinesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3207,7 +2265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.TestLine.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.TestLine.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
@@ -3268,9 +2326,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TestLinesListByCommunicationsGateway(string subscriptionId, string resourceGroupName, string communicationsGatewayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TestLinesListByCommunicationsGateway(string subscriptionId, string resourceGroupName, string communicationsGatewayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3310,9 +2368,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TestLinesListByCommunicationsGatewayViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TestLinesListByCommunicationsGatewayViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3366,7 +2424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TestLinesListByCommunicationsGateway_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TestLinesListByCommunicationsGateway_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3384,7 +2442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.TestLineListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.TestLineListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3444,9 +2502,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TestLinesUpdate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLineUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TestLinesUpdate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3492,9 +2550,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TestLinesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLineUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TestLinesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-01-preview";
+            var apiVersion = @"2023-01-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3552,7 +2610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TestLinesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TestLinesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3570,7 +2628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.TestLine.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.TestLine.FromJson(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
@@ -3604,7 +2662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TestLinesUpdate_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLineUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task TestLinesUpdate_Validate(string subscriptionId, string resourceGroupName, string communicationsGatewayName, string testLineName, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineUpdate body, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

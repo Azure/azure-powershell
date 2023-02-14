@@ -426,6 +426,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
             }
 
+            if(recoveryPoint.RecoveryPointProperties != null)
+            {
+                rpBase.RecoveryPointExpiryTime = (recoveryPoint.RecoveryPointProperties.ExpiryTime != null) ? DateTime.Parse(recoveryPoint.RecoveryPointProperties.ExpiryTime): (DateTime?)null;
+                rpBase.RuleName = recoveryPoint.RecoveryPointProperties.RuleName;             
+            }
+
             if (rpBase.EncryptionEnabled && recoveryPoint.KeyAndSecret != null)
             {
                 rpBase.KeyAndSecretDetails = new KeyAndSecretDetails()
@@ -476,6 +482,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 WorkloadType = item.WorkloadType,
                 FileShareSnapshotUri = recoveryPoint.FileShareSnapshotUri,
             };
+
+            if (recoveryPoint.RecoveryPointProperties != null)
+            {
+                rpBase.RecoveryPointExpiryTime = (recoveryPoint.RecoveryPointProperties.ExpiryTime != null) ? DateTime.Parse(recoveryPoint.RecoveryPointProperties.ExpiryTime) : (DateTime?)null;
+                rpBase.RuleName = recoveryPoint.RecoveryPointProperties.RuleName;
+            }
+
             return rpBase;
         }
 
@@ -602,6 +615,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                     rpBase.RecoveryPointMoveReadinessInfo.Add(moveInfo.Key, AzureWorkloadMoveInfo);
                 }
+            }
+
+            if (recoveryPoint.RecoveryPointProperties != null)
+            {
+                rpBase.RecoveryPointExpiryTime = (recoveryPoint.RecoveryPointProperties.ExpiryTime != null) ? DateTime.Parse(recoveryPoint.RecoveryPointProperties.ExpiryTime) : (DateTime?)null;
+                rpBase.RuleName = recoveryPoint.RecoveryPointProperties.RuleName;
             }
 
             return rpBase;
@@ -774,6 +793,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     rpBase.RecoveryPointMoveReadinessInfo.Add(moveInfo.Key, AzureVmMoveInfo);
                 }
             }
+
+            // to uncomment while adding expiry time for CRR RPs
+            /*if (recoveryPoint.RecoveryPointProperties != null)
+            {
+                rpBase.RecoveryPointExpiryTime = (recoveryPoint.RecoveryPointProperties.ExpiryTime != null) ? DateTime.Parse(recoveryPoint.RecoveryPointProperties.ExpiryTime): (DateTime?)null;
+                rpBase.RuleName = recoveryPoint.RecoveryPointProperties.RuleName;
+            }*/
 
             if (rpBase.EncryptionEnabled && recoveryPoint.KeyAndSecret != null)
             {

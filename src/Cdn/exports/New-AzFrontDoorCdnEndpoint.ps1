@@ -25,7 +25,7 @@ New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnendpoint
 #>
 function New-AzFrontDoorCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdEndpoint])]

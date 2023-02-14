@@ -638,7 +638,7 @@ function Test-LinuxOSConfig {
              }
             }
 '@
-        $linuxOsConfig = [Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig] ($linuxOsConfigJsonStr | ConvertFrom-Json)
+        $linuxOsConfig = [Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig] ($linuxOsConfigJsonStr | ConvertFrom-Json) 
         $kubeletConfigStr = @'
             {
              "failSwapOn": false
@@ -989,3 +989,98 @@ function Test-EdgeZone {
     }
 }
 
+function Test-AadProfile {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    #$AdGroupName = 'TestAksGroup'
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        #New-AzADGroup -DisplayName $AdGroupName -MailNickname $AdGroupName
+        #$adGroup = Get-AzADGroup -DisplayName $AdGroupName
+        #$adGroupId = $adGroup.Id
+        $adGroupId = 'e74a0087-33b6-4144-977d-f9802b0031d4'
+        $AadProfile=@{
+            managed=$true
+            enableAzureRBAC=$false
+            adminGroupObjectIDs=[System.Collections.Generic.List[string]]@($adGroupId)
+        }
+        $AadProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile]$AadProfile
+
+        # create aks cluster with AadProfile
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -AadProfile $AadProfile
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-ObjectEquals $AadProfile.managed $cluster.AadProfile.managed
+        Assert-ObjectEquals $AadProfile.enableAzureRBAC $cluster.AadProfile.enableAzureRBAC
+        Assert-ObjectEquals $AadProfile.adminGroupObjectIDs $cluster.AadProfile.adminGroupObjectIDs
+        Assert-ObjectEquals '54826b22-38d6-4fb2-bad9-b7b93a3e9c5a' $cluster.AadProfile.TenantID
+        $cluster | Remove-AzAksCluster -Force
+
+        # create aks cluster without AadProfile
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-Null $cluster.AadProfile
+        # update the aks cluster with AadProfile
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AadProfile $AadProfile
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-ObjectEquals $AadProfile.managed $cluster.AadProfile.managed
+        #Assert-ObjectEquals $AadProfile.enableAzureRBAC $cluster.AadProfile.enableAzureRBAC
+        Assert-ObjectEquals "" $cluster.AadProfile.enableAzureRBAC
+        Assert-ObjectEquals $AadProfile.adminGroupObjectIDs $cluster.AadProfile.adminGroupObjectIDs
+        Assert-ObjectEquals '54826b22-38d6-4fb2-bad9-b7b93a3e9c5a' $cluster.AadProfile.TenantID
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+        #Remove-AzADGroup -DisplayName $AdGroupName
+    }
+}
+
+function Test-HostGroupID {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        #prepare a Dedicated Host and a user-assigned Identity
+        #$hostGroup = New-AzHostGroup -ResourceGroupName $resourceGroupName -Name $hostGroupName -Location $location -PlatformFaultDomain 1 -SupportAutomaticPlacement $true
+        #$hostSku = (Get-AzComputeResourceSku -Location $location | where ResourceType -eq "hostGroups/hosts")[0].Name 
+        #New-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName -Location $location -Sku DSv3-Type1
+        #$azHost = Get-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName -InstanceView
+        #$nodeVmSize = ($azHost.InstanceView.AvailableCapacity.AllocatableVMs | Sort-Object -Property Count -Descending)[0].VmSize
+
+        #$identity = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $identityName -Location $location
+        #$roleAssignment = New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionName Contributor -Scope $hostGroup.Id
+
+        #$hostGroupId = $hostGroup.Id
+        #$identityId = identity.Id
+
+        $hostGroupId = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/AKS_TEST_RG/providers/Microsoft.Compute/hostGroups/aks_test_hostgroup"
+        $identityId = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks_test_rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aks_test_mi"
+        $nodeVmSize = "Standard_D2s_v3"
+
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -NodeHostGroupID $hostGroupId -EnableManagedIdentity -AssignIdentity $identityId
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual $hostGroupId $cluster.AgentPoolProfiles[0].hostGroupID
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual $hostGroupId $pools[0].hostGroupID
+
+        # create the 2nd nodepool
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSize $nodeVmSize -Count 1 -HostGroupID $hostGroupId
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual $hostGroupId $cluster.AgentPoolProfiles[0].hostGroupID
+        Assert-AreEqual $hostGroupId $cluster.AgentPoolProfiles[1].hostGroupID
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual $hostGroupId $pools[0].hostGroupID
+        Assert-AreEqual $hostGroupId $pools[1].hostGroupID
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

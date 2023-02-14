@@ -37,7 +37,7 @@ AUTHINFO <IAuthInfoBase>: The authentication type.
 TARGETSERVICE <ITargetServiceBase>: The target service properties
   Type <TargetServiceType>: The target service type.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/new-azservicelinker
+https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinker
 #>
 function New-AzServiceLinker {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]

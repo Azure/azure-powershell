@@ -1,5 +1,5 @@
 ﻿using Microsoft.Azure.Commands.RedisCache.Properties;
-using Microsoft.Azure.Management.Redis.Models;
+using Microsoft.Azure.Management.RedisCache.Models;
 using System;
 using System.Collections.Generic;
 

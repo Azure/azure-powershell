@@ -25,11 +25,11 @@ Creates an object that represent an Azure Storage path to be mounted inside a We
 
 ### Example 1
 ```powershell
-$storagePath1 = New-AzWebAppAzureStoragePath -Name "RemoteStorageAccount1" -AccountName "myaccount.files.core.windows.net" -Type AzureFiles -ShareName "someShareName" -AccessKey "some access key" `
--MountPath "C:\myFolderInsideTheContainerWebApp"
+$storagePath1 = New-AzWebAppAzureStoragePath -Name "RemoteStorageAccount1" -AccountName "myaccount" -Type AzureFiles -ShareName "someShareName" -AccessKey "some access key" `
+-MountPath "\mounts\myFolderInsideTheContainerWebApp"
 
-$storagePath2 = New-AzWebAppAzureStoragePath -Name "RemoteStorageAccount2" -AccountName "myaccount2.files.core.windows.net" -Type AzureFiles -ShareName "someShareName2" -AccessKey "some access key 2" `
--MountPath "C:\myFolderInsideTheContainerWebApp2"
+$storagePath2 = New-AzWebAppAzureStoragePath -Name "RemoteStorageAccount2" -AccountName "myaccount2" -Type AzureFiles -ShareName "someShareName2" -AccessKey "some access key 2" `
+-MountPath "\mounts\myFolderInsideTheContainerWebApp2"
 
 Set-AzWebApp -ResourceGroupName myresourcegroup -Name myapp -AzureStoragePath $storagepath1, $storagePath2
 ```
@@ -52,8 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -AccountName
-Azure Storage account name.
-E.g.: myfilestorageaccount.file.core.windows.net
+Azure Storage account name. e.g.: myfilestorageaccount
 
 ```yaml
 Type: System.String
@@ -83,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -MountPath
-Path in the container where the share specified by ShareName will be exposed
+Path in the container where the share specified by ShareName will be exposed. MountPath must be sub-directory of "\mounts".
 
 ```yaml
 Type: System.String

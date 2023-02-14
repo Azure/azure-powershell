@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 }
             }
             
-            var response = CrrAdapter.Client.CrossRegionRestore.TriggerWithHttpMessagesAsync(secondaryRegion, triggerCRRRestoreRequest).Result;
+            var response = CrrAdapter.Client.CrossRegionRestore.TriggerWithHttpMessagesAsync(secondaryRegion, triggerCRRRestoreRequest.CrossRegionRestoreAccessDetails , triggerCRRRestoreRequest.RestoreRequest).Result;
             return response;
         }
     }

@@ -26,7 +26,7 @@ The **Set-AzVirtualNetworkPeering** cmdlet configures a virtual network peering.
 ### Example 1: Change forwarded traffic configuration of a virtual network peering
 ```powershell
 # Get the virtual network peering you want to update information for
-Get-AzVirtualNetworkPeering -VirtualNetworkName "myVnet1" -ResourceGroupName "ResourceGroup" -Name "myVnet1ToMyVnet2"
+$myVnet1ToMyVnet2 = Get-AzVirtualNetworkPeering -VirtualNetworkName "myVnet1" -ResourceGroupName "ResourceGroup" -Name "myVnet1ToMyVnet2"
 
 # Change value of AllowForwardedTraffic property
 $myVnet1ToMyVnet2.AllowForwardedTraffic = $True
