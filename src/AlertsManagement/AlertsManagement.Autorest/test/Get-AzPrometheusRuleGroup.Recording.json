@@ -1,0 +1,140 @@
+{
+  "Get-AzPrometheusRuleGroup+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AlertsManagement/prometheusRuleGroups?api-version=2021-07-22-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AlertsManagement/prometheusRuleGroups?api-version=2021-07-22-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "81054d4e-2585-46cd-a10e-df4722190998" ],
+        "CommandName": [ "Get-AzPrometheusRuleGroup" ],
+        "FullCommandName": [ "Get-AzPrometheusRuleGroup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.AlertsManagement/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "5d2731e5-24d1-4e6a-b990-83f8c8dcf9a9", "5d2731e5-24d1-4e6a-b990-83f8c8dcf9a9" ],
+        "api-supported-versions": [ "2021-07-22-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Arr-Disable-Session-Affinity": [ "true" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "5d2731e5-24d1-4e6a-b990-83f8c8dcf9a9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230214T154234Z:5d2731e5-24d1-4e6a-b990-83f8c8dcf9a9" ],
+        "Date": [ "Tue, 14 Feb 2023 15:42:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1574" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups/lnxRuleGroup\",\r\n      \"name\": \"lnxRuleGroup\",\r\n      \"type\": \"Microsoft.AlertsManagement/prometheusRuleGroups\",\r\n      \"location\": \"East Us\",\r\n      \"properties\": {\r\n        \"enabled\": false,\r\n        \"scopes\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lnxtest/providers/microsoft.monitor/accounts/lnxmonitor\"\r\n        ],\r\n        \"rules\": [\r\n          {\r\n            \"record\": \"job_type:billing_jobs_duration_seconds:99p5m\",\r\n            \"expression\": \"histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service=\\\"billing-processing\\\"}[5m])) by (job_type))\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups/RuleGroup2\",\r\n      \"name\": \"RuleGroup2\",\r\n      \"type\": \"Microsoft.AlertsManagement/prometheusRuleGroups\",\r\n      \"location\": \"East Us\",\r\n      \"properties\": {\r\n        \"scopes\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lnxtest/providers/microsoft.monitor/accounts/lnxmonitor\"\r\n        ],\r\n        \"rules\": [\r\n          {\r\n            \"alert\": \"Billing_Processing_Very_Slow\",\r\n            \"expression\": \"job_type:billing_jobs_duration_seconds:99p5m \u003e 30\",\r\n            \"severity\": 2,\r\n            \"for\": \"PT5M\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPrometheusRuleGroup+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups?api-version=2021-07-22-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups?api-version=2021-07-22-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "921540ea-e647-4149-8f3b-5ca101a6810e" ],
+        "CommandName": [ "Get-AzPrometheusRuleGroup" ],
+        "FullCommandName": [ "Get-AzPrometheusRuleGroup_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.AlertsManagement/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "6e884a2b-b86a-42b3-bd0c-0d510a608113", "6e884a2b-b86a-42b3-bd0c-0d510a608113" ],
+        "api-supported-versions": [ "2021-07-22-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Arr-Disable-Session-Affinity": [ "true" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "6e884a2b-b86a-42b3-bd0c-0d510a608113" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230214T154235Z:6e884a2b-b86a-42b3-bd0c-0d510a608113" ],
+        "Date": [ "Tue, 14 Feb 2023 15:42:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1574" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups/lnxRuleGroup\",\r\n      \"name\": \"lnxRuleGroup\",\r\n      \"type\": \"Microsoft.AlertsManagement/prometheusRuleGroups\",\r\n      \"location\": \"East Us\",\r\n      \"properties\": {\r\n        \"enabled\": false,\r\n        \"scopes\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lnxtest/providers/microsoft.monitor/accounts/lnxmonitor\"\r\n        ],\r\n        \"rules\": [\r\n          {\r\n            \"record\": \"job_type:billing_jobs_duration_seconds:99p5m\",\r\n            \"expression\": \"histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service=\\\"billing-processing\\\"}[5m])) by (job_type))\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups/RuleGroup2\",\r\n      \"name\": \"RuleGroup2\",\r\n      \"type\": \"Microsoft.AlertsManagement/prometheusRuleGroups\",\r\n      \"location\": \"East Us\",\r\n      \"properties\": {\r\n        \"scopes\": [\r\n          \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lnxtest/providers/microsoft.monitor/accounts/lnxmonitor\"\r\n        ],\r\n        \"rules\": [\r\n          {\r\n            \"alert\": \"Billing_Processing_Very_Slow\",\r\n            \"expression\": \"job_type:billing_jobs_duration_seconds:99p5m \u003e 30\",\r\n            \"severity\": 2,\r\n            \"for\": \"PT5M\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPrometheusRuleGroup+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups/RuleGroup2?api-version=2021-07-22-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups/RuleGroup2?api-version=2021-07-22-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "5dcda30d-2a93-4702-878c-8a55144092a7" ],
+        "CommandName": [ "Get-AzPrometheusRuleGroup" ],
+        "FullCommandName": [ "Get-AzPrometheusRuleGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.AlertsManagement/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "9b6b9c97-9baf-4fa6-a6a5-644c76e0585a", "9b6b9c97-9baf-4fa6-a6a5-644c76e0585a" ],
+        "api-supported-versions": [ "2021-07-22-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Arr-Disable-Session-Affinity": [ "true" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "9b6b9c97-9baf-4fa6-a6a5-644c76e0585a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230214T154236Z:9b6b9c97-9baf-4fa6-a6a5-644c76e0585a" ],
+        "Date": [ "Tue, 14 Feb 2023 15:42:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "668" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups/RuleGroup2\",\r\n  \"name\": \"RuleGroup2\",\r\n  \"type\": \"Microsoft.AlertsManagement/prometheusRuleGroups\",\r\n  \"location\": \"East Us\",\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lnxtest/providers/microsoft.monitor/accounts/lnxmonitor\"\r\n    ],\r\n    \"rules\": [\r\n      {\r\n        \"alert\": \"Billing_Processing_Very_Slow\",\r\n        \"expression\": \"job_type:billing_jobs_duration_seconds:99p5m \u003e 30\",\r\n        \"severity\": 2,\r\n        \"for\": \"PT5M\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

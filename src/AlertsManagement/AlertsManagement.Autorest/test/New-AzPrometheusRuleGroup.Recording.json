@@ -1,0 +1,43 @@
+{
+  "New-AzPrometheusRuleGroup+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups/newRuleGroup?api-version=2021-07-22-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups/newRuleGroup?api-version=2021-07-22-preview",
+      "Content": "{\r\n  \"location\": \"East Us\",\r\n  \"properties\": {\r\n    \"scopes\": [ \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lnxtest/providers/microsoft.monitor/accounts/lnxmonitor\" ],\r\n    \"rules\": [\r\n      {\r\n        \"alert\": \"Billing_Processing_Very_Slow\",\r\n        \"expression\": \"job_type:billing_jobs_duration_seconds:99p5m \\u003e 30\",\r\n        \"severity\": 2,\r\n        \"for\": \"PT5M\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "418" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "3317c165-c5cd-49c6-8d11-6695bf82655f", "3317c165-c5cd-49c6-8d11-6695bf82655f" ],
+        "api-supported-versions": [ "2021-07-22-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Arr-Disable-Session-Affinity": [ "true" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
+        "x-ms-correlation-request-id": [ "3317c165-c5cd-49c6-8d11-6695bf82655f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230214T154243Z:3317c165-c5cd-49c6-8d11-6695bf82655f" ],
+        "Date": [ "Tue, 14 Feb 2023 15:42:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "672" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.AlertsManagement/prometheusRuleGroups/newRuleGroup\",\r\n  \"name\": \"newRuleGroup\",\r\n  \"type\": \"Microsoft.AlertsManagement/prometheusRuleGroups\",\r\n  \"location\": \"East Us\",\r\n  \"properties\": {\r\n    \"scopes\": [\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lnxtest/providers/microsoft.monitor/accounts/lnxmonitor\"\r\n    ],\r\n    \"rules\": [\r\n      {\r\n        \"alert\": \"Billing_Processing_Very_Slow\",\r\n        \"expression\": \"job_type:billing_jobs_duration_seconds:99p5m \u003e 30\",\r\n        \"severity\": 2,\r\n        \"for\": \"PT5M\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

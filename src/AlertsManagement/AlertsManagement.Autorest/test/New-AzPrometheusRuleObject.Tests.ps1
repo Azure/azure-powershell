@@ -1,0 +1,21 @@
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzPrometheusRuleObject'))
+{
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  if (-Not (Test-Path -Path $loadEnvPath)) {
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+  }
+  . ($loadEnvPath)
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzPrometheusRuleObject.Recording.json'
+  $currentPath = $PSScriptRoot
+  while(-not $mockingPath) {
+      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+      $currentPath = Split-Path -Path $currentPath -Parent
+  }
+  . ($mockingPath | Select-Object -First 1).FullName
+}
+
+Describe 'New-AzPrometheusRuleObject' {
+    It '__AllParameterSets' {
+        { New-AzPrometheusRuleObject -Alert "Billing_Processing_Very_Slow" -Expression "job_type:billing_jobs_duration_seconds:99p5m > 30" -Severity 2 -For PT5M} | Should -Not -Throw
+    }
+}
