@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az./new-azcontainerappvolumeobject
+online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappvolumeobject
 schema: 2.0.0
 ---
 
