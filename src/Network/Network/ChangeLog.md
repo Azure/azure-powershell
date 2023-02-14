@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
+    - `New-AzFirewallPolicySnat`
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
 * Fixed a bug that reverts classic fw private ranges to default when doing get & set
 
 ## Version 5.4.0
