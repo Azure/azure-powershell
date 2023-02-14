@@ -54,37 +54,37 @@ If the blob name is not valid for the local computer, this cmdlet automatically 
 ## EXAMPLES
 
 ### Example 1: Download blob content by name
-```
-PS C:\>Get-AzStorageBlobContent -Container "ContainerName" -Blob "Blob" -Destination "C:\test\"
+```powershell
+Get-AzStorageBlobContent -Container "ContainerName" -Blob "Blob" -Destination "C:\test\"
 ```
 
 This command downloads a blob by name.
 
 ### Example 2: Download blob content using the pipeline
-```
-PS C:\>Get-AzStorageBlob -Container containername -Blob blobname | Get-AzStorageBlobContent
+```powershell
+Get-AzStorageBlob -Container containername -Blob blobname | Get-AzStorageBlobContent
 ```
 
 This command uses the pipeline to find and download blob content.
 
 ### Example 3: Download blob content using the pipeline and a wildcard character
-```
-PS C:\>Get-AzStorageContainer container* | Get-AzStorageBlobContent -Blob "cbox.exe" -Destination "C:\test"
+```powershell
+Get-AzStorageContainer container* | Get-AzStorageBlobContent -Blob "cbox.exe" -Destination "C:\test"
 ```
 
 This example uses the asterisk wildcard character and the pipeline to find and download blob content.
 
 ### Example 4: Get a blob object and save it in a variable, then download blob content with the blob object
-```
-PS C:\>$blob = Get-AzStorageBlob -Container containername -Blob blobname 
-PS C:\>Get-AzStorageBlobContent -CloudBlob $blob.ICloudBlob -Destination "C:\test"
+```powershell
+$blob = Get-AzStorageBlob -Container containername -Blob blobname 
+Get-AzStorageBlobContent -CloudBlob $blob.ICloudBlob -Destination "C:\test"
 ```
 
 This example first get a blob object and save it in a variable, then download blob content with the blob object. 
 
 ### Example 5: Download a blob content with blob Uri
-```
-PS C:\>Get-AzStorageBlobContent -Uri $blobUri -Destination "C:\test" -Force
+```powershell
+Get-AzStorageBlobContent -Uri $blobUri -Destination "C:\test" -Force
 ```
 
 This example will download a blob content with Uri, the Uri can be a Uri with Sas token. 

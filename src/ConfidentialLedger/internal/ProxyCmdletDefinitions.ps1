@@ -27,7 +27,7 @@ Retrieves a list of available API operations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IResourceProviderOperationDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.confidentialledger/get-azconfidentialledgeroperation
+https://learn.microsoft.com/powershell/module/az.confidentialledger/get-azconfidentialledgeroperation
 #>
 function Get-AzConfidentialLedgerOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IResourceProviderOperationDefinition])]
@@ -179,7 +179,7 @@ INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.confidentialledger/update-azconfidentialledger
+https://learn.microsoft.com/powershell/module/az.confidentialledger/update-azconfidentialledger
 #>
 function Update-AzConfidentialLedger {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger])]

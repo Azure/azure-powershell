@@ -16,14 +16,16 @@ Updates MSIdentity to the recovery services vault.
 ```
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-IdentityId <String[]>]
  [-RemoveUserAssigned] [-RemoveSystemAssigned] [-DisableClassicAlerts <Boolean>]
- [-DisableAzureMonitorAlertsForJobFailure <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DisableAzureMonitorAlertsForJobFailure <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-ImmutabilityState <ImmutabilityState>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AzureRSVaultAddMSIdentity
 ```
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
  [-IdentityId <String[]>] [-DisableClassicAlerts <Boolean>] [-DisableAzureMonitorAlertsForJobFailure <Boolean>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-ImmutabilityState <ImmutabilityState>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -84,6 +86,23 @@ The second cmdlet removes the SystemAssigned identity from the vault.
 The third cmdlet fetches all the user MSIs as a list from the vault.
 The fourth cmdlet removes all the user MSIs from the vault. In case you want, you can provide selected user identities to be removed as comma separated, like in previous example.
 The fifth cmdlet shows the identities in the vault, as we removed all the identites, Type is displayed as None.
+
+### Example 4: Update PublicNetworkAccess, ImmutabilityState of recovery services vault
+```powershell
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -PublicNetworkAccess "Disabled" -ImmutabilityState "Unlocked"
+$updatedVault.Properties.PublicNetworkAccess
+$updatedVault.Properties.ImmutabilitySettings.ImmutabilityState
+```
+
+```output
+Disabled
+Unlocked
+```
+
+The first cmdlet fetches the recovery services vault.
+The second cmdlet updates  PublicNetworkAccess, ImmutabilityState properties of the recovery services vault.
+The third and fourth command are used to fetch the public network access and immutability state of the vault.
 
 ## PARAMETERS
 
@@ -163,6 +182,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImmutabilityState
+Immutability State of the vault. Allowed values are "Disabled", "Unlocked", "Locked". 
+Unlocked means Enabled and can be changed, Locked means Enabled and can't be changed.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.ImmutabilityState]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Unlocked, Locked
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 
 Specifies the name of the recovery services vault to update.
@@ -174,6 +210,22 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Parameter to Enable/Disable public network access of the vault. This setting is useful with Private Endpoints.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.PublicNetworkAccess]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

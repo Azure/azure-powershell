@@ -31,7 +31,7 @@ New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqldb
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqldb
 #>
 function New-AzDataMigrationToSqlDb {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb])]

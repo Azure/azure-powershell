@@ -25,7 +25,7 @@ Get-AzContainerInstanceCachedImage -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICachedImages
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecachedimage
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecachedimage
 #>
 function Get-AzContainerInstanceCachedImage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICachedImages])]

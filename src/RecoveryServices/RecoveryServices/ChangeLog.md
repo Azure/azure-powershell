@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.2.0
+* Added support for enable/disable Public Network Access and PrivateEndpoints
+* Added support for Immutable Vaults
+* Added support for RetainRecoveryPointsAsPerPolicy in Disable-AzRecoveryServicesBackupProtection cmdlet. Now user can suspend backups and retain RPs as per policy
+* Added List Recovery Point expiry time
+* Added RecoveryServices, RecoveryServices.Backup, RecoveryServices.Backup.CrossRegionRestore management SDK
 * Added support for non-UTC time zones with standard policy for workloadType IaasVM, MSSql, AzureFiles
 
 ## Version 6.1.2

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmsssecurityprofile
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmsssecurityprofile
 schema: 2.0.0
 ---
 
@@ -34,7 +34,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
 
 ### Example 2: Create a Confidential Vmss resource with encryption type VMGuestStateOnly.
 ```powershell
-    # Common Variables   
+# Common Variables   
     $rgname = <Resource Group Name>
     $loc = "northeurope"
     New-AzResourceGroup -Name $rgname -Location $loc -Force
@@ -92,7 +92,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
 
 ### Example 3: Create a Confidential Vmss resource with encryption type DiskWithVMGuestState and Image reference Disk Encryption set to EncryptedWithPmk.
 ```powershell
-    # Common variables
+# Common variables
     $rgname = <Resource Group Name>
     $loc = "northeurope"
     New-AzResourceGroup -ResourceGroupName $rgName -Location $loc -Force
@@ -226,7 +226,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
 
 ### Example 4: Create a Confidential Vmss resource with encryption type DiskWithVMGuestState and Image reference Disk Encryption set to EncryptedWithCmk.
 ```powershell
-    # Common Variables
+# Common Variables
     $rgname = <Resource Group Name>;
     $loc = "northeurope";
         
@@ -386,7 +386,6 @@ The second command sets the SecurityType enum to "TrustedLaunch".
 
     # Verify the Gallery Version encyrption at $galVersion.PublishingProfile.TargetRegions.Encryption.OSDiskImage.SecurityProfile.ConfidentialVMEncryptionType $cvmEncryptionType;
 ```
-
 
 ## PARAMETERS
 

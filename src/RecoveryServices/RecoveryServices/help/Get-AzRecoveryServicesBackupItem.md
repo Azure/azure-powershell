@@ -212,7 +212,7 @@ Protection is disabled.
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState
 Parameter Sets: (All)
 Aliases:
-Accepted values: IRPending, ProtectionError, Protected, ProtectionStopped
+Accepted values: IRPending, ProtectionError, Protected, ProtectionStopped, BackupsSuspended
 
 Required: False
 Position: 4

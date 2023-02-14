@@ -45,7 +45,7 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstore
+https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstore
 #>
 function Get-AzAppConfigurationStore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore])]

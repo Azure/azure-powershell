@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 
+## Version 4.4.1
+* Removed default value for time window for autoscale profile [#20660]
+  * `Get-AzAutoscaleSetting`
+  * `New-AzAutoscaleSetting`
+
 ## Version 4.4.0
 * Fixed bug for `Remove-AzDataCollectionRuleAssociation` [#20207]
 * Added support for test notifications cmdlets

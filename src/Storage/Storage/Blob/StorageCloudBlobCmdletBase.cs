@@ -440,14 +440,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
         }
 
-        protected void ValidateBlobTier(BlobType type, PremiumPageBlobTier? pageBlobTier = null, StandardBlobTier? standardBlobTier = null, RehydratePriority? rehydratePriority = null)
+        protected void ValidateBlobTier(BlobType type, PremiumPageBlobTier? pageBlobTier = null, bool? isBlockBlobAccessTier = null, RehydratePriority? rehydratePriority = null)
         {
             if ((pageBlobTier != null)
                 && (type != BlobType.PageBlob))
             {
                 throw new ArgumentOutOfRangeException("BlobType, PageBlobTier", String.Format("PremiumPageBlobTier can only be set to Page Blob. The Current BlobType is: {0}", type));
             }
-            if ((standardBlobTier != null || rehydratePriority != null)
+            if (((isBlockBlobAccessTier != null && isBlockBlobAccessTier.Value) || rehydratePriority != null)
                 && (type != BlobType.BlockBlob))
             {
                 throw new ArgumentOutOfRangeException("BlobType, StandardBlobTier/RehydratePriority", String.Format("StandardBlobTier and RehydratePriority can only be set to Block Blob. The Current BlobType is: {0}", type));
@@ -892,56 +892,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 }
             }
             return originalMetaData;
-        }
-
-        protected static Track2blobModel.AccessTier? GetAccessTier_Track2(StandardBlobTier? standardBlobTier, PremiumPageBlobTier? pageBlobTier)
-        {
-            if(standardBlobTier == null && pageBlobTier == null)
-            {
-                return null;
-            }
-            if (standardBlobTier != null)
-            {
-                switch (standardBlobTier.Value)
-                {
-                    case StandardBlobTier.Archive:
-                        return Track2blobModel.AccessTier.Archive;
-                    case StandardBlobTier.Cool:
-                        return Track2blobModel.AccessTier.Cool;
-                    case StandardBlobTier.Hot:
-                        return Track2blobModel.AccessTier.Hot;
-                    default:
-                        return null;
-                }
-            }
-            else //pageBlobTier != null
-            {
-                switch (pageBlobTier.Value)
-                {
-                    case PremiumPageBlobTier.P4:
-                        return Track2blobModel.AccessTier.P4;
-                    case PremiumPageBlobTier.P6:
-                        return Track2blobModel.AccessTier.P6;
-                    case PremiumPageBlobTier.P10:
-                        return Track2blobModel.AccessTier.P10;
-                    case PremiumPageBlobTier.P20:
-                        return Track2blobModel.AccessTier.P20;
-                    case PremiumPageBlobTier.P30:
-                        return Track2blobModel.AccessTier.P30;
-                    case PremiumPageBlobTier.P40:
-                        return Track2blobModel.AccessTier.P40;
-                    case PremiumPageBlobTier.P50:
-                        return Track2blobModel.AccessTier.P50;
-                    case PremiumPageBlobTier.P60:
-                        return Track2blobModel.AccessTier.P60;
-                    case PremiumPageBlobTier.P70:
-                        return Track2blobModel.AccessTier.P70;
-                    case PremiumPageBlobTier.P80:
-                        return Track2blobModel.AccessTier.P80;
-                    default:
-                        return null;
-                }
-            }
         }
 
         // Convert Track1 Blob object to Track 2 blob Client

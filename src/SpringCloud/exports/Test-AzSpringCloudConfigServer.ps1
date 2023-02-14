@@ -68,7 +68,7 @@ INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
   [StackName <String>]: The name of the stack resource.
   [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/test-azspringcloudconfigserver
+https://learn.microsoft.com/powershell/module/az.springcloud/test-azspringcloudconfigserver
 #>
 function Test-AzSpringCloudConfigServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigServerSettingsValidateResult])]

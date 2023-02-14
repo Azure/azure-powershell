@@ -1765,3 +1765,56 @@ function Test-AzureFirewallPolicyRuleDescription {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests AzureFirewall SNAT
+#>
+function Test-AzureFirewallSnat {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "westus2"
+    $vnetName = Get-ResourceName
+    $privateRange = @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20")
+    $privateRange2 = @("0.0.0.0/0", "66.92.0.0/16")
+   
+    try {
+
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        $snat = New-AzFirewallPolicySnat -PrivateRange $privateRange -AutoLearnPrivateRange
+
+        # Create AzureFirewallPolicy (with SNAT)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -Snat $snat
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+       
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull  $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+        Assert-NotNull  $getAzureFirewallPolicy.Snat
+        Assert-AreEqualArray $privateRange $getAzureFirewallPolicy.Snat.PrivateRanges
+        Assert-AreEqual "Enabled" $getAzureFirewallPolicy.Snat.AutoLearnPrivateRanges
+
+        # Modify
+        $snat = New-AzFirewallPolicySnat -PrivateRange $privateRange2
+        # Set AzureFirewallPolicy
+        $azureFirewallPolicy.Snat = $snat
+        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
+        $policy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        Assert-NotNull $policy.Snat
+        Assert-AreEqualArray $privateRange2 $policy.Snat.PrivateRanges
+        Assert-AreEqual "Disabled" $policy.Snat.AutoLearnPrivateRanges
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

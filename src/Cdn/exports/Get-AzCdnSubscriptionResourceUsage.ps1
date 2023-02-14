@@ -25,7 +25,7 @@ Get-AzCdnSubscriptionResourceUsage
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnsubscriptionresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnsubscriptionresourceusage
 #>
 function Get-AzCdnSubscriptionResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage])]

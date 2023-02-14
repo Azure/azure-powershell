@@ -49,15 +49,15 @@ The **Remove-AzStorageFile** cmdlet deletes a file.
 ## EXAMPLES
 
 ### Example 1: Delete a file from a file share
-```
-PS C:\>Remove-AzStorageFile -ShareName "ContosoShare06" -Path "ContosoFile22"
+```powershell
+Remove-AzStorageFile -ShareName "ContosoShare06" -Path "ContosoFile22"
 ```
 
 This command deletes the file that is named ContosoFile22 from the file share named ContosoShare06.
 
 ### Example 2: Get a file from a file share by using a file share object
-```
-PS C:\>Get-AzStorageShare -Name "ContosoShare06" | Remove-AzStorageFile -Path "ContosoFile22"
+```powershell
+Get-AzStorageShare -Name "ContosoShare06" | Remove-AzStorageFile -Path "ContosoFile22"
 ```
 
 This command uses the **Get-AzStorageShare** cmdlet to get the file share named ContosoShare06, and then passes that object to the current cmdlet by using the pipeline operator.

@@ -104,10 +104,8 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
             if (AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keystore))
             {
-                keystore.Flush();
-                keystore.DisableAutoSaving();
+                keystore.EnableSyncToStorage();
             }
-
 
             if (writeAutoSaveFile)
             {

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.2
+* Added parameter validation for `Get-AzApplicationInsights` [#20697]
+
 ## Version 2.2.1
 * Enabled output object enumerating for `Get-AzApplicationInsights` [#20225]
 
