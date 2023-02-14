@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added property 'AuthorizationStatus' to ExpressRouteCircuit
 * Added property 'BillingType' to ExpressRoutePort
 * Fixed a bug that does not enable to set Perform SNAT to Always
 * Fixed the incorrect type of `-TotalBytesPerSession` in `New-AzNetworkWatcherPacketCapture`
