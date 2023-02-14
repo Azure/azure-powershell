@@ -316,23 +316,222 @@ function Test-DefaultImagesExist
 {
     
     # Setup
+    #$rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $loc = "eastus";
+        # assuming C:\repos\ps3\azure-powershell\src\Compute\Compute.Test\ScenarioTests\ImageTests.ps1
+        # C:\repos\ps3\azure-powershell\src\Compute\Compute\Strategies\ComputeRp\Images.json
+        $imagesFile = Get-Content -Path "..\..\Compute\Strategies\ComputeRp\Images.json";
+        $images = $imagesFile | ConvertFrom-Json ;
+        # $imagesObj =  ConvertFrom-Json -InputObject $imagesObjTest -AsHashtable;
+
+        # Linux
+        # UbuntuLTS test
+        $publisher = $images.Linux.UbuntuLTS.publisher;
+        $offer = $images.Linux.UbuntuLTS.offer;
+        $sku = $images.Linux.UbuntuLTS.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+        
+        # CentOS test
+        $publisher = $images.Linux.CentOS.publisher;
+        $offer = $images.Linux.CentOS.offer;
+        $sku = $images.Linux.CentOS.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+
+        # CoreOS test 
+        $publisher = $images.Linux.CoreOS.publisher;
+        $offer = $images.Linux.CoreOS.offer;
+        $sku = $images.Linux.CoreOS.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+        ### CoreOS publisher does not exist. Even on https://az-vm-image.info/?cmd=--all+--publisher+CoreOS 
+
+        # Debian test
+        $publisher = $images.Linux.Debian.publisher;
+        $offer = $images.Linux.Debian.offer;
+        $sku = $images.Linux.Debian.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+
+        # openSUSE-Leap test
+        $publisher = $images.Linux.'openSUSE-Leap'.publisher;
+        $offer = $images.Linux.'openSUSE-Leap'.offer;
+        $sku = $images.Linux.'openSUSE-Leap'.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+        ### sku 42.3 no longer exists
+
+        # RHEL test
+        $publisher = $images.Linux.RHEL.publisher;
+        $offer = $images.Linux.RHEL.offer;
+        $sku = $images.Linux.RHEL.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+
+        # SLES test
+        $publisher = $images.Linux.SLES.publisher;
+        $offer = $images.Linux.SLES.offer;
+        $sku = $images.Linux.SLES.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+        ### sku 12-SP2 no longer exists. 
+
+        # Windows
+        # Win2022AzureEditionCore test
+        $publisher = $images.Windows.Win2022AzureEditionCore.publisher;
+        $offer = $images.Windows.Win2022AzureEditionCore.offer;
+        $sku = $images.Windows.Win2022AzureEditionCore.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+
+        # Win2019Datacenter test
+        $publisher = $images.Windows.Win2019Datacenter.publisher;
+        $offer = $images.Windows.Win2019Datacenter.offer;
+        $sku = $images.Windows.Win2019Datacenter.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+
+        # Win2016Datacenter test
+        $publisher = $images.Windows.Win2016Datacenter.publisher;
+        $offer = $images.Windows.Win2016Datacenter.offer;
+        $sku = $images.Windows.Win2016Datacenter.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+
+        # Win2012R2Datacenter test
+        $publisher = $images.Windows.Win2012R2Datacenter.publisher;
+        $offer = $images.Windows.Win2012R2Datacenter.offer;
+        $sku = $images.Windows.Win2012R2Datacenter.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+
+        # Win2012Datacenter test
+        $publisher = $images.Windows.Win2012Datacenter.publisher;
+        $offer = $images.Windows.Win2012Datacenter.offer;
+        $sku = $images.Windows.Win2012Datacenter.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+
+        # Win10 test
+        $publisher = $images.Windows.Win10.publisher;
+        $offer = $images.Windows.Win10.offer;
+        $sku = $images.Windows.Win10.sku;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku;
+        Assert-NotNull $img;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-DefaultImagesExist
+{
+    
+    # Setup
     $rgname = Get-ComputeTestResourceName;
     $loc = Get-ComputeVMLocation;
 
     try
     {
         $rgname = "";
-        $Region = "eastus";
-        
+        $loc = "eastus";
+        # assuming C:\repos\ps3\azure-powershell\src\Compute\Compute.Test\ScenarioTests\ImageTests.ps1
+        # C:\repos\ps3\azure-powershell\src\Compute\Compute\Strategies\ComputeRp\Images.json
         $imagesFile = Get-Content -Path "..\..\Compute\Strategies\ComputeRp\Images.json";
-        $imagesObj = $imagesFile | ConvertFrom-Json;
+        $imagesObj = $imagesFile | ConvertFrom-Json ;
         # $imagesObj =  ConvertFrom-Json -InputObject $imagesObjTest -AsHashtable;
         $windows = $imagesObj.Windows;
         $linux = $imagesObj.Linux;
         
-        foreach ($OS in $imagesObj)
+        # as hashtable
+        #$ht = @{};
+        #$imagesObj.psobject.properties | % { $ht[$_.name] = $_.value };
+        foreach ($OS in $imagesObj.GetEnumerator())
         {
-            $OS
+            $OS.Name;
+            $OS.Value;
+            
+            $htAliases = @{};
+            $OS.Value.psobject.properties | % { $htAliases[$_.name] = $_.value };
+            foreach ($Alias in $htAliases.GetEnumerator())
+            {
+                $Alias.Name;
+                $Alias.Value;
+                
+                $htData = @{};
+                $Alias.Value.psobject.properties | % { $htData[$_.name] = $_.value };
+                <#foreach ($Data in $htData.GetEnumerator())
+				{
+					$Data.Name;
+					$Data.Value;
+				}#>
+            #    Write-Host "Images being looked for: ";
+            #    $images = Get-AzVMImage -Location $loc -Publisher $htData.Publisher -Offer $htData.Offer -Sku $htData.Sku;
+            #    Write-Host "Images Found here: ";
+            #    $images;
+            #    #Assert-NotNull $images;
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        #convert to hashtable?
+        $ht = @{};
+        $imagesObj.psobject.properties | % { $ht[$_.name] = $_.value };
+
+        
+        
+        foreach ($OS in $ht.GetEnumerator())
+        {
+            $OS.Name;
+            $OS.Value;
+            
+            $htAliases = @{};
+            $OS.Value.psobject.properties | % { $htAliases[$_.name] = $_.value };
+            foreach ($Alias in $htAliases.GetEnumerator())
+            {
+                $Alias.Name;
+                $Alias.Value;
+                
+                $htData = @{};
+                $Alias.Value.psobject.properties | % { $htData[$_.name] = $_.value };
+                <#foreach ($Data in $htData.GetEnumerator())
+				{
+					$Data.Name;
+					$Data.Value;
+				}#>
+                Write-Host "Images being looked for: ";
+                $images = Get-AzVMImage -Location $loc -Publisher $htData.Publisher -Offer $htData.Offer -Sku $htData.Sku;
+                Write-Host "Images Found here: ";
+                $images;
+                #Assert-NotNull $images;
+            }
+        }
+
+        foreach ($Alias in $imagesObj.Windows)
+        {
+            #$Alias
+            foreach ($Data in $imagesObj.Windows.$Alias)
+            {
+                $Data
+            }
+        }
+
+        foreach ($Alias in $imagesObj.Windows)
+        {
+            $imagesObj.Windows.$Alias[0]
+            
         }
         
         foreach ($SkuName in $VMSKUs.Name)
