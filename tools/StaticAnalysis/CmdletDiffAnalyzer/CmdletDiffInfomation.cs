@@ -35,7 +35,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
         ParameterSetAttributePropertyChange,
         OutputTypeChange
     }
-    public class CmdletDiffInfomation
+    public class CmdletDiffInformation
     {
         public string ModuleName { get; set; }
         public string CmdletName { get; set; }

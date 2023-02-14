@@ -139,7 +139,7 @@ namespace StaticAnalysis
                         {
                             Analyzers.Add(new SignatureVerifier.SignatureVerifier());
                         }
-                        if (analyzerName.ToLower().Equals("cmdletdiff"))
+                        if (analyzerName.ToLower().Equals("cmdlet-diff"))
                         {
                             Analyzers.Add(new CmdletDiffAnalyzer.CmdletDiffAnalyzer());
                         }

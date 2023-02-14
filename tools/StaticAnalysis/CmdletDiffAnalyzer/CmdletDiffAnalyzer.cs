@@ -38,7 +38,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             "InformationVariable", "OutBuffer", "OutVariable", "PipelineVariable", "Proxy",
             "ProxyCredential", "ProxyUseDefaultCredentials", "Verbose", "WarningAction", "WarningVariable"
         };
-        private List<CmdletDiffInfomation> diffInfo;
+        private List<CmdletDiffInformation> diffInfo;
         public CmdletDiffAnalyzer()
         {
             Name = "Cmdlet Diff Analyzer";
@@ -82,7 +82,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                 var probingDirectories = new List<string> { baseDirectory };
                 // Add current directory for probing: .\artifacts\Debug\ && dirs under \Debug.
                 probingDirectories.AddRange(Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)));
-                diffInfo = new List<CmdletDiffInfomation>();
+                diffInfo = new List<CmdletDiffInformation>();
 
                 foreach (var directory in probingDirectories)
                 {
@@ -139,7 +139,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             Directory.SetCurrentDirectory(savedDirectory);
             var reportsDirectory = Path.GetDirectoryName(Logger.CreateLogger<BreakingChangeAnalyzer.BreakingChangeIssue>("CmdletDiffIssues.csv").FileName);
             var markDownPath = Path.Combine(reportsDirectory, "CmdletChangeResult.md");
-            var csvPath = Path.Combine(reportsDirectory, "CmdletDiffInfomation.csv");
+            var csvPath = Path.Combine(reportsDirectory, "CmdletDiffInformation.csv");
 
             GenerateMarkdown(markDownPath);
             // write infomation to csv
@@ -168,7 +168,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             {
                 if (!newCmdletMetadataMap.ContainsKey(cmdletName))
                 {
-                    diffInfo.Add(new CmdletDiffInfomation()
+                    diffInfo.Add(new CmdletDiffInformation()
                     {
                         ModuleName = moduleName,
                         CmdletName = cmdletName,
@@ -200,7 +200,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             }
             foreach (string cmdletName in newCmdletMetadataMap.Keys)
             {
-                diffInfo.Add(new CmdletDiffInfomation()
+                diffInfo.Add(new CmdletDiffInformation()
                 {
                     ModuleName = moduleName,
                     CmdletName = cmdletName,
@@ -227,7 +227,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             {
                 if (changeType == ChangeType.AliasAdd)
                 {
-                    diffInfo.Add(new CmdletDiffInfomation()
+                    diffInfo.Add(new CmdletDiffInformation()
                     {
                         ModuleName = moduleName,
                         CmdletName = cmdletName,
@@ -237,7 +237,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                 }
                 else
                 {
-                    diffInfo.Add(new CmdletDiffInfomation()
+                    diffInfo.Add(new CmdletDiffInformation()
                     {
                         ModuleName = moduleName,
                         CmdletName = cmdletName,
@@ -255,7 +255,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
         {
             if (oldCmdlet.SupportsShouldProcess != newCmdlet.SupportsShouldProcess)
             {
-                diffInfo.Add(new CmdletDiffInfomation()
+                diffInfo.Add(new CmdletDiffInformation()
                 {
                     ModuleName = moduleName,
                     CmdletName = oldCmdlet.Name,
@@ -272,7 +272,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
         {
             if (oldCmdlet.SupportsPaging != newCmdlet.SupportsPaging)
             {
-                diffInfo.Add(new CmdletDiffInfomation()
+                diffInfo.Add(new CmdletDiffInformation()
                 {
                     ModuleName = moduleName,
                     CmdletName = oldCmdlet.Name,
@@ -329,7 +329,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             }
             if (changeType == ChangeType.ParameterAdd)
             {
-                diffInfo.Add(new CmdletDiffInfomation()
+                diffInfo.Add(new CmdletDiffInformation()
                 {
                     ModuleName = moduleName,
                     CmdletName = cmdletName,
@@ -340,7 +340,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             }
             else
             {
-                diffInfo.Add(new CmdletDiffInfomation()
+                diffInfo.Add(new CmdletDiffInformation()
                 {
                     ModuleName = moduleName,
                     CmdletName = cmdletName,
@@ -395,7 +395,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             }
             if (changeType == ChangeType.ParameterAliasAdd)
             {
-                diffInfo.Add(new CmdletDiffInfomation()
+                diffInfo.Add(new CmdletDiffInformation()
                 {
                     ModuleName = moduleName,
                     CmdletName = cmdletName,
@@ -406,7 +406,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             }
             else
             {
-                diffInfo.Add(new CmdletDiffInfomation()
+                diffInfo.Add(new CmdletDiffInformation()
                 {
                     ModuleName = moduleName,
                     CmdletName = cmdletName,
@@ -423,7 +423,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             string newParameterTypeName = GetSimplifiedParameterTypeName(newParameterMetadata);
             if (oldParameterTypeName != newParameterTypeName)
             {
-                diffInfo.Add(new CmdletDiffInfomation()
+                diffInfo.Add(new CmdletDiffInformation()
                 {
                     ModuleName = moduleName,
                     CmdletName = oldCmdletMetadata.Name,
@@ -440,7 +440,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
         {
             if (oldParameterMetadata.ValidateNotNullOrEmpty != newParameterMetadata.ValidateNotNullOrEmpty)
             {
-                diffInfo.Add(new CmdletDiffInfomation()
+                diffInfo.Add(new CmdletDiffInformation()
                 {
                     ModuleName = moduleName,
                     CmdletName = oldCmdletMetadata.Name,
@@ -477,7 +477,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
 
             if (outputTypeChanged)
             {
-                diffInfo.Add(new CmdletDiffInfomation()
+                diffInfo.Add(new CmdletDiffInformation()
                 {
                     ModuleName = moduleName,
                     CmdletName = oldCmd.Name,
@@ -503,7 +503,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                 var newSet = newParameterSets.FirstOrDefault(t => t.Name == oldParameterSet.Name);
                 if (newSet == null)
                 {
-                    diffInfo.Add(new CmdletDiffInfomation()
+                    diffInfo.Add(new CmdletDiffInformation()
                     {
                         ModuleName = moduleName,
                         CmdletName = cmdlet.Name,
@@ -517,7 +517,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                     var newParam = newSet.Parameters.FirstOrDefault(p => p.ParameterMetadata.Name == oldParam.ParameterMetadata.Name);
                     if (newParam == null)
                     {
-                        diffInfo.Add(new CmdletDiffInfomation()
+                        diffInfo.Add(new CmdletDiffInformation()
                         {
                             ModuleName = moduleName,
                             CmdletName = cmdlet.Name,
@@ -531,7 +531,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
 
                     if (oldParam.Position != newParam.Position)
                     {
-                        diffInfo.Add(new CmdletDiffInfomation()
+                        diffInfo.Add(new CmdletDiffInformation()
                         {
                             ModuleName = moduleName,
                             CmdletName = cmdlet.Name,
@@ -545,7 +545,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                     }
                     if (oldParam.Mandatory != newParam.Mandatory)
                     {
-                        diffInfo.Add(new CmdletDiffInfomation()
+                        diffInfo.Add(new CmdletDiffInformation()
                         {
                             ModuleName = moduleName,
                             CmdletName = cmdlet.Name,
@@ -559,7 +559,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                     }
                     if (oldParam.ValueFromPipeline != newParam.ValueFromPipeline)
                     {
-                        diffInfo.Add(new CmdletDiffInfomation()
+                        diffInfo.Add(new CmdletDiffInformation()
                         {
                             ModuleName = moduleName,
                             CmdletName = cmdlet.Name,
@@ -573,7 +573,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                     }
                     if (oldParam.ValueFromPipelineByPropertyName != newParam.ValueFromPipelineByPropertyName)
                     {
-                        diffInfo.Add(new CmdletDiffInfomation()
+                        diffInfo.Add(new CmdletDiffInformation()
                         {
                             ModuleName = moduleName,
                             CmdletName = cmdlet.Name,
@@ -591,7 +591,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                     var oldParam = oldParameterSet.Parameters.FirstOrDefault(p => p.ParameterMetadata.Name == newParam.ParameterMetadata.Name);
                     if (oldParam == null)
                     {
-                        diffInfo.Add(new CmdletDiffInfomation()
+                        diffInfo.Add(new CmdletDiffInformation()
                         {
                             ModuleName = moduleName,
                             CmdletName = cmdlet.Name,
@@ -613,7 +613,7 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
                 var oldSet = oldParameterSets.FirstOrDefault(t => t.Name == newSet.Name);
                 if (oldSet == null)
                 {
-                    diffInfo.Add(new CmdletDiffInfomation()
+                    diffInfo.Add(new CmdletDiffInformation()
                     {
                         ModuleName = moduleName,
                         CmdletName = cmdlet.Name,
@@ -693,76 +693,76 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             }
             return builder.ToString();
         }
-        private string GetDescription_CmdletAdd(CmdletDiffInfomation info)
+        private string GetDescription_CmdletAdd(CmdletDiffInformation info)
         {
             return "";
         }
-        private string GetDescription_CmdletRemove(CmdletDiffInfomation info)
+        private string GetDescription_CmdletRemove(CmdletDiffInformation info)
         {
             return "";
         }
-        private string GetDescription_CmdletSupportsShouldProcessChange(CmdletDiffInfomation info)
+        private string GetDescription_CmdletSupportsShouldProcessChange(CmdletDiffInformation info)
         {
             return $"`SupportsShouldProcess` changed from {info.Before[0]} to {info.After[0]}";
         }
-        private string GetDescription_CmdletSupportsPagingChange(CmdletDiffInfomation info)
+        private string GetDescription_CmdletSupportsPagingChange(CmdletDiffInformation info)
         {
             return $"`SupportsPaging` changed from {info.Before[0]} to {info.After[0]}";
         }
-        private string GetDescription_AliasAdd(CmdletDiffInfomation info)
+        private string GetDescription_AliasAdd(CmdletDiffInformation info)
         {
             var aliasString = info.After.Count() == 1 ? "alias" : "aliases";
             var aliasListString = FormatListString(info.After, t => $"`{t}`");
             return $"Added {aliasString} {aliasListString} to `{info.CmdletName}`.";
         }
-        private string GetDescription_AliasRemove(CmdletDiffInfomation info)
+        private string GetDescription_AliasRemove(CmdletDiffInformation info)
         {
             var aliasString = info.Before.Count() == 1 ? "alias" : "aliases";
             var aliasListString = FormatListString(info.Before, t => $"`{t}`");
             return $"Removed {aliasString} {aliasListString} from `{info.CmdletName}`.";
         }
-        private string GetDescription_ParameterAdd(CmdletDiffInfomation info)
+        private string GetDescription_ParameterAdd(CmdletDiffInformation info)
         {
             var parameterString = info.After.Count == 1 ? "parameter" : "parameters";
             var parameterListString = FormatListString(info.After, t => $"`-{t}`");
             return $"Added {parameterString} {parameterListString}.";
         }
-        private string GetDescription_ParameterRemove(CmdletDiffInfomation info)
+        private string GetDescription_ParameterRemove(CmdletDiffInformation info)
         {
             var parameterString = info.Before.Count == 1 ? "parameter" : "parameters";
             var parameterListString = FormatListString(info.Before, t => $"`-{t}`");
             return $"Removed {parameterString} {parameterListString}.";
         }
-        private string GetDescription_ParameterAliasAdd(CmdletDiffInfomation info)
+        private string GetDescription_ParameterAliasAdd(CmdletDiffInformation info)
         {
             var aliasString = info.After.Count == 1 ? "alias" : "aliases";
             var aliasListString = FormatListString(info.After, t => $"`{t}`");
             return $"Added parameter {aliasString} {aliasListString} to parameter `-{info.ParameterName}`.";
         }
-        private string GetDescription_ParameterAliasRemove(CmdletDiffInfomation info)
+        private string GetDescription_ParameterAliasRemove(CmdletDiffInformation info)
         {
             var aliasString = info.Before.Count == 1 ? "alias" : "aliases";
             var aliasListString = FormatListString(info.Before, t => $"`{t}`");
             return $"Removed parameter {aliasString} {aliasListString} from parameter `-{info.ParameterName}`.";
         }
-        private string GetDescription_ParameterTypeChange(CmdletDiffInfomation info)
+        private string GetDescription_ParameterTypeChange(CmdletDiffInformation info)
         {
             return $"Changed the type of parameter `-{info.ParameterName}` from `{info.Before[0]}` to `{info.After[0]}`.";
         }
-        private string GetDescription_ParameterAttributeChange(CmdletDiffInfomation info)
+        private string GetDescription_ParameterAttributeChange(CmdletDiffInformation info)
         {
             return $"Parameter `-{info.ParameterName}` ValidateNotNullOrEmpty changed from {info.Before[0]} to {info.After[0]}";
         }
 
-        private string GetDescription_ParameterSetAdd(CmdletDiffInfomation info)
+        private string GetDescription_ParameterSetAdd(CmdletDiffInformation info)
         {
             return $"Added parameter set `{info.ParameterSetName}`.";
         }
-        private string GetDescription_ParameterSetRemove(CmdletDiffInfomation info)
+        private string GetDescription_ParameterSetRemove(CmdletDiffInformation info)
         {
             return $"Removed parameter set `{info.ParameterSetName}`.";
         }
-        private string GetDescription_ParameterSetAttributePropertyChange(CmdletDiffInfomation info)
+        private string GetDescription_ParameterSetAttributePropertyChange(CmdletDiffInformation info)
         {
             if (info.PropertyName == "ParameterRemoved")
             {
@@ -790,13 +790,13 @@ namespace StaticAnalysis.CmdletDiffAnalyzer
             }
         }
 
-        private string GetDescription_OutputTypeChange(CmdletDiffInfomation info)
+        private string GetDescription_OutputTypeChange(CmdletDiffInformation info)
         {
             return $"Output type changed from {FormatListString(info.Before, t => $"`{t}`")} to {FormatListString(info.After, t => $"`{t}`")}.";
         }
-        public string GetDescription(CmdletDiffInfomation info)
+        public string GetDescription(CmdletDiffInformation info)
         {
-            Dictionary<ChangeType, Func<CmdletDiffInfomation, string>> mapper = new Dictionary<ChangeType, Func<CmdletDiffInfomation, string>>();
+            Dictionary<ChangeType, Func<CmdletDiffInformation, string>> mapper = new Dictionary<ChangeType, Func<CmdletDiffInformation, string>>();
             mapper.Add(ChangeType.CmdletAdd, GetDescription_CmdletAdd);
             mapper.Add(ChangeType.CmdletRemove, GetDescription_CmdletRemove);
             mapper.Add(ChangeType.CmdletSupportsShouldProcessChange, GetDescription_CmdletSupportsShouldProcessChange);

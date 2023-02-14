@@ -70,6 +70,10 @@ $Steps = @(
         PhaseName = "file-change"
         IssuePath = "$StaticAnalysisOutputDirectory/FileChangeIssue.csv"
     }
+    @{
+        PhaseName = "cmdlet-diff"
+        IssuePath = "$StaticAnalysisOutputDirectory/CmdletDiffInformation.md"
+    }
 )
 
 ForEach ($Step In $Steps)
@@ -80,6 +84,13 @@ ForEach ($Step In $Steps)
     If ($Details.Length -Ne 0)
     {
         $Details = $Details[0]
+        If ($PhaseName -eq "cmdlet-diff")
+        {
+            $ModuleInfo = $Details.Modules[0]
+            $ModuleInfo.Status = "Succeeded"
+            $ModuleInfo.Content = Get-Content -Path $IssuePath
+            continue;
+        }
         If (Test-Path -Path $IssuePath)
         {
             $Issues = Get-Content -Path $IssuePath | ConvertFrom-Csv
