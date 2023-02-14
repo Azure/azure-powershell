@@ -20,7 +20,7 @@ Creates a new ServiceBus namespace.
 #>
 
 function New-AzServiceBusNamespaceV2{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
@@ -57,8 +57,13 @@ function New-AzServiceBusNamespaceV2{
 		
         [Parameter(HelpMessage = "Properties of KeyVault")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[]]
         ${KeyVaultProperty},
+
+        [Parameter(HelpMessage = "The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+        [System.Int32]
+        ${PremiumMessagingPartition},
 
         [Parameter(HelpMessage = "Enable Infrastructure Encryption (Double Encryption)")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -179,7 +184,7 @@ function New-AzServiceBusNamespaceV2{
                     $identityHashTable = @{}
 
 		    foreach ($resourceID in $UserAssignedIdentityId){
-		        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.UserAssignedIdentity]::new())
+		        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.UserAssignedIdentity]::new())
 	            }
 
                     $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
