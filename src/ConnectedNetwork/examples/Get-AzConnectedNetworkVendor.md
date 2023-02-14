@@ -1,9 +1,15 @@
 ### Example 1: Get-AzConnectedNetworkVendor using vendor name
 ```powershell
+<<<<<<< HEAD
 Get-AzConnectedNetworkVendor -Name myVendor
 ```
 
 ```output
+=======
+PS C:\> Get-AzConnectedNetworkVendor -Name myVendor
+
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor
 Name                         : myVendor
 ProvisioningState            : Succeeded
@@ -23,11 +29,18 @@ Getting information about the vendor with vendor name myVendor.
 
 ### Example 2: Get-AzConnectedNetworkVendor using Identity
 ```powershell
+<<<<<<< HEAD
 $vendor = @{ VendorName = "myVendor1"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
 Get-AzConnectedNetworkVendor -InputObject $vendor
 ```
 
 ```output
+=======
+PS C:\> $vendor = @{ VendorName = "myVendor1"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
+PS C:\> Get-AzConnectedNetworkVendor -InputObject $vendor
+
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor1
 Name                         : myVendor1
 ProvisioningState            : Succeeded

@@ -14,10 +14,15 @@ Create or Update Database Migration Service.
 
 ```
 New-AzDataMigrationSqlService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+<<<<<<< HEAD
  [-Location <String>] [-SystemDataCreatedAt <DateTime>] [-SystemDataCreatedBy <String>]
  [-SystemDataCreatedByType <CreatedByType>] [-SystemDataLastModifiedAt <DateTime>]
  [-SystemDataLastModifiedBy <String>] [-SystemDataLastModifiedByType <CreatedByType>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+=======
+ [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 
 ## DESCRIPTION
@@ -161,6 +166,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -SystemDataCreatedAt
 .
 
@@ -251,6 +257,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -Tag
 Dictionary of \<string\>
 

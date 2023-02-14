@@ -1,9 +1,14 @@
 ### Example 1: List all scan runs within a scan instance of a data source
 ```powershell
+<<<<<<< HEAD
 Get-AzPurviewScanResultScanHistory -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' | Format-List
 ```
 
 ```output
+=======
+PS C:\> Get-AzPurviewScanResultScanHistory -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' | fl
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 AssetsClassified            : 62
 AssetsDiscovered            : 97
 Code                        :

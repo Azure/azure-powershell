@@ -47,11 +47,17 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+<<<<<<< HEAD
 branch: 5df8962
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/preview/2020-02-07-preview/hanaonazure.json
+=======
+require:
+  - $(this-folder)/../readme.azure.noprofile.md
+  - $(repo)/specification/hanaonazure/resource-manager/readme.md
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0

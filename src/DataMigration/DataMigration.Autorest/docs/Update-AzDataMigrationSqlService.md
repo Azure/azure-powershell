@@ -247,7 +247,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
+<<<<<<< HEAD
 INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
+=======
+`INPUTOBJECT <IDataMigrationIdentity>`: Identity Parameter
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   - `[Id <String>]`: Resource identity path
   - `[ManagedInstanceName <String>]`: 
   - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.

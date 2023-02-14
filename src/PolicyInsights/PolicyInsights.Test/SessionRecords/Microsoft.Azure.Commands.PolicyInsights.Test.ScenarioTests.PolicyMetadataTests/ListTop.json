@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.PolicyInsights/policyMetadata?api-version=2019-10-01&$top=10",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvcG9saWN5TWV0YWRhdGE/YXBpLXZlcnNpb249MjAxOS0xMC0wMSYkdG9wPTEw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b5f255b9-c6b7-4740-a20c-8e3d4eb739c2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "149"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "968f3e15-5e79-4aee-a18b-355d0a27e392"
+        ],
+        "x-ms-correlation-request-id": [
+          "968f3e15-5e79-4aee-a18b-355d0a27e392"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220113T203354Z:968f3e15-5e79-4aee-a18b-355d0a27e392"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 13 Jan 2022 20:33:54 GMT"
+        ],
+        "Content-Length": [
+          "5121"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"metadataId\": \"Microsoft Managed Control 1000\",\r\n        \"category\": \"Access Control\",\r\n        \"title\": \"Access Control Policy And Procedures - Creating Policy And Procedures\",\r\n        \"owner\": \"Microsoft Security Policy Program, Azure SOP Team, Microsoft Information Risk Management Council (IRMC)\",\r\n        \"additionalContentUrl\": \"\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1000\",\r\n      \"name\": \"ACF1000\",\r\n      \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"metadataId\": \"Microsoft Managed Control 1001\",\r\n        \"category\": \"Access Control\",\r\n        \"title\": \"Access Control Policy And Procedures - Reviewing Policy And Procedures\",\r\n        \"owner\": \"Microsoft Security Policy Program, Azure SOP Team, Microsoft Information Risk Management Council (IRMC)\",\r\n        \"additionalContentUrl\": \"\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1001\",\r\n      \"name\": \"ACF1001\",\r\n      \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"metadataId\": \"Microsoft Managed Control 1002\",\r\n        \"category\": \"Access Control\",\r\n        \"title\": \"Account Management - Identifying Account Types\",\r\n        \"owner\": \"CSSO/ISSO National Security Team, Azure Security Engineering Team, C+AI Security, Azure Networking, Core Services Engineering and Operations (CSEO), Azure Service Teams\",\r\n        \"additionalContentUrl\": \"\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1002\",\r\n      \"name\": \"ACF1002\",\r\n      \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"metadataId\": \"Microsoft Managed Control 1003\",\r\n        \"category\": \"Access Control\",\r\n        \"title\": \"Account Management - Account Managers\",\r\n        \"owner\": \"CSSO/ISSO National Security Team, Azure Security Engineering Team, C+AI Security, Azure Networking, Core Services Engineering and Operations (CSEO), Azure Service Teams\",\r\n        \"additionalContentUrl\": \"\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1003\",\r\n      \"name\": \"ACF1003\",\r\n      \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"metadataId\": \"Microsoft Managed Control 1004\",\r\n        \"category\": \"Access Control\",\r\n        \"title\": \"Account Management - Conditions for Group/Role Membership\",\r\n        \"owner\": \"CSSO/ISSO National Security Team, Azure Security Engineering Team, C+AI Security, Azure Networking, Core Services Engineering and Operations (CSEO), Azure Service Teams\",\r\n        \"additionalContentUrl\": \"\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1004\",\r\n      \"name\": \"ACF1004\",\r\n      \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"metadataId\": \"Microsoft Managed Control 1005\",\r\n        \"category\": \"Access Control\",\r\n        \"title\": \"Account Management - Authorized Users\",\r\n        \"owner\": \"CSSO/ISSO National Security Team, Azure Security Engineering Team, C+AI Security, Azure Networking, Core Services Engineering and Operations (CSEO), Azure Service Teams\",\r\n        \"additionalContentUrl\": \"\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1005\",\r\n      \"name\": \"ACF1005\",\r\n      \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"metadataId\": \"Microsoft Managed Control 1006\",\r\n        \"category\": \"Access Control\",\r\n        \"title\": \"Account Management - Required Approval\",\r\n        \"owner\": \"CSSO/ISSO National Security Team, Azure Security Engineering Team, C+AI Security, Azure Networking, Core Services Engineering and Operations (CSEO), Azure Service Teams\",\r\n        \"additionalContentUrl\": \"\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1006\",\r\n      \"name\": \"ACF1006\",\r\n      \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"metadataId\": \"Microsoft Managed Control 1007\",\r\n        \"category\": \"Access Control\",\r\n        \"title\": \"Account Management - Modifying Accounts\",\r\n        \"owner\": \"CSSO/ISSO National Security Team, Azure Security Engineering Team, C+AI Security, Azure Networking, Core Services Engineering and Operations (CSEO), Azure Service Teams\",\r\n        \"additionalContentUrl\": \"\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1007\",\r\n      \"name\": \"ACF1007\",\r\n      \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"metadataId\": \"Microsoft Managed Control 1008\",\r\n        \"category\": \"Access Control\",\r\n        \"title\": \"Account Management - Monitoring Account Use\",\r\n        \"owner\": \"CSSO/ISSO National Security Team, Azure Security Engineering Team, C+AI Security, Azure Networking, Core Services Engineering and Operations (CSEO), Azure Service Teams\",\r\n        \"additionalContentUrl\": \"\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1008\",\r\n      \"name\": \"ACF1008\",\r\n      \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"metadataId\": \"Microsoft Managed Control 1009\",\r\n        \"category\": \"Access Control\",\r\n        \"title\": \"Account Management - Notifications\",\r\n        \"owner\": \"CSSO/ISSO National Security Team, Azure Security Engineering Team, C+AI Security, Azure Networking, Core Services Engineering and Operations (CSEO), Azure Service Teams\",\r\n        \"additionalContentUrl\": \"\",\r\n        \"metadata\": {}\r\n      },\r\n      \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1009\",\r\n      \"name\": \"ACF1009\",\r\n      \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://westus.management.azure.com/providers/Microsoft.PolicyInsights/policyMetadata?api-version=2019-10-01&$top=10&$skipToken=0w7ydLGqS_QNC3L0zClzCc_2cYQDW1vloBArQ-WQIGcrQwNlz-AwKyNlT1d_KzNTU1ND5UBnNysTZbcAZyvHwGK4JqcMONsWAA\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "086aecf4-23d6-4dfd-99a8-a5c6299f0322"
+  }
+}

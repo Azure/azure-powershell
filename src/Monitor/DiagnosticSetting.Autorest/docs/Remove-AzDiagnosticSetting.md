@@ -1,7 +1,11 @@
 ---
 external help file:
 Module Name: Az.Monitor
+<<<<<<< HEAD
 online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting
+=======
+online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 schema: 2.0.0
 ---
 

@@ -1,0 +1,7 @@
+# Exclude all.
+**/*
+
+# Include the build.
+!artifacts/Release/**/*
+!artifacts/Debug/**/*
+!tools/InstallationTests/NetcoreTests/**/*

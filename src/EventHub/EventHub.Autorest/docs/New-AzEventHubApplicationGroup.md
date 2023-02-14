@@ -27,11 +27,19 @@ Creates or updates an ApplicationGroup for a Namespace.
 ```powershell
 $t1 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId IncomingMessages -RateLimitThreshold 10000
 $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
+<<<<<<< HEAD
 New-AzEventHubApplicationGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -Name myAppGroup -ClientAppGroupIdentifier NamespaceSASKeyName=a -Policy $t1,$t2
 ```
 
 ```output
 ClientAppGroupIdentifier     : NamespaceSASKeyName=a
+=======
+New-AzEventHubApplicationGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -Name myAppGroup -ClientAppGroupIdentifier SASKeyName=a -Policy $t1,$t2
+```
+
+```output
+ClientAppGroupIdentifier     : SASKeyName=a
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
                                myAppGroup
 IsEnabled                    : True
@@ -137,7 +145,11 @@ The policies can support resource governance scenarios such as limiting ingress 
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
+<<<<<<< HEAD
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IApplicationGroupPolicy[]
+=======
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroupPolicy[]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +229,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IApplicationGroup
+=======
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ## NOTES
 

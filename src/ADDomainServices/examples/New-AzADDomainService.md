@@ -16,11 +16,19 @@ Create a new ADDomainService
 ```powershell
 # Variables
 $replicaSet = New-AzADDomainServiceReplicaSet -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default\
+<<<<<<< HEAD
 $certificateBytes = Get-Content "certificate.pfx" -AsByteStream
 $base64String = [System.Convert]::ToBase64String($certificateBytes) 
 $ldaps_pfx_pass = "MyStrongPassword"
 
 New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $($ldaps_pfx_pass | ConvertTo-SecureString -Force -AsPlainText)
+=======
+$certificateBytes = get-content "certificate.pfx" -AsByteStream
+$base64String = [System.Convert]::ToBase64String($certificateBytes) 
+$ldaps_pfx_pass = "MyStrongPassword"
+
+New-AzADDomainService -name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $($ldaps_pfx_pass | ConvertTo-SecureString -Force -AsPlainText)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 
 ```output

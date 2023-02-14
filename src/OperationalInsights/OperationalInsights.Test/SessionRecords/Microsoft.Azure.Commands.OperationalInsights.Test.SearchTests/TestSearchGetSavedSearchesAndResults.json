@@ -1,0 +1,877 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9cac3d77-bf31-4bc1-a570-ea44a0d0e1b2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.58"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "f30aec21-2b4b-491a-8866-cf4907a0ac9c"
+        ],
+        "x-ms-correlation-request-id": [
+          "f30aec21-2b4b-491a-8866-cf4907a0ac9c"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125346Z:f30aec21-2b4b-491a-8866-cf4907a0ac9c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:53:46 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "11823"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights\",\r\n  \"namespace\": \"Microsoft.OperationalInsights\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"d2a0a418-0aac-4541-82b2-b3142c89da77\",\r\n      \"roleDefinitionId\": \"86695298-2eb9-48a7-9ec3-2fdb38b6878b\"\r\n    },\r\n    {\r\n      \"applicationId\": \"ca7f3f0b-7d91-482c-8e09-c5d840d0eac5\",\r\n      \"roleDefinitionId\": \"5d5a2e56-9835-44aa-93db-d2f19e155438\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"workspaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-12-01-preview\",\r\n        \"2021-06-01\",\r\n        \"2021-03-01-privatepreview\",\r\n        \"2020-10-01\",\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2017-04-26-preview\",\r\n        \"2017-03-15-preview\",\r\n        \"2017-03-03-preview\",\r\n        \"2017-01-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2015-03-20\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"querypacks\",\r\n      \"locations\": [\r\n        \"West Central US\",\r\n        \"East US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"West US 2\",\r\n        \"UK South\",\r\n        \"Canada Central\",\r\n        \"Central India\",\r\n        \"Japan East\",\r\n        \"Australia East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"East Asia\",\r\n        \"West US\",\r\n        \"South Africa North\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Australia Southeast\",\r\n        \"Australia Central 2\",\r\n        \"Germany West Central\",\r\n        \"Switzerland West\",\r\n        \"UAE Central\",\r\n        \"UK West\",\r\n        \"Brazil Southeast\",\r\n        \"Japan West\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-09-01-preview\",\r\n        \"2019-09-01\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-10-01\",\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2017-04-26-preview\",\r\n        \"2017-03-15-preview\",\r\n        \"2017-03-03-preview\",\r\n        \"2017-01-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2015-03-20\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationStatuses\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-12-01-preview\",\r\n        \"2020-10-01\",\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2017-04-26-preview\",\r\n        \"2017-03-15-preview\",\r\n        \"2017-03-03-preview\",\r\n        \"2017-01-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2015-03-20\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/scopedPrivateLinkProxies\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2015-11-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/query\",\r\n      \"locations\": [\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/metadata\",\r\n      \"locations\": [\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/dataSources\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2015-11-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/linkedStorageAccounts\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/tables\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia East\",\r\n        \"Australia Central\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\",\r\n        \"Sweden South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-07-01-privatepreview\",\r\n        \"2021-03-01-privatepreview\",\r\n        \"2020-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/storageInsightConfigs\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia East\",\r\n        \"Australia Central\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2017-04-26-preview\",\r\n        \"2017-03-15-preview\",\r\n        \"2017-03-03-preview\",\r\n        \"2017-01-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2015-03-20\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageInsightConfigs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2014-10-10\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/linkedServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\",\r\n        \"2015-11-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"linkTargets\",\r\n      \"locations\": [\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01-preview\",\r\n        \"2015-03-20\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deletedWorkspaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-12-01-preview\",\r\n        \"2020-10-01\",\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-12-01-preview\",\r\n        \"2020-10-01\",\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2015-11-01-preview\",\r\n        \"2014-11-10\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"clusters\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"Brazil South\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-06-01\",\r\n        \"2020-10-01\",\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"workspaces/dataExports\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Australia Southeast\",\r\n        \"West Central US\",\r\n        \"Japan East\",\r\n        \"UK South\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"Australia Central\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"East US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"West US\",\r\n        \"UK West\",\r\n        \"South Africa North\",\r\n        \"Brazil South\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Japan West\",\r\n        \"Brazil Southeast\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"France South\",\r\n        \"South India\",\r\n        \"Korea South\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Canada East\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-08-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps9609?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzOTYwOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"East US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a658d7e8-3539-4126-9260-aaa7ce7399e5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.58"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "22b63146-256f-4124-9d59-596747a08f46"
+        ],
+        "x-ms-correlation-request-id": [
+          "22b63146-256f-4124-9d59-596747a08f46"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125349Z:22b63146-256f-4124-9d59-596747a08f46"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:53:48 GMT"
+        ],
+        "Content-Length": [
+          "165"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609\",\r\n  \"name\": \"ps9609\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzOTYwOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczU0NT9hcGktdmVyc2lvbj0yMDIxLTEyLTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\"\r\n    },\r\n    \"features\": {}\r\n  },\r\n  \"tags\": {},\r\n  \"location\": \"East US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6db5ed21-7b3b-4bad-aa28-a0f8db8cab73"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "138"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "c5c299cd-d2f1-4c93-a242-96fa7425b4c6"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "698ec14e-1617-4241-bb0f-dc660930b89b"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125354Z:698ec14e-1617-4241-bb0f-dc660930b89b"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:53:54 GMT"
+        ],
+        "Content-Length": [
+          "1062"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"28619e3e-4887-4ef1-9a26-c4620822e4b7\",\r\n    \"provisioningState\": \"Creating\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\",\r\n      \"lastSkuUpdate\": \"Thu, 07 Jul 2022 12:53:54 GMT\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Thu, 07 Jul 2022 17:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Thu, 07 Jul 2022 12:53:54 GMT\",\r\n    \"modifiedDate\": \"Thu, 07 Jul 2022 12:53:54 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps9609/providers/microsoft.operationalinsights/workspaces/aztestps545\",\r\n  \"name\": \"AzTestps545\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {}\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzOTYwOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczU0NT9hcGktdmVyc2lvbj0yMDIxLTEyLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6db5ed21-7b3b-4bad-aa28-a0f8db8cab73"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "1df431bb-a29a-44fb-8ce4-3cbc54cdf103"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "737b26e7-7a3f-4dde-8cde-cc16fda9bc32"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125425Z:737b26e7-7a3f-4dde-8cde-cc16fda9bc32"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:54:24 GMT"
+        ],
+        "Content-Length": [
+          "1063"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Azure\",\r\n    \"customerId\": \"28619e3e-4887-4ef1-9a26-c4620822e4b7\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"pergb2018\",\r\n      \"lastSkuUpdate\": \"Thu, 07 Jul 2022 12:53:54 GMT\"\r\n    },\r\n    \"retentionInDays\": 30,\r\n    \"features\": {\r\n      \"legacy\": 0,\r\n      \"searchVersion\": 1,\r\n      \"enableLogAccessUsingOnlyResourcePermissions\": true\r\n    },\r\n    \"workspaceCapping\": {\r\n      \"dailyQuotaGb\": -1.0,\r\n      \"quotaNextResetTime\": \"Thu, 07 Jul 2022 17:00:00 GMT\",\r\n      \"dataIngestionStatus\": \"RespectQuota\"\r\n    },\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"createdDate\": \"Thu, 07 Jul 2022 12:53:54 GMT\",\r\n    \"modifiedDate\": \"Thu, 07 Jul 2022 12:53:55 GMT\"\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps9609/providers/microsoft.operationalinsights/workspaces/aztestps545\",\r\n  \"name\": \"AzTestps545\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {}\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzOTYwOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczU0NS9zYXZlZFNlYXJjaGVzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "245a1372-fca9-4b75-b044-4fc9e0fd600f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "da6fd349-2916-46bc-abb2-7a7bb3a4b68d"
+        ],
+        "x-ms-correlation-request-id": [
+          "da6fd349-2916-46bc-abb2-7a7bb3a4b68d"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125428Z:da6fd349-2916-46bc-abb2-7a7bb3a4b68d"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:54:27 GMT"
+        ],
+        "Content-Length": [
+          "31476"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|AllEvents\",\r\n      \"properties\": {\r\n        \"displayName\": \"All Events\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Event | sort by TimeGenerated desc\\r\\n// Oql: Type=Event // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|AllEvents\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|EventsWithStartedinEventID\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of Events containing the word \\\"started\\\" grouped by EventID\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search in (Event) \\\"started\\\" | summarize AggregatedValue = count() by EventID\\r\\n// Oql: Type=Event \\\"started\\\" | Measure count() by EventID // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|EventsWithStartedinEventID\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|EventsByEventLog\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of Events grouped by Event Log\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Event | summarize AggregatedValue = count() by EventLog\\r\\n// Oql: Type=Event | Measure count() by EventLog // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|EventsByEventLog\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|EventsByEventSource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of Events grouped by Event Source\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Event | summarize AggregatedValue = count() by Source\\r\\n// Oql: Type=Event | Measure count() by Source // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|EventsByEventSource\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|EventsByEventsID\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of Events grouped by Event ID\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Event | summarize AggregatedValue = count() by EventID\\r\\n// Oql: Type=Event | Measure count() by EventID // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|EventsByEventsID\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|WarningEvents\",\r\n      \"properties\": {\r\n        \"displayName\": \"All Events with level \\\"Warning\\\"\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Event | where EventLevelName == \\\"warning\\\" | sort by TimeGenerated desc\\r\\n// Oql: Type=Event EventLevelName=warning // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|WarningEvents\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|CountOfWarningEvents\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of Events with level \\\"Warning\\\" grouped by Event ID\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Event | where EventLevelName == \\\"warning\\\" | summarize AggregatedValue = count() by EventID\\r\\n// Oql: Type=Event EventLevelName=warning | Measure count() by EventID // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|CountOfWarningEvents\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|NoOfConnectionsToOMSDKService\",\r\n      \"properties\": {\r\n        \"displayName\": \"How many connections to Operations Manager's SDK service by day\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Event | where EventID == 26328 and EventLog == \\\"Operations Manager\\\" | summarize AggregatedValue = count() by bin(TimeGenerated, 1d) | sort by TimeGenerated desc\\r\\n// Oql: Type=Event EventID=26328 EventLog=\\\"Operations Manager\\\" | Measure count() interval 1DAY // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|NoOfConnectionsToOMSDKService\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|EventsInOMBetween2000to3000\",\r\n      \"properties\": {\r\n        \"displayName\": \"Events in the Operations Manager Event Log whose Event ID is in the range between 2000 and 3000\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Event | where EventLog == \\\"Operations Manager\\\" and EventID >= 2000 and EventID <= 3000 | sort by TimeGenerated desc\\r\\n// Oql: Type=Event EventLog=\\\"Operations Manager\\\" EventID:[2000..3000] // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|EventsInOMBetween2000to3000\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|ServerRestartTime\",\r\n      \"properties\": {\r\n        \"displayName\": \"When did my servers initiate restart?\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search in (Event) \\\"shutdown\\\" and EventLog == \\\"System\\\" and Source == \\\"User32\\\" and EventID == 1074 | sort by TimeGenerated desc | project TimeGenerated, Computer\\r\\n// Oql: shutdown Type=Event EventLog=System Source=User32 EventID=1074 | Select TimeGenerated,Computer // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|ServerRestartTime\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|WindowsFireawallPolicySettingsChanged\",\r\n      \"properties\": {\r\n        \"displayName\": \"Windows Firewall Policy settings have changed\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Event | where EventLog == \\\"Microsoft-Windows-Windows Firewall With Advanced Security/Firewall\\\" and EventID == 2008 | sort by TimeGenerated desc\\r\\n// Oql: Type=Event EventLog=\\\"Microsoft-Windows-Windows Firewall With Advanced Security/Firewall\\\" EventID=2008 // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|WindowsFireawallPolicySettingsChanged\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|WindowsFireawallPolicySettingsChangedByMachines\",\r\n      \"properties\": {\r\n        \"displayName\": \"On which machines and how many times have Windows Firewall Policy settings changed\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Event | where EventLog == \\\"Microsoft-Windows-Windows Firewall With Advanced Security/Firewall\\\" and EventID == 2008 | summarize AggregatedValue = count() by Computer | limit 500000\\r\\n// Oql: Type=Event EventLog=\\\"Microsoft-Windows-Windows Firewall With Advanced Security/Firewall\\\" EventID=2008 | measure count() by Computer | top 500000 // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|WindowsFireawallPolicySettingsChangedByMachines\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|ListAllIISLogEntries\",\r\n      \"properties\": {\r\n        \"displayName\": \"All IIS Log Entries\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | sort by TimeGenerated desc\\r\\n// Oql: Type=W3CIISLog // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|ListAllIISLogEntries\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|DisplayBreakdownRespondCodes\",\r\n      \"properties\": {\r\n        \"displayName\": \"Shows breakdown of response codes\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = count() by scStatus\\r\\n// Oql: Type=W3CIISLog | Measure count() by scStatus // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|DisplayBreakdownRespondCodes\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|FindMaximumTimeTakenForEachPage\",\r\n      \"properties\": {\r\n        \"displayName\": \"Find the maximum time taken for each page\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = max(TimeTaken) by csUriStem\\r\\n// Oql: Type=W3CIISLog | Measure Max(TimeTaken) by csUriStem // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|FindMaximumTimeTakenForEachPage\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|Show404PagesList\",\r\n      \"properties\": {\r\n        \"displayName\": \"Shows which pages people are getting a 404 for\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search scStatus == 404 | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = count() by csUriStem\\r\\n// Oql: Type=W3CIISLog scStatus=404 | Measure count() by csUriStem // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|Show404PagesList\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|AverageHTTPRequestTimeHTTPMethod\",\r\n      \"properties\": {\r\n        \"displayName\": \"Average HTTP Request time by HTTP Method\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = avg(TimeTaken) by csMethod\\r\\n// Oql: Type=W3CIISLog | Measure Avg(TimeTaken) by csMethod // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|AverageHTTPRequestTimeHTTPMethod\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|ShowServersThrowingInternalServerError\",\r\n      \"properties\": {\r\n        \"displayName\": \"Shows servers that are throwing internal server error\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search scStatus == 500 | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = count() by sComputerName\\r\\n// Oql: Type=W3CIISLog scStatus=500 | Measure count() by sComputerName // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|ShowServersThrowingInternalServerError\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|CountIISLogEntriesHTTPRequestMethod\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of IIS Log Entries by HTTP Request Method\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = count() by csMethod\\r\\n// Oql: Type=W3CIISLog | Measure count() by csMethod // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|CountIISLogEntriesHTTPRequestMethod\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|CountIISLogEntriesHTTPUserAgent\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of IIS Log Entries by HTTP User Agent\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = count() by csUserAgent\\r\\n// Oql: Type=W3CIISLog | Measure count() by csUserAgent // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|CountIISLogEntriesHTTPUserAgent\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|CountIISLogEntriesClientIPAddress\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of IIS Log Entries by Client IP Address\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = count() by cIP\\r\\n// Oql: Type=W3CIISLog | Measure count() by cIP // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|CountIISLogEntriesClientIPAddress\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|IISLogEntriesForClientIP\",\r\n      \"properties\": {\r\n        \"displayName\": \"IIS Log Entries for a specific client IP Address (replace with your own)\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search cIP == \\\"192.168.0.1\\\" | extend Type = $table | where Type == W3CIISLog | sort by TimeGenerated desc | project csUriStem, scBytes, csBytes, TimeTaken, scStatus\\r\\n// Oql: Type=W3CIISLog cIP=\\\"192.168.0.1\\\" | Select csUriStem,scBytes,csBytes,TimeTaken,scStatus // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|IISLogEntriesForClientIP\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|CountOfIISLogEntriesByURLRequestedByClient\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of IIS Log Entries by URL requested by client (without query strings)\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = count() by csUriStem\\r\\n// Oql: Type=W3CIISLog | Measure count() by csUriStem // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|CountOfIISLogEntriesByURLRequestedByClient\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|CountOfIISLogEntriesByHostRequestedByClient\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of IIS Log Entries by Host requested by client\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = count() by csHost\\r\\n// Oql: Type=W3CIISLog | Measure count() by csHost // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|CountOfIISLogEntriesByHostRequestedByClient\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|CountOfIISLogEntriesByURLForHost\",\r\n      \"properties\": {\r\n        \"displayName\": \"Count of IIS Log Entries by URL for the host \\\"www.contoso.com\\\" (replace with your own)\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search csHost == \\\"www.contoso.com\\\" | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = count() by csUriStem\\r\\n// Oql: Type=W3CIISLog csHost=\\\"www.contoso.com\\\" | Measure count() by csUriStem // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|CountOfIISLogEntriesByURLForHost\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|TotalBytesSentByClientIPAddress\",\r\n      \"properties\": {\r\n        \"displayName\": \"Total Bytes sent by Client IP Address\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = sum(csBytes) by cIP\\r\\n// Oql: Type=W3CIISLog | Measure Sum(csBytes) by cIP // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|TotalBytesSentByClientIPAddress\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|TotalBytesReceivedByEachAzureRoleInstance\",\r\n      \"properties\": {\r\n        \"displayName\": \"Total Bytes received by each Azure Role Instance\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = sum(csBytes) by RoleInstance\\r\\n// Oql: Type=W3CIISLog | Measure Sum(csBytes) by RoleInstance // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|TotalBytesReceivedByEachAzureRoleInstance\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|TotalBytesReceivedByEachIISComputer\",\r\n      \"properties\": {\r\n        \"displayName\": \"Total Bytes received by each IIS Computer\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = sum(csBytes) by Computer | limit 500000\\r\\n// Oql: Type=W3CIISLog | Measure Sum(csBytes) by Computer | top 500000 // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|TotalBytesReceivedByEachIISComputer\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|TotalBytesRespondedToClientsByEachIISServerIPAddress\",\r\n      \"properties\": {\r\n        \"displayName\": \"Total Bytes responded back to clients by each IIS ServerIP Address\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = sum(scBytes) by sIP\\r\\n// Oql: Type=W3CIISLog | Measure Sum(scBytes) by sIP // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|TotalBytesRespondedToClientsByEachIISServerIPAddress\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|TotalBytesRespondedToClientsByClientIPAddress\",\r\n      \"properties\": {\r\n        \"displayName\": \"Total Bytes responded back to clients by Client IP Address\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = sum(scBytes) by cIP\\r\\n// Oql: Type=W3CIISLog | Measure Sum(scBytes) by cIP // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|TotalBytesRespondedToClientsByClientIPAddress\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|AverageHTTPRequestTimeByClientIPAddress\",\r\n      \"properties\": {\r\n        \"displayName\": \"Average HTTP Request time by Client IP Address\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"search * | extend Type = $table | where Type == W3CIISLog | summarize AggregatedValue = avg(TimeTaken) by cIP\\r\\n// Oql: Type=W3CIISLog | Measure Avg(TimeTaken) by cIP // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PEF: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|AverageHTTPRequestTimeByClientIPAddress\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|AllSyslog\",\r\n      \"properties\": {\r\n        \"displayName\": \"All Syslogs\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Syslog | sort by TimeGenerated desc\\r\\n// Oql: Type=Syslog // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|AllSyslog\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|AllSyslogsWithErrors\",\r\n      \"properties\": {\r\n        \"displayName\": \"All Syslog Records with Errors\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Syslog | where SeverityLevel == \\\"error\\\" | sort by TimeGenerated desc\\r\\n// Oql: Type=Syslog SeverityLevel=error // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|AllSyslogsWithErrors\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|AllSyslogByFacility\",\r\n      \"properties\": {\r\n        \"displayName\": \"All Syslog Records grouped by Facility\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Syslog | summarize AggregatedValue = count() by Facility\\r\\n// Oql: Type=Syslog | Measure count() by Facility // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|AllSyslogByFacility\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|AllSyslogByProcessName\",\r\n      \"properties\": {\r\n        \"displayName\": \"All Syslog Records grouped by ProcessName\",\r\n        \"category\": \"Log Management\",\r\n        \"query\": \"Syslog | summarize AggregatedValue = count() by ProcessName\\r\\n// Oql: Type=Syslog | Measure count() by ProcessName // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_LogManagement|AllSyslogByProcessName\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_General|dataPointsPerManagementGroup\",\r\n      \"properties\": {\r\n        \"displayName\": \"Which Management Group is generating the most data points?\",\r\n        \"category\": \"General Exploration\",\r\n        \"query\": \"search * | summarize AggregatedValue = count() by ManagementGroupName\\r\\n// Oql: * | Measure count() by ManagementGroupName // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_General|dataPointsPerManagementGroup\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_General|dataTypeDistribution\",\r\n      \"properties\": {\r\n        \"displayName\": \"Distribution of data Types\",\r\n        \"category\": \"General Exploration\",\r\n        \"query\": \"search * | extend Type = $table | summarize AggregatedValue = count() by Type\\r\\n// Oql: * | Measure count() by Type // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_General|dataTypeDistribution\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_General|AlphabeticallySortedComputers\",\r\n      \"properties\": {\r\n        \"displayName\": \"All Computers with their most recent data\",\r\n        \"category\": \"General Exploration\",\r\n        \"query\": \"search not(ObjectName == \\\"Advisor Metrics\\\" or ObjectName == \\\"ManagedSpace\\\") | summarize AggregatedValue = max(TimeGenerated) by Computer | limit 500000 | sort by Computer asc\\r\\n// Oql: NOT(ObjectName=\\\"Advisor Metrics\\\" OR ObjectName=ManagedSpace) | measure max(TimeGenerated) by Computer | top 500000 | Sort Computer // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_General|AlphabeticallySortedComputers\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_General|StaleComputers\",\r\n      \"properties\": {\r\n        \"displayName\": \"Stale Computers (data older than 24 hours)\",\r\n        \"category\": \"General Exploration\",\r\n        \"query\": \"search not(ObjectName == \\\"Advisor Metrics\\\" or ObjectName == \\\"ManagedSpace\\\") | summarize lastdata = max(TimeGenerated) by Computer | limit 500000 | where lastdata < ago(24h)\\r\\n// Oql: NOT(ObjectName=\\\"Advisor Metrics\\\" OR ObjectName=ManagedSpace) | measure max(TimeGenerated) as lastdata by Computer | top 500000 | where lastdata < NOW-24HOURS // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n        \"version\": 2\r\n      },\r\n      \"name\": \"LogManagement(AzTestps545)_General|StaleComputers\",\r\n      \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement%28AzTestps545%29_LogManagement%7CAllEvents?api-version=2020-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzOTYwOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczU0NS9zYXZlZFNlYXJjaGVzL0xvZ01hbmFnZW1lbnQlMjhBelRlc3RwczU0NSUyOV9Mb2dNYW5hZ2VtZW50JTdDQWxsRXZlbnRzP2FwaS12ZXJzaW9uPTIwMjAtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4b13cbc7-3348-472b-b5be-3956ffa60eb2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "0a0d8f75-736c-4fd8-9faf-79e80584bb6f"
+        ],
+        "x-ms-correlation-request-id": [
+          "0a0d8f75-736c-4fd8-9faf-79e80584bb6f"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125431Z:0a0d8f75-736c-4fd8-9faf-79e80584bb6f"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:54:31 GMT"
+        ],
+        "Content-Length": [
+          "614"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545/savedSearches/LogManagement(AzTestps545)_LogManagement|AllEvents\",\r\n  \"properties\": {\r\n    \"displayName\": \"All Events\",\r\n    \"category\": \"Log Management\",\r\n    \"query\": \"Event | sort by TimeGenerated desc\\r\\n// Oql: Type=Event // Args: {OQ: True; WorkspaceId: 00000000-0000-0000-0000-000000000000} // Settings: {PTT: True; SortI: True; SortF: True} // Version: 0.1.122\",\r\n    \"version\": 2\r\n  },\r\n  \"name\": \"LogManagement(AzTestps545)_LogManagement|AllEvents\",\r\n  \"type\": \"Microsoft.OperationalInsights/savedSearches\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps9609/providers/Microsoft.OperationalInsights/workspaces/AzTestps545?api-version=2021-12-01-preview&force=false",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzOTYwOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9BelRlc3RwczU0NT9hcGktdmVyc2lvbj0yMDIxLTEyLTAxLXByZXZpZXcmZm9yY2U9ZmFsc2U=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d561ad35-eb00-4baa-a9d4-c3111cd25557"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "4d5ab01d-6fd4-4eba-8e51-aeaf3a4f7e3c"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "f26885b8-6433-42f6-aa2c-73d619a57b67"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125439Z:f26885b8-6433-42f6-aa2c-73d619a57b67"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:54:39 GMT"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/ps9609?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL3BzOTYwOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6e2dc746-76e0-4b27-96bc-8530863b9beb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.58"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "78e5e82f-93aa-4b76-a6e1-983af65f3a88"
+        ],
+        "x-ms-correlation-request-id": [
+          "78e5e82f-93aa-4b76-a6e1-983af65f3a88"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125443Z:78e5e82f-93aa-4b76-a6e1-983af65f3a88"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:54:43 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprMk1Ea3RSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.58"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "180c2530-cf2d-4b5b-a2b1-dc847fc57083"
+        ],
+        "x-ms-correlation-request-id": [
+          "180c2530-cf2d-4b5b-a2b1-dc847fc57083"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125459Z:180c2530-cf2d-4b5b-a2b1-dc847fc57083"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:54:58 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprMk1Ea3RSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.58"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "f57cb371-22ac-4f79-a997-97845088fb67"
+        ],
+        "x-ms-correlation-request-id": [
+          "f57cb371-22ac-4f79-a997-97845088fb67"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125514Z:f57cb371-22ac-4f79-a997-97845088fb67"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:55:13 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprMk1Ea3RSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.58"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "4f0cce25-b65b-4648-957c-299dabd3c3fd"
+        ],
+        "x-ms-correlation-request-id": [
+          "4f0cce25-b65b-4648-957c-299dabd3c3fd"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125529Z:4f0cce25-b65b-4648-957c-299dabd3c3fd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:55:28 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprMk1Ea3RSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.58"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "71d8ee8f-54c4-491e-a1be-74cf9f1b4ee9"
+        ],
+        "x-ms-correlation-request-id": [
+          "71d8ee8f-54c4-491e-a1be-74cf9f1b4ee9"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125544Z:71d8ee8f-54c4-491e-a1be-74cf9f1b4ee9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:55:44 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprMk1Ea3RSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.58"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "60b29b95-9953-4274-b644-03bde8e7aeca"
+        ],
+        "x-ms-correlation-request-id": [
+          "60b29b95-9953-4274-b644-03bde8e7aeca"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125600Z:60b29b95-9953-4274-b644-03bde8e7aeca"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:56:00 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk2MDktRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprMk1Ea3RSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.58"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "21ff08d3-f4df-4b21-9a5f-f3442f44fa9d"
+        ],
+        "x-ms-correlation-request-id": [
+          "21ff08d3-f4df-4b21-9a5f-f3442f44fa9d"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125600Z:21ff08d3-f4df-4b21-9a5f-f3442f44fa9d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:56:00 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-SearchGetSavedSearchesAndResults": [
+      "ps545",
+      "ps9609"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "57947cb5-aadd-4b6c-9e8e-27f545bb7bf5"
+  }
+}

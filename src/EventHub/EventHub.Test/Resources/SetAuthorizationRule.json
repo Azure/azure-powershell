@@ -1,0 +1,4 @@
+﻿{
+  "Rights":["Send", "Listen","Manage"],
+  "Name": "TestAuthRule"
+}

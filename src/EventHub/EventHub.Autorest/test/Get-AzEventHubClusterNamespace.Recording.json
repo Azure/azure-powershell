@@ -1,13 +1,24 @@
 {
+<<<<<<< HEAD
   "Get-AzEventHubClusterNamespace+[NoContext]+List+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/TestClusterAutomatic/namespaces?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/TestClusterAutomatic/namespaces?api-version=2022-10-01-preview",
+=======
+  "Get-AzEventHubClusterNamespace+[NoContext]+List+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/TestClusterAutomatic/namespaces?api-version=2022-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/TestClusterAutomatic/namespaces?api-version=2022-01-01-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "43" ],
+<<<<<<< HEAD
         "x-ms-client-request-id": [ "bbd5fbec-04f5-415f-98d4-5152e76ed0d2" ],
+=======
+        "x-ms-client-request-id": [ "9248e6b3-f7dc-43bb-b3d1-02c86ab15b23" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "CommandName": [ "Get-AzEventHubClusterNamespace" ],
         "FullCommandName": [ "Get-AzEventHubClusterNamespace_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,6 +33,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11962" ],
         "x-ms-request-id": [ "0c55b0dd-257b-42d1-89a2-e017403a8f6f" ],
@@ -30,13 +42,28 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Date": [ "Mon, 13 Feb 2023 17:28:21 GMT" ]
+=======
+        "x-ms-request-id": [ "612c11ba-47be-4c43-ac1f-998f449a2176_M8CH3_M8CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
+        "x-ms-correlation-request-id": [ "09e43615-c6e2-49cb-9e0b-826bec5fd1df" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221125T102844Z:09e43615-c6e2-49cb-9e0b-826bec5fd1df" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 25 Nov 2022 10:28:43 GMT" ]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       },
       "ContentHeaders": {
         "Content-Length": [ "332" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
+<<<<<<< HEAD
       "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/AutomatedPowershellTesting/providers/Microsoft.Eventhub/namespaces/clusterNamespace2\"},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/AutomatedPowershellTesting/providers/Microsoft.Eventhub/namespaces/clusterNamespace\"}]}",
+=======
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/namespaces/clusterNamespace2\"},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/namespaces/clusterNamespace\"}]}",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "isContentBase64": false
     }
   }

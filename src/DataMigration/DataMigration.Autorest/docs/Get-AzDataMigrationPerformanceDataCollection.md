@@ -40,18 +40,28 @@ Connecting to the SQL server(s)...
 Starting data collection...
 Press the Enter key to stop the data collection at any time...
 
+<<<<<<< HEAD
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
+=======
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 UTC 2022-02-03 07:04:50, Server AALAB03-2K8:
         Performance data query iteration: 1 of 2, collected 349 data points.
 UTC 2022-02-03 07:04:52, Server AALAB03-2K8:
         Collected static configuration data, and saved to C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment.
+<<<<<<< HEAD
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
+=======
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 UTC 2022-02-03 07:05:44, Server AALAB03-2K8:
         Performance data query iteration: 2 of 2, collected 347 data points.
 UTC 2022-02-03 07:07:13, Server AALAB03-2K8:
@@ -74,18 +84,28 @@ Connecting to the SQL server(s)...
 Starting data collection...
 Press the Enter key to stop the data collection at any time...
 
+<<<<<<< HEAD
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
+=======
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 UTC 2022-02-03 07:04:50, Server AALAB03-2K8:
         Performance data query iteration: 1 of 2, collected 349 data points.
 UTC 2022-02-03 07:04:52, Server AALAB03-2K8:
         Collected static configuration data, and saved to C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment.
+<<<<<<< HEAD
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
+=======
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 UTC 2022-02-03 07:05:44, Server AALAB03-2K8:
         Performance data query iteration: 2 of 2, collected 347 data points.
 UTC 2022-02-03 07:07:13, Server AALAB03-2K8:
@@ -108,18 +128,28 @@ Connecting to the SQL server(s)...
 Starting data collection...
 Press the Enter key to stop the data collection at any time...
 
+<<<<<<< HEAD
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
+=======
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 UTC 2022-02-03 07:04:50, Server AALAB03-2K8:
         Performance data query iteration: 1 of 2, collected 349 data points.
 UTC 2022-02-03 07:04:52, Server AALAB03-2K8:
         Collected static configuration data, and saved to C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment.
+<<<<<<< HEAD
 Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only.
 The recommended protocol version is TLS 1.2 and later.
+=======
+Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 UTC 2022-02-03 07:05:44, Server AALAB03-2K8:
         Performance data query iteration: 2 of 2, collected 347 data points.
 UTC 2022-02-03 07:07:13, Server AALAB03-2K8:

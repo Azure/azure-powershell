@@ -24,8 +24,12 @@ Describe 'DiskBackupScenario' {
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
         $defaultPolicy = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
         $policyId = "/subscriptions/" + $sub + "/resourceGroups/" + $rgName + "/providers/Microsoft.DataProtection/backupVaults/" + $vaultName + "/backupPolicies/" + $policyName
+<<<<<<< HEAD
         $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDisk -DatasourceLocation centraluseuap -PolicyId $policyId -DatasourceId $diskId 
         $backupInstance.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].ResourceGroupId = $snapshotRg
+=======
+        $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDisk -DatasourceLocation centraluseuap -PolicyId $policyId -DatasourceId $diskId -SnapshotResourceGroupId $snapshotRg
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         
         $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
         $instance = $instances | where-Object {$_.Property.DataSourceInfo.ResourceId -eq $diskId}
@@ -36,8 +40,16 @@ Describe 'DiskBackupScenario' {
         while($protectionStatus -ne "ProtectionConfigured")
         {
             Start-Sleep -Seconds 5
+<<<<<<< HEAD
             $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -Name $backupInstanceName
             $protectionStatus = $instance.Property.ProtectionStatus.Status
+=======
+
+            $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -Name $backupInstanceName
+            $protectionStatus = $instance.Property.ProtectionStatus.Status
+
+            # configure backup if not configured
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         }
 
         $backupPolicyId = $instance.Property.PolicyInfo.PolicyId 
@@ -67,5 +79,8 @@ Describe 'DiskBackupScenario' {
             $jobstatus = $currentjob.Status
         }
      }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 }

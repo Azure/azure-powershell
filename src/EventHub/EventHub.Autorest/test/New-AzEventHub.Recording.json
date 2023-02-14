@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "New-AzEventHub+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwfkmlo/providers/Microsoft.EventHub/namespaces/namespaceV1yocr0h?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
@@ -490,6 +491,12 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwfkmlo/providers/Microsoft.EventHub/namespaces/namespaceNamez6sfbn/eventhubs/eventHub2ynlspf?api-version=2022-10-01-preview",
+=======
+  "New-AzEventHub+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/eventhubs/eventHubkjfq92?api-version=2022-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/eventhubs/eventHubkjfq92?api-version=2022-01-01-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": "{\n  \"properties\": {\n    \"messageRetentionInDays\": 6,\n    \"partitionCount\": 5\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -505,6 +512,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
+<<<<<<< HEAD
         "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
         "x-ms-request-id": [ "ebfee44f-de65-4c3c-aae6-f704cf0f6a5c" ],
         "x-ms-correlation-request-id": [ "ebfee44f-de65-4c3c-aae6-f704cf0f6a5c" ],
@@ -526,6 +534,29 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwfkmlo/providers/Microsoft.EventHub/namespaces/namespaceNamez6sfbn/eventhubs/eventHub3qks4v6?api-version=2022-10-01-preview",
+=======
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "9ecbb78c-0104-4ac0-afc5-5391b9ab6a0e" ],
+        "x-ms-correlation-request-id": [ "9ecbb78c-0104-4ac0-afc5-5391b9ab6a0e" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221125T103126Z:9ecbb78c-0104-4ac0-afc5-5391b9ab6a0e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 25 Nov 2022 10:31:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "474" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/eventhubs/eventHubkjfq92\",\"name\":\"eventHubkjfq92\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs\",\"location\":\"eastus\",\"properties\":{\"messageRetentionInDays\":6,\"partitionCount\":5,\"status\":\"Active\",\"createdAt\":\"2022-11-25T10:31:24.31Z\",\"updatedAt\":\"2022-11-25T10:31:25.803Z\",\"partitionIds\":[\"0\",\"1\",\"2\",\"3\",\"4\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzEventHub+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/eventhubs/eventHubv2mc8p?api-version=2022-01-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/eventhubs/eventHubv2mc8p?api-version=2022-01-01-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": "{\n  \"properties\": {\n    \"captureDescription\": {\n      \"destination\": {\n        \"properties\": {\n          \"storageAccountResourceId\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Storage/storageAccounts/testpsstoragaccount\",\n          \"blobContainer\": \"container\",\n          \"archiveNameFormat\": \"{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}\"\n        },\n        \"name\": \"EventHubArchive.AzureBlockBlob\"\n      },\n      \"enabled\": true,\n      \"encoding\": \"Avro\",\n      \"intervalInSeconds\": 600,\n      \"sizeLimitInBytes\": 11000000,\n      \"skipEmptyArchives\": true\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -541,6 +572,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
+<<<<<<< HEAD
         "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
         "x-ms-request-id": [ "36468c30-cf01-4e35-b364-85fe3bd6cf0f" ],
         "x-ms-correlation-request-id": [ "36468c30-cf01-4e35-b364-85fe3bd6cf0f" ],
@@ -555,6 +587,22 @@
         "Expires": [ "-1" ]
       },
       "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwfkmlo/providers/Microsoft.EventHub/namespaces/namespaceNamez6sfbn/eventhubs/eventHub3qks4v6\",\"name\":\"eventHub3qks4v6\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs\",\"location\":\"eastus\",\"properties\":{\"retentionDescription\":{\"cleanupPolicy\":\"Delete\",\"retentionTimeInHours\":168},\"messageRetentionInDays\":7,\"partitionCount\":4,\"status\":\"Active\",\"createdAt\":\"2023-02-13T17:36:15.813Z\",\"updatedAt\":\"2023-02-13T17:36:16.697Z\",\"partitionIds\":[\"0\",\"1\",\"2\",\"3\"],\"captureDescription\":{\"enabled\":true,\"encoding\":\"Avro\",\"destination\":{\"name\":\"EventHubArchive.AzureBlockBlob\",\"properties\":{\"storageAccountResourceId\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Storage/storageAccounts/testpsstoragaccount\",\"blobContainer\":\"container\",\"archiveNameFormat\":\"{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}\"}},\"intervalInSeconds\":600,\"sizeLimitInBytes\":11000000,\"skipEmptyArchives\":true}}}",
+=======
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-request-id": [ "70d5372a-d225-4a31-8ec1-aef8ecf2935c" ],
+        "x-ms-correlation-request-id": [ "70d5372a-d225-4a31-8ec1-aef8ecf2935c" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221125T103129Z:70d5372a-d225-4a31-8ec1-aef8ecf2935c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 25 Nov 2022 10:31:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "995" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/eventhubs/eventHubv2mc8p\",\"name\":\"eventHubv2mc8p\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs\",\"location\":\"eastus\",\"properties\":{\"messageRetentionInDays\":7,\"partitionCount\":4,\"status\":\"Active\",\"createdAt\":\"2022-11-25T10:31:28.697Z\",\"updatedAt\":\"2022-11-25T10:31:29.427Z\",\"partitionIds\":[\"0\",\"1\",\"2\",\"3\"],\"captureDescription\":{\"enabled\":true,\"encoding\":\"Avro\",\"destination\":{\"name\":\"EventHubArchive.AzureBlockBlob\",\"properties\":{\"storageAccountResourceId\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Storage/storageAccounts/testpsstoragaccount\",\"blobContainer\":\"container\",\"archiveNameFormat\":\"{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}\"}},\"intervalInSeconds\":600,\"sizeLimitInBytes\":11000000,\"skipEmptyArchives\":true}}}",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "isContentBase64": false
     }
   }

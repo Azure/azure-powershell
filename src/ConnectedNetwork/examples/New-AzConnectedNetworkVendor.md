@@ -1,9 +1,15 @@
 ### Example 1: New-AzConnectedNetworkVendor
 ```powershell
+<<<<<<< HEAD
 New-AzConnectedNetworkVendor -Name myVendor
 ```
 
 ```output
+=======
+PS C:\> New-AzConnectedNetworkVendor -Name myVendor
+
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor
 Name                         : myVendor
 ProvisioningState            : Succeeded
@@ -22,10 +28,16 @@ Creating a vendor with name myVendor.
 
 ### Example 2: New-AzConnectedNetworkVendor with SubscriptionId 
 ```powershell
+<<<<<<< HEAD
 New-AzConnectedNetworkVendor -Name myVendor2 -SubscriptionId xxxxx-22222-xxxxx-22222
 ```
 
 ```output
+=======
+PS C:\> New-AzConnectedNetworkVendor -Name myVendor2 -SubscriptionId xxxxx-22222-xxxxx-22222
+
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Id                           : /subscriptions/xxxxx-22222-xxxxx-22222/providers/Microsoft.HybridNetwork/vendors/myVendor2
 Name                         : myVendor2
 ProvisioningState            : Succeeded

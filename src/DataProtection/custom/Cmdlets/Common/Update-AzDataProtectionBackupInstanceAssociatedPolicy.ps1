@@ -2,7 +2,11 @@
 
 function Update-AzDataProtectionBackupInstanceAssociatedPolicy
 {
+<<<<<<< HEAD
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource')]
+=======
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupInstanceResource')]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates associated policy for a given backup instance')]
 

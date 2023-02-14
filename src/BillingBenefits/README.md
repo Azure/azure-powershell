@@ -60,6 +60,13 @@ resourcegroup-append: true
 nested-object-to-string: true
   
 directive:
+<<<<<<< HEAD
+=======
+  ### No inline
+  - no-inline:
+    - RenewProperties
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   ### Rename Cmdlet names
   - where:
       verb: Get
@@ -96,20 +103,32 @@ directive:
           - PurchaseDateTime
           - Term
           - UserFriendlyAppliedScopeType
+<<<<<<< HEAD
           - AppliedScopePropertiesDisplayName
           - SkuName1
           - Amount
           - CurrencyCode
+=======
+          - AppliedScopePropertyDisplayName
+          - SkuName
+          - CommitmentAmount
+          - CommitmentCurrencyCode
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         labels:
           DisplayName: Name
           DisplayProvisioningState: Status
           ExpiryDateTime: ExpiryDate
           PurchaseDateTime: PurchaseDate
           UserFriendlyAppliedScopeType: Scope
+<<<<<<< HEAD
           SkuName1: ProductName
           Amount: CommitmentAmount
           CurrencyCode: CommitmentCurrency
           AppliedScopePropertiesDisplayName: AppliedScopeDisplayName
+=======
+          SkuName: ProductName
+          AppliedScopePropertyDisplayName: AppliedScopeDisplayName
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   - where:
       model-name: SavingsPlanOrderModel
     set:

@@ -32,7 +32,11 @@ This document describes the changes between the 6.x versions of AzureRM and Az v
 
 ## General breaking changes
 ### Cmdlet Noun Prefix Changes
+<<<<<<< HEAD
 In AzureRM, cmdlets used either 'AzureRM' or 'Azure' as a noun prefix.  Az simplifies and normalizes cmndlet names, so that all cmdlets use 'Az' as their cmdlet noun prefix. 
+=======
+In AzureRM, cmdlets used either 'AzureRM' or 'Azure' as a noun prefix.  Az simplifies and normalizes cmdlet names, so that all cmdlets use 'Az' as their cmdlet noun prefix. 
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 For example:
 ```powershell
 Get-AzureRmVM
@@ -142,7 +146,11 @@ RequiredModules = @(@{ModuleName="Az.Accounts"; ModuleVersion="1.0.0"})
 The tooling for these services are no longer actively supported.  Customers are encouraged to move to alternative services as soon as it is convenient.
 
 ### Windows PowerShell 5.1 and .NET Framework 4.7.2
+<<<<<<< HEAD
 - Using Az with Windows PowerShell 5.1 requires the installation of .NET Framework 4.7.2. However, using Az with PowerShell Core does not require .NET Framework 4.7.2. 
+=======
+- Using Az with Windows PowerShell 5.1 requires the installation of .NET Framework 4.7.2. However, using Az with PowerShell 7 does not require .NET Framework 4.7.2. 
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ### Temporary removal of User login using PSCredential
 - Due to changes in the authentication flow for .NET Standard, we are temporarily removing user login via PSCredential. This capability will be re-introduced in the 1/15/2019 release for Windows PowerShell 5.1. This is discussed in detail in [this issue.](https://github.com/Azure/azure-powershell/issues/7430)
@@ -158,7 +166,11 @@ The tooling for these services are no longer actively supported.  Customers are 
   - Set-AzureRmApiManagementHostnames
   - Update-AzureRmApiManagementDeployment
   - Import-AzureRmApiManagementHostnameCertificate
+<<<<<<< HEAD
   - Use **Set-AzApiManagement** cmdlet to set these properites instead
+=======
+  - Use **Set-AzApiManagement** cmdlet to set these properties instead
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 - Following properties were removed
   - Removed property `PortalHostnameConfiguration`, `ProxyHostnameConfiguration`, `ManagementHostnameConfiguration` and `ScmHostnameConfiguration` of type `PsApiManagementHostnameConfiguration` from `PsApiManagementContext`. Instead use `PortalCustomHostnameConfiguration`, `ProxyCustomHostnameConfiguration`, `ManagementCustomHostnameConfiguration` and `ScmCustomHostnameConfiguration` of type `PsApiManagementCustomHostNameConfiguration`.
   - Removed property `StaticIPs` from PsApiManagementContext. The property has been split into `PublicIPAddresses` and `PrivateIPAddresses`.
@@ -204,7 +216,11 @@ The tooling for these services are no longer actively supported.  Customers are 
   New-AzDataLakeStoreAccount -Tag @{TagName="TagValue"}
   ```
 
+<<<<<<< HEAD
 - Removed deprecated properties ```Identity```, ```EncryptionState```, ```EncrypotionProvisioningState```, ```EncryptionConfig```, ```FirewallState```, ```FirewallRules```, ```VirtualNetworkRules```, ```TrustedIdProviderState```, ```TrustedIdProviders```, ```DefaultGroup```, ```NewTier```, ```CurrentTier```, ```FirewallAllowAzureIps``` from ```PSDataLakeStoreAccountBasic``` object.  Any script that 
+=======
+- Removed deprecated properties ```Identity```, ```EncryptionState```, ```EncryptionProvisioningState```, ```EncryptionConfig```, ```FirewallState```, ```FirewallRules```, ```VirtualNetworkRules```, ```TrustedIdProviderState```, ```TrustedIdProviders```, ```DefaultGroup```, ```NewTier```, ```CurrentTier```, ```FirewallAllowAzureIps``` from ```PSDataLakeStoreAccountBasic``` object.  Any script that 
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 uses the ```PSDatalakeStoreAccount``` returned from ```Get-AzDataLakeStoreAccount``` should not reference these properties.
 
 ### Az.KeyVault (previously AzureRM.KeyVault)

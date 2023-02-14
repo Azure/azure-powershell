@@ -1,0 +1,11 @@
+﻿{
+  "properties": {
+    "batchGroupName": "DEFAULT",
+    "releaseCriteria": {
+      "recurrence": {
+        "frequency": "Week",
+        "interval": 1
+      }
+    }
+  }
+}

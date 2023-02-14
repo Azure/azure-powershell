@@ -1,11 +1,19 @@
 ﻿function Edit-AzDataProtectionPolicyTriggerClientObject{
+<<<<<<< HEAD
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupPolicy')]
+=======
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupPolicy')]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates Backup schedule of an existing backup policy.')]
 
     param (
         [Parameter(Mandatory, HelpMessage='Backup Policy object.')]
+<<<<<<< HEAD
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupPolicy]
+=======
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupPolicy]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         ${Policy},
 
         [Parameter(Mandatory, HelpMessage='Schedule to be associated to backup policy.')]

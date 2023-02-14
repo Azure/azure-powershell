@@ -16,11 +16,16 @@ Creates or updates a new Event Hub as a nested resource within a Namespace.
 New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
  [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>]
+<<<<<<< HEAD
  [-PartitionCount <Int64>] [-RetentionDescriptionCleanupPolicy <CleanupPolicyRetentionDescription>]
  [-RetentionDescriptionRetentionTimeInHour <Int64>]
  [-RetentionDescriptionTombstoneRetentionTimeInHour <Int32>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
  [-Status <EntityStatus>] [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+=======
+ [-PartitionCount <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>]
+ [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 
 ## DESCRIPTION
@@ -47,7 +52,11 @@ Id                           : /subscriptions/subscriptionId/resourceGroups/myRe
 IntervalInSeconds            :
 Location                     : centralus
 MessageRetentionInDays       : 6
+<<<<<<< HEAD
 Name                         : myEventHub
+=======
+Name                         : myFirstEventHub
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 PartitionCount               : 5
 PartitionId                  : {0}
 ResourceGroupName            : myResourceGroup
@@ -60,7 +69,11 @@ Creates a new eventhub entity `myEventHub` on namespace `myNamespace`.
 
 ### Example 2: Create EventHub with Capture Enabled
 ```powershell
+<<<<<<< HEAD
 New-AzEventHub -Name myFirstEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+=======
+New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 
 ```output
@@ -86,6 +99,7 @@ SkipEmptyArchive             : true
 Status                       : Active
 ```
 
+<<<<<<< HEAD
 Creates a new eventhub entity `myFirstEventHub` on namespace `myNamespace` with capture enabled.
 
 ### Example 3: Create EventHub with Compact Cleanup Policy
@@ -171,6 +185,9 @@ UpdatedAt                                        : 1/10/2023 11:38:56 AM
 ```
 
 Creates a new eventhub entity `myFirstEventHub` on namespace `myNamespace` with Delete Cleanup Policy.
+=======
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with capture enabled.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ## PARAMETERS
 
@@ -358,6 +375,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -RetentionDescriptionCleanupPolicy
 Enumerates the possible values for cleanup policy
 
@@ -407,6 +425,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -SizeLimitInBytes
 The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
 
@@ -521,7 +541,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub
+=======
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ## NOTES
 

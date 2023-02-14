@@ -26,10 +26,15 @@ Create an in-memory object for AdlsGen1CredentialScan.
 
 ### Example 1: Create AdlsGen1 Credential scan object
 ```powershell
+<<<<<<< HEAD
 New-AzPurviewAdlsGen1CredentialScanObject -Kind 'AdlsGen1Credential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
 ```
 
 ```output
+=======
+PS C:\> New-AzPurviewAdlsGen1CredentialScanObject -Kind 'AdlsGen1Credential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

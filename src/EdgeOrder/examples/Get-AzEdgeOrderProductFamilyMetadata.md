@@ -1,10 +1,16 @@
 ### Example 1: Gets available product families on procured subscription
 ```powershell
+<<<<<<< HEAD
 $productFamilyMeta = Get-AzEdgeOrderProductFamilyMetadata -SubscriptionId SubscriptionId
 $productFamilyMeta.HierarchyInformation
 ```
 
 ```output
+=======
+PS C:\> $productFamilyMeta = Get-AzEdgeOrderProductFamilyMetadata -SubscriptionId SubscriptionId
+PS C:\> $productFamilyMeta.HierarchyInformation
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ConfigurationName ProductFamilyName ProductLineName ProductName
 ----------------- ----------------- --------------- -----------
                   azurestackedge

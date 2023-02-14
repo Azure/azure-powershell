@@ -17,7 +17,11 @@ Id                           : /subscriptions/subscriptionId/resourceGroups/myRe
 IntervalInSeconds            :
 Location                     : centralus
 MessageRetentionInDays       : 6
+<<<<<<< HEAD
 Name                         : myEventHub
+=======
+Name                         : myFirstEventHub
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 PartitionCount               : 5
 PartitionId                  : {0}
 ResourceGroupName            : myResourceGroup
@@ -31,7 +35,11 @@ Creates a new eventhub entity `myEventHub` on namespace `myNamespace`.
 
 ### Example 2: Create EventHub with Capture Enabled
 ```powershell
+<<<<<<< HEAD
 New-AzEventHub -Name myFirstEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+=======
+New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 
 ```output
@@ -57,6 +65,7 @@ SkipEmptyArchive             : true
 Status                       : Active
 ```
 
+<<<<<<< HEAD
 Creates a new eventhub entity `myFirstEventHub` on namespace `myNamespace` with capture enabled.
 
 ### Example 3: Create EventHub with Compact Cleanup Policy
@@ -140,3 +149,6 @@ Type                                             : Microsoft.EventHub/namespaces
 UpdatedAt                                        : 1/10/2023 11:38:56 AM
 ```
 Creates a new eventhub entity `myFirstEventHub` on namespace `myNamespace` with Delete Cleanup Policy.
+=======
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with capture enabled.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91

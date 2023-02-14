@@ -3,7 +3,11 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
+<<<<<<< HEAD
 $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzProviderHubResourceTypeRegistration.Nested.Recording.json'
+=======
+$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzProviderHubCustomRollout.Recording.json'
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File

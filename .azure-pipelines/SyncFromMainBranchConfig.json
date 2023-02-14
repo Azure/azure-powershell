@@ -1,11 +1,28 @@
 {
     "SyncPath": [
+<<<<<<< HEAD
         "tools",
         ".azure-pipelines",
         "src/lib",
         "build.proj"
+=======
+        ".ci-config.json",
+        "tools",
+        ".azure-pipelines",
+        "src/lib",
+        "src/shared",
+        "build.proj",
+        "src/Az.Test.props",
+        "src/Az.autorest.hybrid.props",
+        "src/psm1.props",
+        "NuGet.Config"
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     ],
     "UnSyncPath": [
         ".azure-pipelines/SyncFromMainBranchConfig.json"
     ]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91

@@ -1,12 +1,20 @@
 ﻿function Edit-AzDataProtectionPolicyTagClientObject{
+<<<<<<< HEAD
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupPolicy')]
+=======
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupPolicy')]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Adds or removes schedule tag in an existing backup policy.')]
 
     param(
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Backup Policy Object.')]
         [Parameter(ParameterSetName='RemoveTag', Mandatory, HelpMessage='Backup Policy Object.')]
+<<<<<<< HEAD
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupPolicy]
+=======
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupPolicy]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         ${Policy},
 
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Name of the Schedule tag.')]
@@ -19,7 +27,11 @@
         ${RemoveRule},
 
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Criterias to be associated with the schedule tag.')]
+<<<<<<< HEAD
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IScheduleBasedBackupCriteria[]]
+=======
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IScheduleBasedBackupCriteria[]]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         ${Criteria}
     )
 
@@ -83,7 +95,11 @@
                 
                 if($tagIndex -eq -1)
                 {
+<<<<<<< HEAD
                     $tagCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.TaggingCriteria]::new()
+=======
+                    $tagCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.TaggingCriteria]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                     $tagCriteria.TaggingPriority = GetTaggingPriority -Name $Name
                     $tagCriteria.Criterion = $Criteria
                     $tagCriteria.TagInfoTagName = $Name

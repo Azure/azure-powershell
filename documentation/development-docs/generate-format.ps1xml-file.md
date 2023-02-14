@@ -14,7 +14,11 @@ Our team trends to make the cmdlets output more convenient and consistent across
 
 # How table view output works by default.
 
+<<<<<<< HEAD
  As an example let's consider [Get-AzSubscription](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Accounts/Subscription/GetAzureRMSubscription.cs) cmdlet. 
+=======
+ As an example let's consider [Get-AzSubscription](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Accounts/Subscription/GetAzureRMSubscription.cs) cmdlet. 
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 The cmdlet class specifies the ```PSAzureSubscription``` class as an output type with the **OutputType attribute**:
 
@@ -31,7 +35,11 @@ namespace Microsoft.Azure.Commands.Profile
 // omitted for brevity the rest of the definition.
 ```
 
+<<<<<<< HEAD
 The [PSAzureSubscription](https://github.com/Azure/azure-powershell-common/blob/master/src/Authentication.ResourceManager/Models/PSAzureSubscription.cs) class contains several public properties. 
+=======
+The [PSAzureSubscription](https://github.com/Azure/azure-powershell-common/blob/main/src/Authentication.ResourceManager/Models/PSAzureSubscription.cs) class contains several public properties. 
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 * Id
 * Name
@@ -106,9 +114,15 @@ The default table output reveals some issues:
 
 # File format.ps1xml.
 
+<<<<<<< HEAD
 Powershell allows to configure cmdlets output view with the [format.ps1xml](https://msdn.microsoft.com/en-us/library/gg580992) files.
 
 To provide a better PowerShell Azure cmdlets output experience we worked out a mechanism to quickly generate a [format.ps1xml](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_format.ps1xml?view=powershell-6) file:
+=======
+Powershell allows to configure cmdlets output view with the [format.ps1xml](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_format.ps1xml) files.
+
+To provide a better PowerShell Azure cmdlets output experience we worked out a mechanism to quickly generate a format.ps1xml file:
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 
 1. Mark all the cmdlet output type public properties that should go to the table output with the *Ps1XmlAttribute* attribute.
@@ -122,7 +136,11 @@ To provide a better PowerShell Azure cmdlets output experience we worked out a m
 
 #  Ps1XmlAttribute attribute.
 
+<<<<<<< HEAD
 The key element of the mechanism is the **Ps1XmlAttribute** attribute located in the [Commands.Common](https://github.com/Azure/azure-powershell-common/blob/master/src/Common/Attributes/Ps1XmlAttribute.cs) project. Below is the attribute definition:
+=======
+The key element of the mechanism is the **Ps1XmlAttribute** attribute located in the [Commands.Common](https://github.com/Azure/azure-powershell-common/blob/main/src/Common/Attributes/Ps1XmlAttribute.cs) project. Below is the attribute definition:
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ```Cs
 namespace Microsoft.WindowsAzure.Commands.Common.Attributes
@@ -223,7 +241,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
   ```
 * If **Label** is not specified - the property name will be used. 
 
+<<<<<<< HEAD
 * Since the **Ps1Xml attribute** definition is located in the [Commands.Common](https://github.com/Azure/azure-powershell-common/tree/master/src/Common) project and the Command.Common project is likely referenced from your project - to make the attribute visible - you only need to add ```using Microsoft.WindowsAzure.Commands.Common.Attributes;``` statement.
+=======
+* Since the **Ps1Xml attribute** definition is located in the [Commands.Common](https://github.com/Azure/azure-powershell-common/tree/main/src/Common) project and the Command.Common project is likely referenced from your project - to make the attribute visible - you only need to add ```using Microsoft.WindowsAzure.Commands.Common.Attributes;``` statement.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ## Properties of complex types.
 
@@ -409,7 +431,11 @@ FunctionsToExport = @()
 PS C:\> Import-Module E:\git\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1
 ```
 
+<<<<<<< HEAD
 4. Try your cmdlet out. In our example it is Get-AuzreRmSubsription:
+=======
+4. Try your cmdlet out. In our example it is Get-AzureRmSubscription:
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```Powershell
 PS C:\> Get-AzSubscription
 
@@ -425,12 +451,21 @@ c9cbd920-c00c-427c-852b-c329e824c3a8 Azure SDK Powershell Test Enabled 72f988bf-
 
 **Note:** All the paths used in the example in the section are under **_azure-powershell/src/Accounts_**
 
+<<<<<<< HEAD
 1. Copy the generated file into your project source folder. In our example this is [src/Accounts/Accounts](https://github.com/Azure/azure-powershell/tree/master/src/Accounts/Accounts) folder.
 
 2. Reference the generated format.ps1xml file form your project. In our example this is [Accounts.csproj](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Accounts/Accounts.csproj) file.
 - **Note**: This is now automatically referenced based on `Az.props` being imported in your csproj file.
 
 3. Add the generated format.ps1xml file to your source module manifest **FormatsToProcess** variable. In our example this is [src/Accounts/Az.Accounts.psd1](https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Az.Accounts.psd1) file:
+=======
+1. Copy the generated file into your project source folder. In our example this is [src/Accounts/Accounts](https://github.com/Azure/azure-powershell/tree/main/src/Accounts/Accounts) folder.
+
+2. Reference the generated format.ps1xml file form your project. In our example this is [Accounts.csproj](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Accounts/Accounts.csproj) file.
+- **Note**: This is now automatically referenced based on `Az.props` being imported in your csproj file.
+
+3. Add the generated format.ps1xml file to your source module manifest **FormatsToProcess** variable. In our example this is [src/Accounts/Az.Accounts.psd1](https://github.com/Azure/azure-powershell/blob/main/src/Accounts/Az.Accounts.psd1) file:
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```Powershell
 # script omitted for brevity
 

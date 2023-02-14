@@ -1,0 +1,75 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/West%20Central%20US/availableDelegations?api-version=2020-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdCUyMENlbnRyYWwlMjBVUy9hdmFpbGFibGVEZWxlZ2F0aW9ucz9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f1f52f8a-7f6f-4f62-8c1f-cc9c282bcf32"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a04d19c2-5166-4a68-9cc7-0b8a88a1a17a"
+        ],
+        "x-ms-correlation-request-id": [
+          "21172e3c-0e70-4572-9d5b-c9d7c7000b17"
+        ],
+        "x-ms-arm-service-request-id": [
+          "a04a364c-169b-43d8-ba00-53d4fba00058"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200607T160428Z:21172e3c-0e70-4572-9d5b-c9d7c7000b17"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 07 Jun 2020 16:04:28 GMT"
+        ],
+        "Content-Length": [
+          "8829"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Microsoft.Web.serverFarms\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.Web.serverFarms\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Web/serverFarms\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.ContainerInstance.containerGroups\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.ContainerInstance.containerGroups\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.ContainerInstance/containerGroups\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Netapp.volumes\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.Netapp.volumes\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Netapp/volumes\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/networkinterfaces/*\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.HardwareSecurityModules.dedicatedHSMs\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.HardwareSecurityModules.dedicatedHSMs\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/networkinterfaces/*\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.ServiceFabricMesh.networks\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.ServiceFabricMesh.networks\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.ServiceFabricMesh/networks\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Logic.integrationServiceEnvironments\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.Logic.integrationServiceEnvironments\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Logic/integrationServiceEnvironments\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Batch.batchAccounts\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.Batch.batchAccounts\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Batch/batchAccounts\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Sql.managedInstances\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.Sql.managedInstances\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Sql/managedInstances\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Web.hostingEnvironments\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.Web.hostingEnvironments\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Web/hostingEnvironments\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.BareMetal.CrayServers\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.BareMetal.CrayServers\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.BareMetal/CrayServers\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/networkinterfaces/*\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Databricks.workspaces\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.Databricks.workspaces\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Databricks/workspaces\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.BareMetal.AzureVMware\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.BareMetal.AzureVMware\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.BareMetal/AzureVMware\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/networkinterfaces/*\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.StreamAnalytics.streamingJobs\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.StreamAnalytics.streamingJobs\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.StreamAnalytics/streamingJobs\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.DBforPostgreSQL.serversv2\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.DBforPostgreSQL.serversv2\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.DBforPostgreSQL/serversv2\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.AzureCosmosDB.clusters\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.AzureCosmosDB.clusters\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.AzureCosmosDB/clusters\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.MachineLearningServices.workspaces\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.MachineLearningServices.workspaces\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.MachineLearningServices/workspaces\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.DBforPostgreSQL.singleServers\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.DBforPostgreSQL.singleServers\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.DBforPostgreSQL/singleServers\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.ApiManagement.service\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.ApiManagement.service\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.ApiManagement/service\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Synapse.workspaces\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/availableDelegations/Microsoft.Synapse.workspaces\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Synapse/workspaces\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "947d47b4-7883-4bb9-9d85-c5e8e2f572ce"
+  }
+}

@@ -2,11 +2,19 @@
 ```powershell
 $t1 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId IncomingMessages -RateLimitThreshold 10000
 $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
+<<<<<<< HEAD
 New-AzEventHubApplicationGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -Name myAppGroup -ClientAppGroupIdentifier NamespaceSASKeyName=a -Policy $t1,$t2
 ```
 
 ```output
 ClientAppGroupIdentifier     : NamespaceSASKeyName=a
+=======
+New-AzEventHubApplicationGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -Name myAppGroup -ClientAppGroupIdentifier SASKeyName=a -Policy $t1,$t2
+```
+
+```output
+ClientAppGroupIdentifier     : SASKeyName=a
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
                                myAppGroup
 IsEnabled                    : True

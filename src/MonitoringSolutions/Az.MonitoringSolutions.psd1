@@ -10,7 +10,11 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.MonitoringSolutions.private.dll'
+<<<<<<< HEAD
   RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; })
+=======
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   FormatsToProcess = './Az.MonitoringSolutions.format.ps1xml'
   FunctionsToExport = 'Get-AzMonitorLogAnalyticsSolution', 'New-AzMonitorLogAnalyticsSolution', 'Remove-AzMonitorLogAnalyticsSolution', 'Update-AzMonitorLogAnalyticsSolution'
   AliasesToExport = '*'

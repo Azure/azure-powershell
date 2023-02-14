@@ -1,0 +1,89 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Marketplace/privateStores?api-version=2020-01-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFya2V0cGxhY2UvcHJpdmF0ZVN0b3Jlcz9hcGktdmVyc2lvbj0yMDIwLTAxLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b91baf8f-4f98-4e27-904e-64598808a9de"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Marketplace.MarketplaceManagementClient/1.0.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "x-ms-version": [
+          "1.0.0.1039 (AzureUX-MarketPlaceRP:master.0c59859b5.200612-1805)"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=410a594c89e30755dbf2fda1f5649d570096e04aecb7eba54f97ba616b56f09f;Path=/;HttpOnly;Domain=df.marketplacerp.azure-test.net"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "789fc0b5-db16-404f-b9fc-c14320b1c7a5"
+        ],
+        "x-ms-correlation-request-id": [
+          "789fc0b5-db16-404f-b9fc-c14320b1c7a5"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20200614T134424Z:789fc0b5-db16-404f-b9fc-c14320b1c7a5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sun, 14 Jun 2020 13:44:23 GMT"
+        ],
+        "Content-Length": [
+          "662"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Marketplace/privateStores/a70d384d-ec34-47dd-9d38-ec6df452cba1\",\r\n      \"name\": \"a70d384d-ec34-47dd-9d38-ec6df452cba1\",\r\n      \"type\": \"Microsoft.Marketplace/privateStores\",\r\n      \"properties\": {\r\n        \"privateStoreId\": \"a70d384d-ec34-47dd-9d38-ec6df452cba1\",\r\n        \"availability\": \"enabled\",\r\n        \"eTag\": \"\\\"30007ce2-0000-0100-0000-5ee6126f0000\\\"\",\r\n        \"privateStoreName\": \"\",\r\n        \"tenantIds\": [\r\n          \"bb0c79d9-b724-425d-ab37-8b80ccacd03a\",\r\n          \"18ae5cc6-6244-4bf0-b379-40a4f6a586de\",\r\n          \"3bc6b734-0508-42db-849e-7a60818a96fc\"\r\n        ],\r\n        \"tenantTag\": \"default.Tenant\",\r\n        \"customerTag\": \"\",\r\n        \"bigCatPricingAudienceClaim\": \"Direct-TSZ\",\r\n        \"hasCommercialAssociation\": false,\r\n        \"hasMultiTenantAssociation\": true,\r\n        \"isGov\": false\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "bc17bb69-1264-4f90-a9f6-0e51e29d5281"
+  }
+}

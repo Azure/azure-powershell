@@ -1,10 +1,16 @@
 ### Example 1: Get order details
 ```powershell
+<<<<<<< HEAD
 $order = Get-AzEdgeOrder -Name pwOrderItem11 -SubscriptionId "SubscriptionId" -Location "eastus" -ResourceGroupName "resourceGroupName"
 $order | Format-List
 ```
 
 ```output
+=======
+PS C:\> $order = Get-AzEdgeOrder -Name pwOrderItem11 -SubscriptionId "SubscriptionId" -Location "eastus" -ResourceGroupName "resourceGroupName"
+PS C:\> $order | fl
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 CurrentStageDisplayName      :
 CurrentStageName             : Placed
 CurrentStageStartTime        : 11/16/2021 10:35:00 AM

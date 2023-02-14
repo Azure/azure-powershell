@@ -33,7 +33,11 @@ Updates an account
 
 ### Example 1: Update a purview account
 ```powershell
+<<<<<<< HEAD
 Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"} | Format-List 
+=======
+Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"} | fl 
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 
 ```output

@@ -1,0 +1,585 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/jobs?api-version=2018-12-01.8.0",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxOC0xMi0wMS44LjA=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"id\": \"deleteNodeFile\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "client-request-id": [
+          "e58637de-1e11-4b69-8354-10a27552f78f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; charset=utf-8"
+        ],
+        "Content-Length": [
+          "97"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "ETag": [
+          "0x8D688AFDBA5C37F"
+        ],
+        "Location": [
+          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/job-1"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "bf334c90-54b3-47e9-8a3e-5ab54eed3e0c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "DataServiceId": [
+          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/job-1"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ],
+        "Last-Modified": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/jobs/deleteNodeFile/tasks?api-version=2018-12-01.8.0",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRlTm9kZUZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxOC0xMi0wMS44LjA=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"id\": \"task1\",\r\n  \"commandLine\": \"cmd /c echo \\\"test\\\" > testFile.txt\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "client-request-id": [
+          "3cbd4a8b-eb34-4fe2-b4a1-ae62d84ff2cf"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; charset=utf-8"
+        ],
+        "Content-Length": [
+          "188"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "ETag": [
+          "0x8D688AFDBCF97FB"
+        ],
+        "Location": [
+          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/deleteNodeFile/tasks/task1"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "b4cf6eeb-382e-4de2-8b87-c4af88451e17"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "DataServiceId": [
+          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/deleteNodeFile/tasks/task1"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ],
+        "Last-Modified": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/jobs/deleteNodeFile/tasks/task1?api-version=2018-12-01.8.0",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRlTm9kZUZpbGUvdGFza3MvdGFzazE/YXBpLXZlcnNpb249MjAxOC0xMi0wMS44LjA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "c63ec97a-c2eb-4687-a6eb-37df0aa72e0d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "ETag": [
+          "0x8D688AFDBCF97FB"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "b2c595bc-d3c1-4c95-8ff6-bea74d40dd4a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"task1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/deleteNodeFile/tasks/task1\",\r\n  \"eTag\": \"0x8D688AFDBCF97FB\",\r\n  \"creationTime\": \"2019-02-02T01:43:40.7973371Z\",\r\n  \"lastModified\": \"2019-02-02T01:43:40.7973371Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2019-02-02T01:43:40.7973371Z\",\r\n  \"commandLine\": \"cmd /c echo \\\"test\\\" > testFile.txt\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P7D\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/deleteNodeFile/tasks/task1?api-version=2018-12-01.8.0",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRlTm9kZUZpbGUvdGFza3MvdGFzazE/YXBpLXZlcnNpb249MjAxOC0xMi0wMS44LjA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "31686c97-3688-4bee-b85f-c5b71ec70fa1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:43 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "ETag": [
+          "0x8D688AFDBCF97FB"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "89be365a-05fe-4f88-bdb5-4aa788018815"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:43 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"task1\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/deleteNodeFile/tasks/task1\",\r\n  \"eTag\": \"0x8D688AFDBCF97FB\",\r\n  \"creationTime\": \"2019-02-02T01:43:40.7973371Z\",\r\n  \"lastModified\": \"2019-02-02T01:43:40.7973371Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2019-02-02T01:43:42.327737Z\",\r\n  \"previousState\": \"running\",\r\n  \"previousStateTransitionTime\": \"2019-02-02T01:43:40.991274Z\",\r\n  \"commandLine\": \"cmd /c echo \\\"test\\\" > testFile.txt\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  },\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P7D\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2019-02-02T01:43:40.991274Z\",\r\n    \"endTime\": \"2019-02-02T01:43:42.327737Z\",\r\n    \"exitCode\": 0,\r\n    \"result\": \"success\",\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  },\r\n  \"nodeInfo\": {\r\n    \"affinityId\": \"TVM:tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d\",\r\n    \"nodeUrl\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d\",\r\n    \"poolId\": \"testPool\",\r\n    \"nodeId\": \"tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d\",\r\n    \"taskRootDirectory\": \"workitems\\\\deleteNodeFile\\\\job-1\\\\task1\",\r\n    \"taskRootDirectoryUrl\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d/files/workitems/deleteNodeFile/job-1/task1\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/deleteNodeFile/tasks?api-version=2018-12-01.8.0&$filter=id%20eq%20%27task1%27&$select=id%2Cstate",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRlTm9kZUZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxOC0xMi0wMS44LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjcmJHNlbGVjdD1pZCUyQ3N0YXRl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "f4f849c6-73d8-43b1-9b91-6c41ae87d7d8"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:41 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "95f5ee95-4a03-4723-97d8-61f742562c75"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"task1\",\r\n      \"state\": \"running\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/deleteNodeFile/tasks?api-version=2018-12-01.8.0&$filter=id%20eq%20%27task1%27&$select=id%2Cstate",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRlTm9kZUZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxOC0xMi0wMS44LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjcmJHNlbGVjdD1pZCUyQ3N0YXRl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "f5f76a69-470a-4ff8-8b05-b3940a52c2ed"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:43 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "3a7fde98-c0a9-4fd2-bf78-7c363e2e0c0f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:43 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"task1\",\r\n      \"state\": \"completed\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/pools/testPool/nodes/tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d/files/workitems%5CdeleteNodeFile%5Cjob-1%5Ctask1%5Cwd%5CtestFile.txt?api-version=2018-12-01.8.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzNlZjYzOGEwYmNkMzMwNDI1NzA0NmQyZjNmNTgwNGU4NjE4Zjc4ZjQxOTBhZDAwODFmNWI2MWFlMjU0MjdlMTdfZC9maWxlcy93b3JraXRlbXMlNUNkZWxldGVOb2RlRmlsZSU1Q2pvYi0xJTVDdGFzazElNUN3ZCU1Q3Rlc3RGaWxlLnR4dD9hcGktdmVyc2lvbj0yMDE4LTEyLTAxLjguMA==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "cacebdeb-c957-4c5b-8d14-9bc46ce89a8c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:44 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "e8216ae5-47a4-4475-91ee-0b55fa283c32"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "ocp-creation-time": [
+          "Sat, 02 Feb 2019 01:43:42 GMT"
+        ],
+        "ocp-batch-file-isdirectory": [
+          "False"
+        ],
+        "ocp-batch-file-url": [
+          "https%3A%2F%2Fmatthchrwestcentralus.westcentralus.batch.azure.com%2Fpools%2FtestPool%2Fnodes%2Ftvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d%2Ffiles%2Fworkitems%2FdeleteNodeFile%2Fjob-1%2Ftask1%2Fwd%2FtestFile.txt"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:44 GMT"
+        ],
+        "Content-Length": [
+          "9"
+        ],
+        "Content-Type": [
+          "text/plain"
+        ],
+        "Last-Modified": [
+          "Sat, 02 Feb 2019 01:43:42 GMT"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/pools/testPool/nodes/tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d/files/workitems%5CdeleteNodeFile%5Cjob-1%5Ctask1%5Cwd%5CtestFile.txt?recursive=false&api-version=2018-12-01.8.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzNlZjYzOGEwYmNkMzMwNDI1NzA0NmQyZjNmNTgwNGU4NjE4Zjc4ZjQxOTBhZDAwODFmNWI2MWFlMjU0MjdlMTdfZC9maWxlcy93b3JraXRlbXMlNUNkZWxldGVOb2RlRmlsZSU1Q2pvYi0xJTVDdGFzazElNUN3ZCU1Q3Rlc3RGaWxlLnR4dD9yZWN1cnNpdmU9ZmFsc2UmYXBpLXZlcnNpb249MjAxOC0xMi0wMS44LjA=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "dcd0a8e4-b495-422b-9801-17923d6bc88c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:45 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "4006a8a4-9f17-4269-9b84-73ad265f53fd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:44 GMT"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/pools/testPool/nodes/tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d/files?recursive=false&api-version=2018-12-01.8.0&$filter=startswith%28name%2C%27workitems%5CdeleteNodeFile%5Cjob-1%5Ctask1%5Cwd%5CtestFile.txt%27%29",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzNlZjYzOGEwYmNkMzMwNDI1NzA0NmQyZjNmNTgwNGU4NjE4Zjc4ZjQxOTBhZDAwODFmNWI2MWFlMjU0MjdlMTdfZC9maWxlcz9yZWN1cnNpdmU9ZmFsc2UmYXBpLXZlcnNpb249MjAxOC0xMi0wMS44LjAmJGZpbHRlcj1zdGFydHN3aXRoJTI4bmFtZSUyQyUyN3dvcmtpdGVtcyU1Q2RlbGV0ZU5vZGVGaWxlJTVDam9iLTElNUN0YXNrMSU1Q3dkJTVDdGVzdEZpbGUudHh0JTI3JTI5",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "e39c4d20-c92d-41ca-98b8-90c570470742"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:45 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "d98aff56-0cfd-494f-803b-eb3c43c04092"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:45 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#files\",\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/deleteNodeFile?api-version=2018-12-01.8.0",
+      "EncodedRequestUri": "L2pvYnMvZGVsZXRlTm9kZUZpbGU/YXBpLXZlcnNpb249MjAxOC0xMi0wMS44LjA=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "38cb27c9-7cd8-43b7-8810-2b8653c9a83a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:45 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "edbd5f0f-a492-4ff8-ad4e-6748d999b4a3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:45 GMT"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
+    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
+    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
+  }
+}

@@ -16,17 +16,27 @@ Updates an EventHub Entity
 ```
 Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
+<<<<<<< HEAD
  [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>]
  [-RetentionDescriptionRetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
  [-Status <EntityStatus>] [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+=======
+ [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>]
+ [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>] [-StorageAccountResourceId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHub -InputObject <IEventHubIdentity> [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-CaptureEnabled] [-DestinationName <String>] [-Encoding <EncodingCaptureDescription>]
+<<<<<<< HEAD
  [-IntervalInSeconds <Int32>] [-RetentionDescriptionRetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>]
+=======
+ [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>] [-SizeLimitInBytes <Int32>]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
  [-SkipEmptyArchive] [-Status <EntityStatus>] [-StorageAccountResourceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -239,6 +249,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
+=======
+### -MessageRetentionInDays
+Number of days to retain the events for this Event Hub, value should be 1 to 7 days
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -Name
 The name of EventHub Entity.
 
@@ -300,6 +328,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -RetentionDescriptionRetentionTimeInHour
 Number of days to retain the events for this Event Hub, value should be 1 to 7 days
 
@@ -315,6 +344,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -SizeLimitInBytes
 The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
 
@@ -430,7 +461,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub
+=======
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ## NOTES
 

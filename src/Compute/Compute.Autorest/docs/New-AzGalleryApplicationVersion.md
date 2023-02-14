@@ -432,7 +432,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
+<<<<<<< HEAD
 TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is going to be replicated to. This property is updatable.
+=======
+`TARGETREGION <ITargetRegion[]>`: The target regions where the Image Version is going to be replicated to. This property is updatable.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   - `Name <String>`: The name of the region.
   - `[EncryptionDataDiskImage <IDataDiskImageEncryption[]>]`: A list of encryption specifications for data disk images.
     - `Lun <Int32>`: This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.

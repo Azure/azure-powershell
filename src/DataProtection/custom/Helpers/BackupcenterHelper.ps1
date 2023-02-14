@@ -107,7 +107,11 @@ function CheckResourceGraphModuleDependency {
     param() 
 
     process {
+<<<<<<< HEAD
         $module = Get-InstalledModule | Where-Object { $_.Name -eq "Az.ResourceGraph" }
+=======
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.ResourceGraph" }
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         if ($module -eq $null) {
             $message = "Az.ResourceGraph Module must be installed to run this command. Please run 'Install-Module -Name Az.ResourceGraph' to install and continue."
             throw $message
@@ -120,7 +124,11 @@ function CheckResourcesModuleDependency {
     param() 
 
     process {
+<<<<<<< HEAD
         $module = Get-InstalledModule | Where-Object { $_.Name -eq "Az.Resources" }
+=======
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.Resources" }
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         if ($module -eq $null) {
             $message = "Az.Resources Module must be installed to run this command. Please run 'Install-Module -Name Az.Resources' to install and continue."
             throw $message
@@ -133,7 +141,11 @@ function CheckPostgreSqlModuleDependency {
     param() 
 
     process {
+<<<<<<< HEAD
         $module = Get-InstalledModule | Where-Object { $_.Name -eq "Az.PostgreSql" }
+=======
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.PostgreSql" }
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         if ($module -eq $null) {
             $message = "Az.PostgreSql Module must be installed to run this command. Please run 'Install-Module -Name Az.PostgreSql' to install and continue."
             throw $message
@@ -146,7 +158,11 @@ function CheckKeyVaultModuleDependency {
     param() 
 
     process {
+<<<<<<< HEAD
         $module = Get-InstalledModule | Where-Object { $_.Name -eq "Az.KeyVault" }
+=======
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.KeyVault" }
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         if ($module -eq $null) {
             $message = "Az.KeyVault Module must be installed to run this command. Please run 'Install-Module -Name Az.KeyVault' to install and continue."
             throw $message

@@ -1,10 +1,17 @@
 ### Example 1: Update-AzConnectedNetworkDeviceTag via Resource name and Device name
 ```powershell
+<<<<<<< HEAD
 $tags = @{ NewTag = "NewTagValue"}
 Update-AzConnectedNetworkDeviceTag -DeviceName "myMecDevice" -ResourceGroupName "myResources" -Tag $tags
 ```
 
 ```output
+=======
+PS C:\> $tags = @{ NewTag = "NewTagValue"}
+PS C:\> Update-AzConnectedNetworkDeviceTag -DeviceName "myMecDevice" -ResourceGroupName "myResources" -Tag $tags
+
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMecDevice
 Location                     : eastus
@@ -27,12 +34,19 @@ Creating an identity with field NewTag and value NewTagValue. Updating the tag o
 
 ### Example 2: Update-AzConnectedNetworkDeviceTag via Identity
 ```powershell
+<<<<<<< HEAD
 $tags = @{ NewTag1 = "NewTagValue1"}
 $mecDevice = @{ DeviceName = "myMecDevice1"; Location = "eastus"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
 Update-AzConnectedNetworkDeviceTag -InputObject $mecDevice -Tag $tags
 ```
 
 ```output
+=======
+PS C:\> $tags = @{ NewTag1 = "NewTagValue1"}
+PS C:\> $mecDevice = @{ DeviceName = "myMecDevice1"; Location = "eastus"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
+PS C:\> Update-AzConnectedNetworkDeviceTag -InputObject $mecDevice -Tag $tags
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/mec_2111_09
 Location                     : eastus

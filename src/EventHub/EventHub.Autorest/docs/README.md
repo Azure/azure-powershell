@@ -1,5 +1,9 @@
 # Docs
+<<<<<<< HEAD
 This directory contains the documentation of the cmdlets for the `Az.EventHub` module. To run documentation generation, use the `generate-help.ps1` script at the root module folder. Files in this folder will *always be overridden on regeneration*. To update documentation examples, please use the `../examples` folder.
+=======
+This directory contains the documentation of the cmdlets for the `Az.EventHub` module. To run documentation generation, use the `generate-help.ps1` script at the root module folder. Files in this folder will *always be overridden on regeneration*. To update documentation examples, please use the `..\examples` folder.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ## Info
 - Modifiable: no
@@ -8,4 +12,8 @@ This directory contains the documentation of the cmdlets for the `Az.EventHub` m
 - Packaged: yes
 
 ## Details
+<<<<<<< HEAD
 The process of documentation generation loads `Az.EventHub` and analyzes the exported cmdlets from the module. It recognizes the [help comments](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_comment_based_help) that are generated into the scripts in the `../exports` folder. Additionally, when writing custom cmdlets in the `../custom` folder, you can use the help comments syntax, which decorate the exported scripts at build-time. The documentation examples are taken from the `../examples` folder.
+=======
+The process of documentation generation loads `Az.EventHub` and analyzes the exported cmdlets from the module. It recognizes the [help comments](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_comment_based_help) that are generated into the scripts in the `..\exports` folder. Additionally, when writing custom cmdlets in the `..\custom` folder, you can use the help comments syntax, which decorate the exported scripts at build-time. The documentation examples are taken from the `..\examples` folder.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91

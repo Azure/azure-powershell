@@ -72,6 +72,7 @@
       </TableControl>
     </View>
     <View>
+<<<<<<< HEAD
       <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ErrorAdditionalInfo</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ErrorAdditionalInfo</TypeName>
@@ -94,6 +95,8 @@
       </TableControl>
     </View>
     <View>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ErrorDetail</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ErrorDetail</TypeName>
@@ -239,9 +242,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
           <TableColumnHeader>
             <Label>Type</Label>
           </TableColumnHeader>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -249,9 +255,12 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
               </TableColumnItem>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -267,9 +276,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
           <TableColumnHeader>
             <Label>Type</Label>
           </TableColumnHeader>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -277,9 +289,12 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
               </TableColumnItem>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -394,9 +409,12 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+<<<<<<< HEAD
             <Label>Type</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             <Label>Location</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -407,9 +425,12 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+<<<<<<< HEAD
                 <PropertyName>Type</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -452,9 +473,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
           <TableColumnHeader>
             <Label>Type</Label>
           </TableColumnHeader>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -465,9 +489,12 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
               </TableColumnItem>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -486,9 +513,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
           <TableColumnHeader>
             <Label>Type</Label>
           </TableColumnHeader>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -499,9 +529,12 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
               </TableColumnItem>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -517,9 +550,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
           <TableColumnHeader>
             <Label>Type</Label>
           </TableColumnHeader>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -527,9 +563,12 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
               </TableColumnItem>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -545,9 +584,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
           <TableColumnHeader>
             <Label>Type</Label>
           </TableColumnHeader>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -555,9 +597,12 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
               </TableColumnItem>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -573,9 +618,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
           <TableColumnHeader>
             <Label>Type</Label>
           </TableColumnHeader>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -583,9 +631,12 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
               </TableColumnItem>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -601,9 +652,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
+<<<<<<< HEAD
           <TableColumnHeader>
             <Label>Type</Label>
           </TableColumnHeader>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -611,9 +665,12 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+<<<<<<< HEAD
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
               </TableColumnItem>
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>

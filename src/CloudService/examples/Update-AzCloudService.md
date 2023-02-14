@@ -4,7 +4,11 @@
 # Create RDP extension object
 $rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name "RDPExtension" -Credential $credential -Expiration $expiration -TypeHandlerVersion "1.2.1"
 # Get existing cloud service
+<<<<<<< HEAD
 $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+=======
+$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 # Add RDP extension to existing cloud service extension object
 $cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension + $rdpExtension
 # Update cloud service
@@ -17,7 +21,11 @@ Above set of commands adds a RDP extension to already existing cloud service nam
 
 ```powershell
 # Get existing cloud service
+<<<<<<< HEAD
 $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+=======
+$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 # Set extension to empty list
 $cloudService.ExtensionProfile.Extension = @()
 # Update cloud service
@@ -30,7 +38,11 @@ Above set of commands removes all extensions from existing cloud service named C
 
 ```powershell
 # Get existing cloud service
+<<<<<<< HEAD
 $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+=======
+$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 # Remove extension by name RDPExtension
 $cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension | Where-Object { $_.Name -ne "RDPExtension" }
 # Update cloud service
@@ -43,7 +55,11 @@ Above set of commands removes RDP extension from existing cloud service named Co
 
 ```powershell
 # Get existing cloud service
+<<<<<<< HEAD
 $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+=======
+$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 # Scale-out all role instance count by 1
 $cloudService.RoleProfile.Role | ForEach-Object {$_.SkuCapacity += 1}

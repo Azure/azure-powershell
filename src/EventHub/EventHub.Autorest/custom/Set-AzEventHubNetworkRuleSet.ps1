@@ -20,7 +20,11 @@ Sets an EventHub Namespace Network Rule Set
 #>
 
 function Set-AzEventHubNetworkRuleSet{
+<<<<<<< HEAD
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INetworkRuleSet])]
+=======
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet])]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub namespace")]
@@ -70,13 +74,21 @@ function Set-AzEventHubNetworkRuleSet{
 
         [Parameter(HelpMessage = "List of IpRules")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+<<<<<<< HEAD
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INwRuleSetIPRules[]]
+=======
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules[]]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         # List of IpRules
         ${IPRule},
 
         [Parameter(HelpMessage = "List of VirtualNetwork Rules")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+<<<<<<< HEAD
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INwRuleSetVirtualNetworkRules[]]
+=======
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules[]]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         # List of VirtualNetwork Rules
         ${VirtualNetworkRule},
 

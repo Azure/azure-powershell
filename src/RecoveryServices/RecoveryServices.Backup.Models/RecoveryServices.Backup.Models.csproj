@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>RecoveryServices</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+
+  <PropertyGroup>
+    <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName).Backup.Models</AssemblyName>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName).Backup</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\RecoveryServices.Backup.Management.Sdk\RecoveryServices.Backup.Management.Sdk.csproj" />
+	<ProjectReference Include="..\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
+</Project>

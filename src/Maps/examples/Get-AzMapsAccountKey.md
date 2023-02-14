@@ -1,9 +1,14 @@
 ### Example 1: Get the keys to use with the Maps APIs
 ```powershell
+<<<<<<< HEAD
 Get-AzMapsAccountKey -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount02
 ```
 
 ```output
+=======
+PS C:\> Get-AzMapsAccountKey -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount02
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 PrimaryKey                                  PrimaryKeyLastUpdated        SecondaryKey                                SecondaryKeyLastUpdated
 ----------                                  ---------------------        ------------                                -----------------------
 AZPcJC8OCNCpqRsnj1NB3Ngl-qQncBP5IT21jts_2b0 2021-05-20T05:59:16.2028276Z 3l_cups4uVp7LB90G861PB_ddEFJFOdt0beX1U8ROO4 2021-05-20T05:59:16.2028276Z

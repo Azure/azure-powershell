@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.PolicyInsights/policyMetadata/ACF1348?api-version=2019-10-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvcG9saWN5TWV0YWRhdGEvQUNGMTM0OD9hcGktdmVyc2lvbj0yMDE5LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "107e8603-437b-442f-af0c-e1ea1914acd3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "149"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "6039ad3d-e7f4-49ee-b3b6-69d3c8e844e3"
+        ],
+        "x-ms-correlation-request-id": [
+          "6039ad3d-e7f4-49ee-b3b6-69d3c8e844e3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220113T203356Z:6039ad3d-e7f4-49ee-b3b6-69d3c8e844e3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 13 Jan 2022 20:33:55 GMT"
+        ],
+        "Content-Length": [
+          "685"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"metadataId\": \"Microsoft Managed Control 1348\",\r\n    \"category\": \"Identification and Authentication\",\r\n    \"title\": \"Identification And Authentication (Non-Organizational Users) | Acceptance Of Third-Party Credentials\",\r\n    \"owner\": \"Not applicable\",\r\n    \"description\": \"The information system accepts only FICAM-approved third-party credentials.\",\r\n    \"requirements\": \"Azure does not allow any non-organizational users to authenticate to production systems. Azure does not accept or process any third-party credentials.\\r\\n\\r\\n\",\r\n    \"additionalContentUrl\": \"\",\r\n    \"metadata\": {}\r\n  },\r\n  \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1348\",\r\n  \"name\": \"ACF1348\",\r\n  \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "086aecf4-23d6-4dfd-99a8-a5c6299f0322"
+  }
+}

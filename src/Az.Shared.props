@@ -8,9 +8,28 @@
 
   <!-- Build -->
   <PropertyGroup>
+<<<<<<< HEAD
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+=======
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
 
+<<<<<<< HEAD
 </Project>
+=======
+  <!-- include shared source code -->
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)shared\*.cs" />
+  </ItemGroup>
+
+</Project>
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91

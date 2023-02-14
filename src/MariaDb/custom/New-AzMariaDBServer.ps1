@@ -14,9 +14,15 @@
 
 <#
 .Synopsis
+<<<<<<< HEAD
 Create a new MariaDB.
 .Description
 Create a new MariaDB.
+=======
+Creates a new MariaDB.
+.Description
+Creates a new MariaDB.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 #>
 function New-AzMariaDbServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
@@ -239,7 +245,11 @@ function New-AzMariaDbServer {
             $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUsername']
             $null = $PSBoundParameters.Remove('AdministratorUsername')
 
+<<<<<<< HEAD
             $Parameter.Property.AdministratorLoginPassword = $PSBoundParameters['AdministratorLoginPassword']
+=======
+            $Parameter.Property.AdministratorLoginPassword = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
 
             $null = $PSBoundParameters.Add('Parameter', $Parameter)

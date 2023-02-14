@@ -1,9 +1,14 @@
 ### Example 1: List all replica DB under a MariaDB
 ```powershell
+<<<<<<< HEAD
 Get-AzMariaDbReplica -ServerName mariadb-test-szp6dt -ResourceGroupName mariadb-test-qu5ov0
 ```
 
 ```output
+=======
+PS C:\> Get-AzMariaDbReplica -ServerName mariadb-test-szp6dt -ResourceGroupName mariadb-test-qu5ov0
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Name                       Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                       -------- ------------------ ------- ----------------------- -------   -------        --------------
 mariadb-test-szp6dt-rep428 eastus   zmoxhpgjqc         10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled

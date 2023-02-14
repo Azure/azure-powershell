@@ -1,6 +1,10 @@
 # Troubleshooting Module Loading With Azure PowerShell
 
+<<<<<<< HEAD
 ## Potential Incompatibilies
+=======
+## Potential Incompatibilities
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 Azure PowerShell consists of multiple modules, each of which has a dependency on specific version of the central authentication module 'Az.Accounts'. If all versions of Azure PowerShell modules are kept up to date, and all are installed to the same scope, there should never be any incompatibility issues.
 
@@ -36,9 +40,15 @@ At line:1 char:1
 
 ## Reason: Missing .NET Framework 4.7.2 or greater
 
+<<<<<<< HEAD
 If you are recieving type loading errors when trying to import/run Az modules in Windows PowerShell, you'll need to install [.NET Framework 4.7.2](https://dotnet.microsoft.com/download) or greater. This is required as Windows PowerShell does not natively support .NET Standard.
 
 You can also avoid this issue by using [PowerShell Core](https://github.com/PowerShell/PowerShell/releases/latest). PowerShell Core natively supports .NET Standard assemblies. PowerShell Core also works cross platform, so Linux and Mac can use Az modules in PowerShell Core.
+=======
+If you are receiving type loading errors when trying to import/run Az modules in Windows PowerShell, you'll need to install [.NET Framework 4.7.2](https://dotnet.microsoft.com/download) or greater. This is required as Windows PowerShell does not natively support .NET Standard.
+
+You can also avoid this issue by using [PowerShell 7](https://github.com/PowerShell/PowerShell/releases/latest). PowerShell 7 natively supports .NET Standard assemblies. PowerShell 7 also works cross platform, so Linux and Mac can use Az modules in PowerShell 7.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ## Symptom: Prompt for Login When a Cmdlet is Executed After a Previous Login
 
@@ -156,4 +166,16 @@ If you see a version of Az.Accounts installed in the session, you can resolve th
 
 Azure PowerShell is a set of binary modules, meaning that cmdlets are defined and implemented in .NET Standard code. PowerShell loads cmdlet assemblies into a single AppDomain, and these assemblies cannot be unloaded, even if the module is removed. Therefore, a module assembly and all its dependent assemblies remain loaded in the PowerShell session once it is imported until the PowerShell session is closed. Additionally, the types defined in a .NET Standard assembly are strongly tied to the assembly version, so that the types from version `A` and version `B` of the same assembly will appear as different types in the PowerShell session. When these types are used in common by multiple assemblies (as in the authentication types in Az.Accounts), then the types that are meant to be common are actually different for each module version. This causes problems when authentication information is instantiated using types from version `X` of Az.Accounts, but an assembly requires version `Y` of these types.
 
+<<<<<<< HEAD
 This underlying problem is solved in Az by requiring all authentication types used by the modules to be fully backward compatible.
+=======
+This underlying problem is solved in Az by requiring all authentication types used by the modules to be fully backward compatible.
+
+### Newtonsoft.Json versions per PowerShell edition
+
+The library `Newtonsoft.Json` is used throughout our cmdlets to handle JSON information. However, we do not have control of the version of this library that is loaded in PowerShell. To troubleshoot serialization issues, here is a table of the versions of `Newtonsoft.Json` that are loaded by the various editions of PowerShell.
+
+| | Windows PowerShell 5.1 | PowerShell 7.0 | PowerShell 7.1
+| - | - | - | - |
+| **Newtonsoft.Json** | 6.0.8 |  12.0.0 | 12.0.0
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91

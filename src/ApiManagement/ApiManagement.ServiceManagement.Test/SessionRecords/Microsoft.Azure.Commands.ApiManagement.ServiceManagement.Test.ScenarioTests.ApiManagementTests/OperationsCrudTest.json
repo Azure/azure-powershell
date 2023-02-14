@@ -1,0 +1,898 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis?$filter=properties/displayName%20eq%20'Echo%20API'&api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzPyRmaWx0ZXI9cHJvcGVydGllcy9kaXNwbGF5TmFtZSUyMGVxJTIwJ0VjaG8lMjBBUEknJmFwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ec33a44c-2360-440a-8878-05dbb469ec7e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "c248158e-6c95-43e4-9988-4dee79529f37"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "c248158e-6c95-43e4-9988-4dee79529f37"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000434Z:c248158e-6c95-43e4-9988-4dee79529f37"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:33 GMT"
+        ],
+        "Content-Length": [
+          "739"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n      \"name\": \"echo-api\",\r\n      \"properties\": {\r\n        \"displayName\": \"Echo API\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": null,\r\n        \"subscriptionRequired\": true,\r\n        \"serviceUrl\": \"http://echoapi.cloudapp.net/api\",\r\n        \"path\": \"echo\",\r\n        \"protocols\": [\r\n          \"https\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "515ce606-b628-4e2c-b16c-939a2da80fee"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "cf09701c-1843-4c31-b8f9-ff41fe518733"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "cf09701c-1843-4c31-b8f9-ff41fe518733"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000434Z:cf09701c-1843-4c31-b8f9-ff41fe518733"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:34 GMT"
+        ],
+        "Content-Length": [
+          "7876"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/create-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"create-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Create resource\",\r\n        \"method\": \"POST\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a POST call based on the echo backend above. The request body is expected to contain JSON-formatted data (see example below). A policy is used to automatically transform any request sent in JSON directly to XML. In a real-world scenario this could be used to enable modern clients to speak to a legacy backend.\",\r\n        \"request\": {\r\n          \"queryParameters\": [],\r\n          \"headers\": [],\r\n          \"representations\": [\r\n            {\r\n              \"contentType\": \"application/json\",\r\n              \"examples\": {\r\n                \"default\": {\r\n                  \"value\": \"{\\r\\n\\t\\\"vehicleType\\\": \\\"train\\\",\\r\\n\\t\\\"maxSpeed\\\": 125,\\r\\n\\t\\\"avgSpeed\\\": 90,\\r\\n\\t\\\"speedUnit\\\": \\\"mph\\\"\\r\\n}\"\r\n                }\r\n              },\r\n              \"generatedSample\": \"{\\r\\n\\t\\\"vehicleType\\\": \\\"train\\\",\\r\\n\\t\\\"maxSpeed\\\": 125,\\r\\n\\t\\\"avgSpeed\\\": 90,\\r\\n\\t\\\"speedUnit\\\": \\\"mph\\\"\\r\\n}\",\r\n              \"sample\": \"{\\r\\n\\t\\\"vehicleType\\\": \\\"train\\\",\\r\\n\\t\\\"maxSpeed\\\": 125,\\r\\n\\t\\\"avgSpeed\\\": 90,\\r\\n\\t\\\"speedUnit\\\": \\\"mph\\\"\\r\\n}\"\r\n            }\r\n          ]\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/modify-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"modify-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Modify Resource\",\r\n        \"method\": \"PUT\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a PUT call handled by the same \\\"echo\\\" backend as above. You can now specify a request body in addition to headers and it will be returned as well.\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/remove-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"remove-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Remove resource\",\r\n        \"method\": \"DELETE\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a DELETE call which traditionally deletes the resource. It is based on the same \\\"echo\\\" backend as in all other operations so nothing is actually deleted.\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/retrieve-header-only\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"retrieve-header-only\",\r\n      \"properties\": {\r\n        \"displayName\": \"Retrieve header only\",\r\n        \"method\": \"HEAD\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"The HEAD operation returns only headers. In this demonstration a policy is used to set additional headers when the response is returned and to enable JSONP.\",\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/retrieve-resource\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"retrieve-resource\",\r\n      \"properties\": {\r\n        \"displayName\": \"Retrieve resource\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/resource\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a GET call on a sample resource. It is handled by an \\\"echo\\\" backend which returns a response equal to the request (the supplied headers and body are being returned as received).\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"param1\",\r\n              \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n              \"type\": \"string\",\r\n              \"defaultValue\": \"sample\",\r\n              \"required\": true,\r\n              \"values\": [\r\n                \"sample\"\r\n              ]\r\n            },\r\n            {\r\n              \"name\": \"param2\",\r\n              \"description\": \"Another sample parameter, set to not required.\",\r\n              \"type\": \"number\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"description\": \"Returned in all cases.\",\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/retrieve-resource-cached\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n      \"name\": \"retrieve-resource-cached\",\r\n      \"properties\": {\r\n        \"displayName\": \"Retrieve resource (cached)\",\r\n        \"method\": \"GET\",\r\n        \"urlTemplate\": \"/resource-cached\",\r\n        \"templateParameters\": [],\r\n        \"description\": \"A demonstration of a GET call with caching enabled on the same \\\"echo\\\" backend as above. Cache TTL is set to 1 hour. When you make the first request the headers you supplied will be cached. Subsequent calls will return the same headers as the first time even if you change them in your request.\",\r\n        \"request\": {\r\n          \"queryParameters\": [\r\n            {\r\n              \"name\": \"param1\",\r\n              \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n              \"type\": \"string\",\r\n              \"defaultValue\": \"sample\",\r\n              \"required\": true,\r\n              \"values\": [\r\n                \"sample\"\r\n              ]\r\n            },\r\n            {\r\n              \"name\": \"param2\",\r\n              \"description\": \"Another sample parameter, set to not required.\",\r\n              \"type\": \"string\",\r\n              \"values\": []\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"representations\": []\r\n        },\r\n        \"responses\": [\r\n          {\r\n            \"statusCode\": 200,\r\n            \"representations\": [],\r\n            \"headers\": []\r\n          }\r\n        ],\r\n        \"policies\": null\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 6\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/create-resource?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvY3JlYXRlLXJlc291cmNlP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "20fc1011-bad7-4378-8426-783480a21805"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAAC1c=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "a72655e8-bb44-46ac-a1a6-63d1e1be9dca"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "a72655e8-bb44-46ac-a1a6-63d1e1be9dca"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000435Z:a72655e8-bb44-46ac-a1a6-63d1e1be9dca"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:34 GMT"
+        ],
+        "Content-Length": [
+          "1648"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/create-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"create-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Create resource\",\r\n    \"method\": \"POST\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a POST call based on the echo backend above. The request body is expected to contain JSON-formatted data (see example below). A policy is used to automatically transform any request sent in JSON directly to XML. In a real-world scenario this could be used to enable modern clients to speak to a legacy backend.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"examples\": {\r\n            \"default\": {\r\n              \"value\": \"{\\r\\n\\t\\\"vehicleType\\\": \\\"train\\\",\\r\\n\\t\\\"maxSpeed\\\": 125,\\r\\n\\t\\\"avgSpeed\\\": 90,\\r\\n\\t\\\"speedUnit\\\": \\\"mph\\\"\\r\\n}\"\r\n            }\r\n          },\r\n          \"generatedSample\": \"{\\r\\n\\t\\\"vehicleType\\\": \\\"train\\\",\\r\\n\\t\\\"maxSpeed\\\": 125,\\r\\n\\t\\\"avgSpeed\\\": 90,\\r\\n\\t\\\"speedUnit\\\": \\\"mph\\\"\\r\\n}\",\r\n          \"sample\": \"{\\r\\n\\t\\\"vehicleType\\\": \\\"train\\\",\\r\\n\\t\\\"maxSpeed\\\": 125,\\r\\n\\t\\\"avgSpeed\\\": 90,\\r\\n\\t\\\"speedUnit\\\": \\\"mph\\\"\\r\\n}\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/modify-resource?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvbW9kaWZ5LXJlc291cmNlP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "650d4e98-a067-489d-93c4-5f3f683d27ef"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAACQU=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "b4380000-92f1-4cd3-a681-ca697410dd70"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "b4380000-92f1-4cd3-a681-ca697410dd70"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000435Z:b4380000-92f1-4cd3-a681-ca697410dd70"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:34 GMT"
+        ],
+        "Content-Length": [
+          "902"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/modify-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"modify-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Modify Resource\",\r\n    \"method\": \"PUT\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a PUT call handled by the same \\\"echo\\\" backend as above. You can now specify a request body in addition to headers and it will be returned as well.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/remove-resource?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvcmVtb3ZlLXJlc291cmNlP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3bc80a23-3b46-49ca-a6ef-e74ae881ed44"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAACQc=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "38cbe579-69bc-4e38-9004-578d30cb3a6a"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "38cbe579-69bc-4e38-9004-578d30cb3a6a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000435Z:38cbe579-69bc-4e38-9004-578d30cb3a6a"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:34 GMT"
+        ],
+        "Content-Length": [
+          "912"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/remove-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"remove-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Remove resource\",\r\n    \"method\": \"DELETE\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a DELETE call which traditionally deletes the resource. It is based on the same \\\"echo\\\" backend as in all other operations so nothing is actually deleted.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/retrieve-header-only?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvcmV0cmlldmUtaGVhZGVyLW9ubHk/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cedf662b-8444-4928-a336-a5148436c66e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAACQg=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "eaf8c5e1-c5e7-4947-af68-94896f66d6fe"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "eaf8c5e1-c5e7-4947-af68-94896f66d6fe"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000435Z:eaf8c5e1-c5e7-4947-af68-94896f66d6fe"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:35 GMT"
+        ],
+        "Content-Length": [
+          "907"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/retrieve-header-only\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"retrieve-header-only\",\r\n  \"properties\": {\r\n    \"displayName\": \"Retrieve header only\",\r\n    \"method\": \"HEAD\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"The HEAD operation returns only headers. In this demonstration a policy is used to set additional headers when the response is returned and to enable JSONP.\",\r\n    \"request\": {\r\n      \"queryParameters\": [],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/retrieve-resource?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvcmV0cmlldmUtcmVzb3VyY2U/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "92934c18-d72f-40d0-86b0-f87715d385c4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAACQM=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "1bde4907-face-400b-8fa5-cb5a47e7b0c9"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "1bde4907-face-400b-8fa5-cb5a47e7b0c9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000435Z:1bde4907-face-400b-8fa5-cb5a47e7b0c9"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:35 GMT"
+        ],
+        "Content-Length": [
+          "1486"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/retrieve-resource\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"retrieve-resource\",\r\n  \"properties\": {\r\n    \"displayName\": \"Retrieve resource\",\r\n    \"method\": \"GET\",\r\n    \"urlTemplate\": \"/resource\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a GET call on a sample resource. It is handled by an \\\"echo\\\" backend which returns a response equal to the request (the supplied headers and body are being returned as received).\",\r\n    \"request\": {\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"param1\",\r\n          \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"sample\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"sample\"\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"param2\",\r\n          \"description\": \"Another sample parameter, set to not required.\",\r\n          \"type\": \"number\",\r\n          \"values\": []\r\n        }\r\n      ],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"description\": \"Returned in all cases.\",\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/retrieve-resource-cached?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvcmV0cmlldmUtcmVzb3VyY2UtY2FjaGVkP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "436bf81a-d231-44e8-91eb-959f542c66d5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAACQQ=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "4fbc91bd-abf5-4797-8bc3-6d3667961438"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "4fbc91bd-abf5-4797-8bc3-6d3667961438"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000436Z:4fbc91bd-abf5-4797-8bc3-6d3667961438"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:35 GMT"
+        ],
+        "Content-Length": [
+          "1563"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/retrieve-resource-cached\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"retrieve-resource-cached\",\r\n  \"properties\": {\r\n    \"displayName\": \"Retrieve resource (cached)\",\r\n    \"method\": \"GET\",\r\n    \"urlTemplate\": \"/resource-cached\",\r\n    \"templateParameters\": [],\r\n    \"description\": \"A demonstration of a GET call with caching enabled on the same \\\"echo\\\" backend as above. Cache TTL is set to 1 hour. When you make the first request the headers you supplied will be cached. Subsequent calls will return the same headers as the first time even if you change them in your request.\",\r\n    \"request\": {\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"param1\",\r\n          \"description\": \"A sample parameter that is required and has a default value of \\\"sample\\\".\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"sample\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"sample\"\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"param2\",\r\n          \"description\": \"Another sample parameter, set to not required.\",\r\n          \"type\": \"string\",\r\n          \"values\": []\r\n        }\r\n      ],\r\n      \"headers\": [],\r\n      \"representations\": []\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 200,\r\n        \"representations\": [],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/ps5110?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvcHM1MTEwP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"rid\",\r\n        \"description\": \"Resource identifier\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": [],\r\n        \"examples\": {}\r\n      },\r\n      {\r\n        \"name\": \"query\",\r\n        \"description\": \"Query string\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": [],\r\n        \"examples\": {}\r\n      }\r\n    ],\r\n    \"description\": \"ps2971\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps1358\",\r\n          \"description\": \"ps9153\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps1092\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps1092\"\r\n          ],\r\n          \"examples\": {}\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps1256\",\r\n          \"description\": \"ps5034\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps8090\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps8090\"\r\n          ],\r\n          \"examples\": {}\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"typeName\": \"the type name\",\r\n          \"examples\": {\r\n            \"default\": {\r\n              \"summary\": \"default\",\r\n              \"description\": \"My default request example\",\r\n              \"value\": \"default\",\r\n              \"externalValue\": \"https://contoso.com\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps2440\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps9983\",\r\n            \"examples\": {\r\n              \"default\": {\r\n                \"summary\": \"default\",\r\n                \"description\": \"My default request example\",\r\n                \"value\": \"default\",\r\n                \"externalValue\": \"https://contoso.com\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"displayName\": \"ps8496\",\r\n    \"method\": \"PATCH\",\r\n    \"urlTemplate\": \"/resource/{rid}?q={query}\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ac26fe05-56c9-4812-a3b4-d143bd97d365"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "2194"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAADrE=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "7e51e661-2145-45b0-8217-742965d68cd7"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "7e51e661-2145-45b0-8217-742965d68cd7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000437Z:7e51e661-2145-45b0-8217-742965d68cd7"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:36 GMT"
+        ],
+        "Content-Length": [
+          "2443"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/ps5110\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"ps5110\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps8496\",\r\n    \"method\": \"PATCH\",\r\n    \"urlTemplate\": \"/resource/{rid}?q={query}\",\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"rid\",\r\n        \"description\": \"Resource identifier\",\r\n        \"type\": \"string\",\r\n        \"values\": [],\r\n        \"examples\": {}\r\n      },\r\n      {\r\n        \"name\": \"query\",\r\n        \"description\": \"Query string\",\r\n        \"type\": \"string\",\r\n        \"values\": [],\r\n        \"examples\": {}\r\n      }\r\n    ],\r\n    \"description\": \"ps2971\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps1358\",\r\n          \"description\": \"ps9153\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps1092\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps1092\"\r\n          ],\r\n          \"examples\": {}\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps1256\",\r\n          \"description\": \"ps5034\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps8090\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps8090\"\r\n          ],\r\n          \"examples\": {}\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"examples\": {\r\n            \"default\": {\r\n              \"summary\": \"default\",\r\n              \"description\": \"My default request example\",\r\n              \"value\": \"default\",\r\n              \"externalValue\": \"https://contoso.com\"\r\n            }\r\n          },\r\n          \"typeName\": \"the type name\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps2440\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps9983\",\r\n            \"examples\": {\r\n              \"default\": {\r\n                \"summary\": \"default\",\r\n                \"description\": \"My default request example\",\r\n                \"value\": \"default\",\r\n                \"externalValue\": \"https://contoso.com\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/ps5110?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvcHM1MTEwP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"xrid\",\r\n        \"description\": \"Resource identifier modified\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": [],\r\n        \"examples\": {}\r\n      },\r\n      {\r\n        \"name\": \"xquery\",\r\n        \"description\": \"Query string modified\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": [],\r\n        \"examples\": {}\r\n      }\r\n    ],\r\n    \"description\": \"ps5684\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request modified\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps4561\",\r\n          \"description\": \"ps5466\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps1233\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps1233\"\r\n          ],\r\n          \"examples\": {}\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps6413\",\r\n          \"description\": \"ps5409\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps1566\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps1566\"\r\n          ],\r\n          \"examples\": {}\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"examples\": {\r\n            \"default\": {\r\n              \"summary\": \"default\",\r\n              \"description\": \"My default request example\",\r\n              \"value\": \"default\",\r\n              \"externalValue\": \"https://contoso.com\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps7051\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps889\",\r\n            \"examples\": {\r\n              \"default\": {\r\n                \"summary\": \"default\",\r\n                \"description\": \"My default request example\",\r\n                \"value\": \"default\",\r\n                \"externalValue\": \"https://contoso.com\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"displayName\": \"ps5072\",\r\n    \"method\": \"PUT\",\r\n    \"urlTemplate\": \"/resource/{xrid}?q={xquery}\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5b4a5b3c-1078-4100-8f68-7850a5b22fe6"
+        ],
+        "If-Match": [
+          "*"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "2182"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAADrQ=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "a66935f1-4608-48fd-a47b-0a3bf0e61ddb"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "a66935f1-4608-48fd-a47b-0a3bf0e61ddb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000437Z:a66935f1-4608-48fd-a47b-0a3bf0e61ddb"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:37 GMT"
+        ],
+        "Content-Length": [
+          "2431"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/ps5110\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"ps5110\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps5072\",\r\n    \"method\": \"PUT\",\r\n    \"urlTemplate\": \"/resource/{xrid}?q={xquery}\",\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"xrid\",\r\n        \"description\": \"Resource identifier modified\",\r\n        \"type\": \"string\",\r\n        \"values\": [],\r\n        \"examples\": {}\r\n      },\r\n      {\r\n        \"name\": \"xquery\",\r\n        \"description\": \"Query string modified\",\r\n        \"type\": \"string\",\r\n        \"values\": [],\r\n        \"examples\": {}\r\n      }\r\n    ],\r\n    \"description\": \"ps5684\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request modified\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps4561\",\r\n          \"description\": \"ps5466\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps1233\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps1233\"\r\n          ],\r\n          \"examples\": {}\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps6413\",\r\n          \"description\": \"ps5409\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps1566\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps1566\"\r\n          ],\r\n          \"examples\": {}\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"examples\": {\r\n            \"default\": {\r\n              \"summary\": \"default\",\r\n              \"description\": \"My default request example\",\r\n              \"value\": \"default\",\r\n              \"externalValue\": \"https://contoso.com\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps7051\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps889\",\r\n            \"examples\": {\r\n              \"default\": {\r\n                \"summary\": \"default\",\r\n                \"description\": \"My default request example\",\r\n                \"value\": \"default\",\r\n                \"externalValue\": \"https://contoso.com\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/ps5110?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvcHM1MTEwP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5b4a5b3c-1078-4100-8f68-7850a5b22fe6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAADrQ=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "ad4b4d14-8084-427c-9fff-48a894ac5e53"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "ad4b4d14-8084-427c-9fff-48a894ac5e53"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000437Z:ad4b4d14-8084-427c-9fff-48a894ac5e53"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:37 GMT"
+        ],
+        "Content-Length": [
+          "2485"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/ps5110\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"ps5110\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps5072\",\r\n    \"method\": \"PUT\",\r\n    \"urlTemplate\": \"/resource/{xrid}?q={xquery}\",\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"xrid\",\r\n        \"description\": \"Resource identifier modified\",\r\n        \"type\": \"string\",\r\n        \"required\": true,\r\n        \"values\": [],\r\n        \"examples\": {}\r\n      },\r\n      {\r\n        \"name\": \"xquery\",\r\n        \"description\": \"Query string modified\",\r\n        \"type\": \"string\",\r\n        \"required\": true,\r\n        \"values\": [],\r\n        \"examples\": {}\r\n      }\r\n    ],\r\n    \"description\": \"ps5684\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request modified\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps4561\",\r\n          \"description\": \"ps5466\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps1233\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps1233\"\r\n          ],\r\n          \"examples\": {}\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps6413\",\r\n          \"description\": \"ps5409\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps1566\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps1566\"\r\n          ],\r\n          \"examples\": {}\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"examples\": {\r\n            \"default\": {\r\n              \"summary\": \"default\",\r\n              \"description\": \"My default request example\",\r\n              \"value\": \"default\",\r\n              \"externalValue\": \"https://contoso.com\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps7051\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps889\",\r\n            \"examples\": {\r\n              \"default\": {\r\n                \"summary\": \"default\",\r\n                \"description\": \"My default request example\",\r\n                \"value\": \"default\",\r\n                \"externalValue\": \"https://contoso.com\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/ps5110?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvcHM1MTEwP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e620f0cf-e4e5-4b2e-977f-921361b957dd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "adc09c73-3d9a-4cd6-9f0b-f8e76f8e7165"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "adc09c73-3d9a-4cd6-9f0b-f8e76f8e7165"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000438Z:adc09c73-3d9a-4cd6-9f0b-f8e76f8e7165"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:37 GMT"
+        ],
+        "Content-Length": [
+          "85"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"Operation not found.\",\r\n    \"details\": null\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/apis/echo-api/operations/ps5110?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9hcGlzL2VjaG8tYXBpL29wZXJhdGlvbnMvcHM1MTEwP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "df7d6d72-26a4-497f-a6d9-c22edb3a09ea"
+        ],
+        "If-Match": [
+          "*"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/8.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "708bbc65-b54f-43da-be0e-e3c951297080"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "708bbc65-b54f-43da-be0e-e3c951297080"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220406T000438Z:708bbc65-b54f-43da-be0e-e3c951297080"
+        ],
+        "Date": [
+          "Wed, 06 Apr 2022 00:04:37 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "": [
+      "ps5110",
+      "ps8496",
+      "ps2971",
+      "ps9729",
+      "ps1256",
+      "ps5034",
+      "ps8090",
+      "ps1358",
+      "ps9153",
+      "ps1092",
+      "ps2440",
+      "ps9983",
+      "ps2321",
+      "ps5072",
+      "ps5684",
+      "ps4935",
+      "ps6413",
+      "ps5409",
+      "ps1566",
+      "ps4561",
+      "ps5466",
+      "ps1233",
+      "ps3081",
+      "ps7051",
+      "ps889",
+      "ps5848"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "dbdbebc3-1f15-4e74-9ef2-7db25483cb15"
+  }
+}

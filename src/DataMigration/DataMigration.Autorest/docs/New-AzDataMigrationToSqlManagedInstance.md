@@ -16,12 +16,20 @@ Create a new database migration to a given SQL Managed Instance.
 New-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
  -TargetDbName <String> [-SubscriptionId <String>] [-AzureBlobAccountKey <String>]
  [-AzureBlobContainerName <String>] [-AzureBlobStorageAccountResourceId <String>]
+<<<<<<< HEAD
  [-FileSharePassword <String>] [-FileSharePath <String>] [-FileShareUsername <String>] [-Kind <ResourceType>]
  [-MigrationOperationId <String>] [-MigrationService <String>] [-Offline]
  [-OfflineConfigurationLastBackupName <String>] [-ProvisioningError <String>] [-Scope <String>]
  [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
  [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
  [-SourceSqlConnectionPassword <String>] [-SourceSqlConnectionTrustServerCertificate]
+=======
+ [-FileSharePassword <SecureString>] [-FileSharePath <String>] [-FileShareUsername <String>]
+ [-Kind <ResourceType>] [-MigrationService <String>] [-Offline] [-OfflineConfigurationLastBackupName <String>]
+ [-Scope <String>] [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
+ [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
+ [-SourceSqlConnectionPassword <SecureString>] [-SourceSqlConnectionTrustServerCertificate]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
  [-SourceSqlConnectionUserName <String>] [-StorageAccountKey <String>] [-StorageAccountResourceId <String>]
  [-TargetDatabaseCollation <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -130,7 +138,11 @@ Accept wildcard characters: False
 Password for username to access file share location.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: System.Security.SecureString
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Parameter Sets: (All)
 Aliases:
 
@@ -201,6 +213,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -MigrationOperationId
 ID tracking current migration operation.
 
@@ -216,6 +229,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -MigrationService
 Resource Id of the Migration Service.
 
@@ -293,6 +308,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -ProvisioningError
 Error message for migration provisioning failure, if any.
 
@@ -308,6 +324,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -ResourceGroupName
 Name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
@@ -403,7 +421,11 @@ Accept wildcard characters: False
 Password to connect to source SQL.
 
 ```yaml
+<<<<<<< HEAD
 Type: System.String
+=======
+Type: System.Security.SecureString
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Parameter Sets: (All)
 Aliases:
 

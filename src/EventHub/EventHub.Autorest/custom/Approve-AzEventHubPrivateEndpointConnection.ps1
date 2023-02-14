@@ -20,7 +20,11 @@ Approves an EventHub PrivateEndpointConnection
 #>
 
 function Approve-AzEventHubPrivateEndpointConnection{
+<<<<<<< HEAD
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection])]
+=======
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection])]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', HelpMessage = "The name of the Private Endpoint Connection")]

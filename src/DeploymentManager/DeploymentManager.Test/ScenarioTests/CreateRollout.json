@@ -1,0 +1,34 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "resources": [
+    {
+      "location": "Central US",
+      "apiVersion": "2018-09-01-preview",
+      "type": "Microsoft.DeploymentManager/rollouts",
+      "name": "__ROLLOUT_NAME__",
+      "Identity": {
+        "type": "userAssigned",
+        "identityIds": [
+          "__USER_ASSIGNED_IDENTITY__"
+        ]
+      },
+      "properties": {
+        "buildVersion": "1.0.0",
+        "targetServiceTopologyId": "__TARGET_SERVICE_TOPOLOGY__",
+        "artifactSourceId": "__ARTIFACT_SOURCE_ID__",
+        "stepGroups": [
+          {
+            "name": "PilotRegion",
+            "preDeploymentSteps": [
+              {
+                "stepId": "__STEP_ID__"
+              }
+            ],
+            "deploymentTargetId": "__SERVICE_UNIT_ID__"
+          }
+        ]
+      }
+    }
+  ],
+  "contentVersion": "1.0.0.0"
+}

@@ -105,7 +105,11 @@
         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
       ],
       "properties": {
+<<<<<<< HEAD
         "clientAppGroupIdentifier": "NamespaceSASKeyName=RootManageSharedAccessKey",
+=======
+        "clientAppGroupIdentifier": "SASKeyName=RootManageSharedAccessKey",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "policies": [
           {
             "type": "ThrottlingPolicy",

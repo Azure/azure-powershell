@@ -1,9 +1,14 @@
 ### Example 1: Delete custom classification rule by name
 ```powershell
+<<<<<<< HEAD
 Remove-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName 'RuleDUmmy'
 ```
 
 ```output
+=======
+PS C:\> Remove-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName 'RuleDUmmy'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ClassificationAction   : Keep
 ClassificationName     : MICROSOFT.GOVERNMENT.AUSTRALIA.DRIVERS_LICENSE_NUMBER
 ColumnPattern          : {{

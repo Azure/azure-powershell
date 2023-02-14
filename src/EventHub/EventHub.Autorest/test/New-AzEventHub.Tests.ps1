@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHub'))
 
 Describe 'New-AzEventHub' {
     It 'CreateExpanded' {
+<<<<<<< HEAD
         #create Premium Namespace
         $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV1 -SkuName Premium -Location eastus
         #create EventHub with Compact CleanUpPolicy
@@ -32,6 +33,8 @@ Describe 'New-AzEventHub' {
         $eventhub.PartitionCount | Should -Be 2
         $eventhub.RetentionDescriptionCleanupPolicy | Should -Be "Delete"
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         # Create EventHub without capture
         $eventhub = New-AzEventHub -Name $env.eventHub2 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -MessageRetentionInDays 6 -PartitionCount 5
         $eventhub.Name | Should -Be $env.eventHub2

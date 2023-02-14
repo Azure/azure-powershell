@@ -356,7 +356,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
+<<<<<<< HEAD
 INPUTOBJECT <IComputeIdentity>: Identity Parameter
+=======
+`INPUTOBJECT <IComputeIdentity>`: Identity Parameter
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   - `[CommandId <String>]`: The command id.
   - `[GalleryApplicationName <String>]`: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
   - `[GalleryApplicationVersionName <String>]`: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
@@ -372,7 +376,11 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   - `[VMName <String>]`: The name of the virtual machine where the run command should be created or updated.
   - `[VMScaleSetName <String>]`: The name of the VM scale set.
 
+<<<<<<< HEAD
 TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is going to be replicated to. This property is updatable.
+=======
+`TARGETREGION <ITargetRegion[]>`: The target regions where the Image Version is going to be replicated to. This property is updatable.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   - `Name <String>`: The name of the region.
   - `[EncryptionDataDiskImage <IDataDiskImageEncryption[]>]`: A list of encryption specifications for data disk images.
     - `Lun <Int32>`: This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.

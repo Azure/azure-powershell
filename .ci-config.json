@@ -264,10 +264,14 @@
         "tools/Gen2Master/*",
         "tools/InstallationTests/*",
         "tools/Installer/*",
+<<<<<<< HEAD
         "tools/NetCoreCsProjSync/*",
         "tools/NetCorePsd1Sync/*",
         "tools/ProjectTemplates/*",
         "tools/RepoTasks/*",
+=======
+        "tools/ProjectTemplates/*",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "tools/SecurityTools/*",
         "tools/Test/*",
         "tools/Tools.Common.Test/*",

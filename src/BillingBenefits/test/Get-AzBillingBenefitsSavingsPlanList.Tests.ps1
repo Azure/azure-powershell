@@ -23,20 +23,32 @@ Describe 'Get-AzBillingBenefitsSavingsPlanList' {
         for($i=0;$i -lt $response.Count;$i++)
         {   
             $version = $response.Count - $i
+<<<<<<< HEAD
             $response[$i].Amount | Should -BeGreaterThan 0
+=======
+            $response[$i].CommitmentAmount | Should -BeGreaterThan 0
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             $response[$i].AppliedScopeType | Should -Not -Be $null
             $response[$i].BenefitStartTime | Should -Not -Be $null
             $response[$i].BillingAccountId | Should -Not -Be $null
             $response[$i].Term | Should -Not -Be $null
             $response[$i].BillingScopeId | Should -Be "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
+<<<<<<< HEAD
             $response[$i].CurrencyCode | Should -Be "USD"
+=======
+            $response[$i].CommitmentCurrencyCode | Should -Be "USD"
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             $response[$i].DisplayName | Should -Not -Be $null
             $response[$i].EffectiveDateTime | Should -Not -Be $null
             $response[$i].ExpiryDateTime | Should -Not -Be $null
             $response[$i].PurchaseDateTime | Should -Not -Be $null
             $response[$i].DisplayProvisioningState | Should -Be "Succeeded"
             $response[$i].ProvisioningState | Should -Be "Succeeded"
+<<<<<<< HEAD
             $response[$i].Grain | Should -Be "Hourly"
+=======
+            $response[$i].CommitmentGrain | Should -Be "Hourly"
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             $response[$i].UtilizationTrend | Should -Be "SAME"
             $response[$i].UtilizationAggregate | Should -Not -Be $null
             $response[$i].Renew | Should -Not -Be $null

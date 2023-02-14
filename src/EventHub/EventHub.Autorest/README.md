@@ -31,12 +31,17 @@ For information on how to develop for `Az.EventHub`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
+<<<<<<< HEAD
 branch: 1e790cfc5ee4e7ff98f99dd19a3174c4dd58432b
+=======
+branch: 6f0c7d58c0a923917c2b3467ee756f21dbd2f8e2
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
+<<<<<<< HEAD
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/AvailableClusterRegions-preview.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/Clusters-preview.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/namespaces-preview.json
@@ -49,6 +54,20 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/SchemaRegistry.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/eventhubs.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/ApplicationGroups.json
+=======
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/AvailableClusterRegions-preview.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/Clusters-preview.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/namespaces-preview.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/networkrulessets-preview.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/AuthorizationRules.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/CheckNameAvailability.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/consumergroups.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/disasterRecoveryConfigs.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/operations.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/SchemaRegistry.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/eventhubs.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/ApplicationGroups.json
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 

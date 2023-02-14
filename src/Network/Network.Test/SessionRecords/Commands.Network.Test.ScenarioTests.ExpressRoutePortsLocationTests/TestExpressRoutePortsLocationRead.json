@@ -1,0 +1,142 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/ExpressRoutePortsLocations?api-version=2020-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjIzNjQ1MDQtMjQwNi00MThlLTk3MWMtMDU4MjJmZjcyZmFkL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0c0xvY2F0aW9ucz9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "680e9500-aa58-4e80-8bf2-bff98351beee"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e6f5d271-e271-4a96-affd-15d58871315f"
+        ],
+        "x-ms-correlation-request-id": [
+          "d6138caf-d86f-4383-8f3f-8fa61c6acbb1"
+        ],
+        "x-ms-arm-service-request-id": [
+          "ce437043-f750-4037-a89d-04580adfe2d4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200607T175209Z:d6138caf-d86f-4383-8f3f-8fa61c6acbb1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 07 Jun 2020 17:52:09 GMT"
+        ],
+        "Content-Length": [
+          "19509"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Area51-ERDirect\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Area51-ERDirect\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"N/A\",\r\n        \"contact\": \"N/A\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"CDC-Canberra\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/CDC-Canberra\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"2 Leonora Street, Fyshwick\",\r\n        \"contact\": \"contact@canberradc.com.au\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"CDC-Canberra-CBR20\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/CDC-Canberra-CBR20\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"2 Leonora Street, Fyshwick\",\r\n        \"contact\": \"contact@canberradc.com.au\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"CDC-Canberra2\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/CDC-Canberra2\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"54-56 Sheppard Street, Hume\",\r\n        \"contact\": \"contact@canberradc.com.au\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Chennai-MAA01\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Chennai-MAA01\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"N/A\",\r\n        \"contact\": \"N/A\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Cheyenne-ERDirect\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Cheyenne-ERDirect\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"N/A\",\r\n        \"contact\": \"N/A\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"ChiefTelecom-Taipei\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/ChiefTelecom-Taipei\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Microsoft c/o Chief Telecom HD Bldg 2 /F., No. 37 Lane 188 Ruiguang Road., Nei Hu District\",\r\n        \"contact\": \"service@chief.com.tw\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Cologix-Toronto-TOR1\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Cologix-Toronto-TOR1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"151 Front Street West Toronto, ON M5J 2N1\",\r\n        \"contact\": \"support@cologix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"CoreSite-Los-Angeles-LA1\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/CoreSite-Los-Angeles-LA1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"624 South Grand Ave. Suite 110, Los Angeles, CA 90017\",\r\n        \"contact\": \"CustomerSupport@CoreSite.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"CoreSite-Reston-VA2\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/CoreSite-Reston-VA2\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"12098 Sunrise Valley Drive, Reston, VA, 201914\",\r\n        \"contact\": \"CustomerSupport@CoreSite.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"CoreSite-Santa-Clara-SV7\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/CoreSite-Santa-Clara-SV7\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"3020 Coronado Drive, Santa Clara, CA 95054\",\r\n        \"contact\": \"CustomerSupport@CoreSite.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"CyrusOne-San-Antonio-1\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/CyrusOne-San-Antonio-1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"9999 Westover Hills Blvd, San Antonio, TX 78251\",\r\n        \"contact\": \"info@cyrusone.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"DigiPlex-Oslo-Ulven\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/DigiPlex-Oslo-Ulven\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Microsoft c/o DigiPlex, Selma Ellefsens Vei 1, Oslo, 0581\",\r\n        \"contact\": \"helpme@digiplex.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Amsterdam-AM5\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Amsterdam-AM5\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Schepenbergweg 42 1105 AT Amsterdam Netherlands\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Ashburn-DC2\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Ashburn-DC2\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"21715 Filigree Court, DC2, Building F, Ashburn, VA 20147\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Chicago-CH1\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Chicago-CH1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"350 East Cermak Road, 5th Floor Suite F, Chicago, IL 60616\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Dallas-DA3\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Dallas-DA3\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"1950 N. Stemmons Freeway, Suite 1039A, DA3, Dallas, TX 75207\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Dublin-DB3\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Dublin-DB3\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Unit 2 Northwest Business Park Ballycoolin Dublin 15 Ireland\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Geneva-GV2\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Geneva-GV2\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"48, Route du Bois-des-Freres 1219 Le Lignon Switzerland\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-London-LD5\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-London-LD5\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"8 Buckingham Avenue, Slough Trading Estate, Slough, Berkshire SL1 4AX, United Kingdom\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Miami-MI1\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Miami-MI1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"50 NE 8th Street, Miami, FL 33132\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-New-York-NY9\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-New-York-NY9\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \" 111 8th Avenue, 5th and 7th Floors, New York, NY 1001\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Osaka-OS1\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Osaka-OS1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Nishi Shinsaibashi Building 1-26-1 Shinmachi Nishi-ku, Osaka City, Osaka, Japan 550-0013\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-San-Jose-SV1\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-San-Jose-SV1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"11 Great Oaks Blvd, SV1, San Jose, CA 95119\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Seattle-SE2\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Seattle-SE2\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"2001 Sixth Ave., Suite 350, SE2, Seattle, WA 98121\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Singapore-SG1\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Singapore-SG1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"20 Ayer Rajah Crescent, 139964, Singapore\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Equinix-Tokyo-TY4\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Tokyo-TY4\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"North Tower, Otemachi Financial City, Otemachi, 1-9-5, Chiyoda-ku, Tokyo\",\r\n        \"contact\": \"support@equinix.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Etisalat-Dubai-DXB20\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Etisalat-Dubai-DXB20\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Pacific Control Cloud Services, Dubai\",\r\n        \"contact\": \"businesscare@etisalat.ae\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Global-Switch-Singapore\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Global-Switch-Singapore\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"2 Tai Seng Avenue, Singapore\",\r\n        \"contact\": \"+1 877-865-5190\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"GreenMountain-Stavanger\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/GreenMountain-Stavanger\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Hodneveien 260, 4150 Rennesøy, Stavanger, Norway West, Norway\",\r\n        \"contact\": \"resepsjon@greenmountain.no\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"iAdvantage-Hong-Kong2-MEGA-i\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/iAdvantage-Hong-Kong2-MEGA-i\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"399 Chai Wan Road, Chai Wan, Hong Kong\",\r\n        \"contact\": \"noc-hk@iadvantage.net\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Interxion-Amsterdam2-AMS8\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Interxion-Amsterdam2-AMS8\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"37, Pudongweg, 1437 EM Rozenburg, Netherlands\",\r\n        \"contact\": \"nl.info@interxion.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Interxion-Frankfurt-FRA11\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Interxion-Frankfurt-FRA11\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Interxion Deutschland GmbHHanauer Landstraße 298 60314 Frankfurt am Main Deutschland\",\r\n        \"contact\": \"de.info@interxion.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"KINX-Seoul-Gasan\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/KINX-Seoul-Gasan\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Microsoft c/o Kinx, 3F LG CNS Bldg\",\r\n        \"contact\": \"tech@kinx.net\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"KIO-Networks-Queretaro-QR01\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/KIO-Networks-Queretaro-QR01\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Parque Industrial, Privada de la Princesa 4, el Marques, 76246 Santiago de Querétaro, Qro., Mexico\",\r\n        \"contact\": \"https://www.kionetworks.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"NextDC-Melbourne-MEL01\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/NextDC-Melbourne-MEL01\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"826-830 Lorimer Street Port Melbourne, VIC 3207\",\r\n        \"contact\": \"nxtops@nextdc.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"NTT-GDC-Berlin-1\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/NTT-GDC-Berlin-1\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Nonnendammallee 15, 13599 Berlin, Germany\",\r\n        \"contact\": \"info@e-shelter.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Sabey-Data-Centers-Quincy-A\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Sabey-Data-Centers-Quincy-A\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Building A, 2200 M St NE, Microsoft c/o Sabey Data Centers, Quincy, Washington, 98848\",\r\n        \"contact\": \"info@sabey.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Tata-Mumbai-LVSB\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Tata-Mumbai-LVSB\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Kashinath Dhuru Marg, Opp. Kirti College Prabhadevi. Mumbai -28 India 40002\",\r\n        \"contact\": \"ip.noc@tatacommunications.com\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Telehouse-London2\",\r\n      \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Telehouse-London2\",\r\n      \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"address\": \"Telehouse North Two, Coriander Avenue\",\r\n        \"contact\": \"salessupport@uk.telehouse.net\",\r\n        \"availableBandwidths\": []\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/ExpressRoutePortsLocations/Cheyenne-ERDirect?api-version=2020-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjIzNjQ1MDQtMjQwNi00MThlLTk3MWMtMDU4MjJmZjcyZmFkL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0c0xvY2F0aW9ucy9DaGV5ZW5uZS1FUkRpcmVjdD9hcGktdmVyc2lvbj0yMDIwLTA1LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f0cc5bf1-9ef7-4324-98fd-cc321fa83bc5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fdbcd1ae-2f3b-4ff7-a655-6b39fdcf5392"
+        ],
+        "x-ms-correlation-request-id": [
+          "4d8f8255-a2b9-4b6f-b86d-4ba5778e9616"
+        ],
+        "x-ms-arm-service-request-id": [
+          "0d0d9349-d190-42b3-a504-fcfa14cd80ae"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200607T175210Z:4d8f8255-a2b9-4b6f-b86d-4ba5778e9616"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 07 Jun 2020 17:52:10 GMT"
+        ],
+        "Content-Length": [
+          "372"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cheyenne-ERDirect\",\r\n  \"id\": \"/subscriptions/62364504-2406-418e-971c-05822ff72fad/providers/Microsoft.Network/expressRoutePortsLocations/Cheyenne-ERDirect\",\r\n  \"type\": \"Microsoft.Network/expressRoutePortsLocations\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"address\": \"N/A\",\r\n    \"contact\": \"N/A\",\r\n    \"availableBandwidths\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "62364504-2406-418e-971c-05822ff72fad"
+  }
+}

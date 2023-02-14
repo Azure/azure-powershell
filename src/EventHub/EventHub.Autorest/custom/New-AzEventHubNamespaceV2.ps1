@@ -20,7 +20,11 @@ Creates an EventHub Namespace
 #>
 
 function New-AzEventHubNamespaceV2{
+<<<<<<< HEAD
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace])]
+=======
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace])]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
@@ -76,7 +80,11 @@ function New-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "Properties to configure Encryption")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+<<<<<<< HEAD
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IKeyVaultProperties[]]
+=======
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[]]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         ${KeyVaultProperty},
 
         [Parameter(HelpMessage = "Type of managed service identity.")]
@@ -199,7 +207,11 @@ function New-AzEventHubNamespaceV2{
                 $identityHashTable = @{}
 
                 foreach ($resourceID in $UserAssignedIdentityId){
+<<<<<<< HEAD
                     $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.UserAssignedIdentity]::new())
+=======
+                    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                 }
 
                 $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)

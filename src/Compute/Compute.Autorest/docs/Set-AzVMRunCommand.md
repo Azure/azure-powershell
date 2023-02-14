@@ -497,11 +497,19 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
+<<<<<<< HEAD
 PARAMETER <IRunCommandInputParameter[]>: The parameters used by the script.
   - `Name <String>`: The run command parameter name.
   - `Value <String>`: The run command parameter value.
 
 PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the script.
+=======
+`PARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
+  - `Name <String>`: The run command parameter name.
+  - `Value <String>`: The run command parameter value.
+
+`PROTECTEDPARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   - `Name <String>`: The run command parameter name.
   - `Value <String>`: The run command parameter value.
 

@@ -1,0 +1,8 @@
+{
+  "autorest_powershell": "3.0.466",
+  "node": "v14.15.5",
+  "autorest_modelerfour": "4.15.414",
+  "autorest": "`-- (empty)",
+  "swagger_commit": "3ad7a853aa7b10ccd820220c58023d5325eb1a49",
+  "autorest_core": "3.7.1"
+}

@@ -1,0 +1,9 @@
+﻿{
+    "name": "SampleHub",
+    "properties": {
+        "defaultCompute": "SampleDefaultCompute",
+        "type": "Hub",
+        "hubId": "00000000-0000-0000-0000-000000000001",
+        "provisioningState": "Succeeded"
+    }
+}

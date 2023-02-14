@@ -1,0 +1,342 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/clusters?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvY2x1c3RlcnM/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d99d6f3d-e1e3-47aa-89ef-e2871dd6b8ca"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "77ce3863-f9bc-49a6-bd77-c9a9926c54e1"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "42bb7f8f-7047-4d03-8eea-5c9be88d61da"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125038Z:42bb7f8f-7047-4d03-8eea-5c9be88d61da"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:50:37 GMT"
+        ],
+        "Content-Length": [
+          "3135"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"identity\": {\r\n        \"type\": \"SystemAssigned\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"01baf8e8-1c9e-4ad7-b118-95b25b5ef380\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"capacityreservation\",\r\n        \"capacity\": 500\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"dd135374-5558-4727-8f20-5d5e04737131\",\r\n        \"billingType\": \"Cluster\",\r\n        \"lastModifiedDate\": \"Mon, 06 Jun 2022 10:27:43 GMT\",\r\n        \"createdDate\": \"Thu, 20 Jan 2022 15:25:21 GMT\",\r\n        \"isDoubleEncryptionEnabled\": true,\r\n        \"isAvailabilityZonesEnabled\": true,\r\n        \"associatedWorkspaces\": [],\r\n        \"capacityReservationProperties\": {\r\n          \"lastSkuUpdate\": \"Mon, 06 Jun 2022 10:27:43 GMT\",\r\n          \"minCapacity\": 500\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/dabenham-dev/providers/Microsoft.OperationalInsights/clusters/dabenham-TestingCluster\",\r\n      \"name\": \"dabenham-TestingCluster\",\r\n      \"type\": \"Microsoft.OperationalInsights/clusters\",\r\n      \"location\": \"East US\",\r\n      \"tags\": {\r\n        \"LAClusterTestException\": \"oibeftExcludeClusterCOGS\"\r\n      }\r\n    },\r\n    {\r\n      \"identity\": {\r\n        \"type\": \"SystemAssigned\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"93fd4a4f-1526-458a-91c5-2e0715ed96b6\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"capacityreservation\",\r\n        \"capacity\": 5000\r\n      },\r\n      \"properties\": {\r\n        \"keyVaultProperties\": {\r\n          \"keyVaultUri\": \"https://dabenham-kv.vault.azure.net/\",\r\n          \"keyName\": \"TestClusterKey\",\r\n          \"keyVersion\": \"4cac6770273f4f45ba52aec2b6d67a47\",\r\n          \"keyRsaSize\": 0\r\n        },\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterId\": \"ad6e8947-45aa-414f-a296-e046c6eb430c\",\r\n        \"billingType\": \"Workspaces\",\r\n        \"lastModifiedDate\": \"Thu, 07 Jul 2022 12:49:33 GMT\",\r\n        \"createdDate\": \"Mon, 08 Nov 2021 08:39:36 GMT\",\r\n        \"isDoubleEncryptionEnabled\": true,\r\n        \"isAvailabilityZonesEnabled\": true,\r\n        \"associatedWorkspaces\": [\r\n          {\r\n            \"workspaceId\": \"2129611d-5576-4b15-a0dd-095192af996a\",\r\n            \"workspaceName\": \"dabenham-eus\",\r\n            \"resourceId\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/dabenham-eus\",\r\n            \"associateDate\": \"Tue, 16 Nov 2021 09:15:19 GMT\"\r\n          }\r\n        ],\r\n        \"capacityReservationProperties\": {\r\n          \"lastSkuUpdate\": \"Mon, 06 Jun 2022 08:58:29 GMT\",\r\n          \"minCapacity\": 500\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/dabenham-dev/providers/Microsoft.OperationalInsights/clusters/dabenhamCluster-dev\",\r\n      \"name\": \"dabenhamCluster-dev\",\r\n      \"type\": \"Microsoft.OperationalInsights/clusters\",\r\n      \"location\": \"East US\",\r\n      \"tags\": {\r\n        \"LAClusterTestException\": \"oibeftExcludeClusterCOGS\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/clusters/dabenhamCluster-dev?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvY2x1c3RlcnMvZGFiZW5oYW1DbHVzdGVyLWRldj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a08f88e5-3a45-470e-bed8-3d8d7d43a0f2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "02297cfb-849a-4aa1-a4d3-43b03d7e4223"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "25d1855c-1ef5-4d19-99ff-5d0e6f3aff67"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125041Z:25d1855c-1ef5-4d19-99ff-5d0e6f3aff67"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:50:41 GMT"
+        ],
+        "Content-Length": [
+          "1684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"93fd4a4f-1526-458a-91c5-2e0715ed96b6\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"capacityreservation\",\r\n    \"capacity\": 5000\r\n  },\r\n  \"properties\": {\r\n    \"keyVaultProperties\": {\r\n      \"keyVaultUri\": \"https://dabenham-kv.vault.azure.net/\",\r\n      \"keyName\": \"TestClusterKey\",\r\n      \"keyVersion\": \"4cac6770273f4f45ba52aec2b6d67a47\",\r\n      \"keyRsaSize\": 0\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"ad6e8947-45aa-414f-a296-e046c6eb430c\",\r\n    \"billingType\": \"Workspaces\",\r\n    \"lastModifiedDate\": \"Thu, 07 Jul 2022 12:49:33 GMT\",\r\n    \"createdDate\": \"Mon, 08 Nov 2021 08:39:36 GMT\",\r\n    \"isDoubleEncryptionEnabled\": true,\r\n    \"isAvailabilityZonesEnabled\": true,\r\n    \"associatedWorkspaces\": [\r\n      {\r\n        \"workspaceId\": \"2129611d-5576-4b15-a0dd-095192af996a\",\r\n        \"workspaceName\": \"dabenham-eus\",\r\n        \"resourceId\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/dabenham-eus\",\r\n        \"associateDate\": \"Tue, 16 Nov 2021 09:15:19 GMT\"\r\n      }\r\n    ],\r\n    \"capacityReservationProperties\": {\r\n      \"lastSkuUpdate\": \"Mon, 06 Jun 2022 08:58:29 GMT\",\r\n      \"minCapacity\": 500\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/dabenham-dev/providers/Microsoft.OperationalInsights/clusters/dabenhamCluster-dev\",\r\n  \"name\": \"dabenhamCluster-dev\",\r\n  \"type\": \"Microsoft.OperationalInsights/clusters\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"LAClusterTestException\": \"oibeftExcludeClusterCOGS\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/clusters/dabenhamCluster-dev?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvY2x1c3RlcnMvZGFiZW5oYW1DbHVzdGVyLWRldj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9dddbef9-f852-44e2-9dec-1bca236f9fb4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "19882d1d-bc2b-46f6-bb65-a8206c097b6b"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "eacfe574-e5ae-4389-b51c-9cd6b15f0bce"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125044Z:eacfe574-e5ae-4389-b51c-9cd6b15f0bce"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:50:43 GMT"
+        ],
+        "Content-Length": [
+          "1684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"93fd4a4f-1526-458a-91c5-2e0715ed96b6\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"capacityreservation\",\r\n    \"capacity\": 5000\r\n  },\r\n  \"properties\": {\r\n    \"keyVaultProperties\": {\r\n      \"keyVaultUri\": \"https://dabenham-kv.vault.azure.net/\",\r\n      \"keyName\": \"TestClusterKey\",\r\n      \"keyVersion\": \"4cac6770273f4f45ba52aec2b6d67a47\",\r\n      \"keyRsaSize\": 0\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"ad6e8947-45aa-414f-a296-e046c6eb430c\",\r\n    \"billingType\": \"Workspaces\",\r\n    \"lastModifiedDate\": \"Thu, 07 Jul 2022 12:49:33 GMT\",\r\n    \"createdDate\": \"Mon, 08 Nov 2021 08:39:36 GMT\",\r\n    \"isDoubleEncryptionEnabled\": true,\r\n    \"isAvailabilityZonesEnabled\": true,\r\n    \"associatedWorkspaces\": [\r\n      {\r\n        \"workspaceId\": \"2129611d-5576-4b15-a0dd-095192af996a\",\r\n        \"workspaceName\": \"dabenham-eus\",\r\n        \"resourceId\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/dabenham-eus\",\r\n        \"associateDate\": \"Tue, 16 Nov 2021 09:15:19 GMT\"\r\n      }\r\n    ],\r\n    \"capacityReservationProperties\": {\r\n      \"lastSkuUpdate\": \"Mon, 06 Jun 2022 08:58:29 GMT\",\r\n      \"minCapacity\": 500\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/dabenham-dev/providers/Microsoft.OperationalInsights/clusters/dabenhamCluster-dev\",\r\n  \"name\": \"dabenhamCluster-dev\",\r\n  \"type\": \"Microsoft.OperationalInsights/clusters\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"LAClusterTestException\": \"oibeftExcludeClusterCOGS\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/clusters/dabenhamCluster-dev?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvY2x1c3RlcnMvZGFiZW5oYW1DbHVzdGVyLWRldj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"billingType\": \"Workspaces\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"sku\": {\r\n    \"capacity\": 5000,\r\n    \"name\": \"CapacityReservation\"\r\n  },\r\n  \"tags\": {\r\n    \"LAClusterTestException\": \"oibeftExcludeClusterCOGS\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1b6add8f-5efd-4af3-9f29-a514c0dcce78"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "267"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c3e9d9dc-7353-4191-b77f-b311373dd3b2"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "815273c0-b337-4dce-b9d6-2cee76e3f517"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220707T125049Z:815273c0-b337-4dce-b9d6-2cee76e3f517"
+        ],
+        "Date": [
+          "Thu, 07 Jul 2022 12:50:49 GMT"
+        ],
+        "Content-Length": [
+          "1684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"93fd4a4f-1526-458a-91c5-2e0715ed96b6\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"capacityreservation\",\r\n    \"capacity\": 5000\r\n  },\r\n  \"properties\": {\r\n    \"keyVaultProperties\": {\r\n      \"keyVaultUri\": \"https://dabenham-kv.vault.azure.net/\",\r\n      \"keyName\": \"TestClusterKey\",\r\n      \"keyVersion\": \"4cac6770273f4f45ba52aec2b6d67a47\",\r\n      \"keyRsaSize\": 0\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"ad6e8947-45aa-414f-a296-e046c6eb430c\",\r\n    \"billingType\": \"Workspaces\",\r\n    \"lastModifiedDate\": \"Thu, 07 Jul 2022 12:50:48 GMT\",\r\n    \"createdDate\": \"Mon, 08 Nov 2021 08:39:36 GMT\",\r\n    \"isDoubleEncryptionEnabled\": true,\r\n    \"isAvailabilityZonesEnabled\": true,\r\n    \"associatedWorkspaces\": [\r\n      {\r\n        \"workspaceId\": \"2129611d-5576-4b15-a0dd-095192af996a\",\r\n        \"workspaceName\": \"dabenham-eus\",\r\n        \"resourceId\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/microsoft.operationalinsights/workspaces/dabenham-eus\",\r\n        \"associateDate\": \"Tue, 16 Nov 2021 09:15:19 GMT\"\r\n      }\r\n    ],\r\n    \"capacityReservationProperties\": {\r\n      \"lastSkuUpdate\": \"Mon, 06 Jun 2022 08:58:29 GMT\",\r\n      \"minCapacity\": 500\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/dabenham-dev/providers/Microsoft.OperationalInsights/clusters/dabenhamCluster-dev\",\r\n  \"name\": \"dabenhamCluster-dev\",\r\n  \"type\": \"Microsoft.OperationalInsights/clusters\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"LAClusterTestException\": \"oibeftExcludeClusterCOGS\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "57947cb5-aadd-4b6c-9e8e-27f545bb7bf5"
+  }
+}

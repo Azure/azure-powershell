@@ -1,0 +1,818 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/invoices?periodStartDate=2020-01-01T00%3A00%3A00.0000000&periodEndDate=2020-06-30T00%3A00%3A00.0000000&api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvaW52b2ljZXM/cGVyaW9kU3RhcnREYXRlPTIwMjAtMDEtMDFUMDAlM0EwMCUzQTAwLjAwMDAwMDAmcGVyaW9kRW5kRGF0ZT0yMDIwLTA2LTMwVDAwJTNBMDAlM0EwMC4wMDAwMDAwJmFwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b1b56131-e8be-4d14-96a1-06510bb7eb82"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-request-id": [
+          "8a100e02-8191-4bbc-a152-7109295b88b5"
+        ],
+        "x-ms-correlation-request-id": [
+          "8a100e02-8191-4bbc-a152-7109295b88b5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191757Z:8a100e02-8191-4bbc-a152-7109295b88b5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:17:56 GMT"
+        ],
+        "Content-Length": [
+          "2574"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/invoices/T000534832\",\r\n      \"name\": \"T000534832\",\r\n      \"properties\": {\r\n        \"amountDue\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 4.37\r\n        },\r\n        \"azurePrepaymentApplied\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"billedAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 4.36\r\n        },\r\n        \"billingProfileDisplayName\": \"Marketing\",\r\n        \"creditAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"documents\": [\r\n          {\r\n            \"kind\": \"Invoice\",\r\n            \"url\": \"https://management.azure.com/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/invoices/T000534832/download?downloadToken=Drs_8404755123&api-version=2020-05-01\",\r\n            \"source\": \"DRS\"\r\n          }\r\n        ],\r\n        \"dueDate\": \"2020-08-04T00:18:53.801623Z\",\r\n        \"freeAzureCreditApplied\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"invoiceDate\": \"2020-07-05T00:18:53.801623Z\",\r\n        \"invoicePeriodEndDate\": \"2020-06-30T23:59:59.9999999\",\r\n        \"invoicePeriodStartDate\": \"2020-06-16T15:15:28.2936915Z\",\r\n        \"invoiceType\": \"AzureMarketplace\",\r\n        \"isMonthlyInvoice\": true,\r\n        \"payments\": [],\r\n        \"status\": \"Due\",\r\n        \"subscriptionId\": \"a8f7d0a1-204c-478a-86f0-bc53ce8d33a8\",\r\n        \"subTotal\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 4.36\r\n        },\r\n        \"taxAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.01\r\n        },\r\n        \"totalAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 4.37\r\n        }\r\n      },\r\n      \"type\": \"Microsoft.Billing/billingAccounts/billingSubscriptions/invoices\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/invoices/T000512627\",\r\n      \"name\": \"T000512627\",\r\n      \"properties\": {\r\n        \"amountDue\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"azurePrepaymentApplied\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"billedAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"billingProfileDisplayName\": \"Ibiza One\",\r\n        \"creditAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"documents\": [\r\n          {\r\n            \"kind\": \"Invoice\",\r\n            \"url\": \"https://management.azure.com/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/invoices/T000512627/download?downloadToken=Drs_6390568816&api-version=2020-05-01\",\r\n            \"source\": \"DRS\"\r\n          }\r\n        ],\r\n        \"dueDate\": \"2020-07-16T15:31:14.5914624Z\",\r\n        \"freeAzureCreditApplied\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"invoiceDate\": \"2020-06-16T15:31:14.5914624Z\",\r\n        \"invoicePeriodEndDate\": \"2020-06-16T15:15:57.5331884Z\",\r\n        \"invoicePeriodStartDate\": \"2020-06-16T15:15:57.5331884Z\",\r\n        \"invoiceType\": \"AzureMarketplace\",\r\n        \"isMonthlyInvoice\": false,\r\n        \"payments\": [],\r\n        \"status\": \"Paid\",\r\n        \"subscriptionId\": \"a8f7d0a1-204c-478a-86f0-bc53ce8d33a8\",\r\n        \"subTotal\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"taxAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        },\r\n        \"totalAmount\": {\r\n          \"currency\": \"USD\",\r\n          \"value\": 0.0\r\n        }\r\n      },\r\n      \"type\": \"Microsoft.Billing/billingAccounts/billingSubscriptions/invoices\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/invoices/T000534832/download?api-version=2020-05-01&downloadToken=Drs_8404755123",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvaW52b2ljZXMvVDAwMDUzNDgzMi9kb3dubG9hZD9hcGktdmVyc2lvbj0yMDIwLTA1LTAxJmRvd25sb2FkVG9rZW49RHJzXzg0MDQ3NTUxMjM=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2346cc60-00a6-4265-a150-181d59271fed"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_2659ef7e-ee18-40f0-afe4-0d3ab61d848b?api-version=2020-05-01"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "3a04fce0-6385-4f6c-ae62-9c9cc731bac2"
+        ],
+        "x-ms-correlation-request-id": [
+          "3a04fce0-6385-4f6c-ae62-9c9cc731bac2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191757Z:3a04fce0-6385-4f6c-ae62-9c9cc731bac2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:17:57 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_2659ef7e-ee18-40f0-afe4-0d3ab61d848b?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvb3BlcmF0aW9uUmVzdWx0cy9pbnZvaWNlRG93bmxvYWRfMjY1OWVmN2UtZWUxOC00MGYwLWFmZTQtMGQzYWI2MWQ4NDhiP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-request-id": [
+          "107ac1bb-02a1-4679-94ca-b46589a52e82"
+        ],
+        "x-ms-correlation-request-id": [
+          "107ac1bb-02a1-4679-94ca-b46589a52e82"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191807Z:107ac1bb-02a1-4679-94ca-b46589a52e82"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:18:07 GMT"
+        ],
+        "Content-Length": [
+          "190"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000534832_8404755123.pdf?sv=2019-02-02&sr=b&sp=r\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_2659ef7e-ee18-40f0-afe4-0d3ab61d848b?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvb3BlcmF0aW9uUmVzdWx0cy9pbnZvaWNlRG93bmxvYWRfMjY1OWVmN2UtZWUxOC00MGYwLWFmZTQtMGQzYWI2MWQ4NDhiP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-request-id": [
+          "c68427da-f1bf-4aad-b69c-ea56afa57136"
+        ],
+        "x-ms-correlation-request-id": [
+          "c68427da-f1bf-4aad-b69c-ea56afa57136"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191808Z:c68427da-f1bf-4aad-b69c-ea56afa57136"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:18:07 GMT"
+        ],
+        "Content-Length": [
+          "190"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000534832_8404755123.pdf?sv=2019-02-02&sr=b&sp=r\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/invoices/T000512627/download?api-version=2020-05-01&downloadToken=Drs_6390568816",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvaW52b2ljZXMvVDAwMDUxMjYyNy9kb3dubG9hZD9hcGktdmVyc2lvbj0yMDIwLTA1LTAxJmRvd25sb2FkVG9rZW49RHJzXzYzOTA1Njg4MTY=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a1b83a19-dc5a-4a1b-aecf-7fc707226c9a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "110badf2-e956-4267-8946-eb9d0cce5684"
+        ],
+        "x-ms-correlation-request-id": [
+          "110badf2-e956-4267-8946-eb9d0cce5684"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191808Z:110badf2-e956-4267-8946-eb9d0cce5684"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:18:07 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvb3BlcmF0aW9uUmVzdWx0cy9pbnZvaWNlRG93bmxvYWRfMDJiZTMyMDctZTk2YS00NmMxLTkwMDEtYzNkNmVkNjVhMGY2P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "cc88581b-942d-4140-942b-a4d2b7c2e3df"
+        ],
+        "x-ms-correlation-request-id": [
+          "cc88581b-942d-4140-942b-a4d2b7c2e3df"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191818Z:cc88581b-942d-4140-942b-a4d2b7c2e3df"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:18:17 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvb3BlcmF0aW9uUmVzdWx0cy9pbnZvaWNlRG93bmxvYWRfMDJiZTMyMDctZTk2YS00NmMxLTkwMDEtYzNkNmVkNjVhMGY2P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "46f6c0ed-28b1-4aef-8b45-3b4fe3df8c96"
+        ],
+        "x-ms-correlation-request-id": [
+          "46f6c0ed-28b1-4aef-8b45-3b4fe3df8c96"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191828Z:46f6c0ed-28b1-4aef-8b45-3b4fe3df8c96"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:18:27 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvb3BlcmF0aW9uUmVzdWx0cy9pbnZvaWNlRG93bmxvYWRfMDJiZTMyMDctZTk2YS00NmMxLTkwMDEtYzNkNmVkNjVhMGY2P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "d3541187-78b9-427c-96df-a806a9ad9513"
+        ],
+        "x-ms-correlation-request-id": [
+          "d3541187-78b9-427c-96df-a806a9ad9513"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191838Z:d3541187-78b9-427c-96df-a806a9ad9513"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:18:38 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvb3BlcmF0aW9uUmVzdWx0cy9pbnZvaWNlRG93bmxvYWRfMDJiZTMyMDctZTk2YS00NmMxLTkwMDEtYzNkNmVkNjVhMGY2P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "1bcd5390-01e6-45fe-8020-8aa7587455a1"
+        ],
+        "x-ms-correlation-request-id": [
+          "1bcd5390-01e6-45fe-8020-8aa7587455a1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191848Z:1bcd5390-01e6-45fe-8020-8aa7587455a1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:18:48 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvb3BlcmF0aW9uUmVzdWx0cy9pbnZvaWNlRG93bmxvYWRfMDJiZTMyMDctZTk2YS00NmMxLTkwMDEtYzNkNmVkNjVhMGY2P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11992"
+        ],
+        "x-ms-request-id": [
+          "5b88e02b-16b0-4662-a17d-2f816c525227"
+        ],
+        "x-ms-correlation-request-id": [
+          "5b88e02b-16b0-4662-a17d-2f816c525227"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191858Z:5b88e02b-16b0-4662-a17d-2f816c525227"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:18:58 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvb3BlcmF0aW9uUmVzdWx0cy9pbnZvaWNlRG93bmxvYWRfMDJiZTMyMDctZTk2YS00NmMxLTkwMDEtYzNkNmVkNjVhMGY2P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11991"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-request-id": [
+          "fdfe54a7-3b7d-4fd6-a15b-baad9a088cda"
+        ],
+        "x-ms-correlation-request-id": [
+          "fdfe54a7-3b7d-4fd6-a15b-baad9a088cda"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191909Z:fdfe54a7-3b7d-4fd6-a15b-baad9a088cda"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:19:08 GMT"
+        ],
+        "Content-Length": [
+          "192"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000512627_6390568816.pdf?sv=2019-02-02&sr=b&sp=r\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/a8f7d0a1-204c-478a-86f0-bc53ce8d33a8/operationResults/invoiceDownload_02be3207-e96a-46c1-9001-c3d6ed65a0f6?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvZGVmYXVsdC9iaWxsaW5nU3Vic2NyaXB0aW9ucy9hOGY3ZDBhMS0yMDRjLTQ3OGEtODZmMC1iYzUzY2U4ZDMzYTgvb3BlcmF0aW9uUmVzdWx0cy9pbnZvaWNlRG93bmxvYWRfMDJiZTMyMDctZTk2YS00NmMxLTkwMDEtYzNkNmVkNjVhMGY2P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11990"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1278.449"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-request-id": [
+          "4748c719-d76f-47a2-9f63-a6bbe51004ed"
+        ],
+        "x-ms-correlation-request-id": [
+          "4748c719-d76f-47a2-9f63-a6bbe51004ed"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200706T191909Z:4748c719-d76f-47a2-9f63-a6bbe51004ed"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 06 Jul 2020 19:19:08 GMT"
+        ],
+        "Content-Length": [
+          "192"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"url\": \"https://billingrppub.blob.core.windows.net/invoices/T000512627_6390568816.pdf?sv=2019-02-02&sr=b&sp=r\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "a8f7d0a1-204c-478a-86f0-bc53ce8d33a8"
+  }
+}

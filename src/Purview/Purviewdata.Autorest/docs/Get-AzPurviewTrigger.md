@@ -12,18 +12,24 @@ Gets trigger information
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### Get (Default)
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 Get-AzPurviewTrigger -Endpoint <String> -DataSourceName <String> -ScanName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### GetViaIdentity
 ```
 Get-AzPurviewTrigger -Endpoint <String> -InputObject <IPurviewdataIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## DESCRIPTION
 Gets trigger information
 
@@ -31,10 +37,15 @@ Gets trigger information
 
 ### Example 1: Get trigger schedule for scan run
 ```powershell
+<<<<<<< HEAD
 Get-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK'
 ```
 
 ```output
+=======
+PS C:\> Get-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 CreatedAt                  : 2/17/2022 1:35:12 PM
 Id                         : datasources/DataScanTestData-Parv/scans/Scan-6HK/triggers/default
 IncrementalScanStartTime   :
@@ -67,7 +78,11 @@ Get trigger schedule for scan run
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: Get
+=======
+Parameter Sets: (All)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Aliases:
 
 Required: True
@@ -108,6 +123,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -124,12 +140,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -ScanName
 .
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: Get
+=======
+Parameter Sets: (All)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Aliases:
 
 Required: True
@@ -144,8 +166,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
@@ -154,6 +179,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
+<<<<<<< HEAD
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
@@ -171,5 +197,7 @@ INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
   - `[ScanRulesetName <String>]`: 
   - `[Version <Int32?>]`: 
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## RELATED LINKS
 

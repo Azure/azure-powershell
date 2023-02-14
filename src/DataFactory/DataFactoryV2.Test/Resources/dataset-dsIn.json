@@ -1,0 +1,16 @@
+{
+  "properties": {
+    "type": "AzureBlob",
+    "typeProperties": {
+      "folderPath": "entitylogs/entitylogs.csv",
+      "format": {
+        "type": "TextFormat"
+      }
+    },
+    "linkedServiceName": {
+      "referenceName": "foo1",
+      "type": "LinkedServiceReference"
+    }
+  }
+}
+

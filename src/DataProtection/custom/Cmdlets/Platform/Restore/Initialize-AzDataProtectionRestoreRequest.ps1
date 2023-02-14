@@ -1,6 +1,10 @@
 ﻿function Initialize-AzDataProtectionRestoreRequest
 {
+<<<<<<< HEAD
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRestoreRequest')]
+=======
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRestoreRequest')]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Initializes Restore Request object for triggering restore on a protected backup instance.')]
 
@@ -71,7 +75,11 @@
 
         [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory, HelpMessage='Backup Instance object to trigger original localtion restore.')]
         [Parameter(ParameterSetName="OriginalLocationILR", Mandatory, HelpMessage='Backup Instance object to trigger original localtion restore.')]
+<<<<<<< HEAD
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.BackupInstanceResource]
+=======
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.BackupInstanceResource]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         ${BackupInstance},
 
         [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory, HelpMessage='Target resource Id to which backup data will be restored.')]
@@ -132,7 +140,11 @@
             Write-Debug -Message $RecoveryPoint
             
             if($PSBoundParameters.ContainsKey("RehydrationPriority")){
+<<<<<<< HEAD
                 $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.AzureBackupRestoreWithRehydrationRequest]::new()
+=======
+                $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.AzureBackupRestoreWithRehydrationRequest]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                 $restoreRequest.ObjectType = "AzureBackupRestoreWithRehydrationRequest"   
                 $restoreRequest.RehydrationPriority = $RehydrationPriority
                 if($PSBoundParameters.ContainsKey("RehydrationDuration")){
@@ -143,7 +155,11 @@
                 }                
             }
             else{
+<<<<<<< HEAD
                 $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.AzureBackupRecoveryPointBasedRestoreRequest]::new()
+=======
+                $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.AzureBackupRecoveryPointBasedRestoreRequest]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                 $restoreRequest.ObjectType = "AzureBackupRecoveryPointBasedRestoreRequest"            
             }            
             $restoreRequest.RecoveryPointId = $RecoveryPoint
@@ -153,7 +169,11 @@
         {
             $utcTime = $PointInTime.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
             Write-Debug -Message $utcTime
+<<<<<<< HEAD
             $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.AzureBackupRecoveryTimeBasedRestoreRequest]::new()
+=======
+            $restoreRequest = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.AzureBackupRecoveryTimeBasedRestoreRequest]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             $restoreRequest.ObjectType = "AzureBackupRecoveryTimeBasedRestoreRequest"
             $restoreRequest.RecoveryPointTime = $utcTime
             $restoreMode = "PointInTimeBased"
@@ -170,7 +190,11 @@
 
         if($RestoreType -eq "RestoreAsFiles") 
         {
+<<<<<<< HEAD
            $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.RestoreFilesTargetInfo]::new()
+=======
+           $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.RestoreFilesTargetInfo]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
            $restoreRequest.RestoreTargetInfo.ObjectType = "RestoreFilesTargetInfo"
 
            if(!($PSBoundParameters.ContainsKey("FileNamePrefix")) -or !($PSBoundParameters.ContainsKey("TargetContainerURI")) ){
@@ -185,13 +209,21 @@
         elseif(!($ItemLevelRecovery))
         {   
             # RestoreTargetInfo for OLR ALR Full recovery
+<<<<<<< HEAD
             $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.RestoreTargetInfo]::new()
+=======
+            $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.RestoreTargetInfo]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             $restoreRequest.RestoreTargetInfo.ObjectType = "restoreTargetInfo"
         }        
         else 
         {
             # ILR: ItemLevelRestoreTargetInfo
+<<<<<<< HEAD
             $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.ItemLevelRestoreTargetInfo]::new()
+=======
+            $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ItemLevelRestoreTargetInfo]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             $restoreRequest.RestoreTargetInfo.ObjectType = "itemLevelRestoreTargetInfo"
 
             $restoreCriteriaList = @()
@@ -199,7 +231,11 @@
             if($ContainersList.length -gt 0){                
                 for($i = 0; $i -lt $ContainersList.length; $i++){
                                 
+<<<<<<< HEAD
                     $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.RangeBasedItemLevelRestoreCriteria]::new()
+=======
+                    $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.RangeBasedItemLevelRestoreCriteria]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
                     $restoreCriteria.ObjectType = "RangeBasedItemLevelRestoreCriteria"
                     $restoreCriteria.MinMatchingValue = $ContainersList[$i]
@@ -218,7 +254,11 @@
                 
                 for($i = 0; $i -lt $FromPrefixPattern.length; $i++){
                                 
+<<<<<<< HEAD
                     $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.RangeBasedItemLevelRestoreCriteria]::new()
+=======
+                    $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.RangeBasedItemLevelRestoreCriteria]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
                     $restoreCriteria.ObjectType = "RangeBasedItemLevelRestoreCriteria"
                     $restoreCriteria.MinMatchingValue = $FromPrefixPattern[$i]
@@ -280,9 +320,15 @@
                     $errormsg = "Please input SecretStoreType"
         		    throw $errormsg                    
                 }
+<<<<<<< HEAD
                 $restoreRequest.RestoreTargetInfo.DatasourceAuthCredentials = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.SecretStoreBasedAuthCredentials]::new()
                 $restoreRequest.RestoreTargetInfo.DatasourceAuthCredentials.ObjectType = "SecretStoreBasedAuthCredentials"
                 $restoreRequest.RestoreTargetInfo.DatasourceAuthCredentials.SecretStoreResource =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.SecretStoreResource]::new()
+=======
+                $restoreRequest.RestoreTargetInfo.DatasourceAuthCredentials = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.SecretStoreBasedAuthCredentials]::new()
+                $restoreRequest.RestoreTargetInfo.DatasourceAuthCredentials.ObjectType = "SecretStoreBasedAuthCredentials"
+                $restoreRequest.RestoreTargetInfo.DatasourceAuthCredentials.SecretStoreResource =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.SecretStoreResource]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                 $restoreRequest.RestoreTargetInfo.DatasourceAuthCredentials.SecretStoreResource.SecretStoreType = $SecretStoreType
                 $restoreRequest.RestoreTargetInfo.DatasourceAuthCredentials.SecretStoreResource.Uri = $SecretStoreURI
             }

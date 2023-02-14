@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/abc/providers/Microsoft.AlertsManagement/actionRules?api-version=2021-08-08",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQ5MWRlMDUtZDc5MS00Y2ViLWI2ZGMtOTg4NjgyZGM3ZDcyL3Jlc291cmNlR3JvdXBzL2FiYy9wcm92aWRlcnMvTWljcm9zb2Z0LkFsZXJ0c01hbmFnZW1lbnQvYWN0aW9uUnVsZXM/YXBpLXZlcnNpb249MjAyMS0wOC0wOA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2eaf36f9-72d9-4b3d-bb32-1fcf0c46eb07"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fea375f5-6046-4d88-a276-2d566443bdb1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "Content-Security-Policy": [
+          "script-src 'self'"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "999"
+        ],
+        "x-ms-correlation-request-id": [
+          "b6cf4f2d-59f8-4492-984e-3440a7d3b0a9"
+        ],
+        "x-ms-routing-request-id": [
+          "GERMANYWESTCENTRAL:20220221T113941Z:b6cf4f2d-59f8-4492-984e-3440a7d3b0a9"
+        ],
+        "Date": [
+          "Mon, 21 Feb 2022 11:39:40 GMT"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "dd91de05-d791-4ceb-b6dc-988682dc7d72"
+  }
+}

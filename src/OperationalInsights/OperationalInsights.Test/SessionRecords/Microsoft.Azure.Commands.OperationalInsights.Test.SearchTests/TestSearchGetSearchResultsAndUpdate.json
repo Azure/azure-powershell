@@ -1,0 +1,143 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourcegroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/search?api-version=2015-03-20",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmVlYTk0MzEtOWNiYy00ZWM2LWE0YzYtMDU5NmU0MzRhYWEyL3Jlc291cmNlZ3JvdXBzL21tcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvMTg4MDg3ZTQtNTg1MC00ZDhiLTlkMDgtM2U1YjQ0OGVhZWNkL3NlYXJjaD9hcGktdmVyc2lvbj0yMDE1LTAzLTIw",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"top\": 5,\r\n  \"highlight\": {},\r\n  \"query\": \"*\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "53"
+        ],
+        "x-ms-client-request-id": [
+          "d1b121ac-430f-4c79-8c3c-d8f084407bb7"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/search/d66b5275-fcec-4201-bd18-e410e51c0abf\",\r\n  \"__metadata\": {\r\n    \"resultType\": \"raw\",\r\n    \"total\": 33015772,\r\n    \"top\": 5,\r\n    \"RequestId\": \"d66b5275-fcec-4201-bd18-e410e51c0abf\",\r\n    \"Status\": \"Pending\",\r\n    \"NumberOfDocuments\": 0,\r\n    \"StartTime\": \"2016-04-27T07:18:35.4034126Z\",\r\n    \"LastUpdated\": \"2016-04-27T07:18:37.7316029Z\",\r\n    \"ETag\": \"635973383177316029\",\r\n    \"sort\": [\r\n      {\r\n        \"name\": \"TimeGenerated\",\r\n        \"order\": \"desc\"\r\n      }\r\n    ],\r\n    \"requestTime\": 2432\r\n  },\r\n  \"value\": [\r\n    {\r\n      \"TimeGenerated\": \"2016-04-27T06:07:02.627Z\",\r\n      \"SourceSystem\": \"OpsManager\",\r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"Channel\": \"Security\",\r\n      \"Task\": 13570,\r\n      \"Level\": 8,\r\n      \"EventData\": \"<EventData xmlns=\\\"http://schemas.microsoft.com/win/2004/08/events/event\\\">\\r\\n  <Data Name=\\\"SubjectUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"SubjectUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"SubjectDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"SubjectLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"TargetUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"TargetUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"TargetDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"TargetLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"ProcessName\\\">C:\\\\Windows\\\\System32\\\\svchost.exe</Data>\\r\\n  <Data Name=\\\"ProcessId\\\">0x4b4</Data>\\r\\n  <Data Name=\\\"EnabledPrivilegeList\\\">SeAssignPrimaryTokenPrivilege \\t\\t\\tSeIncreaseQuotaPrivilege \\t\\t\\tSeSecurityPrivilege \\t\\t\\tSeTakeOwnershipPrivilege \\t\\t\\tSeLoadDriverPrivilege \\t\\t\\tSeSystemtimePrivilege \\t\\t\\tSeBackupPrivilege \\t\\t\\tSeRestorePrivilege \\t\\t\\tSeShutdownPrivilege \\t\\t\\tSeSystemEnvironmentPrivilege \\t\\t\\tSeUndockPrivilege \\t\\t\\tSeManageVolumePrivilege</Data>\\r\\n  <Data Name=\\\"DisabledPrivilegeList\\\">-</Data>\\r\\n</EventData>\",\r\n      \"EventID\": 4703,\r\n      \"Activity\": \"4703\",\r\n      \"MG\": \"00000000-0000-0000-0000-000000000001\",\r\n      \"TimeCollected\": \"2016-04-27T06:07:03.073Z\",\r\n      \"ManagementGroupName\": \"AOI-188087e4-5850-4d8b-9d08-3e5b448eaecd\",\r\n      \"id\": \"4668cfe7-1977-f569-e436-1247bac5a5d9\",\r\n      \"Type\": \"SecurityEvent\",\r\n      \"EventSourceName\": \"Microsoft-Windows-Security-Auditing\",\r\n      \"__metadata\": {\r\n        \"Type\": \"SecurityEvent\",\r\n        \"TimeGenerated\": \"2016-04-27T06:07:02.627Z\",\r\n        \"highlighting\": {}\r\n      }\r\n    },\r\n    {\r\n      \"TimeGenerated\": \"2016-04-27T06:07:02.587Z\",\r\n      \"SourceSystem\": \"OpsManager\",\r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"Channel\": \"Security\",\r\n      \"Task\": 13570,\r\n      \"Level\": 8,\r\n      \"EventData\": \"<EventData xmlns=\\\"http://schemas.microsoft.com/win/2004/08/events/event\\\">\\r\\n  <Data Name=\\\"SubjectUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"SubjectUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"SubjectDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"SubjectLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"TargetUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"TargetUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"TargetDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"TargetLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"ProcessName\\\">C:\\\\Windows\\\\System32\\\\svchost.exe</Data>\\r\\n  <Data Name=\\\"ProcessId\\\">0x4b4</Data>\\r\\n  <Data Name=\\\"EnabledPrivilegeList\\\">SeAssignPrimaryTokenPrivilege \\t\\t\\tSeIncreaseQuotaPrivilege \\t\\t\\tSeSecurityPrivilege \\t\\t\\tSeTakeOwnershipPrivilege \\t\\t\\tSeLoadDriverPrivilege \\t\\t\\tSeSystemtimePrivilege \\t\\t\\tSeBackupPrivilege \\t\\t\\tSeRestorePrivilege \\t\\t\\tSeShutdownPrivilege \\t\\t\\tSeSystemEnvironmentPrivilege \\t\\t\\tSeUndockPrivilege \\t\\t\\tSeManageVolumePrivilege</Data>\\r\\n  <Data Name=\\\"DisabledPrivilegeList\\\">-</Data>\\r\\n</EventData>\",\r\n      \"EventID\": 4703,\r\n      \"Activity\": \"4703\",\r\n      \"MG\": \"00000000-0000-0000-0000-000000000001\",\r\n      \"TimeCollected\": \"2016-04-27T06:07:03.073Z\",\r\n      \"ManagementGroupName\": \"AOI-188087e4-5850-4d8b-9d08-3e5b448eaecd\",\r\n      \"id\": \"94bf56ed-413c-2b15-3dd2-39a2f73d6ed6\",\r\n      \"Type\": \"SecurityEvent\",\r\n      \"EventSourceName\": \"Microsoft-Windows-Security-Auditing\",\r\n      \"__metadata\": {\r\n        \"Type\": \"SecurityEvent\",\r\n        \"TimeGenerated\": \"2016-04-27T06:07:02.587Z\",\r\n        \"highlighting\": {}\r\n      }\r\n    },\r\n    {\r\n      \"TimeGenerated\": \"2016-04-27T06:07:02.533Z\",\r\n      \"SourceSystem\": \"OpsManager\",\r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"Channel\": \"Security\",\r\n      \"Task\": 12802,\r\n      \"Level\": 16,\r\n      \"EventData\": \"<EventData xmlns=\\\"http://schemas.microsoft.com/win/2004/08/events/event\\\">\\r\\n  <Data Name=\\\"SubjectUserSid\\\">S-1-5-21-2127521184-1604012920-1887927527-6429038</Data>\\r\\n  <Data Name=\\\"SubjectUserName\\\">lewang</Data>\\r\\n  <Data Name=\\\"SubjectDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"SubjectLogonId\\\">0x20a2f0f</Data>\\r\\n  <Data Name=\\\"ObjectServer\\\">Security</Data>\\r\\n  <Data Name=\\\"ObjectType\\\">Process</Data>\\r\\n  <Data Name=\\\"ObjectName\\\">\\\\Device\\\\HarddiskVolume3\\\\Windows\\\\System32\\\\lsass.exe</Data>\\r\\n  <Data Name=\\\"HandleId\\\">0x0</Data>\\r\\n  <Data Name=\\\"TransactionId\\\">{00000000-0000-0000-0000-000000000000}</Data>\\r\\n  <Data Name=\\\"AccessList\\\">%%4484 \\t\\t\\t\\t%%4490 \\t\\t\\t\\t</Data>\\r\\n  <Data Name=\\\"AccessReason\\\">-</Data>\\r\\n  <Data Name=\\\"AccessMask\\\">0x410</Data>\\r\\n  <Data Name=\\\"PrivilegeList\\\">-</Data>\\r\\n  <Data Name=\\\"RestrictedSidCount\\\">0</Data>\\r\\n  <Data Name=\\\"ProcessId\\\">0x1224</Data>\\r\\n  <Data Name=\\\"ProcessName\\\">C:\\\\Windows\\\\System32\\\\wbem\\\\WmiPrvSE.exe</Data>\\r\\n  <Data Name=\\\"ResourceAttributes\\\">-</Data>\\r\\n</EventData>\",\r\n      \"EventID\": 4656,\r\n      \"Activity\": \"4656 - A handle to an object was requested.\",\r\n      \"MG\": \"00000000-0000-0000-0000-000000000001\",\r\n      \"TimeCollected\": \"2016-04-27T06:07:03.073Z\",\r\n      \"ManagementGroupName\": \"AOI-188087e4-5850-4d8b-9d08-3e5b448eaecd\",\r\n      \"id\": \"9b712c00-9c3f-b81b-7713-b710380eb9d5\",\r\n      \"Type\": \"SecurityEvent\",\r\n      \"EventSourceName\": \"Microsoft-Windows-Security-Auditing\",\r\n      \"__metadata\": {\r\n        \"Type\": \"SecurityEvent\",\r\n        \"TimeGenerated\": \"2016-04-27T06:07:02.533Z\",\r\n        \"highlighting\": {}\r\n      }\r\n    },\r\n    {\r\n      \"TimeGenerated\": \"2016-04-27T06:07:02.527Z\",\r\n      \"SourceSystem\": \"OpsManager\",\r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"Channel\": \"Security\",\r\n      \"Task\": 13570,\r\n      \"Level\": 8,\r\n      \"EventData\": \"<EventData xmlns=\\\"http://schemas.microsoft.com/win/2004/08/events/event\\\">\\r\\n  <Data Name=\\\"SubjectUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"SubjectUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"SubjectDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"SubjectLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"TargetUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"TargetUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"TargetDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"TargetLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"ProcessName\\\">C:\\\\Windows\\\\System32\\\\svchost.exe</Data>\\r\\n  <Data Name=\\\"ProcessId\\\">0x4b4</Data>\\r\\n  <Data Name=\\\"EnabledPrivilegeList\\\">SeAssignPrimaryTokenPrivilege \\t\\t\\tSeIncreaseQuotaPrivilege \\t\\t\\tSeSecurityPrivilege \\t\\t\\tSeTakeOwnershipPrivilege \\t\\t\\tSeLoadDriverPrivilege \\t\\t\\tSeSystemtimePrivilege \\t\\t\\tSeBackupPrivilege \\t\\t\\tSeRestorePrivilege \\t\\t\\tSeShutdownPrivilege \\t\\t\\tSeSystemEnvironmentPrivilege \\t\\t\\tSeUndockPrivilege \\t\\t\\tSeManageVolumePrivilege</Data>\\r\\n  <Data Name=\\\"DisabledPrivilegeList\\\">-</Data>\\r\\n</EventData>\",\r\n      \"EventID\": 4703,\r\n      \"Activity\": \"4703\",\r\n      \"MG\": \"00000000-0000-0000-0000-000000000001\",\r\n      \"TimeCollected\": \"2016-04-27T06:07:03.073Z\",\r\n      \"ManagementGroupName\": \"AOI-188087e4-5850-4d8b-9d08-3e5b448eaecd\",\r\n      \"id\": \"d64b9bc7-a09d-8894-c466-03348ed6e391\",\r\n      \"Type\": \"SecurityEvent\",\r\n      \"EventSourceName\": \"Microsoft-Windows-Security-Auditing\",\r\n      \"__metadata\": {\r\n        \"Type\": \"SecurityEvent\",\r\n        \"TimeGenerated\": \"2016-04-27T06:07:02.527Z\",\r\n        \"highlighting\": {}\r\n      }\r\n    },\r\n    {\r\n      \"TimeGenerated\": \"2016-04-27T06:07:02.5Z\",\r\n      \"SourceSystem\": \"OpsManager\",\r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"Channel\": \"Security\",\r\n      \"Task\": 13570,\r\n      \"Level\": 8,\r\n      \"EventData\": \"<EventData xmlns=\\\"http://schemas.microsoft.com/win/2004/08/events/event\\\">\\r\\n  <Data Name=\\\"SubjectUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"SubjectUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"SubjectDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"SubjectLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"TargetUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"TargetUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"TargetDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"TargetLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"ProcessName\\\">C:\\\\Windows\\\\System32\\\\svchost.exe</Data>\\r\\n  <Data Name=\\\"ProcessId\\\">0x4b4</Data>\\r\\n  <Data Name=\\\"EnabledPrivilegeList\\\">SeAssignPrimaryTokenPrivilege \\t\\t\\tSeIncreaseQuotaPrivilege \\t\\t\\tSeSecurityPrivilege \\t\\t\\tSeTakeOwnershipPrivilege \\t\\t\\tSeLoadDriverPrivilege \\t\\t\\tSeSystemtimePrivilege \\t\\t\\tSeBackupPrivilege \\t\\t\\tSeRestorePrivilege \\t\\t\\tSeShutdownPrivilege \\t\\t\\tSeSystemEnvironmentPrivilege \\t\\t\\tSeUndockPrivilege \\t\\t\\tSeManageVolumePrivilege</Data>\\r\\n  <Data Name=\\\"DisabledPrivilegeList\\\">-</Data>\\r\\n</EventData>\",\r\n      \"EventID\": 4703,\r\n      \"Activity\": \"4703\",\r\n      \"MG\": \"00000000-0000-0000-0000-000000000001\",\r\n      \"TimeCollected\": \"2016-04-27T06:07:03.073Z\",\r\n      \"ManagementGroupName\": \"AOI-188087e4-5850-4d8b-9d08-3e5b448eaecd\",\r\n      \"id\": \"a45d4c5c-ca80-ce1a-f666-c40b44b931a7\",\r\n      \"Type\": \"SecurityEvent\",\r\n      \"EventSourceName\": \"Microsoft-Windows-Security-Auditing\",\r\n      \"__metadata\": {\r\n        \"Type\": \"SecurityEvent\",\r\n        \"TimeGenerated\": \"2016-04-27T06:07:02.5Z\",\r\n        \"highlighting\": {}\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "8818"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-RateLimit-Remaining": [
+          "9"
+        ],
+        "X-RateLimit-Limit": [
+          "10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "dc611737-27e0-44c4-957a-c40e0a4b5d2d"
+        ],
+        "x-ms-correlation-request-id": [
+          "dc611737-27e0-44c4-957a-c40e0a4b5d2d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160427T071837Z:dc611737-27e0-44c4-957a-c40e0a4b5d2d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 27 Apr 2016 07:18:37 GMT"
+        ],
+        "Location": [
+          "https://https//management.azure.com/subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourcegroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/search?api-version=2015-03-20/subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/search/d66b5275-fcec-4201-bd18-e410e51c0abf&api-version=2015-03-20"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourcegroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/search/d66b5275-fcec-4201-bd18-e410e51c0abf?api-version=2015-03-20",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmVlYTk0MzEtOWNiYy00ZWM2LWE0YzYtMDU5NmU0MzRhYWEyL3Jlc291cmNlZ3JvdXBzL21tcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvMTg4MDg3ZTQtNTg1MC00ZDhiLTlkMDgtM2U1YjQ0OGVhZWNkL3NlYXJjaC9kNjZiNTI3NS1mY2VjLTQyMDEtYmQxOC1lNDEwZTUxYzBhYmY/YXBpLXZlcnNpb249MjAxNS0wMy0yMA==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "85079813-64f7-43b7-ad98-d50b0b9a1b67"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/search/d66b5275-fcec-4201-bd18-e410e51c0abf\",\r\n  \"__metadata\": {\r\n    \"resultType\": \"raw\",\r\n    \"total\": 33015772,\r\n    \"top\": 5,\r\n    \"RequestId\": \"d66b5275-fcec-4201-bd18-e410e51c0abf\",\r\n    \"Status\": \"Successful\",\r\n    \"NumberOfDocuments\": 0,\r\n    \"StartTime\": \"2016-04-27T07:18:35.4034126Z\",\r\n    \"LastUpdated\": \"2016-04-27T07:18:37.7316029Z\",\r\n    \"ETag\": \"635973383177316029\",\r\n    \"sort\": [\r\n      {\r\n        \"name\": \"TimeGenerated\",\r\n        \"order\": \"desc\"\r\n      }\r\n    ],\r\n    \"requestTime\": 116\r\n  },\r\n  \"value\": [\r\n    {\r\n      \"TimeGenerated\": \"2016-04-27T06:07:02.627Z\",\r\n      \"SourceSystem\": \"OpsManager\",\r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"Channel\": \"Security\",\r\n      \"Task\": 13570,\r\n      \"Level\": 8,\r\n      \"EventData\": \"<EventData xmlns=\\\"http://schemas.microsoft.com/win/2004/08/events/event\\\">\\r\\n  <Data Name=\\\"SubjectUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"SubjectUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"SubjectDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"SubjectLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"TargetUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"TargetUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"TargetDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"TargetLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"ProcessName\\\">C:\\\\Windows\\\\System32\\\\svchost.exe</Data>\\r\\n  <Data Name=\\\"ProcessId\\\">0x4b4</Data>\\r\\n  <Data Name=\\\"EnabledPrivilegeList\\\">SeAssignPrimaryTokenPrivilege \\t\\t\\tSeIncreaseQuotaPrivilege \\t\\t\\tSeSecurityPrivilege \\t\\t\\tSeTakeOwnershipPrivilege \\t\\t\\tSeLoadDriverPrivilege \\t\\t\\tSeSystemtimePrivilege \\t\\t\\tSeBackupPrivilege \\t\\t\\tSeRestorePrivilege \\t\\t\\tSeShutdownPrivilege \\t\\t\\tSeSystemEnvironmentPrivilege \\t\\t\\tSeUndockPrivilege \\t\\t\\tSeManageVolumePrivilege</Data>\\r\\n  <Data Name=\\\"DisabledPrivilegeList\\\">-</Data>\\r\\n</EventData>\",\r\n      \"EventID\": 4703,\r\n      \"Activity\": \"4703\",\r\n      \"MG\": \"00000000-0000-0000-0000-000000000001\",\r\n      \"TimeCollected\": \"2016-04-27T06:07:03.073Z\",\r\n      \"ManagementGroupName\": \"AOI-188087e4-5850-4d8b-9d08-3e5b448eaecd\",\r\n      \"id\": \"4668cfe7-1977-f569-e436-1247bac5a5d9\",\r\n      \"Type\": \"SecurityEvent\",\r\n      \"EventSourceName\": \"Microsoft-Windows-Security-Auditing\",\r\n      \"__metadata\": {\r\n        \"Type\": \"SecurityEvent\",\r\n        \"TimeGenerated\": \"2016-04-27T06:07:02.627Z\",\r\n        \"highlighting\": {}\r\n      }\r\n    },\r\n    {\r\n      \"TimeGenerated\": \"2016-04-27T06:07:02.587Z\",\r\n      \"SourceSystem\": \"OpsManager\",\r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"Channel\": \"Security\",\r\n      \"Task\": 13570,\r\n      \"Level\": 8,\r\n      \"EventData\": \"<EventData xmlns=\\\"http://schemas.microsoft.com/win/2004/08/events/event\\\">\\r\\n  <Data Name=\\\"SubjectUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"SubjectUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"SubjectDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"SubjectLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"TargetUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"TargetUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"TargetDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"TargetLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"ProcessName\\\">C:\\\\Windows\\\\System32\\\\svchost.exe</Data>\\r\\n  <Data Name=\\\"ProcessId\\\">0x4b4</Data>\\r\\n  <Data Name=\\\"EnabledPrivilegeList\\\">SeAssignPrimaryTokenPrivilege \\t\\t\\tSeIncreaseQuotaPrivilege \\t\\t\\tSeSecurityPrivilege \\t\\t\\tSeTakeOwnershipPrivilege \\t\\t\\tSeLoadDriverPrivilege \\t\\t\\tSeSystemtimePrivilege \\t\\t\\tSeBackupPrivilege \\t\\t\\tSeRestorePrivilege \\t\\t\\tSeShutdownPrivilege \\t\\t\\tSeSystemEnvironmentPrivilege \\t\\t\\tSeUndockPrivilege \\t\\t\\tSeManageVolumePrivilege</Data>\\r\\n  <Data Name=\\\"DisabledPrivilegeList\\\">-</Data>\\r\\n</EventData>\",\r\n      \"EventID\": 4703,\r\n      \"Activity\": \"4703\",\r\n      \"MG\": \"00000000-0000-0000-0000-000000000001\",\r\n      \"TimeCollected\": \"2016-04-27T06:07:03.073Z\",\r\n      \"ManagementGroupName\": \"AOI-188087e4-5850-4d8b-9d08-3e5b448eaecd\",\r\n      \"id\": \"94bf56ed-413c-2b15-3dd2-39a2f73d6ed6\",\r\n      \"Type\": \"SecurityEvent\",\r\n      \"EventSourceName\": \"Microsoft-Windows-Security-Auditing\",\r\n      \"__metadata\": {\r\n        \"Type\": \"SecurityEvent\",\r\n        \"TimeGenerated\": \"2016-04-27T06:07:02.587Z\",\r\n        \"highlighting\": {}\r\n      }\r\n    },\r\n    {\r\n      \"TimeGenerated\": \"2016-04-27T06:07:02.533Z\",\r\n      \"SourceSystem\": \"OpsManager\",\r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"Channel\": \"Security\",\r\n      \"Task\": 12802,\r\n      \"Level\": 16,\r\n      \"EventData\": \"<EventData xmlns=\\\"http://schemas.microsoft.com/win/2004/08/events/event\\\">\\r\\n  <Data Name=\\\"SubjectUserSid\\\">S-1-5-21-2127521184-1604012920-1887927527-6429038</Data>\\r\\n  <Data Name=\\\"SubjectUserName\\\">lewang</Data>\\r\\n  <Data Name=\\\"SubjectDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"SubjectLogonId\\\">0x20a2f0f</Data>\\r\\n  <Data Name=\\\"ObjectServer\\\">Security</Data>\\r\\n  <Data Name=\\\"ObjectType\\\">Process</Data>\\r\\n  <Data Name=\\\"ObjectName\\\">\\\\Device\\\\HarddiskVolume3\\\\Windows\\\\System32\\\\lsass.exe</Data>\\r\\n  <Data Name=\\\"HandleId\\\">0x0</Data>\\r\\n  <Data Name=\\\"TransactionId\\\">{00000000-0000-0000-0000-000000000000}</Data>\\r\\n  <Data Name=\\\"AccessList\\\">%%4484 \\t\\t\\t\\t%%4490 \\t\\t\\t\\t</Data>\\r\\n  <Data Name=\\\"AccessReason\\\">-</Data>\\r\\n  <Data Name=\\\"AccessMask\\\">0x410</Data>\\r\\n  <Data Name=\\\"PrivilegeList\\\">-</Data>\\r\\n  <Data Name=\\\"RestrictedSidCount\\\">0</Data>\\r\\n  <Data Name=\\\"ProcessId\\\">0x1224</Data>\\r\\n  <Data Name=\\\"ProcessName\\\">C:\\\\Windows\\\\System32\\\\wbem\\\\WmiPrvSE.exe</Data>\\r\\n  <Data Name=\\\"ResourceAttributes\\\">-</Data>\\r\\n</EventData>\",\r\n      \"EventID\": 4656,\r\n      \"Activity\": \"4656 - A handle to an object was requested.\",\r\n      \"MG\": \"00000000-0000-0000-0000-000000000001\",\r\n      \"TimeCollected\": \"2016-04-27T06:07:03.073Z\",\r\n      \"ManagementGroupName\": \"AOI-188087e4-5850-4d8b-9d08-3e5b448eaecd\",\r\n      \"id\": \"9b712c00-9c3f-b81b-7713-b710380eb9d5\",\r\n      \"Type\": \"SecurityEvent\",\r\n      \"EventSourceName\": \"Microsoft-Windows-Security-Auditing\",\r\n      \"__metadata\": {\r\n        \"Type\": \"SecurityEvent\",\r\n        \"TimeGenerated\": \"2016-04-27T06:07:02.533Z\",\r\n        \"highlighting\": {}\r\n      }\r\n    },\r\n    {\r\n      \"TimeGenerated\": \"2016-04-27T06:07:02.527Z\",\r\n      \"SourceSystem\": \"OpsManager\",\r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"Channel\": \"Security\",\r\n      \"Task\": 13570,\r\n      \"Level\": 8,\r\n      \"EventData\": \"<EventData xmlns=\\\"http://schemas.microsoft.com/win/2004/08/events/event\\\">\\r\\n  <Data Name=\\\"SubjectUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"SubjectUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"SubjectDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"SubjectLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"TargetUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"TargetUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"TargetDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"TargetLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"ProcessName\\\">C:\\\\Windows\\\\System32\\\\svchost.exe</Data>\\r\\n  <Data Name=\\\"ProcessId\\\">0x4b4</Data>\\r\\n  <Data Name=\\\"EnabledPrivilegeList\\\">SeAssignPrimaryTokenPrivilege \\t\\t\\tSeIncreaseQuotaPrivilege \\t\\t\\tSeSecurityPrivilege \\t\\t\\tSeTakeOwnershipPrivilege \\t\\t\\tSeLoadDriverPrivilege \\t\\t\\tSeSystemtimePrivilege \\t\\t\\tSeBackupPrivilege \\t\\t\\tSeRestorePrivilege \\t\\t\\tSeShutdownPrivilege \\t\\t\\tSeSystemEnvironmentPrivilege \\t\\t\\tSeUndockPrivilege \\t\\t\\tSeManageVolumePrivilege</Data>\\r\\n  <Data Name=\\\"DisabledPrivilegeList\\\">-</Data>\\r\\n</EventData>\",\r\n      \"EventID\": 4703,\r\n      \"Activity\": \"4703\",\r\n      \"MG\": \"00000000-0000-0000-0000-000000000001\",\r\n      \"TimeCollected\": \"2016-04-27T06:07:03.073Z\",\r\n      \"ManagementGroupName\": \"AOI-188087e4-5850-4d8b-9d08-3e5b448eaecd\",\r\n      \"id\": \"d64b9bc7-a09d-8894-c466-03348ed6e391\",\r\n      \"Type\": \"SecurityEvent\",\r\n      \"EventSourceName\": \"Microsoft-Windows-Security-Auditing\",\r\n      \"__metadata\": {\r\n        \"Type\": \"SecurityEvent\",\r\n        \"TimeGenerated\": \"2016-04-27T06:07:02.527Z\",\r\n        \"highlighting\": {}\r\n      }\r\n    },\r\n    {\r\n      \"TimeGenerated\": \"2016-04-27T06:07:02.5Z\",\r\n      \"SourceSystem\": \"OpsManager\",\r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"Channel\": \"Security\",\r\n      \"Task\": 13570,\r\n      \"Level\": 8,\r\n      \"EventData\": \"<EventData xmlns=\\\"http://schemas.microsoft.com/win/2004/08/events/event\\\">\\r\\n  <Data Name=\\\"SubjectUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"SubjectUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"SubjectDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"SubjectLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"TargetUserSid\\\">S-1-5-18</Data>\\r\\n  <Data Name=\\\"TargetUserName\\\">LEWANG-HP$</Data>\\r\\n  <Data Name=\\\"TargetDomainName\\\">REDMOND</Data>\\r\\n  <Data Name=\\\"TargetLogonId\\\">0x3e7</Data>\\r\\n  <Data Name=\\\"ProcessName\\\">C:\\\\Windows\\\\System32\\\\svchost.exe</Data>\\r\\n  <Data Name=\\\"ProcessId\\\">0x4b4</Data>\\r\\n  <Data Name=\\\"EnabledPrivilegeList\\\">SeAssignPrimaryTokenPrivilege \\t\\t\\tSeIncreaseQuotaPrivilege \\t\\t\\tSeSecurityPrivilege \\t\\t\\tSeTakeOwnershipPrivilege \\t\\t\\tSeLoadDriverPrivilege \\t\\t\\tSeSystemtimePrivilege \\t\\t\\tSeBackupPrivilege \\t\\t\\tSeRestorePrivilege \\t\\t\\tSeShutdownPrivilege \\t\\t\\tSeSystemEnvironmentPrivilege \\t\\t\\tSeUndockPrivilege \\t\\t\\tSeManageVolumePrivilege</Data>\\r\\n  <Data Name=\\\"DisabledPrivilegeList\\\">-</Data>\\r\\n</EventData>\",\r\n      \"EventID\": 4703,\r\n      \"Activity\": \"4703\",\r\n      \"MG\": \"00000000-0000-0000-0000-000000000001\",\r\n      \"TimeCollected\": \"2016-04-27T06:07:03.073Z\",\r\n      \"ManagementGroupName\": \"AOI-188087e4-5850-4d8b-9d08-3e5b448eaecd\",\r\n      \"id\": \"a45d4c5c-ca80-ce1a-f666-c40b44b931a7\",\r\n      \"Type\": \"SecurityEvent\",\r\n      \"EventSourceName\": \"Microsoft-Windows-Security-Auditing\",\r\n      \"__metadata\": {\r\n        \"Type\": \"SecurityEvent\",\r\n        \"TimeGenerated\": \"2016-04-27T06:07:02.5Z\",\r\n        \"highlighting\": {}\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "8820"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "8939f151-cdb2-4aab-9777-1cc533397f26"
+        ],
+        "x-ms-correlation-request-id": [
+          "8939f151-cdb2-4aab-9777-1cc533397f26"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160427T071837Z:8939f151-cdb2-4aab-9777-1cc533397f26"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 27 Apr 2016 07:18:37 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "2eea9431-9cbc-4ec6-a4c6-0596e434aaa2"
+  }
+}

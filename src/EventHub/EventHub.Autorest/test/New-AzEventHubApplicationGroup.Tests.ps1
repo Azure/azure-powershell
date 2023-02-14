@@ -18,10 +18,17 @@ Describe 'New-AzEventHubApplicationGroup' {
     It 'CreateExpanded'  {
         $t1 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId IncomingMessages -RateLimitThreshold 10000
         $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
+<<<<<<< HEAD
         $appGroup = New-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name $env.appGroup2 -ClientAppGroupIdentifier NamespaceSASKeyName=a -Policy $t1, $t2
         $appGroup.Name | Should -Be $env.appGroup2
         $appGroup.ResourceGroupName | Should -Be $env.resourceGroup
         $appGroup.ClientAppGroupIdentifier | Should -Be "NamespaceSASKeyName=a"
+=======
+        $appGroup = New-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name $env.appGroup2 -ClientAppGroupIdentifier SASKeyName=a -Policy $t1, $t2
+        $appGroup.Name | Should -Be $env.appGroup2
+        $appGroup.ResourceGroupName | Should -Be $env.resourceGroup
+        $appGroup.ClientAppGroupIdentifier | Should -Be "SASKeyName=a"
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         $appGroup.Policy.Count | Should -Be 2
     }
 }

@@ -32,7 +32,11 @@ These provide functionality to our HTTP pipeline and other useful features. In s
 ### Attributes
 For processing the cmdlets, we've created some additional attributes:
 - `Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.DescriptionAttribute`
+<<<<<<< HEAD
   - Used in C# cmdlets to provide a high-level description of the cmdlet. This is propegated to reference documentation via [help comments](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comment_based_help) in the exported scripts.
+=======
+  - Used in C# cmdlets to provide a high-level description of the cmdlet. This is propegated to reference documentation via [help comments](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_comment_based_help) in the exported scripts.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 - `Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.DoNotExportAttribute`
   - Used in C# and script cmdlets to suppress creating an exported cmdlet at build-time. These cmdlets will *not be exposed* by `Az.ChangeAnalysis`.
 - `Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.InternalExportAttribute`

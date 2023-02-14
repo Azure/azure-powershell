@@ -1,0 +1,852 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2af4d433-8cff-4f1f-8e4d-c518b4545bb3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "0481284b-73cc-44cf-9b7e-584d0af48b30"
+        ],
+        "x-ms-correlation-request-id": [
+          "0481284b-73cc-44cf-9b7e-584d0af48b30"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065055Z:0481284b-73cc-44cf-9b7e-584d0af48b30"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:50:55 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "11049"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices\",\r\n  \"namespace\": \"Microsoft.CognitiveServices\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"7d312290-28c8-473c-a0ed-8e53749b6d6d\",\r\n      \"roleDefinitionId\": \"5cb87f79-a7c3-4a95-9414-45b65974b51b\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"accounts\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deleteVirtualNetworkOrSubnets\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkSkuAvailability\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkDomainAvailability\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"accounts/privateLinkResources\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"accounts/privateEndpointConnections\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"accounts/privateEndpointConnectionProxies\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deletedAccounts\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/resourceGroups\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/resourceGroups/deletedAccounts\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/commitmentTiers\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/notifyNetworkSecurityPerimeterUpdatesAvailable\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"North Central US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"accounts/networkSecurityPerimeterAssociationProxies\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/networkSecurityPerimeterProxies\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/networkSecurityPerimeterProxies/profileProxies\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/networkSecurityPerimeterProxies/profileProxies/accessRuleProxies\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-10-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg7266?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNzI2Nj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e2a16552-930f-4fca-bebe-de460f0162b6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "5173ef0c-4af8-4789-b1f8-1b7e7b80363d"
+        ],
+        "x-ms-correlation-request-id": [
+          "5173ef0c-4af8-4789-b1f8-1b7e7b80363d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065056Z:5173ef0c-4af8-4789-b1f8-1b7e7b80363d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:50:56 GMT"
+        ],
+        "Content-Length": [
+          "177"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266\",\r\n  \"name\": \"pstestrg7266\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzI2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNzI2Nj9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "12d9f274-d17f-4321-ae44-dda7d032fc6f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.4.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "114"
+        ]
+      },
+      "RequestBody": "{\r\n  \"kind\": \"TextAnalytics\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"properties\": {}\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ff005bbf-0000-0700-0000-634f9e520000\""
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "d48eb5ca-9747-45e5-b70e-552ec1ebad28"
+        ],
+        "azure-asyncoperation": [
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/West US/operationResults/92b58cf5-bd6c-4d39-9a51-69605c153d25?api-version=2017-04-18"
+        ],
+        "x-envoy-upstream-service-time": [
+          "477"
+        ],
+        "Server": [
+          "istio-envoy"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "71dc2071-f665-4060-8112-d1d88cdd3745"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065058Z:71dc2071-f665-4060-8112-d1d88cdd3745"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:50:58 GMT"
+        ],
+        "Content-Length": [
+          "2595"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266\",\r\n  \"name\": \"csapstestrg7266\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"ff005bbf-0000-0700-0000-634f9e520000\\\"\",\r\n  \"location\": \"West US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://westus.api.cognitive.microsoft.com/\",\r\n    \"internalId\": \"4072d6316aa64c8dbabadef3fa3af20a\",\r\n    \"dateCreated\": \"2022-10-19T06:50:58.0810088Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Language-2022-05-01\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering Generate\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://westus.api.cognitive.microsoft.com/\"\r\n    },\r\n    \"provisioningState\": \"Creating\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-10-19T06:50:57.9119936Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-10-19T06:50:57.9119936Z\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzI2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNzI2Nj9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "932bc60e-76ce-40e8-a3d0-cf03991922ef"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.4.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "114"
+        ]
+      },
+      "RequestBody": "{\r\n  \"kind\": \"TextAnalytics\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"properties\": {}\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ff008bc9-0000-0700-0000-634f9e900000\""
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "a7486ed4-541d-440c-9aab-661875d42519"
+        ],
+        "x-envoy-upstream-service-time": [
+          "32"
+        ],
+        "Server": [
+          "istio-envoy"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "473d7d08-4faf-4027-a89b-1d1cc54b7160"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065201Z:473d7d08-4faf-4027-a89b-1d1cc54b7160"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:52:01 GMT"
+        ],
+        "Content-Length": [
+          "2596"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266\",\r\n  \"name\": \"csapstestrg7266\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"ff008bc9-0000-0700-0000-634f9e900000\\\"\",\r\n  \"location\": \"West US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://westus.api.cognitive.microsoft.com/\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"internalId\": \"4072d6316aa64c8dbabadef3fa3af20a\",\r\n    \"dateCreated\": \"2022-10-19T06:50:58.0810088Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Language-2022-05-01\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering Generate\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://westus.api.cognitive.microsoft.com/\"\r\n    }\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-10-19T06:50:57.9119936Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-10-19T06:52:00.1085401Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/West%20US/operationResults/92b58cf5-bd6c-4d39-9a51-69605c153d25?api-version=2017-04-18",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXMvbG9jYXRpb25zL1dlc3QlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzkyYjU4Y2Y1LWJkNmMtNGQzOS05YTUxLTY5NjA1YzE1M2QyNT9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "12d9f274-d17f-4321-ae44-dda7d032fc6f"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.4.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "37950175-8cbd-45f0-9e32-ab2ed23a0b8b"
+        ],
+        "x-envoy-upstream-service-time": [
+          "7"
+        ],
+        "Server": [
+          "istio-envoy"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "5fe040a4-de59-4b12-996b-8b492ff7cb6f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065128Z:5fe040a4-de59-4b12-996b-8b492ff7cb6f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:51:28 GMT"
+        ],
+        "Content-Length": [
+          "271"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/West US/operationResults/92b58cf5-bd6c-4d39-9a51-69605c153d25\",\r\n  \"name\": \"92b58cf5-bd6c-4d39-9a51-69605c153d25\",\r\n  \"status\": \"Creating\",\r\n  \"startTime\": \"2022-10-19T06:50:58Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/West%20US/operationResults/92b58cf5-bd6c-4d39-9a51-69605c153d25?api-version=2017-04-18",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXMvbG9jYXRpb25zL1dlc3QlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzkyYjU4Y2Y1LWJkNmMtNGQzOS05YTUxLTY5NjA1YzE1M2QyNT9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "12d9f274-d17f-4321-ae44-dda7d032fc6f"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.4.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "ad5a4eb7-b593-4ed7-81c4-0fffdd8c9ea6"
+        ],
+        "x-envoy-upstream-service-time": [
+          "6"
+        ],
+        "Server": [
+          "istio-envoy"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "5c7f6f17-6b40-4b2d-bc7b-27d32cd1a532"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065158Z:5c7f6f17-6b40-4b2d-bc7b-27d32cd1a532"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:51:58 GMT"
+        ],
+        "Content-Length": [
+          "305"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/West US/operationResults/92b58cf5-bd6c-4d39-9a51-69605c153d25\",\r\n  \"name\": \"92b58cf5-bd6c-4d39-9a51-69605c153d25\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2022-10-19T06:50:58Z\",\r\n  \"endTime\": \"2022-10-19T06:51:30Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzI2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNzI2Nj9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "12d9f274-d17f-4321-ae44-dda7d032fc6f"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.4.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ff009bc4-0000-0700-0000-634f9e720000\""
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "0aefb80d-0a6e-4df7-8d97-f349392ff161"
+        ],
+        "x-envoy-upstream-service-time": [
+          "10"
+        ],
+        "Server": [
+          "istio-envoy"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "acab3d84-39ee-4300-88be-306e35e36170"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065159Z:acab3d84-39ee-4300-88be-306e35e36170"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:51:58 GMT"
+        ],
+        "Content-Length": [
+          "2596"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266\",\r\n  \"name\": \"csapstestrg7266\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"ff009bc4-0000-0700-0000-634f9e720000\\\"\",\r\n  \"location\": \"West US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://westus.api.cognitive.microsoft.com/\",\r\n    \"internalId\": \"4072d6316aa64c8dbabadef3fa3af20a\",\r\n    \"dateCreated\": \"2022-10-19T06:50:58.0810088Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Language-2022-05-01\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering Generate\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://westus.api.cognitive.microsoft.com/\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-10-19T06:50:57.9119936Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-10-19T06:50:57.9119936Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzI2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNzI2Nj9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "12d9f274-d17f-4321-ae44-dda7d032fc6f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.4.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ff009bc4-0000-0700-0000-634f9e720000\""
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "eb065bec-c104-40f1-a926-f2e2298ff4ea"
+        ],
+        "x-envoy-upstream-service-time": [
+          "12"
+        ],
+        "Server": [
+          "istio-envoy"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "efb629fd-cacf-4f36-8ced-b2b904b40609"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065159Z:efb629fd-cacf-4f36-8ced-b2b904b40609"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:51:58 GMT"
+        ],
+        "Content-Length": [
+          "2596"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266\",\r\n  \"name\": \"csapstestrg7266\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"ff009bc4-0000-0700-0000-634f9e720000\\\"\",\r\n  \"location\": \"West US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://westus.api.cognitive.microsoft.com/\",\r\n    \"internalId\": \"4072d6316aa64c8dbabadef3fa3af20a\",\r\n    \"dateCreated\": \"2022-10-19T06:50:58.0810088Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Language-2022-05-01\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering Generate\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://westus.api.cognitive.microsoft.com/\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-10-19T06:50:57.9119936Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-10-19T06:50:57.9119936Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzI2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNzI2Nj9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "932bc60e-76ce-40e8-a3d0-cf03991922ef"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.4.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ff008bc9-0000-0700-0000-634f9e900000\""
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "86c91d81-5522-49eb-97e0-51d29ccaaa29"
+        ],
+        "x-envoy-upstream-service-time": [
+          "10"
+        ],
+        "Server": [
+          "istio-envoy"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "b19cb35d-b5b3-4771-b07a-d87a1027da1d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065201Z:b19cb35d-b5b3-4771-b07a-d87a1027da1d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:52:01 GMT"
+        ],
+        "Content-Length": [
+          "2596"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266\",\r\n  \"name\": \"csapstestrg7266\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"ff008bc9-0000-0700-0000-634f9e900000\\\"\",\r\n  \"location\": \"West US\",\r\n  \"sku\": {\r\n    \"name\": \"S2\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://westus.api.cognitive.microsoft.com/\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"internalId\": \"4072d6316aa64c8dbabadef3fa3af20a\",\r\n    \"dateCreated\": \"2022-10-19T06:50:58.0810088Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering Authoring\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Language-2022-05-01\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering Generate\": \"https://westus.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://westus.api.cognitive.microsoft.com/\"\r\n    }\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-10-19T06:50:57.9119936Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-10-19T06:52:00.1085401Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7266/providers/Microsoft.CognitiveServices/accounts/csapstestrg7266?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzI2Ni9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNzI2Nj9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e3bdd64e-8fda-4bf7-b691-8959a54e18f4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.4.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-envoy-upstream-service-time": [
+          "101"
+        ],
+        "Server": [
+          "istio-envoy"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "2f7d1fc7-b0ff-4eb4-bb41-df297b5ae9fb"
+        ],
+        "x-ms-correlation-request-id": [
+          "2f7d1fc7-b0ff-4eb4-bb41-df297b5ae9fb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065204Z:2f7d1fc7-b0ff-4eb4-bb41-df297b5ae9fb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:52:04 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg7266?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNzI2Nj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "baebbed0-0dc4-4acc-a0d0-2c7faf6768f4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzcyNjYtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "a36ebcbb-0f90-48a7-8940-bd3edd9ff74d"
+        ],
+        "x-ms-correlation-request-id": [
+          "a36ebcbb-0f90-48a7-8940-bd3edd9ff74d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065205Z:a36ebcbb-0f90-48a7-8940-bd3edd9ff74d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:52:05 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzcyNjYtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSemN5TmpZdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "cbbc8588-3cf2-4719-9b13-213112c6c715"
+        ],
+        "x-ms-correlation-request-id": [
+          "cbbc8588-3cf2-4719-9b13-213112c6c715"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065221Z:cbbc8588-3cf2-4719-9b13-213112c6c715"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:52:20 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzcyNjYtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSemN5TmpZdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "0c822469-a642-417b-b580-501e8d2fcac6"
+        ],
+        "x-ms-correlation-request-id": [
+          "0c822469-a642-417b-b580-501e8d2fcac6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20221019T065221Z:0c822469-a642-417b-b580-501e8d2fcac6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 19 Oct 2022 06:52:20 GMT"
+        ],
+        "Connection": [
+          "close"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-NewAzureRmCognitiveServicesAccount": [
+      "pstestrg7266"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "f9b96b36-1f5e-4021-8959-51527e26e6d3"
+  }
+}

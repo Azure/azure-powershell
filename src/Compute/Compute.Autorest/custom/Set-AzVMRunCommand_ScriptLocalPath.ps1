@@ -180,7 +180,54 @@ function Set-AzVMRunCommand_ScriptLocalPath {
         if ($PSBoundParameters.ContainsKey("ScriptLocalPath"))
         {
             # Read Local File and add 
+<<<<<<< HEAD
             $script = (Get-Content -Path $ScriptLocalPath) -join ";"
+=======
+            $script = ""
+            if ((Get-ChildItem $scriptLocalPath | Select-Object Extension).Extension -eq ".sh"){
+                foreach ($line in Get-Content -Path $scriptLocalPath){
+                    $words = $line.trim().split()
+                    $commentFound = $false
+                    foreach ($word in $words){
+                        if ($word[0] -eq "#" -and $commentFound -eq $false){
+                            $commentFound = $true
+                            $script += "``" + $word + " "
+                        }
+                        else{
+                            $script += $word + " "
+                        }
+                    }
+                    $script = $script.trim()
+                    #close 
+                    if ($commentFound){
+                    $script += "``"
+                    }
+                    $script += ";"
+                }
+            }
+            else{
+                foreach ($line in Get-Content -Path $scriptLocalPath){
+                    $words = $line.trim().split()
+                    $commentFound = $false
+                    foreach ($word in $words){
+                        if ($word[0] -eq "#" -and $commentFound -eq $false){
+                            $commentFound = $true
+                            $script += "<" + $word + " "
+                        }
+                        else{
+                            $script += $word + " "
+                        }
+                    }
+                    $script = $script.trim()
+                    #close 
+                    if ($commentFound){
+                        $script += "#>"
+                    }
+                    $script += ";"
+                }
+            }
+            
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             $PSBoundParameters.Add("SourceScript", $script)
             # If necessary, remove the -ParameterA parameter from the dictionary of bound parameters
             $null = $PSBoundParameters.Remove("ScriptLocalPath")

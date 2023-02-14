@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/PSTestRG1/providers/Microsoft.Authorization/policyAssignments/PSTestAuditAssignmentRG/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01&$top=10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDg2YWVjZjQtMjNkNi00ZGZkLTk5YTgtYTVjNjI5OWYwMzIyL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5QXNzaWdubWVudHMvUFNUZXN0QXVkaXRBc3NpZ25tZW50UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5Qb2xpY3lJbnNpZ2h0cy9wb2xpY3lTdGF0ZXMvbGF0ZXN0L3N1bW1hcml6ZT9hcGktdmVyc2lvbj0yMDE5LTEwLTAxJiR0b3A9MTA=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7e2560a9-4727-447b-bb75-a0c58f6304aa"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "148"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "595592bf-3104-4e8d-9350-3928e882f10f"
+        ],
+        "x-ms-correlation-request-id": [
+          "595592bf-3104-4e8d-9350-3928e882f10f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220113T211653Z:595592bf-3104-4e8d-9350-3928e882f10f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 13 Jan 2022 21:16:53 GMT"
+        ],
+        "Content-Length": [
+          "4485"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"@odata.context\": \"https://westus.management.azure.com/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/PSTestRG1/providers/Microsoft.Authorization/policyAssignments/PSTestAuditAssignmentRG/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary\",\r\n  \"@odata.count\": 1,\r\n  \"value\": [\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://westus.management.azure.com/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/PSTestRG1/providers/Microsoft.Authorization/policyAssignments/PSTestAuditAssignmentRG/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary/$entity\",\r\n      \"results\": {\r\n        \"queryResultsUri\": \"https://westus.management.azure.com/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/PSTestRG1/providers/Microsoft.Authorization/policyAssignments/PSTestAuditAssignmentRG/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2022-01-12 21:16:53Z&$to=2022-01-13 21:16:53Z\",\r\n        \"nonCompliantResources\": 111,\r\n        \"nonCompliantPolicies\": 1,\r\n        \"resourceDetails\": [\r\n          {\r\n            \"complianceState\": \"compliant\",\r\n            \"count\": 399\r\n          },\r\n          {\r\n            \"complianceState\": \"noncompliant\",\r\n            \"count\": 111\r\n          }\r\n        ],\r\n        \"policyDetails\": [\r\n          {\r\n            \"complianceState\": \"noncompliant\",\r\n            \"count\": 1\r\n          }\r\n        ],\r\n        \"policyGroupDetails\": [\r\n          {\r\n            \"complianceState\": \"noncompliant\",\r\n            \"count\": 1\r\n          }\r\n        ]\r\n      },\r\n      \"policyAssignments\": [\r\n        {\r\n          \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/pstestrg1/providers/microsoft.authorization/policyassignments/pstestauditassignmentrg\",\r\n          \"policySetDefinitionId\": \"\",\r\n          \"results\": {\r\n            \"queryResultsUri\": \"https://westus.management.azure.com/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/PSTestRG1/providers/Microsoft.Authorization/policyAssignments/PSTestAuditAssignmentRG/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2022-01-12 21:16:53Z&$to=2022-01-13 21:16:53Z&$filter=PolicyAssignmentId eq '/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/pstestrg1/providers/microsoft.authorization/policyassignments/pstestauditassignmentrg'\",\r\n            \"nonCompliantResources\": 111,\r\n            \"nonCompliantPolicies\": 1,\r\n            \"resourceDetails\": [\r\n              {\r\n                \"complianceState\": \"noncompliant\",\r\n                \"count\": 111\r\n              },\r\n              {\r\n                \"complianceState\": \"compliant\",\r\n                \"count\": 399\r\n              }\r\n            ],\r\n            \"policyDetails\": [\r\n              {\r\n                \"complianceState\": \"noncompliant\",\r\n                \"count\": 1\r\n              }\r\n            ],\r\n            \"policyGroupDetails\": [\r\n              {\r\n                \"complianceState\": \"noncompliant\",\r\n                \"count\": 1\r\n              }\r\n            ]\r\n          },\r\n          \"policyDefinitions\": [\r\n            {\r\n              \"policyDefinitionGroupNames\": [\r\n                \"\"\r\n              ],\r\n              \"policyDefinitionReferenceId\": \"\",\r\n              \"policyDefinitionId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policydefinitions/pstestauditdefinition\",\r\n              \"effect\": \"audit\",\r\n              \"results\": {\r\n                \"queryResultsUri\": \"https://westus.management.azure.com/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/PSTestRG1/providers/Microsoft.Authorization/policyAssignments/PSTestAuditAssignmentRG/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2022-01-12 21:16:53Z&$to=2022-01-13 21:16:53Z&$filter=PolicyAssignmentId eq '/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/pstestrg1/providers/microsoft.authorization/policyassignments/pstestauditassignmentrg' and PolicyDefinitionId eq '/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policydefinitions/pstestauditdefinition'\",\r\n                \"nonCompliantResources\": 111,\r\n                \"resourceDetails\": [\r\n                  {\r\n                    \"complianceState\": \"noncompliant\",\r\n                    \"count\": 111\r\n                  },\r\n                  {\r\n                    \"complianceState\": \"compliant\",\r\n                    \"count\": 399\r\n                  }\r\n                ],\r\n                \"policyDetails\": [\r\n                  {\r\n                    \"complianceState\": \"noncompliant\",\r\n                    \"count\": 1\r\n                  }\r\n                ],\r\n                \"policyGroupDetails\": [\r\n                  {\r\n                    \"complianceState\": \"noncompliant\",\r\n                    \"count\": 1\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          ],\r\n          \"policyGroups\": [\r\n            {\r\n              \"policyGroupName\": \"\",\r\n              \"results\": {\r\n                \"queryResultsUri\": \"https://westus.management.azure.com/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/PSTestRG1/providers/Microsoft.Authorization/policyAssignments/PSTestAuditAssignmentRG/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2022-01-12 21:16:53Z&$to=2022-01-13 21:16:53Z&$filter=PolicyAssignmentId eq '/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/pstestrg1/providers/microsoft.authorization/policyassignments/pstestauditassignmentrg' and PolicySetDefinitionId eq '' and '' in PolicyDefinitionGroupNames\",\r\n                \"nonCompliantResources\": 111,\r\n                \"resourceDetails\": [\r\n                  {\r\n                    \"complianceState\": \"noncompliant\",\r\n                    \"count\": 111\r\n                  },\r\n                  {\r\n                    \"complianceState\": \"compliant\",\r\n                    \"count\": 399\r\n                  }\r\n                ],\r\n                \"policyDetails\": [\r\n                  {\r\n                    \"complianceState\": \"noncompliant\",\r\n                    \"count\": 1\r\n                  }\r\n                ],\r\n                \"policyGroupDetails\": [\r\n                  {\r\n                    \"complianceState\": \"noncompliant\",\r\n                    \"count\": 1\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "086aecf4-23d6-4dfd-99a8-a5c6299f0322"
+  }
+}

@@ -1,0 +1,768 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LoadBalancerBackendAddressPoolName" xml:space="preserve">
+    <value>backendAddressPools</value>
+  </data>
+  <data name="LoadBalancerChildResourceId" xml:space="preserve">
+    <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}</value>
+    <comment>The ID of a load balancer child resource</comment>
+  </data>
+  <data name="LoadBalancerFrontendIpConfigName" xml:space="preserve">
+    <value>frontendIPConfigurations</value>
+  </data>
+  <data name="VirtualNetworkGatewayChildResourceId" xml:space="preserve">
+    <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/{3}/{4}</value>
+    <comment>The ID of a virtual network gateway child resource</comment>
+  </data>
+  <data name="VirtualNetworkGatewayIpConfigName" xml:space="preserve">
+    <value>virtualNetworkGatewayIpConfiguration</value>
+  </data>
+  <data name="VirtualNetworkGatewayName" xml:space="preserve">
+    <value>virtualNetworkGatewayName</value>
+  </data>
+  <data name="LoadBalancerInBoundNatRuleName" xml:space="preserve">
+    <value>inboundNatRules</value>
+  </data>
+  <data name="LoadBalancerNameNotSet" xml:space="preserve">
+    <value>LoadBalancerNameNotSet</value>
+  </data>
+  <data name="LoadBalancerProbeName" xml:space="preserve">
+    <value>probes</value>
+  </data>
+  <data name="LoadBalancerRuleName" xml:space="preserve">
+    <value>loadBalancingRules</value>
+  </data>
+  <data name="OverwritingResource" xml:space="preserve">
+    <value>Are you sure you want to overwrite resource '{0}'</value>
+  </data>
+  <data name="UltraPerformaceGatewayWarning" xml:space="preserve">
+    <value>Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds.</value>
+  </data>
+  <data name="OverwritingResourceMessage" xml:space="preserve">
+    <value>Overwriting resource ...</value>
+  </data>
+  <data name="RemoveResourceMessage" xml:space="preserve">
+    <value>Removing resource ...</value>
+  </data>
+  <data name="RemovingResource" xml:space="preserve">
+    <value>Are you sure you want to remove resource '{0}'</value>
+  </data>
+  <data name="ResourceAlreadyPresent" xml:space="preserve">
+    <value>Resource : {0}, Already present</value>
+  </data>
+  <data name="ResourceGroupNotSet" xml:space="preserve">
+    <value>ResourceGroupNotSet</value>
+  </data>
+  <data name="ResourceNotFound" xml:space="preserve">
+    <value>Resource '{0}' not found</value>
+  </data>
+  <data name="SetByResource" xml:space="preserve">
+    <value>SetByResource</value>
+  </data>
+  <data name="SetByResourceId" xml:space="preserve">
+    <value>SetByResourceId</value>
+  </data>
+  <data name="StaticIpAddressErrorMessage" xml:space="preserve">
+    <value>PrivateIpAddress needs to be specified in Static allocation</value>
+  </data>
+  <data name="VirtualNetworkGatewayNameNotSet" xml:space="preserve">
+    <value>VirtualNetworkGatewayNameNotSet</value>
+  </data>
+  <data name="ApplicationGatewayBackendAddressPoolName" xml:space="preserve">
+    <value>backendAddressPools</value>
+  </data>
+  <data name="ApplicationGatewaybackendHttpSettingsName" xml:space="preserve">
+    <value>backendHttpSettingsCollection</value>
+  </data>
+  <data name="ApplicationGatewaybackendSettingsName" xml:space="preserve">
+    <value>backendSettingsCollection</value>
+  </data>
+  <data name="ApplicationGatewayChildResourceId" xml:space="preserve">
+    <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/applicationGateways/{2}/{3}/{4}</value>
+    <comment>The ID of a application gateway child resource</comment>
+  </data>
+  <data name="ApplicationGatewayFrontendIPConfigName" xml:space="preserve">
+    <value>frontendIpConfigurations</value>
+  </data>
+  <data name="ApplicationGatewayFrontendPortName" xml:space="preserve">
+    <value>frontendPorts</value>
+  </data>
+  <data name="ApplicationGatewayHttpListenerName" xml:space="preserve">
+    <value>httpListeners</value>
+  </data>
+  <data name="ApplicationGatewayListenerName" xml:space="preserve">
+    <value>listeners</value>
+  </data>
+  <data name="ApplicationGatewayIPConfigurationName" xml:space="preserve">
+    <value>gatewayIpConfigurations</value>
+  </data>
+  <data name="ApplicationGatewayNameNotSet" xml:space="preserve">
+    <value>ApplicationGatewayNameNotSet</value>
+  </data>
+  <data name="ApplicationGatewayRequestRoutingRuleName" xml:space="preserve">
+    <value>requestRoutingRules</value>
+  </data>
+  <data name="ApplicationGatewayRoutingRuleName" xml:space="preserve">
+    <value>routingRules</value>
+  </data>
+  <data name="ApplicationGatewayAuthenticationCertificateName" xml:space="preserve">
+    <value>authenticationCertificates</value>
+  </data>
+  <data name="ApplicationGatewaySslCertificateName" xml:space="preserve">
+    <value>sslCertificates</value>
+  </data>
+  <data name="SetByFqdn" xml:space="preserve">
+    <value>SetByFqdn</value>
+  </data>
+  <data name="SetByIP" xml:space="preserve">
+    <value>SetByIP</value>
+  </data>
+  <data name="LoadBalancerInboundNatPoolName" xml:space="preserve">
+    <value>inboundNatPools</value>
+  </data>
+  <data name="ApplicationGatewayProbeName" xml:space="preserve">
+    <value>probes</value>
+  </data>
+  <data name="ApplicationGatewayUrlPathMapName" xml:space="preserve">
+    <value>urlPathMaps</value>
+  </data>
+  <data name="SetByIpConfiguration" xml:space="preserve">
+    <value>SetByIpConfiguration</value>
+  </data>
+  <data name="SetByIpConfigurationResourceId" xml:space="preserve">
+    <value>SetByIpConfigurationResourceId</value>
+  </data>
+  <data name="CreatingResourceMessage" xml:space="preserve">
+    <value>Creating Resource</value>
+  </data>
+  <data name="AddingResourceMessage" xml:space="preserve">
+    <value>Adding Resource</value>
+  </data>
+  <data name="MovingExpressRoutCircuitMessage" xml:space="preserve">
+    <value>Moving ExpressRoute Circuit</value>
+  </data>
+  <data name="ResettingResourceMessage" xml:space="preserve">
+    <value>Resetting Resource</value>
+  </data>
+  <data name="SettingResourceMessage" xml:space="preserve">
+    <value>Setting Resource</value>
+  </data>
+  <data name="UltraPerformanceGatewayWarningMessage" xml:space="preserve">
+    <value>Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds.</value>
+  </data>
+  <data name="EmptyEffectiveNetworkSecurityGroupOnNic" xml:space="preserve">
+    <value>The effective network security group list is empty because the specified network interface is not associated with a network security group or the subnet that is referenced by the network interface is also not associated with a network security group.</value>
+  </data>
+  <data name="ApplicationGatewayRedirectConfigurationName" xml:space="preserve">
+    <value>redirectConfigurations</value>
+  </data>
+  <data name="NetworkProfileNameNotSet" xml:space="preserve">
+    <value>NetworkProfileNameNotSet</value>
+  </data>
+  <data name="ContainerNetworkInterfaceConfigurationNameNotSet" xml:space="preserve">
+    <value>ContainerNetworkInterfaceConfigurationNameNotSet</value>
+  </data>
+  <data name="HubVnetConnectionNotFound" xml:space="preserve">
+    <value>The hub virtual network connection to modify could not be found.</value>
+  </data>
+  <data name="InvalidIPAddress" xml:space="preserve">
+    <value>The IpAddress specified is invalid.</value>
+  </data>
+  <data name="InvalidPrivateIPRange" xml:space="preserve">
+    <value>The private IP range specified, {0}, is invalid.</value>
+  </data>
+  <data name="InvalidPrivateIPRangeMask" xml:space="preserve">
+    <value>The private IP range specified, {0}, is invalid. Subnet masks should be between 0 and 32 bits.</value>
+  </data>
+  <data name="InvalidPrivateIPRangeUnmaskedBits" xml:space="preserve">
+    <value>The private IP range specified, {0}, is invalid. Bits not covered by the subnet mask should be all 0.</value>
+  </data>
+  <data name="ParentVirtualHubNotFound" xml:space="preserve">
+    <value>The parent virtual hub mentioned could not be found.</value>
+  </data>
+  <data name="ParentVpnGatewayDuplicateConnection" xml:space="preserve">
+    <value>The parent VpnGateway already contains a connection with this name. If you wish to change the properties of the connection, please use the SET operation instead.</value>
+  </data>
+  <data name="ParentVpnGatewayNotFound" xml:space="preserve">
+    <value>The parent VpnGateway for this connection cannot be found.</value>
+  </data>
+  <data name="ParentVpnServerConfigurationNotFound" xml:space="preserve">
+    <value>The parent VpnServerConfiguration for this PolicyGroup cannot be found.</value>
+  </data>
+  <data name="ParentExpressRouteGatewayNotFound" xml:space="preserve">
+    <value>The parent ExpressRouteGateway for this connection cannot be found.</value>
+  </data>
+  <data name="RemovingVirtualHubWarning" xml:space="preserve">
+    <value>Removing a VirtualHub will also remove all HubVirtualNetworkExpressRouteConnections associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
+  <data name="RemovingVpnGatewayWarning" xml:space="preserve">
+    <value>Removing a VpnGateway will also remove all VpnExpressRouteConnections associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
+  <data name="RemovingP2SVpnGatewayWarning" xml:space="preserve">
+    <value>Removing a P2SVpnGateway will also remove all P2SConnectionConfigurations associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
+  <data name="RemovingExpressRouteGatewayWarning" xml:space="preserve">
+    <value>Removing an ExpressRouteGateway will also remove all ExpressRouteExpressRouteConnections associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
+  <data name="ResouceGroupNameMustBeSpecified" xml:space="preserve">
+    <value>ResourceGroupName must be specified if ResourceName is specified.</value>
+  </data>
+  <data name="VirtualHubRequiredForVpnGateway" xml:space="preserve">
+    <value>A valid VirtualHub reference is required to create a VpnGateway.</value>
+  </data>
+  <data name="VirtualHubRequiredForExpressRouteGateway" xml:space="preserve">
+    <value>A valid VirtualHub reference is required to create an ExpressRouteGateway.</value>
+  </data>
+  <data name="VirtualNetworkReferenceRequiredToCreateHubVnetConnection" xml:space="preserve">
+    <value>A remote virtual network reference is required to create a HubVirtualNetworkConnection.</value>
+  </data>
+  <data name="VirtualWanNotFound" xml:space="preserve">
+    <value>The referenced VirtualWan could not be found.</value>
+  </data>
+  <data name="VirtualWanReferenceNeededForVirtualHub" xml:space="preserve">
+    <value>A valid VirtualWan reference is required to create a VirtualHub.</value>
+  </data>
+  <data name="VirtualWanRequiredForVpnSiteConfiguration" xml:space="preserve">
+    <value>A valid Virtual WAN is required to generate a vpnSites configuration.</value>
+  </data>
+  <data name="VpnConnectionNotFound" xml:space="preserve">
+    <value>The VpnConnection could not be found.</value>
+  </data>
+  <data name="VpnServerConfigurationPolicyGroupNotFound" xml:space="preserve">
+    <value>The VpnServerConfigurationPolicyGroup could not be found.</value>
+  </data>
+  <data name="VpnGatewayNotFound" xml:space="preserve">
+    <value>The VpnGateway to modify could not be found</value>
+  </data>
+  <data name="P2SVpnGatewayNotFound" xml:space="preserve">
+    <value>The P2SVpnGateway to modify could not be found</value>
+  </data>
+  <data name="VpnSiteListRequiredForVpnSiteConfiguration" xml:space="preserve">
+    <value>A list of connected VpnSites is required to generate a vpnSites configuration.</value>
+  </data>
+  <data name="VpnSiteNotFound" xml:space="preserve">
+    <value>The VpnSite could not be found.</value>
+  </data>
+  <data name="VpnSiteRequiredForVpnConnection" xml:space="preserve">
+    <value>A valid VpnSite is required to create a VpnConnection</value>
+  </data>
+  <data name="VpnServerConfigurationRequiredForP2SVpnGateway" xml:space="preserve">
+    <value>A valid VpnServerConfiguration is required to create a P2SVpnGateway</value>
+  </data>
+  <data name="VpnServerConfigurationNotFound" xml:space="preserve">
+    <value>The VpnServerConfiguration could not be found.</value>
+  </data>
+  <data name="ChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
+    <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
+  </data>
+  <data name="CreatingLongRunningOperationMessage" xml:space="preserve">
+    <value>Creating resource with ResourceGroupName {0}, ResourceName {1}.</value>
+  </data>
+  <data name="CreatingChildResourceLongRunningOperationMessage" xml:space="preserve">
+    <value>Creating child resource with ResourceGroupName {0}, ParentResourceName {1} ResourceName {2}.</value>
+  </data>
+  <data name="ResourceAlreadyPresentInResourceGroup" xml:space="preserve">
+    <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}. If you wish to modify this resource please use the Update operation instead.</value>
+  </data>
+  <data name="InvalidName" xml:space="preserve">
+    <value>Field Name {0} contains invalid character.</value>
+  </data>
+  <data name="VirtualHubToUpdateNotFound" xml:space="preserve">
+    <value>The VirtualHub to update could not be found.</value>
+  </data>
+  <data name="VpnGatewayRequiredToCreateVpnConnection" xml:space="preserve">
+    <value>A valid VpnGateway reference is required to create a VpnConnection.</value>
+  </data>
+  <data name="VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup" xml:space="preserve">
+    <value>A valid VpnServerConfiguration reference is required to create or update a PolicyGroup.</value>
+  </data>
+  <data name="ExpressRouteGatewayRequiredToCreateExpressRouteConnection" xml:space="preserve">
+    <value>A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection.</value>
+  </data>
+  <data name="UpdatingLongRunningOperationMessage" xml:space="preserve">
+    <value>Updating resource with ResourceGroupName {0}, ResourceName {1}.</value>
+  </data>
+  <data name="ApplicationGatewayTrustedRootCertificateName" xml:space="preserve">
+    <value>trustedRootCertificates</value>
+  </data>
+  <data name="InvalidAutoScaleConfiguration" xml:space="preserve">
+    <value>Min {0} cannot be greater than Max {1}.</value>
+  </data>
+  <data name="ExpressRouteGatewayNotFound" xml:space="preserve">
+    <value>The ExpressRouteGateway to modify could not be found</value>
+  </data>
+  <data name="ExpressRouteConnectionNotFound" xml:space="preserve">
+    <value>The ExpressRouteConnection {0} could not be found.</value>
+  </data>
+  <data name="ConnectivityDestinationIsMustNotBeTheSameAsSource" xml:space="preserve">
+    <value>Connectivity check destination resource id must not be the same as source: {0}</value>
+  </data>
+  <data name="ConnectivityMissingDestinationPort" xml:space="preserve">
+    <value>Connectivity check missing destination port</value>
+  </data>
+  <data name="ConnectivityMissingDestinationResourceIdOrAddress" xml:space="preserve">
+    <value>Connectivity check missing destination resource id or address</value>
+  </data>
+  <data name="NoNetworkWatcherInLocation" xml:space="preserve">
+    <value>There is no network watcher in location {0}</value>
+  </data>
+  <data name="ApplicationGatewayRewriteRuleSetName" xml:space="preserve">
+    <value>rewriteRuleSets</value>
+  </data>
+  <data name="VirtualNetworkGatewayNoRevokedCertificate" xml:space="preserve">
+    <value>No revoked certificates found on VirtualNetworkGateway {0}</value>
+    <comment>Message for missing certificates</comment>
+  </data>
+  <data name="VirtualNetworkGatewayNoRootCertificate" xml:space="preserve">
+    <value>No root certificates found on VirtualNetworkGateway {0}</value>
+    <comment>Message for missing certificates</comment>
+  </data>
+  <data name="ApplicationGatewayFirewallPolicy" xml:space="preserve">
+    <value>firewallPolicy</value>
+  </data>
+  <data name="InvalidIPv4IPPrefixLength" xml:space="preserve">
+    <value>Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 21 and less than or equal to 31 and then try the command again</value>
+  </data>
+  <data name="InvalidIPv6IPPrefixLength" xml:space="preserve">
+    <value>Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 117 and less than or equal to 127 and then try the command again</value>
+  </data>
+  <data name="InvalidResourceId" xml:space="preserve">
+    <value>Provided ResourceId isn't in the right format or doesn't refer to the right resource type ({0})</value>
+  </data>
+  <data name="VpnSiteLinkRequiredForVpnSiteLinkConnection" xml:space="preserve">
+    <value>A valid VpnSiteLink attached to a VpnSite is required to create a VpnSiteLinkConnection</value>
+  </data>
+  <data name="VpnConnectionPropertyIsDeprecated" xml:space="preserve">
+    <value>Update request for VpnConnection contains deprecated property. Please use corresponding VpnSiteLinkConnection property instead.</value>
+  </data>
+  <data name="VpnSitePropertyIsDeprecated" xml:space="preserve">
+    <value>Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead.</value>
+  </data>
+  <data name="RouteTableNotFound" xml:space="preserve">
+    <value>The virtual hub route table to modify could not be found</value>
+  </data>
+  <data name="VirtualGatewayRequiredForVirtualRouter" xml:space="preserve">
+    <value>A valid VirtualNetworkGateway is required to create Virtual Router</value>
+  </data>
+  <data name="RemoveVirtualRouterWarning" xml:space="preserve">
+    <value>Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
+  <data name="RemoveRouteServerWarning" xml:space="preserve">
+    <value>Removing a Route Server will also remove all peerings associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
+  <data name="ConnectionMonitorV1V2" xml:space="preserve">
+    <value>Connection monitor V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified</value>
+  </data>
+  <data name="ConnectionMonitorSourceResourceIdInputObjectTestGroups" xml:space="preserve">
+    <value>Either SourceResourceId or InputObject or TestGroups is to be defined</value>
+  </data>
+  <data name="EndpointResourceId" xml:space="preserve">
+    <value>Endpoint resourceId not in the correct format</value>
+  </data>
+  <data name="InvalidEndpointResourceIdForSpecifiedType" xml:space="preserve">
+    <value>ResourceId is invalid for specified endpoint type {0}</value>
+  </data>
+  <data name="EndpointSourceDestination" xml:space="preserve">
+    <value>No sources or destination endpoints</value>
+  </data>
+  <data name="ConnectionMonitorOutput" xml:space="preserve">
+    <value>No output parameter is provided</value>
+  </data>
+  <data name="WorkspaceResourceId" xml:space="preserve">
+    <value>Output WorkspaceResourceId parameter is empty</value>
+  </data>
+  <data name="ProtocolConfigurationPort" xml:space="preserve">
+    <value>Port can not be zero for TCP configuration</value>
+  </data>
+  <data name="ProtocolConfigurationProtocol" xml:space="preserve">
+    <value>Only TCP, HTTP, or ICMP are supported</value>
+  </data>
+  <data name="ProtocolConfigurationNotSupported" xml:space="preserve">
+    <value>Protocol configuration is not supported</value>
+  </data>
+  <data name="ProtocolConfigurationTestFrequency" xml:space="preserve">
+    <value>Test frequency can not be zero</value>
+  </data>
+  <data name="ProtocolConfigurationIPVersion" xml:space="preserve">
+    <value>IP version is undefined</value>
+  </data>
+  <data name="TestConfiguration" xml:space="preserve">
+    <value>No test configuraiton is provided</value>
+  </data>
+  <data name="TestGroupParameters" xml:space="preserve">
+    <value>Test group is missing one or more mandatory parameter</value>
+  </data>
+  <data name="TestGroupEmpty" xml:space="preserve">
+    <value>TestGroup is empty</value>
+  </data>
+  <data name="TestGroupTestConfiguration" xml:space="preserve">
+    <value>Test configuration is undefined</value>
+  </data>
+  <data name="TestGroupProtocol" xml:space="preserve">
+    <value>Protocol in test configuration is not provided</value>
+  </data>
+  <data name="TestGroupProtocolConfiguration" xml:space="preserve">
+    <value>Protocol configuration is not provided</value>
+  </data>
+  <data name="TestGroupTestConfigurationName" xml:space="preserve">
+    <value>Test configuration name is not unique</value>
+  </data>
+  <data name="TestGroupEndpoints" xml:space="preserve">
+    <value>Source or destination endpoint is undefined</value>
+  </data>
+  <data name="TestGroupEndpointParameter" xml:space="preserve">
+    <value>No Endpoint parameter is provided</value>
+  </data>
+  <data name="TestGroupEndpointResourceIdorAddress" xml:space="preserve">
+    <value>Endpoint ResourceId and Address can not be both empty</value>
+  </data>
+  <data name="ConnectionMonitorInputObject" xml:space="preserve">
+    <value>Unrecognized InputObject type.</value>
+  </data>
+  <data name="ConnectionMonitorMustHaveTestGroups" xml:space="preserve">
+    <value>Connection monitor should have at least one testGroup.</value>
+  </data>
+  <data name="InvalidConnectionMonitorOutputType" xml:space="preserve">
+    <value>Invalid connection monitor output type. Only 'Workspace' now is supported.</value>
+  </data>
+  <data name="WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput" xml:space="preserve">
+    <value>WorkspaceResourceId must be provided in connection monitor output.</value>
+  </data>
+  <data name="InvalidWorkspaceResourceId" xml:space="preserve">
+    <value>TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LogAnalytics workspace.</value>
+  </data>
+  <data name="UnsupportedEndpointFilterItemType" xml:space="preserve">
+    <value>Specified EndpointFilterItemType is not supported. Supported type is 'AgentAddress'.</value>
+  </data>
+  <data name="EndpointFilterItemAddressIsMissing" xml:space="preserve">
+    <value>Required property 'Address' is missing in endpoint filter item.</value>
+  </data>
+  <data name="ProtocolConfigurationIsNotDefined" xml:space="preserve">
+    <value>Protocol configuration is not defined.</value>
+  </data>
+  <data name="UnsupportedProtocolConfigurationType" xml:space="preserve">
+    <value>Either TCP, HTTP or ICMP protocol should be defined.</value>
+  </data>
+  <data name="UnsupportedDestinationPortBehavior" xml:space="preserve">
+    <value>Invalid value for DestinationPortBehavior. Supported values are 'None', 'ListenIfAvailable'.</value>
+  </data>
+  <data name="UnsupportedHTTPMethod" xml:space="preserve">
+    <value>Method in HTTPConfiguration is not supported. Valid values are 'GET' and 'POST'.</value>
+  </data>
+  <data name="InvalidHttpUriPathFormat" xml:space="preserve">
+    <value>Invalid format of path in HTTPConfiguration.</value>
+  </data>
+  <data name="InvalidStatusCodeRangesFormat" xml:space="preserve">
+    <value>Invalid format of status code ranges in HTTPConfiguration. Example of valid values: '100', '200-205', '3xx'. Codes should be between 100 and 600.</value>
+  </data>
+  <data name="ConnectionMonitorEndpointMustHaveName" xml:space="preserve">
+    <value>Connection monitor endpoint must have name.</value>
+  </data>
+  <data name="MissedPropertiesInConnectionMonitorEndpoint" xml:space="preserve">
+    <value>Endpoint should have either ResourceId or Address.</value>
+  </data>
+  <data name="InvalidPropertiesInConnectionMonitorEndpoint" xml:space="preserve">
+    <value>ResourceId and Address should not be specified together in connection monitor endpoint.</value>
+  </data>
+  <data name="ConnectionMonitorTestConfigurationMustHaveName" xml:space="preserve">
+    <value>Required field 'Name' is missing in connection monitor test configuration.</value>
+  </data>
+  <data name="ConnectionMonitorTestGroupMustHaveName" xml:space="preserve">
+    <value>Required field 'Name' is missing in connection monitor test group.</value>
+  </data>
+  <data name="ConnectionMonitorTestGroupMustHaveTestConfiguration" xml:space="preserve">
+    <value>Connection monitor test group must have at least one testConfiguration specified.</value>
+  </data>
+  <data name="TestConfigurationNamesMustBeUnique" xml:space="preserve">
+    <value>Test group contains duplicates in test configuration names. TestConfiguration names in testGroup must be unique.</value>
+  </data>
+  <data name="ConnectionMonitorTestGroupMustHaveSourceEndpoint" xml:space="preserve">
+    <value>Connection monitor test group must have at least one source endpoint specified.</value>
+  </data>
+  <data name="ConnectionMonitorTestGroupMustHaveDestinationEndpoint" xml:space="preserve">
+    <value>Connection monitor test group must have at least one destination endpoint specified.</value>
+  </data>
+  <data name="ConnectionMonitorSourceEndpointNamesMustBeUnique" xml:space="preserve">
+    <value>Connection monitor test group contains duplicates in source endpoint names. Source endpoint names in testGroup must be unique.</value>
+  </data>
+  <data name="ConnectionMonitorDestinationEndpointNamesMustBeUnique" xml:space="preserve">
+    <value>Connection monitor test group contains duplicates in destination endpoint names. Destination endpoint names in testGroup must be unique.</value>
+  </data>
+  <data name="TCPProtocolConfigurationMustHavePort" xml:space="preserve">
+    <value>TCP protocol configuration mast have port.</value>
+  </data>
+  <data name="InvalidPortValue" xml:space="preserve">
+    <value>Port value in protocol configuration is out of range. The value must be between 0 and 65535.</value>
+  </data>
+  <data name="InvalidHTTPRequestHeader" xml:space="preserve">
+    <value>Invalid HTTP request header in HTTPConfiguration. Both name and value should be populated.</value>
+  </data>
+  <data name="InvalidEndpointResourceId" xml:space="preserve">
+    <value>Specified resourceID in endpoint is not a valid resource ID.</value>
+  </data>
+  <data name="InvalidEndpointResourceType" xml:space="preserve">
+    <value>Resource type of endpoint is not supported. Supported types are VirtualMachine, VirtualNetwork, Subnet and Workspace. Please update the resource ID of endpoint.</value>
+  </data>
+  <data name="EmptyEndpointType" xml:space="preserve">
+    <value>Type in the endpoint {0} should be populated. Supported types are AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork.</value>
+  </data>
+  <data name="InvalidEndpointType" xml:space="preserve">
+    <value>Invalid type in the endpoint {0}. Supported types are AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, ExternalAddress.</value>
+  </data>
+  <data name="EndpointFilterItemIsMissing" xml:space="preserve">
+    <value>Connection monitor workspace endpoint must have at least one EndpointFilterItem.</value>
+  </data>
+  <data name="UnsupportedEndpointTypeForEndpointWithFilter" xml:space="preserve">
+    <value>Resource type is not supported for endpoint with filter. Supported type is 'workspace'. Please set Log analytics workspace resource ID in resourceID field.</value>
+  </data>
+  <data name="UnsupportedEndpointFilterType" xml:space="preserve">
+    <value>Filter type is not supported. Supported type is 'Include'.</value>
+  </data>
+  <data name="EndpointWilthFilterTypeMustHaveFilterItem" xml:space="preserve">
+    <value>Endpoint with FilterType specified must have at least one EndpointFilterItem.</value>
+  </data>
+  <data name="ResourceIDIsMissingInEndpointWithFilter" xml:space="preserve">
+    <value>An endpoint with 'Filter' specified must always have a resourceID.</value>
+  </data>
+  <data name="EndpointFilterItemAddressesMustBeUnique" xml:space="preserve">
+    <value>Endpoint filter items contain duplicate addresses.</value>
+  </data>
+  <data name="TestFrequencyIsOutOfRange" xml:space="preserve">
+    <value>Test frequency in seconds should be greater or equal to 30 and lesser or equal to 1800 seconds.</value>
+  </data>
+  <data name="ChecksFailedPercentIsOutOfRange" xml:space="preserve">
+    <value>Checks failed percent for success threshold in test configuration should be between 0-100%. The specified value is out of range.</value>
+  </data>
+  <data name="InvalidRoundtripTimeMs" xml:space="preserve">
+    <value>RoundTripTimeMs for success threshold should be a positive value. The specified value is invalid.</value>
+  </data>
+  <data name="InvalidPreferredIPVersion" xml:space="preserve">
+    <value>Invalid value for PreferredIPVersion parameter. Supported values are IPv4 and IPv6.</value>
+  </data>
+  <data name="NoNetworkWatcherFound" xml:space="preserve">
+    <value>There is no network watcher in specified location.</value>
+  </data>
+  <data name="MissingBaseParametersInConnectionMonitor" xml:space="preserve">
+    <value>NetworkWatcherName or resourceGroup are not defined in connectionMonitor object.</value>
+  </data>
+  <data name="ConnectionMonitorNotFound" xml:space="preserve">
+    <value>Connection monitor is not found.</value>
+  </data>
+  <data name="InvalidTargetResourceId" xml:space="preserve">
+    <value>TargetResourceId specified in flow log is not a valid resource ID of Network security group, Virtual Network, Subnet or Network Interface.</value>
+  </data>
+  <data name="InvalidStorageId" xml:space="preserve">
+    <value>StorageId specified in flow log is not a valid ID of storage account.</value>
+  </data>
+  <data name="InvalidFlowLogFormatVersion" xml:space="preserve">
+    <value>Invalid format version. Supported values are 0, 1 and 2.</value>
+  </data>
+  <data name="InvalidFlowLogFormatType" xml:space="preserve">
+    <value>Invalid format type. Supported value is 'JSON'.</value>
+  </data>
+  <data name="TrafficAnalyticsWorkspaceResourceIdIsMissing" xml:space="preserve">
+    <value>Workspace resourceID should be provided if traffic analytics is enabled.</value>
+  </data>
+  <data name="InvalidTrafficAnalyticsInterval" xml:space="preserve">
+    <value>TrafficAnalyticsInterval is invalid. Supported values are 10 and 60.</value>
+  </data>
+  <data name="InvalidRetentionPolicyDaysValue" xml:space="preserve">
+    <value>Number of days in retention policy should be greater than 0.</value>
+  </data>
+  <data name="InvalidFlowLogResourceId" xml:space="preserve">
+    <value>Provided flowLog resourceId is invalid.</value>
+  </data>
+  <data name="InvalidFqdn" xml:space="preserve">
+    <value>The Fqdn specified is invalid.</value>
+  </data>
+  <data name="ExpressRoutePrivatePeeringNotFound" xml:space="preserve">
+    <value>Private Peering needs to be configured on the Express Route Circuit.</value>
+  </data>
+  <data name="ExpressRouteCircuitConnectionNotFound" xml:space="preserve">
+    <value>Circuit Connection with Name '{0}' was not added to the private peering.</value>
+  </data>
+  <data name="ExpressRouteCircuitConnectionAlreadyAdded" xml:space="preserve">
+    <value>Circuit Connection with Name '{0}' is already added.</value>
+  </data>
+  <data name="ApplicationGatewayPrivateEndpointConnectionName" xml:space="preserve">
+    <value>privateEndpointConnections</value>
+  </data>
+  <data name="ApplicationGatewayPrivateLinkConfigurationName" xml:space="preserve">
+    <value>privateLinkConfigurations</value>
+  </data>
+  <data name="ApplicationGatewayPrivateLinkIpConfigurationName" xml:space="preserve">
+    <value>ipConfigurations</value>
+  </data>
+  <data name="RemoveVHubRouteTableWarning" xml:space="preserve">
+    <value>Removing this HubRouteTable will remove all routes present in this and may affect the routing in your VirtualHub.</value>
+  </data>
+  <data name="VHubRouteTableNotFound" xml:space="preserve">
+    <value>The HubRouteTable could not be found.</value>
+  </data>
+  <data name="StaticRoutesNotSupportedForThisRoutingConfiguration" xml:space="preserve">
+    <value>Static Routes are not supported in Routing Configuration for ExpressRoute Connection, VpnConnection and P2SGatewayConnectionConfiguration objects.</value>
+  </data>
+  <data name="VHubRouteTableReferenceNotFound" xml:space="preserve">
+    <value>A valid HubRouteTable reference is required.</value>
+  </data>
+  <data name="CommissioningStateConflict" xml:space="preserve">
+    <value>Cannot have both more than one flag set</value>
+    <comment>Error message for setting the customIpPrefix</comment>
+  </data>
+  <data name="ApplicationGatewaySslProfileName" xml:space="preserve">
+    <value>sslProfiles</value>
+  </data>
+  <data name="ApplicationGatewayTrustedClientCertificateName" xml:space="preserve">
+    <value>trustedClientCertificates</value>
+  </data>
+  <data name="VpnNatRuleUnmatchedPortRange" xml:space="preserve">
+    <value>One or more port ranges specified the VPN NAT rule does not have a corresponding subnet mapping. The count of supplied port ranges in {0} must match with the count of subnets in {1}. </value>
+  </data>
+  <data name="VpnGatewayNatRuleNotFound" xml:space="preserve">
+    <value>The VpnGatewayNatRule could not be found</value>
+  </data>
+  <data name="VpnGatewayRequiredToCreateVpnNatRule" xml:space="preserve">
+    <value>A valid VpnGateway reference is required to create a VpnNatRule</value>
+  </data>
+  <data name="VirtualNetworkGatewayNatRuleNotFound" xml:space="preserve">
+    <value>The VirtualNetworkGatewayNatRule could not be found</value>
+  </data>
+  <data name="RemoveRoutingIntentWarning" xml:space="preserve">
+    <value>Removing this Routing Intent resource will remove all routing policies present in this and may affect the routing in your VirtualHub</value>
+  </data>
+  <data name="RoutingIntentNotFound" xml:space="preserve">
+    <value>The routing intent resource could not be found</value>
+  </data>
+  <data name="SameTypeChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
+    <value>Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
+  </data>
+  <data name="UnsupportPrivateEndpointConnectionType" xml:space="preserve">
+    <value>{0} doesn't support private endpoint connection.</value>
+  </data>
+  <data name="UnsupportPrivateLinkResourceType" xml:space="preserve">
+    <value>{0} doesn't support private link resource.</value>
+  </data>
+  <data name="HubRequiredForHubAndSpokeTopology" xml:space="preserve">
+    <value>A hub is required for HubAndSpoke connectivity topology.</value>
+  </data>
+  <data name="InvalidVnetLocalRouteOverrideCriteriaValue" xml:space="preserve">
+    <value>Permitted values for VnetLocalRouteOverrideCriteria are Equal and Contains.</value>
+  </data>
+</root>

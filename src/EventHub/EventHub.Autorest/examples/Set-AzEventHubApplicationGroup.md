@@ -7,7 +7,11 @@ Set-AzEventHubApplicationGroup -ResourceGroupName myResourceGroup -NamespaceName
 ```
 
 ```output
+<<<<<<< HEAD
 ClientAppGroupIdentifier     : NamespaceSASKeyName=a
+=======
+ClientAppGroupIdentifier     : SASKeyName=a
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
                                myAppGroup
 IsEnabled                    : True
@@ -41,7 +45,11 @@ Set-AzEventHubApplicationGroup -InputObject $appGroup -IsEnabled:$false
 ```
 
 ```output
+<<<<<<< HEAD
 ClientAppGroupIdentifier     : NamespaceSASKeyName=a
+=======
+ClientAppGroupIdentifier     : SASKeyName=a
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
                                myAppGroup
 IsEnabled                    : False

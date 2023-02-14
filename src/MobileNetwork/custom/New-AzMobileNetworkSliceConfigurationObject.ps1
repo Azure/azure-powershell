@@ -38,7 +38,11 @@ function New-AzMobileNetworkSliceConfigurationObject {
         $DefaultDataNetworkId,
         [Parameter(Mandatory, HelpMessage="Slice resource ID.")]
         [string]
+<<<<<<< HEAD
         $SlouseId
+=======
+        $SliceId
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     )
 
     process {
@@ -50,8 +54,13 @@ function New-AzMobileNetworkSliceConfigurationObject {
         if ($PSBoundParameters.ContainsKey('DefaultDataNetworkId')) {
             $Object.DefaultDataNetworkId = $DefaultDataNetworkId
         }
+<<<<<<< HEAD
         if ($PSBoundParameters.ContainsKey('SlouseId')) {
             $Object.SlouseId = $SlouseId
+=======
+        if ($PSBoundParameters.ContainsKey('SliceId')) {
+            $Object.SlouseId = $SliceId
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         }
         return $Object
     }

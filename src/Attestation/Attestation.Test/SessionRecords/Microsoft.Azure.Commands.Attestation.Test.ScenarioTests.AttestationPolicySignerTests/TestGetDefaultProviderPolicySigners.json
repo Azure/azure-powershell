@@ -1,0 +1,116 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/f782b158-10b8-4a42-b9e4-f7fbaf769f35/providers/Microsoft.Attestation/locations/East%20US/defaultProvider?api-version=2018-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc4MmIxNTgtMTBiOC00YTQyLWI5ZTQtZjdmYmFmNzY5ZjM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXR0ZXN0YXRpb24vbG9jYXRpb25zL0Vhc3QlMjBVUy9kZWZhdWx0UHJvdmlkZXI/YXBpLXZlcnNpb249MjAxOC0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "307ab558-d749-40fb-a247-77d33e67ec52"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Attestation.AttestationManagementClient/0.12.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "00-9766b4930c3e17f8110d097aebaba9e7-0000000000000000-00"
+        ],
+        "x-ms-maa-service-version": [
+          "1.10.01279.0001"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "e9c70b08-2916-4760-81ac-6083c025f03e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200703T194239Z:e9c70b08-2916-4760-81ac-6083c025f03e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 03 Jul 2020 19:42:38 GMT"
+        ],
+        "Content-Length": [
+          "285"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedeus\",\r\n  \"name\": \"sharedeus\",\r\n  \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n  \"location\": \"East US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"trustModel\": \"AAD\",\r\n    \"status\": \"Ready\",\r\n    \"attestUri\": \"https://sharedeus.eus.test.attest.azure.net\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/operations/policy/certificates?api-version=2018-09-01-preview",
+      "EncodedRequestUri": "L29wZXJhdGlvbnMvcG9saWN5L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "541b219b-bdc7-4c89-8a92-887314fa18ee"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Attestation.AttestationClient/0.1000.20.12804"
+        ]
+      },
+      "ResponseHeaders": {
+        "Date": [
+          "Fri, 03 Jul 2020 19:42:40 GMT"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "00-9cc6bc1c7809da4498e80ec92cdbe521-0000000000000000-00"
+        ],
+        "x-ms-maa-service-version": [
+          "1.10.01279.0001"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "795"
+        ]
+      },
+      "ResponseBody": "\"eyJhbGciOiAiUlMyNTYiLCAiamt1IjogImh0dHBzOi8vc2hhcmVkZXVzLmV1cy50ZXN0LmF0dGVzdC5henVyZS5uZXQvY2VydHMiLCAia2lkIjogIlhodGZtZlR0bS9MNnhUUkU2RGoxc3BTVkpSRnAwcXdyTjNRem9RWHJwR0E9IiwgInR5cCI6ICJKV1QifQ.eyJhYXMtcG9saWN5Q2VydGlmaWNhdGVzIjogeyJrZXlzIjogW119LCAiZXhwIjogMTU5MzgwODk2MCwgImlhdCI6IDE1OTM4MDUzNjAsICJpc3MiOiAiaHR0cHM6Ly9zaGFyZWRldXMuZXVzLnRlc3QuYXR0ZXN0LmF6dXJlLm5ldCIsICJtYWEtcG9saWN5Q2VydGlmaWNhdGVzIjogeyJrZXlzIjogW119LCAibmJmIjogMTU5MzgwNTM2MH0.RlV8GLBkjEIdczl1SMFLffRTCUtLWWVvzZB3ENCQ8K2l_sI798PxclSGsiC5_pf9416WpdmvbSYH_qpBZYb7SkNtZT9vCkCFoQkZJsSpwnWawze65F_5JKuswMfRU4dP1zVamJsIbgMEKiXB-FvkW7Y3OwxbAWOB54tFDrIpeAaY_CFPhQ20QR4CS0m7StgIQ8G32SfrXbMMhwcoIZd9tc6kzXDSrZDSe1SY7tkjYzEbG3s_6lnc4Pfjd9GJXr6sCg66XWdkBAlUE_6toURbc2GtPMPeqDyIdagpqElvAAkDpuh10-5_Hkr0PsX4DShJ280kVida-aEuHwVmnkdaaw\"",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f782b158-10b8-4a42-b9e4-f7fbaf769f35"
+  }
+}

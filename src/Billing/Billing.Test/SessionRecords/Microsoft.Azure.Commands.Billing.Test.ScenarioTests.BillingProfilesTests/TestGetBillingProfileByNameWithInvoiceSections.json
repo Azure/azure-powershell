@@ -1,0 +1,152 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb%3A171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvYzAxNzA2M2ItMThhZC01ZTI2LWY0YWYtYTRkN2VmZjIwNGNiJTNBMTcxZGYyNGUtYzkyNC00YzU4LTlkYWEtYTBiZGIxNjg2ZmVmXzIwMTktMDUtMzEvYmlsbGluZ1Byb2ZpbGVzP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6160c8cf-e30f-4b70-8a89-92f8d6e04807"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1271.445"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-request-id": [
+          "dff97da5-c35c-4ca2-bdff-5c7aa131c7b8"
+        ],
+        "x-ms-correlation-request-id": [
+          "dff97da5-c35c-4ca2-bdff-5c7aa131c7b8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200625T022354Z:dff97da5-c35c-4ca2-bdff-5c7aa131c7b8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 25 Jun 2020 02:23:54 GMT"
+        ],
+        "Content-Length": [
+          "3633"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB\",\r\n      \"name\": \"RZKZ-H3N4-BG7-TGB\",\r\n      \"properties\": {\r\n        \"billTo\": {\r\n          \"addressLine1\": \"1 Microsoft Way\",\r\n          \"city\": \"Redmond\",\r\n          \"companyName\": \"TestTest_QCUS_BillingAccount\",\r\n          \"country\": \"US\",\r\n          \"email\": \"admin@TestTestQCUSBillAcct.onmicrosoft.com\",\r\n          \"phoneNumber\": \"4255551234\",\r\n          \"postalCode\": \"98052\",\r\n          \"region\": \"wa\"\r\n        },\r\n        \"currency\": \"USD\",\r\n        \"displayName\": \"Billing profile 01\",\r\n        \"enabledAzurePlans\": [\r\n          {\r\n            \"skuId\": \"0002\",\r\n            \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n          },\r\n          {\r\n            \"skuId\": \"0001\",\r\n            \"skuDescription\": \"Microsoft Azure Plan\"\r\n          }\r\n        ],\r\n        \"hasReadAccess\": true,\r\n        \"invoiceDay\": 5,\r\n        \"invoiceEmailOptIn\": true,\r\n        \"invoiceSections\": {\r\n          \"hasMoreResults\": false\r\n        },\r\n        \"poNumber\": \"399cnn3132\",\r\n        \"spendingLimit\": \"Off\",\r\n        \"status\": \"Warned\",\r\n        \"statusReasonCode\": \"PastDue\",\r\n        \"systemId\": \"RZKZ-H3N4-BG7-TGB\"\r\n      },\r\n      \"type\": \"Microsoft.Billing/billingAccounts/billingProfiles\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/S2ZP-F6CT-BG7-TGB\",\r\n      \"name\": \"S2ZP-F6CT-BG7-TGB\",\r\n      \"properties\": {\r\n        \"billTo\": {\r\n          \"addressLine1\": \"One Microsoft Way\",\r\n          \"city\": \"Redmond\",\r\n          \"companyName\": \"Microsoft\",\r\n          \"country\": \"US\",\r\n          \"email\": \"Admin@contoso.com\",\r\n          \"phoneNumber\": \"0000000000\",\r\n          \"postalCode\": \"98052\",\r\n          \"region\": \"wa\"\r\n        },\r\n        \"currency\": \"USD\",\r\n        \"displayName\": \"My ice cream shop 01\",\r\n        \"enabledAzurePlans\": [\r\n          {\r\n            \"skuId\": \"0002\",\r\n            \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n          },\r\n          {\r\n            \"skuId\": \"0001\",\r\n            \"skuDescription\": \"Microsoft Azure Plan\"\r\n          }\r\n        ],\r\n        \"hasReadAccess\": true,\r\n        \"invoiceDay\": 5,\r\n        \"invoiceEmailOptIn\": true,\r\n        \"invoiceSections\": {\r\n          \"hasMoreResults\": false\r\n        },\r\n        \"poNumber\": \"100Bill02\",\r\n        \"spendingLimit\": \"Off\",\r\n        \"status\": \"Active\",\r\n        \"systemId\": \"S2ZP-F6CT-BG7-TGB\"\r\n      },\r\n      \"type\": \"Microsoft.Billing/billingAccounts/billingProfiles\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/JKAQ-NHUD-BG7-TGB\",\r\n      \"name\": \"JKAQ-NHUD-BG7-TGB\",\r\n      \"properties\": {\r\n        \"billTo\": {\r\n          \"addressLine1\": \"1 Microsoft Way\",\r\n          \"city\": \"Redmond\",\r\n          \"companyName\": \"TestTest_QCUS_BillingAccount\",\r\n          \"country\": \"US\",\r\n          \"email\": \"admin@TestTestQCUSBillAcct.onmicrosoft.com\",\r\n          \"phoneNumber\": \"4255551234\",\r\n          \"postalCode\": \"98052\",\r\n          \"region\": \"WA\"\r\n        },\r\n        \"currency\": \"USD\",\r\n        \"displayName\": \"Test BG-5-2-2\",\r\n        \"enabledAzurePlans\": [\r\n          {\r\n            \"skuId\": \"0001\",\r\n            \"skuDescription\": \"Microsoft Azure Plan\"\r\n          },\r\n          {\r\n            \"skuId\": \"0002\",\r\n            \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n          }\r\n        ],\r\n        \"hasReadAccess\": true,\r\n        \"invoiceDay\": 5,\r\n        \"invoiceEmailOptIn\": false,\r\n        \"invoiceSections\": {\r\n          \"hasMoreResults\": false\r\n        },\r\n        \"poNumber\": \"3209324\",\r\n        \"spendingLimit\": \"Off\",\r\n        \"status\": \"Active\",\r\n        \"systemId\": \"JKAQ-NHUD-BG7-TGB\"\r\n      },\r\n      \"type\": \"Microsoft.Billing/billingAccounts/billingProfiles\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/PO6F-IWMU-BG7-TGB\",\r\n      \"name\": \"PO6F-IWMU-BG7-TGB\",\r\n      \"properties\": {\r\n        \"billTo\": {\r\n          \"addressLine1\": \"One Microsoft Way\",\r\n          \"city\": \"Redmond\",\r\n          \"companyName\": \"TestTest_QCUS_BillingAccount\",\r\n          \"country\": \"US\",\r\n          \"email\": \"admin@TestTestQCUSBillAcct.onmicrosoft.com\",\r\n          \"phoneNumber\": \"4255551234\",\r\n          \"postalCode\": \"98052\",\r\n          \"region\": \"wa\"\r\n        },\r\n        \"currency\": \"USD\",\r\n        \"displayName\": \"Billing profile - 4282\",\r\n        \"enabledAzurePlans\": [\r\n          {\r\n            \"skuId\": \"0001\",\r\n            \"skuDescription\": \"Microsoft Azure Plan\"\r\n          },\r\n          {\r\n            \"skuId\": \"0002\",\r\n            \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n          }\r\n        ],\r\n        \"hasReadAccess\": true,\r\n        \"invoiceDay\": 5,\r\n        \"invoiceEmailOptIn\": false,\r\n        \"invoiceSections\": {\r\n          \"hasMoreResults\": false\r\n        },\r\n        \"poNumber\": \"32863285\",\r\n        \"spendingLimit\": \"Off\",\r\n        \"status\": \"Active\",\r\n        \"systemId\": \"PO6F-IWMU-BG7-TGB\"\r\n      },\r\n      \"type\": \"Microsoft.Billing/billingAccounts/billingProfiles\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb%3A171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB?api-version=2020-05-01&$expand=invoiceSections",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9iaWxsaW5nQWNjb3VudHMvYzAxNzA2M2ItMThhZC01ZTI2LWY0YWYtYTRkN2VmZjIwNGNiJTNBMTcxZGYyNGUtYzkyNC00YzU4LTlkYWEtYTBiZGIxNjg2ZmVmXzIwMTktMDUtMzEvYmlsbGluZ1Byb2ZpbGVzL1JaS1otSDNONC1CRzctVEdCP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDEmJGV4cGFuZD1pbnZvaWNlU2VjdGlvbnM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "107611fb-784a-432c-8f66-122cb603db9a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27110.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-service-version": [
+          "10.6.1271.445"
+        ],
+        "api-supported-versions": [
+          "2018-11-01-preview, 2019-10-01-preview, 2020-05-01"
+        ],
+        "X-Frame-Options": [
+          "DENY"
+        ],
+        "x-ms-request-id": [
+          "8aedb231-bad5-4714-9714-189265689b3f"
+        ],
+        "x-ms-correlation-request-id": [
+          "8aedb231-bad5-4714-9714-189265689b3f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20200625T022355Z:8aedb231-bad5-4714-9714-189265689b3f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 25 Jun 2020 02:23:54 GMT"
+        ],
+        "Content-Length": [
+          "2528"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB\",\r\n  \"name\": \"RZKZ-H3N4-BG7-TGB\",\r\n  \"properties\": {\r\n    \"billTo\": {\r\n      \"addressLine1\": \"1 Microsoft Way\",\r\n      \"city\": \"Redmond\",\r\n      \"companyName\": \"TestTest_QCUS_BillingAccount\",\r\n      \"country\": \"US\",\r\n      \"email\": \"admin@TestTestQCUSBillAcct.onmicrosoft.com\",\r\n      \"phoneNumber\": \"4255551234\",\r\n      \"postalCode\": \"98052\",\r\n      \"region\": \"wa\"\r\n    },\r\n    \"currency\": \"USD\",\r\n    \"displayName\": \"Billing profile 01\",\r\n    \"enabledAzurePlans\": [\r\n      {\r\n        \"skuId\": \"0002\",\r\n        \"skuDescription\": \"Microsoft Azure Plan for DevTest\"\r\n      },\r\n      {\r\n        \"skuId\": \"0001\",\r\n        \"skuDescription\": \"Microsoft Azure Plan\"\r\n      }\r\n    ],\r\n    \"hasReadAccess\": true,\r\n    \"invoiceDay\": 5,\r\n    \"invoiceEmailOptIn\": true,\r\n    \"invoiceSections\": {\r\n      \"hasMoreResults\": false,\r\n      \"value\": [\r\n        {\r\n          \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB/invoiceSections/L6E4-BU47-PJA-TGB\",\r\n          \"name\": \"L6E4-BU47-PJA-TGB\",\r\n          \"properties\": {\r\n            \"displayName\": \"Test section\",\r\n            \"labels\": {\r\n              \"a\": \"a\"\r\n            },\r\n            \"systemId\": \"L6E4-BU47-PJA-TGB\"\r\n          },\r\n          \"type\": \"Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections\"\r\n        },\r\n        {\r\n          \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB/invoiceSections/VLRR-PFIL-PJA-TGB\",\r\n          \"name\": \"VLRR-PFIL-PJA-TGB\",\r\n          \"properties\": {\r\n            \"displayName\": \"Prod section\",\r\n            \"systemId\": \"VLRR-PFIL-PJA-TGB\"\r\n          },\r\n          \"type\": \"Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections\"\r\n        },\r\n        {\r\n          \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB/invoiceSections/I4BJ-DPWC-PJA-TGB\",\r\n          \"name\": \"I4BJ-DPWC-PJA-TGB\",\r\n          \"properties\": {\r\n            \"displayName\": \"Dev section\",\r\n            \"labels\": {\r\n              \"a\": \"a\",\r\n              \"a2\": \"a\"\r\n            },\r\n            \"systemId\": \"I4BJ-DPWC-PJA-TGB\"\r\n          },\r\n          \"type\": \"Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections\"\r\n        },\r\n        {\r\n          \"id\": \"/providers/Microsoft.Billing/billingAccounts/c017063b-18ad-5e26-f4af-a4d7eff204cb:171df24e-c924-4c58-9daa-a0bdb1686fef_2019-05-31/billingProfiles/RZKZ-H3N4-BG7-TGB/invoiceSections/GNAH-DU3U-PJA-TGB\",\r\n          \"name\": \"GNAH-DU3U-PJA-TGB\",\r\n          \"properties\": {\r\n            \"displayName\": \"PPE section\",\r\n            \"systemId\": \"GNAH-DU3U-PJA-TGB\"\r\n          },\r\n          \"type\": \"Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections\"\r\n        }\r\n      ]\r\n    },\r\n    \"poNumber\": \"399cnn3132\",\r\n    \"spendingLimit\": \"Off\",\r\n    \"status\": \"Warned\",\r\n    \"statusReasonCode\": \"PastDue\",\r\n    \"systemId\": \"RZKZ-H3N4-BG7-TGB\"\r\n  },\r\n  \"type\": \"Microsoft.Billing/billingAccounts/billingProfiles\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0e660d57-d14d-44e2-9586-a1e29288996e"
+  }
+}

@@ -24,7 +24,10 @@ function setupEnv() {
     $systemAssignedNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
     $keyVaultName = "keyVaultName" + (RandomString -allChars $false -len 6)
     $keyVaultUri = "https://" + $keyVaultName + ".vault.azure.net/"
+<<<<<<< HEAD
     $namespaceV1 = "namespaceV1" + (RandomString -allChars $false -len 6)
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     $namespaceV2 = "namespaceV2" + (RandomString -allChars $false -len 6)
     $namespaceV3 = "namespaceV3" + (RandomString -allChars $false -len 6)
     $namespaceV4 = "namespaceV4" + (RandomString -allChars $false -len 6)
@@ -53,9 +56,14 @@ function setupEnv() {
     $consumerGroup2 = "consumerGroup" + (RandomString -allChars $false -len 6)
     $consumerGroup3 = "consumerGroup" + (RandomString -allChars $false -len 6)
     $eventHub = "eventHub" + (RandomString -allChars $false -len 6)
+<<<<<<< HEAD
     $eventHub2 = "eventHub2" + (RandomString -allChars $false -len 6)
     $eventHub3 = "eventHub3" + (RandomString -allChars $false -len 6)
     $eventHub9 = "eventHub9" + (RandomString -allChars $false -len 6)
+=======
+    $eventHub2 = "eventHub" + (RandomString -allChars $false -len 6)
+    $eventHub3 = "eventHub" + (RandomString -allChars $false -len 6)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     $cluster = "cluster" + (RandomString -allChars $false -len 6)
     $cluster2 = "cluster" + (RandomString -allChars $false -len 6)
     $alias = "alias" + (RandomString -allChars $false -len 6)
@@ -73,7 +81,10 @@ function setupEnv() {
     $env.Add("systemAssignedNamespaceName", $systemAssignedNamespaceName)
     $env.Add("keyVaultUri", $keyVaultUri)
     $env.Add("namespace", $namespaceName)
+<<<<<<< HEAD
     $env.Add("namespaceV1", $namespaceV1)
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     $env.Add("namespaceV2", $namespaceV2)
     $env.Add("namespaceV3", $namespaceV3)
     $env.Add("namespaceV4", $namespaceV4)
@@ -101,7 +112,10 @@ function setupEnv() {
     $env.Add("eventHub", $eventHub)
     $env.Add("eventHub2", $eventHub2)
     $env.Add("eventHub3", $eventHub3)
+<<<<<<< HEAD
     $env.Add("eventHub9", $eventHub9)
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     $env.Add("createdCluster", "TestClusterAutomatic")
     $env.Add("cluster", $cluster)
     $env.Add("cluster2", $cluster2)

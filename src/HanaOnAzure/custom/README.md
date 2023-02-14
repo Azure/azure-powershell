@@ -31,6 +31,7 @@ These provide functionality to our HTTP pipeline and other useful features. In s
 
 ### Attributes
 For processing the cmdlets, we've created some additional attributes:
+<<<<<<< HEAD
 - `Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.DescriptionAttribute`
   - Used in C# cmdlets to provide a high-level description of the cmdlet. This is propegated to reference documentation via [help comments](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_comment_based_help) in the exported scripts.
 - `Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.DoNotExportAttribute`
@@ -38,4 +39,13 @@ For processing the cmdlets, we've created some additional attributes:
 - `Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.InternalExportAttribute`
   - Used in C# cmdlets to route exported cmdlets to the `..\internal`, which are *not exposed* by `Az.HanaOnAzure`. For more information, see [readme.md](..\internal/readme.md) in the `..\internal` folder.
 - `Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.ProfileAttribute`
+=======
+- `Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.DescriptionAttribute`
+  - Used in C# cmdlets to provide a high-level description of the cmdlet. This is propegated to reference documentation via [help comments](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comment_based_help) in the exported scripts.
+- `Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.DoNotExportAttribute`
+  - Used in C# and script cmdlets to suppress creating an exported cmdlet at build-time. These cmdlets will *not be exposed* by `Az.HanaOnAzure`.
+- `Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.InternalExportAttribute`
+  - Used in C# cmdlets to route exported cmdlets to the `..\internal`, which are *not exposed* by `Az.HanaOnAzure`. For more information, see [readme.md](..\internal/readme.md) in the `..\internal` folder.
+- `Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ProfileAttribute`
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   - Used in C# and script cmdlets to define which Azure profiles the cmdlet supports. This is only supported for Azure (`--azure`) modules.

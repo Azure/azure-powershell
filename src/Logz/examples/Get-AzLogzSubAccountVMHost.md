@@ -1,9 +1,14 @@
 ### Example 1: List the compute resources currently being monitored by the logz sub account resource
 ```powershell
+<<<<<<< HEAD
 Get-AzLogzSubAccountVMHost -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01
 ```
 
 ```output
+=======
+PS C:\> Get-AzLogzSubAccountVMHost -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 AgentVersion Id
 ------------ --
 1.0          /SUBSCRIPTIONS/CE37D538-DFA3-49C3-B3CD-149B4B7DB48A/RESOURCEGROUPS/KOYTEST/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/TEST-VM-1

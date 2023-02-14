@@ -60,10 +60,17 @@ For more information on squashing, click [here](https://git-scm.com/book/en/v2/G
 
 If you want to merge specific commits from another branch into the current one you are working from, use **cherry-picking**. 
 
+<<<<<<< HEAD
 For example, if you're working on the **master** branch and want to pull commit X (the commit-hash) from the **feature** branch, you may run the following commands:
 
 ```
 git checkout master
+=======
+For example, if you're working on the **main** branch and want to pull commit X (the commit-hash) from the **feature** branch, you may run the following commands:
+
+```
+git checkout main
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 git cherry-pick X -n
 ```
 
@@ -73,7 +80,11 @@ Now, if you want to cherry-pick a range of commits, say X through Y, from the **
 
 ```
 git checkout -b temp-branch X
+<<<<<<< HEAD
 git rebase --onto master Y^
+=======
+git rebase --onto main Y^
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 
 For more information on cherry-picking, click [here](https://git-scm.com/docs/git-cherry-pick).

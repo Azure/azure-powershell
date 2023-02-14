@@ -1,9 +1,14 @@
 ### Example 1: Get a data source by name
 ```powershell
+<<<<<<< HEAD
 Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/' -Name 'NewDataSource'
 ```
 
 ```output
+=======
+PS C:\> Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/' -Name 'NewDataSource'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 CollectionLastModifiedAt : 2/9/2022 2:49:14 AM
 CollectionReferenceName  : brs-2
 CollectionType           : CollectionReference
@@ -24,10 +29,15 @@ Get a data source named 'NewDataSource'
 
 ### Example 2: Get all data sources
 ```powershell
+<<<<<<< HEAD
 Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/'
 ```
 
 ```output
+=======
+PS C:\>  Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 CollectionLastModifiedAt : 1/31/2022 10:28:16 AM
 CollectionReferenceName  : brs-2
 CollectionType           : CollectionReference

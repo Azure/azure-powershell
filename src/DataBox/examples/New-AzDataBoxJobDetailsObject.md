@@ -1,5 +1,6 @@
 ### Example 1: Creates a databox job detail in memory object 
 ```powershell
+<<<<<<< HEAD
 $contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 
@@ -7,6 +8,11 @@ New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDet
 ```
 
 ```output
+=======
+PS C:\> $details = New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
+PS C:\> $details
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Action                     :
 ChainOfCustodySasKey       :
 ContactDetail              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails

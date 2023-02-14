@@ -50,7 +50,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Content Include="InstallerChecks.config" />
+=======
+    <Content Include="CustomAction.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

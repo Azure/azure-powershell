@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "Remove-AzEventHubSchemaGroup+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwfkmlo/providers/Microsoft.EventHub/namespaces/namespaceNamez6sfbn/schemagroups/schemaGroupjtw65f?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "DELETE",
@@ -8,6 +9,17 @@
       "Headers": {
         "x-ms-unique-id": [ "242" ],
         "x-ms-client-request-id": [ "6f8aefad-6c42-4d67-9214-b185548e85a3" ],
+=======
+  "Remove-AzEventHubSchemaGroup+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupia8xyj?api-version=2022-01-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupia8xyj?api-version=2022-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "228" ],
+        "x-ms-client-request-id": [ "743b7718-03e0-4da1-b292-cdc94ad2a062" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "CommandName": [ "Remove-AzEventHubSchemaGroup" ],
         "FullCommandName": [ "Remove-AzEventHubSchemaGroup_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,6 +34,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "x-ms-request-id": [ "e3482231-f0a1-499d-9d06-7f17acb99d65_M10SN1_M10SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
@@ -31,6 +44,17 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Date": [ "Mon, 13 Feb 2023 18:17:07 GMT" ]
+=======
+        "x-ms-request-id": [ "3f386240-7a8b-44f4-9a6d-94d209ecbf86_M2SN1_M2SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14985" ],
+        "x-ms-correlation-request-id": [ "ffd36274-6344-4f05-b7bc-8bc8cb90e9a4" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221125T111106Z:ffd36274-6344-4f05-b7bc-8bc8cb90e9a4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 25 Nov 2022 11:11:06 GMT" ]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -39,6 +63,7 @@
       "isContentBase64": false
     }
   },
+<<<<<<< HEAD
   "Remove-AzEventHubSchemaGroup+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwfkmlo/providers/Microsoft.EventHub/namespaces/namespaceNamez6sfbn/schemagroups/schemaGroupjtw65f?api-version=2022-10-01-preview+2": {
     "Request": {
       "Method": "GET",
@@ -48,6 +73,17 @@
       "Headers": {
         "x-ms-unique-id": [ "243" ],
         "x-ms-client-request-id": [ "071ded92-b087-4ca0-a0b2-1ba5edfcc383" ],
+=======
+  "Remove-AzEventHubSchemaGroup+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupia8xyj?api-version=2022-01-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupia8xyj?api-version=2022-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "229" ],
+        "x-ms-client-request-id": [ "a77ffd76-402d-4235-a0ef-12129c64c08b" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "CommandName": [ "Get-AzEventHubSchemaGroup" ],
         "FullCommandName": [ "Get-AzEventHubSchemaGroup_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -62,6 +98,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "x-ms-request-id": [ "2db31213-f162-48a7-ba09-a5f86ba8cd44_M10SN1_M10SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
@@ -90,6 +127,36 @@
       "Headers": {
         "x-ms-unique-id": [ "244" ],
         "x-ms-client-request-id": [ "8e79b33c-31b6-4cac-85cf-a71d415157c7" ],
+=======
+        "x-ms-request-id": [ "571701d9-4cde-414c-89ec-5f3d35e7dd19_M2SN1_M2SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11825" ],
+        "x-ms-correlation-request-id": [ "1d469fb2-01a2-4fac-aa01-028b1ae6c9af" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221125T111108Z:1d469fb2-01a2-4fac-aa01-028b1ae6c9af" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 25 Nov 2022 11:11:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "318" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"message\":\"Schema schemaGroupia8xyj does not exist. TrackingId:571701d9-4cde-414c-89ec-5f3d35e7dd19_M2SN1_M2SN1_G3, SystemTracker:namespacenameyb2pzf.servicebus.windows.net:$schemagroups/schemaGroupia8xyj, Timestamp:2022-11-25T11:11:08 CorrelationId: 1d469fb2-01a2-4fac-aa01-028b1ae6c9af\",\"code\":\"NotFound\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzEventHubSchemaGroup+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupvui05s?api-version=2022-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupvui05s?api-version=2022-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "230" ],
+        "x-ms-client-request-id": [ "31bee704-e793-4037-b70b-c12485ee5752" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "CommandName": [ "Get-AzEventHubSchemaGroup" ],
         "FullCommandName": [ "Get-AzEventHubSchemaGroup_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -104,6 +171,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "x-ms-request-id": [ "d408b940-5fda-4e87-adfa-95d32a0ab1c6_M10SN1_M10SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
@@ -132,6 +200,36 @@
       "Headers": {
         "x-ms-unique-id": [ "245" ],
         "x-ms-client-request-id": [ "2b548588-618c-4c35-ae1d-09672da31102" ],
+=======
+        "x-ms-request-id": [ "41c210c2-1a64-482b-8e8e-8c2722a519da_M2SN1_M2SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11824" ],
+        "x-ms-correlation-request-id": [ "1d610e2c-508a-419a-bf4b-5dd811f218ff" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221125T111108Z:1d610e2c-508a-419a-bf4b-5dd811f218ff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 25 Nov 2022 11:11:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "519" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupvui05s\",\"name\":\"schemaGroupvui05s\",\"type\":\"Microsoft.EventHub/Namespaces/SchemaGroups\",\"location\":\"East US\",\"properties\":{\"updatedAtUtc\":\"2022-11-25T11:03:09.777573Z\",\"createdAtUtc\":\"2022-11-25T11:03:09.777573Z\",\"eTag\":\"b0b78501-ec1d-4ece-a058-5a82d8a40221\",\"groupProperties\":{},\"schemaCompatibility\":\"Backward\",\"schemaType\":\"Avro\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzEventHubSchemaGroup+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupvui05s?api-version=2022-01-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupvui05s?api-version=2022-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "231" ],
+        "x-ms-client-request-id": [ "7a6fc877-dc1e-41e5-a5b4-0a3f8aa17cf6" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "CommandName": [ "Remove-AzEventHubSchemaGroup" ],
         "FullCommandName": [ "Remove-AzEventHubSchemaGroup_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -146,6 +244,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "x-ms-request-id": [ "43a940dd-5e79-4ed9-9b3f-0341f6db5a96_M10SN1_M10SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
@@ -155,6 +254,17 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Date": [ "Mon, 13 Feb 2023 18:17:09 GMT" ]
+=======
+        "x-ms-request-id": [ "65f50967-f58e-4292-80de-bd0c62264f90_M2SN1_M2SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14984" ],
+        "x-ms-correlation-request-id": [ "e31f943a-e0b1-45a3-a22e-196f5bda8129" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221125T111110Z:e31f943a-e0b1-45a3-a22e-196f5bda8129" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 25 Nov 2022 11:11:09 GMT" ]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -163,6 +273,7 @@
       "isContentBase64": false
     }
   },
+<<<<<<< HEAD
   "Remove-AzEventHubSchemaGroup+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwfkmlo/providers/Microsoft.EventHub/namespaces/namespaceNamez6sfbn/schemagroups/schemaGroupl9zxhu?api-version=2022-10-01-preview+3": {
     "Request": {
       "Method": "GET",
@@ -172,6 +283,17 @@
       "Headers": {
         "x-ms-unique-id": [ "246" ],
         "x-ms-client-request-id": [ "4c4f295a-a681-4a13-bcc9-32a6e1351b08" ],
+=======
+  "Remove-AzEventHubSchemaGroup+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupvui05s?api-version=2022-01-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/schemagroups/schemaGroupvui05s?api-version=2022-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "232" ],
+        "x-ms-client-request-id": [ "7cff5ed1-5760-4dab-81a8-440849924885" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "CommandName": [ "Get-AzEventHubSchemaGroup" ],
         "FullCommandName": [ "Get-AzEventHubSchemaGroup_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -186,6 +308,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "x-ms-request-id": [ "1ea8bbe4-5fb4-4fac-98b1-7abb17b83a70_M10SN1_M10SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
@@ -202,6 +325,24 @@
         "Expires": [ "-1" ]
       },
       "Content": "{\"error\":{\"message\":\"Schema schemaGroupl9zxhu does not exist. TrackingId:1ea8bbe4-5fb4-4fac-98b1-7abb17b83a70_M10SN1_M10SN1_G8, SystemTracker:namespacenamez6sfbn.servicebus.windows.net:$schemagroups/schemaGroupl9zxhu, Timestamp:2023-02-13T18:17:10 CorrelationId: bf5107ea-74f7-41b6-af52-9cc91caebaf8\",\"code\":\"NotFound\"}}",
+=======
+        "x-ms-request-id": [ "9711dc5f-491f-4bb2-8d95-2a523513c2e3_M2SN1_M2SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11823" ],
+        "x-ms-correlation-request-id": [ "629dae3f-1283-477a-8778-bf2183d63f58" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221125T111111Z:629dae3f-1283-477a-8778-bf2183d63f58" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 25 Nov 2022 11:11:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "318" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"message\":\"Schema schemaGroupvui05s does not exist. TrackingId:9711dc5f-491f-4bb2-8d95-2a523513c2e3_M2SN1_M2SN1_G3, SystemTracker:namespacenameyb2pzf.servicebus.windows.net:$schemagroups/schemaGroupvui05s, Timestamp:2022-11-25T11:11:10 CorrelationId: 629dae3f-1283-477a-8778-bf2183d63f58\",\"code\":\"NotFound\"}}",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "isContentBase64": false
     }
   }

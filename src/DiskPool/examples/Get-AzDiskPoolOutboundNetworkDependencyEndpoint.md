@@ -1,9 +1,14 @@
 ### Example 1: List network dependency endpoints for a Disk pool
 ```powershell
+<<<<<<< HEAD
 Get-AzDiskPoolOutboundNetworkDependencyEndpoint -DiskPoolName disk-pool-1 -ResourceGroupName storagepool-rg-test | Format-Table -Wrap
 ```
 
 ```output
+=======
+PS C:\>  Get-AzDiskPoolOutboundNetworkDependencyEndpoint -DiskPoolName disk-pool-1 -ResourceGroupName storagepool-rg-test | ft -Wrap
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Category              Endpoint
 --------              --------
 Microsoft Event Hub   {{

@@ -24,7 +24,11 @@
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>$(RepoSrc)MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+<<<<<<< HEAD
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+=======
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN;$(TestCoverage)</DefineConstants>
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   </PropertyGroup>
 
   <!-- Resources -->
@@ -34,8 +38,11 @@
       <AutoGen>true</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <!-- include shared source code -->
     <Compile Include="$(MSBuildThisFileDirectory)shared\*.cs" />
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   </ItemGroup>
 
   <ItemGroup>
@@ -53,4 +60,8 @@
     <None Update="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+<<<<<<< HEAD
 </Project>
+=======
+</Project>
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91

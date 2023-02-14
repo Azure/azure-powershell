@@ -4,7 +4,11 @@ Get-AzBillingBenefitsSavingsPlan -OrderId d7ea1620-2bba-46e2-8434-11f31bfb984d
 ```
 
 ```output
+<<<<<<< HEAD
 Name    Status    ExpiryDate            PurchaseDate          Term Scope  AppliedScopeDisplayName ProductName          CommitmentAmount CommitmentCurrency
+=======
+Name    Status    ExpiryDate            PurchaseDate          Term Scope  AppliedScopeDisplayName ProductName          CommitmentAmount CommitmentCurrencyCode
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ----    ------    ----------            ------------          ---- -----  ----------------------- -----------          ---------------- ------------------
 PSTest7 Succeeded 11/29/2025 2:23:51 AM 11/29/2022 2:20:38 AM P3Y  Shared                         Compute_Savings_Plan 0.001            USD
 ```
@@ -17,7 +21,11 @@ Get-AzBillingBenefitsSavingsPlan -OrderId d7ea1620-2bba-46e2-8434-11f31bfb984d -
 ```
 
 ```output
+<<<<<<< HEAD
 Name    Status    ExpiryDate            PurchaseDate          Term Scope  AppliedScopeDisplayName ProductName          CommitmentAmount CommitmentCurrency
+=======
+Name    Status    ExpiryDate            PurchaseDate          Term Scope  AppliedScopeDisplayName ProductName          CommitmentAmount CommitmentCurrencyCode
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ----    ------    ----------            ------------          ---- -----  ----------------------- -----------          ---------------- ------------------
 PSTest7 Succeeded 11/29/2025 2:23:51 AM 11/29/2022 2:20:38 AM P3Y  Shared                         Compute_Savings_Plan 0.001            USD
 ```

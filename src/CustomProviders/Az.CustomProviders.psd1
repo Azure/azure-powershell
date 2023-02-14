@@ -10,15 +10,25 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.CustomProviders.private.dll'
+<<<<<<< HEAD
   FormatsToProcess = './Az.CustomProviders.format.ps1xml'
   FunctionsToExport = 'Get-AzCustomProvider', 'Get-AzCustomProviderAssociation', 'New-AzCustomProvider', 'New-AzCustomProviderAssociation', 'Remove-AzCustomProvider', 'Remove-AzCustomProviderAssociation', 'Update-AzCustomProvider', '*'
+=======
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
+  FormatsToProcess = './Az.CustomProviders.format.ps1xml'
+  FunctionsToExport = 'Get-AzCustomProvider', 'Get-AzCustomProviderAssociation', 'New-AzCustomProvider', 'New-AzCustomProviderAssociation', 'Remove-AzCustomProvider', 'Remove-AzCustomProviderAssociation', 'Update-AzCustomProvider'
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'CustomProviders'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
+<<<<<<< HEAD
       ReleaseNotes = ''
+=======
+      ReleaseNotes = '* the first preview release'
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     }
   }
 }

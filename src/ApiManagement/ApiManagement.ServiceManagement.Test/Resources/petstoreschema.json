@@ -1,0 +1,57 @@
+{
+  "pet": {
+    "required": [
+      "id",
+      "name"
+    ],
+    "externalDocs": {
+      "description": "findmoreinfohere",
+      "url": "https: //helloreverb.com/about"
+    },
+    "properties": {
+      "id": {
+        "type": "integer",
+        "format": "int64"
+      },
+      "name": {
+        "type": "string"
+      },
+      "tag": {
+        "type": "string"
+      }
+    }
+  },
+  "newPet": {
+    "allOf": [
+      {
+        "$ref": "pet"
+      },
+      {
+        "required": [
+          "name"
+        ],
+        "id": {
+          "properties": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    ]
+  },
+  "errorModel": {
+    "required": [
+      "code",
+      "message"
+    ],
+    "properties": {
+      "code": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "message": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1/providerShareSubscriptions/80f618dc-2ca8-4f99-83ee-9d2889066c6d?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVzL3Nka3Rlc3RpbmdzaGFyZTEvcHJvdmlkZXJTaGFyZVN1YnNjcmlwdGlvbnMvODBmNjE4ZGMtMmNhOC00Zjk5LTgzZWUtOWQyODg5MDY2YzZkP2FwaS12ZXJzaW9uPTIwMTktMTEtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "{\r\n \"name\": \"sdktestingprovidersharesubscription20\", \r\n \"properties\": {\r\n \"createdAt\": \"2019-06-11T18:30:38.4357641Z\", \"createdBy\": \"provider\", \"sharedAt\": \"2019-06-11T18:30:38.4357641Z\", \"sharedBy\": \"provider\", \"shareSubscriptionStatus\": \"Active\",\r\n \"company\": \"microsoft\", \r\n \"shareSubscriptionObjectId\": \"80f618dc-2ca8-4f99-83ee-9d2889066c6d\"}\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-ProviderShareSubscriptionGet": [
+      "sdktestingadsrg4712",
+      "sdktestingshareaccount9776",
+      "sdktestingshare1",
+      "80f618dc-2ca8-4f99-83ee-9d2889066c6d"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "c39dce18-cead-4065-8fb1-3af7683a5038"
+  }
+}

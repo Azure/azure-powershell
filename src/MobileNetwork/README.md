@@ -17,7 +17,11 @@ This directory contains the PowerShell module for the MobileNetwork service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
+<<<<<<< HEAD
 - [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+=======
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -59,6 +63,18 @@ nested-object-to-string: true
 
 directive:
   - from: swagger-document 
+<<<<<<< HEAD
+=======
+    where: $.definitions.PacketCoreControlPlanePropertiesFormat.properties.interopSettings
+    transform: >-
+      return {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "Settings to allow interoperability with third party components e.g. RANs and UEs."
+      }
+
+  - from: swagger-document 
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     where: $.definitions
     transform: delete $.CoreNetworkTypeRm
   - from: swagger-document 
@@ -83,6 +99,14 @@ directive:
     remove: true
 
   - where:
+<<<<<<< HEAD
+=======
+      verb: New
+      subject: SimGroup
+    hide: true
+
+  - where:
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       verb: Set
     remove: true
   - where:
@@ -129,6 +153,7 @@ directive:
       subject: ^Slouse$
     set:
       subject: Slice
+<<<<<<< HEAD
 
   - where:
       verb: Invoke
@@ -170,6 +195,75 @@ directive:
   #     - ServiceResourceId
   #     - SiteResourceId
   #     - SimStaticIPProperties
+=======
+  - where:
+      parameter-name: DefaultSlouseId
+    set:
+      parameter-name: DefaultSliceId
+
+  # - where:
+  #     verb: Invoke
+  #     subject: ^BulkSimDelete$
+  #   set:
+  #     verb: Remove
+  - where:
+      verb: Invoke
+      subject: ^BulkSimDelete$
+    remove: true
+  # - where:
+  #     verb: Invoke
+  #     subject: ^BulkSimUpload$
+  #   set:
+  #     verb: Update
+  - where:
+      verb: Invoke
+      subject: ^BulkSimUpload$
+    remove: true
+  # - where:
+  #     verb: Invoke
+  #     subject: ^BulkSimUploadEncrypted$
+  #   set:
+  #     verb: Update
+  - where:
+      verb: Invoke
+      subject: ^BulkSimUploadEncrypted$
+    remove: true
+  # - where:
+  #     verb: Invoke
+  #     subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
+  #   set:
+  #     verb: Update
+  - where:
+      verb: Invoke
+      subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
+    remove: true
+  # - where:
+  #     verb: Invoke
+  #     subject: ^ReinstallPacketCoreControlPlane$
+  #   set:
+  #     verb: Reset
+  - where:
+      verb: Invoke
+      subject: ^ReinstallPacketCoreControlPlane$
+    remove: true
+  # - where:
+  #     verb: Invoke
+  #     subject: ^RollbackPacketCoreControlPlane$
+  #   set:
+  #     verb: Revoke
+  - where:
+      verb: Invoke
+      subject: ^RollbackPacketCoreControlPlane$
+    remove: true
+
+  # The following are commented out and their generated cmdlets may be renamed and custom logic
+  # - model-cmdlet:
+  #     - SliceConfiguration  # SlouseId -> SliceId
+  #     - DataNetworkConfiguration
+  #     - ServiceResourceId
+  #     - SiteResourceId
+  #     - SimStaticIPProperties # SlouseId -> SliceId
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   #     - PccRuleConfiguration
   #     - ServiceDataFlowTemplate
 
@@ -247,5 +341,49 @@ directive:
           - Name
           - ResourceGroupName
           - ProvisioningState
+<<<<<<< HEAD
           - IdentityType
+=======
+  - where:
+      model-name: PacketCoreControlPlane
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+  - where:
+      model-name: PacketCoreDataPlane
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+  - where:
+      model-name: AttachedDataNetwork
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+  - where:
+      model-name: Sim
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+  - where:
+      model-name: PacketCoreControlPlaneVersion
+    set:
+      format-table:
+        properties:
+          - Name
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```

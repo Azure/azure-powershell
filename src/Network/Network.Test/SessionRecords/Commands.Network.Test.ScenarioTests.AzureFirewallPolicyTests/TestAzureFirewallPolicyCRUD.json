@@ -1,0 +1,2239 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourcegroups/ps3482?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlZ3JvdXBzL3BzMzQ4Mj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e442f0ff-3e00-44e3-a729-8d906672de9b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.59"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "78"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "4dd7dd91-b580-42f7-b45b-41528e334e20"
+        ],
+        "x-ms-correlation-request-id": [
+          "4dd7dd91-b580-42f7-b45b-41528e334e20"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225522Z:4dd7dd91-b580-42f7-b45b-41528e334e20"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:21 GMT"
+        ],
+        "Content-Length": [
+          "381"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482\",\r\n  \"name\": \"ps3482\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\",\r\n    \"AdminEmail\": \"cnfwoncall@microsoft.com\",\r\n    \"AlertDaysBeforeDeletion\": \"5\",\r\n    \"Created\": \"2022-08-31T22:55:21.86313Z\",\r\n    \"CreationDate\": \"2022-08-31T22:55:21.8631194Z\",\r\n    \"DaysUntilDeletion\": \"20\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODA/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fe0f158f-8c95-4248-a018-0aca76aead97"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "1a78e55b-a2c6-491c-8c8b-d12193f16ea8"
+        ],
+        "x-ms-correlation-request-id": [
+          "1a78e55b-a2c6-491c-8c8b-d12193f16ea8"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225523Z:1a78e55b-a2c6-491c-8c8b-d12193f16ea8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:22 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "219"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/firewallPolicies/ps3980' under resource group 'ps3482' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODA/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fe0f158f-8c95-4248-a018-0aca76aead97"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ebcf1804-3205-4440-9209-5ec80d8131f2\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "113f084d-dcdf-4bfe-a5b0-a11d35feb68c"
+        ],
+        "x-ms-correlation-request-id": [
+          "113f084d-dcdf-4bfe-a5b0-a11d35feb68c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225539Z:113f084d-dcdf-4bfe-a5b0-a11d35feb68c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:39 GMT"
+        ],
+        "Content-Length": [
+          "517"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980\",\r\n  \"name\": \"ps3980\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"ebcf1804-3205-4440-9209-5ec80d8131f2\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODA/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fe0f158f-8c95-4248-a018-0aca76aead97"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ebcf1804-3205-4440-9209-5ec80d8131f2\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "731c938b-6516-4030-8a68-9f3179f61723"
+        ],
+        "x-ms-correlation-request-id": [
+          "731c938b-6516-4030-8a68-9f3179f61723"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225540Z:731c938b-6516-4030-8a68-9f3179f61723"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:40 GMT"
+        ],
+        "Content-Length": [
+          "517"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980\",\r\n  \"name\": \"ps3980\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"ebcf1804-3205-4440-9209-5ec80d8131f2\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODA/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b453f503-6905-49d8-88c2-4607fe044e9a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ebcf1804-3205-4440-9209-5ec80d8131f2\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "8b49cd7a-75e7-4567-a5d6-8f8f3160d98e"
+        ],
+        "x-ms-correlation-request-id": [
+          "8b49cd7a-75e7-4567-a5d6-8f8f3160d98e"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225541Z:8b49cd7a-75e7-4567-a5d6-8f8f3160d98e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:40 GMT"
+        ],
+        "Content-Length": [
+          "517"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980\",\r\n  \"name\": \"ps3980\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"ebcf1804-3205-4440-9209-5ec80d8131f2\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODA/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "87e6d296-5ca3-4cba-89f4-ad3a94f33d12"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"71b5dd61-9e77-42a9-ad76-eec580aa2b9e\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "f700a051-8590-42f0-ba8d-41ceb50699f0"
+        ],
+        "x-ms-correlation-request-id": [
+          "f700a051-8590-42f0-ba8d-41ceb50699f0"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225557Z:f700a051-8590-42f0-ba8d-41ceb50699f0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:56 GMT"
+        ],
+        "Content-Length": [
+          "712"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [\r\n      {\r\n        \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\"\r\n      }\r\n    ],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980\",\r\n  \"name\": \"ps3980\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"71b5dd61-9e77-42a9-ad76-eec580aa2b9e\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODA/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "87e6d296-5ca3-4cba-89f4-ad3a94f33d12"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"a41ee754-b301-4a17-be66-9f3dcf7fa1a4\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "403b63c6-5a13-4052-8a84-0202d27d0e72"
+        ],
+        "x-ms-correlation-request-id": [
+          "403b63c6-5a13-4052-8a84-0202d27d0e72"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225609Z:403b63c6-5a13-4052-8a84-0202d27d0e72"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:09 GMT"
+        ],
+        "Content-Length": [
+          "711"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Deny\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [\r\n      {\r\n        \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\"\r\n      }\r\n    ],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980\",\r\n  \"name\": \"ps3980\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"a41ee754-b301-4a17-be66-9f3dcf7fa1a4\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODA/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "87e6d296-5ca3-4cba-89f4-ad3a94f33d12"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"a41ee754-b301-4a17-be66-9f3dcf7fa1a4\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "d2826aad-b1c4-4651-a34c-a50e5f10f448"
+        ],
+        "x-ms-correlation-request-id": [
+          "d2826aad-b1c4-4651-a34c-a50e5f10f448"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225610Z:d2826aad-b1c4-4651-a34c-a50e5f10f448"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:09 GMT"
+        ],
+        "Content-Length": [
+          "711"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Deny\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [\r\n      {\r\n        \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\"\r\n      }\r\n    ],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980\",\r\n  \"name\": \"ps3980\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"a41ee754-b301-4a17-be66-9f3dcf7fa1a4\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODA/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "475b33f9-ed88-4fa7-8fed-e98ec08ee796"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"a41ee754-b301-4a17-be66-9f3dcf7fa1a4\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "7fb2c0a8-4a97-4efe-921b-56925e07d14e"
+        ],
+        "x-ms-correlation-request-id": [
+          "7fb2c0a8-4a97-4efe-921b-56925e07d14e"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225611Z:7fb2c0a8-4a97-4efe-921b-56925e07d14e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:10 GMT"
+        ],
+        "Content-Length": [
+          "711"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Deny\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [\r\n      {\r\n        \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\"\r\n      }\r\n    ],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980\",\r\n  \"name\": \"ps3980\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"a41ee754-b301-4a17-be66-9f3dcf7fa1a4\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODA/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fe0f158f-8c95-4248-a018-0aca76aead97"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "138"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    }\r\n  },\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "x-ms-request-id": [
+          "ffde54a7-2cd5-4e96-b58d-e4471010b412",
+          "ffde54a7-2cd5-4e96-b58d-e4471010b412"
+        ],
+        "x-ms-correlation-request-id": [
+          "7018b7a7-b96c-4b6a-af9a-30702ab9b755"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/nfvOperations/ffde54a7-2cd5-4e96-b58d-e4471010b412?api-version=2022-01-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225528Z:7018b7a7-b96c-4b6a-af9a-30702ab9b755"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:27 GMT"
+        ],
+        "Content-Length": [
+          "516"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980\",\r\n  \"name\": \"ps3980\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"ebcf1804-3205-4440-9209-5ec80d8131f2\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODA/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "87e6d296-5ca3-4cba-89f4-ad3a94f33d12"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "137"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"threatIntelMode\": \"Deny\",\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    }\r\n  },\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "x-ms-request-id": [
+          "6de7b87d-0270-41b6-9e07-6aae9bcaf2ff",
+          "6de7b87d-0270-41b6-9e07-6aae9bcaf2ff"
+        ],
+        "x-ms-correlation-request-id": [
+          "53696766-9a60-43be-bfd3-df40fd2d62af"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/nfvOperations/6de7b87d-0270-41b6-9e07-6aae9bcaf2ff?api-version=2022-01-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225559Z:53696766-9a60-43be-bfd3-df40fd2d62af"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:58 GMT"
+        ],
+        "Content-Length": [
+          "710"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Deny\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [\r\n      {\r\n        \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\"\r\n      }\r\n    ],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980\",\r\n  \"name\": \"ps3980\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"a41ee754-b301-4a17-be66-9f3dcf7fa1a4\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/nfvOperations/ffde54a7-2cd5-4e96-b58d-e4471010b412?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvbmZ2T3BlcmF0aW9ucy9mZmRlNTRhNy0yY2Q1LTRlOTYtYjU4ZC1lNDQ3MTAxMGI0MTI/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fe0f158f-8c95-4248-a018-0aca76aead97"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bb967582-83ea-4657-814b-b3066c9bf7b2",
+          "bb967582-83ea-4657-814b-b3066c9bf7b2"
+        ],
+        "x-ms-correlation-request-id": [
+          "97750fd0-3088-4843-b818-4a639fa568ce"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225539Z:97750fd0-3088-4843-b818-4a639fa568ce"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:39 GMT"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODAvcnVsZUNvbGxlY3Rpb25Hcm91cHMvcHM3NTk3P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ac3d5062-86a0-484e-8430-d9f5687c92fa"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "3243"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"priority\": 100,\r\n    \"ruleCollections\": [\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Allow\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 80\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"targetFqdns\": [\r\n              \"*google.com\",\r\n              \"*microsoft.com\"\r\n            ],\r\n            \"name\": \"appRule\"\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 8080\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"targetFqdns\": [\r\n              \"*bing.com\"\r\n            ],\r\n            \"name\": \"appRule2\"\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Mssql\",\r\n                \"port\": 1433\r\n              }\r\n            ],\r\n            \"targetFqdns\": [\r\n              \"www.ssllabs.com\"\r\n            ],\r\n            \"name\": \"appRule3\"\r\n          }\r\n        ],\r\n        \"name\": \"appRc\",\r\n        \"priority\": 400\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Deny\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NetworkRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ],\r\n            \"name\": \"networkRule\"\r\n          }\r\n        ],\r\n        \"name\": \"networkRc\",\r\n        \"priority\": 200\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyNatRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Dnat\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NatRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ],\r\n            \"translatedAddress\": \"10.1.2.3\",\r\n            \"translatedPort\": \"91\",\r\n            \"name\": \"natRule\"\r\n          }\r\n        ],\r\n        \"name\": \"natRc\",\r\n        \"priority\": 100\r\n      }\r\n    ]\r\n  },\r\n  \"name\": \"ps7597\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "x-ms-request-id": [
+          "a6dd2018-f121-4dd7-8b3c-47f79bba58bf",
+          "a6dd2018-f121-4dd7-8b3c-47f79bba58bf"
+        ],
+        "x-ms-correlation-request-id": [
+          "f47606da-38f4-4c3b-b317-94cc7ae0756c"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/nfvOperations/a6dd2018-f121-4dd7-8b3c-47f79bba58bf?api-version=2022-01-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225544Z:f47606da-38f4-4c3b-b317-94cc7ae0756c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:44 GMT"
+        ],
+        "Content-Length": [
+          "4363"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"priority\": 100,\r\n    \"ruleCollections\": [\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Allow\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 80\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*google.com\",\r\n              \"*microsoft.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule2\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 8080\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*bing.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule3\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Mssql\",\r\n                \"port\": 1433\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"www.ssllabs.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          }\r\n        ],\r\n        \"name\": \"appRc\",\r\n        \"priority\": 400\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Deny\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NetworkRule\",\r\n            \"name\": \"networkRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationIpGroups\": [],\r\n            \"destinationFqdns\": [],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"networkRc\",\r\n        \"priority\": 200\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyNatRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Dnat\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NatRule\",\r\n            \"name\": \"natRule\",\r\n            \"translatedAddress\": \"10.1.2.3\",\r\n            \"translatedPort\": \"91\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"natRc\",\r\n        \"priority\": 100\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\",\r\n  \"name\": \"ps7597\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies/RuleCollectionGroups\",\r\n  \"etag\": \"ffb2e86e-6c27-4665-a173-0ea975dde08f\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODAvcnVsZUNvbGxlY3Rpb25Hcm91cHMvcHM3NTk3P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "75c73f16-e12b-453a-a67a-d6d940af7b46"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "3885"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"priority\": 154,\r\n    \"ruleCollections\": [\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Allow\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 80\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"targetFqdns\": [\r\n              \"*google.com\",\r\n              \"*microsoft.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"fqdnTags\": [],\r\n            \"sourceIpGroups\": [],\r\n            \"terminateTLS\": false,\r\n            \"webCategories\": [],\r\n            \"name\": \"appRule\"\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 8080\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"targetFqdns\": [\r\n              \"*bing.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"fqdnTags\": [],\r\n            \"sourceIpGroups\": [],\r\n            \"terminateTLS\": false,\r\n            \"webCategories\": [],\r\n            \"name\": \"appRule2\"\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Mssql\",\r\n                \"port\": 1433\r\n              }\r\n            ],\r\n            \"targetFqdns\": [\r\n              \"www.ssllabs.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"fqdnTags\": [],\r\n            \"sourceIpGroups\": [],\r\n            \"terminateTLS\": false,\r\n            \"webCategories\": [],\r\n            \"name\": \"appRule3\"\r\n          }\r\n        ],\r\n        \"name\": \"appRc\",\r\n        \"priority\": 400\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Deny\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NetworkRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationIpGroups\": [],\r\n            \"destinationFqdns\": [],\r\n            \"name\": \"networkRule\"\r\n          }\r\n        ],\r\n        \"name\": \"networkRc\",\r\n        \"priority\": 200\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyNatRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Dnat\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NatRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ],\r\n            \"translatedAddress\": \"10.1.2.3\",\r\n            \"translatedPort\": \"91\",\r\n            \"sourceIpGroups\": [],\r\n            \"name\": \"natRule\"\r\n          }\r\n        ],\r\n        \"name\": \"natRc\",\r\n        \"priority\": 100\r\n      }\r\n    ]\r\n  },\r\n  \"name\": \"ps7597\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "x-ms-request-id": [
+          "d6c1d3fc-d1c0-4db7-8731-c163055bdfe5",
+          "d6c1d3fc-d1c0-4db7-8731-c163055bdfe5"
+        ],
+        "x-ms-correlation-request-id": [
+          "45f484fa-b14d-4a9e-bfe6-f85b3df67ec9"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/nfvOperations/d6c1d3fc-d1c0-4db7-8731-c163055bdfe5?api-version=2022-01-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225616Z:45f484fa-b14d-4a9e-bfe6-f85b3df67ec9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:16 GMT"
+        ],
+        "Content-Length": [
+          "4363"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"priority\": 154,\r\n    \"ruleCollections\": [\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Allow\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 80\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*google.com\",\r\n              \"*microsoft.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule2\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 8080\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*bing.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule3\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Mssql\",\r\n                \"port\": 1433\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"www.ssllabs.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          }\r\n        ],\r\n        \"name\": \"appRc\",\r\n        \"priority\": 400\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Deny\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NetworkRule\",\r\n            \"name\": \"networkRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationIpGroups\": [],\r\n            \"destinationFqdns\": [],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"networkRc\",\r\n        \"priority\": 200\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyNatRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Dnat\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NatRule\",\r\n            \"name\": \"natRule\",\r\n            \"translatedAddress\": \"10.1.2.3\",\r\n            \"translatedPort\": \"91\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"natRc\",\r\n        \"priority\": 100\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\",\r\n  \"name\": \"ps7597\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies/RuleCollectionGroups\",\r\n  \"etag\": \"a0979cab-0d2c-451c-bac6-7c1254c06149\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/nfvOperations/a6dd2018-f121-4dd7-8b3c-47f79bba58bf?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvbmZ2T3BlcmF0aW9ucy9hNmRkMjAxOC1mMTIxLTRkZDctOGIzYy00N2Y3OWJiYTU4YmY/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ac3d5062-86a0-484e-8430-d9f5687c92fa"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d6ae5af0-e720-45bb-9a44-f541a8253330",
+          "d6ae5af0-e720-45bb-9a44-f541a8253330"
+        ],
+        "x-ms-correlation-request-id": [
+          "6cb3a749-b5c8-4779-89d4-155957c77f84"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225555Z:6cb3a749-b5c8-4779-89d4-155957c77f84"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:55 GMT"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODAvcnVsZUNvbGxlY3Rpb25Hcm91cHMvcHM3NTk3P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ac3d5062-86a0-484e-8430-d9f5687c92fa"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ffb2e86e-6c27-4665-a173-0ea975dde08f\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "334c819c-e53e-4d9e-8744-abea4ecb2139"
+        ],
+        "x-ms-correlation-request-id": [
+          "334c819c-e53e-4d9e-8744-abea4ecb2139"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225556Z:334c819c-e53e-4d9e-8744-abea4ecb2139"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:55:55 GMT"
+        ],
+        "Content-Length": [
+          "4364"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"priority\": 100,\r\n    \"ruleCollections\": [\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Allow\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 80\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*google.com\",\r\n              \"*microsoft.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule2\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 8080\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*bing.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule3\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Mssql\",\r\n                \"port\": 1433\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"www.ssllabs.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          }\r\n        ],\r\n        \"name\": \"appRc\",\r\n        \"priority\": 400\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Deny\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NetworkRule\",\r\n            \"name\": \"networkRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationIpGroups\": [],\r\n            \"destinationFqdns\": [],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"networkRc\",\r\n        \"priority\": 200\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyNatRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Dnat\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NatRule\",\r\n            \"name\": \"natRule\",\r\n            \"translatedAddress\": \"10.1.2.3\",\r\n            \"translatedPort\": \"91\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"natRc\",\r\n        \"priority\": 100\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\",\r\n  \"name\": \"ps7597\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies/RuleCollectionGroups\",\r\n  \"etag\": \"ffb2e86e-6c27-4665-a173-0ea975dde08f\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODAvcnVsZUNvbGxlY3Rpb25Hcm91cHMvcHM3NTk3P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c9b4a7ba-ac4c-491b-aa0f-265af524c408"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ffb2e86e-6c27-4665-a173-0ea975dde08f\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "c21729ec-a26f-4c85-a686-6aaafd1c3160"
+        ],
+        "x-ms-correlation-request-id": [
+          "c21729ec-a26f-4c85-a686-6aaafd1c3160"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225612Z:c21729ec-a26f-4c85-a686-6aaafd1c3160"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:12 GMT"
+        ],
+        "Content-Length": [
+          "4364"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"priority\": 100,\r\n    \"ruleCollections\": [\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Allow\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 80\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*google.com\",\r\n              \"*microsoft.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule2\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 8080\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*bing.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule3\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Mssql\",\r\n                \"port\": 1433\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"www.ssllabs.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          }\r\n        ],\r\n        \"name\": \"appRc\",\r\n        \"priority\": 400\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Deny\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NetworkRule\",\r\n            \"name\": \"networkRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationIpGroups\": [],\r\n            \"destinationFqdns\": [],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"networkRc\",\r\n        \"priority\": 200\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyNatRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Dnat\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NatRule\",\r\n            \"name\": \"natRule\",\r\n            \"translatedAddress\": \"10.1.2.3\",\r\n            \"translatedPort\": \"91\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"natRc\",\r\n        \"priority\": 100\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\",\r\n  \"name\": \"ps7597\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies/RuleCollectionGroups\",\r\n  \"etag\": \"ffb2e86e-6c27-4665-a173-0ea975dde08f\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODAvcnVsZUNvbGxlY3Rpb25Hcm91cHMvcHM3NTk3P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d125920f-f004-4286-9620-cac9ddd50bfe"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"ffb2e86e-6c27-4665-a173-0ea975dde08f\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "dc2eb0da-924e-4195-b320-a0d59317a39d"
+        ],
+        "x-ms-correlation-request-id": [
+          "dc2eb0da-924e-4195-b320-a0d59317a39d"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225613Z:dc2eb0da-924e-4195-b320-a0d59317a39d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:12 GMT"
+        ],
+        "Content-Length": [
+          "4364"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"priority\": 100,\r\n    \"ruleCollections\": [\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Allow\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 80\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*google.com\",\r\n              \"*microsoft.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule2\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 8080\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*bing.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule3\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Mssql\",\r\n                \"port\": 1433\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"www.ssllabs.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          }\r\n        ],\r\n        \"name\": \"appRc\",\r\n        \"priority\": 400\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Deny\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NetworkRule\",\r\n            \"name\": \"networkRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationIpGroups\": [],\r\n            \"destinationFqdns\": [],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"networkRc\",\r\n        \"priority\": 200\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyNatRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Dnat\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NatRule\",\r\n            \"name\": \"natRule\",\r\n            \"translatedAddress\": \"10.1.2.3\",\r\n            \"translatedPort\": \"91\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"natRc\",\r\n        \"priority\": 100\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\",\r\n  \"name\": \"ps7597\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies/RuleCollectionGroups\",\r\n  \"etag\": \"ffb2e86e-6c27-4665-a173-0ea975dde08f\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODAvcnVsZUNvbGxlY3Rpb25Hcm91cHMvcHM3NTk3P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "75c73f16-e12b-453a-a67a-d6d940af7b46"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"a0979cab-0d2c-451c-bac6-7c1254c06149\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "6aabe46f-2c76-4b43-87c2-91c0c59ddeeb"
+        ],
+        "x-ms-correlation-request-id": [
+          "6aabe46f-2c76-4b43-87c2-91c0c59ddeeb"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225627Z:6aabe46f-2c76-4b43-87c2-91c0c59ddeeb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:26 GMT"
+        ],
+        "Content-Length": [
+          "4364"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"priority\": 154,\r\n    \"ruleCollections\": [\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Allow\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 80\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*google.com\",\r\n              \"*microsoft.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule2\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 8080\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*bing.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule3\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Mssql\",\r\n                \"port\": 1433\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"www.ssllabs.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          }\r\n        ],\r\n        \"name\": \"appRc\",\r\n        \"priority\": 400\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Deny\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NetworkRule\",\r\n            \"name\": \"networkRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationIpGroups\": [],\r\n            \"destinationFqdns\": [],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"networkRc\",\r\n        \"priority\": 200\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyNatRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Dnat\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NatRule\",\r\n            \"name\": \"natRule\",\r\n            \"translatedAddress\": \"10.1.2.3\",\r\n            \"translatedPort\": \"91\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"natRc\",\r\n        \"priority\": 100\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\",\r\n  \"name\": \"ps7597\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies/RuleCollectionGroups\",\r\n  \"etag\": \"a0979cab-0d2c-451c-bac6-7c1254c06149\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczM5ODAvcnVsZUNvbGxlY3Rpb25Hcm91cHMvcHM3NTk3P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4bd78e5c-1d45-43c4-af85-be2ff49dc900"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"a0979cab-0d2c-451c-bac6-7c1254c06149\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "a1ffa71c-5211-4454-aa9e-998c9ac1dc41"
+        ],
+        "x-ms-correlation-request-id": [
+          "a1ffa71c-5211-4454-aa9e-998c9ac1dc41"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225628Z:a1ffa71c-5211-4454-aa9e-998c9ac1dc41"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:28 GMT"
+        ],
+        "Content-Length": [
+          "4364"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"priority\": 154,\r\n    \"ruleCollections\": [\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Allow\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 80\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*google.com\",\r\n              \"*microsoft.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule2\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Http\",\r\n                \"port\": 8080\r\n              },\r\n              {\r\n                \"protocolType\": \"Https\",\r\n                \"port\": 443\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"*bing.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          },\r\n          {\r\n            \"ruleType\": \"ApplicationRule\",\r\n            \"name\": \"appRule3\",\r\n            \"protocols\": [\r\n              {\r\n                \"protocolType\": \"Mssql\",\r\n                \"port\": 1433\r\n              }\r\n            ],\r\n            \"fqdnTags\": [],\r\n            \"webCategories\": [],\r\n            \"targetFqdns\": [\r\n              \"www.ssllabs.com\"\r\n            ],\r\n            \"targetUrls\": [],\r\n            \"terminateTLS\": false,\r\n            \"sourceAddresses\": [\r\n              \"192.168.0.0/16\"\r\n            ],\r\n            \"destinationAddresses\": [],\r\n            \"sourceIpGroups\": []\r\n          }\r\n        ],\r\n        \"name\": \"appRc\",\r\n        \"priority\": 400\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyFilterRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Deny\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NetworkRule\",\r\n            \"name\": \"networkRule\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationIpGroups\": [],\r\n            \"destinationFqdns\": [],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"networkRc\",\r\n        \"priority\": 200\r\n      },\r\n      {\r\n        \"ruleCollectionType\": \"FirewallPolicyNatRuleCollection\",\r\n        \"action\": {\r\n          \"type\": \"Dnat\"\r\n        },\r\n        \"rules\": [\r\n          {\r\n            \"ruleType\": \"NatRule\",\r\n            \"name\": \"natRule\",\r\n            \"translatedAddress\": \"10.1.2.3\",\r\n            \"translatedPort\": \"91\",\r\n            \"ipProtocols\": [\r\n              \"UDP\",\r\n              \"TCP\"\r\n            ],\r\n            \"sourceAddresses\": [\r\n              \"10.0.0.0\",\r\n              \"111.1.0.0/24\"\r\n            ],\r\n            \"sourceIpGroups\": [],\r\n            \"destinationAddresses\": [\r\n              \"10.10.10.1\"\r\n            ],\r\n            \"destinationPorts\": [\r\n              \"90\"\r\n            ]\r\n          }\r\n        ],\r\n        \"name\": \"natRc\",\r\n        \"priority\": 100\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps3980/ruleCollectionGroups/ps7597\",\r\n  \"name\": \"ps7597\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies/RuleCollectionGroups\",\r\n  \"etag\": \"a0979cab-0d2c-451c-bac6-7c1254c06149\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/nfvOperations/6de7b87d-0270-41b6-9e07-6aae9bcaf2ff?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvbmZ2T3BlcmF0aW9ucy82ZGU3Yjg3ZC0wMjcwLTQxYjYtOWUwNy02YWFlOWJjYWYyZmY/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "87e6d296-5ca3-4cba-89f4-ad3a94f33d12"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e1691ba8-7291-4d22-9a79-c618f45b75d8",
+          "e1691ba8-7291-4d22-9a79-c618f45b75d8"
+        ],
+        "x-ms-correlation-request-id": [
+          "5856ddf2-8934-4a1b-95f9-9af555664d10"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225609Z:5856ddf2-8934-4a1b-95f9-9af555664d10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:08 GMT"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/nfvOperations/d6c1d3fc-d1c0-4db7-8731-c163055bdfe5?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvbmZ2T3BlcmF0aW9ucy9kNmMxZDNmYy1kMWMwLTRkYjctODczMS1jMTYzMDU1YmRmZTU/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "75c73f16-e12b-453a-a67a-d6d940af7b46"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a6bd6541-2642-44dc-9ed8-cf3c565144a6",
+          "a6bd6541-2642-44dc-9ed8-cf3c565144a6"
+        ],
+        "x-ms-correlation-request-id": [
+          "b5fae610-5c5a-42c1-8cf4-49485bf5b75d"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225627Z:b5fae610-5c5a-42c1-8cf4-49485bf5b75d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:26 GMT"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps95?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczk1P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5d863749-4cb5-4925-850a-14e9bba1ad58"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "4687da65-c852-4e02-97dc-969cfc5e5987"
+        ],
+        "x-ms-correlation-request-id": [
+          "4687da65-c852-4e02-97dc-969cfc5e5987"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225629Z:4687da65-c852-4e02-97dc-969cfc5e5987"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:29 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "217"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/firewallPolicies/ps95' under resource group 'ps3482' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps95?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczk1P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"896f6e28-de76-4c5a-82c6-35c96032c685\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "9a885351-1bfb-44cf-b65f-76d29215a113"
+        ],
+        "x-ms-correlation-request-id": [
+          "9a885351-1bfb-44cf-b65f-76d29215a113"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225643Z:9a885351-1bfb-44cf-b65f-76d29215a113"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:43 GMT"
+        ],
+        "Content-Length": [
+          "513"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps95\",\r\n  \"name\": \"ps95\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"896f6e28-de76-4c5a-82c6-35c96032c685\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps95?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczk1P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "76a36775-26ca-4c9f-bdcd-559a9ed3786a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"896f6e28-de76-4c5a-82c6-35c96032c685\""
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "09fa17a0-ad31-4a1a-affd-586ce48cca6c"
+        ],
+        "x-ms-correlation-request-id": [
+          "09fa17a0-ad31-4a1a-affd-586ce48cca6c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225644Z:09fa17a0-ad31-4a1a-affd-586ce48cca6c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:44 GMT"
+        ],
+        "Content-Length": [
+          "513"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps95\",\r\n  \"name\": \"ps95\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"896f6e28-de76-4c5a-82c6-35c96032c685\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps95?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlR3JvdXBzL3BzMzQ4Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZmlyZXdhbGxQb2xpY2llcy9wczk1P2FwaS12ZXJzaW9uPTIwMjItMDEtMDE=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ba5b5e3e-7367-4543-8c55-4473c9fc0d87"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "138"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    }\r\n  },\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "WWW-Authenticate-dSTS": [
+          "http://schemas.microsoft.com/dsts/saml2-bearer metadata-version=1,sts-realm=realm://dsts.core.windows.net/,certificate-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/certificate,issued-token-sts-address=https://useast2euap-dsts.dsts.core.windows.net/v2/wstrust/13/issuedtoken-bearer,discovery-sts-address=https://useast2euap-dsts.dsts.core.windows.net/2012/IDstsDiscoveryService,service-dns-name=eastus2euap.test.nfvrp.azure.com,known-sts-thumbprints=ForBackwardCompatibility,trusted-sts-thumbprints=ForBackwardCompatibility,error=3,error-description=\"The security token is invalid. Cannot decode base64 encoded string. The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. \""
+        ],
+        "x-ms-request-id": [
+          "1fb9f158-4b1c-48c3-87cf-9dedd6049fa8",
+          "1fb9f158-4b1c-48c3-87cf-9dedd6049fa8"
+        ],
+        "x-ms-correlation-request-id": [
+          "bd25eea1-16c8-494e-be06-6ecdd9caaffa"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/nfvOperations/1fb9f158-4b1c-48c3-87cf-9dedd6049fa8?api-version=2022-01-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225633Z:bd25eea1-16c8-494e-be06-6ecdd9caaffa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:32 GMT"
+        ],
+        "Content-Length": [
+          "512"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"childPolicies\": [],\r\n    \"ruleCollectionGroups\": [],\r\n    \"firewalls\": [],\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps3482/providers/Microsoft.Network/firewallPolicies/ps95\",\r\n  \"name\": \"ps95\",\r\n  \"type\": \"Microsoft.Network/FirewallPolicies\",\r\n  \"etag\": \"896f6e28-de76-4c5a-82c6-35c96032c685\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/providers/Microsoft.Network/locations/eastus2euap/nfvOperations/1fb9f158-4b1c-48c3-87cf-9dedd6049fa8?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvbmZ2T3BlcmF0aW9ucy8xZmI5ZjE1OC00YjFjLTQ4YzMtODdjZi05ZGVkZDYwNDlmYTg/YXBpLXZlcnNpb249MjAyMi0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a3994244-8091-49f0-a7be-885b2a04f3af",
+          "a3994244-8091-49f0-a7be-885b2a04f3af"
+        ],
+        "x-ms-correlation-request-id": [
+          "92521a22-f5c2-4fe6-b2a6-78ccc3fe813c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225643Z:92521a22-f5c2-4fe6-b2a6-78ccc3fe813c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:43 GMT"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourcegroups/ps3482?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL3Jlc291cmNlZ3JvdXBzL3BzMzQ4Mj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d7439e32-ca04-4614-bd1f-36029cc64bdd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.59"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "9fb4143d-5b4b-4b47-bb12-411d57d72b10"
+        ],
+        "x-ms-correlation-request-id": [
+          "9fb4143d-5b4b-4b47-bb12-411d57d72b10"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225645Z:9fb4143d-5b4b-4b47-bb12-411d57d72b10"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:56:45 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpNME9ESXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.59"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "d9c655f9-a41d-4462-b57f-9dbdbaa8c866"
+        ],
+        "x-ms-correlation-request-id": [
+          "d9c655f9-a41d-4462-b57f-9dbdbaa8c866"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225701Z:d9c655f9-a41d-4462-b57f-9dbdbaa8c866"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:57:00 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpNME9ESXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.59"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "36165dea-af41-49b0-80d3-7fd83af75289"
+        ],
+        "x-ms-correlation-request-id": [
+          "36165dea-af41-49b0-80d3-7fd83af75289"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225716Z:36165dea-af41-49b0-80d3-7fd83af75289"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:57:15 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpNME9ESXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.59"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "40a1aa1c-993b-4c09-bc12-2a79f3a22f1d"
+        ],
+        "x-ms-correlation-request-id": [
+          "40a1aa1c-993b-4c09-bc12-2a79f3a22f1d"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225731Z:40a1aa1c-993b-4c09-bc12-2a79f3a22f1d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:57:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpNME9ESXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.59"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "302436f0-cfab-442c-a220-5de0a324b2dd"
+        ],
+        "x-ms-correlation-request-id": [
+          "302436f0-cfab-442c-a220-5de0a324b2dd"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225746Z:302436f0-cfab-442c-a220-5de0a324b2dd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:57:45 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpNME9ESXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.59"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "24d4d59d-b0cf-483b-9b43-8ac55474f9f3"
+        ],
+        "x-ms-correlation-request-id": [
+          "24d4d59d-b0cf-483b-9b43-8ac55474f9f3"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225801Z:24d4d59d-b0cf-483b-9b43-8ac55474f9f3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:58:00 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzM0ODItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWViNWIwMmEtMGYxOC00NWE0LTg2ZDYtODE4MDgxMTVjYWNmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpNME9ESXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.59"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "34722d82-22c5-4e3f-8cde-96c58ec52fca"
+        ],
+        "x-ms-correlation-request-id": [
+          "34722d82-22c5-4e3f-8cde-96c58ec52fca"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20220831T225801Z:34722d82-22c5-4e3f-8cde-96c58ec52fca"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 22:58:00 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-AzureFirewallPolicyCRUD": [
+      "ps3482",
+      "ps3980",
+      "ps95",
+      "ps7597"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "aeb5b02a-0f18-45a4-86d6-81808115cacf"
+  }
+}

@@ -25,4 +25,8 @@ $env = @{}
 if (Test-Path -Path $envFilePath) {
     $env = Get-Content (Join-Path $PSScriptRoot $envFile) | ConvertFrom-Json
     $PSDefaultParameterValues=@{"*:SubscriptionId"=$env.SubscriptionId; "*:Tenant"=$env.Tenant}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91

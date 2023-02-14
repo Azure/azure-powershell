@@ -1,6 +1,10 @@
 ### Example 1: Create a new lab.
 ```powershell
+<<<<<<< HEAD
 New-AzLabServicesLab `
+=======
+PS C:\>  New-AzLabServicesLab `
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         -Name "NewLab" `
         -ResourceGroupName $ENV:ResourceGroupName `
         -Location $ENV:Location `
@@ -25,9 +29,13 @@ New-AzLabServicesLab `
         -Title $ENV:NewLabName `
         -VirtualMachineProfileCreateOption "TemplateVM" `
         -VirtualMachineProfileUseSharedPassword Enabled
+<<<<<<< HEAD
 ```
 
 ```output
+=======
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Location Name
 -------- ----
 westus2  NewLab

@@ -12,18 +12,24 @@ Deletes a data source
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### Delete (Default)
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 Remove-AzPurviewDataSource -Endpoint <String> -Name <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### DeleteViaIdentity
 ```
 Remove-AzPurviewDataSource -Endpoint <String> -InputObject <IPurviewdataIdentity> [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## DESCRIPTION
 Deletes a data source
 
@@ -31,10 +37,15 @@ Deletes a data source
 
 ### Example 1: Remove a data source by name
 ```powershell
+<<<<<<< HEAD
 Remove-AzPurviewDataSource -Endpoint 'https://rs-2.purview.azure.com/' -Name 'NewDataSource'
 ```
 
 ```output
+=======
+PS C:\> Remove-AzPurviewDataSource -Endpoint 'https://rs-2.purview.azure.com/' -Name 'NewDataSource'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 CollectionLastModifiedAt : 2/9/2022 2:49:14 AM
 CollectionReferenceName  : brs-2
 CollectionType           : CollectionReference
@@ -86,6 +97,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -102,12 +114,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -Name
 .
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: Delete
+=======
+Parameter Sets: (All)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Aliases: DataSourceName
 
 Required: True
@@ -168,8 +186,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
@@ -178,6 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
+<<<<<<< HEAD
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
@@ -195,5 +217,7 @@ INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
   - `[ScanRulesetName <String>]`: 
   - `[Version <Int32?>]`: 
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## RELATED LINKS
 

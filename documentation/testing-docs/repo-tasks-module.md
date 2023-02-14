@@ -14,7 +14,11 @@
 	- `Set-TestEnvironment`
 		- Will allow you create a test connection string required to setup the test environment in order to run tests. More information about the test environment can be found [here](./using-azure-test-framework.md)
 	- `Start-Build`
+<<<<<<< HEAD
 		- Will allow you to kick off a full build, or build for a particular scope (_e.g._, `Start-Build -BuildScope ResourceManagment\Compute`)
+=======
+		- Will allow you to kick off a full build, or build for a particular scope (_e.g._, `Start-Build -BuildScope ResourceManagement\Compute`)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 	- `Get-BuildScopes`
 		- Will allow you to find existing scopes that can be used to build from
 	- `Invoke-CheckinTests`

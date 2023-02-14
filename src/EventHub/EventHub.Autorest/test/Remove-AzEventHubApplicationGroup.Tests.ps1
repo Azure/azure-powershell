@@ -18,13 +18,21 @@ Describe 'Remove-AzEventHubApplicationGroup' {
     $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
 
     It 'Delete'  {
+<<<<<<< HEAD
         New-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup -ClientAppGroupIdentifier NamespaceSASKeyName=b -Policy $t2
+=======
+        New-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup -ClientAppGroupIdentifier SASKeyName=b -Policy $t2
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         Remove-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup
         { Get-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup } | Should -Throw
     }
 
     It 'DeleteViaIdentity'  {
+<<<<<<< HEAD
         $appGroup = New-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup -ClientAppGroupIdentifier NamespaceSASKeyName=b -Policy $t2
+=======
+        $appGroup = New-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup -ClientAppGroupIdentifier SASKeyName=b -Policy $t2
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         Remove-AzEventHubApplicationGroup -InputObject $appGroup
         { Get-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup } | Should -Throw
     }

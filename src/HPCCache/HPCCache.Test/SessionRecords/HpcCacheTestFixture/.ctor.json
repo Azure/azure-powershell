@@ -1,0 +1,1473 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/providers/Microsoft.StorageCache/register?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZUNhY2hlL3JlZ2lzdGVyP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "59568342-ea25-44ff-a788-6bca9b77bbeb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.5"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "640c4346-30d4-4582-a4ea-428ae640307e"
+        ],
+        "x-ms-correlation-request-id": [
+          "640c4346-30d4-4582-a4ea-428ae640307e"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135943Z:640c4346-30d4-4582-a4ea-428ae640307e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:43 GMT"
+        ],
+        "Content-Length": [
+          "1613"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/providers/Microsoft.StorageCache\",\r\n  \"namespace\": \"Microsoft.StorageCache\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"4392ab71-2ce2-4b0d-8770-b352745c73f5\",\r\n      \"roleDefinitionId\": \"e27430df-bd6b-4f3a-bd6d-d52ad1a7d075\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US\",\r\n        \"Korea Central\",\r\n        \"South Central US\",\r\n        \"West US 2\",\r\n        \"East US 2\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"caches\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2 EUAP\",\r\n        \"East US\",\r\n        \"Korea Central\",\r\n        \"West US 2\",\r\n        \"East US 2\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"caches/storageTargets\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2 EUAP\",\r\n        \"East US\",\r\n        \"Korea Central\",\r\n        \"West US 2\",\r\n        \"East US 2\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"usageModels\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2 EUAP\",\r\n        \"East US\",\r\n        \"Korea Central\",\r\n        \"West US 2\",\r\n        \"East US 2\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/ascoperations\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2 EUAP\",\r\n        \"East US\",\r\n        \"Korea Central\",\r\n        \"West US 2\",\r\n        \"East US 2\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/providers/Microsoft.StorageCache?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZUNhY2hlP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "65f42dac-14ea-48aa-982a-9668648d81a4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.5"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "cd8299e2-fbf3-49fe-aa08-7363675dae54"
+        ],
+        "x-ms-correlation-request-id": [
+          "cd8299e2-fbf3-49fe-aa08-7363675dae54"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135943Z:cd8299e2-fbf3-49fe-aa08-7363675dae54"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:43 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1613"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/providers/Microsoft.StorageCache\",\r\n  \"namespace\": \"Microsoft.StorageCache\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"4392ab71-2ce2-4b0d-8770-b352745c73f5\",\r\n      \"roleDefinitionId\": \"e27430df-bd6b-4f3a-bd6d-d52ad1a7d075\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US\",\r\n        \"Korea Central\",\r\n        \"South Central US\",\r\n        \"West US 2\",\r\n        \"East US 2\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"caches\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2 EUAP\",\r\n        \"East US\",\r\n        \"Korea Central\",\r\n        \"West US 2\",\r\n        \"East US 2\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"caches/storageTargets\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2 EUAP\",\r\n        \"East US\",\r\n        \"Korea Central\",\r\n        \"West US 2\",\r\n        \"East US 2\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"usageModels\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2 EUAP\",\r\n        \"East US\",\r\n        \"Korea Central\",\r\n        \"West US 2\",\r\n        \"East US 2\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/ascoperations\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2 EUAP\",\r\n        \"East US\",\r\n        \"Korea Central\",\r\n        \"West US 2\",\r\n        \"East US 2\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-11-01\",\r\n        \"2019-08-01-preview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e4457a1f-3e4b-4174-a550-16eaa9e4b72a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.5"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "3371da15-9572-4c85-b738-05a8a52a76d9"
+        ],
+        "x-ms-correlation-request-id": [
+          "3371da15-9572-4c85-b738-05a8a52a76d9"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135943Z:3371da15-9572-4c85-b738-05a8a52a76d9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:43 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "108"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'hpc0313x636d2111' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"hpc0313x636d2111\": \"2020-03-13 13:59:43Z\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6e1c07fc-0444-4017-9f83-5bbf1a752d42"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.5"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "95"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "a2861f65-0be1-437f-8afe-a3c79cb27d8d"
+        ],
+        "x-ms-correlation-request-id": [
+          "a2861f65-0be1-437f-8afe-a3c79cb27d8d"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135944Z:a2861f65-0be1-437f-8afe-a3c79cb27d8d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:44 GMT"
+        ],
+        "Content-Length": [
+          "236"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111\",\r\n  \"name\": \"hpc0313x636d2111\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"hpc0313x636d2111\": \"2020-03-13 13:59:43Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlR3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy9WTmV0LWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5f03dd6c-0245-4031-88b6-efd0874d4642"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "5ef01ee0-7ca9-433e-a9ba-33ed282ac33c"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ef01ee0-7ca9-433e-a9ba-33ed282ac33c"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135944Z:5ef01ee0-7ca9-433e-a9ba-33ed282ac33c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:44 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "175"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111' under resource group 'hpc0313x636d2111' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlR3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy9WTmV0LWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"e30b8255-d320-4951-88e0-ec98c9d52983\""
+        ],
+        "x-ms-request-id": [
+          "7d0fa0bf-051d-4d9a-a593-1cc69de85497"
+        ],
+        "x-ms-correlation-request-id": [
+          "b1d11c93-adcb-44a3-99da-aec7e5255cfa"
+        ],
+        "x-ms-arm-service-request-id": [
+          "a0cc0a55-f751-4a7b-bf25-532ec0c70622"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135948Z:b1d11c93-adcb-44a3-99da-aec7e5255cfa"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:48 GMT"
+        ],
+        "Content-Length": [
+          "671"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"VNet-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111\",\r\n  \"etag\": \"W/\\\"e30b8255-d320-4951-88e0-ec98c9d52983\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"2b7283af-c2f4-427d-a4e2-02e969ddfb4e\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.1.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlR3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy9WTmV0LWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.1.0.0/16\"\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8988b4b4-7948-4962-b485-c3e364091f35"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.3.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "143"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "3"
+        ],
+        "x-ms-request-id": [
+          "60aa5d87-bfcb-44c6-9e93-eb0375f594aa"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/providers/Microsoft.Network/locations/eastus/operations/60aa5d87-bfcb-44c6-9e93-eb0375f594aa?api-version=2018-07-01"
+        ],
+        "x-ms-correlation-request-id": [
+          "14be6e2b-331f-47a0-ad48-88d95b7ff045"
+        ],
+        "x-ms-arm-service-request-id": [
+          "43ab10a1-9672-4774-af7f-56b0167a4eef"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135945Z:14be6e2b-331f-47a0-ad48-88d95b7ff045"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:44 GMT"
+        ],
+        "Content-Length": [
+          "670"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"VNet-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111\",\r\n  \"etag\": \"W/\\\"1c1ff10d-e64c-45b9-9a7e-04894e37dbe4\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"2b7283af-c2f4-427d-a4e2-02e969ddfb4e\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.1.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/providers/Microsoft.Network/locations/eastus/operations/60aa5d87-bfcb-44c6-9e93-eb0375f594aa?api-version=2018-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvNjBhYTVkODctYmZjYi00NGM2LTllOTMtZWIwMzc1ZjU5NGFhP2FwaS12ZXJzaW9uPTIwMTgtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2e583bdc-748e-4f00-90e5-be2dd59eb902"
+        ],
+        "x-ms-correlation-request-id": [
+          "da3b3521-4c37-434b-927e-71d3b3cfcdcf"
+        ],
+        "x-ms-arm-service-request-id": [
+          "19544ba1-f307-4774-9e9e-80517763a693"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135948Z:da3b3521-4c37-434b-927e-71d3b3cfcdcf"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:48 GMT"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlR3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy9WTmV0LWhwYzAzMTN4NjM2ZDIxMTEvc3VibmV0cy9TdWJuZXQtaHBjMDMxM3g2MzZkMjExMT9hcGktdmVyc2lvbj0yMDE5LTExLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e617b14b-1348-4988-8e97-b9b1fdb6840f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a8c1eed2-25a7-4c49-9143-f65ab9583f23"
+        ],
+        "x-ms-correlation-request-id": [
+          "a81bdbb5-6142-4c0d-8267-d6248b16cdb4"
+        ],
+        "x-ms-arm-service-request-id": [
+          "741b1900-14e2-4071-ae01-f6417f6edca4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135948Z:a81bdbb5-6142-4c0d-8267-d6248b16cdb4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:48 GMT"
+        ],
+        "Content-Length": [
+          "288"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Resource /subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111 not found.\",\r\n    \"details\": []\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlR3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy9WTmV0LWhwYzAzMTN4NjM2ZDIxMTEvc3VibmV0cy9TdWJuZXQtaHBjMDMxM3g2MzZkMjExMT9hcGktdmVyc2lvbj0yMDE5LTExLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"8ab56e45-3514-4c1d-8a41-b115ef159c83\""
+        ],
+        "x-ms-request-id": [
+          "c69a2c3f-242d-45ed-99ba-80052f5465f1"
+        ],
+        "x-ms-correlation-request-id": [
+          "2adce7b3-b38e-4f49-b94b-786bbc040081"
+        ],
+        "x-ms-arm-service-request-id": [
+          "ca56bdf5-ec72-4b18-bed9-ad624a41c922"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135952Z:2adce7b3-b38e-4f49-b94b-786bbc040081"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:51 GMT"
+        ],
+        "Content-Length": [
+          "472"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Subnet-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n  \"etag\": \"W/\\\"8ab56e45-3514-4c1d-8a41-b115ef159c83\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"addressPrefix\": \"10.1.0.0/24\",\r\n    \"delegations\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlR3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy9WTmV0LWhwYzAzMTN4NjM2ZDIxMTEvc3VibmV0cy9TdWJuZXQtaHBjMDMxM3g2MzZkMjExMT9hcGktdmVyc2lvbj0yMDE5LTExLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"addressPrefix\": \"10.1.0.0/24\"\r\n  },\r\n  \"name\": \"Subnet-hpc0313x636d2111\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e0089ba4-9b06-441d-a57b-9567a855d49b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.3.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "102"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "3"
+        ],
+        "x-ms-request-id": [
+          "b36756ce-163f-4c25-acaa-e4bfa4c4d9aa"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/providers/Microsoft.Network/locations/eastus/operations/b36756ce-163f-4c25-acaa-e4bfa4c4d9aa?api-version=2018-07-01"
+        ],
+        "x-ms-correlation-request-id": [
+          "44b2f383-79a2-4546-af5d-0669b562f734"
+        ],
+        "x-ms-arm-service-request-id": [
+          "26de0df1-f3d6-4f2b-821f-a635fc838f5b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135949Z:44b2f383-79a2-4546-af5d-0669b562f734"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:48 GMT"
+        ],
+        "Content-Length": [
+          "471"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Subnet-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n  \"etag\": \"W/\\\"7c289f8c-7db2-4ec5-8b91-94917873c064\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"addressPrefix\": \"10.1.0.0/24\",\r\n    \"delegations\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/providers/Microsoft.Network/locations/eastus/operations/b36756ce-163f-4c25-acaa-e4bfa4c4d9aa?api-version=2018-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnMvYjM2NzU2Y2UtMTYzZi00YzI1LWFjYWEtZTRiZmE0YzRkOWFhP2FwaS12ZXJzaW9uPTIwMTgtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.3.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "81b9a275-cc94-49a5-b4b2-e1f06864f330"
+        ],
+        "x-ms-correlation-request-id": [
+          "0d21b912-9751-42e1-9903-247654289497"
+        ],
+        "x-ms-arm-service-request-id": [
+          "43ca763f-be97-496a-8311-2010e141cffc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135952Z:0d21b912-9751-42e1-9903-247654289497"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:51 GMT"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "bb930851-311f-451e-ba28-b54e5ee42a99"
+        ],
+        "x-ms-correlation-request-id": [
+          "bb930851-311f-451e-ba28-b54e5ee42a99"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135952Z:bb930851-311f-451e-ba28-b54e5ee42a99"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:51 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "172"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.StorageCache/caches/Cache-hpc0313x636d2111' under resource group 'hpc0313x636d2111' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667,d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667"
+        ],
+        "x-ms-request-id": [
+          "effc4b33-a8de-4b75-a235-2bda70f07486"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "1043e3d9-2861-42ad-8a18-67f0e918f7ea"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135953Z:1043e3d9-2861-42ad-8a18-67f0e918f7ea"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:52 GMT"
+        ],
+        "Content-Length": [
+          "953"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cache-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111\",\r\n  \"type\": \"Microsoft.StorageCache/caches\",\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  },\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"health\": {\r\n      \"state\": \"Transitioning\",\r\n      \"statusDescription\": \"Deploying Cache resources\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n    \"upgradeStatus\": {\r\n      \"currentFirmwareVersion\": \"5.3.42\",\r\n      \"firmwareUpdateStatus\": \"unavailable\",\r\n      \"firmwareUpdateDeadline\": \"0001-01-01T00:00:00Z\",\r\n      \"lastFirmwareUpdate\": \"2020-03-13T13:59:52.9034317Z\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667,d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667"
+        ],
+        "x-ms-request-id": [
+          "a83e9bc5-7e9f-4bae-b53e-da4d65416176"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "e9badc88-4309-41f2-8371-5629d7d231f9"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T140153Z:e9badc88-4309-41f2-8371-5629d7d231f9"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 14:01:53 GMT"
+        ],
+        "Content-Length": [
+          "953"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cache-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111\",\r\n  \"type\": \"Microsoft.StorageCache/caches\",\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  },\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"health\": {\r\n      \"state\": \"Transitioning\",\r\n      \"statusDescription\": \"Deploying Cache resources\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n    \"upgradeStatus\": {\r\n      \"currentFirmwareVersion\": \"5.3.42\",\r\n      \"firmwareUpdateStatus\": \"unavailable\",\r\n      \"firmwareUpdateDeadline\": \"0001-01-01T00:00:00Z\",\r\n      \"lastFirmwareUpdate\": \"2020-03-13T13:59:52.9034317Z\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667,d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667"
+        ],
+        "x-ms-request-id": [
+          "3d9abb73-0b1d-46ac-8a7f-1035db64e8aa"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "18e8539d-e5db-4f08-8315-b2f8e709f2fd"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T140353Z:18e8539d-e5db-4f08-8315-b2f8e709f2fd"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 14:03:53 GMT"
+        ],
+        "Content-Length": [
+          "953"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cache-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111\",\r\n  \"type\": \"Microsoft.StorageCache/caches\",\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  },\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"health\": {\r\n      \"state\": \"Transitioning\",\r\n      \"statusDescription\": \"Deploying Cache resources\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n    \"upgradeStatus\": {\r\n      \"currentFirmwareVersion\": \"5.3.42\",\r\n      \"firmwareUpdateStatus\": \"unavailable\",\r\n      \"firmwareUpdateDeadline\": \"0001-01-01T00:00:00Z\",\r\n      \"lastFirmwareUpdate\": \"2020-03-13T13:59:52.9034317Z\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667,d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667"
+        ],
+        "x-ms-request-id": [
+          "93af0346-03cc-4043-a3d8-2290e08e6914"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "a8b01e91-7cab-42bf-a183-9b2ef2389d20"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T140553Z:a8b01e91-7cab-42bf-a183-9b2ef2389d20"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 14:05:53 GMT"
+        ],
+        "Content-Length": [
+          "953"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cache-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111\",\r\n  \"type\": \"Microsoft.StorageCache/caches\",\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  },\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"health\": {\r\n      \"state\": \"Transitioning\",\r\n      \"statusDescription\": \"Deploying Cache resources\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n    \"upgradeStatus\": {\r\n      \"currentFirmwareVersion\": \"5.3.42\",\r\n      \"firmwareUpdateStatus\": \"unavailable\",\r\n      \"firmwareUpdateDeadline\": \"0001-01-01T00:00:00Z\",\r\n      \"lastFirmwareUpdate\": \"2020-03-13T13:59:52.9034317Z\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667,d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667"
+        ],
+        "x-ms-request-id": [
+          "c5cdb99e-e11f-4f87-96c7-4740a70cc4a4"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "82da8bfb-1a01-499f-8408-39c41e7128c4"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T140754Z:82da8bfb-1a01-499f-8408-39c41e7128c4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 14:07:53 GMT"
+        ],
+        "Content-Length": [
+          "966"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cache-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111\",\r\n  \"type\": \"Microsoft.StorageCache/caches\",\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  },\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"health\": {\r\n      \"state\": \"Transitioning\",\r\n      \"statusDescription\": \"Waiting for cache creation to complete\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n    \"upgradeStatus\": {\r\n      \"currentFirmwareVersion\": \"5.3.42\",\r\n      \"firmwareUpdateStatus\": \"unavailable\",\r\n      \"firmwareUpdateDeadline\": \"0001-01-01T00:00:00Z\",\r\n      \"lastFirmwareUpdate\": \"2020-03-13T13:59:52.9034317Z\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667,d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667"
+        ],
+        "x-ms-request-id": [
+          "5530f471-d915-430a-9000-3fc736920dc5"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "17698bfe-57f2-4482-8576-6578241a49eb"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T140954Z:17698bfe-57f2-4482-8576-6578241a49eb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 14:09:54 GMT"
+        ],
+        "Content-Length": [
+          "966"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cache-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111\",\r\n  \"type\": \"Microsoft.StorageCache/caches\",\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  },\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"health\": {\r\n      \"state\": \"Transitioning\",\r\n      \"statusDescription\": \"Waiting for cache creation to complete\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n    \"upgradeStatus\": {\r\n      \"currentFirmwareVersion\": \"5.3.42\",\r\n      \"firmwareUpdateStatus\": \"unavailable\",\r\n      \"firmwareUpdateDeadline\": \"0001-01-01T00:00:00Z\",\r\n      \"lastFirmwareUpdate\": \"2020-03-13T13:59:52.9034317Z\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667,d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667"
+        ],
+        "x-ms-request-id": [
+          "59c8f911-7e33-4368-8969-5dbda960dc20"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "9a546be0-64ca-4cc5-8ed0-73697cb6c515"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T141154Z:9a546be0-64ca-4cc5-8ed0-73697cb6c515"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 14:11:54 GMT"
+        ],
+        "Content-Length": [
+          "974"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cache-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111\",\r\n  \"type\": \"Microsoft.StorageCache/caches\",\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  },\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"health\": {\r\n      \"state\": \"Transitioning\",\r\n      \"statusDescription\": \"Cache deployment completed. Cache Starting up.\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n    \"upgradeStatus\": {\r\n      \"currentFirmwareVersion\": \"5.3.42\",\r\n      \"firmwareUpdateStatus\": \"unavailable\",\r\n      \"firmwareUpdateDeadline\": \"0001-01-01T00:00:00Z\",\r\n      \"lastFirmwareUpdate\": \"2020-03-13T13:59:52.9034317Z\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667,d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667"
+        ],
+        "x-ms-request-id": [
+          "ba5217a9-ed41-4d4a-99b6-1be63e55bf1e"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "a6b3adbb-658c-4015-8abd-bc5e7df91878"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T141354Z:a6b3adbb-658c-4015-8abd-bc5e7df91878"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 14:13:54 GMT"
+        ],
+        "Content-Length": [
+          "1081"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cache-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111\",\r\n  \"type\": \"Microsoft.StorageCache/caches\",\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  },\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"health\": {\r\n      \"state\": \"Degraded\",\r\n      \"statusDescription\": \"The cache is having trouble communicating with the Storage Target ''\"\r\n    },\r\n    \"mountAddresses\": [\r\n      \"10.1.0.7\",\r\n      \"10.1.0.8\",\r\n      \"10.1.0.9\"\r\n    ],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n    \"upgradeStatus\": {\r\n      \"currentFirmwareVersion\": \"5.3.42\",\r\n      \"firmwareUpdateStatus\": \"unavailable\",\r\n      \"firmwareUpdateDeadline\": \"0001-01-01T00:00:00Z\",\r\n      \"lastFirmwareUpdate\": \"2020-03-13T13:59:52.9034317Z\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667,d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667"
+        ],
+        "x-ms-request-id": [
+          "81c334cc-3f62-4c0d-a515-960b5667cd6e"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "0fc7d7fb-92f9-4d8e-993b-3634dbb82a86"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T141554Z:0fc7d7fb-92f9-4d8e-993b-3634dbb82a86"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 14:15:54 GMT"
+        ],
+        "Content-Length": [
+          "1041"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cache-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111\",\r\n  \"type\": \"Microsoft.StorageCache/caches\",\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  },\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"health\": {\r\n      \"state\": \"Healthy\",\r\n      \"statusDescription\": \"The cache is in Running state\"\r\n    },\r\n    \"mountAddresses\": [\r\n      \"10.1.0.7\",\r\n      \"10.1.0.8\",\r\n      \"10.1.0.9\"\r\n    ],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n    \"upgradeStatus\": {\r\n      \"currentFirmwareVersion\": \"5.3.42\",\r\n      \"firmwareUpdateStatus\": \"unavailable\",\r\n      \"firmwareUpdateDeadline\": \"0001-01-01T00:00:00Z\",\r\n      \"lastFirmwareUpdate\": \"2020-03-13T13:59:52.9034317Z\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDY4NDFjMGUtNjljOC00YjE3LWFmNDYtNjYyNmVjYjE1ZmMyL3Jlc291cmNlZ3JvdXBzL2hwYzAzMTN4NjM2ZDIxMTEvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlQ2FjaGUvY2FjaGVzL0NhY2hlLWhwYzAzMTN4NjM2ZDIxMTE/YXBpLXZlcnNpb249MjAxOS0xMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28325.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.StorageCache.StorageCacheManagementClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "323"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/providers/Microsoft.StorageCache/locations/eastus/ascOperations/82386421-5a8d-4ef8-94b6-054dd4225ea9?api-version=2019-11-01"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667,d7051dfa-e1e4-45f5-be1e-097f5f1a8eb1_132186511409211667"
+        ],
+        "x-ms-request-id": [
+          "82386421-5a8d-4ef8-94b6-054dd4225ea9"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "2ef92e64-1fae-465e-96d1-d1417aee631e"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20200313T135953Z:2ef92e64-1fae-465e-96d1-d1417aee631e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 13 Mar 2020 13:59:52 GMT"
+        ],
+        "Content-Length": [
+          "896"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Cache-hpc0313x636d2111\",\r\n  \"id\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourceGroups/hpc0313x636d2111/providers/Microsoft.StorageCache/caches/Cache-hpc0313x636d2111\",\r\n  \"type\": \"Microsoft.StorageCache/caches\",\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_2G\"\r\n  },\r\n  \"properties\": {\r\n    \"cacheSizeGB\": 3072,\r\n    \"health\": {\r\n      \"state\": \"Transitioning\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"subnet\": \"/subscriptions/46841c0e-69c8-4b17-af46-6626ecb15fc2/resourcegroups/hpc0313x636d2111/providers/Microsoft.Network/virtualNetworks/VNet-hpc0313x636d2111/subnets/Subnet-hpc0313x636d2111\",\r\n    \"upgradeStatus\": {\r\n      \"currentFirmwareVersion\": \"5.3.42\",\r\n      \"firmwareUpdateStatus\": \"unavailable\",\r\n      \"firmwareUpdateDeadline\": \"0001-01-01T00:00:00Z\",\r\n      \"lastFirmwareUpdate\": \"2020-03-13T13:59:52.9034317Z\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 201
+    }
+  ],
+  "Names": {
+    ".ctor": [
+      "hpc0313x636d2111"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "46841c0e-69c8-4b17-af46-6626ecb15fc2",
+    "DefaultResourcePrefix": "hpc",
+    "DefaultRegion": "eastus",
+    "DefaultCacheSku": "Standard_2G",
+    "DefaultCacheSize": "3072"
+  }
+}

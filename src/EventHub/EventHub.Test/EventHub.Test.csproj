@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>EventHubs</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\**" />
+    <EmbeddedResource Remove="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\**" />
+    <None Remove="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceBYOKTests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventHub\EventHub.csproj" />
+  </ItemGroup>
+</Project>

@@ -33,7 +33,11 @@ AccountName ResourceGroupName Scope                                ScopeTenantId
 test-pa      test-rg            xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a Tenant    xxxxxxxx-1bf0-4dda-aec3
 ```
 
+<<<<<<< HEAD
 Get the default account for the scope Tenant
+=======
+ Get the default account for the scope Tenant
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ## PARAMETERS
 

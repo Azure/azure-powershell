@@ -1,5 +1,9 @@
 ﻿function New-AzDataProtectionPolicyTagCriteriaClientObject{
+<<<<<<< HEAD
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IScheduleBasedBackupCriteria')]
+=======
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IScheduleBasedBackupCriteria')]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates a new criteria object')]
 
@@ -32,7 +36,11 @@
     )
 
     process {
+<<<<<<< HEAD
         $criteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.ScheduleBasedBackupCriteria]::new()
+=======
+        $criteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ScheduleBasedBackupCriteria]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         $criteria.ObjectType = "ScheduleBasedBackupCriteria"
         if($AbsoluteCriteria -ne $null){
             $criteria.AbsoluteCriterion = $AbsoluteCriteria
@@ -61,7 +69,11 @@
                     {
                         throw "Day of month should be between 1 and 28."
                     }
+<<<<<<< HEAD
                     $day = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.Day]::new()
+=======
+                    $day = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.Day]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                     $day.Date = $dayOfMonthNumber
                     $day.IsLast = $false
                     $criteria.DaysOfMonth += $day
@@ -72,7 +84,11 @@
                     {
                         thow "Day of month should either be between 1 and 28 or it should be last"
                     }
+<<<<<<< HEAD
                     $day = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.Day]::new()
+=======
+                    $day = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.Day]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                     $day.IsLast = $true
                     $criteria.DaysOfMonth += $day
                 }

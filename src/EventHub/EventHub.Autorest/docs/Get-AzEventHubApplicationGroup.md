@@ -41,7 +41,11 @@ Get-AzEventHubApplicationGroup -ResourceGroupName myResourceGroup -NamespaceName
 ```
 
 ```output
+<<<<<<< HEAD
 ClientAppGroupIdentifier     : NamespaceSASKeyName=RootManageSharedAccessKey
+=======
+ClientAppGroupIdentifier     : SASKeyName=RootManageSharedAccessKey
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
                                myAppGroup
 IsEnabled                    : True
@@ -173,7 +177,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IApplicationGroup
+=======
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ## NOTES
 

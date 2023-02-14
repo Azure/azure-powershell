@@ -1,0 +1,2778 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourcegroups/CosmosDBClientEncryptionRg60-14?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQ/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"East US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bdca7786-4729-49f3-a4f0-54869994c859"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "a258f470-1895-4f20-abe1-30813b343f4e"
+        ],
+        "x-ms-correlation-request-id": [
+          "a258f470-1895-4f20-abe1-30813b343f4e"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T073801Z:a258f470-1895-4f20-abe1-30813b343f4e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:38:01 GMT"
+        ],
+        "Content-Length": [
+          "215"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14\",\r\n  \"name\": \"CosmosDBClientEncryptionRg60-14\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.DocumentDB/databaseAccounts/clientencryptiondbaccount6014?api-version=2022-02-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvY2xpZW50ZW5jcnlwdGlvbmRiYWNjb3VudDYwMTQ/YXBpLXZlcnNpb249MjAyMi0wMi0xNS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6b8dc613-4c9a-400f-bde3-b9dd61818f73"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "01c9f5bb-48b7-4614-bda9-74544bf05be6"
+        ],
+        "x-ms-correlation-request-id": [
+          "01c9f5bb-48b7-4614-bda9-74544bf05be6"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T073803Z:01c9f5bb-48b7-4614-bda9-74544bf05be6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:38:02 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "270"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DocumentDB/databaseAccounts/clientencryptiondbaccount6014' under resource group 'CosmosDBClientEncryptionRg60-14' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.DocumentDB/databaseAccounts/clientencryptiondbaccount6014?api-version=2022-02-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvY2xpZW50ZW5jcnlwdGlvbmRiYWNjb3VudDYwMTQ/YXBpLXZlcnNpb249MjAyMi0wMi0xNS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6b8dc613-4c9a-400f-bde3-b9dd61818f73"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-request-id": [
+          "0b21a0ca-bc24-4746-b16c-e853ffd4348b"
+        ],
+        "x-ms-correlation-request-id": [
+          "0b21a0ca-bc24-4746-b16c-e853ffd4348b"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074016Z:0b21a0ca-bc24-4746-b16c-e853ffd4348b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:16 GMT"
+        ],
+        "Content-Length": [
+          "2505"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.DocumentDB/databaseAccounts/clientencryptiondbaccount6014\",\r\n  \"name\": \"clientencryptiondbaccount6014\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-05-12T07:39:23.5332451Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://clientencryptiondbaccount6014.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"a99210ac-73c3-4584-aa04-328bf248ad23\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"clientencryptiondbaccount6014-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://clientencryptiondbaccount6014-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"clientencryptiondbaccount6014-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://clientencryptiondbaccount6014-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"clientencryptiondbaccount6014-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://clientencryptiondbaccount6014-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"clientencryptiondbaccount6014-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.DocumentDB/databaseAccounts/clientencryptiondbaccount6014?api-version=2022-02-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvY2xpZW50ZW5jcnlwdGlvbmRiYWNjb3VudDYwMTQ/YXBpLXZlcnNpb249MjAyMi0wMi0xNS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\"\r\n    },\r\n    \"locations\": [\r\n      {\r\n        \"locationName\": \"East Us\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"enableAutomaticFailover\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"databaseAccountOfferType\": \"Standard\"\r\n  },\r\n  \"location\": \"East Us\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6b8dc613-4c9a-400f-bde3-b9dd61818f73"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.7.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "600"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.DocumentDB/databaseAccounts/clientencryptiondbaccount6014/operationResults/6cba5f99-fa95-481f-bdc1-49d0d89de17b?api-version=2022-02-15-preview"
+        ],
+        "x-ms-request-id": [
+          "6cba5f99-fa95-481f-bdc1-49d0d89de17b"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/6cba5f99-fa95-481f-bdc1-49d0d89de17b?api-version=2022-02-15-preview"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "3bc376d6-38cd-4e26-92a8-8f586c914216"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T073813Z:3bc376d6-38cd-4e26-92a8-8f586c914216"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:38:13 GMT"
+        ],
+        "Content-Length": [
+          "2130"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.DocumentDB/databaseAccounts/clientencryptiondbaccount6014\",\r\n  \"name\": \"clientencryptiondbaccount6014\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-05-12T07:38:11.0833175Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"a99210ac-73c3-4584-aa04-328bf248ad23\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"clientencryptiondbaccount6014-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"clientencryptiondbaccount6014-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"clientencryptiondbaccount6014-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"clientencryptiondbaccount6014-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Invalid\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/6cba5f99-fa95-481f-bdc1-49d0d89de17b?api-version=2022-02-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNmNiYTVmOTktZmE5NS00ODFmLWJkYzEtNDlkMGQ4OWRlMTdiP2FwaS12ZXJzaW9uPTIwMjItMDItMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6b8dc613-4c9a-400f-bde3-b9dd61818f73"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "009d637b-ab32-4f3a-8239-25d5987d8cda"
+        ],
+        "x-ms-correlation-request-id": [
+          "009d637b-ab32-4f3a-8239-25d5987d8cda"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T073844Z:009d637b-ab32-4f3a-8239-25d5987d8cda"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:38:43 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/6cba5f99-fa95-481f-bdc1-49d0d89de17b?api-version=2022-02-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNmNiYTVmOTktZmE5NS00ODFmLWJkYzEtNDlkMGQ4OWRlMTdiP2FwaS12ZXJzaW9uPTIwMjItMDItMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6b8dc613-4c9a-400f-bde3-b9dd61818f73"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "f37346db-cc46-473b-aef3-786103a720b4"
+        ],
+        "x-ms-correlation-request-id": [
+          "f37346db-cc46-473b-aef3-786103a720b4"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T073915Z:f37346db-cc46-473b-aef3-786103a720b4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:39:14 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/6cba5f99-fa95-481f-bdc1-49d0d89de17b?api-version=2022-02-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNmNiYTVmOTktZmE5NS00ODFmLWJkYzEtNDlkMGQ4OWRlMTdiP2FwaS12ZXJzaW9uPTIwMjItMDItMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6b8dc613-4c9a-400f-bde3-b9dd61818f73"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "af1ebf47-427d-4db6-82cc-cc4524182db6"
+        ],
+        "x-ms-correlation-request-id": [
+          "af1ebf47-427d-4db6-82cc-cc4524182db6"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T073945Z:af1ebf47-427d-4db6-82cc-cc4524182db6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:39:45 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/6cba5f99-fa95-481f-bdc1-49d0d89de17b?api-version=2022-02-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNmNiYTVmOTktZmE5NS00ODFmLWJkYzEtNDlkMGQ4OWRlMTdiP2FwaS12ZXJzaW9uPTIwMjItMDItMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6b8dc613-4c9a-400f-bde3-b9dd61818f73"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "a9bf5f67-4464-4210-b96b-7013e9d5b911"
+        ],
+        "x-ms-correlation-request-id": [
+          "a9bf5f67-4464-4210-b96b-7013e9d5b911"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074016Z:a9bf5f67-4464-4210-b96b-7013e9d5b911"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:16 GMT"
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/East%20US/deletedVaults/CosmosDBAeAkv60/purge?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL0Vhc3QlMjBVUy9kZWxldGVkVmF1bHRzL0Nvc21vc0RCQWVBa3Y2MC9wdXJnZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "4c8da1a2-b03e-4ec0-a3a7-581218f7c707"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "b114825b-4c9c-470b-bfbc-bc2e955ec2da"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074019Z:b114825b-4c9c-470b-bfbc-bc2e955ec2da"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:18 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/East%20US/deletedVaults/CosmosDBAeAkv60/purge?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL0Vhc3QlMjBVUy9kZWxldGVkVmF1bHRzL0Nvc21vc0RCQWVBa3Y2MC9wdXJnZT9hcGktdmVyc2lvbj0yMDIxLTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "9ce059d9-d3ed-4f31-a8b0-fa99b45b384a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "2697ebe0-ac62-4ded-a289-97f0f014ecb8"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074231Z:2697ebe0-ac62-4ded-a289-97f0f014ecb8"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:42:31 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNREl3TVRneE1UTTRPSHhHTmtJMU56SkNOMEl5UXprMFJVWTJPREpETlRSRlFUUTFRalF3UmprNFFnP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "c21d9699-7859-4a4b-8bee-64b1f2964774"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "d1384f0b-639b-494b-a9f4-4d42b1175e45"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074024Z:d1384f0b-639b-494b-a9f4-4d42b1175e45"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:23 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:40:19Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNREl3TVRneE1UTTRPSHhHTmtJMU56SkNOMEl5UXprMFJVWTJPREpETlRSRlFUUTFRalF3UmprNFFnP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "b619a01a-0dfe-46d2-b32e-2e12d1629095"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "3af96c40-f9ee-4d72-b8a8-3244463c034d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074030Z:3af96c40-f9ee-4d72-b8a8-3244463c034d"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:29 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:40:19Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNREl3TVRneE1UTTRPSHhHTmtJMU56SkNOMEl5UXprMFJVWTJPREpETlRSRlFUUTFRalF3UmprNFFnP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "add904a4-469e-4d30-b17a-c2c9416410c8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "65ec2ef1-4c32-4d1f-8843-1212a77ebdde"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074035Z:65ec2ef1-4c32-4d1f-8843-1212a77ebdde"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:34 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:40:19Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNREl3TVRneE1UTTRPSHhHTmtJMU56SkNOMEl5UXprMFJVWTJPREpETlRSRlFUUTFRalF3UmprNFFnP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "72dc03b5-d8ef-4f9a-9e11-af79494cce38"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "0ae0e41c-9b43-41d4-ab57-f4b490c5ad39"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074040Z:0ae0e41c-9b43-41d4-ab57-f4b490c5ad39"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:39 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:40:19Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNREl3TVRneE1UTTRPSHhHTmtJMU56SkNOMEl5UXprMFJVWTJPREpETlRSRlFUUTFRalF3UmprNFFnP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "2156e16e-c491-4dd3-be66-678eb44ef116"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "71fb4a7e-9739-4a72-be0a-f510bbbd8397"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074045Z:71fb4a7e-9739-4a72-be0a-f510bbbd8397"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:45 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:40:19Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNREl3TVRneE1UTTRPSHhHTmtJMU56SkNOMEl5UXprMFJVWTJPREpETlRSRlFUUTFRalF3UmprNFFnP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "4266e136-24fa-4d33-8a00-855c7535c844"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "0b54fe1c-9a34-41d2-86a1-d6c6f54a3ca5"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074051Z:0b54fe1c-9a34-41d2-86a1-d6c6f54a3ca5"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:50 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:40:19Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNREl3TVRneE1UTTRPSHhHTmtJMU56SkNOMEl5UXprMFJVWTJPREpETlRSRlFUUTFRalF3UmprNFFnP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "97b66c60-0409-442a-9cbe-37568b0b786f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "6d643e65-98b3-4e0a-8058-800921a1d95a"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074056Z:6d643e65-98b3-4e0a-8058-800921a1d95a"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:55 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:40:19Z\",\r\n  \"lastActionDateTime\": \"2022-05-12 07:40:54Z\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MDIwMTgxMTM4OHxGNkI1NzJCN0IyQzk0RUY2ODJDNTRFQTQ1QjQwRjk4Qg?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNREl3TVRneE1UTTRPSHhHTmtJMU56SkNOMEl5UXprMFJVWTJPREpETlRSRlFUUTFRalF3UmprNFFnP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "b69fef42-723f-49b0-8d62-7a7f4fadc7ea"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "260283dd-b9c7-4f1f-a326-08d2bf816ddf"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "b0fb1ffa-b57e-46c0-a3cc-feee605f40e4"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074056Z:b0fb1ffa-b57e-46c0-a3cc-feee605f40e4"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:56 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:40:19Z\",\r\n  \"lastActionDateTime\": \"2022-05-12 07:40:54Z\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resources?$filter=resourceType%20eq%20'Microsoft.KeyVault%2Fvaults'&api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5LZXlWYXVsdCUyRnZhdWx0cycmYXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a353de91-41d9-4684-abe5-f8f9553c1697"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "db49a200-8f2d-40c9-95d4-452efdbce63d"
+        ],
+        "x-ms-correlation-request-id": [
+          "db49a200-8f2d-40c9-95d4-452efdbce63d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074056Z:db49a200-8f2d-40c9-95d4-452efdbce63d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:55 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "12"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resources?$filter=resourceType%20eq%20'Microsoft.KeyVault%2Fvaults'&api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5LZXlWYXVsdCUyRnZhdWx0cycmYXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "20aba468-d1be-4e9c-8f3d-a78807f1caa5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "7164c740-a984-45e7-afeb-57eaa4aef97f"
+        ],
+        "x-ms-correlation-request-id": [
+          "7164c740-a984-45e7-afeb-57eaa4aef97f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074142Z:7164c740-a984-45e7-afeb-57eaa4aef97f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:41:42 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "261"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.KeyVault/vaults/CosmosDBAeAkv60\",\r\n      \"name\": \"CosmosDBAeAkv60\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/v1.0/me",
+      "EncodedRequestUri": "L3YxLjAvbWU=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a353de91-41d9-4684-abe5-f8f9553c1697"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.57"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "0750db3e-a562-4f6f-bf91-b367cfd62c4e"
+        ],
+        "x-ms-correlation-request-id": [
+          "0750db3e-a562-4f6f-bf91-b367cfd62c4e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074057Z:0750db3e-a562-4f6f-bf91-b367cfd62c4e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:40:56 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "137"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingApiVersionParameter\",\r\n    \"message\": \"The api-version query parameter (?api-version=) is required for all requests.\"\r\n  }\r\n}",
+      "StatusCode": 400
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.KeyVault/vaults/CosmosDBAeAkv60?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvQ29zbW9zREJBZUFrdjYwP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"sku\": {\r\n      \"name\": \"standard\",\r\n      \"family\": \"A\"\r\n    },\r\n    \"accessPolicies\": [],\r\n    \"vaultUri\": \"\",\r\n    \"enabledForDeployment\": false,\r\n    \"enabledForDiskEncryption\": false,\r\n    \"enabledForTemplateDeployment\": false,\r\n    \"softDeleteRetentionInDays\": 90,\r\n    \"enableRbacAuthorization\": false,\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"defaultAction\": \"Allow\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a353de91-41d9-4684-abe5-f8f9553c1697"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "521"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "a353de91-41d9-4684-abe5-f8f9553c1697"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "6d077d37-a01b-44bb-9e84-42f877ed9806"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "013171be-260a-4b66-b736-947e6db0836e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074112Z:013171be-260a-4b66-b736-947e6db0836e"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:41:12 GMT"
+        ],
+        "Content-Length": [
+          "950"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.KeyVault/vaults/CosmosDBAeAkv60\",\r\n  \"name\": \"CosmosDBAeAkv60\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdBy\": \"12cf6822-3980-4ea6-855d-d4df52cfa39f\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-05-12T07:41:08.69Z\",\r\n    \"lastModifiedBy\": \"12cf6822-3980-4ea6-855d-d4df52cfa39f\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-05-12T07:41:08.69Z\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"standard\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": false,\r\n    \"enabledForDiskEncryption\": false,\r\n    \"enabledForTemplateDeployment\": false,\r\n    \"enableSoftDelete\": true,\r\n    \"softDeleteRetentionInDays\": 90,\r\n    \"enableRbacAuthorization\": false,\r\n    \"vaultUri\": \"https://CosmosDBAeAkv60.vault.azure.net\",\r\n    \"provisioningState\": \"RegisteringDns\",\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.KeyVault/vaults/CosmosDBAeAkv60?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvQ29zbW9zREJBZUFrdjYwP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"East US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"sku\": {\r\n      \"name\": \"standard\",\r\n      \"family\": \"A\"\r\n    },\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"2074c615-9df8-454e-bd1a-740480f3ddda\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"create\",\r\n            \"Get\",\r\n            \"UnwrapKey\",\r\n            \"WrapKey\",\r\n            \"sign\"\r\n          ],\r\n          \"secrets\": [],\r\n          \"certificates\": [],\r\n          \"storage\": []\r\n        }\r\n      }\r\n    ],\r\n    \"vaultUri\": \"https://cosmosdbaeakv60.vault.azure.net/\",\r\n    \"enabledForDeployment\": false,\r\n    \"enabledForDiskEncryption\": false,\r\n    \"enabledForTemplateDeployment\": false,\r\n    \"enableSoftDelete\": true,\r\n    \"softDeleteRetentionInDays\": 90,\r\n    \"enableRbacAuthorization\": false,\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"defaultAction\": \"Allow\",\r\n      \"ipRules\": [],\r\n      \"virtualNetworkRules\": []\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "20aba468-d1be-4e9c-8f3d-a78807f1caa5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1154"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "20aba468-d1be-4e9c-8f3d-a78807f1caa5"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "203121b4-0414-4eef-9dd1-8bc899f04b24"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "d9a2d363-b7dc-4827-8415-fea748c707ff"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074146Z:d9a2d363-b7dc-4827-8415-fea748c707ff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:41:46 GMT"
+        ],
+        "Content-Length": [
+          "1160"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.KeyVault/vaults/CosmosDBAeAkv60\",\r\n  \"name\": \"CosmosDBAeAkv60\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdBy\": \"12cf6822-3980-4ea6-855d-d4df52cfa39f\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-05-12T07:41:08.69Z\",\r\n    \"lastModifiedBy\": \"12cf6822-3980-4ea6-855d-d4df52cfa39f\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-05-12T07:41:46.22Z\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"standard\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"2074c615-9df8-454e-bd1a-740480f3ddda\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"create\",\r\n            \"Get\",\r\n            \"UnwrapKey\",\r\n            \"WrapKey\",\r\n            \"sign\"\r\n          ],\r\n          \"secrets\": [],\r\n          \"certificates\": [],\r\n          \"storage\": []\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": false,\r\n    \"enabledForDiskEncryption\": false,\r\n    \"enabledForTemplateDeployment\": false,\r\n    \"enableSoftDelete\": true,\r\n    \"softDeleteRetentionInDays\": 90,\r\n    \"enableRbacAuthorization\": false,\r\n    \"vaultUri\": \"https://cosmosdbaeakv60.vault.azure.net/\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.KeyVault/vaults/CosmosDBAeAkv60?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvQ29zbW9zREJBZUFrdjYwP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a353de91-41d9-4684-abe5-f8f9553c1697"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "a353de91-41d9-4684-abe5-f8f9553c1697"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "34acbc4b-1a2f-4818-8f6b-677b9f93a479"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "d78e274e-d706-4ef8-a31f-427ede3476cb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074142Z:d78e274e-d706-4ef8-a31f-427ede3476cb"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:41:41 GMT"
+        ],
+        "Content-Length": [
+          "946"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.KeyVault/vaults/CosmosDBAeAkv60\",\r\n  \"name\": \"CosmosDBAeAkv60\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdBy\": \"12cf6822-3980-4ea6-855d-d4df52cfa39f\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-05-12T07:41:08.69Z\",\r\n    \"lastModifiedBy\": \"12cf6822-3980-4ea6-855d-d4df52cfa39f\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-05-12T07:41:08.69Z\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"standard\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": false,\r\n    \"enabledForDiskEncryption\": false,\r\n    \"enabledForTemplateDeployment\": false,\r\n    \"enableSoftDelete\": true,\r\n    \"softDeleteRetentionInDays\": 90,\r\n    \"enableRbacAuthorization\": false,\r\n    \"vaultUri\": \"https://cosmosdbaeakv60.vault.azure.net/\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.KeyVault/vaults/CosmosDBAeAkv60?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvQ29zbW9zREJBZUFrdjYwP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "20aba468-d1be-4e9c-8f3d-a78807f1caa5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "20aba468-d1be-4e9c-8f3d-a78807f1caa5"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "53725981-5a29-41e1-a426-f9cd27ca70a0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ad1bbea-1f59-4a55-8972-4a78b0da44d2"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074145Z:5ad1bbea-1f59-4a55-8972-4a78b0da44d2"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:41:45 GMT"
+        ],
+        "Content-Length": [
+          "946"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.KeyVault/vaults/CosmosDBAeAkv60\",\r\n  \"name\": \"CosmosDBAeAkv60\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"East US\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdBy\": \"12cf6822-3980-4ea6-855d-d4df52cfa39f\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-05-12T07:41:08.69Z\",\r\n    \"lastModifiedBy\": \"12cf6822-3980-4ea6-855d-d4df52cfa39f\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-05-12T07:41:08.69Z\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"standard\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": false,\r\n    \"enabledForDiskEncryption\": false,\r\n    \"enabledForTemplateDeployment\": false,\r\n    \"enableSoftDelete\": true,\r\n    \"softDeleteRetentionInDays\": 90,\r\n    \"enableRbacAuthorization\": false,\r\n    \"vaultUri\": \"https://cosmosdbaeakv60.vault.azure.net/\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/v1.0/directoryObjects/2074c615-9df8-454e-bd1a-740480f3ddda",
+      "EncodedRequestUri": "L3YxLjAvZGlyZWN0b3J5T2JqZWN0cy8yMDc0YzYxNS05ZGY4LTQ1NGUtYmQxYS03NDA0ODBmM2RkZGE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "20aba468-d1be-4e9c-8f3d-a78807f1caa5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.57"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "b131439a-57c9-4a95-bdff-180d9ca56921"
+        ],
+        "x-ms-correlation-request-id": [
+          "b131439a-57c9-4a95-bdff-180d9ca56921"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074146Z:b131439a-57c9-4a95-bdff-180d9ca56921"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:41:46 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "137"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingApiVersionParameter\",\r\n    \"message\": \"The api-version query parameter (?api-version=) is required for all requests.\"\r\n  }\r\n}",
+      "StatusCode": 400
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.DocumentDB/databaseAccounts/clientencryptiondbaccount6014/sqlDatabases/dbNameCdbAE?api-version=2022-02-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvY2xpZW50ZW5jcnlwdGlvbmRiYWNjb3VudDYwMTQvc3FsRGF0YWJhc2VzL2RiTmFtZUNkYkFFP2FwaS12ZXJzaW9uPTIwMjItMDItMTUtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f42d14e0-ab89-425a-917a-94d6814d8c73"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.DocumentDB/databaseAccounts/clientencryptiondbaccount6014/sqlDatabases/dbNameCdbAE/operationResults/16c13910-c1ec-43fb-bf4b-b948fcc455f4?api-version=2022-02-15-preview"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/16c13910-c1ec-43fb-bf4b-b948fcc455f4?api-version=2022-02-15-preview"
+        ],
+        "x-ms-request-id": [
+          "16c13910-c1ec-43fb-bf4b-b948fcc455f4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "f6f661bf-1c6e-42cd-8c92-16d563a7da11"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074149Z:f6f661bf-1c6e-42cd-8c92-16d563a7da11"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:41:49 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Enqueued\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/16c13910-c1ec-43fb-bf4b-b948fcc455f4?api-version=2022-02-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMTZjMTM5MTAtYzFlYy00M2ZiLWJmNGItYjk0OGZjYzQ1NWY0P2FwaS12ZXJzaW9uPTIwMjItMDItMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f42d14e0-ab89-425a-917a-94d6814d8c73"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "ea6a7a97-818a-483c-a09e-a5979085616d"
+        ],
+        "x-ms-correlation-request-id": [
+          "ea6a7a97-818a-483c-a09e-a5979085616d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074220Z:ea6a7a97-818a-483c-a09e-a5979085616d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:42:19 GMT"
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.DocumentDB/databaseAccounts/clientencryptiondbaccount6014/sqlDatabases/dbNameCdbAE/operationResults/16c13910-c1ec-43fb-bf4b-b948fcc455f4?api-version=2022-02-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvY2xpZW50ZW5jcnlwdGlvbmRiYWNjb3VudDYwMTQvc3FsRGF0YWJhc2VzL2RiTmFtZUNkYkFFL29wZXJhdGlvblJlc3VsdHMvMTZjMTM5MTAtYzFlYy00M2ZiLWJmNGItYjk0OGZjYzQ1NWY0P2FwaS12ZXJzaW9uPTIwMjItMDItMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f42d14e0-ab89-425a-917a-94d6814d8c73"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.7.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "e4689306-c85c-45c8-b906-2554e7545746"
+        ],
+        "x-ms-correlation-request-id": [
+          "e4689306-c85c-45c8-b906-2554e7545746"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220512T074220Z:e4689306-c85c-45c8-b906-2554e7545746"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:42:20 GMT"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBClientEncryptionRg60-14/providers/Microsoft.KeyVault/vaults/CosmosDBAeAkv60?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCQ2xpZW50RW5jcnlwdGlvblJnNjAtMTQvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvQ29zbW9zREJBZUFrdjYwP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f7df7a58-bd23-4583-852e-6e23cc3ecac5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "f7df7a58-bd23-4583-852e-6e23cc3ecac5"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "4926da6e-ba71-4a33-88e6-1891bcc8293c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "65672f5d-928f-479f-8dc5-6d65d0ee151d"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074229Z:65672f5d-928f-479f-8dc5-6d65d0ee151d"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:42:28 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNVFV5TWpJeU16VXhOWHcwUkVRNVF6TTNPVFpHUVRFME16YzJPRUk1TkRSRk5EZERORU0zTWpsQ1F3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "fc459ef3-2bd5-4cd1-a0b2-03fb617f32c7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "fdd1c16e-66fa-4150-8f86-a952784c271a"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074236Z:fdd1c16e-66fa-4150-8f86-a952784c271a"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:42:36 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:42:31Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNVFV5TWpJeU16VXhOWHcwUkVRNVF6TTNPVFpHUVRFME16YzJPRUk1TkRSRk5EZERORU0zTWpsQ1F3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "ef42c442-b0dd-4a6a-a282-1e2bcb3e8a50"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "66309a03-6e64-4568-a2d6-cd268dce5699"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074242Z:66309a03-6e64-4568-a2d6-cd268dce5699"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:42:41 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:42:31Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNVFV5TWpJeU16VXhOWHcwUkVRNVF6TTNPVFpHUVRFME16YzJPRUk1TkRSRk5EZERORU0zTWpsQ1F3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "1ea83d8a-5dc1-421c-bf44-d6608de8d9b4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "7c02a659-d44d-4c5e-957f-641761c3888e"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074247Z:7c02a659-d44d-4c5e-957f-641761c3888e"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:42:47 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:42:31Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNVFV5TWpJeU16VXhOWHcwUkVRNVF6TTNPVFpHUVRFME16YzJPRUk1TkRSRk5EZERORU0zTWpsQ1F3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "c8c6721e-3232-4206-8c77-3847da7ea174"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "42b74114-a3c3-4379-90e1-7c60a4118764"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074252Z:42b74114-a3c3-4379-90e1-7c60a4118764"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:42:52 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:42:31Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNVFV5TWpJeU16VXhOWHcwUkVRNVF6TTNPVFpHUVRFME16YzJPRUk1TkRSRk5EZERORU0zTWpsQ1F3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "7e1f2e55-6773-4804-9d71-b84fb12dcbc5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "19cdcb3e-69ae-4928-bb9e-845341fb3858"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074257Z:19cdcb3e-69ae-4928-bb9e-845341fb3858"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:42:57 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:42:31Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNVFV5TWpJeU16VXhOWHcwUkVRNVF6TTNPVFpHUVRFME16YzJPRUk1TkRSRk5EZERORU0zTWpsQ1F3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "5e63a686-fe6b-4273-9942-f09c72599f66"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "55fa318b-cc2b-4101-a8d6-6476dde3fa6e"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074303Z:55fa318b-cc2b-4101-a8d6-6476dde3fa6e"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:43:03 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:42:31Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNVFV5TWpJeU16VXhOWHcwUkVRNVF6TTNPVFpHUVRFME16YzJPRUk1TkRSRk5EZERORU0zTWpsQ1F3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "d6c4b5c1-39a9-4eff-941e-5ff6031fbd68"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "5a6a2062-66f9-41ab-8806-f5973416f5bd"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074308Z:5a6a2062-66f9-41ab-8806-f5973416f5bd"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:43:08 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:42:31Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNVFV5TWpJeU16VXhOWHcwUkVRNVF6TTNPVFpHUVRFME16YzJPRUk1TkRSRk5EZERORU0zTWpsQ1F3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "3031d193-ac0e-433a-852f-ced09a29744b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "4af99d1c-65e5-438e-8fa8-c6f7d9aed6bf"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074313Z:4af99d1c-65e5-438e-8fa8-c6f7d9aed6bf"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:43:13 GMT"
+        ],
+        "Content-Length": [
+          "64"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:42:31Z\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNVFV5TWpJeU16VXhOWHcwUkVRNVF6TTNPVFpHUVRFME16YzJPRUk1TkRSRk5EZERORU0zTWpsQ1F3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "d921d0fc-2142-4af0-b1e4-394a60e9d95d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "f62ba5dd-27af-40c1-863d-f1efe7e1f389"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074319Z:f62ba5dd-27af-40c1-863d-f1efe7e1f389"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:43:19 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:42:31Z\",\r\n  \"lastActionDateTime\": \"2022-05-12 07:43:18Z\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.KeyVault/locations/eastus/operationResults/VVR8MDYzNzg3OTM4MTUyMjIyMzUxNXw0REQ5QzM3OTZGQTE0Mzc2OEI5NDRFNDdDNEM3MjlCQw?api-version=2021-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL2Vhc3R1cy9vcGVyYXRpb25SZXN1bHRzL1ZWUjhNRFl6TnpnM09UTTRNVFV5TWpJeU16VXhOWHcwUkVRNVF6TTNPVFpHUVRFME16YzJPRUk1TkRSRk5EZERORU0zTWpsQ1F3P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.21202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "cec9afdb-db1c-41df-87ae-aaef00d626d7"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.372.0"
+        ],
+        "x-ms-request-id": [
+          "49e34d99-df17-4115-8218-96bdc0641b48"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "3c3e00be-1184-4958-8cb9-3d2716b68abb"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20220512T074319Z:3c3e00be-1184-4958-8cb9-3d2716b68abb"
+        ],
+        "Date": [
+          "Thu, 12 May 2022 07:43:19 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"createdDateTime\": \"2022-05-12 07:42:31Z\",\r\n  \"lastActionDateTime\": \"2022-05-12 07:43:18Z\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "12053b8f-cab5-4f5c-9c1a-870580142abd",
+    "AADClientId": "2074c615-9df8-454e-bd1a-740480f3ddda"
+  }
+}

@@ -20,7 +20,11 @@ Gets an EventHub SAS key
 #>
 
 function Get-AzEventHubKey{
+<<<<<<< HEAD
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAccessKeys])]
+=======
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys])]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(DefaultParameterSetName = 'GetExpandedNamespace', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'GetExpandedEntity', Mandatory, HelpMessage = "The name of the Authorization Rule")]

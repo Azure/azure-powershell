@@ -12,18 +12,24 @@ Deletes a classification rule
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### Delete (Default)
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 Remove-AzPurviewClassificationRule -Endpoint <String> -Name <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### DeleteViaIdentity
 ```
 Remove-AzPurviewClassificationRule -Endpoint <String> -InputObject <IPurviewdataIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## DESCRIPTION
 Deletes a classification rule
 
@@ -31,10 +37,15 @@ Deletes a classification rule
 
 ### Example 1: Delete custom classification rule by name
 ```powershell
+<<<<<<< HEAD
 Remove-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName 'RuleDUmmy'
 ```
 
 ```output
+=======
+PS C:\> Remove-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName 'RuleDUmmy'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ClassificationAction   : Keep
 ClassificationName     : MICROSOFT.GOVERNMENT.AUSTRALIA.DRIVERS_LICENSE_NUMBER
 ColumnPattern          : {{
@@ -91,6 +102,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -107,12 +119,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -Name
 .
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: Delete
+=======
+Parameter Sets: (All)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Aliases: ClassificationRuleName
 
 Required: True
@@ -173,8 +191,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
@@ -183,6 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
+<<<<<<< HEAD
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
@@ -200,5 +222,7 @@ INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
   - `[ScanRulesetName <String>]`: 
   - `[Version <Int32?>]`: 
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## RELATED LINKS
 

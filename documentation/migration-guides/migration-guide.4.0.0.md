@@ -17,7 +17,11 @@ This document serves as both a breaking change notification and migration guide 
 The following output types were affected this release:
 
 ### PSVirtualMachine
+<<<<<<< HEAD
 - Top level properties `DataDiskNames` and `NetworkInterfaceIDs` of nthe `PSVirtualMachine` object have been removed from the output type. These properties have always been available in the `StorageProfile` and `NetworkProfile` properties of the `PSVirtualMachine` object and will be the way they will need to be accessed going forward.
+=======
+- Top level properties `DataDiskNames` and `NetworkInterfaceIDs` of the `PSVirtualMachine` object have been removed from the output type. These properties have always been available in the `StorageProfile` and `NetworkProfile` properties of the `PSVirtualMachine` object and will be the way they will need to be accessed going forward.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 - This change affects the following cmdlets:
     - `Add-AzureRmVMDataDisk`
     - `Add-AzureRmVMNetworkInterface`
@@ -75,7 +79,11 @@ $s = $s1.StatusCode
 - This cmdlet has been deprecated.
     
 ### Get-AzureRmAlertRule
+<<<<<<< HEAD
 - Each element of the the output (a list of objects) of this cmdlet is flattened, i.e. instead of returning objects with the structure `{ Id, Location, Name, Tags, Properties }` it will return objects with the structure `{ Id, Location, Name, Tags, Type, Description, IsEnabled, Condition, Actions, LastUpdatedTime, ...}`, which is all of the attributes of an Azure Resource plus all of the attributes of an AlertRuleResource at the top level.
+=======
+- Each element of the output (a list of objects) of this cmdlet is flattened, i.e. instead of returning objects with the structure `{ Id, Location, Name, Tags, Properties }` it will return objects with the structure `{ Id, Location, Name, Tags, Type, Description, IsEnabled, Condition, Actions, LastUpdatedTime, ...}`, which is all of the attributes of an Azure Resource plus all of the attributes of an AlertRuleResource at the top level.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     
 ```powershell
 # Old
@@ -162,7 +170,11 @@ $a = $s1.NewResource.ServiceBusRuleId
 ```
     
 ### Set-AzureRmDiagnosticSettings
+<<<<<<< HEAD
 - The command is going to be renamed to `Update-AzureRmDiagnsoticSettings`
+=======
+- The command is going to be renamed to `Update-AzureRmDiagnosticSettings`
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ```powershell
 # Old

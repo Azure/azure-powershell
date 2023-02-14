@@ -1,0 +1,74 @@
+name: 🐞 Az module bug report 
+description: Report errors or unexpected behaviors for the Az module.
+labels: [needs-triage, bug]
+
+body:
+- type: markdown
+  attributes:
+    value: >
+      Thanks for reporting.
+
+      - Make sure you are able to reproduce this issue on the latest released version of [Az](https://www.powershellgallery.com/packages/Az) or [AzPreview](https://www.powershellgallery.com/packages/AzPreview)
+      
+      - Please search the existing issues to see if there has been a similar issue filed
+      
+      - For issue related to importing a module, please refer to our [troubleshooting guide](https://github.com/Azure/azure-powershell/blob/master/documentation/troubleshoot-module-load.md)
+- type: textarea
+  attributes:
+    label: Description
+    description: >
+      Please describe the issue and expected result. Please paste error script to next "Debug output" section 
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Issue script & Debug output
+    description: >
+      Set `$DebugPreference='Continue'` before running the repro and paste the resulting debug stream in the below textarea
+
+      **⚠ ATTENTION:** Be sure to remove any sensitive information that may be in the logs
+    render: PowerShell
+    placeholder: |
+      PS> $DebugPreference='Continue'
+      PS> {}-Az{} ...
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Environment data
+    description: >
+      Please run `$PSVersionTable` and paste the output in the below textarea.
+      If running the Docker container image, indicate the tag of the image used and the version of Docker engine
+    render: PowerShell
+    placeholder: |
+      PS> $PSVersionTable
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Module versions
+    description: >
+      Please run `Get-Module Az*` after cmdlet execution and paste the output in the below textarea.
+
+      If module cannot be installed or imported, please run `Get-Module -ListAvailable` and paste the output.
+    render: PowerShell
+    placeholder: |
+      PS> Get-Module Az*
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Error output
+    description: >
+      Please run `Resolve-AzError` and paste the output in the below textarea
+
+      **⚠ ATTENTION:** Be sure to remove any sensitive information that may be in the logs
+    render: PowerShell
+    placeholder: |
+      PS> Resolve-AzError
+  validations:
+    required: false
+- type: markdown
+  attributes:
+    value: >
+      The Azure PowerShell team is listening, please let us know how we are doing: https://aka.ms/azpssurvey?Q_CHL=REPO.

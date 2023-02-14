@@ -19,7 +19,11 @@ Sets an EventHub Application Group
 Sets an EventHub Application Group
 #>
 function Set-AzEventHubApplicationGroup{
+<<<<<<< HEAD
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IApplicationGroup])]
+=======
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup])]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Application Group.")]
@@ -59,7 +63,11 @@ function Set-AzEventHubApplicationGroup{
         [Parameter(ValueFromPipelineByPropertyName, HelpMessage = "The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
+<<<<<<< HEAD
         # The Unique identifier for application group.Supports SAS(NamespaceSASKeyName=KeyName or EntitySASKeyName=KeyName) or AAD(AADAppID=Guid)
+=======
+        # The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         ${ClientAppGroupIdentifier},
 
         [Parameter(ValueFromPipelineByPropertyName, HelpMessage = "Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed")]
@@ -70,7 +78,11 @@ function Set-AzEventHubApplicationGroup{
 
         [Parameter(ValueFromPipelineByPropertyName, HelpMessage = "List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+<<<<<<< HEAD
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IApplicationGroupPolicy[]]
+=======
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroupPolicy[]]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         # List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
         ${Policy},
 		

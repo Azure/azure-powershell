@@ -1,9 +1,15 @@
 ### Example 1: Get-AzConnectedNetworkFunction via Resource group and Resource name
 ```powershell
+<<<<<<< HEAD
 Get-AzConnectedNetworkFunction -Name myVnf -ResourceGroupName myResources
 ```
 
 ```output
+=======
+PS C:\> Get-AzConnectedNetworkFunction -Name myVnf -ResourceGroupName myResources
+
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
 DeviceId                     : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMec
 Etag                         : "0000a530-0000-3400-0000-615c10fa0000"
@@ -35,11 +41,18 @@ Getting information about the network function in resource group myResources wit
 
 ### Example 2: Get-AzConnectedNetworkFunction via Identity
 ```powershell
+<<<<<<< HEAD
 $vnf = @{ NetworkFunctionName = "myVnf1"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
 Get-AzConnectedNetworkFunction -InputObject $vnf
 ```
 
 ```output
+=======
+PS C:\> $vnf = @{ NetworkFunctionName = "myVnf1"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
+PS C:\> Get-AzConnectedNetworkFunction -InputObject $vnf
+
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
 DeviceId                     : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMec1
 Etag                         : "sampleEtagValue"

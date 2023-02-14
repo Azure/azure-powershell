@@ -13,3 +13,20 @@ ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
 
 This command creates a new backup vault.
 
+<<<<<<< HEAD
+=======
+### Example 2: Create a new backup vault with ImmutabilityState, CrossSubscriptionRestoreState, soft delete settings
+```powershell
+$sub = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
+New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location westus -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState On
+```
+
+```output
+ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
+---- ------------------- ---------------- ------------ -------- ----    ----
+                                                       westus   MyVault Microsoft.DataProtection/backupVaults
+```
+
+This command creates a new backup vault while setting Immutability state, cross subscription restore state, soft delete settings of the vault at creation time.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91

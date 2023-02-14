@@ -1,0 +1,1513 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/providers/Microsoft.Devices?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0fee315a-a947-4af4-a78c-53f9f06f1ead"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "97182ba1-91d5-410a-a134-083594aa1086"
+        ],
+        "x-ms-correlation-request-id": [
+          "97182ba1-91d5-410a-a134-083594aa1086"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063850Z:97182ba1-91d5-410a-a134-083594aa1086"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:38:49 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "5586"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/providers/Microsoft.Devices\",\r\n  \"namespace\": \"Microsoft.Devices\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"0cd79364-7a90-4354-9984-6e36c841418d\",\r\n      \"roleDefinitionId\": \"C121DF10-FE58-4BC4-97F9-8296879F7BBB\"\r\n    },\r\n    {\r\n      \"applicationId\": \"29f411f1-b2cf-4043-8ac8-2185d7316811\"\r\n    },\r\n    {\r\n      \"applicationId\": \"89d10474-74af-4874-99a7-c23c2f643083\",\r\n      \"roleDefinitionId\": \"7df22794-26e3-4f94-9d50-a4f0f6e1cb41\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"South Central US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2018-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkProvisioningServiceNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2018-01-22\",\r\n        \"2017-11-15\",\r\n        \"2017-08-21-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"usages\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"South Central US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2018-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2019-11-04\",\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2019-03-22\",\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationResults\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"South Central US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2018-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"IotHubs\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Brazil South\",\r\n        \"South Central US\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-08-31-preview\",\r\n        \"2020-08-31\",\r\n        \"2020-08-01\",\r\n        \"2020-07-10-preview\",\r\n        \"2020-06-15\",\r\n        \"2020-04-01\",\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2019-11-04\",\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2019-03-22\",\r\n        \"2018-12-01-preview\",\r\n        \"2018-04-01\",\r\n        \"2018-01-22\",\r\n        \"2017-07-01\",\r\n        \"2017-01-19\",\r\n        \"2016-02-03\",\r\n        \"2015-08-15-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"IotHubs/eventGridFilters\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Brazil South\",\r\n        \"South Central US\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-07-31\",\r\n        \"2018-01-15-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"ProvisioningServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Brazil South\",\r\n        \"Germany West Central\",\r\n        \"Germany North\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-03-01\",\r\n        \"2020-01-01\",\r\n        \"2018-01-22\",\r\n        \"2017-11-15\",\r\n        \"2017-08-21-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"IotHubs/securitySettings\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Brazil South\",\r\n        \"South Central US\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"ElasticPools\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2018-12-01-preview\",\r\n        \"2018-01-22-preview\",\r\n        \"2017-09-25-preview\",\r\n        \"2017-07-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"ElasticPools/IotHubTenants\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-07-01-preview\",\r\n        \"2019-03-22-preview\",\r\n        \"2018-01-22-preview\",\r\n        \"2017-09-25-preview\",\r\n        \"2017-07-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/providers/Microsoft.Devices/provisioningServices?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcz9hcGktdmVyc2lvbj0yMDE3LTExLTE1",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "190a1ebb-ef4f-4660-becc-086984912b12"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "cd5b1ed3-873a-4eec-ae2c-5f3e09388faf"
+        ],
+        "x-ms-correlation-request-id": [
+          "cd5b1ed3-873a-4eec-ae2c-5f3e09388faf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063850Z:cd5b1ed3-873a-4eec-ae2c-5f3e09388faf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:38:50 GMT"
+        ],
+        "Content-Length": [
+          "5927"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"etag\": \"AAAAAALBK9M=\",\r\n      \"name\": \"TestIotExtDPS1\",\r\n      \"location\": \"westus2\",\r\n      \"properties\": {\r\n        \"state\": \"Active\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"iotHubs\": [\r\n          {\r\n            \"name\": \"TestIotExt1.azure-devices.net\",\r\n            \"connectionString\": \"HostName=TestIotExt1.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=****\",\r\n            \"location\": \"westus2\"\r\n          }\r\n        ],\r\n        \"allocationPolicy\": \"Hashed\",\r\n        \"serviceOperationsHostName\": \"TestIotExtDPS1.azure-devices-provisioning.net\",\r\n        \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n        \"idScope\": \"0ne000EB3E4\"\r\n      },\r\n      \"resourcegroup\": \"TestCLI\",\r\n      \"type\": \"Microsoft.Devices/provisioningServices\",\r\n      \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/TestCLI/providers/Microsoft.Devices/provisioningServices/TestIotExtDPS1\",\r\n      \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n      \"tags\": {},\r\n      \"sku\": {\r\n        \"name\": \"S1\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      }\r\n    },\r\n    {\r\n      \"etag\": \"AAAAAAXY5xA=\",\r\n      \"name\": \"rk-iot-dps\",\r\n      \"location\": \"westus2\",\r\n      \"properties\": {\r\n        \"state\": \"Active\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"iotHubs\": [\r\n          {\r\n            \"name\": \"rk-test-hub.azure-devices.net\",\r\n            \"connectionString\": \"HostName=rk-test-hub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=****\",\r\n            \"location\": \"westus2\"\r\n          },\r\n          {\r\n            \"name\": \"rk-cli-int-test-hub.azure-devices.net\",\r\n            \"connectionString\": \"HostName=rk-cli-int-test-hub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=****\",\r\n            \"location\": \"westus2\"\r\n          }\r\n        ],\r\n        \"allocationPolicy\": \"GeoLatency\",\r\n        \"serviceOperationsHostName\": \"rk-iot-dps.azure-devices-provisioning.net\",\r\n        \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n        \"idScope\": \"0ne000F596C\"\r\n      },\r\n      \"resourcegroup\": \"rk-iot-rg\",\r\n      \"type\": \"Microsoft.Devices/provisioningServices\",\r\n      \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/rk-iot-rg/providers/Microsoft.Devices/provisioningServices/rk-iot-dps\",\r\n      \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n      \"tags\": {},\r\n      \"sku\": {\r\n        \"name\": \"S1\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      }\r\n    },\r\n    {\r\n      \"etag\": \"AAAAAAPRKrk=\",\r\n      \"name\": \"az-cli-int-test-dps\",\r\n      \"location\": \"westus2\",\r\n      \"properties\": {\r\n        \"state\": \"Active\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"iotHubs\": [\r\n          {\r\n            \"name\": \"az-cli-int-test-hub.azure-devices.net\",\r\n            \"connectionString\": \"HostName=az-cli-int-test-hub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=****\",\r\n            \"location\": \"westus2\"\r\n          }\r\n        ],\r\n        \"allocationPolicy\": \"Hashed\",\r\n        \"serviceOperationsHostName\": \"az-cli-int-test-dps.azure-devices-provisioning.net\",\r\n        \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n        \"idScope\": \"0ne0013E56A\"\r\n      },\r\n      \"resourcegroup\": \"cli-int-test-rg\",\r\n      \"type\": \"Microsoft.Devices/provisioningServices\",\r\n      \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/cli-int-test-rg/providers/Microsoft.Devices/provisioningServices/az-cli-int-test-dps\",\r\n      \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n      \"tags\": {},\r\n      \"sku\": {\r\n        \"name\": \"S1\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      }\r\n    },\r\n    {\r\n      \"etag\": \"AAAAAAcQ8Z4=\",\r\n      \"name\": \"pamontg-private-links\",\r\n      \"location\": \"westus2\",\r\n      \"properties\": {\r\n        \"state\": \"Active\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"iotHubs\": [\r\n          {\r\n            \"name\": \"pamontg.azure-devices.net\",\r\n            \"connectionString\": \"HostName=pamontg.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=****\",\r\n            \"location\": \"westus2\"\r\n          }\r\n        ],\r\n        \"allocationPolicy\": \"Hashed\",\r\n        \"serviceOperationsHostName\": \"pamontg-private-links.azure-devices-provisioning.net\",\r\n        \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n        \"idScope\": \"0ne001A0B6A\",\r\n        \"privateEndpointConnections\": [],\r\n        \"publicNetworkAccess\": \"Enabled\"\r\n      },\r\n      \"resourcegroup\": \"pamontg\",\r\n      \"type\": \"Microsoft.Devices/provisioningServices\",\r\n      \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/pamontg/providers/Microsoft.Devices/provisioningServices/pamontg-private-links\",\r\n      \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n      \"tags\": {},\r\n      \"sku\": {\r\n        \"name\": \"S1\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      }\r\n    },\r\n    {\r\n      \"etag\": \"AAAAAAV6y3A=\",\r\n      \"name\": \"vilit-dps\",\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"state\": \"Active\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"iotHubs\": [],\r\n        \"allocationPolicy\": \"Hashed\",\r\n        \"serviceOperationsHostName\": \"vilit-dps.azure-devices-provisioning.net\",\r\n        \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n        \"idScope\": \"0ne001C3269\"\r\n      },\r\n      \"resourcegroup\": \"vilit\",\r\n      \"type\": \"Microsoft.Devices/provisioningServices\",\r\n      \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/vilit/providers/Microsoft.Devices/provisioningServices/vilit-dps\",\r\n      \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n      \"tags\": {},\r\n      \"sku\": {\r\n        \"name\": \"S1\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      }\r\n    },\r\n    {\r\n      \"etag\": \"AAAAAAYB7Ys=\",\r\n      \"name\": \"vilit-test-cli-dps\",\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"state\": \"Active\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"iotHubs\": [\r\n          {\r\n            \"name\": \"vilit-test-cli-hub.azure-devices.net\",\r\n            \"connectionString\": \"HostName=vilit-test-cli-hub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=****\",\r\n            \"location\": \"eastus\"\r\n          }\r\n        ],\r\n        \"allocationPolicy\": \"Hashed\",\r\n        \"serviceOperationsHostName\": \"vilit-test-cli-dps.azure-devices-provisioning.net\",\r\n        \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n        \"idScope\": \"0ne001DDC0F\"\r\n      },\r\n      \"resourcegroup\": \"vilit-az-cli\",\r\n      \"type\": \"Microsoft.Devices/provisioningServices\",\r\n      \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/vilit-az-cli/providers/Microsoft.Devices/provisioningServices/vilit-test-cli-dps\",\r\n      \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n      \"tags\": {},\r\n      \"sku\": {\r\n        \"name\": \"S1\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 1\r\n      }\r\n    },\r\n    {\r\n      \"etag\": \"AAAAAAbX4Pg=\",\r\n      \"name\": \"ps5037\",\r\n      \"location\": \"West US\",\r\n      \"properties\": {\r\n        \"state\": \"Active\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"iotHubs\": [],\r\n        \"allocationPolicy\": \"Hashed\",\r\n        \"serviceOperationsHostName\": \"ps5037.azure-devices-provisioning.net\",\r\n        \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n        \"idScope\": \"0ne00222AA6\"\r\n      },\r\n      \"resourcegroup\": \"ps2442\",\r\n      \"type\": \"Microsoft.Devices/provisioningServices\",\r\n      \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps2442/providers/Microsoft.Devices/provisioningServices/ps5037\",\r\n      \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n      \"tags\": {},\r\n      \"sku\": {\r\n        \"name\": \"S1\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourcegroups/ps849?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlZ3JvdXBzL3BzODQ5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b9b6e0eb-871f-4b81-a156-872e0d88fca2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "21ff9abc-fdb2-41b0-875f-eacd3e61a335"
+        ],
+        "x-ms-correlation-request-id": [
+          "21ff9abc-fdb2-41b0-875f-eacd3e61a335"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063851Z:21ff9abc-fdb2-41b0-875f-eacd3e61a335"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:38:51 GMT"
+        ],
+        "Content-Length": [
+          "163"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849\",\r\n  \"name\": \"ps849\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3cd4a98a-cc1f-4483-93f8-22ef743054b2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "127"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333/operationResults/b3NfaWRfYmZiZDFjMGEtOGEwNC00Y2IyLTk3ODEtOTYwZTJiNzNiYzQ5?api-version=2017-11-15&asyncinfo"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "4999"
+        ],
+        "x-ms-request-id": [
+          "77b8efe9-1b9f-40c0-940c-231fd15c2a76"
+        ],
+        "x-ms-correlation-request-id": [
+          "77b8efe9-1b9f-40c0-940c-231fd15c2a76"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063853Z:77b8efe9-1b9f-40c0-940c-231fd15c2a76"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:38:52 GMT"
+        ],
+        "Content-Length": [
+          "475"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Activating\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"allocationPolicy\": \"Hashed\",\r\n    \"idScope\": null\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"etag\": \"AAAAAAcX1eM=\",\r\n  \"properties\": {\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"GeoLatency\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d044f405-5162-40b6-94dc-72568862a86d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "279"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333/operationResults/b3NfaWRfZTViNzk2ZjUtMjAwNi00MDk1LTg5NDMtYTI3OWZkM2I3ODli?api-version=2017-11-15&asyncinfo"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "4998"
+        ],
+        "x-ms-request-id": [
+          "525f5018-d743-41f1-aeec-4e77eb387343"
+        ],
+        "x-ms-correlation-request-id": [
+          "525f5018-d743-41f1-aeec-4e77eb387343"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063925Z:525f5018-d743-41f1-aeec-4e77eb387343"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:25 GMT"
+        ],
+        "Content-Length": [
+          "517"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"etag\": \"AAAAAAcX1eM=\",\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Transitioning\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"GeoLatency\",\r\n    \"idScope\": null\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333/operationResults/b3NfaWRfYmZiZDFjMGEtOGEwNC00Y2IyLTk3ODEtOTYwZTJiNzNiYzQ5?api-version=2017-11-15&asyncinfo",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzMvb3BlcmF0aW9uUmVzdWx0cy9iM05mYVdSZlltWmlaREZqTUdFdE9HRXdOQzAwWTJJeUxUazNPREV0T1RZd1pUSmlOek5pWXpRNT9hcGktdmVyc2lvbj0yMDE3LTExLTE1JmFzeW5jaW5mbw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3cd4a98a-cc1f-4483-93f8-22ef743054b2"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "057a27a9-1d68-413f-8ecb-3e5c844bcec8"
+        ],
+        "x-ms-correlation-request-id": [
+          "057a27a9-1d68-413f-8ecb-3e5c844bcec8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063923Z:057a27a9-1d68-413f-8ecb-3e5c844bcec8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:23 GMT"
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3cd4a98a-cc1f-4483-93f8-22ef743054b2"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "96c756c0-172b-4486-98ba-9e62e49490e1"
+        ],
+        "x-ms-correlation-request-id": [
+          "96c756c0-172b-4486-98ba-9e62e49490e1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063924Z:96c756c0-172b-4486-98ba-9e62e49490e1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:23 GMT"
+        ],
+        "Content-Length": [
+          "653"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"etag\": \"AAAAAAcX1eM=\",\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"Hashed\",\r\n    \"serviceOperationsHostName\": \"ps5333.azure-devices-provisioning.net\",\r\n    \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n    \"idScope\": \"0ne0023622B\"\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3cd4a98a-cc1f-4483-93f8-22ef743054b2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "681d1f9a-c374-4231-9c13-3eb77452fc2d"
+        ],
+        "x-ms-correlation-request-id": [
+          "681d1f9a-c374-4231-9c13-3eb77452fc2d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063924Z:681d1f9a-c374-4231-9c13-3eb77452fc2d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:23 GMT"
+        ],
+        "Content-Length": [
+          "653"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"etag\": \"AAAAAAcX1eM=\",\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"Hashed\",\r\n    \"serviceOperationsHostName\": \"ps5333.azure-devices-provisioning.net\",\r\n    \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n    \"idScope\": \"0ne0023622B\"\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "12bffddb-248f-4108-825c-ee9c2ca86c18"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "d071fce8-8bbf-412b-849b-32ee15cb8812"
+        ],
+        "x-ms-correlation-request-id": [
+          "d071fce8-8bbf-412b-849b-32ee15cb8812"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063924Z:d071fce8-8bbf-412b-849b-32ee15cb8812"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:24 GMT"
+        ],
+        "Content-Length": [
+          "653"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"etag\": \"AAAAAAcX1eM=\",\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"Hashed\",\r\n    \"serviceOperationsHostName\": \"ps5333.azure-devices-provisioning.net\",\r\n    \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n    \"idScope\": \"0ne0023622B\"\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d044f405-5162-40b6-94dc-72568862a86d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "b6dc6f97-8dcb-4cd3-98a3-325420413153"
+        ],
+        "x-ms-correlation-request-id": [
+          "b6dc6f97-8dcb-4cd3-98a3-325420413153"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063924Z:b6dc6f97-8dcb-4cd3-98a3-325420413153"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:24 GMT"
+        ],
+        "Content-Length": [
+          "653"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"etag\": \"AAAAAAcX1eM=\",\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"Hashed\",\r\n    \"serviceOperationsHostName\": \"ps5333.azure-devices-provisioning.net\",\r\n    \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n    \"idScope\": \"0ne0023622B\"\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d044f405-5162-40b6-94dc-72568862a86d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "1e302baf-e8a0-41c8-8a84-1fde15d6a3b6"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e302baf-e8a0-41c8-8a84-1fde15d6a3b6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063924Z:1e302baf-e8a0-41c8-8a84-1fde15d6a3b6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:24 GMT"
+        ],
+        "Content-Length": [
+          "653"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"etag\": \"AAAAAAcX1eM=\",\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"Hashed\",\r\n    \"serviceOperationsHostName\": \"ps5333.azure-devices-provisioning.net\",\r\n    \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n    \"idScope\": \"0ne0023622B\"\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d044f405-5162-40b6-94dc-72568862a86d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-request-id": [
+          "92fa095c-ccdc-4580-a41e-6c641fdc8de1"
+        ],
+        "x-ms-correlation-request-id": [
+          "92fa095c-ccdc-4580-a41e-6c641fdc8de1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063955Z:92fa095c-ccdc-4580-a41e-6c641fdc8de1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:55 GMT"
+        ],
+        "Content-Length": [
+          "657"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"etag\": \"AAAAAAcX1iE=\",\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"GeoLatency\",\r\n    \"serviceOperationsHostName\": \"ps5333.azure-devices-provisioning.net\",\r\n    \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n    \"idScope\": \"0ne0023622B\"\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e0ab0d9c-191b-484f-863c-d97ccee7b351"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-request-id": [
+          "2aca67db-202e-4bfa-b52c-1678b783a750"
+        ],
+        "x-ms-correlation-request-id": [
+          "2aca67db-202e-4bfa-b52c-1678b783a750"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063956Z:2aca67db-202e-4bfa-b52c-1678b783a750"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:55 GMT"
+        ],
+        "Content-Length": [
+          "657"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"etag\": \"AAAAAAcX1iE=\",\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"GeoLatency\",\r\n    \"serviceOperationsHostName\": \"ps5333.azure-devices-provisioning.net\",\r\n    \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n    \"idScope\": \"0ne0023622B\"\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333/operationResults/b3NfaWRfZTViNzk2ZjUtMjAwNi00MDk1LTg5NDMtYTI3OWZkM2I3ODli?api-version=2017-11-15&asyncinfo",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzMvb3BlcmF0aW9uUmVzdWx0cy9iM05mYVdSZlpUVmlOemsyWmpVdE1qQXdOaTAwTURrMUxUZzVORE10WVRJM09XWmtNMkkzT0RsaT9hcGktdmVyc2lvbj0yMDE3LTExLTE1JmFzeW5jaW5mbw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d044f405-5162-40b6-94dc-72568862a86d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-request-id": [
+          "dfa4f27b-4c7e-4eb4-9004-278e89b9e276"
+        ],
+        "x-ms-correlation-request-id": [
+          "dfa4f27b-4c7e-4eb4-9004-278e89b9e276"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063955Z:dfa4f27b-4c7e-4eb4-9004-278e89b9e276"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:55 GMT"
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e0ab0d9c-191b-484f-863c-d97ccee7b351"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "67"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "4997"
+        ],
+        "x-ms-request-id": [
+          "8fe4197e-59a9-4811-b85e-229a43ca350c"
+        ],
+        "x-ms-correlation-request-id": [
+          "8fe4197e-59a9-4811-b85e-229a43ca350c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063956Z:8fe4197e-59a9-4811-b85e-229a43ca350c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:56 GMT"
+        ],
+        "Content-Length": [
+          "661"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"etag\": \"\",\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"GeoLatency\",\r\n    \"serviceOperationsHostName\": \"ps5333.azure-devices-provisioning.net\",\r\n    \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n    \"idScope\": \"0ne0023622B\"\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7a1a4f55-6561-4ef0-9a90-162ee3167c76"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "44"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "4996"
+        ],
+        "x-ms-request-id": [
+          "54feb1e4-eaaa-48d8-9b3e-53b6172b6c42"
+        ],
+        "x-ms-correlation-request-id": [
+          "54feb1e4-eaaa-48d8-9b3e-53b6172b6c42"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063957Z:54feb1e4-eaaa-48d8-9b3e-53b6172b6c42"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:57 GMT"
+        ],
+        "Content-Length": [
+          "645"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"etag\": \"\",\r\n  \"name\": \"ps5333\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"state\": \"Active\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"iotHubs\": [],\r\n    \"allocationPolicy\": \"GeoLatency\",\r\n    \"serviceOperationsHostName\": \"ps5333.azure-devices-provisioning.net\",\r\n    \"deviceProvisioningHostName\": \"global.azure-devices-provisioning.net\",\r\n    \"idScope\": \"0ne0023622B\"\r\n  },\r\n  \"resourcegroup\": \"ps849\",\r\n  \"type\": \"Microsoft.Devices/provisioningServices\",\r\n  \"id\": \"/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333\",\r\n  \"subscriptionid\": \"a386d5ea-ea90-441a-8263-d816368c84a1\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzM/YXBpLXZlcnNpb249MjAxNy0xMS0xNQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c57c622-9c9a-408f-b75d-78d662703ef8"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333/operationResults/b3NfaWRfOWVlMGI1N2QtMDQ0MS00YWUzLWFkNDMtOTliNTYyMGVhYmVm?api-version=2017-11-15"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333/operationResults/b3NfaWRfOWVlMGI1N2QtMDQ0MS00YWUzLWFkNDMtOTliNTYyMGVhYmVm?api-version=2017-11-15&asyncinfo"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "e23828b9-ba67-464b-a227-0ce5ac2a4848"
+        ],
+        "x-ms-correlation-request-id": [
+          "e23828b9-ba67-464b-a227-0ce5ac2a4848"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T063958Z:e23828b9-ba67-464b-a227-0ce5ac2a4848"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:39:57 GMT"
+        ],
+        "Content-Length": [
+          "4"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "null",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333/operationResults/b3NfaWRfOWVlMGI1N2QtMDQ0MS00YWUzLWFkNDMtOTliNTYyMGVhYmVm?api-version=2017-11-15&asyncinfo",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzMvb3BlcmF0aW9uUmVzdWx0cy9iM05mYVdSZk9XVmxNR0kxTjJRdE1EUTBNUzAwWVdVekxXRmtORE10T1RsaU5UWXlNR1ZoWW1WbT9hcGktdmVyc2lvbj0yMDE3LTExLTE1JmFzeW5jaW5mbw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c57c622-9c9a-408f-b75d-78d662703ef8"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-request-id": [
+          "335f2571-7bf9-4ce4-8079-895ac0387f08"
+        ],
+        "x-ms-correlation-request-id": [
+          "335f2571-7bf9-4ce4-8079-895ac0387f08"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T064013Z:335f2571-7bf9-4ce4-8079-895ac0387f08"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:40:12 GMT"
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333/operationResults/b3NfaWRfOWVlMGI1N2QtMDQ0MS00YWUzLWFkNDMtOTliNTYyMGVhYmVm?api-version=2017-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlR3JvdXBzL3BzODQ5L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2aWNlcy9wcm92aXNpb25pbmdTZXJ2aWNlcy9wczUzMzMvb3BlcmF0aW9uUmVzdWx0cy9iM05mYVdSZk9XVmxNR0kxTjJRdE1EUTBNUzAwWVdVekxXRmtORE10T1RsaU5UWXlNR1ZoWW1WbT9hcGktdmVyc2lvbj0yMDE3LTExLTE1",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c57c622-9c9a-408f-b75d-78d662703ef8"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.DeviceProvisioningServices.IotDpsClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourceGroups/ps849/providers/Microsoft.Devices/provisioningServices/ps5333/operationResults/b3NfaWRfOWVlMGI1N2QtMDQ0MS00YWUzLWFkNDMtOTliNTYyMGVhYmVm/operationResults/b3NfaWRfOWVlMGI1N2QtMDQ0MS00YWUzLWFkNDMtOTliNTYyMGVhYmVm?api-version=2017-11-15"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-request-id": [
+          "34dcf66f-792b-4784-b894-31a815365488"
+        ],
+        "x-ms-correlation-request-id": [
+          "34dcf66f-792b-4784-b894-31a815365488"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T064013Z:34dcf66f-792b-4784-b894-31a815365488"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:40:12 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/resourcegroups/ps849?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL3Jlc291cmNlZ3JvdXBzL3BzODQ5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "87f5be38-821c-496b-82e9-ac14a3a6b60f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg0OS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "825ace8a-565b-4688-91e8-d29e7bd6f696"
+        ],
+        "x-ms-correlation-request-id": [
+          "825ace8a-565b-4688-91e8-d29e7bd6f696"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T064014Z:825ace8a-565b-4688-91e8-d29e7bd6f696"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:40:13 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg0OS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnME9TMVhSVk5VVlZNaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5kbGMzUjFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg0OS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "ac598746-bb90-476d-974f-6026ef2c7da0"
+        ],
+        "x-ms-correlation-request-id": [
+          "ac598746-bb90-476d-974f-6026ef2c7da0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T064029Z:ac598746-bb90-476d-974f-6026ef2c7da0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:40:29 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg0OS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnME9TMVhSVk5VVlZNaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5kbGMzUjFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg0OS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "03f343cd-6563-4473-8ad6-6be0dfb36811"
+        ],
+        "x-ms-correlation-request-id": [
+          "03f343cd-6563-4473-8ad6-6be0dfb36811"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T064044Z:03f343cd-6563-4473-8ad6-6be0dfb36811"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:40:44 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg0OS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnME9TMVhSVk5VVlZNaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5kbGMzUjFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "1e85ea3c-ae96-42ed-a12c-d9c7916d37f8"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e85ea3c-ae96-42ed-a12c-d9c7916d37f8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T064059Z:1e85ea3c-ae96-42ed-a12c-d9c7916d37f8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:40:59 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a386d5ea-ea90-441a-8263-d816368c84a1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg0OS1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTM4NmQ1ZWEtZWE5MC00NDFhLTgyNjMtZDgxNjM2OGM4NGExL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnME9TMVhSVk5VVlZNaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5kbGMzUjFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.29719.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "b466dab9-bfae-4313-868a-16129b693892"
+        ],
+        "x-ms-correlation-request-id": [
+          "b466dab9-bfae-4313-868a-16129b693892"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210224T064059Z:b466dab9-bfae-4313-868a-16129b693892"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 24 Feb 2021 06:40:59 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-AzureIotDpsLifeCycle": [
+      "ps5333",
+      "ps849"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a386d5ea-ea90-441a-8263-d816368c84a1"
+  }
+}

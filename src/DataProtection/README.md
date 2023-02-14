@@ -34,11 +34,19 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
+<<<<<<< HEAD
 branch: c0d5296b483a5fe4de7851fcd45acde14e736574
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2022-05-01/dataprotection.json
+=======
+branch: f38115ac455af89493b0a0719d9a987404560dda
+require:
+  - $(this-folder)/../readme.azure.noprofile.md
+input-file:
+  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2022-12-01/dataprotection.json
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 title: DataProtection
 directive:
   - from: swagger-document
@@ -54,6 +62,38 @@ directive:
     set:
       parameter-name: CriticalOperationExclusionList
     clear-alias: true
+<<<<<<< HEAD
+=======
+  - where:      
+      parameter-name: ImmutabilitySettingState
+    set:
+      parameter-name: ImmutabilityState
+      parameter-description: Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.
+    clear-alias: true
+  - where:      
+      parameter-name: CrossSubscriptionRestoreSettingState
+    set:
+      parameter-name: CrossSubscriptionRestoreState
+      parameter-description: Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.
+    clear-alias: true
+  - where:      
+      parameter-name: SoftDeleteSettingRetentionDurationInDay
+    set:
+      parameter-name: SoftDeleteRetentionDurationInDay
+      parameter-description: Soft delete retention duration in days.
+    clear-alias: true
+  - where:      
+      parameter-name: SoftDeleteSettingState
+    set:
+      parameter-name: SoftDeleteState
+      parameter-description: Soft delete state of the vault. Allowed values are Off, On, AlwaysOn.
+    clear-alias: true
+  - where:      
+      parameter-name: SecuritySettingSoftDeleteSetting
+    set:
+      parameter-name: SoftDeleteSetting
+    clear-alias: true
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   - where:
       verb: Get
       subject: BackupVaultResource.*
@@ -78,6 +118,12 @@ directive:
       subject: ResourceGuard      
     remove: true
   - where:
+<<<<<<< HEAD
+=======
+      subject: DeletedBackupInstance      
+    remove: true
+  - where:
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       verb: Set
       subject: ResourceGuard.*
     set:
@@ -218,6 +264,29 @@ directive:
     set:
       property-name: CriticalOperationExclusionList
   - where:
+<<<<<<< HEAD
+=======
+      property-name: ImmutabilitySettingState
+    set:
+      property-name: ImmutabilityState
+  - where:
+      property-name: SecuritySettingSoftDeleteSetting
+    set:
+      property-name: SoftDeleteSetting
+  - where:
+      property-name: CrossSubscriptionRestoreSettingState
+    set:
+      property-name: CrossSubscriptionRestoreState
+  - where:
+      property-name: SoftDeleteSettingRetentionDurationInDay
+    set:
+      property-name: SoftDeleteRetentionDurationInDay
+  - where:
+      property-name: SoftDeleteSettingState
+    set:
+      property-name: SoftDeleteState
+  - where:
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       model-name: BackupVaultResource
     set:
       format-table:
@@ -227,7 +296,10 @@ directive:
           - Type
           - IdentityType
   - no-inline:
+<<<<<<< HEAD
     - UserFacingError
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     - InnerError
     - BackupInstance
     - RestoreTargetInfo
@@ -237,6 +309,7 @@ directive:
     - RestoreTargetInfoBase
     - PolicyParameters
     - SecretStoreBasedAuthCredentials
+<<<<<<< HEAD
     - SecretStoreResource
     - SystemData
   - from: source-file-csharp
@@ -251,6 +324,23 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRecoveryPoint Property');
+=======
+    - SecretStoreResource    
+    - SystemData
+    - UserFacingError    
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBaseBackupPolicy Property');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ITriggerContext Trigger');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupParameters BackupParameter');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPoint Property');
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 
 ## Alternate settings

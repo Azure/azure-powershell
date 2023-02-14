@@ -1,9 +1,14 @@
 ### Example 1: Create a replica db for a MariaDB
 ```powershell
+<<<<<<< HEAD
 New-AzMariaDbReplica -MasterName mariadb-test-9pebvn -ReplicaName mariadb-test-9pebvn-rep01 -ResourceGroupName mariadb-test-qu5ov0
 ```
 
 ```output
+=======
+PS C:\> New-AzMariaDbReplica -MasterName mariadb-test-9pebvn -ReplicaName mariadb-test-9pebvn-rep01 -ResourceGroupName mariadb-test-qu5ov0
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
 mariadb-test-9pebvn-rep01 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
@@ -13,10 +18,15 @@ This command creates a replica db for a MariaDB.
 
 ### Example 2: Create a replica db for a MariaDB
 ```powershell
+<<<<<<< HEAD
 Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | New-AzMariaDbReplica -ReplicaName mariadb-test-9pebvn-rep02
 ```
 
 ```output
+=======
+PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | New-AzMariaDbReplica -ReplicaName mariadb-test-9pebvn-rep02
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
 mariadb-test-9pebvn-rep02 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
@@ -26,11 +36,17 @@ This command creates a replica db for a MariaDB.
 
 ### Example 3: Create a replica db for a MariaDB
 ```powershell
+<<<<<<< HEAD
 $mariaDb = Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 
 New-AzMariaDbReplica -Master $mariaDb -ReplicaName mariadb-test-9pebvn-rep03
 ```
 
 ```output
+=======
+PS C:\> $mariaDb = Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 
+PS C:\> New-AzMariaDbReplica -Master $mariaDb -ReplicaName mariadb-test-9pebvn-rep03
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
 mariadb-test-9pebvn-rep03 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled

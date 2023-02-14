@@ -11,7 +11,11 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Aks.private.dll'
   FormatsToProcess = './Az.Aks.format.ps1xml'
+<<<<<<< HEAD
   FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile', 'Get-AzAksVersion', 'Install-AzAksCliTool', 'Start-AzAksCluster', 'Stop-AzAksCluster', '*'
+=======
+  FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile', 'Get-AzAksVersion', 'Start-AzAksCluster', 'Stop-AzAksCluster', '*'
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
   AliasesToExport = 'Get-AzAksClusterUpgradeProfile', '*'
   PrivateData = @{
     PSData = @{

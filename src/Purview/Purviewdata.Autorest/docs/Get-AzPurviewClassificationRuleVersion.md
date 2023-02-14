@@ -24,10 +24,15 @@ Lists the rule versions of a classification rule
 
 ### Example 1: Get all version of a custom classification rule
 ```powershell
+<<<<<<< HEAD
 Get-AzPurviewClassificationRuleVersion -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName 'ClassificationRule5'
 ```
 
 ```output
+=======
+PS C:\> Get-AzPurviewClassificationRuleVersion -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName 'ClassificationRule5'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ClassificationAction   : Keep
 ClassificationName     : ClassificationRule4
 ColumnPattern          : {{

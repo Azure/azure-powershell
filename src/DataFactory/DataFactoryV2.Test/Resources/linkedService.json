@@ -1,0 +1,8 @@
+{
+	"properties": {
+		"type": "AzureStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=myfakekey;"
+		}
+	}
+}

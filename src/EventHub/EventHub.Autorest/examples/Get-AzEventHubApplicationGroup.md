@@ -4,7 +4,11 @@ Get-AzEventHubApplicationGroup -ResourceGroupName myResourceGroup -NamespaceName
 ```
 
 ```output
+<<<<<<< HEAD
 ClientAppGroupIdentifier     : NamespaceSASKeyName=RootManageSharedAccessKey
+=======
+ClientAppGroupIdentifier     : SASKeyName=RootManageSharedAccessKey
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
                                myAppGroup
 IsEnabled                    : True

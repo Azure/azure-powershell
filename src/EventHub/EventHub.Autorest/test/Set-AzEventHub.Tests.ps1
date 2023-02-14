@@ -29,8 +29,13 @@ Describe 'Set-AzEventHub' {
         $eventhub.SizeLimitInBytes | Should -Be 11000000
         $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
 
+<<<<<<< HEAD
         $eventhub = Set-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.eventHub3 -RetentionDescriptionRetentionTimeInHour 90
         $eventhub.RetentionDescriptionRetentionTimeInHour | Should -Be 90
+=======
+        $eventhub = Set-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.eventHub3 -MessageRetentionInDays 4
+        $eventhub.MessageRetentionInDays | Should -Be 4
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         $eventhub.PartitionCount | Should -Be 4
         $eventhub.ArchiveNameFormat | Should -Be "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
         $eventhub.BlobContainer | Should -Be $env.blobContainer

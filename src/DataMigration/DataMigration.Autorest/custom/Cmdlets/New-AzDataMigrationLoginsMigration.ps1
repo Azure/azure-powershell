@@ -94,7 +94,11 @@ function New-AzDataMigrationLoginsMigration
             #Downloading and extracting LoginsMigration Zip file
             if(-Not $TestExePath)
             {
+<<<<<<< HEAD
                 $ZipSource = "https://sqlloginmigration.blob.core.windows.net/app/LoginsMigration.zip";
+=======
+                $ZipSource = "https://sqlassess.blob.core.windows.net/app/LoginsMigration.zip";
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                 $ZipDestination = Join-Path -Path $BaseFolder -ChildPath "LoginsMigration.zip";
                 Invoke-RestMethod -Uri $ZipSource -OutFile $ZipDestination;
 

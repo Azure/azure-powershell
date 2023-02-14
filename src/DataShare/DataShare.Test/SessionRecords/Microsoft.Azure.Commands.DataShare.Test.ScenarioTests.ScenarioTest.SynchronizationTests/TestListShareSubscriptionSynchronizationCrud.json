@@ -1,0 +1,83 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/psrg4712/providers/Microsoft.DataShare/accounts/psaccount9776/shareSubscriptions/psshare1/listSynchronizations?api-version=2019-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Bzcmc0NzEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YVNoYXJlL2FjY291bnRzL3BzYWNjb3VudDk3NzYvc2hhcmVTdWJzY3JpcHRpb25zL3Bzc2hhcmUxL2xpc3RTeW5jaHJvbml6YXRpb25zP2FwaS12ZXJzaW9uPTIwMTktMTEtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "{\r\n \"value\":[{\r\n \"EndTime\":\"2019-07-08T22:25:21.3406278Z\",\r\n \"StartTime\":\"2019-07-08T22:22:58.3438007Z\",\"DurationMs\":145539,\"Status\":\"Succeeded\",\"SynchronizationId\":\"02a17faa-4498-45ee-a884-162180af9251\"},{\"StartTime\":\"2019-07-08T21:59:05.3387641Z\",\"Status\":\"InProgress\",\"SynchronizationId\":\"318aa657-e294-47a2-9bd6-26740178e216\"},{\"EndTime\":\"2019-07-08T20:09:12.0063959Z\",\"StartTime\":\"2019-07-08T20:09:01.7776355Z\",\"DurationMs\":13255,\"Status\":\"Failed\",\"Message\":\"\",\"SynchronizationId\":\"a6ee5c8d-0ce0-485e-b2f2-966b187dc6c7\"}]}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ], 
+  "Names": {
+    "Test-ListShareSubscriptionSynchronizationCrud": [
+      "psrg4712",
+      "psaccount9776",
+      "psshare1"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "c39dce18-cead-4065-8fb1-3af7683a5038"
+  }
+}

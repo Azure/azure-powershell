@@ -1,0 +1,8 @@
+﻿{
+  "Name": "TestAuthRule",
+  "Location": "South Central US",
+  "Rights": [
+    "Listen",
+    "Send"
+  ]
+}

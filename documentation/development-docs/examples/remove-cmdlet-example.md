@@ -91,14 +91,22 @@ To enable the scenarios mentioned previously, the cmdlet will need four paramete
 ```
 Remove-AzChildResource -ResourceGroupName <String> -TopLevelResourceName <String> -Name <String> [-PassThru] [-WhatIf] [-Confirm]
 
+<<<<<<< HEAD
 Remove-AzChildResource -TopLeveResourceObject <PSTopLevelResource> -Name <String> [-PassThru] [-WhatIf] [-Confirm]
+=======
+Remove-AzChildResource -TopLevelResourceObject <PSTopLevelResource> -Name <String> [-PassThru] [-WhatIf] [-Confirm]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 Remove-AzChildResource -InputObject <PSChildResource> [-PassThru] [-WhatIf] [-Confirm]
 
 Remove-AzChildResource -ResourceId <String> [-PassThru] [-WhatIf] [-Confirm]
 ```
 
+<<<<<<< HEAD
 The first parameter set has required `-ResourceGroupName`, `-TopLevelResourceName` and `-Name` parameters, which allows the user to explicitly provide the identity properties of the child resource that they want to delete. The second parameter has a required `-TopLeveResourceObject` parameter, which allows the user to pipe the result of the parent resource's `Get-*` and `Set/Update-*` cmdlets to this cmdlet, as well as a required `-Name` parameter. The third parameter has a required `-InputObject` parameter, which allows the user to pipe the result of the `Get-*` and `Set/Update-*` cmdlets to this cmdlet and delete the corresponding child resource. The fourth parameter has a required `-ResourceId` parameter, which allows the user to delete the specific child resource by resource id.
+=======
+The first parameter set has required `-ResourceGroupName`, `-TopLevelResourceName` and `-Name` parameters, which allows the user to explicitly provide the identity properties of the child resource that they want to delete. The second parameter has a required `-TopLevelResourceObject` parameter, which allows the user to pipe the result of the parent resource's `Get-*` and `Set/Update-*` cmdlets to this cmdlet, as well as a required `-Name` parameter. The third parameter has a required `-InputObject` parameter, which allows the user to pipe the result of the `Get-*` and `Set/Update-*` cmdlets to this cmdlet and delete the corresponding child resource. The fourth parameter has a required `-ResourceId` parameter, which allows the user to delete the specific child resource by resource id.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 #### C# example
 
@@ -129,7 +137,11 @@ namespace Microsoft.Azure.Commands.Service
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = DeleteByParentObjectParameterSet)]
         [ValidateNotNull]
+<<<<<<< HEAD
         public PSTopLevelResource TopLeveResourceObject { get; set; }
+=======
+        public PSTopLevelResource TopLevelResourceObject { get; set; }
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = DeleteByInputObjectParameterSet)]
         [ValidateNotNull]
@@ -144,10 +156,17 @@ namespace Microsoft.Azure.Commands.Service
 
         public override void ExecuteCmdlet()
         {
+<<<<<<< HEAD
             if (this.IsParameterBound(c => c.TopLeveResourceObject))
             {
                 this.ResourceGroupName = this.TopLeveResourceObject.ResourceGroupName;
                 this.TopLevelResourceName = this.TopLeveResourceObject.Name;
+=======
+            if (this.IsParameterBound(c => c.TopLevelResourceObject))
+            {
+                this.ResourceGroupName = this.TopLevelResourceObject.ResourceGroupName;
+                this.TopLevelResourceName = this.TopLevelResourceObject.Name;
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             }
 
             if (this.IsParameterBound(c => c.InputObject))
@@ -168,7 +187,11 @@ namespace Microsoft.Azure.Commands.Service
             if (this.ShouldProcess(this.Name, string.Format("Deleting ChildResource '{0}' in resource group '{1}' under parent TopLevelResource '{2}'.", this.Name, this.ResourceGroupName, this.TopLevelResourceName)))
             {
                 this.MySDKClient.ChildResource.Delete(this.ResourceGroupName, this.TopLevelResourceName, this.Name);
+<<<<<<< HEAD
                 if (this.IsPassThru.IsPresent)
+=======
+                if (this.PassThru.IsPresent)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                 {
                     WriteObject(true);
                 }

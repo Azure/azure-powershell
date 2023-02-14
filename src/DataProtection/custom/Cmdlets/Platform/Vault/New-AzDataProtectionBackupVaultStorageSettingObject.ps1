@@ -15,7 +15,11 @@ function New-AzDataProtectionBackupVaultStorageSettingObject{
     )
 
     process {
+<<<<<<< HEAD
         $storageSetting = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.StorageSetting]::new()
+=======
+        $storageSetting = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.StorageSetting]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         $storageSetting.Type = $Type
         $storageSetting.DataStoreType = $DataStoreType
 

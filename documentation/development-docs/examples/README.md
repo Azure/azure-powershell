@@ -4,6 +4,7 @@ In this folder, you will find patterns and examples for standard Azure PowerShel
 
 ### Table of contents
 
+<<<<<<< HEAD
 - [`Get-*` cmdlet](.\get-cmdlet-example.md)
     - [Top-level resource](.\get-cmdlet-example.md#top-level-resource)
     - [Child resource](.\get-cmdlet-example.md#child-resource)
@@ -19,3 +20,20 @@ In this folder, you will find patterns and examples for standard Azure PowerShel
 - [`Update-*` cmdlet](.\update-cmdlet-example.md)
     - [Top-level resource](.\update-cmdlet-example.md#top-level-resource)
     - [Child resource](.\update-cmdlet-example.md#child-resource)
+=======
+- [`Get-*` cmdlet](get-cmdlet-example.md)
+    - [Top-level resource](get-cmdlet-example.md#top-level-resource)
+    - [Child resource](get-cmdlet-example.md#child-resource)
+- [`New-*` cmdlet](new-cmdlet-example.md)
+    - [Top-level resource](new-cmdlet-example.md#top-level-resource)
+    - [Child resource](new-cmdlet-example.md#child-resource)
+- [`Remove-*` cmdlet](remove-cmdlet-example.md)
+    - [Top-level resource](remove-cmdlet-example.md#top-level-resource)
+    - [Child resource](remove-cmdlet-example.md#child-resource)
+- [`Set-*` cmdlet](set-cmdlet-example.md)
+    - [Top-level resource](set-cmdlet-example.md#top-level-resource)
+    - [Child resource](set-cmdlet-example.md#child-resource)
+- [`Update-*` cmdlet](update-cmdlet-example.md)
+    - [Top-level resource](update-cmdlet-example.md#top-level-resource)
+    - [Child resource](update-cmdlet-example.md#child-resource)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91

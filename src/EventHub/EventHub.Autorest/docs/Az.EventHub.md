@@ -57,7 +57,11 @@ Gets a description for the specified Private Endpoint Connection name.
 Gets lists of resources that supports Privatelinks.
 
 ### [Get-AzEventHubSchemaGroup](Get-AzEventHubSchemaGroup.md)
+<<<<<<< HEAD
 
+=======
+Gets the details of an EventHub schema group.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ### [New-AzEventHub](New-AzEventHub.md)
 Creates or updates a new Event Hub as a nested resource within a Namespace.
@@ -90,7 +94,11 @@ Create an in-memory object for KeyVaultProperties.
 Creates an EventHub Namespace
 
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
+<<<<<<< HEAD
 
+=======
+Creates or Updates an EventHub schema group.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ### [New-AzEventHubThrottlingPolicyConfig](New-AzEventHubThrottlingPolicyConfig.md)
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
@@ -122,11 +130,18 @@ Deletes an existing namespace.
 This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubPrivateEndpointConnection](Remove-AzEventHubPrivateEndpointConnection.md)
+<<<<<<< HEAD
 Deletes an existing namespace.
 This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubSchemaGroup](Remove-AzEventHubSchemaGroup.md)
 
+=======
+Deletes a Private Endpoint Connection.
+
+### [Remove-AzEventHubSchemaGroup](Remove-AzEventHubSchemaGroup.md)
+Deletes an EventHub schema group.
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 
 ### [Set-AzEventHub](Set-AzEventHub.md)
 Updates an EventHub Entity

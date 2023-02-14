@@ -1,6 +1,10 @@
 ---
 Module Name: Az.Purviewdata
+<<<<<<< HEAD
 Module Guid: a13d5021-7d8d-4e9e-bfef-138e496b251d
+=======
+Module Guid: e9265d40-242b-4cd5-a331-7fa976226575
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Download Help Link: https://learn.microsoft.com/powershell/module/az.purviewdata
 Help Version: 1.0.0.0
 Locale: en-US
@@ -242,6 +246,7 @@ Creates or Updates a classification rule
 ### [New-AzPurviewCustomClassificationRuleObject](New-AzPurviewCustomClassificationRuleObject.md)
 Create an in-memory object for CustomClassificationRule.
 
+<<<<<<< HEAD
 ### [New-AzPurviewdataAdlsGen1CredentialScanObject](New-AzPurviewdataAdlsGen1CredentialScanObject.md)
 Create an in-memory object for AdlsGen1CredentialScan.
 
@@ -425,6 +430,11 @@ Create an in-memory object for SqlServerDatabaseDataSource.
 ### [New-AzPurviewdataTeradataDataSourceObject](New-AzPurviewdataTeradataDataSourceObject.md)
 Create an in-memory object for TeradataDataSource.
 
+=======
+### [New-AzPurviewDataSource](New-AzPurviewDataSource.md)
+Creates or Updates a data source
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### [New-AzPurviewFilter](New-AzPurviewFilter.md)
 Creates or updates a filter
 

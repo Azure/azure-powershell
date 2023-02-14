@@ -1,0 +1,1398 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzNDc2Mj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9e7a5005-3541-41dc-a46b-0104f9940ecf"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.41"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "33"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-request-id": [
+          "a61f9a62-a756-49c6-9494-da3b590b621b"
+        ],
+        "x-ms-correlation-request-id": [
+          "a61f9a62-a756-49c6-9494-da3b590b621b"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214716Z:a61f9a62-a756-49c6-9494-da3b590b621b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:15 GMT"
+        ],
+        "Content-Length": [
+          "170"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourceGroups/ps4762\",\r\n  \"name\": \"ps4762\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/Microsoft.Maintenance/maintenanceConfigurations/ps855?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzNDc2Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM4NTU/YXBpLXZlcnNpb249MjAyMS0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    },\r\n    \"installPatches\": {\r\n      \"rebootSetting\": \"IfRequired\",\r\n      \"windowsParameters\": {\r\n        \"kbNumbersToExclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"kbNumbersToInclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"FeaturePack\",\r\n          \"ServicePack\"\r\n        ]\r\n      },\r\n      \"linuxParameters\": {\r\n        \"packageNameMasksToExclude\": [\r\n          \"ppt\",\r\n          \"userpk\"\r\n        ],\r\n        \"packageNameMasksToInclude\": [\r\n          \"apt\",\r\n          \"httpd\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"Other\"\r\n        ]\r\n      },\r\n      \"tasks\": {\r\n        \"preTasks\": [\r\n          {\r\n            \"parameters\": {\r\n              \"arg1\": \"value1\"\r\n            },\r\n            \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n            \"taskScope\": \"Resource\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d7395a65-ef6c-4344-a4e4-b6ef512229f6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1401"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7b0f57b1-fb8b-4eff-b706-5a927c74e169"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1191"
+        ],
+        "x-ms-correlation-request-id": [
+          "7b0f57b1-fb8b-4eff-b706-5a927c74e169"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214718Z:7b0f57b1-fb8b-4eff-b706-5a927c74e169"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:18 GMT"
+        ],
+        "Content-Length": [
+          "1746"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    },\r\n    \"visibility\": \"Custom\",\r\n    \"installPatches\": {\r\n      \"rebootSetting\": \"IfRequired\",\r\n      \"windowsParameters\": {\r\n        \"kbNumbersToExclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"kbNumbersToInclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"FeaturePack\",\r\n          \"ServicePack\"\r\n        ]\r\n      },\r\n      \"linuxParameters\": {\r\n        \"packageNameMasksToExclude\": [\r\n          \"ppt\",\r\n          \"userpk\"\r\n        ],\r\n        \"packageNameMasksToInclude\": [\r\n          \"apt\",\r\n          \"httpd\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"Other\"\r\n        ]\r\n      },\r\n      \"tasks\": {\r\n        \"preTasks\": [\r\n          {\r\n            \"parameters\": {\r\n              \"arg1\": \"value1\"\r\n            },\r\n            \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n            \"taskScope\": \"Resource\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"configurationType\": \"Regular\"\r\n  },\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/Microsoft.Maintenance/maintenanceConfigurations/ps855\",\r\n  \"name\": \"ps855\",\r\n  \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/Microsoft.Maintenance/maintenanceConfigurations/ps855?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzNDc2Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM4NTU/YXBpLXZlcnNpb249MjAyMS0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8bb5a3f7-63ab-4c5b-a27b-4e43f1084426"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "defcb4d3-ac5f-4f7e-a42a-28bea3da79c3"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11969"
+        ],
+        "x-ms-correlation-request-id": [
+          "defcb4d3-ac5f-4f7e-a42a-28bea3da79c3"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214719Z:defcb4d3-ac5f-4f7e-a42a-28bea3da79c3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:19 GMT"
+        ],
+        "Content-Length": [
+          "1746"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    },\r\n    \"visibility\": \"Custom\",\r\n    \"installPatches\": {\r\n      \"rebootSetting\": \"IfRequired\",\r\n      \"windowsParameters\": {\r\n        \"kbNumbersToExclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"kbNumbersToInclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"FeaturePack\",\r\n          \"ServicePack\"\r\n        ]\r\n      },\r\n      \"linuxParameters\": {\r\n        \"packageNameMasksToExclude\": [\r\n          \"ppt\",\r\n          \"userpk\"\r\n        ],\r\n        \"packageNameMasksToInclude\": [\r\n          \"apt\",\r\n          \"httpd\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"Other\"\r\n        ]\r\n      },\r\n      \"tasks\": {\r\n        \"preTasks\": [\r\n          {\r\n            \"parameters\": {\r\n              \"arg1\": \"value1\"\r\n            },\r\n            \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n            \"taskScope\": \"Resource\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"configurationType\": \"Regular\"\r\n  },\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/microsoft.maintenance/maintenanceconfigurations/ps855\",\r\n  \"name\": \"ps855\",\r\n  \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/Microsoft.Maintenance/maintenanceConfigurations/ps855?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzNDc2Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM4NTU/YXBpLXZlcnNpb249MjAyMS0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "052303ed-7ec9-4885-b125-7331542ba65f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "126be404-b472-44d3-9a4d-29957dc97543"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11964"
+        ],
+        "x-ms-correlation-request-id": [
+          "126be404-b472-44d3-9a4d-29957dc97543"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214726Z:126be404-b472-44d3-9a4d-29957dc97543"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:25 GMT"
+        ],
+        "Content-Length": [
+          "1769"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    },\r\n    \"visibility\": \"Custom\",\r\n    \"installPatches\": {\r\n      \"rebootSetting\": \"IfRequired\",\r\n      \"windowsParameters\": {\r\n        \"kbNumbersToExclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"kbNumbersToInclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"FeaturePack\",\r\n          \"ServicePack\"\r\n        ]\r\n      },\r\n      \"linuxParameters\": {\r\n        \"packageNameMasksToExclude\": [\r\n          \"ppt\",\r\n          \"userpk\"\r\n        ],\r\n        \"packageNameMasksToInclude\": [\r\n          \"apt\",\r\n          \"httpd\",\r\n          \"package3\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"Other\"\r\n        ]\r\n      },\r\n      \"tasks\": {\r\n        \"preTasks\": [\r\n          {\r\n            \"parameters\": {\r\n              \"arg1\": \"value1\"\r\n            },\r\n            \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n            \"taskScope\": \"Resource\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"configurationType\": \"Regular\"\r\n  },\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/microsoft.maintenance/maintenanceconfigurations/ps855\",\r\n  \"name\": \"ps855\",\r\n  \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3Bvd2Vyc2hlbGxyZz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ce0d5ef5-33ac-4088-a903-704b1c5ae09b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.41"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "33"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-request-id": [
+          "573eeb83-5175-4da8-8994-bc9ca2ac0afe"
+        ],
+        "x-ms-correlation-request-id": [
+          "573eeb83-5175-4da8-8994-bc9ca2ac0afe"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214719Z:573eeb83-5175-4da8-8994-bc9ca2ac0afe"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:19 GMT"
+        ],
+        "Content-Length": [
+          "182"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourceGroups/powershellrg\",\r\n  \"name\": \"powershellrg\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/Microsoft.Maintenance/maintenanceConfigurations/ps4899?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3Bvd2Vyc2hlbGxyZy9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM0ODk5P2FwaS12ZXJzaW9uPTIwMjEtMDktMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    },\r\n    \"installPatches\": {\r\n      \"rebootSetting\": \"IfRequired\",\r\n      \"windowsParameters\": {\r\n        \"kbNumbersToExclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"kbNumbersToInclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"FeaturePack\",\r\n          \"ServicePack\"\r\n        ],\r\n        \"excludeKbsRequiringReboot\": true\r\n      },\r\n      \"linuxParameters\": {\r\n        \"packageNameMasksToExclude\": [\r\n          \"ppt\",\r\n          \"userpk\"\r\n        ],\r\n        \"packageNameMasksToInclude\": [\r\n          \"apt\",\r\n          \"httpd\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"Other\"\r\n        ]\r\n      },\r\n      \"tasks\": {\r\n        \"preTasks\": [\r\n          {\r\n            \"parameters\": {\r\n              \"arg1\": \"value1\"\r\n            },\r\n            \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n            \"taskScope\": \"Resource\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5a2871f1-7cd1-4b73-b427-92484580416e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1445"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4ebdc46c-bdf0-4887-9660-e47400a007cd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1190"
+        ],
+        "x-ms-correlation-request-id": [
+          "4ebdc46c-bdf0-4887-9660-e47400a007cd"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214720Z:4ebdc46c-bdf0-4887-9660-e47400a007cd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:20 GMT"
+        ],
+        "Content-Length": [
+          "1798"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    },\r\n    \"visibility\": \"Custom\",\r\n    \"installPatches\": {\r\n      \"rebootSetting\": \"IfRequired\",\r\n      \"windowsParameters\": {\r\n        \"kbNumbersToExclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"kbNumbersToInclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"FeaturePack\",\r\n          \"ServicePack\"\r\n        ],\r\n        \"excludeKbsRequiringReboot\": true\r\n      },\r\n      \"linuxParameters\": {\r\n        \"packageNameMasksToExclude\": [\r\n          \"ppt\",\r\n          \"userpk\"\r\n        ],\r\n        \"packageNameMasksToInclude\": [\r\n          \"apt\",\r\n          \"httpd\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"Other\"\r\n        ]\r\n      },\r\n      \"tasks\": {\r\n        \"preTasks\": [\r\n          {\r\n            \"parameters\": {\r\n              \"arg1\": \"value1\"\r\n            },\r\n            \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n            \"taskScope\": \"Resource\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"configurationType\": \"Regular\"\r\n  },\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/Microsoft.Maintenance/maintenanceConfigurations/ps4899\",\r\n  \"name\": \"ps4899\",\r\n  \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/Microsoft.Maintenance/maintenanceConfigurations/ps4899?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3Bvd2Vyc2hlbGxyZy9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM0ODk5P2FwaS12ZXJzaW9uPTIwMjEtMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "187b91f1-7f1c-46ad-bcdd-1c62bccc114d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4d2fadcf-08e2-4bf7-abbe-ade92e15004a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11968"
+        ],
+        "x-ms-correlation-request-id": [
+          "4d2fadcf-08e2-4bf7-abbe-ade92e15004a"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214721Z:4d2fadcf-08e2-4bf7-abbe-ade92e15004a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:20 GMT"
+        ],
+        "Content-Length": [
+          "1798"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    },\r\n    \"visibility\": \"Custom\",\r\n    \"installPatches\": {\r\n      \"rebootSetting\": \"IfRequired\",\r\n      \"windowsParameters\": {\r\n        \"kbNumbersToExclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"kbNumbersToInclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"FeaturePack\",\r\n          \"ServicePack\"\r\n        ],\r\n        \"excludeKbsRequiringReboot\": true\r\n      },\r\n      \"linuxParameters\": {\r\n        \"packageNameMasksToExclude\": [\r\n          \"ppt\",\r\n          \"userpk\"\r\n        ],\r\n        \"packageNameMasksToInclude\": [\r\n          \"apt\",\r\n          \"httpd\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"Other\"\r\n        ]\r\n      },\r\n      \"tasks\": {\r\n        \"preTasks\": [\r\n          {\r\n            \"parameters\": {\r\n              \"arg1\": \"value1\"\r\n            },\r\n            \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n            \"taskScope\": \"Resource\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"configurationType\": \"Regular\"\r\n  },\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/microsoft.maintenance/maintenanceconfigurations/ps4899\",\r\n  \"name\": \"ps4899\",\r\n  \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/providers/Microsoft.Maintenance/maintenanceConfigurations?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFpbnRlbmFuY2UvbWFpbnRlbmFuY2VDb25maWd1cmF0aW9ucz9hcGktdmVyc2lvbj0yMDIxLTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ae296cac-c5a9-4f0a-93fc-141b111e474d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "78fd7e0a-8a04-4e89-b5bd-0f8f1d010edd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11967"
+        ],
+        "x-ms-correlation-request-id": [
+          "78fd7e0a-8a04-4e89-b5bd-0f8f1d010edd"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214722Z:78fd7e0a-8a04-4e89-b5bd-0f8f1d010edd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:22 GMT"
+        ],
+        "Content-Length": [
+          "30450"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"All\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/Microsoft.Maintenance/maintenanceConfigurations/policydgnsrsharedeastus2euap\",\r\n      \"name\": \"policydgnsrsharedeastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"All\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/Microsoft.Maintenance/maintenanceConfigurations/policydgnsrsharedcentraluseuap\",\r\n      \"name\": \"policydgnsrsharedcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/Microsoft.Maintenance/maintenanceConfigurations/configshvenk\",\r\n      \"name\": \"configshvenk\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"All\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/Microsoft.Maintenance/maintenanceConfigurations/policydgnsrfulleastus2euap\",\r\n      \"name\": \"policydgnsrfulleastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/vmsstestrg/providers/microsoft.maintenance/maintenanceconfigurations/testvmssconfig\",\r\n      \"name\": \"testvmssconfig\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"OSImage\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"05:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"5Days\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/vmsstestrg/providers/microsoft.maintenance/maintenanceconfigurations/testvmssconfigosimage\",\r\n      \"name\": \"testvmssconfigOSImage\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-05-19 17:45\",\r\n          \"duration\": \"04:35\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Week\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"AlwaysReboot\",\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"apt\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"http\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/auminguestpatchadvancelinux\",\r\n      \"name\": \"AUMInguestPatchAdvanceLinux\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-10 11:30\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:15\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"AlwaysReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB234567\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Security\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"apt\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"http\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/auminguestpatchadvancallos\",\r\n      \"name\": \"AUMInguestPatchAdvancAllOS\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-20 01:00\",\r\n          \"expirationDateTime\": \"2221-06-20 19:30\",\r\n          \"duration\": \"02:00\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/inguestpatchdefault\",\r\n      \"name\": \"InGuestPatchDefault\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-08 11:30\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:15\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {}\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/aumrg/providers/microsoft.maintenance/maintenanceconfigurations/inguestdefaulttest\",\r\n      \"name\": \"InGuestDefaultTest\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-08 11:50\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:15\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"classificationsToInclude\": [\r\n              \"Critical\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/aumrg/providers/microsoft.maintenance/maintenanceconfigurations/testinguestdefault\",\r\n      \"name\": \"TestInGuestDefault\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-13 19:49\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:25\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/aumrg/providers/microsoft.maintenance/maintenanceconfigurations/test-mc-inguestdefault\",\r\n      \"name\": \"Test-mc-InGuestDefault\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/osexttest\",\r\n      \"name\": \"OSExtTest\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/stageintegrationtest\",\r\n      \"name\": \"stageintegrationtest\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastusstg\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/stagetest/providers/microsoft.maintenance/maintenanceconfigurations/stagetesteastusstg\",\r\n      \"name\": \"stagetesteastusstg\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"southcentralusstg\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/stagetest/providers/microsoft.maintenance/maintenanceconfigurations/stagetestsouthcentralusstg\",\r\n      \"name\": \"stagetestsouthcentralusstg\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-08-09 15:30\",\r\n          \"expirationDateTime\": \"2221-05-19 03:30\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"AlwaysReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB234567\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Security\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"apt\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"http\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/arcinguestpatchadv\",\r\n      \"name\": \"ArcInGuestPatchAdv\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastusstg\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-08-12 20:25\",\r\n          \"duration\": \"02:00\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Week Thursday\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/sched_notif_test/providers/microsoft.maintenance/maintenanceconfigurations/arg_schedule_notif_test_mc\",\r\n      \"name\": \"arg_schedule_notif_test_mc\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrfulleastus2euap\",\r\n      \"name\": \"policydgnsrfulleastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdngeastus2euap\",\r\n      \"name\": \"policydgnsrdngeastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdngcentraluseuap\",\r\n      \"name\": \"policydgnsrdngcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrfullcentraluseuap\",\r\n      \"name\": \"policydgnsrfullcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2020-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/clidemo1\",\r\n      \"name\": \"clidemo1\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2020-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"pkg1\",\r\n              \"pkg2\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/clidemo2\",\r\n      \"name\": \"clidemo2\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2020-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [],\r\n            \"kbNumbersToInclude\": [],\r\n            \"classificationsToInclude\": []\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"pkg1\",\r\n              \"pkg2\",\r\n              \"AAABBB\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [],\r\n            \"postTasks\": []\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/clidemo21\",\r\n      \"name\": \"clidemo21\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"NeverReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps7276/providers/microsoft.maintenance/maintenanceconfigurations/ps424\",\r\n      \"name\": \"ps424\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"NeverReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps6454/providers/microsoft.maintenance/maintenanceconfigurations/ps987\",\r\n      \"name\": \"ps987\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"NeverReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps2796/providers/microsoft.maintenance/maintenanceconfigurations/ps5218\",\r\n      \"name\": \"ps5218\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdhcentraluseuap\",\r\n      \"name\": \"policydgnsrdhcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdheastus2euap\",\r\n      \"name\": \"policydgnsrdheastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/microsoft.maintenance/maintenanceconfigurations/ps855\",\r\n      \"name\": \"ps855\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ],\r\n            \"excludeKbsRequiringReboot\": true\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/microsoft.maintenance/maintenanceconfigurations/ps4899\",\r\n      \"name\": \"ps4899\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/providers/Microsoft.Maintenance/maintenanceConfigurations?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFpbnRlbmFuY2UvbWFpbnRlbmFuY2VDb25maWd1cmF0aW9ucz9hcGktdmVyc2lvbj0yMDIxLTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b49914a8-860d-4c8b-ac86-32cfcaa4bbce"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9bb86a6d-724a-4424-9549-d82c38520c43"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11966"
+        ],
+        "x-ms-correlation-request-id": [
+          "9bb86a6d-724a-4424-9549-d82c38520c43"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214723Z:9bb86a6d-724a-4424-9549-d82c38520c43"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:23 GMT"
+        ],
+        "Content-Length": [
+          "30450"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"All\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/Microsoft.Maintenance/maintenanceConfigurations/policydgnsrsharedeastus2euap\",\r\n      \"name\": \"policydgnsrsharedeastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"All\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/Microsoft.Maintenance/maintenanceConfigurations/policydgnsrsharedcentraluseuap\",\r\n      \"name\": \"policydgnsrsharedcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/Microsoft.Maintenance/maintenanceConfigurations/configshvenk\",\r\n      \"name\": \"configshvenk\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"All\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/Microsoft.Maintenance/maintenanceConfigurations/policydgnsrfulleastus2euap\",\r\n      \"name\": \"policydgnsrfulleastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/vmsstestrg/providers/microsoft.maintenance/maintenanceconfigurations/testvmssconfig\",\r\n      \"name\": \"testvmssconfig\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"OSImage\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"05:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"5Days\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/vmsstestrg/providers/microsoft.maintenance/maintenanceconfigurations/testvmssconfigosimage\",\r\n      \"name\": \"testvmssconfigOSImage\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-05-19 17:45\",\r\n          \"duration\": \"04:35\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Week\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"AlwaysReboot\",\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"apt\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"http\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/auminguestpatchadvancelinux\",\r\n      \"name\": \"AUMInguestPatchAdvanceLinux\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-10 11:30\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:15\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"AlwaysReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB234567\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Security\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"apt\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"http\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/auminguestpatchadvancallos\",\r\n      \"name\": \"AUMInguestPatchAdvancAllOS\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-20 01:00\",\r\n          \"expirationDateTime\": \"2221-06-20 19:30\",\r\n          \"duration\": \"02:00\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/inguestpatchdefault\",\r\n      \"name\": \"InGuestPatchDefault\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-08 11:30\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:15\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {}\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/aumrg/providers/microsoft.maintenance/maintenanceconfigurations/inguestdefaulttest\",\r\n      \"name\": \"InGuestDefaultTest\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-08 11:50\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:15\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"classificationsToInclude\": [\r\n              \"Critical\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/aumrg/providers/microsoft.maintenance/maintenanceconfigurations/testinguestdefault\",\r\n      \"name\": \"TestInGuestDefault\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-13 19:49\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:25\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/aumrg/providers/microsoft.maintenance/maintenanceconfigurations/test-mc-inguestdefault\",\r\n      \"name\": \"Test-mc-InGuestDefault\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/osexttest\",\r\n      \"name\": \"OSExtTest\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/stageintegrationtest\",\r\n      \"name\": \"stageintegrationtest\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastusstg\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/stagetest/providers/microsoft.maintenance/maintenanceconfigurations/stagetesteastusstg\",\r\n      \"name\": \"stagetesteastusstg\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"southcentralusstg\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/stagetest/providers/microsoft.maintenance/maintenanceconfigurations/stagetestsouthcentralusstg\",\r\n      \"name\": \"stagetestsouthcentralusstg\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-08-09 15:30\",\r\n          \"expirationDateTime\": \"2221-05-19 03:30\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"AlwaysReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB234567\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Security\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"apt\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"http\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/arcinguestpatchadv\",\r\n      \"name\": \"ArcInGuestPatchAdv\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastusstg\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-08-12 20:25\",\r\n          \"duration\": \"02:00\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Week Thursday\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/sched_notif_test/providers/microsoft.maintenance/maintenanceconfigurations/arg_schedule_notif_test_mc\",\r\n      \"name\": \"arg_schedule_notif_test_mc\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrfulleastus2euap\",\r\n      \"name\": \"policydgnsrfulleastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdngeastus2euap\",\r\n      \"name\": \"policydgnsrdngeastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdngcentraluseuap\",\r\n      \"name\": \"policydgnsrdngcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrfullcentraluseuap\",\r\n      \"name\": \"policydgnsrfullcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2020-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/clidemo1\",\r\n      \"name\": \"clidemo1\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2020-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"pkg1\",\r\n              \"pkg2\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/clidemo2\",\r\n      \"name\": \"clidemo2\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2020-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [],\r\n            \"kbNumbersToInclude\": [],\r\n            \"classificationsToInclude\": []\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"pkg1\",\r\n              \"pkg2\",\r\n              \"AAABBB\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [],\r\n            \"postTasks\": []\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/clidemo21\",\r\n      \"name\": \"clidemo21\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"NeverReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps7276/providers/microsoft.maintenance/maintenanceconfigurations/ps424\",\r\n      \"name\": \"ps424\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"NeverReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps6454/providers/microsoft.maintenance/maintenanceconfigurations/ps987\",\r\n      \"name\": \"ps987\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"NeverReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps2796/providers/microsoft.maintenance/maintenanceconfigurations/ps5218\",\r\n      \"name\": \"ps5218\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdhcentraluseuap\",\r\n      \"name\": \"policydgnsrdhcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdheastus2euap\",\r\n      \"name\": \"policydgnsrdheastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/microsoft.maintenance/maintenanceconfigurations/ps855\",\r\n      \"name\": \"ps855\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ],\r\n            \"excludeKbsRequiringReboot\": true\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/microsoft.maintenance/maintenanceconfigurations/ps4899\",\r\n      \"name\": \"ps4899\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/providers/Microsoft.Maintenance/maintenanceConfigurations?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFpbnRlbmFuY2UvbWFpbnRlbmFuY2VDb25maWd1cmF0aW9ucz9hcGktdmVyc2lvbj0yMDIxLTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "24af24e2-309d-4781-8004-0b8ad22358f1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8cdb7402-7e1c-4ca7-8e23-be76e30bc001"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11965"
+        ],
+        "x-ms-correlation-request-id": [
+          "8cdb7402-7e1c-4ca7-8e23-be76e30bc001"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214725Z:8cdb7402-7e1c-4ca7-8e23-be76e30bc001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:24 GMT"
+        ],
+        "Content-Length": [
+          "30450"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"All\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/Microsoft.Maintenance/maintenanceConfigurations/policydgnsrsharedeastus2euap\",\r\n      \"name\": \"policydgnsrsharedeastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"All\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/Microsoft.Maintenance/maintenanceConfigurations/policydgnsrsharedcentraluseuap\",\r\n      \"name\": \"policydgnsrsharedcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/Microsoft.Maintenance/maintenanceConfigurations/configshvenk\",\r\n      \"name\": \"configshvenk\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"All\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/Microsoft.Maintenance/maintenanceConfigurations/policydgnsrfulleastus2euap\",\r\n      \"name\": \"policydgnsrfulleastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/vmsstestrg/providers/microsoft.maintenance/maintenanceconfigurations/testvmssconfig\",\r\n      \"name\": \"testvmssconfig\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"OSImage\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"05:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"5Days\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/vmsstestrg/providers/microsoft.maintenance/maintenanceconfigurations/testvmssconfigosimage\",\r\n      \"name\": \"testvmssconfigOSImage\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-05-19 17:45\",\r\n          \"duration\": \"04:35\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Week\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"AlwaysReboot\",\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"apt\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"http\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/auminguestpatchadvancelinux\",\r\n      \"name\": \"AUMInguestPatchAdvanceLinux\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-10 11:30\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:15\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"AlwaysReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB234567\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Security\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"apt\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"http\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/auminguestpatchadvancallos\",\r\n      \"name\": \"AUMInguestPatchAdvancAllOS\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-20 01:00\",\r\n          \"expirationDateTime\": \"2221-06-20 19:30\",\r\n          \"duration\": \"02:00\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/inguestpatchdefault\",\r\n      \"name\": \"InGuestPatchDefault\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-08 11:30\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:15\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {}\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/aumrg/providers/microsoft.maintenance/maintenanceconfigurations/inguestdefaulttest\",\r\n      \"name\": \"InGuestDefaultTest\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-08 11:50\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:15\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"classificationsToInclude\": [\r\n              \"Critical\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/aumrg/providers/microsoft.maintenance/maintenanceconfigurations/testinguestdefault\",\r\n      \"name\": \"TestInGuestDefault\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-07-13 19:49\",\r\n          \"expirationDateTime\": \"2221-05-19 19:30\",\r\n          \"duration\": \"01:25\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/aumrg/providers/microsoft.maintenance/maintenanceconfigurations/test-mc-inguestdefault\",\r\n      \"name\": \"Test-mc-InGuestDefault\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/osexttest\",\r\n      \"name\": \"OSExtTest\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/stageintegrationtest\",\r\n      \"name\": \"stageintegrationtest\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastusstg\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/stagetest/providers/microsoft.maintenance/maintenanceconfigurations/stagetesteastusstg\",\r\n      \"name\": \"stagetesteastusstg\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"southcentralusstg\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/stagetest/providers/microsoft.maintenance/maintenanceconfigurations/stagetestsouthcentralusstg\",\r\n      \"name\": \"stagetestsouthcentralusstg\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-08-09 15:30\",\r\n          \"expirationDateTime\": \"2221-05-19 03:30\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"AlwaysReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB234567\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Security\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"apt\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"http\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/arcinguestpatchadv\",\r\n      \"name\": \"ArcInGuestPatchAdv\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastusstg\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-08-12 20:25\",\r\n          \"duration\": \"02:00\",\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"recurEvery\": \"1Week Thursday\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/sched_notif_test/providers/microsoft.maintenance/maintenanceconfigurations/arg_schedule_notif_test_mc\",\r\n      \"name\": \"arg_schedule_notif_test_mc\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrfulleastus2euap\",\r\n      \"name\": \"policydgnsrfulleastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdngeastus2euap\",\r\n      \"name\": \"policydgnsrdngeastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdngcentraluseuap\",\r\n      \"name\": \"policydgnsrdngcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrfullcentraluseuap\",\r\n      \"name\": \"policydgnsrfullcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2020-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/clidemo1\",\r\n      \"name\": \"clidemo1\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2020-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"pkg1\",\r\n              \"pkg2\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/clidemo2\",\r\n      \"name\": \"clidemo2\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2020-04-30 08:00\",\r\n          \"expirationDateTime\": \"9999-12-31 00:00\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"Day\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [],\r\n            \"kbNumbersToInclude\": [],\r\n            \"classificationsToInclude\": []\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"pkg1\",\r\n              \"pkg2\",\r\n              \"AAABBB\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [],\r\n            \"postTasks\": []\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/canarytestuseast2euap/providers/microsoft.maintenance/maintenanceconfigurations/clidemo21\",\r\n      \"name\": \"clidemo21\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"NeverReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps7276/providers/microsoft.maintenance/maintenanceconfigurations/ps424\",\r\n      \"name\": \"ps424\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"NeverReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps6454/providers/microsoft.maintenance/maintenanceconfigurations/ps987\",\r\n      \"name\": \"ps987\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"NeverReboot\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps2796/providers/microsoft.maintenance/maintenanceconfigurations/ps5218\",\r\n      \"name\": \"ps5218\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsrcentraluseuap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdhcentraluseuap\",\r\n      \"name\": \"policydgnsrdhcentraluseuap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"Host\",\r\n        \"visibility\": \"Custom\",\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/dgnsreastus2euap/providers/microsoft.maintenance/maintenanceconfigurations/policydgnsrdheastus2euap\",\r\n      \"name\": \"policydgnsrdheastus2euap\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ]\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/microsoft.maintenance/maintenanceconfigurations/ps855\",\r\n      \"name\": \"ps855\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    },\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"extensionProperties\": {},\r\n        \"maintenanceScope\": \"InGuestPatch\",\r\n        \"maintenanceWindow\": {\r\n          \"startDateTime\": \"2021-10-09 12:30\",\r\n          \"expirationDateTime\": \"9999-12-31 23:59\",\r\n          \"duration\": \"01:00\",\r\n          \"timeZone\": \"Pacific Standard Time\",\r\n          \"recurEvery\": \"2Months Third Monday Offset3\"\r\n        },\r\n        \"visibility\": \"Custom\",\r\n        \"installPatches\": {\r\n          \"rebootSetting\": \"IfRequired\",\r\n          \"windowsParameters\": {\r\n            \"kbNumbersToExclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"kbNumbersToInclude\": [\r\n              \"KB123456\",\r\n              \"KB123466\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"FeaturePack\",\r\n              \"ServicePack\"\r\n            ],\r\n            \"excludeKbsRequiringReboot\": true\r\n          },\r\n          \"linuxParameters\": {\r\n            \"packageNameMasksToExclude\": [\r\n              \"ppt\",\r\n              \"userpk\"\r\n            ],\r\n            \"packageNameMasksToInclude\": [\r\n              \"apt\",\r\n              \"httpd\"\r\n            ],\r\n            \"classificationsToInclude\": [\r\n              \"Other\"\r\n            ]\r\n          },\r\n          \"tasks\": {\r\n            \"preTasks\": [\r\n              {\r\n                \"parameters\": {\r\n                  \"arg1\": \"value1\"\r\n                },\r\n                \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n                \"taskScope\": \"Resource\"\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"configurationType\": \"Regular\"\r\n      },\r\n      \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/microsoft.maintenance/maintenanceconfigurations/ps4899\",\r\n      \"name\": \"ps4899\",\r\n      \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/Microsoft.Maintenance/maintenanceConfigurations/ps855?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzNDc2Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM4NTU/YXBpLXZlcnNpb249MjAyMS0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    },\r\n    \"visibility\": \"Custom\",\r\n    \"installPatches\": {\r\n      \"windowsParameters\": {\r\n        \"kbNumbersToExclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"kbNumbersToInclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"FeaturePack\",\r\n          \"ServicePack\"\r\n        ]\r\n      },\r\n      \"linuxParameters\": {\r\n        \"packageNameMasksToExclude\": [\r\n          \"ppt\",\r\n          \"userpk\"\r\n        ],\r\n        \"packageNameMasksToInclude\": [\r\n          \"apt\",\r\n          \"httpd\",\r\n          \"package3\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"Other\"\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "68963779-7cf0-4bcb-af56-4b33119864a9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1089"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "91bf25b9-f277-4a9c-b32b-9f66c2b05248"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1189"
+        ],
+        "x-ms-correlation-request-id": [
+          "91bf25b9-f277-4a9c-b32b-9f66c2b05248"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214725Z:91bf25b9-f277-4a9c-b32b-9f66c2b05248"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:25 GMT"
+        ],
+        "Content-Length": [
+          "1769"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    },\r\n    \"visibility\": \"Custom\",\r\n    \"installPatches\": {\r\n      \"rebootSetting\": \"IfRequired\",\r\n      \"windowsParameters\": {\r\n        \"kbNumbersToExclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"kbNumbersToInclude\": [\r\n          \"KB123456\",\r\n          \"KB123466\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"FeaturePack\",\r\n          \"ServicePack\"\r\n        ]\r\n      },\r\n      \"linuxParameters\": {\r\n        \"packageNameMasksToExclude\": [\r\n          \"ppt\",\r\n          \"userpk\"\r\n        ],\r\n        \"packageNameMasksToInclude\": [\r\n          \"apt\",\r\n          \"httpd\",\r\n          \"package3\"\r\n        ],\r\n        \"classificationsToInclude\": [\r\n          \"Other\"\r\n        ]\r\n      },\r\n      \"tasks\": {\r\n        \"preTasks\": [\r\n          {\r\n            \"parameters\": {\r\n              \"arg1\": \"value1\"\r\n            },\r\n            \"source\": \"/subscriptions/a18897a6-7e44-457d-9260-f2854c0aca42/resourceGroups/azemailerbackup-rg/providers/Microsoft.Logic/workflows/azemailerdataprotector\",\r\n            \"taskScope\": \"Resource\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"configurationType\": \"Regular\"\r\n  },\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/microsoft.maintenance/maintenanceconfigurations/ps855\",\r\n  \"name\": \"ps855\",\r\n  \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/Microsoft.Maintenance/maintenanceConfigurations/ps2181?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3Bvd2Vyc2hlbGxyZy9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHMyMTgxP2FwaS12ZXJzaW9uPTIwMjEtMDktMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f8c93258-ab0e-4c0a-a1d8-c67d86e8407e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "351"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5af30bd7-9dd3-4855-a292-8e33e3784c3a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1188"
+        ],
+        "x-ms-correlation-request-id": [
+          "5af30bd7-9dd3-4855-a292-8e33e3784c3a"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214727Z:5af30bd7-9dd3-4855-a292-8e33e3784c3a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:26 GMT"
+        ],
+        "Content-Length": [
+          "704"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"2Months Third Monday Offset3\"\r\n    },\r\n    \"visibility\": \"Custom\",\r\n    \"configurationType\": \"Regular\"\r\n  },\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/Microsoft.Maintenance/maintenanceConfigurations/ps2181\",\r\n  \"name\": \"ps2181\",\r\n  \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/Microsoft.Maintenance/maintenanceConfigurations/ps2181?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3Bvd2Vyc2hlbGxyZy9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHMyMTgxP2FwaS12ZXJzaW9uPTIwMjEtMDktMDEtcHJldmlldw==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"6Days\"\r\n    },\r\n    \"visibility\": \"Custom\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "19558f56-f40b-405d-866a-e04570cdcc6c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "404"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5d2e056c-4a1b-47c0-92be-46854ede62e6"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1187"
+        ],
+        "x-ms-correlation-request-id": [
+          "5d2e056c-4a1b-47c0-92be-46854ede62e6"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214728Z:5d2e056c-4a1b-47c0-92be-46854ede62e6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:27 GMT"
+        ],
+        "Content-Length": [
+          "681"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"6Days\"\r\n    },\r\n    \"visibility\": \"Custom\",\r\n    \"configurationType\": \"Regular\"\r\n  },\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/microsoft.maintenance/maintenanceconfigurations/ps2181\",\r\n  \"name\": \"ps2181\",\r\n  \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/Microsoft.Maintenance/maintenanceConfigurations/ps2181?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3Bvd2Vyc2hlbGxyZy9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHMyMTgxP2FwaS12ZXJzaW9uPTIwMjEtMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6b4f53b3-dcf8-410a-8335-cbcec61ffa41"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "657f62b9-d095-4568-ba39-a942b925f4ec"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11963"
+        ],
+        "x-ms-correlation-request-id": [
+          "657f62b9-d095-4568-ba39-a942b925f4ec"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214728Z:657f62b9-d095-4568-ba39-a942b925f4ec"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:27 GMT"
+        ],
+        "Content-Length": [
+          "681"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"extensionProperties\": {},\r\n    \"maintenanceScope\": \"InGuestPatch\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2021-10-09 12:30\",\r\n      \"expirationDateTime\": \"9999-12-31 23:59\",\r\n      \"duration\": \"01:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"6Days\"\r\n    },\r\n    \"visibility\": \"Custom\",\r\n    \"configurationType\": \"Regular\"\r\n  },\r\n  \"id\": \"/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/microsoft.maintenance/maintenanceconfigurations/ps2181\",\r\n  \"name\": \"ps2181\",\r\n  \"type\": \"Microsoft.Maintenance/maintenanceConfigurations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762/providers/Microsoft.Maintenance/maintenanceConfigurations/ps855?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzNDc2Mi9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM4NTU/YXBpLXZlcnNpb249MjAyMS0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "53c2bf14-fd15-4a77-ae46-3c2faab93c70"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2144a650-40e2-4d12-94b5-370e5eaf9d11"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "2144a650-40e2-4d12-94b5-370e5eaf9d11"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214729Z:2144a650-40e2-4d12-94b5-370e5eaf9d11"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:28 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/Microsoft.Maintenance/maintenanceConfigurations/ps4899?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3Bvd2Vyc2hlbGxyZy9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM0ODk5P2FwaS12ZXJzaW9uPTIwMjEtMDktMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c58b1b18-0350-4632-8ea5-8ac88ef1726b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "88c5cb35-25b8-4908-bef0-d99d29de78c9"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "88c5cb35-25b8-4908-bef0-d99d29de78c9"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214730Z:88c5cb35-25b8-4908-bef0-d99d29de78c9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:29 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg/providers/Microsoft.Maintenance/maintenanceConfigurations/ps2181?api-version=2021-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3Bvd2Vyc2hlbGxyZy9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHMyMTgxP2FwaS12ZXJzaW9uPTIwMjEtMDktMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9312d3a4-16fe-4f17-8a55-3f5a5efd3b67"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Maintenance.MaintenanceManagementClient/1.4.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "30fa6f75-3e3e-4a76-b6ad-74ac62dd353f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "30fa6f75-3e3e-4a76-b6ad-74ac62dd353f"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214731Z:30fa6f75-3e3e-4a76-b6ad-74ac62dd353f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps4762?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzNDc2Mj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0b633add-7af4-43b0-9ca3-bc1a9f4540e0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.41"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ3NjItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14988"
+        ],
+        "x-ms-request-id": [
+          "6e2033b4-5362-4c76-acf7-0ab244b28a4b"
+        ],
+        "x-ms-correlation-request-id": [
+          "6e2033b4-5362-4c76-acf7-0ab244b28a4b"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214731Z:6e2033b4-5362-4c76-acf7-0ab244b28a4b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:31 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ3NjItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRM05qSXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.41"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11978"
+        ],
+        "x-ms-request-id": [
+          "6fef45c5-3af9-43c0-aa65-016890cdce8e"
+        ],
+        "x-ms-correlation-request-id": [
+          "6fef45c5-3af9-43c0-aa65-016890cdce8e"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214747Z:6fef45c5-3af9-43c0-aa65-016890cdce8e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:46 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQ3NjItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpRM05qSXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.41"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11977"
+        ],
+        "x-ms-request-id": [
+          "772699bf-3a2a-4da2-8f2c-92f94e034fd2"
+        ],
+        "x-ms-correlation-request-id": [
+          "772699bf-3a2a-4da2-8f2c-92f94e034fd2"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214747Z:772699bf-3a2a-4da2-8f2c-92f94e034fd2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:46 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/powershellrg?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3Bvd2Vyc2hlbGxyZz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a7da3a33-a5b8-4302-83ae-ce2773d5a6ce"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.41"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMUkctRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14987"
+        ],
+        "x-ms-request-id": [
+          "088f619e-4d0e-403b-916d-c681a89e18ff"
+        ],
+        "x-ms-correlation-request-id": [
+          "088f619e-4d0e-403b-916d-c681a89e18ff"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214747Z:088f619e-4d0e-403b-916d-c681a89e18ff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:47:47 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMUkctRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVDFkRlVsTklSVXhNVWtjdFJVRlRWRlZUTWtWVlFWQWlMQ0pxYjJKTWIyTmhkR2x2YmlJNkltVmhjM1IxY3pKbGRXRndJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.41"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11976"
+        ],
+        "x-ms-request-id": [
+          "de42f24c-9a6c-4964-b11d-6e237899efd5"
+        ],
+        "x-ms-correlation-request-id": [
+          "de42f24c-9a6c-4964-b11d-6e237899efd5"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214802Z:de42f24c-9a6c-4964-b11d-6e237899efd5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:48:02 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMUkctRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVDFkRlVsTklSVXhNVWtjdFJVRlRWRlZUTWtWVlFWQWlMQ0pxYjJKTWIyTmhkR2x2YmlJNkltVmhjM1IxY3pKbGRXRndJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.41"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11975"
+        ],
+        "x-ms-request-id": [
+          "4bf30bef-57ce-4d85-914a-73c904efe2d6"
+        ],
+        "x-ms-correlation-request-id": [
+          "4bf30bef-57ce-4d85-914a-73c904efe2d6"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20210927T214803Z:4bf30bef-57ce-4d85-914a-73c904efe2d6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 27 Sep 2021 21:48:02 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-AzMaintenanceConfigurationInGuestPatch": [
+      "ps4762",
+      "ps855",
+      "ps4899",
+      "ps2181"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "eee2cef4-bc47-4278-b4f8-cfc65f25dfd8"
+  }
+}

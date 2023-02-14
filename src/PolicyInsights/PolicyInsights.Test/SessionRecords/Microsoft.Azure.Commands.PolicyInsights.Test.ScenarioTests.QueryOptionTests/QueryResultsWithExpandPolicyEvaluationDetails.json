@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/PSTestRG1/providers/Microsoft.Network/networkSecurityGroups/pstests1/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$top=10&$filter=PolicyDefinitionAction%20eq%20%27modify%27&$expand=PolicyEvaluationDetails",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9QU1Rlc3RSRzEvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtTZWN1cml0eUdyb3Vwcy9wc3Rlc3RzMS9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL3BvbGljeVN0YXRlcy9sYXRlc3QvcXVlcnlSZXN1bHRzP2FwaS12ZXJzaW9uPTIwMTktMTAtMDEmJHRvcD0xMCYkZmlsdGVyPVBvbGljeURlZmluaXRpb25BY3Rpb24lMjBlcSUyMCUyN21vZGlmeSUyNyYkZXhwYW5kPVBvbGljeUV2YWx1YXRpb25EZXRhaWxz",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3e3f1d26-2965-4072-aef7-782c69459671"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "149"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "855cafe7-289b-417e-874f-b48f2943921b"
+        ],
+        "x-ms-correlation-request-id": [
+          "855cafe7-289b-417e-874f-b48f2943921b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220113T204950Z:855cafe7-289b-417e-874f-b48f2943921b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 13 Jan 2022 20:49:50 GMT"
+        ],
+        "Content-Length": [
+          "4520"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"@odata.context\": \"https://westus.management.azure.com/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/PSTestRG1/providers/Microsoft.Network/networkSecurityGroups/pstests1/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest\",\r\n  \"@odata.count\": 2,\r\n  \"value\": [\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://westus.management.azure.com/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/PSTestRG1/providers/Microsoft.Network/networkSecurityGroups/pstests1/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"timestamp\": \"2022-01-13T20:41:04.3614848Z\",\r\n      \"resourceId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/pstestrg1/providers/microsoft.network/networksecuritygroups/pstests1\",\r\n      \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/pstestmodifyassignmentsub\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.management/managementgroups/azgovperftest/providers/microsoft.authorization/policydefinitions/pstestmodifydefinition\",\r\n      \"effectiveParameters\": \"\",\r\n      \"isCompliant\": false,\r\n      \"subscriptionId\": \"086aecf4-23d6-4dfd-99a8-a5c6299f0322\",\r\n      \"resourceType\": \"Microsoft.Network/networkSecurityGroups\",\r\n      \"resourceLocation\": \"eastus\",\r\n      \"resourceGroup\": \"PSTestRG1\",\r\n      \"resourceTags\": \"tbd\",\r\n      \"policyAssignmentName\": \"PSTestModifyAssignmentSub\",\r\n      \"policyAssignmentOwner\": \"tbd\",\r\n      \"policyAssignmentParameters\": \"\",\r\n      \"policyAssignmentScope\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322\",\r\n      \"policyDefinitionName\": \"PSTestModifyDefinition\",\r\n      \"policyDefinitionAction\": \"modify\",\r\n      \"policyDefinitionCategory\": \"tbd\",\r\n      \"policySetDefinitionId\": \"\",\r\n      \"policySetDefinitionName\": \"\",\r\n      \"policySetDefinitionOwner\": \"\",\r\n      \"policySetDefinitionCategory\": \"\",\r\n      \"policySetDefinitionParameters\": \"\",\r\n      \"managementGroupIds\": \"AzGovPerfTest,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"policyDefinitionReferenceId\": \"\",\r\n      \"complianceState\": \"NonCompliant\",\r\n      \"policyDefinitionGroupNames\": [\r\n        \"\"\r\n      ],\r\n      \"policyDefinitionVersion\": \"\",\r\n      \"policySetDefinitionVersion\": \"\",\r\n      \"policyAssignmentVersion\": \"\",\r\n      \"complianceReasonCode\": \"\",\r\n      \"policyEvaluationDetails\": {\r\n        \"evaluatedExpressions\": [\r\n          {\r\n            \"result\": \"True\",\r\n            \"expressionKind\": \"Field\",\r\n            \"expression\": \"type\",\r\n            \"path\": \"type\",\r\n            \"expressionValue\": \"microsoft.network/networksecuritygroups\",\r\n            \"targetValue\": \"Microsoft.Network/networkSecurityGroups\",\r\n            \"operator\": \"Equals\"\r\n          },\r\n          {\r\n            \"result\": \"True\",\r\n            \"expressionKind\": \"Field\",\r\n            \"expression\": \"name\",\r\n            \"path\": \"name\",\r\n            \"expressionValue\": \"pstests1\",\r\n            \"targetValue\": \"pstests*\",\r\n            \"operator\": \"Like\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://westus.management.azure.com/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/PSTestRG1/providers/Microsoft.Network/networkSecurityGroups/pstests1/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"timestamp\": \"2022-01-13T20:41:04.3613522Z\",\r\n      \"resourceId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/pstestrg1/providers/microsoft.network/networksecuritygroups/pstests1\",\r\n      \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policyassignments/613e8ca956654139835a4c6e\",\r\n      \"policyDefinitionId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/microsoft.authorization/policydefinitions/a6e9f54c-3039-4ad5-a2b4-735e68316c3d\",\r\n      \"effectiveParameters\": \"\",\r\n      \"isCompliant\": false,\r\n      \"subscriptionId\": \"086aecf4-23d6-4dfd-99a8-a5c6299f0322\",\r\n      \"resourceType\": \"Microsoft.Network/networkSecurityGroups\",\r\n      \"resourceLocation\": \"eastus\",\r\n      \"resourceGroup\": \"PSTestRG1\",\r\n      \"resourceTags\": \"tbd\",\r\n      \"policyAssignmentName\": \"613e8ca956654139835a4c6e\",\r\n      \"policyAssignmentOwner\": \"tbd\",\r\n      \"policyAssignmentParameters\": \"\",\r\n      \"policyAssignmentScope\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322\",\r\n      \"policyDefinitionName\": \"a6e9f54c-3039-4ad5-a2b4-735e68316c3d\",\r\n      \"policyDefinitionAction\": \"modify\",\r\n      \"policyDefinitionCategory\": \"tbd\",\r\n      \"policySetDefinitionId\": \"\",\r\n      \"policySetDefinitionName\": \"\",\r\n      \"policySetDefinitionOwner\": \"\",\r\n      \"policySetDefinitionCategory\": \"\",\r\n      \"policySetDefinitionParameters\": \"\",\r\n      \"managementGroupIds\": \"AzGovPerfTest,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"policyDefinitionReferenceId\": \"\",\r\n      \"complianceState\": \"NonCompliant\",\r\n      \"policyDefinitionGroupNames\": [\r\n        \"\"\r\n      ],\r\n      \"policyDefinitionVersion\": \"\",\r\n      \"policySetDefinitionVersion\": \"\",\r\n      \"policyAssignmentVersion\": \"\",\r\n      \"complianceReasonCode\": \"\",\r\n      \"policyEvaluationDetails\": {\r\n        \"evaluatedExpressions\": [\r\n          {\r\n            \"result\": \"True\",\r\n            \"expressionKind\": \"Field\",\r\n            \"expression\": \"tags.test\",\r\n            \"path\": \"tags.test\",\r\n            \"expressionValue\": \"2022-01-13T18:07:11.8431782Z\",\r\n            \"targetValue\": \"2022-01-13T20:41:04.3546112Z\",\r\n            \"operator\": \"NotEquals\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "086aecf4-23d6-4dfd-99a8-a5c6299f0322"
+  }
+}

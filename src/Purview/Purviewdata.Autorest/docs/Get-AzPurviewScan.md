@@ -24,12 +24,15 @@ Get-AzPurviewScan -Endpoint <String> -DataSourceName <String> -Name <String> [-D
  [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### GetViaIdentity
 ```
 Get-AzPurviewScan -Endpoint <String> -InputObject <IPurviewdataIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## DESCRIPTION
 Gets a scan information
 
@@ -37,10 +40,15 @@ Gets a scan information
 
 ### Example 1: Get scan instance within a data source
 ```powershell
+<<<<<<< HEAD
 Get-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -Name 'ScanTest'
 ```
 
 ```output
+=======
+PS C:\> Get-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -Name 'ScanTest'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 CollectionLastModifiedAt  : 2/15/2022 3:49:23 PM
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference
@@ -62,10 +70,15 @@ Get scan instance named 'ScanTest' within a data source
 
 ### Example 2: Get all scan instances within a data source
 ```powershell
+<<<<<<< HEAD
 Get-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv'
 ```
 
 ```output
+=======
+PS C:\>  Get-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 CollectionLastModifiedAt  : 2/13/2022 3:16:24 PM
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference
@@ -108,7 +121,11 @@ Get all scan instances within a data source
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: Get, List
+=======
+Parameter Sets: (All)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Aliases:
 
 Required: True
@@ -149,6 +166,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -165,6 +183,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -Name
 .
 
@@ -185,8 +205,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan
@@ -195,6 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
+<<<<<<< HEAD
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
@@ -212,5 +236,7 @@ INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
   - `[ScanRulesetName <String>]`: 
   - `[Version <Int32?>]`: 
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## RELATED LINKS
 

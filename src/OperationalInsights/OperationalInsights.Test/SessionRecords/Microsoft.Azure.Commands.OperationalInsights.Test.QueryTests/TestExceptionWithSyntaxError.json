@@ -1,0 +1,73 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/v1/workspaces/DEMO_WORKSPACE/query",
+      "EncodedRequestUri": "L3YxL3dvcmtzcGFjZXMvREVNT19XT1JLU1BBQ0UvcXVlcnk=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"query\": \"union * | foobar\"\r\n}",
+      "RequestHeaders": {
+        "x-api-key": [
+          "DEMO_KEY"
+        ],
+        "x-ms-client-request-id": [
+          "ad2a69e9-04c4-461a-a33f-720b035c6a75",
+          "c66c2fc9-18f1-4a7a-877a-7431b02c8380"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient/0.10.0.0"
+        ],
+        "prefer": [
+          "response-v1=true"
+        ],
+        "x-ms-app": [
+          "csharpsdk,LogAnalyticsPSClient"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "35"
+        ]
+      },
+      "ResponseHeaders": {
+        "Date": [
+          "Mon, 15 Nov 2021 07:04:00 GMT"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "Via": [
+          "1.1 draft-oms-9fd78f878-pdwrj"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Retry-After,Age,WWW-Authenticate,x-resource-identities,x-ms-status-location"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "367"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"message\": \"The request had some invalid properties\",\r\n    \"code\": \"BadArgumentError\",\r\n    \"correlationId\": \"be092412-1d4b-4fb7-a425-d64a926b59bc\",\r\n    \"innererror\": {\r\n      \"code\": \"SyntaxError\",\r\n      \"message\": \"A recognition error occurred in the query.\",\r\n      \"innererror\": {\r\n        \"code\": \"SYN0002\",\r\n        \"message\": \"Query could not be parsed at 'foobar' on line [1,10]\",\r\n        \"line\": 1,\r\n        \"pos\": 10,\r\n        \"token\": \"foobar\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 400
+    }
+  ],
+  "Names": {},
+  "Variables": {}
+}

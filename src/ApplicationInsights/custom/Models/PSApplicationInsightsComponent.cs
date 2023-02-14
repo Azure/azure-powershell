@@ -24,6 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
     {
         public PSApplicationInsightsComponent(ApplicationInsightsComponent component)
         {
+<<<<<<< HEAD
             this.ResourceGroupName = ParseResourceGroupFromId(component.Id);
             this.Name = component.Name;
             this.Id = component.Id;
@@ -48,6 +49,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             this.PrivateLinkScopedResources = component.PrivateLinkScopedResource.ToList();
             this.RetentionInDays = component.RetentionInDay;
             this.ConnectionString = component.ConnectionString;
+=======
+            this.ResourceGroupName = ParseResourceGroupFromId(component?.Id);
+            this.Name = component?.Name;
+            this.Id = component?.Id;
+            this.Location = component?.Location;
+            this.Tags = component?.Tag?.Keys?.ToDictionary(x => x, x => component.Tag[x]);
+            this.Kind = component?.Kind;
+            this.Type = component?.Type;
+            this.AppId = component?.AppId;
+            this.ApplicationId = component?.ApplicationId;
+            this.ApplicationType = component?.ApplicationType;
+            this.CreationDate = component?.CreationDate;
+            this.FlowType = component?.FlowType;
+            this.HockeyAppId = component?.HockeyAppId;
+            this.HockeyAppToken = component?.HockeyAppToken;
+            this.InstrumentationKey = component?.InstrumentationKey;
+            this.ProvisioningState = component?.ProvisioningState;
+            this.RequestSource = component?.RequestSource;
+            this.SamplingPercentage = component?.SamplingPercentage;
+            this.TenantId = component?.TenantId;
+            this.PublicNetworkAccessForIngestion = component?.PublicNetworkAccessForIngestion;
+            this.PublicNetworkAccessForQuery = component?.PublicNetworkAccessForQuery;
+            this.PrivateLinkScopedResources = component?.PrivateLinkScopedResource?.ToList();
+            this.RetentionInDays = component?.RetentionInDay;
+            this.ConnectionString = component?.ConnectionString;
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         }
 
         public string Id { get; set; }
@@ -145,7 +172,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
                                                              ApplicationInsightsComponentQuotaStatus status) 
             : base(component)
         {
+<<<<<<< HEAD
             if (billing.CurrentBillingFeature.Any(f => f.Contains("Enterprise")))
+=======
+            if (billing != null && billing.CurrentBillingFeature != null && billing.CurrentBillingFeature.Any(f => f.Contains("Enterprise")))
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             {
                 this.PricingPlan = "Application Insights Enterprise";
             }
@@ -154,11 +185,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
                 this.PricingPlan = billing.CurrentBillingFeature.FirstOrDefault();
             }
 
+<<<<<<< HEAD
             this.Cap = billing.DataVolumeCap.Cap;
             this.ResetTime = billing.DataVolumeCap.ResetTime;
             this.StopSendNotificationWhenHitCap = billing.DataVolumeCap.StopSendNotificationWhenHitCap.Value;
             this.CapExpirationTime = status.ExpirationTime;
             this.IsCapped = status.ShouldBeThrottled != null ? status.ShouldBeThrottled.Value : false;
+=======
+            this.Cap = billing?.DataVolumeCap?.Cap;
+            this.ResetTime = billing?.DataVolumeCap?.ResetTime;
+            if (billing != null && billing.DataVolumeCap != null && billing.DataVolumeCap.StopSendNotificationWhenHitCap != null) {
+                this.StopSendNotificationWhenHitCap = billing.DataVolumeCap.StopSendNotificationWhenHitCap.Value;
+            }
+            this.CapExpirationTime = status?.ExpirationTime;
+            this.IsCapped = status?.ShouldBeThrottled != null ? status.ShouldBeThrottled.Value : false;
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         }
     }
 }

@@ -1,0 +1,191 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/pools/testPool/nodes?api-version=2018-12-01.8.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTgtMTItMDEuOC4w",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "64105dbb-27c5-4539-bba0-86940188e74f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:32 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "edaadd54-566c-4a8e-9986-ac0826821c36"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:33 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d\",\r\n      \"state\": \"offline\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2019-02-02T01:31:07.728215Z\",\r\n      \"lastBootTime\": \"2019-02-02T01:30:58.539796Z\",\r\n      \"allocationTime\": \"2019-02-02T01:24:33.4580714Z\",\r\n      \"ipAddress\": \"10.0.0.4\",\r\n      \"affinityId\": \"TVM:tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"resourceFiles\": [],\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"task\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2019-02-02T01:31:02.317399Z\",\r\n        \"endTime\": \"2019-02-02T01:31:03.925358Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"13.78.133.50\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2019-02-02T01:27:48.565403Z\",\r\n        \"version\": \"1.4.9\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvmps_c6e535d20ee292b2a3ac18eb0d48e3e48fd608ee5f38116b8a96df6355a8dd85_d\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvmps_c6e535d20ee292b2a3ac18eb0d48e3e48fd608ee5f38116b8a96df6355a8dd85_d\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2019-02-02T01:33:47.318908Z\",\r\n      \"lastBootTime\": \"2019-02-02T01:33:43.883964Z\",\r\n      \"allocationTime\": \"2019-02-02T01:24:33.4580714Z\",\r\n      \"ipAddress\": \"10.0.0.5\",\r\n      \"affinityId\": \"TVM:tvmps_c6e535d20ee292b2a3ac18eb0d48e3e48fd608ee5f38116b8a96df6355a8dd85_d\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"resourceFiles\": [],\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"task\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2019-02-02T01:33:45.775187Z\",\r\n        \"endTime\": \"2019-02-02T01:33:47.194179Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"13.78.133.50\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2019-02-02T01:27:57.600332Z\",\r\n        \"version\": \"1.4.9\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/pools/testPool/nodes/tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d/files/startup%5Cstdout.txt?api-version=2018-12-01.8.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzNlZjYzOGEwYmNkMzMwNDI1NzA0NmQyZjNmNTgwNGU4NjE4Zjc4ZjQxOTBhZDAwODFmNWI2MWFlMjU0MjdlMTdfZC9maWxlcy9zdGFydHVwJTVDc3Rkb3V0LnR4dD9hcGktdmVyc2lvbj0yMDE4LTEyLTAxLjguMA==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "963e6bdf-69c5-48c0-a3d7-d6d7406c9ccc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:38 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "7abadcc1-aa03-4fc0-93e1-352ff3a36994"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "ocp-creation-time": [
+          "Sat, 02 Feb 2019 01:31:03 GMT"
+        ],
+        "ocp-batch-file-isdirectory": [
+          "False"
+        ],
+        "ocp-batch-file-url": [
+          "https%3A%2F%2Fmatthchrwestcentralus.westcentralus.batch.azure.com%2Fpools%2FtestPool%2Fnodes%2Ftvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d%2Ffiles%2Fstartup%2Fstdout.txt"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:38 GMT"
+        ],
+        "Content-Length": [
+          "7"
+        ],
+        "Content-Type": [
+          "text/plain"
+        ],
+        "Last-Modified": [
+          "Sat, 02 Feb 2019 01:31:03 GMT"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/pools/testPool/nodes/tvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d/files/startup%5Cstdout.txt?api-version=2018-12-01.8.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzNlZjYzOGEwYmNkMzMwNDI1NzA0NmQyZjNmNTgwNGU4NjE4Zjc4ZjQxOTBhZDAwODFmNWI2MWFlMjU0MjdlMTdfZC9maWxlcy9zdGFydHVwJTVDc3Rkb3V0LnR4dD9hcGktdmVyc2lvbj0yMDE4LTEyLTAxLjguMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "d2ca7d5f-7d2e-4d27-ad13-bab0adaf5f1f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Sat, 02 Feb 2019 01:43:38 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/10.0.0.0",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "2415215b-5750-4b1b-a798-99398d5ffbb4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "ocp-creation-time": [
+          "Sat, 02 Feb 2019 01:31:03 GMT"
+        ],
+        "ocp-batch-file-isdirectory": [
+          "False"
+        ],
+        "ocp-batch-file-url": [
+          "https%3A%2F%2Fmatthchrwestcentralus.westcentralus.batch.azure.com%2Fpools%2FtestPool%2Fnodes%2Ftvmps_3ef638a0bcd3304257046d2f3f5804e8618f78f4190ad0081f5b61ae25427e17_d%2Ffiles%2Fstartup%2Fstdout.txt"
+        ],
+        "Date": [
+          "Sat, 02 Feb 2019 01:43:38 GMT"
+        ],
+        "Content-Type": [
+          "text/plain"
+        ],
+        "Last-Modified": [
+          "Sat, 02 Feb 2019 01:31:03 GMT"
+        ]
+      },
+      "ResponseBody": "hello\r\n",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
+    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
+    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
+  }
+}

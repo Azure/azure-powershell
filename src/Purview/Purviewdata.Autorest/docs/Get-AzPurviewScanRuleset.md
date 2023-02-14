@@ -22,12 +22,15 @@ Get-AzPurviewScanRuleset -Endpoint <String> [-DefaultProfile <PSObject>] [<Commo
 Get-AzPurviewScanRuleset -Endpoint <String> -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### GetViaIdentity
 ```
 Get-AzPurviewScanRuleset -Endpoint <String> -InputObject <IPurviewdataIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## DESCRIPTION
 Get a scan ruleset
 
@@ -35,10 +38,15 @@ Get a scan ruleset
 
 ### Example 1: Get all custom scanrulesets
 ```powershell
+<<<<<<< HEAD
 Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/
 ```
 
 ```output
+=======
+PS C:\> Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 CreatedAt                            : 1/25/2022 2:01:38 AM
 Description                          : asdasd
 ExcludedSystemClassification         : {MICROSOFT.GOVERNMENT.CYPRUS.TAX.IDENTIFICATION.NUMBER, MICROSOFT.GOVERNMENT.CHILE.CDI_NUMBER, MICROSOFT.GOVERNMENT.MALTA.DRIVERS.LICENSE.NUMBER,
@@ -73,10 +81,15 @@ Get all custom scanrulesets
 
 ### Example 2: Get custom scanruleset by name
 ```powershell
+<<<<<<< HEAD
 Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
 ```
 
 ```output
+=======
+PS C:\> Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 CreatedAt                            : 2/17/2022 2:30:15 PM
 Description                          : test desc
 ExcludedSystemClassification         : {MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER, MICROSOFT.SECURITY.COMMON_PASSWORDS, MICROSOFT.MISCELLANEOUS.IPADDRESS}
@@ -127,6 +140,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -143,6 +157,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -Name
 .
 
@@ -163,8 +179,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
@@ -173,6 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
+<<<<<<< HEAD
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
@@ -190,5 +210,7 @@ INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
   - `[ScanRulesetName <String>]`: 
   - `[Version <Int32?>]`: 
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## RELATED LINKS
 

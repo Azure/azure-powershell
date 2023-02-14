@@ -20,7 +20,11 @@ function New-AzDataProtectionBackupInstance {
         ${VaultName},
 
         [Parameter(Mandatory, HelpMessage='Backup instance request object which will be used to configure backup')]
+<<<<<<< HEAD
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource]
+=======
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupInstanceResource]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         ${BackupInstance},
 
         [Parameter(Mandatory=$false, HelpMessage='Resource tags')]        

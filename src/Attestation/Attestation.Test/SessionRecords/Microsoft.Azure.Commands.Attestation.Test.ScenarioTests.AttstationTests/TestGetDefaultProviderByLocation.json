@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/f782b158-10b8-4a42-b9e4-f7fbaf769f35/providers/Microsoft.Attestation/locations/East%20US/defaultProvider?api-version=2018-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc4MmIxNTgtMTBiOC00YTQyLWI5ZTQtZjdmYmFmNzY5ZjM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXR0ZXN0YXRpb24vbG9jYXRpb25zL0Vhc3QlMjBVUy9kZWZhdWx0UHJvdmlkZXI/YXBpLXZlcnNpb249MjAxOC0wOS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2f72a8a6-ee97-4c85-bbc0-395e7cc531d8"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28928.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "Microsoft.Azure.Management.Attestation.AttestationManagementClient/0.12.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "00-fa24ac4bd35627dd4b5f2199d2a38831-0000000000000000-00"
+        ],
+        "x-ms-maa-service-version": [
+          "1.10.01279.0001"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "0a0d8c15-a34b-4eb7-ba0a-d2f192ed9dc1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20200703T122920Z:0a0d8c15-a34b-4eb7-ba0a-d2f192ed9dc1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 03 Jul 2020 12:29:20 GMT"
+        ],
+        "Content-Length": [
+          "285"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedeus\",\r\n  \"name\": \"sharedeus\",\r\n  \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n  \"location\": \"East US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"trustModel\": \"AAD\",\r\n    \"status\": \"Ready\",\r\n    \"attestUri\": \"https://sharedeus.eus.test.attest.azure.net\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f782b158-10b8-4a42-b9e4-f7fbaf769f35"
+  }
+}

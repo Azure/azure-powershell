@@ -1,0 +1,1276 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NMP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6ef9ca07-169b-4d61-8df4-8e7f17301499"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "244ddadc-1907-4dd8-b852-e78c8539df70"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "040bdae6-75f9-4dad-97d3-95a3d1e8030e"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092450Z:040bdae6-75f9-4dad-97d3-95a3d1e8030e"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:24:50 GMT"
+        ],
+        "Content-Length": [
+          "97"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"The specified table: 'dabenhamPoc17_CL' does not exist.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NMP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6ef9ca07-169b-4d61-8df4-8e7f17301499"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "371a8c7a-1b1b-4311-8500-5f06b226c454"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "33c90e02-3894-461b-ab6b-fc268afc94a1"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092555Z:33c90e02-3894-461b-ab6b-fc268afc94a1"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:25:54 GMT"
+        ],
+        "Content-Length": [
+          "1395"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 30,\r\n    \"archiveRetentionInDays\": 5,\r\n    \"plan\": \"Analytics\",\r\n    \"retentionInDaysAsDefault\": false,\r\n    \"totalRetentionInDaysAsDefault\": false,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc17_CL\",\r\n      \"tableType\": \"CustomLog\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"ColName1\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"DateTime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ColName3\",\r\n          \"type\": \"int\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": true\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 25\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL\",\r\n  \"name\": \"dabenhamPoc17_CL\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NMP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0f94a89b-75ac-4938-bca6-f16dc6657b08"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "88b31979-cc3b-4b70-abad-cb192846fa4c"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "1953562c-d1a3-46d5-92d0-d5d83affa173"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092558Z:1953562c-d1a3-46d5-92d0-d5d83affa173"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:25:57 GMT"
+        ],
+        "Content-Length": [
+          "1395"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 30,\r\n    \"archiveRetentionInDays\": 5,\r\n    \"plan\": \"Analytics\",\r\n    \"retentionInDaysAsDefault\": false,\r\n    \"totalRetentionInDaysAsDefault\": false,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc17_CL\",\r\n      \"tableType\": \"CustomLog\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"ColName1\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"DateTime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ColName3\",\r\n          \"type\": \"int\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": true\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 25\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL\",\r\n  \"name\": \"dabenhamPoc17_CL\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NMP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1624b543-1eaa-49d6-b02c-1ed8c135a4d3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b721c7de-39c2-4754-a63c-e994f3377d4f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "7cc096a8-2307-4fe2-b142-65f6ee4918f9"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092559Z:7cc096a8-2307-4fe2-b142-65f6ee4918f9"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:25:59 GMT"
+        ],
+        "Content-Length": [
+          "1395"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 30,\r\n    \"archiveRetentionInDays\": 5,\r\n    \"plan\": \"Analytics\",\r\n    \"retentionInDaysAsDefault\": false,\r\n    \"totalRetentionInDaysAsDefault\": false,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc17_CL\",\r\n      \"tableType\": \"CustomLog\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"ColName1\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"DateTime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ColName3\",\r\n          \"type\": \"int\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": true\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 25\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL\",\r\n  \"name\": \"dabenhamPoc17_CL\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NMP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "baac2646-7aba-44c1-b273-5573539bc18d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "28419f4a-ea34-42f0-90fe-0b6a8aff208d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "0e33b69d-cddd-450f-87ae-c6b560fedab6"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092606Z:0e33b69d-cddd-450f-87ae-c6b560fedab6"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:26:05 GMT"
+        ],
+        "Content-Length": [
+          "1395"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 35,\r\n    \"archiveRetentionInDays\": 5,\r\n    \"plan\": \"Analytics\",\r\n    \"retentionInDaysAsDefault\": false,\r\n    \"totalRetentionInDaysAsDefault\": false,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc17_CL\",\r\n      \"tableType\": \"CustomLog\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"ColName1\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"DateTime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ColName3\",\r\n          \"type\": \"int\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": true\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 30\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL\",\r\n  \"name\": \"dabenhamPoc17_CL\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NMP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b3290cb7-eaa7-4f44-910c-ab7fc5d5c000"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "71e0b8ef-062c-4859-85a0-d27f5c214e6c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "0c7ccbac-94db-40e4-8099-a083e54cccad"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092609Z:0c7ccbac-94db-40e4-8099-a083e54cccad"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:26:09 GMT"
+        ],
+        "Content-Length": [
+          "1395"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 35,\r\n    \"archiveRetentionInDays\": 5,\r\n    \"plan\": \"Analytics\",\r\n    \"retentionInDaysAsDefault\": false,\r\n    \"totalRetentionInDaysAsDefault\": false,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc17_CL\",\r\n      \"tableType\": \"CustomLog\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"ColName1\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"DateTime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ColName3\",\r\n          \"type\": \"int\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": true\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 30\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL\",\r\n  \"name\": \"dabenhamPoc17_CL\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NMP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "59a8ea4e-09a5-4c3c-b084-7c5d7c2164a5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:e6336c63-aab2-45f0-996a-e5dbab2a1508"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3ed7411e-3b29-47bd-909f-bcb70a4ab9ec"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "860b0921-9544-45dd-b1e0-7ae5827b07de"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092800Z:860b0921-9544-45dd-b1e0-7ae5827b07de"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:27:59 GMT"
+        ],
+        "Content-Length": [
+          "97"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"The specified table: 'dabenhamPoc17_CL' does not exist.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NMP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionInDays\": 25,\r\n    \"totalRetentionInDays\": 30,\r\n    \"schema\": {\r\n      \"name\": \"dabenhamPoc17_CL\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"ColName1\",\r\n          \"type\": \"string\"\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"DateTime\"\r\n        },\r\n        {\r\n          \"name\": \"ColName3\",\r\n          \"type\": \"int\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6ef9ca07-169b-4d61-8df4-8e7f17301499"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "426"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL/operationresults/4fe15b73-7b7e-4392-a989-6400328ebdf5?api-version=2021-12-01-preview"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/4fe15b73-7b7e-4392-a989-6400328ebdf5?api-version=2015-11-01-preview"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c6faae8e-9f8a-47a6-a6bd-e6666793fd5c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "8224d20c-ffff-472b-b5a7-fd1bca706133"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092453Z:8224d20c-ffff-472b-b5a7-fd1bca706133"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:24:53 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/4fe15b73-7b7e-4392-a989-6400328ebdf5?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzRmZTE1YjczLTdiN2UtNDM5Mi1hOTg5LTY0MDAzMjhlYmRmNT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6ef9ca07-169b-4d61-8df4-8e7f17301499"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a67984c3-7195-4575-a702-a05f4a451aff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "101aa671-2668-48c4-a2dc-85a5f52a786e"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092524Z:101aa671-2668-48c4-a2dc-85a5f52a786e"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:25:23 GMT"
+        ],
+        "Content-Length": [
+          "304"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Updating\",\r\n  \"name\": \"4fe15b73-7b7e-4392-a989-6400328ebdf5\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/4fe15b73-7b7e-4392-a989-6400328ebdf5\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 09:24:53 GMT\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/4fe15b73-7b7e-4392-a989-6400328ebdf5?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzLzRmZTE1YjczLTdiN2UtNDM5Mi1hOTg5LTY0MDAzMjhlYmRmNT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6ef9ca07-169b-4d61-8df4-8e7f17301499"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bd85a98a-615e-4780-8077-b0412cab8a9e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "c5443548-9b64-40c4-8516-9d7c1061d906"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092554Z:c5443548-9b64-40c4-8516-9d7c1061d906"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:25:53 GMT"
+        ],
+        "Content-Length": [
+          "352"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"4fe15b73-7b7e-4392-a989-6400328ebdf5\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/4fe15b73-7b7e-4392-a989-6400328ebdf5\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 09:24:53 GMT\",\r\n  \"endTime\": \"Tue, 28 Jun 2022 09:25:35 GMT\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NMP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionInDays\": 30,\r\n    \"totalRetentionInDays\": 35\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1624b543-1eaa-49d6-b02c-1ed8c135a4d3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "88"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f668b080-7f96-4b13-8a0e-660000b819f3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "e0d4c182-5ae3-48a9-bff4-87d14c818131"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092603Z:e0d4c182-5ae3-48a9-bff4-87d14c818131"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:26:03 GMT"
+        ],
+        "Content-Length": [
+          "1395"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 35,\r\n    \"archiveRetentionInDays\": 5,\r\n    \"plan\": \"Analytics\",\r\n    \"retentionInDaysAsDefault\": false,\r\n    \"totalRetentionInDaysAsDefault\": false,\r\n    \"schema\": {\r\n      \"tableSubType\": \"DataCollectionRuleBased\",\r\n      \"name\": \"dabenhamPoc17_CL\",\r\n      \"tableType\": \"CustomLog\",\r\n      \"columns\": [\r\n        {\r\n          \"name\": \"ColName1\",\r\n          \"type\": \"string\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"TimeGenerated\",\r\n          \"type\": \"DateTime\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        },\r\n        {\r\n          \"name\": \"ColName3\",\r\n          \"type\": \"int\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"standardColumns\": [\r\n        {\r\n          \"name\": \"TenantId\",\r\n          \"type\": \"guid\",\r\n          \"isDefaultDisplay\": false,\r\n          \"isHidden\": false\r\n        }\r\n      ],\r\n      \"solutions\": [\r\n        \"LogManagement\"\r\n      ],\r\n      \"isTroubleshootingAllowed\": true\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 30\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL\",\r\n  \"name\": \"dabenhamPoc17_CL\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL/migrate?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NML21pZ3JhdGU/YXBpLXZlcnNpb249MjAyMS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "baac2646-7aba-44c1-b273-5573539bc18d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "73def09f-e574-48ab-974f-d8fe524c0550"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "f3b03a10-e64e-4196-9f73-fee24c221dce"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092607Z:f3b03a10-e64e-4196-9f73-fee24c221dce"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:26:06 GMT"
+        ],
+        "Content-Length": [
+          "487"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"totalRetentionInDays\": 35,\r\n    \"archiveRetentionInDays\": 5,\r\n    \"plan\": \"Analytics\",\r\n    \"retentionInDaysAsDefault\": false,\r\n    \"totalRetentionInDaysAsDefault\": false,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"retentionInDays\": 30\r\n  },\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL\",\r\n  \"name\": \"dabenhamPoc17_CL\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NMP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b3290cb7-eaa7-4f44-910c-ab7fc5d5c000"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL/operationresults/e88e669b-8997-458e-82f7-2a8706f01501?api-version=2021-12-01-preview"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/e88e669b-8997-458e-82f7-2a8706f01501?api-version=2015-11-01-preview"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3ab144d6-c40f-458a-8d43-bd95ac7b3508"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "0468bf73-1c90-44fa-8e52-d38adfa95157"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092611Z:0468bf73-1c90-44fa-8e52-d38adfa95157"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:26:11 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/e88e669b-8997-458e-82f7-2a8706f01501?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzL2U4OGU2NjliLTg5OTctNDU4ZS04MmY3LTJhODcwNmYwMTUwMT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b3290cb7-eaa7-4f44-910c-ab7fc5d5c000"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5ece7ef0-afab-4e3b-8953-3534d9858650"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "63d5dbf9-41c1-4016-b4e2-e7e38fd4b026"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092641Z:63d5dbf9-41c1-4016-b4e2-e7e38fd4b026"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:26:41 GMT"
+        ],
+        "Content-Length": [
+          "304"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Deleting\",\r\n  \"name\": \"e88e669b-8997-458e-82f7-2a8706f01501\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/e88e669b-8997-458e-82f7-2a8706f01501\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 09:26:11 GMT\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/e88e669b-8997-458e-82f7-2a8706f01501?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzL2U4OGU2NjliLTg5OTctNDU4ZS04MmY3LTJhODcwNmYwMTUwMT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b3290cb7-eaa7-4f44-910c-ab7fc5d5c000"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4be183a1-cfe2-4d81-9de4-f5bd304ea07f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "faf591df-a9b6-4fe5-bdd9-34055c79f8c3"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092712Z:faf591df-a9b6-4fe5-bdd9-34055c79f8c3"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:27:11 GMT"
+        ],
+        "Content-Length": [
+          "304"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Deleting\",\r\n  \"name\": \"e88e669b-8997-458e-82f7-2a8706f01501\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/e88e669b-8997-458e-82f7-2a8706f01501\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 09:26:11 GMT\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/e88e669b-8997-458e-82f7-2a8706f01501?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuT3BlcmF0aW9uYWxJbnNpZ2h0cy9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblN0YXR1c2VzL2U4OGU2NjliLTg5OTctNDU4ZS04MmY3LTJhODcwNmYwMTUwMT9hcGktdmVyc2lvbj0yMDE1LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b3290cb7-eaa7-4f44-910c-ab7fc5d5c000"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5fc32d72-35db-48ce-85d3-ae46c07bb6ea"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "061b5715-1b39-4fff-9292-dc18e67d8bb3"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092742Z:061b5715-1b39-4fff-9292-dc18e67d8bb3"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:27:41 GMT"
+        ],
+        "Content-Length": [
+          "352"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"e88e669b-8997-458e-82f7-2a8706f01501\",\r\n  \"id\": \"/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/providers/Microsoft.OperationalInsights/locations/eastus/operationStatuses/e88e669b-8997-458e-82f7-2a8706f01501\",\r\n  \"startTime\": \"Tue, 28 Jun 2022 09:26:11 GMT\",\r\n  \"endTime\": \"Tue, 28 Jun 2022 09:27:40 GMT\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourcegroups/dabenham-dev/providers/Microsoft.OperationalInsights/workspaces/dabenham-pshTest/tables/dabenhamPoc17_CL/operationresults/e88e669b-8997-458e-82f7-2a8706f01501?api-version=2021-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc5NDdjYjUtYWFkZC00YjZjLTllOGUtMjdmNTQ1YmI3YmY1L3Jlc291cmNlZ3JvdXBzL2RhYmVuaGFtLWRldi9wcm92aWRlcnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHMvd29ya3NwYWNlcy9kYWJlbmhhbS1wc2hUZXN0L3RhYmxlcy9kYWJlbmhhbVBvYzE3X0NML29wZXJhdGlvbnJlc3VsdHMvZTg4ZTY2OWItODk5Ny00NThlLTgyZjctMmE4NzA2ZjAxNTAxP2FwaS12ZXJzaW9uPTIwMjEtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b3290cb7-eaa7-4f44-910c-ab7fc5d5c000"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.26002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.25.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-AMS-APIVersion": [
+          "WebAPI1.0"
+        ],
+        "CacheControl": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "32b5e375-4a9c-4e7e-853c-7c7570074159"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "9b0ac34f-b64e-4fc2-b31b-c8f7d961a30d"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20220628T092750Z:9b0ac34f-b64e-4fc2-b31b-c8f7d961a30d"
+        ],
+        "Date": [
+          "Tue, 28 Jun 2022 09:27:49 GMT"
+        ],
+        "Content-Length": [
+          "97"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"The specified table: 'dabenhamPoc17_CL' does not exist.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "57947cb5-aadd-4b6c-9e8e-27f545bb7bf5"
+  }
+}

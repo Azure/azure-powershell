@@ -1,9 +1,14 @@
 ### Example 1: Get-AzConnectedNetworkVendorSku using Vendor name and Subscription Id
 ```powershell
+<<<<<<< HEAD
 Get-AzConnectedNetworkVendorSku -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222
 ```
 
 ```output
+=======
+PS C:\> Get-AzConnectedNetworkVendorSku -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 DeploymentMode                                          : PrivateEdgeZone
 Id                                                      : /subscriptions/xxxxx-22222-xxxxx-22222/providers/Microsoft.HybridNetwork/vendors/myVendor/VendorSkus/mySku
 ManagedApplicationParameter                             : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorSkuPropertiesFormatManagedApplicationParameters

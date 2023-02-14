@@ -21,9 +21,15 @@ Creates a log analytics solution.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution
 .Link
+<<<<<<< HEAD
 https://learn.microsoft.com/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution
 .LINK
 [Get-AzOperationalInsightsWorkspace](https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
+=======
+https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution
+.LINK
+[Get-AzOperationalInsightsWorkspace](https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 #>
 function New-AzMonitorLogAnalyticsSolution {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution])]

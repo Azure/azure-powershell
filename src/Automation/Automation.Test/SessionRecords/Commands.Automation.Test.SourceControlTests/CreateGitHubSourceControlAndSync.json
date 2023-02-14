@@ -1,0 +1,1283 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d78cebbf-94af-4e1b-9767-d890504d2918"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d78cebbf-94af-4e1b-9767-d890504d2918"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11979"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef361573-1851-4711-8656-fea3e78dd563"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052701Z:ef361573-1851-4711-8656-fea3e78dd563"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:00 GMT"
+        ],
+        "Content-Length": [
+          "97"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"SourceControl with name: 'AASourceControl-GitHub' does not exist.\"\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3b7a9c98-a970-4b05-8328-4daac04a5bba"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3b7a9c98-a970-4b05-8328-4daac04a5bba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11973"
+        ],
+        "x-ms-correlation-request-id": [
+          "0f001a47-483f-49ff-9faa-f2e46edd110f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052816Z:0f001a47-483f-49ff-9faa-f2e46edd110f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:28:16 GMT"
+        ],
+        "Content-Length": [
+          "528"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub\",\r\n  \"name\": \"AASourceControl-GitHub\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-04-05T10:57:03.10056+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-05T10:57:05.7306298+05:30\",\r\n    \"repoUrl\": \"https://github.com/sharma224/SwaggerAndCmdletsTests.git\",\r\n    \"sourceType\": \"GitHub\",\r\n    \"branch\": \"ps\",\r\n    \"folderPath\": \"/\",\r\n    \"autoSync\": false,\r\n    \"publishRunbook\": true,\r\n    \"description\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"repoUrl\": \"https://github.com/sharma224/SwaggerAndCmdletsTests.git\",\r\n    \"branch\": \"ps\",\r\n    \"folderPath\": \"/\",\r\n    \"autoSync\": false,\r\n    \"publishRunbook\": false,\r\n    \"sourceType\": \"GitHub\",\r\n    \"securityToken\": {\r\n      \"accessToken\": \"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\",\r\n      \"tokenType\": \"PersonalAccessToken\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2cc13ffe-c497-481a-884c-e9d5951cdc5e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "370"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub?api-version=2020-01-13-preview"
+        ],
+        "x-ms-request-id": [
+          "2cc13ffe-c497-481a-884c-e9d5951cdc5e"
+        ],
+        "x-ms-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub?api-version=2020-01-13-preview"
+        ],
+        "ocp-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub?api-version=2020-01-13-preview"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "1fee235e-4b40-4005-9a3b-da220669908f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052704Z:1fee235e-4b40-4005-9a3b-da220669908f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:04 GMT"
+        ],
+        "Content-Length": [
+          "527"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub\",\r\n  \"name\": \"AASourceControl-GitHub\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-04-05T10:57:03.10056+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-05T10:57:03.10056+05:30\",\r\n    \"repoUrl\": \"https://github.com/sharma224/SwaggerAndCmdletsTests.git\",\r\n    \"sourceType\": \"GitHub\",\r\n    \"branch\": \"ps\",\r\n    \"folderPath\": \"/\",\r\n    \"autoSync\": false,\r\n    \"publishRunbook\": false,\r\n    \"description\": null\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publishRunbook\": true\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c9dd8628-fea7-409b-b4f9-63528c3ef989"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "56"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c9dd8628-fea7-409b-b4f9-63528c3ef989"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "e7d36aca-b17d-4e12-9771-b0fae96610bb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052705Z:e7d36aca-b17d-4e12-9771-b0fae96610bb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:04 GMT"
+        ],
+        "Content-Length": [
+          "528"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub\",\r\n  \"name\": \"AASourceControl-GitHub\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"creationTime\": \"2021-04-05T10:57:03.10056+05:30\",\r\n    \"lastModifiedTime\": \"2021-04-05T10:57:05.7306298+05:30\",\r\n    \"repoUrl\": \"https://github.com/sharma224/SwaggerAndCmdletsTests.git\",\r\n    \"sourceType\": \"GitHub\",\r\n    \"branch\": \"ps\",\r\n    \"folderPath\": \"/\",\r\n    \"autoSync\": false,\r\n    \"publishRunbook\": true,\r\n    \"description\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icy80MmRhMzgyMS03ZWE3LTQxMDQtODBmZS00MWU2NDdmN2FiOTY/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"commitId\": \"\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5a37358e-5e31-4482-beef-b8ce5db20716"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "48"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96?api-version=2020-01-13-preview"
+        ],
+        "x-ms-request-id": [
+          "5a37358e-5e31-4482-beef-b8ce5db20716"
+        ],
+        "x-ms-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96?api-version=2020-01-13-preview"
+        ],
+        "ocp-location": [
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96?api-version=2020-01-13-preview"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "0041f1bd-51f9-441e-ad7a-f02ded35065c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052707Z:0041f1bd-51f9-441e-ad7a-f02ded35065c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:07 GMT"
+        ],
+        "Content-Length": [
+          "459"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n  \"properties\": {\r\n    \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n    \"provisioningState\": \"Running\",\r\n    \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n    \"startTime\": null,\r\n    \"endTime\": null,\r\n    \"syncType\": \"FullSync\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56aaf04-7147-41ae-9ee2-f736a67d1f92"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c56aaf04-7147-41ae-9ee2-f736a67d1f92"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-correlation-request-id": [
+          "b5e239b0-2780-4b59-b252-046a9d353aab"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052709Z:b5e239b0-2780-4b59-b252-046a9d353aab"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:08 GMT"
+        ],
+        "Content-Length": [
+          "471"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": null,\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0b51f183-baf2-4d87-8683-0160e1804b57"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0b51f183-baf2-4d87-8683-0160e1804b57"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11982"
+        ],
+        "x-ms-correlation-request-id": [
+          "3ae9470d-8401-45ba-903a-853b3ed235fb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052714Z:3ae9470d-8401-45ba-903a-853b3ed235fb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:14 GMT"
+        ],
+        "Content-Length": [
+          "471"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": null,\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "399d5a57-2a1d-46bb-9fb5-d46e895a75fd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "399d5a57-2a1d-46bb-9fb5-d46e895a75fd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11982"
+        ],
+        "x-ms-correlation-request-id": [
+          "6c440b7b-cbb2-45da-af0b-8cdc3330026c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052722Z:6c440b7b-cbb2-45da-af0b-8cdc3330026c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:22 GMT"
+        ],
+        "Content-Length": [
+          "471"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": null,\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4939af89-506f-4f76-a8f7-62dcb0113c29"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4939af89-506f-4f76-a8f7-62dcb0113c29"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11981"
+        ],
+        "x-ms-correlation-request-id": [
+          "58c16dad-0f25-4644-892d-e873ec369554"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052728Z:58c16dad-0f25-4644-892d-e873ec369554"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:28 GMT"
+        ],
+        "Content-Length": [
+          "471"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": null,\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3281eddb-4556-4e94-a5b5-0c47a8f10e9e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3281eddb-4556-4e94-a5b5-0c47a8f10e9e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11975"
+        ],
+        "x-ms-correlation-request-id": [
+          "7409f8a7-e219-47d3-b8c8-b1b2ab416b0f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052734Z:7409f8a7-e219-47d3-b8c8-b1b2ab416b0f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:34 GMT"
+        ],
+        "Content-Length": [
+          "502"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": \"2021-04-05T10:57:29.5466667+05:30\",\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ccb446e2-7b5a-4a42-8887-492c9618c346"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ccb446e2-7b5a-4a42-8887-492c9618c346"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "x-ms-correlation-request-id": [
+          "a5bd0a7c-4910-47b8-8767-a37bd1d33c53"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052739Z:a5bd0a7c-4910-47b8-8767-a37bd1d33c53"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:39 GMT"
+        ],
+        "Content-Length": [
+          "502"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": \"2021-04-05T10:57:29.5466667+05:30\",\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6c8dc72b-a2f0-4bfe-93b1-1169a8868eb6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6c8dc72b-a2f0-4bfe-93b1-1169a8868eb6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11963"
+        ],
+        "x-ms-correlation-request-id": [
+          "e4235c5d-c23f-4561-98f5-08c7bcb0062d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052746Z:e4235c5d-c23f-4561-98f5-08c7bcb0062d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:46 GMT"
+        ],
+        "Content-Length": [
+          "502"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": \"2021-04-05T10:57:29.5466667+05:30\",\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1aeb83c0-e918-46da-be5e-0c76f9a322be"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1aeb83c0-e918-46da-be5e-0c76f9a322be"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11977"
+        ],
+        "x-ms-correlation-request-id": [
+          "c6888573-30e6-465a-9fef-48e7729aa132"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052751Z:c6888573-30e6-465a-9fef-48e7729aa132"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:51 GMT"
+        ],
+        "Content-Length": [
+          "502"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": \"2021-04-05T10:57:29.5466667+05:30\",\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b3fefadf-5946-4343-ae0d-c63c04f24f1e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b3fefadf-5946-4343-ae0d-c63c04f24f1e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11962"
+        ],
+        "x-ms-correlation-request-id": [
+          "77f1745e-8e63-4b9b-9c8d-b5290db369b7"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052757Z:77f1745e-8e63-4b9b-9c8d-b5290db369b7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:27:57 GMT"
+        ],
+        "Content-Length": [
+          "502"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": \"2021-04-05T10:57:29.5466667+05:30\",\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ab68a241-d499-4b6b-a4bb-62bced818449"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ab68a241-d499-4b6b-a4bb-62bced818449"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11974"
+        ],
+        "x-ms-correlation-request-id": [
+          "c1cfd509-d1b7-41e9-9203-714eb59a9718"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052803Z:c1cfd509-d1b7-41e9-9203-714eb59a9718"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:28:03 GMT"
+        ],
+        "Content-Length": [
+          "502"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": \"2021-04-05T10:57:29.5466667+05:30\",\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6791a09d-8395-4a26-b4a8-82e66d5419fb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6791a09d-8395-4a26-b4a8-82e66d5419fb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11980"
+        ],
+        "x-ms-correlation-request-id": [
+          "e0c1683f-2b35-4f52-bd01-ab76d1bdab1b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052809Z:e0c1683f-2b35-4f52-bd01-ab76d1bdab1b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:28:09 GMT"
+        ],
+        "Content-Length": [
+          "502"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Running\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": \"2021-04-05T10:57:29.5466667+05:30\",\r\n        \"endTime\": null,\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViL3NvdXJjZUNvbnRyb2xTeW5jSm9icz9hcGktdmVyc2lvbj0yMDIwLTAxLTEzLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cdd9ccd1-558a-43a1-ae31-f8ea326c9512"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "cdd9ccd1-558a-43a1-ae31-f8ea326c9512"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11979"
+        ],
+        "x-ms-correlation-request-id": [
+          "373fc15b-839b-4b97-9bf4-bcb8ca434b5e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052816Z:373fc15b-839b-4b97-9bf4-bcb8ca434b5e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:28:15 GMT"
+        ],
+        "Content-Length": [
+          "530"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub/sourceControlSyncJobs/42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n      \"properties\": {\r\n        \"sourceControlSyncJobId\": \"42da3821-7ea7-4104-80fe-41e647f7ab96\",\r\n        \"provisioningState\": \"Completed\",\r\n        \"creationTime\": \"2021-04-05T10:57:07.6661232+05:30\",\r\n        \"startTime\": \"2021-04-05T10:57:29.5466667+05:30\",\r\n        \"endTime\": \"2021-04-05T10:58:15.84+05:30\",\r\n        \"syncType\": \"FullSync\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6633fccb-21cf-4298-a746-07ab7aa8e47b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29812.02",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6633fccb-21cf-4298-a746-07ab7aa8e47b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "bdba4d27-f93f-4071-9030-aaabed2df848"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20210405T052817Z:bdba4d27-f93f-4071-9030-aaabed2df848"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Apr 2021 05:28:16 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+  }
+}

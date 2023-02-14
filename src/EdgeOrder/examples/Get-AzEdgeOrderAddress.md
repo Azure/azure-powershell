@@ -1,10 +1,16 @@
 ### Example 1: Get address details
 ```powershell
+<<<<<<< HEAD
 $address = Get-AzEdgeOrderAddress -SubscriptionId SubscriptionId -ResourceGroupName "resourceGroupName"
 $address | Format-List
 ```
 
 ```output
+=======
+PS C:\> $address = Get-AzEdgeOrderAddress -SubscriptionId SubscriptionId -ResourceGroupName "resourceGroupName"
+PS C:\> $address | fl
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 AddressValidationStatus      : Valid
 ContactDetail                : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
 Id                           : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/addresses/pwvalidaddress

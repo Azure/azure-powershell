@@ -12,18 +12,24 @@ Cancels a scan
 
 ## SYNTAX
 
+<<<<<<< HEAD
 ### Cancel (Default)
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ```
 Stop-AzPurviewScanResultScan -Endpoint <String> -DataSourceName <String> -RunId <String> -ScanName <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+<<<<<<< HEAD
 ### CancelViaIdentity
 ```
 Stop-AzPurviewScanResultScan -Endpoint <String> -InputObject <IPurviewdataIdentity>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## DESCRIPTION
 Cancels a scan
 
@@ -31,10 +37,15 @@ Cancels a scan
 
 ### Example 1: Stop a scan run by run id
 ```powershell
+<<<<<<< HEAD
 Stop-AzPurviewScanResultScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' -RunId '663623f3-8728-4b10-b5c8-8ed8dbc2ae7e'
 ```
 
 ```output
+=======
+PS C:\> Stop-AzPurviewScanResultScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' -RunId '663623f3-8728-4b10-b5c8-8ed8dbc2ae7e'
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 EndTime ScanResultId StartTime            Status
 ------- ------------ ---------            ------
                      2/15/2022 2:47:55 PM Accepted
@@ -49,7 +60,11 @@ Stop a scan run by run id '663623f3-8728-4b10-b5c8-8ed8dbc2ae7e'
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: Cancel
+=======
+Parameter Sets: (All)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Aliases:
 
 Required: True
@@ -90,6 +105,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -106,12 +122,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ### -RunId
 .
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: Cancel
+=======
+Parameter Sets: (All)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Aliases:
 
 Required: True
@@ -126,7 +148,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
+<<<<<<< HEAD
 Parameter Sets: Cancel
+=======
+Parameter Sets: (All)
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Aliases:
 
 Required: True
@@ -172,8 +198,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+<<<<<<< HEAD
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
@@ -182,6 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
+<<<<<<< HEAD
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
@@ -199,5 +229,7 @@ INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
   - `[ScanRulesetName <String>]`: 
   - `[Version <Int32?>]`: 
 
+=======
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 ## RELATED LINKS
 

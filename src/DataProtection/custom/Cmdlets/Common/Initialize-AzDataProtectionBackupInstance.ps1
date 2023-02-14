@@ -2,7 +2,11 @@
 
 
 function Initialize-AzDataProtectionBackupInstance {
+<<<<<<< HEAD
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource')]
+=======
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupInstanceResource')]
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Initializes Backup instance Request object for configuring backup')]
 
@@ -43,7 +47,11 @@ function Initialize-AzDataProtectionBackupInstance {
     process {
 
         $manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
+<<<<<<< HEAD
         $backupInstance = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.BackupInstance]::new()
+=======
+        $backupInstance = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.BackupInstance]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         $backupInstance.ObjectType = "BackupInstance"
 
         if($DatasourceType.ToString() -ne "AzureDisk" -and $SnapshotResourceGroupId -ne "")
@@ -84,9 +92,15 @@ function Initialize-AzDataProtectionBackupInstance {
                     $errormsg = "Please input SecretStoreType"
         		    throw $errormsg                    
                 }
+<<<<<<< HEAD
                 $backupInstance.DatasourceAuthCredentials = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.SecretStoreBasedAuthCredentials]::new()
                 $backupInstance.DatasourceAuthCredentials.ObjectType = "SecretStoreBasedAuthCredentials"
                 $backupInstance.DatasourceAuthCredentials.SecretStoreResource =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.SecretStoreResource]::new()
+=======
+                $backupInstance.DatasourceAuthCredentials = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.SecretStoreBasedAuthCredentials]::new()
+                $backupInstance.DatasourceAuthCredentials.ObjectType = "SecretStoreBasedAuthCredentials"
+                $backupInstance.DatasourceAuthCredentials.SecretStoreResource =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.SecretStoreResource]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
                 $backupInstance.DatasourceAuthCredentials.SecretStoreResource.SecretStoreType = $SecretStoreType
                 $backupInstance.DatasourceAuthCredentials.SecretStoreResource.Uri = $SecretStoreURI
             }
@@ -96,7 +110,11 @@ function Initialize-AzDataProtectionBackupInstance {
             }            
         }
 
+<<<<<<< HEAD
         $backupInstanceResource = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.BackupInstanceResource]::new()
+=======
+        $backupInstanceResource = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.BackupInstanceResource]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         $backupInstanceResource.Property = $backupInstance
 
         if($PSBoundParameters.ContainsKey("DatasourceId"))
@@ -114,7 +132,11 @@ function Initialize-AzDataProtectionBackupInstance {
 
         if($DatasourceType.ToString() -eq "AzureDisk")
         {
+<<<<<<< HEAD
             $operationalParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.AzureOperationalStoreParameters]::new()
+=======
+            $operationalParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.AzureOperationalStoreParameters]::new()
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
             $operationalParam.DataStoreType = "OperationalStore"
             $operationalParam.ObjectType = "AzureOperationalStoreParameters"
             $operationalParam.ResourceGroupId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"

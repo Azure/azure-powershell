@@ -1,9 +1,14 @@
 ### Example 1: Add Tags to a custom Provider
 ```powershell
+<<<<<<< HEAD
 Update-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type -Tag @{MyTag="MyValue"} | Format-List
 ```
 
 ```output
+=======
+PS C:\> Update-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type -Tag @{MyTag="MyValue"} | Format-List
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Action            :
 Id                : /subscriptions/xxxxx-yyyyy-xxxx-yyyy/resourceGroups/mc-cp01/providers/Microsoft.CustomProviders/resourceproviders/Namespace.Type
 Location          : West US 2
@@ -19,10 +24,15 @@ Update the tags of a custom provider.
 
 ### Example 2: Update custom provider with piping
 ```powershell
+<<<<<<< HEAD
 Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type | Update-AzCustomProvider -Tag @{MyTag="MyValue"}
 ```
 
 ```output
+=======
+PS C:\> PS C:\> Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type | Update-AzCustomProvider -Tag @{MyTag="MyValue"}
+
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
 Location  Name             Type
 --------  ----             ----
 West US 2 Namespace.Type   Microsoft.CustomProviders/resourceproviders

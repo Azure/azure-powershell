@@ -57,7 +57,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview" ],
+=======
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
         "x-ms-correlation-request-id": [ "33c32b8a-51a2-489a-89d6-25ded528571f" ],
         "x-ms-request-id": [ "d9fec7ed-8ab6-430b-b75e-3566e4f684b5" ],
@@ -75,10 +79,17 @@
       "Content": "{\n  \"name\": \"9f84a9ca-0261-4d74-b3b0-ec7e2e679c26\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:12:57.9149167Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
     }
   },
+<<<<<<< HEAD
   "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview+3": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview",
+=======
+  "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -97,7 +108,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview" ],
+=======
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
         "x-ms-correlation-request-id": [ "524cb6b2-a9f8-4b4e-8247-14e425eb0e75" ],
         "x-ms-request-id": [ "6e95ba2e-b074-49bc-9c6d-643821d9fbe5" ],
@@ -115,10 +130,17 @@
       "Content": "{\n  \"name\": \"9f84a9ca-0261-4d74-b3b0-ec7e2e679c26\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:12:57.9149167Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
     }
   },
+<<<<<<< HEAD
   "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview+4": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview",
+=======
+  "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -137,7 +159,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview" ],
+=======
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
         "x-ms-correlation-request-id": [ "b3c78755-3005-4e70-b04b-4ec76d9813f3" ],
         "x-ms-request-id": [ "5f294cd6-edb3-4c38-af59-8e187b107ef5" ],
@@ -155,10 +181,17 @@
       "Content": "{\n  \"name\": \"9f84a9ca-0261-4d74-b3b0-ec7e2e679c26\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:12:57.9149167Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
     }
   },
+<<<<<<< HEAD
   "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview+5": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview",
+=======
+  "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -177,7 +210,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview" ],
+=======
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "x-ms-ratelimit-remaining-subscription-reads": [ "11949" ],
         "x-ms-correlation-request-id": [ "6c84531d-a884-468a-91f5-97c438830d5e" ],
         "x-ms-request-id": [ "5b0ce88f-3ed4-4961-b9ac-d96eda4846a0" ],
@@ -195,10 +232,17 @@
       "Content": "{\n  \"name\": \"9f84a9ca-0261-4d74-b3b0-ec7e2e679c26\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:12:57.9149167Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
     }
   },
+<<<<<<< HEAD
   "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview+6": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview",
+=======
+  "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -217,7 +261,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview" ],
+=======
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "x-ms-ratelimit-remaining-subscription-reads": [ "11948" ],
         "x-ms-correlation-request-id": [ "583d0164-6e42-48e6-bf66-90c1112dca0c" ],
         "x-ms-request-id": [ "26dad21f-4140-4d35-b974-43fe8604f7cf" ],
@@ -235,10 +283,17 @@
       "Content": "{\n  \"name\": \"9f84a9ca-0261-4d74-b3b0-ec7e2e679c26\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:12:57.9149167Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
     }
   },
+<<<<<<< HEAD
   "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview+7": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview",
+=======
+  "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -257,7 +312,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview" ],
+=======
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "x-ms-ratelimit-remaining-subscription-reads": [ "11946" ],
         "x-ms-correlation-request-id": [ "4df0c58c-e957-4865-b63f-5c1b761f5e3d" ],
         "x-ms-request-id": [ "8138214b-ca06-4fd0-9f53-d595bbca4f0a" ],
@@ -275,10 +334,17 @@
       "Content": "{\n  \"name\": \"9f84a9ca-0261-4d74-b3b0-ec7e2e679c26\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:12:57.9149167Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
     }
   },
+<<<<<<< HEAD
   "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview+8": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview",
+=======
+  "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -297,7 +363,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview" ],
+=======
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "x-ms-ratelimit-remaining-subscription-reads": [ "11945" ],
         "x-ms-correlation-request-id": [ "0e9b53ce-8ed0-4312-91ff-d1860256f6c5" ],
         "x-ms-request-id": [ "b4657ab6-223b-49de-9454-18e7c0595e6b" ],
@@ -315,10 +385,17 @@
       "Content": "{\n  \"name\": \"9f84a9ca-0261-4d74-b3b0-ec7e2e679c26\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:12:57.9149167Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
     }
   },
+<<<<<<< HEAD
   "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview+9": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview",
+=======
+  "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -337,7 +414,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+<<<<<<< HEAD
         "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview" ],
+=======
+        "Location": [ "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview" ],
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
         "x-ms-ratelimit-remaining-subscription-reads": [ "11944" ],
         "x-ms-correlation-request-id": [ "e1b3879a-cfcc-43f5-8454-76d5b7c2ba91" ],
         "x-ms-request-id": [ "48cbf8c4-3e26-48d6-8dbb-dda2464c23e7" ],
@@ -355,10 +436,17 @@
       "Content": "{\n  \"name\": \"9f84a9ca-0261-4d74-b3b0-ec7e2e679c26\",\n  \"status\": \"InProgress\",\n  \"startTime\": \"2020-11-12T05:12:57.9149167Z\",\n  \"error\": {\n   \"code\": \"\",\n   \"message\": \"\"\n  }\n }"
     }
   },
+<<<<<<< HEAD
   "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview+10": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2020-02-07-preview",
+=======
+  "New-AzSapMonitor+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/providers/Microsoft.HanaOnAzure/locations/uksouth/operationsStatus/9f84a9ca-0261-4d74-b3b0-ec7e2e679c26?api-version=2017-11-03-preview",
+>>>>>>> 97176e9029ae7684a4ab56b6bec6966b134d4f91
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
