@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.17
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting isolated compute by `-EnableIsolatedCompute`
 
 ## Version 2.2.0
 * Added breaking change message for  `-SparkConfigFilePath`. It will be deprecated around the middle of December.
