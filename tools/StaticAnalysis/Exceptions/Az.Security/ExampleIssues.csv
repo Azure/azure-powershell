@@ -1,4 +1,0 @@
-"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
-"Az.Security","Set-AzSecurityAutomation","1","1","Invalid_Parameter_Name","5011","1","Set-AzSecurityAutomation -Scopes is not a valid parameter name.","-Scopes","Check validity of the parameter -Scopes."
-"Az.Security","Set-AzSecurityAutomation","1","1","Invalid_Parameter_Name","5011","1","Set-AzSecurityAutomation -Sources is not a valid parameter name.","-Sources","Check validity of the parameter -Sources."
-"Az.Security","Set-AzSecurityAutomation","1","1","Invalid_Parameter_Name","5011","1","Set-AzSecurityAutomation -Actions is not a valid parameter name.","-Actions","Check validity of the parameter -Actions."
