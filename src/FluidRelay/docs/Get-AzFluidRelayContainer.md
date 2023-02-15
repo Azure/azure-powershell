@@ -47,7 +47,7 @@ eb4dd5f6-531f-44e1-86e3-759d39d1010c 2022-06-16 02:35:16 AM 2022-06-16 02:58:55 
 ```
 
 List Fluid Relay container.
-Read and execute this document [Quickstart: Dice roller](https://docs.microsoft.com/en-us/azure/azure-fluid-relay/quickstarts/quickstart-dice-roll) to complete setup of the environment.
+Read and execute this document [Quickstart: Dice roller](https://learn.microsoft.com/en-us/azure/azure-fluid-relay/quickstarts/quickstart-dice-roll) to complete setup of the environment.
 
 ### Example 2:Get a Fluid Relay container.
 ```powershell
@@ -61,7 +61,7 @@ eb4dd5f6-531f-44e1-86e3-759d39d1010c 2022-06-16 02:35:16 AM 2022-06-16 02:58:55 
 ```
 
 Get a Fluid Relay container.
-Read and execute this document [Quickstart: Dice roller](https://docs.microsoft.com/en-us/azure/azure-fluid-relay/quickstarts/quickstart-dice-roll) to complete setup of the environment.
+Read and execute this document [Quickstart: Dice roller](https://learn.microsoft.com/en-us/azure/azure-fluid-relay/quickstarts/quickstart-dice-roll) to complete setup of the environment.
 
 ## PARAMETERS
 
