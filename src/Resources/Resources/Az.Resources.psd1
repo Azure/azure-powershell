@@ -59,6 +59,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.4'; })
 RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll', 
                'Microsoft.Azure.Management.ResourceManager.dll', 
                'Microsoft.Azure.Management.ManagementGroups.dll', 
+               'Microsoft.Azure.PowerShell.Resources.Management.Sdk.dll',
                'Microsoft.Extensions.Caching.Abstractions.dll', 
                'Microsoft.Extensions.Caching.Memory.dll', 
                'Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
