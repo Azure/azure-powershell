@@ -11,8 +11,8 @@ jobs:
   displayName: Update fabricbot.json
   steps:
   - checkout:
-    self:
-      ref: main
+      self:
+        ref: main
   - pwsh: |
       ./tools/Github/ParseWiki2Json.ps1 -ADOToken $(ADOToken)
     displayName: Update fabricbot.json file locally
