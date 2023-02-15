@@ -6,7 +6,7 @@ Invoke-LiveTestScenario -Name "Create Spring Cloud Instance" -Description "Test 
     $location = "eastus"
     $springCloudServiceName = New-LiveTestResourceName
 
-    $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Enterprise" -SkuName "E0"
+    $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Basic" -SkuName "B0"
 
     Assert-AreEqual $springCloudServiceName $springCloudInstance.Name
 }
@@ -20,7 +20,7 @@ Invoke-LiveTestScenario -Name "Create Spring Cloud App Instance" -Description "T
     $springCloudServiceName = New-LiveTestResourceName
     $appName = New-LiveTestResourceName
 
-    $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Enterprise" -SkuName "E0"
+    $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Basic" -SkuName "B0"
     $appInstance = New-AzSpringCloudApp -ResourceGroupName $rgName -ServiceName $springCloudServiceName -Name $appName
 
     Assert-AreEqual $appName $appInstance.Name
@@ -36,7 +36,7 @@ Invoke-LiveTestScenario -Name "Create Spring Cloud App Deployment Instance" -Des
     $appName = New-LiveTestResourceName
     $deploymentName = "default"
 
-    $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Enterprise" -SkuName "E0"
+    $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Basic" -SkuName "B0"
     $appInstance = New-AzSpringCloudApp -ResourceGroupName $rgName -ServiceName $springCloudServiceName -Name $appName
     $deployment = New-AzSpringCloudAppDeployment -ResourceGroupName $rgName -Name $springCloudServiceName -AppName $appName -DeploymentName $deploymentName
 
