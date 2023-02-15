@@ -39,7 +39,7 @@ jobs:
       $Title = "Sync upcoming breaking changes docs from Azure/azure-powershell repo"
       $HeadBranch = "$(BranchName)"
       $BaseBranch = "main"
-      $Description = "Migrate upcoming breaking changes doc from Azure/azure-powershell repo to MSdoc/azure-docs-powershell"
+      $Description = "Sync latest upcoming breaking changes doc from Azure/azure-powershell repo."
       $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $(GithubToken)"}
       $PrBody = @"
       <!-- DO NOT DELETE THIS TEMPLATE -->

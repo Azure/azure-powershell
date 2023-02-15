@@ -58,6 +58,6 @@ title: Upcoming breaking changes in Azure PowerShell
     git add (Join-Path $WorkSpace $RepoName/docs-conceptual/azps-$AzVersion)
 }
 
-git commit -m "Sync upcoming breaking changes doc from azure-powershell."
+git commit -m "Sync upcoming breaking changes doc from azure-powershell repo."
 git remote set-url origin "https://$GithubToken@github.com/$OrgName/$RepoName.git"
 git push origin "$BranchName" --force
