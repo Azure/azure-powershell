@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         /// <summary>
         /// Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IFailoverProperties _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.FailoverProperties();
+        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IFailoverProperties _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.FailoverProperties();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
