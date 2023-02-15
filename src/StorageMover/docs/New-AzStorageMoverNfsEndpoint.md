@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemovernfsendpoint
 schema: 2.0.0
 ---
 
