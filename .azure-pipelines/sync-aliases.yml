@@ -1,4 +1,10 @@
 # Variable 'ADOToken' and 'BotAccessToken' was defined in the Variables tab
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: main
+
 schedules:
 - cron: "50 15 * * *"
   displayName: 11:50 PM (UTC + 8:00) China Daily Run
@@ -27,7 +33,7 @@ jobs:
     displayName: Git commit and push
   
   - pwsh: |
-      $diff = git diff origin/main internal/sync-fabricbot-json
+      $diff = git diff main internal/sync-fabricbot-json
       if ($diff.Length -eq 0) {
         Write-Host "No differences between main and internal/sync-fabricbot-json. Skipping PR creation."
       } else {
