@@ -33,7 +33,7 @@ jobs:
       git add .
       git commit -m "Sync fabricbot.json"
         
-      git remote set-url origin https://$(BotAccessToken)@github.com/xtr0d666/azure-powershell.git;
+      git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
       git push origin internal/sync-fabricbot-json --force
     displayName: Git commit and push
     condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))
