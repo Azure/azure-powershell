@@ -284,9 +284,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.JobRun</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.JobRun</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.JobRun</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.JobRun</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -306,9 +306,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.JobRunError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.JobRunError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.JobRunError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.JobRunError</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -340,9 +340,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.JobRunList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.JobRunList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.JobRunList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.JobRunList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -362,9 +362,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.JobRunProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.JobRunProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.JobRunProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.JobRunProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -522,9 +522,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.JobRunResourceId</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.JobRunResourceId</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.JobRunResourceId</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.JobRunResourceId</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -544,9 +544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.StorageMoverUpdateParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.StorageMoverUpdateParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.StorageMoverUpdateParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.StorageMoverUpdateParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
