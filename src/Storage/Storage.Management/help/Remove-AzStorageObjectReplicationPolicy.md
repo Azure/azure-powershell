@@ -37,7 +37,7 @@ The **Remove-AzStorageObjectReplicationPolicy** cmdlet removes the specified obj
 ## EXAMPLES
 
 ### Example 1: Remove an object replication policy with specific policyId from a storage account.
-```
+```powershell
 Remove-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PolicyId $policyId
 ```
 

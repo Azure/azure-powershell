@@ -12,7 +12,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Redis" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RedisCache.Management.Sdk\RedisCache.Management.Sdk.csproj" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

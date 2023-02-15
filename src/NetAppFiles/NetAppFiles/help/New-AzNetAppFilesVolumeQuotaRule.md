@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesvolumequotarule
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesvolumequotarule
 schema: 2.0.0
 ---
 

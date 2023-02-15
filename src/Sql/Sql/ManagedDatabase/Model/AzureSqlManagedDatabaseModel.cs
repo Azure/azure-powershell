@@ -114,6 +114,24 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string StorageContainerIdentity { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource identifier of the cross-subscription
+        /// source database associated with create operation of this database.
+        /// </summary>
+        public string CrossSubscriptionSourceDatabaseId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the restorable cross-subscription dropped database
+        /// resource id to restore when creating this database.
+        /// </summary>
+        public string CrossSubscriptionRestorableDroppedDatabaseId { get; set; }
+
+        /// <summary>
+        /// Gets or sets target managed instance id used in cross-subscription
+        /// restore.
+        /// </summary>
+        public string CrossSubscriptionTargetManagedInstanceId { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlManagedDatabaseModel
         /// </summary>
         public AzureSqlManagedDatabaseModel()
@@ -152,6 +170,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             AutoCompleteRestore = database.AutoCompleteRestore;
             LastBackupName = database.LastBackupName;
             StorageContainerIdentity = database.StorageContainerIdentity;
+            CrossSubscriptionRestorableDroppedDatabaseId = database.CrossSubscriptionRestorableDroppedDatabaseId;
+            CrossSubscriptionSourceDatabaseId = database.CrossSubscriptionSourceDatabaseId;
+            CrossSubscriptionTargetManagedInstanceId = database.CrossSubscriptionTargetManagedInstanceId;
         }
     }
 }
