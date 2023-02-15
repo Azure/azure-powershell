@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F312FD6E-AF0F-4901-B763-741E1B46A654
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayurlpathmapconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayurlpathmapconfig
 schema: 2.0.0
 ---
 
@@ -50,8 +50,8 @@ The **New-AzApplicationGatewayUrlPathMapConfig** cmdlet creates an array of URL 
 ## EXAMPLES
 
 ### Example 1: Create an array of URL path mappings to a backend server pool
-```
-PS C:\>New-AzApplicationGatewayUrlPathMapConfig -Name $UrlPathMapName -PathRules $VideoPathRule, $ImagePathRule -DefaultBackendAddressPool $Pool -DefaultBackendHttpSettings $PoolSetting02
+```powershell
+New-AzApplicationGatewayUrlPathMapConfig -Name $UrlPathMapName -PathRules $VideoPathRule, $ImagePathRule -DefaultBackendAddressPool $Pool -DefaultBackendHttpSettings $PoolSetting02
 ```
 
 This command creates an array of URL path mappings to a backend server pool.

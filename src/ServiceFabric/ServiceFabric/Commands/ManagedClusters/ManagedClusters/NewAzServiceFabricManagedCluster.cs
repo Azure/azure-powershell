@@ -12,7 +12,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -141,6 +143,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Specify the tags as key/value pairs.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Specify the tags as key/value pairs.")]
+        public Hashtable Tag { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -229,7 +235,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 sku: new Sku(name: this.Sku.ToString()),
                 clusterUpgradeMode: this.UpgradeMode.ToString(),
                 clusterUpgradeCadence: this.UpgradeCadence.ToString(),
-                zonalResiliency: this.ZonalResiliency.IsPresent
+                zonalResiliency: this.ZonalResiliency.IsPresent,
+                tags: this.Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string)
             );
 
             if (this.UpgradeMode == Models.ClusterUpgradeMode.Manual)

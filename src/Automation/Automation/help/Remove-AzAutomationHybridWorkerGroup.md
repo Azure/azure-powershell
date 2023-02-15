@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationhybridworkergroup
+online version: https://learn.microsoft.com/powershell/module/az.automation/remove-azautomationhybridworkergroup
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ The Remove-AzAutomationHybridWorkerGroup cmdlet removes a hybrid worker group fr
 This command removes a hybrid worker by name.
 
 ```powershell
-PS C:\> Remove-AzAutomationHybridWorkerGroup -ResourceGroupName "rg1" `
+Remove-AzAutomationHybridWorkerGroup -ResourceGroupName "rg1" `
                                                   -AutomationAccountName "devAccount" `
                                                   -Name "GroupName"
 ```
@@ -36,6 +36,7 @@ PS C:\> Remove-AzAutomationHybridWorkerGroup -ResourceGroupName "rg1" `
 
 ### -AutomationAccountName
 The automation account name.
+
 
 ```yaml
 Type: System.String
@@ -52,6 +53,7 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
+
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
@@ -66,6 +68,7 @@ Accept wildcard characters: False
 
 ### -Name
 The hybrid worker group name.
+
 
 ```yaml
 Type: System.String
@@ -82,6 +85,7 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The resource group name.
 
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -96,6 +100,7 @@ Accept wildcard characters: False
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -113,6 +118,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
+
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -126,16 +132,14 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### System.Void
-
 ## NOTES
 
 ## RELATED LINKS

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HPCCache.dll-Help.xml
 Module Name: Az.HPCCache
-online version: https://docs.microsoft.com/powershell/module/az.hpccache/update-azhpccache
+online version: https://learn.microsoft.com/powershell/module/az.hpccache/update-azhpccache
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The **Update-AzHpcCache** cmdlet updates a Azure HPC Cache.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzHpcCache -ResourceGroupName testRG -CacheName testCache
+Update-AzHpcCache -ResourceGroupName testRG -CacheName testCache
 ```
 
 ## PARAMETERS

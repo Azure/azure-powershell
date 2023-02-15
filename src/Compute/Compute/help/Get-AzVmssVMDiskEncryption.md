@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvmdiskencryption
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmssvmdiskencryption
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ Shows the disk encryption status of VM scale set.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzVmssVMDiskEncryption -ResourceGroupName "Group001" -VMScaleSetName "VMSS001" -InstanceId "1"
+```powershell
+Get-AzVmssVMDiskEncryption -ResourceGroupName "Group001" -VMScaleSetName "VMSS001" -InstanceId "1"
 ```
 
 Shows the disk encryption status of VM instance 1 in the VM scale set named VMSS001 that belongs to the resource group named Group001.

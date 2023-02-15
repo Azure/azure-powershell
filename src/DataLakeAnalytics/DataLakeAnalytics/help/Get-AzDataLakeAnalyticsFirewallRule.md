@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticsfirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticsfirewallrule
 schema: 2.0.0
 ---
 
@@ -23,15 +23,15 @@ The **Get-AzDataLakeAnalyticsFirewallRule** cmdlet retrieves a firewall rule or 
 ## EXAMPLES
 
 ### Example 1: Get a firewall rule
-```
-PS C:\>Get-AzDataLakeAnalyticsFirewallRule -Account "ContosoAdlAcct" -Name "My firewall rule"
+```powershell
+Get-AzDataLakeAnalyticsFirewallRule -Account "ContosoAdlAcct" -Name "My firewall rule"
 ```
 
 This command gets the firewall rule named "my firewall rule" from account "ContosoAdlAcct"
 
 ### Example 2: List all firewall rules
-```
-PS C:\>Get-AzDataLakeAnalyticsFirewallRule -Account "ContosoAdlAcct"
+```powershell
+Get-AzDataLakeAnalyticsFirewallRule -Account "ContosoAdlAcct"
 ```
 
 This command gets all firewall rules from account "ContosoAdlAcct"

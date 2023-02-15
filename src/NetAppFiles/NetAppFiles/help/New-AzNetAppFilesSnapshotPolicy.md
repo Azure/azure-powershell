@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilessnapshotpolicy
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilessnapshotpolicy
 schema: 2.0.0
 ---
 
@@ -30,13 +30,13 @@ New-AzNetAppFilesSnapshotPolicy -Name <String> [-Enabled] -HourlySchedule <PSNet
 ```
 
 ## DESCRIPTION
-The **New-AzNetAppFilesActiveDirectory** cmdlet creates a new snapshot policy for an ANF account.
+The **New-AzNetAppFilesSnapshotPolicy** cmdlet creates a new snapshot policy for an ANF account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$hourlySchedule = @{        
+$hourlySchedule = @{
         Minute = 2
         SnapshotsToKeep = 6
     }
@@ -46,18 +46,18 @@ $hourlySchedule = @{
         SnapshotsToKeep = 6
     }
     $weeklySchedule = @{
-        Minute = 2    
-        Hour = 1		        
+        Minute = 2
+        Hour = 1
         Day = "Sunday,Monday"
         SnapshotsToKeep = 6
     }
     $monthlySchedule = @{
-        Minute = 2    
-        Hour = 1        
+        Minute = 2
+        Hour = 1
         DaysOfMonth = "2,11,21"
         SnapshotsToKeep = 6
     }
-PS C:\> New-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAccount" -Name "MySnapshotPolicy" -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
+New-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -Name "MySnapshotPolicy" -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
 ```
 
 This command creates the new ANF snapshot policy for ANF account named account "MyAccount".
@@ -289,3 +289,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetAppFilesSnapshotPolicy](./Get-AzNetAppFilesSnapshotPolicy.md)
+[Update-AzNetAppFilesSnapshotPolicy](./Update-AzNetAppFilesSnapshotPolicy.md)
+[Remove-AzNetAppFilesSnapshotPolicy](./Remove-AzNetAppFilesSnapshotPolicy.md)
+[Set-AzNetAppFilesSnapshotPolicy](./Set-AzNetAppFilesSnapshotPolicy.md)
+[Get-AzNetAppFilesSnapshot](./Get-AzNetAppFilesSnapshot.md)
+[New-AzNetAppFilesSnapshot](./New-AzNetAppFilesSnapshot.md)
+[Remove-AzNetAppFilesSnapshot](./Remove-AzNetAppFilesSnapshot.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesVolume.md)

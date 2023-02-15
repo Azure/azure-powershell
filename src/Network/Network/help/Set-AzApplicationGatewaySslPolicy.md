@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 30A34CA8-AC07-4327-B7B9-19F001DA996A
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysslpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysslpolicy
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **Set-AzApplicationGatewaySslPolicy** cmdlet modifies the SSL policy of an a
 
 ### Example 1
 ```powershell
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGw = Set-AzApplicationGatewaySslPolicy -ApplicationGateway $getgw -PolicyType Predefined -PolicyName AppGwSslPolicy20170401
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Set-AzApplicationGatewaySslPolicy -ApplicationGateway $getgw -PolicyType Predefined -PolicyName AppGwSslPolicy20170401
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.

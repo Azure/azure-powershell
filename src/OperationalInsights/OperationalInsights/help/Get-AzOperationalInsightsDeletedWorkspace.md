@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdeletedworkspace
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdeletedworkspace
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ List deleted workspaces.
 
 ### Example 1
 ```powershell
-PS C:\> $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
-PS C:\> $workspace | Remove-AzOperationalInsightsWorkspace
-PS C:\> Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName $rgname
+$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName "RG-NAME" -Name "WORKSPACE-NAME" -Location "LOCATION-VALUE"
+$workspace | Remove-AzOperationalInsightsWorkspace
+Get-AzOperationalInsightsDeletedWorkspace -ResourceGroupName "RG-NAME"
 ```
 
 List deleted workspaces.

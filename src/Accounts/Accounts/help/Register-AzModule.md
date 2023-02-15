@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/register-azmodule
+online version: https://learn.microsoft.com/powershell/module/az.accounts/register-azmodule
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ FOR INTERNAL USE ONLY - Provide Runtime Support for AutoRest Generated cmdlets
 
 ### Example 1
 ```powershell
-PS C:\> Register-AzModule
+Register-AzModule
 ```
 
 Used Internally by AutoRest-generated cmdlets

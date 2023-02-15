@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/new-Azsqlelasticjobtargetgroup
+online version: https://learn.microsoft.com/powershell/module/Az.sql/new-Azsqlelasticjobtargetgroup
 schema: 2.0.0
 ---
 
@@ -36,10 +36,12 @@ The New-AzSqlElasticJobTargetGroup cmdlet creates a new target group
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+```powershell
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 $agent | New-AzSqlElasticJobTargetGroup -Name tg1
+```
 
+```output
 TargetGroupName Targets
 --------------- -------
 tg1

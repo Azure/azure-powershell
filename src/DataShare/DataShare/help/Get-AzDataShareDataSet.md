@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/get-azdatasharedataset
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatasharedataset
 schema: 2.0.0
 ---
 
@@ -29,8 +29,11 @@ The **Get-AzDataShareDataSet** cmdlet gets information about data sets added in 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsDataSet"
 ```
-PS C:\> Get-AzDataShareDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsDataSet"
+
+```output
 ContainerName  : AdsContainer
 DataSetId      : d2411889-5357-4ca8-8d65-9363e46ef2ed
 ResourceGroup  : ADS

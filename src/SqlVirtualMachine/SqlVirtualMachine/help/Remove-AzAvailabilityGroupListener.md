@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/powershell/module/az.sqlvirtualmachine/remove-azavailabilitygrouplistener
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/remove-azavailabilitygrouplistener
 schema: 2.0.0
 ---
 
@@ -44,13 +44,14 @@ The Remove-AzAvailabilityGroupListener cmdlet deletes an Availability Group List
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -Name AgListener01
+Remove-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -Name AgListener01
 ```
 
+```output
 Name         ResourceGroupName GroupName    AvailabilityGroupName
 ----         ----------------- ---------    ---------------------
 AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
-
+```
 Deletes the Availability Group Listener AgListener01 in the Availability Group AvailabilityGroup01.
 
 ## PARAMETERS

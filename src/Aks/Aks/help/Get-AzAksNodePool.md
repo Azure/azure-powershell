@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/get-azaksnodepool
+online version: https://learn.microsoft.com/powershell/module/az.aks/get-azaksnodepool
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ List node pools in specified cluster.
 
 ### Get all node pools within specified cluster
 ```powershell
-PS C:\> Get-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster
+Get-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster
 ```
 
 ## PARAMETERS

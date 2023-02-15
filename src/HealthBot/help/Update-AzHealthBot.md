@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthBot
-online version: https://docs.microsoft.com/powershell/module/az.healthbot/update-azhealthbot
+online version: https://learn.microsoft.com/powershell/module/az.healthbot/update-azhealthbot
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Patch a HealthBot.
 
 ### Example 1: update HealthBot by Resourcegroupname and Name
 ```powershell
-PS C:\> update-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot -Sku S1
+Update-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot -Sku S1
+```
 
+```output
 Location Name           SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
 -------- ----           ------------------- -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----
 eastus   yourihealthbot 2020/12/29 8:19:10  test@microsoft.com User                    2020/12/30 6:12:33       test@microsoft.com    User                         Microsoft.HealthBot/health…
@@ -42,9 +44,11 @@ update HealthBot by Resourcegroupname and Name
 
 ### Example 2: update HealthBot by InputObject
 ```powershell
-PS C:\> $getHealth = Get-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot
+$getHealth = Get-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot
 Update-AzHealthBot -InputObject $getHealth -Sku F0
+```
 
+```output
 Location Name           SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
 -------- ----           ------------------- -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----
 eastus   yourihealthbot 2020/12/29 8:19:10  test@microsoft.com User                    2020/12/30 6:12:33       test@microsoft.com    User                         Microsoft.HealthBot/health…
@@ -211,7 +215,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IHealthBotIdentity>: Identity Parameter
+INPUTOBJECT `<IHealthBotIdentity>`: Identity Parameter
   - `[BotName <String>]`: The name of the Bot resource.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the Bot resource group in the user subscription.

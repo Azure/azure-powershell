@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/get-azaksupgradeprofile
+online version: https://learn.microsoft.com/powershell/module/az.aks/get-azaksupgradeprofile
 schema: 2.0.0
 ---
 
@@ -30,8 +30,10 @@ Gets the details of the upgrade profile for a managed cluster with a specified r
 
 ### Example 1: Get Aks upgrade profile with resource group name and cluster name
 ```powershell
-PS C:\> Get-AzAksUpgradeProfile -ResourceGroupName group -Name myCluster
+Get-AzAksUpgradeProfile -ResourceGroupName group -Name myCluster
+```
 
+```output
 Name    Type
 ----    ----
 default Microsoft.ContainerService/managedClusters/upgradeprofiles
@@ -140,7 +142,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAksIdentity>: Identity Parameter
+`INPUTOBJECT <IAksIdentity>`: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of a supported Azure region.

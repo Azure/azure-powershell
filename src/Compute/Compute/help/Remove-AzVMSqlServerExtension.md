@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: B02CEAC8-C838-4890-8C21-9897CA39EF45
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmsqlserverextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmsqlserverextension
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzVMSqlServerExtension** cmdlet removes an AzureSQL Server extensio
 ## EXAMPLES
 
 ### Example 1: Remove a SQL Server extension
-```
-PS C:\> Remove-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" -Name "SqlIaaSAgent"
+```powershell
+Remove-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" -Name "SqlIaaSAgent"
 ```
 
 This command removes a SQL Server extension from the virtual machine named ContosoVM22.

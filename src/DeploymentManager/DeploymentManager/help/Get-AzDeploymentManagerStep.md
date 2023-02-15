@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/get-azdeploymentmanagerstep
+online version: https://learn.microsoft.com/powershell/module/az.deploymentmanager/get-azdeploymentmanagerstep
 schema: 2.0.0
 ---
 
@@ -40,22 +40,21 @@ You can modify this object locally, and then apply changes to the artifact sourc
 
 ### Example 1: Get a step
 ```powershell
-PS C:\> New-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep
+New-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep
 ```
 
 This command gets a step named ContosoService1WaitStep in ContosoResourceGroup.
 
 ### Example 2: Get a step using the resource identifier
-### Example 1
 ```powershell
-PS C:\> Get-AzDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
+Get-AzDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
 ```
 
 This command gets a step named ContosoService1WaitStep in ContosoResourceGroup.
 
 ### Example 3: Get a step using an object returned by New-AzDeploymentManagerStep
 ```powershell
-PS C:\> Get-AzDeploymentManagerStep -InputObject $stepObject
+Get-AzDeploymentManagerStep -InputObject $stepObject
 ```
 
  This command gets a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.

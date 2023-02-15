@@ -15,26 +15,19 @@
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
-    public class SqlDatabaseTests : SynapseTestBase
+    public class SqlDatabaseTests : SynapseTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public SqlDatabaseTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SqlDatabaseTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseSqlDatabase()
         {
-            SynapseTestBase.NewInstance.RunPsTest(
-                _logger,
-                "Test-SynapseSqlDatabase");
+            TestRunner.RunTestScript("Test-SynapseSqlDatabase");
         }
     }
 }

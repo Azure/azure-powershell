@@ -1,24 +1,24 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourcegroups/PowerShellTest?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlZ3JvdXBzL1Bvd2VyU2hlbGxUZXN0P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourcegroups/PowerShellTest?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlZ3JvdXBzL1Bvd2VyU2hlbGxUZXN0P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a8c54136-120c-4ec6-a7a8-53229ff266a4"
+          "550a142d-fa75-4eab-9aca-0a6e26fd0619"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.32"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -26,17 +26,20 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-request-id": [
-          "05ee337e-235c-4dcb-81d9-23a187e5ccf9"
+          "57f48a36-9084-48f0-a070-c814286398b6"
         ],
         "x-ms-correlation-request-id": [
-          "05ee337e-235c-4dcb-81d9-23a187e5ccf9"
+          "57f48a36-9084-48f0-a070-c814286398b6"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T063302Z:05ee337e-235c-4dcb-81d9-23a187e5ccf9"
+          "WESTINDIA:20221017T065417Z:57f48a36-9084-48f0-a070-c814286398b6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +48,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 06:33:02 GMT"
+          "Mon, 17 Oct 2022 06:54:16 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -54,31 +57,97 @@
           "-1"
         ],
         "Content-Length": [
-          "188"
+          "106"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest\",\r\n  \"name\": \"PowerShellTest\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'PowerShellTest' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourcegroups/PowerShellTest?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlZ3JvdXBzL1Bvd2VyU2hlbGxUZXN0P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b049b972-4114-4d30-a437-4b588c3c9caf"
+          "1a3af74a-ab66-44c4-9e70-d82525f39296"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "37"
         ]
       },
+      "RequestBody": "{\r\n  \"location\": \"West Central US\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "fdc5dad4-062f-4b2e-8904-91721274e3e0"
+        ],
+        "x-ms-correlation-request-id": [
+          "fdc5dad4-062f-4b2e-8904-91721274e3e0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20221017T065424Z:fdc5dad4-062f-4b2e-8904-91721274e3e0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 17 Oct 2022 06:54:23 GMT"
+        ],
+        "Content-Length": [
+          "188"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest\",\r\n  \"name\": \"PowerShellTest\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2022-08-08",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMi0wOC0wOA==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f5bee914-bbbf-427b-915b-96f15740550b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
+        ]
+      },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -90,13 +159,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "89e5eda6-14ec-4d2c-b0dd-d3308395bc80"
+          "6424931e-22e2-4057-9f06-8ebf9e4e2281"
         ],
         "x-ms-correlation-request-id": [
-          "89e5eda6-14ec-4d2c-b0dd-d3308395bc80"
+          "6424931e-22e2-4057-9f06-8ebf9e4e2281"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T063303Z:89e5eda6-14ec-4d2c-b0dd-d3308395bc80"
+          "WESTINDIA:20221017T065424Z:6424931e-22e2-4057-9f06-8ebf9e4e2281"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -105,7 +174,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 06:33:03 GMT"
+          "Mon, 17 Oct 2022 06:54:24 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -121,24 +190,24 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2022-08-08",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMi0wOC0wOA==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f23388fd-e446-469e-bf31-1871479750ef"
+          "d18b89f1-1cba-4408-bfd0-e7668c445b9d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -147,40 +216,34 @@
           "no-cache"
         ],
         "ocp-automation-accountid": [
-          "286f8d8e-9517-44e7-ad97-80ac5b37dbaa"
+          "8011fb15-1b4e-4b6c-afa2-744b711a5bfe"
         ],
         "x-ms-request-id": [
-          "f23388fd-e446-469e-bf31-1871479750ef"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "d18b89f1-1cba-4408-bfd0-e7668c445b9d"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "eadc7026-c788-4f89-abd5-9b8df9e45832"
+          "fc493370-8ad7-437e-b27b-b93b5922973c"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T063332Z:eadc7026-c788-4f89-abd5-9b8df9e45832"
+          "JIOINDIAWEST:20221017T065442Z:fc493370-8ad7-437e-b27b-b93b5922973c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 06:33:32 GMT"
+          "Mon, 17 Oct 2022 06:54:41 GMT"
         ],
         "Content-Length": [
-          "791"
+          "1210"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -189,28 +252,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"account-powershell-test\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {\r\n    \"gg\": \"hh\",\r\n    \"abc\": \"def\"\r\n  },\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://286f8d8e-9517-44e7-ad97-80ac5b37dbaa.agentsvc.wcus.azure-automation.net/accounts/286f8d8e-9517-44e7-ad97-80ac5b37dbaa\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"creationTime\": \"2021-04-04T12:03:16.55+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2021-04-04T12:03:26.3866667+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"account-powershell-test\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n    \"lastModifiedAt\": \"2022-10-17T12:24:35.35+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {\r\n    \"abc\": \"def\",\r\n    \"gg\": \"hh\"\r\n  },\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://8011fb15-1b4e-4b6c-afa2-744b711a5bfe.agentsvc.wcus.azure-automation.net/accounts/8011fb15-1b4e-4b6c-afa2-744b711a5bfe\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"automationHybridServiceUrl\": \"https://8011fb15-1b4e-4b6c-afa2-744b711a5bfe.jrds.wcus.azure-automation.net/automationAccounts/8011fb15-1b4e-4b6c-afa2-744b711a5bfe\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2022-10-17T12:24:35.35+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2022-08-08",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMi0wOC0wOA==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2d000812-ac87-4469-ad8c-e90fc3124856"
+          "e0db09ba-7e6e-4877-8f54-167c5bb92274"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -219,40 +282,34 @@
           "no-cache"
         ],
         "ocp-automation-accountid": [
-          "286f8d8e-9517-44e7-ad97-80ac5b37dbaa"
+          "8011fb15-1b4e-4b6c-afa2-744b711a5bfe"
         ],
         "x-ms-request-id": [
-          "2d000812-ac87-4469-ad8c-e90fc3124856"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "e0db09ba-7e6e-4877-8f54-167c5bb92274"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "988c426e-0257-476b-8087-6769cd242115"
+          "b6f57e43-739a-4700-848a-71010c7ddd13"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T063340Z:988c426e-0257-476b-8087-6769cd242115"
+          "JIOINDIAWEST:20221017T065454Z:b6f57e43-739a-4700-848a-71010c7ddd13"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 06:33:39 GMT"
+          "Mon, 17 Oct 2022 06:54:53 GMT"
         ],
         "Content-Length": [
-          "774"
+          "1198"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -261,26 +318,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"account-powershell-test\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {\r\n    \"lm\": \"jk\"\r\n  },\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://286f8d8e-9517-44e7-ad97-80ac5b37dbaa.agentsvc.wcus.azure-automation.net/accounts/286f8d8e-9517-44e7-ad97-80ac5b37dbaa\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"creationTime\": \"2021-04-04T12:03:16.55+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2021-04-04T12:03:34.12+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"account-powershell-test\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n    \"lastModifiedAt\": \"2022-10-17T12:24:44.17+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {\r\n    \"lm\": \"jk\"\r\n  },\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://8011fb15-1b4e-4b6c-afa2-744b711a5bfe.agentsvc.wcus.azure-automation.net/accounts/8011fb15-1b4e-4b6c-afa2-744b711a5bfe\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"automationHybridServiceUrl\": \"https://8011fb15-1b4e-4b6c-afa2-744b711a5bfe.jrds.wcus.azure-automation.net/automationAccounts/8011fb15-1b4e-4b6c-afa2-744b711a5bfe\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2022-10-17T12:24:44.17+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2022-08-08",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMi0wOC0wOA==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Free\"\r\n    }\r\n  },\r\n  \"name\": \"account-powershell-test\",\r\n  \"location\": \"West Central US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4ee8ab1b-4990-4a98-9187-0e34e9043342"
+          "a93ad50a-98ce-4adf-9c15-fb27a7ddb7b0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -289,6 +345,7 @@
           "143"
         ]
       },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Free\"\r\n    }\r\n  },\r\n  \"name\": \"account-powershell-test\",\r\n  \"location\": \"West Central US\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -297,46 +354,34 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2020-01-13-preview"
+          "https://management.azure.com/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2022-08-08"
         ],
         "x-ms-request-id": [
-          "4ee8ab1b-4990-4a98-9187-0e34e9043342"
-        ],
-        "x-ms-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2020-01-13-preview"
-        ],
-        "ocp-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2020-01-13-preview"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "a93ad50a-98ce-4adf-9c15-fb27a7ddb7b0"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "c13f3040-1ff2-41fb-a24d-67a0522cb042"
+          "c7c52136-5ee6-4fd7-bbd2-ffc52dcace9f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T063320Z:c13f3040-1ff2-41fb-a24d-67a0522cb042"
+          "WESTINDIA:20221017T065433Z:c7c52136-5ee6-4fd7-bbd2-ffc52dcace9f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 06:33:19 GMT"
+          "Mon, 17 Oct 2022 06:54:32 GMT"
         ],
         "Content-Length": [
-          "733"
+          "1167"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -345,26 +390,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"account-powershell-test\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://286f8d8e-9517-44e7-ad97-80ac5b37dbaa.agentsvc.wcus.azure-automation.net/accounts/286f8d8e-9517-44e7-ad97-80ac5b37dbaa\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"creationTime\": \"2021-04-04T12:03:16.55+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2021-04-04T12:03:16.55+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"account-powershell-test\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n    \"lastModifiedAt\": \"2022-10-17T12:24:30.3266667+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://8011fb15-1b4e-4b6c-afa2-744b711a5bfe.agentsvc.wcus.azure-automation.net/accounts/8011fb15-1b4e-4b6c-afa2-744b711a5bfe\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"automationHybridServiceUrl\": \"https://8011fb15-1b4e-4b6c-afa2-744b711a5bfe.jrds.wcus.azure-automation.net/automationAccounts/8011fb15-1b4e-4b6c-afa2-744b711a5bfe\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2022-10-17T12:24:30.3266667+05:30\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2022-08-08",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMi0wOC0wOA==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Free\"\r\n    }\r\n  },\r\n  \"name\": \"account-powershell-test\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {\r\n    \"gg\": \"hh\",\r\n    \"abc\": \"def\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4317d791-521a-49c4-826b-537e6d214630"
+          "179180b1-16b6-4616-aa92-e5d8d21496ee"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -373,6 +417,7 @@
           "197"
         ]
       },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Free\"\r\n    }\r\n  },\r\n  \"name\": \"account-powershell-test\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {\r\n    \"abc\": \"def\",\r\n    \"gg\": \"hh\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -381,37 +426,31 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4317d791-521a-49c4-826b-537e6d214630"
+          "179180b1-16b6-4616-aa92-e5d8d21496ee"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "e4008c90-31c5-41bc-a0c0-5d8e4fe8d704"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20221017T065438Z:e4008c90-31c5-41bc-a0c0-5d8e4fe8d704"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-correlation-request-id": [
-          "c4379306-014f-4228-bf44-2e6e96a6fd9f"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T063332Z:c4379306-014f-4228-bf44-2e6e96a6fd9f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 06:33:31 GMT"
+          "Mon, 17 Oct 2022 06:54:38 GMT"
         ],
         "Content-Length": [
-          "759"
+          "1178"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -420,26 +459,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"account-powershell-test\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {\r\n    \"gg\": \"hh\",\r\n    \"abc\": \"def\"\r\n  },\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://286f8d8e-9517-44e7-ad97-80ac5b37dbaa.agentsvc.wcus.azure-automation.net/accounts/286f8d8e-9517-44e7-ad97-80ac5b37dbaa\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"creationTime\": \"2021-04-04T12:03:16.55+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2021-04-04T12:03:26.3866667+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"account-powershell-test\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n    \"lastModifiedAt\": \"2022-10-17T12:24:35.35+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {\r\n    \"abc\": \"def\",\r\n    \"gg\": \"hh\"\r\n  },\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://8011fb15-1b4e-4b6c-afa2-744b711a5bfe.agentsvc.wcus.azure-automation.net/accounts/8011fb15-1b4e-4b6c-afa2-744b711a5bfe\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"automationHybridServiceUrl\": \"https://8011fb15-1b4e-4b6c-afa2-744b711a5bfe.jrds.wcus.azure-automation.net/automationAccounts/8011fb15-1b4e-4b6c-afa2-744b711a5bfe\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2022-10-17T12:24:35.35+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2022-08-08",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMi0wOC0wOA==",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\"\r\n    }\r\n  },\r\n  \"name\": \"account-powershell-test\",\r\n  \"tags\": {\r\n    \"lm\": \"jk\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f23388fd-e446-469e-bf31-1871479750ef"
+          "d18b89f1-1cba-4408-bfd0-e7668c445b9d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -448,6 +486,7 @@
           "145"
         ]
       },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\"\r\n    }\r\n  },\r\n  \"name\": \"account-powershell-test\",\r\n  \"tags\": {\r\n    \"lm\": \"jk\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -456,37 +495,31 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f23388fd-e446-469e-bf31-1871479750ef"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "d18b89f1-1cba-4408-bfd0-e7668c445b9d"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "4db0a2e1-71e2-42ff-bdd2-9e2eea5a69e2"
+          "ff4e258c-05f3-478c-8c75-c37accdd7bae"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T063337Z:4db0a2e1-71e2-42ff-bdd2-9e2eea5a69e2"
+          "JIOINDIAWEST:20221017T065447Z:ff4e258c-05f3-478c-8c75-c37accdd7bae"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 06:33:36 GMT"
+          "Mon, 17 Oct 2022 06:54:46 GMT"
         ],
         "Content-Length": [
-          "742"
+          "1166"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -495,28 +528,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"account-powershell-test\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {\r\n    \"lm\": \"jk\"\r\n  },\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://286f8d8e-9517-44e7-ad97-80ac5b37dbaa.agentsvc.wcus.azure-automation.net/accounts/286f8d8e-9517-44e7-ad97-80ac5b37dbaa\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"creationTime\": \"2021-04-04T12:03:16.55+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2021-04-04T12:03:34.12+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"account-powershell-test\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n    \"lastModifiedAt\": \"2022-10-17T12:24:44.17+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"West Central US\",\r\n  \"tags\": {\r\n    \"lm\": \"jk\"\r\n  },\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://8011fb15-1b4e-4b6c-afa2-744b711a5bfe.agentsvc.wcus.azure-automation.net/accounts/8011fb15-1b4e-4b6c-afa2-744b711a5bfe\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"automationHybridServiceUrl\": \"https://8011fb15-1b4e-4b6c-afa2-744b711a5bfe.jrds.wcus.azure-automation.net/automationAccounts/8011fb15-1b4e-4b6c-afa2-744b711a5bfe\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2022-10-17T12:24:44.17+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/providers/Microsoft.Automation/automationAccounts?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHM/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/providers/Microsoft.Automation/automationAccounts?api-version=2022-08-08",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHM/YXBpLXZlcnNpb249MjAyMi0wOC0wOA==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "016783f0-5a86-4f8f-a79e-bd31839aa7f5"
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -525,21 +558,45 @@
           "no-cache"
         ],
         "x-ms-original-request-ids": [
-          "016783f0-5a86-4f8f-a79e-bd31839aa7f5",
-          "016783f0-5a86-4f8f-a79e-bd31839aa7f5",
-          "016783f0-5a86-4f8f-a79e-bd31839aa7f5"
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a",
+          "f716485d-a2d6-4faa-98d8-fe8ea7b8e46a"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-request-id": [
-          "66d937b0-1868-44bb-9392-f745bbaa56b6"
+          "424a3151-ef5c-483b-9e05-dbe9fc54d24e"
         ],
         "x-ms-correlation-request-id": [
-          "66d937b0-1868-44bb-9392-f745bbaa56b6"
+          "424a3151-ef5c-483b-9e05-dbe9fc54d24e"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T063338Z:66d937b0-1868-44bb-9392-f745bbaa56b6"
+          "JIOINDIAWEST:20221017T065449Z:424a3151-ef5c-483b-9e05-dbe9fc54d24e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -548,7 +605,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 06:33:38 GMT"
+          "Mon, 17 Oct 2022 06:54:49 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -557,31 +614,31 @@
           "-1"
         ],
         "Content-Length": [
-          "1506"
+          "42986"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-02/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"fbs-aa-01\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-03-31T12:00:07.25+05:30\",\r\n        \"lastModifiedTime\": \"2021-03-31T14:04:36.72+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/OlenaTestRG16/providers/Microsoft.Automation/automationAccounts/OlenaTestPython\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"OlenaTestPython\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2017-03-13T09:52:47.49+05:30\",\r\n        \"lastModifiedTime\": \"2021-03-15T22:18:21.71+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n      \"location\": \"eastus\",\r\n      \"name\": \"fbs-aa-01\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-04-03T22:47:41.42+05:30\",\r\n        \"lastModifiedTime\": \"2021-04-03T22:47:41.42+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n      \"location\": \"West Central US\",\r\n      \"name\": \"account-powershell-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {\r\n        \"lm\": \"jk\"\r\n      },\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-04-04T12:03:16.55+05:30\",\r\n        \"lastModifiedTime\": \"2021-04-04T12:03:34.12+05:30\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/rgmpentajpe/providers/Microsoft.Automation/automationAccounts/aa-mpenta-jpe\",\r\n      \"location\": \"japaneast\",\r\n      \"name\": \"aa-mpenta-jpe\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2017-04-13T11:18:04.44+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/roramc-testRG/providers/Microsoft.Automation/automationAccounts/Atmn1234\",\r\n      \"location\": \"Japan East\",\r\n      \"name\": \"Atmn1234\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2019-11-25T17:09:20.437+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/DefaultResourceGroup-EJP/providers/Microsoft.Automation/automationAccounts/Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-EJP\",\r\n      \"location\": \"japaneast\",\r\n      \"name\": \"Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-EJP\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2019-03-06T03:35:02.823+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/demoha-jpe-rg2/providers/Microsoft.Automation/automationAccounts/demoha-jpe-aa2\",\r\n      \"location\": \"japaneast\",\r\n      \"name\": \"demoha-jpe-aa2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-07-02T11:41:18.56+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/Test-pl-changes/providers/Microsoft.Automation/automationAccounts/krmanupa-aa-jpe\",\r\n      \"location\": \"japaneast\",\r\n      \"name\": \"krmanupa-aa-jpe\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-04-30T21:27:20.883+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-cdm-rg/providers/Microsoft.Automation/automationAccounts/swjai-aa-je-test\",\r\n      \"location\": \"japaneast\",\r\n      \"name\": \"swjai-aa-je-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-03-13T20:01:13.15+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-arm-rg/providers/Microsoft.Automation/automationAccounts/swjai-arm-aa2\",\r\n      \"location\": \"japaneast\",\r\n      \"name\": \"swjai-arm-aa2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-04-27T11:40:11.477+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-billing-rg/providers/Microsoft.Automation/automationAccounts/swjai-billing-aa\",\r\n      \"location\": \"japaneast\",\r\n      \"name\": \"swjai-billing-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-03-23T16:23:43.13+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-cdm-rg/providers/Microsoft.Automation/automationAccounts/swjai-cross-aa\",\r\n      \"location\": \"japaneast\",\r\n      \"name\": \"swjai-cross-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-07-16T11:29:57.49+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-billing-j-rg/providers/Microsoft.Automation/automationAccounts/swjai-japan-billing-aa\",\r\n      \"location\": \"japaneast\",\r\n      \"name\": \"swjai-japan-billing-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-03-27T15:27:58.167+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/vinkumar-CDMoaasINT-rg/providers/Microsoft.Automation/automationAccounts/vinkumar-aa22\",\r\n      \"location\": \"japaneast\",\r\n      \"name\": \"vinkumar-aa22\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-06-10T19:06:09.74+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.24+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-eus/providers/Microsoft.Automation/automationAccounts/aa-mpenta-test2\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"aa-mpenta-test2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {\r\n        \"StartStopVMVersion\": \"1.0.0.0\"\r\n      },\r\n      \"properties\": {\r\n        \"creationTime\": \"2016-11-01T04:27:47.14+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\",\r\n        \"publicNetworkAccess\": false\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/OaaSCSJGD3DBOQZ7ALDIJOEIVBWP3SGST5Y352S4EGA4NP3ZD7A4G6S7RQ-East-US/providers/Microsoft.Automation/automationAccounts/atchub\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"atchub\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-08-12T00:47:18.19+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/defaultresourcegroup-eus2/providers/Microsoft.Automation/automationAccounts/Automate-6466415-EUS\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"Automate-6466415-EUS\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-09-19T23:01:07.72+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/defaultresourcegroup-eus/providers/Microsoft.Automation/automationAccounts/Automate-8295506-EUS2\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"Automate-8295506-EUS2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-09-19T23:40:23.767+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/defaultresourcegroup-eus/providers/Microsoft.Automation/automationAccounts/Automate-9285612-EUS2\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"Automate-9285612-EUS2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-09-20T00:20:32.877+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/RegionValidation/providers/Microsoft.Automation/automationAccounts/ClearValidationResources\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"ClearValidationResources\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-02-09T21:10:26.47+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/OaaSCSJGD3DBOQZ7ALDIJOEIVBWP3SGST5Y352S4EGA4NP3ZD7A4G6S7RQ-East-US/providers/Microsoft.Automation/automationAccounts/garyke\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"garyke\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2014-04-03T04:43:12.46+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-eus/providers/Microsoft.Automation/automationAccounts/garykeAccountJeffZabel1WS\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"garykeAccountJeffZabel1WS\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2016-10-06T23:17:06.973+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/katwill-eastus2/providers/Microsoft.Automation/automationAccounts/katwill-eastus2\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"katwill-eastus2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2019-06-22T01:03:13.537+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-eus/providers/Microsoft.Automation/automationAccounts/khughes07252017c\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"khughes07252017c\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2017-07-27T00:14:54.02+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-eus/providers/Microsoft.Automation/automationAccounts/khughes-mms-eus-account\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"khughes-mms-eus-account\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2016-07-28T05:47:05.743+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-eus/providers/Microsoft.Automation/automationAccounts/khughes-mms-eus-basic-account\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"khughes-mms-eus-basic-account\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2016-08-02T06:08:25.823+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mahjacmktest/providers/Microsoft.Automation/automationAccounts/mahja-eus2\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"mahja-eus2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-01-15T17:06:22.283+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/asjtestRG/providers/Microsoft.Automation/automationAccounts/sdkupdateAA2\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"sdkupdateAA2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-10-21T19:35:17.08+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-eus/providers/Microsoft.Automation/automationAccounts/stas17\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"stas17\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2017-03-29T05:08:59.92+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-cdm-rg/providers/Microsoft.Automation/automationAccounts/swjai-eus2-aa\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"swjai-eus2-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-07-13T14:25:27.36+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-cdm-rg/providers/Microsoft.Automation/automationAccounts/swjai-eus2-aa5\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"swjai-eus2-aa5\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-10-06T12:22:31.967+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-billing-rg-test/providers/Microsoft.Automation/automationAccounts/swjai-eus-billing-aa\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"swjai-eus-billing-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-03-27T15:31:24.84+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-targ/providers/Microsoft.Automation/automationAccounts/swjai-ta2-eu2\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"swjai-ta2-eu2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-11-30T12:35:21.367+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/OaaSCSJGD3DBOQZ7ALDIJOEIVBWP3SGST5Y352S4EGA4NP3ZD7A4G6S7RQ-East-US/providers/Microsoft.Automation/automationAccounts/testaccount1\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"testaccount1\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2014-12-04T23:23:11.953+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/krmanupa-icm-test/providers/Microsoft.Automation/automationAccounts/test-kramanupa-eus2\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"test-kramanupa-eus2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-05-13T13:35:05.57+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/krmanupa-eus2/providers/Microsoft.Automation/automationAccounts/test-krmanupa-eus2\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"test-krmanupa-eus2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-05-21T15:44:21.667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/test-MultiHoming/providers/Microsoft.Automation/automationAccounts/test-multiHoming\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"test-multiHoming\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-05-27T17:48:02.203+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/prchenRG/providers/Microsoft.Automation/automationAccounts/testprchenAutoAccount\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"testprchenAutoAccount\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-09-14T16:25:26.74+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-eus/providers/Microsoft.Automation/automationAccounts/UpdatesAtchubAutoAcct\",\r\n      \"location\": \"eastus2\",\r\n      \"name\": \"UpdatesAtchubAutoAcct\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2016-10-27T02:20:56.51+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:54.83+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Automation/automationAccounts/Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-WEU\",\r\n      \"location\": \"westeurope\",\r\n      \"name\": \"Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-WEU\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2019-11-01T11:38:11.307+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.17+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/azharrg/providers/Microsoft.Automation/automationAccounts/newweuaa\",\r\n      \"location\": \"westeurope\",\r\n      \"name\": \"newweuaa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-02-26T11:43:40.773+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.17+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/12seuasRG/providers/Microsoft.Automation/automationAccounts/nizlati\",\r\n      \"location\": \"westeurope\",\r\n      \"name\": \"nizlati\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2019-03-25T15:00:14.577+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.17+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/krmanupa/providers/Microsoft.Automation/automationAccounts/test-krmanupa-df\",\r\n      \"location\": \"westeurope\",\r\n      \"name\": \"test-krmanupa-df\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-03-26T22:01:51.92+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.17+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/azharrg/providers/Microsoft.Automation/automationAccounts/weaatesting\",\r\n      \"location\": \"westeurope\",\r\n      \"name\": \"weaatesting\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-02-25T22:04:37.39+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.17+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-oval-SAN\",\r\n      \"location\": \"southafricanorth\",\r\n      \"name\": \"nikhim-oval-SAN\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-06-22T16:35:51.33+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.6766667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-ukw-oval\",\r\n      \"location\": \"ukwest\",\r\n      \"name\": \"nikhim-ukw-oval\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-06-24T03:23:09.86+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.09+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/carloctestrg/providers/Microsoft.Automation/automationAccounts/carlocstzntest1\",\r\n      \"location\": \"switzerlandnorth\",\r\n      \"name\": \"carlocstzntest1\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2019-09-17T19:46:05.0433333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.1533333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-aum-mpac-test\",\r\n      \"location\": \"switzerlandnorth\",\r\n      \"name\": \"nikhim-aum-mpac-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {\r\n        \"Delete\": \"True\"\r\n      },\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-09-29T00:15:40.7566667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.1533333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-aum-swiz-test-aa\",\r\n      \"location\": \"switzerlandnorth\",\r\n      \"name\": \"nikhim-aum-swiz-test-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-09-20T23:47:33.9533333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.1533333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-oval-test\",\r\n      \"location\": \"switzerlandnorth\",\r\n      \"name\": \"nikhim-oval-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-03-09T15:41:09.97+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.1533333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhimsignofftest\",\r\n      \"location\": \"switzerlandnorth\",\r\n      \"name\": \"nikhimsignofftest\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {\r\n        \"Delete\": \"True\"\r\n      },\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-10-07T16:58:36.71+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.1533333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-switz-test\",\r\n      \"location\": \"switzerlandnorth\",\r\n      \"name\": \"nikhim-switz-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {\r\n        \"Delete\": \"True\"\r\n      },\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-09-10T15:51:19.7+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.1533333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/privateLink/providers/Microsoft.Automation/automationAccounts/STZN-PLTestingAutomationAccount\",\r\n      \"location\": \"SwitzerlandNorth\",\r\n      \"name\": \"STZN-PLTestingAutomationAccount\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-03-02T14:44:02.1966667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.1533333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-new-region/providers/Microsoft.Automation/automationAccounts/swjai-ne-aa\",\r\n      \"location\": \"norwayeast\",\r\n      \"name\": \"swjai-ne-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-03-05T13:55:31.7766667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.1833333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-new-region/providers/Microsoft.Automation/automationAccounts/swjai-uae-aa\",\r\n      \"location\": \"uaenorth\",\r\n      \"name\": \"swjai-uae-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-03-05T13:56:55.6333333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.54+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-swizwest-oval\",\r\n      \"location\": \"switzerlandwest\",\r\n      \"name\": \"nikhim-swizwest-oval\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-06-24T03:18:10.0933333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.2933333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-ac2-oval\",\r\n      \"location\": \"australiacentral2\",\r\n      \"name\": \"nikhim-ac2-oval\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-06-24T03:21:03.1266667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.98+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-test-southindia\",\r\n      \"location\": \"southindia\",\r\n      \"name\": \"nikhim-test-southindia\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-06-22T00:52:30.57+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.17+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/AnatoliB-SEA/providers/Microsoft.Automation/automationAccounts/AnatoliB-SEA\",\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"AnatoliB-SEA\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2018-08-22T01:30:41.317+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.49+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/DefaultResourceGroup-SEA/providers/Microsoft.Automation/automationAccounts/Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-SEA\",\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-SEA\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2017-11-27T11:00:53.27+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.49+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/OMSSolutionRP-DoNotDelete/providers/Microsoft.Automation/automationAccounts/OMSSolutionRP-DoNotDelete\",\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"OMSSolutionRP-DoNotDelete\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2016-08-24T06:20:15.603+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.49+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/OMSSolutionRPSQL-DoNotDelete/providers/Microsoft.Automation/automationAccounts/OMSSolutionRPSQL-DoNotDelete\",\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"OMSSolutionRPSQL-DoNotDelete\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2016-09-09T21:58:06.517+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.49+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/DefaultResourceGroup-SCUS/providers/Microsoft.Automation/automationAccounts/Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-SCUS\",\r\n      \"location\": \"southcentralus\",\r\n      \"name\": \"Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-SCUS\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-03-06T02:14:04.537+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.977+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/Default-Storage-SouthCentralUS/providers/Microsoft.Automation/automationAccounts/garykegallerytest\",\r\n      \"location\": \"South Central US\",\r\n      \"name\": \"garykegallerytest\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-10-14T22:19:24.317+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.977+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/Default-Storage-SouthCentralUS/providers/Microsoft.Automation/automationAccounts/garykegallerytest2\",\r\n      \"location\": \"South Central US\",\r\n      \"name\": \"garykegallerytest2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-10-14T23:53:04.11+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.977+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/azharrg/providers/Microsoft.Automation/automationAccounts/scustesting\",\r\n      \"location\": \"southcentralus\",\r\n      \"name\": \"scustesting\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-02-25T21:58:01.2+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.977+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-new-region/providers/Microsoft.Automation/automationAccounts/swjai-ncus-aa\",\r\n      \"location\": \"northcentralus\",\r\n      \"name\": \"swjai-ncus-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-03-05T13:57:44.117+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.933+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/WatcherBilling/providers/Microsoft.Automation/automationAccounts/WatcherBillingNorthCentral\",\r\n      \"location\": \"northcentralus\",\r\n      \"name\": \"WatcherBillingNorthCentral\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2019-12-17T23:12:37.747+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.933+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/krmanupa/providers/Microsoft.Automation/automationAccounts/krmanupa-cus\",\r\n      \"location\": \"centralus\",\r\n      \"name\": \"krmanupa-cus\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-08-07T17:20:57.2733333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:55.9066667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/aysharm-policy-test/providers/Microsoft.Automation/automationAccounts/aa2-testWUS\",\r\n      \"location\": \"westus\",\r\n      \"name\": \"aa2-testWUS\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-01-28T15:21:21.29+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.0633333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/abvarma/providers/Microsoft.Automation/automationAccounts/test-ac\",\r\n      \"location\": \"australiacentral\",\r\n      \"name\": \"test-ac\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-07-10T17:21:01.3566667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.67+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-new-region/providers/Microsoft.Automation/automationAccounts/swjai-kc-aa\",\r\n      \"location\": \"koreacentral\",\r\n      \"name\": \"swjai-kc-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-03-05T14:00:03.07+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.6666667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/RegionValidation/providers/Microsoft.Automation/automationAccounts/ClearRegionValidationResourcesUpdated\",\r\n      \"location\": \"eastus\",\r\n      \"name\": \"ClearRegionValidationResourcesUpdated\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2022-02-23T13:28:18.3633333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.22+05:30\",\r\n        \"publicNetworkAccess\": true,\r\n        \"disableLocalAuth\": false\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/jtamber-msi/providers/Microsoft.Automation/automationAccounts/jtamber-eus\",\r\n      \"location\": \"eastus\",\r\n      \"name\": \"jtamber-eus\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-02-27T15:44:14.7866667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.22+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/meghnan-rg1/providers/Microsoft.Automation/automationAccounts/meghnan-automationacc\",\r\n      \"location\": \"eastus\",\r\n      \"name\": \"meghnan-automationacc\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-08-10T15:27:33.0966667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.22+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/meghnan-rg1/providers/Microsoft.Automation/automationAccounts/meghnan-test\",\r\n      \"location\": \"eastus\",\r\n      \"name\": \"meghnan-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-09-10T18:13:07.7066667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.22+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/callisto/providers/Microsoft.Automation/automationAccounts/sdk-testacc\",\r\n      \"location\": \"eastus\",\r\n      \"name\": \"sdk-testacc\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2022-08-16T10:27:15.9533333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.22+05:30\",\r\n        \"publicNetworkAccess\": true,\r\n        \"disableLocalAuth\": false\r\n      },\r\n      \"identity\": {\r\n        \"type\": \"SystemAssigned\",\r\n        \"principalId\": \"9955906e-b7b9-4543-ba16-1e2a721daccd\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/shreuss/providers/Microsoft.Automation/automationAccounts/shrjaineuss\",\r\n      \"location\": \"eastus\",\r\n      \"name\": \"shrjaineuss\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-08-05T20:43:56.93+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.22+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-rg/providers/Microsoft.Automation/automationAccounts/swjai-eus-taa\",\r\n      \"location\": \"eastus\",\r\n      \"name\": \"swjai-eus-taa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-11-17T10:53:27.83+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.22+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-targ/providers/Microsoft.Automation/automationAccounts/swjai-ta1-eu\",\r\n      \"location\": \"eastus\",\r\n      \"name\": \"swjai-ta1-eu\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-11-30T12:34:43.1+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.22+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/DefaultResourceGroup-WUS2/providers/Microsoft.Automation/automationAccounts/Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-WUS2\",\r\n      \"location\": \"westus2\",\r\n      \"name\": \"Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-WUS2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2019-06-19T00:36:28.4466667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.36+05:30\",\r\n        \"publicNetworkAccess\": false\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/katwill-wus2-validation/providers/Microsoft.Automation/automationAccounts/katwill-automation-wus2\",\r\n      \"location\": \"westus2\",\r\n      \"name\": \"katwill-automation-wus2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2019-04-13T06:45:41.9166667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.36+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-test-rg/providers/Microsoft.Automation/automationAccounts/nikhim-test-aa2\",\r\n      \"location\": \"westus2\",\r\n      \"name\": \"nikhim-test-aa2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-11-25T15:45:44.5433333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.36+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/vmtestgroup/providers/Microsoft.Automation/automationAccounts/mahjauks\",\r\n      \"location\": \"uksouth\",\r\n      \"name\": \"mahjauks\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-05-11T22:51:51.91+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.67+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/callisto/providers/Microsoft.Automation/automationAccounts/test-recover-1\",\r\n      \"location\": \"uksouth\",\r\n      \"name\": \"test-recover-1\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2022-08-25T11:49:07.1966667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.67+05:30\",\r\n        \"publicNetworkAccess\": true,\r\n        \"disableLocalAuth\": false\r\n      },\r\n      \"identity\": {\r\n        \"type\": \"SystemAssigned\",\r\n        \"principalId\": \"634c23ff-403c-491c-9392-20d3593ecc6b\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test\",\r\n      \"location\": \"West Central US\",\r\n      \"name\": \"account-powershell-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {\r\n        \"lm\": \"jk\"\r\n      },\r\n      \"properties\": {\r\n        \"creationTime\": \"2022-10-17T12:24:30.3266667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-17T12:24:44.17+05:30\",\r\n        \"disableLocalAuth\": false\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/example914/providers/Microsoft.Automation/automationAccounts/Automate-4794944-WCUS\",\r\n      \"location\": \"westcentralus\",\r\n      \"name\": \"Automate-4794944-WCUS\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2017-09-15T07:22:48.41+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.5833333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/defaultresourcegroup-wcus/providers/Microsoft.Automation/automationAccounts/Automate-6374655-WCUS\",\r\n      \"location\": \"westcentralus\",\r\n      \"name\": \"Automate-6374655-WCUS\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2017-05-26T01:24:27.6333333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-16T21:42:14.2166667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/DefaultResourceGroup-WCUS/providers/Microsoft.Automation/automationAccounts/Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-WCUS\",\r\n      \"location\": \"westcentralus\",\r\n      \"name\": \"Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-WCUS\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2017-05-25T03:38:47.17+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.5833333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/DefaultResourceGroup-WCUS/providers/Microsoft.Automation/automationAccounts/ruhim-wcus\",\r\n      \"location\": \"westcentralus\",\r\n      \"name\": \"ruhim-wcus\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2017-08-23T10:34:12.58+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.5833333+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-noe-test1\",\r\n      \"location\": \"northeurope\",\r\n      \"name\": \"nikhim-noe-test1\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-12-08T15:53:12.993+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.777+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-northeurope-test\",\r\n      \"location\": \"northeurope\",\r\n      \"name\": \"nikhim-northeurope-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-12-08T12:43:33.423+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.777+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/OaaSSolutionRP-DoNotDelete/providers/Microsoft.Automation/automationAccounts/OaaSSolutionRP-DoNotDelete\",\r\n      \"location\": \"canadacentral\",\r\n      \"name\": \"OaaSSolutionRP-DoNotDelete\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2016-08-15T08:03:55.26+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:56.67+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/DefaultResourceGroup-CIN/providers/Microsoft.Automation/automationAccounts/Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-CIN\",\r\n      \"location\": \"centralindia\",\r\n      \"name\": \"Automate-cd45f23b-b832-4fa4-a434-1bf7e6f14a5a-CIN\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-03-26T16:17:50.733+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:57.46+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/krmanupa-autovalidate/providers/Microsoft.Automation/automationAccounts/krmanupa-final-auto-create\",\r\n      \"location\": \"centralindia\",\r\n      \"name\": \"krmanupa-final-auto-create\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-08-26T15:35:06.033+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:57.46+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-aum-aa-task\",\r\n      \"location\": \"centralindia\",\r\n      \"name\": \"nikhim-aum-aa-task\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {\r\n        \"Delete\": \"True\"\r\n      },\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-04-08T09:17:12.637+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:57.46+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-aum-centralIndia\",\r\n      \"location\": \"centralindia\",\r\n      \"name\": \"nikhim-aum-centralIndia\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-09-15T23:30:53.157+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:57.46+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-scopeconfig-test\",\r\n      \"location\": \"centralindia\",\r\n      \"name\": \"nikhim-scopeconfig-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-11-26T23:44:58.363+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:57.46+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-aa-frc-test\",\r\n      \"location\": \"francecentral\",\r\n      \"name\": \"nikhim-aa-frc-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-11-26T15:54:50.6133333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:57.04+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-fc-test2\",\r\n      \"location\": \"francecentral\",\r\n      \"name\": \"nikhim-fc-test2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {\r\n        \"Delete\": \"True\"\r\n      },\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-12-08T15:52:22.79+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:57.04+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-template-fc\",\r\n      \"location\": \"francecentral\",\r\n      \"name\": \"nikhim-template-fc\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {\r\n        \"Delete\": \"True\"\r\n      },\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-12-17T01:39:56.45+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:57.04+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/swjai-cdm-rg/providers/Microsoft.Automation/automationAccounts/swjai-france\",\r\n      \"location\": \"francecentral\",\r\n      \"name\": \"swjai-france\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-12-07T14:50:25.61+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:57.04+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/dsc/providers/Microsoft.Automation/automationAccounts/AMKtest2\",\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"AMKtest2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-11-14T06:45:27.8333333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:59.2266667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/AutomationSourceControlScenarioValidationRGc122603/providers/Microsoft.Automation/automationAccounts/AutomationSourceControlValidationc122603\",\r\n      \"location\": \"East US 2\",\r\n      \"name\": \"AutomationSourceControlValidationc122603\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-12-15T00:45:21.3033333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:59.2266667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/krmanupa/providers/Microsoft.Automation/automationAccounts/krmanupa-extension-test\",\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"krmanupa-extension-test\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-07-02T21:09:27.34+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:59.2266667+05:30\",\r\n        \"publicNetworkAccess\": false,\r\n        \"disableLocalAuth\": false\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mahja/providers/Microsoft.Automation/automationAccounts/mahja-recovery\",\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"mahja-recovery\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-09-29T17:04:40.1+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:59.2266667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-aum-first-rg/providers/Microsoft.Automation/automationAccounts/nikhim-aum-aa-eap\",\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"nikhim-aum-aa-eap\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-04-28T12:10:46.99+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:59.2266667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-test-rg/providers/Microsoft.Automation/automationAccounts/nikhim-test-aa\",\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"nikhim-test-aa\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2020-11-10T12:24:04.1666667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:59.2266667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/nikhim-py3-test/providers/Microsoft.Automation/automationAccounts/nikhim-test-agent-canary\",\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"nikhim-test-agent-canary\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-02-22T11:06:49.16+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:59.2266667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mahja/providers/Microsoft.Automation/automationAccounts/test-recovery2\",\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"test-recovery2\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2021-09-29T11:35:39.99+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-13T20:17:59.2266667+05:30\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/BugBashTara-Testing/providers/Microsoft.Automation/automationAccounts/TestTara\",\r\n      \"location\": \"centraluseuap\",\r\n      \"name\": \"TestTara\",\r\n      \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"creationTime\": \"2022-10-17T11:58:13.13+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-17T11:58:13.13+05:30\",\r\n        \"publicNetworkAccess\": true,\r\n        \"disableLocalAuth\": false\r\n      },\r\n      \"identity\": {\r\n        \"type\": \"SystemAssigned\",\r\n        \"principalId\": \"47f48eed-cf47-41a6-ad42-771ae1953e08\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/PowerShellTest/providers/Microsoft.Automation/automationAccounts/account-powershell-test?api-version=2022-08-08",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYWNjb3VudC1wb3dlcnNoZWxsLXRlc3Q/YXBpLXZlcnNpb249MjAyMi0wOC0wOA==",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "23af181c-5202-4436-bfcb-509d52a8c8de"
+          "ae56bbdf-8cfb-474f-bc1e-d94af3daaba3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -590,34 +647,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "23af181c-5202-4436-bfcb-509d52a8c8de"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "ae56bbdf-8cfb-474f-bc1e-d94af3daaba3"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "517a0699-c255-4554-bf80-f26ed673adf0"
+          "a02ea094-bdf2-453b-aa47-774b8c83422d"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T063356Z:517a0699-c255-4554-bf80-f26ed673adf0"
+          "JIOINDIAWEST:20221017T065510Z:a02ea094-bdf2-453b-aa47-774b8c83422d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 06:33:55 GMT"
+          "Mon, 17 Oct 2022 06:55:10 GMT"
         ],
         "Expires": [
           "-1"
@@ -632,6 +683,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+    "SubscriptionId": "cd45f23b-b832-4fa4-a434-1bf7e6f14a5a"
   }
 }

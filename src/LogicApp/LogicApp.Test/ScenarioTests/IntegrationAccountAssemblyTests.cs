@@ -13,21 +13,16 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
-    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
     /// <summary>
     /// Scenario tests for integration account assembly commands.
     /// </summary>
-    public class IntegrationAccountAssemblyTests : RMTestBase
+    public class IntegrationAccountAssemblyTests : LogicAppTestRunner
     {
-        public XunitTracingInterceptor _logger;
-        public IntegrationAccountAssemblyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationAccountAssemblyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -37,7 +32,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-NewIntegrationAccountAssembly");
+            TestRunner.RunTestScript("Test-NewIntegrationAccountAssembly");
         }
 
         /// <summary>
@@ -47,7 +42,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountAssembly");
+            TestRunner.RunTestScript("Test-GetIntegrationAccountAssembly");
         }
 
         /// <summary>
@@ -57,7 +52,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountAssembly");
+            TestRunner.RunTestScript("Test-RemoveIntegrationAccountAssembly");
         }
 
         /// <summary>
@@ -67,7 +62,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAssembly()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-SetIntegrationAccountAssembly");
+            TestRunner.RunTestScript("Test-SetIntegrationAccountAssembly");
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ The **New-AzCosmosDBCassandraClusterKey** creates a new CosmosDB Cassandra Clust
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBCassandraClusterKey -Name <String> -OrderBy <String>
+New-AzCosmosDBCassandraClusterKey -Name "name" -OrderBy "Asc"
+```
 
+```output
 Name   OrderBy
 ----   -------
 {name}  Asc

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Maps
-online version: https://docs.microsoft.com/powershell/module/az.maps/new-azmapscreator
+online version: https://learn.microsoft.com/powershell/module/az.maps/new-azmapscreator
 schema: 2.0.0
 ---
 
@@ -29,8 +29,10 @@ It requires an account to exist before it can be created.
 
 ### Example 1: Create a Maps Creator resource
 ```powershell
-PS C:\> New-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01 -Location eastus2 -StorageUnit 3
+New-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01 -Location eastus2 -StorageUnit 3
+```
 
+```output
 Location Name       Type
 -------- ----       ----
 eastus2  creator-01 Microsoft.Maps/accounts/creators

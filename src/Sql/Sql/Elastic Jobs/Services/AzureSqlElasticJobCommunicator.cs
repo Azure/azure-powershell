@@ -279,10 +279,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <summary>
         /// Gets the associated Job Credential associated to the Azure SQL Database Agent
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="serverName"></param>
-        /// <param name="agentName"></param>
-        /// <param name="jobName"></param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="jobExecutionId">The job execution id</param>
         /// <returns>The agent belonging to specified server</returns>
         public JobExecution GetJobExecution(
             string resourceGroupName,
@@ -401,7 +402,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server name</param>
         /// <param name="agentName">The agent name</param>
-        /// <param name="credentialName">The credential name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="jobExecutionId">The job execution id</param>
         public void CancelJobExecution(
             string resourceGroupName,
             string serverName,

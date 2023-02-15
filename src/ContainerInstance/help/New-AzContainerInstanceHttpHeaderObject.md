@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceHttpHeaderObject
+online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceHttpHeaderObject
 schema: 2.0.0
 ---
 
@@ -23,8 +23,10 @@ Create a in-memory object for HttpHeader
 
 ### Example 1: Create an HTTP Header object
 ```powershell
-PS C:\> New-AzContainerInstanceHttpHeaderObject -name foo -value bar
+New-AzContainerInstanceHttpHeaderObject -name foo -value bar
+```
 
+```output
 Name Value
 ---- -----
 foo  bar

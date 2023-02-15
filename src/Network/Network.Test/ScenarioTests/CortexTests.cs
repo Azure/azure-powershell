@@ -37,6 +37,22 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestRoutingIntentCRUD()
+        {
+            TestRunner.RunTestScript("Test-RoutingIntentCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestStaticRoutesConfig()
+        {
+            TestRunner.RunTestScript("Test-StaticRoutesConfigCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestVpnSiteIsSecurity()
         {
@@ -45,7 +61,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestCortexExpressRouteCRUD()
         {
             TestRunner.RunTestScript("Test-CortexExpressRouteCRUD");
@@ -85,7 +101,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestCortexVirtualHubCRUD()
         {
             TestRunner.RunTestScript("Test-CortexVirtualHubCRUD");
@@ -121,6 +137,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVpnSiteLinkConnectionGetIkeSa()
         {
             TestRunner.RunTestScript("Test-VpnSiteLinkConnectionGetIkeSa");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestVirtualHubAndVpnGatewayWithCustomAsn()
+        {
+            TestRunner.RunTestScript("Test-VirtualHubAndVpnGatewayWithCustomAsn");
         }
     }
 }

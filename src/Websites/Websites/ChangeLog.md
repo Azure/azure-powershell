@@ -19,6 +19,57 @@
 -->
 ## Upcoming Release
 
+## Version 2.12.1
+* Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as portal [#19592]
+
+## Version 2.12.0
+* Added Tag parameter for `New-AzWebApp` and `New-AzWebAppSlot`
+* Fixed `Set-AzWebApp` and `Set-AZWebAppSlot` to rethrow exception when Service Principal/User doesn't have permission to list web app configuration. [#19942]
+
+## Version 2.11.5
+* Fixed `Publish-AzWebApp` to use latest publish API when deploying war package [#19791]
+## Version 2.11.4
+* Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as Az-CLI
+
+## Version 2.11.3
+* Fixed `Publish-AzWebapp` to handle relative paths properly [#18028]
+
+## Version 2.11.2
+* Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetworkSubnetId` property [#18042]
+* Updated `Publish-AzWebApp` to avoid the false positive result when zip deploy is not reachable. 
+## Version 2.11.1
+* Updated 'New-AzWebAppContainerPSSession' with CmdletDeprecation Attribute [#16646]
+* Updated `Restore-AzDeletedWebApp` to fix issue that prevents the cmdlet from working on hosts with a locale is anything different from `en-US`
+
+## Version 2.11.0
+* Fixed `Set-AzWebAppSlot` to support MinTlsVersion version update [#17663]
+* Fixed `Set-AzAppServicePlan` to keep existing Tags when adding new Tags 
+* Fixed `Set-AzWebApp`,`Set-AzWebAppSlot`, `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VnetRouteAllEnabled` property in `SiteConfig` [#15663]
+* Fixed `Set-AzWebApp`, `Set-AzWebAppSlot`, `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `HealthCheckPath` property in `SiteConfig` [#16325]
+* Fixed DateTime conversion issue caused by culture [#17253]
+* Added support for the web job feature [#661]
+    - Get-AzWebAppContinuousWebJob
+    - Get-AzWebAppSlotContinuousWebJob
+    - Get-AzWebAppSlotTriggeredWebJob
+    - Get-AzWebAppSlotTriggeredWebJobHistory
+    - Get-AzWebAppSlotWebJob
+    - Get-AzWebAppTriggeredWebJob
+    - Get-AzWebAppTriggeredWebJobHistory
+    - Get-AzWebAppWebJob
+    - Remove-AzWebAppContinuousWebJob
+    - Remove-AzWebAppSlotContinuousWebJob
+    - Remove-AzWebAppSlotTriggeredWebJob
+    - Remove-AzWebAppTriggeredWebJob
+    - Start-AzWebAppContinuousWebJob
+    - Start-AzWebAppSlotContinuousWebJob
+    - Start-AzWebAppSlotTriggeredWebJob
+    - Start-AzWebAppTriggeredWebJob
+    - Stop-AzWebAppContinuousWebJob
+    - Stop-AzWebAppSlotContinuousWebJob
+
+## Version 2.10.0
+* Updated `New-AzAppServicePlan`  to create an app service plan with host environment id #16094
+
 ## Version 2.9.0
 * Updated the Microsoft.Azure.Management.Websites SDK to 3.1.2
 ## Version 2.8.3

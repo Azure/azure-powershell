@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicyexclusionmanagedruleset
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicyexclusionmanagedruleset
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet** creates an
 
 ### Example 1
 ```powershell
-PS C:\> $managedRuleSet = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet -RuleSetType $ruleSetType 
+$managedRuleSet = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet -RuleSetType $ruleSetType `
 -RuleSetVersion $ruleSetVersion -RuleGroup $ruleGroup1, $ruleGroup2
 ```
 

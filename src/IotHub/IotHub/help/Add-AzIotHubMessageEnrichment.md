@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment
+online version: https://learn.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment
 schema: 2.0.0
 ---
 
@@ -38,8 +38,10 @@ To know more, see https://docs.microsoft.com/azure/iot-hub/iot-hub-message-enric
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzIotHubMessageEnrichment -ResourceGroupName "myresourcegroup" -Name "myiothub" -Key "newKey" -Value "newValue" -Endpoint endpoint1,endpoint2
+Add-AzIotHubMessageEnrichment -ResourceGroupName "myresourcegroup" -Name "myiothub" -Key "newKey" -Value "newValue" -Endpoint endpoint1,endpoint2
+```
 
+```output
 Key          : newKey
 Value        : newValue
 Endpoint(s)  : { endpoint1, endpoint2 }

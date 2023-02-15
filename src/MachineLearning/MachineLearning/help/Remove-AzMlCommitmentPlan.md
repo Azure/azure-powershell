@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
-online version: https://docs.microsoft.com/powershell/module/az.machinelearning/remove-azmlcommitmentplan
+online version: https://learn.microsoft.com/powershell/module/az.machinelearning/remove-azmlcommitmentplan
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ Deletes an Azure Machine Learning commitment plan. Note that commitment plans wh
 ## EXAMPLES
 
 ### Example 1: Delete a commitment plan
-```
+```powershell
 Remove-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
 

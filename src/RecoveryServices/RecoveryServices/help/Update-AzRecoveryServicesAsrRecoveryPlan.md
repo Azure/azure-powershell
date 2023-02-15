@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrrecoveryplan
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrrecoveryplan
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ The **Update-AzRecoveryServicesAsrRecoveryPlan** cmdlet updates the contents of 
 ## EXAMPLES
 
 ### Example 1: Update a recovery plan
-```
-PS C:\> $currentJob = Update-AzRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
+```powershell
+$currentJob = Update-AzRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
 ```
 
 Start the operation of updating a recovery plan using the contents of the specified ASR recovery plan object and returns the ASR job used to track the operation.

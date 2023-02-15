@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 67A9BB67-EF14-4CAA-99D9-002D0D23178B
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaserestorepoint
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqldatabaserestorepoint
 schema: 2.0.0
 ---
 
@@ -26,9 +26,9 @@ This cmdlet is currently supported by the SQL Server Datawarehouse service on Az
 ## EXAMPLES
 
 ### Example 1: Removes a restore point
-```
-PS C:\>$RestorePointCreationDate = Get-Date "3/11/2017 1:50:00 AM"
-PS C:\>Remove-AzSqlDatabaseRestorePoint -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -RestorePointCreationDate $RestorePointCreationDate
+```powershell
+$RestorePointCreationDate = Get-Date "3/11/2017 1:50:00 AM"
+Remove-AzSqlDatabaseRestorePoint -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -RestorePointCreationDate $RestorePointCreationDate
 ```
 
 This command removes a restore point for Azure SQL Database given creation date.

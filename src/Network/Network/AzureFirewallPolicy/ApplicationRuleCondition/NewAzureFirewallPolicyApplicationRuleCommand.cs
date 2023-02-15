@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (FqdnTag != null)
             {
-                this.Protocol = new string[] { "http", "https" };
+                this.Protocol = new string[] { "http", "https", "mssql"};
                 FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag, this.AzureFirewallPolicyFqdnTagClient).ToArray();
             }
 
@@ -182,7 +182,8 @@ namespace Microsoft.Azure.Commands.Network
                 WebCategories = this.WebCategory?.ToList(),
                 TargetUrls = this.TargetUrl?.ToList(),
                 TerminateTLS = this.TerminateTLS.IsPresent ? true : (bool?)null,
-                RuleType = "ApplicationRule"
+                RuleType = "ApplicationRule",
+                Description = this.Description
             };
             WriteObject(applicationRule);
         }

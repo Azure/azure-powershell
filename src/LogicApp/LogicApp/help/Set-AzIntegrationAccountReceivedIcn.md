@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
-online version: https://docs.microsoft.com/powershell/module/az.logicapp/set-azintegrationaccountreceivedicn
+online version: https://learn.microsoft.com/powershell/module/az.logicapp/set-azintegrationaccountreceivedicn
 schema: 2.0.0
 ---
 
@@ -31,8 +31,11 @@ Please do provide the "-AgreementType" parameter to specify whether X12 or Edifa
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Set-AzIntegrationAccountGeneratedIcn -AgreementType "X12" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "X12IntegrationAccountAgreement" -ControlNumber "123"
 ```
-PS C:\> Set-AzIntegrationAccountGeneratedIcn -AgreementType "X12" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "X12IntegrationAccountAgreement" -ControlNumber "123" -IsMessageProcessingFailed $true
+
+```output
 ControlNumber             : 1100
 ControlNumberChangedTime  : 2/15/2017 12:36:00 AM
 IsMessageProcessingFailed : True
@@ -41,8 +44,11 @@ IsMessageProcessingFailed : True
 This command updates the integration account received X12 interchange control number for a specific integration account agreement and value with message processing status failed.
 
 ### Example 2
+```powershell
+Set-AzIntegrationAccountGeneratedIcn -AgreementType "Edifact" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "EdifactIntegrationAccountAgreement" -ControlNumber "123"
 ```
-PS C:\> Set-AzIntegrationAccountGeneratedIcn -AgreementType "Edifact" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "EdifactIntegrationAccountAgreement" -ControlNumber "123" -IsMessageProcessingFailed $true
+
+```output
 ControlNumber             : 1100
 ControlNumberChangedTime  : 2/15/2017 12:36:00 AM
 IsMessageProcessingFailed : True

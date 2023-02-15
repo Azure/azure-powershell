@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azhostgroup
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azhostgroup
 schema: 2.0.0
 ---
 
@@ -36,15 +36,15 @@ This cmdlet will delete a Host group
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzHostGroup -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName | Remove-AzHostGroup
+```powershell
+Get-AzHostGroup -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName | Remove-AzHostGroup
 ```
 
 This command gets and removes the given host group.
 
 ### Example 2
-```
-PS C:\> Remove-AzHostGroup -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName
+```powershell
+Remove-AzHostGroup -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName
 ```
 
 This command removes the given host group.

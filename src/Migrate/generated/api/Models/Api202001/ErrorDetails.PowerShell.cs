@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -92,16 +94,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).PossibleCaus = (string) content.GetValueForProperty("PossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).PossibleCaus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).RecommendedAction = (string) content.GetValueForProperty("RecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).RecommendedAction, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Severity, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).IsAgentReportedError = (bool?) content.GetValueForProperty("IsAgentReportedError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).IsAgentReportedError, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorCode = (string) content.GetValueForProperty("AgentErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorMessage = (string) content.GetValueForProperty("AgentErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorPossibleCaus = (string) content.GetValueForProperty("AgentErrorPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorPossibleCaus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorRecommendedAction = (string) content.GetValueForProperty("AgentErrorRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorRecommendedAction, global::System.Convert.ToString);
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("PossibleCaus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).PossibleCaus = (string) content.GetValueForProperty("PossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).PossibleCaus, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecommendedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).RecommendedAction = (string) content.GetValueForProperty("RecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).RecommendedAction, global::System.Convert.ToString);
+            }
+            if (content.Contains("Severity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Severity, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsAgentReportedError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).IsAgentReportedError = (bool?) content.GetValueForProperty("IsAgentReportedError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).IsAgentReportedError, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AgentErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorCode = (string) content.GetValueForProperty("AgentErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorMessage = (string) content.GetValueForProperty("AgentErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentErrorPossibleCaus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorPossibleCaus = (string) content.GetValueForProperty("AgentErrorPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorPossibleCaus, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentErrorRecommendedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorRecommendedAction = (string) content.GetValueForProperty("AgentErrorRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorRecommendedAction, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,16 +151,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Code, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).PossibleCaus = (string) content.GetValueForProperty("PossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).PossibleCaus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).RecommendedAction = (string) content.GetValueForProperty("RecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).RecommendedAction, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Severity, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).IsAgentReportedError = (bool?) content.GetValueForProperty("IsAgentReportedError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).IsAgentReportedError, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorCode = (string) content.GetValueForProperty("AgentErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorMessage = (string) content.GetValueForProperty("AgentErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorPossibleCaus = (string) content.GetValueForProperty("AgentErrorPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorPossibleCaus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorRecommendedAction = (string) content.GetValueForProperty("AgentErrorRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorRecommendedAction, global::System.Convert.ToString);
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("PossibleCaus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).PossibleCaus = (string) content.GetValueForProperty("PossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).PossibleCaus, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecommendedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).RecommendedAction = (string) content.GetValueForProperty("RecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).RecommendedAction, global::System.Convert.ToString);
+            }
+            if (content.Contains("Severity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).Severity, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsAgentReportedError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).IsAgentReportedError = (bool?) content.GetValueForProperty("IsAgentReportedError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).IsAgentReportedError, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AgentErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorCode = (string) content.GetValueForProperty("AgentErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorMessage = (string) content.GetValueForProperty("AgentErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentErrorPossibleCaus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorPossibleCaus = (string) content.GetValueForProperty("AgentErrorPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorPossibleCaus, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentErrorRecommendedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorRecommendedAction = (string) content.GetValueForProperty("AgentErrorRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetailsInternal)this).AgentErrorRecommendedAction, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -136,7 +198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// Creates a new instance of <see cref="ErrorDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ErrorDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IErrorDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

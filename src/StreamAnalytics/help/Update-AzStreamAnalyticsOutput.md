@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsoutput
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsoutput
 schema: 2.0.0
 ---
 
@@ -36,8 +36,9 @@ update one or two properties) an output without affecting the rest the job or ou
 
 ### Example 1: Update an output to a stream analytics job
 ```powershell
-PS C:\> Update-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name output-01 -File .\test\template-json\StroageAccount.json
-
+Update-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name output-01 -File .\test\template-json\StroageAccount.json
+```
+```output
 Name      Type                                            ETag
 ----      ----                                            ----
 output-01 Microsoft.StreamAnalytics/streamingjobs/outputs d5a980c2-07cc-4dc7-8dd3-21d27ec1212d
@@ -47,8 +48,9 @@ This command updates a new output in the stream analytics job.
 
 ### Example 2:  Update an output to a stream analytics job by pipeline
 ```powershell
-PS C:\>  Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name output-01| Update-AzStreamAnalyticsOutput -File .\test\template-json\StroageAccount.json
-
+Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name output-01| Update-AzStreamAnalyticsOutput -File .\test\template-json\StroageAccount.json
+```
+```output
 Name      Type                                            ETag
 ----      ----                                            ----
 output-01 Microsoft.StreamAnalytics/streamingjobs/outputs 6bbe2f2d-519a-4cd9-9fdb-5311ea2617bc
@@ -235,7 +237,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+INPUTOBJECT `<IStreamAnalyticsIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.
   - `[FunctionName <String>]`: The name of the function.
   - `[Id <String>]`: Resource identity path

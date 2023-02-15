@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementapiversionset
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementapiversionset
 schema: 2.0.0
 ---
 
@@ -25,9 +25,11 @@ The **New-AzApiManagementApiVersionSet** cmdlet creates an API Version set entit
 
 ### Example 1
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\> New-AzApiManagementApiVersionSet -Context $ApiMgmtContext  -Name "newversion" -Scheme Header -HeaderName "x-ms-version" -Description "version by xmsversion"
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementApiVersionSet -Context $ApiMgmtContext  -Name "newversion" -Scheme Header -HeaderName "x-ms-version" -Description "version by xmsversion"
+```
 
+```output
 ApiVersionSetId   : ea9a87cd-a699-4a75-bf7d-909846b91268
 Description       : version by xmsversion
 VersionQueryName  :

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzSecurityCompliance
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzSecurityCompliance
 schema: 2.0.0
 ---
 
@@ -35,9 +35,10 @@ The security compliance is calculated every day and the history is saved.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityCompliance
+Get-AzSecurityCompliance
+```
 
-
+```output
 Id                         : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-20Z
 Name                       : 2018-08-20Z
 ResourceCount              : 18
@@ -127,9 +128,10 @@ Gets the security compliance of a subscription for the last 14 days
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSecurityCompliance -Name "2018-08-20Z"
+Get-AzSecurityCompliance -Name "2018-08-20Z"
+```
 
-
+```output
 Id                         : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/compliances/2018-08-20Z
 Name                       : 2018-08-20Z
 ResourceCount              : 18

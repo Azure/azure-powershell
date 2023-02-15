@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapseintegrationruntimekey
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapseintegrationruntimekey
 schema: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ The cmdlet **New-AzSynapseIntegrationRuntimeKey** regenerates the integration ru
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseIntegrationRuntimeKey -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -KeyName authKey2
+New-AzSynapseIntegrationRuntimeKey -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -KeyName authKey2
 ```
 
 The cmdlet regenerates key 'authKey2' for integration runtime named 'test-selfhost-ir'.

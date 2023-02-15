@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MariaDb
-online version: https://docs.microsoft.com/powershell/module/az.mariadb/remove-azmariadbserver
+online version: https://learn.microsoft.com/powershell/module/az.mariadb/remove-azmariadbserver
 schema: 2.0.0
 ---
 
@@ -31,16 +31,14 @@ Deletes a server.
 
 ### Example 1: Remove a MariaDB
 ```powershell
-PS C:\> Remove-AzMariaDbServer -Name mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0
-
+Remove-AzMariaDbServer -Name mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0
 ```
 
 This command removes a MariaDB.
 
 ### Example 2: Remove a MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbServer -Name mariadb-bc-t01 -ResourceGroupName mariadb-test-qu5ov0 | Remove-AzMariaDbServer
-
+Get-AzMariaDbServer -Name mariadb-bc-t01 -ResourceGroupName mariadb-test-qu5ov0 | Remove-AzMariaDbServer
 ```
 
 This command removes a MariaDB.
@@ -220,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
+INPUTOBJECT `<IMariaDbIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

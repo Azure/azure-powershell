@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://docs.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemovercommit
+online version: https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemovercommit
 schema: 2.0.0
 ---
 
@@ -29,8 +29,10 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ### Example 1: Validate the dependecies before commit of the resources.
 ```powershell
-PS C:\> Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" -ValidateOnly
+Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" -ValidateOnly
+```
 
+```output
 AdditionalInfo : 
 Code           : 
 Detail         : 
@@ -49,8 +51,10 @@ Validate the dependecies before commit of the resources.
 
 ### Example 2: Commit the set of resources in the Move Collection using "MoveResource Name" as input.
 ```powershell
-PS C:\>Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId"
+Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId"
+```
 
+```output
 AdditionalInfo : 
 Code           : 
 Detail         : 
@@ -70,8 +74,10 @@ Commit the set of resources in the Move Collection using "MoveResource Name" as 
 
 ### Example 3: Commit the set of resources in the Move Collection using "SourceARMID" as input.
 ```powershell
-PS C:\> Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg') -MoveResourceInputType "MoveResourceSourceId"
+Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg') -MoveResourceInputType "MoveResourceSourceId"
+```
 
+```output
 AdditionalInfo : 
 Code           : 
 Detail         : 

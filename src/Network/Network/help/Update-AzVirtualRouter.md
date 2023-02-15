@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/update-azvirtualrouter
+online version: https://learn.microsoft.com/powershell/module/az.network/update-azvirtualrouter
 schema: 2.0.0
 ---
 
@@ -31,14 +31,14 @@ Updates Virtual Router to enable or disable branch to branch traffic.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -AllowBranchToBranchTraffic
+Update-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName -AllowBranchToBranchTraffic
 ```
 
 Updates the Virtual Router to allow branch to branch traffic
 
 ### Example 2
 ```powershell
-PS C:\> Update-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
+Update-AzVirtualRouter -ResourceGroupName $rgname -RouterName $virtualRouterName
 ```
 
 Updates the Virtual Router to block branch to branch traffic

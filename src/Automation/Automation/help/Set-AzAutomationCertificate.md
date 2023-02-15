@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: F1A2861F-14EF-4F67-8452-31FD498528BB
-online version: https://docs.microsoft.com/powershell/module/az.automation/set-azautomationcertificate
+online version: https://learn.microsoft.com/powershell/module/az.automation/set-azautomationcertificate
 schema: 2.0.0
 ---
 
@@ -25,9 +25,9 @@ The **Set-AzAutomationCertificate** cmdlet modifies the configuration of a certi
 ## EXAMPLES
 
 ### Example 1: Modify a certificate
-```
-PS C:\>$Password = ConvertTo-SecureString -String "Password" -AsPlainText -Force
-PS C:\> Set-AzAutomationCertificate -AutomationAccountName "Contos17" -Name "ContosoCertificate" -Path "./cert.pfx" -Password $Password -ResourceGroupName "ResourceGroup01"
+```powershell
+$Password = ConvertTo-SecureString -String "Password" -AsPlainText -Force
+Set-AzAutomationCertificate -AutomationAccountName "Contos17" -Name "ContosoCertificate" -Path "./cert.pfx" -Password $Password -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command converts a plain text password to be a secure string by using the ConvertTo-SecureString cmdlet.
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

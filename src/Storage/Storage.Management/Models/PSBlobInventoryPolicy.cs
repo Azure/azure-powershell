@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.SystemData = policy.SystemData is null ? null : new PSSystemData(policy.SystemData);
 
             this.Enabled = policy.Policy.Enabled;
-            //this.Destination = policy.Policy.Destination;
+            this.Destination = policy.Policy.Destination;
 
             if (policy.Policy.Rules != null)
             {
@@ -108,6 +108,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "Rules", Target = ViewControl.List, Position = 7)]
         public PSBlobInventoryPolicyRule[] Rules { get; set; }
         public PSSystemData SystemData { get; set; }
+        public string Destination { get; private set; }
     }
 
     /// <summary>
@@ -178,11 +179,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         // Possible values include: 'Blob', 'Container'
         public string ObjectType { get; set; }
 
-        //     Valid values for this field for the blob object type include: Name, Creation-Time, Last-Modified, Content-Length,
-        //     Content-MD5, BlobType, AccessTier, AccessTierChangeTime, Expiry-Time, hdi_isfolder,
-        //     Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, AccessTierInferred, Tags. 
-        //     Valid values for container object type include Name, Last-Modified,
-        //     Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold.
+        // Valid values for this field for the blob object type include: Name, Creation-Time, Last-Modified, Content-Length,
+        // Content-MD5, BlobType, AccessTier, AccessTierChangeTime, Expiry-Time, hdi_isfolder,
+        // Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, AccessTierInferred, Tags,
+        // Etag, Content-Type, Content-Encoding, Content-Language, Content-CRC64, Cache-Control, Content-Disposition,
+        // LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, DeletionId, DeletedTime, RemainingRetentionDays,
+        // mmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold,  CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime,
+        // CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, x-ms-blob-sequence-number, EncryptionScope, IncrementalCopy, TagCount
+        // Valid values for container object type include Name, Last-Modified,
+        // Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag,
+        // DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays
         public string[] SchemaFields { get; set; }
 
         //private string[] BlobSchemaField = new string[] {"Name", "Creation-Time", "Last-Modified", "Content-Length", "Content-MD5", "BlobType", "AccessTier", "AccessTierChangeTime",
@@ -215,9 +221,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSBlobInventoryPolicyFilter(BlobInventoryPolicyFilter filters)
         {
             this.PrefixMatch = PSManagementPolicyRuleFilter.StringListToArray(filters.PrefixMatch);
+            this.ExcludePrefix = PSManagementPolicyRuleFilter.StringListToArray(filters.ExcludePrefix);
             this.BlobTypes = PSManagementPolicyRuleFilter.StringListToArray(filters.BlobTypes);
             this.IncludeBlobVersions = filters.IncludeBlobVersions;
             this.IncludeSnapshots = filters.IncludeSnapshots;
+            this.IncludeDeleted = filters.IncludeDeleted;
         }
 
         public BlobInventoryPolicyFilter ParseBlobInventoryPolicyFilter()
@@ -225,16 +233,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             return new BlobInventoryPolicyFilter()
             {
                 PrefixMatch = PSManagementPolicyRuleFilter.StringArrayToList(this.PrefixMatch),
+                ExcludePrefix = PSManagementPolicyRuleFilter.StringArrayToList(this.ExcludePrefix),
                 BlobTypes = PSManagementPolicyRuleFilter.StringArrayToList(this.BlobTypes),
                 IncludeSnapshots = this.IncludeSnapshots,
-                IncludeBlobVersions = this.IncludeBlobVersions
+                IncludeBlobVersions = this.IncludeBlobVersions,
+                IncludeDeleted = this.IncludeDeleted
             };
         }
 
         public string[] PrefixMatch { get; set; }
+        public string[] ExcludePrefix { get; set; }
         public string[] BlobTypes { get; set; }
         public bool? IncludeBlobVersions { get; set; }
         public bool? IncludeSnapshots { get; set; }
+        public bool? IncludeDeleted { get; set; }
     }
 
     /// <summary>

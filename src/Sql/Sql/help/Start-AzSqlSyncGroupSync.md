@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/start-azsqlsyncgroupsync
+online version: https://learn.microsoft.com/powershell/module/az.sql/start-azsqlsyncgroupsync
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Start-AzSqlSyncGroupSync** cmdlet starts a sync group synchronization.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Start-AzSqlSyncGroupSync -SyncGroupName mysg [-ServerName] mysrv [-DatabaseName] mydb [-ResourceGroupName] myrg
+```powershell
+Start-AzSqlSyncGroupSync -SyncGroupName mysg -ServerName mysrv -DatabaseName mydb -ResourceGroupName myrg
 ```
 
 This command starts a round of synchronization for the sync group mysg.

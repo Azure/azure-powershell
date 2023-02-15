@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 476094CC-A320-4B2D-B53D-6BFFE30C76CC
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Gets a base retention policy object.
 ```
 Get-AzRecoveryServicesBackupRetentionPolicyObject [-WorkloadType] <WorkloadType>
  [[-BackupManagementType] <BackupManagementType>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-ScheduleRunFrequency] <ScheduleRunType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,17 +27,26 @@ It is a temporary object that you can manipulate and use with the New-AzRecovery
 ## EXAMPLES
 
 ### Example 1: Create a backup protection policy
-```
-PS C:\>$RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM 
-PS C:\> $RetPol.DailySchedule.DurationCountInDays = 365
-PS C:\> $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM 
-PS C:\> New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
+```powershell
+$RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM 
+$RetPol.DailySchedule.DurationCountInDays = 365
+$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM 
+New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
 ```
 
 The first command gets the retention policy object, and then stores it in the $RetPol variable.
 The second command sets the duration for the retention policy object to 365 days.
 The third command gets the schedule policy object, and then stores it in the $SchPol variable.
 The last command creates a backup protection policy using the retention policy and schedule policy created with the previous commands.
+
+### Example 2: Get base hourly retention object for fileshare policy
+```powershell
+$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+$retentionPolicy.DailySchedule.DurationCountInDays = 10
+```
+
+The first command gets a base hourly **RetentionPolicy** object, and then stores it in the $retentionPolicy variable. Similarly the retention hourly policy can be fetched for enhanced hourly schedule for other workloads.
+The second command sets the retention duration for daily recovery points to 10 days.
 
 ## PARAMETERS
 
@@ -70,6 +79,22 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleRunFrequency
+Frequency of the schedule for which base retention policy object is fetched. Acceptable values are Daily and Hourly.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ScheduleRunType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Daily, Hourly, Weekly
+
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

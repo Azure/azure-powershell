@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 32CF9DA7-5607-4CF9-A2D0-D76A0C005FDA
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmaccessextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmaccessextension
 schema: 2.0.0
 ---
 
@@ -24,15 +24,15 @@ The **Get-AzVMAccessExtension** cmdlet gets information about the Virtual Machin
 ## EXAMPLES
 
 ### Example 1: Get the VMAccess extension
-```
-PS C:\> $VMAccessExtension = Get-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest"
+```powershell
+$VMAccessExtension = Get-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest"
 ```
 
 This command gets the VMAccess extension named ContosoTest for the virtual machine named VirtualMachine07.
 
 ### Example 2: Get the instance view of the VMAccess extension
-```
-PS C:\> $VMAccessExtension = Get-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest" -Status
+```powershell
+$VMAccessExtension = Get-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest" -Status
 ```
 
 This command gets the instance view of the VMAccess extension named ContosoTest for the virtual machine named VirtualMachine07.

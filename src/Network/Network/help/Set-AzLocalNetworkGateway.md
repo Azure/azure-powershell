@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F8C1DF39-1DAF-4BDB-8B0E-1BC3B5E82185
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway
 schema: 2.0.0
 ---
 
@@ -28,10 +28,12 @@ The **Set-AzLocalNetworkGateway** cmdlet modifies a local network gateway.
 Set configuration for an existing gateway
 
 
-```
+```powershell
 $lgw = Get-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 Set-AzLocalNetworkGateway -LocalNetworkGateway $lgw
+```
 
+```output
 Name                     : myLocalGW
 ResourceGroupName        : TestRG1
 Location                 : westus

@@ -15,26 +15,19 @@
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
-    public class SparkPoolTests : SynapseTestBase
+    public class SparkPoolTests : SynapseTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public SparkPoolTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SparkPoolTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseSparkPool()
         {
-            SynapseTestBase.NewInstance.RunPsTest(
-                _logger,
-                "Test-SynapseSparkPool");
+            TestRunner.RunTestScript("Test-SynapseSparkPool");
         }
     }
 }

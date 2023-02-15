@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImportExport
-online version: https://docs.microsoft.com/powershell/module/az.importexport/remove-azimportexport
+online version: https://learn.microsoft.com/powershell/module/az.importexport/remove-azimportexport
 schema: 2.0.0
 ---
 
@@ -33,15 +33,14 @@ Only jobs in the Creating or Completed states can be deleted.
 
 ### Example 1: Remove ImportExport job by resourceGroup and server name
 ```powershell
-PS C:\> Remove-AzImportExport -Name test-job -ResourceGroupName ImportTestRG
+Remove-AzImportExport -Name test-job -ResourceGroupName ImportTestRG
 ```
 
 This cmdlet removes ImportExport job by resourceGroup and server name.
 
 ### Example 2: Remove ImportExport job by identity
 ```powershell
-PS C:\> Get-AzImportExport -Name test-job -ResourceGroupName ImportTestRG | Remove-AzImportExport
- 
+Get-AzImportExport -Name test-job -ResourceGroupName ImportTestRG | Remove-AzImportExport
 ```
 
 These cmdlet removes ImportExport job by identity.
@@ -205,7 +204,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IImportExportIdentity>: Identity Parameter
+`INPUTOBJECT <IImportExportIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[JobName <String>]`: The name of the import/export job.
   - `[LocationName <String>]`: The name of the location. For example, West US or westus.

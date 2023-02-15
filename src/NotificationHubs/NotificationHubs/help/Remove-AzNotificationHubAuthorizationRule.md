@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 715F8821-BBD1-440A-AD54-E960939E288A
-online version: https://docs.microsoft.com/powershell/module/az.notificationhubs/remove-aznotificationhubauthorizationrule
+online version: https://learn.microsoft.com/powershell/module/az.notificationhubs/remove-aznotificationhubauthorizationrule
 schema: 2.0.0
 ---
 
@@ -33,8 +33,8 @@ Removing an authorization rule also removes the corresponding user permission.
 ## EXAMPLES
 
 ### Example 1: Remove an authorization rule from a notification hub
-```
-PS C:\>Remove-AzNotificationHubAuthorizationRule -Namespace "ContosoNamespace" -NotificationHub "ContosoExternalHub" -ResourceGroup "ContosoNotificationsGroup" -AuthorizationRule "ListenRule"
+```powershell
+Remove-AzNotificationHubAuthorizationRule -Namespace "ContosoNamespace" -NotificationHub "ContosoExternalHub" -ResourceGroup "ContosoNotificationsGroup" -AuthorizationRule "ListenRule"
 ```
 
 This command removes the authorization rule named ListenRule from the notification hub named ContosoExternalHub.

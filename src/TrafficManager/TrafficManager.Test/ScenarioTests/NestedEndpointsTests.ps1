@@ -50,10 +50,12 @@ function Test-NestedEndpointsCreateUpdate
 	$anotherCreatedChildProfile = New-AzTrafficManagerProfile -Name $anotherChildProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $anotherChildProfileRelativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -ProfileStatus "Enabled"
 	Assert-NotNull $anotherCreatedChildProfile.Id
 
-	$anotherNestedEndpoint = New-AzTrafficManagerEndpoint -Name "MySecondNestedEndpoint" -ProfileName $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "NestedEndpoints" -TargetResourceId $anotherCreatedChildProfile.Id -EndpointStatus "Enabled" -EndpointLocation "West Europe" -MinChildEndpoints 3
+	$anotherNestedEndpoint = New-AzTrafficManagerEndpoint -Name "MySecondNestedEndpoint" -ProfileName $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "NestedEndpoints" -TargetResourceId $anotherCreatedChildProfile.Id -EndpointStatus "Enabled" -EndpointLocation "West Europe" -MinChildEndpoints 3 -MinChildEndpointsIPv4 2 -MinChildEndpointsIPv6 1
 
 	Assert-NotNull $anotherNestedEndpoint
 	Assert-AreEqual 3 $anotherNestedEndpoint.MinChildEndpoints
+	Assert-AreEqual 2 $anotherNestedEndpoint.MinChildEndpointsIPv4
+	Assert-AreEqual 1 $anotherNestedEndpoint.MinChildEndpointsIPv6
 	Assert-AreEqual "West Europe" $anotherNestedEndpoint.Location
 	
 	$retrievedParentProfile = Get-AzTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName
@@ -61,22 +63,30 @@ function Test-NestedEndpointsCreateUpdate
 	Assert-NotNull $retrievedParentProfile
 	Assert-AreEqual 2 $retrievedParentProfile.Endpoints.Count
 	Assert-AreEqual 3 $retrievedParentProfile.Endpoints[1].MinChildEndpoints
+	Assert-AreEqual 2 $retrievedParentProfile.Endpoints[1].MinChildEndpointsIPv4
+	Assert-AreEqual 1 $retrievedParentProfile.Endpoints[1].MinChildEndpointsIPv6
 	Assert-AreEqual "West Europe" $retrievedParentProfile.Endpoints[1].Location
 
-	$anotherNestedEndpoint.MinChildEndpoints = 4
+	$anotherNestedEndpoint.MinChildEndpoints = 6
+	$anotherNestedEndpoint.MinChildEndpointsIPv4 = 2
+	$anotherNestedEndpoint.MinChildEndpointsIPv6 = 3
 	$anotherNestedEndpoint.Location = "West US"
 
 	$anotherNestedEndpoint = Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $anotherNestedEndpoint
 
 	Assert-NotNull $anotherNestedEndpoint
-	Assert-AreEqual 4 $anotherNestedEndpoint.MinChildEndpoints
+	Assert-AreEqual 6 $anotherNestedEndpoint.MinChildEndpoints
+	Assert-AreEqual 2 $anotherNestedEndpoint.MinChildEndpointsIPv4
+	Assert-AreEqual 3 $anotherNestedEndpoint.MinChildEndpointsIPv6
 	Assert-AreEqual "West US" $anotherNestedEndpoint.Location
 
 	$retrievedParentProfile = Get-AzTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
 	Assert-NotNull $retrievedParentProfile
 	Assert-AreEqual 2 $retrievedParentProfile.Endpoints.Count
-	Assert-AreEqual 4 $retrievedParentProfile.Endpoints[1].MinChildEndpoints
+	Assert-AreEqual 6 $retrievedParentProfile.Endpoints[1].MinChildEndpoints
+	Assert-AreEqual 2 $retrievedParentProfile.Endpoints[1].MinChildEndpointsIPv4
+	Assert-AreEqual 3 $retrievedParentProfile.Endpoints[1].MinChildEndpointsIPv6
 	Assert-AreEqual "West US" $retrievedParentProfile.Endpoints[1].Location
 	}
     finally

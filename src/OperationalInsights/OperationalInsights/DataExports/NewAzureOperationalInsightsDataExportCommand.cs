@@ -52,16 +52,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 
         public override void ExecuteCmdlet()
         {
-            var dataExportParameters = new CreatePSDataExportParameters
-            {
-                ResourceGroupName = ResourceGroupName,
-                WorkspaceName = WorkspaceName,
-                DataExportName = DataExportName,
-                TableNames = TableName.ToList(),
-                DestinationResourceId = ResourceId,
-                EventHubName = EventHubName,
-                Enable = Enable
-            };
+            var dataExportParameters = new CreatePSDataExportParameters(ResourceGroupName, WorkspaceName, DataExportName, TableName.ToList(), ResourceId, EventHubName, Enable);
+
             if (ShouldProcess(DataExportName, $"Create Data export: {DataExportName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {
                 WriteObject(this.OperationalInsightsClient.CreateDataExport(ResourceGroupName, dataExportParameters), true);

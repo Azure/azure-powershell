@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Communication
-online version: https://docs.microsoft.com/powershell/module/az.communication/get-azcommunicationservicekey
+online version: https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservicekey
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Get the access keys of the CommunicationService resource.
 
 ### Example 1: Fetch the Key for the specified Communcation service
 ```powershell
-PS C:\> Get-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+Get-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+```
 
+```output
 PrimaryConnectionString              PrimaryKey            SecondaryConnectionString               SecondaryKey
 -----------------------              ----------            -----------------------                 ----------
 endpoint=<example-primary-endpoint>  <example-primarykey>  endpoint=<example-secondary-endpoint>   <example-secondarykey>

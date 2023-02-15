@@ -109,6 +109,11 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.SqlPoolName = resourceIdentifier.ResourceName;
             }
 
+            if (string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
+            }
+
             SqlPoolAuditModel model = new SqlPoolAuditModel
             {
                 ResourceGroupName = ResourceGroupName,

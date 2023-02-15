@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbmongodbdatabase
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbmongodbdatabase
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The **Remove-AzCosmosDBMongoDBDatabase** cmdlet deletes a CosmosDB MongoDB Datab
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCosmosDBMongoDBDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {dbName}
+Remove-AzCosmosDBMongoDBDatabase -ResourceGroupName "rgName" -AccountName "accountName" -Name "dbName"
 ```
 
 The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.

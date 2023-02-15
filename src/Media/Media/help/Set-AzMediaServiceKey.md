@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: D28EB28D-DBC6-48D5-AB0A-C56F56CD0104
-online version: https://docs.microsoft.com/powershell/module/az.media/set-azmediaservicekey
+online version: https://learn.microsoft.com/powershell/module/az.media/set-azmediaservicekey
 schema: 2.0.0
 ---
 
@@ -24,15 +24,15 @@ The **Set-AzMediaServiceKey** cmdlet regenerates a key used for accessing the Re
 ## EXAMPLES
 
 ### Example 1: Regenerate the primary key used for accessing the Media Service
-```
-PS C:\>Set-AzMediaServiceKey -ResourceGroupName "ResourceGroup004" -AccountName "MediaService001" -KeyType Primary
+```powershell
+Set-AzMediaServiceKey -ResourceGroupName "ResourceGroup004" -AccountName "MediaService001" -KeyType Primary
 ```
 
 This command regenerates the primary key for the media service named MediaService001 that belongs to the resource group named ResourceGroup004.
 
 ### Example 2: Regenerates the secondary key used for accessing the Media Service
-```
-PS C:\>Set-AzMediaServiceKey -ResourceGroupName "Resourcegroup123" -AccountName "MediaService002" -KeyType Secondary
+```powershell
+Set-AzMediaServiceKey -ResourceGroupName "Resourcegroup123" -AccountName "MediaService002" -KeyType Secondary
 ```
 
 This command regenerates the secondary key for the media service named MediaService002 that belongs to the resource group named Resourcegroup123.

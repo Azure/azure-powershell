@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrswitchappliance
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrswitchappliance
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **Start-AzRecoveryServicesAsrSwitchAppliance** cmdlet starts the switch appl
 
 ### Example 1
 ```powershell
-PS C:\> $currentJob = Start-AzRecoveryServicesAsrSwitchAppliance -Fabric $Fabric
- -ReplicationProtectedItem $RPI -TargetApplianceName $TargetApplianceName
+$currentJob = Start-AzRecoveryServicesAsrSwitchAppliance -Fabric $Fabric `
+-ReplicationProtectedItem $RPI -TargetApplianceName $TargetApplianceName
 ```
 
 Starts the switch appliance for the specified replicated protected item and returns the ASR job used to track the operation.

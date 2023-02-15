@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azhost
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azhost
 schema: 2.0.0
 ---
 
@@ -25,9 +25,11 @@ This cmdlet will create a Host.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName -Location $location -Sku $skuName
 ```
-PS C:\> New-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName -Location $location -Sku $skuName
 
+```output
 ResourceGroupName    : myrg01
 PlatformFaultDomain  : 0
 AutoReplaceOnFailure : True

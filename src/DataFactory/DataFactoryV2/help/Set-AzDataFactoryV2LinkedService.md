@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryv2linkedservice
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryv2linkedservice
 schema: 2.0.0
 ---
 
@@ -38,9 +38,11 @@ Perform these operations in the following order:
 ## EXAMPLES
 
 ### Example 1: Create a linked service
+```powershell
+Set-AzDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData" -File "C:\\samples\\WikiSample\\LinkedServiceCuratedWikiData.json" | Format-List
 ```
-PS C:\> Set-AzDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData" -File "C:\\samples\\WikiSample\\LinkedServiceCuratedWikiData.json" | Format-List
 
+```output
     LinkedServiceName : LinkedServiceCuratedWikiData
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF

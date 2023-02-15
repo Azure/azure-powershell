@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrprotectioncontainermapping
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrprotectioncontainermapping
 schema: 2.0.0
 ---
 
@@ -32,9 +32,11 @@ The **New-AzRecoveryServicesAsrProtectionContainerMapping** cmdlet creates an Az
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzRecoveryServicesAsrProtectionContainerMapping -Name $ContainerMappingName -Policy $ProtectionProfile -PrimaryProtectionContainer $PrimaryContainer -RecoveryProtectionContainer $RecoveryContainer
 ```
-PS C:\> New-AzRecoveryServicesAsrProtectionContainerMapping -Name $ContainerMappingName -Policy $ProtectionProfile -PrimaryProtectionContainer $PrimaryContainer -RecoveryProtectionContainer $RecoveryContainer
 
+```output
 Name             : 1f32fee1-05d0-4c11-a997-1618e14b4dab
 ID               : /Subscriptions/xxxxxxxxxxxx/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/1f32fee1-05d0-4c11-a997-1618e14b4dab
 Type             :
@@ -56,9 +58,11 @@ Errors           : {}
 Starts the creation of the protection container mapping with the specified parameters, and returns the ASR job used to track the operation.
 
 ### Example 2
+```powershell
+New-AzRecoveryServicesAsrProtectionContainerMapping -Name $PrimaryProtectionContainerMapping -policy $Policy1 -PrimaryProtectionContainer $pc
 ```
-PS C:\> New-AzRecoveryServicesAsrProtectionContainerMapping -Name $PrimaryProtectionContainerMapping -policy $Policy1 -PrimaryProtectionContainer $pc
 
+```output
 Name             : 1f32fee1-05d0-4c11-a997-1618e14b4dab
 ID               : /Subscriptions/xxxxxxxxxxxx/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationJobs/1f32fee1-05d0-4c11-a997-1618e14b4dab
 Type             :
@@ -128,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryProtectionContainer
-Specifies the ASR protection container object for the  primary protection container to be used in the mapping.
+Specifies the ASR protection container object for the  primary protection container to be used in the mapping. To get the ASR protection container in the Recovery Service Container run the [Get-AzRecoveryServicesAsrProtectionContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesasrprotectioncontainer) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer

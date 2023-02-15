@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpath
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpath
 schema: 2.0.0
 ---
 
@@ -24,11 +24,13 @@ Object corresponding to Sql API's IncludedPath.
 
 ### Example 1
 ```powershell
-PS C:\> $index1 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+$index1 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
 $index2 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
 
 New-AzCosmosDBSqlIncludedPath -Path "/*" -Index $index1,$index2
+```
 
+```output
 Path Indexes
 ---- -------
 /*   {Microsoft.Azure.Commands.CosmosDB.Models.PSIndexes,Microsoft.Azure.Commands.CosmosDB.Models.PSIndexes}

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ The **New-AzCosmosDBSqlUniqueKeyPolicy** cmdlet creates a new object of type PSS
 
 ### Example 1
 ```powershell
-PS C:\>New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey {psUniqueKey1, psUniqueKey2}
+New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey $psUniqueKey1, $psUniqueKey2
+```
 
+```output
 UniqueKey
 ---------
 {Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey, Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey}

@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 90630395-8747-4446-A879-323274811956
-online version: https://docs.microsoft.com/powershell/module/az.datalakestore/import-azdatalakestoreitem
+online version: https://learn.microsoft.com/powershell/module/az.datalakestore/import-azdatalakestoreitem
 schema: 2.0.0
 ---
 
@@ -34,8 +34,8 @@ The **Import-AzDataLakeStoreItem** cmdlet uploads a local file or directory to a
 ## EXAMPLES
 
 ### Example 1: Upload a file
-```
-PS C:\>Import-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "C:\SrcFile.csv" -Destination "/MyFiles/File.csv" -Concurrency 4
+```powershell
+Import-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "C:\SrcFile.csv" -Destination "/MyFiles/File.csv" -Concurrency 4
 ```
 
 This command uploads the file SrcFile.csv and adds it to the MyFiles folder in the Data Lake Store as File.csv with a concurrency of 4.

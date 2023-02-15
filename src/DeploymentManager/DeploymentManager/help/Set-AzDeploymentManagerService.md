@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/set-azdeploymentmanagerservice
+online version: https://learn.microsoft.com/powershell/module/az.deploymentmanager/set-azdeploymentmanagerservice
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The cmdlet returns the updated service object.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDeploymentManagerService -InputObject $serviceObject
+Set-AzDeploymentManagerService -InputObject $serviceObject
 ```
 
 This command updates a service whose name, service topology name and ResourceGroup match the Name, ServiceTopologyName and ResourceGroupName properties of the $serviceObject, respectively.

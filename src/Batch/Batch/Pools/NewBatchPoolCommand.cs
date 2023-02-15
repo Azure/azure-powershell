@@ -18,7 +18,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Batch.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -70,7 +72,9 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public int? MaxTasksPerComputeNode { get; set; }
+        [CmdletParameterBreakingChange("MaxTasksPerComputeNode", "MaxTasksPerComputeNode alias will be removed in an upcoming breaking change release.")]
+        [Alias("MaxTasksPerComputeNode")]
+        public int? TaskSlotsPerNode { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -124,6 +128,15 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSUserAccount[] UserAccount { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public NodeCommunicationMode CurrentNodeCommunicationMode { get; }
+
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Default", "Classic", "Simplified")]
+        public NodeCommunicationMode TargetNodeCommunicationMode { get; set; }
+
         protected override void ExecuteCmdletImpl()
         {
             NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
@@ -135,7 +148,7 @@ namespace Microsoft.Azure.Commands.Batch
                 TargetLowPriorityComputeNodes = this.TargetLowPriorityComputeNodes,
                 AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval,
                 AutoScaleFormula = this.AutoScaleFormula,
-                MaxTasksPerComputeNode = this.MaxTasksPerComputeNode,
+                TaskSlotsPerNode = this.TaskSlotsPerNode,
                 TaskSchedulingPolicy = this.TaskSchedulingPolicy,
                 Metadata = this.Metadata,
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,
@@ -147,7 +160,8 @@ namespace Microsoft.Azure.Commands.Batch
                 NetworkConfiguration = this.NetworkConfiguration,
                 UserAccounts = this.UserAccount,
                 ApplicationLicenses = this.ApplicationLicenses,
-                MountConfiguration = this.MountConfiguration
+                MountConfiguration = this.MountConfiguration,
+                TargetCommunicationMode = this.TargetNodeCommunicationMode
             };
 
             if (ShouldProcess("AzureBatchPool"))

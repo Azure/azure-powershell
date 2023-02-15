@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification
 schema: 2.0.0
 ---
 
@@ -46,8 +46,10 @@ The Get-AzSqlInstanceDatabaseSensitivityClassification cmdlet returns the curren
 
 ### Example 1: Get current information types and sensitivity labels of an Azure SQL Managed Instance database.
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database
+Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database
+```
 
+```output
 ResourceGroupName : resourceGroup
 InstanceName      : managedInstance
 DatabaseName      : database
@@ -74,8 +76,10 @@ SensitivityLabels : {{
 
 ### Example 2: Get current information types and sensitivity labels of an Azure SQL Managed Instance database with Piping.
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityClassification
+Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityClassification
+```
 
+```output
 ResourceGroupName : resourceGroup
 InstanceName      : managedInstance
 DatabaseName      : database
@@ -102,8 +106,10 @@ SensitivityLabels : {{
 
 ### Example 3: Get current information type and sensitivity label of a specific column of an Azure SQL Managed Instance database.
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName dbo -TableName EMailLog -ColumnName BounceEmailSubject
+Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName dbo -TableName EMailLog -ColumnName BounceEmailSubject
+```
 
+```output
 ResourceGroupName : resourceGroup
 InstanceName      : managedInstance
 DatabaseName      : database
@@ -119,8 +125,10 @@ SensitivityLabels : {{
 
 ### Example 4: Get current information type and sensitivity label of a specific column of an Azure SQL Managed Instance database using Piping.
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityClassification -SchemaName dbo -TableName EMailLog -ColumnName BounceEmailSubject
+Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Get-AzSqlInstanceDatabaseSensitivityClassification -SchemaName dbo -TableName EMailLog -ColumnName BounceEmailSubject
+```
 
+```output
 ResourceGroupName : resourceGroup
 InstanceName      : managedInstance
 DatabaseName      : database

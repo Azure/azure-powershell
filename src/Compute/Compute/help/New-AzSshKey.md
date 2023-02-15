@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azsshkey
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azsshkey
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create a SSH Public Key resource.
 
 ```
 New-AzSshKey -ResourceGroupName <String> -Name <String> [-PublicKey <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,14 +24,14 @@ Create a SSH Public Key resource.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" -PublicKey $publicKey
+New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" -PublicKey $publicKey
 ```
 
 Creating a SSH Key resource with provided a public key. 
 
 ### Example 2
 ```powershell
-PS C:\> New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" 
+New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1"
 ```
 
 Creating a SSH Key resource without providing a public key. A key pair will be generated and saved in ~\.ssh. The public key will also be saved in the SSH Key resource.
@@ -96,6 +96,36 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### CommonParameters

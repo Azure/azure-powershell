@@ -53,33 +53,37 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.BatchContext = context;
             cmdlet.JobId = "job-1";
 
+            const int requiredSlots = 2;
             const int active = 3;
             const int running = 5;
             const int succeeded = 2;
             const int failed = 1;
 
             // Build a TaskCounts instead of querying the service on a Get TaskCounts call
-            AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders> response =
-                BatchTestHelpers.CreateTaskCountsGetResponse(active, running, succeeded, failed);
+            AzureOperationResponse<ProxyModels.TaskCountsResult, ProxyModels.JobGetTaskCountsHeaders> response =
+                BatchTestHelpers.CreateTaskCountsGetResponse(requiredSlots, active, running, succeeded, failed);
+
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
                 ProxyModels.JobGetTaskCountsOptions,
-                AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders>>(response);
+                AzureOperationResponse<ProxyModels.TaskCountsResult, ProxyModels.JobGetTaskCountsHeaders>>(response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
             PSTaskCounts taskCounts = null;
-            commandRuntimeMock.Setup(r =>
-                    r.WriteObject(It.IsAny<PSTaskCounts>()))
-                .Callback<object>(p => taskCounts = (PSTaskCounts)p);
+            commandRuntimeMock
+                .Setup(r => r.WriteObject(It.IsAny<PSTaskCounts>()))
+                .Callback<object>(p => {
+                    taskCounts = (PSTaskCounts)p;
+                });
 
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(active, taskCounts.Active);
-            Assert.Equal(running, taskCounts.Running);
-            Assert.Equal(succeeded + failed, taskCounts.Completed);
-            Assert.Equal(succeeded, taskCounts.Succeeded);
-            Assert.Equal(failed, taskCounts.Failed);
+            Assert.Equal(3, taskCounts.Active);
+            Assert.Equal(5, taskCounts.Running);
+            Assert.Equal(3, taskCounts.Completed);
+            Assert.Equal(2, taskCounts.Succeeded);
+            Assert.Equal(1, taskCounts.Failed);
         }
     }
 }

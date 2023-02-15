@@ -17,28 +17,24 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 {
-    public class ActiveDirectoryTests
+    public class ActiveDirectoryTests : NetAppFilesTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public ActiveDirectoryTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ActiveDirectoryTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestActiveDirectoryCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ActiveDirectoryCrud");
+            TestRunner.RunTestScript("Test-ActiveDirectoryCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestActiveDirectoryPipelines()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ActiveDirectoryPipelines");
+            TestRunner.RunTestScript("Test-ActiveDirectoryPipelines");
         }
     }
 }

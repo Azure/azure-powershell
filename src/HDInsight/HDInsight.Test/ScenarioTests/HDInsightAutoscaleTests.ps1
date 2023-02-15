@@ -46,7 +46,7 @@ function Test-AutoscaleRelatedCommands{
 		Assert-AreEqual $autoscale.Capacity.MinInstanceCount  4
 		Assert-AreEqual $autoscale.Capacity.MaxInstanceCount  5
 
-		Start-Sleep -s 20
+		Start-TestSleep -Seconds 20
 		# test Remove-AzHDInsightClusterAutoscaleConfiguration
 		Remove-AzHDInsightClusterAutoscaleConfiguration -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		

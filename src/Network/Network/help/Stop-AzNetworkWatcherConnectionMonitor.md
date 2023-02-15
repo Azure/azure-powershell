@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/stop-aznetworkwatcherconnectionmonitor
+online version: https://learn.microsoft.com/powershell/module/az.network/stop-aznetworkwatcherconnectionmonitor
 schema: 2.0.0
 ---
 
@@ -49,7 +49,7 @@ The Stop-AzNetworkWatcherConnectionMonitor cmdlet stops the specified connection
 
 ### Example 1: Stop a connection monitor
 ```powershell
-PS C:\> Stop-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name cm
+Stop-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name cm
 ```
 
 In this example we stop connection monitor specified by name and network watcher

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F0370845-13D9-4FB5-B30E-826A22EBC5E0
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressroutecircuitarptable
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressroutecircuitarptable
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ a particular peering. You can use the ARP table to validate layer 2 configuratio
 ## EXAMPLES
 
 ### Example 1: Display the ARP table for an ExpressRoute peer
-```
+```powershell
 Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType MicrosoftPeering -DevicePath Primary
 ```
 

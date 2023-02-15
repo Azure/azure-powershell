@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 987BD670-20F3-4105-A5BE-03E712AB2B56
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmsswinrmlistener
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmsswinrmlistener
 schema: 2.0.0
 ---
 
@@ -25,9 +25,9 @@ The **Add-AzVmssWinRMListener** cmdlet adds a Windows Remote Management (WinRM) 
 ## EXAMPLES
 
 ### Example 1: Add a WinRM listener to the VMSS
-```
-PS C:\> $VMSS = New-AzVmssConfig
-PS C:\> Add-AzVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol Https -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion"
+```powershell
+$VMSS = New-AzVmssConfig
+Add-AzVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol Https -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion"
 ```
 
 This example adds a WinRM listener to the VMSS.

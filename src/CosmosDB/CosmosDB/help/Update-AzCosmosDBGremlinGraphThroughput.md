@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbgremlingraphthroughput
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbgremlingraphthroughput
 schema: 2.0.0
 ---
 
@@ -40,7 +40,10 @@ Updates the throughput value of a CosmosDB Gremlin Graph.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBGremlinGraphThroughput -AccountName {myAccountName} -ResourceGroupName {myResourceGroupName} -DatabaseName {mydatabaseName} -Name {myGraphName} -Throughput {updatedThroughputValue}
+Update-AzCosmosDBGremlinGraphThroughput -AccountName "myAccountName" -ResourceGroupName "myResourceGroupName" -DatabaseName "mydatabaseName" -Name "myGraphName" -Throughput $updatedThroughputValue
+```
+
+```output
 Name                : mxGp
 Id                  : /subscriptions/{mySubscriptionId}/resourceGroups/{myResourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{myAccountName}/gremlinDatabase/{mydatabaseName}/graphs/{myGraphName}/throughputSettings/default
 Throughput          : {updatedThroughputValue}

@@ -45,8 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
         /// <summary>
         /// Constructs a database adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceFailoverGroupAdapter(IAzureContext context)
         {
             _subscription = context.Subscription;
@@ -87,8 +86,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
         /// <summary>
         /// Creates or updates an Azure Sql Database InstanceFailoverGroup.
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="location">The name of the local region</param>
         /// <param name="model">The input parameters for the create/update operation</param>
         /// <returns>The upserted Azure Sql Database InstanceFailoverGroup</returns>
         internal AzureSqlInstanceFailoverGroupModel UpsertInstanceFailoverGroup(AzureSqlInstanceFailoverGroupModel model)
@@ -137,18 +134,18 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="location">The name of the local region</param>
-        /// <param name="failvoerGroupName">The name of the Azure SQL Database Failover Group to delete</param>
+        /// <param name="failoverGroupName">The name of the Azure SQL Database Failover Group to delete</param>
         public void RemoveInstanceFailoverGroup(string resourceGroupName, string location, string failoverGroupName)
         {
             Communicator.Remove(resourceGroupName, location, failoverGroupName);
         }
-        
+
         /// <summary>
         /// Finds and removes the Secondary Link by the secondary resource group and Azure SQL Server
         /// </summary>
         /// <param name="resourceGroupName">The name of the Resource Group containing the primary database</param>
         /// <param name="location">The name of the partner location</param>
-        /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
+        /// <param name="failoverGroupName">The name of the Azure Sql Database FailoverGroup</param>
         /// <param name="allowDataLoss">Whether the failover operation will allow data loss</param>
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
         internal AzureSqlInstanceFailoverGroupModel Failover(string resourceGroupName, string location, string failoverGroupName, bool allowDataLoss)
@@ -168,9 +165,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
         /// <summary>
         /// Converts the response from the service to a powershell database object
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the server is in</param>
-        /// <param name="location">The name of the local region</param>
-        /// <param name="pool">The service response</param>
+        /// <param name="failoverGroup">Recommended Action object</param>
         /// <returns>The converted model</returns>
         private AzureSqlInstanceFailoverGroupModel CreateInstanceFailoverGroupModelFromResponse(Management.Sql.Models.InstanceFailoverGroup failoverGroup)
         {

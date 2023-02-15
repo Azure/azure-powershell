@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/unregister-azwvdapplicationgroup
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/unregister-azwvdapplicationgroup
 schema: 2.0.0
 ---
 
@@ -25,10 +25,12 @@ Unregister the Windows virtual desktop application group.
 
 ### Example 1: Unregister a Windows Virtual Desktop Application Group
 ```powershell
-PS C:\> Unregister-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
+Unregister-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -WorkspaceName WorkspaceName `
                                     -ApplicationGroupPath '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName'
+```
 
+```output
 Location   Name                 Type
 --------   ----                 ----
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces

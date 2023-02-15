@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version: https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenancepublicconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.maintenance/get-azmaintenancepublicconfiguration
 schema: 2.0.0
 ---
 
@@ -24,9 +24,10 @@ Get Public Maintenance Configuration record
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzMaintenancePublicConfiguration -ResourceGroupName smdtest -Name workervmscentralus
+Get-AzMaintenancePublicConfiguration -ResourceGroupName smdtest -Name workervmscentralus
+```
 
-
+```output
 Location            : centralus
 Tags                : {}
 NamespaceProperty   :

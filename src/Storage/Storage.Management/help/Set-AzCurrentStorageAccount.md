@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 15973FE8-16C1-4B71-A3A8-6D6F67A96FDF
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azcurrentstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azcurrentstorageaccount
 schema: 2.0.0
 ---
 
@@ -32,8 +32,8 @@ The current Storage account is used as the default when you access Storage witho
 ## EXAMPLES
 
 ### Example 1: Set the current Storage account
-```
-PS C:\>Set-AzCurrentStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+```powershell
+Set-AzCurrentStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```
 
 This command sets the default Storage account for the specified subscription.

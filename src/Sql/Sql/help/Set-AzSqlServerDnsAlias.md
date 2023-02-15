@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverdnsalias
+online version: https://learn.microsoft.com/powershell/module/az.sql/set-azsqlserverdnsalias
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ This command needs to be issued while logged into subscription where new server 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Set-AzSqlServerDnsAlias -ResourceGroupName rg -DnsAliasName aliasName -TargetServerName newServer -SourceServerName oldServer -SourceServerResourceGroupName SourceServerRG -SourceServerSubscriptionId 0000-0000-0000-0000
+```powershell
+Set-AzSqlServerDnsAlias -ResourceGroupName rg -DnsAliasName aliasName -TargetServerName newServer -SourceServerName oldServer -SourceServerResourceGroupName SourceServerRG -SourceServerSubscriptionId 0000-0000-0000-0000
 ```
 
 This command is updating alias which was previously pointing to oldServer to point to server newServer

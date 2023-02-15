@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ The **New-AzCosmosDBCassandraSchema** creates a new CosmosDB Cassandra Schema.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBCassandraSchema -Column {PSColumn[]} -PartitionKey <String[]> -ClusterKey {PSClusterKey[]}
+New-AzCosmosDBCassandraSchema -Column $column1 -PartitionKey "a" -ClusterKey $clusterkey1
+```
 
+```output
 Columns PartitionKeys ClusterKeys
 ------- ------------- -----------
 {column1}     {a}     {clusterkey1}

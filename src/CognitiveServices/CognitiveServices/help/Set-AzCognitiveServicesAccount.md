@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 11E2D82A-1DF1-4E19-8328-44674641D1BB
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
@@ -43,9 +43,10 @@ The **Set-AzCognitiveServicesAccount** cmdlet modifies the SKU or tags of the sp
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -SkuName S0
+Set-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -SkuName S0
+```
 
-
+```output
 ResourceGroupName : cognitive-services-resource-group
 AccountName       : myluis
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog

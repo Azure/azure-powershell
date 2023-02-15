@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/reset-azsynapsesqlpoolauditsetting
+online version: https://learn.microsoft.com/powershell/module/az.synapse/reset-azsynapsesqlpoolauditsetting
 schema: 2.0.0
 ---
 
@@ -43,14 +43,14 @@ The **Reset-AzSynapseSqlPoolAuditSetting** cmdlet removes the auditing settings 
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzSynapseSqlPoolAuditSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Reset-AzSynapseSqlPoolAuditSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command removes the auditing settings of a SQL pool called ContosoSqlPool in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool | Reset-AzSynapseSqlPoolAuditSetting
+Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool | Reset-AzSynapseSqlPoolAuditSetting
 ```
 
 This command removes the auditing settings of a SQL pool called ContosoSqlPool in the workspace ContosoWorkspace through pipeline.

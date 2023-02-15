@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultroleassignment
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultroleassignment
 schema: 2.0.0
 ---
 
@@ -69,15 +69,17 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 
 ### Example 1
 ```powershell
-PS C:\> New-AzKeyVaultRoleAssignment -HsmName bez-hsm -RoleDefinitionName "Managed Hsm Crypto User" -ObjectId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+New-AzKeyVaultRoleAssignment -HsmName bez-hsm -RoleDefinitionName "Managed Hsm Crypto User" -ObjectId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 This example assigns role "Managed Hsm Crypto User" to user "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" at top scope. If user wants to perform operations on keys. "Managed Hsm Crypto *" role is required for that user.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzKeyVaultRoleAssignment -HsmName myHsm -RoleDefinitionName "Managed HSM Policy Administrator" -SignInName user1@microsoft.com
+New-AzKeyVaultRoleAssignment -HsmName myHsm -RoleDefinitionName "Managed HSM Policy Administrator" -SignInName user1@microsoft.com
+```
 
+```output
 RoleDefinitionName               DisplayName                    ObjectType Scope
 ------------------               -----------                    ---------- -----
 Managed HSM Policy Administrator User 1 (user1@microsoft.com)   User       /

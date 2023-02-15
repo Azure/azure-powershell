@@ -23,11 +23,7 @@ Describe 'New-AzADAppCredential' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ApplicationObjectIdWithKeyCredentialParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApplicationObjectIdWithPasswordCredentialParameterSet' -skip {
+    It 'ApplicationObjectIdWithCredentialParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
@@ -55,27 +51,15 @@ Describe 'New-AzADAppCredential' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ApplicationObjectWithPasswordCredentialParameterSet' -skip {
+    It 'ApplicationObjectWithCredentialParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DisplayNameWithPasswordCredentialParameterSet' -skip {
+    It 'DisplayNameWithCredentialParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ApplicationIdWithPasswordCredentialParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApplicationObjectWithKeyCredentialParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DisplayNameWithKeyCredentialParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApplicationIdWithKeyCredentialParameterSet' -skip {
+    It 'ApplicationIdWithCredentialParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

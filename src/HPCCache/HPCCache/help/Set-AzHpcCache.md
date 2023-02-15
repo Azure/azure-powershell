@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HPCCache.dll-Help.xml
 Module Name: Az.HPCCache
-online version: https://docs.microsoft.com/powershell/module/az.hpccache/set-azhpccache
+online version: https://learn.microsoft.com/powershell/module/az.hpccache/set-azhpccache
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The **Set-AzHpcCache** cmdlet updates an Azure HPC Cache tags.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzHpcCache -ResourceGroupName testRG -CacheName testCache -Tag @{"tag3" = "value1"; "tag4" = "value2"}
+Set-AzHpcCache -ResourceGroupName testRG -CacheName testCache -Tag @{"tag3" = "value1"; "tag4" = "value2"}
 ```
 
 ## PARAMETERS

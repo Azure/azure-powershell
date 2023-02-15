@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CostManagement
-online version: https://docs.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementexportexecutionhistory
+online version: https://learn.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementexportexecutionhistory
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The operation to get the execution history of an export for the defined scope an
 
 ### Example 1: Get AzCostManagementExportExecutionHistory
 ```powershell
-PS C:\> Get-AzCostManagementExportExecutionHistory -ExportName 'TestExport' -Scope 'subscriptions/**********'
+Get-AzCostManagementExportExecutionHistory -ExportName 'TestExport' -Scope 'subscriptions/**********'
+```
 
+```output
 ExecutionType ProcessingStartTime ProcessingEndTime  Status    FileName
 ------------- ------------------- -----------------  ------    --------
 Scheduled     2020/6/11 12:03:20  2020/6/11 12:03:43 Completed ad-hoc/TestExport/20200601-20200630/TestExport_00000000-0000-0000-0000-000000000000.csv
@@ -43,9 +45,11 @@ Get AzCostManagementExportExecutionHistory By ExportName and Scope
 
 ### Example 2: Get AzCostManagementExportExecutionHistory by InputObject
 ```powershell
-PS C:\> $getExport = Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
+$getExport = Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
 Get-AzCostManagementExportExecutionHistory -InputObject $getExport
+```
 
+```output
 ExecutionType ProcessingStartTime ProcessingEndTime  Status    FileName
 ------------- ------------------- -----------------  ------    --------
 Scheduled     2020/6/11 12:03:20  2020/6/11 12:03:43 Completed ad-hoc/TestExport/20200601-20200630/TestExport_00000000-0000-0000-0000-000000000000.csv
@@ -126,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExportExecution
 
 ## NOTES
 
@@ -137,12 +141,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
+`INPUTOBJECT <ICostManagementIdentity>`: Identity Parameter
   - `[AlertId <String>]`: Alert ID
+  - `[BillingAccountId <String>]`: Enrollment ID (Legacy BillingAccount ID)
+  - `[BillingProfileId <String>]`: BillingProfile ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.
   - `[ExternalCloudProviderType <ExternalCloudProviderType?>]`: The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
   - `[Id <String>]`: Resource identity path
+  - `[OperationId <String>]`: The target operation Id.
   - `[Scope <String>]`: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   - `[ViewName <String>]`: View name
 

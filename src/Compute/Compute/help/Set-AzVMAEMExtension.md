@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 3B15C734-DF57-433A-8854-ACE2B35FF6CB
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmaemextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmaemextension
 schema: 2.0.0
 ---
 
@@ -16,8 +16,9 @@ Enables support for monitoring for SAP systems.
 ```
 Set-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [-EnableWAD]
  [[-WADStorageAccountName] <String>] [[-OSType] <String>] [-SkipStorage] [-NoWait]
- [-SetAccessToIndividualResources] [-InstallNewExtension] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-SetAccessToIndividualResources] [-InstallNewExtension] [[-ProxyURI] <String>] [-DebugExtension]
+ [[-PathUserIdentity] <String>] [-SkipIdentity] [-IsTest]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,14 +28,29 @@ The cmdlet installs the Azure Enhanced Monitoring (AEM) extension that collects 
 ## EXAMPLES
 
 ### Example 1: Use AEM extension
-```
-PS C:\> Set-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server" -WADStorageAccountName "stdstorage"
+```powershell
+Set-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server" -WADStorageAccountName "stdstorage"
 ```
 
 This command configures the virtual machine named contoso-server to use the AEM extension.
 The command specifies the storage account named stdstorage.
 
 ## PARAMETERS
+
+### -DebugExtension
+Enable debug mode for the VM Extension.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -81,6 +97,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IsTest
+Use test version of the extension. The parameter is meant for earlybird and private builds. Please use it only if advised by the product support. Not for production.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.
 
@@ -113,6 +143,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PathUserIdentity
+Assures user assigned identity on the VM and configures the extension to authenticate with the user assigned identity.
+For example:
+-PathUserIdentity "/subscriptions/272eae8b-75b3-41e5-88b4-782d16d0d97e/resourcegroups/ContosoRresourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ContosoUserAssignedIdentity"
+You can use the -PathUserIdentity parameter along with -SkipIdentity, in this case the script will only configure the extension and the VM must already has a valid user identity assigned.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyURI
+Configures the proxy URI that should be used by the VM Extension for SAP.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group of the virtual machine that this cmdlet modifies.
 
@@ -138,6 +200,20 @@ Aliases:
 
 Required: False
 Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipIdentity
+Bypas the VM identity configuration. The VM must already have either system or user identity assigned.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

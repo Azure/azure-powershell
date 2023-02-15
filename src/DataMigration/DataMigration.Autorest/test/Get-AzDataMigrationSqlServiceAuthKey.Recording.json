@@ -1,0 +1,41 @@
+{
+  "Get-AzDataMigrationSqlServiceAuthKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trialTD/listAuthKeys?api-version=2021-10-30-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trialTD/listAuthKeys?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "8f744a77-4786-4bbb-bc69-c95743b72f52" ],
+        "CommandName": [ "Get-AzDataMigrationSqlServiceAuthKey" ],
+        "FullCommandName": [ "Get-AzDataMigrationSqlServiceAuthKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "5aa04921-c3b8-4588-baaa-e8861caea8fa" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "bdd5ef32-d37f-45ad-8e89-63f5a9bab4e8" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164444Z:bdd5ef32-d37f-45ad-8e89-63f5a9bab4e8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:44:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "229" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"authKey1\":\"IR@82fb81b7-2dbf-4173-a52e-224d62725865@trialTD@eu2euap@zSUO/Z+b0YhQxqgzLhcoH+nt1JoWjO45zz5Lbd7Wy6w=\",\"authKey2\":\"IR@82fb81b7-2dbf-4173-a52e-224d62725865@trialTD@eu2euap@kezFa9Uan3I3qdzkOU3Uq0XeFGWTFWV87lkWIb2JdMo=\"}"
+    }
+  }
+}

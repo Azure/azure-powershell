@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.BotService",
-  "ModuleVersion": "0.3.2",
+  "ModuleVersion": "0.5.0",
   "Cmdlets": [
     {
       "VerbName": "Export",
@@ -14,23 +14,45 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "AllSetting": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings",
+              "Parameter": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters",
+              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection[]",
+              "MsaAppType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType]",
+              "PublicNetworkAccess": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess]",
+              "IsDeveloperAppInsightsApiKeySet": "System.Nullable`1[System.Boolean]",
+              "IsCmekEnabled": "System.Nullable`1[System.Boolean]",
+              "DisableLocalAuth": "System.Nullable`1[System.Boolean]",
+              "IsStreamingSupported": "System.Nullable`1[System.Boolean]",
+              "DeveloperAppInsightsApiKey": "System.String",
+              "SchemaTransformationVersion": "System.String",
+              "PublishingCredentials": "System.String",
+              "AppPasswordHint": "System.String",
+              "ProvisioningState": "System.String",
+              "CmekEncryptionStatus": "System.String",
+              "CmekKeyVaultUrl": "System.String",
+              "OpenWithHint": "System.String",
+              "MsaAppTenantId": "System.String",
+              "MsaAppMsiResourceId": "System.String",
+              "MsaAppId": "System.String",
+              "DeveloperAppInsightsApplicationId": "System.String",
+              "MigrationToken": "System.String",
+              "LuisKey": "System.String",
+              "StorageResourceId": "System.String",
               "Description": "System.String",
               "DeveloperAppInsightKey": "System.String",
-              "DeveloperAppInsightsApiKey": "System.String",
-              "DeveloperAppInsightsApplicationId": "System.String",
-              "DisplayName": "System.String",
-              "Endpoint": "System.String",
-              "EndpointVersion": "System.String",
               "IconUrl": "System.String",
-              "LuisKey": "System.String",
-              "MsaAppId": "System.String",
+              "EndpointVersion": "System.String",
+              "Endpoint": "System.String",
+              "DisplayName": "System.String",
+              "ManifestUrl": "System.String",
+              "TenantId": "System.String",
+              "LuisAppId": "System.String[]",
               "ConfiguredChannel": "System.String[]",
-              "EnabledChannel": "System.String[]",
-              "LuisAppId": "System.String[]"
+              "EnabledChannel": "System.String[]"
             }
           },
           "ParameterSets": [
@@ -106,7 +128,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -116,7 +138,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -257,7 +279,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -273,7 +295,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -344,23 +366,45 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "AllSetting": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings",
+              "Parameter": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters",
+              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection[]",
+              "MsaAppType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType]",
+              "PublicNetworkAccess": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess]",
+              "IsDeveloperAppInsightsApiKeySet": "System.Nullable`1[System.Boolean]",
+              "IsCmekEnabled": "System.Nullable`1[System.Boolean]",
+              "DisableLocalAuth": "System.Nullable`1[System.Boolean]",
+              "IsStreamingSupported": "System.Nullable`1[System.Boolean]",
+              "DeveloperAppInsightsApiKey": "System.String",
+              "SchemaTransformationVersion": "System.String",
+              "PublishingCredentials": "System.String",
+              "AppPasswordHint": "System.String",
+              "ProvisioningState": "System.String",
+              "CmekEncryptionStatus": "System.String",
+              "CmekKeyVaultUrl": "System.String",
+              "OpenWithHint": "System.String",
+              "MsaAppTenantId": "System.String",
+              "MsaAppMsiResourceId": "System.String",
+              "MsaAppId": "System.String",
+              "DeveloperAppInsightsApplicationId": "System.String",
+              "MigrationToken": "System.String",
+              "LuisKey": "System.String",
+              "StorageResourceId": "System.String",
               "Description": "System.String",
               "DeveloperAppInsightKey": "System.String",
-              "DeveloperAppInsightsApiKey": "System.String",
-              "DeveloperAppInsightsApplicationId": "System.String",
-              "DisplayName": "System.String",
-              "Endpoint": "System.String",
-              "EndpointVersion": "System.String",
               "IconUrl": "System.String",
-              "LuisKey": "System.String",
-              "MsaAppId": "System.String",
+              "EndpointVersion": "System.String",
+              "Endpoint": "System.String",
+              "DisplayName": "System.String",
+              "ManifestUrl": "System.String",
+              "TenantId": "System.String",
+              "LuisAppId": "System.String[]",
               "ConfiguredChannel": "System.String[]",
-              "EnabledChannel": "System.String[]",
-              "LuisAppId": "System.String[]"
+              "EnabledChannel": "System.String[]"
             }
           },
           "ParameterSets": [
@@ -405,11 +449,12 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
               "ConnectionName": "System.String",
               "Id": "System.String",
+              "PrivateEndpointConnectionName": "System.String",
               "ResourceGroupName": "System.String",
               "ResourceName": "System.String",
               "SubscriptionId": "System.String"
@@ -444,7 +489,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -454,7 +499,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -580,7 +625,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -596,7 +641,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -727,7 +772,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -743,7 +788,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -859,7 +904,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -875,7 +920,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -941,11 +986,12 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
                     "ConnectionName": "System.String",
                     "Id": "System.String",
+                    "PrivateEndpointConnectionName": "System.String",
                     "ResourceGroupName": "System.String",
                     "ResourceName": "System.String",
                     "SubscriptionId": "System.String"
@@ -998,7 +1044,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1014,7 +1060,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1114,7 +1160,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1130,7 +1176,254 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzBotServiceHostSetting",
+      "Name": "Get-AzBotServiceHostSetting",
+      "ClassName": "Get-AzBotServiceHostSetting",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 0,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "Get",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IHostSettingsResponse",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IHostSettingsResponse, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "ValidateAuthority": "System.Nullable`1[System.Boolean]",
+              "BotOpenIdMetadata": "System.String",
+              "OAuthUrl": "System.String",
+              "ToBotFromChannelOpenIdMetadataUrl": "System.String",
+              "ToBotFromChannelTokenIssuer": "System.String",
+              "ToBotFromEmulatorOpenIdMetadataUrl": "System.String",
+              "ToChannelFromBotLoginUrl": "System.String",
+              "ToChannelFromBotOAuthScope": "System.String"
+            }
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "SubscriptionId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzureRMContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSObject",
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Break",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelineAppend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelinePrepend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Proxy",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Uri",
+            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyCredential",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSCredential",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyUseDefaultCredentials",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1201,23 +1494,45 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "AllSetting": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings",
+              "Parameter": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters",
+              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection[]",
+              "MsaAppType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType]",
+              "PublicNetworkAccess": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess]",
+              "IsDeveloperAppInsightsApiKeySet": "System.Nullable`1[System.Boolean]",
+              "IsCmekEnabled": "System.Nullable`1[System.Boolean]",
+              "DisableLocalAuth": "System.Nullable`1[System.Boolean]",
+              "IsStreamingSupported": "System.Nullable`1[System.Boolean]",
+              "DeveloperAppInsightsApiKey": "System.String",
+              "SchemaTransformationVersion": "System.String",
+              "PublishingCredentials": "System.String",
+              "AppPasswordHint": "System.String",
+              "ProvisioningState": "System.String",
+              "CmekEncryptionStatus": "System.String",
+              "CmekKeyVaultUrl": "System.String",
+              "OpenWithHint": "System.String",
+              "MsaAppTenantId": "System.String",
+              "MsaAppMsiResourceId": "System.String",
+              "MsaAppId": "System.String",
+              "DeveloperAppInsightsApplicationId": "System.String",
+              "MigrationToken": "System.String",
+              "LuisKey": "System.String",
+              "StorageResourceId": "System.String",
               "Description": "System.String",
               "DeveloperAppInsightKey": "System.String",
-              "DeveloperAppInsightsApiKey": "System.String",
-              "DeveloperAppInsightsApplicationId": "System.String",
-              "DisplayName": "System.String",
-              "Endpoint": "System.String",
-              "EndpointVersion": "System.String",
               "IconUrl": "System.String",
-              "LuisKey": "System.String",
-              "MsaAppId": "System.String",
+              "EndpointVersion": "System.String",
+              "Endpoint": "System.String",
+              "DisplayName": "System.String",
+              "ManifestUrl": "System.String",
+              "TenantId": "System.String",
+              "LuisAppId": "System.String[]",
               "ConfiguredChannel": "System.String[]",
-              "EnabledChannel": "System.String[]",
-              "LuisAppId": "System.String[]"
+              "EnabledChannel": "System.String[]"
             }
           },
           "ParameterSets": [
@@ -1290,7 +1605,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1300,7 +1615,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1438,7 +1753,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1454,7 +1769,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1525,23 +1840,45 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "AllSetting": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings",
+              "Parameter": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters",
+              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection[]",
+              "MsaAppType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType]",
+              "PublicNetworkAccess": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess]",
+              "IsDeveloperAppInsightsApiKeySet": "System.Nullable`1[System.Boolean]",
+              "IsCmekEnabled": "System.Nullable`1[System.Boolean]",
+              "DisableLocalAuth": "System.Nullable`1[System.Boolean]",
+              "IsStreamingSupported": "System.Nullable`1[System.Boolean]",
+              "DeveloperAppInsightsApiKey": "System.String",
+              "SchemaTransformationVersion": "System.String",
+              "PublishingCredentials": "System.String",
+              "AppPasswordHint": "System.String",
+              "ProvisioningState": "System.String",
+              "CmekEncryptionStatus": "System.String",
+              "CmekKeyVaultUrl": "System.String",
+              "OpenWithHint": "System.String",
+              "MsaAppTenantId": "System.String",
+              "MsaAppMsiResourceId": "System.String",
+              "MsaAppId": "System.String",
+              "DeveloperAppInsightsApplicationId": "System.String",
+              "MigrationToken": "System.String",
+              "LuisKey": "System.String",
+              "StorageResourceId": "System.String",
               "Description": "System.String",
               "DeveloperAppInsightKey": "System.String",
-              "DeveloperAppInsightsApiKey": "System.String",
-              "DeveloperAppInsightsApplicationId": "System.String",
-              "DisplayName": "System.String",
-              "Endpoint": "System.String",
-              "EndpointVersion": "System.String",
               "IconUrl": "System.String",
-              "LuisKey": "System.String",
-              "MsaAppId": "System.String",
+              "EndpointVersion": "System.String",
+              "Endpoint": "System.String",
+              "DisplayName": "System.String",
+              "ManifestUrl": "System.String",
+              "TenantId": "System.String",
+              "LuisAppId": "System.String[]",
               "ConfiguredChannel": "System.String[]",
-              "EnabledChannel": "System.String[]",
-              "LuisAppId": "System.String[]"
+              "EnabledChannel": "System.String[]"
             }
           },
           "ParameterSets": [
@@ -1551,25 +1888,16 @@
       ],
       "Parameters": [
         {
-          "Name": "ApplicationId",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Location",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
           "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ApplicationId",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -1622,6 +1950,24 @@
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Location",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ServerFarmLocation",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1716,7 +2062,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1726,7 +2072,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1765,6 +2111,21 @@
           "Parameters": [
             {
               "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ApplicationId",
                 "Type": {
                   "Namespace": "System",
@@ -1774,36 +2135,6 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Location",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ResourceGroupName",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -1829,6 +2160,36 @@
             {
               "ParameterMetadata": {
                 "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServerFarmLocation",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -1897,7 +2258,7 @@
                 },
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": false,
+              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -1942,7 +2303,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1958,7 +2319,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2065,6 +2426,21 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ApplicationId",
                 "Type": {
                   "Namespace": "System",
@@ -2074,36 +2450,6 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Location",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ResourceGroupName",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -2129,6 +2475,36 @@
             {
               "ParameterMetadata": {
                 "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServerFarmLocation",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -2197,7 +2573,7 @@
                 },
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": false,
+              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -2242,7 +2618,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2258,7 +2634,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2365,6 +2741,21 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ApplicationId",
                 "Type": {
                   "Namespace": "System",
@@ -2374,36 +2765,6 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Location",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ResourceGroupName",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -2429,6 +2790,36 @@
             {
               "ParameterMetadata": {
                 "Name": "Description",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServerFarmLocation",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -2497,7 +2888,7 @@
                 },
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": false,
+              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -2542,7 +2933,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2558,7 +2949,368 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzBotServiceDirectLineKey",
+      "Name": "New-AzBotServiceDirectLineKey",
+      "ClassName": "New-AzBotServiceDirectLineKey",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "RegenerateExpanded",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotChannel",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotChannel, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "ChannelName": "System.String",
+              "PropertiesEtag": "System.String",
+              "PropertiesLocation": "System.String",
+              "PropertiesProvisioningState": "System.String"
+            }
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ChannelName",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.RegenerateKeysChannelName",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.RegenerateKeysChannelName, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SubscriptionId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Key",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Key",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Key, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SiteName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzureRMContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSObject",
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Break",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelineAppend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelinePrepend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Proxy",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Uri",
+            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyCredential",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSCredential",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyUseDefaultCredentials",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ChannelName",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.RegenerateKeysChannelName",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.RegenerateKeysChannelName, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Key",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Key",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Key, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SiteName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2765,11 +3517,12 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
               "ConnectionName": "System.String",
               "Id": "System.String",
+              "PrivateEndpointConnectionName": "System.String",
               "ResourceGroupName": "System.String",
               "ResourceName": "System.String",
               "SubscriptionId": "System.String"
@@ -2804,7 +3557,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2814,7 +3567,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2948,7 +3701,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2964,7 +3717,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3045,11 +3798,12 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
                     "ConnectionName": "System.String",
                     "Id": "System.String",
+                    "PrivateEndpointConnectionName": "System.String",
                     "ResourceGroupName": "System.String",
                     "ResourceName": "System.String",
                     "SubscriptionId": "System.String"
@@ -3102,7 +3856,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3118,7 +3872,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3233,7 +3987,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3249,7 +4003,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3335,23 +4089,45 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "AllSetting": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings",
+              "Parameter": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters",
+              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection[]",
+              "MsaAppType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType]",
+              "PublicNetworkAccess": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess]",
+              "IsDeveloperAppInsightsApiKeySet": "System.Nullable`1[System.Boolean]",
+              "IsCmekEnabled": "System.Nullable`1[System.Boolean]",
+              "DisableLocalAuth": "System.Nullable`1[System.Boolean]",
+              "IsStreamingSupported": "System.Nullable`1[System.Boolean]",
+              "DeveloperAppInsightsApiKey": "System.String",
+              "SchemaTransformationVersion": "System.String",
+              "PublishingCredentials": "System.String",
+              "AppPasswordHint": "System.String",
+              "ProvisioningState": "System.String",
+              "CmekEncryptionStatus": "System.String",
+              "CmekKeyVaultUrl": "System.String",
+              "OpenWithHint": "System.String",
+              "MsaAppTenantId": "System.String",
+              "MsaAppMsiResourceId": "System.String",
+              "MsaAppId": "System.String",
+              "DeveloperAppInsightsApplicationId": "System.String",
+              "MigrationToken": "System.String",
+              "LuisKey": "System.String",
+              "StorageResourceId": "System.String",
               "Description": "System.String",
               "DeveloperAppInsightKey": "System.String",
-              "DeveloperAppInsightsApiKey": "System.String",
-              "DeveloperAppInsightsApplicationId": "System.String",
-              "DisplayName": "System.String",
-              "Endpoint": "System.String",
-              "EndpointVersion": "System.String",
               "IconUrl": "System.String",
-              "LuisKey": "System.String",
-              "MsaAppId": "System.String",
+              "EndpointVersion": "System.String",
+              "Endpoint": "System.String",
+              "DisplayName": "System.String",
+              "ManifestUrl": "System.String",
+              "TenantId": "System.String",
+              "LuisAppId": "System.String[]",
               "ConfiguredChannel": "System.String[]",
-              "EnabledChannel": "System.String[]",
-              "LuisAppId": "System.String[]"
+              "EnabledChannel": "System.String[]"
             }
           },
           "ParameterSets": [
@@ -3395,15 +4171,43 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
               "ConnectionName": "System.String",
               "Id": "System.String",
+              "PrivateEndpointConnectionName": "System.String",
               "ResourceGroupName": "System.String",
               "ResourceName": "System.String",
               "SubscriptionId": "System.String"
             }
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AllSetting",
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AppPasswordHint",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "CmekKeyVaultUrl",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3444,6 +4248,15 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "DisableLocalAuth",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DisplayName",
           "Type": {
             "Namespace": "System",
@@ -3480,11 +4293,29 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "IsCmekEnabled",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "IsStreamingSupported",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "Kind",
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3517,7 +4348,88 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "ManifestUrl",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "MsaAppId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MsaAppMsiResourceId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MsaAppTenantId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MsaAppType",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "OpenWithHint",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Parameter",
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "PublicNetworkAccess",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "PublishingCredentials",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SchemaTransformationVersion",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -3530,7 +4442,16 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "StorageResourceId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3540,6 +4461,15 @@
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "TenantId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3570,7 +4500,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3580,7 +4510,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3667,6 +4597,51 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AllSetting",
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AppPasswordHint",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CmekKeyVaultUrl",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Description",
                 "Type": {
                   "Namespace": "System",
@@ -3717,6 +4692,21 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DisableLocalAuth",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3787,11 +4777,41 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "IsCmekEnabled",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IsStreamingSupported",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Kind",
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3848,7 +4868,142 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ManifestUrl",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "MsaAppId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MsaAppMsiResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MsaAppTenantId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MsaAppType",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "OpenWithHint",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Parameter",
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublicNetworkAccess",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublishingCredentials",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SchemaTransformationVersion",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -3867,7 +5022,22 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3883,6 +5053,21 @@
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "TenantId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3931,7 +5116,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3947,7 +5132,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4013,11 +5198,12 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ChannelName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
                     "ConnectionName": "System.String",
                     "Id": "System.String",
+                    "PrivateEndpointConnectionName": "System.String",
                     "ResourceGroupName": "System.String",
                     "ResourceName": "System.String",
                     "SubscriptionId": "System.String"
@@ -4028,6 +5214,51 @@
               "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AllSetting",
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AppPasswordHint",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CmekKeyVaultUrl",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
             {
@@ -4082,6 +5313,21 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DisableLocalAuth",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4152,11 +5398,41 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "IsCmekEnabled",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IsStreamingSupported",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Kind",
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4213,7 +5489,142 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ManifestUrl",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "MsaAppId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MsaAppMsiResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MsaAppTenantId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MsaAppType",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "OpenWithHint",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Parameter",
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublicNetworkAccess",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublishingCredentials",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SchemaTransformationVersion",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -4232,7 +5643,22 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4248,6 +5674,21 @@
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "TenantId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4296,7 +5737,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4312,7 +5753,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4374,6 +5815,51 @@
           "Parameters": [
             {
               "ParameterMetadata": {
+                "Name": "AllSetting",
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AppPasswordHint",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CmekKeyVaultUrl",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Description",
                 "Type": {
                   "Namespace": "System",
@@ -4424,6 +5910,21 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DisableLocalAuth",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4494,11 +5995,41 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "IsCmekEnabled",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IsStreamingSupported",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Kind",
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4555,7 +6086,142 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ManifestUrl",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "MsaAppId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MsaAppMsiResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MsaAppTenantId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MsaAppType",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "OpenWithHint",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Parameter",
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublicNetworkAccess",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PublishingCredentials",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SchemaTransformationVersion",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -4574,7 +6240,22 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4590,6 +6271,21 @@
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "TenantId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4638,7 +6334,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4654,7 +6350,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4757,6 +6453,352 @@
     "System.Char": {
       "Name": "System.Char"
     },
+    "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection[], Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IPrivateEndpointConnection, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointConnectionProvisioningState]",
+        "PrivateLinkServiceConnectionStateStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus]",
+        "PrivateEndpointId": "System.String",
+        "PrivateLinkServiceConnectionStateActionsRequired": "System.String",
+        "PrivateLinkServiceConnectionStateDescription": "System.String"
+      }
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointConnectionProvisioningState]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointConnectionProvisioningState]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointConnectionProvisioningState, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointConnectionProvisioningState"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointConnectionProvisioningState": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointConnectionProvisioningState",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointConnectionProvisioningState, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointConnectionProvisioningState"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.Management.Automation.CompletionResult"
+      ]
+    },
+    "System.Management.Automation.CompletionResult": {
+      "Namespace": "System.Management.Automation",
+      "Name": "System.Management.Automation.CompletionResult",
+      "AssemblyQualifiedName": "System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PrivateEndpointServiceConnectionStatus"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Boolean]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.Boolean"
+      ]
+    },
     "System.String[]": {
       "Namespace": "System",
       "Name": "System.String[]",
@@ -4766,7 +6808,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SendAsyncStep, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -4941,15 +6983,10 @@
       "Name": "System.Delegate",
       "AssemblyQualifiedName": "System.Delegate, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "System.Type": {
-      "Namespace": "System",
-      "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-    },
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName"
       ]
@@ -4957,7 +6994,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName, Az.BotService.private, Version=0.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName, Az.BotService.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -5018,19 +7055,6 @@
           "ReturnType": "System.Type"
         }
       ]
-    },
-    "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "System.Management.Automation.CompletionResult"
-      ]
-    },
-    "System.Management.Automation.CompletionResult": {
-      "Namespace": "System.Management.Automation",
-      "Name": "System.Management.Automation.CompletionResult",
-      "AssemblyQualifiedName": "System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     }
   }
 }

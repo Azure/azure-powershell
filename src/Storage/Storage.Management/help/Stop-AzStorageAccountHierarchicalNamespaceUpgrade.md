@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/stop-azstorageaccounthierarchicalnamespaceupgrade
+online version: https://learn.microsoft.com/powershell/module/az.storage/stop-azstorageaccounthierarchicalnamespaceupgrade
 schema: 2.0.0
 ---
 
@@ -30,8 +30,11 @@ The **Stop-AzStorageAccountHierarchicalNamespaceUpgrade** cmdlet can aborts an o
 ## EXAMPLES
 
 ### Example 1: Abort HierarchicalNamespace upgrade task on a stroage account
+```powershell
+Stop-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $rgname -Name $accountName -Force -PassThru
 ```
-PS C:\> Stop-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $rgname -Name $accountName -Force -PassThru
+
+```output
 True
 ```
 

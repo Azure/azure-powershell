@@ -111,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         /// <summary>
         /// remove azure table
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="localChannel">IStorageTableManagement channel object</param>
         /// <param name="tableName">table name</param>
         /// <returns>
         /// true if the table is removed, false if user has cancelled the operation,

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/undo-azcognitiveservicesaccountremoval
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/undo-azcognitiveservicesaccountremoval
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Undo-AzCognitiveServicesAccountRemoval** cmdlet recover a soft-deleted Cog
 
 ### Example 1
 ```powershell
-PS C:\> Undo-AzCognitiveServicesAccountRemoval -Location "Central US EUAP" -ResourceGroupName "ResourceGroupName" -Name "ResourceName"
+Undo-AzCognitiveServicesAccountRemoval -Location "Central US EUAP" -ResourceGroupName "ResourceGroupName" -Name "ResourceName"
 ```
 
 Recover a soft-deleted Cognitive Services account. The account was created in "Central US EUAP", the resource group and resource name were "ResourceGroupName" and "ResourceName". 

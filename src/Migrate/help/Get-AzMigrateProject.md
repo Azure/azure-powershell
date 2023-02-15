@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
+online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Method to get a migrate project.
 
 ### Example 1: Get
 ```powershell
-PS C:\> Get-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -Name BugBashAVSVMware
+Get-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -Name BugBashAVSVMware
+```
 
+```output
 ETag Location      Name             Type
 ---- --------      ----             ----
      southeastasia BugBashAVSVMware Microsoft.Migrate/MigrateProjects

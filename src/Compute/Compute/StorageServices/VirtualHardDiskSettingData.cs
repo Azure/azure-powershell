@@ -83,6 +83,7 @@ namespace Microsoft.Samples.HyperV.Storage
         /// </param>
         /// <param name="blockSize">The block size of the virtual hard disk.</param>
         /// <param name="logicalSectorSize">The logical sector size of the virtual hard disk.
+        /// </param>
         /// <param name="physicalSectorSize">The physical sector size of the virtual hard disk.
         /// </param>
         public

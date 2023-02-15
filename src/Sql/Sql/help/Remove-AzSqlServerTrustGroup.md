@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlservertrustgroup
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlservertrustgroup
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Deletes a Server Trust Group with specified name, location and resource group.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -Location "West Europe" -Name "ServerTrustGroup01"
+Remove-AzSqlServerTrustGroup -ResourceGroupName "ResourceGroup01" -Location "West Europe" -Name "ServerTrustGroup01"
 ```
 
 Deletes a Server Trust Group in location West Europe with name ServerTrustGroup01 in resource group ResourceGroup01.

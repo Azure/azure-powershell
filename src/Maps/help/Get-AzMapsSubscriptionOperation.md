@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Maps
-online version: https://docs.microsoft.com/powershell/module/az.maps/get-azmapssubscriptionoperation
+online version: https://learn.microsoft.com/powershell/module/az.maps/get-azmapssubscriptionoperation
 schema: 2.0.0
 ---
 
@@ -23,8 +23,10 @@ List operations available for the Maps Resource Provider
 
 ### Example 1: List operations available for the Maps Resource Provider
 ```powershell
-PS C:\> Get-AzMapsSubscriptionOperation
+Get-AzMapsSubscriptionOperation
+```
 
+```output
 IsDataAction Name                                                                          Origin
 ------------ ----                                                                          ------
              Microsoft.Maps/resourceTypes/read

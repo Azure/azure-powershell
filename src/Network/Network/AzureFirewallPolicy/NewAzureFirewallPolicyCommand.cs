@@ -73,10 +73,15 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The base policy to inherit from")]
         public string BasePolicy { get; set; }
 
-       [Parameter(
+        [Parameter(
             Mandatory = false,
             HelpMessage = "The DNS Setting")]
         public PSAzureFirewallPolicyDnsSettings DnsSetting { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The SQL related setting")]
+        public PSAzureFirewallPolicySqlSetting SqlSetting { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -116,6 +121,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.FirewallPolicySkuTier.Standard,
             MNM.FirewallPolicySkuTier.Premium,
+            MNM.FirewallPolicySkuTier.Basic,
             IgnoreCase = true)]
         public string SkuTier { get; set; }
 
@@ -138,12 +144,22 @@ namespace Microsoft.Azure.Commands.Network
         )]
         public string[] PrivateRange { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Explicit Proxy Settings in Firewall Policy.")]
+        public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
+
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "The private IP addresses/IP ranges to which traffic will not be SNAT in Firewall Policy.")]
+        public PSAzureFirewallPolicySNAT Snat { get; set; }
+
         public override void Execute()
         {
 
             base.Execute();
 
-            var present = NetworkBaseCmdlet.IsResourcePresent(() => GetAzureFirewallPolicy(this.ResourceGroupName, this.Name));  
+            var present = NetworkBaseCmdlet.IsResourcePresent(() => GetAzureFirewallPolicy(this.ResourceGroupName, this.Name));
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -155,6 +171,10 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSAzureFirewallPolicy CreateAzureFirewallPolicy()
         {
+            if (this.Snat != null && this.PrivateRange != null && this.PrivateRange.Length > 0)
+            {
+                throw new ArgumentException("Please use Snat parameter to set PrivateRange. Private ranges can not be provided on both Snat and PrivateRange parameters at the same time.");
+            }
 
             var firewallPolicy = new PSAzureFirewallPolicy()
             {
@@ -165,11 +185,15 @@ namespace Microsoft.Azure.Commands.Network
                 ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                 BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
                 DnsSettings = this.DnsSetting,
-                Sku = new PSAzureFirewallPolicySku {
+                SqlSetting = this.SqlSetting,
+                Sku = new PSAzureFirewallPolicySku
+                {
                     Tier = this.SkuTier ?? MNM.FirewallPolicySkuTier.Standard
                 },
                 IntrusionDetection = this.IntrusionDetection,
-                PrivateRange = this.PrivateRange
+                PrivateRange = this.PrivateRange,
+                ExplicitProxy = this.ExplicitProxy,
+                Snat = this.Snat
             };
 
             if (this.UserAssignedIdentityId != null)

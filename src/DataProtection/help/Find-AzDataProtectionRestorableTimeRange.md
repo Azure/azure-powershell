@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/find-azdataprotectionrestorabletimerange
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/find-azdataprotectionrestorabletimerange
 schema: 2.0.0
 ---
 
 # Find-AzDataProtectionRestorableTimeRange
 
 ## SYNOPSIS
-
+Finds the valid recovery point in time ranges for the restore.
 
 ## SYNTAX
 
@@ -20,18 +20,20 @@ Find-AzDataProtectionRestorableTimeRange -BackupInstanceName <String> -ResourceG
 ```
 
 ## DESCRIPTION
-
+Finds the valid recovery point in time ranges for the restore.
 
 ## EXAMPLES
 
 ### Example 1: Fetch valid restorable time ranges for a BackupInstance
 ```powershell
-PS C:\> $startTime = (Get-Date).AddDays(-30).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
-PS C:\> $endTime = (Get-Date).AddDays(0).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
-PS C:\>  $instances = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "subscriptionId" -DatasourceType AzureBlob -ResourceGroup "rgName" -Vault "vaultName"
-PS C:\> $pointInTimeRange = Find-AzDataProtectionRestorableTimeRange -BackupInstanceName $instances[0].BackupInstanceName -ResourceGroupName "rgName" -SubscriptionId "subscriptionId"  -VaultName "vaultName" -SourceDataStoreType OperationalStore -StartTime $startTime -EndTime $endTime
-PS C:\> $pointInTimeRange.RestorableTimeRange | fl
+$startTime = (Get-Date).AddDays(-30).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
+$endTime = (Get-Date).AddDays(0).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
+$instances = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "subscriptionId" -DatasourceType AzureBlob -ResourceGroup "rgName" -Vault "vaultName"
+$pointInTimeRange = Find-AzDataProtectionRestorableTimeRange -BackupInstanceName $instances[0].BackupInstanceName -ResourceGroupName "rgName" -SubscriptionId "subscriptionId"  -VaultName "vaultName" -SourceDataStoreType OperationalStore -StartTime $startTime -EndTime $endTime
+$pointInTimeRange.RestorableTimeRange | Format-List
+```
 
+```output
 EndTime    : 2021-04-24T08:57:36.4149422Z
 ObjectType : RestorableTimeRange
 StartTime  : 2021-03-25T14:27:31.0000000Z
@@ -45,7 +47,7 @@ Dispaly RestorableTimeRange, note that this can be multiple dicrete ranges.
 ## PARAMETERS
 
 ### -BackupInstanceName
-The name of the backup instance
+The name of the backup instance.
 
 ```yaml
 Type: System.String
@@ -91,7 +93,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the backup vault is present.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -137,7 +140,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -204,7 +208,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupFindRestorableTimeRangesResponseResource
 
 ## NOTES
 

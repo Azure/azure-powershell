@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Databricks service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,19 +47,27 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 53740f04d2b1f9fab8ba6b0bdc0fde9b178c5987
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/9120c925c8de6840da38365bb8807be2e0e617c0/specification/databricks/resource-manager/Microsoft.Databricks/stable/2018-04-01/databricks.json
-
-module-version: 0.2.0
+  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/databricks.json
+  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/vnetpeering.json
+  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/accessconnector.json
+module-version: 1.1.0
 title: Databricks
 subject-prefix: $(service-name)
 
-inlining-threshold: 50
+inlining-threshold: 100
+resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
+  # Remove cmdlet, Private link related resource should be ignored. 
+  - where:
+     subject: PrivateEndpointConnection|PrivateLinkResource
+    remove: true
   # Remove the unexpanded parameter set
   - where:
       variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -112,7 +120,63 @@ directive:
   - where:
       parameter-name: PeeringName
     set:
-      parameter-name: Name 
+      parameter-name: Name
+  - where:
+      parameter-name: AmlWorkspaceIdValue
+    set:
+      parameter-name: AmlWorkspaceId
+
+  - where:
+      parameter-name: EnableNoPublicIPValue
+    set:
+      parameter-name: EnableNoPublicIP
+  - where:
+      parameter-name: PublicIPNameValue
+    set:
+      parameter-name: PublicIPName
+
+  - where:
+      parameter-name: KeyVaultPropertyKeyName
+    set:
+      parameter-name: KeyVaultKeyName
+  - where:
+      parameter-name: KeyVaultPropertyKeyVaultUri
+    set:
+      parameter-name: KeyVaultUri
+  - where:
+      parameter-name: KeyVaultPropertyKeyVersion
+    set:
+      parameter-name: KeyVaultKeyVersion
+
+  - where:
+      parameter-name: LoadBalancerBackendPoolNameValue
+    set:
+      parameter-name: LoadBalancerBackendPoolName
+  - where:
+      parameter-name: LoadBalancerIdValue
+    set:
+      parameter-name: LoadBalancerId
+
+  - where:
+      parameter-name: NatGatewayNameValue
+    set:
+      parameter-name: NatGatewayName
+
+  - where:
+      parameter-name: StorageAccountNameValue
+    set:
+      parameter-name: StorageAccountName
+
+  - where:
+      parameter-name: StorageAccountSkuNameValue
+    set:
+      parameter-name: StorageAccountSku
+
+  - where:
+      parameter-name: VnetAddressPrefixValue
+    set:
+      parameter-name: VnetAddressPrefix
+
   # Rename parameters of Set VNetPeering cmdlet
   - where:
       verb: New
@@ -131,12 +195,24 @@ directive:
       subject: VNetPeering
       parameter-name: DatabrickVirtualNetworkId 
     set:
-      parameter-name: DatabricksVirtualNetworkId 
+      parameter-name: DatabricksVirtualNetworkId
+  - where:
+      subject: AccessConnector
+      parameter-name: ConnectorName 
+    set:
+      parameter-name: Name  
   # Remove the set Workspace cmdlet
   - where:
       verb: Set
       subject: Workspace
     remove: true
+
+  # Remove the set AccessConnector cmdlet
+  - where:
+      verb: Set
+      subject: AccessConnector
+    remove: true
+
   # Hide the New Workspace cmdlet for customization
   - where:
       verb: New
@@ -158,6 +234,7 @@ directive:
       format-table:
         properties:
           - Name
+          - ResourceGroupName
           - Location
           - ManagedResourceGroupId
         labels:

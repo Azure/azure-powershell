@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsesqladvancedthreatprotectionsetting
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsesqladvancedthreatprotectionsetting
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Get-AzSynapseSqlAdvancedThreatProtectionSetting** cmdlet gets the advanced
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlAdvancedThreatProtectionSetting -WorkspaceName ContosoWorkspace
+Get-AzSynapseSqlAdvancedThreatProtectionSetting -WorkspaceName ContosoWorkspace
 ```
 
 This command gets the advanced threat protection settings for a workspace named ContosoWorkspace.

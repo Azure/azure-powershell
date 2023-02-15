@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/stop-azaksdashboard
+online version: https://learn.microsoft.com/powershell/module/az.aks/stop-azaksdashboard
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Stop-AzKubernetesDashboard
+```powershell
+Stop-AzAksDashboard
 ```
 
 Stops the existing SSH tunnel setup by executing Start-AzKubernetesDashboard.

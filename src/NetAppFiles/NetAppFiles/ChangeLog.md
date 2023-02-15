@@ -19,6 +19,38 @@
 -->
 ## Upcoming Release
 
+## Version 0.11.0
+* Added cmdlet `Reset-AzNetAppFilesVolumeCifsPassword`
+* Added cmdlet `Get-AzNetAppFilesVolumeReplications` and `Restore-AzNetAppFilesVolume`
+* Added cmdLet `Get-AzNetAppFilesVolumeQuotaRule`, `Get-AzNetAppFilesVolumeQuotaRule`, `New-AzNetAppFilesVolumeQuotaRule`, `Update-AzNetAppFilesVolumeQuotaRule` and `Remove-AzNetAppFilesVolumeQuotaRule`
+* Added cmdLet `Update-NetAppFilesAccountCredential`
+* Added properties `Identity`, `Encryption` and `DisableShowmount` to `PSNetAppFilesAccount`
+* Added properties `Encrypted` and `Zones`, `DeleteBaseSnapshot`, `KeyVaultPrivateEndpointResourceId`,`SmbAccessBasedEnumeration`, `SmbNonBrowsable`, `EncryptionKeySource`, `VolumeSpecName` to `PSNetAppFilesVolume`
+* Added paramter `CoolAccess` to `Update-AzNetAppFilesPool`
+* Added paramter `DeleteBaseSnapshot`, `SmbAccessBasedEnumeration`, `SmbNonBrowsable`, `EncryptionKeySource` and `KeyVaultPrivateEndpointResourceId` to `New-AzNetAppFilesVolume`
+* Added paramter `CoolAccess`, `CoolnessPeriod`, `EncryptionKeySource` and `KeyVaultPrivateEndpointResourceId` to `Update-AzNetAppFilesVolume`
+* Planning to deprecate the cmdLet `Get-AzNetAppFilesVault` as it will not be needed 
+
+## Version 0.10.0
+* Added cmdlet `New/Remove/Get/Update-AzNetAppFilesSubvolume` and `Get-AzNetAppFilesSubvolumeMetadata`
+* Added cmdlet `New/Remove/Get-AzNetAppFilesVolumeGroup`
+* Added cmdlet `New-AzNetAppFilesExportPolicyRuleObject` and `New-AzNetAppFilesExportPolicyObject`
+* Added `Restore-AzNetAppFilesSnapshot` to restore the specified files from the specified snapshot to the active filesystem
+* Added property `LdapSearchScope` to `PSNetAppFilesActiveDirectory`
+* Added property `SystemData` to `PSNetAppFilesBackupPolicy`, `PSNetAppFilesAccount` and `PSNetAppFilesPool` 
+* Added property `SystemData` and `MonthlySchedule` to output type `PSNetAppFilesSnapshotPolicy` 
+* Added property `SystemData`, `MaximumNumberOfFiles` and `EnableSubvolumes` to output type `PSNetAppFilesVolume` 
+* Added parameter `EnableSubvolume` and `UnixPermission` to `Update-AzNetAppFilesVolume`
+* Added parameter `ForceDelete' to `Remove-AzNetAppFilesVolume`
+
+## Version 0.9.0
+* Added `Administrators` and `EncryptDCConnections` to `ActiveDirectory`
+* Added `Get-AzNetAppFilesQuotaLimit` to get the default and current limits for quotas
+* Added `CapacityPoolResourceId`, `ProximityPlacementGroup`, `VolumeSpecName` and `PlacementRules` to `Volume`
+
+Breaking change:
+* The `Administrators` parameter in `New-AzNetAppFilesActiveDirectory` and `Update-AzNetAppFilesActiveDirectory` is changed to singularform `Administrator` to follow Powrshell convetion
+
 ## Version 0.8.0
 * Added list NetAppAccounts by subscription
 * Added etags to response PSNetAppFilesVolume, PSNetAppFilesPool, PSNetAppFilesAccount, PSNetAppFilesBackupPolicy, PSNetAppFilesSnapshotPolicy

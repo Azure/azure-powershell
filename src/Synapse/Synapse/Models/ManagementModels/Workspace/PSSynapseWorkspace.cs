@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// </summary>
         public IDictionary<string, object> ExtraProperties { get; set; }
 
+        /// <summary>
         /// Gets or sets managed Virtual Network Settings
         /// </summary>
         public PSManagedVirtualNetworkSettings ManagedVirtualNetworkSettings { get; set; }

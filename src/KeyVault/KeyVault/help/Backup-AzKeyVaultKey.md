@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: A82392AA-B12B-443E-8704-7CF5A9F8ED58
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -46,8 +46,10 @@ Use the **Backup-AzKeyVaultKey** cmdlet to retrieve the key in encrypted format 
 
 ### Example 1: Back up a key with an automatically generated file name
 ```powershell
-PS C:\Users\username\> Backup-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'
+Backup-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'
+```
 
+```output
 C:\Users\username\mykeyvault-mykey-1527029447.01191
 ```
 
@@ -55,8 +57,10 @@ This command retrieves the key named MyKey from the key vault named MyKeyVault a
 
 ### Example 2: Back up a key to a specified file name
 ```powershell
-PS C:\> Backup-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey' -OutputFile 'C:\Backup.blob'
+Backup-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey' -OutputFile 'C:\Backup.blob'
+```
 
+```output
 C:\Backup.blob
 ```
 
@@ -64,9 +68,11 @@ This command retrieves the key named MyKey from the key vaultnamed MyKeyVault an
 
 ### Example 3: Back up a previously retrieved key to a specified file name, overwriting the destination file without prompting.
 ```powershell
-PS C:\> $key = Get-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'
-PS C:\> Backup-AzKeyVaultKey -Key $key -OutputFile 'C:\Backup.blob' -Force
+$key = Get-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'
+Backup-AzKeyVaultKey -Key $key -OutputFile 'C:\Backup.blob' -Force
+```
 
+```output
 C:\Backup.blob
 ```
 

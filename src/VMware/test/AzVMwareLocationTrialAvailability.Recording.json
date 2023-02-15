@@ -1,17 +1,17 @@
 {
-  "AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/westcentralus/checkTrialAvailability?api-version=2021-06-01+1": {
+  "AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2021-12-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/westcentralus/checkTrialAvailability?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2021-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "228" ],
-        "x-ms-client-request-id": [ "50f69e1b-ab6f-4698-a9cb-370d2ff8b4ed" ],
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "cea0dcf0-1095-44c2-a326-54e891078ae6" ],
         "CommandName": [ "Test-AzVMwareLocationTrialAvailability" ],
         "FullCommandName": [ "Test-AzVMwareLocationTrialAvailability_Check" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -20,24 +20,14 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
-        "x-ms-request-id": [ "977a0061-9e71-469f-8a64-2af5b68261fe" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "e17228e2-bc63-43ac-a6af-35ccf790fcfc" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042101Z:e17228e2-bc63-43ac-a6af-35ccf790fcfc" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D03A890D768E49288B14640E3580CC7A Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:21:00Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:21:01 GMT" ]
+        "Date": [ "Thu, 22 Sep 2022 07:16:21 GMT" ],
+        "Server": [ "Rocket" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "45" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "46" ],
+        "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"availableHosts\":0,\"status\":\"TrialDisabled\"}",
+      "Content": "{\"status\":\"TrialAvailable\",\"availableHosts\":4}",
       "isContentBase64": false
     }
   }

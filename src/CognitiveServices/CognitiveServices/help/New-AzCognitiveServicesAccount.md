@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: A2B4ACC1-6F53-47DE-A2D4-831E8AC89A5C
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
@@ -43,11 +43,11 @@ specified type and SKU.
 ## EXAMPLES
 
 ### 1:
+```powershell
+New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Location 'WestUS'
 ```
-PS C:\> New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locatio
-n 'WestUS'
 
-
+```output
 ResourceGroupName : cognitive-services-resource-group
 AccountName       : myluis
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog

@@ -106,7 +106,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// create a new azure container
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="name">container name</param>
+        /// <param name="accesslevel">access level in ("off", "blob", "container")</param>
         internal async Task CreateAzureContainer(long taskId, IStorageBlobManagement localChannel, string name, BlobContainerPublicAccessType accesslevel)
         {
             if (!NameUtil.IsValidContainerName(name))

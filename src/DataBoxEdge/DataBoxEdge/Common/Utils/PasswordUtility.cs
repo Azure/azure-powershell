@@ -32,7 +32,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Utils
         /// <summary>
         /// Validates password strength with set of rules for password provided by user
         /// </summary>
-        /// <paramref name="password">Password provided by user</param>
+        /// <param name="argumentName"></param>
+        /// <param name="password">Password provided by user</param>
         /// <returns>true if valid pattern is provided.</returns>
         public static bool ValidateUserPasswordPattern(string argumentName, string password)
         {

@@ -165,6 +165,7 @@ function Test-StorageBlobContainerEncryptionScope
 		$containerName2 = "container2"+ $rgname
 		$scopeName = "testscope"
 		$scopeName2 = "testscope2"
+		$scopeName3 = "filtertestscope3"
 
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -190,8 +191,20 @@ function Test-StorageBlobContainerEncryptionScope
 		
 		#List Scope
 		New-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName2 -StorageEncryption
+		New-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName3 -StorageEncryption
+		Update-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -EncryptionScopeName $scopeName3 -State Disabled 
 		$scopes = Get-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual 3 $scopes.Count
+		$scopes = Get-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -MaxPageSize 1 -Include Disabled 
+		Assert-AreEqual 1 $scopes.Count
+		Assert-AreEqual "Disabled" $scopes[0].State
+		$scopes = Get-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -Include All -Filter "startswith(name, filter)"
+		Assert-AreEqual 1 $scopes.Count
+		Assert-AreEqual $scopeName3  $scopes[0].Name 
+		$scopes = Get-AzStorageEncryptionScope -ResourceGroupName $rgname -StorageAccountName $stoname -Include Enabled 
 		Assert-AreEqual 2 $scopes.Count
+		Assert-AreEqual "Enabled" $scopes[0].State
+		Assert-AreEqual "Enabled" $scopes[1].State
 
 		#create container
 		New-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -DefaultEncryptionScope $scopename -PreventEncryptionScopeOverride $true 
@@ -564,9 +577,10 @@ function Test-StorageBlobServiceProperties
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
 		
 		# Enable and Disable Blob Delete Retention Policy
-		$policy = Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 3
+		$policy = Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 3 -AllowPermanentDelete
 		Assert-AreEqual $true $policy.Enabled
 		Assert-AreEqual 3 $policy.Days
+		Assert-AreEqual $true $policy.AllowPermanentDelete
 		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
 		Assert-AreEqual $true $property.DeleteRetentionPolicy.Enabled
@@ -868,7 +882,7 @@ function Test-StorageBlobContainerSoftDelete
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 
         # Enable Blob Delete Retention Policy
-        $policy = Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 30
+        $policy = Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 30 
         Assert-AreEqual $true $policy.Enabled
         Assert-AreEqual 30 $policy.Days
         $property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname

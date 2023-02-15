@@ -16,13 +16,13 @@
 
 <#
 .Synopsis
-Description for Deletes a web, mobile, or API app, or one of the deployment slots.
+Deletes a web, mobile, or API app, or one of the deployment slots.
 .Description
-Description for Deletes a web, mobile, or API app, or one of the deployment slots.
+Deletes a web, mobile, or API app, or one of the deployment slots.
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
 .Example
-PS C:\> Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -91,7 +91,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionapp
 #>
 function Remove-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -199,6 +199,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunctionApp_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunctionApp_DeleteViaIdentity';
@@ -212,6 +213,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -220,15 +222,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -16,6 +16,7 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.Azure.Management.ApiManagement.Models;
     using ResourceManager.Common;
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
@@ -58,17 +59,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             "Default behavior is to make the region live immediately. ")]
         public bool? DisableGateway { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments.")]
+        public string PublicIpAddressId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             WriteObject(
                 new PsApiManagementRegion
                 {
                     Location = Location,
-                    Sku = PsApiManagementSku.Premium, // additional regions are only supported in Premium Sku
+                    Sku = SkuType.Premium, // additional regions are only supported in Premium Sku
                     Capacity = Capacity.HasValue ? Capacity.Value : 1,
                     VirtualNetwork = VirtualNetwork,
                     Zone = Zone,
-                    DisableGateway = DisableGateway
+                    DisableGateway = DisableGateway,
+                    PublicIpAddressId = PublicIpAddressId
                 });
         }
     }

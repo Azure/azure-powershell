@@ -1,7 +1,7 @@
 ---
 Module Name: Az.RecoveryServices
 Module Guid: 4aa53b7e-fcfe-4e22-979c-9a4e6380de58
-Download Help Link: https://docs.microsoft.com/powershell/module/az.recoveryservices
+Download Help Link: https://learn.microsoft.com/powershell/module/az.recoveryservices
 Help Version: 4.1.2.0
 Locale: en-US
 ---
@@ -36,7 +36,7 @@ Edits a Site Recovery plan.
 The **Enable-AzRecoveryServicesBackupAutoProtection** cmdlet sets up automatic protection of current and any future SQL DBs within the given instance with the supplied policy.
 
 ### [Enable-AzRecoveryServicesBackupProtection](Enable-AzRecoveryServicesBackupProtection.md)
-Enables backup for an item with a specified Backup protection policy.
+Enables or resumes backup for an item with a specified Backup protection policy.
 
 ### [Get-AzRecoveryServicesAsrAlertSetting](Get-AzRecoveryServicesAsrAlertSetting.md)
 Gets the configured Azure Site Recovery notification settings for the vault.
@@ -140,6 +140,9 @@ Checks whether your ARM resource is backed up or not.
 ### [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](Get-AzRecoveryServicesBackupWorkloadRecoveryConfig.md)
 This command constructs the recovery configuration of a backed up item such as SQL DB. The configuration object stores all details such as the recovery mode, target destinations for the restore and application specific parameters like target physical paths for SQL.
 
+### [Get-AzRecoveryServicesResourceGuardMapping](Get-AzRecoveryServicesResourceGuardMapping.md)
+Gets the resource guard mapping added to the recovery services vault.
+
 ### [Get-AzRecoveryServicesVault](Get-AzRecoveryServicesVault.md)
 Gets a list of Recovery Services vaults.
 
@@ -150,7 +153,7 @@ Returns the properties of a Recovery Services Vault.
 Gets the Azure Site Recovery vault settings file.
 
 ### [Import-AzRecoveryServicesAsrVaultSettingsFile](Import-AzRecoveryServicesAsrVaultSettingsFile.md)
-Imports the specified ASR vault settings file to set the vault context(PowerShell session context) for subsequent ASR operations in the PowerShell session. 
+Imports the specified ASR vault settings file to set the vault context(PowerShell session context) for subsequent ASR operations in the PowerShell session.
 
 ### [Initialize-AzRecoveryServicesBackupProtectableItem](Initialize-AzRecoveryServicesBackupProtectableItem.md)
 This command triggers the discovery of any unprotected items of the given workload type in the given container. If the DB application is not auto-protected use this command to discover new DBs whenever they are added and proceed to protect them.
@@ -242,6 +245,9 @@ Removes the vCenter server from the ASR fabric and stops discovery of virtual ma
 ### [Remove-AzRecoveryServicesBackupProtectionPolicy](Remove-AzRecoveryServicesBackupProtectionPolicy.md)
 Deletes a Backup protection policy from a vault.
 
+### [Remove-AzRecoveryServicesResourceGuardMapping](Remove-AzRecoveryServicesResourceGuardMapping.md)
+Deletes the resource guard mapping added to the recovery services vault.
+
 ### [Remove-AzRecoveryServicesVault](Remove-AzRecoveryServicesVault.md)
 Deletes a Recovery Services vault.
 
@@ -269,6 +275,9 @@ Sets the properties for backup management.
 
 ### [Set-AzRecoveryServicesBackupProtectionPolicy](Set-AzRecoveryServicesBackupProtectionPolicy.md)
 Modifies a Backup protection policy.
+
+### [Set-AzRecoveryServicesResourceGuardMapping](Set-AzRecoveryServicesResourceGuardMapping.md)
+Sets the resource guard mapping to the recovery services vault.
 
 ### [Set-AzRecoveryServicesVaultContext](Set-AzRecoveryServicesVaultContext.md)
 Sets vault context.
@@ -316,7 +325,7 @@ Cancels a running job.
 This cmdlet performs necessary validations for DS Move.
 
 ### [Undo-AzRecoveryServicesBackupItemDeletion](Undo-AzRecoveryServicesBackupItemDeletion.md)
-If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever 
+If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever
 
 ### [Unregister-AzRecoveryServicesBackupContainer](Unregister-AzRecoveryServicesBackupContainer.md)
 Unregisters a Windows Server or other container from the vault.

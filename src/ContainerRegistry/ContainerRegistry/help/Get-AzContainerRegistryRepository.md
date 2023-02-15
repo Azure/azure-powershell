@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryrepository
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryrepository
 schema: 2.0.0
 ---
 
@@ -33,6 +33,9 @@ List returns repository names only.
 ### Example 1
 ```powershell
 Get-AzContainerRegistryRepository -RegistryName registry
+```
+
+```output
 alpine
 test/busybox0
 test/busybox1
@@ -44,6 +47,9 @@ List all repositories in registry.
 ### Example 2
 ```powershell
 Get-AzContainerRegistryRepository -RegistryName registry -First 3
+```
+
+```output
 alpine
 test/busybox0
 test/busybox1
@@ -54,7 +60,9 @@ List first 3 repositories in registry.
 ### Example 3
 ```powershell
 Get-AzContainerRegistryRepository -RegistryName registry -Name alpine
+```
 
+```output
 Registry             : registry.azurecr.io
 ImageName            : alpine
 CreatedTime          : 2020-10-13T05:45:25.5896115Z

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 2FD2C5C0-5A5A-4CF0-9260-21B9E3DE52B9
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementproductfromgroup
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementproductfromgroup
 schema: 2.0.0
 ---
 
@@ -25,9 +25,9 @@ In other words, this cmdlet removes the group assignment from a product.
 ## EXAMPLES
 
 ### Example 1: Remove a product from a group
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementProductFromGroup -Context $apimContext -GroupId "0001" -ProductId "0123456789"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementProductFromGroup -Context $apimContext -GroupId "0001" -ProductId "0123456789"
 ```
 
 This command removes a product from an existing group.

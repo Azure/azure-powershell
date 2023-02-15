@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapseroleassignment
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapseroleassignment
 schema: 2.0.0
 ---
 
@@ -88,33 +88,36 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 * GET /users/{id}
 * GET /servicePrincipals/{id}
 
+>[!Note]
+> To removing a role assignment for a service principal, pass the object ID of the principal in the ObjectId parameter.
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentId ContosoRoleAssignmentId
+Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentId ContosoRoleAssignmentId
 ```
 
 This command deletes an Azure Synapse Analytics role assignment with a role assignment Id.
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentName ContosoRole -SignInName ContosoName
+Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName
 ```
 
 This command deletes an Azure Synapse Analytics role assignment at workspace level with a role name and a user principal name.
 
 ### Example 3
 ```powershell
-PS C:\> Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem
+Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem
 ```
 
 This command deletes an Azure Synapse Analytics role assignment with a role name, a user principal name, a item type and a item.
 
 ### Example 4
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseRoleAssignment -RoleAssignmentId ContosoRoleAssignmentId
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseRoleAssignment -RoleAssignmentId ContosoRoleAssignmentId
 ```
 
 This command deletes an Azure Synapse Analytics role assignment with a role assignment Id through pipeline.

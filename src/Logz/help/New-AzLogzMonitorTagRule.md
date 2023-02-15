@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/new-azlogzmonitortagrule
+online version: https://learn.microsoft.com/powershell/module/az.logz/new-azlogzmonitortagrule
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create or update a tag rule set for a given monitor resource.
 
 ### Example 1: Create or update a tag rule set for a given monitor resource
 ```powershell
-PS C:\> New-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
+New-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
+```
 
+```output
 Name    ProvisioningState ResourceGroupName
 ----    ----------------- -----------------
 default Succeeded         logz-rg-test

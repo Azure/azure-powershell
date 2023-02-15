@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubeventhubconsumergroup
+online version: https://learn.microsoft.com/powershell/module/az.iothub/add-aziothubeventhubconsumergroup
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Creates a consumer group in the Eventhub associated with the specified IotHub.
 ## EXAMPLES
 
 ### Example 1: Add a consumer group to the telemetry eventhub
-```
-PS C:\> Add-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubConsumerGroupName "myconsumergroup"
+```powershell
+Add-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubConsumerGroupName "myconsumergroup"
 ```
 
 Adds a new consumergroup named "myconsumergroup" to the eventhub for telemetry events in the iothub named "myiothub"

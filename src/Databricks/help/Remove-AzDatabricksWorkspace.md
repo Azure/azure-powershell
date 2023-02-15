@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksworkspace
+online version: https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksworkspace
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ Deletes the workspace.
 
 ### Example 1: Remove a Databricks workspace
 ```powershell
-PS C:\> Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
+Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
 ```
 
 This command removes a Databricks workspace from a resource group.
 
 ### Example 2: Remove a Databricks workspace by object
 ```powershell
-PS C:\> $dbr = Get-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
-PS C:\> Remove-AzDatabricksWorkspace -InputObject $dbr
+$dbr = Get-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
+Remove-AzDatabricksWorkspace -InputObject $dbr
 ```
 
 This command removes a Databricks workspace from a resource group.
@@ -219,9 +219,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+`INPUTOBJECT <IDatabricksIdentity>`: Identity Parameter
+  - `[ConnectorName <String>]`: The name of the azure databricks accessConnector.
+  - `[GroupId <String>]`: The name of the private link resource
   - `[Id <String>]`: Resource identity path
   - `[PeeringName <String>]`: The name of the workspace vNet peering.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/new-azlogzmonitorssoconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.logz/new-azlogzmonitorssoconfiguration
 schema: 2.0.0
 ---
 
@@ -27,8 +27,10 @@ This operation can take upto 10 minutes to complete.
 
 ### Example 1: Configures single-sign-on for this resource
 ```powershell
-PS C:\> New-AzLogzMonitorSSOConfiguration -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
+New-AzLogzMonitorSSOConfiguration -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
+```
 
+```output
 Name    ProvisioningState SingleSignOnState SingleSignOnUrl             ResourceGroupName
 ----    ----------------- ----------------- ---------------             -----------------
 default Succeeded         Disable           https://app.logz.io/        logz-rg-test

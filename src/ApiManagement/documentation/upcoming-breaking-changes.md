@@ -26,3 +26,11 @@
 -->
 
 # Upcoming Breaking Changes
+
+The following cmdlets were affected this release:
+
+**Add-AzApiManagementRegion**
+**New-AzApiManagement**
+**Update-AzApiManagementRegion**
+
+BreakingChangeAttributeParameterReplaced: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/set-azsynapsesqlpooltransparentdataencryption
+online version: https://learn.microsoft.com/powershell/module/az.synapse/set-azsynapsesqlpooltransparentdataencryption
 schema: 2.0.0
 ---
 
@@ -46,7 +46,7 @@ The **Set-AzSynapseSqlPoolTransparentDataEncryption** cmdlet modifies the Transp
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseSqlPoolTransparentDataEncryption -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -State Enabled
+Set-AzSynapseSqlPoolTransparentDataEncryption -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -State Enabled
 ```
 
 This command enables TDE for the SQL pool named ContosoSqlPool under the workspace named ContosoWorkspace.

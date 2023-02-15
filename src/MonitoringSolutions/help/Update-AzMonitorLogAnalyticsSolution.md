@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MonitoringSolutions
-online version: https://docs.microsoft.com/powershell/module/az.monitoringsolutions/update-azmonitorloganalyticssolution
+online version: https://learn.microsoft.com/powershell/module/az.monitoringsolutions/update-azmonitorloganalyticssolution
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Update the tags of a solution.
 
 ### Example 1: Update a monitor log analytics solution by name
 ```powershell
-PS C:\> Update-AzMonitorLogAnalyticsSolution -ResourceGroupName lucas-manual-test -Name 'Containers(monitoringworkspace-2vob7n)' -Tag @{'Operation'='update';'Param'='Tag'}
+Update-AzMonitorLogAnalyticsSolution -ResourceGroupName lucas-manual-test -Name 'Containers(monitoringworkspace-2vob7n)' -Tag @{'Operation'='update';'Param'='Tag'}
+```
 
+```output
 Name                                   Type                                     Location
 ----                                   ----                                     --------
 Containers(monitoringworkspace-2vob7n) Microsoft.OperationsManagement/solutions East US
@@ -42,9 +44,11 @@ This command updates a monitor log analytics solution by name.
 
 ### Example 2: Update a monitor log analytics solution by object
 ```powershell
-PS C:\> $monitor = Get-AzMonitorLogAnalyticsSolution -ResourceGroupName lucas-manual-test -Name 'Containers(monitoringworkspace-2vob7n)'
-PS C:\> Update-AzMonitorLogAnalyticsSolution -InputObject $monitor -Tag @{'Operation'='update';'Param'='Tag'}
+$monitor = Get-AzMonitorLogAnalyticsSolution -ResourceGroupName lucas-manual-test -Name 'Containers(monitoringworkspace-2vob7n)'
+Update-AzMonitorLogAnalyticsSolution -InputObject $monitor -Tag @{'Operation'='update';'Param'='Tag'}
+```
 
+```output
 Name                                   Type                                     Location
 ----                                   ----                                     --------
 Containers(monitoringworkspace-2vob7n) Microsoft.OperationsManagement/solutions East US
@@ -198,7 +202,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMonitoringSolutionsIdentity>: Identity Parameter
+INPUTOBJECT `<IMonitoringSolutionsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ManagementAssociationName <String>]`: User ManagementAssociation Name.
   - `[ManagementConfigurationName <String>]`: User Management Configuration Name.

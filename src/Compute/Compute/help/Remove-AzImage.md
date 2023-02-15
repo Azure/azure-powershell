@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azimage
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azimage
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Remove-AzImage** cmdlet removes an image..
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Force;
+```powershell
+Remove-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Force;
 ```
 
 This command removes the image named 'Image01' in the resource group 'ResourceGroup01'.

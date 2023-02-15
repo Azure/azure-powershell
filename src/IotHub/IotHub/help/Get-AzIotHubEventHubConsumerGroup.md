@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubeventhubconsumergroup
+online version: https://learn.microsoft.com/powershell/module/az.iothub/get-aziothubeventhubconsumergroup
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ Gets all the eventhub consumergroups for the different EventHubs used by IotHub.
 ## EXAMPLES
 
 ### Example 1 Gets all the eventhub consumergroups for the telemetry eventhub
-```
-PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub"
+```powershell
+Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets all the eventhub consumergroups for the telemetry eventhub for the iothub named myiothub

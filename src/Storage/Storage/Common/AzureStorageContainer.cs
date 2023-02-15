@@ -281,6 +281,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// Get Track1 Blob Container Object
         /// </summary>
         /// <param name="track2BlobContainerClient"></param>
+        /// <param name="credentials"></param>
         public static CloudBlobContainer GetTrack1BlobContainer(BlobContainerClient track2BlobContainerClient, StorageCredentials credentials)
         {
             if (credentials.IsSAS) // the Uri already contains credentail.

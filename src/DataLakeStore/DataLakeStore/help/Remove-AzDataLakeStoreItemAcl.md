@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: D3E8A6A6-C6C5-46B0-914B-75088A6F6011
-online version: https://docs.microsoft.com/powershell/module/az.datalakestore/remove-azdatalakestoreitemacl
+online version: https://learn.microsoft.com/powershell/module/az.datalakestore/remove-azdatalakestoreitemacl
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzDataLakeStoreItemAcl** cmdlet clears the access control list (ACL
 ## EXAMPLES
 
 ### Example 1: Remove the ACL from a folder
-```
-PS C:\>Remove-AzDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/"
+```powershell
+Remove-AzDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/"
 ```
 
 This command removes the ACL for the root directory for the ContosoADL account.

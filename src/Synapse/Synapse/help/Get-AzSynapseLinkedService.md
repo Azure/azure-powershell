@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapselinkedservice
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapselinkedservice
 schema: 2.0.0
 ---
 
@@ -33,22 +33,22 @@ If you do not specify a name, this cmdlet gets information about all the linked 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseLinkedService -WorkspaceName ContosoWorkspace
+Get-AzSynapseLinkedService -WorkspaceName ContosoWorkspace
 ```
 
 This command gets information about all linked services in the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseLinkedService -WorkspaceName ContosoWorkspace -Name ContosoLinkedService
+Get-AzSynapseLinkedService -WorkspaceName ContosoWorkspace -Name ContosoLinkedService
 ```
 
 This command gets information about the linked service named ContosoLinkedService in the workspace named ContosoWorkspace.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseLinkedService -Name ContosoLinkedService
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseLinkedService -Name ContosoLinkedService
 ```
 
 This command gets information about the linked service named ContosoLinkedService in the workspace named ContosoWorkspace through pipeline.

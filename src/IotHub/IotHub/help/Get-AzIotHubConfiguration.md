@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.iothub/get-aziothubconfiguration
 schema: 2.0.0
 ---
 
@@ -38,14 +38,14 @@ See https://docs.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1"
+Get-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1"
 ```
 
 Get the details of an IoT automatic device management configuration.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
+Get-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
 ```
 
 List IoT automatic device management configurations in an IoT Hub.

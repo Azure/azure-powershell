@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: A9A8C4B9-6346-4186-9D73-3A56437BFB2F
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Set-AzHDInsightClusterSize** cmdlet sets the number of Worker nodes in a s
 ## EXAMPLES
 
 ### Example 1: Set the size of a specified cluster
-```
-PS C:\>Set-AzHDInsightClusterSize -ClusterName "your-hadoop-001" -TargetInstanceCount 6
+```powershell
+Set-AzHDInsightClusterSize -ClusterName "your-hadoop-001" -TargetInstanceCount 6
 ```
 
 This command sets the size of the cluster named your-hadoop-001.

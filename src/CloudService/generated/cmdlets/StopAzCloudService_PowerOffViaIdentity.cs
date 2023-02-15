@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Power off the cloud service. Note that resources are still attached and you are getting charged for the resources.

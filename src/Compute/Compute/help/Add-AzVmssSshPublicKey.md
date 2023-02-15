@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 9C216103-EB77-468E-8684-F5E5400B73A7
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmsssshpublickey
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmsssshpublickey
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Add-AzVmssSshPublicKey** cmdlet adds the public keys that you can use to c
 ## EXAMPLES
 
 ### Example 1: Add an SSH public key to the VMSS
-```
-PS C:\> $VMSS = New-AzVmssConfig
-PS C:\> Add-AzVmssSshPublicKey -VirtualMachineScaleSet $VMSS -KeyData "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSq12Ib3DQEB21QUAMEUxCzAJBgNV" -Path "/home/admin/.ssh/authorized_keys"
+```powershell
+$VMSS = New-AzVmssConfig
+Add-AzVmssSshPublicKey -VirtualMachineScaleSet $VMSS -KeyData "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSq12Ib3DQEB21QUAMEUxCzAJBgNV" -Path "/home/admin/.ssh/authorized_keys"
 ```
 
 This example adds an SSH public key to the VMSS.

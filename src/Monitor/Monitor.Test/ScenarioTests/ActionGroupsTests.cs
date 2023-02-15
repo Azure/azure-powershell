@@ -12,29 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class ActionGroupsTests : RMTestBase
+    public class ActionGroupsTests : MonitorTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ActionGroupsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ActionGroupsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddGetListSetRemoveActionGroup()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-AddGetListSetRemoveActionGroup");
+            TestRunner.RunTestScript("Test-AddGetListSetRemoveActionGroup");
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesreplication
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesreplication
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ Remove/Delete the replication connection on the destination volume, and send rel
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AnfReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
+Remove-AzNetAppFilesReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume"
 ```
 
 This command removes the ANF Replication connection on volume "MyDestinationAnfVolume".
@@ -212,3 +212,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Approve-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
+[Initialize-AzNetAppFilesReplication](./Initialize-AzNetAppFilesReplication.md)
+[Suspend-AzNetAppFilesReplication](./Suspend-AzNetAppFilesReplication.md)
+[Resume-AzNetAppFilesReplication](./Resume-AzNetAppFilesReplication.md)
+[Get-AzNetAppFilesReplicationStatus](./Get-AzNetAppFilesReplicationStatus.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesVolume.md)

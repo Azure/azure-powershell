@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>RecoveryServices</PsModuleName>
@@ -11,9 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.3.2-preview" />
-	<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="4.2.0-preview" />
     <PackageReference Include="System.Security.Cryptography.Cng" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+  	<ProjectReference Include="..\RecoveryServices.Management.Sdk\RecoveryServices.Management.Sdk.csproj" />
+	<ProjectReference Include="..\RecoveryServices.Backup.Management.Sdk\RecoveryServices.Backup.Management.Sdk.csproj" />
+	<ProjectReference Include="..\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,5 +34,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

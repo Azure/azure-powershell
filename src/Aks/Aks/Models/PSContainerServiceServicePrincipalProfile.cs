@@ -38,8 +38,6 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// <param name="clientId">The ID for the service principal.</param>
         /// <param name="secret">The secret password associated with the
         /// service principal in plain text.</param>
-        /// <param name="keyVaultSecretRef">Reference to a secret stored in
-        /// Azure Key Vault.</param>
         public PSContainerServiceServicePrincipalProfile(string clientId, string secret = default(string))
         {
             ClientId = clientId;

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 13EF1028-43DE-424D-8185-EC45B5CEF2C1
-online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
@@ -48,14 +48,13 @@ The **Set-AzNetworkInterfaceIpConfig** cmdlet updates an IP configuration for a 
 ## EXAMPLES
 
 ### 1: Changing the IP address of an IP configuration
-```
+```powershell
 $vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
 
 $nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
 
-$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet
-    -Primary
+$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -Primary
 
 $nic | Set-AzNetworkInterface
 ```
@@ -68,15 +67,14 @@ The first two commands get a virtual network called myvnet and a subnet called m
     
 
 ### 2: Associating an IP configuration with an application security group
-```
+```powershell
 $vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
 $asg = Get-AzApplicationSecurityGroup -Name myasg -ResourceGroupName myrg
 
 $nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
 
-$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -ApplicationSecurityGroup $asg
-    -Primary
+$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -ApplicationSecurityGroup $asg -Primary
 
 $nic | Set-AzNetworkInterface
 ```

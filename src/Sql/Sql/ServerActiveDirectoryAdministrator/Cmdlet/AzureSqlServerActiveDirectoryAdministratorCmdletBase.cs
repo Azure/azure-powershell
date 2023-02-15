@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services;
-using Microsoft.Azure.Commands.Sql.Helpers;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -49,8 +48,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             base.ExecuteCmdlet();
         }
     }

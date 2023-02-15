@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/set-azservicefabricmanagedclusterapplicationtype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/set-azservicefabricmanagedclusterapplicationtype
 schema: 2.0.0
 ---
 
@@ -38,32 +38,32 @@ This cmdlet can be used to update application type tags.
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $newTags = @{new="tags"}
-PS C:\> Set-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Tags $newTags -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+$newTags = @{new="tags"}
+Set-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Tag $newTags -Verbose
 ```
 
 This example will update the managed application type "testAppType" tags.
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $newTags = @{new="tags"}
-PS C:\> $appType = Get-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
-PS C:\> $appType | Set-AzServiceFabricManagedClusterApplicationType -Tags $newTags -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+$newTags = @{new="tags"}
+$appType = Get-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
+$appType | Set-AzServiceFabricManagedClusterApplicationType -Tag $newTags -Verbose
 ```
 
 This example will update the managed application type "testAppType" tags.
 
 ### Example 3
 ```powershell
-PS C:\> $newTags = @{new="tags"}
-PS C:\> $resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType"
-PS C:\> Set-AzServiceFabricManagedClusterApplicationType -ResourceId $resourceId -Tags $newTags
+$newTags = @{new="tags"}
+$resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType"
+Set-AzServiceFabricManagedClusterApplicationType -ResourceId $resourceId -Tag $newTags
 ```
 
 This example will update the managed application type details with the ARM Resource ID specified.

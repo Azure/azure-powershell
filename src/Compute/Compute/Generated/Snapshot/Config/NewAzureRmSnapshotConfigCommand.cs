@@ -88,7 +88,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk. Possible values are: Empty, Attach, FromImage, Import, Copy, Restore, Upload, CopyStart")]
-        //todo: verify help message with API team
         public string CreateOption { get; set; }
 
         [Parameter(
@@ -99,13 +98,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Sets the Purchase Plan for the Snapshot.")]
+            HelpMessage = "Sets the purchase plan for the snapshot. Used for establishing the purchase context of any 3rd Party artifact through Marketplace.")]
         public PSPurchasePlan PurchasePlan { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify if Disk Supports Hibernation with $true of $false")]
+            HelpMessage = "Indicates if the OS on the snapshot supports hibernation with $true or $false")]
         public bool? SupportsHibernation { get; set; }
 
         [Parameter(
@@ -172,6 +171,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "True if the image from which the OS disk is created supports accelerated networking.")]
         public bool? AcceleratedNetwork { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Additional authentication requirements when exporting or uploading to a disk or snapshot.")]
+        [PSArgumentCompleter("AzureActiveDirectory", "None")]
+        public string DataAccessAuthMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
+        [PSArgumentCompleter("X64", "Arm64")]
+        public string Architecture { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -336,6 +349,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSupportedCapabilities.AcceleratedNetwork = AcceleratedNetwork;
             }
 
+            if (this.IsParameterBound(c => c.Architecture))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.Architecture = this.Architecture;
+            }
+
             var vSnapshot = new PSSnapshot
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -354,7 +376,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? this.PurchasePlan : null,
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
                 SupportedCapabilities = vSupportedCapabilities,
-                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null
+                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null
             };
 
             WriteObject(vSnapshot);

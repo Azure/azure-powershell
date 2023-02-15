@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/update-azdatafactoryv2integrationruntimenode
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/update-azdatafactoryv2integrationruntimenode
 schema: 2.0.0
 ---
 
@@ -38,8 +38,8 @@ The **Update-AzDataFactoryV2IntegrationRuntimeNode** cmdlet updates properties o
 ## EXAMPLES
 
 ### Example 1: Updates self-hosted integration runtime node
-```
-PS C:\> Update-AzDataFactoryV2IntegrationRuntimeNode `
+```powershell
+Update-AzDataFactoryV2IntegrationRuntimeNode `
     -ResourceGroupName 'rg-test-dfv2' `
     -DataFactoryName 'test-df-eu2' `
     -IntegrationRuntimeName 'test-selfhost-ir' `

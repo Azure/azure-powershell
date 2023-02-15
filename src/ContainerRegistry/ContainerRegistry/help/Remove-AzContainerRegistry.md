@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistry
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistry
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The Remove-AzContainerRegistry cmdlet removes a container registry.
 
 ### Example 1: Remove a specified container registry
 ```powershell
-PS C:\>Remove-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
+Remove-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
 ```
 
 This command removes the specified container registry.

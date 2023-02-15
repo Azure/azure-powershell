@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 9591E150-54DA-48B7-8656-3891833FE61E
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault
 schema: 2.0.0
 ---
 
@@ -15,6 +15,8 @@ Creates a new Recovery Services vault.
 
 ```
 New-AzRecoveryServicesVault -Name <String> -ResourceGroupName <String> -Location <String> [-Tag <Hashtable>]
+ [-DisableClassicAlerts <Boolean>] [-DisableAzureMonitorAlertsForJobFailure <Boolean>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-ImmutabilityState <ImmutabilityState>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,11 +26,19 @@ The **New-AzRecoveryServicesVault** cmdlet creates a new Recovery Services vault
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "rg" -Location "eastasia"
+```powershell
+New-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "rg" -Location "eastasia"
 ```
 
 Create recovery service vault in resource group and given location.
+
+### Example 2: reate recovery service vault with ImmutabilityState, PublicNetworkAccess options
+```powershell
+$tag= @{"tag1"="value1";"tag2"="value2"}
+New-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName" -Location "westus" -Tag $tag -ImmutabilityState "Unlocked" -PublicNetworkAccess "Disabled"
+```
+
+Create recovery service vault with options like ImmutabilityState, PublicNetworkAccess. Please note Public Network Access is by default enabled for RS vault (if not specified) and can be updated using Update-AzRecoveryServicesVault cmdlet.
 
 ## PARAMETERS
 
@@ -39,6 +49,53 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableAzureMonitorAlertsForJobFailure
+Boolean paramter to specify whether built-in Azure Monitor alerts should be received for every job failure.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableClassicAlerts
+Boolean paramter to specify whether backup alerts from the classic solution should be disabled or enabled.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutabilityState
+Immutability State of the vault. Allowed values are "Disabled", "Unlocked", "Locked". 
+Unlocked means Enabled and can be changed, Locked means Enabled and can't be changed.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.ImmutabilityState]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Unlocked
 
 Required: False
 Position: Named
@@ -71,6 +128,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Parameter to Enable/Disable public network access of the vault. This setting is useful with Private Endpoints.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.PublicNetworkAccess]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

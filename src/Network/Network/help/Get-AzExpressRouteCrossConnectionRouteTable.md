@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: BA7F6BAC-6047-42B0-B8CA-0B36302951B0
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressroutecrossconnectionroutetable
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressroutecrossconnectionroutetable
 schema: 2.0.0
 ---
 
@@ -36,8 +36,8 @@ connectivity.
 ## EXAMPLES
 
 ### Example 1: Display the route table for the primary path
-```
-Get-AzExpressRouteCrossConnectionRouteTable -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CircuitName -DevicePath 'Primary'
+```powershell
+Get-AzExpressRouteCrossConnectionRouteTable -ResourceGroupName $RG -CrossConnectionName $CircuitName -PeeringType MicrosoftPeering -DevicePath Primary
 ```
 
 ## PARAMETERS

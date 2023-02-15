@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/set-Azsqlelasticjobagent
+online version: https://learn.microsoft.com/powershell/module/Az.sql/set-Azsqlelasticjobagent
 schema: 2.0.0
 ---
 
@@ -36,9 +36,11 @@ The Set-AzSqlElasticJobAgent cmdlet updates an Elastic Job agents
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Set-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent -Tag @{ Octopus = "Agent" }
 ```
-PS C:\> Set-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent -Tag @{ Octopus = "Agent" }
 
+```output
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
 ----------------- ----------       ------------ --------- ----- ----
 rg                elasticjobserver jobdb        agent     Ready {[Octopus, Agent]}

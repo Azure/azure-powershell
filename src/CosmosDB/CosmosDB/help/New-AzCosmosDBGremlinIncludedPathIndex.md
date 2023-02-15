@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinincludedpathindex
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinincludedpathindex
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Object corresponding to Gremlin API's IncludedPath's Indexes.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+New-AzCosmosDBGremlinIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+```
 
+```output
 DataType Precision Kind
 -------- --------- ----
 String          -1 Hash

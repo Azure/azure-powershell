@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryusage
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryusage
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Get Usage of an azure container registry.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzContainerRegistryUsage -ResourceGroupName $resourceGroupName -RegistryName $RegistryName
+Get-AzContainerRegistryUsage -ResourceGroupName $resourceGroupName -RegistryName $RegistryName
 ```
 
 Get Usage of an azure container registry.

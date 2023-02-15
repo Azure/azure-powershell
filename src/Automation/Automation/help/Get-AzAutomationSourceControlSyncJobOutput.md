@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationsourcecontrolsyncjoboutput
+online version: https://learn.microsoft.com/powershell/module/az.automation/get-azautomationsourcecontrolsyncjoboutput
 schema: 2.0.0
 ---
 
@@ -28,14 +28,14 @@ This command gets the output of source control sync job with id 08d6d266-27b6-46
 
 
 ```powershell
-PS C:\> Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName "rg1" `
+Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName "rg1" `
                                                         -AutomationAccountName "devAccount" `
-                                                        -Name "VSTSNative"
-                                                        -Id "08d6d266-27b6-463c-beea-bc48a67ace15" `
+                                                        -SourceControlName "VSTSNative" `
+                                                        -JobId "08d6d266-27b6-463c-beea-bc48a67ace15" `
                                                         -Stream Output | ForEach-Object {$_.summary}
+```
 
-========================================================================================================
-
+```output
 Azure Automation Source Control Public Preview.
 Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
 Setting AzureRmEnvironment.
@@ -64,8 +64,6 @@ File size exceeds 1Mb:
 
 Invalid runbook name:
  - RunbookZ_ĈĦŕĬŞ.ps1
-
-========================================================================================================
 ```
 
 ## PARAMETERS
@@ -178,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -110,5 +110,35 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         /// Gets or sets a resource identifier for the related ApiVersionSet.
         /// </summary>
         public string ApiVersionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the email address of the contact person/organization.
+        /// </summary>
+        public string ContactEmail { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identifying name of the contact person/organization.
+        /// </summary>
+        public string ContactName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URL pointing to the contact information.
+        /// </summary>
+        public string ContactUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license name used for the API.
+        /// </summary>
+        public string LicenseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets a URL to the License for the API.
+        /// </summary>
+        public string LicenseUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets a URL to the Terms of Service for the API.
+        /// </summary>
+        public string TermsOfServiceUrl { get; set; }
     }
 }

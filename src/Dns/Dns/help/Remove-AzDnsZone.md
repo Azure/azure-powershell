@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: A8E230A0-5057-40BC-81CD-6D397A503A84
-online version: https://docs.microsoft.com/powershell/module/az.dns/remove-azdnszone
+online version: https://learn.microsoft.com/powershell/module/az.dns/remove-azdnszone
 schema: 2.0.0
 ---
 
@@ -37,8 +37,8 @@ This can be suppressed using the *Overwrite* parameter, which deletes the zone r
 ## EXAMPLES
 
 ### Example 1: Remove a zone
-```
-PS C:\>Remove-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+```powershell
+Remove-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 This command removes the zone named myzone.com from the resource group named MyResourceGroup.

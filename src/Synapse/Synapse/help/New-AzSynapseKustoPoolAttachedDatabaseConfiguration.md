@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolattacheddatabaseconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolattacheddatabaseconfiguration
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ Creates or updates an attached database configuration.
 
 ### Example 1: Create a new AttachedDatabaseConfiguration
 ```powershell
-PS C:\> New-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool -Name followerconfiguration -KustoPoolResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Synapse/workspaces/testws/kustoPools/testkustopool -DatabaseName testdatabase -DefaultPrincipalsModificationKind Union -Location eastus2
+New-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool -Name followerconfiguration -KustoPoolResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Synapse/workspaces/testws/kustoPools/testkustopool -DatabaseName testdatabase -DefaultPrincipalsModificationKind Union -Location eastus2
+```
 
+```output
 Name                                               Type                                                                   Location
 ----                                               ----                                                                   --------
 testws/testfollowerkustopool/followerconfiguration Microsoft.Synapse/workspaces/kustoPools/AttachedDatabaseConfigurations East US 2

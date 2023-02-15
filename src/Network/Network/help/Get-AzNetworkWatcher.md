@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcher
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkwatcher
 schema: 2.0.0
 ---
 
@@ -29,9 +29,11 @@ The Get-AzNetworkWatcher cmdlet gets one or more Azure Network Watcher resources
 ## EXAMPLES
 
 ### Example 1: Get a Network Watcher
+```powershell
+Get-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroupName NetworkWatcherRG
 ```
-Get-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
 
+```output
 Name              : NetworkWatcher_westcentralus
 Id                : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus
 Etag              : W/"ac624778-0214-49b9-a04c-794863485fa6"
@@ -43,9 +45,11 @@ ProvisioningState : Succeeded
 Gets the Network Watcher named NetworkWatcher_westcentralus in the resource group NetworkWatcherRG.
 
 ### Example 2: List Network Watchers using filtering
-```
+```powershell
 Get-AzNetworkWatcher -Name NetworkWatcher*
+```
 
+```output
 Name              : NetworkWatcher_westcentralus1
 Id                : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus1
 Etag              : W/"ac624778-0214-49b9-a04c-794863485fa6"

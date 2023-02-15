@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasebackupshorttermretentionpolicy
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldatabasebackupshorttermretentionpolicy
 schema: 2.0.0
 ---
 
@@ -38,8 +38,10 @@ The policy is the retention period in days and differential backup interval in h
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01
+Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01
+```
 
+```output
 ResourceGroupName ServerName  DatabaseName RetentionDays DiffBackupIntervalInHours
 ----------------- ----------  ------------ ------------- -------------------------
 resourcegroup01   server01    database01   7             24
@@ -49,8 +51,10 @@ This command gets the short term retention policy for database01.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 | Get-AzSqlDatabaseBackupShortTermRetentionPolicy
+Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 | Get-AzSqlDatabaseBackupShortTermRetentionPolicy
+```
 
+```output
 ResourceGroupName ServerName  DatabaseName RetentionDays DiffBackupIntervalInHours
 ----------------- ----------  ------------ ------------- -------------------------
 resourcegroup01   server01    database01   7             24

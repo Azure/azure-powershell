@@ -1,0 +1,530 @@
+{
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$PUT+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"sourceSqlConnection\": {\r\n      \"dataSource\": \"server.mivrosoft.com\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"userName\": \"hijavatestuser1\",\r\n      \"password\": \"admin\"\r\n    },\r\n    \"scope\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\r\n    \"sourceDatabaseName\": \"AdventureWorks\",\r\n    \"migrationService\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/dms20211030\",\r\n    \"targetSqlConnection\": {\r\n      \"dataSource\": \"targetserver.windows.net\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"userName\": \"user1\",\r\n      \"password\": \"password\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "807" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqldbmigration/operationResults/b373cc4a-263f-4ecc-b888-3f3ccb2ffc77?api-version=2022-03-30-preview" ],
+        "x-ms-request-id": [ "90f78e65-d8ba-4e13-9f74-07d8721dd3de" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "d25a8466-9279-421d-9793-b390e69d018c" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113841Z:d25a8466-9279-421d-9793-b390e69d018c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:38:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "833" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Creating\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqldbmigration/operationResults/b373cc4a-263f-4ecc-b888-3f3ccb2ffc77?api-version=2022-03-30-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqldbmigration/operationResults/b373cc4a-263f-4ecc-b888-3f3ccb2ffc77?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "dc71ce2d-e16c-4c38-bd35-612a932b3df9" ],
+        "CommandName": [ "New-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "New-AzDataMigrationToSqlDb_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "85c0364d-cc8f-4ef4-812c-e288756f69a7" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "882fa7e5-751a-4991-9c01-07bf3990b0db" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113856Z:882fa7e5-751a-4991-9c01-07bf3990b0db" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:38:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"b373cc4a-263f-4ecc-b888-3f3ccb2ffc77\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-30T11:38:40.043Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "dc71ce2d-e16c-4c38-bd35-612a932b3df9" ],
+        "CommandName": [ "New-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "New-AzDataMigrationToSqlDb_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "2e818cd4-5bac-4478-bdfd-b49678cd4a1c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "a379ba24-f8f5-40a2-804a-580bfe0868ad" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113856Z:a379ba24-f8f5-40a2-804a-580bfe0868ad" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:38:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "965" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Succeeded\",\"migrationStatus\":\"InProgress\",\"startedOn\":\"2022-03-30T11:38:53.59Z\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"migrationOperationId\":\"d0998fa9-1b73-4242-8f73-28ab2de2779f\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "90756f2d-d620-4a73-9f4e-02fec8bed74e" ],
+        "CommandName": [ "Get-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "Get-AzDataMigrationToSqlDb_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "61cf88ee-13dc-4195-895d-7d03483930a7" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "51ab7796-3b2f-45ea-a5ff-8805721093fd" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113858Z:51ab7796-3b2f-45ea-a5ff-8805721093fd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:38:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "965" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Succeeded\",\"migrationStatus\":\"InProgress\",\"startedOn\":\"2022-03-30T11:38:53.59Z\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"migrationOperationId\":\"d0998fa9-1b73-4242-8f73-28ab2de2779f\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2/cancel?api-version=2022-03-30-preview+5": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2/cancel?api-version=2022-03-30-preview",
+      "Content": "{\r\n  \"migrationOperationId\": \"d0998fa9-1b73-4242-8f73-28ab2de2779f\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "70" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/cancelsqldbmigration/operationResults/59023a50-c585-4e0c-9fcb-95a677a86b9b?api-version=2022-03-30-preview" ],
+        "x-ms-request-id": [ "b8bd8528-eb45-4bb8-a836-24ad07e76eaf" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "7fba2e51-68bb-4a1f-856b-327584887d72" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113900Z:7fba2e51-68bb-4a1f-856b-327584887d72" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:38:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "670" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Canceling\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "34d05151-0cc6-41bf-b84e-d7d82268933a" ],
+        "CommandName": [ "Get-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "Get-AzDataMigrationToSqlDb_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "86e29a5c-6a99-4f75-93eb-dd1e1e947c1d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "d1d0362a-d7d6-4265-a7c5-0e9b0b0a0c02" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113901Z:d1d0362a-d7d6-4265-a7c5-0e9b0b0a0c02" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:39:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "964" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Canceling\",\"migrationStatus\":\"Canceling\",\"startedOn\":\"2022-03-30T11:38:53.59Z\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"migrationOperationId\":\"d0998fa9-1b73-4242-8f73-28ab2de2779f\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "b46984c2-85de-43a8-bd8c-0a2a86340611" ],
+        "CommandName": [ "Get-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "Get-AzDataMigrationToSqlDb_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "55a171ca-6a8e-42d4-bfa7-107c13b54ef9" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "a4b75a20-c4c3-4acb-b8f9-1e8ac7a32275" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113902Z:a4b75a20-c4c3-4acb-b8f9-1e8ac7a32275" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:39:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "964" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Canceling\",\"migrationStatus\":\"Canceling\",\"startedOn\":\"2022-03-30T11:38:53.59Z\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"migrationOperationId\":\"d0998fa9-1b73-4242-8f73-28ab2de2779f\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "77c1d4e7-282f-4523-afa6-9bcf218fbf34" ],
+        "CommandName": [ "Get-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "Get-AzDataMigrationToSqlDb_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "66a6392a-2aaf-4686-b31c-f61255307063" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "e823a7f2-f823-44e2-9636-30bdabb3f299" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113903Z:e823a7f2-f823-44e2-9636-30bdabb3f299" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:39:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "964" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Canceling\",\"migrationStatus\":\"Canceling\",\"startedOn\":\"2022-03-30T11:38:53.59Z\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"migrationOperationId\":\"d0998fa9-1b73-4242-8f73-28ab2de2779f\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "ed4eec87-69e8-43de-8f43-c3874b27c6a6" ],
+        "CommandName": [ "Get-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "Get-AzDataMigrationToSqlDb_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "7c6747e0-d159-4cd2-a833-ba39e9ab0d86" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "68de19a9-d258-4a6d-a314-d36cfa1b4ef6" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113904Z:68de19a9-d258-4a6d-a314-d36cfa1b4ef6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:39:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "964" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Canceling\",\"migrationStatus\":\"Canceling\",\"startedOn\":\"2022-03-30T11:38:53.59Z\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"migrationOperationId\":\"d0998fa9-1b73-4242-8f73-28ab2de2779f\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "45429403-eaa0-46b5-a291-e465d3153b96" ],
+        "CommandName": [ "Get-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "Get-AzDataMigrationToSqlDb_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "2f5d02c8-a966-431f-bb67-f2bfec0fe574" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "d4e0f50a-e3ef-4f7c-8c7b-5a06e8eff73d" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113905Z:d4e0f50a-e3ef-4f7c-8c7b-5a06e8eff73d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:39:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "964" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Canceling\",\"migrationStatus\":\"Canceling\",\"startedOn\":\"2022-03-30T11:38:53.59Z\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"migrationOperationId\":\"d0998fa9-1b73-4242-8f73-28ab2de2779f\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "f8fde2e1-e6fe-4f55-afb4-dcbb9b7198e7" ],
+        "CommandName": [ "Get-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "Get-AzDataMigrationToSqlDb_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ab2c15dc-369b-4931-aa11-046625f37916" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "0d134755-fb0b-4add-b905-1d55b4179396" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113905Z:0d134755-fb0b-4add-b905-1d55b4179396" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:39:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "964" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Canceling\",\"migrationStatus\":\"Canceling\",\"startedOn\":\"2022-03-30T11:38:53.59Z\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"migrationOperationId\":\"d0998fa9-1b73-4242-8f73-28ab2de2779f\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "7af0349e-fbec-4306-916e-558d01eb896a" ],
+        "CommandName": [ "Get-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "Get-AzDataMigrationToSqlDb_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "fec88bbf-5d30-4e4e-8e79-aed3567b026a" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "b00a3893-fffd-45df-a696-c06a9e2b94a9" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113906Z:b00a3893-fffd-45df-a696-c06a9e2b94a9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:39:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "964" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Canceling\",\"migrationStatus\":\"Canceling\",\"startedOn\":\"2022-03-30T11:38:53.59Z\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"migrationOperationId\":\"d0998fa9-1b73-4242-8f73-28ab2de2779f\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataMigrationToSqlDb+[NoContext]+CancelExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2?api-version=2022-03-30-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "22c4ced4-d269-4b9b-9ae3-a1507b8e5dad" ],
+        "CommandName": [ "Get-AzDataMigrationToSqlDb" ],
+        "FullCommandName": [ "Get-AzDataMigrationToSqlDb_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DataMigration/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f7c9eb17-fb75-4974-bfc7-6e740469432b" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "8e45b9dc-efaf-4b0c-b63c-50d7d81ff501" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20220330T113907Z:8e45b9dc-efaf-4b0c-b63c-50d7d81ff501" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Mar 2022 11:39:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "999" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offlineConfiguration\":{\"offline\":true},\"backupConfiguration\":{\"sourceLocation\":{\"fileStorageType\":\"None\"}},\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb\",\"provisioningState\":\"Succeeded\",\"migrationStatus\":\"Canceled\",\"startedOn\":\"2022-03-30T11:38:53.59Z\",\"endedOn\":\"2022-03-30T11:39:07.34Z\",\"sourceServerName\":\"server.mivrosoft.com\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"migrationOperationId\":\"d0998fa9-1b73-4242-8f73-28ab2de2779f\",\"kind\":\"SqlDb\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt2\",\"name\":\"at_sqldbtrgt2\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}",
+      "isContentBase64": false
+    }
+  }
+}

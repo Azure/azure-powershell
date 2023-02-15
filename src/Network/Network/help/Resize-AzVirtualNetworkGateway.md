@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: DE2441FC-9504-4F3F-AEAF-37EDCD9B7275
-online version: https://docs.microsoft.com/powershell/module/az.network/resize-azvirtualnetworkgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/resize-azvirtualnetworkgateway
 schema: 2.0.0
 ---
 
@@ -29,9 +29,9 @@ For more information, see https://azure.microsoft.com/en-us/pricing/details/vpn-
 ## EXAMPLES
 
 ### Example 1: Change the size of a virtual network gateway
-```
-PS C:\>$Gateway = Get-AzVirtualNetworkGateway -Name "ContosoVirtualGateway"
-PS C:\> Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -GatewaySku "Basic"
+```powershell
+$Gateway = Get-AzVirtualNetworkGateway -Name "ContosoVirtualGateway"
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -GatewaySku "Basic"
 ```
 
 This example changes the size of a virtual network gateway named ContosoVirtualGateway.

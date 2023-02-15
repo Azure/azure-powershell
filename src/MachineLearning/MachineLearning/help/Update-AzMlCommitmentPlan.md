@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
-online version: https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlcommitmentplan
+online version: https://learn.microsoft.com/powershell/module/az.machinelearning/update-azmlcommitmentplan
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Updates an existing commitment plan resource. Note that most properties of the c
 ## EXAMPLES
 
 ### Example 1: Update a commitment plan
-```
-Update-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName" -Tags @{'MyTagKey'='MyTagValue'}
+```powershell
+Update-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName" -Tag @{'MyTagKey'='MyTagValue'}
 ```
 
 ## PARAMETERS

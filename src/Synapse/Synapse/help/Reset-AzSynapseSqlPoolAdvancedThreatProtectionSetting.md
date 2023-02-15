@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/reset-azsynapsesqlpooladvancedthreatprotectionsetting
+online version: https://learn.microsoft.com/powershell/module/az.synapse/reset-azsynapsesqlpooladvancedthreatprotectionsetting
 schema: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ The **Reset-AzSynapseSqlPoolAdvancedThreatProtectionSetting** cmdlet removes the
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzSynapseSqlPoolAdvancedThreatProtectionSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Reset-AzSynapseSqlPoolAdvancedThreatProtectionSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command removes the advanced threat protection settings from a SQL pool named ContosoSqlPool under the workspace named ContosoWorkspace.

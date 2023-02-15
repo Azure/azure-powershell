@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsquota
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsquota
 schema: 2.0.0
 ---
 
@@ -24,8 +24,9 @@ Retrieves the subscription's current quota information in a particular region.
 
 ### Example 1: Get information about the Streaming Unit quota for a region
 ```powershell
-PS C:\> Get-AzStreamAnalyticsQuota -Location 'WestCentralUS'
-
+Get-AzStreamAnalyticsQuota -Location 'WestCentralUS'
+```
+```output
 Name              Type
 ----              ----
 StreamingUnits    Microsoft.StreamAnalytics/quotas

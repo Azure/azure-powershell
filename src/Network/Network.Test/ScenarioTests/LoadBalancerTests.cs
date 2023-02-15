@@ -92,9 +92,33 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerProbes_ProbeThresholdParameter()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerProbes_ProbeThresholdParameter");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestLoadBalancerChildResource()
         {
             TestRunner.RunTestScript("Test-LoadBalancerChildResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerInboundNatRuleV2()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerInboundNatRuleV2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerInboundNatRuleV2InternalLB()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerInboundNatRuleV2-InternalLB");
         }
 
         [Fact]

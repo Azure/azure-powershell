@@ -16,13 +16,13 @@
 
 <#
 .Synopsis
-Description for Starts an app (or deployment slot, if specified).
+Starts an app (or deployment slot, if specified).
 .Description
-Description for Starts an app (or deployment slot, if specified).
+Starts an app (or deployment slot, if specified).
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
 .Example
-PS C:\> Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
+Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -91,7 +91,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/start-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/start-azfunctionapp
 #>
 function Start-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -186,6 +186,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Start = 'Az.Functions.private\Start-AzFunctionApp_Start';
             StartViaIdentity = 'Az.Functions.private\Start-AzFunctionApp_StartViaIdentity';
@@ -199,6 +200,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -207,15 +209,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

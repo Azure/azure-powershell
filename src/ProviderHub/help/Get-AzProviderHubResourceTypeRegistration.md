@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubresourcetyperegistration
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubresourcetyperegistration
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets a resource type details in the given subscription and provider.
 
 ### Example 1: List all resource types under the resource provider namespace.
 ```powershell
-PS C:\> Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso"
+Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso"
+```
 
+```output
 Name                        Type
 ----                        ----
 testResourceType1           Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations
@@ -49,8 +51,10 @@ List all resource types under the resource provider namespace.
 
 ### Example 2: Gets a resource type by name.
 ```powershell
-PS C:\> Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType1"
+Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType1"
+```
 
+```output
 Name                        Type
 ----                        ----
 testResourceType1           Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations
@@ -60,8 +64,10 @@ Gets a resource type by name.
 
 ### Example 3: Gets a nested resource type by name.
 ```powershell
-PS C:\> Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType1/nestedResourceType"
+Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType1/nestedResourceType"
+```
 
+```output
 Name                                      Type
 ----                                      ----
 testResourceType1/nestedResourceType      Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations
@@ -167,7 +173,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+INPUTOBJECT `<IProviderHubIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[NestedResourceTypeFirst <String>]`: The first child resource type.
   - `[NestedResourceTypeSecond <String>]`: The second child resource type.

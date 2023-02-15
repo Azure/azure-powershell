@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Common
 {
+    using System.Threading;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -48,6 +49,22 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         }
 
         /// <summary>
+        /// Gets the cancellation source.
+        /// </summary>
+        protected CancellationToken CancellationToken
+        {
+            get
+            {
+                return this.cancellationSource != null ? this.cancellationSource.Token : CancellationToken.None;
+            }
+        }
+
+        /// <summary>
+        /// The cancellation source.
+        /// </summary>
+        private CancellationTokenSource cancellationSource;
+
+        /// <summary>
         /// Executes the cmdlet logic.
         /// </summary>
         public abstract void Execute();
@@ -72,6 +89,57 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
                 WriteExceptionError(ex.Body?.Error != null
                     ? new RestException($"{ex.Message} ({ex.Body.Error.Code}: {ex.Body.Error.Message})")
                     : ex);
+            }
+        }
+
+
+        /// <summary>
+        /// The <c>BeginProcessing</c> method.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            if (this.cancellationSource == null)
+            {
+                this.cancellationSource = new CancellationTokenSource();
+            }
+
+            base.BeginProcessing();
+        }
+
+        /// <summary>
+        /// The <c>StopProcessing</c> method.
+        /// </summary>
+        protected override void StopProcessing()
+        {
+            try
+            {
+                if (this.cancellationSource != null && !this.cancellationSource.IsCancellationRequested)
+                {
+                    this.cancellationSource.Cancel();
+                }
+
+                base.StopProcessing();
+            }
+            finally
+            {
+                this.DisposeOfCancellationSource();
+            }
+        }
+
+        /// <summary>
+        /// Disposes of the <see cref="CancellationTokenSource"/>.
+        /// </summary>
+        private void DisposeOfCancellationSource()
+        {
+            if (this.cancellationSource != null)
+            {
+                if (!this.cancellationSource.IsCancellationRequested)
+                {
+                    this.cancellationSource.Cancel();
+                }
+
+                this.cancellationSource.Dispose();
+                this.cancellationSource = null;
             }
         }
     }

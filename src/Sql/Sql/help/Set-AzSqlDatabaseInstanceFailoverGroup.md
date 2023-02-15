@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/set-Azsqldatabaseinstancefailovergroup
+online version: https://learn.microsoft.com/powershell/module/Az.sql/set-Azsqldatabaseinstancefailovergroup
 schema: 2.0.0
 ---
 
@@ -43,9 +43,11 @@ During preview of the Instance Failover Groups feature, only values greater than
 ## EXAMPLES
 
 ### Example 1
+```powershell
+$failoverGroup = Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Set-AzSqlDatabaseInstanceFailoverGroup -FailoverPolicy Manual
 ```
-PS C:\> $failoverGroup = Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Set-AzSqlDatabaseInstanceFailoverGroup -FailoverPolicy Manual
-Output:
+
+```output
 ResourceGroupName                     : rg
 Location                              : East US
 Name                                  : fg

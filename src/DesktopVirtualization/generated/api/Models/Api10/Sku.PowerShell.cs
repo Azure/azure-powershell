@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10
         /// Creates a new instance of <see cref="Sku" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="Sku" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISku FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,11 +101,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Tier = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier?) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Tier, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Size, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Family, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Tier = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier?) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Tier, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier.CreateFrom);
+            }
+            if (content.Contains("Size"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Size, global::System.Convert.ToString);
+            }
+            if (content.Contains("Family"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Family, global::System.Convert.ToString);
+            }
+            if (content.Contains("Capacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,11 +138,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Tier = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier?) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Tier, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Size, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Family, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Tier = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier?) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Tier, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier.CreateFrom);
+            }
+            if (content.Contains("Size"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Size, global::System.Convert.ToString);
+            }
+            if (content.Contains("Family"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Family, global::System.Convert.ToString);
+            }
+            if (content.Contains("Capacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 

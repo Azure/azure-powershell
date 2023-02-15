@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 0DB0B08A-F948-4F6E-9CF0-2FB5DD5064D3
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlelasticpoolactivity
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlelasticpoolactivity
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ You can see the status of both pool creation and configuration updates.
 ## EXAMPLES
 
 ### Example 1: Get the status of operations for an elastic pool
-```
-PS C:\>Get-AzSqlElasticPoolActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
+```powershell
+Get-AzSqlElasticPoolActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
 ```
 
 This command gets the status of the operations for the elastic pool named ElasticPool01.

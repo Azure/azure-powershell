@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolfollowerdatabase
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolfollowerdatabase
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Returns a list of databases that are owned by this Kusto Pool and were followed 
 
 ### Example 1: List all followed databases
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolFollowerDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
+Get-AzSynapseKustoPoolFollowerDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
+```
 
+```output
 AttachedDatabaseConfigurationName DatabaseName KustoPoolResourceId
 --------------------------------- ------------ -------------------
 conf1                             testdatabase /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Synapse/workspaces/testws/kustoPools/followerpool

@@ -16,11 +16,10 @@
 .SYNOPSIS
 Get latest policy states at subscription scope; with From query option
 #>
-function QueryOptions-QueryResultsWithFrom
-{
+function QueryOptions-QueryResultsWithFrom {
 	$from = Get-TestQueryIntervalStart
 
-    $policyStates = Get-AzPolicyState -From $from -Top 10
+	$policyStates = Get-AzPolicyState -From $from -Top 10
 	Validate-PolicyStates $policyStates 10
 }
 
@@ -28,11 +27,10 @@ function QueryOptions-QueryResultsWithFrom
 .SYNOPSIS
 Get latest policy states at subscription scope; with To query option
 #>
-function QueryOptions-QueryResultsWithTo
-{
+function QueryOptions-QueryResultsWithTo {
 	$to = Get-TestQueryIntervalEnd
 
-    $policyStates = Get-AzPolicyState -To $to -Top 10
+	$policyStates = Get-AzPolicyState -To $to -Top 10
 	Validate-PolicyStates $policyStates 10
 }
 
@@ -40,9 +38,8 @@ function QueryOptions-QueryResultsWithTo
 .SYNOPSIS
 Get latest policy states at subscription scope; with Top query option
 #>
-function QueryOptions-QueryResultsWithTop
-{
-    $policyStates = Get-AzPolicyState -Top 10
+function QueryOptions-QueryResultsWithTop {
+	$policyStates = Get-AzPolicyState -Top 10
 	Validate-PolicyStates $policyStates 10
 }
 
@@ -50,9 +47,8 @@ function QueryOptions-QueryResultsWithTop
 .SYNOPSIS
 Get latest policy states at subscription scope; with OrderBy query option
 #>
-function QueryOptions-QueryResultsWithOrderBy
-{
-    $policyStates = Get-AzPolicyState -OrderBy "Timestamp asc, PolicyDefinitionAction, PolicyAssignmentId asc" -Top 10
+function QueryOptions-QueryResultsWithOrderBy {
+	$policyStates = Get-AzPolicyState -OrderBy "Timestamp asc, PolicyDefinitionAction, PolicyAssignmentId asc" -Top 10
 	Validate-PolicyStates $policyStates 10
 }
 
@@ -60,9 +56,8 @@ function QueryOptions-QueryResultsWithOrderBy
 .SYNOPSIS
 Get latest policy states at subscription scope; with Select query option
 #>
-function QueryOptions-QueryResultsWithSelect
-{
-    $policyStates = Get-AzPolicyState -Select "Timestamp, ResourceId, PolicyAssignmentId, PolicyDefinitionId, IsCompliant, SubscriptionId, PolicyDefinitionAction, ComplianceState" -Top 10
+function QueryOptions-QueryResultsWithSelect {
+	$policyStates = Get-AzPolicyState -Select "Timestamp, ResourceId, PolicyAssignmentId, PolicyDefinitionId, IsCompliant, SubscriptionId, PolicyDefinitionAction, ComplianceState" -Top 10
 	Validate-PolicyStates $policyStates 10
 }
 
@@ -70,9 +65,8 @@ function QueryOptions-QueryResultsWithSelect
 .SYNOPSIS
 Get latest policy states at subscription scope; with Filter query option
 #>
-function QueryOptions-QueryResultsWithFilter
-{
-    $policyStates = Get-AzPolicyState -Filter "IsCompliant eq false and PolicyDefinitionAction eq 'deny'" -Top 10
+function QueryOptions-QueryResultsWithFilter {
+	$policyStates = Get-AzPolicyState -Filter "IsCompliant eq false and PolicyDefinitionAction eq 'audit'" -Top 10
 	Validate-PolicyStates $policyStates 10
 }
 
@@ -80,11 +74,9 @@ function QueryOptions-QueryResultsWithFilter
 .SYNOPSIS
 Get latest policy states at subscription scope; with Apply query option
 #>
-function QueryOptions-QueryResultsWithApply
-{
-    $policyStates = Get-AzPolicyState -Apply "groupby((PolicyAssignmentId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicyDefinitionId), aggregate(`$count as NumResources))" -Top 10
-	Foreach($policyState in $policyStates)
-	{
+function QueryOptions-QueryResultsWithApply {
+	$policyStates = Get-AzPolicyState -Apply "groupby((PolicyAssignmentId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicyDefinitionId), aggregate(`$count as NumResources))" -Top 10
+	Foreach ($policyState in $policyStates) {
 		Assert-NotNull $policyState
 
 		Assert-Null $policyState.ResourceId
@@ -100,10 +92,9 @@ function QueryOptions-QueryResultsWithApply
 .SYNOPSIS
 Get latest policy states at subscription scope; with Expand query option set to PolicyEvaluationDetails
 #>
-function QueryOptions-QueryResultsWithExpandPolicyEvaluationDetails
-{
+function QueryOptions-QueryResultsWithExpandPolicyEvaluationDetails {
 	$resourceId = Get-TestResourceId
 
-    $policyStates = Get-AzPolicyState -ResourceId $resourceId -Expand "PolicyEvaluationDetails" -Top 10
+	$policyStates = Get-AzPolicyState -ResourceId $resourceId -Expand "PolicyEvaluationDetails" -Top 10 -Filter "PolicyDefinitionAction eq 'modify'"
 	Validate-PolicyStates $policyStates 10 -expandPolicyEvaluationDetails
 }

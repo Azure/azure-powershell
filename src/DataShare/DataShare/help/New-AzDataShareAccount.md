@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/new-azdatashareaccount
+online version: https://learn.microsoft.com/powershell/module/az.datashare/new-azdatashareaccount
 schema: 2.0.0
 ---
 
@@ -23,8 +23,11 @@ New-AzDataShareAccount -ResourceGroupName <String> -Name <String> -Location <Str
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataShareAccount -ResourceGroupName "ADS" -Name "WikiADS" -Location "WestUS"
 ```
-PS C:\> New-AzDataShareAccount -ResourceGroupName "ADS" -Name "WikiADS" -Location "WestUS"
+
+```output
 DataShareAccountName   : WikiADS
 ResourceGroupName : ADS
 Location          : WestUS

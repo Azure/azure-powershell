@@ -1,8 +1,10 @@
 ### Example 1: Specify a volume mount available to a container instance
 ```powershell
-PS C:\> New-AzContainerInstanceVolumeMountObject -Name 
+New-AzContainerInstanceVolumeMountObject -Name 
 "mnt" -MountPath "/mnt/azfile" -ReadOnly $true
+```
 
+```output
 MountPath   Name ReadOnly
 ---------   ---- --------
 /mnt/azfile mnt  True

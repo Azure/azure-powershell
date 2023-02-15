@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject
+online version: https://learn.microsoft.com/powershell/module/az.security/New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ The New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject cmdlet creates a new 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Enabled $false -Type "SomeRuleType" -DenylistValue @()
+New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Enabled $false -Type "SomeRuleType" -DenylistValue @()
+```
 
+```output
 RuleType: "SomeRuleType"
 DisplayName: "Display name for some rule type"
 Description: "Description for some rule type"

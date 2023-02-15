@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CustomProviders
-online version: https://docs.microsoft.com/powershell/module/az.customproviders/get-azcustomproviderassociation
+online version: https://learn.microsoft.com/powershell/module/az.customproviders/get-azcustomproviderassociation
 schema: 2.0.0
 ---
 
@@ -36,8 +36,10 @@ Get an association.
 
 ### Example 1: List custom provider associations
 ```powershell
-PS C:\> Get-AzCustomProviderAssociation
+Get-AzCustomProviderAssociation
+```
 
+```output
 Location  Name             Type
 --------  ----             ----
 East US 2 MyAssoc   Microsoft.CustomProviders/associations
@@ -47,8 +49,10 @@ List all custom provider associations for a given scope.
 
 ### Example 2: Get an association
 ```powershell
-PS C:\> Get-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc
+Get-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc
+```
 
+```output
 Location  Name             Type
 --------  ----             ----
 East US 2 MyAssoc   Microsoft.CustomProviders/associations
@@ -139,7 +143,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
+INPUTOBJECT `<ICustomProvidersIdentity>`: Identity Parameter
   - `[AssociationName <String>]`: The name of the association.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.

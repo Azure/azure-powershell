@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/invoke-azproviderhubmanifestcheckin
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/invoke-azproviderhubmanifestcheckin
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Checkin the manifest.
 
 ### Example 1: Checkin the resource provider manifest.
 ```powershell
-PS C:\> Invoke-AzProviderHubManifestCheckin -ProviderNamespace "Microsoft.Contoso" -BaselineArmManifestLocation "NorthEurope" -Environment "Canary"
+Invoke-AzProviderHubManifestCheckin -ProviderNamespace "Microsoft.Contoso" -BaselineArmManifestLocation "NorthEurope" -Environment "Canary"
+```
 
+```output
 CommitId IsCheckedIn PullRequest StatusMessage
 -------- ----------- ----------- -------------
          False                   Manifest is successfully merged.
@@ -36,8 +38,10 @@ Checkin the resource provider manifest.
 
 ### Example 2: Checkin the resource provider manifest.
 ```powershell
-PS C:\> Invoke-AzProviderHubManifestCheckin -ProviderNamespace "Microsoft.Contoso" -BaselineArmManifestLocation "EastUS2EUAP" -Environment "Prod"
+Invoke-AzProviderHubManifestCheckin -ProviderNamespace "Microsoft.Contoso" -BaselineArmManifestLocation "EastUS2EUAP" -Environment "Prod"
+```
 
+```output
 CommitId IsCheckedIn PullRequest StatusMessage
 -------- ----------- ----------- -------------
          False                   Manifest is successfully merged.

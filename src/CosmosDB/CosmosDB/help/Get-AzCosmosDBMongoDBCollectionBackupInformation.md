@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionbackupinformation
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionbackupinformation
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Retrieves the latest restorable timestamp for a mongodb collection. This is the 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBMongoDBCollectionBackupInformation -ResourceGroupName CosmosDBResourceGroup3668 -AccountName pitr-sql-stage-source -DatabaseName TestDB1 -Name TestCollectionInDB1 -Location "EAST US 2"
+Get-AzCosmosDBMongoDBCollectionBackupInformation -ResourceGroupName CosmosDBResourceGroup3668 -AccountName pitr-sql-stage-source -DatabaseName TestDB1 -Name TestCollectionInDB1 -Location "EAST US 2"
+```
 
+```output
 LatestRestorableTimestamp
 -------------------------
 1623042210

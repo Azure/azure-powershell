@@ -20,11 +20,11 @@ Restarts a server.
 .Description
 Restarts a server.
 .Example
-PS C:\> Restart-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
+ Restart-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
 
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/restart"
-PS C:\> Restart-AzPostgreSqlServer -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/restart"
+Restart-AzPostgreSqlServer -InputObject $ID
  
 
 .Inputs
@@ -48,7 +48,7 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlserver
+https://learn.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlserver
 #>
 function Restart-AzPostgreSqlServer {
 [OutputType([System.Boolean])]

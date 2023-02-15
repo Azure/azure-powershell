@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Maps
-online version: https://docs.microsoft.com/powershell/module/az.maps/remove-azmapscreator
+online version: https://learn.microsoft.com/powershell/module/az.maps/remove-azmapscreator
 schema: 2.0.0
 ---
 
@@ -31,16 +31,14 @@ Delete a Maps Creator resource.
 
 ### Example 1: Delete a Maps Creator resource
 ```powershell
-PS C:\> Remove-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount03 -Name creator-01
-
+Remove-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount03 -Name creator-01
 ```
 
 This command deletes a Maps Creator resource.
 
 ### Example 2: Delete a Maps Creator resource by pipeline
 ```powershell
-PS C:\> Get-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01 | Remove-AzMapsCreator
-
+Get-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01 | Remove-AzMapsCreator
 ```
 
 This command deletes a Maps Creator resource by pipeline.
@@ -205,7 +203,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMapsIdentity>: Identity Parameter
+INPUTOBJECT `<IMapsIdentity>`: Identity Parameter
   - `[AccountName <String>]`: The name of the Maps Account.
   - `[CreatorName <String>]`: The name of the Maps Creator instance.
   - `[Id <String>]`: Resource identity path

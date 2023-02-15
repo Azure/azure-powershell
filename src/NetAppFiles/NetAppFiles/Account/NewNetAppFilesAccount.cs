@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "A hashtable which represents the Encryption settings")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesAccountEncryption Encryption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -101,13 +107,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             {
                 Location = Location,
                 ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : null,
-                Tags = tagPairs
+                Tags = tagPairs,
+                Encryption = (Encryption != null) ? Encryption.ConvertFromPs() : null,
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.CreateOrUpdate(netAppAccountBody, ResourceGroupName, Name);
-                WriteObject(anfAccount.ToPsNetAppFilesAccount());
+                WriteObject(anfAccount.ConvertToPs());
             }
         }
     }

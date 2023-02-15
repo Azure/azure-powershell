@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azproviderpreviewfeature
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azproviderpreviewfeature
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Get-AzProviderPreviewFeature** cmdlet gets a feature registration in your 
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzProviderPreviewFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+Get-AzProviderPreviewFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
 This gets the AllowApplicationSecurityGroups feature for Microsoft.Network in your account.

@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public int? Order { get; set; }
         public string PackageReferenceId { get; set; }
         public string ConfigurationReference { get; set; }
+        public bool? TreatFailureAsDeploymentFailure { get; set; }
+        public bool? EnableAutomaticUpgrade { get; set; }
 
     }
 }

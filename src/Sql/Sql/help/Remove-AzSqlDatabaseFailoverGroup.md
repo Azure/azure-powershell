@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The Failover Group's primary server should be used to execute the command.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg
+```powershell
+Remove-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg
 ```
 
 Remove a Failover Group.

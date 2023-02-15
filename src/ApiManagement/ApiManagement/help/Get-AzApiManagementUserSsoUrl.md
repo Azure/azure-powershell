@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 27FF1B7D-E103-4504-AD09-8D3A8BCA8B75
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuserssourl
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuserssourl
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Get-AzApiManagementUserSsoUrl** cmdlet generates a single sign-on (SSO) UR
 
 ### Example 1: Get a user's SSO URL
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementUserSsoUrl -Context $apimContext -UserId "0123456789"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementUserSsoUrl -Context $apimContext -UserId "0123456789"
 ```
 
 This command gets a user's SSO URL.

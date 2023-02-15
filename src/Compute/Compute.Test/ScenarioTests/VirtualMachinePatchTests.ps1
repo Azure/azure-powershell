@@ -54,8 +54,7 @@ function Test-InvokeAzVmPatchAssessment
         $computerName = 'test';
 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
-
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2012-R2-Datacenter" -version "4.127.20180315";
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Create a Virtual Machine

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The **Get-AzCosmosDBSqlDatabase** cmdlet gets the list of all existing CosmosDB 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlDatabase -AccountName {accountName} -ResourceGroupName {resourceGroupName} -Name {databaseName}
+Get-AzCosmosDBSqlDatabase -AccountName "accountName" -ResourceGroupName "resourceGroupName" -Name "databaseName"
+```
 
+```output
 Name                    : {databaseName}
 Id                      : {databaseId}
 Resource                 : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetPropertiesResource

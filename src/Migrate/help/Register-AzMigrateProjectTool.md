@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
+online version: https://learn.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Registers a tool with the migrate project.
 
 ### Example 1: REgister tool.
 ```powershell
-PS C:\> Register-AzMigrateProjectTool -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -MigrateProjectName BugBashAVSVMware -Tool Zerto
+Register-AzMigrateProjectTool -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -MigrateProjectName BugBashAVSVMware -Tool Zerto
+```
 
+```output
 True
 ```
 

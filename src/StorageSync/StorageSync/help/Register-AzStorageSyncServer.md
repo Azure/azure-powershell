@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/powershell/module/Az.storagesync/register-Azstoragesyncserver
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/register-Azstoragesyncserver
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ The command must be run locally on the server that is to be registered - either 
 
 ### Example 1
 ```powershell
-PS C:\> Register-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+Register-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
 This command will register the local server this command is run on.

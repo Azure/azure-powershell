@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/Stop-AzDataMigrationService
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Stop-AzDataMigrationService
 schema: 2.0.0
 ---
 
 # Stop-AzDataMigrationService
 
 ## SYNOPSIS
-Stops an instance of the Azure Database Migration Service that is in a running state.
+Stops an instance of the Azure Database Migration Service (classic) that is in a running state.
 
 ## SYNTAX
 
@@ -31,23 +31,23 @@ Stop-AzDataMigrationService [-ResourceId] <String> [-PassThru] [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-The Stop-AzDataMigrationService cmdlet stops an instance of the Azure Database Migration Service that is in a running state.
+The Stop-AzDataMigrationService cmdlet stops an instance of the Azure Database Migration Service (classic) that is in a running state.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Stop-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
+```powershell
+Stop-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
 ```
 
-The above example stops an instance of the Azure Database Migration Service called TestService based on service name passed in as input parameter
+The above example stops an instance of the Azure Database Migration Service (classic) called TestService based on service name passed in as input parameter
 
 ### Example 2
-```
-PS C:\> Stop-AzDataMigrationService -InputObject $TestService
+```powershell
+Stop-AzDataMigrationService -InputObject $TestService
 ```
 
-The above example stops an instance of the Azure Database Migration Service based on PSDataMigrationService object passed as input parameter.
+The above example stops an instance of the Azure Database Migration Service (classic) based on PSDataMigrationService object passed as input parameter.
 
 ## PARAMETERS
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Database Migration Service Name.
+Azure Database Migration Service (classic) Name.
 
 ```yaml
 Type: System.String
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

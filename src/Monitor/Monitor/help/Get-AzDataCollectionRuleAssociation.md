@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azdatacollectionruleassociation
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azdatacollectionruleassociation
 schema: 2.0.0
 ---
 
@@ -14,36 +14,26 @@ Gets data collection rule association(s).
 
 ### ByAssociatedResource (Default)
 ```
-Get-AzDataCollectionRuleAssociation 
-   -TargetResourceId <string> 
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -TargetResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzDataCollectionRuleAssociation 
-   -TargetResourceId <string> 
-   -AssociationName <string> 
-   [-DefaultProfile <IAzureContextContainer>] 
-   [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -TargetResourceId <String> -AssociationName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByRule
 ```
-Get-AzDataCollectionRuleAssociation 
-   -ResourceGroupName <string> 
-   -RuleName <string> 
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -ResourceGroupName <String> -RuleName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzDataCollectionRuleAssociation 
-   -InputObject <PSDataCollectionRuleResource> 
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -InputObject <PSDataCollectionRuleResource>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,10 +44,12 @@ To apply a DCR to a virtual machine, you create an association for the virtual m
 ## EXAMPLES
 
 ### Example 1: Get data collection rules associations by target resource ID (associated virtual machine)
+```powershell
+$vm = Get-AzVM -ResourceGroupName $rg -Name $vmName
+Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id
 ```
-PS C:\>$vm = Get-AzVM -ResourceGroupName $rg -Name $vmName
-PS C:\>Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id
 
+```output
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
                        nsights/dataCollectionRules/{dcrName}
@@ -72,9 +64,11 @@ Type                 : Microsoft.Insights/dataCollectionRuleAssociations
 This command lists all the data collection rules for the given target resource ID (virtual machine).
 
 ### Example 2: Get data collection rules associations by rule (DCR)
+```powershell
+Get-AzDataCollectionRuleAssociation -ResourceGroupName $rg -RuleName $dcrName
 ```
-PS C:\>Get-AzDataCollectionRuleAssociation -ResourceGroup $rg -RuleName $dcrName
 
+```output
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
                        nsights/dataCollectionRules/{dcrName}
@@ -89,10 +83,12 @@ Type                 : Microsoft.Insights/dataCollectionRuleAssociations
 This command lists data collection rules associations for the given resource group and rule (DCR).
 
 ### Example 3: Get data collection rule associations by input object (PSDataCollectionRuleResource)
+```powershell
+$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
+$dcr | Get-AzDataCollectionRuleAssociation
 ```
-PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
-PS C:\>$dcr | Get-AzDataCollectionRuleAssociation
 
+```output
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
                        nsights/dataCollectionRules/{dcrName}
@@ -107,9 +103,11 @@ Type                 : Microsoft.Insights/dataCollectionRuleAssociations
 This command lists data collection rules associations for the given input object.
 
 ### Example 4: Get a data collection rule association by target resource ID (associated virtual machine) and association name
+```powershell
+Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
 ```
-PS C:\>Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
 
+```output
 Description          :
 DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
                        nsights/dataCollectionRules/{dcrName}
@@ -124,6 +122,21 @@ Type                 : Microsoft.Insights/dataCollectionRuleAssociations
 This command lists one (a list with a single element) data collection rule association.
 
 ## PARAMETERS
+
+### -AssociationName
+The name of the association.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -140,30 +153,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetResourceId
-The associated resource ID
+### -InputObject
+PSDataCollectionRuleResource Object
 
 ```yaml
-Type: System.String
-Parameter Sets: ByAssociatedResource (Default)
-Aliases: ResourceUri
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+Parameter Sets: ByInputObject
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases: ResourceUri
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -197,33 +198,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-PSDataCollectionRuleResource Object
-
-```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True
-Accept wildcard characters: False
-```
-
-### -AssociationName
-The name of the association.
+### -TargetResourceId
+The associated resource ID
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases: Name
+Parameter Sets: ByAssociatedResource, ByName
+Aliases: ResourceUri
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

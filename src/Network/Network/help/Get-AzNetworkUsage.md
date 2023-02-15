@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkusage
 schema: 2.0.0
 ---
 
@@ -22,9 +22,11 @@ The Get-AzNetworkUsage cmdlet gets limits and current usage for Network resource
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzNetworkUsage -Location westcentralus
 ```
-PS C:\> Get-AzNetworkUsage -Location westcentralus
 
+```output
 ResourceType : Virtual Networks
 CurrentValue : 6
 Limit        : 50

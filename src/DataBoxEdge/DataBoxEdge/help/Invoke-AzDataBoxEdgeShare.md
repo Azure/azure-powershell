@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/invoke-azdataboxedgeshare
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/invoke-azdataboxedgeshare
 schema: 2.0.0
 ---
 
@@ -38,13 +38,16 @@ The **Invoke-AzDataBoxEdgeShare** cmdlet invokes action to refresh data on a sha
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share1 -PassThru
-PS C:\> true
+Invoke-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share1 -PassThru
+```
+
+```output
+true
 ```
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share1 | Invoke-AzDataBoxEdgeShare
+Invoke-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name share1 | Invoke-AzDataBoxEdgeShare
 ```
 
 ## PARAMETERS

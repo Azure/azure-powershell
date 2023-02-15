@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/stop-azdatasharesubscriptionsynchronization
+online version: https://learn.microsoft.com/powershell/module/az.datashare/stop-azdatasharesubscriptionsynchronization
 schema: 2.0.0
 ---
 
@@ -37,9 +37,11 @@ The **Stop-AzDataShareSubscriptionSynchronization** cmdlet stops ongoing synchro
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Stop-AzDataShareSubscriptionSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -SynchronizationId 20a4416b-b33b-4539-a908-71dc8ef698fb
 ```
-PS C:\> Stop-AzDataShareSubscriptionSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -SynchronizationId 20a4416b-b33b-4539-a908-71dc8ef698fb
 
+```output
 Confirm
 AdsShareSubscription
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y

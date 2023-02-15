@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzsubaccount
+online version: https://learn.microsoft.com/powershell/module/az.logz/remove-azlogzsubaccount
 schema: 2.0.0
 ---
 
@@ -34,16 +34,14 @@ This delete operation can take upto 10 minutes to complete.
 
 ### Example 1: Delete a sub account resource
 ```powershell
-PS C:\> Remove-AzLogzSubAccount -ResourceGroupName logz-rg-test -MonitorName logz-portal01 -Name logz01-subaccount01
-
+Remove-AzLogzSubAccount -ResourceGroupName logz-rg-test -MonitorName logz-portal01 -Name logz01-subaccount01
 ```
 
 This command deletes a sub account resource.
 
 ### Example 2: Delete a sub account resource by pipeline
 ```powershell
-PS C:\> Get-AzLogzSubAccount -ResourceGroupName logz-rg-test -MonitorName logz-portal01 -Name logz01-subaccount02 | Remove-AzLogzSubAccount
-
+Get-AzLogzSubAccount -ResourceGroupName logz-rg-test -MonitorName logz-portal01 -Name logz01-subaccount02 | Remove-AzLogzSubAccount
 ```
 
 This command deletes a sub account resource by pipeline.
@@ -238,7 +236,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ILogzIdentity>: Identity Parameter
+INPUTOBJECT `<ILogzIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

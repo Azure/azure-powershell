@@ -35,14 +35,8 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Initializes a new instance of the NetworkRuleSet class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="defaultAction">Default Action for Network Rule Set.
-        /// Possible values include: 'Allow', 'Deny'</param>
-        /// <param name="VirtualNetworkRules">List VirtualNetwork Rules</param>
-        /// <param name="ipRules">List of IpRules</param>
-        public PSNetworkRuleSetAttributes(NetworkRuleSet networkRuleSet)           
+        /// <param name="networkRuleSet"></param>
+        public PSNetworkRuleSetAttributes(NetworkRuleSet networkRuleSet)
         {
             DefaultAction = networkRuleSet.DefaultAction;
             TrustedServiceAccessEnabled = networkRuleSet.TrustedServiceAccessEnabled;
@@ -51,6 +45,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
             Id = networkRuleSet.Id;
             Name = networkRuleSet.Name;
             Type = networkRuleSet.Type;
+            PublicNetworkAccess = networkRuleSet?.PublicNetworkAccess;
         }
 
         /// <summary>
@@ -85,6 +80,8 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public IList<PSNWRuleSetIpRulesAttributes> IpRules { get; set; }
 
         public bool? TrustedServiceAccessEnabled { get; set; }
+
+        public string PublicNetworkAccess { get; set; }
 
     }
 }

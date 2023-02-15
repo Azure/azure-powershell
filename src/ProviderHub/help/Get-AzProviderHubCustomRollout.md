@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubcustomrollout
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubcustomrollout
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets the custom rollout details.
 
 ### Example 1: Get a custom rollout by rollout name.
 ```powershell
-PS C:\> Get-AzProviderHubCustomRollout -ProviderNamespace "Microsft.Contoso" -RolloutName "customRollout1"
+Get-AzProviderHubCustomRollout -ProviderNamespace "Microsft.Contoso" -RolloutName "customRollout1"
+```
 
+```output
 Name                        Type
 ----                        ----
 customRollout1              Microsoft.ProviderHub/providerRegistrations/customRollouts
@@ -144,7 +146,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+INPUTOBJECT `<IProviderHubIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[NestedResourceTypeFirst <String>]`: The first child resource type.
   - `[NestedResourceTypeSecond <String>]`: The second child resource type.

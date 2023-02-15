@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationdscnodeconfigurationdeploymentschedule
+online version: https://learn.microsoft.com/powershell/module/az.automation/get-azautomationdscnodeconfigurationdeploymentschedule
 schema: 2.0.0
 ---
 
@@ -31,11 +31,13 @@ The **Get-AzAutomationDscNodeConfigurationDeployment** cmdlet deploys an APS Des
 ## EXAMPLES
 
 ### Example 1: Get all the deployment schedules
-```
-PS C:\> Get-AzAutomationDscNodeConfigurationDeploymentSchedule `
+```powershell
+Get-AzAutomationDscNodeConfigurationDeploymentSchedule `
             -AutomationAccountName "Contoso01"  `
             -ResourceGroupName "ResourceGroup01"
+```
 
+```output
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobScheduleId         : 2b1d7738-093d-4ff7-b87b-e4b2321319e5
@@ -50,13 +52,15 @@ RunbookName           : Deploy-NodeConfigurationToAutomationDscNodesV1
 ```
 
 ### Example 2: Get a deployment schedule
-```
-PS C:\> $js= Get-AzAutomationDscNodeConfigurationDeploymentSchedule `
+<!-- Skip: Output cannot be splitted from code -->
+
+
+```powershell
+$js = Get-AzAutomationDscNodeConfigurationDeploymentSchedule `
                  -AutomationAccountName "Contoso01" `
                  -ResourceGroupName "ResourceGroup01" `
                  -JobScheduleId 2b1d7738-093d-4ff7-b87b-e4b2321319e5
-
-PS C:\> $js
+$js
 
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
@@ -64,7 +68,7 @@ JobScheduleId         : 2b1d7738-093d-4ff7-b87b-e4b2321319e5
 JobSchedule           : Microsoft.Azure.Commands.Automation.Model.JobSche
 RunbookName           : Deploy-NodeConfigurationToAutomationDscNodesV1
 
-PS C:\> $js.JobSchedule
+$js.JobSchedule
 
 ResourceGroupName     : ResourceGroup01
 RunOn                 :
@@ -141,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

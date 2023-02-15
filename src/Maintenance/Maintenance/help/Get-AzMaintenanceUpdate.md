@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version: https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate
+online version: https://learn.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Get pending maintenance updates to resource.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzMaintenanceUpdate -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute
+Get-AzMaintenanceUpdate -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute
+```
 
+```output
 MaintenanceScope    : Host
 ImpactType          : Freeze
 Status              : Pending

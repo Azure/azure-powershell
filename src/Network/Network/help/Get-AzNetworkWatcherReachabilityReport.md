@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherreachabilityreport
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkwatcherreachabilityreport
 schema: 2.0.0
 ---
 
@@ -49,7 +49,9 @@ The Get-AzNetworkWatcherReachabilityReport gets the relative latency score for i
 ```powershell
 $nw = Get-AzNetworkWatcher -Name NetworkWatcher -ResourceGroupName NetworkWatcherRG
 Get-AzNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -StartTime "2017-10-10" -EndTime "2017-10-12"
+```
 
+```output
 "aggregationLevel" : "Country",
 "providerLocation" : {
     "country" : "United States"

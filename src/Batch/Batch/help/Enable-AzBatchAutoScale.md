@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 3107D061-7F25-45D0-8029-C99120A156DA
-online version: https://docs.microsoft.com/powershell/module/az.batch/enable-azbatchautoscale
+online version: https://learn.microsoft.com/powershell/module/az.batch/enable-azbatchautoscale
 schema: 2.0.0
 ---
 
@@ -25,9 +25,9 @@ The **Enable-AzBatchAutoScale** cmdlet enables automatic scaling of the specifie
 ## EXAMPLES
 
 ### Example 1: Enable automatic scaling for a pool
-```
-PS C:\>$Formula = 'totalNodes=($CPUPercent.GetSamplePercent(TimeInterval_Minute*0,TimeInterval_Minute*10)<0.7?5:(min($CPUPercent.GetSample(TimeInterval_Minute*0, TimeInterval_Minute*10))>0.8?($CurrentDedicated*1.1):$CurrentDedicated));$TargetDedicated=min(100,totalNodes);';
-PS C:\> Enable-AzBatchAutoScale -Id "MyPool" -AutoScaleFormula $Formula -BatchContext $Context
+```powershell
+$Formula = 'totalNodes=($CPUPercent.GetSamplePercent(TimeInterval_Minute*0,TimeInterval_Minute*10)<0.7?5:(min($CPUPercent.GetSample(TimeInterval_Minute*0, TimeInterval_Minute*10))>0.8?($CurrentDedicated*1.1):$CurrentDedicated));$TargetDedicated=min(100,totalNodes);';
+Enable-AzBatchAutoScale -Id "MyPool" -AutoScaleFormula $Formula -BatchContext $Context
 ```
 
 The first command defines a formula, and then saves it to the $Formula variable.

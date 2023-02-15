@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/remove-azdatashareinvitation
+online version: https://learn.microsoft.com/powershell/module/az.datashare/remove-azdatashareinvitation
 schema: 2.0.0
 ---
 
@@ -37,8 +37,11 @@ The **Remove-AzDataShareInvitation** cmdlet removes a datashare invitation.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Remove-AzDataShareInvitation -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "ADSInvite"
 ```
-PS C:\> Remove-AzDataShareDataSetMapping -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "ADSInvite"
+
+```output
 Are you sure you want to remove dataset mapping "ADSInvite"? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```

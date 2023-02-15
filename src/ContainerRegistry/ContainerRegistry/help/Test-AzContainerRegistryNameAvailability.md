@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/test-azcontainerregistrynameavailability
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/test-azcontainerregistrynameavailability
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ The Test-AzContainerRegistryNameAvailability cmdlet checks whether a container r
 
 ### Example 1: Checks the availability of a container registry name
 ```powershell
-PS C:\>Test-AzContainerRegistryNameAvailability -Name 'SomeRegistryName'
+Test-AzContainerRegistryNameAvailability -Name 'SomeRegistryName'
+```
 
+```output
 NameAvailable Reason Message
 ------------- ------ -------
          True

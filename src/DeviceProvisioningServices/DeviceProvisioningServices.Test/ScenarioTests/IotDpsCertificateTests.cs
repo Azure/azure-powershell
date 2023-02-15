@@ -15,22 +15,15 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.DeviceProvisioningServices.Test
 {
-    public class IotDpsCertificateTests : RMTestBase
+    public class IotDpsCertificateTests : DeviceProvisioningServicesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IotDpsCertificateTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IotDpsCertificateTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Access denied error on CertEnroll CX509 Enrollment CreateRequest")]
@@ -51,7 +44,7 @@ namespace Commands.DeviceProvisioningServices.Test
 
             AzureSession.Instance.DataStore = dataStore;
 
-            IotDpsController.NewInstance.RunPsTest(_logger, "Test-AzureIotDpsCertificateLifeCycle");
+            TestRunner.RunTestScript("Test-AzureIotDpsCertificateLifeCycle");
         }
     }
 }

@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Azure.Internal.Subscriptions.Models.Utilities;
-using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities
             {
                 subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                     environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                    new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                    new RenewingTokenCredential(accessToken),
                     AzureSession.Instance.ClientFactory.GetCustomHandlers());
 
                 var tenants = new GenericPageEnumerable<TenantIdDescription>(subscriptionClient.Tenants.List, subscriptionClient.Tenants.ListNext, ulong.MaxValue, 0).ToList();
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities
         {
             using (var subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                new RenewingTokenCredential(accessToken),
                 AzureSession.Instance.ClientFactory.GetCustomHandlers()))
             {
                 return (subscriptionClient.ListAllSubscriptions()?
@@ -83,7 +82,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities
         {
             using (var subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                new RenewingTokenCredential(accessToken),
                 AzureSession.Instance.ClientFactory.GetCustomHandlers()))
             {
                 var subscription = subscriptionClient.Subscriptions.Get(subscriptionId);

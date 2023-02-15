@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: CBDF4BCB-7EB3-4D64-B19C-1314D4AB84E4
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetwork
 schema: 2.0.0
 ---
 
@@ -33,7 +33,9 @@ The **Get-AzVirtualNetwork** cmdlet gets one or more virtual networks in a resou
 ### Example 1: Retrieve a virtual network
 ```powershell
 Get-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup
+```
 
+```output
 Name                   : MyVirtualNetwork1
 ResourceGroupName      : TestResourceGroup
 Location               : eastus
@@ -61,7 +63,9 @@ This command gets the virtual network named MyVirtualNetwork in the resource gro
 ### Example 2: List virtual networks using filter
 ```powershell
 Get-AzVirtualNetwork -Name MyVirtualNetwork*
+```
 
+```output
 Name                   : MyVirtualNetwork1
 ResourceGroupName      : TestResourceGroup
 Location               : eastus

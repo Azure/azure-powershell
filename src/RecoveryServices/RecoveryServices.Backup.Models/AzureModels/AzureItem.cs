@@ -14,6 +14,7 @@
 
 using System;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -75,7 +76,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             PolicyId = protectedItemResource.Properties.PolicyId;
             DeleteState = ItemDeleteState.NotDeleted;
         }
+
+        public AzureItem(CrrModel.ProtectedItemResource protectedItemResource,
+           string containerName, ContainerType containerType, string policyName)
+            : base(protectedItemResource, containerName, containerType)
+        {
+            ProtectionPolicyName = policyName;
+            PolicyId = protectedItemResource.Properties.PolicyId;
+            DeleteState = ItemDeleteState.NotDeleted;
+        }
     }
+
     public class AzureItemExtendedInfo : ItemExtendedInfoBase
     {
         /// <summary>

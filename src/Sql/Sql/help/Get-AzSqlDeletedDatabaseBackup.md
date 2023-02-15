@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 62B9754D-5EBF-4BEE-B07A-3E508C918F03
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup
 schema: 2.0.0
 ---
 
@@ -26,15 +26,15 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## EXAMPLES
 
 ### Example 1: Get all deleted database backups on a server
-```
-PS C:\>Get-AzSqlDeletedDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer"
+```powershell
+Get-AzSqlDeletedDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer"
 ```
 
 This command gets all deleted database backups on a server.
 
 ### Example 2: Get a specified deleted database backup
-```
-PS C:\>Get-AzSqlDeletedDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "ContosoDatabase"
+```powershell
+Get-AzSqlDeletedDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "ContosoDatabase"
 ```
 
 This command gets the deleted database backup for ContosoDatabase.

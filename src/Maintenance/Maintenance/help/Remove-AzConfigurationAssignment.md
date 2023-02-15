@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version: https://docs.microsoft.com/powershell/module/az.maintenance/remove-azconfigurationassignment
+online version: https://learn.microsoft.com/powershell/module/az.maintenance/remove-azconfigurationassignment
 schema: 2.0.0
 ---
 
@@ -26,8 +26,10 @@ Unregister configuration for resource.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzConfigurationAssignment -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName
+Remove-AzConfigurationAssignment -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName
+```
 
+```output
 Remove-AzConfigurationAssignment operation
 This cmdlet will remove the specified resource.  Do you want to continue?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):

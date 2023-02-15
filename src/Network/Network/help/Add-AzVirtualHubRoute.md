@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azvirtualhubroute
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azvirtualhubroute
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Creates a VirtualHubRoute object.
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzVirtualHubRoute -DestinationType "CIDR" -Destination @("10.4.0.0/16", "10.5.0.0/16") -NextHopType "IPAddress" -NextHop @("10.0.0.68")
+Add-AzVirtualHubRoute -DestinationType "CIDR" -Destination @("10.4.0.0/16", "10.5.0.0/16") -NextHopType "IPAddress" -NextHop @("10.0.0.68")
+```
 
+```output
 AddressPrefixes  : {10.4.0.0/16, 10.5.0.0/16}
 NextHopIpAddress : 10.0.0.68
 DestinationType  : CIDR

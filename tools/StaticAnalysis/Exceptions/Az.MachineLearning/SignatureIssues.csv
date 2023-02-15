@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll","Microsoft.Azure.Commands.MachineLearning.RemoveAzureMLCommitmentPlan","Remove-AzMlCommitmentPlan","1","8510","Cmdlet 'Remove-AzMlCommitmentPlan' has multiple parameter sets, but no defined default parameter set.","Define a default parameter set in the cmdlet attribute."
 "Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll","Microsoft.Azure.Commands.MachineLearning.RemoveAzureMLWebService","Remove-AzMlWebService","1","8510","Cmdlet 'Remove-AzMlWebService' has multiple parameter sets, but no defined default parameter set.","Define a default parameter set in the cmdlet attribute."
 "Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll","Microsoft.Azure.Commands.MachineLearning.UpdateAzureMLWebService","Update-AzMlWebService","1","8410","Parameter Keys of cmdlet Update-AzMlWebService does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."

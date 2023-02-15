@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azfirewallpolicyrulecollectiongroup
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azfirewallpolicyrulecollectiongroup
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Get-AzFirewallPolicyRuleCollectionGroup** cmdlet gets the RuleCollectionGr
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzFirewallPolicyRuleCollectionGroup -Name rg1 -AzureFirewallPolicy $fp
+Get-AzFirewallPolicyRuleCollectionGroup -Name rg1 -AzureFirewallPolicy $fp
 ```
 
 This example get the rule collectionGroup in the firewall policy $fp
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The resource name.
+The Firewall Policy Rule Collection Group resource name. For example: "DefaultNetworkRuleCollectionGroup"
 
 ```yaml
 Type: String

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount
 schema: 2.0.0
 ---
 
@@ -30,9 +30,10 @@ The **Get-AzCosmosDBAccount** cmdlet gets the list of all existing CosmosDB acco
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBAccount -ResourceGroupName {resourceGroupName} -Name {databaseAccountName}
+Get-AzCosmosDBAccount -ResourceGroupName "resourceGroupName" -Name "databaseAccountName"
+```
 
-
+```output
 Id                            : /subscriptions/{subscriptionid}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{databaseAccountName}
 Name                          : {databaseAccountName}
 FailoverPolicies              : {databaseAccountName-region1}
@@ -126,7 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccount
+### Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
 
 ## NOTES
 

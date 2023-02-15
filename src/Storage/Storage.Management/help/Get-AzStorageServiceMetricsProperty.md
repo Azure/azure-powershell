@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 3B5B828A-6B3E-49BD-8BA9-916F8B69B8E9
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageservicemetricsproperty
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageservicemetricsproperty
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzStorageServiceMetricsProperty** cmdlet gets metrics properties for t
 ## EXAMPLES
 
 ### Example 1: Get metrics properties for the Blob service
-```
-C:\PS>Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour
+```powershell
+Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour
 ```
 
 This command gets metrics properties for blob storage for the Hour metrics type.

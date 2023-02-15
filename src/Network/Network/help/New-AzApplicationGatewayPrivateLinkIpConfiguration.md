@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayprivatelinkipconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayprivatelinkipconfiguration
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **New-AzApplicationGatewayPrivateLinkIpConfiguration** cmdlet creates an Ip 
 
 ### Example 1: PrivateLink Ip Configuration
 ```powershell
-PS C:\> $PrivateLinkIpConfiguration = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name "ipConfig01" -Subnet $subnet -Primary
+$PrivateLinkIpConfiguration = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name "ipConfig01" -Subnet $subnet -Primary
 ```
 
 This command creates an PrivateLink IP Configuration named 'ipConfig01' stores the result in the variable named $PrivateLinkIpConfiguration. 

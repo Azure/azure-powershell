@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitorvmhost
+online version: https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitorvmhost
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ List the compute resources currently being monitored by the Logz main account re
 
 ### Example 1: List the compute resources currently being monitored by the monitor resource
 ```powershell
-PS C:\> Get-AzLogzMonitorVMHost -ResourceGroupName logz-rg-test -Name pwsh-logz04
+Get-AzLogzMonitorVMHost -ResourceGroupName logz-rg-test -Name pwsh-logz04
+```
 
+```output
 AgentVersion Id
 ------------ --
 1.0          /SUBSCRIPTIONS/xxxx-xxxxxx-xx-xxxxxx/RESOURCEGROUPS/KOYTEST/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/TEST-VM-1

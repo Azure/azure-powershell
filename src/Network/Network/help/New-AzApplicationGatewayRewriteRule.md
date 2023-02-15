@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriterule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriterule
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ New-AzApplicationGatewayRewriteRule -Name <String> -ActionSet <PSApplicationGate
 
 ### Example 1 : Create a rewrite rule for an application gateway
 ```powershell
-PS C:\> $rule = New-AzApplicationGatewayRewriteRule -Name rule1 -ActionSet $action -RuleSequence 101 -Condition $condition
+$rule = New-AzApplicationGatewayRewriteRule -Name rule1 -ActionSet $action -RuleSequence 101 -Condition $condition
 ```
 
 This command creates a rewrite rule named rule1 and stores the result in the variable named $rule.

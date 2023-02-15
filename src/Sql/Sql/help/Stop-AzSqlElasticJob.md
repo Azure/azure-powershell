@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/stop-Azsqlelasticjob
+online version: https://learn.microsoft.com/powershell/module/Az.sql/stop-Azsqlelasticjob
 schema: 2.0.0
 ---
 
@@ -39,8 +39,11 @@ Returns the current status of the job execution
 
 ### Example 1: Stops a job with a running job execution
 ```powershell
-PS C:\> $je = Get-AzSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId dab0ebe8-fd52-42e9-bacf-e5f27577039b
+$je = Get-AzSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId dab0ebe8-fd52-42e9-bacf-e5f27577039b
 $je | Stop-AzSqlElasticJob
+```
+
+```output
 JobName JobExecutionId                       Lifecycle                    StartTime            EndTime
 ------- --------------                       ---------                    ---------            -------
 job1    dab0ebe8-fd52-42e9-bacf-e5f27577039b WaitingForChildJobExecutions 6/1/2018 10:13:56 PM
@@ -50,8 +53,8 @@ Stops a running job execution and returns it's current status
 
 ### Example 2
 
+<!-- Aladdin Generated Example -->
 ```powershell
-<!-- Aladdin Generated Example --> 
 Stop-AzSqlElasticJob -AgentName agent -JobExecutionId 00000000-0000-0000-0000-000000000000 -JobName job1 -ResourceGroupName MyResourceGroup -ServerName s1
 ```
 

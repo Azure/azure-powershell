@@ -12,48 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataFactoryV2.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
-    public class DatasetTests : DataFactoriesScenarioTestsBase
+    public class DatasetTests : DataFactoryV2TestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public DatasetTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DatasetTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatasetV2()
         {
-            RunPowerShellTest(_logger, "Test-Dataset");
+            TestRunner.RunTestScript("Test-Dataset");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatasetWithDataFactoryParameterV2()
         {
-            RunPowerShellTest(_logger, "Test-DatasetWithDataFactoryParameter");
+            TestRunner.RunTestScript("Test-DatasetWithDataFactoryParameter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatasetPipingV2()
         {
-            RunPowerShellTest(_logger, "Test-DatasetPiping");
+            TestRunner.RunTestScript("Test-DatasetPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatasetWithResourceIdV2()
         {
-            RunPowerShellTest(_logger, "Test-DatasetWithResourceId");
+            TestRunner.RunTestScript("Test-DatasetWithResourceId");
         }
     }
 }

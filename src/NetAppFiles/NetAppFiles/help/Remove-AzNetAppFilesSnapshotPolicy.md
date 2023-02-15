@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilessnapshotpolicy
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilessnapshotpolicy
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The **Remove-AzNetAppFilesSnapshotPolicy** cmdlet deletes an ANF snapshot policy
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MySnapshotPolicy"
+Remove-AzNetAppFilesSnapshotPolicy -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MySnapshotPolicy"
 ```
 
 This command deletes the new ANF backup policy with a the name "MyBackupPolicy" for account "MyAccount".
@@ -219,3 +219,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetAppFilesSnapshotPolicy](./Get-AzNetAppFilesSnapshotPolicy.md)
+[New-AzNetAppFilesSnapshotPolicy](./New-AzNetAppFilesSnapshotPolicy.md)
+[Update-AzNetAppFilesSnapshotPolicy](./Update-AzNetAppFilesSnapshotPolicy.md)
+[Set-AzNetAppFilesSnapshotPolicy](./Set-AzNetAppFilesSnapshotPolicy.md)
+[Get-AzNetAppFilesSnapshot](./Get-AzNetAppFilesSnapshot.md)
+[New-AzNetAppFilesSnapshot](./New-AzNetAppFilesSnapshot.md)
+[Remove-AzNetAppFilesSnapshot](./Remove-AzNetAppFilesSnapshot.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesVolume.md)

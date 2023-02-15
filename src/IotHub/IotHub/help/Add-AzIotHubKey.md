@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubkey
+online version: https://learn.microsoft.com/powershell/module/az.iothub/add-aziothubkey
 schema: 2.0.0
 ---
 
@@ -32,8 +32,8 @@ KeyNames are not unique and need to be managed carefully.
 ## EXAMPLES
 
 ### Example 1 Add a Key to an IotHub
-```
-PS C:\> Add-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "primarykey" -SecondaryKey "secondarykey" -Rights RegistryRead
+```powershell
+Add-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "primarykey" -SecondaryKey "secondarykey" -Rights RegistryRead
 ```
 
 Creates a key named "mykey" for the iothub "myiothub" with RegistryRead permissions.

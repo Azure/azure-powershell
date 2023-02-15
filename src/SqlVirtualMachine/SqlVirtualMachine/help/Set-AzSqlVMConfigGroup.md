@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/powershell/module/az.sqlvirtualmachine/set-azsqlvmconfiggroup
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/set-azsqlvmconfiggroup
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ The Set-AzSqlVMConfigGroup cmdlet set the information needed in order to join a 
 
 ### Example 1
 ```powershell
-PS C:\> $config = Set-AzSqlVMConfigGroup -SqlVM $config -SqlVMGroup $group -ClusterOperatorAccountPassword 'password' -SqlServiceAccountPassword 'password'
+$config = Set-AzSqlVMConfigGroup -SqlVM $config -SqlVMGroup $group -ClusterOperatorAccountPassword 'password' -SqlServiceAccountPassword 'password'
 ```
 
 Update the group informations of a sql virtual machine configuration.

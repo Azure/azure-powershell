@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/set-azsignalrupstream
+online version: https://learn.microsoft.com/powershell/module/az.signalr/set-azsignalrupstream
 schema: 2.0.0
 ---
 
@@ -38,14 +38,16 @@ Set the upstream settings of a SignalR service.
 
 ### Set two ordered upstream templates
 ```powershell
-PS C:\>  Set-AzSignalRUpstream -name pssignalr -ResourceGroupName test_resource_group -Template @{UrlTemplate='http://host-connections1.com'; HubPattern='chat';EventPattern='broadcast' }, @{UrlTemplate='http://host-connections2.com'}
+Set-AzSignalRUpstream -name pssignalr -ResourceGroupName test_resource_group -Template @{UrlTemplate='http://host-connections1.com'; HubPattern='chat';EventPattern='broadcast' }, @{UrlTemplate='http://host-connections2.com'}
+```
 
+```output
 Templates
 ---------
 {Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplat…
 ```
 
-The following JSON represents the actual templates set. 
+The following JSON represents the actual templates set.
 
  `
 {
@@ -64,8 +66,10 @@ The following JSON represents the actual templates set.
 
 ### Clear all the upstream settings
 ```powershell
-PS C:\>  Set-AzSignalRUpstream -name pssignalr -ResourceGroupName test_resource_group -Clear
+Set-AzSignalRUpstream -name pssignalr -ResourceGroupName test_resource_group -Clear
+```
 
+```output
 Templates
 ---------
 {}
@@ -243,4 +247,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[How to use splatting to pass parameters to commands in PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_splatting?view=powershell-7)
+[How to use splatting to pass parameters to commands in PowerShell](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_splatting?view=powershell-7)

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementapiversionset
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementapiversionset
 schema: 2.0.0
 ---
 
@@ -38,8 +38,8 @@ The **Remove-AzAzureRmApiManagementApiVersionSet** cmdlet removes an existing AP
 
 ### Example 1: Remove an API Version set
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementApiVersionSet -Context $apimContext -ApiVersionSetId "query-param-set"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementApiVersionSet -Context $apimContext -ApiVersionSetId "query-param-set"
 ```
 
 This command removes the API Version Set with the specified ApiVersionSetId.

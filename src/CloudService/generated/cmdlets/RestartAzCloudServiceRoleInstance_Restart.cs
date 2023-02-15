@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// The Reboot Role Instance asynchronous operation requests a reboot of a role instance in the cloud service.

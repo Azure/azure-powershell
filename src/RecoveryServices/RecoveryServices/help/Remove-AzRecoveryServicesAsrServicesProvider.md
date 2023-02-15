@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesasrservicesprovider
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesasrservicesprovider
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Remove-AzRecoveryServicesAsrServicesProvider** cmdlet removes the specifie
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Remove-AzRecoveryServicesAsrServicesProvider -ServicesProvider $ServicesProvider
+```powershell
+$currentJob = Remove-AzRecoveryServicesAsrServicesProvider -ServicesProvider $ServicesProvider
 ```
 
 Starts the deletion/unregistration of the specified Azure Site Recovery services provider and returns the ASR job used to track the operation.

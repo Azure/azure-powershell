@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: AB370DAD-CED9-479D-BE08-B32EFF924A37
-online version: https://docs.microsoft.com/powershell/module/az.network/reset-azvirtualnetworkgatewayconnectionsharedkey
+online version: https://learn.microsoft.com/powershell/module/az.network/reset-azvirtualnetworkgatewayconnectionsharedkey
 schema: 2.0.0
 ---
 
@@ -24,9 +24,11 @@ Resets the shared key of the virtual network gateway connection.
 ## EXAMPLES
 
 ### Example 1:
-```
+```powershell
 Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName myRG -Name myConnection -KeyLength 32
+```
 
+```output
 Confirm
 Are you sure you want to overwrite resource 'myConnection'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

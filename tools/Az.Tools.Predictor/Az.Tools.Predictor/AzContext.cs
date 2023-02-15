@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     {
         private const string InternalUserSuffix = "@microsoft.com";
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
-        private PowerShellRuntime _powerShellRuntime;
+        private IPowerShellRuntime _powerShellRuntime;
 
         /// <inheritdoc/>
         public Version AzVersion { get; private set; } = DefaultVersion;
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public bool IsInternal { get; internal set; }
 
-        public AzContext(PowerShellRuntime powerShellRuntime) => _powerShellRuntime
+        public AzContext(IPowerShellRuntime powerShellRuntime) => _powerShellRuntime
              = powerShellRuntime;
 
         /// <inheritdoc/>

@@ -21,14 +21,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class RoleAssignmentTests : ResourceTestRunner
+    public class RoleAssignmentTests : ResourcesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public RoleAssignmentTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+
         }
 
         [Fact]
@@ -42,14 +39,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void RaClassicAdminsWithScope()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RaClassicAdminsWithScope");
+            TestRunner.RunTestScript("Test-RaClassicAdminsWithScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void RaDeletedPrincipals()
         {
-            TestRunner.RunTestScript("Test-RaDeletedPrincipals");
+            TestRunner.RunTestScript("Test-UnknowndPrincipals");
         }
 
         [Fact]
@@ -74,7 +71,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeleteByPSRoleAssignment()
         {
             TestRunner.RunTestScript("Test-RaDeleteByPSRoleAssignment");

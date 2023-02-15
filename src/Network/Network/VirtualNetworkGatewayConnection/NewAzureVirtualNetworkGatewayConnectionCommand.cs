@@ -196,6 +196,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Whether to use accelerated virtual network access by bypassing gateway")]
         public SwitchParameter ExpressRouteGatewayBypass { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Bypass the ExpressRoute gateway when accessing private-links. " +
+                          "ExpressRoute FastPath (ExpressRouteGatewayBypass) must be enabled.")]
+        public SwitchParameter EnablePrivateLinkFastPath { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -231,6 +238,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent;
             vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
             vnetGatewayConnection.ExpressRouteGatewayBypass = this.ExpressRouteGatewayBypass.IsPresent;
+            vnetGatewayConnection.EnablePrivateLinkFastPath = this.EnablePrivateLinkFastPath.IsPresent;
 
             if (!string.IsNullOrWhiteSpace(this.ConnectionProtocol))
             {

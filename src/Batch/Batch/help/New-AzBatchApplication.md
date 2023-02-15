@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: FF111B74-90A3-4F7C-B515-CE1EEF68EB54
-online version: https://docs.microsoft.com/powershell/module/az.batch/new-azbatchapplication
+online version: https://learn.microsoft.com/powershell/module/az.batch/new-azbatchapplication
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **New-AzBatchApplication** cmdlet adds an application to the specified Azure
 ## EXAMPLES
 
 ### Example 1: Add an empty application to a Batch account
-```
-PS C:\>New-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "Litware" -AllowUpdates $True -DisplayName "Litware Advanced Reticulator"
+```powershell
+New-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "Litware" -AllowUpdates $True -DisplayName "Litware Advanced Reticulator"
 ```
 
 This command creates the Litware application in the ContosoBatch account.

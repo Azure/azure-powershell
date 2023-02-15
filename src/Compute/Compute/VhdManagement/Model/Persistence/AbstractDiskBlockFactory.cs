@@ -24,14 +24,25 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         protected AbstractDiskBlockFactory(VhdFile vhdFile)
         {
             this.vhdFile = vhdFile;
+            this.BlockCount = CalculateBlockCount();
         }
 
         public abstract Block Create(uint block);
         public abstract Sector GetSector(Block block, uint sector);
 
+        private int CalculateBlockCount()
+        {
+            var count = this.vhdFile.Footer.CurrentSize * 1.0m / this.GetBlockSize();
+            if (Math.Floor(count) < Math.Ceiling(count))
+            {
+                this.ExtraBlockIndex = (long)Math.Floor(count);
+            }
+            return (int)Math.Ceiling(count);
+        }
+
         public IndexRange GetFooterRange()
         {
-            return IndexRange.FromLength(this.GetBlockSize() * this.BlockCount, VhdConstants.VHD_FOOTER_SIZE);
+            return IndexRange.FromLength(this.vhdFile.Footer.CurrentSize, VhdConstants.VHD_FOOTER_SIZE);
         }
 
         public byte[] ReadBlockData(Block block)
@@ -50,10 +61,8 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         protected abstract byte[] DoReadBlockData(Block block);
 
-        public long BlockCount
-        {
-            get { return vhdFile.BlockAllocationTable.Size; }
-        }
+        public long BlockCount { get; private set; }
+        public long? ExtraBlockIndex { get; private set; }
 
         public bool HasData(uint blockIndex)
         {

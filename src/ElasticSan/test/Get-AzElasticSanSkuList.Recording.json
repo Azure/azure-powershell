@@ -1,0 +1,42 @@
+{
+  "Get-AzElasticSanSkuList+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/skus?api-version=2021-11-20-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/skus?api-version=2021-11-20-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "dd76cbb6-d8da-4276-9dd9-84893a24066a" ],
+        "CommandName": [ "Get-AzElasticSanSkuList" ],
+        "FullCommandName": [ "Get-AzElasticSanSkuList_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.6", "Az.ElasticSan/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-request-id": [ "93faec1e-567d-4c2d-8168-2dac0dd6453a" ],
+        "x-ms-correlation-request-id": [ "93faec1e-567d-4c2d-8168-2dac0dd6453a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102607Z:93faec1e-567d-4c2d-8168-2dac0dd6453a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 22 Sep 2022 10:26:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "3671" ]
+      },
+      "Content": "{\"value\":[{\"resourceType\":\"elasticSans\",\"name\":\"Premium_LRS\",\"tier\":\"Premium\",\"locations\":[\"centraluseuap\"],\"locationInfo\":[{\"location\":\"centraluseuap\",\"zones\":[\"1\",\"2\"],\"zoneDetails\":[]}],\"capabilities\":[{\"name\":\"elasticSanIopsPerBaseTiB\",\"value\":\"5000\"},{\"name\":\"elasticSanMaxSizeTiB\",\"value\":\"1024\"},{\"name\":\"elasticSanMinSizeTiB\",\"value\":\"64\"},{\"name\":\"elasticSanMBpsPerBaseTiB\",\"value\":\"80\"},{\"name\":\"elasticSanMaxMBps\",\"value\":\"81920\"},{\"name\":\"elasticSanMinIncrementSizeTiB\",\"value\":\"1\"},{\"name\":\"elasticSanMaxVolumeGroupCount\",\"value\":\"20\"},{\"name\":\"volumeGroupMaxVolumeCount\",\"value\":\"1000\"},{\"name\":\"volumeMaxSizeGiB\",\"value\":\"65536\"},{\"name\":\"volumeMinSizeGiB\",\"value\":\"1\"},{\"name\":\"volumeIopsPerBaseGiB\",\"value\":\"750\"},{\"name\":\"volumeMBpsPerBaseGiB\",\"value\":\"192\"},{\"name\":\"volumeMaxIops\",\"value\":\"64000\"},{\"name\":\"volumeMaxMBps\",\"value\":\"1024\"},{\"name\":\"volumeMinIncrementSizeGiB\",\"value\":\"1\"}],\"restrictions\":[]},{\"resourceType\":\"elasticSans\",\"name\":\"Premium_LRS\",\"tier\":\"Premium\",\"locations\":[\"eastus2euap\"],\"locationInfo\":[{\"location\":\"eastus2euap\",\"zones\":[\"1\",\"2\",\"3\"],\"zoneDetails\":[]}],\"capabilities\":[{\"name\":\"elasticSanIopsPerBaseTiB\",\"value\":\"5000\"},{\"name\":\"elasticSanMaxSizeTiB\",\"value\":\"1024\"},{\"name\":\"elasticSanMinSizeTiB\",\"value\":\"64\"},{\"name\":\"elasticSanMBpsPerBaseTiB\",\"value\":\"80\"},{\"name\":\"elasticSanMaxMBps\",\"value\":\"81920\"},{\"name\":\"elasticSanMinIncrementSizeTiB\",\"value\":\"1\"},{\"name\":\"elasticSanMaxVolumeGroupCount\",\"value\":\"20\"},{\"name\":\"volumeGroupMaxVolumeCount\",\"value\":\"1000\"},{\"name\":\"volumeMaxSizeGiB\",\"value\":\"65536\"},{\"name\":\"volumeMinSizeGiB\",\"value\":\"1\"},{\"name\":\"volumeIopsPerBaseGiB\",\"value\":\"750\"},{\"name\":\"volumeMBpsPerBaseGiB\",\"value\":\"192\"},{\"name\":\"volumeMaxIops\",\"value\":\"64000\"},{\"name\":\"volumeMaxMBps\",\"value\":\"1024\"},{\"name\":\"volumeMinIncrementSizeGiB\",\"value\":\"1\"}],\"restrictions\":[]},{\"resourceType\":\"elasticSans\",\"name\":\"Premium_LRS\",\"tier\":\"Premium\",\"locations\":[\"eastus2stage\"],\"locationInfo\":[{\"location\":\"eastus2stage\",\"zones\":[],\"zoneDetails\":[]}],\"capabilities\":[{\"name\":\"elasticSanIopsPerBaseTiB\",\"value\":\"5000\"},{\"name\":\"elasticSanMaxSizeTiB\",\"value\":\"1024\"},{\"name\":\"elasticSanMinSizeTiB\",\"value\":\"64\"},{\"name\":\"elasticSanMBpsPerBaseTiB\",\"value\":\"80\"},{\"name\":\"elasticSanMaxMBps\",\"value\":\"81920\"},{\"name\":\"elasticSanMinIncrementSizeTiB\",\"value\":\"1\"},{\"name\":\"elasticSanMaxVolumeGroupCount\",\"value\":\"20\"},{\"name\":\"volumeGroupMaxVolumeCount\",\"value\":\"1000\"},{\"name\":\"volumeMaxSizeGiB\",\"value\":\"65536\"},{\"name\":\"volumeMinSizeGiB\",\"value\":\"1\"},{\"name\":\"volumeIopsPerBaseGiB\",\"value\":\"750\"},{\"name\":\"volumeMBpsPerBaseGiB\",\"value\":\"192\"},{\"name\":\"volumeMaxIops\",\"value\":\"64000\"},{\"name\":\"volumeMaxMBps\",\"value\":\"1024\"},{\"name\":\"volumeMinIncrementSizeGiB\",\"value\":\"1\"}],\"restrictions\":[]},{\"resourceType\":\"elasticSans\",\"name\":\"Premium_LRS\",\"tier\":\"Premium\",\"locations\":[\"southcentralusstg\"],\"locationInfo\":[{\"location\":\"southcentralusstg\",\"zones\":[],\"zoneDetails\":[]}],\"capabilities\":[{\"name\":\"elasticSanIopsPerBaseTiB\",\"value\":\"5000\"},{\"name\":\"elasticSanMaxSizeTiB\",\"value\":\"1024\"},{\"name\":\"elasticSanMinSizeTiB\",\"value\":\"64\"},{\"name\":\"elasticSanMBpsPerBaseTiB\",\"value\":\"80\"},{\"name\":\"elasticSanMaxMBps\",\"value\":\"81920\"},{\"name\":\"elasticSanMinIncrementSizeTiB\",\"value\":\"1\"},{\"name\":\"elasticSanMaxVolumeGroupCount\",\"value\":\"20\"},{\"name\":\"volumeGroupMaxVolumeCount\",\"value\":\"1000\"},{\"name\":\"volumeMaxSizeGiB\",\"value\":\"65536\"},{\"name\":\"volumeMinSizeGiB\",\"value\":\"1\"},{\"name\":\"volumeIopsPerBaseGiB\",\"value\":\"750\"},{\"name\":\"volumeMBpsPerBaseGiB\",\"value\":\"192\"},{\"name\":\"volumeMaxIops\",\"value\":\"64000\"},{\"name\":\"volumeMaxMBps\",\"value\":\"1024\"},{\"name\":\"volumeMinIncrementSizeGiB\",\"value\":\"1\"}],\"restrictions\":[]}]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 973E1E53-983F-45A7-A7CF-18A8D96EC4E6
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azvpnclientrevokedcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvpnclientrevokedcertificate
 schema: 2.0.0
 ---
 
@@ -32,8 +32,8 @@ For more information, see the documentation for the New-AzVirtualNetworkGateway 
 ## EXAMPLES
 
 ### Example 1: Create a new client-revoked certificate
-```
-PS C:\>$Certificate = New-AzVpnClientRevokedCertificate -Name "ContosoClientRevokedCertificate" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
+```powershell
+$Certificate = New-AzVpnClientRevokedCertificate -Name "ContosoClientRevokedCertificate" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
 ```
 
 This command creates a new client-revoked certificate and stores the certificate object in a variable named $Certificate.

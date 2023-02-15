@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistryrepository
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistryrepository
 schema: 2.0.0
 ---
 
@@ -25,7 +25,9 @@ Delete repository from ACR.
 ### Example 1
 ```powershell
 Remove-AzContainerRegistryRepository -RegistryName registry -Name test/busybox15
+```
 
+```output
 ManifestsDeleted                                                          TagsDeleted
 ----------------                                                          -----------
 {sha256:31a54a0cf86d7354788a8265f60ae6acb4b348a67efbcf7c1007dd3cf7af05ab} {latest}

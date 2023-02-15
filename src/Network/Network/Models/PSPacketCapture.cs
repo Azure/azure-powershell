@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Target { get; set; }
 
+        public PSPacketCaptureMachineScope Scope { get; set; }
+
+        public PSPacketCaptureTargetType? TargetType { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public int? BytesToCapturePerPacket { get; set; }
 
@@ -39,6 +43,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string FiltersText
         {
             get { return JsonConvert.SerializeObject(this.Filters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ScopeText
+        {
+            get { return JsonConvert.SerializeObject(this.Scope, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

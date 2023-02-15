@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
+online version: https://learn.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Executes a command for a specific container instance in a specified resource gro
 
 ### Example 1: Execute a command in a specific container instance
 ```powershell
-PS C:\> Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName　test-rg -Command "echo hello"
+Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName test-rg -Command "echo hello"
+```
 
+```output
 hello
 ```
 

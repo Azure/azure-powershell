@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmssdatadisk
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmssdatadisk
 schema: 2.0.0
 ---
 
@@ -30,15 +30,15 @@ The **Remove-AzVmssDataDisk** cmdlet removes a data disk from the Virtual Machin
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzVmssDataDisk -VirtualMachineScaleSet $vmss -Name 'DataDisk1'
+```powershell
+Remove-AzVmssDataDisk -VirtualMachineScaleSet $vmss -Name 'DataDisk1'
 ```
 
 This command removes the data disk named 'DataDisk1' from the VMSS object.
 
 ### Example 2
-```
-PS C:\> Remove-AzVmssDataDisk -VirtualMachineScaleSet $vmss -Lun 0
+```powershell
+Remove-AzVmssDataDisk -VirtualMachineScaleSet $vmss -Lun 0
 ```
 
 This command removes the data disk of LUN 0 from the VMSS object.

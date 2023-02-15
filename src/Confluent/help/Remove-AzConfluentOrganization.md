@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Confluent
-online version: https://docs.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
+online version: https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 schema: 2.0.0
 ---
 
@@ -31,7 +31,10 @@ Delete Organization resource
 
 ### Example 1: Remove a confluent organization by name
 ```powershell
-PS C:\> Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01-portal
+Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01-portal
+```
+
+```output
 - This action cannot be undone.
 - This will permanently delete ‘<resource_name>’ and its Azure subscription
 - Stop billing for the selected Confluent organization through Azure Marketplace
@@ -42,7 +45,10 @@ This command removes a confluent organization by name
 
 ### Example 2: Remove a confluent organization by pipeline
 ```powershell
-PS C:\>  Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Remove-AzConfluentOrganization
+Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Remove-AzConfluentOrganization
+```
+
+```output
 - This action cannot be undone.
 - This will permanently delete ‘<resource_name>’ and its Azure subscription
 - Stop billing for the selected Confluent organization through Azure Marketplace
@@ -225,7 +231,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConfluentIdentity>: Identity Parameter
+INPUTOBJECT `<IConfluentIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[OrganizationName <String>]`: Organization resource name
   - `[ResourceGroupName <String>]`: Resource group name

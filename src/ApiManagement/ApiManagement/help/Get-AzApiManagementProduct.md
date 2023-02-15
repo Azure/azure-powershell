@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: B64E9C13-97A6-4E8B-92DB-EFAF8A48C5B8
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementproduct
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementproduct
 schema: 2.0.0
 ---
 
@@ -43,20 +43,29 @@ The **Get-AzApiManagementProduct** cmdlet gets a list or a particular product.
 ## EXAMPLES
 
 ### Example 1: Get all products
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementProduct -Context $apimContext
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementProduct -Context $apimContext
 ```
 
 This command get all API Management products.
 
 ### Example 2: Get a product by ID
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementProduct -Context $apimContext -ProductId "0123456789"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementProduct -Context $apimContext -ProductId "0123456789"
 ```
 
 This command get an API Management product by ID.
+
+### Example 2: Get a product by Title
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+$product = Get-AzApiManagementProduct -Context $apimContext -Title 'Starter'
+$product | Select-Object -First 1
+```
+
+This command selects the first API Management product by Title.
 
 ## PARAMETERS
 

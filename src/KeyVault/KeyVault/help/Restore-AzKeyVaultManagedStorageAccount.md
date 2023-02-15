@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultmanagedstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultmanagedstorageaccount
 schema: 2.0.0
 ---
 
@@ -42,8 +42,10 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up managed storage account
 ```powershell
-PS C:\> Restore-AzKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+Restore-AzKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+```
 
+```output
 Id                  : https://mykeyvault.vault.azure.net:443/storage/mystorageaccount
 Vault Name          : MyKeyVault
 AccountName         : mystorageaccount

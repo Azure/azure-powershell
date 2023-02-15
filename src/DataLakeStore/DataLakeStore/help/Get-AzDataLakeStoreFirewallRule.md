@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 7D27F7B1-BAF8-4A01-8BA7-A75A4CFAE370
-online version: https://docs.microsoft.com/powershell/module/az.datalakestore/get-azdatalakestorefirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.datalakestore/get-azdatalakestorefirewallrule
 schema: 2.0.0
 ---
 
@@ -26,15 +26,15 @@ If no firewall rule is specified, then lists all firewall rules for the account.
 ## EXAMPLES
 
 ### Example 1: Retrieve a specific firewall rule
-```
-PS C:\> Get-AzDataLakeStoreFirewallRule -AccountName "ContosoADL" -Name MyFirewallRule
+```powershell
+Get-AzDataLakeStoreFirewallRule -AccountName "ContosoADL" -Name MyFirewallRule
 ```
 
 Returns the firewall rule named "MyFirewallRule" from account "ContosoADL"
 
 ### Example 2: List all firewall rules in an account
-```
-PS C:\> Get-AzDataLakeStoreFirewallRule -AccountName "ContosoADL"
+```powershell
+Get-AzDataLakeStoreFirewallRule -AccountName "ContosoADL"
 ```
 
 Returns all firewall rules in account "ContosoADL"

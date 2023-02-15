@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesAsrVMNicIPConfig
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesAsrVMNicIPConfig
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ The **New-AzRecoveryServicesAsrVMNicIPConfig** cmdlet creates an IP Config objec
 
 ### Example 1
 ```powershell
-PS C:\> $ipConfig = New-AzRecoveryServicesAsrVMNicIPConfig -IpConfigName "ipconfig1" -RecoverySubnetName "default" `
+$ipConfig = New-AzRecoveryServicesAsrVMNicIPConfig -IpConfigName "ipconfig1" -RecoverySubnetName "default" `
 -TfoSubnetName "default" -RecoveryStaticIPAddress "10.1.40.10" -TfoStaticIPAddress "10.3.4.33"
 ```
 

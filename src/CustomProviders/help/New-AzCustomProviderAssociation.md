@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CustomProviders
-online version: https://docs.microsoft.com/powershell/module/az.customproviders/new-azcustomproviderassociation
+online version: https://learn.microsoft.com/powershell/module/az.customproviders/new-azcustomproviderassociation
 schema: 2.0.0
 ---
 
@@ -24,9 +24,11 @@ Create or update an association.
 
 ### Example 1: Create a custom provider association
 ```powershell
-PS C:\> $provider = Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
-PS C:\> New-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc -TargetResourceId $provider.Id
+$provider = Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
+New-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc -TargetResourceId $provider.Id
+```
 
+```output
 Location  Name     Type
 --------  ----     ----
 East US 2 MyAssoc  Microsoft.CustomProviders/associations

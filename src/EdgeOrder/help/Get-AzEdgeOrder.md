@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorder
+online version: https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorder
 schema: 2.0.0
 ---
 
@@ -36,9 +36,11 @@ Gets an order.
 
 ### Example 1: Get order details
 ```powershell
-PS C:\> $order = Get-AzEdgeOrder -Name pwOrderItem11 -SubscriptionId "SubscriptionId" -Location "eastus" -ResourceGroupName "resourceGroupName"
-PS C:\> $order | fl
+$order = Get-AzEdgeOrder -Name pwOrderItem11 -SubscriptionId "SubscriptionId" -Location "eastus" -ResourceGroupName "resourceGroupName"
+$order | Format-List
+```
 
+```output
 CurrentStageDisplayName      :
 CurrentStageName             : Placed
 CurrentStageStartTime        : 11/16/2021 10:35:00 AM

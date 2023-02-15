@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfacetapconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/set-aznetworkinterfacetapconfig
 schema: 2.0.0
 ---
 
@@ -23,10 +23,10 @@ The **Set-AzNetworkInterfaceTapConfig** updates a tap configuration for a networ
 ## EXAMPLES
 
 ### Example 1: Set the TapConfiguration with updated TapConfig name
-```
-PS C:\>$tapConfig = Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -NetworkInterface "sourceNicName" -Name "tapconfigName"
-PS C:\>$tapConfig.Name = "NewTapName"
-PS C:\>Set-AzNetworkInterfaceTapConfig -NetworkInterfaceTapConfig $tapConfig
+```powershell
+$tapConfig = Get-AzNetworkInterfaceTapConfig -ResourceGroupName "ResourceGroup1" -NetworkInterfaceName "sourceNicName" -Name "tapconfigName"
+$tapConfig.Name = "NewTapName"
+Set-AzNetworkInterfaceTapConfig -NetworkInterfaceTapConfig $tapConfig
 ```
 
 ## PARAMETERS

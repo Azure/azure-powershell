@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/test-azsignalrname
+online version: https://learn.microsoft.com/powershell/module/az.signalr/test-azsignalrname
 schema: 2.0.0
 ---
 
@@ -24,14 +24,19 @@ Check the availability of a name. Alias: Test-AzSignal.
 
 ### Check an existed name.
 ```powershell
-PS C:\> Test-AzSignalRName -Name existedsignalr -Location eastus
+Test-AzSignalRName -Name existedsignalr -Location eastus
+```
+
+```output
 False
 ```
 
 ### Check an unexisted name.
+```powershell
+Test-AzSignalRName -Name unexistedsignalr -Location eastus
 ```
-powershell
-PS C:\> Test-AzSignalR unexistedsignalr eastus
+
+```output
 True
 ```
 

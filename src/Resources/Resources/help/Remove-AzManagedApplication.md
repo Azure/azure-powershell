@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azmanagedapplication
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azmanagedapplication
 schema: 2.0.0
 ---
 
@@ -30,9 +30,9 @@ The **Remove-AzManagedApplication** cmdlet removes a managed application
 ## EXAMPLES
 
 ### Example 1: Remove managed application by resource ID
-```
-PS C:\>$Application = Get-AzManagedApplication -Name "myApp" -ResourceGroupName "myRG"
-PS C:\>Remove-AzManagedApplication -Id $Application.ResourceId -Force
+```powershell
+$Application = Get-AzManagedApplication -Name "myApp" -ResourceGroupName "myRG"
+Remove-AzManagedApplication -Id $Application.ResourceId -Force
 ```
 
 The first command gets a managed application named myApp by using the Get-AzManagedApplication cmdlet.

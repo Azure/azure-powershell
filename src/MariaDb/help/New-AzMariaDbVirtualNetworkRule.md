@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MariaDb
-online version: https://docs.microsoft.com/powershell/module/az.mariadb/new-azmariadbvirtualnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.mariadb/new-azmariadbvirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -25,9 +25,11 @@ Creates or updates an existing virtual network rule.
 
 ### Example 1: Create a virtual network rule for a MariaDB
 ```powershell
-PS C:\> $vnet = Get-AzVirtualNetwork -Name vnet -ResourceGroupName mariadb-test-qu5ov0
-PS C:\> New-AzMariaDbVirtualNetworkRule -ServerName mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 -Name vnet-001 -SubnetId $vnet.Subnets[0].Id -IgnoreMissingVnetServiceEndpoint
+$vnet = Get-AzVirtualNetwork -Name vnet -ResourceGroupName mariadb-test-qu5ov0
+New-AzMariaDbVirtualNetworkRule -ServerName mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 -Name vnet-001 -SubnetId $vnet.Subnets[0].Id -IgnoreMissingVnetServiceEndpoint
+```
 
+```output
 Name     Type
 ----     ----
 vnet-001 Microsoft.DBforMariaDB/servers/virtualNetworkRules

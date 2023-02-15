@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlconnectionstring
+online version: https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlconnectionstring
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Get the connection string according to client connection provider.
 
 ### Example 1: Get MySql server connection string by resource group and server name
 ```powershell
-PS C:\> Get-AzMySqlConnectionString -Client ADO.NET -Name mysql-test -ResourceGroupName PowershellMySqlTest
+Get-AzMySqlConnectionString -Client ADO.NET -Name mysql-test -ResourceGroupName PowershellMySqlTest
+```
 
+```output
 Server=mysql-test.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=mysql_test@mysql-test; Pwd={your_password};
 ```
 
@@ -40,8 +42,10 @@ This cmdlet gets MySql server connection string by resource group and server nam
 
 ### Example 2: Get MySql server connection string by identity
 ```powershell
-PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Get-AzMySqlConnectionString -Client PHP
+Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Get-AzMySqlConnectionString -Client PHP
+```
 
+```output
 $con=mysqli_init(); mysqli_real_connect($con, "mysql-test.mysql.database.azure.com", "mysql_test@mysql-test", {your_password}, {your_database}, 3306);
 ```
 
@@ -160,7 +164,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServer>: The server for the connection string.
+`INPUTOBJECT <IServer>`: The server for the connection string.
   - `Location <String>`: The geo-location where the resource lives
   - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

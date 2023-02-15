@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 67A9BB67-CF17-4CAA-99D9-002D0D23178B
-online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint
+online version: https://learn.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint
 schema: 2.0.0
 ---
 
@@ -26,8 +26,11 @@ This cmdlet is currently supported for Azure SQL Data Warehouse.
 ## EXAMPLES
 
 ### Example 1: Create a restore point
+```powershell
+New-AzSqlDatabaseRestorePoint -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -RestorePointLabel "RestorePoint01"
 ```
-PS C:\>New-AzSqlDatabaseRestorePoint -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -RestorePointLabel "RestorePoint01"
+
+```output
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 DatabaseName             : database01

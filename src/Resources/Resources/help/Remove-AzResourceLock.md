@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 42EEAAA8-F13B-486B-82BD-F646EF0DCDBA
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azresourcelock
 schema: 2.0.0
 ---
 
@@ -58,7 +58,7 @@ The **Remove-AzResourceLock** cmdlet removes an Azure resource lock.
 
 ### Example 1: Remove a lock
 ```powershell
-PS C:\>Remove-AzResourceLock -LockName "ContosoSiteLock" -ResourceName "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Storage-SouthCentralUS/providers/Microsoft.ClassicStorage/storageAccounts/mystorageaccount/providers/Microsoft.Authorization/locks/test"
+Remove-AzResourceLock -LockName "ContosoSiteLock" -ResourceName "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Storage-SouthCentralUS/providers/Microsoft.ClassicStorage/storageAccounts/mystorageaccount/providers/Microsoft.Authorization/locks/test"
 ```
 
 This command removes the lock named ContosoSiteLock.

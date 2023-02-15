@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: FFC02A5D-A12F-494D-8542-76A5B89E32DC
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasedatamaskingpolicy
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldatabasedatamaskingpolicy
 schema: 2.0.0
 ---
 
@@ -27,8 +27,11 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## EXAMPLES
 
 ### Example 1: Get the data masking policy for an Azure SQL database
+```powershell
+Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
-PS C:\>Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+
+```output
 DatabaseName      : Database01
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01

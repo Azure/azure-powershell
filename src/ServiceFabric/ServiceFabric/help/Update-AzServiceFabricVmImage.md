@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricvmimage
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricvmimage
 schema: 2.0.0
 ---
 
@@ -93,7 +93,7 @@ Specify common target vmImage to be used for the cluster.
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.VmImageKind
 Parameter Sets: (All)
 Aliases:
-Accepted values: Windows, Linux, Ubuntu, Ubuntu18_04
+Accepted values: Windows, Linux, Ubuntu, Ubuntu18_04, Ubuntu20_04
 
 Required: True
 Position: Named

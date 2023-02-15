@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 15CAC050-F2E9-4872-88E7-516A6D194FAB
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata
 schema: 2.0.0
 ---
 
@@ -31,8 +31,8 @@ The **Get-AzVMBootDiagnosticsData** cmdlet gets boot diagnostics data for a virt
 ## EXAMPLES
 
 ### Example 1: Get boot diagnostics data
-```
-PS C:\> Get-AzVMBootDiagnosticsData -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07" -Windows -LocalPath "C:\Contoso\BootDiagnostics"
+```powershell
+Get-AzVMBootDiagnosticsData -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07" -Windows -LocalPath "C:\Contoso\BootDiagnostics"
 ```
 
 This command gets boot diagnostics data for the virtual machine named ContosoVM07.

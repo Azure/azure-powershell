@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 7BFCD982-EC80-418B-BB52-C9941D028F76
-online version: https://docs.microsoft.com/powershell/module/az.logicapp/get-azlogicapp
+online version: https://learn.microsoft.com/powershell/module/az.logicapp/get-azlogicapp
 schema: 2.0.0
 ---
 
@@ -36,8 +36,11 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Get a logic app from a resource group
+```powershell
+Get-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03"
 ```
-PS C:\>Get-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03"
+
+```output
 Id                           : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/LogicAppCmdletTest/providers/Microsoft.Logic/workflows/LogicApp03
 Name                         : LogicApp03
 Type                         : Microsoft.Logic/workflows

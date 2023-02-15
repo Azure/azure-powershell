@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/remove-Azsqlelasticjobagent
+online version: https://learn.microsoft.com/powershell/module/Az.sql/remove-Azsqlelasticjobagent
 schema: 2.0.0
 ---
 
@@ -36,9 +36,11 @@ The Remove-AzSqlElasticJobAgent cmdlet removes an Elastic Job agent
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Remove-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 ```
-PS C:\> Remove-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 
+```output
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
 ----------------- ----------       ------------ --------- ----- ----
 rg                elasticjobserver jobdb        agent     Ready {[Octopus, Agent]}

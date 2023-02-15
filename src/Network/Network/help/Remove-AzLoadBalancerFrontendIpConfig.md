@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5F8E11DF-D560-44D7-99CA-C425951A56D6
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancerfrontendipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azloadbalancerfrontendipconfig
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Remove-AzLoadBalancerFrontendIpConfig** cmdlet removes a front-end IP conf
 ## EXAMPLES
 
 ### Example 1: Remove a front-end IP configuration from a load balancer
-```
-PS C:\>$loadbalancer = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:> Remove-AzLoadBalancerFrontendIpConfig -Name "frontendName" -LoadBalancer $loadbalancer
+```powershell
+$loadbalancer = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Remove-AzLoadBalancerFrontendIpConfig -Name "frontendName" -LoadBalancer $loadbalancer
 ```
 
 The first command gets the load balancer that is associated with the front-end IP configuration you want to remove, and then stores it in the $loadbalancer variable.

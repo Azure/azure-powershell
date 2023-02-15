@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 95103160-8101-4C43-8DAA-0BD75DFF3150
-online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection
+online version: https://learn.microsoft.com/powershell/module/az.automation/new-azautomationconnection
 schema: 2.0.0
 ---
 
@@ -25,9 +25,9 @@ The **New-AzAutomationConnection** cmdlet creates a connection in Azure Automati
 ## EXAMPLES
 
 ### Example 1: Create a connection for ConnectionTypeName=Azure
-```
-PS C:\> $FieldValues = @{"AutomationCertificateName"="ContosoCertificate";"SubscriptionID"="81b59010-dc55-45b7-89cd-5ca26db62472"}
-PS C:\> New-AzAutomationConnection -Name "Connection12" -ConnectionTypeName Azure -ConnectionFieldValues $FieldValues -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+```powershell
+$FieldValues = @{"AutomationCertificateName"="ContosoCertificate";"SubscriptionID"="81b59010-dc55-45b7-89cd-5ca26db62472"}
+New-AzAutomationConnection -Name "Connection12" -ConnectionTypeName Azure -ConnectionFieldValues $FieldValues -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 The first command assigns a hash table of field values to the $FieldValue variable.
@@ -35,25 +35,25 @@ The second command creates an Azure connection named Connection12 in the Automat
 The command uses the connection field values in $FieldValues.
 
 ### Example 2: Create a connection for ConnectionTypeName=AzureServicePrincipal
-```
-PS C:\> $Thumbprint = "0SZTNJ34TCCMUJ5MJZGR8XQD3S0RVHJBA33Z8ZXV"
-PS C:\> $TenantId = "4cd76576-b611-43d0-8f2b-adcb139531bf"
-PS C:\> $ApplicationId = "3794a65a-e4e4-493d-ac1d-f04308d712dd"
-PS C:\> $SubscriptionId = "81b59010-dc55-45b7-89cd-5ca26db62472"
-PS C:\> $RunAsAccountConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId}
-PS C:\> New-AzAutomationConnection -Name "Connection13" -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $RunAsAccountConnectionFieldValues -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+```powershell
+$Thumbprint = "0SZTNJ34TCCMUJ5MJZGR8XQD3S0RVHJBA33Z8ZXV"
+$TenantId = "4cd76576-b611-43d0-8f2b-adcb139531bf"
+$ApplicationId = "3794a65a-e4e4-493d-ac1d-f04308d712dd"
+$SubscriptionId = "81b59010-dc55-45b7-89cd-5ca26db62472"
+$RunAsAccountConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId}
+New-AzAutomationConnection -Name "Connection13" -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $RunAsAccountConnectionFieldValues -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 The command creates an Azure connection named Connection13 in the Automation account named AutomationAccount01 using $RunAsAccountConnectionFieldValues and ConnectionTypeName=AzureServicePrincipal.
 This ConnectionTypeName=AzureServicePrincipal is mainly used for Azure Run As Account.
 
 ### Example 3: Create a connection for ConnectionTypeName=AzureClassicCertificate
-```
-PS C:\> $SubscriptionName = "MyTestSubscription"
-PS C:\> $SubscriptionId = "81b59010-dc55-45b7-89cd-5ca26db62472"
-PS C:\> $ClassicRunAsAccountCertifcateAssetName = "AzureClassicRunAsCertificate"
-PS C:\> $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
-PS C:\> New-AzAutomationConnection -Name "Connection14" -ConnectionTypeName AzureClassicCertificate  -ConnectionFieldValues $ClassicRunAsAccountConnectionFieldValues -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+```powershell
+$SubscriptionName = "MyTestSubscription"
+$SubscriptionId = "81b59010-dc55-45b7-89cd-5ca26db62472"
+$ClassicRunAsAccountCertifcateAssetName = "AzureClassicRunAsCertificate"
+$ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
+New-AzAutomationConnection -Name "Connection14" -ConnectionTypeName AzureClassicCertificate  -ConnectionFieldValues $ClassicRunAsAccountConnectionFieldValues -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 The command creates an Azure connection named Connection14 in the Automation account named AutomationAccount01 using $ClassicRunAsAccountConnectionFieldValues and ConnectionTypeName=AzureClassicCertificate.
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

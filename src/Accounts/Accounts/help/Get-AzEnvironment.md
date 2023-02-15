@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/get-azenvironment
+online version: https://learn.microsoft.com/powershell/module/az.accounts/get-azenvironment
 schema: 2.0.0
 ---
 
@@ -23,12 +23,13 @@ The Get-AzEnvironment cmdlet gets endpoints and metadata for an instance of Azur
 
 ### Example 1: Getting all Azure environments
 ```powershell
-PS C:\> Get-AzEnvironment 
+Get-AzEnvironment 
+```
 
+```Output
 Name              Resource Manager Url                  ActiveDirectory Authority          Type
 ----              --------------------                  -------------------------          ----
 AzureUSGovernment https://management.usgovcloudapi.net/ https://login.microsoftonline.us/  Built-in
-AzureGermanCloud  https://management.microsoftazure.de/ https://login.microsoftonline.de/  Built-in
 AzureCloud        https://management.azure.com/         https://login.microsoftonline.com/ Built-in
 AzureChinaCloud   https://management.chinacloudapi.cn/  https://login.chinacloudapi.cn/    Built-in
 ```
@@ -37,8 +38,10 @@ This example shows how to get the endpoints and metadata for the AzureCloud (def
 
 ### Example 2: Getting the AzureCloud environment
 ```powershell
-PS C:\> Get-AzEnvironment -Name AzureCloud
+Get-AzEnvironment -Name AzureCloud
+```
 
+```Output
 Name       Resource Manager Url          ActiveDirectory Authority          Type
 ----       --------------------          -------------------------          ----
 AzureCloud https://management.azure.com/ https://login.microsoftonline.com/ Built-in
@@ -48,8 +51,10 @@ This example shows how to get the endpoints and metadata for the AzureCloud (def
 
 ### Example 3: Getting the AzureChinaCloud environment
 ```powershell
-PS C:\> Get-AzEnvironment -Name AzureChinaCloud | Format-List
+Get-AzEnvironment -Name AzureChinaCloud | Format-List
+```
 
+```Output
 Name                                              : AzureChinaCloud
 Type                                              : Built-in
 EnableAdfsAuthentication                          : False
@@ -87,8 +92,10 @@ This example shows how to get the endpoints and metadata for the AzureChinaCloud
 
 ### Example 4: Getting the AzureUSGovernment environment
 ```powershell
-PS C:\> Get-AzEnvironment -Name AzureUSGovernment
+Get-AzEnvironment -Name AzureUSGovernment
+```
 
+```Output
 Name              Resource Manager Url                  ActiveDirectory Authority         Type
 ----              --------------------                  -------------------------         ----
 AzureUSGovernment https://management.usgovcloudapi.net/ https://login.microsoftonline.us/ Built-in

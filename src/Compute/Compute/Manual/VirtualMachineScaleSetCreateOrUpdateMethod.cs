@@ -36,7 +36,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";
         // SimpleParameterSet
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet, 
+            Mandatory = false,
+            HelpMessage = "The name of the image for VMs in this Scale Set. If no value is provided, the 'Windows Server 2016 DataCenter' image will be used.")]
         [PSArgumentCompleter(
             "CentOS",
             "CoreOS",
@@ -48,7 +51,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
-            "Win2008R2SP1",
             "Win10")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
@@ -205,6 +207,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specified the gallery image unique id for vmss deployment. This can be fetched from gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string ImageReferenceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://docs.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://docs.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.")]
+        [PSArgumentCompleter("SCSI", "NVMe")]
+        public string DiskControllerType { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -245,6 +261,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
+               
 
                 // generate a domain name label if it's not specified.
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
@@ -344,6 +361,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
 
+                Dictionary<string, List<string>> auxAuthHeader = null;
+                if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
+                {
+                    var resourceId = ResourceId.TryParse(_cmdlet.ImageReferenceId);
+
+                    if (string.Equals(ComputeStrategy.Namespace, resourceId?.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
+                     && string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                     && !string.Equals(_cmdlet.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                    {
+                        List<string> resourceIds = new List<string>();
+                        resourceIds.Add(_cmdlet.ImageReferenceId);
+                        var auxHeaderDictionary = _cmdlet.GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                        if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                        {
+                            auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                        }
+                    }
+                }
+
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
                     subnet: subnet,
@@ -375,7 +411,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
-                    userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null
+                    userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null,
+                    imageReferenceId: _cmdlet.IsParameterBound(c => c.ImageReferenceId) ? _cmdlet.ImageReferenceId : null,
+                    auxAuthHeader: auxAuthHeader,
+                    diskControllerType: _cmdlet.DiskControllerType
                     );
             }
 
@@ -507,10 +546,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
                 }
-                else if (_cmdlet.SinglePlacementGroup == true)
-                {
-                    throw new Exception("The value provided for singlePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
-                }
             }
         }
 
@@ -601,9 +636,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                            ResourceIdentityType.SystemAssigned :
                            (SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned : ResourceIdentityType.UserAssigned),
                     UserAssignedIdentities = isUserAssignedEnabled 
-                                             ? new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>()
+                                             ? new Dictionary<string, UserAssignedIdentitiesValue>()
                                              {
-                                                 { UserAssignedIdentity, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue()}
+                                                 { UserAssignedIdentity, new UserAssignedIdentitiesValue()}
                                              }
                                              : null,
                 }

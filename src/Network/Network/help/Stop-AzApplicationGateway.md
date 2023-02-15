@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2C9609E8-0D8B-471B-9F0E-672BF55C3A0E
-online version: https://docs.microsoft.com/powershell/module/az.network/stop-azapplicationgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/stop-azapplicationgateway
 schema: 2.0.0
 ---
 
@@ -24,11 +24,12 @@ The **Stop-AzApplicationGateway** cmdlet stops an application gateway.
 ## EXAMPLES
 
 ### Example 1: Stop an application gateway
-```
-PS C:\>Stop-AzApplicationGateway -ApplicationGateway $AppGw
+```powershell
+$AppGw = Get-AzApplicationGateway -Name Test -ResourceGroupName Appgwtest
+Stop-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
-This command stops the application gateway stored in the $AppGw variable.
+These commands set the $AppGw variable to an application gateway and then stops the application gateway.
 
 ## PARAMETERS
 

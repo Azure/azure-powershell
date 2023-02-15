@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitor
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitor
 schema: 2.0.0
 ---
 
@@ -75,9 +75,10 @@ The New-AzNetworkWatcherConnectionMonitor cmdlet creates a connection monitor re
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name cm -SourceResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/RgCentralUSEUAP/providers/Microsoft.Compute/virtualMachines/vm -DestinationAddress bing.com -DestinationPort 80
+New-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name cm -SourceResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/RgCentralUSEUAP/providers/Microsoft.Compute/virtualMachines/vm -DestinationAddress bing.com -DestinationPort 80
 ```
 
+```output
 Name                        : cm
 Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGro
                               ups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -101,7 +102,7 @@ MonitoringStatus            : Running
 Location                    : centraluseuap
 Type                        : Microsoft.Network/networkWatchers/connectionMonitors
 Tags                        : {}
-
+```
 ## PARAMETERS
 
 ### -AsJob

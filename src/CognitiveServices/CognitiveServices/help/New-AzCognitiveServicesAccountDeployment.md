@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccountdeployment
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccountdeployment
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Create a Deployment for a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "deployment" -Properties $properties
+New-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "deployment" -Properties $properties
 ```
 
 Create a Deployment for a Cognitive Services account

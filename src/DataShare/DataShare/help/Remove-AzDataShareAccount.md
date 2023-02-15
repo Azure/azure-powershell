@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/remove-azdatashareaccount
+online version: https://learn.microsoft.com/powershell/module/az.datashare/remove-azdatashareaccount
 schema: 2.0.0
 ---
 
@@ -36,8 +36,11 @@ The **Remove-AzDataShareAccount** cmdlet removes a datashare account.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Remove-AzDataShareAccount -Name "WikiADS" -ResourceGroupName "ADS"
 ```
-PS C:\> Remove-AzDataShareAccount -Name "WikiADS" -ResourceGroupName "ADS"
+
+```output
 Confirm
 Are you sure you want to remove datashare account 'WikiADS' in resource group 'ADS'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y

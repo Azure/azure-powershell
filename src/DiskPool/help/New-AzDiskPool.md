@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
+online version: https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ This is expected service behavior.
 
 ### Example 1: Create a Disk Pool
 ```powershell
-PS C:\> New-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' -Location 'eastus2euap' -SkuName 'Standard' -SkuTier 'Standard' -SubnetId '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default' -AvailabilityZone "1"
+New-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' -Location 'eastus2euap' -SkuName 'Standard' -SkuTier 'Standard' -SubnetId '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/storagepool-rg-test/providers/Microsoft.Network/virtualNetworks/disk-pool-vnet/subnets/default' -AvailabilityZone "1"
+```
 
+```output
 Name             Location    Status    ProvisioningState AvailabilityZone
 ----             --------    ------    ----------------- ----------------
 disk-pool-1      eastus2euap Running   Succeeded         {3}

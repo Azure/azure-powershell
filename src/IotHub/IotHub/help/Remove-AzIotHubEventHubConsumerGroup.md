@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothubeventhubconsumergroup
+online version: https://learn.microsoft.com/powershell/module/az.iothub/remove-aziothubeventhubconsumergroup
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Deletes an eventhub consumergroup.
 ## EXAMPLES
 
 ### Example 1 Remove eventhub consumergroup from the telemetry eventhub
-```
-PS C:\> Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubConsumerGroupName myconsumergroup
+```powershell
+Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubConsumerGroupName myconsumergroup
 ```
 
 Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"

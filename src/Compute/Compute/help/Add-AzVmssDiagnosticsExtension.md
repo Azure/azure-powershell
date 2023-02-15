@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 7A1B92F5-C698-4D5E-ACD7-4013F1BC6247
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmssdiagnosticsextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmssdiagnosticsextension
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **Add-AzVmssDiagnosticsExtension** cmdlet adds a diagnostics extension to th
 ## EXAMPLES
 
 ### Example 1: Add a diagnostics extension to the VMSS
-```
-PS C:\> Add-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -SettingFilePath $publicConfigPath -ProtectedSettingFilePath $privateConfigPath -Name $extName -TypeHandlerVersion $typeVersion -AutoUpgradeMinorVersion $True -Force
+```powershell
+Add-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -SettingFilePath $publicConfigPath -ProtectedSettingFilePath $privateConfigPath -Name $extName -TypeHandlerVersion $typeVersion -AutoUpgradeMinorVersion $True -Force
 ```
 
 This command adds a diagnostics extension to the VMSS.

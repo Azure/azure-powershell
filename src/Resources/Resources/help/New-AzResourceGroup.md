@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 0632DAD6-F331-454F-9E7E-2164AB413E77
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azresourcegroup
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ Azure resource group is a collection of Azure resources that are deployed as a u
 ## EXAMPLES
 
 ### Example 1: Create an empty resource group
-```
-PS> New-AzResourceGroup -Name RG01 -Location "South Central US"
+```powershell
+New-AzResourceGroup -Name RG01 -Location "South Central US"
 ```
 
 This command creates a resource group that has no resources. You can use the
@@ -39,15 +39,15 @@ This command creates a resource group that has no resources. You can use the
 deployments to this resource group.
 
 ### Example 2: Create an empty resource group using positional parameters
-```
-PS> New-AzResourceGroup RG01 "South Central US"
+```powershell
+New-AzResourceGroup RG01 "South Central US"
 ```
 
 This command creates a resource group that has no resources.
 
 ### Example 3: Create a resource group with tags
-```
-PS> New-AzResourceGroup -Name RG01 -Location "South Central US" -Tag @{Empty=$null; Department="Marketing"}
+```powershell
+New-AzResourceGroup -Name RG01 -Location "South Central US" -Tag @{Empty=$null; Department="Marketing"}
 ```
 
 This command creates an empty resource group. This command is the same as the command in Example 1,

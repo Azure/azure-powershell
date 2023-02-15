@@ -15,21 +15,15 @@
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
     /// <summary>
     /// Scenario tests for integration account map commands.
     /// </summary>
-    public class IntegrationAccountMapTests : RMTestBase
+    public class IntegrationAccountMapTests : LogicAppTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IntegrationAccountMapTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationAccountMapTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -39,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateMap()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountMap");
+            TestRunner.RunTestScript("Test-CreateIntegrationAccountMap");
         }
 
         /// <summary>
@@ -49,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetMap()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountMap");
+            TestRunner.RunTestScript("Test-GetIntegrationAccountMap");
         }
 
         /// <summary>
@@ -59,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveMap()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountMap");
+            TestRunner.RunTestScript("Test-RemoveIntegrationAccountMap");
         }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateMap()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountMap");
+            TestRunner.RunTestScript("Test-UpdateIntegrationAccountMap");
         }
 
         /// <summary>
@@ -79,7 +73,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListMap()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListIntegrationAccountMap");
+            TestRunner.RunTestScript("Test-ListIntegrationAccountMap");
         }
     }
 }

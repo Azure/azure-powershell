@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: E2A56E55-30A3-4A2F-80AE-9D166840909E
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azremotedesktopfile
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azremotedesktopfile
 schema: 2.0.0
 ---
 
@@ -31,8 +31,8 @@ The **Get-AzRemoteDesktopFile** cmdlet gets a Remote Desktop Protocol (.rdp) fil
 ## EXAMPLES
 
 ### Example 1: Get a Remote Desktop file
-```
-PS C:\> Get-AzRemoteDesktopFile -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -LocalPath "D:\RemoteDesktopFile07.rdp"
+```powershell
+Get-AzRemoteDesktopFile -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -LocalPath "D:\RemoteDesktopFile07.rdp"
 ```
 
 This command gets the Remote Desktop file for the virtual machine named VirtualMachine07.

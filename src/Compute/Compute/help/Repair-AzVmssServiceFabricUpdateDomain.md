@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/repair-azvmssservicefabricupdatedomain
+online version: https://learn.microsoft.com/powershell/module/az.compute/repair-azvmssservicefabricupdatedomain
 schema: 2.0.0
 ---
 
@@ -15,21 +15,22 @@ Manual platform update domain walk to update virtual machines in a service fabri
 ### DefaultParameter (Default)
 ```
 Repair-AzVmssServiceFabricUpdateDomain [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-PlatformUpdateDomain] <Int32> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PlatformUpdateDomain] <Int32> [-Zone <String>] [-PlacementGroupId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Repair-AzVmssServiceFabricUpdateDomain [-PlatformUpdateDomain] <Int32> [-ResourceId] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Repair-AzVmssServiceFabricUpdateDomain [-PlatformUpdateDomain] <Int32> [-Zone <String>]
+ [-PlacementGroupId <String>] [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
-Repair-AzVmssServiceFabricUpdateDomain [-PlatformUpdateDomain] <Int32>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Repair-AzVmssServiceFabricUpdateDomain [-PlatformUpdateDomain] <Int32> [-Zone <String>]
+ [-PlacementGroupId <String>] [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,23 +39,23 @@ Force manual platform update domain walk to update virtual machines in a service
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Repair-AzVmssServiceFabricUpdateDomain -ResourceGroupName $rgname -VMScaleSetName $vmssName -PlatformUpdateDomain 0
+```powershell
+Repair-AzVmssServiceFabricUpdateDomain -ResourceGroupName $rgname -VMScaleSetName $vmssName -PlatformUpdateDomain 0
 ```
 
 This command forces service fabric update walk on UD 0 for the virtual machine scale set specified by resource group name and scale set name.
 
 ### Example 2
-```
-PS C:\> $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
-PS C:\> Repair-AzVmssServiceFabricUpdateDomain -VirtualMachineScaleSet $vmss -PlatformUpdateDomain 1
+```powershell
+$vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+Repair-AzVmssServiceFabricUpdateDomain -VirtualMachineScaleSet $vmss -PlatformUpdateDomain 1
 ```
 
 This command forces service fabric update walk on UD 1 for the virtual machine scale set specified by VM scale set object.
 
 ### Example 3
-```
-PS C:\> Repair-AzVmssServiceFabricUpdateDomain -ResourceId $resourceId  -PlatformUpdateDomain 2;
+```powershell
+Repair-AzVmssServiceFabricUpdateDomain -ResourceId $resourceId  -PlatformUpdateDomain 2;
 ```
 
 This command forces service fabric update walk on UD 2 for the virtual machine scale set specified by resource id.
@@ -83,6 +84,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlacementGroupId
+Placement Group Id of the Vmss
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -163,6 +179,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Zone
+Zone of the Vmss
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

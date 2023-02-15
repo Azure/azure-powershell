@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2trigger
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2trigger
 schema: 2.0.0
 ---
 
@@ -36,9 +36,11 @@ The **Remove-AzDataFactoryV2Trigger** cmdlet removes a trigger from a data facto
 ## EXAMPLES
 
 ### Example 1: Remove a trigger
-```
+```powershell
 Remove-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "ScheduledTrigger"
+```
 
+```output
 Confirm
 Are you sure you want to remove trigger 'ScheduledTrigger' in data factory 'TestFactory'?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

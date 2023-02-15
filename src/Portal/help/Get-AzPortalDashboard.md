@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Portal
-online version: https://docs.microsoft.com/powershell/module/az.portal/get-azportaldashboard
+online version: https://learn.microsoft.com/powershell/module/az.portal/get-azportaldashboard
 schema: 2.0.0
 ---
 
@@ -41,20 +41,24 @@ Gets the Dashboard.
 
 ### Example 1: List all dashboards in a subscription
 ```powershell
-PS C:> Get-AzPortalDashboard                                                                                                                     
+Get-AzPortalDashboard                                                  
+```
+
+```output
 Location Name                                           Type
 -------- ----                                           ----
 eastasia my-custom-dashboard1                           Microsoft.Portal/dashboards
 westus   my-second-custom-dashboard1                    Microsoft.Portal/dashboards
-
 ```
 
 List all dashboards in a subscription
 
 ### Example 2: Get details for a single Portal Dashboard
 ```powershell
-PS C:\> Get-AzPortalDashboard -ResourceGroupName my-rg -Name mydashboard
+Get-AzPortalDashboard -ResourceGroupName my-rg -Name mydashboard
+```
 
+```output
 Location Name        Type
 -------- ----        ----
 eastus   mydashboard Microsoft.Portal/dashboards
@@ -162,7 +166,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPortalIdentity>: Identity Parameter
+INPUTOBJECT `<IPortalIdentity>`: Identity Parameter
   - `[DashboardName <String>]`: The name of the dashboard.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.

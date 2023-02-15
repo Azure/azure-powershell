@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Confluent
-online version: https://docs.microsoft.com/powershell/module/az.confluent/update-azconfluentorganization
+online version: https://learn.microsoft.com/powershell/module/az.confluent/update-azconfluentorganization
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Update Organization resource
 
 ### Example 1: Update a confluent organization by name
 ```powershell
-PS C:\> pdate-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Tag @{"key01" = "value01"}
+Update-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Tag @{"key01" = "value01"}
+```
 
+```output
 Location Name                 Type
 -------- ----                 ----
 eastus   confluentorg-02-pwsh Microsoft.Confluent/organizations
@@ -42,8 +44,10 @@ This command updates a confluent organization by name.
 
 ### Example 2: Update a confluent organization by pipeline
 ```powershell
-PS C:\> Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Update-AzConfluentOrganization -Tag @{"key01" = "value01"; "key02"="value02"}
+Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Update-AzConfluentOrganization -Tag @{"key01" = "value01"; "key02"="value02"}
+```
 
+```output
 Location Name                 Type
 -------- ----                 ----
 eastus   confluentorg-02-pwsh Microsoft.Confluent/organizations
@@ -195,7 +199,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConfluentIdentity>: Identity Parameter
+INPUTOBJECT `<IConfluentIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[OrganizationName <String>]`: Organization resource name
   - `[ResourceGroupName <String>]`: Resource group name

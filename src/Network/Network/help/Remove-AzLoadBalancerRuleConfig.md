@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: DEBD58A3-AFAF-485C-8708-53228625138F
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancerruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azloadbalancerruleconfig
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Remove-AzLoadBalancerRuleConfig** cmdlet removes a rule configuration for 
 ## EXAMPLES
 
 ### Example 1: Remove a rule configuration from a load balancer
-```
-PS C:\>$loadbalancer = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:> Remove-AzLoadBalancerRuleConfig -Name "MyLBruleName" -LoadBalancer $loadbalancer
+```powershell
+$loadbalancer = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Remove-AzLoadBalancerRuleConfig -Name "MyLBruleName" -LoadBalancer $loadbalancer
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the $loadbalancer variable.

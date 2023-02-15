@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlvirtualnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlvirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Deletes the virtual network rule with the given name.
 
 ### Example 1: Remove PostgreSql server Virtual Network Rule by name
 ```powershell
-PS C:\> Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 ```
 
@@ -40,9 +40,9 @@ This cmdlet removes PostgreSql server Virtual Network Rule by name.
 
 ### Example 2: Remove PostgreSql server Virtual Network Rule by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
-PS C:\> Remove-AzPostgreSqlVirtualNetworkRule -InputObject $ID
- 
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
+Remove-AzPostgreSqlVirtualNetworkRule -InputObject $ID
+
 ```
 
 These cmdlets remove PostgreSql server Virtual Network Rule by identity.
@@ -237,7 +237,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

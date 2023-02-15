@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.TimeSeriesInsights
-online version: https://docs.microsoft.com/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsaccesspolicy
 schema: 2.0.0
 ---
 
@@ -25,8 +25,9 @@ Create or update an access policy in the specified environment.
 
 ### Example 1: Create an access policy for a specified environment
 ```powershell
-PS C:\> New-AzTimeSeriesInsightsAccessPolicy -EnvironmentName tsitest001 -ResourceGroupName testgroup -PrincipalObjectId ce74a389-b5e8-4f16-89c7-787031ddd903 -Role Contributor -Name policy001
-
+New-AzTimeSeriesInsightsAccessPolicy -EnvironmentName tsitest001 -ResourceGroupName testgroup -PrincipalObjectId ce74a389-b5e8-4f16-89c7-787031ddd903 -Role Contributor -Name policy001
+```
+```output
 Name      Type
 ----      ----
 policy001 Microsoft.TimeSeriesInsights/Environments/AccessPolicies

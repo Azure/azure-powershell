@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: A1E19A66-CD70-467E-8C59-1F88453905A4
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlelasticpoolrecommendation
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlelasticpoolrecommendation
 schema: 2.0.0
 ---
 
@@ -33,8 +33,8 @@ These recommendations include the following values:
 ## EXAMPLES
 
 ### Example 1: Get recommendations for a server
-```
-PS C:\>Get-AzSqlElasticPoolRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+```powershell
+Get-AzSqlElasticPoolRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 This command gets the elastic pool recommendations for the server named Server01.

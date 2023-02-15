@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlrestorableresource
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlrestorableresource
 schema: 2.0.0
 ---
 
@@ -36,8 +36,10 @@ The user can also use this list and provide a subset of restorable resources if 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlRestorableResource -LocationName {locationName} -DatabaseAccountInstanceId {DatabaseInstanceId} -RestoreLocation {Database} -RestoreTimestampInUtc {RestoreTimestamp}
+Get-AzCosmosDBSqlRestorableResource -Location "location" -DatabaseAccountInstanceId "DatabaseInstanceId" -RestoreLocation "Database" -RestoreTimestampInUtc $RestoreTimestamp
+```
 
+```output
 DatabaseName CollectionNames
 ------------ ---------------
 {DBName}     {Collection names}
@@ -78,6 +80,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+CosmosDB Restorable Database Account object
+
+```yaml
+Type: Microsoft.Azure.Management.CosmosDB.Models.PSRestorableDatabaseAccountGetResult
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Name of the Location in string.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RestoreLocation
 The location of the source account from which restore is triggered.
 This will also be the write region of the restored account
@@ -99,36 +131,6 @@ The timestamp to which the source account has to be restored to.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-CosmosDB Restorable Database Account object
-
-```yaml
-Type: Microsoft.Azure.Management.CosmosDB.Models.PSRestorableDatabaseAccountGetResult
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Location
-Name of the Location in string.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

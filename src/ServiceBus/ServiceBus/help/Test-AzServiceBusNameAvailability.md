@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/powershell/module/az.servicebus/test-azservicebusnameavailability
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/test-azservicebusnameavailability
 schema: 2.0.0
 ---
 
@@ -32,6 +32,9 @@ The **Test-AzServiceBusNameAvailability** Cmdlet Check Availability of the provi
 ### Example 1
 ```powershell
 Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameQueue -Queue
+```
+
+```output
 True
 ```
 
@@ -40,6 +43,9 @@ Returns True if the Provided $nameQueue name is Availabile or returns False if P
 ### Example 2
 ```powershell
 Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameTopic -Topic
+```
+
+```output
 True
 ```
 
@@ -86,7 +92,7 @@ Parameter Sets: (All)
 Aliases: NamespaceName
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -138,8 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

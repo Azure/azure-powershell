@@ -89,14 +89,23 @@ namespace Microsoft.Azure.Commands.Aks
         [ValidateNotNullOrEmpty]
         public string[] CommandContextAttachment { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Path of the zip file containing the files required by the command.")]
+        [ValidateNotNullOrEmpty]
+        public string CommandContextAttachmentZip { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Remove managed Kubernetes cluster without prompt")]
+        [Parameter(Mandatory = false, HelpMessage = "Execute the command without confirm")]
         public SwitchParameter Force { get; set; }
 
         private string GetCommandContext()
         {
+            if (this.IsParameterBound(c => c.CommandContextAttachmentZip))
+            {
+                var zipContent = File.ReadAllBytes(CommandContextAttachmentZip);
+                return Convert.ToBase64String(zipContent);
+            }
             if (CommandContextAttachment == null || CommandContextAttachment.Length == 0)
             {
                 return "";
@@ -145,7 +154,7 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     foreach (string filepath in filesToAttach)
                     {
-                        var relativePath = filepath.Replace(rootDirectory, "").Trim('/').Trim('\\');
+                        var relativePath = filepath.Replace(rootDirectory, "").Replace('\\', '/').Trim('/');
                         var memoryZipFile = archive.CreateEntry(relativePath);
                         var fileContent = File.ReadAllText(filepath);
                         using (var entryStream = memoryZipFile.Open())
@@ -156,6 +165,7 @@ namespace Microsoft.Azure.Commands.Aks
                     }
                 }
                 memoryStream.Flush();
+
                 return Convert.ToBase64String(memoryStream.ToArray());
             }
         }

@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     {
         public static List<ServiceClientModel.SubProtectionPolicy> GetServiceClientSubProtectionPolicy(
             SQLRetentionPolicy retentionPolicy,
-            SQLSchedulePolicy schedulePolicy)
+            SQLSchedulePolicy schedulePolicy, 
+            TieringPolicy tieringPolicy, bool isSmartTieringEnabled = false)
         {
             List<ServiceClientModel.SubProtectionPolicy> subProtectionPolicy =
                 new List<ServiceClientModel.SubProtectionPolicy>();
@@ -35,7 +36,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 subProtectionPolicy.Add(new ServiceClientModel.SubProtectionPolicy("Full",
                     GetServiceClientSimpleSchedulePolicy(schedulePolicy.FullBackupSchedulePolicy),
-                    GetServiceClientLongTermRetentionPolicy(retentionPolicy.FullBackupRetentionPolicy)));
+                    GetServiceClientLongTermRetentionPolicy(retentionPolicy.FullBackupRetentionPolicy),
+                    GetServiceClientTieringPolicy(tieringPolicy, isSmartTieringEnabled)));
             }
             if (schedulePolicy.DifferentialBackupSchedulePolicy != null &&
                 retentionPolicy.DifferentialBackupRetentionPolicy != null &&
@@ -57,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         public static List<ServiceClientModel.SubProtectionPolicy> GetServiceClientSubProtectionPolicy(
-            AzureVmWorkloadPolicy policy)
+            AzureVmWorkloadPolicy policy, bool isSmartTieringEnabled = false)
         {
             List<ServiceClientModel.SubProtectionPolicy> subProtectionPolicy =
                 new List<ServiceClientModel.SubProtectionPolicy>();
@@ -66,7 +68,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 subProtectionPolicy.Add(new ServiceClientModel.SubProtectionPolicy("Full",
                     GetServiceClientSimpleSchedulePolicy((SimpleSchedulePolicy)policy.FullBackupSchedulePolicy),
-                    GetServiceClientLongTermRetentionPolicy((LongTermRetentionPolicy)policy.FullBackupRetentionPolicy)));
+                    GetServiceClientLongTermRetentionPolicy((LongTermRetentionPolicy)policy.FullBackupRetentionPolicy),
+                    GetServiceClientTieringPolicy(policy.FullBackupTieringPolicy, isSmartTieringEnabled)));
             }
             if (policy.DifferentialBackupSchedulePolicy != null &&
                 policy.DifferentialBackupRetentionPolicy != null &&

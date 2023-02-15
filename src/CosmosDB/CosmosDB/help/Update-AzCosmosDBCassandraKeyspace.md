@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbcassandrakeyspace
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbcassandrakeyspace
 schema: 2.0.0
 ---
 
@@ -40,8 +40,10 @@ Updates the CosmosDB Cassandra Keyspace. Performs a client side patch operation 
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBCassandraKeyspace -AccountName myAccountName -ResourceGroupName myRgName -Name myKeyspaceName -Throughput 600
+Update-AzCosmosDBCassandraKeyspace -AccountName myAccountName -ResourceGroupName myRgName -Name myKeyspaceName -Throughput 600
+```
 
+```output
 Name     : myKeyspace
 Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/cassandraKeyspaces/myKeyspaceName
 Location :

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrvcenter
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrvcenter
 schema: 2.0.0
 ---
 
@@ -30,8 +30,11 @@ The **Update-AzRecoveryServicesAsrvCenter** cmdlet is updates discovery details 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Update-AzRecoveryServicesAsrvCenter -Account $fabric.fabricSpecificDetails.RunAsAccounts[1] -InputObject $vCenter
 ```
-PS C:\> Update-AzRecoveryServicesAsrvCenter -Account $fabric.fabricSpecificDetails.RunAsAccounts[1] -InputObject $vCenter
+
+```output
 Returns ASRJOB for update vCenter.
 ```
 

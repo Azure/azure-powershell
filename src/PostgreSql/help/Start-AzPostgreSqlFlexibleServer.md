@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/start-azpostgresqlflexibleserver
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/start-azpostgresqlflexibleserver
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ Starts a server.
 
 ### Example 1: Start the server by resource name
 ```powershell
-PS C:\> Start-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
+Start-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 ```
 
 Start the server by name
 
 ### Example 2: Start the server by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/start"
-PS C:\> Start-AzPostgreSqlFlexibleServer -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/start"
+Start-AzPostgreSqlFlexibleServer -InputObject $ID
 ```
 
 Start the server by identity
@@ -219,7 +219,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlstoredprocedure
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlstoredprocedure
 schema: 2.0.0
 ---
 
@@ -32,7 +32,10 @@ Creates a new CosmosDB Sql StoredProcedure.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlStoredProcedure -AccountName MyAccountName -ResourceGroupName MyRgName -DatabaseName MyDatabaseName -ContainerName MyContainerName -Name mySprocrName -Body myBody 
+New-AzCosmosDBSqlStoredProcedure -AccountName MyAccountName -ResourceGroupName MyRgName -DatabaseName MyDatabaseName -ContainerName MyContainerName -Name mySprocrName -Body myBody
+```
+
+```output
 Name     : mySprocName
 Id       : /subscriptions/mySubId/resourceGroups/MyRgName/providers/Microsoft.DocumentDB/databaseAccounts/MyAccountName/sqlDatabases/MyDatabaseName/contain
            ers/MyContainerName/storedProcedures/mySprocName

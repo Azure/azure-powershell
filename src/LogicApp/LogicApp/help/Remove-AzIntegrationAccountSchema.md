@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 56550997-21D9-4F85-B23A-677625482547
-online version: https://docs.microsoft.com/powershell/module/az.logicapp/remove-azintegrationaccountschema
+online version: https://learn.microsoft.com/powershell/module/az.logicapp/remove-azintegrationaccountschema
 schema: 2.0.0
 ---
 
@@ -29,8 +29,8 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Remove an integration account schema
-```
-PS C:\>Remove-AzIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -SchemaName "IntegrationAccountSchema43"
+```powershell
+Remove-AzIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -SchemaName "IntegrationAccountSchema43"
 ```
 
 This command removes an integration account schema named IntegrationAccountSchema43.

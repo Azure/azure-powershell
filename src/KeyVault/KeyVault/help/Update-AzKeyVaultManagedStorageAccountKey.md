@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/update-azkeyvaultmanagedstorageaccountkey
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/update-azkeyvaultmanagedstorageaccountkey
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ Regenerates the specified key of Key Vault managed Azure Storage Account and set
 
 ### Example 1: Regenerate a key
 ```powershell
-PS C:\> Update-AzKeyVaultManagedStorageAccountKey -VaultName 'myvault' -AccountName 'mystorageaccount' -KeyName 'key1'
+Update-AzKeyVaultManagedStorageAccountKey -VaultName 'myvault' -AccountName 'mystorageaccount' -KeyName 'key1'
+```
 
+```output
 Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
 Vault Name          : myvault
 AccountName         : mystorageaccount

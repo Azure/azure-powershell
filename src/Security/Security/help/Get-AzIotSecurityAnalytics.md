@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzIotSecurityAnalytics
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzIotSecurityAnalytics
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ The Get-AzIotSecurityAnalytics cmdlet returns a set of security analytics of a s
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotSecurityAnalytics -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Default
+Get-AzIotSecurityAnalytics -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Default
+```
 
+```output
 Id: "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MySolution/analyticsModels/default"
 Name: "default"
 Type: "Microsoft.Security/IoTSecuritySolutionAnalyticsModel"

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 2D882B33-2B62-4785-AF8F-5F4644E9504D
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azroledefinition
 schema: 2.0.0
 ---
 
@@ -43,12 +43,12 @@ If there are existing role assignments made to the custom role to be deleted, th
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzRoleDefinition -Name "Virtual Machine Operator" | Remove-AzRoleDefinition
 ```
 
 ### Example 2
-```
+```powershell
 Remove-AzRoleDefinition -Id "52a6cc13-ff92-47a8-a39b-2a8205c3087e"
 ```
 

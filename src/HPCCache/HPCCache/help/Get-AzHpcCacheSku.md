@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HPCCache.dll-Help.xml
 Module Name: Az.HPCCache
-online version: https://docs.microsoft.com/powershell/module/az.hpccache/get-azhpccachesku
+online version: https://learn.microsoft.com/powershell/module/az.hpccache/get-azhpccachesku
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ The **Get-AzHpcCacheSku** cmdlet returns a list of SKUs available in subscriptio
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzHpcCacheSku
+Get-AzHpcCacheSku
 ```
 
 ## PARAMETERS

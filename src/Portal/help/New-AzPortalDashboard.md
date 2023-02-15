@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Portal
-online version: https://docs.microsoft.com/powershell/module/az.portal/new-azportaldashboard
+online version: https://learn.microsoft.com/powershell/module/az.portal/new-azportaldashboard
 schema: 2.0.0
 ---
 
@@ -38,8 +38,10 @@ Creates or updates a Dashboard.
 
 ### Example 1: Create a dashboard using a dashboard template file
 ```powershell
-PS C:\> New-AzPortalDashboard -DashboardPath .\resources\dash1.json -ResourceGroupName mydash-rg -DashboardName my-dashboard03
+New-AzPortalDashboard -DashboardPath .\resources\dash1.json -ResourceGroupName mydash-rg -DashboardName my-dashboard03
+```
 
+```output
 Location Name           Type
 -------- ----           ----
 eastasia my-dashboard03 Microsoft.Portal/dashboards
@@ -254,7 +256,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DASHBOARD <IDashboard>: The shared dashboard resource definition.
+DASHBOARD `<IDashboard>`: The shared dashboard resource definition.
   - `Location <String>`: Resource location
   - `[Lens <IDashboardPropertiesLenses>]`: The dashboard lenses.
     - `[(Any) <IDashboardLens>]`: This indicates any property can be added to this object.

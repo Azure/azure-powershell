@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapserolescope
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapserolescope
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ The **Get-AzSynapseRoleScope** cmdlet gets a Azure Synapse Analytics Role Scope.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseRoleScope -WorkspaceName ContosoWorkspace
+Get-AzSynapseRoleScope -WorkspaceName ContosoWorkspace
 ```
 
 This command gets all role scopes under a workspace.
 
-### Example 6
+### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseRoleScope
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseRoleScope
 ```
 
 This command gets all role scopes under a workspace through pipeline.

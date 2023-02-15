@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Support.dll-Help.xml
 Module Name: Az.Support
-online version:https://docs.microsoft.com/powershell/module/az.support/new-azsupportcontactprofileobject
+online version:https://learn.microsoft.com/powershell/module/az.support/new-azsupportcontactprofileobject
 schema: 2.0.0
 ---
 
@@ -34,8 +34,9 @@ This is a helper cmdlet that you can use to create a support contact profile obj
 
 ### Example 1: Create a contact object
 ```powershell
-PS C:\> New-AzSupportContactProfileObject -FirstName "First" -LastName "Last" -PreferredContactMethod "Email" -PrimaryEmailAddress "user@contoso.com" -PreferredTimeZone "Pacific Standard Time" -PreferredSupportLanguage "en-US" -Country "USA"             
-
+New-AzSupportContactProfileObject -FirstName "First" -LastName "Last" -PreferredContactMethod "Email" -PrimaryEmailAddress "user@contoso.com" -PreferredTimeZone "Pacific Standard Time" -PreferredSupportLanguage "en-US" -Country "USA"             
+```
+```output
 FirstName LastName PreferredContactMethod PrimaryEmailAddress  PhoneNumber PreferredTimeZone     Country PreferredSupportLanguage
 --------- -------- ---------------------- -------------------  ----------- -----------------     ------- ------------------------
 First     Last     Email                  user@contoso.com                 Pacific Standard Time USA     en-US

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapseroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapseroledefinition
 schema: 2.0.0
 ---
 
@@ -44,22 +44,22 @@ If you do not specify a role name or a role Id, this cmdlet gets all role defini
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseRoleDefinition -WorkspaceName ContosoWorkspace
+Get-AzSynapseRoleDefinition -WorkspaceName ContosoWorkspace
 ```
 
 This command gets all role definitions under a workspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseRoleDefinition -WorkspaceName ContosoWorkspace -Name ContosoRole
+Get-AzSynapseRoleDefinition -WorkspaceName ContosoWorkspace -Name ContosoRole
 ```
 
 This command gets the role definition under workspace ContosoWorkspace with name ContosoRole.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseRoleDefinition
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseRoleDefinition
 ```
 
 This command gets all role definitions under a workspace through pipeline.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplicationgroup
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplicationgroup
 schema: 2.0.0
 ---
 
@@ -33,11 +33,13 @@ Update an applicationGroup.
 
 ### Example 1: Create a Windows Virtual Desktop ApplicationGroup by name
 ```powershell
-PS C:\> New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
-                            -Name ApplicationGroupName `
-                            -FriendlyName 'Friendly Name' `
-                            -Description 'Description' `
+New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
+                          -Name ApplicationGroupName `
+                          -FriendlyName 'Friendly Name' `
+                          -Description 'Description'
+```
 
+```output
 Location   Name                 Type
 --------   ----                 ----
 eastus     ApplicationGroupName Microsoft.DesktopVirtualization/applicationgroups
@@ -220,7 +222,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+`INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group

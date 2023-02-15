@@ -20,11 +20,11 @@ Deletes a server.
 .Description
 Deletes a server.
 .Example
-PS C:\> Remove-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
+ Remove-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
 
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer"
-PS C:\> Remove-AzPostgreSqlServer -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer"
+ Remove-AzPostgreSqlServer -InputObject $ID
  
 
 .Inputs
@@ -48,7 +48,7 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlserver
+https://learn.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlserver
 #>
 function Remove-AzPostgreSqlServer {
 [OutputType([System.Boolean])]

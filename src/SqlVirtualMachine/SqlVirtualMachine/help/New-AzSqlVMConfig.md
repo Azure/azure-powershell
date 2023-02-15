@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvmconfig
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvmconfig
 schema: 2.0.0
 ---
 
@@ -24,8 +24,11 @@ The New-AzSqlVMConfig cmdlet creates a new configuration object for a sql virtua
 
 ### Example 1
 ```powershell
-PS C:\> $config = New-AzSqlVMConfig -LicenseType "PAYG"
-PS C:\> New-AzSqlVM -ResourceGroupName "ResourceGroup01" -Name "vm" -SqlVM $config
+$config = New-AzSqlVMConfig -LicenseType "PAYG"
+New-AzSqlVM -ResourceGroupName "ResourceGroup01" -Name "vm" -SqlVM $config
+```
+
+```output
 Name ResourceGroupName  LicenseType Sku       Offer          SqlManagementType
 ---- -----------------  ----------- ---       -----          -----------------
 vm   ResourceGroup01	PAYG        Developer SQL2017-WS2016 Full

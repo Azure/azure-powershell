@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/new-azservicefabricmanagedclusterapplicationtype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/new-azservicefabricmanagedclusterapplicationtype
 schema: 2.0.0
 ---
 
@@ -25,10 +25,10 @@ The cmdlet creates a new service fabric managed application type under the speci
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $appType = New-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+$appType = New-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Verbose
 ```
 
 This example will create a new managed application type "testAppType" under the resource group and cluster specified.

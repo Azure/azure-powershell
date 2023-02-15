@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Protocol used to send probe")]
-        [ValidateSet("Http", "Https", IgnoreCase = true)]
+        [ValidateSet("Http", "Https" ,"TCP", "TLS", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
         public string HostName { get; set; }
 
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            HelpMessage = "Relative path of probe. Valid path starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }

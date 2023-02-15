@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/powershell/module/Az.storagesync/set-Azstoragesyncservice
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/set-Azstoragesyncservice
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ A storage sync service is the top level resource for Azure File Sync. This comma
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzStorageSyncService -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -IncomingTrafficPolicy "AllowAllTraffic"
+Set-AzStorageSyncService -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -IncomingTrafficPolicy "AllowAllTraffic"
 ```
 
 This command will set a storage sync service.

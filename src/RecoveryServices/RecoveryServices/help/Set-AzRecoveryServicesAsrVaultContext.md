@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesasrvaultcontext
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesasrvaultcontext
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Set-AzRecoveryServicesAsrVaultContext** cmdlet sets the Azure Site Recover
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $vaultSettings = Set-AzRecoveryServicesAsrVaultContext -Vault $RecoveryServicesVault
+```powershell
+$vaultSettings = Set-AzRecoveryServicesAsrVaultContext -Vault $RecoveryServicesVault
 ```
 
 Sets the vault context to the specified Recovery Services vault for subsequent Azure Site Recovery operations in the current PowerShell session.

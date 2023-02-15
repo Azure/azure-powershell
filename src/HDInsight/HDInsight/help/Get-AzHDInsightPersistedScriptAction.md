@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 2B7C1B83-EEEA-4BD1-9E9B-1F3070295995
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightpersistedscriptaction
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightpersistedscriptaction
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzHDInsightPersistedScriptAction** cmdlet gets the persisted script ac
 ## EXAMPLES
 
 ### Example 1: Get the persisted script actions on a cluster
-```
-PS C:\>Get-AzHDInsightPersistedScriptAction -ClusterName "your-hadoop-001"
+```powershell
+Get-AzHDInsightPersistedScriptAction -ClusterName "your-hadoop-001"
 ```
 
 This command gets persisted script actions on the cluster named your-hadoop-001.

@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -63,6 +64,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 protectedItem.ExtendedProperties.DiskExclusionProperties != null)
             {
                 DiskExclusionProperties diskExclusionProperties = protectedItem.ExtendedProperties.DiskExclusionProperties;
+                IsInclusionList = diskExclusionProperties.IsInclusionList;
+                DiskLunList = diskExclusionProperties.DiskLunList;
+            }
+        }
+
+        /// <summary>
+        /// Constructor. Takes the service client object representing the protected item 
+        /// and converts it in to the PS protected item model
+        /// </summary>
+        /// <param name="protectedItemResource">Service client object representing the protected item resource</param>
+        /// <param name="containerName">Name of the container associated with this protected item</param>
+        /// <param name="containerType">Type of the container associated with this protected item</param>
+        /// <param name="policyName">Name of the protection policy associated with this protected item</param>
+        public AzureVmItem(CrrModel.ProtectedItemResource protectedItemResource,
+            string containerName, ContainerType containerType, string policyName)
+            : base(protectedItemResource, containerName, containerType, policyName)
+        {
+            CrrModel.AzureIaaSVMProtectedItem protectedItem = (CrrModel.AzureIaaSVMProtectedItem)protectedItemResource.Properties;
+            LastBackupStatus = protectedItem.LastBackupStatus;
+            LastBackupTime = protectedItem.LastBackupTime;
+            ProtectionState =
+                EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState.ToString());
+            ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
+            VirtualMachineId = protectedItem.VirtualMachineId;
+            HealthStatus = protectedItem.HealthStatus;
+            DateOfPurge = null;
+            DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
+            if (protectedItem.IsScheduledForDeferredDelete.HasValue)
+            {
+                DateOfPurge = protectedItem.DeferredDeleteTimeInUTC.Value.AddDays(14);
+                DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
+            }
+
+            if (protectedItem.ExtendedProperties != null &&
+                protectedItem.ExtendedProperties.DiskExclusionProperties != null)
+            {
+                CrrModel.DiskExclusionProperties diskExclusionProperties = protectedItem.ExtendedProperties.DiskExclusionProperties;
                 IsInclusionList = diskExclusionProperties.IsInclusionList;
                 DiskLunList = diskExclusionProperties.DiskLunList;
             }

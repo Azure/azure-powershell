@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/sync-azsynapseintegrationruntimecredential
+online version: https://learn.microsoft.com/powershell/module/az.synapse/sync-azsynapseintegrationruntimecredential
 schema: 2.0.0
 ---
 
@@ -45,7 +45,7 @@ The **Sync-AzSynapseIntegrationRuntimeCredential** cmdlet synchronizes on-premis
 
 ### Example 1
 ```powershell
-PS C:\> Sync-AzSynapseIntegrationRuntimeCredential -WorkspaceName ContosoWorkspace -IntegrationRuntimeName 'test-selfhost-ir'
+Sync-AzSynapseIntegrationRuntimeCredential -WorkspaceName ContosoWorkspace -IntegrationRuntimeName 'test-selfhost-ir'
 ```
 
 Synchronizes credentials among integration runtime nodes.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicymanagedrule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicymanagedrule
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ The **New-AzApplicationGatewayFirewallPolicyManagedRule** creates a managed-rule
 
 ### Example 1
 ```powershell
-PS C:\> $condition = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet -Exclusion $exclusion1,$exclusion2
+$condition = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet -Exclusion $exclusion1,$exclusion2
 ```
 
 The command creates managed rules a list of ManagedRuleSet with $managedRuleSet and an exclusion list with entries as $exclusion1, $exclusion2.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesreplicationstatus
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesreplicationstatus
 schema: 2.0.0
 ---
 
@@ -37,10 +37,10 @@ Get the status of the replication
 
 ### Example 1
 ```powershell
-PS C:\> Get-AnfReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolName "MyDestinationPool" -VolumeName "MyVol"
+Get-AzNetAppFilesReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVol"
+```
 
-Output:
-
+```output
 Healthy            : true
 RelationshipStatus : Idle
 MirrorState        : Mirrored
@@ -173,3 +173,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Approve-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
+[Initialize-AzNetAppFilesReplication](./Initialize-AzNetAppFilesReplication.md)
+[Suspend-AzNetAppFilesReplication](./Suspend-AzNetAppFilesReplication.md)
+[Resume-AzNetAppFilesReplication](./Resume-AzNetAppFilesReplication.md)
+[Remove-AzNetAppFilesReplication](./Remove-AzNetAppFilesReplication.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesVolume.md)

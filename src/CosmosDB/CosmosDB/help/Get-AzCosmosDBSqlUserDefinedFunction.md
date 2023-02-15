@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqluserdefinedfunction
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqluserdefinedfunction
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The **Get-AzCosmosDBSqlUserDefinedFunction** cmdlet gets the list of all existin
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlUserDefinedFunction -AccountName {accountName} -ResourceGroupName {resourceGroupName} -DatabaseName {databaseName} -Name {userDefinedFunctionName} -ContainerName {containerName} 
+Get-AzCosmosDBSqlUserDefinedFunction -AccountName "accountName" -ResourceGroupName "resourceGroupName" -DatabaseName "databaseName" -Name "userDefinedFunctionName" -ContainerName "containerName"
+```
 
+```output
 Name                               : {userDefinedFunctionName}
 Id                                 : {userDefinedFunctionId}
 Resource                           : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUserDefinedFunctionGetPropertiesResource

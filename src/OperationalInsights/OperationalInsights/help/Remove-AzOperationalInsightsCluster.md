@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightscluster
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightscluster
 schema: 2.0.0
 ---
 
@@ -37,9 +37,7 @@ Delete cluster, only apply to clusters with provisioning state "Succeeded"
 
 ### Example 1
 ```powershell
-Remove-AzOperationalInsightsCluster -ResourceGroupName {rg-name} -ClusterName {cluster-name}
-
-true
+Remove-AzOperationalInsightsCluster -ResourceGroupName "rg-name" -ClusterName "cluster-name"
 ```
 
 Delete cluster

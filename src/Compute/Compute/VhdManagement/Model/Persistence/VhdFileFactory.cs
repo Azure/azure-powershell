@@ -57,7 +57,8 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
                     blockAllocationTable = new BlockAllocationTableFactory(dataReader, header).Create();
                     if (footer.DiskType == DiskType.Differencing)
                     {
-                        var parentPath = streamSource.VhdDirectory == null ? header.ParentPath : Path.Combine(streamSource.VhdDirectory, header.GetRelativeParentPath());
+                        string parentPath = GetParentPath(streamSource.VhdDirectory, header);
+
                         parent = Create(parentPath);
                     }
                 }
@@ -199,7 +200,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
                 if (footer.DiskType == DiskType.Differencing)
                 {
-                    var parentPath = streamSource.VhdDirectory == null ? header.ParentPath : Path.Combine(streamSource.VhdDirectory, header.GetRelativeParentPath());
+                    string parentPath = GetParentPath(streamSource.VhdDirectory, header);
 
                     BeginCreate(parentPath, machine.CompletionCallback, null);
                     yield return CompletionPort.SingleOperation;
@@ -207,6 +208,28 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
                 }
             }
             machine.ParameterValue = new VhdFile(footer, header, blockAllocationTable, parent, streamSource.Stream);
+        }
+
+        private string GetParentPath(string vhdDirectory, VhdHeader header)
+        {
+            string parentPath;
+            if (vhdDirectory == null)
+            {
+                parentPath = vhdDirectory;
+            }
+            else
+            {
+                string relativeParentPath = header.GetRelativeParentPath();
+                if (relativeParentPath != null)
+                {
+                    parentPath = Path.Combine(vhdDirectory, relativeParentPath);
+                }
+                else
+                {
+                    parentPath = header.GetAbsoluteParentPath();
+                }
+            }
+            return parentPath;
         }
     }
 }

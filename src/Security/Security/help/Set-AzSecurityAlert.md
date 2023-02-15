@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Set-AzSecurityAlert
+online version: https://learn.microsoft.com/powershell/module/az.security/Set-AzSecurityAlert
 schema: 2.0.0
 ---
 
@@ -36,6 +36,12 @@ Set-AzSecurityAlert [-ActionType <String>] -InputObject <PSSecurityAlert> [-Pass
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InputObjectV3
+```
+Set-AzSecurityAlert -InputObjectV3 <PSSecurityAlertV3> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Sets a security alert state.
 
@@ -43,7 +49,7 @@ Sets a security alert state.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecurityAlert -Location "centralus" -ResourceGroupName "RSG" -Name "2518710774294070750_FFF23C70-80EF-4A8B-9122-507B0EA8DFFF" -ActionType Dismiss
+Set-AzSecurityAlert -Location "centralus" -ResourceGroupName "RSG" -Name "2518710774294070750_FFF23C70-80EF-4A8B-9122-507B0EA8DFFF" -ActionType Dismiss
 ```
 
 Dismisses a security alert that was raised.
@@ -98,6 +104,21 @@ Input Object.
 ```yaml
 Type: Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
 Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InputObjectV3
+Input Object V3.
+
+```yaml
+Type: Microsoft.Azure.Commands.SecurityCenter.Models.Alerts.PSSecurityAlertV3
+Parameter Sets: InputObjectV3
 Aliases:
 
 Required: True

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/remove-azcognitiveservicesaccountdeployment
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/remove-azcognitiveservicesaccountdeployment
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ Delete a Deployment from a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "plan"
+Remove-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "plan"
 ```
 
 Delete a Deployment from a Cognitive Services account

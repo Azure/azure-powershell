@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/invoke-azrmstoragecontainerimmutablestoragewithversioningmigration
+online version: https://learn.microsoft.com/powershell/module/az.storage/invoke-azrmstoragecontainerimmutablestoragewithversioningmigration
 schema: 2.0.0
 ---
 
@@ -39,10 +39,10 @@ The cmdlet only works when the Storage account has already enabled blob versioni
 ## EXAMPLES
 
 ### Example 1: Migrates an existing Storage blob containers to enable immutable Storage with versioning.
-```
-PS C:\> $t = Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -asjob
+```powershell
+$t = Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -asjob
 
-PS C:\> $t | Wait-Job
+$t | Wait-Job
 ```
 
 This command migrates an existing Storage blob containers to enable immutable Storage with versioning.

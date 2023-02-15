@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvpnsitelinkconnectionikesa
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvpnsitelinkconnectionikesa
 schema: 2.0.0
 ---
 
@@ -39,7 +39,10 @@ If the **Get-AzVpnSiteLinkConnectionIkeSa** cmdlet is issued without specifying 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzVpnSiteLinkConnectionIkeSa -ResourceGroupName test-rg -VpnGatewayName test-gateway -VpnConnectionName test-connection -ResourceName test-linkConnection
+Get-AzVpnSiteLinkConnectionIkeSa -ResourceGroupName test-rg -VpnGatewayName test-gateway -VpnConnectionName test-connection -ResourceName test-linkConnection
+```
+
+```output
 LocalEndpoint              : 52.148.27.69
 RemoteEndpoint             : 13.78.223.113
 InitiatorCookie            : 10994953846917485010

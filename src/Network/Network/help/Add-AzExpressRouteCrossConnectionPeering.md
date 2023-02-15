@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C44AD23A-E575-418C-BE90-323B44D6D2E8
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azexpressroutecrossconnectionpeering
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azexpressroutecrossconnectionpeering
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ cmdlet to activate the configuration.
 ## EXAMPLES
 
 ### Example 1: Add a peer to an existing ExpressRoute cross connection
-```
+```powershell
 $cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 $parameters = @{
     Name = 'AzurePrivatePeering'

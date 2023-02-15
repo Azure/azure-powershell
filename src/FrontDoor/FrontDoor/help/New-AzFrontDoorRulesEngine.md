@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorrulesengine
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorrulesengine
 schema: 2.0.0
 ---
 
@@ -27,8 +27,10 @@ Use cmdlet "New-AzFrontDoorRulesEngineRule" to construct rules engine rules to p
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name myRulesEngine -Rule $rulesEngineRule1
+New-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name myRulesEngine -Rule $rulesEngineRule1
+```
 
+```output
 Name          RulesEngineRules
 ----          ----------------
 myRulesEngine {rules1}

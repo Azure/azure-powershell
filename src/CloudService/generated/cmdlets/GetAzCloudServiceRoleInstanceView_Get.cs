@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Retrieves information about the run-time state of a role instance in a cloud service.

@@ -52,6 +52,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.WebsitesIdentity"
         /// />.
         /// </summary>
@@ -89,6 +97,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.SerializationMode.IncludeAll)?.ToString();
 
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
+
         /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.WebsitesIdentity"
         /// />.
@@ -103,17 +123,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Authprovider = (string) content.GetValueForProperty("Authprovider",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Authprovider, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Userid = (string) content.GetValueForProperty("Userid",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Userid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).EnvironmentName = (string) content.GetValueForProperty("EnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).EnvironmentName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).FunctionAppName = (string) content.GetValueForProperty("FunctionAppName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).FunctionAppName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).DomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Authprovider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Authprovider = (string) content.GetValueForProperty("Authprovider",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Authprovider, global::System.Convert.ToString);
+            }
+            if (content.Contains("Userid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Userid = (string) content.GetValueForProperty("Userid",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Userid, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnvironmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).EnvironmentName = (string) content.GetValueForProperty("EnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).EnvironmentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FunctionAppName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).FunctionAppName = (string) content.GetValueForProperty("FunctionAppName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).FunctionAppName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).DomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("WebJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).WebJobName = (string) content.GetValueForProperty("WebJobName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).WebJobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Slot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Slot = (string) content.GetValueForProperty("Slot",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Slot, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobHistoryId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).JobHistoryId = (string) content.GetValueForProperty("JobHistoryId",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).JobHistoryId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -131,17 +196,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Authprovider = (string) content.GetValueForProperty("Authprovider",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Authprovider, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Userid = (string) content.GetValueForProperty("Userid",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Userid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).EnvironmentName = (string) content.GetValueForProperty("EnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).EnvironmentName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).FunctionAppName = (string) content.GetValueForProperty("FunctionAppName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).FunctionAppName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).DomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Authprovider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Authprovider = (string) content.GetValueForProperty("Authprovider",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Authprovider, global::System.Convert.ToString);
+            }
+            if (content.Contains("Userid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Userid = (string) content.GetValueForProperty("Userid",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Userid, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnvironmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).EnvironmentName = (string) content.GetValueForProperty("EnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).EnvironmentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FunctionAppName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).FunctionAppName = (string) content.GetValueForProperty("FunctionAppName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).FunctionAppName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).DomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("WebJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).WebJobName = (string) content.GetValueForProperty("WebJobName",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).WebJobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Slot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Slot = (string) content.GetValueForProperty("Slot",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Slot, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobHistoryId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).JobHistoryId = (string) content.GetValueForProperty("JobHistoryId",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).JobHistoryId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

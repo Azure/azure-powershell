@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Kusto service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -53,7 +53,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2021-01-01/kusto.json
+  - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/kusto.json
+branch: e14d80ab3f3630e8640ccd3b01e5ec9df647dc73
 
 ```
 
@@ -125,8 +126,21 @@ directive:
   - where:
       verb: Set
     remove: true
+  # Rename cmdlet from Get-AzKustoOperationsResultsLocation to Get-AzKustoOperationsResultLocation so it's consistent with Get-AzKustoOperationsResult
+  - where:
+      verb: Get
+      subject: OperationsResultsLocation
+      variant: ^Get$|^GetViaIdentity$
+    set:
+      subject: OperationsResultLocation
+  # For Get-AzKustoOperationResult no particular need for -PassThru parameter
+  - where:
+      verb: Get
+      subject: OperationsResultLocation
+      parameter-name: ^PassThru$
+    hide: true
   # Correct some generated code
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection Property');
 ```

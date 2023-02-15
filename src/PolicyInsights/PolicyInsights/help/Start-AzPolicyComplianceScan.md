@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
 Module Name: Az.PolicyInsights
-online version: https://docs.microsoft.com/powershell/module/az.policyinsights/start-azpolicycompliancescan
+online version: https://learn.microsoft.com/powershell/module/az.policyinsights/start-azpolicycompliancescan
 schema: 2.0.0
 ---
 
@@ -23,23 +23,23 @@ The **Start-AzPolicyComplianceScan** cmdlet starts a policy compliance evaluatio
 ## EXAMPLES
 
 ### Example 1: Start a compliance scan at subscription scope
-```
-PS C:\> Start-AzPolicyComplianceScan
+```powershell
+Start-AzPolicyComplianceScan
 ```
 
 This command starts a policy compliance evaluation for the active subscription.
 
 ### Example 2: Start a compliance scan at resource group scope
-```
-PS C:\> Start-AzPolicyComplianceScan -ResourceGroupName "myRG"
+```powershell
+Start-AzPolicyComplianceScan -ResourceGroupName "myRG"
 ```
 
 This command starts a policy compliance evaluation for the "myRG" resource group in the active subscription.
 
 ### Example 3: Start a compliance scan and wait for it to complete in the background
-```
-PS C:\> $job = Start-AzPolicyComplianceScan -AsJob
-PS C:\> $job | Wait-Job
+```powershell
+$job = Start-AzPolicyComplianceScan -AsJob
+$job | Wait-Job
 ```
 
 This command starts a policy compliance evaluation for the active subscription. It will wait for the scan to complete.
@@ -50,7 +50,7 @@ This command starts a policy compliance evaluation for the active subscription. 
 Run cmdlet in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 Return True if the command completes successfully.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -126,7 +126,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

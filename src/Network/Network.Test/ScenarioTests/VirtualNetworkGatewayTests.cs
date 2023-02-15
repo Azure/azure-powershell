@@ -59,6 +59,14 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SetVirtualNetworkGatewayCRUD");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
+        public void VirtualNetworkGatewayDisableIPsecProtection()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayDisableIPsecProtection");
+        }
+
         [Fact(Skip = "Skipped due to intermittent backend failures")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
@@ -154,6 +162,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVirtualNetworkGatewayNatRuleCRUD()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayNatRuleCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
+        public void TestVirtualNetworkGatewayPolicyGroupCRUD()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayPolicyGroupCRUD");
         }
     }
 }

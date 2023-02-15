@@ -20,11 +20,7 @@ Creates a new server, or will overwrite an existing server.
 .Description
 Creates a new server, or will overwrite an existing server.
 .Example
-PS C:\> New-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -Location eastus -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku GP_Gen5_4
-
-Name                 Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----                 -------- ------------------ ------- ----------------------- -------   -------        --------------
-postgresqltestserver eastus   pwsh               9.6     5120                    GP_Gen5_4 GeneralPurpose Enabled
+ New-AzPostgreSqlServer -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG -Location eastus -AdministratorUserName pwsh -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerForCreate
@@ -70,7 +66,7 @@ PARAMETER <IServerForCreate>: Represents a server to be created.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlserver
+https://learn.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlserver
 #>
 function New-AzPostgreSqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]

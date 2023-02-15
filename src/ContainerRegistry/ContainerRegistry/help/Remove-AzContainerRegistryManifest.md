@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrymanifest
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrymanifest
 schema: 2.0.0
 ---
 
@@ -35,6 +35,9 @@ first.
 ### Example 1
 ```powershell
 Remove-AzContainerRegistryManifest -RegistryName registry -RepositoryName test/busybox27 -Manifest sha256:31a54a0cf86d7354788a8265f60ae6acb4b348a67efbcf7c1007dd3cf7af05ab
+```
+
+```output
 True
 ```
 
@@ -43,6 +46,9 @@ Delete manifest sha256:31a54a0cf86d7354788a8265f60ae6acb4b348a67efbcf7c1007dd3cf
 ### Example 2
 ```powershell
 Remove-AzContainerRegistryManifest -RegistryName registry -RepositoryName test/busybox27 -Tag latest
+```
+
+```output
 True
 ```
 

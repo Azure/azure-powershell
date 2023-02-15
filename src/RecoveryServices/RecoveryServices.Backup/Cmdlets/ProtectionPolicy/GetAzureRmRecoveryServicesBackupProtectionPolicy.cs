@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
@@ -72,6 +73,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 
+        /// <summary>
+        /// policy subtype filter. 
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.PolicySubType)]
+        public PSPolicyType PolicySubType = 0;
+
+        /// <summary>
+        /// Parameter to list policies for which smart tiering is Enabled/Disabled. Allowed values are $true, $false. 
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.IsSmartTieringEnabled)]
+        public bool? IsArchiveSmartTieringEnabled { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -103,11 +116,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             ServiceClientAdapter,
                             vaultName: vaultName,
                             resourceGroupName: resourceGroupName);
+
                     if (policy == null)
                     {
                         throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
                     }
-
                     WriteObject(ConversionHelpers.GetPolicyModel(policy));
                 }
                 else
@@ -185,7 +198,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     var backupManagementTypeFilter = serviceClientProviderType;
 
-
                     ODataQuery<ServiceClientModel.ProtectionPolicyQueryObject> queryParams
                     = new ODataQuery<ServiceClientModel.ProtectionPolicyQueryObject>(
                     q => q.BackupManagementType == backupManagementTypeFilter);
@@ -199,9 +211,96 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     WriteDebug("Successfully got response from service");
 
                     policyList = ConversionHelpers.GetPolicyModelList(respList);
+                    policyList = FilterPolicyBasedOnPolicyType(policyList, PolicySubType);
+                    policyList = FilterPolicyBasedOnSmartTiering(policyList, IsArchiveSmartTieringEnabled);
+
                     WriteObject(policyList, enumerateCollection: true);
                 }
-            });
+            });            
+        }
+
+        /// <summary>
+        /// filter policies based on policySubType
+        /// </summary>
+        /// <param name="policyList"></param>
+        /// <param name="policySubType"></param>
+        /// <returns></returns>
+        public static List<PolicyBase> FilterPolicyBasedOnPolicyType (List<PolicyBase> policyList, PSPolicyType policySubType)
+        {
+            if (policySubType != 0)
+            {
+                policyList = policyList.Where(policy =>
+                {
+                    if (policy.GetType() == typeof(AzureVmPolicy))
+                    {
+                        return ((AzureVmPolicy)policy).PolicySubType == policySubType;
+                    }
+                    else if (policySubType == PSPolicyType.Enhanced)
+                    {
+                        return false;
+                    }
+
+                    return true;
+                }).ToList();
+            }
+
+            return policyList;
+        }
+
+        /// <summary>
+        /// filter policies for which smart tiering is Enabled/Disabled
+        /// </summary>
+        /// <param name="policyList"></param>
+        /// <param name="MoveToArchiveTier"></param>
+        /// <returns></returns>
+        public static List<PolicyBase> FilterPolicyBasedOnSmartTiering(List<PolicyBase> policyList, bool? MoveToArchiveTier)
+        {
+            if (MoveToArchiveTier == true)
+            {
+                policyList = policyList.Where(policy =>
+                {
+                    if (policy.BackupManagementType == Models.BackupManagementType.AzureVM )
+                    {
+                        if (((AzureVmPolicy)policy).TieringPolicy != null)
+                        {
+                            return (((AzureVmPolicy)policy).TieringPolicy.TieringMode == TieringMode.TierAllEligible || ((AzureVmPolicy)policy).TieringPolicy.TieringMode == TieringMode.TierRecommended);
+                        }
+                    }
+                    else if (policy.BackupManagementType == Models.BackupManagementType.AzureWorkload)
+                    {
+                        if (((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy != null)
+                        {
+                            return (((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy.TieringMode == TieringMode.TierAllEligible || ((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy.TieringMode == TieringMode.TierRecommended);
+                        }
+                    }
+                    
+                    return false;
+                }).ToList();
+            }
+            else if (MoveToArchiveTier == false)
+            {
+                policyList = policyList.Where(policy =>
+                {
+                    if (policy.BackupManagementType == Models.BackupManagementType.AzureVM)
+                    {
+                        if (((AzureVmPolicy)policy).TieringPolicy != null)
+                        {
+                            return (((AzureVmPolicy)policy).TieringPolicy.TieringMode != TieringMode.TierAllEligible && ((AzureVmPolicy)policy).TieringPolicy.TieringMode != TieringMode.TierRecommended);
+                        }                        
+                    }
+                    else if (policy.BackupManagementType == Models.BackupManagementType.AzureWorkload)
+                    {
+                        if (((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy != null)
+                        {
+                            return (((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy.TieringMode != TieringMode.TierAllEligible && ((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy.TieringMode != TieringMode.TierRecommended);
+                        }
+                    }
+
+                    return true;
+                }).ToList();
+            }
+
+            return policyList;
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: D85FF5ED-23EA-48C7-8E61-D931713E0064
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactorygateway
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactorygateway
 schema: 2.0.0
 ---
 
@@ -34,8 +34,11 @@ If you want to add an on-premises Microsoft SQL Server as a linked service to a 
 ## EXAMPLES
 
 ### Example 1: Get all logical gateways in a data factory
+```powershell
+Get-AzDataFactoryGateway -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 ```
-PS C:\>Get-AzDataFactoryGateway -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+
+```output
 Name            : gateway1
 Description     : 
 Version         : 1.3.5338.1
@@ -59,8 +62,11 @@ ExpiryTime      :
 This command gets information about all logical gateways for the data factory named WikiADF in the resource group named ADF.
 
 ### Example 2: Get a specific logical gateway in a data factory
+```powershell
+Get-AzDataFactoryGateway -ResourceGroupName "ADF" -Name "Gateway01" -DataFactoryName "WikiADF"
 ```
-PS C:\>Get-AzDataFactoryGateway -ResourceGroupName "ADF" -Name "Gateway01" -DataFactoryName "WikiADF"
+
+```output
 Name            : Gateway01
 Description     : 
 Version         : 1.3.5338.1

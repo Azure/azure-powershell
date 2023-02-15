@@ -44,9 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Sets the cached runner. This is mainly for testing purpose.
         /// </summary>
-        /// <param name="runner">
-        /// Indicating the instance of the cached runner.
-        /// </param>
+        /// <param name="transferManager"></param>
         internal static void SetCachedTransferManager(ITransferManager transferManager)
         {
             cachedTransferManager = transferManager;

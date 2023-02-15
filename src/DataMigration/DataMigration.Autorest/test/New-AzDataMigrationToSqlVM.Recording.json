@@ -1,0 +1,317 @@
+{
+  "New-AzDataMigrationToSqlVM+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest/providers/Microsoft.DataMigration/databaseMigrations/VmUnitTest0k8lo2sr57?api-version=2021-10-30-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest/providers/Microsoft.DataMigration/databaseMigrations/VmUnitTest0k8lo2sr57?api-version=2021-10-30-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"sourceSqlConnection\": {\r\n      \"dataSource\": \"sampledomain.onmicrosoft.com\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"userName\": \"domainUserName\",\r\n      \"password\": \"domainPassword\"\r\n    },\r\n    \"kind\": \"SqlVm\",\r\n    \"scope\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest\",\r\n    \"sourceDatabaseName\": \"AdventureWorks\",\r\n    \"migrationService\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias\",\r\n    \"backupConfiguration\": {\r\n      \"sourceLocation\": {\r\n        \"fileShare\": {\r\n          \"path\": \"\\\\\\\\sampledomain.onmicrosoft.com\\\\SharedBackup\\\\tsuman\",\r\n          \"username\": \"domainUserName\",\r\n          \"password\": \"domainPassword\"\r\n        }\r\n      },\r\n      \"targetLocation\": {\r\n        \"storageAccountResourceId\": \"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest\",\r\n        \"accountKey\": \"accountKey\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1259" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview" ],
+        "x-ms-request-id": [ "ed1a99a3-7daf-4ef4-8d09-581f853a1f46" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "bd1f9942-bcae-4671-a9f7-f0d2a78e8f12" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164555Z:bd1f9942-bcae-4671-a9f7-f0d2a78e8f12" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:45:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "715" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest\",\"provisioningState\":\"Creating\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias\",\"kind\":\"SqlVm\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest/providers/Microsoft.DataMigration/databaseMigrations/VmUnitTest0k8lo2sr57\",\"name\":\"VmUnitTest0k8lo2sr57\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}"
+    }
+  },
+  "New-AzDataMigrationToSqlVM+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "91e341e3-e032-4838-9d81-ee87073f0573" ],
+        "CommandName": [ "New-AzDataMigrationToSqlVM" ],
+        "FullCommandName": [ "New-AzDataMigrationToSqlVM_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "df248200-5233-4fbe-be54-86e61c123560" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "085c6a37-b1f2-420d-817f-34f9572a24bb" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164610Z:085c6a37-b1f2-420d-817f-34f9572a24bb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:46:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"1dd787c3-d3d9-464b-a72a-a4b12829ad08\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:45:54.277Z\"}"
+    }
+  },
+  "New-AzDataMigrationToSqlVM+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "91e341e3-e032-4838-9d81-ee87073f0573" ],
+        "CommandName": [ "New-AzDataMigrationToSqlVM" ],
+        "FullCommandName": [ "New-AzDataMigrationToSqlVM_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "14315d82-7ac0-4642-960c-7e11e100dea5" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "8f481bdd-6f01-4ec5-9c5c-3a3dd46abb79" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164626Z:8f481bdd-6f01-4ec5-9c5c-3a3dd46abb79" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:46:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"1dd787c3-d3d9-464b-a72a-a4b12829ad08\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:45:54.277Z\"}"
+    }
+  },
+  "New-AzDataMigrationToSqlVM+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "91e341e3-e032-4838-9d81-ee87073f0573" ],
+        "CommandName": [ "New-AzDataMigrationToSqlVM" ],
+        "FullCommandName": [ "New-AzDataMigrationToSqlVM_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "6ee60210-45d6-4895-a44c-7d721d981964" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "74a8102e-7a71-40cc-a52d-2c248a85e581" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164641Z:74a8102e-7a71-40cc-a52d-2c248a85e581" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:46:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"1dd787c3-d3d9-464b-a72a-a4b12829ad08\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:45:54.277Z\"}"
+    }
+  },
+  "New-AzDataMigrationToSqlVM+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "91e341e3-e032-4838-9d81-ee87073f0573" ],
+        "CommandName": [ "New-AzDataMigrationToSqlVM" ],
+        "FullCommandName": [ "New-AzDataMigrationToSqlVM_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "e5258932-7138-42b3-9549-e0717afde1e0" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "deced9ec-c19b-4c3c-8799-baa4a6a9e69b" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164656Z:deced9ec-c19b-4c3c-8799-baa4a6a9e69b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:46:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"1dd787c3-d3d9-464b-a72a-a4b12829ad08\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:45:54.277Z\"}"
+    }
+  },
+  "New-AzDataMigrationToSqlVM+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "91e341e3-e032-4838-9d81-ee87073f0573" ],
+        "CommandName": [ "New-AzDataMigrationToSqlVM" ],
+        "FullCommandName": [ "New-AzDataMigrationToSqlVM_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "e5f93dfc-cfca-4031-afa9-19c75e4b865f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "93991b8e-3cc6-4516-9ae8-d756d0b93008" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164712Z:93991b8e-3cc6-4516-9ae8-d756d0b93008" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:47:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"1dd787c3-d3d9-464b-a72a-a4b12829ad08\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:45:54.277Z\"}"
+    }
+  },
+  "New-AzDataMigrationToSqlVM+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqlvmmigration/operationResults/1dd787c3-d3d9-464b-a72a-a4b12829ad08?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "91e341e3-e032-4838-9d81-ee87073f0573" ],
+        "CommandName": [ "New-AzDataMigrationToSqlVM" ],
+        "FullCommandName": [ "New-AzDataMigrationToSqlVM_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "b11bb53c-f6d1-4f49-8ff2-de81e0e71ba5" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "c4557e40-6e87-4331-b5d9-710b39295ca8" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164727Z:c4557e40-6e87-4331-b5d9-710b39295ca8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:47:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"1dd787c3-d3d9-464b-a72a-a4b12829ad08\",\"status\":\"Succeeded\",\"startTime\":\"2021-12-23T16:45:54.277Z\"}"
+    }
+  },
+  "New-AzDataMigrationToSqlVM+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest/providers/Microsoft.DataMigration/databaseMigrations/VmUnitTest0k8lo2sr57?api-version=2021-10-30-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest/providers/Microsoft.DataMigration/databaseMigrations/VmUnitTest0k8lo2sr57?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "91e341e3-e032-4838-9d81-ee87073f0573" ],
+        "CommandName": [ "New-AzDataMigrationToSqlVM" ],
+        "FullCommandName": [ "New-AzDataMigrationToSqlVM_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ec9f66d0-1d78-4018-869e-bae42a377efc" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-correlation-request-id": [ "27b10860-882c-4e28-aea3-bf59cd3f346d" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164727Z:27b10860-882c-4e28-aea3-bf59cd3f346d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:47:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "848" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"scope\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest\",\"provisioningState\":\"Succeeded\",\"migrationStatus\":\"InProgress\",\"startedOn\":\"2021-12-23T16:47:14.683Z\",\"sourceDatabaseName\":\"AdventureWorks\",\"migrationService\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias\",\"migrationOperationId\":\"7a507b3d-6d68-4613-8fb4-0bb04e3aae61\",\"kind\":\"SqlVm\"},\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest/providers/Microsoft.DataMigration/databaseMigrations/VmUnitTest0k8lo2sr57\",\"name\":\"VmUnitTest0k8lo2sr57\",\"type\":\"Microsoft.DataMigration/databaseMigrations\"}"
+    }
+  }
+}

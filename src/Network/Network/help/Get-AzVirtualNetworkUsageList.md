@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkusagelist
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkusagelist
 schema: 2.0.0
 ---
 
@@ -23,11 +23,11 @@ The **Get-AzVirtualNetworkUsageList** cmdlet gets per subnet usage for the speci
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzVirtualNetworkUsageList -ResourceGroupName test -Name usagetest
-
+```powershell
 Get-AzVirtualNetworkUsageList -ResourceGroupName test -Name usagetest
+```
 
+```output
 Name         : Subnet size and usage
 Id           : /subscriptions/sub1/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/usagetest/subnets/subnet
 CurrentValue : 1

@@ -16,17 +16,13 @@
 
 <#
 .Synopsis
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Description
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -95,7 +91,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationslot
 #>
 function Get-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -195,6 +191,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_GetViaIdentity';
@@ -209,6 +206,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -217,15 +215,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

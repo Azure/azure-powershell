@@ -15,20 +15,26 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ItemTests : RMTestBase
+    public partial class ItemTests : RecoveryServicesBackupTestRunner
     {
+        private readonly string _AzureWorkloadcommonModule = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/Common.ps1";
+        private readonly string _AzureWorkloadtestModule = $"ScenarioTests/{PsBackupProviderTypes.AzureWorkload}/ItemTests.ps1";
+
         [Fact(Skip = "To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadProtectableItem()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadProtectableItem");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadProtectableItem"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -36,8 +42,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadInitializeProtectableItem()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadInitializeProtectableItem");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadInitializeProtectableItem"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -45,8 +54,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadEnableProtectableItem()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadEnableProtectableItem");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadEnableProtectableItem"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -55,8 +67,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVmWorkloadEnableAutoProtectableItem()
         {
             AzureSession.Instance.RegisterComponent("GetGuidComponent", () => "29e3f4dc-6407-4a9a-99cf-ea910639ba19", true);
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadEnableAutoProtectableItem");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadEnableAutoProtectableItem"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -64,8 +79,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadBackupProtectionItem()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadBackupProtectionItem");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadBackupProtectionItem"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -73,8 +91,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadGetRPs()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadGetRPs");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadGetRPs"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -82,8 +103,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadGetLogChains()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadGetLogChains");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadGetLogChains"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -91,8 +115,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadFullRestore()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadFullRestore");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadFullRestore"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -100,8 +127,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadFullRestoreWithFiles()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadFullRestoreWithFiles");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadFullRestoreWithFiles"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -109,8 +139,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadRestoreAsFiles()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureWorkload, "Test-AzureVmWorkloadRestoreAsFiles");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadRestoreAsFiles"
+            );
         }
     }
 }

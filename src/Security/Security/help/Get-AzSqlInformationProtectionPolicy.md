@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzSqlInformationProtectionPolicy
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzSqlInformationProtectionPolicy
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Retrieves the effective tenant SQL information protection policy.
 
 ### Example
 ```powershell
-PS C:\> Get-AzSqlInformationProtectionPolicy
+Get-AzSqlInformationProtectionPolicy
 ```
 
 ## PARAMETERS

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryv2dataflow
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryv2dataflow
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ The Set-AzDataFactoryV2DataFlow cmdlet creates a data flow or updates an existin
 
 ### Example 1: Create a data flow
 ```powershell
-PS C:\> Set-AzDataFactoryV2DataFlow -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "TaxiDemo1" -DefinitionFile "C:\\samples\\WikiSample\\TaxiDemo1.json"
+Set-AzDataFactoryV2DataFlow -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "TaxiDemo1" -DefinitionFile "C:\\samples\\WikiSample\\TaxiDemo1.json"
+```
 
+```output
 DataFlowName           DataFactoryName ResourceGroupName                                                    Properties
 ------------           --------------- -----------------                                                    ----------
 TaxiDemo1                      WikiADF               adf Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow

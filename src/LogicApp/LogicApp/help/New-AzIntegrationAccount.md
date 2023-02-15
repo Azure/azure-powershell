@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 5F1A4FE0-CB57-45D3-9F08-879469A61E1E
-online version: https://docs.microsoft.com/powershell/module/az.logicapp/new-azintegrationaccount
+online version: https://learn.microsoft.com/powershell/module/az.logicapp/new-azintegrationaccount
 schema: 2.0.0
 ---
 
@@ -30,8 +30,11 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Create an integration account
+```powershell
+New-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Location "brazilsouth" -Sku "Standard"
 ```
-PS C:\>New-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Location "brazilsouth" -Sku "Standard"
+
+```output
 Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31
 Name        : IntegrationAccount31
 Type        : Microsoft.Logic/integrationAccounts

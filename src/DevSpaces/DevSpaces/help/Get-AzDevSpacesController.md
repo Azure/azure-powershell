@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevSpaces.dll-Help.xml
 Module Name: Az.DevSpaces
-online version: https://docs.microsoft.com/powershell/module/az.devspaces/get-azdevspacescontroller
+online version: https://learn.microsoft.com/powershell/module/az.devspaces/get-azdevspacescontroller
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Get or list Azure DevSpaces controller.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDevSpacesController
+Get-AzDevSpacesController
+```
 
+```output
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded
@@ -42,8 +44,10 @@ List all controllers in a subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDevSpacesController --ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName
+Get-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName
+```
 
+```output
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded

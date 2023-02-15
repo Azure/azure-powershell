@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarecloudlink
+online version: https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarecloudlink
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create or update a cloud link in a private cloud
 
 ### Example 1: Create a cloud link in a private cloud
 ```powershell
-PS C:\> New-AzVMwareCloudLink -Name azps_test_cloudlink -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -LinkedCloud "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group2/providers/Microsoft.AVS/privateClouds/azps_test_cloud2/"
+New-AzVMwareCloudLink -Name azps_test_cloudlink -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -LinkedCloud "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group2/providers/Microsoft.AVS/privateClouds/azps_test_cloud2/"
+```
 
+```output
 Name                Type                                   ResourceGroupName
 ----                ----                                   -----------------
 azps_test_cloudlink Microsoft.AVS/privateClouds/cloudLinks azps_test_group
@@ -195,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudLink
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink
 
 ## NOTES
 

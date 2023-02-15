@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 5F856280-C561-47B5-AA96-27E34C86D604
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultcertificateissuer
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultcertificateissuer
 schema: 2.0.0
 ---
 
@@ -38,8 +38,10 @@ The **Get-AzKeyVaultCertificateIssuer** cmdlet gets a specified certificate issu
 
 ### Example 1: Get a certificate issuer
 ```powershell
-PS C:\> Get-AzKeyVaultCertificateIssuer -VaultName "Contosokv01" -Name "TestIssuer01"
+Get-AzKeyVaultCertificateIssuer -VaultName "Contosokv01" -Name "TestIssuer01"
+```
 
+```output
 AccountId           : 555
 ApiKey              :
 OrganizationDetails : Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateOrganizationDetails
@@ -52,8 +54,10 @@ This command gets the certificate issuer named TestIssuer01.
 
 ### Example 2: List certificate issuers using filtering
 ```powershell
-PS C:\> Get-AzKeyVaultCertificateIssuer -VaultName "Contosokv01" -Name "test*"
+Get-AzKeyVaultCertificateIssuer -VaultName "Contosokv01" -Name "test*"
+```
 
+```output
 AccountId           : 555
 ApiKey              :
 OrganizationDetails : Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateOrganizationDetails

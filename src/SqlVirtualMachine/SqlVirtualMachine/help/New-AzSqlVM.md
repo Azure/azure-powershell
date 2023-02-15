@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvm
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvm
 schema: 2.0.0
 ---
 
@@ -32,7 +32,10 @@ The New-AzSqlVM cmdlet creates an Azure SQL virtual machine.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSqlVM -ResourceGroupName ResourceGroup01 -Name vm -LicenseType 'PAYG' -Sku Developer
+New-AzSqlVM -ResourceGroupName ResourceGroup01 -Name vm -LicenseType 'PAYG' -Sku Developer
+```
+
+```output
 Name ResourceGroupName  LicenseType Sku       Offer          SqlManagementType
 ---- -----------------  ----------- ---       -----          -----------------
 vm   ResourceGroup01	PAYG        Developer SQL2017-WS2016 Full

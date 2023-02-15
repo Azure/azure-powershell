@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/update-azcustomipprefix
+online version: https://learn.microsoft.com/powershell/module/az.network/update-azcustomipprefix
 schema: 2.0.0
 ---
 
@@ -14,20 +14,20 @@ Updates a CustomIpPrefix
 
 ### UpdateByNameParameterSet
 ```
-Update-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> [-Commission] [-Decomission] [-Provision] [-Deprovision] [-Cidr <String>]
+Update-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> [-Commission] [-Decomission] [-Provision] [-Deprovision] [-NoInternetAdvertise] [-Cidr <String>]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzCustomIpPrefix -InputObject <PSCustomIpPrefix> [-Commission] [-Decomission] [-Provision] [-Deprovision] [-Cidr <String>] [-Tag <Hashtable>]
+Update-AzCustomIpPrefix -InputObject <PSCustomIpPrefix> [-Commission] [-Decomission] [-Provision] [-Deprovision] [-NoInternetAdvertise] [-Cidr <String>] [-Tag <Hashtable>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzCustomIpPrefix -ResourceId <String> [-Commission] [-Decomission] [-Provision] [-Deprovision] [-Cidr <String>] [-Tag <Hashtable>] [-AsJob]
+Update-AzCustomIpPrefix -ResourceId <String> [-Commission] [-Decomission] [-Provision] [-Deprovision] [-NoInternetAdvertise] [-Cidr <String>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,42 +38,42 @@ The **Update-AzCustomIpPrefix** cmdlet allows the user to provision, commission,
 
 ### Example 1 : Commission the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Commission
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Commission
 ```
 
 The above command will start the commissioning process of the CustomIpPrefix.
 
 ### Example 2 : Decommission the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Decommission
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Decommission
 ```
 
 The above command will start the de-commissioning process of the CustomIpPrefix.
 
 ### Example 3 : Provision the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Provision
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Provision
 ```
 
 The above command will start the provisioning process of the CustomIpPrefix.
 
 ### Example 4 : Deprovision the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Deprovision
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Deprovision
 ```
 
 The above command will start the deprovisioning process of the CustomIpPrefix.
 
 ### Example 5 : Update tags for the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Tag $tags
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Tag $tags
 ```
 
 The above command will update the tags for the CustomIpPrefix.
 
 ### Example 6 : Update CIDR for the CustomIpPrefix
 ```powershell
-PS C:\> Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Cidr $cidr
+Update-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName -Cidr $cidr
 ```
 
 The above command will update the cidr for the CustomIpPrefix. This would work only when resource is in validationfailed state.
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Commission
-Run cmdlet in the background
+Commission the CustomIpPrefix resource
 
 ```yaml
 Type: SwitchParameter
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Decomission
-Run cmdlet in the background
+Decommission the CustomIpPrefix resource
 
 ```yaml
 Type: SwitchParameter
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -Provision
-Run cmdlet in the background
+Provision the CustomIpPrefix resource
 
 ```yaml
 Type: SwitchParameter
@@ -141,7 +141,22 @@ Accept wildcard characters: False
 ```
 
 ### -Deprovision
-Run cmdlet in the background
+Deprovision the CustomIpPrefix resource
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoInternetAdvertise
+Commission the CustomIpPrefix resource with no internet advertise
 
 ```yaml
 Type: SwitchParameter

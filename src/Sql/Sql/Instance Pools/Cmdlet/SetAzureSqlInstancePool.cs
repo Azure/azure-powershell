@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
         /// <summary>
         /// Generates the updated model from user input.
         /// </summary>
-        /// <param name="existingEntity">The existing instance pool model</param>
+        /// <param name="model">The existing instance pool model</param>
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<AzureSqlInstancePoolModel> ApplyUserInputToModel(IEnumerable<AzureSqlInstancePoolModel> model)
         {

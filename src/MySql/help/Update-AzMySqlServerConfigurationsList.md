@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
+online version: https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
 schema: 2.0.0
 ---
 
@@ -32,16 +32,14 @@ Update a list of configurations in a given server.
 
 ### Example 1: Update MySQL configurations list by name
 ```powershell
-PS C:\> Update-AzMySqlServerConfigurationsList -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
-
+Update-AzMySqlServerConfigurationsList -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
 
 Update MySQL configurations list by name.
 
 ### Example 2: Update MySQL configurations list by identity
 ```powershell
-PS C:\> Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServerConfigurationsList
-
+Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServerConfigurationsList
 ```
 
 Update MySQL configurations list by ID.
@@ -222,7 +220,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
@@ -235,7 +233,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
-VALUE <IConfiguration[]>: The list of server configurations.
+`VALUE <IConfiguration[]>`: The list of server configurations.
   - `[Source <String>]`: Source of the configuration.
   - `[Value <String>]`: Value of the configuration.
 

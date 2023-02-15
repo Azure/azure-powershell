@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 8D8FE2FE-03E7-453E-B968-E28B07E42EF2
-online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azactiongroup
+online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azactiongroup
 schema: 2.0.0
 ---
 
@@ -37,8 +37,11 @@ The **Remove-AzActionGroup** cmdlet removes an action group.
 ## EXAMPLES
 
 ### Example 1: Remove an action group
+```powershell
+Remove-AzActionGroup -ResourceGroupName "Default-Web-CentralUS" -Name "myActionGroup"
 ```
-PS C:\>Remove-AzActionGroup -ResourceGroup "Default-Web-CentralUS" -Name "myActionGroup"
+
+```output
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 2c6c159b-0e73-4a01-a67b-c32c1a0008a3                                                                                 OK

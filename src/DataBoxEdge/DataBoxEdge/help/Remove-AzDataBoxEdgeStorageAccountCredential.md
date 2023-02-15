@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgestorageaccountcredential
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgestorageaccountcredential
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ The **Remove-AzDataBoxEdgeStorageAccountCredential** cmdlet removes the storage 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeStorageAccountCredential ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAccountCredentialName
+Remove-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAccountName
 ```
 
 ## PARAMETERS

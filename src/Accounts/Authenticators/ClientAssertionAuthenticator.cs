@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
-using System.Threading.Tasks;
-
 using Azure.Core;
-using Azure.Identity;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Identity.Client;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Azure.PowerShell.Authenticators.Identity;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
@@ -44,7 +40,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var requestContext = new TokenRequestContext(scopes);
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
 
-            TokenCredential tokenCredential = new ClientAssertionCredential(tenantId, spParameters.ClientId, spParameters.ClientAssertion.ConvertToString());
+            var options = new ClientAssertionCredentialOptions()
+            {
+                TokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions()
+            };
+            options.Diagnostics.IsTelemetryEnabled = false; // disable telemetry to avoid error thrown from Azure.Core that AssemblyInformationalVersion is null
+            TokenCredential tokenCredential = new ClientAssertionCredential(tenantId, spParameters.ClientId, () => GetClientAssertion(spParameters), options);
             string parametersLog = $"- ClientId:'{spParameters.ClientId}', TenantId:'{tenantId}', ClientAssertion:'***' Scopes:'{string.Join(",", scopes)}'";
             return MsalAccessToken.GetAccessTokenAsync(
                 nameof(ClientAssertionAuthenticator),
@@ -60,5 +61,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             return (parameters as ClientAssertionParameters) != null;
         }
+
+        private string GetClientAssertion(ClientAssertionParameters parameters)
+        {
+            return parameters.ClientAssertion.ConvertToString();
+        }
+
     }
 }

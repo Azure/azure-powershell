@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 006B4341-274C-4929-86EE-2E107BA9E485
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstorageaccount
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzStorageAccount** cmdlet removes a Storage account from Azure.
 ## EXAMPLES
 
 ### Example 1: Remove a Storage account
-```
-PS C:\>Remove-AzStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+```powershell
+Remove-AzStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```
 
 This command removes the specified Storage account.

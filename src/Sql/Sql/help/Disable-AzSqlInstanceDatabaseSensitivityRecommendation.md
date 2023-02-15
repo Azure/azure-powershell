@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation
+online version: https://learn.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation
 schema: 2.0.0
 ---
 
@@ -41,17 +41,17 @@ The Disable-AzSqlInstanceDatabaseSensitivityRecommendation cmdlet disables (dism
 
 ### Example 1: Disable sensitivity recommendations on a given column in an Azure SQL Managed Instance database.
 ```powershell
-PS C:\> Disable-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column
+Disable-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column
 ```
 
 ### Example 2: Disable sensitivity recommendations on columns which have sensitivity recommendations in an Azure SQL Managed Instance database with Piping.
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Disable-AzSqlInstanceDatabaseSensitivityRecommendation
+Get-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Disable-AzSqlInstanceDatabaseSensitivityRecommendation
 ```
 
 ### Example 3: Disable sensitivity recommendations on a given column in an Azure SQL Managed Instance database with Piping.
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Disable-AzSqlInstanceDatabaseSensitivityRecommendation -SchemaName schema -TableName table -ColumnName column
+Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Disable-AzSqlInstanceDatabaseSensitivityRecommendation -SchemaName schema -TableName table -ColumnName column
 ```
 
 ## PARAMETERS

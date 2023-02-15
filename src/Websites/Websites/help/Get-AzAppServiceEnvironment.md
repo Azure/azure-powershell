@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azappserviceenvironment
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azappserviceenvironment
 schema: 2.0.0
 ---
 
@@ -24,10 +24,10 @@ The **Get-AzAppServiceEnvironment** cmdlet return ASE(s) matching the query.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseName
+Get-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseName
 ```
 
-Returns a specific App Service Environment named <MyAseName> in <MyResourceGroup>
+Returns a specific App Service Environment named `<MyAseName>` in `<MyResourceGroup>`
 
 ## PARAMETERS
 

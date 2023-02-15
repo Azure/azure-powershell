@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayavailablessloption
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayavailablessloption
 schema: 2.0.0
 ---
 
@@ -22,8 +22,8 @@ The **Get-AzApplicationGatewayAvailableSslOption** cmdlet gets all available ssl
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>$sslOptions = Get-AzApplicationGatewayAvailableSslOption
+```powershell
+$sslOptions = Get-AzApplicationGatewayAvailableSslOption
 ```
 
 This commands returns all available ssl options for ssl policy.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinconflictresolutionpolicy
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinconflictresolutionpolicy
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Object corresponding to Gremlin API's ConflictResolutionPolicy.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBGremlinConflictResolutionPolicy -Type LastWriterWins -Path "/myPath"
+New-AzCosmosDBGremlinConflictResolutionPolicy -Type LastWriterWins -Path "/myPath"
+```
 
+```output
 Mode           ConflictResolutionPath ConflictResolutionProcedure
 ----           ---------------------- ---------------------------
 LastWriterWins /myPath

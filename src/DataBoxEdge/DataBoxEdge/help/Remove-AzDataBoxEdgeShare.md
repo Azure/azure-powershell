@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgeshare
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgeshare
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzDataBoxEdgeEdgeShare** cmdlet removes the associated edge shares 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name shareName
+Remove-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName -Name shareName
 ```
 
 ## PARAMETERS

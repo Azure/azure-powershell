@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "No bandwidth available")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRoutePortCRUDMinimalParameters()
         {
             TestRunner.RunTestScript(string.Format("Test-ExpressRoutePortCRUD"));
@@ -35,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "No bandwidth available")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRoutePortIdentityCRUD()
         {
             TestRunner.RunTestScript("Test-ExpressRoutePortIdentityCRUD");
@@ -43,11 +43,18 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "Nfv-RP rollout in progress")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRoutePortGenerateLOA()
         {
             TestRunner.RunTestScript("Test-ExpressRoutePortGenerateLOA");
         }
 
+        [Fact(Skip = "No bandwidth available")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRoutePortAuthorizationCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRoutePortAuthorizationCRUD");
+        }
     }
 }

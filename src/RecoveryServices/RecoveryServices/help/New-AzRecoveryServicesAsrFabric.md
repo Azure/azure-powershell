@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrfabric
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrfabric
 schema: 2.0.0
 ---
 
@@ -30,16 +30,16 @@ The **New-AzRecoveryServicesAsrFabric** cmdlet creates an Azure Site Recovery Fa
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>  $currentJob = New-AzRecoveryServicesAsrFabric -Name $FabricName
+```powershell
+$currentJob = New-AzRecoveryServicesAsrFabric -Name $FabricName
 ```
 
 Starts the fabric creation with passed name and returns the ASR job used to track the fabric creation operation.
 
 ### Example 2
-```
-PS C:\>  $currentJob = New-AzRecoveryServicesAsrFabric -Azure -Name $fabricName -Location "eastus"
-PS C:\>  Get-ASRJob -name $currentJob.id
+```powershell
+$currentJob = New-AzRecoveryServicesAsrFabric -Azure -Name $fabricName -Location "eastus"
+Get-AzRecoveryServicesAsrJob -name $currentJob.id
 ```
 
 Starts the azure fabric creation with passed name and returns the ASR job used to track the fabric creation operation.

@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Managed Databases
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlManagedDatabaseCommunicator(IAzureContext context)
         {
             Context = context;
@@ -89,9 +88,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Restore a given Sql Azure Managed Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
-        /// <param name="databaseName">The name of the Azure SQL Managed database</param>
+        /// <param name="managedDatabaseName">The name of the Azure SQL Managed database</param>
         /// <param name="model">Model describing the managed database restore request</param>
         /// <returns>Restored database object</returns>
         public Management.Sql.Models.ManagedDatabase RestoreDatabase(string resourceGroupName, string managedInstanceName, string managedDatabaseName, Management.Sql.Models.ManagedDatabase model)
@@ -102,10 +101,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Restore a given Sql Azure Managed Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
-        /// <param name="databaseName">The name of the Azure SQL Managed database</param>
-        /// <param name="parameters">Parameters describing the managed database restore request</param>
+        /// <param name="managedDatabaseName">The name of the Azure SQL Managed database</param>
+        /// <param name="resourceId">The resource ID of the Azure SQL Managed database</param>
+        /// <param name="model">Model describing the managed database restore request</param>
         /// <returns>Restored database object</returns>
         public Management.Sql.Models.ManagedDatabase RecoverDatabase(string resourceGroupName, string managedInstanceName, string managedDatabaseName, string resourceId, AzureSqlRecoverableManagedDatabaseModel model)
         {

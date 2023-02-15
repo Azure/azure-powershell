@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/remove-Azsqlelasticjobcredential
+online version: https://learn.microsoft.com/powershell/module/Az.sql/remove-Azsqlelasticjobcredential
 schema: 2.0.0
 ---
 
@@ -36,10 +36,12 @@ The Remove-AzSqlElasticJobCredential cmdlet removes a job credential
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+```powershell
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 $agent | Remove-AzSqlElasticJobCredential -Name cred1
+```
 
+```output
 CredentialName UserName
 -------------- --------
 cred1          user2

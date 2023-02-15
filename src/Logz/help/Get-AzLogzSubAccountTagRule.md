@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccounttagrule
+online version: https://learn.microsoft.com/powershell/module/az.logz/get-azlogzsubaccounttagrule
 schema: 2.0.0
 ---
 
@@ -30,8 +30,10 @@ Get a tag rule set for a given monitor resource.
 
 ### Example 1: Get the default tag rule set for a given logz sub account resource
 ```powershell
-PS C:\> Get-AzLogzSubAccountTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01
+Get-AzLogzSubAccountTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01
+```
 
+```output
 Name    ProvisioningState ResourceGroupName
 ----    ----------------- -----------------
 default Succeeded         logz-rg-test
@@ -41,8 +43,10 @@ This command gets the default tag rule set for a given logz sub account resource
 
 ### Example 2: Get the default tag rule set for a given logz sub account resourceby pipeline
 ```powershell
-PS C:\> New-AzLogzSubAccountTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01 | Get-AzLogzSubAccountTagRule
+New-AzLogzSubAccountTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01 | Get-AzLogzSubAccountTagRule
+```
 
+```output
 Name    ProvisioningState ResourceGroupName
 ----    ----------------- -----------------
 default Succeeded         logz-rg-test
@@ -164,7 +168,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ILogzIdentity>: Identity Parameter
+INPUTOBJECT `<ILogzIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

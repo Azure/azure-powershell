@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 2970E81E-A788-4829-B1FF-B522A91DE4B1
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azproviderfeature
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azproviderfeature
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ The **Get-AzProviderFeature** cmdlet gets the feature name, provider name, and r
 ## EXAMPLES
 
 ### Example 1: Get all available features
-```
-PS C:\>Get-AzProviderFeature -ListAvailable
+```powershell
+Get-AzProviderFeature -ListAvailable
 ```
 
 This command gets all available features.
 
 ### Example 2: Get information about a specific feature
-```
-PS C:\>Get-AzProviderFeature -FeatureName "AllowPreReleaseRegions" -ProviderNamespace "Microsoft.Compute"
+```powershell
+Get-AzProviderFeature -FeatureName "AllowPreReleaseRegions" -ProviderNamespace "Microsoft.Compute"
 ```
 
 This command gets information for the feature named AllowPreReleaseRegions for the specified provider.

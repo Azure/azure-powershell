@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -68,27 +69,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 WriteDebug("Fetching job with ID: " + JobId);
-
-                JobResource jobDetails;
+                                
                 if (UseSecondaryRegion.IsPresent) {
-                    CrrJobRequest jobRequest = new CrrJobRequest();
+                    CrrModel.CrrJobRequest jobRequest = new CrrModel.CrrJobRequest();
                     jobRequest.JobName = JobId;
                     jobRequest.ResourceId = VaultId;
 
+                    // check this GetVault for rainy day scenario
                     ARSVault vault = ServiceClientAdapter.GetVault(resourceGroupName, vaultName);
                     string secondaryRegion = BackupUtils.regionMap[vault.Location];
-                    
-                    jobDetails = ServiceClientAdapter.GetCRRJobDetails(secondaryRegion, jobRequest);
+
+                    CrrModel.JobResource jobDetailsCrr = ServiceClientAdapter.GetCRRJobDetails(secondaryRegion, jobRequest);
+                    WriteObject(JobConversions.GetPSJobCrr(jobDetailsCrr));
                 }
                 else
                 {
-                    jobDetails = ServiceClientAdapter.GetJob(
+                    JobResource jobDetails = ServiceClientAdapter.GetJob(
                     JobId,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
+
+                    WriteObject(JobConversions.GetPSJob(jobDetails));
                 }
-                
-                WriteObject(JobConversions.GetPSJob(jobDetails));
             });
         }
     }

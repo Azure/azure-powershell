@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsefirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsefirewallrule
 schema: 2.0.0
 ---
 
@@ -57,22 +57,22 @@ The **New-AzSynapseFirewallRule** cmdlet creates an Azure Synapse Analytics Fire
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseFirewallRule -WorkspaceName ContosoWorkspace -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAddress "255.255.255.255"
+New-AzSynapseFirewallRule -WorkspaceName ContosoWorkspace -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAddress "255.255.255.255"
 ```
 
 This command creates firewall rule named ContosoFirewallRule under workspace ContosoWorkspace with name ContosoFirewallRule.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | New-AzSynapseFirewallRule -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAddress "255.255.255.255"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | New-AzSynapseFirewallRule -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAddress "255.255.255.255"
 ```
 
 This command creates firewall rule named ContosoFirewallRule under a workspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> New-AzSynapseFirewallRule -WorkspaceName ContosoWorkspace -AllowAllAzureIP
+New-AzSynapseFirewallRule -WorkspaceName ContosoWorkspace -AllowAllAzureIP
 ```
 
 This command creates firewall rule that allow all azure ips under a workspace.

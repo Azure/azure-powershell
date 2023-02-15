@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaysslpredefinedpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewaysslpredefinedpolicy
 schema: 2.0.0
 ---
 
@@ -23,9 +23,11 @@ The **Get-AzApplicationGatewaySslPredefinedPolicy** cmdlet gets Predefined SSL P
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzApplicationGatewaySslPredefinedPolicy
 ```
-PS C:\> Get-AzApplicationGatewaySslPredefinedPolicy
 
+```output
 Name: AppGwSslPolicy20150501
 MinProtocolVersion: TLSv1_0
 CipherSuites:
@@ -104,9 +106,11 @@ CipherSuites:
 This commands returns all the predefined SSL policies.
 
 ### Example 2
+```powershell
+Get-AzApplicationGatewaySslPredefinedPolicy -Name AppGwSslPolicy20170401
 ```
-PS C:\> Get-AzApplicationGatewaySslPredefinedPolicy -Name AppGwSslPolicy20170401
 
+```output
 Name: AppGwSslPolicy20170401
 MinProtocolVersion: TLSv1_1
 CipherSuites:
@@ -131,9 +135,11 @@ CipherSuites:
 This commands returns predefined policy with name AppGwSslPolicy20170401.
 
 ### Example 3
+```powershell
+Get-AzApplicationGatewaySslPredefinedPolicy -Name AppGwSslPolicy2017*
 ```
-PS C:\> Get-AzApplicationGatewaySslPredefinedPolicy -Name AppGwSslPolicy2017*
 
+```output
 Name: AppGwSslPolicy20170401
 MinProtocolVersion: TLSv1_1
 CipherSuites:

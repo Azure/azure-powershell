@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: DEB3D7B5-D974-472B-B8B4-9A19CA6AECCC
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem
 schema: 2.0.0
 ---
 
@@ -50,9 +50,9 @@ Set the vault context by using the -VaultId parameter.
 ### Example 1: Get an item from a Backup container
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM" -VaultId $vault.ID
-PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureVM -VaultId $vault.ID
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -FriendlyName "V2VM" -VaultId $vault.ID
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureVM -VaultId $vault.ID
 ```
 
 The first command gets the container of type AzureVM, and then stores it in the $Container variable.
@@ -61,9 +61,9 @@ The second command gets the Backup item named V2VM in $Container, and then store
 ### Example 2: Get an Azure File Share Item from FriendlyName
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "StorageAccount1" -VaultId $vault.ID
-PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "FileShareName"
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -FriendlyName "StorageAccount1" -VaultId $vault.ID
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "FileShareName"
 ```
 
 The first command gets the container of type AzureStorage, and then stores it in the $Container variable.
@@ -212,7 +212,7 @@ Protection is disabled.
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState
 Parameter Sets: (All)
 Aliases:
-Accepted values: IRPending, ProtectionError, Protected, ProtectionStopped
+Accepted values: IRPending, ProtectionError, Protected, ProtectionStopped, BackupsSuspended
 
 Required: False
 Position: 4
@@ -281,6 +281,7 @@ Workload type of the resource. The acceptable values for this parameter are:
 - AzureFiles
 - MSSQL
 - FileFolder
+- SAPHanaDatabase
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType

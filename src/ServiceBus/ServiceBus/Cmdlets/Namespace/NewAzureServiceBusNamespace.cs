@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -88,26 +90,129 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "enabling or disabling SAS authentication for the Service Bus namespace")]
         public SwitchParameter DisableLocalAuth { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage ="Identity Type" )]
+        [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
+        public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
+
+        /// <summary>
+        /// List of KeyVaultProperties
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The minimum TLS version for the namespace to support, e.g. '1.2'")]
+        [ValidateSet("1.0", "1.1", "1.2", IgnoreCase = true)]
+        public string MinimumTlsVersion { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            // Create a new ServiceBus namespace
-            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-
-            if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamesapce, Name, ResourceGroupName)))
+            try
             {
-                try
+                // Create a new ServiceBus namespace
+                Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+
+                if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamesapce, Name, ResourceGroupName)))
                 {
-                    PSNamespaceAttributes createresponse = Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, ZoneRedundant.IsPresent, DisableLocalAuth.IsPresent, SkuCapacity);
-                    WriteObject(createresponse);
-                }
-                catch (ErrorResponseException ex)
-                {
-                   WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                    try
+                    {
+                        PSNamespaceAttributes createresponse = Client.BeginCreateNamespace(resourceGroupName: ResourceGroupName,
+                                                                                           namespaceName: Name,CreateNamespacePayload());
+                        WriteObject(createresponse);
+                    }
+                    catch (ErrorResponseException ex)
+                    {
+                        WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                WriteError(new ErrorRecord(ex, ex.Message, ErrorCategory.OpenError, ex));
+            }
         }
+
+        internal SBNamespace CreateNamespacePayload()
+        {
+            SBNamespace createNamespacePayload = new SBNamespace();
+            createNamespacePayload.Location = Location;
+
+            if (this.IsParameterBound(c => c.SkuName))
+            {
+                createNamespacePayload.Sku = new SBSku()
+                {
+                    Name = SkuName,
+                    Tier = SkuName
+                };
+            }
+
+            if (this.IsParameterBound(c => c.SkuCapacity))
+            {
+                if (createNamespacePayload.Sku == null)
+                {
+                    throw new System.Exception("Missing -SkuName");
+                }
+
+                createNamespacePayload.Sku.Capacity = SkuCapacity;
+            }
+
+            if (this.IsParameterBound(c => c.Tag))
+            {
+                Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+
+                createNamespacePayload.Tags = tagDictionary;
+            }
+
+            if (this.IsParameterBound(c => c.ZoneRedundant))
+            {
+                createNamespacePayload.ZoneRedundant = ZoneRedundant.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.DisableLocalAuth))
+            {
+                createNamespacePayload.DisableLocalAuth = DisableLocalAuth.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.MinimumTlsVersion))
+            {
+                createNamespacePayload.MinimumTlsVersion = MinimumTlsVersion;
+            }
+
+            if (this.IsParameterBound(c => c.IdentityType))
+            {
+                createNamespacePayload.Identity = new Identity()
+                {
+                    Type = IdentityType
+                };
+            }
+
+            if (this.IsParameterBound(c => c.IdentityId))
+            {
+                if (createNamespacePayload.Identity == null || createNamespacePayload.Identity.Type == ManagedServiceIdentityType.SystemAssigned || createNamespacePayload.Identity.Type == ManagedServiceIdentityType.None)
+                {
+                    Client.InvalidArgumentException("-IdentityType must be set to 'UserAssigned' or 'SystemAssigned, UserAssigned' to enable User Assigned Identitites");
+                }
+
+                createNamespacePayload.Identity.UserAssignedIdentities = Client.MapIdentityId(IdentityId);
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionConfig))
+            {
+                createNamespacePayload.Encryption = new Encryption()
+                {
+                    KeyVaultProperties = Client.MapEncryptionConfig(EncryptionConfig),
+                    KeySource = KeySource.MicrosoftKeyVault
+                };
+            }
+
+            return createNamespacePayload;
+
+        }
+
     }
 }

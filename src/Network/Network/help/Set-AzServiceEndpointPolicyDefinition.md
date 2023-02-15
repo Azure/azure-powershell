@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azserviceendpointpolicydefinition
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azserviceendpointpolicydefinition
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Set-AzServiceEndpointPolicyDefinition** cmdlet create a service endpoint p
 ## EXAMPLES
 
 ### Example 1: Updates a service endpoint policy definition in a service endpoint policy
-```
+```powershell
 $serviceEndpointPolicy = Set-AzServiceEndpointPolicyDefinition -Name "Policydef1" -ServiceEndpointPolicy $serviceEndpointPolicy
 ```
 

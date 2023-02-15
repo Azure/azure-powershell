@@ -32,16 +32,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Initializes a new instance of the NWRuleSetVirtualNetworkRules
         /// class.
         /// </summary>
-        /// <param name="subnet">Subnet properties</param>
-        /// <param name="ignoreMissingVnetServiceEndpoint">Value that indicates
-        /// whether to ignore missing VNet Service Endpoint</param>
+        /// <param name="nwVirtualNetworkRules"></param>
         public static IList<PSNWRuleSetVirtualNetworkRulesAttributes> PSNWRuleSetVirtualNetworkRulesAttributesCollection(IList<NWRuleSetVirtualNetworkRules> nwVirtualNetworkRules)
         {
             List<PSNWRuleSetVirtualNetworkRulesAttributes> VNetRules = new List<PSNWRuleSetVirtualNetworkRulesAttributes>(); 
 
             foreach (NWRuleSetVirtualNetworkRules nwRuleSetVirtualNetworkRules in nwVirtualNetworkRules)
             {
-                VNetRules.Add(new PSNWRuleSetVirtualNetworkRulesAttributes(nwRuleSetVirtualNetworkRules));                
+                VNetRules.Add(new PSNWRuleSetVirtualNetworkRulesAttributes(nwRuleSetVirtualNetworkRules));
             }
 
             return VNetRules;
@@ -65,6 +63,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Service Endpoint
         /// </summary>
         public bool? IgnoreMissingVnetServiceEndpoint { get; set; }
-       
+
     }
 }

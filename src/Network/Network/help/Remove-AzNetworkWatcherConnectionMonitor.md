@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkwatcherconnectionmonitor
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworkwatcherconnectionmonitor
 schema: 2.0.0
 ---
 
@@ -50,7 +50,7 @@ The remove-AzNetworkWatcherConnectionMonitor cmdlet removes the specified connec
 
 ### Example 1: Remove the specified connection monitor
 ```powershell
-PS C:\> Remove-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
+Remove-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
 ```
 
 In this example we delete the connection monitor specified by location and name.

@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Apply user input to the retrieved Availability Group Listener
         /// </summary>
-        /// <param name="model">The Availability Group Listener that will be updated<param>
+        /// <param name="model">The Availability Group Listener that will be updated</param>
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<AzureAvailabilityGroupListenerModel> ApplyUserInputToModel(IEnumerable<AzureAvailabilityGroupListenerModel> model)
         {

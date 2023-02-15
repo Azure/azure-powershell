@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/remove-azakscluster
+online version: https://learn.microsoft.com/powershell/module/az.aks/remove-azakscluster
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ Delete a managed Kubernetes cluster.
 
 ### Delete an existing managed Kubernetes cluster
 ```powershell
-PS C:\> Remove-AzAks -ResourceGroupName group -Name myCluster
+Remove-AzAksCluster -ResourceGroupName group -Name myCluster
 ```
 
 ## PARAMETERS

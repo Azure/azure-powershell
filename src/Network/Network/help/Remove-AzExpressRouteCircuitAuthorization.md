@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 38D57CE4-6994-4BDA-A50E-28680EF4E568
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azexpressroutecircuitauthorization
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azexpressroutecircuitauthorization
 schema: 2.0.0
 ---
 
@@ -32,9 +32,9 @@ able to use the ExpressRoute circuit to connect to Azure.
 ## EXAMPLES
 
 ### Example 1: Remove a circuit authorization from an ExpressRoute circuit
-```
+```powershell
 $Circuit = Get-AzExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
-Remove-AzExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization" -Circuit $Circuit
+Remove-AzExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization" -ExpressRouteCircuit $Circuit
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $Circuit
 ```
 

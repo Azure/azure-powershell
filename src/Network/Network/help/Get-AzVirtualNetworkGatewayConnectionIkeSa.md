@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionikesa
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionikesa
 schema: 2.0.0
 ---
 
@@ -38,7 +38,10 @@ If the **Get-AzVirtualNetworkGatewayConnection** cmdlet is issued without specif
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceGroupName myRG -Name myTunnel
+Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceGroupName myRG -Name myTunnel
+```
+
+```output
 localEndpoint              : 52.180.160.154
 remoteEndpoint             : 104.208.54.1
 initiatorCookie            : 5490733703579933026

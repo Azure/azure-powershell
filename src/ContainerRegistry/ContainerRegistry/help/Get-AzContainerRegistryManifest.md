@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrymanifest
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrymanifest
 schema: 2.0.0
 ---
 
@@ -35,7 +35,9 @@ first.
 ### Example 1
 ```powershell
 Get-AzContainerRegistryManifest -RegistryName registry -RepositoryName alpine
+```
 
+```output
 Registry                    ImageName                   ManifestsAttributes
 --------                    ---------                   -------------------
 registry.azurecr.io         alpine         {Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.Comm…}
@@ -46,7 +48,9 @@ List manifests for repository alpine under registry.
 ### Example 2
 ```powershell
 Get-AzContainerRegistryManifest -RegistryName registry -RepositoryName alpine -Name sha256:a5426f084c755f4d6c1d1562a2d456aa574a24a61706f6806415627360c06ac0
+```
 
+```output
 Registry                    ImageName Attributes
 --------                    --------- ----------
 registry.azurecr.io         alpine    Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsedataflow
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsedataflow
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzSynapseDataFlow** cmdlet removes a data flow from workspace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseDataFlow -WorkspaceName ContosoWorkspace -Name ContosoDataFlow
+Remove-AzSynapseDataFlow -WorkspaceName ContosoWorkspace -Name ContosoDataFlow
 ```
 
 This command removes the data flow named ContosoDataFlow from the workspace named ContosoWorkspace.

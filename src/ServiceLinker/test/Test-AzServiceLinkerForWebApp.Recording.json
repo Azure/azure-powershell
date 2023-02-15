@@ -1,0 +1,242 @@
+{
+  "Test-AzServiceLinkerForWebApp+[NoContext]+Validate+$POST+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker/validateLinker?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker/validateLinker?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "69" ],
+        "x-ms-client-request-id": [ "cdea3610-73da-400d-8993-dcd32c978087" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Test-AzServiceLinker" ],
+        "FullCommandName": [ "Test-AzServiceLinker_Validate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/4bbb4f1f-19a4-46a5-a1ac-2354774228dd*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "683600d2-71c8-40f7-bea9-159ee233a4bc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/4bbb4f1f-19a4-46a5-a1ac-2354774228dd*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01" ],
+        "x-ms-request-id": [ "4bbb4f1f-19a4-46a5-a1ac-2354774228dd" ],
+        "x-ms-correlation-request-id": [ "b25f7543-1ad9-4c57-ac16-e6179a53d04b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065337Z:b25f7543-1ad9-4c57-ac16-e6179a53d04b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:53:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA=="
+    }
+  },
+  "Test-AzServiceLinkerForWebApp+[NoContext]+Validate+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/4bbb4f1f-19a4-46a5-a1ac-2354774228dd*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/4bbb4f1f-19a4-46a5-a1ac-2354774228dd*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "cdea3610-73da-400d-8993-dcd32c978087" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Test-AzServiceLinker" ],
+        "FullCommandName": [ "Test-AzServiceLinker_Validate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"03002614-0000-0100-0000-627617730000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
+        "x-ms-request-id": [ "a214d4a8-728a-46dd-b945-9d82e5071f2d" ],
+        "x-ms-correlation-request-id": [ "20c8fb73-2a78-47ae-ba9a-62d01e1fbe3c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065407Z:20c8fb73-2a78-47ae-ba9a-62d01e1fbe3c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:54:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1478" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/4bbb4f1f-19a4-46a5-a1ac-2354774228dd*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"name\":\"4bbb4f1f-19a4-46a5-a1ac-2354774228dd*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-07T06:53:36.8105991Z\",\"endTime\":\"2022-05-07T06:53:39.5091744Z\",\"properties\":{\"message\":\"{\\\"ConnectionName\\\":\\\"preparedLinker\\\",\\\"IsConnectionAvailable\\\":true,\\\"ValidationDetail\\\":[{\\\"Name\\\":\\\"The target existence is validated\\\",\\\"Description\\\":null,\\\"Result\\\":0},{\\\"Name\\\":\\\"The target service firewall is validated\\\",\\\"Description\\\":\\\"Public network access is enabled, but firewall rule not set\\\",\\\"Result\\\":2},{\\\"Name\\\":\\\"The configured values (except username/password) is validated\\\",\\\"Description\\\":null,\\\"Result\\\":0}],\\\"ReportStartTimeUtc\\\":\\\"2022-05-07T06:53:38.4618123Z\\\",\\\"ReportEndTimeUtc\\\":\\\"2022-05-07T06:53:39.431554Z\\\",\\\"SourceId\\\":null,\\\"TargetId\\\":\\\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\\\",\\\"AuthType\\\":4}\"}}"
+    }
+  },
+  "Test-AzServiceLinkerForWebApp+[NoContext]+Validate+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/4bbb4f1f-19a4-46a5-a1ac-2354774228dd*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/4bbb4f1f-19a4-46a5-a1ac-2354774228dd*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "cdea3610-73da-400d-8993-dcd32c978087" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Test-AzServiceLinker" ],
+        "FullCommandName": [ "Test-AzServiceLinker_Validate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"03002614-0000-0100-0000-627617730000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
+        "x-ms-request-id": [ "16bf7853-a163-4525-86e9-4e5693eee385" ],
+        "x-ms-correlation-request-id": [ "0e438854-39dd-4bd7-b50a-a72c6ced79f8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065408Z:0e438854-39dd-4bd7-b50a-a72c6ced79f8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:54:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1478" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/4bbb4f1f-19a4-46a5-a1ac-2354774228dd*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"name\":\"4bbb4f1f-19a4-46a5-a1ac-2354774228dd*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-07T06:53:36.8105991Z\",\"endTime\":\"2022-05-07T06:53:39.5091744Z\",\"properties\":{\"message\":\"{\\\"ConnectionName\\\":\\\"preparedLinker\\\",\\\"IsConnectionAvailable\\\":true,\\\"ValidationDetail\\\":[{\\\"Name\\\":\\\"The target existence is validated\\\",\\\"Description\\\":null,\\\"Result\\\":0},{\\\"Name\\\":\\\"The target service firewall is validated\\\",\\\"Description\\\":\\\"Public network access is enabled, but firewall rule not set\\\",\\\"Result\\\":2},{\\\"Name\\\":\\\"The configured values (except username/password) is validated\\\",\\\"Description\\\":null,\\\"Result\\\":0}],\\\"ReportStartTimeUtc\\\":\\\"2022-05-07T06:53:38.4618123Z\\\",\\\"ReportEndTimeUtc\\\":\\\"2022-05-07T06:53:39.431554Z\\\",\\\"SourceId\\\":null,\\\"TargetId\\\":\\\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\\\",\\\"AuthType\\\":4}\"}}"
+    }
+  },
+  "Test-AzServiceLinkerForWebApp+[NoContext]+ValidateViaIdentity+$POST+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker/validateLinker?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker/validateLinker?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "4a48080f-08c9-4bb5-be10-2c965db1cd09" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Test-AzServiceLinker" ],
+        "FullCommandName": [ "Test-AzServiceLinker_ValidateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/249d9d1d-3b57-406c-bd08-62332678c8be*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "c8a64471-6199-4fff-84de-834652933a43" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/249d9d1d-3b57-406c-bd08-62332678c8be*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01" ],
+        "x-ms-request-id": [ "249d9d1d-3b57-406c-bd08-62332678c8be" ],
+        "x-ms-correlation-request-id": [ "eb1bae85-2b23-4c3f-beb0-ca22a6e19c1c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065409Z:eb1bae85-2b23-4c3f-beb0-ca22a6e19c1c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:54:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA=="
+    }
+  },
+  "Test-AzServiceLinkerForWebApp+[NoContext]+ValidateViaIdentity+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/249d9d1d-3b57-406c-bd08-62332678c8be*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/249d9d1d-3b57-406c-bd08-62332678c8be*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "4a48080f-08c9-4bb5-be10-2c965db1cd09" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Test-AzServiceLinker" ],
+        "FullCommandName": [ "Test-AzServiceLinker_ValidateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"03002d14-0000-0100-0000-627617930000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
+        "x-ms-request-id": [ "b0263d52-7099-4591-b4be-5d08cef09827" ],
+        "x-ms-correlation-request-id": [ "e9d1bcfc-0b9e-4b3b-90f9-a0c4236bb80d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065439Z:e9d1bcfc-0b9e-4b3b-90f9-a0c4236bb80d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:54:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1479" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/249d9d1d-3b57-406c-bd08-62332678c8be*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"name\":\"249d9d1d-3b57-406c-bd08-62332678c8be*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-07T06:54:08.7536684Z\",\"endTime\":\"2022-05-07T06:54:11.4992993Z\",\"properties\":{\"message\":\"{\\\"ConnectionName\\\":\\\"preparedLinker\\\",\\\"IsConnectionAvailable\\\":true,\\\"ValidationDetail\\\":[{\\\"Name\\\":\\\"The target existence is validated\\\",\\\"Description\\\":null,\\\"Result\\\":0},{\\\"Name\\\":\\\"The target service firewall is validated\\\",\\\"Description\\\":\\\"Public network access is enabled, but firewall rule not set\\\",\\\"Result\\\":2},{\\\"Name\\\":\\\"The configured values (except username/password) is validated\\\",\\\"Description\\\":null,\\\"Result\\\":0}],\\\"ReportStartTimeUtc\\\":\\\"2022-05-07T06:54:10.4212458Z\\\",\\\"ReportEndTimeUtc\\\":\\\"2022-05-07T06:54:11.4104682Z\\\",\\\"SourceId\\\":null,\\\"TargetId\\\":\\\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\\\",\\\"AuthType\\\":4}\"}}"
+    }
+  },
+  "Test-AzServiceLinkerForWebApp+[NoContext]+ValidateViaIdentity+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/249d9d1d-3b57-406c-bd08-62332678c8be*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/249d9d1d-3b57-406c-bd08-62332678c8be*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "4a48080f-08c9-4bb5-be10-2c965db1cd09" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Test-AzServiceLinker" ],
+        "FullCommandName": [ "Test-AzServiceLinker_ValidateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"03002d14-0000-0100-0000-627617930000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11949" ],
+        "x-ms-request-id": [ "4a7e6afd-9b40-4424-8e57-27dbf33c68e8" ],
+        "x-ms-correlation-request-id": [ "e19df065-756a-454f-892f-18867a3d79aa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065440Z:e19df065-756a-454f-892f-18867a3d79aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:54:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1479" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/249d9d1d-3b57-406c-bd08-62332678c8be*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"name\":\"249d9d1d-3b57-406c-bd08-62332678c8be*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-07T06:54:08.7536684Z\",\"endTime\":\"2022-05-07T06:54:11.4992993Z\",\"properties\":{\"message\":\"{\\\"ConnectionName\\\":\\\"preparedLinker\\\",\\\"IsConnectionAvailable\\\":true,\\\"ValidationDetail\\\":[{\\\"Name\\\":\\\"The target existence is validated\\\",\\\"Description\\\":null,\\\"Result\\\":0},{\\\"Name\\\":\\\"The target service firewall is validated\\\",\\\"Description\\\":\\\"Public network access is enabled, but firewall rule not set\\\",\\\"Result\\\":2},{\\\"Name\\\":\\\"The configured values (except username/password) is validated\\\",\\\"Description\\\":null,\\\"Result\\\":0}],\\\"ReportStartTimeUtc\\\":\\\"2022-05-07T06:54:10.4212458Z\\\",\\\"ReportEndTimeUtc\\\":\\\"2022-05-07T06:54:11.4104682Z\\\",\\\"SourceId\\\":null,\\\"TargetId\\\":\\\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\\\",\\\"AuthType\\\":4}\"}}"
+    }
+  }
+}

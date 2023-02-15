@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlincompositepath
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlincompositepath
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Object corresponding to Gremlin API's CompositePath.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBGremlinCompositePath -Path "/abc" -Order Ascending
+New-AzCosmosDBGremlinCompositePath -Path "/abc" -Order Ascending
+```
 
+```output
 Path Order
 ---- -----
 /abc Ascending

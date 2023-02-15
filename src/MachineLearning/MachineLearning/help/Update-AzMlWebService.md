@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
-online version: https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice
+online version: https://learn.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice
 schema: 2.0.0
 ---
 
@@ -36,14 +36,14 @@ Pass only the properties that you want modified.
 ## EXAMPLES
 
 ### Example 1: Selective update arguments
-```
+```powershell
 Update-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Description "new update to description" -Keys @{Primary='changed primary key'} -Diagnostics @{Level='All'}
 ```
 
 Here, we change the description, primary access key and enable the diagnostics collection for all traces during runtime for the web service.
 
 ### Example 2: Update based on a web service instance
-```
+```powershell
 $updates = @{ Properties = @{ Title="New Title"; RealtimeConfiguration = @{ MaxConcurrentCalls=25 }}}
 
 Update-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -ServiceUpdates $updates

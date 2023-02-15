@@ -1,0 +1,299 @@
+{
+  "New-AzDnsResolverInboundEndpoint+[NoContext]+Create new inbound endpoint with ip configurations only, expect inbound endpoint created+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15?api-version=2022-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15?api-version=2022-07-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname15\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "265" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjNlNWNiZTJjLTgxMzMtNDViZS04ODFjLTUwOWQ5OGVmOGI0MiJ9?api-version=2022-07-01" ],
+        "Retry-After": [ "5" ],
+        "x-ms-activity-id": [ "fd10d2a2-c82c-4840-818b-a725c0259263" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjNlNWNiZTJjLTgxMzMtNDViZS04ODFjLTUwOWQ5OGVmOGI0MiJ9?api-version=2022-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
+        "x-ms-request-id": [ "297ad2e0-91d7-424a-b44a-0450284b6bf5" ],
+        "x-ms-correlation-request-id": [ "297ad2e0-91d7-424a-b44a-0450284b6bf5" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220215T221337Z:297ad2e0-91d7-424a-b44a-0450284b6bf5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A4B63DC37E4F4A458B9397A05434F78F Ref B: YVR311000111023 Ref C: 2022-02-15T22:13:35Z" ],
+        "Date": [ "Tue, 15 Feb 2022 22:13:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDnsResolverInboundEndpoint+[NoContext]+Create new inbound endpoint with ip configurations only, expect inbound endpoint created+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjNlNWNiZTJjLTgxMzMtNDViZS04ODFjLTUwOWQ5OGVmOGI0MiJ9?api-version=2022-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjNlNWNiZTJjLTgxMzMtNDViZS04ODFjLTUwOWQ5OGVmOGI0MiJ9?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "926c7db6-f5c8-4f87-9640-00fafc30eb83" ],
+        "CommandName": [ "New-AzDnsResolver" ],
+        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "4adcd50b-54af-4330-a71f-8e2cb68f35f8" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-request-id": [ "55aac264-2eaf-4327-857a-2229c79e3c2d" ],
+        "x-ms-correlation-request-id": [ "55aac264-2eaf-4327-857a-2229c79e3c2d" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220215T221343Z:55aac264-2eaf-4327-857a-2229c79e3c2d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AE958559614C4E25A515DD68A1316309 Ref B: YVR311000111023 Ref C: 2022-02-15T22:13:43Z" ],
+        "Date": [ "Tue, 15 Feb 2022 22:13:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjNlNWNiZTJjLTgxMzMtNDViZS04ODFjLTUwOWQ5OGVmOGI0MiJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjNlNWNiZTJjLTgxMzMtNDViZS04ODFjLTUwOWQ5OGVmOGI0MiJ9\",\"startTime\":\"2022-02-15T22:13:37.0000000Z\",\"endTime\":\"2022-02-15T22:13:39.0000000Z\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDnsResolverInboundEndpoint+[NoContext]+Create new inbound endpoint with ip configurations only, expect inbound endpoint created+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15?api-version=2022-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "926c7db6-f5c8-4f87-9640-00fafc30eb83" ],
+        "CommandName": [ "New-AzDnsResolver" ],
+        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "41c1b1a5-0725-475e-a5e0-704644821eb1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-request-id": [ "16b0236f-578c-49bc-b74b-dc0a1debb4c6" ],
+        "x-ms-correlation-request-id": [ "16b0236f-578c-49bc-b74b-dc0a1debb4c6" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220215T221343Z:16b0236f-578c-49bc-b74b-dc0a1debb4c6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D3EBD54A994E4D2696375DC7938D5AAF Ref B: YVR311000111023 Ref C: 2022-02-15T22:13:43Z" ],
+        "Date": [ "Tue, 15 Feb 2022 22:13:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "785" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname15\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"cda7f034-e989-4600-9940-e2addb71ee1b\"},\"etag\":\"\\\"1000aff9-0000-0200-0000-620c25920000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15\",\"name\":\"psdnsresolvername15\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-15T22:13:37.5391938Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-15T22:13:37.5391938Z\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDnsResolverInboundEndpoint+[NoContext]+Create new inbound endpoint with ip configurations only, expect inbound endpoint created+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15/inboundEndpoints/psinboundendpointname15?api-version=2022-07-01+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15/inboundEndpoints/psinboundendpointname15?api-version=2022-07-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"subnet\": {\r\n          \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname15/subnets/snet-sim2\"\r\n        },\r\n        \"privateIpAddress\": \"\",\r\n        \"privateIpAllocationMethod\": \"Dynamic\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "421" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI5YTczNzg0Yy0wNTllLTRjOTUtYmQ1MC0xNGUzZjZmY2I2ODMifQ==?api-version=2022-07-01" ],
+        "Retry-After": [ "5" ],
+        "x-ms-activity-id": [ "5e6cb13b-b275-415d-ae71-e4d2d0cf3c1c" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI5YTczNzg0Yy0wNTllLTRjOTUtYmQ1MC0xNGUzZjZmY2I2ODMifQ==?api-version=2022-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
+        "x-ms-request-id": [ "7bf84893-0563-4b94-a6ea-654fa03d8117" ],
+        "x-ms-correlation-request-id": [ "7bf84893-0563-4b94-a6ea-654fa03d8117" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220215T221345Z:7bf84893-0563-4b94-a6ea-654fa03d8117" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4EDAB7191C354092AF91F02172FF8C2E Ref B: YVR311000111023 Ref C: 2022-02-15T22:13:43Z" ],
+        "Date": [ "Tue, 15 Feb 2022 22:13:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDnsResolverInboundEndpoint+[NoContext]+Create new inbound endpoint with ip configurations only, expect inbound endpoint created+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI5YTczNzg0Yy0wNTllLTRjOTUtYmQ1MC0xNGUzZjZmY2I2ODMifQ==?api-version=2022-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI5YTczNzg0Yy0wNTllLTRjOTUtYmQ1MC0xNGUzZjZmY2I2ODMifQ==?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "9422aeaf-47e7-4634-ad3e-794a5ce5c76d" ],
+        "CommandName": [ "New-AzDnsResolverInboundEndpoint" ],
+        "FullCommandName": [ "New-AzDnsResolverInboundEndpoint_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "3fc0cc34-b68e-45be-8bb4-a49d5f4f545c" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
+        "x-ms-request-id": [ "414cba2f-cff5-4b4e-be54-1acc3c5309c1" ],
+        "x-ms-correlation-request-id": [ "414cba2f-cff5-4b4e-be54-1acc3c5309c1" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220215T221350Z:414cba2f-cff5-4b4e-be54-1acc3c5309c1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DC34ADBCBCDB4B35B2AA61DE5B5E8609 Ref B: YVR311000111023 Ref C: 2022-02-15T22:13:50Z" ],
+        "Date": [ "Tue, 15 Feb 2022 22:13:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI5YTczNzg0Yy0wNTllLTRjOTUtYmQ1MC0xNGUzZjZmY2I2ODMifQ==\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI5YTczNzg0Yy0wNTllLTRjOTUtYmQ1MC0xNGUzZjZmY2I2ODMifQ==\",\"startTime\":\"2022-02-15T22:13:45.0000000Z\",\"status\":\"InProgress\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDnsResolverInboundEndpoint+[NoContext]+Create new inbound endpoint with ip configurations only, expect inbound endpoint created+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI5YTczNzg0Yy0wNTllLTRjOTUtYmQ1MC0xNGUzZjZmY2I2ODMifQ==?api-version=2022-07-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI5YTczNzg0Yy0wNTllLTRjOTUtYmQ1MC0xNGUzZjZmY2I2ODMifQ==?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "9422aeaf-47e7-4634-ad3e-794a5ce5c76d" ],
+        "CommandName": [ "New-AzDnsResolverInboundEndpoint" ],
+        "FullCommandName": [ "New-AzDnsResolverInboundEndpoint_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "befec29a-3550-419c-a470-770170da8fc8" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-request-id": [ "e4636efc-48da-4f11-b27e-b6118ad6db3a" ],
+        "x-ms-correlation-request-id": [ "e4636efc-48da-4f11-b27e-b6118ad6db3a" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220215T221420Z:e4636efc-48da-4f11-b27e-b6118ad6db3a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4E1EDDCD3FA94E6FADA1600582399D86 Ref B: YVR311000111023 Ref C: 2022-02-15T22:14:20Z" ],
+        "Date": [ "Tue, 15 Feb 2022 22:14:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "552" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI5YTczNzg0Yy0wNTllLTRjOTUtYmQ1MC0xNGUzZjZmY2I2ODMifQ==\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0SW5ib3VuZEVuZHBvaW50IiwiT3BlcmF0aW9uSWQiOiI5YTczNzg0Yy0wNTllLTRjOTUtYmQ1MC0xNGUzZjZmY2I2ODMifQ==\",\"startTime\":\"2022-02-15T22:13:45.0000000Z\",\"endTime\":\"2022-02-15T22:13:54.0000000Z\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDnsResolverInboundEndpoint+[NoContext]+Create new inbound endpoint with ip configurations only, expect inbound endpoint created+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15/inboundEndpoints/psinboundendpointname15?api-version=2022-07-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15/inboundEndpoints/psinboundendpointname15?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "9422aeaf-47e7-4634-ad3e-794a5ce5c76d" ],
+        "CommandName": [ "New-AzDnsResolverInboundEndpoint" ],
+        "FullCommandName": [ "New-AzDnsResolverInboundEndpoint_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "b2f6760a-11cd-4ad5-a62c-1413663d6384" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-request-id": [ "8b0a4e6b-b098-4ba1-b9f4-c407226a44c4" ],
+        "x-ms-correlation-request-id": [ "8b0a4e6b-b098-4ba1-b9f4-c407226a44c4" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220215T221421Z:8b0a4e6b-b098-4ba1-b9f4-c407226a44c4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 24791CC607214649A126D354877F80E5 Ref B: YVR311000111023 Ref C: 2022-02-15T22:14:21Z" ],
+        "Date": [ "Tue, 15 Feb 2022 22:14:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "917" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"ipConfigurations\":[{\"subnet\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname15/subnets/snet-sim2\"},\"privateIpAddress\":\"10.2.2.4\",\"privateIpAllocationMethod\":\"Dynamic\"}],\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"38bd3167-a130-4e9b-aa2f-03fe18d28f9c\"},\"etag\":\"\\\"1200aeec-0000-0200-0000-620c25a10000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15/inboundEndpoints/psinboundendpointname15\",\"name\":\"psinboundendpointname15\",\"type\":\"Microsoft.Network/dnsResolvers/inboundEndpoints\",\"systemData\":{\"createdAt\":\"2022-02-15T22:13:44.9752597Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-15T22:13:44.9752597Z\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  }
+}

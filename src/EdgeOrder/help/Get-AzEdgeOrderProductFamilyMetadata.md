@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamilymetadata
+online version: https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamilymetadata
 schema: 2.0.0
 ---
 
@@ -24,9 +24,11 @@ This method provides the list of product families metadata for the given subscri
 
 ### Example 1: Gets available product families on procured subscription
 ```powershell
-PS C:\> $productFamilyMeta = Get-AzEdgeOrderProductFamilyMetadata -SubscriptionId SubscriptionId
-PS C:\> $productFamilyMeta.HierarchyInformation
+$productFamilyMeta = Get-AzEdgeOrderProductFamilyMetadata -SubscriptionId SubscriptionId
+$productFamilyMeta.HierarchyInformation
+```
 
+```output
 ConfigurationName ProductFamilyName ProductLineName ProductName
 ----------------- ----------------- --------------- -----------
                   azurestackedge

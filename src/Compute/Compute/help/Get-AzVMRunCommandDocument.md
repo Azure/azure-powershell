@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmruncommanddocument
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmruncommanddocument
 schema: 2.0.0
 ---
 
@@ -23,15 +23,15 @@ Get a run command document.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzVMRunCommandDocument -Location 'westus' -CommandId 'RunPowerShellScript'
+```powershell
+Get-AzVMRunCommandDocument -Location 'westus' -CommandId 'RunPowerShellScript'
 ```
 
 Gets a specific run command document for 'RunPowerShellScript' in 'westus'.
 
 ### Example 2
-```
-PS C:\> Get-AzVMRunCommandDocument -Location 'westus'
+```powershell
+Get-AzVMRunCommandDocument -Location 'westus'
 ```
 
 Lists all available run commands in 'westus'.

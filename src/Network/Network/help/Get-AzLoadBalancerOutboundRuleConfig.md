@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azloadbalanceroutboundruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azloadbalanceroutboundruleconfig
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzLoadBalancerOutboundRuleConfig** cmdlet gets an outbound rule config
 
 ### Example 1: Get an outbound rule configuration in a load balancer
 ```powershell
-PS C:\>$slb = Get-AzLoadBalancer -ResourceGroupName "MyResourceGroup" -Name "MyLoadBalancer"
-PS C:\>Get-AzLoadBalancerOutboundRuleConfig -LoadBalancer $slb -Name "MyRule"
+$slb = Get-AzLoadBalancer -ResourceGroupName "MyResourceGroup" -Name "MyLoadBalancer"
+Get-AzLoadBalancerOutboundRuleConfig -LoadBalancer $slb -Name "MyRule"
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.

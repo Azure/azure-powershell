@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover
+online version: https://learn.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The Invoke-AzSqlElasticPoolFailover cmdlet failovers an elastic pool. Failover w
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzSqlElasticPoolFailover -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
+Invoke-AzSqlElasticPoolFailover -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
 ```
 
 This command will failover the elastic pool named "ElasticPool01" on the server named "Server01".  This means failover will occur on all databases in the elastic pool named "ElasticPool01".

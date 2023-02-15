@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistryrepository
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistryrepository
 schema: 2.0.0
 ---
 
@@ -26,7 +26,9 @@ Update ACR repository.
 ### Example 1
 ```powershell
 Update-AzContainerRegistryRepository -RegistryName registry -Name test/busybox8 -DeleteEnabled $false -WriteEnabled $true -ListEnabled $true -ReadEnabled $true
+```
 
+```output
 Registry             : registry.azurecr.io
 ImageName            : test/busybox8
 CreatedTime          : 2020-12-11T08:57:56.2070002Z
@@ -59,7 +61,7 @@ Accept wildcard characters: False
 Delete enable.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +76,7 @@ Accept wildcard characters: False
 List enable.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +106,7 @@ Accept wildcard characters: False
 Read enable.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +136,7 @@ Accept wildcard characters: False
 Write enable.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

@@ -472,7 +472,7 @@ function Test-GalleryImageVersion
         $maxVCPU = 32;
         $purchasePlanName = "purchasePlanName";
         $purchasePlanProduct = "purchasePlanProduct";
-        $purchasePlanPublisher = "";
+        $purchasePlanPublisher = "20";
         $osState = "Generalized";
         $osType = "Windows";
 
@@ -502,7 +502,7 @@ function Test-GalleryImageVersion
         $galleryImageVersionName = "1.0.0";
         
         # Create a VM first
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A2_v2';
         $vmname = 'vm' + $rgname;
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -548,7 +548,7 @@ function Test-GalleryImageVersion
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Virtual Machine
@@ -565,26 +565,37 @@ function Test-GalleryImageVersion
         $targetRegions = @(@{Name='South Central US';ReplicaCount=1;StorageAccountType='Standard_LRS'},@{Name='East US';ReplicaCount=2},@{Name='Central US'});        
         $tag = @{test1 = "testval1"; test2 = "testval2" };
 
+        # Set TargetExtendedLocation
+        $storageAccountType = "Standard_LRS"
+        $extendedLocation = @{Name = 'microsoftlosangeles1';Type='EdgeZone'}
+        $edgezone_losangeles = @{Location = "westus";ExtendedLocation=$extendedLocation;ReplicaCount = 3;StorageAccountType = 'StandardSSD_LRS'}  
+        $targetExtendedLocations = @($edgezone_losangeles) 
+
         New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                        -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
                                        -Location $loc -SourceImageId $image.Id -ReplicaCount 1 `
                                        -PublishingProfileEndOfLifeDate $endOfLifeDate `
                                        -StorageAccountType Standard_LRS `
-                                       -TargetRegion $targetRegions;
+                                       -TargetRegion $targetRegions -TargetExtendedLocation $targetExtendedLocations;
 
+        # Check TargetExtendedLocation
         $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                                   -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
                                    $image.Id 1 $endOfLifeDate $targetRegions;
+        Assert-AreEqual $version.PublishingProfile.TargetExtendedLocations.count 1
 
+        # remove TargetExtendedLocation
         Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                           -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
-                                          -Tag $tag;
+                                          -Tag $tag -TargetExtendedLocation @() -AllowDeletionOfReplicatedLocation $True;
 
         $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                                   -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
-                                   $image.Id 1 $endOfLifeDate $targetRegions;
+                                   $image.Id 1 $endOfLifeDate $targetRegions
+        # check TargetExtendedLocation count 
+        Assert-AreEqual $version.PublishingProfile.TargetExtendedLocations.count 0
 
         $version | Remove-AzGalleryImageVersion -Force;
         Wait-Seconds 300;
@@ -702,6 +713,51 @@ function Test-GalleryImageVersionDiskImage
 
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
                                    $null 1 $endOfLifeDate $targetRegions $osDiskImage @($dataDiskImage1, $dataDiskImage2)
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-GalleryDirectSharing
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+
+    try
+    {
+        $loc = 'eastus'
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # create gallery with permissions groups
+        New-AzGallery -ResourceGroupName $rgname -Location $loc -Name $galleryName -Permission 'Groups'
+
+        # get that gallery check for SharingProfile
+        $gal = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName -Expand 'SharingProfile/Groups'
+        Assert-AreEqual $gal.sharingProfile.Permissions 'Groups'
+
+        # Add 2 subscriptions to share with 
+        $gal = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission 'Groups' -Share -Subscription '88fd8cb2-8248-499e-9a2d-4929a4b0133c','54b875cc-a81a-4914-8bfd-1a36bc7ddf4d'
+
+        # check
+        Assert-AreEqual $gal.SharingProfile.Groups[0].Type 'Subscriptions'
+        Assert-AreEqual $gal.SharingProfile.Groups[0].Ids.count 2
+
+        # remove 1
+        $gal = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission 'Groups' -Share -RemoveSubscription '88fd8cb2-8248-499e-9a2d-4929a4b0133c'
+
+        # check 
+        Assert-AreEqual $gal.SharingProfile.Groups[0].Type 'Subscriptions'
+        Assert-AreEqual $gal.SharingProfile.Groups[0].Ids.count 1
+
+        # Reset that gallery
+        $gal = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Share -Reset
+
+        # check 
+        Assert-AreEqual $gal.SharingProfile.Permissions 'Private'
     }
     finally
     {

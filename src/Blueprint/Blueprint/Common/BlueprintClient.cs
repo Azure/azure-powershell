@@ -24,6 +24,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using BlueprintManagement = Microsoft.Azure.Management.Blueprint;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
 {
@@ -34,8 +35,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         /// <summary>
         /// Construct a BlueprintClient BlueprintManagementClient.
         /// </summary>
-        /// <param name="subscription"></param>
-        /// <param name="blueprintManagementClient"></param>
+        /// <param name="context"></param>
         public BlueprintClient(IAzureContext context)
         {
             //Remove our custom api handler if it's in the current session's custom handlers list
@@ -274,12 +274,29 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         public IEnumerable<PSArtifact> ListArtifacts(string scope, string blueprintName, string version)
         {
             var list = new List<PSArtifact>();
+            var artifactList = new List<Artifact>();
 
-            var artifacts = string.IsNullOrEmpty(version)
-                ? blueprintManagementClient.Artifacts.List(scope, blueprintName)
-                : blueprintManagementClient.PublishedArtifacts.List(scope, blueprintName, version);
+            if (string.IsNullOrEmpty(version))
+            {
+                var artifacts = blueprintManagementClient.Artifacts.List(scope, blueprintName);
+                artifactList.AddRange(artifacts.AsEnumerable());
+                while (!string.IsNullOrEmpty(artifacts.NextPageLink))
+                {
+                    artifacts = blueprintManagementClient.Artifacts.ListNext(artifacts.NextPageLink);
+                    artifactList.AddRange(artifacts.AsEnumerable());
+                }
+            } else
+            {
+                var artifacts = blueprintManagementClient.PublishedArtifacts.List(scope, blueprintName, version);
+                artifactList.AddRange(artifacts.AsEnumerable());
+                while (!string.IsNullOrEmpty(artifacts.NextPageLink))
+                {
+                    artifacts = blueprintManagementClient.PublishedArtifacts.ListNext(artifacts.NextPageLink);
+                    artifactList.AddRange(artifacts.AsEnumerable());
+                }
+            }
 
-            foreach (var artifact in artifacts)
+            foreach (var artifact in artifactList)
             {
                 switch (artifact)
                 {

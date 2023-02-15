@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
-online version:https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubiprule
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubiprule
 schema: 2.0.0
 ---
 
@@ -14,15 +14,15 @@ Remove a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### IPRulePropertiesParameterSet (Default)
 ```
-Remove-AzEventHubIPRule [-ResourceGroupName] <String> [-Name] <String> [-IpMask] <String>
+Remove-AzEventHubIPRule [-ResourceGroupName] <String> [-Name] <String> [-IpMask] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IPRuleInputObjectParameterSet
 ```
 Remove-AzEventHubIPRule [-ResourceGroupName] <String> [-Name] <String>
- [-IpRuleObject] <PSNWRuleSetIpRulesAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IpRuleObject] <PSNWRuleSetIpRulesAttributes> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ Remove a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -IpMask "11.22.33.44"
+Remove-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -IpMask "11.22.33.44"
 ```
 
 Removes IpMask of the NetworkRuleSet of the given namespace
@@ -176,8 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

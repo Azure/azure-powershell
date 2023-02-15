@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 919B3755-81D4-43FB-AE8C-B071329A61D9
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaysslcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewaysslcertificate
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Get-AzApplicationGatewaySslCertificate** cmdlet gets an SSL certificate fo
 ## EXAMPLES
 
 ### Example 1: Get a specific SSL certificate
-```
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Cert = Get-AzApplicationGatewaySslCertificate -Name "Cert01" -ApplicationGateway $AppGW
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$Cert = Get-AzApplicationGatewaySslCertificate -Name "Cert01" -ApplicationGateway $AppGW
 ```
 
 The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
@@ -34,9 +34,9 @@ The second command gets the SSL certificate named Cert01 from the application ga
 The command stores the certificate in the variable named $Cert.
 
 ### Example 2: Get a list of SSL certificates
-```
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Certs = Get-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$Certs = Get-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW
 ```
 
 The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.

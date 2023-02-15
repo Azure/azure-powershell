@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 23C6C9D3-A745-46C8-AB2C-B874223FBFFF
-online version: https://docs.microsoft.com/powershell/module/az.media/get-azmediaservicenameavailability
+online version: https://learn.microsoft.com/powershell/module/az.media/get-azmediaservicenameavailability
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ Media service names are globally unique.
 ## EXAMPLES
 
 ### Example 1: Check whether a Media Service name is available
-```
-PS C:\>Get-AzMediaServiceNameAvailability -AccountName "MediaService1"
+```powershell
+Get-AzMediaServiceNameAvailability -AccountName "MediaService1"
 ```
 
 This command checks if the name MediaService1 is available.

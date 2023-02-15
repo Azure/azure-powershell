@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapseintegrationruntimenode
+online version: https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapseintegrationruntimenode
 schema: 2.0.0
 ---
 
@@ -46,7 +46,7 @@ The **Update-AzSynapseIntegrationRuntimeNode** cmdlet updates properties of self
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSynapseIntegrationRuntimeNode -WorkspaceName ContosoWorkspace -IntegrationRuntimeName 'test-selfhost-ir' -Name 'Node_1' -ConcurrentJobsLimit 3
+Update-AzSynapseIntegrationRuntimeNode -WorkspaceName ContosoWorkspace -IntegrationRuntimeName 'test-selfhost-ir' -Name 'Node_1' -ConcurrentJobsLimit 3
 ```
 
 The cmdlet updates 'ConcurrentJobsLimit' to 3 for node 'Node_1' in self-hosted integration runtime 'test-selfhost-ir'.

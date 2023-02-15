@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultremoval
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultremoval
 schema: 2.0.0
 ---
 
@@ -34,8 +34,10 @@ recovered vault will be active after recovery
 
 ### Example 1
 ```powershell
-PS C:\> Undo-AzKeyVaultRemoval -VaultName 'MyKeyVault' -ResourceGroupName 'MyResourceGroup' -Location 'eastus2' -Tag @{"x"= "y"}
+Undo-AzKeyVaultRemoval -VaultName 'MyKeyVault' -ResourceGroupName 'MyResourceGroup' -Location 'eastus2' -Tag @{"x"= "y"}
+```
 
+```output
 Vault Name                       : MyKeyVault
 Resource Group Name              : MyResourceGroup
 Location                         : eastus2

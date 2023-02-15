@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Communication
-online version: https://docs.microsoft.com/powershell/module/az.communication/get-azcommunicationservice
+online version: https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservice
 schema: 2.0.0
 ---
 
@@ -42,8 +42,10 @@ Get the CommunicationService and its properties.
 
 ### Example 1: List existing CommunicationServices for a Subscription
 ```powershell
-PS C:\> Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
+Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
+```
 
+```output
 Location Name             Type                                          AzureAsyncOperation
 -------- ----             ----                                          -------------------
 global   ContosoResource1   Microsoft.Communication/communicationServices
@@ -56,8 +58,10 @@ Returns a list of all ACS resources under that subscription.
 
 ### Example 2: Get infomation on specified Azure Communication resource
 ```powershell
-PS C:\> Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+```
 
+```output
 Location Name           Type                                          AzureAsyncOperation
 -------- ----           ----                                          -------------------
 Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
@@ -164,7 +168,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
+INPUTOBJECT `<ICommunicationIdentity>`: Identity Parameter
   - `[CommunicationServiceName <String>]`: The name of the CommunicationService resource.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.

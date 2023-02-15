@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: A8FDC5A3-F309-49B3-B417-8E0A1535BAF4
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob
 schema: 2.0.0
 ---
 
@@ -34,9 +34,9 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 ## EXAMPLES
 
 ### Example 1: Stop a backup job
-```
-PS C:\>$Job = Get-AzRecoveryServicesBackupJob -Operation Backup
-PS C:\> Stop-AzRecoveryServicesBackupJob -JobID $Job.InstanceId
+```powershell
+$Job = Get-AzRecoveryServicesBackupJob -Operation Backup
+Stop-AzRecoveryServicesBackupJob -JobID $Job.InstanceId
 ```
 
 The first command gets a backup job, and then stores the job in the $Job variable.

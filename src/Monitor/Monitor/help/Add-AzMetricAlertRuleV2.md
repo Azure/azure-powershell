@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2
+online version: https://learn.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2
 schema: 2.0.0
 ---
 
@@ -40,8 +40,10 @@ Adds or updates a **V2 (non-classic) metric-based alert rule**. The added rule i
 ### Example 1: Add a metric alert rule to a virtual machine
 
 ```powershell
-PS C:\> Add-AzMetricAlertRuleV2 -Name PS3182019 -ResourceGroupName xxxxRG -WindowSize 0:5 -Frequency 0:5 -TargetResourceScope "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Compute/virtualMachines/VM1", "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Compute/virtualMachines/VM2" -TargetResourceType "Microsoft.Compute/virtualMachines" -TargetResourceRegion "eastus" -Description "This is description" -Severity 4 -ActionGroup $act -Condition $condition
+Add-AzMetricAlertRuleV2 -Name PS3182019 -ResourceGroupName xxxxRG -WindowSize 0:5 -Frequency 0:5 -TargetResourceScope "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Compute/virtualMachines/VM1", "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/012345/providers/Microsoft.Compute/virtualMachines/VM2" -TargetResourceType "Microsoft.Compute/virtualMachines" -TargetResourceRegion "eastus" -Description "This is description" -Severity 4 -ActionGroup $act -Condition $condition
+```
 
+```output
 Description          : This is description
 Severity             : 4
 Enabled              : True
@@ -62,12 +64,14 @@ Location             : global
 Tags                 :
 ```
 
-This command creates a metric alert rule for a virtual machine. $condition is the output of [New-AzMetricAlertRuleV2Criteria](https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria) cmdlet and $act is the output of [New-AzActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azactiongroup) cmdlet
+This command creates a metric alert rule for a virtual machine. $condition is the output of [New-AzMetricAlertRuleV2Criteria](https://learn.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria) cmdlet and $act is the output of [New-AzActionGroup](https://learn.microsoft.com/powershell/module/az.monitor/new-azactiongroup) cmdlet
 
 ### Example 2: Add a metric alert rule for all virtual machines in a subscription
 ```powershell
-PS C:\> Add-AzMetricAlertRuleV2 -Name AllVM -ResourceGroupName xxxxRG -WindowSize 0:5 -Frequency 0:5 -TargetResourceScope "/subscriptions/00000000-0000-0000-0000-0000000" -TargetResourceType "Microsoft.Compute/virtualMachines" -TargetResourceRegion "eastus" -Description "This is description" -Severity 4 -ActionGroup $act -Condition $condition
+Add-AzMetricAlertRuleV2 -Name AllVM -ResourceGroupName xxxxRG -WindowSize 0:5 -Frequency 0:5 -TargetResourceScope "/subscriptions/00000000-0000-0000-0000-0000000" -TargetResourceType "Microsoft.Compute/virtualMachines" -TargetResourceRegion "eastus" -Description "This is description" -Severity 4 -ActionGroup $act -Condition $condition
+```
 
+```output
 Description          : This is description
 Severity             : 4
 Enabled              : True
@@ -91,7 +95,10 @@ This command creates a metric alert rule for all virtual machines in the subscri
 
 ### Example 3: Disable a metric alert rule
 ```powershell
-PS C:\>Get-AzMetricAlertRuleV2 -ResourceGroupName alertstest  -Name TestAlertRule | Add-AzMetricAlertRuleV2 -DisableRule
+Get-AzMetricAlertRuleV2 -ResourceGroupName alertstest  -Name TestAlertRule | Add-AzMetricAlertRuleV2 -DisableRule
+```
+
+```output
 Description          : This new Metric alert rule was created from Powershell version: 1.0.1
 Severity             : 4
 Enabled              : False
@@ -111,16 +118,19 @@ Location             : global
 Tags                 :
 ```
 
-This command disables a metric alert rule. Here, we are piping output of [Get-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2) to [Add-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2) 
+This command disables a metric alert rule. Here, we are piping output of [Get-AzMetricAlertRuleV2](https://learn.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2) to [Add-AzMetricAlertRuleV2](https://learn.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2) 
 
 ### Example 4: Add a metric alert rule with dimensions
 
 ```powershell
-PS C:\>$act = New-AzActionGroup -ActionGroupId "/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/Microsoft.Insights/actiongroups/actionGroupDemo"
-PS C:\>$dim1 = New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/name" -ValuesToInclude "gdtest"
-PS C:\>$dim2 = New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/location" -ValuesToInclude "*"
-PS C:\>$criteria = New-AzMetricAlertRuleV2Criteria -MetricName "availabilityResults/availabilityPercentage" -DimensionSelection $dim1,$dim2 -TimeAggregation Average -Operator GreaterThan -Threshold 2
-PS C:\>Add-AzMetricAlertRuleV2 -Name AlertWithDim -ResourceGroupName alertstest -WindowSize 00:05:00 -Frequency 00:05:00 -TargetResourceId "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/alertstest/providers/Microsoft.Insights/components/alertstestFunction" -Condition $criteria -ActionGroup $act -DisableRule -Severity 4
+$act = New-AzActivityLogAlertActionGroupObject -Id "/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/Microsoft.Insights/actiongroups/actionGroupDemo"
+$dim1 = New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/name" -ValuesToInclude "gdtest"
+$dim2 = New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/location" -ValuesToInclude "*"
+$criteria = New-AzMetricAlertRuleV2Criteria -MetricName "availabilityResults/availabilityPercentage" -DimensionSelection $dim1,$dim2 -TimeAggregation Average -Operator GreaterThan -Threshold 2
+Add-AzMetricAlertRuleV2 -Name AlertWithDim -ResourceGroupName alertstest -WindowSize 00:05:00 -Frequency 00:05:00 -TargetResourceId "/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/alertstest/providers/Microsoft.Insights/components/alertstestFunction" -Condition $criteria -ActionGroup $act -DisableRule -Severity 4
+```
+
+```output
 Description          : This new Metric alert rule was created from Powershell version: 1.0.0
 Severity             : 4
 Enabled              : False
@@ -140,7 +150,7 @@ Location             : global
 Tags                 :
 ```
 
-To create a more complex metric alert rule like the ones that involve selecting dimension values or have multiple criteria, you can use the helper cmdlets [New-AzMetricAlertRuleV2DimensionSelection](https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2dimensionselection) and [New-AzMetricAlertRuleV2Criteria](https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria).
+To create a more complex metric alert rule like the ones that involve selecting dimension values or have multiple criteria, you can use the helper cmdlets [New-AzMetricAlertRuleV2DimensionSelection](https://learn.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2dimensionselection) and [New-AzMetricAlertRuleV2Criteria](https://learn.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria).
 
 Above set of cmdlets will create a metric alert rule with dimensions.
 
@@ -150,7 +160,7 @@ Above set of cmdlets will create a metric alert rule with dimensions.
 The Action Group for rule
 
 ```yaml
-Type: Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertActionGroup[]
+Type: Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]
 Parameter Sets: (All)
 Aliases: Actions
 

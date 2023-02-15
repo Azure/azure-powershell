@@ -135,5 +135,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// Gets or sets the maintenance configuration id for the elastic pool
         /// </summary>
         public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of high availability replicas associated with the elastic pool
+        /// </summary>
+        public int? HighAvailabilityReplicaCount { get; set; }
     }
 }

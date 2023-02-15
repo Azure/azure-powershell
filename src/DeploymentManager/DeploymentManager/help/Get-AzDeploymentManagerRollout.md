@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/get-azdeploymentmanagerrollout
+online version: https://learn.microsoft.com/powershell/module/az.deploymentmanager/get-azdeploymentmanagerrollout
 schema: 2.0.0
 ---
 
@@ -40,14 +40,14 @@ The returned rollout object contains the services, service units and steps that 
 
 ### Example 1 Get the rollout
 ```powershell
-PS C:\> Get-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout
+Get-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout
 ```
 
 This command gets a rollout named ContosoRollout in the ContosoResourceGroup. 
 
 ### Example 2 Get and display the rollout details
 ```powershell
-PS C:\> Get-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -Verbose
+Get-AzDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -Verbose
 ```
 
 This command gets a rollout named ContosoRollout in the ContosoResourceGroup. 
@@ -55,14 +55,14 @@ The -Verbose switch displays all the rollout details hierarchically; showing the
 
 ### Example 3: Get a rollout using the resource identifier
 ```powershell
-PS C:\> Get-AzDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
+Get-AzDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
 ```
 
 This command gets a rollout named ContosoRollout in the ContosoResourceGroup.
 
 ### Example 4: Get a rollout using the rollout object.
 ```powershell
-PS C:\> Get-AzDeploymentManagerRollout -InputObject $rolloutObject
+Get-AzDeploymentManagerRollout -InputObject $rolloutObject
 ```
 
 This command gets a rollout whose name and ResourceGroup match the Name and ResourceGroupName properties of the $rolloutObject, respectively.

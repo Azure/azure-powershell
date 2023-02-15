@@ -54,6 +54,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
+        /// <summary>Backing field for <see cref="ManagedPrivateEndpointName" /> property.</summary>
+        private string _managedPrivateEndpointName;
+
+        /// <summary>The name of the managed private endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
+        public string ManagedPrivateEndpointName { get => this._managedPrivateEndpointName; set => this._managedPrivateEndpointName = value; }
+
         /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
         private string _operationId;
 
@@ -67,6 +74,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// <summary>The name of the Kusto principalAssignment.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
         public string PrincipalAssignmentName { get => this._principalAssignmentName; set => this._principalAssignmentName = value; }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
+        private string _privateEndpointConnectionName;
+
+        /// <summary>The name of the private endpoint connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
+        public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
+
+        /// <summary>Backing field for <see cref="PrivateLinkResourceName" /> property.</summary>
+        private string _privateLinkResourceName;
+
+        /// <summary>The name of the private link resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
+        public string PrivateLinkResourceName { get => this._privateLinkResourceName; set => this._privateLinkResourceName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -149,6 +170,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
+        /// <summary>The name of the managed private endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the managed private endpoint.",
+        SerializedName = @"managedPrivateEndpointName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ManagedPrivateEndpointName { get; set; }
         /// <summary>The Guid of the operation ID</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
@@ -165,6 +194,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         SerializedName = @"principalAssignmentName",
         PossibleTypes = new [] { typeof(string) })]
         string PrincipalAssignmentName { get; set; }
+        /// <summary>The name of the private endpoint connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the private endpoint connection.",
+        SerializedName = @"privateEndpointConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateEndpointConnectionName { get; set; }
+        /// <summary>The name of the private link resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the private link resource.",
+        SerializedName = @"privateLinkResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateLinkResourceName { get; set; }
         /// <summary>The name of the resource group containing the Kusto cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
@@ -209,10 +254,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         string Id { get; set; }
         /// <summary>Azure location (region) name.</summary>
         string Location { get; set; }
+        /// <summary>The name of the managed private endpoint.</summary>
+        string ManagedPrivateEndpointName { get; set; }
         /// <summary>The Guid of the operation ID</summary>
         string OperationId { get; set; }
         /// <summary>The name of the Kusto principalAssignment.</summary>
         string PrincipalAssignmentName { get; set; }
+        /// <summary>The name of the private endpoint connection.</summary>
+        string PrivateEndpointConnectionName { get; set; }
+        /// <summary>The name of the private link resource.</summary>
+        string PrivateLinkResourceName { get; set; }
         /// <summary>The name of the resource group containing the Kusto cluster.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the Kusto database script.</summary>

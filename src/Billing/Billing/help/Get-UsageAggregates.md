@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.UsageAggregates.dll-Help.xml
 Module Name: Az.Billing
 ms.assetid: 52B3ECCB-80E5-4E16-954A-B83D0BDC7E22
-online version: https://docs.microsoft.com/powershell/module/az.billing/get-usageaggregates
+online version: https://learn.microsoft.com/powershell/module/az.billing/get-usageaggregates
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ For more information, see Azure Billing REST API Referencehttps://msdn.microsoft
 ## EXAMPLES
 
 ### Example 1: Retrieve subscription data
-```
-PS C:\>Get-UsageAggregates -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
+```powershell
+Get-UsageAggregates -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
 ```
 
 This command retrieves the reported usage data for the subscription between 5/2/2015 and 5/5/2015.

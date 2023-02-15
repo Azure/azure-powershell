@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesobject
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesobject
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Create a Cognitive Services Object
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesObject -Type DeploymentProperties
+New-AzCognitiveServicesObject -Type DeploymentProperties
 ```
 
 Create a Cognitive Services DeploymentProperties Object

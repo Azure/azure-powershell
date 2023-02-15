@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset.md
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset.md
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Get or list disk encryption sets.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDiskEncryptionSet -ResourceGroupName rg1 -Name enc1;
+Get-AzDiskEncryptionSet -ResourceGroupName rg1 -Name enc1;
+```
 
+```output
 ResourceGroupName : rg1
 Identity          : Microsoft.Azure.Management.Compute.Models.EncryptionSetIdentity
 ActiveKey         : Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
@@ -42,8 +44,10 @@ Get disk encryption set 'enc1'
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDiskEncryptionSet
+Get-AzDiskEncryptionSet
+```
 
+```output
 ResourceGroupName : rg1
 Identity          : Microsoft.Azure.Management.Compute.Models.EncryptionSetIdentity
 ActiveKey         : Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
@@ -71,8 +75,10 @@ Get all disk encryption sets in resource group 'rg1'.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzDiskEncryptionSet -ResourceGroupName rg1
+Get-AzDiskEncryptionSet -ResourceGroupName rg1
+```
 
+```output
 ResourceGroupName : rg1
 Identity          : Microsoft.Azure.Management.Compute.Models.EncryptionSetIdentity
 ActiveKey         : Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
@@ -153,7 +159,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

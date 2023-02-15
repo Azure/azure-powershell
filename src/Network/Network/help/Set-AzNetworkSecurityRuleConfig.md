@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 7EFFFF43-501E-4955-A4EE-2C09B8863B30
-online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworksecurityruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/set-aznetworksecurityruleconfig
 schema: 2.0.0
 ---
 
@@ -40,9 +40,9 @@ The **Set-AzNetworkSecurityRuleConfig** cmdlet updates a network security rule c
 
 ### Example 1: Change the access configuration in a network security rule
 ```powershell
-PS C:\>$nsg = Get-AzNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
-PS C:\> $nsg | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
-PS C:\> Set-AzNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurityGroup $nsg -Access "Deny"
+$nsg = Get-AzNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
+$nsg | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
+Set-AzNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurityGroup $nsg -Access "Deny"
 ```
 
 The first command gets the network security group named NSG-FrontEnd, and then stores it in the variable $nsg.
@@ -264,15 +264,18 @@ Accept wildcard characters: False
 ### -Protocol
 Specifies the network protocol that a rule configuration applies to.
 The acceptable values for this parameter are:
- --Tcp
+- Tcp
 - Udp
-- A wildcard character (*) to match both
+- Icmp
+- Esp
+- Ah
+- Wildcard character (*) to match all
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Tcp, Udp, *
+Accepted values: Tcp, Udp, Icmp, Esp, Ah, *
 
 Required: False
 Position: Named

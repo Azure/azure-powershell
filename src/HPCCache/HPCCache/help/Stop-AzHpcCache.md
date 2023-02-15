@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HPCCache.dll-Help.xml
 Module Name: Az.HPCCache
-online version: https://docs.microsoft.com/powershell/module/az.hpccache/stop-azhpccache
+online version: https://learn.microsoft.com/powershell/module/az.hpccache/stop-azhpccache
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Stop-AzHpcCache** cmdlet stops a Azure HPC Cache.
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzHpcCache -ResourceGroupName testRG -CacheName testCache
+Stop-AzHpcCache -ResourceGroupName testRG -CacheName testCache
 ```
 
 ## PARAMETERS

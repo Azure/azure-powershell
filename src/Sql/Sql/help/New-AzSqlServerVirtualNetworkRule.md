@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Creates an Azure SQL Server Virtual Network Rule. Virtual Network Rules are used
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $virtualNetworkRule = New-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRuleName -VirtualNetworkSubnetId virtualNetworkSubnetId
+```powershell
+$virtualNetworkRule = New-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRuleName -VirtualNetworkSubnetId virtualNetworkSubnetId
 ```
 
 Creates an Azure SQL Server virtual network rule

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azmanagementgroupdeployment
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azmanagementgroupdeployment
 schema: 2.0.0
 ---
 
@@ -36,15 +36,15 @@ The **Remove-AzManagementGroupDeployment** cmdlet removes an Azure deployment at
 ## EXAMPLES
 
 ### Example 1: Remove a deployment with a given name
-```
-PS C:\>Remove-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "RolesDeployment"
+```powershell
+Remove-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "RolesDeployment"
 ```
 
 This command removes the deployment "RolesDeployment" at the management group "myMG".
 
 ### Example 2: Get a deployment and remove it
-```
-PS C:\>Get-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "RolesDeployment" | Remove-AzManagementGroupDeployment
+```powershell
+Get-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "RolesDeployment" | Remove-AzManagementGroupDeployment
 ```
 
 This command gets the deployment "RolesDeployment" at the management group "myMG" and removes it.

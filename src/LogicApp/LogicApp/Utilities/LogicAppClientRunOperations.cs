@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// </summary>
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="workflowName">Name of the workflow</param>
+        /// <param name="nextPageLink"></param>
         /// <returns>List of workflow runs</returns>
         public Page<WorkflowRun> GetWorkflowRuns(string resourceGroupName, string workflowName, string nextPageLink = "")
         {
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="workflowName">Name of the workflow</param>
         /// <param name="runName">Name of the workflow run</param>
+        /// <param name="nextPageLink"></param>
         /// <returns>Actions of the specified workflow run</returns>
         public Page<WorkflowRunAction> GetWorkflowRunActions(string resourceGroupName, string workflowName, string runName, string nextPageLink = "")
         {

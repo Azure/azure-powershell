@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Bool".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Bool", "Bool", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bool");
+                yield return new global::System.Management.Automation.CompletionResult("'Bool'", "Bool", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bool");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Object".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Object", "Object", global::System.Management.Automation.CompletionResultType.ParameterValue, "Object");
+                yield return new global::System.Management.Automation.CompletionResult("'Object'", "Object", global::System.Management.Automation.CompletionResultType.ParameterValue, "Object");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "String".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("String", "String", global::System.Management.Automation.CompletionResultType.ParameterValue, "String");
+                yield return new global::System.Management.Automation.CompletionResult("'String'", "String", global::System.Management.Automation.CompletionResultType.ParameterValue, "String");
             }
         }
     }

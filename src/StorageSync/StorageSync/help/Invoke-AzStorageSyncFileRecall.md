@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/powershell/module/Az.storagesync/invoke-Azstoragesyncfilerecall
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/invoke-Azstoragesyncfilerecall
 schema: 2.0.0
 ---
 
@@ -41,7 +41,7 @@ When cloud tiering is enabled on a server endpoint (a specific location on a reg
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzStorageSyncFileRecall -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -ServerEndpointName "myServerEndpointName"
+Invoke-AzStorageSyncFileRecall -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -ServerEndpointName "myServerEndpointName"
 ```
 
 This command recursively recalls all tiered files located under the root path of the specified server endpoint.

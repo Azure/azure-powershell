@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 7A929BA8-02D9-4BBE-AFF3-B8781F8DDAD9
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvault
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/remove-azkeyvault
 schema: 2.0.0
 ---
 
@@ -64,8 +64,10 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 
 ### Example 1: Remove a key vault
 ```powershell
-PS C:\> Remove-AzKeyVault -VaultName "Contoso03Vault" -PassThru
+Remove-AzKeyVault -VaultName "Contoso03Vault" -PassThru
+```
 
+```output
 True
 ```
 
@@ -73,22 +75,15 @@ This command removes the key vault named Contoso03Vault from your current subscr
 
 ### Example 2: Remove a key vault from a specified resource group
 ```powershell
-PS C:\> Remove-AzKeyVault -Name "Contoso03Vault" -ResourceGroupName "Group14" -PassThru
+Remove-AzKeyVault -Name "Contoso03Vault" -ResourceGroupName "Group14" -PassThru
+```
 
+```output
 True
 ```
 
 This command removes the key vault named Contoso03Vault from the named resource group.
 If you do not specify the resource group name, the cmdlet searches for the named key vault to delete in your current subscription.
-
-### Example 3: Remove a managed hsm
-```powershell
-PS C:\>  Remove-AzKeyVault -Name "testManagedHsm" -Hsm -PassThru
-
-True
-```
-
-This command removes the managed hsm named testManagedHsm from your current subscription.
 
 ## PARAMETERS
 

@@ -48,8 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Constructs a recoverable managed database adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlRecoverableManagedDatabaseAdapter(IAzureContext context)
         {
             Context = context;
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// </summary>
         /// <param name="resourceGroup">The resource group the managed instance is in</param>
         /// <param name="managedInstanceName">The name of the Azure Sql Database Managed Instance</param>
-        /// <param name="database">The service response</param>
+        /// <param name="managedDatabase">The service response</param>
         /// <returns>The converted model</returns>
         public static AzureSqlRecoverableManagedDatabaseModel CreateRecoverableManagedDatabaseModelFromResponse(string resourceGroup, string managedInstanceName, Management.Sql.Models.RecoverableManagedDatabase managedDatabase)
         {

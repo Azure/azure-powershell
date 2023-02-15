@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImportExport
-online version: https://docs.microsoft.com/powershell/module/az.importexport/get-azimportexportlocation
+online version: https://learn.microsoft.com/powershell/module/az.importexport/get-azimportexportlocation
 schema: 2.0.0
 ---
 
@@ -38,7 +38,10 @@ A location is an Azure region.
 
 ### Example 1: Get all Azure region location details with default context
 ```powershell
-PS C:\> Get-AzImportExportLocation
+Get-AzImportExportLocation
+```
+
+```output
 Name                 Type
 ----                 ----
 Australia East       Microsoft.ImportExport/locations
@@ -58,7 +61,10 @@ This cmdlet gets all Azure region location details with default context.
 
 ### Example 2: Get Azure region location details by location name
 ```powershell
-PS C:\> Get-AzImportExportLocation -Name eastus
+Get-AzImportExportLocation -Name eastus
+```
+
+```output
 Name    Type
 ----    ----
 East US Microsoft.ImportExport/locations
@@ -68,8 +74,11 @@ This cmdlet gets Azure region location details by location name.
 
 ### Example 3: Get Azure region location details by identity
 ```powershell
-PS C:\> $Id = "/providers/Microsoft.ImportExport/locations/eastus"
-PS C:\> Get-AzImportExportLocation -InputObject $Id
+$Id = "/providers/Microsoft.ImportExport/locations/eastus"
+Get-AzImportExportLocation -InputObject $Id
+```
+
+```output
 Name    Type
 ----    ----
 East US Microsoft.ImportExport/locations
@@ -150,7 +159,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ILocation
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ILocation
 
 ## NOTES
 
@@ -161,7 +170,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IImportExportIdentity>: Identity Parameter
+`INPUTOBJECT <IImportExportIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[JobName <String>]`: The name of the import/export job.
   - `[LocationName <String>]`: The name of the location. For example, West US or westus.

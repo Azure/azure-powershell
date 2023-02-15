@@ -1,28 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.Subscription/aliases/navyprod1?api-version=2020-09-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3Vic2NyaXB0aW9uL2FsaWFzZXMvbmF2eXByb2QxP2FwaS12ZXJzaW9uPTIwMjAtMDktMDE=",
+      "RequestUri": "/providers/Microsoft.Subscription/aliases/test-alias?api-version=2021-10-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3Vic2NyaXB0aW9uL2FsaWFzZXMvdGVzdC1hbGlhcz9hcGktdmVyc2lvbj0yMDIxLTEwLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"testSub1\",\r\n    \"workload\": \"Production\",\r\n    \"billingScope\": \"billingScope\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"workload\": \"Production\",\r\n    \"subscriptionId\": \"d17ad3ae-320e-42ff-b5a1-705389c6063a\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "754fdc06-4e5e-4331-bfb1-8a699ac22fe0"
+          "4f634d8b-de86-43e9-a6d0-a1969e5a19c3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29130.01",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19041.",
-          "Microsoft.Azure.Management.Subscription.SubscriptionClient/1.1.5.0"
+          "OSVersion/Microsoft.Windows.10.0.22000.",
+          "Microsoft.Azure.Management.Subscription.SubscriptionClient/2.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "127"
+          "121"
         ]
       },
       "ResponseHeaders": {
@@ -38,11 +38,14 @@
         "x-ms-ratelimit-remaining-tenant-writes": [
           "1199"
         ],
+        "MS-CV": [
+          "6w8rF/fecU+4LkdC/lFigg.0"
+        ],
         "x-ms-correlation-request-id": [
-          "ad1c5637-1edc-4f54-80af-b26289a4502a"
+          "d15b29f4-9be7-41e1-880a-dd96de8ede1c"
         ],
         "request-id": [
-          "ad1c5637-1edc-4f54-80af-b26289a4502a"
+          "d15b29f4-9be7-41e1-880a-dd96de8ede1c"
         ],
         "x-gsm": [
           "1.0.0.0"
@@ -60,19 +63,19 @@
           "ASP.NET"
         ],
         "x-ms-request-id": [
-          "ad1c5637-1edc-4f54-80af-b26289a4502a"
+          "d15b29f4-9be7-41e1-880a-dd96de8ede1c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200901T212110Z:ad1c5637-1edc-4f54-80af-b26289a4502a"
+          "WESTUS:20220203T070234Z:d15b29f4-9be7-41e1-880a-dd96de8ede1c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 01 Sep 2020 21:21:10 GMT"
+          "Thu, 03 Feb 2022 07:02:34 GMT"
         ],
         "Content-Length": [
-          "222"
+          "224"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -81,12 +84,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Subscription/aliases/navyprod1\",\r\n  \"name\": \"navyprod1\",\r\n  \"type\": \"Microsoft.Subscription/aliases\",\r\n  \"properties\": {\r\n    \"subscriptionId\": \"cef41c82-c4f0-48ae-a336-2ec44ec4375a\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Subscription/aliases/test-alias\",\r\n  \"name\": \"test-alias\",\r\n  \"type\": \"Microsoft.Subscription/aliases\",\r\n  \"properties\": {\r\n    \"subscriptionId\": \"d17ad3ae-320e-42ff-b5a1-705389c6063a\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "5b47c35e-863f-4c66-ba9f-52b9d0ced037"
+    "SubscriptionId": "d17ad3ae-320e-42ff-b5a1-705389c6063a"
   }
 }

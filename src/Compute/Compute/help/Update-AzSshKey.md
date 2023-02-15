@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azsshkey
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azsshkey
 schema: 2.0.0
 ---
 
@@ -15,19 +15,19 @@ Update a SSH Public Key resource.
 ### DefaultParameterSet (Default)
 ```
 Update-AzSshKey -ResourceGroupName <String> -Name <String> -PublicKey <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
-Update-AzSshKey [-ResourceId] <String> -PublicKey <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Update-AzSshKey -ResourceId <String> -PublicKey <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Update-AzSshKey[-InputObject] <PSSshPublicKeyResource> -PublicKey <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzSshKey -InputObject <PSSshPublicKeyResource> -PublicKey <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,9 +37,8 @@ Update a SSH Public Key resource.
 
 ### Example 1
 ```powershell
-PS C:\> $SshKey1 = Get-AzSshKey -ResourceGroupName "testRG" -Name "sshKey1"
-PS C:\> Update-AzSshKey -ResourceGroupName "testRG" -Name "sshKey2" -PublicKey $SshKey1.publickey
-
+$SshKey1 = Get-AzSshKey -ResourceGroupName "testRG" -Name "sshKey1"
+Update-AzSshKey -ResourceGroupName "testRG" -Name "sshKey2" -PublicKey $SshKey1.publickey
 ```
 
 Updates the public key value of 'sshKey2' with public key value from 'sshKey1'
@@ -70,7 +69,7 @@ Parameter Sets: InputObjectParameterSet
 Aliases: SshKey
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -81,7 +80,7 @@ Specifies the name of the Ssh Public Key resource to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: sshkeyName
 
 Required: True
@@ -111,7 +110,7 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: True
@@ -130,9 +129,39 @@ Parameter Sets: ResourceIDParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

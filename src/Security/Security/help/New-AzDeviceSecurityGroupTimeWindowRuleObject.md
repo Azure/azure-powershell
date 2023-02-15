@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/New-AzDeviceSecurityGroupTimeWindowRuleObject
+online version: https://learn.microsoft.com/powershell/module/az.security/New-AzDeviceSecurityGroupTimeWindowRuleObject
 schema: 2.0.0
 ---
 
@@ -25,9 +25,11 @@ The New-AzDeviceSecurityGroupTimeWindowRuleObject cmdlet creates a new list of t
 
 ### Example 1
 ```powershell
-PS C:\> $TimeWindowSize = New-TimeSpan -Minutes 5
-PS C:\> New-AzDeviceSecurityGroupTimeWindowRuleObject -TimeWindowSize $TimeWindowSize -MinThreshold 0 -MaxThreshold 30 -Enabled $true -Type "ActiveConnectionsNotInAllowedRange"
+$TimeWindowSize = New-TimeSpan -Minutes 5
+New-AzDeviceSecurityGroupTimeWindowRuleObject -TimeWindowSize $TimeWindowSize -MinThreshold 0 -MaxThreshold 30 -Enabled $true -Type "ActiveConnectionsNotInAllowedRange"
+```
 
+```output
 RuleType: "ActiveConnectionsNotInAllowedRange"
 DisplayName: "Number of active connections is not in allowed range"
 Description: "Get an alert when the number of active connections of a device in the time window is not in the allowed range"

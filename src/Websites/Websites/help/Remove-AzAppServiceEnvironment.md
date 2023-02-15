@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azappserviceenvironment
+online version: https://learn.microsoft.com/powershell/module/az.websites/remove-azappserviceenvironment
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The **Remove-AzAppServiceEnvironment** cmdlet removes an App Service Environment
 
 ### Example 1 : Delete an App Service Environment
 ```powershell
-PS C:\> Remove-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseName
+Remove-AzAppServiceEnvironment -ResourceGroupName MyResourceGroup -Name MyAseName
 ```
 
 Delete an App Service Environment

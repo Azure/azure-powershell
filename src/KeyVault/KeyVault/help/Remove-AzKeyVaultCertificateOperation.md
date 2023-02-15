@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 2659C06A-AE5B-4F7B-B9EF-069A74E12560
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultcertificateoperation
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultcertificateoperation
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ The **Remove-AzKeyVaultCertificateOperation** cmdlet deletes a certificate opera
 
 ### Example 1: Remove a certificate operation
 ```powershell
-PS C:\> Remove-AzKeyVaultCertificateOperation -VaultName "ContosoKV01" -Name "TestCert01" -Force
+Remove-AzKeyVaultCertificateOperation -VaultName "ContosoKV01" -Name "TestCert01" -Force
+```
 
+```output
 Id                        : https://contosokv01.vault.azure.net/certificates/testcert01/pending
 Status                    : completed
 StatusDetails             :

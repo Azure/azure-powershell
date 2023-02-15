@@ -1,8 +1,8 @@
 {
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+1": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"SafeNet Luna Network HSM A790\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"networkProfile\": {\r\n      \"subnet\": {\r\n        \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"\r\n      },\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"privateIpAddress\": \"10.2.1.120\"\r\n        }\r\n      ]\r\n    },\r\n    \"stampId\": \"stamp1\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -36,10 +36,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"CheckingQuota\",\"statusMessage\":\"Resource creation in progress. Validating subscription device quota...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+2": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -78,10 +78,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Connecting\",\"statusMessage\":\"Resource creation in progress. Connecting the device to the virtual network...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+3": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -120,10 +120,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Connecting\",\"statusMessage\":\"Resource creation in progress. Connecting the device to the virtual network...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+4": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -162,10 +162,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+5": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -204,10 +204,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+6": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -246,10 +246,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+7": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -288,10 +288,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+8": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -330,10 +330,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+9": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -372,10 +372,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+10": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -414,10 +414,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+11": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -456,10 +456,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+12": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -498,10 +498,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+13": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -540,10 +540,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+14": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -582,10 +582,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+15": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -624,10 +624,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Provisioning\",\"statusMessage\":\"Resource creation in progress. Configuring the device...\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+16": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -666,10 +666,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+17": {
+  "New-AzDedicatedHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -708,10 +708,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "Get-AzDedicatedHsm+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2018-10-31+1": {
+  "Get-AzDedicatedHsm+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2021-11-30+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "57" ],
@@ -750,10 +750,10 @@
       "Content": "{\"value\":[{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}]}"
     }
   },
-  "Get-AzDedicatedHsm+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+1": {
+  "Get-AzDedicatedHsm+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "58" ],
@@ -792,10 +792,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "Get-AzDedicatedHsm+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2018-10-31+1": {
+  "Get-AzDedicatedHsm+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2021-11-30+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "59" ],
@@ -834,10 +834,10 @@
       "Content": "{\"value\":[{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}]}"
     }
   },
-  "Get-AzDedicatedHsm+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+1": {
+  "Get-AzDedicatedHsm+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "60" ],
@@ -876,10 +876,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "Get-AzDedicatedHsm+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+2": {
+  "Get-AzDedicatedHsm+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "61" ],
@@ -918,10 +918,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "Update-AzDedicatedHsm+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+1": {
+  "Update-AzDedicatedHsm+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": "{\r\n  \"tags\": {\r\n    \"key1\": \"1\",\r\n    \"key2\": \"2\",\r\n    \"key3\": \"3\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -955,10 +955,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{\"key1\":\"1\",\"key2\":\"2\",\"key3\":\"3\"},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "Update-AzDedicatedHsm+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+1": {
+  "Update-AzDedicatedHsm+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "63" ],
@@ -997,10 +997,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{\"key1\":\"1\",\"key2\":\"2\",\"key3\":\"3\"},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "Update-AzDedicatedHsm+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+2": {
+  "Update-AzDedicatedHsm+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": "{\r\n  \"tags\": {\r\n    \"key4\": \"4\",\r\n    \"key1\": \"1\",\r\n    \"key2\": \"2\",\r\n    \"key3\": \"3\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -1034,10 +1034,10 @@
       "Content": "{\"sku\":{\"name\":\"SafeNet Luna Network HSM A790\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw\",\"name\":\"hsm-vf2jtw\",\"type\":\"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\"location\":\"eastus\",\"tags\":{\"key4\":\"4\",\"key1\":\"1\",\"key2\":\"2\",\"key3\":\"3\"},\"properties\":{\"networkProfile\":{\"subnet\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/virtualNetworks/vnet9ytx2d/subnets/hsmsubnet\"},\"networkInterfaces\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.Network/networkInterfaces/hsm-vf2jtw_HSMnic\",\"privateIpAddress\":\"10.2.1.120\"}]},\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Dedicated HSM device is provisioned successfully and ready to use.\",\"stampId\":\"stamp1\"}}"
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31+1": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "65" ],
@@ -1056,7 +1056,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "023ee789-8940-483c-ba7c-8975a2f4701f" ],
@@ -1077,10 +1077,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+2": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1099,7 +1099,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "07b3da3e-7d3b-452d-a691-d4773cdbef65" ],
@@ -1120,10 +1120,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+3": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1142,7 +1142,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "a00f7df0-95f8-4a9b-96f2-e20bfa31f115" ],
@@ -1163,10 +1163,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+4": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1185,7 +1185,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "26066fed-1aff-4e71-865a-cad1530ac883" ],
@@ -1206,10 +1206,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+5": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1228,7 +1228,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "dcc203d8-0e76-44b3-b24f-706c6ba63286" ],
@@ -1249,10 +1249,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+6": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1271,7 +1271,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "f6718b83-d3f8-4606-8bd6-dcb4a9a0bbf1" ],
@@ -1292,10 +1292,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+7": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1314,7 +1314,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "eb12679b-40fa-4414-9661-f5b96f5af68b" ],
@@ -1335,10 +1335,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+8": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1357,7 +1357,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "f4a6abde-662e-4e25-9db8-6887597db4d5" ],
@@ -1378,10 +1378,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+9": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1400,7 +1400,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "7f4d09a6-066c-460c-be35-0707ccbbb322" ],
@@ -1421,10 +1421,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+10": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1443,7 +1443,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "76c7b10e-17fc-4ac6-88e1-f6935b6e1db1" ],
@@ -1464,10 +1464,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+11": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1486,7 +1486,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "9b1ffe1f-a849-4dd3-be1c-516b75694b9e" ],
@@ -1507,10 +1507,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+12": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1529,7 +1529,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "a9b2c03f-8781-4fda-bf74-5c5e3ef30acf" ],
@@ -1550,10 +1550,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+13": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1572,7 +1572,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "41a88750-e8d7-460f-b14a-cf3d5328f940" ],
@@ -1593,10 +1593,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+14": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1615,7 +1615,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "a5d8335c-e57c-4939-b4ae-ef2f8d3d5520" ],
@@ -1636,10 +1636,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+15": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1658,7 +1658,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "11002ad4-4c23-4ea3-a859-707de197317d" ],
@@ -1679,10 +1679,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+16": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1701,7 +1701,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "7ac7a647-7498-49cd-942b-9974951a7e4c" ],
@@ -1722,10 +1722,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+17": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1744,7 +1744,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "f0e16cd6-cc28-43cd-9f85-440c2b4e981d" ],
@@ -1765,10 +1765,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+18": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1787,7 +1787,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "53e8dfa9-79d9-4518-a163-78969412ea65" ],
@@ -1808,10 +1808,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+19": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+19": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1830,7 +1830,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "64901565-f3fd-4ad8-aba8-06d96cc86dfc" ],
@@ -1851,10 +1851,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+20": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+20": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1873,7 +1873,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "2c429075-1e0a-45c4-a0e6-bcbef5bdb9b4" ],
@@ -1894,10 +1894,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+21": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+21": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1916,7 +1916,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "b68f66b1-5103-4f33-b04d-f317470263eb" ],
@@ -1937,10 +1937,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+22": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+22": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -1959,7 +1959,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "1d9a4344-f89d-4367-a763-c9192e2a559d" ],
@@ -1980,10 +1980,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+23": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+23": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2002,7 +2002,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "3f96627e-e1d5-423d-a95a-69dcf1c61f5e" ],
@@ -2023,10 +2023,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+24": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+24": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2045,7 +2045,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "478a65ef-f323-4aa0-8ee2-4bb1f5e6ce00" ],
@@ -2066,10 +2066,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+25": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+25": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2088,7 +2088,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "a1684d93-fdee-480c-bf93-ced573e54b1d" ],
@@ -2109,10 +2109,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+26": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+26": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2131,7 +2131,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "ee1ce66f-a00c-480a-978b-c76e11222549" ],
@@ -2152,10 +2152,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+27": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+27": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2174,7 +2174,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "4de9519c-e06b-4e40-808c-0d104a63b3c4" ],
@@ -2195,10 +2195,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+28": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+28": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2217,7 +2217,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "e6c5ce8e-2967-441a-b10e-b70245a378ab" ],
@@ -2238,10 +2238,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+29": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+29": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2260,7 +2260,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "1abfd848-172e-4fc0-8ac3-8bf697c9b734" ],
@@ -2281,10 +2281,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+30": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+30": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2303,7 +2303,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "4897f784-c6e1-4baa-afe2-423fb9791c74" ],
@@ -2324,10 +2324,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+31": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+31": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2346,7 +2346,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "8a2b475f-e591-4523-9724-4bb10406b210" ],
@@ -2367,10 +2367,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+32": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+32": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2389,7 +2389,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "122fa838-3969-423b-bd53-870050f4b64d" ],
@@ -2410,10 +2410,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+33": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+33": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2432,7 +2432,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "8798c64e-7ebb-47b1-9eb0-c340ff2b00f6" ],
@@ -2453,10 +2453,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+34": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+34": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2475,7 +2475,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "4fd595b8-04c5-478c-b6ce-9ff7a30555ba" ],
@@ -2496,10 +2496,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+35": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+35": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2518,7 +2518,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "d0c936a2-73f3-47f8-a79f-fc3f14cb04dd" ],
@@ -2539,10 +2539,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+36": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+36": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2561,7 +2561,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "659208a4-06a2-4df5-90a4-2c02e5975fec" ],
@@ -2582,10 +2582,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+37": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+37": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2604,7 +2604,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "6166f729-2b76-474a-a767-a285c9232142" ],
@@ -2625,10 +2625,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+38": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+38": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2647,7 +2647,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "cc0c7ef7-a571-48a1-95ef-35a71eb74627" ],
@@ -2668,10 +2668,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+39": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+39": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2690,7 +2690,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "22636486-0e0f-4033-adc3-fbc7203ba39a" ],
@@ -2711,10 +2711,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+40": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+40": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2733,7 +2733,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "322128fd-1c01-4acf-9e07-4b98e3d77dfc" ],
@@ -2754,10 +2754,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+41": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+41": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2776,7 +2776,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "7912ddf5-f784-4773-aaf1-61770e939212" ],
@@ -2797,10 +2797,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+42": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+42": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2819,7 +2819,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30" ],
         "Retry-After": [ "5" ],
         "x-ms-keyvault-service-version": [ "1.1.131.0" ],
         "x-ms-request-id": [ "42fc79c8-fcbb-4a9b-9514-06c34c0f6494" ],
@@ -2840,10 +2840,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+43": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+43": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2880,10 +2880,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31+44": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30+44": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HardwareSecurityModules/locations/eastus/operationResults/OUUyMjNEQkUtMzM5OS00RTE5LTg4RUItMDk3NUYwMkFDODdGL0RFRElDQVRFREhTTS1SRy0wQlI3MUwvSFNNLVZGMkpUVw?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -2920,10 +2920,10 @@
       "Content": null
     }
   },
-  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2018-10-31+45": {
+  "Remove-AzDedicatedHsm+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2021-11-30+45": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2018-10-31",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs?api-version=2021-11-30",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "109" ],

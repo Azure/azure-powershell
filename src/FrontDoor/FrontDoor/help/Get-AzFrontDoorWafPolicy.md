@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorwafpolicy
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ The **Get-AzFrontDoorWafPolicy** cmdletGet gets WAF policy in a resource group u
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName
+Get-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName
+```
 
+```output
 Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
 ----         ---------- ------------------ ----------------------------- -----------
 {policyName} Prevention            Enabled                           403 https://www.bing.com/
@@ -35,8 +37,10 @@ Get a WAF policy called $policyName in $resourceGroupName
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName
+Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName
+```
 
+```output
 Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
 ----         ---------- ------------------ ----------------------------- -----------
 {policyName} Prevention           Disabled

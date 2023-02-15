@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementidentityproviderclientsecret
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementidentityproviderclientsecret
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Get the identity provider client secret.
 
 ### Example 1: Get the client secret of AAD Type Identity Provider
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\> Get-AzApiManagementIdentityProviderClientSecret -Context $apimContext -Type Aad
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementIdentityProviderClientSecret -Context $apimContext -Type Aad
 ```
 
 Gets the client secret of the Identity Provider Configuration of Azure Active Directory.

@@ -19,8 +19,8 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 using Track1Sdk = Microsoft.Azure.KeyVault.WebKey;
 using System.Security.Cryptography;
-using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 if (JwkHelper.IsEC(extraInfo?.KeyType))
                 {
-                    jwk.Kty = JsonWebKeyType.EllipticCurveHsm; // byok -> hsm
+                    jwk.Kty = Track1Sdk.JsonWebKeyType.EllipticCurveHsm; // byok -> hsm
                     jwk.CurveName = extraInfo.CurveName;
                 }
 
@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
         }
 
-        public Track2Sdk.JsonWebKey ConvertToTrack2SdkKeyFromFile(FileInfo fileInfo, SecureString password)
+        public Track2Sdk.JsonWebKey ConvertToTrack2SdkKeyFromFile(FileInfo fileInfo, SecureString password, WebKeyConverterExtraInfo extraInfo = null)
         {
             if (CanProcess(fileInfo))
-                return ConvertToTrack2SdkJsonWebKey(fileInfo.FullName);
+                return ConvertToTrack2SdkJsonWebKey(fileInfo.FullName, extraInfo);
             else if (next != null)
-                return next.ConvertToTrack2SdkKeyFromFile(fileInfo, password);
+                return next.ConvertToTrack2SdkKeyFromFile(fileInfo, password, extraInfo);
             else
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
         }
@@ -85,14 +85,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             };
         }
 
-        private Track2Sdk.JsonWebKey ConvertToTrack2SdkJsonWebKey(string byokFileName)
+        private Track2Sdk.JsonWebKey ConvertToTrack2SdkJsonWebKey(string byokFileName, WebKeyConverterExtraInfo extraInfo = null)
         {
             byte[] byokBlob = File.ReadAllBytes(byokFileName);
 
             if (byokBlob == null || byokBlob.Length == 0)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "BYOK"));
 
-            return new Track2Sdk.JsonWebKey(new RSACryptoServiceProvider())
+            return new Track2Sdk.JsonWebKey(new RSACryptoServiceProvider(), default, extraInfo?.KeyOps?.Select(op => new Track2Sdk.KeyOperation(op)))
             {
                 KeyType = Track2Sdk.KeyType.RsaHsm,
                 T = byokBlob,

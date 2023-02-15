@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: BAC2FA68-1D82-411D-A853-FD4EE525B533
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmssnetworkinterfaceconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmssnetworkinterfaceconfiguration
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ The **Add-AzVmssNetworkInterfaceConfiguration** cmdlet adds a network interface 
 ## EXAMPLES
 
 ### Example 1: Add a network interface configuration to the VMSS
-```
-PS C:\> Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "Test" -Primary $True -IPConfiguration $IPCfg
+```powershell
+Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "Test" -Primary $True -IPConfiguration $IPCfg
 ```
 
 This command adds a network interface configuration to the VMSS.

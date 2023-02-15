@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbsqlstoredprocedure
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbsqlstoredprocedure
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ The **Remove-AzCosmosDBSqlStoredProcedure** cmdlet deletes the CosmosDB Sql Stor
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCosmosDBSqlStoredProcedure -ResourceGroupName {resourceGroupName} -AccountName {accountName} -DatabaseName {databaseName} -ContainerName {containerName} -Name {storedProcedureName}
+Remove-AzCosmosDBSqlStoredProcedure -ResourceGroupName "resourceGroupName" -AccountName "accountName" -DatabaseName "databaseName" -ContainerName "containerName" -Name "storedProcedureName"
 ```
 
 ## PARAMETERS

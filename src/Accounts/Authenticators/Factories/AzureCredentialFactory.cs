@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
             return new ManagedIdentityCredential(clientId);
         }
 
-        public virtual TokenCredential CreateClientSecretCredential(string tenantId, string clientId, SecureString secret, ClientCertificateCredentialOptions options)
+        public virtual TokenCredential CreateClientSecretCredential(string tenantId, string clientId, SecureString secret, ClientSecretCredentialOptions options)
         {
             return new ClientSecretCredential(tenantId, clientId, secret.ConvertToString(), options);
         }
@@ -40,6 +40,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
         public virtual TokenCredential CreateClientCertificateCredential(string tenantId, string clientId, string certificatePath, ClientCertificateCredentialOptions options)
         {
             return new ClientCertificateCredential(tenantId, clientId, certificatePath, options);
+	}
+
+        public virtual TokenCredential CreateSharedTokenCacheCredentials(SharedTokenCacheCredentialOptions options)
+        {
+            return new SharedTokenCacheCredential(options);
         }
     }
 }

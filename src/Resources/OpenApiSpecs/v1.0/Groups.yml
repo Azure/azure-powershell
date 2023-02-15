@@ -1,0 +1,941 @@
+openapi: 3.0.1
+info:
+  title: Groups
+  version: v1.0
+servers:
+  - url: https://graph.microsoft.com/v1.0/
+    description: Core
+paths:
+  /groups:
+    get:
+      tags:
+        - groups.group
+      summary: Get entities from groups
+      operationId: groups.group_ListGroup
+      parameters:
+        - name: ConsistencyLevel
+          in: header
+          description: 'Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/'
+          schema:
+            type: string
+          examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - id desc
+                - deletedDateTime
+                - deletedDateTime desc
+                - assignedLabels
+                - assignedLabels desc
+                - assignedLicenses
+                - assignedLicenses desc
+                - classification
+                - classification desc
+                - createdDateTime
+                - createdDateTime desc
+                - description
+                - description desc
+                - displayName
+                - displayName desc
+                - expirationDateTime
+                - expirationDateTime desc
+                - groupTypes
+                - groupTypes desc
+                - hasMembersWithLicenseErrors
+                - hasMembersWithLicenseErrors desc
+                - isAssignableToRole
+                - isAssignableToRole desc
+                - licenseProcessingState
+                - licenseProcessingState desc
+                - mail
+                - mail desc
+                - mailEnabled
+                - mailEnabled desc
+                - mailNickname
+                - mailNickname desc
+                - membershipRule
+                - membershipRule desc
+                - membershipRuleProcessingState
+                - membershipRuleProcessingState desc
+                - onPremisesDomainName
+                - onPremisesDomainName desc
+                - onPremisesLastSyncDateTime
+                - onPremisesLastSyncDateTime desc
+                - onPremisesNetBiosName
+                - onPremisesNetBiosName desc
+                - onPremisesProvisioningErrors
+                - onPremisesProvisioningErrors desc
+                - onPremisesSamAccountName
+                - onPremisesSamAccountName desc
+                - onPremisesSecurityIdentifier
+                - onPremisesSecurityIdentifier desc
+                - onPremisesSyncEnabled
+                - onPremisesSyncEnabled desc
+                - preferredDataLocation
+                - preferredDataLocation desc
+                - preferredLanguage
+                - preferredLanguage desc
+                - proxyAddresses
+                - proxyAddresses desc
+                - renewedDateTime
+                - renewedDateTime desc
+                - securityEnabled
+                - securityEnabled desc
+                - securityIdentifier
+                - securityIdentifier desc
+                - theme
+                - theme desc
+                - visibility
+                - visibility desc
+                - allowExternalSenders
+                - allowExternalSenders desc
+                - autoSubscribeNewMembers
+                - autoSubscribeNewMembers desc
+                - hideFromAddressLists
+                - hideFromAddressLists desc
+                - hideFromOutlookClients
+                - hideFromOutlookClients desc
+                - isSubscribedByMail
+                - isSubscribedByMail desc
+                - unseenCount
+                - unseenCount desc
+                - isArchived
+                - isArchived desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - deletedDateTime
+                - assignedLabels
+                - assignedLicenses
+                - classification
+                - createdDateTime
+                - description
+                - displayName
+                - expirationDateTime
+                - groupTypes
+                - hasMembersWithLicenseErrors
+                - isAssignableToRole
+                - licenseProcessingState
+                - mail
+                - mailEnabled
+                - mailNickname
+                - membershipRule
+                - membershipRuleProcessingState
+                - onPremisesDomainName
+                - onPremisesLastSyncDateTime
+                - onPremisesNetBiosName
+                - onPremisesProvisioningErrors
+                - onPremisesSamAccountName
+                - onPremisesSecurityIdentifier
+                - onPremisesSyncEnabled
+                - preferredDataLocation
+                - preferredLanguage
+                - proxyAddresses
+                - renewedDateTime
+                - securityEnabled
+                - securityIdentifier
+                - theme
+                - visibility
+                - allowExternalSenders
+                - autoSubscribeNewMembers
+                - hideFromAddressLists
+                - hideFromOutlookClients
+                - isSubscribedByMail
+                - unseenCount
+                - isArchived
+                - appRoleAssignments
+                - createdOnBehalfOf
+                - memberOf
+                - members
+                - membersWithLicenseErrors
+                - owners
+                - permissionGrants
+                - settings
+                - transitiveMemberOf
+                - transitiveMembers
+                - acceptedSenders
+                - calendar
+                - calendarView
+                - conversations
+                - events
+                - photo
+                - photos
+                - rejectedSenders
+                - threads
+                - drive
+                - drives
+                - sites
+                - extensions
+                - groupLifecyclePolicies
+                - planner
+                - onenote
+                - team
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - appRoleAssignments
+                - createdOnBehalfOf
+                - memberOf
+                - members
+                - membersWithLicenseErrors
+                - owners
+                - permissionGrants
+                - settings
+                - transitiveMemberOf
+                - transitiveMembers
+                - acceptedSenders
+                - calendar
+                - calendarView
+                - conversations
+                - events
+                - photo
+                - photos
+                - rejectedSenders
+                - threads
+                - drive
+                - drives
+                - sites
+                - extensions
+                - groupLifecyclePolicies
+                - planner
+                - onenote
+                - team
+              type: string
+      responses:
+        '200':
+          description: Retrieved entities
+          content:
+            application/json:
+              schema:
+                title: Collection of group
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/microsoft.graph.group'
+                  '@odata.nextLink':
+                    type: string
+                additionalProperties:
+                  type: object
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-pageable:
+        nextLinkName: '@odata.nextLink'
+        operationName: listMore
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - groups.group
+      summary: Add new entity to groups
+      operationId: groups.group_CreateGroup
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/microsoft.graph.group'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.group'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/groups/{group-id}':
+    get:
+      tags:
+        - groups.group
+      summary: Get entity from groups by key
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      operationId: groups.group_GetGroup
+      parameters:
+        - name: group-id
+          in: path
+          description: 'key: id of group'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - name: ConsistencyLevel
+          in: header
+          description: 'Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/'
+          schema:
+            type: string
+          examples:
+            example-1:
+              description: $search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'.
+              value: eventual
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - deletedDateTime
+                - assignedLabels
+                - assignedLicenses
+                - classification
+                - createdDateTime
+                - description
+                - displayName
+                - expirationDateTime
+                - groupTypes
+                - hasMembersWithLicenseErrors
+                - isAssignableToRole
+                - licenseProcessingState
+                - mail
+                - mailEnabled
+                - mailNickname
+                - membershipRule
+                - membershipRuleProcessingState
+                - onPremisesDomainName
+                - onPremisesLastSyncDateTime
+                - onPremisesNetBiosName
+                - onPremisesProvisioningErrors
+                - onPremisesSamAccountName
+                - onPremisesSecurityIdentifier
+                - onPremisesSyncEnabled
+                - preferredDataLocation
+                - preferredLanguage
+                - proxyAddresses
+                - renewedDateTime
+                - securityEnabled
+                - securityIdentifier
+                - theme
+                - visibility
+                - allowExternalSenders
+                - autoSubscribeNewMembers
+                - hideFromAddressLists
+                - hideFromOutlookClients
+                - isSubscribedByMail
+                - unseenCount
+                - isArchived
+                - appRoleAssignments
+                - createdOnBehalfOf
+                - memberOf
+                - members
+                - membersWithLicenseErrors
+                - owners
+                - permissionGrants
+                - settings
+                - transitiveMemberOf
+                - transitiveMembers
+                - acceptedSenders
+                - calendar
+                - calendarView
+                - conversations
+                - events
+                - photo
+                - photos
+                - rejectedSenders
+                - threads
+                - drive
+                - drives
+                - sites
+                - extensions
+                - groupLifecyclePolicies
+                - planner
+                - onenote
+                - team
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - appRoleAssignments
+                - createdOnBehalfOf
+                - memberOf
+                - members
+                - membersWithLicenseErrors
+                - owners
+                - permissionGrants
+                - settings
+                - transitiveMemberOf
+                - transitiveMembers
+                - acceptedSenders
+                - calendar
+                - calendarView
+                - conversations
+                - events
+                - photo
+                - photos
+                - rejectedSenders
+                - threads
+                - drive
+                - drives
+                - sites
+                - extensions
+                - groupLifecyclePolicies
+                - planner
+                - onenote
+                - team
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.group'
+          links:
+            appRoleAssignments:
+              operationId: groups.ListAppRoleAssignments
+              parameters:
+                group-id: $request.path.group-id
+            createdOnBehalfOf:
+              operationId: groups.GetCreatedOnBehalfOf
+              parameters:
+                group-id: $request.path.group-id
+            memberOf:
+              operationId: groups.ListMemberOf
+              parameters:
+                group-id: $request.path.group-id
+            members:
+              operationId: groups.ListMembers
+              parameters:
+                group-id: $request.path.group-id
+            membersWithLicenseErrors:
+              operationId: groups.ListMembersWithLicenseErrors
+              parameters:
+                group-id: $request.path.group-id
+            owners:
+              operationId: groups.ListOwners
+              parameters:
+                group-id: $request.path.group-id
+            permissionGrants:
+              operationId: groups.ListPermissionGrants
+              parameters:
+                group-id: $request.path.group-id
+            settings:
+              operationId: groups.ListSettings
+              parameters:
+                group-id: $request.path.group-id
+            transitiveMemberOf:
+              operationId: groups.ListTransitiveMemberOf
+              parameters:
+                group-id: $request.path.group-id
+            transitiveMembers:
+              operationId: groups.ListTransitiveMembers
+              parameters:
+                group-id: $request.path.group-id
+            acceptedSenders:
+              operationId: groups.ListAcceptedSenders
+              parameters:
+                group-id: $request.path.group-id
+            calendar:
+              operationId: groups.GetCalendar
+              parameters:
+                group-id: $request.path.group-id
+            calendarView:
+              operationId: groups.ListCalendarView
+              parameters:
+                group-id: $request.path.group-id
+            conversations:
+              operationId: groups.ListConversations
+              parameters:
+                group-id: $request.path.group-id
+            events:
+              operationId: groups.ListEvents
+              parameters:
+                group-id: $request.path.group-id
+            photo:
+              operationId: groups.GetPhoto
+              parameters:
+                group-id: $request.path.group-id
+            photos:
+              operationId: groups.ListPhotos
+              parameters:
+                group-id: $request.path.group-id
+            rejectedSenders:
+              operationId: groups.ListRejectedSenders
+              parameters:
+                group-id: $request.path.group-id
+            threads:
+              operationId: groups.ListThreads
+              parameters:
+                group-id: $request.path.group-id
+            drive:
+              operationId: groups.GetDrive
+              parameters:
+                group-id: $request.path.group-id
+            drives:
+              operationId: groups.ListDrives
+              parameters:
+                group-id: $request.path.group-id
+            sites:
+              operationId: groups.ListSites
+              parameters:
+                group-id: $request.path.group-id
+            extensions:
+              operationId: groups.ListExtensions
+              parameters:
+                group-id: $request.path.group-id
+            groupLifecyclePolicies:
+              operationId: groups.ListGroupLifecyclePolicies
+              parameters:
+                group-id: $request.path.group-id
+            planner:
+              operationId: groups.GetPlanner
+              parameters:
+                group-id: $request.path.group-id
+            onenote:
+              operationId: groups.GetOnenote
+              parameters:
+                group-id: $request.path.group-id
+            team:
+              operationId: groups.GetTeam
+              parameters:
+                group-id: $request.path.group-id
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - groups.group
+      summary: Update entity in groups
+      description: Update entity in groups
+      operationId: groups.group_UpdateGroup
+      parameters:
+        - name: group-id
+          in: path
+          description: 'key: id of group'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/microsoft.graph.group'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - groups.group
+      summary: Delete entity from groups
+      description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+      operationId: groups.group_DeleteGroup
+      parameters:
+        - name: group-id
+          in: path
+          description: 'key: id of group'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+components:
+  schemas:
+    microsoft.graph.group:
+      allOf:
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - title: group
+          type: object
+          properties:
+            classification:
+              type: string
+              description: 'Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).'
+              nullable: true
+            createdDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              readOnly: true
+              description: 'Timestamp of when the group was created. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, NOT, ge, le, in). Read-only.'
+              format: date-time
+              nullable: true
+            description:
+              type: string
+              description: 'An optional description for the group. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.'
+              nullable: true
+            displayName:
+              type: string
+              description: 'The display name for the group. This property is required when a group is created and cannot be cleared during updates. Returned by default. Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.'
+              nullable: true
+            expirationDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              readOnly: true
+              description: 'Timestamp of when the group is set to expire. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, NOT, ge, le, in). Read-only.'
+              format: date-time
+              nullable: true
+            groupTypes:
+              type: array
+              items:
+                type: string
+              description: 'Specifies the group type and its membership.  If the collection contains Unified, the group is a Microsoft 365 group; otherwise, it''s either a security group or distribution group. For details, see groups overview.If the collection includes DynamicMembership, the group has dynamic membership; otherwise, membership is static.  Returned by default. Supports $filter (eq, NOT).'
+            hasMembersWithLicenseErrors:
+              type: boolean
+              description: 'Indicates whether there are members in this group that have license errors from its group-based license assignment. This property is never returned on a GET operation. You can use it as a $filter argument to get groups that have members with license errors (that is, filter for this property being true).  Supports $filter (eq).'
+              nullable: true
+            isAssignableToRole:
+              type: boolean
+              description: 'Indicates whether this group can be assigned to an Azure Active Directory role.This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true and the group cannot be a dynamic group (that is, groupTypes cannot contain DynamicMembership). Only callers in Global administrator and Privileged role administrator roles can set this property. The caller must also be assigned the Directory.AccessAsUser.All permission to set this property. For more, see Using a group to manage Azure AD role assignmentsReturned by default. Supports $filter (eq, ne, NOT).'
+              nullable: true
+            mail:
+              type: string
+              readOnly: true
+              description: 'The SMTP address for the group, for example, ''serviceadmins@contoso.onmicrosoft.com''. Returned by default. Read-only. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            mailEnabled:
+              type: boolean
+              description: 'Specifies whether the group is mail-enabled. Returned by default. Supports $filter (eq, ne, NOT).'
+              nullable: true
+            mailNickname:
+              type: string
+              description: 'The mail alias for the group, unique in the organization. This property must be specified when a group is created. These characters cannot be used in the mailNickName: @()/[]'';:.<>,SPACE. Returned by default. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            membershipRule:
+              type: string
+              description: 'The rule that determines members for this group if the group is a dynamic group (groupTypes contains DynamicMembership). For more information about the syntax of the membership rule, see Membership Rules syntax. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith).'
+              nullable: true
+            membershipRuleProcessingState:
+              type: string
+              description: 'Indicates whether the dynamic membership processing is on or paused. Possible values are On or Paused. Returned by default. Supports $filter (eq, ne, NOT, in).'
+              nullable: true
+            preferredDataLocation:
+              type: string
+              description: 'The preferred data location for the group. For more information, see  OneDrive Online Multi-Geo. Returned by default.'
+              nullable: true
+            preferredLanguage:
+              type: string
+              description: 'The preferred language for a Microsoft 365 group. Should follow ISO 639-1 Code; for example ''en-US''. Returned by default. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
+              nullable: true
+            proxyAddresses:
+              type: array
+              items:
+                type: string
+              readOnly: true
+              description: 'Email addresses for the group that direct to the same group mailbox. For example: [''SMTP: bob@contoso.com'', ''smtp: bob@sales.contoso.com'']. The any operator is required for filter expressions on multi-valued properties. Returned by default. Read-only. Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).'
+            renewedDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              readOnly: true
+              description: 'Timestamp of when the group was last renewed. This cannot be modified directly and is only updated via the renew service action. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, NOT, ge, le, in). Read-only.'
+              format: date-time
+              nullable: true
+            securityEnabled:
+              type: boolean
+              description: 'Specifies whether the group is a security group. Returned by default. Supports $filter (eq, ne, NOT, in).'
+              nullable: true
+            securityIdentifier:
+              type: string
+              description: 'Security identifier of the group, used in Windows scenarios. Returned by default.'
+              nullable: true
+            theme:
+              type: string
+              description: 'Specifies a Microsoft 365 group''s color theme. Possible values are Teal, Purple, Green, Blue, Pink, Orange or Red. Returned by default.'
+              nullable: true
+            visibility:
+              type: string
+              description: 'Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or Hiddenmembership. Hiddenmembership can be set only for Microsoft 365 groups, when the groups are created. It can''t be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. See group visibility options to learn more. Returned by default.'
+              nullable: true
+            isArchived:
+              type: boolean
+              nullable: true
+            appRoleAssignments:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
+              description: Represents the app roles a group has been granted for an application. Supports $expand.
+            createdOnBehalfOf:
+              $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+            memberOf:
+              type: array
+              items:
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
+              description: 'Groups and administrative units that this group is a member of. HTTP Methods: GET (supported for all groups). Read-only. Nullable. Supports $expand.'
+            members:
+              type: array
+              items:
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
+              description: 'Users, contacts, and groups that are members of this group. HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only. Nullable. Supports $expand.'
+            membersWithLicenseErrors:
+              type: array
+              items:
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
+              description: A list of group members with license errors from this group-based license assignment. Read-only.
+            owners:
+              type: array
+              items:
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
+              description: 'The owners of the group. The owners are a set of non-admin users who are allowed to modify this object. HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only. Nullable. Supports $expand.'
+            permissionGrants:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant'
+              description: The permissions that have been granted for a group to a specific application. Supports $expand.
+            groupLifecyclePolicies:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.groupLifecyclePolicy'
+              readOnly: true
+              description: The collection of lifecycle policies for this group. Read-only. Nullable.
+          additionalProperties:
+            type: object
+          description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+    microsoft.graph.appRoleAssignment:
+      allOf:
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - title: appRoleAssignment
+          type: object
+          properties:
+            appRoleId:
+              pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+              type: string
+              description: 'The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application''s service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.'
+              format: uuid
+            createdDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: 'The time when the app role assignment was created.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.'
+              format: date-time
+              nullable: true
+            principalDisplayName:
+              type: string
+              description: 'The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).'
+              nullable: true
+            principalId:
+              pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+              type: string
+              description: 'The unique identifier (id) for the user, group or service principal being granted the app role. Required on create.'
+              format: uuid
+              nullable: true
+            principalType:
+              type: string
+              description: 'The type of the assigned principal. This can either be User, Group or ServicePrincipal. Read-only.'
+              nullable: true
+            resourceDisplayName:
+              type: string
+              description: The display name of the resource app's service principal to which the assignment is made.
+              nullable: true
+            resourceId:
+              pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+              type: string
+              description: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
+              format: uuid
+              nullable: true
+          additionalProperties:
+            type: object
+          description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+    microsoft.graph.resourceSpecificPermissionGrant:
+      allOf:
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
+        - title: resourceSpecificPermissionGrant
+          type: object
+          properties:
+            clientAppId:
+              type: string
+              description: ID of the service principal of the Azure AD app that has been granted access. Read-only.
+              nullable: true
+            clientId:
+              type: string
+              description: ID of the Azure AD app that has been granted access. Read-only.
+              nullable: true
+            permission:
+              type: string
+              description: The name of the resource-specific permission. Read-only.
+              nullable: true
+            permissionType:
+              type: string
+              description: 'The type of permission. Possible values are: Application, Delegated. Read-only.'
+              nullable: true
+            resourceAppId:
+              type: string
+              description: ID of the Azure AD app that is hosting the resource. Read-only.
+              nullable: true
+          additionalProperties:
+            type: object
+          description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+    microsoft.graph.groupLifecyclePolicy:
+      allOf:
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.entity'
+        - title: groupLifecyclePolicy
+          type: object
+          properties:
+            alternateNotificationEmails:
+              type: string
+              description: List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.
+              nullable: true
+            groupLifetimeInDays:
+              maximum: 2147483647
+              minimum: -2147483648
+              type: integer
+              description: 'Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.'
+              format: int32
+              nullable: true
+            managedGroupTypes:
+              type: string
+              description: 'The group type for which the expiration policy applies. Possible values are All, Selected or None.'
+              nullable: true
+          additionalProperties:
+            type: object
+    odata.error:
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/odata.error.main'
+      additionalProperties:
+        type: object
+    odata.error.main:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/odata.error.detail'
+        innererror:
+          type: object
+          additionalProperties:
+            type: object
+          description: The structure of this object is service-specific
+      additionalProperties:
+        type: object
+    odata.error.detail:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+      additionalProperties:
+        type: object
+  responses:
+    error:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/odata.error'
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Show only the first n items
+      schema:
+        minimum: 0
+        type: integer
+      example: 50
+    skip:
+      name: $skip
+      in: query
+      description: Skip the first n items
+      schema:
+        minimum: 0
+        type: integer
+    search:
+      name: $search
+      in: query
+      description: Search items by search phrases
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: Filter items by property values
+      schema:
+        type: string
+        x-ms-skip-url-encoding: true
+    count:
+      name: $count
+      in: query
+      description: Include count of items
+      schema:
+        type: boolean
+  securitySchemes:
+    azureaadv2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: { }
+security:
+  - azureaadv2: [ ]

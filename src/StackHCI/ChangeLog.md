@@ -19,6 +19,62 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.2
+* Added Remote Support terms and conditions for HCI device types.
+* Unified Resource Group support for both Azure Stack HCI and Arc for server resources.
+* Enhanced error feedback and logging in the Register-AzStackHCI cmdlet.
+* Bug fixes and improvements in Azure Arc for servers enablement in Register-AzStackHCI cmdlet.
+* Improved parameter validations in the Register-AzStackHCI cmdlet.
+* Enabled Managed System Identity (MSI) for Registration in Fairfax Cloud.
+* Minor bug fixes and improvements.
+
+## Version 1.4.1
+* Added support for arc extensions which depend on HCI cluster's IMDS endpoints.
+
+## Version 1.4.0
+* Enabled system-assigned identity on HCI cluster resource registration and repair registration flow.
+* Added error message in the command Register-AzStackHCI if Arc is not enabled.
+* Added default region confirmation prompt if the region is not mentioned in the command Register-AzStackHCI.
+* Added general logging improvements.
+* Added logic that skipping the Arc SPN permission check in Register-AzStackHCI if a customer doesn't have the required permissions to read Arc SPN credential.
+* Added deprecation message for the command Test-AzStackHCIConnection. Customers can use Invoke-AzStackHciConnectivityValidation from the module AzStackHCI.EnvironmentChecker for connectivity verification tests.
+
+## Version 1.3.2
+* Supported WDAC compliant APIs
+* Fixed module versions of dependent PS modules
+* Updated Remote Support cmdlets to check device type between HCIv2 and AzureEdge
+
+## Version 1.3.1
+* Made GraphAccessToken parameter obsolete in Register-AzStackHCI, Unregister-AzStackHCI and Set-AzStackHCI cmdlets. This is because Az.StackHCI module does not depend on Azure AD anymore.
+* Include API version for all Microsoft.AzStackHCI related AZ-Resource calls
+
+## Version 1.3.0
+* Added support to Stack HCI Cluster
+* Added support to Stack HCI Extension
+* Added support to Stack HCI Arc Settings
+
+## Version 1.2.0
+* Improved Registration process for Register-AzStackHCI cmdlet
+    - All Azure AD related operations are now moved to HCI Cloud Services
+    - Register-AzStackHCI and UnRegister-AzStackHCI cmdlets no more use AzureAD PS module
+* Added support to register hybridConnectivity RP in Canary and Public clouds
+* Added support for Region Specific ServiceEndpoints
+    -Service endpoints are now specified by HCI Cloud services instead of it being hardcoded in the PS module
+* Added support to specify ArcServerResourceGroupName to Register-AzStackHCI cmdlet
+    - Now we can specify the resource group into which the ARC resource gets projected using 'ArcServerResourceGroupName' parameter during registration
+* Check ResourceProvider is already registered before attempting to register it during Register-AzStackHCI cmdlet
+    - Register-AzStackHCI cmdlet now does not take any action if required Resource Providers are already registered. This allows users with Roles who do not have permissions to register resource providers to still perform registration operation
+* Supported for writing event log entries from registration cmdlets
+    - Register-AzStackHCI and UnRegister-AzStackHCI flows will now write events to Node log reflecting the status  of registration. Events will be logged under source name "HCI Registration"
+
+## Version 1.1.1
+* Updated firewall rules for Attestation network to block all other traffic
+* Updated cluster to ignore Attestation network
+
+## Version 1.1.0
+* Adding support cmdlet for Remote Support 
+    - New cmdlets - Install-AzStackHCIRemoteSupport, Remove-AzStackHCIRemoteSupport, Enable-AzStackHCIRemoteSupport, Disable-AzStackHCIRemoteSupport, Get-AzStackHCIRemoteSupportAccess,Get-AzStackHCIRemoteSupportSessionHistory
+    
 ## Version 1.0.0
 * Promoted Az.StackHCI to GA
 

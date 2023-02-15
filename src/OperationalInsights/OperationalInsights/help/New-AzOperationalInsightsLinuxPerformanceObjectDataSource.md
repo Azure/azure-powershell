@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: F94F3FA8-08FD-4B25-B634-8E2EEBDDE36E
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightslinuxperformanceobjectdatasource
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightslinuxperformanceobjectdatasource
 schema: 2.0.0
 ---
 
@@ -32,6 +32,24 @@ New-AzOperationalInsightsLinuxPerformanceObjectDataSource [-Workspace] <PSWorksp
 The **New-AzOperationalInsightsLinuxPerformanceObjectDataSource** cmdlet adds performance counters from which Azure Operational Insights collects data to all Linux computers in a workspace.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsWorkspace -Name performance -ObjectName object -CounterNames counter
+```
+
+```output
+Name              : performance
+ResourceGroupName : testrg
+WorkspaceName     : LogAnalyticsWorkspace
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/testrg/providers/Microsoft.Ope
+                    rationalInsights/workspaces/LogAnalyticsWorkspace/datasources/performance
+Kind              : LinuxPerformanceObject
+Properties        : {"objectName":"object","instanceName":"*","intervalSeconds":15,"performanceCounters":[{"counterName
+                    ":"counter"}]}
+```
+
+Add performance counters from which Azure Operational Insights collects data to all Linux computers in a workspace
 
 ## PARAMETERS
 

@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the VMware service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,18 +47,19 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 87fe548940e52c5f46fd86ac587de9c1f4bdde83
+branch: 2e665b044670074d91e8a9e6d04f23fbe3c8a06e
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 
-  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-06-01/vmware.json
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json
 
-module-version: 0.3.0
+module-version: 0.4.0
 title: VMware
 subject-prefix: $(service-name)
-resourcegroup-append: true
 
 identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
   - from: swagger-document 
@@ -85,6 +86,9 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
+      variant: ^Restrict$|^RestrictViaIdentity$
+    remove: true
+  - where:
       verb: Set
     remove: true
   - where:
@@ -101,7 +105,11 @@ directive:
     hide: true
   - where:
       verb: Get|New|Remove
-      subject: ScriptExecution|WorkloadNetworkPublicIP|Datastore
+      subject: ScriptExecution|WorkloadNetworkPublicIP
+    hide: true
+  - where:
+      verb: Lock
+      subject: VirtualMachineMovement
     hide: true
   - where:
       verb: Get|New|Update|Remove
@@ -111,19 +119,23 @@ directive:
       verb: New|Get|Remove
       subject: HcxEnterpriseSite
     remove: true
-  - no-inline:
-      - AddonProperties
-  - model-cmdlet:
-      - ScriptSecureStringExecutionParameter
-      - ScriptStringExecutionParameter
-      - PSCredentialExecutionParameter
-      - AddonSrmProperties
-      - AddonVrProperties
   - where:
       verb: Test
       subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$
       variant: ^CheckViaIdentity$
     remove: true
+  - no-inline:
+      - AddonProperties
+      - PlacementPolicyProperties
+  # Re-name and custom it
+  # - model-cmdlet:
+  #     - VMPlacementPolicyProperties
+  #     - VmHostPlacementPolicyProperties
+  #     - ScriptSecureStringExecutionParameter
+  #     - ScriptStringExecutionParameter
+  #     - PSCredentialExecutionParameter
+  #     - AddonSrmProperties
+  #     - AddonVrProperties
   - where:
       verb: Get
       subject: ^PrivateCloudAdminCredentials$
@@ -158,6 +170,11 @@ directive:
       parameter-name: DnsServiceId
     set:
       parameter-name: DnsServiceName
+  - where:
+      subject: ^Cluster$
+      parameter-name: PropertiesHosts
+    set:
+      parameter-name: PropertiesHost
   - where:
       verb: New|Get|Update|Remove
       subject: ^WorkloadNetworkDnsZone$
@@ -200,4 +217,13 @@ directive:
       parameter-name: PeerExpressRouteCircuit
     set:
       parameter-name: PeerExpressRouteResourceId
+  - where:
+      model-name: Datastore
+    set:
+      format-table:
+        properties:
+          - Name
+          - Status
+          - ProvisioningState
+          - ResourceGroupName
 ```

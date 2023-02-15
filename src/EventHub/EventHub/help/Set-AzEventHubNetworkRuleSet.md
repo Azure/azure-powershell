@@ -1,97 +1,148 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubnetworkruleset
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubnetworkruleset
 schema: 2.0.0
 ---
 
 # Set-AzEventHubNetworkRuleSet
 
 ## SYNOPSIS
-Update the NetworkruleSet of the given Namespace in the current Azure subscription.
+Sets an EventHub Namespace Network Rule Set
 
 ## SYNTAX
 
-### NetworkRuleSetPropertiesSet (Default)
+### SetExpanded (Default)
 ```
-Set-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-DefaultAction <String>]
- [-TrustedServiceAccessEnabled] [-IPRule] <PSNWRuleSetIpRulesAttributes[]>
- [-VirtualNetworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]> [-DefaultProfile <IAzureContextContainer>]
+Set-AzEventHubNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-TrustedServiceAccessEnabled] [-DefaultAction <DefaultAction>]
+ [-IPRule <INwRuleSetIPRules[]>] [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetViaIdentityExpanded
+```
+Set-AzEventHubNetworkRuleSet -InputObject <IEventHubIdentity> [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-TrustedServiceAccessEnabled] [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
+ [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NetwrokruleSetInputObjectSet
-```
-Set-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
- [-InputObject] <PSNetworkRuleSetAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### NetworkRuleSetResourceIdParameterSet
-```
-Set-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-ResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Update the NetworkruleSet of the given Namespace in the current Azure subscription.
+Sets an EventHub Namespace Network Rule Set
 
 ## EXAMPLES
 
-### Example 1 
+### Example 1: Add IP Rules and Virtual Network Rules to a Network Rule Set
 ```powershell
-PS C:\> $IpRules = @([Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "4.4.4.4";Action = "Allow"},[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "3.3.3.3";Action = "Allow"})
-PS C:\> $VirtualNetworkRules = @([Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]@{Subnet=@{Id="/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"};IgnoreMissingVnetServiceEndpoint=$True})
-PS C:\> Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace EventHub-Namespace1-1375 -IPRule $IpRules -VirtualNetworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
-
+$ipRule1 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
+$ipRule2 = New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
+$virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId '/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default'
+$networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$networkRuleSet.IPRule += $ipRule1
+$networkRuleSet.IPRule += $ipRule2
+$networkRuleSet.VirtualNetworkRule += $virtualNetworkRule1
+Set-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace -IPRule $ipRule1,$ipRule2 -VirtualNetworkRule $virtualNetworkRule1,$virtualNetworkRule2,$virtualNetworkRule3
 ```
 
-Name                : default
-DefaultAction       : Allow
-Id                  : /subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1122/networkRuleSets/default
-Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
-IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
-VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
-
-Update the NetworkRuleSet using -IPRule and -VirtualNetworkRule parameters
-
-### Example 2
-```powershell
-PS C:\> $getresult = Get-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-1375
-PS C:\> Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-1375 -InputObject $getresult
+```output
+DefaultAction                : Deny
+IPRule                       : {{
+                                 "ipMask": "1.1.1.1",
+                                 "action": "Allow"
+                               }, {
+                                 "ipMask": "2.2.2.2",
+                                 "action": "Allow"
+                               }, {
+                                 "ipMask": "3.3.3.3",
+                                 "action": "Allow"
+                               }}
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/
+                               default
+Location                     : Australia East
+Name                         : default
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : Default-EventHub-6229
+TrustedServiceAccessEnabled  :
+Type                         : Microsoft.EventHub/Namespaces/NetworkRuleSets
+VirtualNetworkRule           : {{
+                                 "subnet": {
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default"
+                                 },
+                                 "ignoreMissingVnetServiceEndpoint": false
+                               },{
+                                 "subnet": {
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/mySubnet"
+                                 },
+                                 "ignoreMissingVnetServiceEndpoint": false
+                               }}
 ```
 
-Name                : default
-DefaultAction       : Allow
-Id                  : /subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1122/networkRuleSets/default
-Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
-IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
-VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
+Appends virtual network rules and IPRules to the existing rules.
 
-Update the NetworkRuleSet using -InputObject
-
-
-### Example 3
+### Example 2: Enable Trusted Service Access on a namespace
 ```powershell
-PS C:\> Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-1375 -ResourceId /subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375
+Set-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TrustedServiceAccessEnabled
 ```
-Name                : default
-DefaultAction       : Allow
-Id                  : /subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1122/networkRuleSets/default
-Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
-IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
-VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
 
-Update the NetworkRuleSet using -ResourceId of the other namespace.
+```output
+DefaultAction                : Deny
+IPRule                       : {{
+                                 "ipMask": "1.1.1.1",
+                                 "action": "Allow"
+                               }, {
+                                 "ipMask": "2.2.2.2",
+                                 "action": "Allow"
+                               }, {
+                                 "ipMask": "3.3.3.3",
+                                 "action": "Allow"
+                               }}
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/
+                               default
+Location                     : Australia East
+Name                         : default
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : myResourceGroup
+TrustedServiceAccessEnabled  : True
+Type                         : Microsoft.EventHub/Namespaces/NetworkRuleSets
+VirtualNetworkRule           : {{
+                                 "subnet": {
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default"
+                                 },
+                                 "ignoreMissingVnetServiceEndpoint": false
+                               },{
+                                 "subnet": {
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/mySubnet"
+                                 },
+                                 "ignoreMissingVnetServiceEndpoint": false
+                               }}
+```
+
+Enabled Trusted Service Access on the eventhub namespace `myNamespace`.
 
 ## PARAMETERS
 
-### -DefaultAction
-Default Action for NetworkRuleSet
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
-Parameter Sets: NetworkRuleSetPropertiesSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultAction
+Default Action for Network Rule Set
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.DefaultAction
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -105,9 +156,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -117,86 +168,121 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-NetworkruleSet Configuration Object
+Identity parameter.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes
-Parameter Sets: NetwrokruleSetInputObjectSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: SetViaIdentityExpanded
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -IPRule
-List of IPRuleSet
+List of IpRules
+To construct, see NOTES section for IPRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[]
-Parameter Sets: NetworkRuleSetPropertiesSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules[]
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-EventHub Namespace Name.
+### -NamespaceName
+The name of EventHub namespace
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: NamespaceName
+Parameter Sets: SetExpanded
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+This determines if traffic is allowed over public network.
+By default it is enabled.
+If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource ID of Namespace
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: NetworkRuleSetResourceIdParameterSet
+Parameter Sets: SetExpanded
 Aliases:
 
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -TrustedServiceAccessEnabled
-Indicates whether TrustedServiceAccessEnabled is enabled
+Value that indicates whether Trusted Service Access is Enabled or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: NetworkRuleSetPropertiesSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -207,15 +293,16 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkRule
-List of VirtualNetworkRules
+List of VirtualNetwork Rules
+To construct, see NOTES section for VIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[]
-Parameter Sets: NetworkRuleSetPropertiesSet
-Aliases: VirtualNteworkRule
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules[]
+Parameter Sets: (All)
+Aliases:
 
-Required: True
-Position: 3
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -253,19 +340,46 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
+  - `[Alias <String>]`: The Disaster Recovery configuration name
+  - `[ApplicationGroupName <String>]`: The Application Group name 
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[ClusterName <String>]`: The name of the Event Hubs Cluster.
+  - `[ConsumerGroupName <String>]`: The consumer group name
+  - `[EventHubName <String>]`: The Event Hub name
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The Namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[ResourceAssociationName <String>]`: The ResourceAssociation Name
+  - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
+  - `[SchemaGroupName <String>]`: The Schema Group name 
+  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+`IPRULE <INwRuleSetIPRules[]>`: List of IpRules
+  - `[Action <NetworkRuleIPAction?>]`: The IP Filter Action
+  - `[IPMask <String>]`: IP Mask
+
+`VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>`: List of VirtualNetwork Rules
+  - `[IgnoreMissingVnetServiceEndpoint <Boolean?>]`: Value that indicates whether to ignore missing Vnet Service Endpoint
+  - `[SubnetId <String>]`: Resource ID of Virtual Network Subnet
 
 ## RELATED LINKS

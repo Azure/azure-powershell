@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 86276DF3-95E2-405F-BA46-F188B7AE3B9B
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterautoscaleconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterautoscaleconfiguration
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ The cmdlet **New-AzHDInsightClusterAutoscaleConfiguration** creates a non-persis
 
 ### Example 1: Create an object which describes Load-based autoscale configuration
 ```powershell
-PS C:\> New-AzHDInsightClusterAutoscaleConfiguration -MinWorkerNodeCount 3 -MaxWorkerNodeCount 5
+New-AzHDInsightClusterAutoscaleConfiguration -MinWorkerNodeCount 3 -MaxWorkerNodeCount 5
 ```
 
 This command creates an object which describes Load-based autoscale configuration.
@@ -41,8 +41,8 @@ This command creates an object which describes Load-based autoscale configuratio
 ### Example 2: Create an object which describes Schedule-based autoscale configuration
 ```powershell
 # Create an autoscale condition firstly
-PS C:\> $condition=New-AzHDInsightClusterAutoscaleScheduleCondition -Day Monday -Time 09:00 -WorkerNodeCount 5
-PS C:\> New-AzHDInsightClusterAutoscaleConfiguration -TimeZone ([System.TimeZoneInfo]::Local).Id `
+$condition=New-AzHDInsightClusterAutoscaleScheduleCondition -Day Monday -Time 09:00 -WorkerNodeCount 5
+New-AzHDInsightClusterAutoscaleConfiguration -TimeZone ([System.TimeZoneInfo]::Local).Id `
         -Condition $condition
 ```
 

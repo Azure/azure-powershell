@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 75A4826A-7A5F-4742-9DC4-DC728CED63D0
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewayrequestroutingrule
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewayrequestroutingrule
 schema: 2.0.0
 ---
 
@@ -38,9 +38,9 @@ The **Set-AzApplicationGatewayRequestRoutingRule** cmdlet modifies a request rou
 ## EXAMPLES
 
 ### Example 1: Update a request routing rule
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGw = Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw -Name "Rule01" -RuleType Basic -Priority 100 -BackendHttpSettings $Setting -HttpListener $Listener -BackendAddressPool $Pool
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw -Name "Rule01" -RuleType Basic -Priority 100 -BackendHttpSettings $Setting -HttpListener $Listener -BackendAddressPool $Pool
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azroutefilter
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azroutefilter
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The **Get-AzRouteFilter** cmdlet gets a route filter.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
+Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
+```
 
+```output
 Name              : RouteFilter01
 ResourceGroupName : ResourceGroup01
 Location          : westus
@@ -49,8 +51,10 @@ This command gets the route filter named RouteFilter01 that belongs to the resou
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzRouteFilter -Name "RouteFilter*"
+Get-AzRouteFilter -Name "RouteFilter*"
+```
 
+```output
 Name              : RouteFilter01
 ResourceGroupName : ResourceGroup01
 Location          : westus

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 12FC21EB-0B4E-4275-88FB-7FF42730A6A0
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementcertificate
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementcertificate
 schema: 2.0.0
 ---
 
@@ -34,8 +34,8 @@ The **Set-AzApiManagementCertificate** cmdlet modifies an Azure API Management c
 
 ### Example 1: Modify a certificate
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789" -PfxFilePath "C:\contoso\certificates\apimanagementnew.pfx" -PfxPassword "2222"
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Set-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789" -PfxFilePath "C:\contoso\certificates\apimanagementnew.pfx" -PfxPassword "2222"
 ```
 
 This command modifies the specified API Management certificate.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesasrnetworkmapping
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesasrnetworkmapping
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Remove-AzRecoveryServicesAsrNetworkMapping** cmdlet deletes the specified 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Remove-AzRecoveryServicesAsrNetworkMapping -NetworkMapping $networkmapping
+```powershell
+$currentJob = Remove-AzRecoveryServicesAsrNetworkMapping -NetworkMapping $networkmapping
 ```
 
 Starts the deletion of specified ASR network mapping and returns the ASR job used to track the operation.

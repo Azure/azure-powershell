@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrresynchronizereplicationjob
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrresynchronizereplicationjob
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ The **Start-AzRecoveryServicesAsrResynchronizeReplicationJob** cmdlet start resy
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Start-AzRecoveryServicesAsrResynchronizeReplicationJob -ReplicationProtectedItem $rpi
+```powershell
+Start-AzRecoveryServicesAsrResynchronizeReplicationJob -ReplicationProtectedItem $rpi
 ```
 
 Starts job to resynchronize replication on passed replication protected item.

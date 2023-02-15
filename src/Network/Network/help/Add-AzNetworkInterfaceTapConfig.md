@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/add-aznetworkinterfacetapconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-aznetworkinterfacetapconfig
 schema: 2.0.0
 ---
 
@@ -32,8 +32,8 @@ The **Add-AzNetworkInterfaceTapConfig** cmdlet creates a TapConfiguration resour
 ## EXAMPLES
 
 ### Example 1: Add TapConfiguration to a given NetworkInterface
-```
-PS C:\>Add-AzNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name 'myTapConfig'
+```powershell
+Add-AzNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name 'myTapConfig'
 ```
 
 Add the TapConfiguration to a sourceNic. The traffic from sourceNic VM will be mirrored to destination VM referred in vVirtualNetworkTap resource.

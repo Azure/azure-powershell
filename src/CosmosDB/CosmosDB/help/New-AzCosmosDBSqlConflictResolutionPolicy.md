@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlconflictresolutionpolicy
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlconflictresolutionpolicy
 schema: 2.0.0
 ---
 
@@ -24,14 +24,14 @@ Object corresponding to Sql API's ConflictResolutionPolicy.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlConflictResolutionPolicy -Type LastWriterWins -Path "/myPath"
+New-AzCosmosDBSqlConflictResolutionPolicy -Type LastWriterWins -Path "/myPath"
+```
 
+```output
 Mode           ConflictResolutionPath ConflictResolutionProcedure
 ----           ---------------------- ---------------------------
 LastWriterWins /myPath
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 

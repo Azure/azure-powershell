@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 9DDB3672-4C98-4449-9F29-DD9501ED4D3E
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiskencryptionextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmdiskencryptionextension
 schema: 2.0.0
 ---
 
@@ -26,15 +26,15 @@ This cmdlet will fail if encryption on the virtual machine has not been first di
 ## EXAMPLES
 
 ### Example 1: Remove the disk encryption extension from a virtual machine.
-```
-PS C:\> Remove-AzVMDiskEncryptionExtension -ResourceGroupName "MyResourceGroup" -VMName "MyTestVM"
+```powershell
+Remove-AzVMDiskEncryptionExtension -ResourceGroupName "MyResourceGroup" -VMName "MyTestVM"
 ```
 
 This command removes the extension with default name AzureDiskEncryption for a virtual machine that runs the Windows operating system or AzureDiskEncryptionForLinux for Linux based virtual machine named MyTestVM.
 
 ### Example 2: Remove a specific disk encryption extension from a virtual machine.
-```
-PS C:\> Remove-AzVMDiskEncryptionExtension -ResourceGroupName "MyResourceGroup" -VMName "MyTestVM" -Name "MyDiskEncryptionExtension"
+```powershell
+Remove-AzVMDiskEncryptionExtension -ResourceGroupName "MyResourceGroup" -VMName "MyTestVM" -Name "MyDiskEncryptionExtension"
 ```
 
 This command removes the encryption extension named MyDiskEncryptionExtension from the virtual machine named MyTestVM.

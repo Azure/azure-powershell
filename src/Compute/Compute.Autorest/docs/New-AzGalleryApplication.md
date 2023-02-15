@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
 schema: 2.0.0
 ---
 
@@ -25,8 +25,7 @@ Create or update a gallery Application Definition.
 
 ### Example 1: Create a gallery application 
 ```powershell
-PS C:\> New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryName $galleryName -Name $name -SupportedOSType Windows
-
+New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryName $galleryName -Name $name -SupportedOSType Windows
 ```
 
 Creating a Gallery Application in a Gallery.
@@ -247,7 +246,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
 
 ## NOTES
 

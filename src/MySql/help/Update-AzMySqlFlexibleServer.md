@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserver
+online version: https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserver
 schema: 2.0.0
 ---
 
@@ -41,8 +41,10 @@ Use Update-AzMySqlFlexibleServerConfiguration instead if you want update server 
 
 ### Example 1: Update MySql server by resource group and server name
 ```powershell
-PS C:\> Update-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test -Sku Standard_D4ds_v4
+Update-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test -Sku Standard_D4ds_v4
+```
 
+```output
 Name                 Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----                 --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
@@ -52,8 +54,10 @@ This cmdlet updates MySql server by resource group and server name.
 
 ### Example 2: Update MySql server by identity.
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlFlexibleServer -BackupRetentionDay 23 -StorageInMb 10240
+Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlFlexibleServer -BackupRetentionDay 23 -StorageInMb 10240
+```
 
+```output
 Name                 Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----                 --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
@@ -380,7 +384,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter.
+`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter.
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.

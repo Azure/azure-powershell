@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
+online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Create a in-memory object for PSCredentialExecutionParameter
 
 ### Example 1: Create a local PS Credential Execution object
 ```powershell
-PS C:\> New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
+New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
+```
 
+```output
 Name                      Type       Password      Username
 ----                      ----       --------      --------
 azps_test_credentialvalue Credential passwordValue usernameValue
@@ -87,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.PsCredentialExecutionParameter
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PsCredentialExecutionParameter
 
 ## NOTES
 

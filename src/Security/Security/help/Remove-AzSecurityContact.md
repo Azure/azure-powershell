@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Remove-AzSecurityContact
+online version: https://learn.microsoft.com/powershell/module/az.security/Remove-AzSecurityContact
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Deletes a security contact.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSecurityContact -Name "default1"
+Remove-AzSecurityContact -Name "default1"
 ```
 
 Deletes the "default1" security contact

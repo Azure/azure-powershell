@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbdatabasetorestore
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbdatabasetorestore
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Creates a new CosmosDB DatabaseToRestore object(PSDatabaseToRestore). This retur
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBDatabaseToRestore -DatabaseName database1 -CollectionName collection1,collection2,collection3
+New-AzCosmosDBDatabaseToRestore -DatabaseName database1 -CollectionName collection1,collection2,collection3
+```
 
+```output
 DatabaseName CollectionNames
 ------------ ---------------
 database1    {collection1, collection2, collection3}

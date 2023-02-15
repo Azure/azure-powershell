@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 486748AC-3932-4E0C-BBCC-2BC194E69DCC
-online version: https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccountkey
+online version: https://learn.microsoft.com/powershell/module/az.batch/new-azbatchaccountkey
 schema: 2.0.0
 ---
 
@@ -25,8 +25,11 @@ The cmdlet returns a **BatchAccountContext** object that has its current **Prima
 ## EXAMPLES
 
 ### Example 1: Regenerate the primary account key on a Batch account
+```powershell
+New-AzBatchAccountKey -AccountName "pfuller" -KeyType "Primary"
 ```
-PS C:\>New-AzBatchAccountKey -AccountName "pfuller" -KeyType "Primary"
+
+```output
 AccountName                  : pfuller
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG

@@ -50,7 +50,7 @@ namespace VersionController.Models
         /// <returns></returns>
         private ModuleMetadata DeserializeCmdlets(string fileName)
         {
-            return JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName));
+            return File.Exists(fileName) ? JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName)) : null;
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace VersionController.Models
         /// </summary>
         /// <param name="fileName">Name of the file cmdlets are being serialized to.</param>
         /// <param name="cmdlets">List of cmdlets that are to be serialized.</param>
-        public static void SerializeCmdlets(string fileName, ModuleMetadata moduleMetadata)
+        public static string SerializeCmdlets(string fileName, ModuleMetadata moduleMetadata)
         {
             string json = JsonConvert.SerializeObject(moduleMetadata, new JsonSerializerSettings
             {
@@ -67,6 +67,7 @@ namespace VersionController.Models
                 ContractResolver = VersionMetadataContractResolver.Instance
             });
             File.WriteAllText(fileName, json);
+            return fileName;
         }
 
         /// <summary>
@@ -297,7 +298,8 @@ namespace VersionController.Models
                 Console.WriteLine($"Warning: {moduleName} does not have a previously serialized cmdlet for comparison.");
                 Console.ForegroundColor = currentColor;
                 var newCmdletFile = Path.Join(serializedCmdletsDirectory, serializedCmdletName);
-                SerializeCmdlets(newCmdletFile, newModuleMetadata);
+                // Use newly build one, only bump PATCH version
+                serializedCmdletFile = SerializeCmdlets(newCmdletFile, newModuleMetadata);
             }
             var oldModuleMetadata = DeserializeCmdlets(serializedCmdletFile);
             CmdletLoader.ModuleMetadata = oldModuleMetadata;

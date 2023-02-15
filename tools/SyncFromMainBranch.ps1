@@ -32,7 +32,9 @@ foreach ($UnSyncPath in $Config.UnSyncPath)
 
 foreach ($SyncPath in $Config.SyncPath)
 {
-    Remove-Item -Path $SyncPath -Recurse -Force
+    if (Test-Path -Path $SyncPath) {
+        Remove-Item -Path $SyncPath -Recurse -Force
+    }
     Copy-Item -Path "$TmpFolder/$SyncPath" -Destination $SyncPath -Recurse -Force
     git add $SyncPath
 }

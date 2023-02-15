@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: FA154E07-EA26-4688-986E-C53C3A9E4F06
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ Use the *ClusterName* parameter to get details for a specific cluster.
 ## EXAMPLES
 
 ### Example 1: List all Azure HDInsight clusters
-```
-PS C:\>Get-AzHDInsightCluster
+```powershell
+Get-AzHDInsightCluster
 ```
 
 This command lists all the Azure HDInsight clusters.

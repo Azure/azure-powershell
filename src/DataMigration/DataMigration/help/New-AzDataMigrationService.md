@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationService
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationService
 schema: 2.0.0
 ---
 
 # New-AzDataMigrationService
 
 ## SYNOPSIS
-Creates a new instance of the Azure Database Migration Service.
+Creates a new instance of the Azure Database Migration Service (classic).
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzDataMigrationService -ResourceGroupName <String> -Name <String> -Location 
 ```
 
 ## DESCRIPTION
-The New-AzDataMigrationService cmdlet creates a new instance of the Azure Database Migration Service. This cmdlet takes in name of existing Azure Resource Group, the unique name for the new instance of the Azure Database Migration Service to be created, the region in which the instance is provisioned, the name of the DMS Worker SKU, and the name of the Azure Virtual Subnet on which the service is to reside. There is no parameter for subscription name, because it is expected for the user to specify the default subscription of the Azure login session or execute Get-AzSubscription -SubscriptionName "MySubscription" | Select-AzSubscription to select another subscription.
+The New-AzDataMigrationService cmdlet creates a new instance of the Azure Database Migration Service (classic). This cmdlet takes in name of existing Azure Resource Group, the unique name for the new instance of the Azure Database Migration Service to be created, the region in which the instance is provisioned, the name of the DMS Worker SKU, and the name of the Azure Virtual Subnet on which the service is to reside. There is no parameter for subscription name, because it is expected for the user to specify the default subscription of the Azure login session or execute Get-AzSubscription -SubscriptionName "MySubscription" | Select-AzSubscription to select another subscription.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzDataMigrationService -ResourceGroupName myResourceGroup -Name TestService -Location "Central US" -Sku Basic_2vCores -VirtualSubnetId $virtualSubNetId
+```powershell
+New-AzDataMigrationService -ResourceGroupName myResourceGroup -Name TestService -Location "Central US" -Sku Basic_2vCores -VirtualSubnetId $virtualSubNetId
 ```
 
-The above example shows how to create a new instance of the Azure Database Migration Service named TestService in Central US region.
+The above example shows how to create a new instance of the Azure Database Migration Service (classic) named TestService in Central US region.
 
 ## PARAMETERS
 
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the Azure Database Migration Service instance to be created, which corresponds to an Azure region.
+The location of the Azure Database Migration Service (classic) instance to be created, which corresponds to an Azure region.
 
 ```yaml
 Type: System.String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Database Migration Service Name.
+Azure Database Migration Service (classic) Name.
 
 ```yaml
 Type: System.String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-The sku for the Azure Database Migration Service instance. Possible values currently are Standard_1vCores, Standard_2vCores, Standard_4vCores, Premium_4vCores.
+The sku for the Azure Database Migration Service (classic) instance. Possible values currently are Standard_1vCores, Standard_2vCores, Standard_4vCores, Premium_4vCores.
 
 ```yaml
 Type: System.String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualSubnetId
-The name of the subnet under the specified virtual network to use for the Azure Database Migration Service instance.
+The name of the subnet under the specified virtual network to use for the Azure Database Migration Service (classic) instance.
 
 ```yaml
 Type: System.String
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

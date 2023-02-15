@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/grant-azdiskaccess
+online version: https://learn.microsoft.com/powershell/module/az.compute/grant-azdiskaccess
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Grant-AzDiskAccess** cmdlet grants an access to a disk.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Grant-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Access 'Read' -DurationInSecond 60;
+```powershell
+Grant-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Access 'Read' -DurationInSecond 60;
 ```
 
 Grant 'Read' access to the disk named 'Disk01' in the resource group named 'ResourceGroup01' for 60 seconds.

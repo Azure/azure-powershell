@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticscomputepolicy
+online version: https://learn.microsoft.com/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticscomputepolicy
 schema: 2.0.0
 ---
 
@@ -23,15 +23,15 @@ The **Get-AzDataLakeAnalyticsComputePolicy** gets a specified Azure Data Lake An
 ## EXAMPLES
 
 ### Example 1: Get a specified compute policy
-```
-PS C:\>Get-AzDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name myPolicy
+```powershell
+Get-AzDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name myPolicy
 ```
 
 This command gets the specified compute policy with name 'myPolicy' in account 'contosoadla'.
 
 ### Example 2: Get a list of all compute policies in the account
-```
-PS C:\>Get-AzDataLakeAnalyticsComputePolicy -AccountName "contosoadla"
+```powershell
+Get-AzDataLakeAnalyticsComputePolicy -AccountName "contosoadla"
 ```
 
 This command gets a list of all compute policies in the account "contosoadla"

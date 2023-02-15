@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolsku
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolsku
 schema: 2.0.0
 ---
 
@@ -30,8 +30,10 @@ Lists eligible SKUs for Kusto Pool resource.
 
 ### Example 1: Lists eligible SKUs
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolSku
+Get-AzSynapseKustoPoolSku
+```
 
+```output
 Location             Name              ResourceType          Size
 --------             ----              ------------          ----
 {australiacentral}   Compute optimized workspaces/kustoPools Extra small
@@ -46,8 +48,10 @@ The above command lists eligible SKUs.
 
 ### Example 2: Lists eligible SKUs for specific kusto pool
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolSku -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testnewkustopool
+Get-AzSynapseKustoPoolSku -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testnewkustopool
+```
 
+```output
 ResourceType
 ------------
 Microsoft.Synapse/workspaces/kustoPools

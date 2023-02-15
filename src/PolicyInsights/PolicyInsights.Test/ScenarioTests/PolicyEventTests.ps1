@@ -16,8 +16,7 @@
 .SYNOPSIS
 Get policy events at management group scope
 #>
-function Get-AzureRmPolicyEvent-ManagementGroupScope
-{
+function Get-AzureRmPolicyEvent-ManagementGroupScope {
    $managementGroupName = Get-TestManagementGroupName
    $from = Get-TestQueryIntervalStart
 
@@ -27,10 +26,25 @@ function Get-AzureRmPolicyEvent-ManagementGroupScope
 
 <#
 .SYNOPSIS
+Get multiple pages of policy events at management group scope
+#>
+function Get-AzureRmPolicyEvent-ManagementGroupScope-Paging {
+   $managementGroupName = Get-TestManagementGroupName
+   $from = Get-TestQueryIntervalStart
+
+   # Apply filters\selection to recude the session recording size
+   $policyEvents = Get-AzPolicyEvent -ManagementGroupName $managementGroupName -From $from -Top 1001 -Select "Timestamp" -Filter "PolicyDefinitionAction eq 'modify'"
+   Assert-True { $policyEvents.Count -eq 1001 }
+
+   $policyEvents = Get-AzPolicyEvent -ManagementGroupName $managementGroupName -From $from  -Select "Timestamp" -Filter "PolicyDefinitionAction eq 'modify'"
+   Assert-True { $policyEvents.Count -ge 1001 }
+}
+
+<#
+.SYNOPSIS
 Get policy events at subscription scope
 #>
-function Get-AzureRmPolicyEvent-SubscriptionScope
-{
+function Get-AzureRmPolicyEvent-SubscriptionScope {
    $from = Get-TestQueryIntervalStart
 
    $policyEvents = Get-AzPolicyEvent -Top 10 -From $from
@@ -39,11 +53,25 @@ function Get-AzureRmPolicyEvent-SubscriptionScope
 
 <#
 .SYNOPSIS
+Get multiple pages of policy events at subscription scope
+#>
+function Get-AzureRmPolicyEvent-SubscriptionScope-Paging {
+   $from = Get-TestQueryIntervalStart
+
+   # Apply filters\selection to recude the session recording size
+   $policyEvents = Get-AzPolicyEvent -Top 1001 -From $from  -Select "Timestamp" -Filter "PolicyDefinitionAction eq 'modify'"
+   Assert-True { $policyEvents.Count -eq 1001 }
+
+   $policyEvents = Get-AzPolicyEvent -From $from  -Select "Timestamp" -Filter "PolicyDefinitionAction eq 'modify'"
+   Assert-True { $policyEvents.Count -ge 1001 }
+}
+
+<#
+.SYNOPSIS
 Get policy events at resource group scope
 #>
-function Get-AzureRmPolicyEvent-ResourceGroupScope
-{
-   $resourceGroupName = Get-TestResourceGroupName
+function Get-AzureRmPolicyEvent-ResourceGroupScope {
+   $resourceGroupName = Get-FirstTestResourceGroupName
    $from = Get-TestQueryIntervalStart
 
    $policyEvents = Get-AzPolicyEvent -ResourceGroupName $resourceGroupName -Top 10 -From $from
@@ -54,8 +82,7 @@ function Get-AzureRmPolicyEvent-ResourceGroupScope
 .SYNOPSIS
 Get policy events at resource scope
 #>
-function Get-AzureRmPolicyEvent-ResourceScope
-{
+function Get-AzureRmPolicyEvent-ResourceScope {
    $resourceId = Get-TestResourceId
    $from = Get-TestQueryIntervalStart
 
@@ -67,8 +94,7 @@ function Get-AzureRmPolicyEvent-ResourceScope
 .SYNOPSIS
 Get policy events at policy set definition scope
 #>
-function Get-AzureRmPolicyEvent-PolicySetDefinitionScope
-{
+function Get-AzureRmPolicyEvent-PolicySetDefinitionScope {
    $policySetDefinitionName = Get-TestPolicySetDefinitionName
    $from = Get-TestQueryIntervalStart
 
@@ -80,9 +106,8 @@ function Get-AzureRmPolicyEvent-PolicySetDefinitionScope
 .SYNOPSIS
 Get policy events at policy definition scope
 #>
-function Get-AzureRmPolicyEvent-PolicyDefinitionScope
-{
-   $policyDefinitionName = Get-TestPolicyDefinitionNameForEvents
+function Get-AzureRmPolicyEvent-PolicyDefinitionScope {
+   $policyDefinitionName = Get-TestAuditPolicyDefinitionName
 
    $policyEvents = Get-AzPolicyEvent -PolicyDefinitionName $policyDefinitionName -Top 10
    Validate-PolicyEvents $policyEvents 10
@@ -92,9 +117,8 @@ function Get-AzureRmPolicyEvent-PolicyDefinitionScope
 .SYNOPSIS
 Get policy events at subscription level policy assignment scope
 #>
-function Get-AzureRmPolicyEvent-SubscriptionLevelPolicyAssignmentScope
-{
-   $policyAssignmentName = Get-TestPolicyAssignmentName
+function Get-AzureRmPolicyEvent-SubscriptionLevelPolicyAssignmentScope {
+   $policyAssignmentName = Get-TestSubscriptionAuditAssignmentName
    $from = Get-TestQueryIntervalStart
 
    $policyEvents = Get-AzPolicyEvent -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
@@ -105,10 +129,9 @@ function Get-AzureRmPolicyEvent-SubscriptionLevelPolicyAssignmentScope
 .SYNOPSIS
 Get policy events at resource group level policy assignment scope
 #>
-function Get-AzureRmPolicyEvent-ResourceGroupLevelPolicyAssignmentScope
-{
-   $resourceGroupName = Get-TestResourceGroupNameForPolicyAssignmentEvents
-   $policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevelEvents
+function Get-AzureRmPolicyEvent-ResourceGroupLevelPolicyAssignmentScope {
+   $resourceGroupName = Get-FirstTestResourceGroupName
+   $policyAssignmentName = Get-TestResourceGroupAuditAssignmentName
 
    $policyEvents = Get-AzPolicyEvent -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10
    Validate-PolicyEvents $policyEvents 10

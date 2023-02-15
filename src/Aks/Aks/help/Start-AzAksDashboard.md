@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/start-azaksdashboard
+online version: https://learn.microsoft.com/powershell/module/az.aks/start-azaksdashboard
 schema: 2.0.0
 ---
 
@@ -36,8 +36,8 @@ Create a Kubectl SSH tunnel to the managed cluster's dashboard. The SSH tunnel i
 ## EXAMPLES
 
 ### Start an SSH tunnel and open a browser to the Kubernetes dashboard
-```
-PS C:\> Start-AzAksDashboard -ResourceGroupName group -Name myCluster
+```powershell
+Start-AzAksDashboard -ResourceGroupName group -Name myCluster
 ```
 
 ## PARAMETERS

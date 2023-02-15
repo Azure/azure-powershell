@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/get-Azsqlelasticjobagent
+online version: https://learn.microsoft.com/powershell/module/Az.sql/get-Azsqlelasticjobagent
 schema: 2.0.0
 ---
 
@@ -36,9 +36,11 @@ The Get-AzSqlElasticJobAgent cmdlet gets one or more Elastic Job agents
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 ```
-PS C:\> Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 
+```output
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
 ----------------- ----------       ------------ --------- ----- ----
 rg                elasticjobserver jobdb        agent     Ready

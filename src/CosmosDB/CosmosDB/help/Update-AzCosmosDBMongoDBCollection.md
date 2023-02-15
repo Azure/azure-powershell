@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection
 schema: 2.0.0
 ---
 
@@ -43,8 +43,10 @@ Updates the CosmosDB MongoDB Collection. Performs a client side patch operation 
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBMongoDBCollection -AccountName myAccountName -ResourceGroupName myRgName -DatabaseName myDatabaseName -Name myCollectionName -Index $index1,$index2
+Update-AzCosmosDBMongoDBCollection -AccountName myAccountName -ResourceGroupName myRgName -DatabaseName myDatabaseName -Name myCollectionName -Index $index1,$index2
+```
 
+```output
 Name     : collection1
 Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/mongodbDatabases/myDatabaseName/collect
            ions/myCollectionName

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 4518D2A9-7DE7-4617-86E0-7778B8CFE48C
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayfrontendport
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayfrontendport
 schema: 2.0.0
 ---
 
@@ -24,18 +24,18 @@ The **Get-AzApplicationGatewayFrontendPort** cmdlet gets the front-end port of a
 ## EXAMPLES
 
 ### Example 1: Get a specified front-end port
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $FrontEndPort = Get-AzApplicationGatewayFrontendPort -Name "FrontEndPort01" -ApplicationGateway $AppGw
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$FrontEndPort = Get-AzApplicationGatewayFrontendPort -Name "FrontEndPort01" -ApplicationGateway $AppGw
 ```
 
 The first command gets an application gateway named ApplicationGateway01 from the resource group named ResourceGroup01, and stores it in the $AppGw variable.
 The second command gets the front-end port named FrontEndPort01 from $AppGw and stores it in the $FrontEndPort variable.
 
 ### Example 2: Get a list of front-end ports
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $FrontEndPorts = Get-AzApplicationGatewayFrontendPort  -ApplicationGateway $AppGw
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$FrontEndPorts = Get-AzApplicationGatewayFrontendPort  -ApplicationGateway $AppGw
 ```
 
 The first command gets an application gateway named ApplicationGateway01 from the resource group named ResourceGroup01, and stores it in the $AppGw variable.

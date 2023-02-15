@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 5B7A1BE6-F5F5-4968-BE32-7743D0E25FE3
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmdscextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmdscextension
 schema: 2.0.0
 ---
 
@@ -31,8 +31,8 @@ The **Get-AzVMDscExtension** cmdlet gets the settings of the Desired State Confi
 ## EXAMPLES
 
 ### Example 1: Get the settings of a DSC extension
-```
-PS C:\> Get-AzVMDscExtension -ResourceGroupName "ResourceGroup002" -VMName "VM07" -Name "DSC"
+```powershell
+Get-AzVMDscExtension -ResourceGroupName "ResourceGroup002" -VMName "VM07" -Name "DSC"
 ```
 
 This command gets the settings of extension named DSC on the virtual machine named VM07.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azfirewallpolicyrulecollectiongroup
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azfirewallpolicyrulecollectiongroup
 schema: 2.0.0
 ---
 
@@ -46,14 +46,14 @@ The **Remove-AzFirewallPolicyRuleCollectionGroup** cmdlet removes a rule collect
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFirewallPolicyRuleCollectionGroup -Name testRcGroup -FirewallPolicyObject $fp
+Remove-AzFirewallPolicyRuleCollectionGroup -Name testRcGroup -FirewallPolicyObject $fp
 ```
 
 This example removes the firewall policy rule colelction group named "testRcGroup" in the firewall policy object $fp
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzFirewallPolicyRuleCollectionGroup -Name testRcGroup -ResourceGroupName testRg -AzureFirewallPolicyName fpName 
+Remove-AzFirewallPolicyRuleCollectionGroup -Name testRcGroup -ResourceGroupName testRg -AzureFirewallPolicyName fpName 
 ```
 
 This example removes the firewall policy rule colelction group named "testRcGroup" in the firewall named "fpName" frpm the resourcegroup names "testRg"

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azp2svpngateway
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azp2svpngateway
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzP2sVpnGateway** cmdlet enables you to remove an existing P2SVpnGa
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzP2sVpnGateway -Name 683482ade8564515aed4b8448c9757ea-westus-gw-ResourceGroupName P2SCortexGATesting -Force -PassThru
+Remove-AzP2sVpnGateway -Name 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -Force -PassThru
 ```
 
 The **Remove-AzP2sVpnGateway** cmdlet enables you to remove an existing P2SVpnGateway under VirtualHub.

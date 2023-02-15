@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification
 schema: 2.0.0
 ---
 
@@ -41,17 +41,17 @@ The Remove-AzSqlInstanceDatabaseSensitivityClassification cmdlet removes the inf
 
 ### Example 1: Remove information type and sensitivity label of a column in an Azure SQL Managed Instance database.
 ```powershell
-PS C:\> Remove-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column
+Remove-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column
 ```
 
 ### Example 2: Remove current information types and sensitivity labels of columns in an Azure SQL Managed Instance database with Piping.
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Remove-AzSqlInstanceDatabaseSensitivityClassification
+Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Remove-AzSqlInstanceDatabaseSensitivityClassification
 ```
 
 ### Example 3: Remove information type and sensitivity label of a column in an Azure SQL Managed Instance database with Piping.
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Remove-AzSqlInstanceDatabaseSensitivityClassification -SchemaName schema -TableName table -ColumnName column
+Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Remove-AzSqlInstanceDatabaseSensitivityClassification -SchemaName schema -TableName table -ColumnName column
 ```
 
 ## PARAMETERS

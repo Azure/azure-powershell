@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
 schema: 2.0.0
 ---
 
@@ -24,8 +24,9 @@ Tests whether an input’s datasource is reachable and usable by the Azure Strea
 
 ### Example 1: Test the connection status of an input
 ```powershell
-PS C:\> Test-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name input-01
-
+Test-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name input-01
+```
+```output
 Status
 ------
 TestSucceeded

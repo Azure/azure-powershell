@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 622FE9AC-1CC4-489C-BB17-9D6B9D1C151D
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule
 schema: 2.0.0
 ---
 
@@ -38,8 +38,8 @@ New-AzApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String> [-P
 ## EXAMPLES
 
 ### Example 1: Create a request routing rule for an application gateway
-```
-PS C:\>$Rule = New-AzApplicationGatewayRequestRoutingRule -Name "Rule01" -RuleType Basic -Priority 100 -BackendHttpSettings $Setting -HttpListener $Listener -BackendAddressPool $Pool
+```powershell
+$Rule = New-AzApplicationGatewayRequestRoutingRule -Name "Rule01" -RuleType Basic -Priority 100 -BackendHttpSettings $Setting -HttpListener $Listener -BackendAddressPool $Pool
 ```
 
 This command creates a basic request routing rule named Rule01 and stores the result in the variable named $Rule.

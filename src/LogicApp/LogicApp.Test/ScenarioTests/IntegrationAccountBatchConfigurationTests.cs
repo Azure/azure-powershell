@@ -14,21 +14,16 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
-    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
     /// <summary>
     /// Scenario tests for integration account batch configuration commands.
     /// </summary>
-    public class IntegrationAccountBatchConfigurationTests : RMTestBase
+    public class IntegrationAccountBatchConfigurationTests : LogicAppTestRunner
     {
-        public XunitTracingInterceptor _logger;
-        public IntegrationAccountBatchConfigurationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationAccountBatchConfigurationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -38,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-NewIntegrationAccountBatchConfiguration");
+            TestRunner.RunTestScript("Test-NewIntegrationAccountBatchConfiguration");
         }
 
         /// <summary>
@@ -48,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountBatchConfiguration");
+            TestRunner.RunTestScript("Test-GetIntegrationAccountBatchConfiguration");
         }
 
         /// <summary>
@@ -58,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountBatchConfiguration");
+            TestRunner.RunTestScript("Test-RemoveIntegrationAccountBatchConfiguration");
         }
 
         /// <summary>
@@ -68,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetBatchConfiguration()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-SetIntegrationAccountBatchConfiguration");
+            TestRunner.RunTestScript("Test-SetIntegrationAccountBatchConfiguration");
         }
     }
 }

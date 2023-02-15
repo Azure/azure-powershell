@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Validate the resource id of a sql virtual machine group
         /// </summary>
-        /// <param name="sqlVirtualMachineResourceId">Resource id to be validated</param>
+        /// <param name="sqlVirtualMachineGroupId">Resource id to be validated</param>
         /// <returns>True if the resource id is valid, false otherwise</returns>
         public bool ValidateSqlVirtualMachineGroupId(string sqlVirtualMachineGroupId)
         {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Get the resource group name of a sql virtual machine group from its resource id
         /// </summary>
-        /// <param name="sqlVirtualMachineId">Resource  id of the sql virtual machine</param>
+        /// <param name="sqlVirtualMachineGroupId">Resource  id of the sql virtual machine</param>
         /// <returns>Resource group name contained in the resource id</returns>
         public string GetResourceGroupNameFromId(string sqlVirtualMachineGroupId)
         {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Get the name of a sql virtual machine from its resource id
         /// </summary>
-        /// <param name="sqlVirtualMachineId">Resource  id of the sql virtual machine</param>
+        /// <param name="sqlVirtualMachineGroupId">Resource  id of the sql virtual machine</param>
         /// <returns>Resource name contained in the resource id</returns>
         public string GetResourceNameFromId(string sqlVirtualMachineGroupId)
         {

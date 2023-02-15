@@ -141,6 +141,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// </summary>
         /// <param name="sessionContent">The session content.</param>
         /// <param name="integrationAccountAgreementName">The integration account agreement name.</param>
+        /// <param name="controlNumber"></param>
         /// <returns>The <see cref="IntegrationAccountControlNumber"/>.</returns>
         /// <exception cref="PSInvalidOperationException">If the session content is not in the expected format.</exception>
         private static IntegrationAccountControlNumber SessionContentToIntegrationAccountControlNumber(object sessionContent, string integrationAccountAgreementName, string controlNumber = null)

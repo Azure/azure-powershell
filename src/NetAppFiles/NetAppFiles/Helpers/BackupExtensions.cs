@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +36,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ProvisioningState = backup.ProvisioningState,
                 Size = backup.Size,
                 VolumeName = backup.VolumeName,
-                UseExistingSnapshot = backup.UseExistingSnapshot
+                UseExistingSnapshot = backup.UseExistingSnapshot,
+                CreationDate = backup.CreationDate
             };
             return psBackup;
         }

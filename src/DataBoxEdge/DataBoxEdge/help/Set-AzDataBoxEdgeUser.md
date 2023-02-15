@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/set-azdataboxedgeuser
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/set-azdataboxedgeuser
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ The **Set-AzDataBoxEdgeUser** cmdlet sets a new password for a user on the Data 
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+Set-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username `
  -Password @SecureString -EncryptionKey @SecureString
 ```
 

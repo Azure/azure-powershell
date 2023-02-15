@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlvirtualcluster
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlvirtualcluster
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzSqlVirtualCluster** cmdlet removes an Azure SQL Virtual Cluster.
 
 ### Example 1
 ```powershell
-PS C:> Remove-AzSqlVirtualCluster -Name VirtualCluster1 -ResourceGroupName ResourceGroup01
+Remove-AzSqlVirtualCluster -Name VirtualCluster1 -ResourceGroupName ResourceGroup01
 ```
 
 This command removes the virtual cluster named VirtualCluster1 assigned to the resource group ResourceGroup01.

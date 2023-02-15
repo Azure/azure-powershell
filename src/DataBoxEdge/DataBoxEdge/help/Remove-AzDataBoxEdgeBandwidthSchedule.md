@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgebandwidthschedule
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgebandwidthschedule
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzDataBoxEdgeBandwidthSchedule** cmdlet removes the Bandwidth sched
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule
+Remove-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule
 ```
 
 ## PARAMETERS

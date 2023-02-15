@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 71043093-DEE5-4395-B67A-2F104CF67893
-online version: https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationwebhook
+online version: https://learn.microsoft.com/powershell/module/az.automation/remove-azautomationwebhook
 schema: 2.0.0
 ---
 
@@ -25,13 +25,11 @@ The webhook is deleted.
 ## EXAMPLES
 
 ### Example 1: Remove a webhook
-```
-PS C:\>Remove-AzAutomationWebhook -Name "Webhook11" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
+```powershell
+Remove-AzAutomationWebhook -Name "Webhook11" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command removes a webhook named Webhook11 in the Automation account named AutomationAccount01.
-The command specifies the *Force* parameter.
-Therefore, it does not prompt you for confirmation.
 
 ## PARAMETERS
 
@@ -127,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrprotectioncontainer
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrprotectioncontainer
 schema: 2.0.0
 ---
 
@@ -38,15 +38,18 @@ Replication policies define replication settings for protected items and can be 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $ProtectionContainers = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric
+```powershell
+$ProtectionContainers = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric
 ```
 
 List of protection container in fabric $fabric.
 
 ### Example 2
+```powershell
+Get-AzRecoveryServicesAsrProtectionContainer -Name xxxxx  -Fabric $fabric
 ```
-PS C:\> Get-AzRecoveryServicesAsrProtectionContainer -Name xxxxx  -Fabric $fabric
+
+```output
 FriendlyName                : xxxxxxxx
 Name                        : xxxxx
 ID                          : /Subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxx/replicationFabrics/xxxxxxxxxxxxxxxxxxxxxxxxx/replicationProtectionContainers/xxxxxxxxxxxxxxxxxxxxxxxxx
@@ -61,8 +64,11 @@ ProtectionContainerMappings : {pcmmapping, v2aPowerold, 636569dc-79bc-4f50-b83d-
 Protection container in fabric $fabric with name.
 
 ### Example 3
+```powershell
+Get-AzRecoveryServicesAsrProtectionContainer -FriendlyName xxxxxxxx  -Fabric $fabric
 ```
-PS C:\> Get-AzRecoveryServicesAsrProtectionContainer -FriendlyName xxxxxxxx  -Fabric $fabric
+
+```output
 FriendlyName                : xxxxxxxx
 Name                        : xxxxx
 ID                          : /Subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxx/replicationFabrics/xxxxxxxxxxxxxxxxxxxxxxxxx/replicationProtectionContainers/xxxxxxxxxxxxxxxxxxxxxxxxx

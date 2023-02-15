@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubproviderregistration
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubproviderregistration
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets the provider registration details.
 
 ### Example 1: Get the provider registration.
 ```powershell
-PS C:\> Get-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
+Get-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
+```
 
+```output
 Name                Type
 ----                ----
 Microsoft.Contoso   Microsoft.ProviderHub/providerRegistrations
@@ -129,7 +131,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+INPUTOBJECT `<IProviderHubIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[NestedResourceTypeFirst <String>]`: The first child resource type.
   - `[NestedResourceTypeSecond <String>]`: The second child resource type.

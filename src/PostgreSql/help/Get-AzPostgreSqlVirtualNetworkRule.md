@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlvirtualnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlvirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets a virtual network rule.
 
 ### Example 1: Lists all the Virtual Network Rules in specified PostgreSql server
 ```powershell
-PS C:\> Get-AzPostgreSqlVirtualNetworkRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer 
+Get-AzPostgreSqlVirtualNetworkRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer 
+```
 
+```output
 Name Type
 ---- ----
 vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
@@ -48,8 +50,10 @@ This cmdlet lists all the Virtual Network Rules in specified PostgreSql server.
 
 ### Example 2: Get Virtual Network Rule by name
 ```powershell
-PS C:\> Get-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Get-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+```
 
+```output
 Name Type
 ---- ----
 vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
@@ -59,9 +63,11 @@ This cmdlet gets Virtual Network Rule by name.
 
 ### Example 3: Get Virtual Network Rule by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
-PS C:\> Get-AzPostgreSqlVirtualNetworkRule -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
+Get-AzPostgreSqlVirtualNetworkRule -InputObject $ID
+```
 
+```output
 Name Type
 ---- ----
 vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
@@ -198,7 +204,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

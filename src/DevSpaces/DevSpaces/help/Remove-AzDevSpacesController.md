@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevSpaces.dll-Help.xml
 Module Name: Az.DevSpaces
-online version: https://docs.microsoft.com/powershell/module/az.devspaces/remove-azdevspacescontroller
+online version: https://learn.microsoft.com/powershell/module/az.devspaces/remove-azdevspacescontroller
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Delete a DevSpaces controller.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName
+Remove-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName
 ```
 
 Delete a DevSpaces controller named devSpaceControllerName.

@@ -1,0 +1,343 @@
+{
+  "Get-AzDnsResolver+[NoContext]+Get single DNS resolver by name, expect DNS resolver by name retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62?api-version=2022-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62?api-version=2022-07-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname62\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "265" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImVkYTY1NjcwLTM0M2MtNDRkNS1iOTdlLTcxODNjZjQ2Njk1NiJ9?api-version=2022-07-01" ],
+        "Retry-After": [ "5" ],
+        "x-ms-activity-id": [ "256a3c44-a52d-436b-82fc-813b3a960e1c" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImVkYTY1NjcwLTM0M2MtNDRkNS1iOTdlLTcxODNjZjQ2Njk1NiJ9?api-version=2022-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11985" ],
+        "x-ms-request-id": [ "28e83fd3-83c2-415a-a0f0-837f6ccb1da8" ],
+        "x-ms-correlation-request-id": [ "28e83fd3-83c2-415a-a0f0-837f6ccb1da8" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220218T022950Z:28e83fd3-83c2-415a-a0f0-837f6ccb1da8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E2C85A1063B44E8EA74C384FFE562E32 Ref B: YVR311000110053 Ref C: 2022-02-18T02:29:48Z" ],
+        "Date": [ "Fri, 18 Feb 2022 02:29:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDnsResolver+[NoContext]+Get single DNS resolver by name, expect DNS resolver by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImVkYTY1NjcwLTM0M2MtNDRkNS1iOTdlLTcxODNjZjQ2Njk1NiJ9?api-version=2022-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImVkYTY1NjcwLTM0M2MtNDRkNS1iOTdlLTcxODNjZjQ2Njk1NiJ9?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "19fd54fd-c55e-4ee4-9037-3b463ca505f4" ],
+        "CommandName": [ "New-AzDnsResolver" ],
+        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "da9a08ba-b711-4e53-809a-f3fcb2407a70" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-request-id": [ "810e20e0-93ba-416f-bb7b-4e9757435553" ],
+        "x-ms-correlation-request-id": [ "810e20e0-93ba-416f-bb7b-4e9757435553" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220218T022955Z:810e20e0-93ba-416f-bb7b-4e9757435553" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 65DC8D692887446CB81C1EFDF15E9711 Ref B: YVR311000110053 Ref C: 2022-02-18T02:29:55Z" ],
+        "Date": [ "Fri, 18 Feb 2022 02:29:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImVkYTY1NjcwLTM0M2MtNDRkNS1iOTdlLTcxODNjZjQ2Njk1NiJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImVkYTY1NjcwLTM0M2MtNDRkNS1iOTdlLTcxODNjZjQ2Njk1NiJ9\",\"startTime\":\"2022-02-18T02:29:49.0000000Z\",\"endTime\":\"2022-02-18T02:29:52.0000000Z\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDnsResolver+[NoContext]+Get single DNS resolver by name, expect DNS resolver by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62?api-version=2022-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "19fd54fd-c55e-4ee4-9037-3b463ca505f4" ],
+        "CommandName": [ "New-AzDnsResolver" ],
+        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "7cddfd5d-cdf2-4dd6-bcd5-f2991cfb2650" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
+        "x-ms-request-id": [ "ce5cc49c-7113-45fd-ab05-e2704d82d65b" ],
+        "x-ms-correlation-request-id": [ "ce5cc49c-7113-45fd-ab05-e2704d82d65b" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220218T022955Z:ce5cc49c-7113-45fd-ab05-e2704d82d65b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5692A60327A244EAB9A3601109041F4E Ref B: YVR311000110053 Ref C: 2022-02-18T02:29:55Z" ],
+        "Date": [ "Fri, 18 Feb 2022 02:29:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "785" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname62\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"c6637d4f-544b-449a-b0fe-93972735a860\"},\"etag\":\"\\\"0500de3f-0000-0200-0000-620f04a00000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62\",\"name\":\"psdnsresolvername62\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T02:29:49.9410187Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:29:49.9410187Z\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDnsResolver+[NoContext]+Get single DNS resolver by name, expect DNS resolver by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62?api-version=2022-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "040c7ce5-b1f0-4161-880a-c6bf13fff7f8" ],
+        "CommandName": [ "Get-AzDnsResolver" ],
+        "FullCommandName": [ "Get-AzDnsResolver_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "5dd729e4-28df-4937-aec4-f86cbe5d3adf" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-request-id": [ "b80435ec-81c3-4491-a0f4-51821a3f1ac5" ],
+        "x-ms-correlation-request-id": [ "b80435ec-81c3-4491-a0f4-51821a3f1ac5" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220218T022956Z:b80435ec-81c3-4491-a0f4-51821a3f1ac5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B24DBBA7DFB64C93BAE9067578E21972 Ref B: YVR311000110053 Ref C: 2022-02-18T02:29:56Z" ],
+        "Date": [ "Fri, 18 Feb 2022 02:29:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "785" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname62\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"c6637d4f-544b-449a-b0fe-93972735a860\"},\"etag\":\"\\\"0500de3f-0000-0200-0000-620f04a00000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62\",\"name\":\"psdnsresolvername62\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T02:29:49.9410187Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:29:49.9410187Z\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDnsResolver+[NoContext]+List DNS resolvers in a resource group, expected least number of DNS resolvers retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63?api-version=2022-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63?api-version=2022-07-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname63\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "265" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZhMjAyYWJlLTM5NTctNGMzNC1iMjU2LTVhMzk2OWQxM2VlMiJ9?api-version=2022-07-01" ],
+        "Retry-After": [ "5" ],
+        "x-ms-activity-id": [ "881c3fa5-6923-4781-a124-2ad9f7eaa915" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZhMjAyYWJlLTM5NTctNGMzNC1iMjU2LTVhMzk2OWQxM2VlMiJ9?api-version=2022-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11984" ],
+        "x-ms-request-id": [ "37530922-72c2-4328-846d-be773aa43beb" ],
+        "x-ms-correlation-request-id": [ "37530922-72c2-4328-846d-be773aa43beb" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220218T022958Z:37530922-72c2-4328-846d-be773aa43beb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2A2D3BE343AD4C669ECA461AAC475692 Ref B: YVR311000110053 Ref C: 2022-02-18T02:29:57Z" ],
+        "Date": [ "Fri, 18 Feb 2022 02:29:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDnsResolver+[NoContext]+List DNS resolvers in a resource group, expected least number of DNS resolvers retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZhMjAyYWJlLTM5NTctNGMzNC1iMjU2LTVhMzk2OWQxM2VlMiJ9?api-version=2022-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZhMjAyYWJlLTM5NTctNGMzNC1iMjU2LTVhMzk2OWQxM2VlMiJ9?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "6fcd455d-47c8-4de7-a75d-1612a33644a1" ],
+        "CommandName": [ "New-AzDnsResolver" ],
+        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "5aa53a6c-e196-470f-accf-504cafec0f64" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-request-id": [ "cc2fdde4-1b91-4250-8d5f-b8ab8329f22b" ],
+        "x-ms-correlation-request-id": [ "cc2fdde4-1b91-4250-8d5f-b8ab8329f22b" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220218T023003Z:cc2fdde4-1b91-4250-8d5f-b8ab8329f22b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F621BE9C8FC84DC4A528C122C1DFFC8A Ref B: YVR311000110053 Ref C: 2022-02-18T02:30:03Z" ],
+        "Date": [ "Fri, 18 Feb 2022 02:30:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZhMjAyYWJlLTM5NTctNGMzNC1iMjU2LTVhMzk2OWQxM2VlMiJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImZhMjAyYWJlLTM5NTctNGMzNC1iMjU2LTVhMzk2OWQxM2VlMiJ9\",\"startTime\":\"2022-02-18T02:29:58.0000000Z\",\"endTime\":\"2022-02-18T02:30:00.0000000Z\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDnsResolver+[NoContext]+List DNS resolvers in a resource group, expected least number of DNS resolvers retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63?api-version=2022-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "6fcd455d-47c8-4de7-a75d-1612a33644a1" ],
+        "CommandName": [ "New-AzDnsResolver" ],
+        "FullCommandName": [ "New-AzDnsResolver_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "bb08773b-c3ea-4c18-af09-17136b600723" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-request-id": [ "ff2156a9-690d-4e77-99f6-bdc458ab96e9" ],
+        "x-ms-correlation-request-id": [ "ff2156a9-690d-4e77-99f6-bdc458ab96e9" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220218T023003Z:ff2156a9-690d-4e77-99f6-bdc458ab96e9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1929284541354D83AA0D2489750729AC Ref B: YVR311000110053 Ref C: 2022-02-18T02:30:03Z" ],
+        "Date": [ "Fri, 18 Feb 2022 02:30:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "785" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname63\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"ea8728dc-cbbb-41ca-a208-275c44dbc041\"},\"etag\":\"\\\"05001540-0000-0200-0000-620f04a70000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63\",\"name\":\"psdnsresolvername63\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T02:29:58.2493476Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:29:58.2493476Z\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDnsResolver+[NoContext]+List DNS resolvers in a resource group, expected least number of DNS resolvers retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers?api-version=2022-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "2ac2a928-7272-453d-aa69-bc82c7465ad5" ],
+        "CommandName": [ "Get-AzDnsResolver" ],
+        "FullCommandName": [ "Get-AzDnsResolver_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-activity-id": [ "f6de8695-ee38-4a94-995c-f0efa4b0f52b" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "496" ],
+        "x-ms-ratelimit-remaining-subscription-resource-entities-read": [ "59950" ],
+        "x-ms-request-id": [ "422b6c40-d6a0-4939-acf4-f68e0290e606" ],
+        "x-ms-correlation-request-id": [ "422b6c40-d6a0-4939-acf4-f68e0290e606" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20220218T023004Z:422b6c40-d6a0-4939-acf4-f68e0290e606" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8235B329F3754C7D94F90C683504B278 Ref B: YVR311000110053 Ref C: 2022-02-18T02:30:04Z" ],
+        "Date": [ "Fri, 18 Feb 2022 02:30:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "39403" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname15\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"cda7f034-e989-4600-9940-e2addb71ee1b\"},\"etag\":\"\\\"1000b0f9-0000-0200-0000-620c259c0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername15\",\"name\":\"psdnsresolvername15\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-15T22:13:37.5391938Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-15T22:13:37.5391938Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname16\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"ece17e4c-4f59-4f3d-9037-717a5b27c1f8\"},\"etag\":\"\\\"00006509-0000-0200-0000-620c48e10000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername16\",\"name\":\"psdnsresolvername16\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T00:44:08.9897132Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T00:44:08.9897132Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname17\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"5503d213-cc54-468d-bbed-ba49a54e275d\"},\"etag\":\"\\\"0000710e-0000-0200-0000-620c534e0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername17\",\"name\":\"psdnsresolvername17\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T01:28:35.4818066Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T01:28:35.4818066Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname18\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"b1b56e26-f301-411f-8910-1ca7b3139bc9\"},\"etag\":\"\\\"0000760e-0000-0200-0000-620c537a0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername18\",\"name\":\"psdnsresolvername18\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T01:29:22.2872869Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T01:29:22.2872869Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname19\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"0e6f7b66-10c4-413d-acf9-040e9a907a17\"},\"etag\":\"\\\"0500463f-0000-0200-0000-620f04250000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername19\",\"name\":\"psdnsresolvername19\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T01:41:21.2110273Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:27:46.9151536Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname20\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"a30567b4-f795-473a-9653-f7c7eee78740\"},\"etag\":\"\\\"00006214-0000-0200-0000-620c5b0f0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername20\",\"name\":\"psdnsresolvername20\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T02:00:26.5590393Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T02:01:39.2757366Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname21\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"df597f9d-dbc0-4ccb-9432-843ea991e6e7\"},\"etag\":\"\\\"00003a17-0000-0200-0000-620c5ef10000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername21\",\"name\":\"psdnsresolvername21\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T02:17:44.9947831Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T02:17:44.9947831Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname22\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"56b508ae-536d-4c7e-9a2e-ad133bd2c62a\"},\"etag\":\"\\\"00004917-0000-0200-0000-620c5f200000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername22\",\"name\":\"psdnsresolvername22\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T02:19:02.5075091Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T02:19:02.5075091Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname23\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"afe28061-926f-4209-8f46-a0b656555922\"},\"etag\":\"\\\"05004b3f-0000-0200-0000-620f042c0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername23\",\"name\":\"psdnsresolvername23\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T02:26:49.6221368Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:27:55.4563647Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname24\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"d1969e70-6d1e-4fb5-bb3d-14e6d23e642a\"},\"etag\":\"\\\"0000db38-0000-0200-0000-620c840c0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername24\",\"name\":\"psdnsresolvername24\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T04:56:36.4342882Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T04:56:36.4342882Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname25\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"cdf94a02-32f7-46c4-ba66-ce19d8e1010b\"},\"etag\":\"\\\"0300c572-0000-0200-0000-620d3e350000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername25\",\"name\":\"psdnsresolvername25\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T18:10:51.9398207Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T18:10:51.9398207Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname26\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"ce7e6be7-6193-4d07-921c-456377651871\"},\"etag\":\"\\\"03005d74-0000-0200-0000-620d41700000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername26\",\"name\":\"psdnsresolvername26\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":null,\"createdByType\":null,\"lastModifiedAt\":\"2022-02-16T18:24:39.0185789Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname27\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"4bce0ac2-eef6-491c-beed-4f5388f783ce\"},\"etag\":\"\\\"03006774-0000-0200-0000-620d41a30000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername27\",\"name\":\"psdnsresolvername27\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":null,\"createdByType\":null,\"lastModifiedAt\":\"2022-02-16T18:25:31.4283917Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"dcad738d-e6a2-47b6-b56f-20dbbcd81c0b\"},\"etag\":\"\\\"03006975-0000-0200-0000-620d430b0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28\",\"name\":\"psdnsresolvername28\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T18:31:31.4990792Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T18:31:31.4990792Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname29\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"68999fe1-aea4-414a-81f6-7afa13d4ee70\"},\"etag\":\"\\\"03009775-0000-0200-0000-620d43420000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29\",\"name\":\"psdnsresolvername29\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T18:32:25.3876427Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T18:32:25.3876427Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname30\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"fb16b315-adc4-4e5a-8539-e229a8416176\"},\"etag\":\"\\\"0300c977-0000-0200-0000-620d467b0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername30\",\"name\":\"psdnsresolvername30\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T18:46:08.2055923Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T18:46:08.2055923Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname31\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"19931bc9-3aad-4d87-ac40-7c4761f9f81a\"},\"etag\":\"\\\"0300c28d-0000-0200-0000-620d59770000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername31\",\"name\":\"psdnsresolvername31\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T20:07:11.7907072Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T20:07:11.7907072Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname32\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"84511be2-34db-475b-93e6-3354ec0e3d31\"},\"etag\":\"\\\"0300278e-0000-0200-0000-620d59ea0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername32\",\"name\":\"psdnsresolvername32\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T20:09:03.5740349Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T20:09:03.5740349Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname33\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"c487534c-8ec1-4bf1-8c71-4b68a1d3e489\"},\"etag\":\"\\\"030086bb-0000-0200-0000-620d6a310000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername33\",\"name\":\"psdnsresolvername33\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T21:18:32.0061184Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T21:18:32.0061184Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname34\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"921f4f96-83e5-47c3-aea9-15f106a62e5c\"},\"etag\":\"\\\"0300a6bc-0000-0200-0000-620d6b640000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername34\",\"name\":\"psdnsresolvername34\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T21:23:37.5336952Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T21:23:37.5336952Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname35\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"cc99d9d3-0d1b-4c86-8bf6-336d633f0a10\"},\"etag\":\"\\\"030070c1-0000-0200-0000-620d70920000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername35\",\"name\":\"psdnsresolvername35\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T21:45:46.4069344Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T21:45:46.4069344Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname36\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"b75cd4fe-b321-4d45-8ff1-133eb1ffd8eb\"},\"etag\":\"\\\"030079c1-0000-0200-0000-620d70c90000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername36\",\"name\":\"psdnsresolvername36\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T21:46:39.9592439Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T21:46:39.9592439Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname37\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"24157fbe-2e0b-4d21-905d-536a3d11e67b\"},\"etag\":\"\\\"0300cdc1-0000-0200-0000-620d71a50000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername37\",\"name\":\"psdnsresolvername37\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T21:50:19.2261321Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T21:50:19.2261321Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname38\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"ff2c1ada-ec7b-4deb-9e0c-c04702f0d644\"},\"etag\":\"\\\"030001c2-0000-0200-0000-620d71da0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername38\",\"name\":\"psdnsresolvername38\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T21:51:13.1305592Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T21:51:13.1305592Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname39\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"91584c43-c737-41b6-adc1-3161cbd9fb9b\"},\"etag\":\"\\\"030011c4-0000-0200-0000-620d76100000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername39\",\"name\":\"psdnsresolvername39\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T22:09:10.3344312Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T22:09:10.3344312Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname40\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"2fcb649b-08f0-48bb-b1a4-326810d42aa0\"},\"etag\":\"\\\"030000c4-0000-0200-0000-620d75a20000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername40\",\"name\":\"psdnsresolvername40\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T22:07:18.9325346Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T22:07:18.9325346Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname41\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"bc9ccf07-6aca-4c1d-9923-5fe90e0a20ac\"},\"etag\":\"\\\"03000ac4-0000-0200-0000-620d75d50000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername41\",\"name\":\"psdnsresolvername41\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-16T22:08:13.7136904Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-16T22:08:13.7136904Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname42\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"f1860481-a100-4af8-ad57-79afb7d6bdbf\"},\"etag\":\"\\\"04007830-0000-0200-0000-620de54f0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername42\",\"name\":\"psdnsresolvername42\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T06:03:49.2357036Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:03:49.2357036Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname43\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"7018da5c-f0f5-4f22-aef2-beafd5d3a769\"},\"etag\":\"\\\"0400bf35-0000-0200-0000-620de9d50000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername43\",\"name\":\"psdnsresolvername43\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T06:23:09.0883469Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:23:09.0883469Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"e56ea734-f1fa-4a09-a004-bbe30bb6f44e\"},\"etag\":\"\\\"0400d738-0000-0200-0000-620deca60000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44\",\"name\":\"psdnsresolvername44\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T06:35:09.6966547Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:35:09.6966547Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname45\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"b7c1a2fe-d9e7-4b97-bc9f-e35286346fa9\"},\"etag\":\"\\\"0400e53b-0000-0200-0000-620df2450000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername45\",\"name\":\"psdnsresolvername45\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T06:59:08.5054687Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:59:08.5054687Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname46\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"c29c7a2a-2c1f-4766-a231-e4e13ff2a725\"},\"etag\":\"\\\"0400f13b-0000-0200-0000-620df2810000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername46\",\"name\":\"psdnsresolvername46\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T07:00:08.7771045Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T07:00:08.7771045Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname47\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"72c1afff-5fd0-4d9a-b8dd-1b8813e8e360\"},\"etag\":\"\\\"05004d3f-0000-0200-0000-620f04400000\\\"\",\"location\":\"eastus2\",\"tags\":{\"key7v0j5\":\"value7v0j5\",\"keyozrf6\":\"valueozrf6\",\"keyu5dpi\":\"valueu5dpi\",\"keyqpb2m\":\"valueqpb2m\",\"keyp564z\":\"valuep564z\",\"keyfygw0\":\"valuefygw0\"},\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername47\",\"name\":\"psdnsresolvername47\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T18:20:23.6702765Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:28:13.5845121Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname48\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"890f6de6-7708-4b43-94a8-fd5cfbab783f\"},\"etag\":\"\\\"04007ae9-0000-0200-0000-620e966b0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername48\",\"name\":\"psdnsresolvername48\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T18:39:29.6020456Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T18:39:29.6020456Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname49\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"cf0563fe-9bf1-41cb-a8b7-d31b27c8424d\"},\"etag\":\"\\\"0400eeec-0000-0200-0000-620e9bd50000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername49\",\"name\":\"psdnsresolvername49\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T19:02:33.6137503Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T19:02:33.6137503Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname50\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"1faebe7e-435a-4194-a911-4c9de440184b\"},\"etag\":\"\\\"05005b05-0000-0200-0000-620eb68e0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername50\",\"name\":\"psdnsresolvername50\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T20:56:34.6727685Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T20:56:34.6727685Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname51\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"d3348542-6218-499f-a322-ab22c49318ed\"},\"etag\":\"\\\"05001b28-0000-0200-0000-620ee4bc0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername51\",\"name\":\"psdnsresolvername51\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T00:13:39.9998685Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T00:13:39.9998685Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname52\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"de10ce79-8a8e-4c2b-8930-eb9b52635297\"},\"etag\":\"\\\"05006d2b-0000-0200-0000-620ee86c0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername52\",\"name\":\"psdnsresolvername52\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T00:28:52.7582524Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T00:28:52.7582524Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname53\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"cf3ce29b-ecda-47c3-946b-eee46437d9f4\"},\"etag\":\"\\\"0500802c-0000-0200-0000-620eeaca0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername53\",\"name\":\"psdnsresolvername53\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T00:39:27.5281516Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T00:39:27.5281516Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname54\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"9a35ecf8-8f13-4caa-84eb-deeb44f7540b\"},\"etag\":\"\\\"0500d92c-0000-0200-0000-620eebb00000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername54\",\"name\":\"psdnsresolvername54\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T00:43:17.785088Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T00:43:17.785088Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname55\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"8c0667f9-3acb-4b4a-af23-26e2ce44ac02\"},\"etag\":\"\\\"05005a2e-0000-0200-0000-620eef6b0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername55\",\"name\":\"psdnsresolvername55\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T00:59:12.9736905Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T00:59:12.9736905Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname56\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"1b21462f-b89f-47da-91b9-9c04a0a0b906\"},\"etag\":\"\\\"0500422f-0000-0200-0000-620ef03b0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername56\",\"name\":\"psdnsresolvername56\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T01:02:42.1624163Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T01:02:42.1624163Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname57\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"95fbffd9-a3e5-4e47-98dc-523835b803ea\"},\"etag\":\"\\\"05005039-0000-0200-0000-620efb010000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername57\",\"name\":\"psdnsresolvername57\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T01:48:41.0550366Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T01:48:41.0550366Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname58\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"d5f7f699-181d-46d2-94ce-ea685201683d\"},\"etag\":\"\\\"0500ea3a-0000-0200-0000-620efd940000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername58\",\"name\":\"psdnsresolvername58\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T01:59:40.2465219Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T01:59:40.2465219Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname59\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"3616b749-ad66-48b0-9d91-c83f0baa8114\"},\"etag\":\"\\\"0500b33b-0000-0200-0000-620efe760000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername59\",\"name\":\"psdnsresolvername59\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T02:03:23.3941961Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:03:23.3941961Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname60\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"c9d211f8-8853-47b6-aab6-b3c6b2ecfbda\"},\"etag\":\"\\\"0500263f-0000-0200-0000-620f03d20000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername60\",\"name\":\"psdnsresolvername60\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T02:26:22.6358918Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:26:22.6358918Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname61\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"92f7ddd8-e1e2-4a27-a3c4-0d0815b4c000\"},\"etag\":\"\\\"0500293f-0000-0200-0000-620f03d80000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername61\",\"name\":\"psdnsresolvername61\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T02:26:31.5737882Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:26:31.5737882Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname62\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"c6637d4f-544b-449a-b0fe-93972735a860\"},\"etag\":\"\\\"0500de3f-0000-0200-0000-620f04a00000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername62\",\"name\":\"psdnsresolvername62\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T02:29:49.9410187Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:29:49.9410187Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname63\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"ea8728dc-cbbb-41ca-a208-275c44dbc041\"},\"etag\":\"\\\"05001540-0000-0200-0000-620f04a70000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername63\",\"name\":\"psdnsresolvername63\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-18T02:29:58.2493476Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-18T02:29:58.2493476Z\",\"lastModifiedByType\":\"User\"}},{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname5\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"77d94e11-aa71-4e71-a7a5-bcfdcfe5eb81\"},\"etag\":\"\\\"10007af7-0000-0200-0000-620c11a20000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername8\",\"name\":\"psdnsresolvername8\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-15T20:48:20.6457999Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-15T20:48:20.6457999Z\",\"lastModifiedByType\":\"User\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

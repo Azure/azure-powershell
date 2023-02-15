@@ -118,9 +118,9 @@ function Test-NetworkInterfaceCRUD
     $publicIpName = Get-ResourceName
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = Get-ProviderLocation ResourceManagement "East US 2 EUAP"
     $resourceTypeParent = "Microsoft.Network/networkInterfaces"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation $resourceTypeParent "East US 2 EUAP"
     
     try 
     {
@@ -135,7 +135,7 @@ function Test-NetworkInterfaceCRUD
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking -AuxiliaryMode MaxConnections -Tag @{ fastpathenabled = "true"}
         $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
@@ -148,6 +148,7 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
         Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-AreEqual "MaxConnections" $expectedNic.AuxiliaryMode
 
         $expectedNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
 
@@ -984,6 +985,56 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
 
 <#
 .SYNOPSIS
+Tests creating new simple public networkinterface with disableTcpStateTracking Property.
+#>
+function Test-NetworkInterfaceWithDisableTcpStateTracking
+{
+   # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+        # Create NetworkInterface with DisableTcpStateTracking Property set to true
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -DisableTcpStateTracking true
+        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
+
+        Assert-NotNull $expectedNic.ResourceGuid
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $true $expectedNic.DisableTcpStateTracking
+
+        # Delete ResourceGroup
+        $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test creating new NetworkInterfaceTapConfiguration using minimal set of parameters
 #>
 function Test-NetworkInterfaceTapConfigurationCRUD
@@ -1028,7 +1079,7 @@ function Test-NetworkInterfaceTapConfigurationCRUD
 
         # Create source Nic which is getting tapped
         $sourceIpConfig = New-AzNetworkInterfaceIpConfig -Name $sourceIpConfigName -Subnet $vnet.Subnets[0]
-        $sourceNic = New-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname -Location $location -IpConfiguration $sourceIpConfig -Tag @{ testtag = "testval" }
+        $sourceNic = New-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname -Location $location -IpConfiguration $sourceIpConfig -Tag @{ testtag = "testval" } -EnableAcceleratedNetworking
 
         # Add tap configuration
         Add-AzNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name $rname

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/register-azproviderpreviewfeature
+online version: https://learn.microsoft.com/powershell/module/az.resources/register-azproviderpreviewfeature
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Register-AzProviderPreviewFeature** cmdlet creates a feature registration 
 ## EXAMPLES
 
 ### Example 1: Creates a feature registration
-```
-PS C:\>Register-AzProviderPreviewFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+```powershell
+Register-AzProviderPreviewFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
 This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to your account.

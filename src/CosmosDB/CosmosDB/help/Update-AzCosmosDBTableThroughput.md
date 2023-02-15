@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbtablethroughput
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbtablethroughput
 schema: 2.0.0
 ---
 
@@ -40,7 +40,10 @@ Updates the throughput value of a CosmosDB Table.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBTableThroughput -AccountName {myAccountName} -ResourceGroupName {myResourceGroupName} -Name {myTableName} -Throughput {updatedThroughputValue}
+Update-AzCosmosDBTableThroughput -AccountName "myAccountName" -ResourceGroupName "myResourceGroupName" -Name "myTableName" -Throughput $updatedThroughputValue
+```
+
+```output
 Name                : mxGp
 Id                  : /subscriptions/{mySubscriptionId}/resourceGroups/{myResourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{myAccountName}/table/{myTableName}/throughputSettings/default
 Throughput          : {updatedThroughputValue}

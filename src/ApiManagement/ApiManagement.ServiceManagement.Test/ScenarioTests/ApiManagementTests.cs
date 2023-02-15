@@ -1,52 +1,36 @@
-﻿//  
+﻿//
 // Copyright (c) Microsoft.  All rights reserved.
-// 
+//
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
 //  You may obtain a copy of the License at
 //    http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 //  Unless required by applicable law or agreed to in writing, software
 //  distributed under the License is distributed on an "AS IS" BASIS,
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.Linq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
-
-    public class ApiManagementTests : RMTestBase
+    public class ApiManagementTests : ApiManagementTestRunner
     {
-        private readonly EnvironmentSetupHelper _helper;
         public string Location { get; set; }
         public string ResourceGroupName { get; set; }
         public string ApiManagementServiceName { get; set; }
 
-        public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _helper = new EnvironmentSetupHelper
-            {
-                TracingInterceptor = new XunitTracingInterceptor(output)
-            };
-            XunitTracingInterceptor.AddToContext(_helper.TracingInterceptor);
-
             using (var context = MockContext.Start("ApiManagementTests", "CreateApiManagementService"))
             {
                 var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient(context);
-                ResourceGroupName = "powershelltest";
+                ResourceGroupName = "Apim-NetSdk-20210801";
                 Location = "CentralUSEUAP";
 
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
@@ -55,271 +39,266 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
                     resourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
                 }
 
-                ApiManagementServiceName = "powershellsdkservice";
+                ApiManagementServiceName = "powershellsdkservicetest";
                 ApiManagementHelper.GetApiManagementClient(context).TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
             }
+        }
+
+        public string[] ConvertScriptName(params string[] scripts)
+        {
+            return scripts.Select(s => s + $" {ResourceGroupName} {ApiManagementServiceName}").ToArray();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiCrudGraphQLTest()
+        {
+            TestRunner.RunTestScript(ConvertScriptName("Api-CrudGraphQlTest"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiCrudWebSocketTest()
+        {
+            TestRunner.RunTestScript(ConvertScriptName("Api-CrudWebSocketTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiCrudTest()
         {
-            RunPowerShellTest("Api-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Api-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-         public void ApiCloneCrudTest()
+        public void ApiCloneCrudTest()
         {
-            RunPowerShellTest("ApiClone-Test");
-        }        
+            TestRunner.RunTestScript(ConvertScriptName("ApiClone-Test"));
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiImportExportWadlTest()
         {
-            RunPowerShellTest("Api-ImportExportWadlTest");
+            TestRunner.RunTestScript(ConvertScriptName("Api-ImportExportWadlTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiImportExportSwaggerTest()
         {
-            RunPowerShellTest("Api-ImportExportSwaggerTest");
+            TestRunner.RunTestScript(ConvertScriptName("Api-ImportExportSwaggerTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiImportExportWsdlTest()
         {
-            RunPowerShellTest("Api-ImportExportWsdlTest");
+            TestRunner.RunTestScript(ConvertScriptName("Api-ImportExportWsdlTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiImportExportOpenApiTest()
         {
-            RunPowerShellTest("Api-ImportExportOpenApiTest");
+            TestRunner.RunTestScript(ConvertScriptName("Api-ImportExportOpenApiTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiImportExportOpenApiJsonTest()
         {
-            RunPowerShellTest("Api-ImportExportOpenApiJsonTest");
+            TestRunner.RunTestScript(ConvertScriptName("Api-ImportExportOpenApiJsonTest"));
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiSchemaCrudOnSwaggerApiTest()
         {
-            RunPowerShellTest("ApiSchema-SwaggerCRUDTest");
+            TestRunner.RunTestScript(ConvertScriptName("ApiSchema-SwaggerCRUDTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiSchemaCrudOnWsdlApiTest()
         {
-            RunPowerShellTest("ApiSchema-WsdlCRUDTest");
+            TestRunner.RunTestScript(ConvertScriptName("ApiSchema-WsdlCRUDTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void OperationsCrudTest()
         {
-            RunPowerShellTest("Operations-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Operations-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProductCrudTest()
         {
-            RunPowerShellTest("Product-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Product-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionOldModelCrudTest()
         {
-            RunPowerShellTest("SubscriptionOldModel-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("SubscriptionOldModel-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionNewModelCrudTest()
         {
-            RunPowerShellTest("SubscriptionNewModel-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("SubscriptionNewModel-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UserCrudTest()
         {
-            RunPowerShellTest("User-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("User-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GroupCrudTest()
         {
-            RunPowerShellTest("Group-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Group-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PolicyCrudTest()
         {
-            RunPowerShellTest("Policy-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Policy-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CertificateCrudTest()
         {
-            RunPowerShellTest("Certificate-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Certificate-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AuthorizationServerCrudTest()
         {
-            RunPowerShellTest("AuthorizationServer-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("AuthorizationServer-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void LoggerCrudTest()
         {
-            RunPowerShellTest("Logger-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Logger-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GatewayCrudTest()
         {
-            RunPowerShellTest("Gateway-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Gateway-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PropertiesCrudTest()
         {
-            RunPowerShellTest("Properties-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Properties-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void OpenIdConnectProviderCrudTest()
         {
-            RunPowerShellTest("OpenIdConnectProvider-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("OpenIdConnectProvider-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IdentityProviderAadB2CCrudTest()
         {
-            RunPowerShellTest("IdentityProvider-AadB2C-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("IdentityProvider-AadB2C-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IdentityProviderCrudTest()
         {
-            RunPowerShellTest("IdentityProvider-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("IdentityProvider-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TenantGitConfCrudTest()
         {
-            RunPowerShellTest("TenantGitConfiguration-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("TenantGitConfiguration-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TenantAccessConfCrudTest()
         {
-            RunPowerShellTest("TenantAccessConfiguration-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("TenantAccessConfiguration-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void BackendCrudTest()
         {
-            RunPowerShellTest("Backend-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Backend-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void BackendServiceFabricCrudTest()
         {
-            RunPowerShellTest("BackendServiceFabric-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("BackendServiceFabric-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiVersionSetImportCrudTest()
         {
-            RunPowerShellTest("ApiVersionSet-ImportCrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("ApiVersionSet-ImportCrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiVersionSetCrudTest()
         {
-            RunPowerShellTest("ApiVersionSet-SetCrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("ApiVersionSet-SetCrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiRevisionCrudTest()
         {
-            RunPowerShellTest("ApiRevision-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("ApiRevision-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CacheCrudTest()
         {
-            RunPowerShellTest("Cache-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Cache-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DiagnosticCrudTest()
         {
-            RunPowerShellTest("Diagnostic-CrudTest");
+            TestRunner.RunTestScript(ConvertScriptName("Diagnostic-CrudTest"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiDiagnosticCrudTest()
         {
-            RunPowerShellTest("ApiDiagnostic-CrudTest");
-        }
-
-        private void RunPowerShellTest(params string[] scripts)
-        {
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
-
-            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-
-            using (var context = MockContext.Start(callingClassType, mockName))
-            {
-                _helper.SetupSomeOfManagementClients(context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment()));
-
-                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                _helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + GetType().Name + ".ps1",
-                    _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.ApiManagement.psd1"));
-
-                scripts = scripts.Select(s => s + $" {ResourceGroupName} {ApiManagementServiceName}").ToArray();
-                _helper.RunPowerShellTest(scripts);
-            }
+            TestRunner.RunTestScript(ConvertScriptName("ApiDiagnostic-CrudTest"));
         }
     }
 }

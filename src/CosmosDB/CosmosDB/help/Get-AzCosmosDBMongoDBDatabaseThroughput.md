@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The **Get-AzCosmosDBMongoDBDatabaseThroughput** cmdlet gets the throughput prope
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBMongoDBDatabaseThroughput -ResourceGroupName {rgName} -AccountName {accountName} -Name {databaseName}
+Get-AzCosmosDBMongoDBDatabaseThroughput -ResourceGroupName "rgName" -AccountName "accountName" -Name "databaseName"
+```
 
+```output
 Name: {throughputName}
 Id: {Id}
 Throughput: {value} 

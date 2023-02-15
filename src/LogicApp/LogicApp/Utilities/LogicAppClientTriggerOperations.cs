@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="workflowName">Name of the workflow</param>
         /// <param name="triggerName">Name of the trigger</param>
+        /// <param name="nextPageLink"></param>
         /// <returns>List of trigger histories</returns>
         public Page<WorkflowTriggerHistory> GetWorkflowTriggerHistories(string resourceGroupName, string workflowName,
             string triggerName, string nextPageLink = "")

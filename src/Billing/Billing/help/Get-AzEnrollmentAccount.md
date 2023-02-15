@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Billing.dll-Help.xml
 Module Name: Az.Billing
-online version: https://docs.microsoft.com/powershell/module/az.billing/get-azenrollmentaccount
+online version: https://learn.microsoft.com/powershell/module/az.billing/get-azenrollmentaccount
 schema: 2.0.0
 ---
 
@@ -28,9 +28,11 @@ The **Get-AzEnrollmentAccount** cmdlet gets enrollment accounts.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzEnrollmentAccount
 ```
-PS C:\> Get-AzEnrollmentAccount
 
+```output
 ObjectId                             PrincipalName
 --------                             -------------
 dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com
@@ -40,9 +42,11 @@ dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com
 Get all available enrollment accounts.
 
 ### Example 2
+```powershell
+Get-AzEnrollmentAccount -ObjectId dbd8453d-071f-4fb4-8e01-c99f5b067649
 ```
-PS C:\> Get-AzEnrollmentAccount -ObjectId dbd8453d-071f-4fb4-8e01-c99f5b067649
 
+```output
 ObjectId                             PrincipalName
 --------                             -------------
 dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com

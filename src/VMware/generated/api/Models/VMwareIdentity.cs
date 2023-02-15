@@ -105,6 +105,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
+        /// <summary>Backing field for <see cref="PlacementPolicyName" /> property.</summary>
+        private string _placementPolicyName;
+
+        /// <summary>
+        /// Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string PlacementPolicyName { get => this._placementPolicyName; set => this._placementPolicyName = value; }
+
         /// <summary>Backing field for <see cref="PortMirroringId" /> property.</summary>
         private string _portMirroringId;
 
@@ -302,6 +311,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
         /// <summary>
+        /// Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy",
+        SerializedName = @"placementPolicyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PlacementPolicyName { get; set; }
+        /// <summary>
         /// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -426,6 +445,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string Id { get; set; }
         /// <summary>Azure region</summary>
         string Location { get; set; }
+        /// <summary>
+        /// Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+        /// </summary>
+        string PlacementPolicyName { get; set; }
         /// <summary>
         /// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
         /// </summary>

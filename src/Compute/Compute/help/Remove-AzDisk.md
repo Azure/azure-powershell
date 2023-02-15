@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azdisk
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azdisk
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Remove-AzDisk** cmdlet removes a disk.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Force;
+```powershell
+Remove-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Force;
 ```
 
 This command removes the disk named 'Disk01' in the resource group 'ResourceGroup01'.

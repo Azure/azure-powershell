@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/new-azdataboxedgestoragecontainer
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/new-azdataboxedgestoragecontainer
 schema: 2.0.0
 ---
 
@@ -25,7 +25,10 @@ The **New-AzDataBoxEdgeStorageContainer** cmdlet creates a new storage container
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeStorageContainer -ResourceGroupName resourceGroupName -DeviceName db-edge -EdgeStorageAccountName edgestorageaccount1 -Name edgecontainer1 -DataFormat BlockBlob
+New-AzDataBoxEdgeStorageContainer -ResourceGroupName resourceGroupName -DeviceName db-edge -EdgeStorageAccountName edgestorageaccount1 -Name edgecontainer1 -DataFormat BlockBlob
+```
+
+```output
 Name       DataFormat EdgeStorageAccountName DeviceName ResourceGroupName
 ----       ---------- ---------------------- ---------- -----------------
 container1 BlockBlob  edgestorageaccount1    db-edge    resourceGroupName

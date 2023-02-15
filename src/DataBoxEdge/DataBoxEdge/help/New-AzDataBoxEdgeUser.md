@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/new-azdataboxedgeuser
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/new-azdataboxedgeuser
 schema: 2.0.0
 ---
 
@@ -25,16 +25,22 @@ The **New-AzDataBoxEdgeUser** cmdlet creates a new user for the Data Box Edge de
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+New-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username `
  -Password password-secured-string -EncryptionKey encryption-key
+ ```
+
+```output
 User name   Type  ResourceGroupName DeviceName
 ---------   ----  ----------------- ----------
 username    Share resourceGroupName deviceName
 ```
 
 ```powershell
-PS C:\> New-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+New-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username `
  -Password password-secured-string -EncryptionKey encryption-key -Type Share
+ ```
+
+```output
 User name   Type  ResourceGroupName DeviceName
 ---------   ----  ----------------- ----------
 username    Share resourceGroupName deviceName

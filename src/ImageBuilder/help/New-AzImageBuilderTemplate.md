@@ -1,57 +1,175 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/New-AzImageBuilderTemplate
+online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/new-azimagebuildertemplate
 schema: 2.0.0
 ---
 
 # New-AzImageBuilderTemplate
 
 ## SYNOPSIS
-Create a virtual machine image template
+Create or update a virtual machine image template
 
 ## SYNTAX
 
-### FlattenParameterSet (Default)
+### CreateExpanded (Default)
 ```
-New-AzImageBuilderTemplate -ImageTemplateName <String> -ResourceGroupName <String>
- -Distribute <IImageTemplateDistributor[]> -Source <IImageTemplateSource> -UserAssignedIdentityId <String>
- [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>] [-Customize <IImageTemplateCustomizer[]>]
- [-Location <String>] [-Tag <Hashtable>] [-VMProfileOsdiskSizeInGb <Int32>] [-VMProfileVmSize <String>]
+New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Customize <IImageTemplateCustomizer[]>
+ -Distribute <IImageTemplateDistributor[]> -Location <String> -Source <IImageTemplateSource>
+ -UserAssignedIdentityId <String> [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>]
+ [-StagingResourceGroup <String>] [-Tag <Hashtable>] [-ValidateContinueDistributeOnFailure]
+ [-ValidateSourceValidationOnly] [-Validator <IImageTemplateInVMValidator[]>] [-VMProfileOsdiskSizeGb <Int32>]
+ [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>] [-VnetConfigProxyVMSize <String>]
  [-VnetConfigSubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### JsonTemplate
+### CreateViaJsonString
 ```
-New-AzImageBuilderTemplate -ImageTemplateName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-JsonTemplatePath <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### JsonTemplatePath
+```
+New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -JsonTemplatePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a virtual machine image template
+Create or update a virtual machine image template
 
 ## EXAMPLES
 
 ### Example 1: Create a virtual machine image template
 ```powershell
-PS C:\> $srcPlatform = New-AzImageBuilderSourceObject -SourceTypePlatformImage -Publisher 'Canonical'  -Offer 'UbuntuServer' -Sku '18.04-LTS' -Version 'latest'
-PS C:\> $disSharedImg = New-AzImageBuilderDistributorObject -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/testsharedgallery/images/imagedefinition-linux/versions/1.0.0' -ReplicationRegion 'eastus2' -RunOutputName 'runoutput-01'  -ExcludeFromLatest $false
-PS C:\> $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName 'CheckSumCompareShellScript' -ScriptUri 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh' -Sha256Checksum 'ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93'
-PS C:\> $userAssignedIdentity = '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/image-builder-user-assign-identity'
-PS C:\> New-AzImageBuilderTemplate -ImageTemplateName platform-shared-img -ResourceGroupName wyunchi-imagebuilder -Source $srcPlatform -Distribute $disSharedImg -Customize $customizer -Location eastus  -UserAssignedIdentityId $userAssignedIdentity
+# Create a platform image source
+$source = New-AzImageBuilderTemplateSourceObject -PlatformImageSource -Publisher 'Canonical' -Offer 'UbuntuServer' -Sku '18.04-LTS' -Version 'latest'
+# Create a shell customizer
+$customizer = New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name 'CheckSumCompareShellScript' -ScriptUri 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh' -Sha256Checksum 'ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93'
+# Create a shared image distributor
+$distributor = New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Compute/galleries/bez_gallery/images/bez-image' -ReplicationRegion 'eastus2' -RunOutputName 'runoutput-01' -ExcludeFromLatest $false
+# the userAssignedIdentity should have access permissions to the image above
+$userAssignedIdentity = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id'
+# Create a virtual machine image template
+New-AzImageBuilderTemplate -Name bez-test-img-temp -ResourceGroupName bez-rg -Location eastus -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor  
+```
 
-Location Name                Type
--------- ----                ----
-PlanInfoPlanName      :
-PlanInfoPlanPublisher :
-Sku                   : 18.04-LTS
-Version               : latest
-PlanInfo              : Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.PlatformImagePurchasePlan
+```output
+Location Name              SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType       
+-------- ----              ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------       
+eastus   bez-test-img-temp
 ```
 
 This commands creates a virtual machine image template.
+
+### Example 2: Create a virtual machine image template via Json file
+```powershell
+# request_body.json
+# {
+#   "location": "eastus",
+#   "properties": {
+#     "source": {
+#       "type": "PlatformImage",
+#       "publisher": "Canonical",
+#       "offer": "UbuntuServer",
+#       "sku": "18.04-LTS",
+#       "version": "latest"
+#     },
+#     "customize": [
+#       {
+#         "type": "Shell",
+#         "name": "CheckSumCompareShellScript",
+#         "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh",
+#         "sha256Checksum": "ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93"
+#       }
+#     ],
+#     "distribute": [
+#       {
+#         "type": "SharedImage",
+#         "runOutputName": "runoutput-01",
+#         "artifactTags": {
+#           "tag": "dis-share"
+#         },
+#         "galleryImageId": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Compute/galleries/bez_gallery/images/bez-image",
+#         "replicationRegions": [
+#           "eastus2"
+#         ],
+#         "excludeFromLatest": false
+#       }
+#     ]
+#   },
+#   "identity": {
+#     "type": "UserAssigned",
+#     "userAssignedIdentities": {
+#       "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id": {}
+#     }
+#   }
+# }
+New-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg -JsonTemplatePath ./request_body.json
+```
+
+```output
+Location Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+-------- ----                ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+eastus   bez-test-img-temp12
+```
+
+This commands creates a virtual machine image template via Json file.
+
+### Example 3: Create a virtual machine image template via Json string
+```powershell
+New-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg -JsonString '{
+  "location": "eastus",
+  "properties": {
+    "source": {
+      "type": "PlatformImage",
+      "publisher": "Canonical",
+      "offer": "UbuntuServer",
+      "sku": "18.04-LTS",
+      "version": "latest"
+    },
+    "customize": [
+      {
+        "type": "Shell",
+        "name": "CheckSumCompareShellScript",
+        "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh",
+        "sha256Checksum": "ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93"
+      }
+    ],
+    "distribute": [
+      {
+        "type": "SharedImage",
+        "runOutputName": "runoutput-01",
+        "artifactTags": {
+          "tag": "dis-share"
+        },
+        "galleryImageId": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Compute/galleries/bez_gallery/images/bez-image",
+        "replicationRegions": [
+          "eastus2"
+        ],
+        "excludeFromLatest": false
+      }
+    ]
+  },
+  "identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id": {}
+    }
+  }
+}'
+```
+
+```output
+Location Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+-------- ----                ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+eastus   bez-test-img-temp12
+```
+
+This commands creates a virtual machine image template via Json stri.
 
 ## PARAMETERS
 
@@ -71,12 +189,11 @@ Accept wildcard characters: False
 ```
 
 ### -BuildTimeoutInMinute
-Maximum duration to wait while building the image template.
-Omit or specify 0 to use the default (4 hours).
+
 
 ```yaml
 Type: System.Int32
-Parameter Sets: FlattenParameterSet
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -87,15 +204,14 @@ Accept wildcard characters: False
 ```
 
 ### -Customize
-Specifies the properties used to describe the customization steps of the image, like Image source etc.
 To construct, see NOTES section for CUSTOMIZE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer[]
-Parameter Sets: FlattenParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateCustomizer[]
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -103,8 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-region HideParameter
- The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -119,12 +234,11 @@ Accept wildcard characters: False
 ```
 
 ### -Distribute
-The distribution targets where the image output needs to go to.
 To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor[]
-Parameter Sets: FlattenParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateDistributor[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -134,13 +248,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageTemplateName
-The name of the image Template.
+### -JsonString
+Json string.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: Name
+Parameter Sets: CreateViaJsonString
+Aliases:
 
 Required: True
 Position: Named
@@ -150,14 +264,14 @@ Accept wildcard characters: False
 ```
 
 ### -JsonTemplatePath
-Path of json formated image template file.
+
 
 ```yaml
 Type: System.String
-Parameter Sets: JsonTemplate
+Parameter Sets: JsonTemplatePath
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -165,14 +279,29 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Resource location.
+
 
 ```yaml
 Type: System.String
-Parameter Sets: FlattenParameterSet
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the image Template
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ImageTemplateName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -210,12 +339,11 @@ Accept wildcard characters: False
 ```
 
 ### -Source
-Describes a virtual machine image source for building, customizing and distributing.
 To construct, see NOTES section for SOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource
-Parameter Sets: FlattenParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateSource
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -225,8 +353,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StagingResourceGroup
+
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
+The subscription Id forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
@@ -241,11 +385,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: FlattenParameterSet
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -256,11 +400,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentityId
-The id of user assigned identity.
+
 
 ```yaml
 Type: System.String
-Parameter Sets: FlattenParameterSet
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -270,13 +414,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMProfileOsdiskSizeInGb
-Size of the OS disk in GB.
-Omit or specify 0 to use Azure's default OS disk size.
+### -ValidateContinueDistributeOnFailure
+
 
 ```yaml
-Type: System.Int32
-Parameter Sets: FlattenParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -286,13 +429,87 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMProfileVmSize
-Size of the virtual machine used to build, customize and capture images.
-Omit or specify empty string to use the default (Standard_D1_v2).
+### -ValidateSourceValidationOnly
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Validator
+To construct, see NOTES section for VALIDATOR properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateInVMValidator[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMProfileOsdiskSizeGb
+
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMProfileUserAssignedIdentity
+
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMProfileVmsize
+
 
 ```yaml
 Type: System.String
-Parameter Sets: FlattenParameterSet
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VnetConfigProxyVMSize
+
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -303,11 +520,11 @@ Accept wildcard characters: False
 ```
 
 ### -VnetConfigSubnetId
-Resource id of a pre-existing subnet.
+
 
 ```yaml
 Type: System.String
-Parameter Sets: FlattenParameterSet
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -355,7 +572,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplate
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplate
 
 ## NOTES
 
@@ -366,18 +583,22 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CUSTOMIZE <IImageTemplateCustomizer[]>: Specifies the properties used to describe the customization steps of the image, like Image source etc.
+`CUSTOMIZE <IImageTemplateCustomizer[]>`: 
   - `Type <String>`: The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
   - `[Name <String>]`: Friendly Name to provide context on what this customization step does
 
-DISTRIBUTE <IImageTemplateDistributor[]>: The distribution targets where the image output needs to go to.
+`DISTRIBUTE <IImageTemplateDistributor[]>`: 
   - `RunOutputName <String>`: The name to be used for the associated RunOutput.
   - `Type <String>`: Type of distribution.
   - `[ArtifactTag <IImageTemplateDistributorArtifactTags>]`: Tags that will be applied to the artifact once it has been created/updated by the distributor.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-SOURCE <IImageTemplateSource>: Describes a virtual machine image source for building, customizing and distributing.
+`SOURCE <IImageTemplateSource>`: 
   - `Type <String>`: Specifies the type of source image you want to start with.
+
+`VALIDATOR <IImageTemplateInVMValidator[]>`: 
+  - `Type <String>`: The type of validation you want to use on the Image. For example, "Shell" can be shell validation
+  - `[Name <String>]`: Friendly Name to provide context on what this validation step does
 
 ## RELATED LINKS
 

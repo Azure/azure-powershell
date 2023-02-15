@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: F6D9EA59-BA61-4117-8771-9B190424BFF8
-online version: https://docs.microsoft.com/powershell/module/az.logicapp/set-azintegrationaccount
+online version: https://learn.microsoft.com/powershell/module/az.logicapp/set-azintegrationaccount
 schema: 2.0.0
 ---
 
@@ -29,8 +29,11 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Modify an integration account
+```powershell
+Set-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Sku "Free"
 ```
-PS C:\>Set-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Sku "Free"
+
+```output
 Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31
 Name        : IntegrationAccount31
 Type        : Microsoft.Logic/integrationAccounts

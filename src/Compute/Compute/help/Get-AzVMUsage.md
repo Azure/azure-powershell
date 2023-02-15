@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 3702701E-428D-47E2-A227-0F38B055F881
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmusage
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Get-AzVMUsage** cmdlet gets the virtual machine core count usage for a loc
 ## EXAMPLES
 
 ### Example 1: Get core count usage for a location
-```
-PS C:\> Get-AzVMUsage -Location "Central US"
+```powershell
+Get-AzVMUsage -Location "Central US"
 ```
 
 This command gets the virtual machine core count usage for the location Central US.

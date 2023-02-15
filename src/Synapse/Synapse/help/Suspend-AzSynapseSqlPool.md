@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/suspend-azsynapsesqlpool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/suspend-azsynapsesqlpool
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The **Suspend-AzSynapseSqlPool** cmdlet suspends an Azure Synapse Analytics SQL 
 
 ### Example 1
 ```powershell
-PS C:\> Suspend-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Suspend-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command suspends an active Azure Synapse Analytics SQL pool.

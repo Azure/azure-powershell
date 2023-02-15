@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Aks
 Module Guid: a97e0c3e-e389-46a6-b73d-2b9bd6909bdb
-Download Help Link: https://docs.microsoft.com/powershell/module/az.aks
+Download Help Link: https://learn.microsoft.com/powershell/module/az.aks
 Help Version: 0.0.1.0
 Locale: en-US
 ---
@@ -31,18 +31,23 @@ Gets the details of the upgrade profile for a managed cluster with a specified r
 
 ### [Get-AzAksVersion](Get-AzAksVersion.md)
 List available version for creating managed Kubernetes cluster.
+The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.
 
 ### [Import-AzAksCredential](Import-AzAksCredential.md)
 Import and merge Kubectl config for a managed Kubernetes Cluster.
 
-### [Install-AzAksKubectl](Install-AzAksKubectl.md)
-Download and install kubectl, the Kubernetes command-line tool.
+### [Install-AzAksCliTool](Install-AzAksCliTool.md)
+Download and install kubectl and kubelogin.
 
 ### [Invoke-AzAksRunCommand](Invoke-AzAksRunCommand.md)
 Run a shell command (with kubectl, helm) on your aks cluster, support attaching files as well.
 
 ### [New-AzAksCluster](New-AzAksCluster.md)
 Create a new managed Kubernetes cluster.
+
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- POST /servicePrincipals
 
 ### [New-AzAksNodePool](New-AzAksNodePool.md)
 Create a new node pool in specified cluster.

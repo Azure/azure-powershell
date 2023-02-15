@@ -92,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             IReadOnlyList<string> history = new List<string>()
             {
-                "New-AzVM -Name hello -Location WestUS"
+                "Get-LogProperties -Name:'Windows PowerShell'"
             };
 
             _service.Commands = null;
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
-            string maskedCommand = "New-AzVM -Location *** -Name ***";
+            string maskedCommand = "Get-LogProperties -Name:***";
 
             Assert.Equal(new List<string>() { AzPredictorConstants.CommandPlaceholder, maskedCommand }, _service.Commands);
             Assert.Equal(history[0], _service.History.ToString());
@@ -116,8 +116,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             IReadOnlyList<string> history = new List<string>()
             {
-                "New-AzResourceGroup -Name 'resourceGroup01'",
-                "New-AzVM -Name:hello -Location:WestUS"
+                "Set-Content -Path C:\\Temp\\* -Filter *.txt -Value 'Empty'",
+                "Get-LogProperties -Name:'Windows PowerShell'"
             };
 
             _service.Commands = null;
@@ -129,8 +129,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             var maskedCommands = new List<string>()
             {
-                "New-AzResourceGroup -Name ***",
-                "New-AzVM -Location:*** -Name:***"
+                "Set-Content -Filter *** -Path *** -Value ***",
+                "Get-LogProperties -Name:***"
             };
 
             Assert.Equal(maskedCommands, _service.Commands);
@@ -174,8 +174,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var history = new List<string>()
             {
-                "New-AzResourceGroup -Name:resourceGroup01",
-                "New-AzVM -Name hello -Location WestUS"
+                "Set-Content -Path C:\\Temp\\* -Filter *.txt -Value 'Empty'",
+                "Get-LogProperties -Name:'Windows PowerShell'"
             };
 
             _service.Commands = null;
@@ -200,8 +200,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             var maskedCommands = new List<string>()
             {
-                "New-AzResourceGroup -Name:***",
-                "New-AzVM -Location *** -Name ***"
+                "Set-Content -Filter *** -Path *** -Value ***",
+                "Get-LogProperties -Name:***"
             };
 
             Assert.Equal(maskedCommands, _service.Commands);
@@ -210,14 +210,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             // When there is a new supported command, we'll use that for prediction.
 
             _service.ResetRequestPredictionTask();
-            history.Add("Get-AzResourceGroup -Name ResourceGroup01");
+            history.Add("Clear-Content -Path '*' -Filter '*.log' -Force");
             _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             maskedCommands = new List<string>()
             {
-                "New-AzVM -Location *** -Name ***",
-                "Get-AzResourceGroup -Name ***",
+                "Get-LogProperties -Name:***",
+                "Clear-Content -Filter *** -Force *** -Path ***"
             };
 
             Assert.Equal(maskedCommands, _service.Commands);
@@ -232,8 +232,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var history = new List<string>()
             {
-                "New-AzResourceGroup -Name resourceGroup01",
-                "New-AzVM -Name:hello -Location:WestUS"
+                "Set-Content -Path C:\\Temp\\* -Filter *.txt -Value 'Empty'",
+                "Get-LogProperties -Name:'Windows PowerShell'"
             };
 
             _service.Commands = null;
@@ -244,14 +244,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             _service.ResetRequestPredictionTask();
-            history.Add("Get-AzResourceGroup -Name resourceGroup01");
+            history.Add("Clear-Content -Path C:\\Test\\Copy-Script.ps1 -Stream Zone.Identifier");
             _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             var maskedCommands = new List<string>()
             {
-                "New-AzVM -Location:*** -Name:***",
-                "Get-AzResourceGroup -Name ***",
+                "Get-LogProperties -Name:***",
+                "Clear-Content -Path *** -Stream ***"
             };
 
             Assert.Equal(maskedCommands, _service.Commands);
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var history = new List<string>()
             {
                 "git status",
-                "New-AzVM -Name:hello -Location:WestUS"
+                "Clear-Content -Path '*' -Filter '*.log' -Force"
             };
 
             _service.Commands = null;
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var maskedCommands = new List<string>()
             {
                 AzPredictorConstants.CommandPlaceholder,
-                "New-AzVM -Location:*** -Name:***"
+                "Clear-Content -Filter *** -Force *** -Path ***"
             };
 
             Assert.Equal(maskedCommands, _service.Commands);
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var history = new List<string>()
             {
-                "New-AzVM -Name hello -Location WestUS",
+                "Clear-Variable -Name:my* -Scope Global",
                 "git status",
             };
 
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var maskedCommands = new List<string>()
             {
                 AzPredictorConstants.CommandPlaceholder,
-                "New-AzVM -Location *** -Name ***",
+                "Clear-Variable -Name:*** -Scope ***",
             };
 
             Assert.Equal(maskedCommands, _service.Commands);
@@ -320,8 +320,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verifies AzPredictor returns the same value as AzPredictorService for the prediction.
         /// </summary>
         [Theory]
-        [InlineData("new-azresourcegroup -name hello")]
-        [InlineData("Get-AzContext -Name")]
+        [InlineData("compare-object -referenceobject ref -differenceobject diff")]
+        [InlineData("Clear-Variable -Name my")]
         public void VerifySuggestion(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -352,8 +352,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             },
             azContext);
 
-            var userInput = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -";
-            var expected = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -Tag value1";
+            var userInput = "Clear-Variable -Name my* -";
+            var expected = "Clear-Variable -Name my* -Scope Global";
 
             var predictionContext = PredictionContext.Create(userInput);
             var actual = localAzPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);

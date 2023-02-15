@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: B6487D26-2B6A-4938-B1CD-48EADD8D0C3C
-online version: https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook
+online version: https://learn.microsoft.com/powershell/module/az.automation/import-azautomationrunbook
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow def
 
 ### Example 1: Import a runbook from a file
 ```powershell
-PS C:\> $Tags = @{"tag01"="value01"; "tag02"="value02"}
-PS C:\> Import-AzAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type GraphicalPowershell
+$Tags = @{"tag01"="value01"; "tag02"="value02"}
+Import-AzAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type GraphicalPowershell
 ```
 
 The first command assigns two key/value pairs to the $Tags variable.
@@ -233,7 +233,7 @@ It is equivalent to GraphicalPowerShellWorkflow.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph, Python2, Python3
+Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph, Python2
 
 Required: True
 Position: Named

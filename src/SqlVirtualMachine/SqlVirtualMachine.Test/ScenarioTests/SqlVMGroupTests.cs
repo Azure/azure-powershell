@@ -20,7 +20,7 @@ using Xunit.Abstractions;
 namespace Microsoft.Azure.Commands.SqlVirtualMachineGroup.Test.ScenarioTests
 {
     [Collection("SqlVirtualMachineTests")]
-    public class SqlVMGroupTests : SqlVirtualMachineTestsBase
+    public class SqlVMGroupTests : SqlVirtualMachineTestRunner
     {
         public SqlVMGroupTests(ITestOutputHelper output) : base(output)
         {
@@ -30,28 +30,28 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachineGroup.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlVirtualMachineGroupCreate()
         {
-            RunPowerShellTest("Test-CreateSqlVirtualMachineGroup");
+            TestRunner.RunTestScript("Test-CreateSqlVirtualMachineGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlVirtualMachineGroupGet()
         {
-            RunPowerShellTest("Test-GetSqlVirtualMachineGroup");
+            TestRunner.RunTestScript("Test-GetSqlVirtualMachineGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlVirtualMachineGroupUpdate()
         {
-            RunPowerShellTest("Test-UpdateSqlVirtualMachineGroup");
+            TestRunner.RunTestScript("Test-UpdateSqlVirtualMachineGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlVirtualMachineGroupRemove()
         {
-            RunPowerShellTest("Test-RemoveSqlVirtualMachineGroup");
+            TestRunner.RunTestScript("Test-RemoveSqlVirtualMachineGroup");
         }
     }
 }

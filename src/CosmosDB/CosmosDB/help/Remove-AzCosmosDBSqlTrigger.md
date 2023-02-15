@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbsqltrigger
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbsqltrigger
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ The **Remove-AzCosmosDBSqlTrigger** cmdlet deletes the CosmosDB Sql Trigger corr
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCosmosDBSqlTrigger -ResourceGroupName {resourceGroupName} -AccountName {accountName} -DatabaseName {databaseName} -ContainerName {containerName} -Name {triggerName}
+Remove-AzCosmosDBSqlTrigger -ResourceGroupName "resourceGroupName" -AccountName "accountName" -DatabaseName "databaseName" -ContainerName "containerName" -Name "triggerName"
 ```
 
 ## PARAMETERS

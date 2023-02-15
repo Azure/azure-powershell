@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://docs.microsoft.com/powershell/module/az.digitaltwins/test-azdigitaltwinsinstancenameavailability
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/test-azdigitaltwinsinstancenameavailability
 schema: 2.0.0
 ---
 
@@ -18,20 +18,6 @@ Test-AzDigitalTwinsInstanceNameAvailability -Location <String> -Name <String> [-
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Check
-```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String>
- -DigitalTwinsInstanceCheckName <ICheckNameRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzDigitalTwinsInstanceNameAvailability -InputObject <IDigitalTwinsIdentity>
- -DigitalTwinsInstanceCheckName <ICheckNameRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### CheckViaIdentityExpanded
 ```
 Test-AzDigitalTwinsInstanceNameAvailability -InputObject <IDigitalTwinsIdentity> -Name <String>
@@ -43,29 +29,31 @@ Check if a DigitalTwinsInstance name is available.
 
 ## EXAMPLES
 
-### Example 1: Check the name by location and name.
+### Example 1: Check if a DigitalTwinsInstance name is available.
 ```powershell
-PS C:\> Test-AzDigitalTwinsInstanceNameAvailability -Location eastus -name youriTestName
-
-Message                       NameAvailable Reason
--------                       ------------- ------
-'youriTestName' is available. True
+Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name testName
 ```
 
-Check the availability of the name by location and name.
-
-### Example 2: Check the name by DigitalTwinsObject and CheckNameObject.
-```powershell
-PS C:\> $getAzDT =Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest 
-$checkName = New-AzDigitalTwinsCheckNameRequestObject -name youriTestName
-Test-AzDigitalTwinsInstanceNameAvailability -InputObject $getAzDT -DigitalTwinsInstanceCheckName $checkName
-
-Message                     NameAvailable Reason
--------                     ------------- ------
-'youriTestName' is available. True
+```output
+Message                  NameAvailable Reason
+-------                  ------------- ------
+'testName' is available. True
 ```
 
-Get A DigitalTwinsInstance and create a Requset Object to Test the availability of the name.
+Check if a DigitalTwinsInstance name is available.
+
+### Example 2: Check if a DigitalTwinsInstance name is not available.
+```powershell
+Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name !testName
+```
+
+```output
+Message                                                                                                                                NameAvailable Reason
+-------                                                                                                                                ------------- ------
+'!testName' must be between 3 and 63 characters. Alphanumerics and hyphens are allowed. Value must start and end with an alphanumeric. False         Invalid
+```
+
+Check if a DigitalTwinsInstance name is not available.
 
 ## PARAMETERS
 
@@ -84,29 +72,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DigitalTwinsInstanceCheckName
-The result returned from a database check name availability request.
-To construct, see NOTES section for DIGITALTWINSINSTANCECHECKNAME properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ICheckNameRequest
-Parameter Sets: Check, CheckViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
+Parameter Sets: CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -121,7 +93,7 @@ Location of DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -136,7 +108,7 @@ Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -151,7 +123,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -197,13 +169,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ICheckNameRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ICheckNameResult
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ICheckNameResult
 
 ## NOTES
 
@@ -214,16 +184,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DIGITALTWINSINSTANCECHECKNAME <ICheckNameRequest>: The result returned from a database check name availability request.
-  - `Name <String>`: Resource name.
-
-INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+`INPUTOBJECT <IDigitalTwinsIdentity>`: Identity Parameter
   - `[EndpointName <String>]`: Name of Endpoint Resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location of DigitalTwinsInstance.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the DigitalTwinsInstance.
+  - `[ResourceId <String>]`: The name of the private link resource.
   - `[ResourceName <String>]`: The name of the DigitalTwinsInstance.
   - `[SubscriptionId <String>]`: The subscription identifier.
+  - `[TimeSeriesDatabaseConnectionName <String>]`: Name of time series database connection.
 
 ## RELATED LINKS
 

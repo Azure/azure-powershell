@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         private int CalculateBlockCount()
         {
-            var count = this.vhdFile.Footer.VirtualSize * 1.0m / this.GetBlockSize();
+            var count = this.vhdFile.Footer.CurrentSize * 1.0m / this.GetBlockSize();
             if (Math.Floor(count) < Math.Ceiling(count))
             {
                 extraBlockIndex = (long)Math.Floor(count);

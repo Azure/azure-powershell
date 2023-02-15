@@ -17,18 +17,18 @@ Describe 'Get-AzImageBuilderTemplate' {
         $templateList.Count | Should -BeGreaterOrEqual 1
     }
     It 'List1' {
-        $templateList = Get-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup
+        $templateList = Get-AzImageBuilderTemplate -ResourceGroupName $env.rg
         $templateList.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
-        $template.Name | Should -be $env.Resources.Template.templateName10
+        $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
+        $template.Name | Should -be $env.templateName
     }
 
     It 'GetViaIdentity' {
-        $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         $newTemplate = Get-AzImageBuilderTemplate -InputObject $template
-        $newTemplate.Name | Should -be $env.Resources.Template.templateName10
+        $newTemplate.Name | Should -be $env.templateName
     }
 }

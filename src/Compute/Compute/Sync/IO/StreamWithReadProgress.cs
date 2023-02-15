@@ -20,20 +20,12 @@ namespace Microsoft.WindowsAzure.Commands.Sync.IO
     internal class StreamWithReadProgress : Stream
     {
         private readonly Stream innerStream;
-        private readonly TimeSpan progressInterval;
         private ProgressStatus readStatus;
-        private ProgressTracker progressTracker;
 
-        public StreamWithReadProgress(Stream innerStream, TimeSpan progressInterval)
+        public StreamWithReadProgress(Stream innerStream, ProgressStatus readStatus)
         {
             this.innerStream = innerStream;
-            this.progressInterval = progressInterval;
-            this.readStatus = new ProgressStatus(0, this.innerStream.Length, new ComputeStats());
-
-            this.progressTracker = new ProgressTracker(this.readStatus,
-                Program.SyncOutput.ProgressOperationStatus,
-                Program.SyncOutput.ProgressOperationComplete,
-                this.progressInterval);
+            this.readStatus = readStatus;
         }
 
         public override void Flush()
@@ -91,13 +83,11 @@ namespace Microsoft.WindowsAzure.Commands.Sync.IO
 
         public override void Close()
         {
-            this.progressTracker.Dispose();
             this.innerStream.Close();
         }
 
         protected override void Dispose(bool disposing)
         {
-            this.progressTracker.Dispose();
             this.innerStream.Dispose();
         }
     }

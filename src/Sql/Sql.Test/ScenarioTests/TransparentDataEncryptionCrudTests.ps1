@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = 'southeastasia'
+$location = 'westeurope'
 
 <#
 	.SYNOPSIS
@@ -75,7 +75,7 @@ function Test-GetTransparentDataEncryption
 			-DatabaseName $db.DatabaseName -State Disabled
 		Assert-AreEqual $tde3.State Disabled
 
-		Start-Sleep -s 1
+		Start-TestSleep -Seconds 1
 
 		$tdeActivity = Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName $server.ResourceGroupname `
 			-ServerName $server.ServerName -DatabaseName $db.DatabaseName

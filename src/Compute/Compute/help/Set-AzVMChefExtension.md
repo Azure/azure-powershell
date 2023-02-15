@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: CC306D8C-A5EE-4655-B686-E5A77CCE5042
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmchefextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmchefextension
 schema: 2.0.0
 ---
 
@@ -41,24 +41,24 @@ The **Set-AzVMChefExtension** cmdlet adds the Chef extension to the virtual mach
 ## EXAMPLES
 
 ### Example 1: Add a Chef extension to a Windows virtual machine
-```
-PS C:\> Set-AzVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Daemon "service" -SecretFile "C:\my_encrypted_data_bag_secret" -Windows
+```powershell
+Set-AzVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Daemon "service" -SecretFile "C:\my_encrypted_data_bag_secret" -Windows
 ```
 
 This command adds a Chef extension to a Windows virtual machine named WindowsVM001.
 When the virtual machine starts, Chef bootstraps the virtual machine to run Apache.
 
 ### Example 2: Add a Chef extension to a Linux virtual machine
-```
-PS C:\> Set-AzVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Secret "my_secret" -Linux
+```powershell
+Set-AzVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Secret "my_secret" -Linux
 ```
 
 This command adds a Chef extension to a Linux virtual machine named LinuxVM001.
 When the virtual machine starts, Chef bootstraps the virtual machine to run Apache.
 
 ### Example 3: Add a Chef extension to a Windows virtual machine with bootstrap options
-```
-PS C:\> Set-AzVMChefExtension -ResourceGroupName "ResourceGroup003" -VMName "WindowsVM002" -ValidationPem C:\my-org-validator.pem -ClientRb C:\client.rb -BootstrapOptions '{"chef_node_name":"your_node_name","chef_server_url":"https://api.opscode.com/organizations/some-org", "validation_client_name":"some-org-validator"}' -RunList "Apache" -Windows
+```powershell
+Set-AzVMChefExtension -ResourceGroupName "ResourceGroup003" -VMName "WindowsVM002" -ValidationPem C:\my-org-validator.pem -ClientRb C:\client.rb -BootstrapOptions '{"chef_node_name":"your_node_name","chef_server_url":"https://api.opscode.com/organizations/some-org", "validation_client_name":"some-org-validator"}' -RunList "Apache" -Windows
 ```
 
 This command adds the Chef extension to a Windows virtual machine named WindowsVM002.

@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.SignalR-help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
+online version: https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
 schema: 2.0.0
 ---
 
@@ -15,15 +15,15 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ### RegenerateExpanded (Default)
 ```
-New-AzWebPubSubKey -ResourceGroupName <String> -ResourceName <String> -KeyType <KeyType>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+New-AzWebPubSubKey -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ -KeyType <KeyType> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
 ```
 New-AzWebPubSubKey -InputObject <IWebPubSubIdentity> -KeyType <KeyType> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,28 +34,28 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ### Example 1: Regenerate the primary access key of a Web PubSub resource
 ```powershell
-PS C:\>  New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps -KeyType 'Primary' | Format-List
+New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps -KeyType 'Primary' | Format-List
+```
 
+```output
 PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 PrimaryKey                : ********
 SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 SecondaryKey              : ********
 ```
-
-
 
 ### Example 2: Regenerate the primary access key of a Web PubSub resource via identity
 ```powershell
-PS C:\>  $wps = Get-AzWebPubSub -Name psdemo-wps -ResourceGroupName psdemo
-PS C:\> $wps | New-AzWebPubSubKey -KeyType Primary | Format-List
+$wps = Get-AzWebPubSub -Name psdemo-wps -ResourceGroupName psdemo
+$wps | New-AzWebPubSubKey -KeyType Primary | Format-List
+```
 
+```output
 PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 PrimaryKey                : ********
 SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
 SecondaryKey              : ********
 ```
-
-
 
 ## PARAMETERS
 
@@ -238,7 +238,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys
 
 ## NOTES
 
@@ -249,10 +249,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
+  - `[CertificateName <String>]`: Custom certificate name
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
+  - `[Name <String>]`: Custom domain name.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   - `[ResourceName <String>]`: The name of the resource.
@@ -260,4 +262,3 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CustomLocation
-online version: https://docs.microsoft.com/powershell/module/az.customlocation/remove-azcustomlocation
+online version: https://learn.microsoft.com/powershell/module/az.customlocation/remove-azcustomlocation
 schema: 2.0.0
 ---
 
@@ -31,16 +31,14 @@ Deletes the Custom Location with the specified Resource Name, Resource Group, an
 
 ### Example 1: Deletes the Custom Location.
 ```powershell
-PS C:\> Remove-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster
-
+Remove-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster
 ```
 
 Deletes the Custom Location.
 
 ### Example 2: Deletes the Custom Location.
 ```powershell
-PS C:\> Get-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster | Remove-AzCustomLocation
-
+Get-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster | Remove-AzCustomLocation
 ```
 
 Deletes the Custom Location.
@@ -220,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
+INPUTOBJECT `<ICustomLocationIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceName <String>]`: Custom Locations name.

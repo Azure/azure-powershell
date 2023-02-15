@@ -1,28 +1,31 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools/testPool/nodes?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMjAtMDMtMDEuMTEuMA==",
+      "RequestUri": "/pools/testPool/nodes?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMjItMTAtMDEuMTYuMA==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0ee79975-4226-4c6c-9146-c2ae212fa963"
+          "f8ac8ddb-933d-41ef-9db7-51f80e5a2eeb"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:13:24 GMT"
+          "Fri, 02 Dec 2022 17:22:49 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "02d91a55-fd5f-42dd-adbf-63547421a346"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
@@ -31,7 +34,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "c40ad592-0af2-4bbc-b92d-14631946550d"
+          "3147b366-de71-4242-a47f-be08f4e3609c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,35 +46,37 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:13:46 GMT"
+          "Fri, 02 Dec 2022 17:22:49 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvmps_5588b2c9db0df4d8fcf672ea8dd42c28027e22241536de49d696c8540a826215_d\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_5588b2c9db0df4d8fcf672ea8dd42c28027e22241536de49d696c8540a826215_d\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2020-06-09T17:11:36.058121Z\",\r\n      \"lastBootTime\": \"2020-06-09T17:11:33.25425Z\",\r\n      \"allocationTime\": \"2020-06-09T17:08:18.9130671Z\",\r\n      \"ipAddress\": \"10.218.0.4\",\r\n      \"affinityId\": \"TVM:tvmps_5588b2c9db0df4d8fcf672ea8dd42c28027e22241536de49d696c8540a826215_d\",\r\n      \"vmSize\": \"standard_d2_v3\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c \\\"echo hello\\\"\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2020-06-09T17:11:35.948758Z\",\r\n        \"endTime\": \"2020-06-09T17:11:36.042491Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"20.43.39.67\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2020-06-09T17:11:33.25425Z\",\r\n        \"version\": \"1.8.2\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:57:43.09548Z\",\r\n      \"lastBootTime\": \"2020-06-09T16:57:40.492514Z\",\r\n      \"allocationTime\": \"2020-06-09T16:25:12.7257784Z\",\r\n      \"ipAddress\": \"10.218.0.5\",\r\n      \"affinityId\": \"TVM:tvmps_67c7cd533daccf422807a8e72192afe6b3bd035d859dc2b1b0844ccd2331aaba_d\",\r\n      \"vmSize\": \"standard_d2_v3\",\r\n      \"totalTasksRun\": 2,\r\n      \"totalTasksSucceeded\": 1,\r\n      \"runningTasksCount\": 0,\r\n      \"recentTasks\": [],\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c \\\"echo hello\\\"\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2020-06-09T16:57:42.986109Z\",\r\n        \"endTime\": \"2020-06-09T16:57:43.09548Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"20.43.39.67\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2020-06-09T16:28:51.733507Z\",\r\n        \"version\": \"1.8.2\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikebatcheast.eastus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvmps_39b80af4ea6080d6840ed65a6b9a3f36c426c5eefd48bd9bc8013c2a515d4300_d\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/testPool/nodes/tvmps_39b80af4ea6080d6840ed65a6b9a3f36c426c5eefd48bd9bc8013c2a515d4300_d\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2022-12-02T17:12:43.419868Z\",\r\n      \"lastBootTime\": \"2022-12-02T17:12:43.012584Z\",\r\n      \"allocationTime\": \"2022-12-02T16:38:29.1361821Z\",\r\n      \"ipAddress\": \"10.218.0.4\",\r\n      \"affinityId\": \"TVM:tvmps_39b80af4ea6080d6840ed65a6b9a3f36c426c5eefd48bd9bc8013c2a515d4300_d\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 3,\r\n      \"totalTasksSucceeded\": 2,\r\n      \"runningTasksCount\": 0,\r\n      \"runningTaskSlotsCount\": 0,\r\n      \"recentTasks\": [],\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2022-12-02T17:12:43.326126Z\",\r\n        \"endTime\": \"2022-12-02T17:12:43.419868Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2022-12-02T16:42:26.627175Z\",\r\n        \"version\": \"1.9.33\"\r\n      },\r\n      \"virtualMachineInfo\": {}\r\n    },\r\n    {\r\n      \"id\": \"tvmps_70a4d7160bdf07e74da5ea9735da046eab8a4deca641a1358586b4ed510a0d6b_d\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/testPool/nodes/tvmps_70a4d7160bdf07e74da5ea9735da046eab8a4deca641a1358586b4ed510a0d6b_d\",\r\n      \"state\": \"unusable\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2022-12-02T17:18:08.0112022Z\",\r\n      \"lastBootTime\": \"2022-12-02T16:48:23.843484Z\",\r\n      \"allocationTime\": \"2022-12-02T16:38:29.1361821Z\",\r\n      \"ipAddress\": \"10.218.0.6\",\r\n      \"affinityId\": \"TVM:tvmps_70a4d7160bdf07e74da5ea9735da046eab8a4deca641a1358586b4ed510a0d6b_d\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"runningTaskSlotsCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2022-12-02T16:48:29.383812Z\",\r\n        \"endTime\": \"2022-12-02T16:48:29.462049Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2022-12-02T16:48:23.843484Z\",\r\n        \"version\": \"1.9.33\"\r\n      },\r\n      \"virtualMachineInfo\": {}\r\n    },\r\n    {\r\n      \"id\": \"tvmps_fcf53e63866aa0b2b333caf954c74de6f887ad33d9eafa66e5a566f5848287a5_d\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/testPool/nodes/tvmps_fcf53e63866aa0b2b333caf954c74de6f887ad33d9eafa66e5a566f5848287a5_d\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2022-12-02T17:07:20.620359Z\",\r\n      \"lastBootTime\": \"2022-12-02T16:43:32.56961Z\",\r\n      \"allocationTime\": \"2022-12-02T16:38:29.1361821Z\",\r\n      \"ipAddress\": \"10.218.0.5\",\r\n      \"affinityId\": \"TVM:tvmps_fcf53e63866aa0b2b333caf954c74de6f887ad33d9eafa66e5a566f5848287a5_d\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 2,\r\n      \"totalTasksSucceeded\": 2,\r\n      \"runningTasksCount\": 0,\r\n      \"runningTaskSlotsCount\": 0,\r\n      \"recentTasks\": [\r\n        {\r\n          \"taskUrl\": \"https://mikebatcheast.eastus.batch.azure.com/jobs/taskCrudJob/tasks/task2\",\r\n          \"jobId\": \"taskCrudJob\",\r\n          \"taskId\": \"task2\",\r\n          \"taskState\": \"completed\",\r\n          \"executionInfo\": {\r\n            \"startTime\": \"2022-12-02T17:07:20.493619Z\",\r\n            \"endTime\": \"2022-12-02T17:07:20.589084Z\",\r\n            \"exitCode\": 0,\r\n            \"result\": \"success\",\r\n            \"retryCount\": 0,\r\n            \"requeueCount\": 0\r\n          }\r\n        }\r\n      ],\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2022-12-02T16:43:33.953527Z\",\r\n        \"endTime\": \"2022-12-02T16:43:34.062911Z\",\r\n        \"exitCode\": 0,\r\n        \"result\": \"success\",\r\n        \"retryCount\": 0\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput\",\r\n            \"protocol\": \"tcp\",\r\n            \"frontendPort\": 3389,\r\n            \"backendPort\": 20000\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2022-12-02T16:43:32.56961Z\",\r\n        \"version\": \"1.9.33\"\r\n      },\r\n      \"virtualMachineInfo\": {}\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvmps_5588b2c9db0df4d8fcf672ea8dd42c28027e22241536de49d696c8540a826215_d/users?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzU1ODhiMmM5ZGIwZGY0ZDhmY2Y2NzJlYThkZDQyYzI4MDI3ZTIyMjQxNTM2ZGU0OWQ2OTZjODU0MGE4MjYyMTVfZC91c2Vycz9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
+      "RequestUri": "/pools/testPool/nodes/tvmps_39b80af4ea6080d6840ed65a6b9a3f36c426c5eefd48bd9bc8013c2a515d4300_d/users?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM5YjgwYWY0ZWE2MDgwZDY4NDBlZDY1YTZiOWEzZjM2YzQyNmM1ZWVmZDQ4YmQ5YmM4MDEzYzJhNTE1ZDQzMDBfZC91c2Vycz9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"userendtoend\",\r\n  \"isAdmin\": false,\r\n  \"expiryTime\": \"0001-01-01T00:00:00Z\",\r\n  \"password\": \"Password1234!\"\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "8f3700d8-65a5-4bdd-bfe9-f87a8fee0de1"
+          "688656af-f78e-4a75-852a-aeaac76530a5"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:13:47 GMT"
+          "Fri, 02 Dec 2022 17:22:49 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "eaf04592-fc2d-479e-8e32-7a0a72da4348"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -81,18 +86,19 @@
           "124"
         ]
       },
+      "RequestBody": "{\r\n  \"name\": \"userendtoend\",\r\n  \"isAdmin\": false,\r\n  \"expiryTime\": \"0001-01-01T00:00:00Z\",\r\n  \"password\": \"Password1234!\"\r\n}",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
         ],
         "Location": [
-          "https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_5588b2c9db0df4d8fcf672ea8dd42c28027e22241536de49d696c8540a826215_d/users/userendtoend"
+          "https://mikebatcheast.eastus.batch.azure.com/pools/testPool/nodes/tvmps_39b80af4ea6080d6840ed65a6b9a3f36c426c5eefd48bd9bc8013c2a515d4300_d/users/userendtoend"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "9f22a845-ccfb-4701-a95a-e4da150b5d1f"
+          "ff101c35-d396-43ab-b4d0-07e79bfb2fd0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -104,35 +110,37 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_5588b2c9db0df4d8fcf672ea8dd42c28027e22241536de49d696c8540a826215_d/users/userendtoend"
+          "https://mikebatcheast.eastus.batch.azure.com/pools/testPool/nodes/tvmps_39b80af4ea6080d6840ed65a6b9a3f36c426c5eefd48bd9bc8013c2a515d4300_d/users/userendtoend"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:14:09 GMT"
+          "Fri, 02 Dec 2022 17:22:49 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvmps_5588b2c9db0df4d8fcf672ea8dd42c28027e22241536de49d696c8540a826215_d/users/userendtoend?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzU1ODhiMmM5ZGIwZGY0ZDhmY2Y2NzJlYThkZDQyYzI4MDI3ZTIyMjQxNTM2ZGU0OWQ2OTZjODU0MGE4MjYyMTVfZC91c2Vycy91c2VyZW5kdG9lbmQ/YXBpLXZlcnNpb249MjAyMC0wMy0wMS4xMS4w",
+      "RequestUri": "/pools/testPool/nodes/tvmps_39b80af4ea6080d6840ed65a6b9a3f36c426c5eefd48bd9bc8013c2a515d4300_d/users/userendtoend?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM5YjgwYWY0ZWE2MDgwZDY4NDBlZDY1YTZiOWEzZjM2YzQyNmM1ZWVmZDQ4YmQ5YmM4MDEzYzJhNTE1ZDQzMDBfZC91c2Vycy91c2VyZW5kdG9lbmQ/YXBpLXZlcnNpb249MjAyMi0xMC0wMS4xNi4w",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"password\": \"Abcdefghijk1234!\",\r\n  \"expiryTime\": \"2020-06-14T22:14:09.7239077Z\"\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "7ff221ae-45fb-4475-819d-a2a226b161c1"
+          "cffd4d28-557d-4065-a83a-b7032b0c40fe"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:14:09 GMT"
+          "Fri, 02 Dec 2022 17:22:50 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "669893f0-36e2-4976-b90f-19b5948a2778"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -142,6 +150,7 @@
           "87"
         ]
       },
+      "RequestBody": "{\r\n  \"password\": \"Abcdefghijk1234!\",\r\n  \"expiryTime\": \"2022-12-07T17:22:50.5226356Z\"\r\n}",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
@@ -150,7 +159,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "ab86e2ce-1d0f-4a2d-b02c-3f9a22c48143"
+          "2f55bf80-7fbe-41c5-9078-17fd27f80968"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -162,41 +171,44 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://prodtest6.francecentral.batch.azure.com/pools/testPool/nodes/tvmps_5588b2c9db0df4d8fcf672ea8dd42c28027e22241536de49d696c8540a826215_d/users/userendtoend"
+          "https://mikebatcheast.eastus.batch.azure.com/pools/testPool/nodes/tvmps_39b80af4ea6080d6840ed65a6b9a3f36c426c5eefd48bd9bc8013c2a515d4300_d/users/userendtoend"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:14:09 GMT"
+          "Fri, 02 Dec 2022 17:22:50 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvmps_5588b2c9db0df4d8fcf672ea8dd42c28027e22241536de49d696c8540a826215_d/users/userendtoend?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzU1ODhiMmM5ZGIwZGY0ZDhmY2Y2NzJlYThkZDQyYzI4MDI3ZTIyMjQxNTM2ZGU0OWQ2OTZjODU0MGE4MjYyMTVfZC91c2Vycy91c2VyZW5kdG9lbmQ/YXBpLXZlcnNpb249MjAyMC0wMy0wMS4xMS4w",
+      "RequestUri": "/pools/testPool/nodes/tvmps_39b80af4ea6080d6840ed65a6b9a3f36c426c5eefd48bd9bc8013c2a515d4300_d/users/userendtoend?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM5YjgwYWY0ZWE2MDgwZDY4NDBlZDY1YTZiOWEzZjM2YzQyNmM1ZWVmZDQ4YmQ5YmM4MDEzYzJhNTE1ZDQzMDBfZC91c2Vycy91c2VyZW5kdG9lbmQ/YXBpLXZlcnNpb249MjAyMi0xMC0wMS4xNi4w",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "a9f14143-45de-46d7-a761-bcb69d4d4da7"
+          "75ddf7d9-87b7-44ef-bd19-750651781ba1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:14:10 GMT"
+          "Fri, 02 Dec 2022 17:22:50 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "52c77fbf-5f0a-49c2-8d59-233ccb747e57"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
           "0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
@@ -205,7 +217,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "48fd3662-a85c-422a-94ee-d9298335697b"
+          "70c1e3b1-49f8-4dc5-a230-938dfad97394"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -217,44 +229,47 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:14:09 GMT"
+          "Fri, 02 Dec 2022 17:22:50 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvmps_5588b2c9db0df4d8fcf672ea8dd42c28027e22241536de49d696c8540a826215_d/users/userendtoend?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzU1ODhiMmM5ZGIwZGY0ZDhmY2Y2NzJlYThkZDQyYzI4MDI3ZTIyMjQxNTM2ZGU0OWQ2OTZjODU0MGE4MjYyMTVfZC91c2Vycy91c2VyZW5kdG9lbmQ/YXBpLXZlcnNpb249MjAyMC0wMy0wMS4xMS4w",
+      "RequestUri": "/pools/testPool/nodes/tvmps_39b80af4ea6080d6840ed65a6b9a3f36c426c5eefd48bd9bc8013c2a515d4300_d/users/userendtoend?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bXBzXzM5YjgwYWY0ZWE2MDgwZDY4NDBlZDY1YTZiOWEzZjM2YzQyNmM1ZWVmZDQ4YmQ5YmM4MDEzYzJhNTE1ZDQzMDBfZC91c2Vycy91c2VyZW5kdG9lbmQ/YXBpLXZlcnNpb249MjAyMi0xMC0wMS4xNi4w",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "b02f83f2-b617-490c-81bc-2cc1b52d81ed"
+          "4e47d366-dec5-4bac-827c-98d4efa49dee"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:14:10 GMT"
+          "Fri, 02 Dec 2022 17:22:51 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "8efbfb2f-a802-40cc-bbb5-9ce37b21fe9e"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
           "0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "0f51db3f-ef26-4008-8bd4-b47e82a7d1ba"
+          "f6c44925-d6fb-45ca-ad34-797b0c542e8a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -266,24 +281,24 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:14:10 GMT"
+          "Fri, 02 Dec 2022 17:22:50 GMT"
         ],
         "Content-Length": [
-          "346"
+          "343"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"NodeUserNotFound\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"The specified node user does not exist.\\nRequestId:0f51db3f-ef26-4008-8bd4-b47e82a7d1ba\\nTime:2020-06-09T22:14:10.6811398Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikebatcheast.eastus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"NodeUserNotFound\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"The specified node user does not exist.\\nRequestId:f6c44925-d6fb-45ca-ad34-797b0c542e8a\\nTime:2022-12-02T17:22:51.0322558Z\"\r\n  }\r\n}",
       "StatusCode": 404
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
-    "AZURE_BATCH_ACCOUNT": "prodtest6",
-    "AZURE_BATCH_ENDPOINT": "https://prodtest6.francecentral.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "abc"
+    "SubscriptionId": "67e11b19-95f8-4d96-a472-5f626c5445ec",
+    "AZURE_BATCH_ACCOUNT": "mikebatcheast",
+    "AZURE_BATCH_ENDPOINT": "https://mikebatcheast.eastus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "mikeazure"
   }
 }

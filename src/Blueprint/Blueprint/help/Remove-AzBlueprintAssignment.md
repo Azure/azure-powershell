@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Blueprint.dll-Help.xml
 Module Name: Az.Blueprint
-online version: https://docs.microsoft.com/powershell/module/az.blueprint/remove-azblueprintassignment
+online version: https://learn.microsoft.com/powershell/module/az.blueprint/remove-azblueprintassignment
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Remove a blueprint that has been assigned to a subscription.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzBlueprintAssignment -Name "myAssignment" -Subscription "00000000-1111-0000-1111-000000000000" -Confirm
+Remove-AzBlueprintAssignment -Name "myAssignment" -SubscriptionId "00000000-1111-0000-1111-000000000000" -Confirm
 ```
 
 Remove the blueprint assignment specified by name from the specified subscription. The cmdlet will prompt for confirmation before executing the command.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: D2BBAC5B-A7B9-44DA-BE37-24D89E03BAB3
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmimagesku
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzVMImageSku** cmdlet gets VMImage SKUs.
 ## EXAMPLES
 
 ### Example 1: Get VMImage SKUs
-```
-PS C:\> Get-AzVMImageSku -Location "Central US" -PublisherName "Fabrikam" -Offer "LinuxServer"
+```powershell
+Get-AzVMImageSku -Location "Central US" -PublisherName "Fabrikam" -Offer "LinuxServer"
 ```
 
 This command gets the SKUs for the specified publisher and offer.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkprofile
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkprofile
 schema: 2.0.0
 ---
 
@@ -43,7 +43,9 @@ The **Get-AzNetworkProfile** cmdlet retrieves an existing network profile top le
 ### Example 1
 ```powershell
 $networkProfile = Get-AzNetworkProfile -Name np1 -ResourceGroupName rg1
+```
 
+```output
 ProvisioningState                           : Succeeded
 ContainerNetworkInterfaces                  : {}
 ContainerNetworkInterfaceConfigurations     : {}
@@ -66,7 +68,9 @@ This retrieves the network profile np1 in resource group rg1
 ### Example 2
 ```powershell
 $networkProfile = Get-AzNetworkProfile -Name np*
+```
 
+```output
 ProvisioningState                           : Succeeded
 ContainerNetworkInterfaces                  : {}
 ContainerNetworkInterfaceConfigurations     : {}

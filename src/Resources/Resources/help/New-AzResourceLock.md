@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6847ECFD-2E3D-46F6-ABE9-9D8E08C7858F
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azresourcelock
 schema: 2.0.0
 ---
 
@@ -61,15 +61,15 @@ The **New-AzResourceLock** cmdlet creates a resource lock.
 ## EXAMPLES
 
 ### Example 1: Create a resource lock on a website
-```
-PS C:\>New-AzResourceLock -LockLevel CanNotDelete -LockNotes "My lock notes" -LockName "ContosoSiteLock" -ResourceName "ContosoSite" -ResourceType "microsoft.web/sites"
+```powershell
+New-AzResourceLock -LockLevel CanNotDelete -LockNotes "My lock notes" -LockName "ContosoSiteLock" -ResourceName "ContosoSite" -ResourceType "microsoft.web/sites"
 ```
 
 This command creates a resource lock on a website.
 
 ### Example 2: Create a resource lock on a database
-```
-PS C:\>New-AzResourceLock -LockLevel CanNotDelete -LockNotes "Lock note" -LockName "db-lock" -ResourceName "server1/ContosoDB"  -ResourceGroupName "RG1" -ResourceType "Microsoft.Sql/servers/databases"
+```powershell
+New-AzResourceLock -LockLevel CanNotDelete -LockNotes "Lock note" -LockName "db-lock" -ResourceName "server1/ContosoDB"  -ResourceGroupName "RG1" -ResourceType "Microsoft.Sql/servers/databases"
 ```
 
 This command creates a resource lock on a Azure database.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthBot
-online version: https://docs.microsoft.com/powershell/module/az.healthbot/remove-azhealthbot
+online version: https://learn.microsoft.com/powershell/module/az.healthbot/remove-azhealthbot
 schema: 2.0.0
 ---
 
@@ -31,17 +31,15 @@ Delete a HealthBot.
 
 ### Example 1: Delete HealthBot by ResourceGroupName and Name
 ```powershell
-PS C:\> Remove-AzHealthBot -Name yourihealthbot -ResourceGroupName youriTest
-
+Remove-AzHealthBot -Name yourihealthbot -ResourceGroupName youriTest
 ```
 
 Delete HealthBot by ResourceGroupName and Name
 
 ### Example 2: Delete HealthBot by InputObject
 ```powershell
-PS C:\> $gethealthbot = Get-AzHealthBot -Name yourihealthbot1 -ResourceGroupName youriTest
+$gethealthbot = Get-AzHealthBot -Name yourihealthbot1 -ResourceGroupName youriTest
 Remove-AzHealthBot -InputObject $gethealthbot
-
 ```
 
 Delete HealthBot by InputObject
@@ -220,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IHealthBotIdentity>: Identity Parameter
+INPUTOBJECT `<IHealthBotIdentity>`: Identity Parameter
   - `[BotName <String>]`: The name of the Bot resource.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the Bot resource group in the user subscription.

@@ -24,7 +24,7 @@ function Test-SnapshotCrud
     $resourceGroup = Get-ResourceGroupName
     $accName = Get-ResourceName
     $poolName = Get-ResourceName
-    $volName = Get-ResourceName
+    $volName = Get-ResourceName    
     $snName1 = Get-ResourceName
     $snName2 = Get-ResourceName
     $gibibyte = 1024 * 1024 * 1024
@@ -231,8 +231,9 @@ function Test-CreateVolumeFromSnapshot
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
 
         # Create volume from snapshot
-        $restoredVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -SnapshotId $retrievedSnapshot.SnapshotId
-        Assert-AreEqual $retrievedVolume.Name $restoredVolume.Name
+        $restoredNewVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName2 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -SnapshotId $retrievedSnapshot.SnapshotId
+        Assert-NotNull $restoredNewVolume
+        Assert-AreEqual "$accName/$poolName/$volName2" $restoredNewVolume.Name
     }
     finally
     {
@@ -305,9 +306,8 @@ function Test-RestoreVolumeFromSnapshot
         $retrievedSnapshotById = Get-AzNetAppFilesSnapshot -ResourceId $retrievedSnapshot.Id
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
 
-        # revert the volume from snapshot
-        Restore-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotId $retrievedSnapshot.SnapshotId
-        
+        # Restore the volume from snapshot
+        $restoredVolume = Restore-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotId $retrievedSnapshot.SnapshotId                
     }
     finally
     {

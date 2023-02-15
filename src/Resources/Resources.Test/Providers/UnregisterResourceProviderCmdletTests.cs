@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.Resources.Models;
+    using Microsoft.Azure.Commands.TestFx;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Azure.ServiceManagement.Common.Models;

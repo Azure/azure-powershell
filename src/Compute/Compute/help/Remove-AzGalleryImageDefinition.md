@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azgalleryimagedefinition
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryimagedefinition
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Delete a gallery image definition.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $gallery -GalleryImageDefinitionName $galleryImage
+Remove-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $gallery -GalleryImageDefinitionName $galleryImage
 ```
 
 Remove the gallery image definition.

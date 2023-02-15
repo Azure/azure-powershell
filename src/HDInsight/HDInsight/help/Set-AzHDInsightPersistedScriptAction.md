@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 92F21752-4FB6-4162-B542-DA25ACA3340B
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightpersistedscriptaction
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightpersistedscriptaction
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The script action will run each time the Azure HDInsight cluster is scaled up.
 ## EXAMPLES
 
 ### Example 1: Set a previously successful script action to be persisted, or run on cluster scale up
-```
-PS C:\>Set-AzHDInsightPersistedScriptAction `
+```powershell
+Set-AzHDInsightPersistedScriptAction `
             -ClusterName "your-hadoop-001" `
             -ScriptExecutionId "<id>"
 ```

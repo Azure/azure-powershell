@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azimageconfig
 schema: 2.0.0
 ---
 
@@ -13,9 +13,10 @@ Creates a configurable image object.
 ## SYNTAX
 
 ```
-New-AzImageConfig [[-Location] <String>] [-EdgeZone <String>] [[-Tag] <Hashtable>] [[-SourceVirtualMachineId] <String>]
- [[-OsDisk] <ImageOSDisk>] [-HyperVGeneration <String>] [-DataDisk <ImageDataDisk[]>] [-ZoneResilient]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzImageConfig [[-Location] <String>] [-EdgeZone <String>] [[-Tag] <Hashtable>]
+ [[-SourceVirtualMachineId] <String>] [[-OsDisk] <ImageOSDisk>] [-HyperVGeneration <String>]
+ [-DataDisk <ImageDataDisk[]>] [-ZoneResilient] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,15 +25,15 @@ The **New-AzImageConfig** cmdlet creates a configurable image object.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $imageConfig = New-AzImageConfig -Location 'West US';
-PS C:\> $osDiskVhdUri = "https://contoso.blob.core.windows.net/test/os.vhd"
-PS C:\> $dataDiskVhdUri1 = "https://contoso.blob.core.windows.net/test/data1.vhd"
-PS C:\> $dataDiskVhdUri2 = "https://contoso.blob.core.windows.net/test/data2.vhd"
-PS C:\> Set-AzImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
-PS C:\> Add-AzImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
-PS C:\> Add-AzImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
-PS C:\> New-AzImage -Image $imageConfig -ImageName 'ImageName01' -ResourceGroupName 'ResourceGroup01';
+```powershell
+$imageConfig = New-AzImageConfig -Location 'West US';
+$osDiskVhdUri = "https://contoso.blob.core.windows.net/test/os.vhd"
+$dataDiskVhdUri1 = "https://contoso.blob.core.windows.net/test/data1.vhd"
+$dataDiskVhdUri2 = "https://contoso.blob.core.windows.net/test/data2.vhd"
+Set-AzImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
+Add-AzImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
+Add-AzImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
+New-AzImage -Image $imageConfig -ImageName 'ImageName01' -ResourceGroupName 'ResourceGroup01';
 ```
 
 The first command creates an image object, and then stores it in the $imageConfig variable.
@@ -75,6 +76,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeZone
+Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -HyperVGeneration
 Specifies the HyperVGeneration Type for the virtual machine created from the image.  Allowed values are V1 and V2.
 
@@ -100,21 +116,6 @@ Aliases:
 
 Required: False
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EdgeZone
-Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

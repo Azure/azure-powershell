@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: A262DFD1-8B90-462C-A4E2-ABA0F51173FA
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azresource
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azresource
 schema: 2.0.0
 ---
 
@@ -40,8 +40,8 @@ The **Remove-AzResource** cmdlet removes an Azure resource.
 ## EXAMPLES
 
 ### Example 1: Remove a website resource
-```
-PS C:\>Remove-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup11/providers/Microsoft.Web/sites/ContosoSite" -Force
+```powershell
+Remove-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup11/providers/Microsoft.Web/sites/ContosoSite" -Force
 ```
 
 This command removes the website resource named ContosoSite.

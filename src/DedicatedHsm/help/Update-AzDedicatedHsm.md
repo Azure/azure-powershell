@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DedicatedHsm
-online version: https://docs.microsoft.com/powershell/module/az.dedicatedhsm/update-azdedicatedhsm
+online version: https://learn.microsoft.com/powershell/module/az.dedicatedhsm/update-azdedicatedhsm
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Update a dedicated HSM in the specified subscription.
 
 ### Example 1: Update the parameter tag of the Dedicated HSM by name
 ```powershell
-PS C:\> Update-AzDedicatedHsm -Name  hsm-n7wfxi -ResourceGroupName dedicatedhsm-rg-n359cz -Tag @{'key1' = '1'; 'key2' = 2; 'key3' = 3}
+Update-AzDedicatedHsm -Name hsm-n7wfxi -ResourceGroupName dedicatedhsm-rg-n359cz -Tag @{'key1' = '1'; 'key2' = 2; 'key3' = 3}
+```
 
+```output
 Name       Provisioning State SKU                           Location
 ----       ------------------ ---                           --------
 hsm-n7wfxi Succeeded          SafeNet Luna Network HSM A790 eastus
@@ -42,9 +44,11 @@ This command updates the parameter tag of the Dedicated HSM by name
 
 ### Example 2: Update the parameter tag of the Dedicated HSM by object
 ```powershell
-PS C:\> $hsm = Get-AzDedicatedHsm -Name  hsm-n7wfxi -ResourceGroupName dedicatedhsm-rg-n359cz 
-PS C:\> Update-AzDedicatedHsm -InputObject -Tag @{'key1' = '1'; 'key2' = 2; 'key3' = 3}
+$hsm = Get-AzDedicatedHsm -Name hsm-n7wfxi -ResourceGroupName dedicatedhsm-rg-n359cz
+Update-AzDedicatedHsm -InputObject $hsm -Tag @{'key1' = '1'; 'key2' = 2; 'key3' = 3}
+```
 
+```output
 Name       Provisioning State SKU                           Location
 ----       ------------------ ---                           --------
 hsm-n7wfxi Succeeded          SafeNet Luna Network HSM A790 eastus
@@ -216,7 +220,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm
+### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm
 
 ## NOTES
 
@@ -227,7 +231,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDedicatedHsmIdentity>: Identity Parameter
+INPUTOBJECT `<IDedicatedHsmIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: Name of the dedicated Hsm
   - `[ResourceGroupName <String>]`: The name of the Resource Group to which the resource belongs.

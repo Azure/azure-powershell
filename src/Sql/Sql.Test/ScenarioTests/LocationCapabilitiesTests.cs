@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class LocationCapabilitiesTests : SqlTestsBase
+    public class LocationCapabilitiesTests : SqlTestRunner
     {
         public LocationCapabilitiesTests(ITestOutputHelper output) : base(output)
         {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLocationCapabilities()
         {
-            RunPowerShellTest("Test-Capabilities");
+            TestRunner.RunTestScript("Test-Capabilities");
         }
     }
 }

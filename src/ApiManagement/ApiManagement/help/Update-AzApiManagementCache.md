@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementcache
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementcache
 schema: 2.0.0
 ---
 
@@ -40,10 +40,11 @@ The cmdlet **Update-AzApiManagementCache** updates a cache in the ApiManagement 
 
 ### Example 1 : Updates the Description of the Cache in centralus
 ```powershell
-PS D:\github\azure-powershell> $context=New-AzApiManagementContext -ResourceGroupName Api-Default-Central-US -ServiceName contoso
-PS D:\github\azure-powershell> Update-AzApiManagementCache -Context $context -CacheId centralus -Description "Team new cache" -PassThru
+$context=New-AzApiManagementContext -ResourceGroupName Api-Default-Central-US -ServiceName contoso
+Update-AzApiManagementCache -Context $context -CacheId centralus -Description "Team new cache" -PassThru
+```
 
-
+```output
 CacheId              : centralus
 Description          : Team new cache
 ConnectionString     : {{5cc19889e6ed3b0524c3f7d3}}

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
         /// Format an ODataQuery filter expression to string.
         /// </summary>
         /// <remarks>
-        /// This method uses <see cref="Rest.Azure.OData.ODataQuery" /> class for the underlying parsing and serialization of the filter string.
+        /// This method uses <see cref="Rest.Azure.OData.ODataQuery{T}" /> class for the underlying parsing and serialization of the filter string.
         /// It supports limited operations in the implementation of filter.
         /// For string comparison, use `==` instead of `String.Equals()`.
         /// </remarks>

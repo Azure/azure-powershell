@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/update-aznetappfilespool
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/update-aznetappfilespool
 schema: 2.0.0
 ---
 
@@ -15,26 +15,26 @@ Updates an Azure NetApp Files (ANF) pool according to the optional modifiers pro
 ### ByFieldsParameterSet (Default)
 ```
 Update-AzNetAppFilesPool -ResourceGroupName <String> [-Location <String>] -AccountName <String> -Name <String>
- [-PoolSize <Int64>] [-QosType <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-QosType <String>] [-Tag <Hashtable>]
- -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
+ [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-Tag <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-Tag <Hashtable>]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-Tag <Hashtable>]
+Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-Tag <Hashtable>]
  -InputObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -45,11 +45,11 @@ The **Update-AzNetAppFilesPool** cmdlet modifies an ANF pool.
 ## EXAMPLES
 
 ### Example 1: Modify an ANF pool
+```powershell
+Update-AzNetAppFilesPool -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolSize 4398046511104 -QosType "Auto"
 ```
-PS C:\>Update-AzNetAppFilesPool -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolSize 4398046511104 -QosType "Auto"
 
-Output:
-
+```output
 Location          : westus2
 Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool
 Name              : MyAnfAccount/MyAnfPool
@@ -93,6 +93,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -CoolAccess
+If enabled (true) the pool can contain cool Access enabled volumes.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -280,3 +295,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesPool](./New-AzNetAppFilesPool.md)
+[Get-AzNetAppFilesPool](./Get-AzNetAppFilesPool.md)
+[Remove-AzNetAppFilesPool](./Remove-AzNetAppFilesPool.md)
+[Set-AzNetAppFilesPool](./Set-AzNetAppFilesPool.md)

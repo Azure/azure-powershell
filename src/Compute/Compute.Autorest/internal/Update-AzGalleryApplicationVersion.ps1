@@ -20,18 +20,18 @@ Update a gallery Application Version.
 .Description
 Update a gallery Application Version.
 .Example
-PS C:\> $ctx = New-AzStorageContext -StorageAccountName $storAccName
-PS C:\> $SASToken = new-azstorageblobsastoken -Context $ctx -Container $containerName -blob $blobName -Permission r
-PS C:\> $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
-PS C:\> $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
-PS C:\> $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
-PS C:\> $SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
-PS C:\> Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
+$ctx = New-AzStorageContext -StorageAccountName $storAccName
+$SASToken = New-AzStorageBlobSASToken -Context $ctx -Container $containerName -blob $blobName -Permission r
+$storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
+$SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
+$SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
+Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,6 +53,19 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 
+PUBLISHINGPROFILETARGETEXTENDEDLOCATION <IGalleryTargetExtendedLocation[]>: The target extended locations where the Image Version is going to be replicated to. This property is updatable.
+  [EncryptionDataDiskImage <IDataDiskImageEncryption[]>]: A list of encryption specifications for data disk images.
+    Lun <Int32>: This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
+    [DiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
+  [ExtendedLocationName <String>]: 
+  [ExtendedLocationReplicaCount <Int32?>]: The number of replicas of the Image Version to be created per extended location. This property is updatable.
+  [ExtendedLocationType <GalleryExtendedLocationType?>]: It is type of the extended location.
+  [Name <String>]: The name of the region.
+  [OSDiskImageDiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
+  [SecurityProfileConfidentialVMEncryptionType <ConfidentialVMEncryptionType?>]: confidential VM encryption types
+  [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
+  [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
+
 TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is going to be replicated to. This property is updatable.
   Name <String>: The name of the region.
   [EncryptionDataDiskImage <IDataDiskImageEncryption[]>]: A list of encryption specifications for data disk images.
@@ -60,12 +73,14 @@ TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is go
     [DiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
   [OSDiskImageDiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
   [RegionalReplicaCount <Int32?>]: The number of replicas of the Image Version to be created per region. This property is updatable.
+  [SecurityProfileConfidentialVMEncryptionType <ConfidentialVMEncryptionType?>]: confidential VM encryption types
+  [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
   [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
 #>
 function Update-AzGalleryApplicationVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -115,6 +130,15 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Optional.
+    # The name to assign the downloaded config file on the VM.
+    # This is limited to 4096 characters.
+    # If not specified, the config file will be named the Gallery Application name appended with "_config".
+    ${ConfigFileName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Optional.
     # The defaultConfigurationLink of the artifact, must be a readable storage page blob.
     ${DefaultConfigFileLink},
 
@@ -124,6 +148,15 @@ param(
     # Required.
     # The mediaLink of the artifact, must be a readable storage page blob.
     ${PackageFileLink},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Optional.
+    # The name to assign the downloaded package file on the VM.
+    # This is limited to 4096 characters.
+    # If not specified, the package file will be named the same as the Gallery Application name.
+    ${PackageFileName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
@@ -149,7 +182,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IUpdateResourceDefinitionTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IUpdateResourceDefinitionTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
@@ -157,7 +190,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ITargetRegion[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]]
     # The target regions where the Image Version is going to be replicated to.
     # This property is updatable.
     # To construct, see NOTES section for TARGETREGION properties and create a hash table.
@@ -230,6 +263,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             UpdateExpanded = 'Az.Compute.private\Update-AzGalleryApplicationVersion_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Compute.private\Update-AzGalleryApplicationVersion_UpdateViaIdentityExpanded';
@@ -243,6 +277,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -251,15 +286,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

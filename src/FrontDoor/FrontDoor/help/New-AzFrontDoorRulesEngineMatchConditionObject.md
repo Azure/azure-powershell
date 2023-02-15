@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorrulesenginematchconditionobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorrulesenginematchconditionobject
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create a PSRulesEngineMatchCondition object for creating a rules engine rule.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable RequestHeader -Operator Equal -MatchValue allowoverride -Transform "LowerCase", "UpperCase"-Selector Rules-Engine-Route-Forward -NegateCondition $false
+New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable RequestHeader -Operator Equal -MatchValue allowoverride -Transform "LowerCase", "UpperCase"-Selector Rules-Engine-Route-Forward -NegateCondition $false
+```
 
+```output
 RulesEngineMatchVariable : RequestHeader
 RulesEngineMatchValue    : {allowoverride}
 Selector                 : Rules-Engine-Route-Forward

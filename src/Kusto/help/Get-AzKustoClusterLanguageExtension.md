@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclusterlanguageextension
+online version: https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterlanguageextension
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Returns a list of language extensions that can run within KQL queries.
 
 ### Example 1: List all language extensions set for a cluster
 ```powershell
-PS C:\> Get-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testnewkustocluster
+Get-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testnewkustocluster
+```
 
+```output
 Name
 ----
 R
@@ -135,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.ILanguageExtension
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ILanguageExtension
 
 ## NOTES
 

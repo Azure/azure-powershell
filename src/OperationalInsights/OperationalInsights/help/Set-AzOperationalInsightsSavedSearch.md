@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: A333A60D-CA76-4E4E-9C8B-72AAEF464F0A
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/set-azoperationalinsightssavedsearch
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/set-azoperationalinsightssavedsearch
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **Set-AzOperationalInsightsSavedSearch** cmdlet updates a saved search that 
 ## EXAMPLES
 
 ### Example 1: Sets a saved search with updated properties
-```
-PS C:\>Set-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId" -DisplayName "ContosoSavedSearchDisplayName" -Category "ContosoSavedSearchCategory" -Query "Type=Event" -Version $Version -ETag "ContosoSavedSearchEtag"
+```powershell
+Set-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId" -DisplayName "ContosoSavedSearchDisplayName" -Category "ContosoSavedSearchCategory" -Query "Type=Event" -Version 1 -ETag "ContosoSavedSearchEtag"
 ```
 
 This command sets a saved search with updated properties.

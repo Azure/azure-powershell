@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ This will cause a running streaming job to stop processing input events and prod
 
 ### Example 1: Stop a Stream Analytics job
 ```powershell
-PS C:\> Stop-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal
+Stop-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal
 
 ```
 
@@ -41,7 +41,7 @@ This command stops the job StreamingJob.
 
 ### Example 2: Stop a Stream Analytics job by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal | Stop-AzStreamAnalyticsJob
+Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal | Stop-AzStreamAnalyticsJob
 
 ```
 
@@ -222,7 +222,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+INPUTOBJECT `<IStreamAnalyticsIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.
   - `[FunctionName <String>]`: The name of the function.
   - `[Id <String>]`: Resource identity path

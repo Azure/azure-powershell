@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/add-azsqlelasticjobstep
+online version: https://learn.microsoft.com/powershell/module/az.sql/add-azsqlelasticjobstep
 schema: 2.0.0
 ---
 
@@ -108,9 +108,11 @@ The Add-AzSqlElasticJobStep cmdlet adds a job step to a job
 
 ### Example 1: Adds a step to a job
 ```powershell
-PS C:\> $job = Get-AzSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -Name job1
+$job = Get-AzSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -Name job1
 $job | Add-AzSqlElasticJobStep -Name step1 -TargetGroupName tg1 -CredentialName cred1 -CommandText "SELECT 1"
+```
 
+```output
 JobName StepName StepId TargetGroupName CredentialName Output CommandText
 ------- -------- ------ --------------- -------------- ------ -----------
 job1    step1    1      tg1             cred1                 SELECT 1

@@ -2,65 +2,65 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 44622461-E567-4A0A-8F18-2D7B1BF86DA2
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection
 schema: 2.0.0
 ---
 
 # Enable-AzRecoveryServicesBackupProtection
 
 ## SYNOPSIS
-Enables backup for an item with a specified Backup protection policy.
+Enables or resumes backup for an item with a specified Backup protection policy.
 
 ## SYNTAX
 
 ### AzureVMComputeEnableProtection (Default)
 ```
-Enable-AzRecoveryServicesBackupProtection [[-Policy] <PolicyBase>] [-Name] <String>
- [-ResourceGroupName] <String> [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>]
- [-ExcludeAllDataDisks] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String> [-ResourceGroupName] <String>
+ [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ExcludeAllDataDisks] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMClassicComputeEnableProtection
 ```
-Enable-AzRecoveryServicesBackupProtection [[-Policy] <PolicyBase>] [-Name] <String> [-ServiceName] <String>
+Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String> [-ServiceName] <String>
  [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ExcludeAllDataDisks] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureFileShareEnableProtection
 ```
-Enable-AzRecoveryServicesBackupProtection [[-Policy] <PolicyBase>] [-Name] <String>
+Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String>
  [-StorageAccountName] <String> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureWorkloadEnableProtection
 ```
-Enable-AzRecoveryServicesBackupProtection [[-Policy] <PolicyBase>] [-ProtectableItem] <ProtectableItemBase>
+Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-ProtectableItem] <ProtectableItemBase>
  [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ModifyProtection
 ```
-Enable-AzRecoveryServicesBackupProtection [[-Policy] <PolicyBase>] [-Item] <ItemBase>
+Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Item] <ItemBase>
  [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ResetExclusionSettings]
- [-ExcludeAllDataDisks] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ExcludeAllDataDisks] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzRecoveryServicesBackupProtection** cmdlet enables the backup by associating a protection policy with the item.
-If policy ID is not present or the backup item is not associated with any policy, then this command will expect a policyID.
-Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
+The **Enable-AzRecoveryServicesBackupProtection** cmdlet enables the backup by associating a protection policy with the item. If policy ID is not present or the backup item is not associated with any policy, then this command will expect a policyID. You can also use the same command to resume backup for a resource for which you've stopped protection with the data retention option. Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Enable Backup protection for an item
 ```powershell
-PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
-PS C:\> $inclusionDiskLUNS = ("1", "2")
-PS C:\> Enable-AzRecoveryServicesBackupProtection -Policy $Pol -Name "V2VM" -ResourceGroupName "RGName1" -InclusionDisksList $inclusionDiskLUNS
+$Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
+$inclusionDiskLUNS = ("1", "2")
+Enable-AzRecoveryServicesBackupProtection -Policy $Pol -Name "V2VM" -ResourceGroupName "RGName1" -InclusionDisksList $inclusionDiskLUNS
+```
+
+```output
 WorkloadName    Operation        Status          StartTime                  EndTime
 ------------    ---------        ------          ---------                  -------
 co03-vm         ConfigureBackup  Completed       11-Apr-16 12:19:49 PM      11-Apr-16 12:19:54 PM
@@ -68,15 +68,16 @@ co03-vm         ConfigureBackup  Completed       11-Apr-16 12:19:49 PM      11-A
 
 The first cmdlet gets a default policy object, and then stores it in the $Pol variable.
 The second cmdlet specifies the disk LUNs which are to be backed up and stores it in $inclusionDiskLUNS variable.
-The third cmdlet sets the Backup protection policy for the ARM virtual machine named V2VM using the policy in $Pol.
+The third cmdlet sets the Backup protection policy for the ARM virtual machine named V2VM, in a resource group named RGName1, using the policy in $Pol.
 
 ### Example 2
+Enables backup for an item with a specified Backup protection policy or resumes backup for an item that has data retained when backup was stopped.
 
-Enables backup for an item with a specified Backup protection policy. (autogenerated)
+<!-- Aladdin Generated Example -->
+
 
 ```powershell
-<!-- Aladdin Generated Example --> 
-Enable-AzRecoveryServicesBackupProtection -Item $Item -Policy $Pol -VaultId $vault
+Enable-AzRecoveryServicesBackupProtection  -ResourceGroupName $ResourceGroupName -Item $Item -Policy $Pol -VaultId $vault
 ```
 
 ## PARAMETERS
@@ -181,7 +182,7 @@ Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -219,7 +220,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+Specifies the name of the resource group of a virtual machine.
 Specify this parameter only for ARM virtual machines.
 
 ```yaml
@@ -264,6 +265,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Token
+Auxiliary access token for authenticating critical operation to resource guard subscription
+
+```yaml
+Type: System.String
+Parameter Sets: ModifyProtection
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultId
 ARM ID of the Recovery Services Vault.
 
@@ -295,7 +311,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. 
+Shows what would happen if the cmdlet runs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

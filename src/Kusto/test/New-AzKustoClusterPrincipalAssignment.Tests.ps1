@@ -25,7 +25,7 @@ Describe 'New-AzKustoClusterPrincipalAssignment' {
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
         $principalAssignment = New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -PrincipalId $principalId -PrincipalType $principalType -Role $role
-        Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role
+        Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role $env.principalAadObjectId
         { Remove-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName } | Should -Not -Throw
     }
 }

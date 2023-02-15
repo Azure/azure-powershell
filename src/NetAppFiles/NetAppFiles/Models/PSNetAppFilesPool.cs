@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets TotalThroughputMibps
         /// </summary>
         /// <value>
-        /// total throughput of pool in Mibps        
+        /// Total throughput of pool in MiB/s
         /// </value>
         public double? TotalThroughputMibps { get; set; }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets UtilizedThroughputMibps
         /// </summary>
         /// <value>
-        /// Utilized throughput of pool in Mibps        
+        /// Utilized throughput of pool in MiB/s        
         /// </value>
         public double? UtilizedThroughputMibps { get; set; }
 
@@ -116,5 +116,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Encryption type of the capacity pool (Single, Double), set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.
         /// </value>
         public string EncryptionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets System Data
+        /// </summary>
+        public PSSystemData SystemData { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/new-azdatasharesubscription
+online version: https://learn.microsoft.com/powershell/module/az.datashare/new-azdatasharesubscription
 schema: 2.0.0
 ---
 
@@ -24,8 +24,11 @@ The **New-AzDataShareSubscription** cmdlet creates a share subscription in speci
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataShareSubscription -ResourceGroupName "ADS" -AccountName "WikiAds" -Name "AdsShareSubscription" -InvitationId "167e06ff-567f-4bc7-be0c-645a6de710f3"
 ```
-PS C:\> New-AzDataShareSubscription -ResourceGroupName "ADS" -AccountName "WikiAds" -Name "AdsShareSubscription" -InvitationId "167e06ff-567f-4bc7-be0c-645a6de710f3"
+
+```output
 CreatedAt               : 6/30/2019 12:42:12 AM
 CreatedBy               : adstest@microsoft.com
 InvitationId            : 167e06ff-567f-4bc7-be0c-645a6de710f3

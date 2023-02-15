@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 7E9CBEE9-DD5F-4552-9187-ECBBEF6174B0
-online version: https://docs.microsoft.com/powershell/module/az.notificationhubs/new-aznotificationhubauthorizationrule
+online version: https://learn.microsoft.com/powershell/module/az.notificationhubs/new-aznotificationhubauthorizationrule
 schema: 2.0.0
 ---
 
@@ -37,8 +37,8 @@ For example, a client given the Listen permission will be directed to the URI fo
 ## EXAMPLES
 
 ### Example 1: Create a notification hub authorization rule
-```
-PS C:\>New-AzNotificationHubAuthorizationRule -Namespace "ContosoNamespace" -NotificationHub "ContosoInternalHub" -ResourceGroup "ContosoNotificationsGroup" -InputFile "C:\Configuration\ExternalAccessRule.json"
+```powershell
+New-AzNotificationHubAuthorizationRule -Namespace "ContosoNamespace" -NotificationHub "ContosoInternalHub" -ResourceGroup "ContosoNotificationsGroup" -InputFile "C:\Configuration\ExternalAccessRule.json"
 ```
 
 This command creates a new authorization rule and assigns it to the notification hub named ContosoInternalHub.

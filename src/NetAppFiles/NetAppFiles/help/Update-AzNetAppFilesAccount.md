@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/update-aznetappfilesaccount
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/update-aznetappfilesaccount
 schema: 2.0.0
 ---
 
@@ -39,11 +39,11 @@ The **Update-AzNetAppFilesAccount** cmdlet modifies an ANF account.
 ## EXAMPLES
 
 ### Example 1 : Updates an ANF account
+```powershell
+Update-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Location "westus2" -Name "MyAnfAccount" -Tag @{'Tag1' = 'Value1'}
 ```
-PS C:\>Update-AzNetAppFilesAccount -ResourceGroupName "MyRG" -l "westus2" -Name "MyAnfAccount" -Tag @{'Tag1' = 'Value1'}
 
-Output:
-
+```output
 Location          : westus2
 Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
 Name              : MyAnfAccount
@@ -225,3 +225,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesAccount](./New-AzNetAppFilesAccount.md)
+[Get-AzNetAppFilesAccount](./Get-AzNetAppFilesAccount.md)
+[Remove-AzNetAppFilesAccount](./Remove-AzNetAppFilesAccount.md)
+[Set-AzNetAppFilesAccount](./Set-AzNetAppFilesAccount.md)
+[Get-AzNetAppFilesActiveDirectory](./Get-AzNetAppFilesActiveDirectory.md)
+[New-AzNetAppFilesActiveDirectory](./New-AzNetAppFilesActiveDirectory.md)
+[Remove-AzNetAppFilesActiveDirectory](./Remove-AzNetAppFilesActiveDirectory.md)
+[Update-AzNetAppFilesActiveDirectory](./Update-AzNetAppFilesActiveDirectory.md)

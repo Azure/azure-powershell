@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: CE690DB0-0CD4-4841-B219-C208173D4730
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightscriptactionhistory
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightscriptactionhistory
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzHDInsightScriptActionHistory** cmdlet gets the script action history
 ## EXAMPLES
 
 ### Example 1: Get the history of script actions executions for a cluster
-```
-PS C:\>Get-AzHDInsightScriptActionHistory -ClusterName "your-hadoop-001"
+```powershell
+Get-AzHDInsightScriptActionHistory -ClusterName "your-hadoop-001"
 ```
 
 This command gets the history of script actions for the cluster your-hadoop-001.

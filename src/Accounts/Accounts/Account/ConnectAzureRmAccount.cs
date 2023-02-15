@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 using System.Security;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,13 +35,15 @@ using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
+using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.PowerShell.Common.Share.Survey;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -315,11 +318,27 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
             }
+            else if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
+            {
+                string subscriptionFromConfig = configManager.GetConfigValue<string>(ConfigKeys.DefaultSubscriptionForLogin);
+                if (!string.IsNullOrEmpty(subscriptionFromConfig))
+                {
+                    // user doesn't specify subscript; but DefaultSubscriptionForLogin is found in config
+                    WriteDebugWithTimestamp($"[ConnectAzureRmAccountCommand] Using default subscription \"{subscriptionFromConfig}\" from config.");
+                    if (Guid.TryParse(subscriptionFromConfig, out subscriptionIdGuid))
+                    {
+                        subscriptionId = subscriptionFromConfig;
+                    }
+                    else
+                    {
+                        subscriptionName = subscriptionFromConfig;
+                    }
+                }
+            }
 
             if(ClientAssertionParameterSet.Equals(ParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
-                string suppressWarningOrErrorValue = System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME);
-                bool.TryParse(suppressWarningOrErrorValue, out bool suppressWarningOrError);
+                bool suppressWarningOrError = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager) && configManager.GetConfigValue<bool>(ConfigKeys.DisplayBreakingChangeWarning);
                 if (!suppressWarningOrError)
                 {
                     WriteWarning("The feature related to parameter name 'FederatedToken' is under preview.");
@@ -363,6 +382,11 @@ namespace Microsoft.Azure.Commands.Profile
                     break;
             }
 
+            if (!AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keyStore))
+            {
+                keyStore = null;
+            }
+
             SecureString password = null;
             if (Credential != null)
             {
@@ -401,7 +425,11 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.CertificatePath, resolvedPath);
                 if (CertificatePassword != null)
                 {
-                    azureAccount.SetProperty(AzureAccount.Property.CertificatePassword, CertificatePassword.ConvertToString());
+                    keyStore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, azureAccount.Id, Tenant), CertificatePassword);
+                    if (GetContextModificationScope() == ContextModificationScope.CurrentUser && !keyStore.IsProtected)
+                    {
+                        WriteWarning(string.Format(Resources.ServicePrincipalWarning, AzureSession.Instance.KeyStoreFile, AzureSession.Instance.ARMProfileDirectory));
+                    }
                 }
             }
 
@@ -409,16 +437,8 @@ namespace Microsoft.Azure.Commands.Profile
                 && SendCertificateChain)
             {
                 azureAccount.SetProperty(AzureAccount.Property.SendCertificateChain, SendCertificateChain.ToString());
-                bool supressWarningOrError = false;
-                try
-                {
-                    supressWarningOrError = bool.Parse(System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
-                }
-                catch
-                {
-                    //if value of env variable is invalid, use default value of supressWarningOrError
-                }
-                if (!supressWarningOrError)
+                bool suppressWarningOrError = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager) && configManager.GetConfigValue<bool>(ConfigKeys.DisplayBreakingChangeWarning);
+                if (!suppressWarningOrError)
                 {
                     WriteWarning(Resources.PreviewFunctionMessage);
                 }
@@ -431,12 +451,11 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && password != null)
             {
-                azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
-                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                keyStore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
+                    ,azureAccount.Id, Tenant), password);
+                if (GetContextModificationScope() == ContextModificationScope.CurrentUser && !keyStore.IsProtected)
                 {
-                    var file = AzureSession.Instance.ARMProfileFile;
-                    var directory = AzureSession.Instance.ARMProfileDirectory;
-                    WriteWarning(string.Format(Resources.ServicePrincipalWarning, file, directory));
+                    WriteWarning(string.Format(Resources.ServicePrincipalWarning, AzureSession.Instance.KeyStoreFile, AzureSession.Instance.ARMProfileDirectory));
                 }
             }
             if (azureAccount.Type == "ClientAssertion" && FederatedToken != null)
@@ -511,10 +530,16 @@ namespace Microsoft.Azure.Commands.Profile
                    }
                    catch (AuthenticationFailedException ex)
                    {
+                       string message = string.Empty;
                        if (IsUnableToOpenWebPageError(ex))
                        {
                            WriteWarning(Resources.InteractiveAuthNotSupported);
                            WriteDebug(ex.ToString());
+                       }
+                       else if (TryParseUnknownAuthenticationException(ex, out message))
+                       {
+                           WriteDebug(ex.ToString());
+                           throw ex.WithAdditionalMessage(message);
                        }
                        else
                        {
@@ -552,6 +577,21 @@ namespace Microsoft.Azure.Commands.Profile
         {
             return exception.InnerException is MsalClientException && ((MsalClientException)exception.InnerException)?.ErrorCode == MsalError.LinuxXdgOpen
                             || (exception.Message?.ToLower()?.Contains("unable to open a web page") ?? false);
+        }
+
+        private bool TryParseUnknownAuthenticationException(AuthenticationFailedException exception, out string message)
+        {
+
+            var innerException = exception?.InnerException as MsalServiceException;
+            bool isUnknownMsalServiceException = string.Equals(innerException?.ErrorCode, "access_denied", StringComparison.OrdinalIgnoreCase);
+            message = null;
+            if(isUnknownMsalServiceException)
+            {
+                StringBuilder messageBuilder = new StringBuilder(nameof(innerException.ErrorCode));
+                messageBuilder.Append(": ").Append(innerException.ErrorCode);
+                message = messageBuilder.ToString();
+            }
+            return isUnknownMsalServiceException;
         }
 
         private ConcurrentQueue<Task> _tasks = new ConcurrentQueue<Task>();
@@ -630,7 +670,7 @@ namespace Microsoft.Azure.Commands.Profile
             try
             {
 #endif
-                AzureSessionInitializer.InitializeAzureSession();
+                AzureSessionInitializer.InitializeAzureSession(WriteInitializationWarnings);
                 AzureSessionInitializer.MigrateAdalCache(AzureSession.Instance, GetAzureContextContainer, WriteInitializationWarnings);
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)
@@ -640,7 +680,7 @@ namespace Microsoft.Azure.Commands.Profile
 #if DEBUG
                 }
 #endif
-
+                SurveyHelper.GetInstance().updateSurveyHelper(AzureSession.Instance.ExtendedProperties["InstallationId"]);
                 var autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
                 var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
 
@@ -672,15 +712,15 @@ namespace Microsoft.Azure.Commands.Profile
                     WriteInitializationWarnings(Resources.FallbackContextSaveModeDueCacheCheckError.FormatInvariant(ex.Message));
                 }
 
-                if(!InitializeProfileProvider(autoSaveEnabled))
+                AzKeyStore keyStore = null;
+                keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.KeyStoreFile, autoSaveEnabled);
+                AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore);
+
+                if (!InitializeProfileProvider(autoSaveEnabled))
                 {
                     AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
                     autoSaveEnabled = false;
                 }
-
-                IServicePrincipalKeyStore keyStore =
-                    new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
-                AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
 
                 IAuthenticatorBuilder builder = null;
                 if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out builder))
@@ -707,6 +747,11 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
+                AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), () => new SshCredentialFactory());
+#if DEBUG || TESTCOVERAGE
+                AzureSession.Instance.RegisterComponent<ITestCoverage>(nameof(ITestCoverage), () => new TestCoverage());
+#endif
+
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

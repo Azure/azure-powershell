@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Aks.Models
         [EnumMember(Value = "SystemAssigned")]
         SystemAssigned,
 
+        [EnumMember(Value = "UserAssigned")]
+        UserAssigned,
+
         [EnumMember(Value = "None")]
         None
     }

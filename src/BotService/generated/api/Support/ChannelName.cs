@@ -9,7 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
     public partial struct ChannelName :
         System.IEquatable<ChannelName>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName AlexaChannel = @"AlexaChannel";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName DirectLineChannel = @"DirectLineChannel";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName DirectLineSpeechChannel = @"DirectLineSpeechChannel";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName EmailChannel = @"EmailChannel";
 
@@ -17,7 +21,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName KikChannel = @"KikChannel";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName LineChannel = @"LineChannel";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName MSTeamsChannel = @"MsTeamsChannel";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName Omnichannel = @"Omnichannel";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName OutlookChannel = @"OutlookChannel";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName SkypeChannel = @"SkypeChannel";
 
@@ -27,12 +37,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName TelegramChannel = @"TelegramChannel";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName TelephonyChannel = @"TelephonyChannel";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName WebChatChannel = @"WebChatChannel";
 
         /// <summary>the value for an instance of the <see cref="ChannelName" /> Enum.</summary>
         private string _value { get; set; }
 
-        /// <summary>Creates an instance of the <see cref="ChannelName" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="ChannelName"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private ChannelName(string underlyingValue)
         {
@@ -93,8 +105,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         }
 
         /// <summary>Overriding != operator for enum ChannelName</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName e1, Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName e2)
         {
@@ -102,8 +114,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         }
 
         /// <summary>Overriding == operator for enum ChannelName</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName e1, Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName e2)
         {

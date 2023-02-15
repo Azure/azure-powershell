@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecapability
+online version: https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecapability
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Get the list of CPU/memory/GPU capabilities of a region.
 
 ### Example 1: Get the list of capabilities of the location
 ```powershell
-PS C:\> Get-AzContainerInstanceCapability -Location eastus
+Get-AzContainerInstanceCapability -Location eastus
+```
 
+```output
 Gpu  IPAddressType Location OSType       ResourceType   
 ---  ------------- -------- ------       ------------   
 None Public        eastus   NotSpecified containerGroups

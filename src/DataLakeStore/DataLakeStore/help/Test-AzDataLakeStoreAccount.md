@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 613DE097-65E0-4F08-839D-F9B53F772382
-online version: https://docs.microsoft.com/powershell/module/az.datalakestore/test-azdatalakestoreaccount
+online version: https://learn.microsoft.com/powershell/module/az.datalakestore/test-azdatalakestoreaccount
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Test-AzDataLakeStoreAccount** cmdlet tests the existence of a Data Lake St
 ## EXAMPLES
 
 ### Example 1: Test an account
-```
-PS C:\>Test-AzDataLakeStoreAccount -Name "ContosoADL"
+```powershell
+Test-AzDataLakeStoreAccount -Name "ContosoADL"
 ```
 
 This command tests whether the account named ContosoADL exists.

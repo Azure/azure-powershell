@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HPCCache.dll-Help.xml
 Module Name: Az.HPCCache
-online version: https://docs.microsoft.com/powershell/module/az.hpccache/get-azhpccachestoragetarget
+online version: https://learn.microsoft.com/powershell/module/az.hpccache/get-azhpccachestoragetarget
 schema: 2.0.0
 ---
 
@@ -36,12 +36,12 @@ The **Get-AzHpcCacheStorageTarget** cmdlet gets storage target(s) that exist on 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzHpcCacheStorageTarget -ResourceGroupName rgTest -CacheName cacheTest
+Get-AzHpcCacheStorageTarget -ResourceGroupName rgTest -CacheName cacheTest
 ```
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzHpcCacheStorageTarget -ResourceGroupName rgTest -CacheName cacheTest -StorageTargetName stTest
+Get-AzHpcCacheStorageTarget -ResourceGroupName rgTest -CacheName cacheTest -StorageTargetName stTest
 ```
 
 ## PARAMETERS

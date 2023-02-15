@@ -86,6 +86,31 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models.Remediation
         public string ResourceDiscoveryMode { get; }
 
         /// <summary>
+        /// The number of non-compliant resources to be remediated.
+        /// </summary>
+        public int? ResourceCount { get; }
+
+        /// <summary>
+        /// The number of resources to remediate at any given time.
+        /// </summary>
+        public int? ParallelDeployments { get;  }
+
+        /// <summary>
+        /// The remediation failure threshold.
+        /// </summary>
+        public double? FailureThreshold { get; }
+
+        /// <summary>
+        /// The remediation correlation Id.
+        /// </summary>
+        public string CorrelationId { get; }
+
+        /// <summary>
+        /// The remediation status message.
+        /// </summary>
+        public string StatusMessage { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PSRemediation" /> class.
         /// </summary>
         /// <param name="remediation">The raw remediation model.</param>
@@ -108,6 +133,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models.Remediation
             this.Filters = remediation.Filters != null ? new PSRemediationFilter(remediation.Filters) : null;
             this.DeploymentSummary = remediation.DeploymentStatus != null ? new PSRemediationDeploymentSummary(remediation.DeploymentStatus) : null;
             this.ResourceDiscoveryMode = remediation.ResourceDiscoveryMode;
+            this.ResourceCount = remediation.ResourceCount;
+            this.ParallelDeployments = remediation.ParallelDeployments;
+            this.FailureThreshold = remediation.FailureThreshold?.Percentage;
+            this.CorrelationId = remediation.CorrelationId;
+            this.StatusMessage = remediation.StatusMessage;
 
             if (deployments != null)
             {

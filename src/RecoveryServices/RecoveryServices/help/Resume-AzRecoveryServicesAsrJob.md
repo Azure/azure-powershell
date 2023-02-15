@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/resume-azrecoveryservicesasrjob
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/resume-azrecoveryservicesasrjob
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ The **Resume-AzRecoveryServicesAsrJob** cmdlet resumes a suspended Azure Site Re
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Resume-AzRecoveryServicesAsrJob -Job $Job
+```powershell
+$currentJob = Resume-AzRecoveryServicesAsrJob -Job $Job
 ```
 
 Resume the specified job if it is in a waiting or suspended state and return the updated ASR job object corresponding to the ASR job.

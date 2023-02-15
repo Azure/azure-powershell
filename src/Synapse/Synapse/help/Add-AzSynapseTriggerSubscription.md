@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/add-azsynapsetriggersubscription
+online version: https://learn.microsoft.com/powershell/module/az.synapse/add-azsynapsetriggersubscription
 schema: 2.0.0
 ---
 
@@ -37,23 +37,23 @@ The **Add-AzSynapseTriggerSubscription** cmdlet subscribes the event trigger to 
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzSynapseTriggerSubscription -WorkspaceName ContosoWorkspace -Name ContosoTrigger
+Add-AzSynapseTriggerSubscription -WorkspaceName ContosoWorkspace -Name ContosoTrigger
 ```
 
 This command will subscribe trigger called ContosoTrigger to the specified events from the trigger defintion.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Add-AzSynapseTriggerSubscription -Name ContosoTrigger
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Add-AzSynapseTriggerSubscription -Name ContosoTrigger
 ```
 
 This command will subscribe trigger called ContosoTrigger to the specified events from the trigger defintion through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $trigger = Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
-PS C:\> $trigger | Add-AzSynapseTriggerSubscription
+$trigger = Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger
+$trigger | Add-AzSynapseTriggerSubscription
 ```
 
 This command will subscribe trigger called ContosoTrigger to the specified events from the trigger defintion through pipeline.

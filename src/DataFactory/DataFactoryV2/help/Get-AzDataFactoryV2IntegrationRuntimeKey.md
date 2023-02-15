@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2integrationruntimekey
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2integrationruntimekey
 schema: 2.0.0
 ---
 
@@ -36,9 +36,11 @@ Get keys for an integration runtime. The keys are used to register an integratio
 ## EXAMPLES
 
 ### Example 1: Get integration runtime keys
+```powershell
+Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir'
 ```
-PS C:\> Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir'
 
+```output
 AuthKey1                                                 AuthKey2
 --------                                                 --------
 IR@89895504-f647-48fd-8dd3-42fa556d67e3******            IR@89895504-f647-48fd-8dd3-42fa556d67e3****

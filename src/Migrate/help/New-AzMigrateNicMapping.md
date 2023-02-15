@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
+online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Creates an object to update NIC properties of a replicating server.
 
 ```
 New-AzMigrateNicMapping -NicID <String> [-TargetNicIP <String>] [-TargetNicName <String>]
- [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>] [<CommonParameters>]
+ [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>] [-TestNicIP <String>]
+ [-TestNicSubnet <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,8 +26,10 @@ This object is provided as an input to the Set-AzMigrateServerReplication cmdlet
 
 ### Example 1: Create a NIC object
 ```powershell
-PS C:\> New-AzMigrateNicMapping -NicID a2399354-653a-464e-a567-d30ef5467a31 -TargetNicSelectionType primary -TargetNicIP "172.17.1.17"
+New-AzMigrateNicMapping -NicID a2399354-653a-464e-a567-d30ef5467a31 -TargetNicSelectionType primary -TargetNicIP "172.17.1.17"
+```
 
+```output
 IsPrimaryNic IsSelectedForMigration NicId                                TargetStaticIPAddress TargetSubnetName
 ------------ ---------------------- -----                                --------------------- ----------------
 false        false                  a2399354-653a-464e-a567-d30ef5467a31
@@ -111,6 +114,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TestNicIP
+Specifies the IP within the destination test subnet to be used for the NIC.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestNicSubnet
+Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be test migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -118,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput
 
 ## NOTES
 

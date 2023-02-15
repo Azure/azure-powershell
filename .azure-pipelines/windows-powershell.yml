@@ -1,11 +1,17 @@
 variables:
+  AgentPoolName: pool-windows-2019
   WindowsName: windows
   WindowsImage: windows-2019
-  TestFramework: netcoreapp2.1
+  TestFramework: netcoreapp3.1
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
   IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
+  BuildTimeoutInMinutes: 120
+  AnalysisTimeoutInMinutes: 120
+  EnableTestCoverage: true
+  TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
+  PowerShellPlatform: Windows PowerShell
 
 trigger: none
 
@@ -20,8 +26,8 @@ jobs:
 - job: Build
   displayName: Build
   condition: and(eq(variables.IsGenerateBased, false), succeeded())
-  pool:
-    vmImage: ${{ variables.WindowsImage }}
+  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+  pool: ${{ variables.AgentPoolName }}
 
   steps:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
@@ -29,48 +35,30 @@ jobs:
     continueOnError: true
   - template: util/build-steps.yml
     parameters:
-      osName: ${{ variables.WindowsName }}
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
-  condition: and(eq(variables.IsGenerateBased, false), succeeded())
-  timeoutInMinutes: 90
-  pool:
-    vmImage: ${{ variables.WindowsImage }}
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
+  pool: ${{ variables.AgentPoolName }}
 
   steps:
   - template: util/analyze-steps.yml
     parameters:
-      osName: ${{ variables.WindowsName }}
       configuration: ${{ variables.Configuration }}
-  - task: PowerShell@2
-    displayName: 'Cleanup Build'
-    inputs:
-      targetType: filePath
-      filePath: tools/CleanupBuild.ps1
-      pwsh: true
-  - task: NuGetCommand@2
-    displayName: 'Download BinSkim'
-    inputs:
-      command: custom
-      arguments: 'install Microsoft.CodeAnalysis.BinSkim -OutputDirectory $(System.DefaultWorkingDirectory)/tools/SecurityTools -Version 1.7.0'
-  - task: PowerShell@2
-    displayName: 'Run BinSkim'
-    inputs:
-      targetType: filePath
-      filePath: tools/SecurityTools/RunBinSkim.ps1
-      pwsh: true
+      testFramework: ${{ variables.TestFramework }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
 - job: Test
   displayName: Test
   dependsOn: Build
   condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: 180
-  pool:
-    vmImage: ${{ variables.WindowsImage }}
+  pool: ${{ variables.AgentPoolName }}
 
   steps:
   - template: util/test-steps.yml
@@ -79,3 +67,4 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}

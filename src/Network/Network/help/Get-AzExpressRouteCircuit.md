@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C9954E3D-8645-473E-A6D4-86278C2F6BC1
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressroutecircuit
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressroutecircuit
 schema: 2.0.0
 ---
 
@@ -26,9 +26,11 @@ operate on ExpressRoute circuits.
 ## EXAMPLES
 
 ### Example 1: Get the ExpressRoute circuit
-```
+```powershell
 Get-AzExpressRouteCircuit -ResourceGroupName testrg -Name test
+```
 
+```output
 Name                             : test
 ResourceGroupName                : testrg
 Location                         : southcentralus
@@ -62,9 +64,11 @@ GatewayManagerEtag               :
 Get a specific ExpressRoute circuit with Name "testrg" and ResourceGroupName "test"
 
 ### Example 2: List the ExpressRoute circuits using filtering
-```
+```powershell
 Get-AzExpressRouteCircuit -Name test*
+```
 
+```output
 Name                             : test1
 ResourceGroupName                : testrg
 Location                         : southcentralus

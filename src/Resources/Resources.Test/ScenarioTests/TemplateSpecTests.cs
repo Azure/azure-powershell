@@ -18,7 +18,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class TemplateSpecTests : ResourceTestRunner
+    public class TemplateSpecTests : ResourcesTestRunner
     {
         public TemplateSpecTests(ITestOutputHelper output) : base(output)
         {

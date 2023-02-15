@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldataconnection
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldataconnection
 schema: 2.0.0
 ---
 
@@ -39,8 +39,10 @@ Returns a data connection.
 
 ### Example 1:  List all data connections in a specific database
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+```
 
+```output
 Kind     Location  Name                                                                                                              
 ----     --------  ----                                             
 EventHub East US 2 testws/testkustopool/mykustodatabase/eventhubdc
@@ -50,8 +52,10 @@ The above command returns all Kusto connections in the workspace "testws" found 
 
 ### Example 2: Get a specific data connection by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -DataConnectionName mykustodataconnection
+Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -DataConnectionName mykustodataconnection
+```
 
+```output
 Kind     Location  Name                                                                                                             
 ----     --------  ----                                             
 EventHub East US 2 testws/testkustopool/mykustodatabase/mykustodataconnection
@@ -203,7 +207,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
+INPUTOBJECT `<ISynapseIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[DataConnectionName <String>]`: The name of the data connection.
   - `[DatabaseName <String>]`: The name of the database in the Kusto pool.

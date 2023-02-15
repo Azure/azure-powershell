@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestWithUserAssignedIdentity()
         {
             TestRunner.RunTestScript("Test-WithUserAssignedIdentity");
@@ -540,5 +540,34 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 Assert.True(nok.Count == nokCount);
             }
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSkipIdentity()
+        {
+            TestRunner.RunTestScript("Test-SkipIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestUserIdentityOnlyWin()
+        {
+            TestRunner.RunTestScript("Test-UserIdentityOnlyWin");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestUserIdentityOnlyLnx()
+        {
+            TestRunner.RunTestScript("Test-UserIdentityOnlyLnx");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestUserIdentityWithSystemLnx()
+        {
+            TestRunner.RunTestScript("Test-UserIdentityWithSystemLnx");
+        }
+
     }
 }

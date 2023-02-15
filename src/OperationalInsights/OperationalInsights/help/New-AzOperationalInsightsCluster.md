@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightscluster
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightscluster
 schema: 2.0.0
 ---
 
@@ -28,8 +28,10 @@ Create cluster
 
 ### Example 1
 ```powershell
-New-AzOperationalInsightsCluster -ResourceGroupName {rg-name} -ClusterName {cluster-name} -Location eastus -IdentityType SystemAssigned -SkuName CapacityReservation -SkuCapacity 1000
+New-AzOperationalInsightsCluster -ResourceGroupName "rg-name" -ClusterName "cluster-name" -Location eastus -IdentityType SystemAssigned -SkuName CapacityReservation -SkuCapacity 1000
+```
 
+```output
 Identity						: Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity
 Sku								: Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku
 ClusterId						: {cluster-id}
@@ -115,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-the identity type, value can be 'SystemAssigned', 'None'.
+the identity type, value can be 'SystemAssigned', 'None', 'UserAssigned'.
 
 ```yaml
 Type: System.String
@@ -236,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuCapacity
-Sku Capacity, value need to be multiple of 100 and in the range of 1000-2000.
+Sku Capacity, value need to be multiple of 100 and at least 1000.
 
 ```yaml
 Type: System.Int64

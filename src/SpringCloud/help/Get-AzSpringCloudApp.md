@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudapp
+online version: https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudapp
 schema: 2.0.0
 ---
 
@@ -35,47 +35,45 @@ Get an App and its properties.
 
 ## EXAMPLES
 
-### Example 1: Get Spring Cloud App by name.
+### Example 1: Get all App under the spring service
 ```powershell
-PS C:\> Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway
-ActiveDeploymentName    : default
-CreatedTime             : 2020-08-08 15:37:43
-Fqdn                    : spring-cloud-service.azuremicroservices.io
-HttpsOnly               : False
-Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/spring-cloud-rg/providers/Microsoft.AppPlatform/Spring/spring-cloud-service/apps/gateway
-IdentityPrincipalId     :
-IdentityTenantId        :
-IdentityType            :
-Location                : eastus
-Name                    : gateway
-PersistentDiskMountPath : /persistent
-PersistentDiskSizeInGb  : 0
-PersistentDiskUsedInGb  :
-ProvisioningState       : Succeeded
-Public                  : False
-TemporaryDiskMountPath  : /tmp
-TemporaryDiskSizeInGb   : 5
-Type                    : Microsoft.AppPlatform/Spring/apps
-Url                     :
-Identity                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ManagedIdentityProperties
-PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.PersistentDisk
-Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResourceProperties
-TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TemporaryDisk
+Get-AzSpringCloudApp -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service
 ```
 
-Get Spring Cloud App by name.
-
-### Example 2: List all the app under a given spring cloud service.
-```powershell
-PS C:\> Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
-Name            Type                              Location
-----            ----                              --------
-account-service Microsoft.AppPlatform/Spring/apps eastus
-auth-service    Microsoft.AppPlatform/Spring/apps eastus
-gateway         Microsoft.AppPlatform/Spring/apps eastus
+```output
+Name   SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+----   ------------------- -------------------     ----------------------- ------------------------ ------------------------
+plugin 2022/6/28 9:15:47   *********@microsoft.com User                    2022/6/28 9:15:47        *********@microsoft.com
+tools  2022/6/28 8:33:27   *********@microsoft.com User                    2022/6/28 8:33:27        *********@microsoft.com
 ```
 
-List all the app under a given spring cloud service.
+Get all App under the spring service.
+
+### Example 2: Get an App and its properties
+```powershell
+Get-AzSpringCloudApp -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name tools
+```
+
+```output
+Name  SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+----  ------------------- -------------------     ----------------------- ------------------------ ------------------------
+tools 2022/6/28 8:33:27   *********@microsoft.com User                    2022/6/28 8:33:27        *********@microsoft.com
+```
+
+Get an App and its properties.
+
+### Example 3: Get an App and its properties by pipeline
+```powershell
+New-AzSpringCloudApp -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name tools | Get-AzSpringCloudApp
+```
+
+```output
+Name  SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+----  ------------------- -------------------     ----------------------- ------------------------ ------------------------
+tools 2022/6/28 8:33:27   *********@microsoft.com User                    2022/6/28 8:33:27        *********@microsoft.com
+```
+
+Get an App and its properties by pipeline.
 
 ## PARAMETERS
 
@@ -196,7 +194,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
 
 ## NOTES
 
@@ -207,16 +205,26 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+`INPUTOBJECT <ISpringCloudIdentity>`: Identity Parameter
+  - `[AgentPoolName <String>]`: The name of the build service agent pool resource.
   - `[AppName <String>]`: The name of the App resource.
   - `[BindingName <String>]`: The name of the Binding resource.
+  - `[BuildName <String>]`: The name of the build resource.
+  - `[BuildResultName <String>]`: The name of the build result resource.
+  - `[BuildServiceName <String>]`: The name of the build service resource.
+  - `[BuilderName <String>]`: The name of the builder resource.
+  - `[BuildpackBindingName <String>]`: The name of the Buildpack Binding Name
+  - `[BuildpackName <String>]`: The name of the buildpack resource.
   - `[CertificateName <String>]`: The name of the certificate resource.
+  - `[ConfigurationServiceName <String>]`: The name of Application Configuration Service.
   - `[DeploymentName <String>]`: The name of the Deployment resource.
   - `[DomainName <String>]`: The name of the custom domain resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   - `[ServiceName <String>]`: The name of the Service resource.
+  - `[ServiceRegistryName <String>]`: The name of Service Registry.
+  - `[StackName <String>]`: The name of the stack resource.
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS

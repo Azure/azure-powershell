@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldataconnection
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldataconnection
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Deletes the data connection with the given name.
 
 ### Example 1: Delete an existing data connection by name
 ```powershell
-PS C:\> Remove-AzSynapseKustoPoolDataConnection -ResourceGroupName "testrg" -WrokspaceName "testws" -KustoPoolName "testkustopool" -DatabaseName "mykustodatabase" -DataConnectionName "mykustodataconnection"
+Remove-AzSynapseKustoPoolDataConnection -ResourceGroupName "testrg" -WorkspaceName "testws" -KustoPoolName "testkustopool" -DatabaseName "mykustodatabase" -DataConnectionName "mykustodataconnection"
 ```
 
 The above command deletes the data connection named "mykustodataconnection" in kusto database "mykustodatabase" of the existing workspace "testws" found in the resource group "testrg"
@@ -257,7 +257,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
+INPUTOBJECT `<ISynapseIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[DataConnectionName <String>]`: The name of the data connection.
   - `[DatabaseName <String>]`: The name of the database in the Kusto pool.

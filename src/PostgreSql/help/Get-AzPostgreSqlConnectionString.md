@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlconnectionstring
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlconnectionstring
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Get the connection string according to client connection provider.
 
 ### Example 1: Get PostgreSql server connection string by resource group and server name
 ```powershell
-PS C:\> Get-AzPostgreSqlConnectionString -Client ADO.NET -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG
+Get-AzPostgreSqlConnectionString -Client ADO.NET -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG
+```
 
+```output
 Server=postgresqltestserver.postgres.database.azure.com;Database={your_database};Port=5432;User Id=pwsh@postgresqltestserver;Password={your_password};Ssl Mode=Require;
 ```
 
@@ -40,8 +42,10 @@ This cmdlet gets PostgreSql server connection string by resource group and serve
 
 ### Example 2: Get PostgreSql server connection string by identity
 ```powershell
-PS C:\> Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlConnectionString -Client PHP
+Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlConnectionString -Client PHP
+```
 
+```output
 host=postgresqltestserver.postgres.database.azure.com port=5432 dbname={your_database} user=pwsh@postgresqltestserver password={your_password} sslmode=require
 ```
 
@@ -160,7 +164,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServer>: The server for the connection string
+INPUTOBJECT `<IServer>`: The server for the connection string
   - `Location <String>`: The geo-location where the resource lives
   - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

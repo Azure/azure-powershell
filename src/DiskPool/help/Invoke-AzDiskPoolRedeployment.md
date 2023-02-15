@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/az.diskpool/invoke-azdiskpoolredeployment
+online version: https://learn.microsoft.com/powershell/module/az.diskpool/invoke-azdiskpoolredeployment
 schema: 2.0.0
 ---
 
@@ -35,16 +35,14 @@ This is expected service behavior.
 
 ### Example 1: Redeploy a Disk Pool
 ```powershell
-PS C:\> Invoke-AzDiskPoolRedeployment -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
-
+Invoke-AzDiskPoolRedeployment -DiskPoolName 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
 ```
 
 This command redeploys a Disk Pool.
 
 ### Example 2: Redeploy a Disk Pool by object
 ```powershell
-PS C:\> Get-AzDiskPool -ResourceGroupName 'storagepool-rg-test' -Name 'disk-pool-1' | Invoke-AzDiskPoolRedeployment
-
+Get-AzDiskPool -ResourceGroupName 'storagepool-rg-test' -Name 'disk-pool-1' | Invoke-AzDiskPoolRedeployment
 ```
 
 This command redeploys a Disk Pool by object.
@@ -224,7 +222,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
+INPUTOBJECT `<IDiskPoolIdentity>`: Identity Parameter
   - `[DiskPoolName <String>]`: The name of the Disk Pool.
   - `[Id <String>]`: Resource identity path
   - `[IscsiTargetName <String>]`: The name of the iSCSI Target.

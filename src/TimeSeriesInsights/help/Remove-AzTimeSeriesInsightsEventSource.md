@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.TimeSeriesInsights
-online version: https://docs.microsoft.com/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightseventsource
+online version: https://learn.microsoft.com/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightseventsource
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Deletes the event source with the specified name in the specified subscription, 
 
 ### Example 1: Remove a specified event source by name
 ```powershell
-PS C:\> Remove-AzTimeSeriesInsightsEventSource -EnvironmentName tsitest001 -Name iots001 -ResourceGroupName testgroup
+Remove-AzTimeSeriesInsightsEventSource -EnvironmentName tsitest001 -Name iots001 -ResourceGroupName testgroup
 
 ```
 
@@ -39,8 +39,8 @@ This removes a specific event source.
 
 ### Example 2: Remove a specified event source by object
 ```powershell
-PS C:\> $es = Get-AzTimeSeriesInsightsEventSource -EnvironmentName tsitest001 -ResourceGroupName testgroup -Name iots001
-PS C:\> Remove-AzTimeSeriesInsightsEventSource -InputObject $es
+$es = Get-AzTimeSeriesInsightsEventSource -EnvironmentName tsitest001 -ResourceGroupName testgroup -Name iots001
+Remove-AzTimeSeriesInsightsEventSource -InputObject $es
 
 ```
 
@@ -205,7 +205,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
+INPUTOBJECT `<ITimeSeriesInsightsIdentity>`: Identity Parameter
   - `[AccessPolicyName <String>]`: Name of the access policy.
   - `[EnvironmentName <String>]`: Name of the environment
   - `[EventSourceName <String>]`: The name of the Time Series Insights event source associated with the specified environment.

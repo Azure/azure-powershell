@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 prepareMoveRequest.TargetResourceId = TargetVault.ID;
                 prepareMoveRequest.TargetRegion = TargetVault.Location; 
 
-                /// currently only allowing vault level data move
+                // currently only allowing vault level data move
                 prepareMoveRequest.DataMoveLevel = "Vault";
 
                 if (RetryOnlyFailed.IsPresent)

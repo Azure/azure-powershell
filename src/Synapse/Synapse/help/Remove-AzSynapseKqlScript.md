@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekqlscript
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekqlscript
 schema: 2.0.0
 ---
 
@@ -37,23 +37,23 @@ The **Remove-AzSynapseKqlScript** cmdlet removes a KQL script from a workspace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -Name ContosoKqlScript
+Remove-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -Name ContosoKqlScript
 ```
 
 Removes a KQL script called ContosoKqlScript from the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseKqlScript -Name ContosoKqlScript
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseKqlScript -Name ContosoKqlScript
 ```
 
 Removes a KQL script called ContosoKqlScript from the workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $kqlScript = Get-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -Name ContosoKqlScript
-PS C:\> $kqlScript | Remove-AzSynapseKqlScript
+$kqlScript = Get-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -Name ContosoKqlScript
+$kqlScript | Remove-AzSynapseKqlScript
 ```
 
 Removes a KQL script called ContosoKqlScript from the workspace ContosoWorkspace through pipeline.

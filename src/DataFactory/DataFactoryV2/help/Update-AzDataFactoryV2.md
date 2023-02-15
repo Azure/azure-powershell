@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/update-azdatafactoryv2
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/update-azdatafactoryv2
 schema: 2.0.0
 ---
 
@@ -45,9 +45,11 @@ The **Update-AzDataFactoryV2** cmdlet updates tags or identity properties of a d
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Update-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Tag @{myNewTagName = "myTagValue"}
 ```
-PS C:\> Update-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Tag @{myNewTagName = "myTagValue"}
 
+```output
 Confirm
 Are you sure you want to update properties of the data factory 'WikiADF' in resource group 'ADF'?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

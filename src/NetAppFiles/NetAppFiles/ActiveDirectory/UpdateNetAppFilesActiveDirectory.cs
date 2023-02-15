@@ -169,6 +169,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
         public SwitchParameter AllowLocalNfsUsersWithLdap { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Domain Users to be added to the Built-in Administrators Active Directory group. A list of unique usernames without domain specifier.")]
+        [ValidateNotNullOrEmpty]
+        public string[] Administrator { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter EncryptDCConnection { get; set; }
+
+        [Parameter(
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
@@ -215,34 +227,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 if (string.IsNullOrWhiteSpace(ActiveDirectoryId))
                 {
                     anfADConfig = new Management.NetApp.Models.ActiveDirectory();
-                    anfADConfig.AdName = AdName ?? anfADConfig.AdName;
-                    anfADConfig.Dns = dnsStr ?? anfADConfig.Dns;
-                    anfADConfig.Domain = Domain ?? anfADConfig.Domain;
-                    anfADConfig.SmbServerName = SmbServerName ?? anfADConfig.SmbServerName;
-                    anfADConfig.Username = Username ?? anfADConfig.Username;
-                    anfADConfig.Password = Password.ConvertToString();
-                    anfADConfig.Site = Site ?? anfADConfig.Site;
-                    anfADConfig.OrganizationalUnit = OrganizationalUnit ?? anfADConfig.Site;
-                    anfADConfig.BackupOperators = BackupOperator ?? anfADConfig.BackupOperators;
-                    anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
-                    anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
-                    anfADConfig.SecurityOperators = SecurityOperator ?? anfADConfig.SecurityOperators;
-                    if (AesEncryption)
-                    {
-                        anfADConfig.AesEncryption = AesEncryption;
-                    }
-                    if (LdapSigning)
-                    {
-                        anfADConfig.LdapSigning = LdapSigning;
-                    }
-                    if (LdapOverTLS)
-                    {
-                        anfADConfig.LdapOverTLS = LdapOverTLS;
-                    }
-                    if (AllowLocalNfsUsersWithLdap)
-                    {
-                        anfADConfig.AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap;
-                    }
                 }
                 else
                 {
@@ -251,43 +235,47 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                     {
                         throw new ArgumentException($"ActiveDirectory configuration with ID '{this.ActiveDirectoryId}' in account '{this.AccountName}' is not found. Please use New-AzNetAppFilesActiveDirectory to Create a new ActiveDirectory configuration.");
                     }
-                    else
-                    {
-                        anfADConfig.AdName = AdName ?? anfADConfig.AdName;
-                        anfADConfig.Dns = dnsStr ?? anfADConfig.Dns;
-                        anfADConfig.Domain = Domain ?? anfADConfig.Domain;
-                        anfADConfig.SmbServerName = SmbServerName ?? anfADConfig.SmbServerName;
-                        anfADConfig.Username = Username ?? anfADConfig.Username;
-                        anfADConfig.Password = Password.ConvertToString();
-                        anfADConfig.Site = Site ?? anfADConfig.Site;
-                        anfADConfig.OrganizationalUnit = OrganizationalUnit ?? anfADConfig.Site;
-                        anfADConfig.BackupOperators = BackupOperator ?? anfADConfig.BackupOperators;
-                        anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
-                        anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
-                        anfADConfig.SecurityOperators = SecurityOperator ?? anfADConfig.SecurityOperators;
-                        if (AesEncryption)
-                        {
-                            anfADConfig.AesEncryption = AesEncryption;
-                        }
-                        if (LdapSigning)
-                        {
-                            anfADConfig.LdapSigning = LdapSigning;
-                        }
-                        if (LdapOverTLS)
-                        {
-                            anfADConfig.LdapOverTLS = LdapOverTLS;
-                        }
-                        if (AllowLocalNfsUsersWithLdap)
-                        {
-                            anfADConfig.AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap;
-                        }
-                    }
                 }
-                
+
+                anfADConfig.AdName = AdName ?? anfADConfig.AdName;
+                anfADConfig.Dns = dnsStr ?? anfADConfig.Dns;
+                anfADConfig.Domain = Domain ?? anfADConfig.Domain;
+                anfADConfig.SmbServerName = SmbServerName ?? anfADConfig.SmbServerName;
+                anfADConfig.Username = Username ?? anfADConfig.Username;
+                anfADConfig.Password = Password.ConvertToString();
+                anfADConfig.Site = Site ?? anfADConfig.Site;
+                anfADConfig.OrganizationalUnit = OrganizationalUnit ?? anfADConfig.Site;
+                anfADConfig.BackupOperators = BackupOperator ?? anfADConfig.BackupOperators;
+                anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
+                anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
+                anfADConfig.SecurityOperators = SecurityOperator ?? anfADConfig.SecurityOperators;
+                if (AesEncryption)
+                {
+                    anfADConfig.AesEncryption = AesEncryption;
+                }
+                if (LdapSigning)
+                {
+                    anfADConfig.LdapSigning = LdapSigning;
+                }
+                if (LdapOverTLS)
+                {
+                    anfADConfig.LdapOverTLS = LdapOverTLS;
+                }
+                if (AllowLocalNfsUsersWithLdap)
+                {
+                    anfADConfig.AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap;
+                }
+                anfADConfig.Administrators = Administrator ?? anfADConfig.Administrators;
+                if (EncryptDCConnection)
+                {
+                    anfADConfig.EncryptDCConnections = EncryptDCConnection;
+                }
+
                 var netAppAccountBody = new NetAppAccountPatch()
                 {
                     ActiveDirectories = anfAccount.ActiveDirectories                    
                 };
+
                 var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, AccountName);
                 var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
                 WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));

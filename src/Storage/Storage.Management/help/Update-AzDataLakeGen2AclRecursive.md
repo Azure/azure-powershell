@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/update-azdatalakegen2aclrecursive
+online version: https://learn.microsoft.com/powershell/module/az.storage/update-azdatalakegen2aclrecursive
 schema: 2.0.0
 ---
 
@@ -26,12 +26,14 @@ The input ACL will merge the the original ACL: If ACL entry with same AccessCont
 ## EXAMPLES
 
 ### Example 1: Update ACL recursively on a root directiry of filesystem
+```powershell
+$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
+$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
+$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
+Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -Context $ctx
 ```
-PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
-PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
-PS C:\> Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -Context $ctx
 
+```output
 FailedEntries                   : 
 TotalDirectoriesSuccessfulCount : 7
 TotalFilesSuccessfulCount       : 5
@@ -42,6 +44,7 @@ ContinuationToken               :
 This command first creates an ACL object with 3 acl entries, then updates ACL recursively on a root directory of a file system.
 
 ### Example 2: Update ACL recursively on a directory, and resume from failure with ContinuationToken
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $result = Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -Context $ctx
 
@@ -75,7 +78,8 @@ ContinuationToken               :
 This command first updateds ACL recursively to a directory and failed, then resume with ContinuationToken after user fix the failed file.
 
 ### Example 3: Update ACL recursively chunk by chunk
-```
+<!-- Skip: Output cannot be splitted from code -->
+```powershell
 $ContinueOnFailure = $true # Set it to $false if want to terminate the operation quickly on encountering failures
 $token = $null
 $TotalDirectoriesSuccess = 0
@@ -113,6 +117,7 @@ echo "FailedEntries:"$($FailedEntries | ft)
 This script will update ACL rescursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 5000 in this script.
 
 ### Example 4: Update ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $result = Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
 

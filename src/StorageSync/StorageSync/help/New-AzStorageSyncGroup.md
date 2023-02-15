@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/powershell/module/Az.storagesync/new-Azstoragesyncgroup
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/new-Azstoragesyncgroup
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ This command creates a new sync group within a specified storage sync service. A
 
 ### Example 1
 ```powershell
-PS C:\> New-AzStorageSyncGroup -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
+New-AzStorageSyncGroup -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
 ```
 
 This command creates a new sync group within a specified storage sync service.

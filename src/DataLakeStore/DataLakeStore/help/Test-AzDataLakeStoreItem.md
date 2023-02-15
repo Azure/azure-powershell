@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 0937A390-6AC2-4611-AA6C-99936AC0ABFD
-online version: https://docs.microsoft.com/powershell/module/az.datalakestore/test-azdatalakestoreitem
+online version: https://learn.microsoft.com/powershell/module/az.datalakestore/test-azdatalakestoreitem
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **Test-AzDataLakeStoreItem** cmdlet tests the existence of a file or folder 
 
 ### Example 1: Test a file
 ```powershell
-PS C:\>Test-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/MyFiles/Test.csv"
+Test-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/MyFiles/Test.csv"
 ```
 
 This command tests whether the file Test.csv exists in the ContosoADL account.

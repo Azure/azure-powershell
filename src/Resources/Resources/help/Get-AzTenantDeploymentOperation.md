@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-aztenantdeploymentoperation
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-aztenantdeploymentoperation
 schema: 2.0.0
 ---
 
@@ -30,15 +30,15 @@ The **Get-AzTenantDeploymentOperation** cmdlet lists all the operations that wer
 ## EXAMPLES
 
 ### Example 1: Get deployment operations given a deployment name
-```
-PS C:\>Get-AzTenantDeploymentOperation -DeploymentName Deploy01
+```powershell
+Get-AzTenantDeploymentOperation -DeploymentName Deploy01
 ```
 
 Gets deployment operations with name "Deploy01" at the current tenant scope.
 
 ### Example 2: Get a deployment and get its deployment operations
-```
-PS C:\>Get-AzTenantDeployment -Name Deploy01 | Get-AzTenantDeploymentOperation
+```powershell
+Get-AzTenantDeployment -Name Deploy01 | Get-AzTenantDeploymentOperation
 ```
 
 This command gets the deployment "Deploy01" at the current tenant scope and get its deployment operations.

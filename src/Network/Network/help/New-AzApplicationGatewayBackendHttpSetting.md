@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Back-end HTTP settings are applied to all back-end servers in a pool.
 
 ### Example 1: Create back-end HTTP settings
 ```powershell
-PS C:\>$Setting = New-AzApplicationGatewayBackendHttpSetting -Name "Setting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled
+$Setting = New-AzApplicationGatewayBackendHttpSetting -Name "Setting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
 This command creates back-end HTTP settings named Setting01 on port 80, using the HTTP protocol, with cookie-based affinity disabled.

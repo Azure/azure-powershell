@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkwatcherflowlog
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworkwatcherflowlog
 schema: 2.0.0
 ---
 
@@ -49,7 +49,7 @@ Deletes the specified flow log resource.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkWatcherFlowLog -Location eastus -Name pstest
+Remove-AzNetworkWatcherFlowLog -Location eastus -Name pstest
 ```
 
 ## PARAMETERS

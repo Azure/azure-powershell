@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionoperation
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionoperation
 schema: 2.0.0
 ---
 
@@ -23,8 +23,10 @@ Returns the list of available operations.
 
 ### Example 1: Get the list of of available operations
 ```powershell
-PS C:\> Get-AzDataProtectionOperation
+Get-AzDataProtectionOperation
+```
 
+```output
 IsDataAction Name                                                                                                Origin
 ------------ ----                                                                                                ------
              Microsoft.DataProtection/locations/getBackupStatus/action                                           user
@@ -107,7 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IClientDiscoveryValueForSingleApi
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IClientDiscoveryValueForSingleApi
 
 ## NOTES
 

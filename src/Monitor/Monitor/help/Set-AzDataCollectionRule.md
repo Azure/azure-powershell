@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/set-azdatacollectionrule
+online version: https://learn.microsoft.com/powershell/module/az.monitor/set-azdatacollectionrule
 schema: 2.0.0
 ---
 
@@ -14,47 +14,27 @@ Updates (full replacement) a data collection rule.
 
 ### ByName (Default)
 ```
-Set-AzDataCollectionRule 
-   -Location <string>
-   -ResourceGroupName <string>
-   -RuleName <string>
-   -RuleFile <string>
-   [-Description <string>]
-   [-Tag <hashtable>]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+Set-AzDataCollectionRule -Location <String> -ResourceGroupName <String> -RuleName <String> -RuleFile <String>
+ [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzDataCollectionRule 
-   -Location <string>
-   -RuleId <string>
-   -RuleFile <string>
-   [-Description <string>]
-   [-Tag <hashtable>]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+Set-AzDataCollectionRule -Location <String> -RuleId <String> -RuleFile <String> [-Description <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Set-AzDataCollectionRule 
-   -InputObject <PSDataCollectionRuleResource> 
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+Set-AzDataCollectionRule -InputObject <PSDataCollectionRuleResource> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Set-AzDataCollectionRule** cmdlet replaces an existing data collection rule.
 
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection-rule-overview).
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
 
 To use the -RuleFile parameter, construct a json file containing three properties: dataSources, destinations, dataFlows (see Example #1).
 
@@ -66,12 +46,14 @@ The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported 
 
 ### Example 1: Update data collection rule, JSON from Rest API
 ```powershell
-PS C:\>Set-AzDataCollectionRule -Location 'East US 2 EUAP'
-                                -ResourceGroupName 'testdcr' 
-                                -RuleName 'newDcr' 
-                                -RuleFile 'C:\samples\dcr1.json'
+Set-AzDataCollectionRule -Location 'East US 2 EUAP' `
+                                -ResourceGroupName 'testdcr' `
+                                -RuleName 'newDcr' `
+                                -RuleFile 'C:\samples\dcr1.json' `
                                 -Description 'Updated Description'
+```
 
+```output
 Description       : Updated Description
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
@@ -125,11 +107,13 @@ This command replaces an existing data collection rules for the current subscrip
 
 ### Example 2: Update data collection rule, JSON from PSDataCollectionRuleResource
 ```powershell
-PS C:\>Set-AzDataCollectionRule -Location 'East US 2 EUAP'
-                                -RuleId '/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr' 
-                                -RuleFile 'C:\samples\dcr2.json'
+Set-AzDataCollectionRule -Location 'East US 2 EUAP' `
+                                -RuleId '/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr' `
+                                -RuleFile 'C:\samples\dcr2.json' `
                                 -Description 'Updated Description'
+```
 
+```output
 Description       : Updated Description
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
@@ -181,10 +165,12 @@ This command replaces an existing data collection rules for the current subscrip
 
 ### Example 3: Update data collection rule from object
 ```powershell
-PS C:\>$dcr = Get-AzDataCollectionRule -ResourceGroupName "testdcr" -Name "newDcr"
-PS C:\>$dcr.Description = 'This is a test'
-PS C:\>$dcr | Set-AzDataCollectionRule
+$dcr = Get-AzDataCollectionRule -ResourceGroupName "testdcr" -Name "newDcr"
+$dcr.Description = 'This is a test'
+$dcr | Set-AzDataCollectionRule
+```
 
+```output
 Description       : This is a test
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
@@ -197,6 +183,8 @@ Type              : Microsoft.Insights/dataCollectionRules
 Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
 ```
+
+Update data collection rule from object
 
 ## PARAMETERS
 
@@ -215,51 +203,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+The resource description
+
+```yaml
+Type: System.String
+Parameter Sets: ByName, ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+PSDataCollectionRuleResource Object
+
+```yaml
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 The resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RuleFile
-The JSON file path
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: ByName, ByResourceId
 Aliases:
 
 Required: True
@@ -284,13 +263,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleName
-The resource name
+### -RuleFile
+The JSON file path
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases: Name
+Parameter Sets: ByName, ByResourceId
+Aliases:
 
 Required: True
 Position: Named
@@ -310,31 +289,19 @@ Aliases: ResourceId
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Description
-The resource description
+### -RuleName
+The resource name
 
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases:
+Aliases: Name
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -346,40 +313,13 @@ The resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ByName
+Parameter Sets: ByName, ByResourceId
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-PSDataCollectionRuleResource Object
-
-```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True
 Accept wildcard characters: False
 ```
 

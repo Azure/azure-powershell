@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Profile
             SupportedResourceNames.AadGraph,
             SupportedResourceNames.MSGraph,
             SupportedResourceNames.AnalysisServices,
+            SupportedResourceNames.AppConfiguration,
             SupportedResourceNames.Arm,
             SupportedResourceNames.Attestation,
             SupportedResourceNames.Batch,
@@ -120,7 +121,6 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     var tokenParts = accessToken.AccessToken.Split('.');
                     var decodedToken = Base64UrlHelper.DecodeToString(tokenParts[1]);
-
                     var tokenDocument = JsonDocument.Parse(decodedToken);
                     int expSeconds = tokenDocument.RootElement.EnumerateObject()
                                     .Where(p => p.Name == "exp")

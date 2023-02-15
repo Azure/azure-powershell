@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopoolattacheddatabaseconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopoolattacheddatabaseconfiguration
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Deletes the attached database configuration with the given name.
 
 ### Example 1: Delete an existing AttachedDatabaseConfiguration by name
 ```powershell
-PS C:\> Remove-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName "testrg" -WorkspaceName "testws" -KustoPoolName "testkustopool" -AttachedDatabaseConfigurationName "myfollowerconfiguration"
+Remove-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName "testrg" -WorkspaceName "testws" -KustoPoolName "testkustopool" -AttachedDatabaseConfigurationName "myfollowerconfiguration"
 ```
 
 The above command deletes the attached database configuration with the given name "myfollowerconfiguration" from workspace "testws".
@@ -242,7 +242,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
+INPUTOBJECT `<ISynapseIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[DataConnectionName <String>]`: The name of the data connection.
   - `[DatabaseName <String>]`: The name of the database in the Kusto pool.

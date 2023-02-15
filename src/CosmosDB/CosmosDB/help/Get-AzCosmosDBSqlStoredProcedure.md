@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlstoredprocedure
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlstoredprocedure
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The **Get-AzCosmosDBSqlStoredProcedure** cmdlet gets the list of all existing Co
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlStoredProcedure -AccountName {accountName} -ResourceGroupName {resourceGroupName} -DatabaseName {databaseName} -Name {storedProcedureName} -ContainerName {containerName}
+Get-AzCosmosDBSqlStoredProcedure -AccountName "accountName" -ResourceGroupName "resourceGroupName" -DatabaseName "databaseName" -Name "storedProcedureName" -ContainerName "containerName"
+```
 
+```output
 Name                           : {storedProcedureName}
 Id                             : {storedProcedureId}
 Resource                       : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlStoredProcedureGetPropertiesResource

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer
 schema: 2.0.0
 ---
 
@@ -31,12 +31,21 @@ This command allows Azure Backup to convert the Resource to a Backup Container w
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType MSSQL -BackupManagementType AzureWorkload
+### Example 1 Register a backup container
+```powershell
+Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType MSSQL -BackupManagementType AzureWorkload
 ```
 
 The cmdlet registers an azure VM as a container for the workload MSSQL.
+
+### Example 2 Re-register a backup container
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName"  -Name "vaultName"
+$container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -VaultId $vault.ID 
+Register-AzRecoveryServicesBackupContainer -Container $container[-1] -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID
+```
+
+The first command fetches the recovery services vault. The second command fetches all the backup containers registered with the recovery services vault. The third command triggers a re-register operation for the container $container[-1], to re-register an already registered container we pass -Container parameter.
 
 ## PARAMETERS
 

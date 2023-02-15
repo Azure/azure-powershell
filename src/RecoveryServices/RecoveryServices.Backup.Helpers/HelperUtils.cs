@@ -20,6 +20,8 @@ using System.Text.RegularExpressions;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using ResourceManagerModel = Microsoft.Azure.Management.Internal.Resources.Models;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -77,6 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Gets list of enum type S equivalents given the corresponding list of enums of type T. 
         /// </summary>
         /// <typeparam name="T">Type of the enum whose list should be converted to list of strings.</typeparam>
+        /// <typeparam name="S">Type of the enum whose list should be converted from list of T.</typeparam>
         /// <param name="enumListT">List of enums.</param>
         /// <returns>List of enums converted.</returns>
         public static List<S> EnumListConverter<T, S>(IList<T> enumListT)
@@ -273,6 +276,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return resourceGroupName;
         }
 
+        public static string GetVMNameFromId(Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
+            string id)
+        {
+            string virtualMachineName = string.Empty;
+
+            if (keyValuePairs.ContainsKey(CmdletModel.UriEnums.VirtualMachines))
+            {
+                virtualMachineName = keyValuePairs[CmdletModel.UriEnums.VirtualMachines];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.VirtualMachines.ToString(), id));
+            }
+
+            return virtualMachineName;
+        }
+
         public static string GetVaultNameFromId(
             Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
             string id)
@@ -290,6 +311,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return vaultName;
+        }
+
+        /// <summary>
+        /// Retrieves all the pages returned by a paginated API.
+        /// </summary>
+        /// <typeparam name="T">Type of the object returned by the paginated API</typeparam>
+        /// <param name="listResources">Delegate representing the paginated API</param>
+        /// <param name="listNext">Delegate representing the call to retrieve the next page</param>
+        /// <returns>List of objects returned by the API</returns>
+        public static List<T> GetPagedListCrr<T>(
+            Func<IPage<T>> listResources, Func<string, IPage<T>> listNext)
+            where T : CrrModel.Resource
+        {
+            var resources = new List<T>();
+            string nextLink = null;            
+            var pagedResources = listResources();
+            
+            foreach (var pagedResource in pagedResources)
+            {
+                resources.Add(pagedResource);
+            }            
+            nextLink = pagedResources.NextPageLink;
+            
+            while (!string.IsNullOrEmpty(nextLink))
+            {               
+                pagedResources = listNext(nextLink);
+                nextLink = pagedResources.NextPageLink;
+                
+                foreach (var pagedResource in pagedResources)
+                {                    
+                    resources.Add(pagedResource);
+                }                
+            }            
+            return resources;
         }
 
         /// <summary>

@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Moq;
 using System.IO;
 using System.Text;
+using Microsoft.Azure.Commands.TestFx.Mocks;
 
 namespace Common.Authentication.Test
 {

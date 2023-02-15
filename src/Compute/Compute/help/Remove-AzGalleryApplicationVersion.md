@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.Compute-help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azgalleryapplicationversion
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplicationversion
 schema: 2.0.0
 ---
 
@@ -16,13 +16,13 @@ Delete a gallery Application Version.
 ```
 Remove-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzGalleryApplicationVersion -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,10 +30,9 @@ Delete a gallery Application Version.
 
 ## EXAMPLES
 
-### Example 1: Remove a Gallery Application Version 
+### Example 1: Remove a Gallery Application Version
 ```powershell
-PS C:\> Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -Name $name
-
+Remove-AzGalleryApplicationVersion -ResourceGroupName $rgNmae -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -Name $name
 ```
 
 Delete a gallery application version.
@@ -243,7 +242,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IComputeIdentity>: Identity Parameter
+`INPUTOBJECT <IComputeIdentity>`: Identity Parameter
   - `[CommandId <String>]`: The command id.
   - `[GalleryApplicationName <String>]`: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
   - `[GalleryApplicationVersionName <String>]`: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
@@ -260,4 +259,3 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   - `[VMScaleSetName <String>]`: The name of the VM scale set.
 
 ## RELATED LINKS
-

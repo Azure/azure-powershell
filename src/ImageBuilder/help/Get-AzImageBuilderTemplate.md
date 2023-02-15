@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuildertemplate
+online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuildertemplate
 schema: 2.0.0
 ---
 
@@ -19,8 +19,8 @@ Get-AzImageBuilderTemplate [-SubscriptionId <String[]>] [-DefaultProfile <PSObje
 
 ### Get
 ```
-Get-AzImageBuilderTemplate -ImageTemplateName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -42,55 +42,45 @@ Get information about a virtual machine image template
 
 ### Example 1: List all template under a subscription
 ```powershell
-PS C:\> Get-AzImageBuilderTemplate
+Get-AzImageBuilderTemplate
+```
 
-Location Name                      Type
--------- ----                      ----
-eastus   HelloImageTemplateLinux01 Microsoft.VirtualMachineImages/imageTemplates
-eastus   lucas-imagetemplate       Microsoft.VirtualMachineImages/imageTemplates
-eastus   test-imagebuilder         Microsoft.VirtualMachineImages/imageTemplates
+```output
+Location Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+-------- ----                ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+eastus   bez-test-img-temp
+eastus   bez-test-img-temp12
+eastus   bez-test-img-temp13
+eastus   test-img-temp
 ```
 
 This command lists all template under a subscription.
 
 ### Example 2: List all template under a resource group
 ```powershell
-PS C:\> Get-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder
+Get-AzImageBuilderTemplate -ResourceGroupName bez-rg
+```
 
-Location Name                       Type
--------- ----                       ----
-eastus   HelloImageTemplateLinux01  Microsoft.VirtualMachineImages/imageTemplates
-eastus   template-name-ax01b7       Microsoft.VirtualMachineImages/imageTemplates
-eastus   template-name-ep5z7v       Microsoft.VirtualMachineImages/imageTemplates
-eastus   template-name-klcuav       Microsoft.VirtualMachineImages/imageTemplates
-eastus   template-name-u7gjqx       Microsoft.VirtualMachineImages/imageTemplates
-eastus   test-imagebuilder          Microsoft.VirtualMachineImages/imageTemplates
-eastus   tmpl-managedimg-managedimg Microsoft.VirtualMachineImages/imageTemplates
-eastus   tmpl-platform-managed      Microsoft.VirtualMachineImages/imageTemplates
-eastus   tmpl-shareimg-managedimg   Microsoft.VirtualMachineImages/imageTemplates
+```output
+Location Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+-------- ----                ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+eastus   bez-test-img-temp
+eastus   bez-test-img-temp12
+eastus   bez-test-img-temp13
+eastus   test-img-temp
 ```
 
 This command lists all template under a resource group.
 
 ### Example 3: Get a template under a resource group
 ```powershell
-PS C:\> Get-AzImageBuilderTemplate -ImageTemplateName lucas-imagetemplate -ResourceGroupName wyunchi-imagebuilder
-
-Location Name                Type
--------- ----                ----
-eastus   lucas-imagetemplate Microsoft.VirtualMachineImages/imageTemplates
+Get-AzImageBuilderTemplate -Name test-img-temp -ResourceGroupName bez-rg
 ```
 
-This command gets a template under a resource group.
-
-### Example 4: Get a template under a resource group
-```powershell
-PS C:\> $template = Get-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder -ImageTemplateName template-name-ep5z7v
-PS C:\> Get-AzImageBuilderTemplate -InputObject $template
-
-Location Name                 Type
--------- ----                 ----
-eastus   template-name-ep5z7v Microsoft.VirtualMachineImages/imageTemplates
+```output
+Location Name          SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+-------- ----          ------------------- ------------------- ----------------------- ------------------------ ------------------ 
+eastus   test-img-temp
 ```
 
 This command gets a template under a resource group.
@@ -112,21 +102,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageTemplateName
-The name of the image Template
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: Name
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -140,6 +115,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the image Template
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: ImageTemplateName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -183,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplate
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplate
 
 ## NOTES
 
@@ -194,7 +184,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IImageBuilderIdentity>: Identity Parameter
+`INPUTOBJECT <IImageBuilderIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ImageTemplateName <String>]`: The name of the image Template
   - `[ResourceGroupName <String>]`: The name of the resource group.

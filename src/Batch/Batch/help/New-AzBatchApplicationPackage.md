@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: D53DAEB6-DC4F-473C-A193-A1E2A65326D4
-online version: https://docs.microsoft.com/powershell/module/az.batch/new-azbatchapplicationpackage
+online version: https://learn.microsoft.com/powershell/module/az.batch/new-azbatchapplicationpackage
 schema: 2.0.0
 ---
 
@@ -33,8 +33,8 @@ The **New-AzBatchApplicationPackage** cmdlet creates an application package in a
 ## EXAMPLES
 
 ### Example 1: Install an application package into a Batch account
-```
-PS C:\>New-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "Litware" -ApplicationVersion "1.0" -FilePath "litware.1.0.zip" -Format "zip"
+```powershell
+New-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "Litware" -ApplicationVersion "1.0" -FilePath "litware.1.0.zip" -Format "zip"
 ```
 
 This command creates and activates version 1.0 of the Litware application, and uploads the contents of litware.1.0.zip as the application package content.

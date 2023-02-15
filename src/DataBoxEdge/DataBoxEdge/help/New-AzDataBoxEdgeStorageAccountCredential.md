@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/new-azdataboxedgestorageaccountcredential
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/new-azdataboxedgestorageaccountcredential
 schema: 2.0.0
 ---
 
@@ -25,7 +25,10 @@ The **New-AzDataBoxEdgeStorageAccountCredential** cmdlet creates a new edge stor
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName device-name -Name storage-acount-credential-name -StorageAccountName storageAccountName -StorageAccountType BlobStorage -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+New-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName device-name -Name storageAccountName -StorageAccountType BlobStorage -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+```
+
+```output
 Name                             StorageAccount    SslStatus  ResourceGroupName
 --------------------------- ---------------------- ---------- ---------------------
 storageAccountCredentalName storageAccountName     Enabled    resourceGroupName

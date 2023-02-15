@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/stop-azmanagementgroupdeployment
+online version: https://learn.microsoft.com/powershell/module/az.resources/stop-azmanagementgroupdeployment
 schema: 2.0.0
 ---
 
@@ -39,15 +39,15 @@ To create a deployment at a management group, use the New-AzManagementGroupDeplo
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Stop-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "deployment01"
+```powershell
+Stop-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "deployment01"
 ```
 
 This command cancels a running deployment "deployment01" at the management group "myMG".
 
 ### Example 2
-```
-PS C:\>Get-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "deployment01" | Stop-AzManagementGroupDeployment
+```powershell
+Get-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "deployment01" | Stop-AzManagementGroupDeployment
 ```
 
 This command gets the deployment "deployment01" at the management group "myMG" and cancels it. 

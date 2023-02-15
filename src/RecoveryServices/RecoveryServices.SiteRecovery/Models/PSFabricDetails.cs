@@ -1325,6 +1325,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
     /// <summary>
     ///     HyperV replica 2012 replication details.
+    /// </summary>
     public class HyperVReplicaSpecificRPIDetails
     {
 
@@ -1547,53 +1548,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         /// <summary>
         ///     Gets or sets the recovery availability set Id.
-        /// <summary>
+        /// </summary>
         public string RecoveryAvailabilitySetId { get; set; }
 
         /// <summary>
         ///     Gets or sets the selected option to enable RDP\SSH on target vm after failover.
         ///     String value of {SrsDataContract.EnableRDPOnTargetOption} enum.
-        /// <summary>
+        /// </summary>
         public string EnableRDPOnTargetOption { get; set; }
 
         /// <summary>
         ///     Gets or sets the CPU count of the VM on the primary side.
-        /// <summary>
+        /// </summary>
         public int? SourceVmCPUCount { get; set; }
 
         /// <summary>
         ///     Gets or sets the RAM size of the VM on the primary side.
-        /// <summary>
+        /// </summary>
         public int? SourceVmRAMSizeInMB { get; set; }
 
         /// <summary>
         ///     Gets or sets the operating system info.
-        /// <summary>
+        /// </summary>
         public ASRHyperVReplicaAzureOsDetails OsDetails { get; set; }
 
         /// <summary>
         ///     Gets or sets the encryption info.
-        /// <summary>
+        /// </summary>
         public string Encryption { get; set; }
 
         /// <summary>
         ///     Gets or sets the selected recovery azure network Id.
-        /// <summary>
+        /// </summary>
         public string SelectedRecoveryAzureNetworkId { get; set; }
 
         /// <summary>
         ///     Gets or sets the protection state description for the vm.
-        /// <summary>
+        /// </summary>
         public string VmProtectionStateDescription { get; set; }
 
         /// <summary>
         ///     Gets or sets the protection state for the vm.
-        /// <summary>
+        /// </summary>
         public string VmProtectionState { get; set; }
 
         /// <summary>
         ///     Gets or sets the virtual machine Id.
-        /// <summary>
+        /// </summary>
         public string VmId { get; set; }
 
         /// <summary>
@@ -1741,7 +1742,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         /// <summary>
         ///     Gets or sets the recovery availability set Id.
-        /// <summary>
+        /// </summary>
         public string RecoveryAvailabilitySetId { get; set; }
 
         /// <summary>
@@ -2123,6 +2124,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.InitialRecoveryZone = details.InitialRecoveryZone;
             this.RecoveryAvailabilityZone = details.RecoveryAvailabilityZone;
             this.PrimaryAvailabilityZone = details.PrimaryAvailabilityZone;
+            this.InitialPrimaryExtendedLocation = details.InitialPrimaryExtendedLocation;
+            this.InitialRecoveryExtendedLocation = details.InitialRecoveryExtendedLocation;
+            this.PrimaryExtendedLocation = details.PrimaryExtendedLocation;
+            this.RecoveryExtendedLocation = details.RecoveryExtendedLocation;
             this.LifecycleId = details.LifecycleId;
 
             if (details.LastHeartbeat != null)
@@ -2186,7 +2191,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Multi vm group name.
         /// </summary>
         public string MultiVmGroupName { get; set; }
-        /// </summary>
 
         /// <summary>
         /// Operating system type.
@@ -2271,22 +2275,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string TestFailoverRecoveryFabricObjectId { get; set; }
 
         /// <summary>
-        //     Gets or sets the agent version.
+        ///     Gets or sets the agent version.
         /// </summary>
         public string AgentVersion;
 
         /// <summary>
-        //  Gets or sets the time (in UTC) when the last RPO value was calculated by Protection service.
+        ///  Gets or sets the time (in UTC) when the last RPO value was calculated by Protection service.
         /// </summary>
         public DateTime? LastRpoCalculatedTime;
 
         /// <summary>
-        //     Gets or sets the last RPO value in seconds.
+        ///     Gets or sets the last RPO value in seconds.
         /// </summary>
         public long? RpoInSeconds;
 
         /// <summary>
-        //     Gets or sets a value indicating whether replication agent update is required.
+        ///     Gets or sets a value indicating whether replication agent update is required.
         /// </summary>
         public bool? IsReplicationAgentUpdateRequired;
 
@@ -2324,6 +2328,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the primary availability zone.
         /// </summary>
         public string PrimaryAvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial primary extended location.
+        /// </summary>
+        public ExtendedLocation InitialPrimaryExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial recovery extended location.
+        /// </summary>
+        public ExtendedLocation InitialRecoveryExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery extended location.
+        /// </summary>
+        public ExtendedLocation RecoveryExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the primary extended location.
+        /// </summary>
+        public ExtendedLocation PrimaryExtendedLocation { get; set; }
+
 
         /// <summary>
         /// Gets or sets the only constant ID throught out the enable disable cycle.

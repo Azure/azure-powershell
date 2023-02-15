@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/get-azdefault
+online version: https://learn.microsoft.com/powershell/module/az.accounts/get-azdefault
 schema: 2.0.0
 ---
 
@@ -23,9 +23,11 @@ user has set as default in the current context.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDefault
 ```
-PS C:\> Get-AzDefault
 
+```Output
 Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup
 Name       : myResourceGroup
 Properties : Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroupProperties
@@ -37,9 +39,11 @@ Tags       :
 This command returns the current defaults if there are defaults set, or returns nothing if no default is set.
 
 ### Example 2
+```powershell
+Get-AzDefault -ResourceGroup
 ```
-PS C:\> Get-AzDefault -ResourceGroup
 
+```Output
 Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup
 Name       : myResourceGroup
 Properties : Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroupProperties

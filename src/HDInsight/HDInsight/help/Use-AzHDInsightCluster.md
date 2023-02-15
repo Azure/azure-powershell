@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 92E876FE-AA7B-43AA-915F-D02AC5CEF0CA
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/use-azhdinsightcluster
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/use-azhdinsightcluster
 schema: 2.0.0
 ---
 
@@ -24,12 +24,12 @@ The **Use-AzHDInsightCluster** cmdlet selects the Azure HDInsight cluster for th
 ## EXAMPLES
 
 ### Example 1: Select a cluster for Hive query submission
-```
-PS C:\># Cluster info
-PS C:\>$clusterName = "your-hadoop-001"
-PS C:\>$clusterCreds = Get-Credential
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
-PS C:\>Use-AzHDInsightCluster `
+Use-AzHDInsightCluster `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```

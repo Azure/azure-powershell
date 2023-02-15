@@ -13,11 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.Resources.ManagementGroups.Common;
 using Microsoft.Azure.Commands.Resources.Models.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
@@ -89,7 +91,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 
                     PatchManagementGroupRequest patchGroupRequest =
                         new PatchManagementGroupRequest(DisplayName, ParentId);
-                    var response = ManagementGroupsApiClient.ManagementGroups.Update(GroupName, patchGroupRequest);
+                    dynamic response = ManagementGroupsApiClient.ManagementGroups.Update(GroupName, patchGroupRequest);
                     WriteObject(new PSManagementGroup(response));
                 }
             }

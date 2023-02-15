@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzmonitortagrule
+online version: https://learn.microsoft.com/powershell/module/az.logz/remove-azlogzmonitortagrule
 schema: 2.0.0
 ---
 
@@ -31,16 +31,14 @@ Delete a tag rule set for a given monitor resource.
 
 ### Example 1: Delete a tag rule set for a given monitor resource
 ```powershell
-PS C:\> Remove-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
-
+Remove-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
 ```
 
 This command deletes a tag rule set for a given monitor resource.
 
 ### Example 2: Delete a tag rule set for a given monitor resource by pipeline
 ```powershell
-PS C:\> Get-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 | Remove-AzLogzMonitorTagRule
-
+Get-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 | Remove-AzLogzMonitorTagRule
 ```
 
 This command deletes a tag rule set for a given monitor resource by pipeline.
@@ -190,7 +188,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ILogzIdentity>: Identity Parameter
+INPUTOBJECT `<ILogzIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

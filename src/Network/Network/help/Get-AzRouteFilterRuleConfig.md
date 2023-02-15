@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azroutefilterruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azroutefilterruleconfig
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Get-AzRouteFilterRuleConfig** cmdlet gets a route filter rule or a list of
 
 ### Example 1
 ```powershell
-PS C:\> $rf = Get-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01"
-PS C:\> Get-AzRouteFilterRuleConfig -RouteFilter $rf
+$rf = Get-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
+Get-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01"
+Get-AzRouteFilterRuleConfig -RouteFilter $rf
 ```
 
 The first command gets the route filter named MyRouteFilter, and then stores it in the variable $rf.

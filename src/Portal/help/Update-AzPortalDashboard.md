@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Portal
-online version: https://docs.microsoft.com/powershell/module/az.portal/update-azportaldashboard
+online version: https://learn.microsoft.com/powershell/module/az.portal/update-azportaldashboard
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ Updates an existing Dashboard.
 
 ### Example 1: Update the Tags of a Dashboard
 ```powershell
-PS C:\> Update-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
+Update-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
+```
 
+```output
 Location Name       Type
 -------- ----       ----
 eastasia dashbase03 Microsoft.Portal/dashboards
@@ -44,8 +46,10 @@ Tags are represented as an inline hashtable.
 
 ### Example 2: Update Dashboard tags using the pipeline
 ```powershell
-PS C:\> Get-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 | Update-AzPortalDashboard -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
+Get-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 | Update-AzPortalDashboard -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
+```
 
+```output
 Location Name       Type
 -------- ----       ----
 eastasia dashbase03 Microsoft.Portal/dashboards
@@ -230,7 +234,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPortalIdentity>: Identity Parameter
+INPUTOBJECT `<IPortalIdentity>`: Identity Parameter
   - `[DashboardName <String>]`: The name of the dashboard.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.

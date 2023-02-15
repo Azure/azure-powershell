@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrnetwork
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrnetwork
 schema: 2.0.0
 ---
 
@@ -36,8 +36,8 @@ The **Get-AzRecoveryServicesAsrNetwork** cmdlet gets information about Azure Sit
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $Networks = Get-AzRecoveryServicesAsrNetwork -Fabric $Fabric
+```powershell
+$Networks = Get-AzRecoveryServicesAsrNetwork -Fabric $Fabric
 ```
 
 Gets all known networks in the specified fabric.

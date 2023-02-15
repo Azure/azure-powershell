@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/powershell/module/az.mysql/test-azmysqlflexibleserverconnect
+online version: https://learn.microsoft.com/powershell/module/az.mysql/test-azmysqlflexibleserverconnect
 schema: 2.0.0
 ---
 
@@ -46,9 +46,11 @@ Test out the connection to the database server
 
 ### Example 1: Test connection by name
 ```powershell
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Get-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password
+$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+Test-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password
+```
 
+```output
 The connection testing to mysql-test.database.azure.com was successful!
 ```
 
@@ -56,9 +58,11 @@ Test connection by the resource group and the server name
 
 ### Example 2: Test connection by identity
 ```powershell
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Get-AzMySqlFlexibleServerConnect -AdministratorLoginPassword $password
+$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Test-AzMySqlFlexibleServerConnect -AdministratorLoginPassword $password
+```
 
+```output
 The connection testing to mysql-test.database.azure.com was successful!
 ```
 
@@ -66,9 +70,11 @@ Test connection by the identity
 
 ### Example 3: Test query by name
 ```powershell
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Get-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password -Query "SELECT * FROM test"
+$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+Test-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password -QueryText "SELECT * FROM test"
+```
 
+```output
 col
 -----
 1
@@ -80,8 +86,10 @@ Test a query by the resource group and the server name
 
 ### Example 4: Test connection by identity
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Get-AzMySqlFlexibleServerConnect -Query "SELECT * FROM test" -AdministratorLoginPassword $password
+Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Test-AzMySqlFlexibleServerConnect -QueryText "SELECT * FROM test" -AdministratorLoginPassword $password
+```
 
+```output
 col
 -----
 1
@@ -237,7 +245,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: The server to connect.
+`INPUTOBJECT <IMySqlIdentity>`: The server to connect.
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://docs.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsinstance
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsinstance
 schema: 2.0.0
 ---
 
@@ -29,24 +29,12 @@ Delete a DigitalTwinsInstance.
 
 ## EXAMPLES
 
-### Example 1: Remove an AzDigitalTwinsInstance by name
+### Example 1: Remove an AzDigitalTwinsInstance by name.
 ```powershell
-PS C:\> Remove-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwin
-
-
+Remove-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
 ```
 
-This command removes an AzDigitalTwinsInstance by name
-
-### Example 2: Remove an AzDigitalTwinsInstance by InputObject
-```powershell
-PS C:\> $GetAzDigitalTwins =  Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
-Remove-AzDigitalTwinsInstance -InputObject $GetAzDigitalTwins
-
-
-```
-
-This command removes an AzDigitalTwinsInstance by name
+This command removes an AzDigitalTwinsInstance by name.
 
 ## PARAMETERS
 
@@ -211,7 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription
 
 ## NOTES
 
@@ -222,13 +210,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+`INPUTOBJECT <IDigitalTwinsIdentity>`: Identity Parameter
   - `[EndpointName <String>]`: Name of Endpoint Resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location of DigitalTwinsInstance.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the DigitalTwinsInstance.
+  - `[ResourceId <String>]`: The name of the private link resource.
   - `[ResourceName <String>]`: The name of the DigitalTwinsInstance.
   - `[SubscriptionId <String>]`: The subscription identifier.
+  - `[TimeSeriesDatabaseConnectionName <String>]`: Name of time series database connection.
 
 ## RELATED LINKS
 

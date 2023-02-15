@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version: https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgriddomaintopic
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgriddomaintopic
 schema: 2.0.0
 ---
 
@@ -27,8 +27,10 @@ Creates a new Azure Event Grid Domain Topic.
 Creates an Event Grid Domain Topic \`Topic1\` in Domain \`Domain1\` under resource group \`MyResourceGroupName\`.
 
 ```powershell
-PS C:\> New-AzEventGridDomainTopic -ResourceGroupName MyResourceGroupName -DomainName Domain1 -Name Topic1
+New-AzEventGridDomainTopic -ResourceGroupName MyResourceGroupName -DomainName Domain1 -Name Topic1
+```
 
+```output
 ResourceGroupName : MyResourceGroupName
 DomainName        : Domain1
 DomainTopicName   : topic1

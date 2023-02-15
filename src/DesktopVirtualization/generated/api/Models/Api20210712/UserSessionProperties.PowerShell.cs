@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
         /// Creates a new instance of <see cref="UserSessionProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="UserSessionProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -106,12 +108,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).UserPrincipalName = (string) content.GetValueForProperty("UserPrincipalName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).UserPrincipalName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ApplicationType = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType?) content.GetValueForProperty("ApplicationType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ApplicationType, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).SessionState = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionState?) content.GetValueForProperty("SessionState",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).SessionState, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ActiveDirectoryUserName = (string) content.GetValueForProperty("ActiveDirectoryUserName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ActiveDirectoryUserName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).CreateTime = (global::System.DateTime?) content.GetValueForProperty("CreateTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).CreateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("ObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserPrincipalName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).UserPrincipalName = (string) content.GetValueForProperty("UserPrincipalName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).UserPrincipalName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApplicationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ApplicationType = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType?) content.GetValueForProperty("ApplicationType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ApplicationType, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType.CreateFrom);
+            }
+            if (content.Contains("SessionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).SessionState = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionState?) content.GetValueForProperty("SessionState",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).SessionState, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionState.CreateFrom);
+            }
+            if (content.Contains("ActiveDirectoryUserName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ActiveDirectoryUserName = (string) content.GetValueForProperty("ActiveDirectoryUserName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ActiveDirectoryUserName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).CreateTime = (global::System.DateTime?) content.GetValueForProperty("CreateTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).CreateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -129,12 +149,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).UserPrincipalName = (string) content.GetValueForProperty("UserPrincipalName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).UserPrincipalName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ApplicationType = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType?) content.GetValueForProperty("ApplicationType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ApplicationType, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).SessionState = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionState?) content.GetValueForProperty("SessionState",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).SessionState, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ActiveDirectoryUserName = (string) content.GetValueForProperty("ActiveDirectoryUserName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ActiveDirectoryUserName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).CreateTime = (global::System.DateTime?) content.GetValueForProperty("CreateTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).CreateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("ObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserPrincipalName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).UserPrincipalName = (string) content.GetValueForProperty("UserPrincipalName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).UserPrincipalName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApplicationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ApplicationType = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType?) content.GetValueForProperty("ApplicationType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ApplicationType, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType.CreateFrom);
+            }
+            if (content.Contains("SessionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).SessionState = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionState?) content.GetValueForProperty("SessionState",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).SessionState, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionState.CreateFrom);
+            }
+            if (content.Contains("ActiveDirectoryUserName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ActiveDirectoryUserName = (string) content.GetValueForProperty("ActiveDirectoryUserName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).ActiveDirectoryUserName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).CreateTime = (global::System.DateTime?) content.GetValueForProperty("CreateTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSessionPropertiesInternal)this).CreateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
     }

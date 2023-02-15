@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: BF6AA8D4-D624-4BE1-A393-1A43909450C4
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azavailabilityset
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **New-AzAvailabilitySet** cmdlet creates an Azure availability set.
 ## EXAMPLES
 
 ### Example 1: Create an availability set
-```
-PS C:\> New-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" -Location "West US"
+```powershell
+New-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" -Location "West US"
 ```
 
 This command creates an availability set named AvailabilitySet03 in the resource group named ResourceGroup11.

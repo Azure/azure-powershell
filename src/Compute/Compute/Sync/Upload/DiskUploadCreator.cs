@@ -171,6 +171,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
 
                 var bs = new BufferedStream(vds);
                 // linear still
+                //var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges.Take(3000), PageSizeInBytes).ToArray();
                 var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges, PageSizeInBytes).ToArray();
 
                 // detecting empty data blocks line. Takes long 
@@ -247,15 +248,11 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
             var bufferSize = (int)rangeToRead.Length;
             var buffer = manager.TakeBuffer(bufferSize);
 
-            int bytesRead = 0;
-            while (bytesRead < bufferSize)
+            int bytesTotal = 0;
+            while (bytesTotal < bufferSize)
             {
-                int bytess = stream.Read(buffer, bytesRead, bufferSize - bytesRead);
-                if (bytess < 0)
-                {
-                    Console.WriteLine("here");
-                }
-                bytesRead += bytess;
+                int bytesRead = stream.Read(buffer, bytesTotal, bufferSize - bytesTotal);
+                bytesTotal += bytesRead;
             }
 
             return buffer;

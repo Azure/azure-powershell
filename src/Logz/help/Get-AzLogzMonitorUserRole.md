@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitoruserrole
+online version: https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitoruserrole
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ List the user's roles configured on Logz.io side for the account corresponding t
 
 ### Example 1: List the user's roles configured on Logz.io side for the account corresponding to the monitor resource
 ```powershell
-PS C:\> Get-AzLogzMonitorUserRole -ResourceGroupName logz-rg-test -Name pwsh-logz04
+Get-AzLogzMonitorUserRole -ResourceGroupName logz-rg-test -Name pwsh-logz04
+```
 
+```output
 Role
 ----
 None

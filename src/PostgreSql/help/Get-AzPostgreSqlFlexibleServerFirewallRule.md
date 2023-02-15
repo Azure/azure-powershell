@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverfirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverfirewallrule
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ List all the firewall rules in a given server.
 
 ### Example 1: Get firewall rules by name
 ```powershell
-PS C:\> Get-AzPostgreSqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+Get-AzPostgreSqlFlexibleServerFirewallRule -Name firewallrule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+```
 
+```output
 FirewallRuleName   StartIPAddress   EndIPAddress
 -----------------  ---------------  ---------------
 firewallrule-test   12.12.12.12     23.23.23.23
@@ -48,9 +50,11 @@ This cmdlet gets firewall rules by name.
 
 ### Example 2: Get firewall rules by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/postgresql-test/firewallRules/firewallrule-test"
-PS C:\> Get-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/postgresql-test/firewallRules/firewallrule-test"
+Get-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
+```
 
+```output
 FirewallRuleName   StartIPAddress   EndIPAddress
 -----------------  ---------------  ---------------
 firewallrule-test   12.12.12.12     23.23.23.23
@@ -60,8 +64,10 @@ This cmdlet gets firewall rules by identity.
 
 ### Example 3: Lists all the firewall rules in the specified PostgreSql server
 ```powershell
-PS C:\> Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+```
 
+```output
 FirewallRuleName   StartIPAddress   EndIPAddress
 -----------------  ---------------  ---------------
 firewallrule-test   12.12.12.12     23.23.23.23
@@ -184,7 +190,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

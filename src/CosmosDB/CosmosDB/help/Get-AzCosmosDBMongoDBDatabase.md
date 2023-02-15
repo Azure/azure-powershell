@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The **Get-AzCosmosDBMongoDBDatabase** cmdlet gets the CosmosDB MongoDB Database.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBMongoDBDatabase -ResourceGroupName {rgName} -AccountName {accountName} -Name {dbName} 
+Get-AzCosmosDBMongoDBDatabase -ResourceGroupName "rgName" -AccountName "accountName" -Name "dbName"
+```
 
+```output
 Name    Id   Resource
 {name}  {id} Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetPropertiesResource
 ```

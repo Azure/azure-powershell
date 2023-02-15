@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsesqlpoolrestorepoint
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsesqlpoolrestorepoint
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The **Get-AzSynapseSqlPoolRestorePoint** cmdlet retrieves the distinct restore p
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command returns all available restore points for the Azure Synapse Analytics SQL pool named ContosoSqlPool.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewaycustomerror
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewaycustomerror
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **New-AzApplicationGatewayCustomError** cmdlet creates a custom error.
 
 ### Example 1
 ```powershell
-PS C:\> $customError403Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
-PS C:\> $ce = New-AzApplicationGatewayCustomError -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url
+$customError403Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+$ce = New-AzApplicationGatewayCustomError -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url
 ```
 
 This command creates the custom error of http status code 403.

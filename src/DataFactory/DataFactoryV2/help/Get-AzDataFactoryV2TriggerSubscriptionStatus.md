@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2triggersubscriptionstatus
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2triggersubscriptionstatus
 schema: 2.0.0
 ---
 
@@ -36,9 +36,11 @@ This command gets the status of the subscription for the event trigger to the sp
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 ```
-PS C:\> Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 
+```output
 TriggerName Status
 ----------- ------
 Trigger1    Enabled

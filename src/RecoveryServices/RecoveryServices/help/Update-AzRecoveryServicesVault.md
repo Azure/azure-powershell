@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault
 schema: 2.0.0
 ---
 
@@ -12,17 +12,21 @@ Updates MSIdentity to the recovery services vault.
 
 ## SYNTAX
 
-### AzureRSVaultAddMSIdentity (Default)
-```
-Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
- [-IdentityId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AzureRSVaultRemoveMSIdentity
+### AzureRSVaultRemoveMSIdentity (Default)
 ```
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-IdentityId <String[]>]
- [-RemoveUserAssigned] [-RemoveSystemAssigned] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RemoveUserAssigned] [-RemoveSystemAssigned] [-DisableClassicAlerts <Boolean>]
+ [-DisableAzureMonitorAlertsForJobFailure <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-ImmutabilityState <ImmutabilityState>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### AzureRSVaultAddMSIdentity
+```
+Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
+ [-IdentityId <String[]>] [-DisableClassicAlerts <Boolean>] [-DisableAzureMonitorAlertsForJobFailure <Boolean>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-ImmutabilityState <ImmutabilityState>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,19 +36,21 @@ This cmdlet is used to add or remove the MSI from the recovery services vault. U
 
 ### Example 1: Add SystemAssigned identity to the recovery services vault
 ```powershell
-PS C:\> Update-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName" -IdentityType SystemAssigned
+Update-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName" -IdentityType SystemAssigned
 ```
 
 This cmdlet is used to add a SystemAssigned identity to a recovery services vault.
 
 ### Example 2: Add UserAssigned identity to the recovery services vault
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
-PS C:\> $identity1 = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity1"
-PS C:\> $identity2 = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity2"
-PS C:\> $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -IdentityType UserAssigned -IdentityId $identity1.Id, $identity2.Id
-PS C:\>  $updatedVault.Identity | fl
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$identity1 = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity1"
+$identity2 = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity2"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -IdentityType UserAssigned -IdentityId $identity1.Id, $identity2.Id
+$updatedVault.Identity | Format-List
+```
 
+```output
 PrincipalId            :
 TenantId               : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type                   : UserAssigned
@@ -61,12 +67,14 @@ The fifth cmdlet shows the Identities added to the vault.
 
 ### Example 3: Remove SystemAssigned and UserAssigned identities from the vault
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
-PS C:\> $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveSystemAssigned
-PS C:\> $AllUserIdentities =  $vault.Identity.UserAssignedIdentities.Keys | foreach {$_} 
-PS C:\> $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveUserAssigned -IdentityId $AllUserIdentities
-PS C:\> $updatedVault.Identity | fl
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveSystemAssigned
+$AllUserIdentities =  $vault.Identity.UserAssignedIdentities.Keys | ForEach-Object {$_} 
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveUserAssigned -IdentityId $AllUserIdentities
+$updatedVault.Identity | Format-List
+```
 
+```output
 PrincipalId            :
 TenantId               :
 Type                   : None
@@ -79,6 +87,23 @@ The third cmdlet fetches all the user MSIs as a list from the vault.
 The fourth cmdlet removes all the user MSIs from the vault. In case you want, you can provide selected user identities to be removed as comma separated, like in previous example.
 The fifth cmdlet shows the identities in the vault, as we removed all the identites, Type is displayed as None.
 
+### Example 4: Update PublicNetworkAccess, ImmutabilityState of recovery services vault
+```powershell
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -PublicNetworkAccess "Disabled" -ImmutabilityState "Unlocked"
+$updatedVault.Properties.PublicNetworkAccess
+$updatedVault.Properties.ImmutabilitySettings.ImmutabilityState
+```
+
+```output
+Disabled
+Unlocked
+```
+
+The first cmdlet fetches the recovery services vault.
+The second cmdlet updates  PublicNetworkAccess, ImmutabilityState properties of the recovery services vault.
+The third and fourth command are used to fetch the public network access and immutability state of the vault.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -88,6 +113,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableAzureMonitorAlertsForJobFailure
+Boolean paramter to specify whether built-in Azure Monitor alerts should be received for every job failure.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableClassicAlerts
+Boolean paramter to specify whether backup alerts from the classic solution should be disabled or enabled.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -127,6 +182,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImmutabilityState
+Immutability State of the vault. Allowed values are "Disabled", "Unlocked", "Locked". 
+Unlocked means Enabled and can be changed, Locked means Enabled and can't be changed.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.ImmutabilityState]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Unlocked, Locked
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 
 Specifies the name of the recovery services vault to update.
@@ -138,6 +210,22 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Parameter to Enable/Disable public network access of the vault. This setting is useful with Private Endpoints.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.PublicNetworkAccess]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

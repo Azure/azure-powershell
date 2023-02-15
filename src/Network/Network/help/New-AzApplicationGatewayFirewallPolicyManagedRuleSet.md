@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicymanagedruleset
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicymanagedruleset
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **New-AzApplicationGatewayFirewallPolicyManagedRuleSet** creates a managed-r
 
 ### Example 1
 ```powershell
-PS C:\> $managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType $ruleSetType 
--RuleSetVersion $ruleSetVersion -RuleGroupOverrides $ruleGroupOverride1, $ruleGroupOverride2
+$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType $ruleSetType `
+-RuleSetVersion $ruleSetVersion -RuleGroupOverride $ruleGroupOverride1, $ruleGroupOverride2
 ```
 
 Creates a ManagedRuleSet with ruleSetType as $ruleSetType, ruleSetVersion as $ruleSetVersion and RuleGroupOverrides as a list with entires as $ruleGroupOverride1, $ruleGroupOverride2

@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 0.6.0
+ * Added cmdlets:
+   * `Get-AzKubernetesConfigFluxOperationStatus`
+   * `Get-AzKubernetesConfigurationFlux`
+   * `New-AzKubernetesConfigurationFlux`
+   * `Update-AzKubernetesConfigurationFlux`
+   * `Remove-AzKubernetesConfigurationFlux`
+
 ## Version 0.5.0
 * Onboarded cmdlets `New/Update/Get/Remove-AzKubernetesExtension` and `New/Get/Remove-AzKubernetesConfiguration`
 * Removed the plural form of parameter HelmOperatorChartValues, OperatorParameters and SshKnownHosts in `New-AzKubernetesConfiguration`

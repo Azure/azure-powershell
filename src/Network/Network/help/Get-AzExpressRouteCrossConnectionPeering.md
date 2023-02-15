@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 47C45467-F368-4993-937E-E7E975F400B5
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressroutecrossconnectionpeering
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressroutecrossconnectionpeering
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ relationship for an ExpressRoute cross connection.
 ## EXAMPLES
 
 ### Example 1: Display the peering configuration for an ExpressRoute cross connection
-```
+```powershell
 $cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $RG
 Get-AzExpressRouteCrossConnectionPeering -Name "AzurePrivatePeering" -ExpressRouteCrossConnection $cc
 ```

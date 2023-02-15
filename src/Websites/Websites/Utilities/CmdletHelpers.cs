@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 "NumberOfWorkers",
                 "AlwaysOn",
                 "MinTlsVersion",
-                "FtpsState"
+                "FtpsState",
+                "HealthCheckPath"
             };
 
         public static HashSet<string> SiteParameters = new HashSet<string>
@@ -52,13 +53,16 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         private static readonly Regex KeyVaultResourceIdRegex =
             new Regex(@"^\/subscriptions\/(?<subscriptionName>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.KeyVault\/vaults\/(?<vaultName>[^\/]+)$", RegexOptions.IgnoreCase);
 
+        private static readonly Regex AppServiceEnvironmentResourceIdRegex =
+          new Regex(@"^\/subscriptions\/(?<subscriptionName>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.Web\/hostingEnvironments\/(?<aseName>[^\/]+)$", RegexOptions.IgnoreCase);
+
         private static readonly Dictionary<string, int> WorkerSizes = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) { { "Small", 1 }, { "Medium", 2 }, { "Large", 3 }, { "ExtraLarge", 4 } };
 
         private const string ProductionSlotName = "Production";
 
         private const string FmtSiteWithSlotName = "{0}({1})";
-        public const string ApplicationServiceEnvironmentResourcesName = "hostingEnvironments";
-        private const string ApplicationServiceEnvironmentResourceIdFormat =
+        public const string AppServiceEnvironmentResourcesName = "hostingEnvironments";
+        private const string AppServiceEnvironmentResourceIdFormat =
             "/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/{2}/{3}";
 
         public const string DockerRegistryServerUrl = "DOCKER_REGISTRY_SERVER_URL";
@@ -180,10 +184,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         internal static HostingEnvironmentProfile CreateHostingEnvironmentProfile(string subscriptionId, string resourceGroupName, string aseResourceGroupName, string aseName)
         {
             var rg = string.IsNullOrEmpty(aseResourceGroupName) ? resourceGroupName : aseResourceGroupName;
-            var aseResourceId = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(subscriptionId, rg, aseName);
+            var aseResourceId = CmdletHelpers.GetAppServiceEnvironmentResourceId(subscriptionId, rg, aseName);
             return new HostingEnvironmentProfile(
                 aseResourceId,
-                CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
+                CmdletHelpers.AppServiceEnvironmentResourcesName,
                 aseName);
         }
 
@@ -269,6 +273,24 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return false;
         }
 
+        internal static bool TryParseAppServiceEnvironmentMetadataFromResourceId(string resourceId, out string resourceGroupName,
+            out string aseName)
+        {
+            var match = AppServiceEnvironmentResourceIdRegex.Match(resourceId);
+            if (match.Success)
+            {
+                resourceGroupName = match.Groups["resourceGroupName"].Value;
+                aseName = match.Groups["aseName"].Value;
+
+                return true;
+            }
+
+            resourceGroupName = null;
+            aseName = null;
+
+            return false;
+        }
+
         internal static bool IsValidAKVResourceId(string resourceId)
         {
             return KeyVaultResourceIdRegex.Match(resourceId).Success;
@@ -345,10 +367,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return siteName;
         }
 
-        internal static string GetApplicationServiceEnvironmentResourceId(string subscriptionId, string resourceGroupName, string applicationServiceEnvironmentName)
+        internal static string GetAppServiceEnvironmentResourceId(string subscriptionId, string resourceGroupName, string appServiceEnvironmentName)
         {
-            return string.Format(ApplicationServiceEnvironmentResourceIdFormat, subscriptionId, resourceGroupName, ApplicationServiceEnvironmentResourcesName,
-                applicationServiceEnvironmentName);
+            return string.Format(AppServiceEnvironmentResourceIdFormat, subscriptionId, resourceGroupName, AppServiceEnvironmentResourcesName,
+                appServiceEnvironmentName);
         }
 
         internal static HostNameSslState[] GetHostNameSslStatesFromSiteResponse(Site site, string hostName = null)
@@ -492,7 +514,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WindowsFxVersion = config.WindowsFxVersion,
                 ManagedServiceIdentityId = config.ManagedServiceIdentityId,
                 MinTlsVersion = config.MinTlsVersion,
-                FtpsState = config.FtpsState
+                FtpsState = config.FtpsState,
+                VnetRouteAllEnabled = config.VnetRouteAllEnabled,
+                HealthCheckPath=config.HealthCheckPath
             };
         }
 
@@ -548,7 +572,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 FtpsState = config.FtpsState,
                 ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
                 ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
-                Http20Enabled = config.Http20Enabled
+                Http20Enabled = config.Http20Enabled,
+                VnetRouteAllEnabled = config.VnetRouteAllEnabled,
+                HealthCheckPath = config.HealthCheckPath
             };
         }
 

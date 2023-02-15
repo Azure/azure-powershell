@@ -1,7 +1,9 @@
 ### Example 1: List all configurations in PostgreSql server
 ```powershell
-PS C:\> Get-AzPostgreSqlConfiguration -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Get-AzPostgreSqlConfiguration -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+```
 
+```output
 Name                                  Value
 ----                                  -----
 array_nulls                           on
@@ -21,8 +23,10 @@ This cmdlet lists all configurations in specified PostgreSql server.
 
 ### Example 2: Get specified PostgreSql configuration by name
 ```powershell
-PS C:\> Get-AzPostgreSqlConfiguration -Name timezone -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Get-AzPostgreSqlConfiguration -Name timezone -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+```
 
+```output
 Name     Value
 ----     -----
 timezone UTC

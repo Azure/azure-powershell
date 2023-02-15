@@ -16,9 +16,12 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Reflection;
     using Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests;
     using Microsoft.Azure.Commands.HPCCache.Test.Utilities;
+    using Microsoft.Azure.Commands.TestFx.Recorder;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Authorization.Models;
     using Microsoft.Azure.Management.Internal.Resources;
@@ -61,7 +64,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             [System.Runtime.CompilerServices.CallerMemberName]
             string methodName = ".ctor")
         {
-            HttpMockServer.Matcher = HpcCacheController.GetRecordMatcher();
+            BuildMockServer();
             this.mockContext = MockContext.Start(suiteObject, methodName);
             this.RegisterSubscriptionForResource("Microsoft.StorageCache");
         }
@@ -76,9 +79,41 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             [System.Runtime.CompilerServices.CallerMemberName]
             string methodName = ".ctor")
         {
-            HttpMockServer.Matcher = HpcCacheController.GetRecordMatcher();
+            BuildMockServer();
             this.mockContext = MockContext.Start(type.Name, methodName);
             this.RegisterSubscriptionForResource("Microsoft.StorageCache");
+        }
+
+        private void BuildMockServer()
+        {
+            var rpToIgnore = new Dictionary<string, string>
+            {
+                { "Microsoft.Resources", null },
+                { "Microsoft.Features", null },
+                { "Microsoft.Authorization", null },
+                { "Microsoft.Network", null },
+            };
+            var uaToIgnore = new Dictionary<string, string>
+            {
+                { "Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01" },
+                { "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10" },
+            };
+
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, rpToIgnore, uaToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(GetTestProjectPath(), "SessionRecords");
+        }
+
+        private string GetTestProjectPath()
+        {
+            var testAssembly = Assembly.GetExecutingAssembly();
+            var testProjectPath = testAssembly.GetCustomAttributes<AssemblyMetadataAttribute>().Single(a => a.Key == "TestProjectPath").Value;
+
+            if (string.IsNullOrEmpty(testProjectPath))
+            {
+                throw new InvalidOperationException($"Unable to determine the test directory for {testAssembly}");
+            }
+
+            return testProjectPath;
         }
 
         /// <summary>

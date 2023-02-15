@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/new-azsignalrkey
+online version: https://learn.microsoft.com/powershell/module/az.signalr/new-azsignalrkey
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Regenerate an access key for a SignalR service.
 
 ### Regenerate the primary key
 ```powershell
-PS C:\> New-AzSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1 -KeyType Primary -PassThru
+New-AzSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1 -KeyType Primary -PassThru
+```
 
+```output
 True
 ```
 

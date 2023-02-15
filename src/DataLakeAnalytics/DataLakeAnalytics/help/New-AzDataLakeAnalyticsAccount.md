@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: 0A7CD695-6D14-4BC9-B960-0CAFE502B88B
-online version: https://docs.microsoft.com/powershell/module/az.datalakeanalytics/new-azdatalakeanalyticsaccount
+online version: https://learn.microsoft.com/powershell/module/az.datalakeanalytics/new-azdatalakeanalyticsaccount
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **New-AzDataLakeAnalyticsAccount** cmdlet creates an Azure Data Lake Analyti
 ## EXAMPLES
 
 ### Example 1: Create a Data Lake Analytics account
-```
-PS C:\>New-AzDataLakeAnalyticsAccount -Name "ContosoAdlAccount" -ResourceGroupName "ContosoOrg" -Location "East US 2" -DefaultDataLakeStore "ContosoAdlStore"
+```powershell
+New-AzDataLakeAnalyticsAccount -Name "ContosoAdlAccount" -ResourceGroupName "ContosoOrg" -Location "East US 2" -DefaultDataLakeStore "ContosoAdlStore"
 ```
 
 This command creates a Data Lake Analytics account named ContosoAdlAccount that uses the ContosoAdlStore Data Store, in the resource group named ContosoOrg.

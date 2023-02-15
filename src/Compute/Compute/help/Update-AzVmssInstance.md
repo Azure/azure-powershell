@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: E8C9D68E-7C68-43D0-B348-72E9713CB99F
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azvmssinstance
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azvmssinstance
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ This is used when the upgrade policy on the VMSS Scale Set is set to manual.
 ## EXAMPLES
 
 ### Example 1: Start an upgrade of the VMSS instance
-```
-PS C:\> Update-AzVmssInstance -ResourceGroupName "Group011" -VMScaleSetName "VMScaleSet001" -InstanceId "0"
+```powershell
+Update-AzVmssInstance -ResourceGroupName "Group011" -VMScaleSetName "VMScaleSet001" -InstanceId "0"
 ```
 
 This command starts an upgrade of the VMSS named VMScaleSet001 that has the instance ID of 0.

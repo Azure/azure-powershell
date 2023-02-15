@@ -16,17 +16,13 @@
 
 <#
 .Synopsis
-Description for Syncs function trigger metadata to the management database
+Syncs function trigger metadata to the management database
 .Description
-Description for Syncs function trigger metadata to the management database
+Syncs function trigger metadata to the management database
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -95,7 +91,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/sync-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/sync-azfunction
 #>
 function Sync-AzFunction {
 [OutputType([System.Boolean])]
@@ -190,6 +186,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Sync = 'Az.Functions.private\Sync-AzFunction_Sync';
             SyncViaIdentity = 'Az.Functions.private\Sync-AzFunction_SyncViaIdentity';
@@ -203,6 +200,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -211,15 +209,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

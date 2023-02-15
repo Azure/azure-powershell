@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: FB5E4ED2-8EF3-462F-A053-7EC82C767E8D
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementvirtualnetwork
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementvirtualnetwork
 schema: 2.0.0
 ---
 
@@ -26,19 +26,19 @@ This command is used with **Set-AzApiManagement** and **New-AzApiManagement** cm
 
 ### Example 1: Create a virtual network and Update an existing APIM service into the VNET
 ```powershell
-PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
-PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
-PS C:\> $apim.VpnType = "External"
-PS C:\> $apim.VirtualNetwork = $virtualNetwork
-PS C:\> Set-AzApiManagement -InputObject $apim
+$virtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
+$apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
+$apim.VpnType = "External"
+$apim.VirtualNetwork = $virtualNetwork
+Set-AzApiManagement -InputObject $apim
 ```
 
 This example creates a virtual network and then calls the **Set-AzApiManagement** cmdlet.
 
 ### Example 2: Create an API Management service for an external virtual network
 ```powershell
-PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -Location "West US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-b1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet"
-PS C:\> New-AzApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -VirtualNetwork $virtualNetwork -VpnType "External" -Sku "Premium"
+$virtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-b1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet"
+New-AzApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -VirtualNetwork $virtualNetwork -VpnType "External" -Sku "Premium"
 ```
 
 This example creates a new APIM service into a Virtual Network in `External` mode

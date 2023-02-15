@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// Creates a new instance of <see cref="VMwareSite" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="VMwareSite" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -104,29 +106,98 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SitePropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareSiteTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ETag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnProperties) content.GetValueForProperty("ServicePrincipalIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteSpnPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentProperties) content.GetValueForProperty("AgentDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteAgentPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServiceEndpoint = (string) content.GetValueForProperty("ServiceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServiceEndpoint, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).DiscoverySolutionId = (string) content.GetValueForProperty("DiscoverySolutionId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).DiscoverySolutionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ApplianceName = (string) content.GetValueForProperty("ApplianceName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ApplianceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailTenantId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailApplicationId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailObjectId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAudience = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAadAuthority = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailRawCertData = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailRawCertData",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailRawCertData, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailId = (string) content.GetValueForProperty("AgentDetailId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailVersion = (string) content.GetValueForProperty("AgentDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailLastHeartBeatUtc = (global::System.DateTime?) content.GetValueForProperty("AgentDetailLastHeartBeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailLastHeartBeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultUri = (string) content.GetValueForProperty("AgentDetailKeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultId = (string) content.GetValueForProperty("AgentDetailKeyVaultId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultId, global::System.Convert.ToString);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SitePropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareSiteTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ETag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ETag, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnProperties) content.GetValueForProperty("ServicePrincipalIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteSpnPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AgentDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentProperties) content.GetValueForProperty("AgentDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteAgentPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ServiceEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServiceEndpoint = (string) content.GetValueForProperty("ServiceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServiceEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiscoverySolutionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).DiscoverySolutionId = (string) content.GetValueForProperty("DiscoverySolutionId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).DiscoverySolutionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApplianceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ApplianceName = (string) content.GetValueForProperty("ApplianceName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ApplianceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailTenantId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailApplicationId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailObjectId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAudience = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAadAuthority = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailRawCertData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailRawCertData = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailRawCertData",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailRawCertData, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentDetailId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailId = (string) content.GetValueForProperty("AgentDetailId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentDetailVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailVersion = (string) content.GetValueForProperty("AgentDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentDetailLastHeartBeatUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailLastHeartBeatUtc = (global::System.DateTime?) content.GetValueForProperty("AgentDetailLastHeartBeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailLastHeartBeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("AgentDetailKeyVaultUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultUri = (string) content.GetValueForProperty("AgentDetailKeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentDetailKeyVaultId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultId = (string) content.GetValueForProperty("AgentDetailKeyVaultId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -144,29 +215,98 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SitePropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareSiteTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ETag, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnProperties) content.GetValueForProperty("ServicePrincipalIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteSpnPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentProperties) content.GetValueForProperty("AgentDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteAgentPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServiceEndpoint = (string) content.GetValueForProperty("ServiceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServiceEndpoint, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).DiscoverySolutionId = (string) content.GetValueForProperty("DiscoverySolutionId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).DiscoverySolutionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ApplianceName = (string) content.GetValueForProperty("ApplianceName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ApplianceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailTenantId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailApplicationId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailObjectId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAudience = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAadAuthority = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailRawCertData = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailRawCertData",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailRawCertData, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailId = (string) content.GetValueForProperty("AgentDetailId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailVersion = (string) content.GetValueForProperty("AgentDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailLastHeartBeatUtc = (global::System.DateTime?) content.GetValueForProperty("AgentDetailLastHeartBeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailLastHeartBeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultUri = (string) content.GetValueForProperty("AgentDetailKeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultId = (string) content.GetValueForProperty("AgentDetailKeyVaultId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultId, global::System.Convert.ToString);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SitePropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareSiteTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ETag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ETag, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteSpnProperties) content.GetValueForProperty("ServicePrincipalIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteSpnPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AgentDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISiteAgentProperties) content.GetValueForProperty("AgentDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SiteAgentPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ServiceEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServiceEndpoint = (string) content.GetValueForProperty("ServiceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServiceEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiscoverySolutionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).DiscoverySolutionId = (string) content.GetValueForProperty("DiscoverySolutionId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).DiscoverySolutionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApplianceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ApplianceName = (string) content.GetValueForProperty("ApplianceName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ApplianceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailTenantId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailApplicationId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailObjectId = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAudience = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAadAuthority = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServicePrincipalIdentityDetailRawCertData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailRawCertData = (string) content.GetValueForProperty("ServicePrincipalIdentityDetailRawCertData",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).ServicePrincipalIdentityDetailRawCertData, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentDetailId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailId = (string) content.GetValueForProperty("AgentDetailId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentDetailVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailVersion = (string) content.GetValueForProperty("AgentDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentDetailLastHeartBeatUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailLastHeartBeatUtc = (global::System.DateTime?) content.GetValueForProperty("AgentDetailLastHeartBeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailLastHeartBeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("AgentDetailKeyVaultUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultUri = (string) content.GetValueForProperty("AgentDetailKeyVaultUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentDetailKeyVaultId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultId = (string) content.GetValueForProperty("AgentDetailKeyVaultId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteInternal)this).AgentDetailKeyVaultId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

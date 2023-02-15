@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesasrjob
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesasrjob
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ The **Stop-AzRecoveryServicesAsrJob** cmdlet stops the specified Azure Site Reco
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Stop-AzRecoveryServicesAsrJob -Job $Job
+```powershell
+$currentJob = Stop-AzRecoveryServicesAsrJob -Job $Job
 ```
 
 Attempts to stop the specified job and returns an updated ASR job object.

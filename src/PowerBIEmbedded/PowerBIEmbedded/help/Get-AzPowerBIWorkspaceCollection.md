@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded.dll-Help.xml
 Module Name: Az.PowerBIEmbedded
 ms.assetid: EEF32F48-00F6-4C57-B4F1-B58B566EAFEF
-online version: https://docs.microsoft.com/powershell/module/az.powerbiembedded/get-azpowerbiworkspacecollection
+online version: https://learn.microsoft.com/powershell/module/az.powerbiembedded/get-azpowerbiworkspacecollection
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ The **Get-AzPowerBIWorkspaceCollection** cmdlet gets Power BI workspace collecti
 ## EXAMPLES
 
 ### Example 1: Get all workspace collections in a resource group
-```
-PS C:\>Get-AzPowerBIWorkspaceCollection -ResourceGroupName "ResourceGroup17"
+```powershell
+Get-AzPowerBIWorkspaceCollection -ResourceGroupName "ResourceGroup17"
 ```
 
 This command gets the workspace collections that belong to the resource group named ResourceGroup17.
 
 ### Example 2: Get a workspace collection by using its name
-```
-PS C:\>Get-AzPowerBIWorkspaceCollection -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11"
+```powershell
+Get-AzPowerBIWorkspaceCollection -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11"
 ```
 
 This command gets the workspace collection named WCN11 in the specified resource group.
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

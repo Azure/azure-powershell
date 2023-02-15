@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/restore-azstorageblobrange
+online version: https://learn.microsoft.com/powershell/module/az.storage/restore-azstorageblobrange
 schema: 2.0.0
 ---
 
@@ -40,6 +40,7 @@ The start range is included, and the end range is excluded in blob restore.
 ## EXAMPLES
 
 ### Example 1: Start restores blobs in a Storage account with specific blob ranges
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> $range1 = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange container2/blob2
 PS C:\> $range2 = New-AzStorageBlobRangeToRestore -StartRange container3/blob3 -EndRange container4/blob4
@@ -60,12 +61,14 @@ This command first creates 2 blob ranges, then start restores blobs in a Storage
 
 ### Example 2: Restores all blobs in a Storage account in the backend
 ```powershell
-PS C:\> $job = Restore-AzStorageBlobRange -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -TimeToRestore (Get-Date).AddMinutes(-30) -WaitForComplete -asjob
+$job = Restore-AzStorageBlobRange -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -TimeToRestore (Get-Date).AddMinutes(-30) -WaitForComplete -asjob
 
-PS C:\> $job | Wait-Job
+$job | Wait-Job
 
-PS C:\> $job.Output
+$job.Output
+```
 
+```output
 Status   RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges
 ------   ---------                            ------------- ------------------------     ---------------------
 Complete 0387953a-bbe6-4602-818d-e661581ee44b               2020-08-28T07:11:33.9843100Z ["" -> ""]
@@ -75,9 +78,12 @@ This command restores all blobs in a Storage account from 30 minutes ago, and wa
 
 ### Example 3: Restores blobs by input blob ranges directly, and wait for complete
 ```powershell
-PS C:\> Restore-AzStorageBlobRange -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -WaitForComplete `
+Restore-AzStorageBlobRange -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -WaitForComplete `
     -TimeToRestore (Get-Date).AddSeconds(-1) `
     -BlobRestoreRange @{StartRange="aaa/abc";EndRange="bbb/abc"},@{StartRange="bbb/acc";EndRange=""}
+```
+
+```output
 WARNING: Restore blob rang with Id 'd66d1d02-6e48-47ef-b516-0155dd8319c6' started. Restore blob ranges time to complete is dependent on the size of the restore.
 
 Status   RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges   

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayprivatelinkconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayprivatelinkconfiguration
 schema: 2.0.0
 ---
 
@@ -23,10 +23,10 @@ The **Remove-AzApplicationGatewayPrivateLinkConfiguration** cmdlet removes an pr
 ## EXAMPLES
 
 ### Example 1: Remove an application gateway PrivateLink Configuration
-```
-PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzApplicationGatewayPrivateLinkConfiguration -ApplicationGateway $AppGw -Name "privateLinkConfig01"
-PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGW
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewayPrivateLinkConfiguration -ApplicationGateway $AppGw -Name "privateLinkConfig01"
+Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
 The first command gets an application gateway and stores it in the $AppGw variable.

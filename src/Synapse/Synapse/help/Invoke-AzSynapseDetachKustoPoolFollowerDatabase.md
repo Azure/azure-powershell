@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/invoke-azsynapsedetachkustopoolfollowerdatabase
+online version: https://learn.microsoft.com/powershell/module/az.synapse/invoke-azsynapsedetachkustopoolfollowerdatabase
 schema: 2.0.0
 ---
 
@@ -34,7 +34,7 @@ Detaches all followers of a database owned by this Kusto Pool.
 
 ### Example 1: Detach a follower database
 ```powershell
-PS C:\> Invoke-AzSynapseDetachKustoPoolFollowerDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -AttachedDatabaseConfigurationName "myfollowerconfiguration" -KustoPoolResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Synapse/workspaces/testws/kustoPools/testfollowerkustopool"
+Invoke-AzSynapseDetachKustoPoolFollowerDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -AttachedDatabaseConfigurationName "myfollowerconfiguration" -KustoPoolResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Synapse/workspaces/testws/kustoPools/testfollowerkustopool"
 
 ```
 
@@ -260,7 +260,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
+INPUTOBJECT `<ISynapseIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[DataConnectionName <String>]`: The name of the data connection.
   - `[DatabaseName <String>]`: The name of the database in the Kusto pool.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azprivatelinkresource
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azprivatelinkresource
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ The **Get-AzPrivateLinkResource** cmdlet retrieves all link resources belongs Pr
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzPrivateLinkResource -PrivateLinkResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Sql/servers/mySql'
 ```
 

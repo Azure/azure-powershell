@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azexpressrouteportidentity
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azexpressrouteportidentity
 schema: 2.0.0
 ---
 
@@ -24,10 +24,10 @@ The **Set-AzExpressRoutePortIdentity** cmdlet updates a local Azure ExpressRoute
 
 ### Example 1
 ```powershell
-PS C:\>$exrport = Get-AzExpressRoutePort -Name $portName -ResourceGroupName $rgName
-PS C:\>$identity = New-AzUserAssignedIdentity -Name $identityName -ResourceGroupName $rgName -Location $location
-PS C:\>$exrPortIdentity = Set-AzExpressRoutePortIdentity -UserAssignedIdentity $identity.Id -ExpressRoutePort $exrPort
-PS C:\>$updatedExrPort = Set-AzExpressRoutePort -ExpressRoutePort $exrPort
+$exrport = Get-AzExpressRoutePort -Name $portName -ResourceGroupName $rgName
+$identity = New-AzUserAssignedIdentity -Name $identityName -ResourceGroupName $rgName -Location $location
+$exrPortIdentity = Set-AzExpressRoutePortIdentity -UserAssignedIdentity $identity.Id -ExpressRoutePort $exrPort
+$updatedExrPort = Set-AzExpressRoutePort -ExpressRoutePort $exrPort
 ```
 
 ## PARAMETERS

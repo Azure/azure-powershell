@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/new-azdatasharesynchronizationsetting
+online version: https://learn.microsoft.com/powershell/module/az.datashare/new-azdatasharesynchronizationsetting
 schema: 2.0.0
 ---
 
@@ -24,8 +24,11 @@ The **New-AzDataShareSynchronizationSetting** creates a synchronization setting 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataShareSynchronizationSetting -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "ShareSynchronization" -RecurrenceInterval "Day" -SynchronizationTime 9:00
 ```
-PS C:\>  New-AzDataShareSynchronizationSetting -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "ShareSynchronization" -RecurrenceInterval "Day" -SynchronizationTime 9:00
+
+```output
 RecurrenceInterval  : Day
 SynchronizationTime : 7/9/2019 9:00:00 AM
 ProvisioningState   : Succeeded

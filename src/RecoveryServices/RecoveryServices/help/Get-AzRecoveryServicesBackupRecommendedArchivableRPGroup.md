@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecommendedarchivablerpgroup
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecommendedarchivablerpgroup
 schema: 2.0.0
 ---
 
@@ -25,12 +25,12 @@ These recovery points when moved together will lead to maximum savings.
 
 ### Example 1: Fetch recommended rps to be moved to VaultArchive tier
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $vault.ID
-PS C:\> $rpGroup = Get-AzRecoveryServicesRecommendedArchivableRPGroup -Item $item[3] -VaultId $vault.ID
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $vault.ID
+$rpGroup = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $item[3] -VaultId $vault.ID
 ```
 
-Here we use **Get-AzRecoveryServicesRecommendedArchivableRPGroup** cmdlet to fetch the recommended RPs list to be moved to VaultArchive tier
+Here we use **Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup** cmdlet to fetch the recommended RPs list to be moved to VaultArchive tier
 and assign to $rpGroup. 
 
 ## PARAMETERS

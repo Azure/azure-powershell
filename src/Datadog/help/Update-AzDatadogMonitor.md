@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://docs.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitor
+online version: https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitor
 schema: 2.0.0
 ---
 
@@ -33,8 +33,10 @@ Update a monitor resource.
 
 ### Example 1: Update a monitor resource
 ```powershell
-PS C:\> Update-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog -Tag @{'key1'='value1'; 'key2'='value2'}
+Update-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog -Tag @{'key1'='value1'; 'key2'='value2'}
+```
 
+```output
 Location    Name         Type
 --------    ----         ----
 eastus2euap Datadog microsoft.Datadog/monitors
@@ -44,7 +46,10 @@ This command updates a monitor resource.
 
 ### Example 2: Update a monitor resource by pipeline
 ```powershell
-PS C:\> Get-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog | Update-AzDatadogMonitor -Tag @{'key1'='value1'; 'key2'='value2'}
+Get-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog | Update-AzDatadogMonitor -Tag @{'key1'='value1'; 'key2'='value2'}
+```
+
+```output
 Location    Name         Type
 --------    ----         ----
 eastus2euap Datadog microsoft.Datadog/monitors
@@ -257,7 +262,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatadogIdentity>: Identity Parameter
+INPUTOBJECT `<IDatadogIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

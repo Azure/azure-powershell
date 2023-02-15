@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 8CD55A33-5964-409A-BDA5-EDAE9A21E0C1
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightclusterautoscaleconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightclusterautoscaleconfiguration
 schema: 2.0.0
 ---
 
@@ -38,9 +38,9 @@ The **Get-AzHDInsightClusterAutoscaleConfiguration** cmdlet gets the autoscale c
 
 ### Example 1: Get the autoscale configuration of HDInsight cluster.
 ```powershell
-PS C:\> $clusterResourceGroup="group"
-PS C:\> $clusterName="MyCluster"
-PS C:\> Get-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName
+$clusterResourceGroup="group"
+$clusterName="MyCluster"
+Get-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName
 ```
 
 This command gets the autoscale configuration of HDInsight cluster.

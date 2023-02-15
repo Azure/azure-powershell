@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasralertsetting
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasralertsetting
 schema: 2.0.0
 ---
 
@@ -22,9 +22,11 @@ The **Get-AzRecoveryServicesAsrAlertSetting** cmdlet gets the configured Azure S
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzRecoveryServicesAsrAlertSetting
 ```
-PS C:\> Get-AzRecoveryServicesAsrAlertSetting
 
+```output
 CustomEmailAddress     EmailSubscriptionOwner Locale
 ------------------     ---------------------- ------
 {abcxxxx@xxxx.com} On                     en-US

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrywebhook
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrywebhook
 schema: 2.0.0
 ---
 
@@ -40,8 +40,10 @@ The Update-AzContainerRegistryWebhook cmdlet updates a container registry webhoo
 
 ### Example 1: Update an existing container registry webhook.
 ```powershell
-PS C:\>Update-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key='val'} -Status Enabled -Scope 'foo:*'
+Update-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key='val'} -Status Enabled -Scope 'foo:*'
+```
 
+```output
 Name            Location   Status     Scope           Actions         Provisioni ServiceUri
                                                                       ngState
 ----            --------   ------     -----           -------         ---------- ----------

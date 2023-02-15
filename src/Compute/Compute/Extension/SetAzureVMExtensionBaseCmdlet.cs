@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The version")]
-        [ValidateNotNullOrEmpty]
         public string TypeHandlerVersion { get; set; }
 
         [Parameter(
@@ -60,7 +59,6 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
         [LocationCompleter("Microsoft.Compute/virtualMachines")]
-        [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
@@ -70,14 +68,9 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
 
         [Parameter(
-            Mandatory = false)]
-        public bool? EnableAutomaticUpgrade { get; set; }
-
-        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Force re-run even if extension configuration has not changed")]
-        [ValidateNotNullOrEmpty]
         public string ForceRerun { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/remove-azdeploymentmanagerservice
+online version: https://learn.microsoft.com/powershell/module/az.deploymentmanager/remove-azdeploymentmanagerservice
 schema: 2.0.0
 ---
 
@@ -51,21 +51,21 @@ Specify the service by its name, service topology it is in and the resource grou
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDeploymentManagerService -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -Name ContosoService1
+Remove-AzDeploymentManagerService -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -Name ContosoService1
 ```
 
 This command deletes a service named ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
 
 ### Example 2: Delete a service using the resource identifier.
 ```powershell
-PS C:\> Remove-AzDeploymentManagerService -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology/services/ContosoService1"
+Remove-AzDeploymentManagerService -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology/services/ContosoService1"
 ```
 
 This command deletes a service named ContosoService1 in a service topology named ContosoServiceTopology in the ContosoResourceGroup.
 
 ### Example 3: Delete a service using the service object.
 ```powershell
-PS C:\> Remove-AzDeploymentManagerService -InputObject $serviceObject
+Remove-AzDeploymentManagerService -InputObject $serviceObject
 ```
 
 This command deletes a service whose name, service topology name and ResourceGroup match the Name, ServiceTopologyName and ResourceGroupName properties of the $serviceObject, respectively.

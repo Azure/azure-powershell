@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -65,12 +67,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).AgentId = (string) content.GetValueForProperty("AgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).AgentId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentId = (string) content.GetValueForProperty("DependencyAgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentVersion = (string) content.GetValueForProperty("DependencyAgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentRevision = (string) content.GetValueForProperty("DependencyAgentRevision",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentRevision, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).RebootStatus = (string) content.GetValueForProperty("RebootStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).RebootStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).ClockGranularity = (int?) content.GetValueForProperty("ClockGranularity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).ClockGranularity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("AgentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).AgentId = (string) content.GetValueForProperty("AgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).AgentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DependencyAgentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentId = (string) content.GetValueForProperty("DependencyAgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DependencyAgentVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentVersion = (string) content.GetValueForProperty("DependencyAgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("DependencyAgentRevision"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentRevision = (string) content.GetValueForProperty("DependencyAgentRevision",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentRevision, global::System.Convert.ToString);
+            }
+            if (content.Contains("RebootStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).RebootStatus = (string) content.GetValueForProperty("RebootStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).RebootStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClockGranularity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).ClockGranularity = (int?) content.GetValueForProperty("ClockGranularity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).ClockGranularity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -88,12 +108,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).AgentId = (string) content.GetValueForProperty("AgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).AgentId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentId = (string) content.GetValueForProperty("DependencyAgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentVersion = (string) content.GetValueForProperty("DependencyAgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentRevision = (string) content.GetValueForProperty("DependencyAgentRevision",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentRevision, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).RebootStatus = (string) content.GetValueForProperty("RebootStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).RebootStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).ClockGranularity = (int?) content.GetValueForProperty("ClockGranularity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).ClockGranularity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("AgentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).AgentId = (string) content.GetValueForProperty("AgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).AgentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DependencyAgentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentId = (string) content.GetValueForProperty("DependencyAgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DependencyAgentVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentVersion = (string) content.GetValueForProperty("DependencyAgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("DependencyAgentRevision"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentRevision = (string) content.GetValueForProperty("DependencyAgentRevision",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).DependencyAgentRevision, global::System.Convert.ToString);
+            }
+            if (content.Contains("RebootStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).RebootStatus = (string) content.GetValueForProperty("RebootStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).RebootStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClockGranularity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).ClockGranularity = (int?) content.GetValueForProperty("ClockGranularity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfigurationInternal)this).ClockGranularity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -127,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// Creates a new instance of <see cref="AgentConfiguration" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="AgentConfiguration" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAgentConfiguration FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

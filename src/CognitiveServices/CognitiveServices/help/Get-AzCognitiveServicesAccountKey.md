@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 73B1EB7E-568E-44E8-993A-91678B7D8AEE
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountkey
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountkey
 schema: 2.0.0
 ---
 
@@ -28,8 +28,10 @@ Use New-AzCognitiveServicesAccountKey to regenerate a key.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis
+Get-AzCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis
+```
 
+```output
 Key1                             Key2
 ----                             ----
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

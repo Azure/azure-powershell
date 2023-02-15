@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestNetworkVirtualApplianceCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-NetworkVirtualApplianceCRUD"));
@@ -35,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "A bug is being fixed by Nfv-Rp team")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestVirtualApplianceSiteCRUD()
         {
             TestRunner.RunTestScript("Test-VirtualApplianceSiteCRUD");

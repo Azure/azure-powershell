@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 488229AF-FD6D-4E1B-B3DA-E57CA781D91E
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azroleassignment
 schema: 2.0.0
 ---
 
@@ -20,6 +20,8 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 - GET /groups/{id}
 - GET /directoryObjects/{id}
 - POST /directoryObjects/getByIds
+
+Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or current account has insufficient privileges to get object type.
 
 ## SYNTAX
 
@@ -157,29 +159,29 @@ Use the IncludeClassicAdministrators switch to also display the subscription adm
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzRoleAssignment
+```powershell
+Get-AzRoleAssignment
 ```
 
 List all role assignments in the subscription
 
 ### Example 2
-```
-PS C:\> Get-AzRoleAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com
+```powershell
+Get-AzRoleAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com
 ```
 
 Gets all role assignments made to user john.doe@contoso.com, and the groups of which he is member, at the testRG scope or above.
 
 ### Example 3
-```
-PS C:\> Get-AzRoleAssignment -ServicePrincipalName "http://testapp1.com"
+```powershell
+Get-AzRoleAssignment -ServicePrincipalName "http://testapp1.com"
 ```
 
 Gets all role assignments of the specified service principal
 
 ### Example 4
-```
-PS C:\> Get-AzRoleAssignment -Scope "/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
+```powershell
+Get-AzRoleAssignment -Scope "/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
 ```
 
 Gets role assignments at the 'site1' website scope.

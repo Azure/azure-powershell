@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 1EA57372-6FA5-45C9-94A1-50D53830FC10
-online version: https://docs.microsoft.com/powershell/module/az.batch/stop-azbatchtask
+online version: https://learn.microsoft.com/powershell/module/az.batch/stop-azbatchtask
 schema: 2.0.0
 ---
 
@@ -31,8 +31,8 @@ The **Stop-AzBatchTask** cmdlet stops an Azure Batch task.
 ## EXAMPLES
 
 ### Example 1: Delete a Batch task by ID
-```
-PS C:\>Stop-AzBatchTask -JobId "Job-000001" -Id "Task23" -BatchContext $Context
+```powershell
+Stop-AzBatchTask -JobId "Job-000001" -Id "Task23" -BatchContext $Context
 ```
 
 This command stops a task that has the ID Task23 under the job that has the ID Job-000001.
@@ -40,8 +40,8 @@ The command prompts you for confirmation.
 Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Stop a Batch task by using the pipeline
-```
-PS C:\>Get-AzBatchTask -JobId "Job-000001" -Id "Task26" -BatchContext $Context | Stop-AzBatchTask -BatchContext $Context
+```powershell
+Get-AzBatchTask -JobId "Job-000001" -Id "Task26" -BatchContext $Context | Stop-AzBatchTask -BatchContext $Context
 ```
 
 This command gets the Batch task that has the ID Task26 in the job that has the ID Job-000001 by using the Get-AzBatchTask cmdlet.

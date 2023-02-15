@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 0225C7CA-74B4-4ACC-870C-9539DF6ECC47
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/start-azhdinsightjob
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/start-azhdinsightjob
 schema: 2.0.0
 ---
 
@@ -26,16 +26,16 @@ This can be a MapReduce job, a Streaming MapReduce job, a Hive job, or a Pig job
 ## EXAMPLES
 
 ### Example 1: Start a job on the specified cluster
-```
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $clusterCreds = Get-Credential
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
 # Hive job details
-PS C:\> $statusFolder = "tempStatusFolder/"
-PS C:\> $query = "SHOW TABLES"
+$statusFolder = "tempStatusFolder/"
+$query = "SHOW TABLES"
 
-PS C:\> New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
+New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
             -Query $query `
         | Start-AzHDInsightJob `
             -ClusterName $clusterName `

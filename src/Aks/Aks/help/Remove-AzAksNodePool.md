@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/remove-azaksnodepool
+online version: https://learn.microsoft.com/powershell/module/az.aks/remove-azaksnodepool
 schema: 2.0.0
 ---
 
@@ -46,7 +46,7 @@ Delete node pool from managed cluster.
 
 ### Delete specified node pool
 ```powershell
-PS C:\> Remove-AzAksNodePool -ResourceGroupName myResourceGroup -CulsterName myCluster -Name winpool
+Remove-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name winpool
 ```
 
 ## PARAMETERS

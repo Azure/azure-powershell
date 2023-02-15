@@ -2249,7 +2249,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps4829/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps4829/virtualmachines/0?api-version=2021-03-01",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/crptestps4829/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps4829/virtualMachines/0?api-version=2021-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczQ4MjkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NjcnB0ZXN0cHM0ODI5L3ZpcnR1YWxtYWNoaW5lcy8wP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",

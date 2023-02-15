@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsesparkconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsesparkconfiguration
 schema: 2.0.0
 ---
 
@@ -32,22 +32,22 @@ If you specify the name of a spark configuration, the new spark configuration wi
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\sparkconfiguration.json"
+New-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\sparkconfiguration.json"
 ```
 
 This command creates or updates a spark configuration from file sparkconfiguration.json in the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfiguration -DefinitionFile "C:\\samples\\sparkconfiguration.json"
+New-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfiguration -DefinitionFile "C:\\samples\\sparkconfiguration.json"
 ```
 
 This command creates or updates a spark configuration named ContosoSparkConfiguration from file sparkconfiguration.json in the workspace named ContosoWorkspace.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | New-AzSynapseSparkConfiguration -DefinitionFile "C:\\samples\\sparkconfiguration.json"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | New-AzSynapseSparkConfiguration -DefinitionFile "C:\\samples\\sparkconfiguration.json"
 ```
 
 This command creates or updates a spark configuration from file sparkconfiguration.json in the workspace named ContosoWorkspace through pipeline.

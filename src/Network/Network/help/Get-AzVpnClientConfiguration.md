@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvpnclientconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvpnclientconfiguration
 schema: 2.0.0
 ---
 
@@ -23,10 +23,10 @@ The Get-AzVpnClientConfiguration returns the URL where the VPN client can be dow
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzVpnClientConfiguration -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup" -AuthenticationMethod "EAPTLS" -RadiusRootCert "C:\Users\Test\Desktop\VpnProfileRadiusCert.cer"
+```powershell
+New-AzVpnClientConfiguration -Name "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup" -AuthenticationMethod "EAPTLS" -RadiusRootCertificateFile "C:\Users\Test\Desktop\VpnProfileRadiusCert.cer"
 
-PS C:\> Get-AzVpnClientConfiguration -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup"
+Get-AzVpnClientConfiguration -Name "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup"
 ```
 
 Gets the URL to download a VpnClient profile that has been previously generated using the New-AzVpnClientConfiguration command.

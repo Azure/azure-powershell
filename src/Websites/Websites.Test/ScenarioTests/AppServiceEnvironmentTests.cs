@@ -33,14 +33,12 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetAppServiceEnvironment");
         }
 
-
         [Fact(Skip = "Need to be record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAppServiceEnvironment()
         {
             TestRunner.RunTestScript("Test-RemoveAppServiceEnvironment");
         }
-
 
         [Fact(Skip = "Need to be record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

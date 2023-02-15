@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azfirewallpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azfirewallpolicy
 schema: 2.0.0
 ---
 
@@ -37,21 +37,21 @@ The **Remove-AzFirewallPolicy** cmdlet removes an Azure Firewall Policy.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFirewallPolicy -Name firewallpolicy -ResourceGroupName TestRg
+Remove-AzFirewallPolicy -Name firewallpolicy -ResourceGroupName TestRg
 ```
 
 This example removes the firewall policy named "firewallpolicy" in the resourcegroup "TestRg"
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzFirewallPolicy -Name firewallpolicy -ResourceId "/subscriptions/12345/resourceGroups/TestRg/providers/Microsoft.Network/firewallpolicies/firewallPolicy1"
+Remove-AzFirewallPolicy -ResourceId "/subscriptions/12345/resourceGroups/TestRg/providers/Microsoft.Network/firewallpolicies/firewallPolicy1"
 ```
 
 This example removes the firewall policy by the Id.
 
 ### Example 3
 ```powershell
-PS C:\> Remove-AzFirewallPolicy -InputObject $fp
+Remove-AzFirewallPolicy -InputObject $fp
 ```
 
 This example removes the firewall policy $fp

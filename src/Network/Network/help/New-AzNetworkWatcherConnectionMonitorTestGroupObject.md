@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitortestgroupobject
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitortestgroupobject
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ The New-AzNetworkWatcherConnectionMonitorTestGroupObject cmdlet creates a connec
 
 ### Example 1: Create a test group with 2 testConfigurations, w source and 2 destination endpoints
 
-```
+```powershell
 $testGroup1 = New-AzNetworkWatcherConnectionMonitorTestGroupObject -Name testGroup1 -TestConfiguration $tcpTestConfiguration, $icmpTestConfiguration -Source $vmEndpoint, $workspaceEndpoint -Destination $bingEndpoint, $googleEndpoint
 ```
 

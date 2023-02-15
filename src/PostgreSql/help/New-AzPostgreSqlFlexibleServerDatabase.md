@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlflexibleserverdatabase
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlflexibleserverdatabase
 schema: 2.0.0
 ---
 
@@ -33,8 +33,10 @@ Creates a new database or updates an existing database.
 
 ### Example 1: Add a new database to PostgreSQL server.
 ```powershell
-PS C:\> New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb -Charset utf8 -Collation en_US.utf8
+New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb -Charset utf8 -Collation en_US.utf8
+```
 
+```output
 Name   Charset Collation
 ----   ------- ---------
 testdb UTF8    en_US.utf8
@@ -247,7 +249,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

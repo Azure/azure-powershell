@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 97FA5983-0D73-4336-99DA-46E5992F06DC
-online version: https://docs.microsoft.com/powershell/module/az.batch/remove-azbatchjobschedule
+online version: https://learn.microsoft.com/powershell/module/az.batch/remove-azbatchjobschedule
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzBatchJobSchedule** cmdlet removes an Azure Batch job schedule.
 ## EXAMPLES
 
 ### Example 1: Delete a Batch job schedule
-```
-PS C:\>Remove-AzBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context
+```powershell
+Remove-AzBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context
 ```
 
 This command deletes the job schedule that has the ID MyJobSchedule.
@@ -33,8 +33,8 @@ The command prompts you for confirmation before it deletes the job.
 Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Delete a Batch job without confirmation by using the pipeline
-```
-PS C:\>Get-AzBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context | Remove-AzBatchJobSchedule -Force -BatchContext $Context
+```powershell
+Get-AzBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context | Remove-AzBatchJobSchedule -Force -BatchContext $Context
 ```
 
 This command gets the job schedule that has the ID MyJobSchedule by using the Get-AzBatchJobSchedule cmdlet.

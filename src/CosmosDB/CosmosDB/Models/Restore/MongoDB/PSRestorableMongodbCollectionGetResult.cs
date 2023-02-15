@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string Id { get; }
 
         /// <summary>
-        //  Gets the name of the RestorableMongodbCollection resource.
+        ///  Gets the name of the RestorableMongodbCollection resource.
         /// </summary>
         [Ps1Xml(Label = "Name", Target = ViewControl.List)]
         public string Name { get; }

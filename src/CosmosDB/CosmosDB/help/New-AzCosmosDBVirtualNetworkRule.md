@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbvirtualnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbvirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -24,7 +24,10 @@ Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBVirtualNetworkRule -Id {id} -IgnoreMissingVNetServiceEndpoint 0
+New-AzCosmosDBVirtualNetworkRule -Id "id" -IgnoreMissingVNetServiceEndpoint 0
+```
+
+```output
 Id  IgnoreMissingVNetServiceEndpoint
 --   --------------------------------
 {id}                            False

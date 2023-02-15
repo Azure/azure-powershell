@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/remove-azdatasharedataset
+online version: https://learn.microsoft.com/powershell/module/az.datashare/remove-azdatasharedataset
 schema: 2.0.0
 ---
 
@@ -36,8 +36,11 @@ The **Remove-AzDataShareDataSet** cmdlet removes a dataset.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Remove-AzDataShareDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "DS"
 ```
-PS C:\> Remove-AzDataShareDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "DS"
+
+```output
 Are you sure you want to remove dataset mapping "DS"? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```

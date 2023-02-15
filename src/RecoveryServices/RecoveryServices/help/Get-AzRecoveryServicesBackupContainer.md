@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 1097FF29-1C23-4960-930C-5C1227419359
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
 schema: 2.0.0
 ---
 
@@ -16,8 +16,8 @@ Gets Backup containers.
 
 ```
 Get-AzRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-BackupManagementType] <String>]
- [[-FriendlyName] <String>] [[-ResourceGroupName] <String>] [[-Status] <ContainerRegistrationStatus>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-FriendlyName] <String>] [[-ResourceGroupName] <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,8 +32,8 @@ Set the vault context by using the -VaultId parameter.
 ### Example 1: Get a specific container
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -FriendlyName "V2VM" -VaultId $vault.ID
 ```
 
 This command gets the container named V2VM of type AzureVM.
@@ -41,8 +41,8 @@ This command gets the container named V2VM of type AzureVM.
 ### Example 2: Get all containers of a specific type
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MAB -VaultId $vault.ID
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MAB -VaultId $vault.ID
 ```
 
 This command gets all Windows containers that are protected by Azure Backup agent.
@@ -65,7 +65,7 @@ This parameter is used to differentiate Windows machines that are backed up usin
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MAB, AzureWorkload, AzureStorage
+Accepted values: AzureVM, AzureStorage, AzureWorkload, MAB
 
 Required: False
 Position: 2
@@ -141,26 +141,6 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Status
-
-Specifies the container registration status.
-The acceptable values for this parameter are:
-
-- Registered
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerRegistrationStatus
-Parameter Sets: (All)
-Aliases:
-Accepted values: Registered
-
-Required: False
-Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -16,17 +16,13 @@
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -147,6 +143,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -275,7 +273,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azwebappconfiguration
+https://learn.microsoft.com/powershell/module/az.functions/update-azwebappconfiguration
 #>
 function Update-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -320,6 +318,20 @@ param(
     # Web app configuration ARM resource.
     # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -907,6 +919,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzWebAppConfiguration_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzWebAppConfiguration_UpdateExpanded';
@@ -922,6 +935,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -930,15 +944,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/update-azstorageblobserviceproperty
+online version: https://learn.microsoft.com/powershell/module/az.storage/update-azstorageblobserviceproperty
 schema: 2.0.0
 ---
 
@@ -40,9 +40,11 @@ The **Update-AzStorageBlobServiceProperty** cmdlet modifies the service properti
 ## EXAMPLES
 
 ### Example 1: Set Blob service DefaultServiceVersion to 2018-03-28
+```powershell
+Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -DefaultServiceVersion 2018-03-28 
 ```
-C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -DefaultServiceVersion 2018-03-28 
 
+```output
 StorageAccountName            : mystorageaccount
 ResourceGroupName             : myresourcegroup
 DefaultServiceVersion         : 2018-03-28
@@ -58,9 +60,11 @@ IsVersioningEnabled           :
 This command sets the DefaultServiceVersion of Blob Service to 2018-03-28.
 
 ### Example 2: Enable Changefeed on Blob service of a Storage account with ChangeFeedRetentionInDays as 5 days
+```powershell
+Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableChangeFeed $true -ChangeFeedRetentionInDays 5
 ```
-C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableChangeFeed $true -ChangeFeedRetentionInDays 5
 
+```output
 StorageAccountName            : mystorageaccount
 ResourceGroupName             : myresourcegroup
 DefaultServiceVersion         : 
@@ -80,9 +84,11 @@ The serialized changes are persisted as an Apache Avro file and can be processed
 If not specify ChangeFeedRetentionInDays, will get null value in service properties, indicates an infinite retention of the change feed.
 
 ### Example 3: Enable Versioning on Blob service of a Storage account
+```powershell
+Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IsVersioningEnabled $true
 ```
-C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IsVersioningEnabled $true
 
+```output
 StorageAccountName            : mystorageaccount
 ResourceGroupName             : myresourcegroup
 DefaultServiceVersion         : 

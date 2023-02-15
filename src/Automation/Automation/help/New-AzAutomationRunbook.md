@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: B6E35D4D-B2C1-4527-94A6-E7E3488F510B
-online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook
+online version: https://learn.microsoft.com/powershell/module/az.automation/new-azautomationrunbook
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ Specify a name for the runbook.
 
 ### Example 1: Create a runbook
 ```powershell
-PS C:\>New-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook02" -ResourceGroupName "ResourceGroup01"
+New-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook02" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command creates a runbook named Runbook02 in the Azure Automation account named Contoso17.
@@ -182,7 +182,7 @@ It is equivalent to GraphicalPowerShellWorkflow.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph, Python2, Python3
+Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph, Python2
 
 Required: True
 Position: Named

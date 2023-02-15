@@ -1,8 +1,15 @@
 [cmdletbinding()]
 param(
   [string]
-  [Parameter(Mandatory = $false, Position = 0)]
-  $requiredPsVersion
+  [Parameter(Mandatory = $false)]
+  $requiredPsVersion,
+  [string]
+  [Parameter(Mandatory = $false)]
+  $AgentOS,
+  [string]
+  [AllowEmptyString()]
+  [Parameter(Mandatory = $false)]
+  $PowerShellPath
 )
 
 function Install-PowerShell {
@@ -13,18 +20,23 @@ function Install-PowerShell {
   )
   
   $windowsPowershellVersion = "5.1.14"
-
   # Prepare powershell
   if ($requiredPsVersion -ne $windowsPowershellVersion) {
     Write-Host "Installing PS $requiredPsVersion..."
-    dotnet --version
-    dotnet new tool-manifest --force
-    if('latest' -eq $requiredPsVersion){
-      dotnet tool install PowerShell
-    }else {
-      dotnet tool install PowerShell --version $requiredPsVersion 
+    if ('preview' -eq $requiredPsVersion) {
+      Write-Host "PowerShell preview package has been extracted to $PowerShellPath."
+    } else {
+      dotnet --version
+      dotnet new tool-manifest --force
+      if ( 'latest' -eq $requiredPsVersion ) {
+        dotnet tool install PowerShell
+      }
+      else {
+        dotnet tool install PowerShell --version $requiredPsVersion 
+      }
+      dotnet tool list
     }
-    dotnet tool list
+    
   }else {
     Write-Host "Powershell", $requiredPsVersion, "has been installed"
   }
@@ -36,7 +48,29 @@ function Install-PowerShell {
   }else{
     $command = "Install-Module -Repository PSGallery -Name PowerShellGet -Scope CurrentUser -AllowClobber -Force `
     Exit"
-    dotnet tool run pwsh -c $command
+    if ('preview' -eq $requiredPsVersion) {
+      # Change the mode of 'pwsh' to 'rwxr-xr-x' to allow execution
+      if ($AgentOS -ne "Windows_NT") { chmod 755 "$PowerShellPath/pwsh" }
+      . "$PowerShellPath/pwsh" -c $command
+    } else {
+      dotnet tool run pwsh -c $command
+    }
+  }
+
+  #Install ThreadJob for Windows PowerShell
+  if ($requiredPsVersion -eq $windowsPowershellVersion) {
+    Write-Host "Install ThreadJob for Windows PowerShell."
+    $installedModule = Get-Module -ListAVailable -Name ThreadJob
+    if ($installedModule -eq $null) {
+      try {
+        Install-Module -Name ThreadJob -Repository PSGallery -Scope CurrentUser -AllowClobber -Force
+        Write-Host "Install ThreadJob successfully."
+      }
+      catch {
+        Write-Host "Fail to install ThreadJob from PSGallery."
+        Write-Host $_
+      }
+    }
   }
 }
 

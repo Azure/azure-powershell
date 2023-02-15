@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/remove-azdatasharesubscription
+online version: https://learn.microsoft.com/powershell/module/az.datashare/remove-azdatasharesubscription
 schema: 2.0.0
 ---
 
@@ -36,8 +36,11 @@ The **Remove-AzDataShareSubscription** cmdlet removes a share subscription
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Remove-AzDataShareSubscription -ResourceGroupName "ADS" -AccountName "WikiAds" -Name "AdsShareSubscription"
 ```
-PS C:\> Remove-AzDataShareSubscription -ResourceGroupName "ADS" -AccountName "WikiAds" -Name "AdsShareSubscription"
+
+```output
 Are you sure you want to remove sharesubscription "AdsShareSubscription"? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```

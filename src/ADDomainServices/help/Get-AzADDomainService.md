@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://docs.microsoft.com/powershell/module/az.addomainservices/get-azaddomainservice
+online version: https://learn.microsoft.com/powershell/module/az.addomainservices/get-azaddomainservice
 schema: 2.0.0
 ---
 
@@ -42,8 +42,10 @@ The Get Domain Service operation retrieves a json representation of the Domain S
 
 ### Example 1: Get All ADDomainService By default
 ```powershell
-PS C:\> Get-AzADDomainService
+Get-AzADDomainService
+```
 
+```output
 Name          Domain Name       Location Sku
 ----          -----------       -------- ---
 youriADdomain youriAddomain.com westus   Enterprise
@@ -53,8 +55,10 @@ Get All ADDomainService By default
 
 ### Example 2: Get ADDomainService By ResourceGroup and name
 ```powershell
-PS C:\> Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
+Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
+```
 
+```output
 Name          Domain Name       Location Sku
 ----          -----------       -------- ---
 youriADdomain youriAddomain.com westus   Enterprise
@@ -64,8 +68,10 @@ Get ADDomainService By ResourceGroup and name
 
 ### Example 3: Get all ADDomainService By ResourceGroup
 ```powershell
-PS C:\> Get-AzADDomainService -ResourceGroupName youriADdomain
+Get-AzADDomainService -ResourceGroupName youriADdomain
+```
 
+```output
 Name          Domain Name       Location Sku
 ----          -----------       -------- ---
 youriADdomain youriAddomain.com westus   Enterprise
@@ -75,9 +81,11 @@ Get all ADDomainService By ResourceGroup
 
 ### Example 4: Get ADDomainService By InputObject
 ```powershell
-PS C:\> $getAzAddomain = Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
+$getAzAddomain = Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
 Get-AzADDomainService -InputObject $getAzAddomain
+```
 
+```output
 Name          Domain Name       Location Sku
 ----          -----------       -------- ---
 youriADdomain youriAddomain.com westus   Enterprise
@@ -185,7 +193,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAdDomainServicesIdentity>: Identity Parameter
+INPUTOBJECT `<IAdDomainServicesIdentity>`: Identity Parameter
   - `[DomainServiceName <String>]`: The name of the domain service.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group within the user's subscription. The name is case insensitive.

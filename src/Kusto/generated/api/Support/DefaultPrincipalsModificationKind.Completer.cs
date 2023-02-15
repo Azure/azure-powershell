@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Union".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Union", "Union", global::System.Management.Automation.CompletionResultType.ParameterValue, "Union");
+                yield return new global::System.Management.Automation.CompletionResult("'Union'", "Union", global::System.Management.Automation.CompletionResultType.ParameterValue, "Union");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Replace".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Replace", "Replace", global::System.Management.Automation.CompletionResultType.ParameterValue, "Replace");
+                yield return new global::System.Management.Automation.CompletionResult("'Replace'", "Replace", global::System.Management.Automation.CompletionResultType.ParameterValue, "Replace");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
         }
     }

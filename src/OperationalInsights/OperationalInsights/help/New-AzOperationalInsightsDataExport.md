@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightsdataexport
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightsdataexport
 schema: 2.0.0
 ---
 
@@ -25,12 +25,14 @@ Creates data export for a workspace.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzOperationalInsightsDataExport  -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName} -TableNames {table_names} -ResourceId {resource}
+New-AzOperationalInsightsDataExport -ResourceGroupName "rg-name" -WorkspaceName "workspace-name" -DataExportName "dataExportName" -TableName "table_name" -ResourceId "resource_id"
+```
 
+```output
 Name             : {dataExportName}
 Id               : /subscriptions/{subscription}/resourcegroups/{rg-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}/dataexports/{dataExportName}
 DataExportId     : {GUID}
-TableNames       : {table_names}
+TableNames       : {table_name}
 ResourceId       : /subscriptions/{subscription}/resourceGroups/{rg-name}/providers/Microsoft.EventHub/namespaces/{eventHub_namespace}
 DataExportType   : EventHub
 EventHubName     :

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrywebhookevent
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrywebhookevent
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ The Get-AzContainerRegistryWebhookEvent cmdlet lists all the events of a webhook
 
 ### Example 1: Gets all the events of a webhook.
 ```powershell
-PS C:\>Get-AzContainerRegistryWebhookEvent -ResourceGroupName mattacrtest001 -RegistryName premium001 -Name webhook001
+Get-AzContainerRegistryWebhookEvent -ResourceGroupName mattacrtest001 -RegistryName premium001 -WebhookName webhook001
+```
 
+```output
    Webhook service Uri: http://www.bing.com/
 
 ID                                       Action   Timestamp                      Response

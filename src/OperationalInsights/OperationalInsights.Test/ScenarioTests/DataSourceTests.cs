@@ -12,50 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
-    public class DataSourceTests : OperationalInsightsScenarioTestBase
+    public class DataSourceTests : OperationalInsightsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public DataSourceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataSourceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "waiting for service team to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataSourceCreateUpdateDelete()
         {
-            RunPowerShellTest(_logger, "Test-DataSourceCreateUpdateDelete");
+            TestRunner.RunTestScript("Test-DataSourceCreateUpdateDelete");
         }
 
         [Fact(Skip = "waiting for service team to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataSourceCreateFailsWithoutWorkspace()
         {
-            RunPowerShellTest(_logger, "Test-DataSourceCreateFailsWithoutWorkspace");
+            TestRunner.RunTestScript("Test-DataSourceCreateFailsWithoutWorkspace");
         }
 
         [Fact(Skip="waiting for service team to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAllKindsOfDataSource()
         {
-            RunPowerShellTest(_logger, "Test-CreateAllKindsOfDataSource");
+            TestRunner.RunTestScript("Test-CreateAllKindsOfDataSource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestToggleSingletonDataSourceState()
         {
-            RunPowerShellTest(_logger, "Test-ToggleSingletonDataSourceState");
+            TestRunner.RunTestScript("Test-ToggleSingletonDataSourceState");
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementcache
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementcache
 schema: 2.0.0
 ---
 
@@ -37,8 +37,8 @@ The cmdlet **Remove-AzApiManagementCache** removes the cache entity.
 
 ### Example 1 : Remove the Cache entity
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementCache -Context $apimContext -CacheId "centralus"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementCache -Context $apimContext -CacheId "centralus"
 ```
 
 This cmdlet remove the cache `centralus` from Api Management service.

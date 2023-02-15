@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 0729687C-3104-4136-A80D-16BAEBD6B76C
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultcertificatepolicy
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultcertificatepolicy
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ The **Get-AzKeyVaultCertificatePolicy** cmdlet gets the policy for a certificate
 
 ### Example 1: Get a certificate policy
 ```powershell
-PS C:\ >Get-AzKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01"
+Get-AzKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01"
+```
 
+```output
 SecretContentType               : application/x-pkcs12
 Kty                             : RSA
 KeySize                         : 2048

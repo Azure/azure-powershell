@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 8EDDA991-55B6-4151-8619-E13E14599ECD
-online version: https://docs.microsoft.com/powershell/module/az.notificationhubs/new-aznotificationhub
+online version: https://learn.microsoft.com/powershell/module/az.notificationhubs/new-aznotificationhub
 schema: 2.0.0
 ---
 
@@ -39,8 +39,8 @@ When used in conjunction with the **New-AzNotificationHub** cmdlet, the precedin
 ## EXAMPLES
 
 ### Example 1: Create a notification hub
-```
-PS C:\>New-AzNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -InputFile "C:\Configurations\InternalHub.json"
+```powershell
+New-AzNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -InputFile "C:\Configurations\InternalHub.json"
 ```
 
 This command creates a notification hub in the namespace ContosoNamespace.

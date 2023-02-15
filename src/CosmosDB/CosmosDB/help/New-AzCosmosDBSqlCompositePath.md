@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlcompositepath
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlcompositepath
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Object corresponding to Sql API's CompositePath.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
+New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
+```
 
+```output
 Path Order
 ---- -----
 /abc Ascending

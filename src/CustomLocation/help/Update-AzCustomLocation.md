@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CustomLocation
-online version: https://docs.microsoft.com/powershell/module/az.customlocation/update-azcustomlocation
+online version: https://learn.microsoft.com/powershell/module/az.customlocation/update-azcustomlocation
 schema: 2.0.0
 ---
 
@@ -36,8 +36,10 @@ Updates a Custom Location with the specified Resource Name in the specified Reso
 
 ### Example 1: Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
 ```powershell
-PS C:\> Update-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster_1 -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -Namespace arc
+Update-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster_1 -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -Namespace arc
+```
 
+```output
 Location Name                Namespace
 -------- ----                ----
 eastus   azps_test_cluster_1 arc
@@ -47,8 +49,10 @@ Updates a Custom Location with the specified Resource Name in the specified Reso
 
 ### Example 2: Updates a Custom Location.
 ```powershell
-PS C:\> Get-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster | Update-AzCustomLocation
+Get-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster | Update-AzCustomLocation
+```
 
+```output
 Location Name                Namespace
 -------- ----                ----
 eastus   azps_test_cluster_1 arc
@@ -307,7 +311,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
+INPUTOBJECT `<ICustomLocationIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceName <String>]`: Custom Locations name.

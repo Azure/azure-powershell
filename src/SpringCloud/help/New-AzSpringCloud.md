@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloud
+online version: https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloud
 schema: 2.0.0
 ---
 
@@ -13,10 +13,12 @@ Create a new Service or update an exiting Service.
 ## SYNTAX
 
 ```
-New-AzSpringCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-GitPropertyUri <String>] [-Location <String>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-TraceAppInsightInstrumentationKey <String>] [-TraceEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSpringCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Location <String>]
+ [-NetworkProfileResourceGroup <String>] [-NetworkProfileServiceCidr <String>]
+ [-NetworkProfileServiceResourceGroup <String>] [-NetworkProfileServiceSubnetId <String>]
+ [-NetworkProfileSubnetId <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,56 +26,32 @@ Create a new Service or update an exiting Service.
 
 ## EXAMPLES
 
-### Example 1: Create a spring cloud service.
+### Example 1: Create or update a new standard spring cloud service 
 ```powershell
-PS C:\> New-AzSpringCloud -ResourceGroupName spring-cloud-rp -name spring-cloud-service -Location eastus
-
-ConfigServerPropertiesErrorCode                  :
-ConfigServerPropertiesErrorMessage               :
-ConfigServerPropertyState                        : Succeeded
-GitPropertyHostKey                               :
-GitPropertyHostKeyAlgorithm                      :
-GitPropertyLabel                                 :
-GitPropertyPassword                              :
-GitPropertyPrivateKey                            :
-GitPropertyRepository                            :
-GitPropertySearchPath                            :
-GitPropertyStrictHostKeyChecking                 :
-GitPropertyUri                                   :
-GitPropertyUsername                              :
-Id                                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/spring-cloud-rg/providers/Microsoft.AppPlatform/Spring/spring-cloud-service
-Location                                         : eastus
-Name                                             : spring-cloud-service
-NetworkProfileAppNetworkResourceGroup            :
-NetworkProfileAppSubnetId                        :
-NetworkProfileServiceCidr                        :
-NetworkProfileServiceRuntimeNetworkResourceGroup :
-NetworkProfileServiceRuntimeSubnetId             :
-ProvisioningState                                : Succeeded
-ServiceId                                        : e5e964885b4146b1a91e9bfc17971ee5
-SkuCapacity                                      :
-SkuName                                          : S0
-SkuTier                                          : Standard
-Tag                                              : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TrackedResourceTags
-TraceAppInsightInstrumentationKey                :
-TraceEnabled                                     : False
-TraceErrorCode                                   :
-TraceErrorMessage                                :
-TraceState                                       : Succeeded
-Type                                             : Microsoft.AppPlatform/Spring
-Version                                          : 2
-ConfigServerGitProperty                          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerGitProperty
-ConfigServerProperty                             : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerProperties
-ConfigServerPropertyConfigServer                 : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerSettings
-ConfigServerPropertyError                        : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
-NetworkProfile                                   : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.NetworkProfile
-Property                                         : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ClusterResourceProperties
-Sku                                              : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Sku
-Trace                                            : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TraceProperties
-TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
+New-AzSpringCloud -ResourceGroupName springcloudrg -Name spring-pwsh01 -Location eastus
 ```
 
-Create a spring cloud service.
+```output
+Location Name                SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModified
+                                                                                                 At
+-------- ----                ------------------- -------------------     ----------------------- ----------------------
+eastus   springcloud-service 2022/6/28 7:59:45   ******@microsoft.com    User                    2022/6/28 7:59:45
+```
+
+Create or update a new standard spring cloud service.
+
+### Example 2: Create or update a new enterprise spring cloud service 
+```powershell
+New-AzSpringCloud -ResourceGroupName springcloudrg -Name espring-pwsh01 -Location eastus -SkuTier "Enterprise" -SkuName "E0"
+```
+
+```output
+Location Name           SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+-------- ----           -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+eastus   espring-pwsh01 7/22/2022 7:35:40 AM v-diya@microsoft.com User                    7/22/2022 7:35:40 AM     v-diya@microsoft.com     User                         springcloudrg
+```
+
+Create or update a new enterprise spring cloud service .
 
 ## PARAMETERS
 
@@ -99,21 +77,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GitPropertyUri
-URI of the repository
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -152,6 +115,81 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkProfileResourceGroup
+Name of the resource group containing network resources for customer apps in Azure Spring Apps
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileServiceCidr
+Azure Spring Apps service reserved CIDR
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileServiceResourceGroup
+Name of the resource group containing network resources of Azure Spring Apps Service Runtime
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileServiceSubnetId
+Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileSubnetId
+Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -177,6 +215,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+Current capacity of the target resource
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,23 +297,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TraceAppInsightInstrumentationKey
-Target application insight instrumentation key
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TraceEnabled
-Indicates whether enable the tracing functionality
+### -ZoneRedundant
+.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -312,7 +350,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource
 
 ## NOTES
 

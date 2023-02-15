@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Info".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Info", "Info", global::System.Management.Automation.CompletionResultType.ParameterValue, "Info");
+                yield return new global::System.Management.Automation.CompletionResult("'Info'", "Info", global::System.Management.Automation.CompletionResultType.ParameterValue, "Info");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Warning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Warning", "Warning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warning");
+                yield return new global::System.Management.Automation.CompletionResult("'Warning'", "Warning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warning");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Error".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Error", "Error", global::System.Management.Automation.CompletionResultType.ParameterValue, "Error");
+                yield return new global::System.Management.Automation.CompletionResult("'Error'", "Error", global::System.Management.Automation.CompletionResultType.ParameterValue, "Error");
             }
         }
     }

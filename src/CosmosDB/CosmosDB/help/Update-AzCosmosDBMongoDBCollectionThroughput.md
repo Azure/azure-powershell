@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollectionthroughput
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollectionthroughput
 schema: 2.0.0
 ---
 
@@ -40,15 +40,16 @@ Updates the throughput value of a CosmosDB MongoDB Collection.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBMongoDBCollectionThroughput -AccountName {myAccountName} -ResourceGroupName {myResourceGroupName} -DatabaseName {mydatabaseName} -Name {myCollectionName} -Throughput {updatedThroughputValue}
+Update-AzCosmosDBMongoDBCollectionThroughput -AccountName "myAccountName" -ResourceGroupName "myResourceGroupName" -DatabaseName "mydatabaseName" -Name "myCollectionName" -Throughput $updatedThroughputValue
+```
+
+```output
 Name                : mxGp
 Id                  : /subscriptions/{mySubscriptionId}/resourceGroups/{myResourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{myAccountName}/mongodbDatabase/{mydatabaseName}/collections/{myCollectionName}/throughputSettings/default
 Throughput          : {updatedThroughputValue}
 MinimumThroughput   : 400
 OfferReplacePending :
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 

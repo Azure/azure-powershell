@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/set-azdataboxedgestorageaccountcredential
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/set-azdataboxedgestorageaccountcredential
 schema: 2.0.0
 ---
 
@@ -40,11 +40,14 @@ The **Set-AzDataBoxEdgeStorageAccountCredential** cmdlet updates the storage acc
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAcountCredentialName
- -StorageAccountName storageaccountname -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+Set-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName -Name storageAccountName `
+ -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+```
+
+```output
 Name                        StorageAccount      SslStatus  ResourceGroupName
 --------------------------- ------------------- ---------- ---------------------
-storageAcountCredentialName storageaccountname  Enabled    resourceGroupName
+storageAcountCredentialName storageAccountName  Enabled    resourceGroupName
 ```
 
 Helps in rotating access keys for a storage account

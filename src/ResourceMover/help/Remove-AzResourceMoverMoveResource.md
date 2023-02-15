@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://docs.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
+online version: https://learn.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Deletes a Move Resource from the move collection.
 
 ### Example 1: Remove one Move Rresource from the Move Collection.
 ```powershell
-PS C:\> Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
+Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
+```
 
+```output
 AdditionalInfo : 
 Code           : 
 Detail         : 

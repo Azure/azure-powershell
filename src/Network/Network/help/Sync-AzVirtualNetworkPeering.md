@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/sync-azvirtualnetworkpeering
+online version: https://learn.microsoft.com/powershell/module/az.network/sync-azvirtualnetworkpeering
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ Updating the address space on peered virtual networks is now supported. However,
 
 ### Example 1
 ```powershell
-PS C:\> Sync-AzVirtualNetworkPeering -Name 'peering2' -VirtualNetworkName 'vnet1' -ResourceGroupName 'rg1'
+Sync-AzVirtualNetworkPeering -Name 'peering2' -VirtualNetworkName 'vnet1' -ResourceGroupName 'rg1'
 ```
 
 Syncs the address space on the peering, peering2 in the virtual network, vnet1 within the resource group, rg1.
 
 ### Example 2
 ```powershell
-PS C:\> $s1h1 = Get-AzVirtualNetworkPeering -Name 'spoke1-hub1' -VirtualNetworkName 'spoke1' -ResourceGroupName 'HUB1-RG'
-PS C:\> $s1h1 | Sync-AzVirtualNetworkPeering
+$s1h1 = Get-AzVirtualNetworkPeering -Name 'spoke1-hub1' -VirtualNetworkName 'spoke1' -ResourceGroupName 'HUB1-RG'
+$s1h1 | Sync-AzVirtualNetworkPeering
 ```
 
 The first commandlet gets the virtual network peering. The second piped commandlet applies the sync operation on the peering.

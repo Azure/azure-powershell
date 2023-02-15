@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azgallery
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgallery
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Delete a gallery.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzGallery -ResourceGroupName $rgname -GalleryName $galleryName
+Remove-AzGallery -ResourceGroupName $rgname -GalleryName $galleryName
 ```
 
 Delete the given gallery.

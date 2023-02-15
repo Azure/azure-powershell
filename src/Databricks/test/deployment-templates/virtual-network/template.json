@@ -1,11 +1,17 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "virtualNetworks_dbrvn_name": {
+        "virtualNetworks_name": {
+            "defaultValue": "databricks-vnet-swohp4",
             "type": "String"
         },
-        "networkSecurityGroups_dolaulinsg_externalid": {
+        "netSG_id": {
+            "defaultValue": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-13vdtb/providers/Microsoft.Network/networkSecurityGroups/vnet-security-h2pgn8",
+            "type": "String"
+        },
+        "netbricksSG_id": {
+            "defaultValue": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-13vdtb/providers/Microsoft.Network/networkSecurityGroups/databricksnsgtdotod7d4n5vy",
             "type": "String"
         }
     },
@@ -13,30 +19,39 @@
     "resources": [
         {
             "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2019-11-01",
-            "name": "[parameters('virtualNetworks_dbrvn_name')]",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('virtualNetworks_name')]",
             "location": "eastus",
-            "tags": {
-                "w": "p"
-            },
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "10.0.0.0/16"
+                        "10.0.0.0/16",
+                        "10.179.0.0/16"
                     ]
                 },
                 "subnets": [
                     {
-                        "name": "pub",
+                        "name": "default",
                         "properties": {
-                            "addressPrefix": "10.0.2.0/24",
+                            "addressPrefix": "10.0.0.0/24",
                             "networkSecurityGroup": {
-                                "id": "[parameters('networkSecurityGroups_dolaulinsg_externalid')]"
+                                "id": "[parameters('netSG_id')]"
                             },
-                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "bricks-privsubnet",
+                        "properties": {
+                            "addressPrefix": "10.179.0.0/18",
+                            "networkSecurityGroup": {
+                                "id": "[parameters('netbricksSG_id')]"
+                            },
                             "delegations": [
                                 {
-                                    "name": "c51c7bf921a34ff981f1ed890976a4f5",
+                                    "name": "databricks-del-uuwhhdogeslcq",
                                     "properties": {
                                         "serviceName": "Microsoft.Databricks/workspaces"
                                     }
@@ -47,16 +62,15 @@
                         }
                     },
                     {
-                        "name": "priv",
+                        "name": "bricks-pubsubnet",
                         "properties": {
-                            "addressPrefix": "10.0.1.0/24",
+                            "addressPrefix": "10.179.64.0/18",
                             "networkSecurityGroup": {
-                                "id": "[parameters('networkSecurityGroups_dolaulinsg_externalid')]"
+                                "id": "[parameters('netbricksSG_id')]"
                             },
-                            "serviceEndpoints": [],
                             "delegations": [
                                 {
-                                    "name": "5ed72d37fa084742bfc280b2638dd860",
+                                    "name": "databricks-del-jw2yx565vknri",
                                     "properties": {
                                         "serviceName": "Microsoft.Databricks/workspaces"
                                     }
@@ -68,26 +82,24 @@
                     }
                 ],
                 "virtualNetworkPeerings": [],
-                "enableDdosProtection": false,
-                "enableVmProtection": false
+                "enableDdosProtection": false
             }
         },
         {
             "type": "Microsoft.Network/virtualNetworks/subnets",
-            "apiVersion": "2019-11-01",
-            "name": "[concat(parameters('virtualNetworks_dbrvn_name'), '/priv')]",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_name'), '/bricks-privsubnet')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_dbrvn_name'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_name'))]"
             ],
             "properties": {
-                "addressPrefix": "10.0.1.0/24",
+                "addressPrefix": "10.179.0.0/18",
                 "networkSecurityGroup": {
-                    "id": "[parameters('networkSecurityGroups_dolaulinsg_externalid')]"
+                    "id": "[parameters('netbricksSG_id')]"
                 },
-                "serviceEndpoints": [],
                 "delegations": [
                     {
-                        "name": "5ed72d37fa084742bfc280b2638dd860",
+                        "name": "databricks-del-uuwhhdogeslcq",
                         "properties": {
                             "serviceName": "Microsoft.Databricks/workspaces"
                         }
@@ -99,25 +111,41 @@
         },
         {
             "type": "Microsoft.Network/virtualNetworks/subnets",
-            "apiVersion": "2019-11-01",
-            "name": "[concat(parameters('virtualNetworks_dbrvn_name'), '/pub')]",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_name'), '/bricks-pubsubnet')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_dbrvn_name'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_name'))]"
             ],
             "properties": {
-                "addressPrefix": "10.0.2.0/24",
+                "addressPrefix": "10.179.64.0/18",
                 "networkSecurityGroup": {
-                    "id": "[parameters('networkSecurityGroups_dolaulinsg_externalid')]"
+                    "id": "[parameters('netbricksSG_id')]"
                 },
-                "serviceEndpoints": [],
                 "delegations": [
                     {
-                        "name": "c51c7bf921a34ff981f1ed890976a4f5",
+                        "name": "databricks-del-jw2yx565vknri",
                         "properties": {
                             "serviceName": "Microsoft.Databricks/workspaces"
                         }
                     }
                 ],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "10.0.0.0/24",
+                "networkSecurityGroup": {
+                    "id": "[parameters('netSG_id')]"
+                },
+                "delegations": [],
                 "privateEndpointNetworkPolicies": "Enabled",
                 "privateLinkServiceNetworkPolicies": "Enabled"
             }

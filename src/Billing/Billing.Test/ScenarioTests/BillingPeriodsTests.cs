@@ -13,49 +13,43 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Billing.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
 {
-    public class BillingPeriodsTests
+    public class BillingPeriodsTests : BillingTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public BillingPeriodsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public BillingPeriodsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingPeriods()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingPeriods");
+            TestRunner.RunTestScript("Test-ListBillingPeriods");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingPeriodsWithMaxCount()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingPeriodsWithMaxCount");
+            TestRunner.RunTestScript("Test-ListBillingPeriodsWithMaxCount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBillingPeriodWithName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBillingPeriodWithName");
+            TestRunner.RunTestScript("Test-GetBillingPeriodWithName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBillingPeriodWithNames()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBillingPeriodWithNames");
+            TestRunner.RunTestScript("Test-GetBillingPeriodWithNames");
         }
     }
 }

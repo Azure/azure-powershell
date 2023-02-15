@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpublicipaddress
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpublicipaddress
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ This is the placeholder for the Ip Address that can be used for multi pip on azu
 
 ### Example 1
 ```powershell
-PS C:\> $publicIp = New-AzFirewallPublicIpAddress -Address 20.2.3.4
+$publicIp = New-AzFirewallPublicIpAddress -Address 20.2.3.4
 ```
 
 $publicIp will be the placeholder for the ip address 20.2.3.4

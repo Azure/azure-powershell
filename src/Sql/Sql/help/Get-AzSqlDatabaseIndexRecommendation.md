@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 10656EA5-EA5F-4394-951F-BC64BE3BF6F9
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseindexrecommendation
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldatabaseindexrecommendation
 schema: 2.0.0
 ---
 
@@ -25,22 +25,22 @@ The **Get-AzSqlDatabaseIndexRecommendation** cmdlet gets the recommended index o
 ## EXAMPLES
 
 ### Example 1: Get index recommendations for all databases on server
-```
-PS C:\>Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+```powershell
+Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 This command returns index recommendations for all databases on server server01.
 
 ### Example 2: Get index recommendations for a specific database
-```
-PS C:\>Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+```powershell
+Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 This command returns index recommendations for specific database.
 
 ### Example 3: Get a single index recommendation by name
-```
-PS C:\>Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -IndexRecommendationName "INDEX_NAME"
+```powershell
+Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -IndexRecommendationName "INDEX_NAME"
 ```
 
 This command returns single index recommendation by name.

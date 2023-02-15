@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstorageblobimmutabilitypolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azstorageblobimmutabilitypolicy
 schema: 2.0.0
 ---
 
@@ -37,6 +37,7 @@ The cmdlet only works when the blob container has already enabled immutable Stor
 ## EXAMPLES
 
 ### Example 1: Create or update immutability policy of a Storage blob.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $blob = Set-AzStorageBlobImmutabilityPolicy -Container $containerName -Blob $blobname  -ExpiresOn (Get-Date).AddDays(100) -PolicyMode Unlocked
 

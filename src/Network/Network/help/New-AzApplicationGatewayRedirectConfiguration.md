@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayredirectconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayredirectconfiguration
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ New-AzApplicationGatewayRedirectConfiguration -Name <String> -RedirectType <Stri
 
 ### Example 1
 ```powershell
-PS C:\>$RedirectConfig = New-AzApplicationGatewayRedirectConfiguration -Name "Redirect01" -RedirectType Permanent -TargetListener $listener01
+$RedirectConfig = New-AzApplicationGatewayRedirectConfiguration -Name "Redirect01" -RedirectType Permanent -TargetListener $listener01
 ```
 
 This command creates a redirect configuration named Redirect01 and stores the result in the variable named $RedirectConfig.

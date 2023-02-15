@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistry
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistry
 schema: 2.0.0
 ---
 
@@ -61,8 +61,10 @@ The Update-AzContainerRegistry cmdlet updates a container registry.
 
 ### Example 1: Enable admin user for a specified container registry
 ```powershell
-PS C:\>Update-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -EnableAdminUser
+Update-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -EnableAdminUser
+```
 
+```output
   Container registry location: eastus
 
 Registry Name        Sku        LoginServer                    CreationDate         Provisioni AdminUserE StorageAccountName
@@ -75,8 +77,10 @@ This command enables admin user for the specified container registry.
 
 ### Example 2: Set the storage account used by a specified container registry
 ```powershell
-PS C:\>Update-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -StorageAccountName "mystorageaccount"
+Update-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -StorageAccountName "mystorageaccount"
+```
 
+```output
   Container registry location: eastus
 
 Registry Name        Sku        LoginServer                    CreationDate         Provisioni AdminUserE StorageAccountName

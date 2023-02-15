@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzSecurityLocation
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzSecurityLocation
 schema: 2.0.0
 ---
 
@@ -35,7 +35,10 @@ Use this cmdlet to discover that location.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityLocation
+Get-AzSecurityLocation
+```
+
+```output
 Id                                                                                                   Name
 --                                                                                                   ----
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/locations/centralus centralus

@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothubkey
+online version: https://learn.microsoft.com/powershell/module/az.iothub/remove-aziothubkey
 schema: 2.0.0
 ---
 
@@ -31,8 +31,8 @@ If there are multiple keys with the same name the first one in the list is remov
 ## EXAMPLES
 
 ### Example 1 Delete an IotHub
-```
-PS C:\> Remove-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner1"
+```powershell
+Remove-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner1"
 ```
 
 Removes the key named iothubowner1 from the IotHub named "myiothub"

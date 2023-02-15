@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
+online version: https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
 schema: 2.0.0
 ---
 
@@ -25,9 +25,10 @@ Create an in-memory object for ShippingAddress.
 
 ### Example 1: Shipping Address object 
 ```powershell
-PS C:\> $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
-PS C:\> $ShippingDetails
+New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
+```
 
+```output
 AddressType City          CompanyName Country PostalCode StateOrProvince StreetAddress1  StreetAddress2 StreetAddress3 ZipExtendedCode
 ----------- ----          ----------- ------- ---------- --------------- --------------  -------------- -------------- ---------------
 Commercial  San Francisco             US      94107      CA              101 TOWNSEND ST

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaytrustedclientcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewaytrustedclientcertificate
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The Get-AzApplicationGatewayTrustedClientCertificate cmdlet gets the trusted cli
 
 ### Example 1
 ```powershell
-PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-PS C:\> $trustedClientCert = Get-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $gw -Name $certName
+$gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
+$trustedClientCert = Get-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $gw -Name $certName
 ```
 
 The first command gets the Application Gateway and stores it in $gw variable. The second command gets the trusted client CA certificate chain with a specified name from the Application Gateway.

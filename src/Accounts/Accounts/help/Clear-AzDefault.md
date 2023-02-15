@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/clear-azdefault
+online version: https://learn.microsoft.com/powershell/module/az.accounts/clear-azdefault
 schema: 2.0.0
 ---
 
@@ -25,14 +25,14 @@ the user depending on the switch parameters specified by the user.
 
 ### Example 1
 ```powershell
-PS C:\> Clear-AzDefault
+Clear-AzDefault
 ```
 
 This command removes all the defaults set by the user in the current context.
 
 ### Example 2
 ```powershell
-PS C:\> Clear-AzDefault -ResourceGroup
+Clear-AzDefault -ResourceGroup
 ```
 
 This command removes the default resource group set by the user in the current context.

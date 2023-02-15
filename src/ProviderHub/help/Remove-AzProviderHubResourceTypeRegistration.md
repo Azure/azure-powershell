@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubresourcetyperegistration
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubresourcetyperegistration
 schema: 2.0.0
 ---
 
@@ -31,14 +31,14 @@ Deletes a resource type
 
 ### Example 1: Delete a resource type registration by name.
 ```powershell
-PS C:\> Remove-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType"
+Remove-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType"
 ```
 
 Delete a resource type registration by name.
 
 ### Example 2: Delete a nested resource type registration by name.
 ```powershell
-PS C:\> Remove-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType/nestedResourceType"
+Remove-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType/nestedResourceType"
 ```
 
 Delete a nested resource type registration by name.
@@ -187,7 +187,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+INPUTOBJECT `<IProviderHubIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[NestedResourceTypeFirst <String>]`: The first child resource type.
   - `[NestedResourceTypeSecond <String>]`: The second child resource type.

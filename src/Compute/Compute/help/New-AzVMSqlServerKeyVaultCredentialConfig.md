@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: B30C2BDD-6DA9-47B5-88FE-3AD43E15A072
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azvmsqlserverkeyvaultcredentialconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azvmsqlserverkeyvaultcredentialconfig
 schema: 2.0.0
 ---
 
@@ -20,8 +20,24 @@ New-AzVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-Enable
 ```
 
 ## DESCRIPTION
+The **New-AzVMSqlServerKeyVaultCredentialConfig** cmdlet creates a configuration object for SQL server key vault credential on a virtual machine.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+New-AzVMSqlServerKeyVaultCredentialConfig -ResourceGroupName "ResourceGroup11" -Enable -AzureKeyVaultUrl https://myvault.vault.azure.net/ -CredentialName test1
+```
+
+```Output
+ResourceGroupName      : ResourceGroup11
+Enable                 : True
+CredentialName         : test1
+AzureKeyVaultUrl       : https://myvault.vault.azure.net/
+ServicePrincipalName   :
+ServicePrincipalSecret :
+Credentials            :
+```
 
 ## PARAMETERS
 

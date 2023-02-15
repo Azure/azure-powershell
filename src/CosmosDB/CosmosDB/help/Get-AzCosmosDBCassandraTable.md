@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratable
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratable
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The **Get-AzCosmosDBCassandraTable** cmdlet creates a new or updates an existing
 
 ### Example 1
 ```powershell
-PS C:\> $table = Get-AzCosmosDBCassandraTable -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Keyspace {keyspaceName} -Name {name}
+Get-AzCosmosDBCassandraTable -ResourceGroupName "resourceGroupName" -AccountName "accountName" -KeyspaceName "keyspaceName" -Name "tableName"
+```
 
+```output
 Name    Id   Resource
 {name}  {id} {resourceObject}
 ```

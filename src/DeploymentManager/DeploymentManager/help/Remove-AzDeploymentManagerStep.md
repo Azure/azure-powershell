@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/remove-azdeploymentmanagerstep
+online version: https://learn.microsoft.com/powershell/module/az.deploymentmanager/remove-azdeploymentmanagerstep
 schema: 2.0.0
 ---
 
@@ -38,22 +38,21 @@ Specify the step by its name and the resource group name. Alternately, you can p
 
 ### Example 1: Remove a step
 ```powershell
-PS C:\> Remove-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep
+Remove-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep
 ```
 
 This command deletes a step named ContosoService1WaitStep in ContosoResourceGroup.
 
 ### Example 2: Remove a step using the resource identifier
 ```powershell
-PS C:\> Remove-AzDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
+Remove-AzDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
 ```
 
 This command deletes a step named ContosoService1WaitStep in ContosoResourceGroup.
 
 ### Example 3: Remove a step using an object returned by New-AzDeploymentManagerStep
-### Example 1
 ```powershell
-PS C:\> Remove-AzDeploymentManagerStep -InputObject $stepObject
+Remove-AzDeploymentManagerStep -InputObject $stepObject
 ```
 
  This command deletes a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.

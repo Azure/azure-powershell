@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlroledefinition
 schema: 2.0.0
 ---
 
@@ -31,9 +31,11 @@ Id can be either fully qualified or just the Guid.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzCosmosDBSqlRoleDefinition -AccountName accountName -ResourceGroupName resourceGroupName -Id id
 ```
-PS C:\> Get-AzCosmosDBSqlRoleDefinition -AccountName accountName -ResourceGroupName resourceGroupName -Id id
 
+```output
 RoleName         : roleName
 Id               : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/id
 Type             : CustomRole

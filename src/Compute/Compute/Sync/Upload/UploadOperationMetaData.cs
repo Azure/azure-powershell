@@ -22,6 +22,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Security.Permissions;
+using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {
@@ -84,13 +85,28 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             using (var md5 = MD5.Create())
             {
-                using (var swrp = new StreamWithReadProgress(stream, TimeSpan.FromSeconds(1)))
+                Program.SyncOutput.MessageCalculatingMD5Hash(filePath);
+                ProgressStatus hashStatus = new ProgressStatus(0, stream.Length, new ComputeStats());
+
+                using (ProgressTracker progressTracker = new ProgressTracker(hashStatus,
+                                                                             Program.SyncOutput.ProgressOperationStatus,
+                                                                             Program.SyncOutput.ProgressOperationComplete))
+                using (var swrp = new StreamWithReadProgress(stream, hashStatus))
                 {
-                    var bs = new BufferedStream(swrp);
-                    Program.SyncOutput.MessageCalculatingMD5Hash(filePath);
-                    var md5Hash = md5.ComputeHash(bs);
+                    Task<byte[]> task = Task<byte[]>.Factory.StartNew(() =>
+                    {
+                        var bs = new BufferedStream(swrp);
+                        var md5Hash = md5.ComputeHash(bs);
+                        return md5Hash;
+                    });
+
+                    while (!task.Wait(TimeSpan.FromSeconds(1)))
+                    {
+                        progressTracker.Update();
+                    }
+
                     Program.SyncOutput.MessageMD5HashCalculationFinished();
-                    return md5Hash;
+                    return task.Result;
                 }
             }
         }

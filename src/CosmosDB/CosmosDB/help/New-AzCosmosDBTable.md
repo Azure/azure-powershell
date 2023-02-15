@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbtable
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbtable
 schema: 2.0.0
 ---
 
@@ -33,8 +33,10 @@ Creates a new CosmosDB Table.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBTable -AccountName myAcccountName -Name myTableName -ResourceGroupName myRgName
+New-AzCosmosDBTable -AccountName myAcccountName -Name myTableName -ResourceGroupName myRgName
+```
 
+```output
 Name     : myTableName
 Id       : /subscriptions/mySubscriptionId/resourceGroups/myResourcegroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/Tables/myTableName
 Location :

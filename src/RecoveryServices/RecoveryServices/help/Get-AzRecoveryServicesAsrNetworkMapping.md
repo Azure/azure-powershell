@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrnetworkmapping
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrnetworkmapping
 schema: 2.0.0
 ---
 
@@ -30,16 +30,16 @@ The **Get-AzRecoveryServicesAsrNetworkMapping** cmdlet gets information about Az
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $Networkmappings = Get-AzRecoveryServicesAsrNetworkMapping -Network $Network
+```powershell
+$Networkmappings = Get-AzRecoveryServicesAsrNetworkMapping -Network $Network
 ```
 
 Gets all networks mappings for the passed Network.
 
 ### Example 2
-```
-PS C:\> $primaryFabric = Get-AzRecoveryServicesAsrFabric -Name xxxx
-PS C:\> $Networkmappings = Get-AzRecoveryServicesAsrNetworkMapping -Name $networkMappingName -PrimaryFabric $primaryFabric
+```powershell
+$primaryFabric = Get-AzRecoveryServicesAsrFabric -Name xxxx
+$Networkmappings = Get-AzRecoveryServicesAsrNetworkMapping -Name $networkMappingName -PrimaryFabric $primaryFabric
 ```
 
 Gets networks mapping with provided name in specified azure site recovery fabric.

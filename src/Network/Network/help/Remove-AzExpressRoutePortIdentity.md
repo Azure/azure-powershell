@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azexpressrouteportidentity
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azexpressrouteportidentity
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Remove-AzExpressRoutePortIdentity** cmdlet removes identity from a local A
 
 ### Example 1
 ```powershell
-PS C:\> $expressroutePort = Remove-AzExpressRoutePortIdentity -ExpressRoutePort $expressroutePort
+$expressroutePort = Remove-AzExpressRoutePortIdentity -ExpressRoutePort $expressroutePort
 ```
 
 ## PARAMETERS

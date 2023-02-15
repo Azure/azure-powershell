@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/get-azservicefabriccluster
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabriccluster
 schema: 2.0.0
 ---
 
@@ -36,7 +36,7 @@ The **Get-AzServiceFabricCluster** will get the cluster resource details.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzServiceFabricCluster -ResourceGroupName 'Group1' -ClusterName 'Contoso01SFCluster'
+Get-AzServiceFabricCluster -ResourceGroupName 'Group1' -ClusterName 'Contoso01SFCluster'
 ```
 
 This command will get the cluster resource details for cluster 'myCluster'.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: CFE184E2-6DEF-4E92-A9C3-E82F29BB4FB8
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressroutecircuitstat
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressroutecircuitstat
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ secondary routes.
 ## EXAMPLES
 
 ### Example 1: Display the traffic statistics for an ExpressRoute peer
-```
+```powershell
 Get-AzExpressRouteCircuitStat -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
 ```
 

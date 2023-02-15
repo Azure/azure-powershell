@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2integrationruntime
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2integrationruntime
 schema: 2.0.0
 ---
 
@@ -38,8 +38,8 @@ The Remove-AzDataFactoryV2IntegrationRuntime cmdlet removes a integration runtim
 ## EXAMPLES
 
 ### Example 1: Remove a integration runtime
-```
-PS C:\> Remove-AzDataFactoryV2IntegrationRuntime  -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df' -Name 'test-reserved-ir' -Confirm
+```powershell
+Remove-AzDataFactoryV2IntegrationRuntime  -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df' -Name 'test-reserved-ir' -Confirm
 ```
 
 This command removes the integration runtime named 'test-reserved-ir' from the data factory named 'test-df'.

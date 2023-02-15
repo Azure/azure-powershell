@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azpolicysetdefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azpolicysetdefinition
 schema: 2.0.0
 ---
 
@@ -48,9 +48,9 @@ The **Remove-AzPolicySetDefinition** cmdlet removes a policy definition.
 ## EXAMPLES
 
 ### Example 1: Remove policy set definition by resource ID
-```
-PS C:\> $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
-PS C:\> Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force
+```powershell
+$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force
 ```
 
 The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.

@@ -16,41 +16,17 @@
 
 <#
 .Synopsis
-Description for Get an App Service plan.
+Get an App Service plan.
 .Description
-Description for Get an App Service plan.
+Get an App Service plan.
 .Example
-PS C:\> Get-AzFunctionAppPlan
-
-Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------    -----------------                --------------
-Func99-West-Europe-Linux-Premium   Linux      ElasticPremium EP1     West Europe Func99-West-Europe-Linux-Premium fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium1680894595   Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium428118799    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium677505437    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium711892854    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium819994758    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionAppPlan
 .Example
-PS C:\> Get-AzFunctionAppPlan -ResourceGroupName "West Europe"
-
-Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------    -----------------                --------------
-Func99-West-Europe-Linux-Premium   Linux      ElasticPremium EP1     West Europe Func99-West-Europe-Linux-Premium fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium1680894595   Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionAppPlan -ResourceGroupName "West Europe"
 .Example
-PS C:\> Get-AzFunctionAppPlan -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8z
-
-Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------    -----------------                --------------
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8z
+Get-AzFunctionAppPlan -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8z
 .Example
-PS C:\> Get-AzFunctionAppPlan -Location "Central US"
-
-Name                               WorkerType SkuTier        SkuName Location   ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------   -----------------                --------------
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     Central US Func99-West-Europe-Win-Premium   3r16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionAppPlan -Location "Central US"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -119,7 +95,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappplan
 #>
 function Get-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -226,6 +202,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunctionAppPlan_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunctionAppPlan_GetViaIdentity';
@@ -241,6 +218,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -249,15 +227,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

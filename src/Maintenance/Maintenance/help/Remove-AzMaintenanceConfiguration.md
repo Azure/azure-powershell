@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version: https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Delete Maintenance Configuration record
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzMaintenanceConfiguration -ResourceGroupName smdtest -Name workervmscentralus
+Remove-AzMaintenanceConfiguration -ResourceGroupName smdtest -Name workervmscentralus
+```
 
+```output
 Remove-AzMaintenanceConfiguration operation
 This cmdlet will remove the specified resource.  Do you want to continue?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):

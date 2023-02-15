@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 
         [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet,
             HelpMessage = "An array of tables to export, for example: [“Heartbeat, SecurityEvent”].")]
-        public string[] TableName{ get; set; }
+        public string[] TableName { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet,
             HelpMessage = "The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.")]
@@ -74,28 +74,30 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
                 this.DataExportName = resourceIdentifier.ResourceName;
             }
 
-            CreatePSDataExportParameters parameters = new CreatePSDataExportParameters();
+            CreatePSDataExportParameters parameters; ;
 
             if (this.IsParameterBound(c => c.InputDataExport))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.InputDataExport.Id);
-                parameters.ResourceGroupName = resourceIdentifier.ResourceGroupName; ;
-                parameters.WorkspaceName = resourceIdentifier.ParentResource.ToLower().Replace("workspaces/", "");
-                parameters.DataExportName = resourceIdentifier.ResourceName;
-                parameters.TableNames = InputDataExport.TableNames;
-                parameters.DestinationResourceId = InputDataExport.ResourceId;
-                parameters.EventHubName = InputDataExport.EventHubName;
-                parameters.Enable = InputDataExport.Enable;
+                parameters = new CreatePSDataExportParameters(
+                    resourceGroupName: resourceIdentifier.ResourceGroupName,
+                    workspaceName: resourceIdentifier.ParentResource.ToLower().Replace("workspaces/", ""),
+                    dataExportName: resourceIdentifier.ResourceName,
+                    tableNames: InputDataExport.TableNames,
+                    destinationResourceId: InputDataExport.ResourceId,
+                    eventHubName: InputDataExport.EventHubName,
+                    enable: InputDataExport.Enable);
             }
             else
             {
-                parameters.ResourceGroupName = ResourceGroupName;
-                parameters.WorkspaceName = WorkspaceName;
-                parameters.DataExportName = DataExportName;
-                parameters.TableNames = TableName.ToList();
-                parameters.DestinationResourceId = DestinationResourceId;
-                parameters.EventHubName = EventHubName;
-                parameters.Enable = Enable;
+                parameters = new CreatePSDataExportParameters(
+                    resourceGroupName: ResourceGroupName,
+                    workspaceName: WorkspaceName,
+                    dataExportName: DataExportName,
+                    tableNames: TableName.ToList(),
+                    destinationResourceId: DestinationResourceId,
+                    eventHubName: EventHubName,
+                    enable: Enable);
             }
 
             if (ShouldProcess(DataExportName, $"Update Data export: {DataExportName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))

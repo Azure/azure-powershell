@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/New-azstorageobjectreplicationpolicyrule
+online version: https://learn.microsoft.com/powershell/module/az.storage/New-azstorageobjectreplicationpolicyrule
 schema: 2.0.0
 ---
 
@@ -24,11 +24,13 @@ The **Get-AzStorageObjectReplicationPolicy** cmdlet creates an object replicatio
 ## EXAMPLES
 
 ### Example 1: Create an object replication policy rule with only source and destination account, and show its properties
+```powershell
+$rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src1 -DestinationContainer dest1 
+
+$rule1
 ```
-PS C:\> $rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src1 -DestinationContainer dest1 
 
-PS C:\> $rule1
-
+```output
 RuleId SourceContainer DestinationContainer Filters.PrefixMatch Filters.MinCreationTime
 ------ --------------- -------------------- ------------------- -----------------------
        src1            dest1                {}
@@ -37,11 +39,13 @@ RuleId SourceContainer DestinationContainer Filters.PrefixMatch Filters.MinCreat
 This command creates an object replication policy rule with only source and destination account, and show its properties.
 
 ### Example 2: Create an object replication policy rule with all properties, and show its properties
+```powershell
+$rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime 2019-01-01T16:00:00Z -PrefixMatch a,abc,dd
+
+$rule2
 ```
-PS C:\> $rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime 2019-01-01T16:00:00Z -PrefixMatch a,abc,dd
 
-PS C:\> $rule2
-
+```output
 RuleId SourceContainer DestinationContainer Filters.PrefixMatch Filters.MinCreationTime
 ------ --------------- -------------------- ------------------- -----------------------
        src             dest                 {a, abc, dd}        2019-01-01T16:00:00Z

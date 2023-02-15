@@ -18,17 +18,6 @@
 Updates entity in applications
 .Description
 Updates entity in applications
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -160,7 +149,7 @@ WEB <IMicrosoftGraphWebApplication>: webApplication
   [LogoutUrl <String>]: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
   [RedirectUri <String[]>]: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/update-azadapplication
 #>
 function Update-AzADApplication {
   [OutputType([System.Boolean])]
@@ -423,6 +412,13 @@ function Update-AzADApplication {
     ${TokenLifetimePolicy},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplication]
+    # webApplication
+    # To construct, see NOTES section for WEB properties and create a hash table.
+    ${Web},
+
+    [Parameter()]
     [Alias("AzContext", "AzureRmContext", "AzureCredential")]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
@@ -525,7 +521,7 @@ function Update-AzADApplication {
     }
     # even if payload contains all three redirect options, only one will be added in the actual app, the order is
     # web -> spa -> public client
-    if ($PSBoundParameters['HomePage'] -or $PSBoundParameters['ReplyUrl']) {
+    if (!$PSBoundParameters['Web'] -And ($PSBoundParameters['HomePage'] -or $PSBoundParameters['ReplyUrl'])) {
       $props = @{}
       if ($PSBoundParameters['HomePage']) {
         $props['HomePageUrl'] = $PSBoundParameters['HomePage']

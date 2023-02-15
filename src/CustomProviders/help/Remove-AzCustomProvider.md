@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CustomProviders
-online version: https://docs.microsoft.com/powershell/module/az.customproviders/remove-azcustomprovider
+online version: https://learn.microsoft.com/powershell/module/az.customproviders/remove-azcustomprovider
 schema: 2.0.0
 ---
 
@@ -31,15 +31,17 @@ Deletes the custom resource provider.
 
 ### Example 1: Remove a custom provider.
 ```powershell
-PS C:\> PS C:\> Remove-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
+Remove-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
 ```
 
 Remove a custom provider
 
 ### Example 2: Remove a custom provider with PassThru
 ```powershell
-PS C:\> PS C:\> Remove-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type -PassThru
+Remove-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type -PassThru
+```
 
+```output
 True
 ```
 
@@ -221,7 +223,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
+INPUTOBJECT `<ICustomProvidersIdentity>`: Identity Parameter
   - `[AssociationName <String>]`: The name of the association.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.

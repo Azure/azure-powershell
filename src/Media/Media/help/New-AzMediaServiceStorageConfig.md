@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 4D64CA4D-1066-4D3E-9317-60D37D9DE2BB
-online version: https://docs.microsoft.com/powershell/module/az.media/new-azmediaservicestorageconfig
+online version: https://learn.microsoft.com/powershell/module/az.media/new-azmediaservicestorageconfig
 schema: 2.0.0
 ---
 
@@ -24,11 +24,10 @@ The **New-AzMediaServiceStorageConfig** cmdlet creates a storage account configu
 ## EXAMPLES
 
 ### Example 1: Create a storage account configuration for the media service cmdlets
-```
-PS C:\>
-$StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name "Storage1" -Location "East US" -Type "Standard_GRS"
+```powershell
+$StorageAccount = New-AzStorageAccount -ResourceGroupName "ResourceGroup001" -Name "Storage1" -Location "East US" -Type "Standard_GRS"
 
-PS C:\> New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount.Id -IsPrimary
+New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount.Id -IsPrimary
 ```
 
 The first command creates a storage account object by using **the New-AzStorageAccount** cmdlet.

@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/invoke-aziothubmanualfailover
+online version: https://learn.microsoft.com/powershell/module/az.iothub/invoke-aziothubmanualfailover
 schema: 2.0.0
 ---
 
@@ -38,14 +38,14 @@ This is a long running operation and could take several minutes to finish. Pleas
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzIotHubManualFailover -ResourceGroupName "myresourcegroup" -Name "myiothub"
+Invoke-AzIotHubManualFailover -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Initiating failover process of "myiothub" IoT Hub.
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzIotHubManualFailover -ResourceGroupName "myresourcegroup" -Name "myiothub" -AsJob
+Invoke-AzIotHubManualFailover -ResourceGroupName "myresourcegroup" -Name "myiothub" -AsJob
 ```
 
 Initiating failover process of "myiothub" IoT Hub in the background.

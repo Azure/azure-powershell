@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version: https://docs.microsoft.com/powershell/module/az.maintenance/update-azmaintenanceconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.maintenance/update-azmaintenanceconfiguration
 schema: 2.0.0
 ---
 
@@ -25,9 +25,10 @@ Patch maintenance configuration record
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzMaintenanceConfiguration -ResourceGroupName smdtest -Name workervmscentralus -Configuration $configuration
+Update-AzMaintenanceConfiguration -ResourceGroupName smdtest -Name workervmscentralus -Configuration $configuration
+```
 
-
+```output
 Location            : centralus
 Tags                : {}
 ExtensionProperties : {}

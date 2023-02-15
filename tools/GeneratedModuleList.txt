@@ -1,6 +1,9 @@
 Az.ADDomainServices
+Az.Advisor
+Az.App
 Az.AppConfiguration
 Az.BotService
+Az.Cdn
 Az.ChangeAnalysis
 Az.CloudService
 Az.Communication
@@ -21,6 +24,8 @@ Az.DigitalTwins
 Az.DiskPool
 Az.EdgeOrder
 Az.Elastic
+Az.ElasticSan
+Az.FluidRelay
 Az.Functions
 Az.HanaOnAzure
 Az.HealthBot
@@ -35,6 +40,8 @@ Az.MariaDb
 Az.Migrate
 Az.MonitoringSolutions
 Az.MySql
+Az.NetworkFunction
+Az.Nginx
 Az.Portal
 Az.PostgreSql
 Az.ProviderHub
@@ -46,3 +53,4 @@ Az.StreamAnalytics
 Az.TimeSeriesInsights
 Az.VMware
 Az.WindowsIotServices
+Az.MachineLearningServices

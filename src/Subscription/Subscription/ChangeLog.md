@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `New-AzSubscriptionAlias` cmdlet to make the Workload parameter mandatory.
+
+## Version 0.8.1
+* Updated Microsoft.Azure.Management.Subscription .Net SDK version to 2.0.0
 
 ## Version 0.8.0
 * Added new cmdlets `New-AzSubscriptionAlias`,`Get-AzSubscriptionAlias`,`Remove-AzSubscriptionAlias` and Removed cmdlet `New-AzSubscription`

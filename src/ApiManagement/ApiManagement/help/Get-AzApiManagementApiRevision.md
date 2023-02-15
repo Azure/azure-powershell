@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementapirevision
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementapirevision
 schema: 2.0.0
 ---
 
@@ -24,9 +24,11 @@ The **Get-AzApiManagementApiRevision** cmdlet gets the details of all revisions 
 
 ### Example 1: Get all API Revisions of an API
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementApiRevision -Context $ApiMgmtContext -ApiId "5adf6fbf0faadf3ad8558065"
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementApiRevision -Context $ApiMgmtContext -ApiId "5adf6fbf0faadf3ad8558065"
+```
 
+```output
 ApiId           : /apis/5adf6fbf0faadf3ad8558065;rev=3
 ApiRevision     : 3
 CreatedDateTime : 4/26/2018 10:57:42 PM

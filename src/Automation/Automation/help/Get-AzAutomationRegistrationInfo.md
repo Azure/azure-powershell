@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 09823BE3-A98B-42EF-B6F4-99F95F2B342E
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationregistrationinfo
+online version: https://learn.microsoft.com/powershell/module/az.automation/get-azautomationregistrationinfo
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzAutomationRegistrationInfo** cmdlet gets the endpoint and keys requi
 ## EXAMPLES
 
 ### Example 1: Get registration information
-```
-PS C:\>Get-AzAutomationRegistrationInfo -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+```powershell
+Get-AzAutomationRegistrationInfo -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command gets the registration information for the Automation account named AutomationAccount01 in the Resource Group named ResourceGroup01.
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: E53D5040-C1E8-4DC1-8371-F41C00B666E3
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageaccount
 schema: 2.0.0
 ---
 
@@ -37,32 +37,33 @@ The **Get-AzStorageAccount** cmdlet gets a specified Storage account or all of t
 ## EXAMPLES
 
 ### Example 1: Get a specified Storage account
-```
-PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
+```powershell
+Get-AzStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```
 
 This command gets the specified Storage account.
 
 ### Example 2: Get all Storage accounts in a resource group
-```
-PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01"
+```powershell
+Get-AzStorageAccount -ResourceGroupName "RG01"
 ```
 
 This command gets all of the Storage accounts in a resource group.
 
 ### Example 3:  Get all Storage accounts in the subscription
-```
-PS C:\>Get-AzStorageAccount
+```powershell
+Get-AzStorageAccount
 ```
 
 This command gets all of the Storage accounts in the subscription.
 
 ### Example 4:  Get a Storage accounts with its blob restore status
+```powershell
+$account = Get-AzStorageAccount -ResourceGroupName "myresourcegoup" -Name "mystorageaccount" -IncludeBlobRestoreStatus
+
+$account.BlobRestoreStatus
 ```
-PS C:\> $account = Get-AzStorageAccount -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -IncludeBlobRestoreStatus
-
-PS C:\> $account.BlobRestoreStatus
-
+```output
 Status     RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges                 
 ------     ---------                            ------------- ------------------------     ---------------------                 
 InProgress a70cd4a1-f223-4c86-959f-cc13eb4795a8               2020-02-10T13:45:04.7155962Z [container1/blob1 -> container2/blob2]

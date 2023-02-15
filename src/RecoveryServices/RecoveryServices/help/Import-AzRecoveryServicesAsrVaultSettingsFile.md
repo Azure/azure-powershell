@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/import-azrecoveryservicesasrvaultsettingsfile
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/import-azrecoveryservicesasrvaultsettingsfile
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Import-AzRecoveryServicesAsrVaultSettingsFile** cmdlet imports the Azure S
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $VaultSettings = Import-AzRecoveryServicesAsrVaultSettingsFile -Path $FilePath
+```powershell
+$VaultSettings = Import-AzRecoveryServicesAsrVaultSettingsFile -Path $FilePath
 ```
 
 Imports the specified Recovery Services vault settings file and returns settings of the imported vault.

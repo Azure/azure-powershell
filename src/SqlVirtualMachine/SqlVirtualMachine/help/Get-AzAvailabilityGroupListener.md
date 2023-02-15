@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/powershell/module/az.sqlvirtualmachine/get-azavailabilitygrouplistener
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/get-azavailabilitygrouplistener
 schema: 2.0.0
 ---
 
@@ -37,37 +37,40 @@ The Get-AzAvailabilityGroupListener gets one or more Availability Group Listener
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -Name AgListener01
+Get-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -Name AgListener01
 ```
 
+```output
 Name         ResourceGroupName GroupName    AvailabilityGroupName
 ----         ----------------- ---------    ---------------------
 AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
-
+```
 This command gets information about the Availability Group Listener AgListener01 in the SQL Virtual Machine Group SqlVmGroup01 and Resource Group ResourceGroup01.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01
+Get-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01
 ```
 
+```output
 Name         ResourceGroupName GroupName    AvailabilityGroupName
 ----         ----------------- ---------    ---------------------
 AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
 AgListener02 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
-
+```
 This command gets information about all Availability Group Listeners in the SQL Virtual Machine Group SqlVmGroup01 and Resource Group ResourceGroup01.
 
 ### Example 3
 ```powershell
-PS C:\> $SqlVmGroupObject = Get-AzSqlVMGroup -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01
-PS C:\> Get-AzAvailabilityGroupListener -Name AgListener01 -SqlVMGroupObject $SqlVmGroupObject
+$SqlVmGroupObject = Get-AzSqlVMGroup -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01
+Get-AzAvailabilityGroupListener -Name AgListener01 -SqlVMGroupObject $SqlVmGroupObject
 ```
 
+```output
 Name         ResourceGroupName GroupName    AvailabilityGroupName
 ----         ----------------- ---------    ---------------------
 AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
-
+```
 ## PARAMETERS
 
 ### -DefaultProfile

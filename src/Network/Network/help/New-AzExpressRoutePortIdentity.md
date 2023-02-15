@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azexpressrouteportidentity
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azexpressrouteportidentity
 schema: 2.0.0
 ---
 
@@ -23,10 +23,10 @@ The **New-AzExpressRoutePortIdentity** cmdlet creates a local Azure ExpressRoute
 
 ### Example 1
 ```powershell
-PS C:\> $parameters = @{
+$parameters = @{
     UserAssignedIdentityId='/subscriptions/<SubId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityName>'
 	}
-PS C:\> New-AzExpressRoutePortIdentity @parameters
+New-AzExpressRoutePortIdentity @parameters
 ```
 
 ## PARAMETERS

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ManagedServices
-online version: https://docs.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleApproverObject
+online version: https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleApproverObject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Create an in-memory object for EligibleApprover.
 
 ### Example 1: Creates Azure Lighthouse eligible authorization approver object
 ```powershell
-PS C:\>  New-AzManagedServicesEligibleApproverObject -PrincipalId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -PrincipalIdDisplayName "Approvers group"
+New-AzManagedServicesEligibleApproverObject -PrincipalId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -PrincipalIdDisplayName "Approvers group"
+```
 
+```output
 PrincipalId                          PrincipalIdDisplayName
 -----------                          ----------------------
 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Approvers group

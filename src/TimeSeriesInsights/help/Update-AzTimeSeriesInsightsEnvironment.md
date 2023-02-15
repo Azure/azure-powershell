@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.TimeSeriesInsights
-online version: https://docs.microsoft.com/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsenvironment
+online version: https://learn.microsoft.com/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsenvironment
 schema: 2.0.0
 ---
 
@@ -31,8 +31,9 @@ Updates the environment with the specified name in the specified subscription an
 
 ### Example 1: Update a Gen1 time series insights environment
 ```powershell
-PS C:\> Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Tag @{'key1'='val1'}
-
+Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Tag @{'key1'='val1'}
+```
+```output
 DataAccessFqdn               : b6d113a4-0865-405f-b09e-ad4355b5d046.env.timeseries.azure.com
 DataAccessId                 : b6d113a4-0865-405f-b09e-ad4355b5d046
 DataRetentionTime            : 1.01:25:00
@@ -60,9 +61,10 @@ This command updates a Gen1 time series insights environment.
 
 ### Example 2:  Update a Gen1 time series insights environment
 ```powershell
-PS C:\> $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001
-PS C:\> Update-AzTimeSeriesInsightsEnvironment -InputObject $env -Tag @{'key2'='val2'}
-
+$env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001
+Update-AzTimeSeriesInsightsEnvironment -InputObject $env -Tag @{'key2'='val2'}
+```
+```output
 DataAccessFqdn               : b6d113a4-0865-405f-b09e-ad4355b5d046.env.timeseries.azure.com
 DataAccessId                 : b6d113a4-0865-405f-b09e-ad4355b5d046
 DataRetentionTime            : 1.01:25:00
@@ -262,7 +264,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
+INPUTOBJECT `<ITimeSeriesInsightsIdentity>`: Identity Parameter
   - `[AccessPolicyName <String>]`: Name of the access policy.
   - `[EnvironmentName <String>]`: Name of the environment
   - `[EventSourceName <String>]`: The name of the Time Series Insights event source associated with the specified environment.

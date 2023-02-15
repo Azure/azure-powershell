@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 428BC568-A305-49AD-B6B8-B1BB5E9B822B
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/remove-azdatafactorydataset
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/remove-azdatafactorydataset
 schema: 2.0.0
 ---
 
@@ -31,8 +31,11 @@ The **Remove-AzDataFactoryDataset** cmdlet removes a dataset from Azure Data Fac
 ## EXAMPLES
 
 ### Example 1: Remove a dataset
+```powershell
+Remove-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikiAggregatedData"
 ```
-PS C:\>Remove-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikiAggregatedData"
+
+```output
 Confirm
 Are you sure you want to remove dataset 'DAWikiAggregatedData' in data factory 'WikiADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

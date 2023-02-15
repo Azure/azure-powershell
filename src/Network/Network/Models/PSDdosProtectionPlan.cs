@@ -26,10 +26,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSResourceId> VirtualNetworks { get; set; }
 
+        public List<PSResourceId> PublicIPAddresses { get; set; }
+
         [JsonIgnore]
         public string VirtualNetworksText
         {
             get { return JsonConvert.SerializeObject(VirtualNetworks, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PublicIPAddressesText
+        {
+            get { return JsonConvert.SerializeObject(PublicIPAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

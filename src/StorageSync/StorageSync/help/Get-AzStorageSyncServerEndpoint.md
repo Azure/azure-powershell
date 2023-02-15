@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/powershell/module/Az.storagesync/get-Azstoragesyncserverendpoint
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/get-Azstoragesyncserverendpoint
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ This command lists all server endpoints within a given sync group. It can be use
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName"
+Get-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName"
 ```
 
 This command gets all server endpoints contained within the specified sync group. Specify -ServerEndpointName to return a specific one.

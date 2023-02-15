@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CustomProviders
-online version: https://docs.microsoft.com/powershell/module/az.customproviders/get-azcustomprovider
+online version: https://learn.microsoft.com/powershell/module/az.customproviders/get-azcustomprovider
 schema: 2.0.0
 ---
 
@@ -41,8 +41,10 @@ Gets the custom resource provider manifest.
 
 ### Example 1: List all Custom Providers in a subscription
 ```powershell
-PS C:\> Get-AzCustomProvider
+Get-AzCustomProvider
+```
 
+```output
 Location  Name             Type
 --------  ----             ----
 West US 2 Namespace.Type   Microsoft.CustomProviders/resourceproviders
@@ -53,8 +55,10 @@ Lists all the custom providers in a subscription
 
 ### Example 2: Get a single custom provider
 ```powershell
-PS C:\> Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type | Format-List
+Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type | Format-List
+```
 
+```output
 Action            :
 Id                : /subscriptions/xxxxx-yyyyy-xxxx-yyyy/resourceGroups/mc-cp01/providers/Microsoft.CustomProviders/resourceproviders/Namespace.Type
 Location          : West US 2
@@ -170,7 +174,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
+INPUTOBJECT `<ICustomProvidersIdentity>`: Identity Parameter
   - `[AssociationName <String>]`: The name of the association.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.

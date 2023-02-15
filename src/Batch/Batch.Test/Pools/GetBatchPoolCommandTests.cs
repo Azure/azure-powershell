@@ -57,8 +57,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
             cmdlet.Filter = null;
 
+            // Pool returned in the response
+            ProxyModels.CloudPool pool = new ProxyModels.CloudPool();
+            pool.Id = cmdlet.Id;
+            pool.TaskSlotsPerNode = 16;
+
             // Build a CloudPool instead of querying the service on a Get CloudPool call
-            AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> response = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
+            AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> response = BatchTestHelpers.CreateCloudPoolGetResponse(pool);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
                 ProxyModels.PoolGetOptions,
                 AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>>(response);
@@ -74,6 +79,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Verify that the cmdlet wrote the pool returned from the OM to the pipeline
             Assert.Single(pipeline);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
+            Assert.Equal(16, pipeline[0].TaskSlotsPerNode);
         }
 
         [Fact]

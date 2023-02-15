@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.dll-Help.xml
 Module Name: Az.AnalysisServices
-online version: https://docs.microsoft.com/powershell/module/az.analysisservices/get-azanalysisservicesserver
+online version: https://learn.microsoft.com/powershell/module/az.analysisservices/get-azanalysisservicesserver
 schema: 2.0.0
 ---
 
@@ -23,15 +23,15 @@ The Get-AzAnalysisServicesServer cmdlet gets the details of an Analysis Services
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Get-AzAnalysisServicesServer -ResourceGroupName "ResourceGroup03"
+```powershell
+Get-AzAnalysisServicesServer -ResourceGroupName "ResourceGroup03"
 ```
 
 This command gets all Azure Analysis Services servers in the resource group named ResourceGroup03.
 
 ### Example 2: Get a server
-```
-PS C:\>Get-AzAnalysisServicesServer -ResourceGroupName "ResourceGroup03" -Name "testserver"
+```powershell
+Get-AzAnalysisServicesServer -ResourceGroupName "ResourceGroup03" -Name "testserver"
 ```
 
 This command gets the Azure Analysis Services server named testserver in the resource group named ResourceGroup03.

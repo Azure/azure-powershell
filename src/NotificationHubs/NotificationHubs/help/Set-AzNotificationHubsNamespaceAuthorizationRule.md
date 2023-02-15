@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: F0981A7A-1B17-4141-A267-927E5B78BE5F
-online version: https://docs.microsoft.com/powershell/module/az.notificationhubs/set-aznotificationhubsnamespaceauthorizationrule
+online version: https://learn.microsoft.com/powershell/module/az.notificationhubs/set-aznotificationhubsnamespaceauthorizationrule
 schema: 2.0.0
 ---
 
@@ -49,8 +49,8 @@ When used in conjunction with the **Set-AzNotificationHubsNamespaceAuthorization
 ## EXAMPLES
 
 ### Example 1: Modify an authorization rule assigned to a namespace
-```
-PS C:\>Set-AzNotificationHubsNamespaceAuthorizationRule -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationGroup" -InputFile "C:\Configuration\AuthorizationRules.json"
+```powershell
+Set-AzNotificationHubsNamespaceAuthorizationRule -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationGroup" -InputFile "C:\Configuration\AuthorizationRules.json"
 ```
 
 This command modifies an authorization rule assigned to the namespace named ContosoNamespace.

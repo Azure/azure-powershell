@@ -1,0 +1,140 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/providers/Microsoft.Security/automations?api-version=2019-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDNiNjAxZjEtN2VjYS00NDk2LThmOGQtMzU1MjE5ZWVlMjU0L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvYXV0b21hdGlvbnM/YXBpLXZlcnNpb249MjAxOS0wMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "819908ea-10fb-4ad6-aab0-9da8381900ce"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.16002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "99"
+        ],
+        "api-supported-versions": [
+          "2019-01-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "78ceb54b-08e6-4cd7-acc4-6b87ee958560"
+        ],
+        "x-ms-correlation-request-id": [
+          "78ceb54b-08e6-4cd7-acc4-6b87ee958560"
+        ],
+        "x-ms-routing-request-id": [
+          "GERMANYWESTCENTRAL:20220414T142627Z:78ceb54b-08e6-4cd7-acc4-6b87ee958560"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 14 Apr 2022 14:26:27 GMT"
+        ],
+        "Content-Length": [
+          "4275"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"description\": \"\",\r\n        \"isEnabled\": true,\r\n        \"metadata\": {\r\n          \"createdDateTimeUtc\": \"2022-04-12T21:49:21.5823298Z\",\r\n          \"createdBy\": \"dc6a9278-25c3-47fc-98da-51506fa32469\",\r\n          \"lastUpdatedDateTimeUtc\": \"2022-04-14T14:26:15.7699929Z\",\r\n          \"lastUpdatedBy\": \"293d7dce-b44a-40ff-a6f1-263cabed1d1e\"\r\n        },\r\n        \"scopes\": [\r\n          {\r\n            \"description\": \"scope for subscription 03b601f1-7eca-4496-8f8d-355219eee254\",\r\n            \"scopePath\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254\"\r\n          }\r\n        ],\r\n        \"sources\": [\r\n          {\r\n            \"eventSource\": \"Assessments\",\r\n            \"ruleSets\": [\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"type\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"Microsoft.Security/assessments\",\r\n                    \"operator\": \"Contains\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"eventSource\": \"AssessmentsSnapshot\",\r\n            \"ruleSets\": [\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"type\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"Microsoft.Security/assessments\",\r\n                    \"operator\": \"Contains\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"eventSource\": \"SubAssessments\"\r\n          },\r\n          {\r\n            \"eventSource\": \"SubAssessmentsSnapshot\"\r\n          },\r\n          {\r\n            \"eventSource\": \"Alerts\",\r\n            \"ruleSets\": [\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"Severity\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"low\",\r\n                    \"operator\": \"Equals\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"Severity\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"medium\",\r\n                    \"operator\": \"Equals\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"Severity\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"high\",\r\n                    \"operator\": \"Equals\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"Severity\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"informational\",\r\n                    \"operator\": \"Equals\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"eventSource\": \"SecureScores\"\r\n          },\r\n          {\r\n            \"eventSource\": \"SecureScoresSnapshot\"\r\n          },\r\n          {\r\n            \"eventSource\": \"SecureScoreControls\"\r\n          },\r\n          {\r\n            \"eventSource\": \"SecureScoreControlsSnapshot\"\r\n          },\r\n          {\r\n            \"eventSource\": \"RegulatoryComplianceAssessment\"\r\n          },\r\n          {\r\n            \"eventSource\": \"RegulatoryComplianceAssessmentSnapshot\"\r\n          }\r\n        ],\r\n        \"actions\": [\r\n          {\r\n            \"workspaceResourceId\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/rgsurashed2/providers/microsoft.operationalinsights/workspaces/surashedwc1\",\r\n            \"actionType\": \"Workspace\"\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/Sample-RG/providers/Microsoft.Security/automations/ExportToWorkspace\",\r\n      \"name\": \"ExportToWorkspace\",\r\n      \"type\": \"Microsoft.Security/automations\",\r\n      \"etag\": \"\\\"6f004471-0000-0d00-0000-62582f070000\\\"\",\r\n      \"location\": \"australiaeast\",\r\n      \"tags\": {\r\n        \"key1\": \"value1\"\r\n      }\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"description\": \"\",\r\n        \"isEnabled\": true,\r\n        \"metadata\": {\r\n          \"createdDateTimeUtc\": \"2022-04-12T21:50:56.5605427Z\",\r\n          \"createdBy\": \"293d7dce-b44a-40ff-a6f1-263cabed1d1e\",\r\n          \"lastUpdatedDateTimeUtc\": \"2022-04-14T14:25:39.5035293Z\",\r\n          \"lastUpdatedBy\": \"293d7dce-b44a-40ff-a6f1-263cabed1d1e\"\r\n        },\r\n        \"scopes\": [\r\n          {\r\n            \"description\": \"scope for subscription 03b601f1-7eca-4496-8f8d-355219eee254\",\r\n            \"scopePath\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254\"\r\n          }\r\n        ],\r\n        \"sources\": [\r\n          {\r\n            \"eventSource\": \"Assessments\",\r\n            \"ruleSets\": [\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"type\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"Microsoft.Security/assessments\",\r\n                    \"operator\": \"Contains\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"eventSource\": \"AssessmentsSnapshot\",\r\n            \"ruleSets\": [\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"type\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"Microsoft.Security/assessments\",\r\n                    \"operator\": \"Contains\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"eventSource\": \"SubAssessments\"\r\n          },\r\n          {\r\n            \"eventSource\": \"SubAssessmentsSnapshot\"\r\n          },\r\n          {\r\n            \"eventSource\": \"Alerts\",\r\n            \"ruleSets\": [\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"Severity\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"low\",\r\n                    \"operator\": \"Equals\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"Severity\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"medium\",\r\n                    \"operator\": \"Equals\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"Severity\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"high\",\r\n                    \"operator\": \"Equals\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"rules\": [\r\n                  {\r\n                    \"propertyJPath\": \"Severity\",\r\n                    \"propertyType\": \"String\",\r\n                    \"expectedValue\": \"informational\",\r\n                    \"operator\": \"Equals\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"eventSource\": \"SecureScores\"\r\n          },\r\n          {\r\n            \"eventSource\": \"SecureScoresSnapshot\"\r\n          },\r\n          {\r\n            \"eventSource\": \"SecureScoreControls\"\r\n          },\r\n          {\r\n            \"eventSource\": \"SecureScoreControlsSnapshot\"\r\n          },\r\n          {\r\n            \"eventSource\": \"RegulatoryComplianceAssessment\"\r\n          },\r\n          {\r\n            \"eventSource\": \"RegulatoryComplianceAssessmentSnapshot\"\r\n          }\r\n        ],\r\n        \"actions\": [\r\n          {\r\n            \"workspaceResourceId\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/rgsurashed2/providers/microsoft.operationalinsights/workspaces/surashedwc1\",\r\n            \"actionType\": \"Workspace\"\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/Sample-RG/providers/Microsoft.Security/automations/sampleAutomation@\",\r\n      \"name\": \"sampleAutomation@\",\r\n      \"type\": \"Microsoft.Security/automations\",\r\n      \"etag\": \"\\\"6f002769-0000-0d00-0000-62582ee30000\\\"\",\r\n      \"location\": \"centralus\",\r\n      \"tags\": {\r\n        \"key1\": \"value1\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/Sample-RG/providers/Microsoft.Security/automations/ExportToWorkspace?api-version=2019-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDNiNjAxZjEtN2VjYS00NDk2LThmOGQtMzU1MjE5ZWVlMjU0L3Jlc291cmNlR3JvdXBzL1NhbXBsZS1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LlNlY3VyaXR5L2F1dG9tYXRpb25zL0V4cG9ydFRvV29ya3NwYWNlP2FwaS12ZXJzaW9uPTIwMTktMDEtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6d6acef3-993c-4db3-8208-46df677a8e7f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.16002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "98"
+        ],
+        "api-supported-versions": [
+          "2019-01-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "6d6807da-3deb-4ff0-ad46-18a3a2d27c09"
+        ],
+        "x-ms-correlation-request-id": [
+          "6d6807da-3deb-4ff0-ad46-18a3a2d27c09"
+        ],
+        "x-ms-routing-request-id": [
+          "GERMANYWESTCENTRAL:20220414T142627Z:6d6807da-3deb-4ff0-ad46-18a3a2d27c09"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 14 Apr 2022 14:26:27 GMT"
+        ],
+        "Content-Length": [
+          "2133"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"description\": \"\",\r\n    \"isEnabled\": true,\r\n    \"metadata\": {\r\n      \"createdDateTimeUtc\": \"2022-04-12T21:49:21.5823298Z\",\r\n      \"createdBy\": \"dc6a9278-25c3-47fc-98da-51506fa32469\",\r\n      \"lastUpdatedDateTimeUtc\": \"2022-04-14T14:26:15.7699929Z\",\r\n      \"lastUpdatedBy\": \"293d7dce-b44a-40ff-a6f1-263cabed1d1e\"\r\n    },\r\n    \"scopes\": [\r\n      {\r\n        \"description\": \"scope for subscription 03b601f1-7eca-4496-8f8d-355219eee254\",\r\n        \"scopePath\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254\"\r\n      }\r\n    ],\r\n    \"sources\": [\r\n      {\r\n        \"eventSource\": \"Assessments\",\r\n        \"ruleSets\": [\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"type\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"Microsoft.Security/assessments\",\r\n                \"operator\": \"Contains\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"eventSource\": \"AssessmentsSnapshot\",\r\n        \"ruleSets\": [\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"type\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"Microsoft.Security/assessments\",\r\n                \"operator\": \"Contains\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"eventSource\": \"SubAssessments\"\r\n      },\r\n      {\r\n        \"eventSource\": \"SubAssessmentsSnapshot\"\r\n      },\r\n      {\r\n        \"eventSource\": \"Alerts\",\r\n        \"ruleSets\": [\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"Severity\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"low\",\r\n                \"operator\": \"Equals\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"Severity\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"medium\",\r\n                \"operator\": \"Equals\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"Severity\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"high\",\r\n                \"operator\": \"Equals\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"rules\": [\r\n              {\r\n                \"propertyJPath\": \"Severity\",\r\n                \"propertyType\": \"String\",\r\n                \"expectedValue\": \"informational\",\r\n                \"operator\": \"Equals\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"eventSource\": \"SecureScores\"\r\n      },\r\n      {\r\n        \"eventSource\": \"SecureScoresSnapshot\"\r\n      },\r\n      {\r\n        \"eventSource\": \"SecureScoreControls\"\r\n      },\r\n      {\r\n        \"eventSource\": \"SecureScoreControlsSnapshot\"\r\n      },\r\n      {\r\n        \"eventSource\": \"RegulatoryComplianceAssessment\"\r\n      },\r\n      {\r\n        \"eventSource\": \"RegulatoryComplianceAssessmentSnapshot\"\r\n      }\r\n    ],\r\n    \"actions\": [\r\n      {\r\n        \"workspaceResourceId\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/rgsurashed2/providers/microsoft.operationalinsights/workspaces/surashedwc1\",\r\n        \"actionType\": \"Workspace\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourcegroups/Sample-RG/providers/Microsoft.Security/automations/ExportToWorkspace\",\r\n  \"name\": \"ExportToWorkspace\",\r\n  \"type\": \"Microsoft.Security/automations\",\r\n  \"etag\": \"\\\"6f004471-0000-0d00-0000-62582f070000\\\"\",\r\n  \"location\": \"australiaeast\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "03b601f1-7eca-4496-8f8d-355219eee254"
+  }
+}

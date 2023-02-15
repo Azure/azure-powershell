@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 11D5BFDF-5E5D-46B2-9F9B-A0524EFA1B42
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
@@ -45,9 +45,10 @@ If you do not specify the *ResourceGroupName* parameter, this cmdlet gets all Co
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locati
-on 'WestUS'
+New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Location 'WestUS'
+```
 
+```output
 ResourceGroupName : cognitive-services-resource-group
 AccountName       : myluis
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog

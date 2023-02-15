@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 7100B5F0-A07B-4305-BF80-1F52647A03AB
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryrun
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryrun
 schema: 2.0.0
 ---
 
@@ -46,8 +46,11 @@ LatencyStatus :
 ## EXAMPLES
 
 ### Example 1: Get a dataset
+```powershell
+Get-AzDataFactoryRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z
 ```
-PS C:\>Get-AzDataFactoryRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z
+
+```output
 Id                  : a7c4913c-9623-49b3-ae1e-3e45e2b68819
 ResourceGroupName   : ADF
 DataFactoryName     : WikiADF

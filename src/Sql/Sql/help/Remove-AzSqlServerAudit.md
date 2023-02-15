@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/powershell/module/az.sql/Remove-AzSqlServerAudit
+online version: https://learn.microsoft.com/powershell/module/az.sql/Remove-AzSqlServerAudit
 schema: 2.0.0
 ---
 
@@ -32,13 +32,13 @@ Specify the *ResourceGroupName* and *ServerName* parameters to identify the serv
 ## EXAMPLES
 
 ### Example 1: Remove the auditing settings of an Azure SQL server
-```
-PS C:\>Remove-AzSqlServerAudit -ResourceGroupName "resourcegroup01" -ServerName "server01"
+```powershell
+Remove-AzSqlServerAudit -ResourceGroupName "resourcegroup01" -ServerName "server01"
 ```
 
 ### Example 2: Remove, through pipeline, the auditing settings of an Azure SQL server
-```
-PS C:\> Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Remove-AzSqlServerAudit
+```powershell
+Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Remove-AzSqlServerAudit
 ```
 
 ## PARAMETERS

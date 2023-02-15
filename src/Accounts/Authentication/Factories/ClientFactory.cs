@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
+
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -77,6 +78,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             List<Type> types = new List<Type>();
             List<object> parameterList = new List<object>();
             List<DelegatingHandler> handlerList = new List<DelegatingHandler> { DefaultCancelRetryHandler.Clone() as CancelRetryHandler};
+            if (parameters.FirstOrDefault(parameter => parameter is IClaimsChallengeProcessor) is IClaimsChallengeProcessor claimsChallengeProcessor)
+            {
+                handlerList.Add(new ClaimsChallengeHandler(claimsChallengeProcessor));
+            }
+
             var customHandlers = GetCustomHandlers();
             if (customHandlers != null && customHandlers.Any())
             {
@@ -454,7 +460,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public void RemoveUserAgent(string name)
         {
-            name = GetProductInfoHeaderKey(name);
             if (_userAgents != null && _userAgents.Keys != null)
             {
                 var agents = _userAgents.Keys.Where((k) => k.Product != null && string.Equals(k.Product.Name, name, StringComparison.OrdinalIgnoreCase));

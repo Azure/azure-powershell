@@ -447,7 +447,7 @@ function Get-WorkspaceEncryptionTestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
-              location = "canadacentral";
+              location = "eastus";
               encryptionKeyIdentifier = "<your-encryptionKeyIdentifier>";
 		}
 }
@@ -516,7 +516,7 @@ function Get-WorkspaceTestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
-              location = "canadacentral";
+              location = "eastus";
 		}
 }
 

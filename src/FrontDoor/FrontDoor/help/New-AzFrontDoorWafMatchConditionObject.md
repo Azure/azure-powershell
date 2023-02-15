@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject
 schema: 2.0.0
 ---
 
@@ -25,9 +25,10 @@ Create MatchCondition Object for WAF policy creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "Windows"
+New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "Windows"
+```
 
-
+```output
 MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
 ------------- ---------------- ---------- --------   --------------- ---------
 RequestHeader Contains         {Windows}  User-Agent           False
@@ -35,9 +36,10 @@ RequestHeader Contains         {Windows}  User-Agent           False
 
 ### Example 2
 ```powershell
-PS C:\> New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "WINDOWS" -Transform Uppercase
+New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "WINDOWS" -Transform Uppercase
+```
 
-
+```output
 MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
 ------------- ---------------- ---------- --------   --------------- ---------
 RequestHeader Contains         {WINDOWS}  User-Agent           False {Uppercase}

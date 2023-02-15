@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azcapacityreservationgroup
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azcapacityreservationgroup
 schema: 2.0.0
 ---
 
@@ -31,14 +31,14 @@ The **Get-AzCapacityReservationGroup** cmdlet gets the properties of Capacity Re
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name "CRGroup1" -InstanceView
+Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name "CRGroup1" -InstanceView
 ```
 
 This will retrieve the Capacity Reservation Group named "CRGroup1" with its instance view information.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzCapacityReservationGroup -ResourceGroupName $rgname
+Get-AzCapacityReservationGroup -ResourceGroupName $rgname
 ```
 
 This will retrieve all the Capacity Reservation Groups' information from resource group.

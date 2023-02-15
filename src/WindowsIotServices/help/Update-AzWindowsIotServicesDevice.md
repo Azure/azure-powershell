@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.WindowsIotServices
-online version: https://docs.microsoft.com/powershell/module/az.windowsiotservices/update-azwindowsiotservicesdevice
+online version: https://learn.microsoft.com/powershell/module/az.windowsiotservices/update-azwindowsiotservicesdevice
 schema: 2.0.0
 ---
 
@@ -37,8 +37,9 @@ The usual pattern to modify a property is to retrieve the Windows IoT Device Ser
 
 ### Example 1: Update a Windows IoT services by name
 ```powershell
-PS C:\> Update-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test -Quantity 10
-
+Update-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test -Quantity 10
+```
+```output
 Location Name    Type                                Etag
 -------- ----    ----                                ----
 eastus   wsi-t03 Microsoft.WindowsIoT/DeviceServices "5d006a5c-0000-0700-0000-5faa46760000"
@@ -48,8 +49,9 @@ This command updates a Windows IoT services by name.
 
 ### Example 2: Update a Windows IoT services by pipeline
 ```powershell
-PS C:\> Get-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test | Update-AzWindowsIotServicesDevice-Quantity 100 -Tag @{'oper'='update'}
-
+Get-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test | Update-AzWindowsIotServicesDevice -Quantity 100 -Tag @{'oper'='update'}
+```
+```output
 Location Name    Type                                Etag
 -------- ----    ----                                ----
 West US  wsi-t01 Microsoft.WindowsIoT/DeviceServices "5d005f5f-0000-0700-0000-5faa46ae0000"
@@ -309,7 +311,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWindowsIotServicesIdentity>: Identity Parameter
+INPUTOBJECT `<IWindowsIotServicesIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the Windows IoT Device Service.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the Windows IoT Device Service.

@@ -1,7 +1,9 @@
 ### Example 1: Get the usage of the location
 ```powershell
-PS C:\> Get-AzContainerInstanceUsage -Location eastus
+Get-AzContainerInstanceUsage -Location eastus
+```
 
+```output
 CurrentValue Limit Unit
 ------------ ----- ----
 9            100   Count

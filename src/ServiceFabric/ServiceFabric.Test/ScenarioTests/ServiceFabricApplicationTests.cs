@@ -13,24 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 {
-    public class ServiceFabricApplicationTests : RMTestBase
+    public class ServiceFabricApplicationTests : ServiceFabricTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ServiceFabricApplicationTests(ITestOutputHelper output)
+        public ServiceFabricApplicationTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-
-            ServiceFabricManagedCmdletBase.WriteVerboseIntervalInSec = 0;
+            ServiceFabricCommonCmdletBase.WriteVerboseIntervalInSec = 0;
             ServiceFabricCmdletBase.RunningTest = true;
         }
 
@@ -38,28 +31,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAppType()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-AppType");
+            TestRunner.RunTestScript("Test-AppType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAppTypeVersion()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-AppTypeVersion");
+            TestRunner.RunTestScript("Test-AppTypeVersion");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApp()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-App");
+            TestRunner.RunTestScript("Test-App");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestService()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-Service");
+            TestRunner.RunTestScript("Test-Service");
         }
     }
 }

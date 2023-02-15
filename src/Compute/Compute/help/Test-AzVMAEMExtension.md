@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 67AED9B8-AE3D-47E5-813C-9B46E11AE46C
-online version: https://docs.microsoft.com/powershell/module/az.compute/test-azvmaemextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/test-azvmaemextension
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ This cmdlet checks whether performance data is available.
 ## EXAMPLES
 
 ### Example 1: Check the configuration of the AEM extension
-```
-PS C:\> Test-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
+```powershell
+Test-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 
 This command checks the configuration of the AEM extension for the virtual machine named contoso-server.

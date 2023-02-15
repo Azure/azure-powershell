@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 368DD95E-EA25-4FC4-8171-CB7348FE480C
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ Warning: This cmdlet is being deprecated in a future breaking change release. Th
 ### Example 1
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> Set-AzRecoveryServicesVaultContext -Vault $vault
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+Set-AzRecoveryServicesVaultContext -Vault $vault
 ```
 
 Sets vault context.

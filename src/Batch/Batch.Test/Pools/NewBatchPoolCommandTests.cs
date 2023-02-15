@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.BatchContext = context;
 
             cmdlet.Id = "testPool";
-            cmdlet.ApplicationLicenses = new List<string>() { "foo", "bar"};
+            cmdlet.ApplicationLicenses = new List<string>() { "foo", "bar" };
             cmdlet.CertificateReferences = new PSCertificateReference[]
             {
                 new PSCertificateReference()
@@ -93,18 +93,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.CloudServiceConfiguration = new PSCloudServiceConfiguration("4", "*");
             cmdlet.DisplayName = "display name";
             cmdlet.InterComputeNodeCommunicationEnabled = true;
-            cmdlet.MaxTasksPerComputeNode = 4;
-            cmdlet.Metadata = new Dictionary<string, string>();
-            cmdlet.Metadata.Add("meta1", "value1");
+            cmdlet.TaskSlotsPerNode = 4;
+            cmdlet.Metadata = new Dictionary<string, string> { { "meta1", "value1" } };
             cmdlet.ResizeTimeout = TimeSpan.FromMinutes(20);
             cmdlet.StartTask = new PSStartTask("cmd /c echo start task");
             cmdlet.TargetDedicatedComputeNodes = 3;
             cmdlet.TargetLowPriorityComputeNodes = 2;
+            cmdlet.TargetNodeCommunicationMode = Microsoft.Azure.Batch.Common.NodeCommunicationMode.Simplified;
             cmdlet.TaskSchedulingPolicy = new PSTaskSchedulingPolicy(Azure.Batch.Common.ComputeNodeFillType.Spread);
             cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
             cmdlet.VirtualMachineSize = "small";
-            cmdlet.MountConfiguration = new[] { new PSMountConfiguration(new PSAzureBlobFileSystemConfiguration("foo", "bar", "baz", AzureStorageAuthenticationKey.FromAccountKey("abc"))) };
-            
+            cmdlet.MountConfiguration = new[] {
+                new PSMountConfiguration(new PSAzureBlobFileSystemConfiguration("foo", "bar", "baz", AzureStorageAuthenticationKey.FromAccountKey("abc"))),
+                new PSMountConfiguration(new PSAzureBlobFileSystemConfiguration("foo2", "bar2", "baz2", new PSComputeNodeIdentityReference(new Azure.Batch.ComputeNodeIdentityReference { ResourceId = "fake-identity"})))
+            };
+
             PoolAddParameter requestParameters = null;
 
             // Store the request parameters
@@ -130,7 +133,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.CloudServiceConfiguration.OSVersion, requestParameters.CloudServiceConfiguration.OsVersion);
             Assert.Equal(cmdlet.DisplayName, requestParameters.DisplayName);
             Assert.Equal(cmdlet.InterComputeNodeCommunicationEnabled, requestParameters.EnableInterNodeCommunication);
-            Assert.Equal(cmdlet.MaxTasksPerComputeNode, requestParameters.MaxTasksPerNode);
+            Assert.Equal(cmdlet.TaskSlotsPerNode, requestParameters.TaskSlotsPerNode);
             Assert.Equal(cmdlet.Metadata.Count, requestParameters.Metadata.Count);
             Assert.Equal(cmdlet.Metadata["meta1"], requestParameters.Metadata[0].Value);
             Assert.Equal(cmdlet.ResizeTimeout, requestParameters.ResizeTimeout);
@@ -138,6 +141,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.TargetDedicatedComputeNodes, requestParameters.TargetDedicatedNodes);
             Assert.Equal(cmdlet.TargetLowPriorityComputeNodes, requestParameters.TargetLowPriorityNodes);
             Assert.Equal(cmdlet.TaskSchedulingPolicy.ComputeNodeFillType.ToString(), requestParameters.TaskSchedulingPolicy.NodeFillType.ToString());
+            Assert.Equal(cmdlet.TargetNodeCommunicationMode.ToString(), NodeCommunicationMode.Simplified.ToString());
             Assert.Equal(cmdlet.VirtualMachineConfiguration.NodeAgentSkuId, requestParameters.VirtualMachineConfiguration.NodeAgentSKUId);
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Publisher, requestParameters.VirtualMachineConfiguration.ImageReference.Publisher);
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Offer, requestParameters.VirtualMachineConfiguration.ImageReference.Offer);
@@ -147,6 +151,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountKey, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountKey);
             Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.ContainerName, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.ContainerName);
             Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.RelativeMountPath, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.RelativeMountPath);
+            Assert.Equal(cmdlet.MountConfiguration[1].AzureBlobFileSystemConfiguration.AccountName, requestParameters.MountConfiguration[1].AzureBlobFileSystemConfiguration.AccountName);
+            Assert.Equal(cmdlet.MountConfiguration[1].AzureBlobFileSystemConfiguration.IdentityReference.ResourceId, requestParameters.MountConfiguration[1].AzureBlobFileSystemConfiguration.IdentityReference.ResourceId);
+            Assert.Equal(cmdlet.MountConfiguration[1].AzureBlobFileSystemConfiguration.ContainerName, requestParameters.MountConfiguration[1].AzureBlobFileSystemConfiguration.ContainerName);
+            Assert.Equal(cmdlet.MountConfiguration[1].AzureBlobFileSystemConfiguration.RelativeMountPath, requestParameters.MountConfiguration[1].AzureBlobFileSystemConfiguration.RelativeMountPath);
         }
 
         [Fact]
@@ -196,7 +204,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.NetworkConfiguration = networkConfiguration;
 
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
-            
+
             string subnetId = null;
 
             Action<BatchRequest<
@@ -231,7 +239,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             PSUserAccount adminUser = new PSUserAccount("admin", "password1", Azure.Batch.Common.ElevationLevel.Admin);
             PSUserAccount nonAdminUser = new PSUserAccount("user2", "password2", Azure.Batch.Common.ElevationLevel.NonAdmin);
             PSUserAccount sshUser = new PSUserAccount("user3", "password3", linuxUserConfiguration: new PSLinuxUserConfiguration(uid: 1, gid: 2, sshPrivateKey: "my ssh key"));
-            cmdlet.UserAccount = new [] { adminUser, nonAdminUser, sshUser };
+            cmdlet.UserAccount = new[] { adminUser, nonAdminUser, sshUser };
 
             PoolAddParameter requestParameters = null;
 

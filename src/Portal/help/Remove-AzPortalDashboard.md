@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Portal
-online version: https://docs.microsoft.com/powershell/module/az.portal/remove-azportaldashboard
+online version: https://learn.microsoft.com/powershell/module/az.portal/remove-azportaldashboard
 schema: 2.0.0
 ---
 
@@ -31,14 +31,14 @@ Deletes the Dashboard.
 
 ### Example 1: Remove a Dashboard
 ```powershell
-PS C:\td\> Remove-AzPortalDashboard -ResourceGroupName my-rg -DashboardName dashbase02
+Remove-AzPortalDashboard -ResourceGroupName my-rg -DashboardName dashbase02
 ```
 
 Remove a Dashbaord using resource group name and dashboard name.
 
 ### Example 2: Remove a Dashboard using the pipeline
 ```powershell
-PS C:\> Get-AzPortalDashboard -ResourceGroupName my-rg -DashboardName dashbase02 | Remove-AzPortalDashboard
+Get-AzPortalDashboard -ResourceGroupName my-rg -DashboardName dashbase02 | Remove-AzPortalDashboard
 ```
 
 Remove the dashboard returned from a Get-AzDashboard call.
@@ -189,7 +189,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPortalIdentity>: Identity Parameter
+INPUTOBJECT `<IPortalIdentity>`: Identity Parameter
   - `[DashboardName <String>]`: The name of the dashboard.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.

@@ -13,23 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 {
-    public class ServiceFabricManagedClustersTests : RMTestBase
+    public class ServiceFabricManagedClustersTests : ServiceFabricTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ServiceFabricManagedClustersTests(ITestOutputHelper output)
+        public ServiceFabricManagedClustersTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-
             ServiceFabricCommonCmdletBase.WriteVerboseIntervalInSec = 0;
             ServiceFabricCmdletBase.RunningTest = true;
         }
@@ -38,21 +31,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateBasicCluster()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-CreateBasicCluster");
+            TestRunner.RunTestScript("Test-CreateBasicCluster");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNodeTypeOperations()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-NodeTypeOperations");
+            TestRunner.RunTestScript("Test-NodeTypeOperations");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCertAndExtension()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-CertAndExtension");
+            TestRunner.RunTestScript("Test-CertAndExtension");
         }
     }
 }

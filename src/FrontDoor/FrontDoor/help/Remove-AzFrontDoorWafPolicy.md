@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorwafpolicy
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
@@ -37,14 +37,14 @@ The **Remove-AzFrontDoorWafPolicy** cmdlet removes a WAF policy under the curren
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName
+Remove-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName
 ```
 
 Remove the WAF policy called $policyName in $resourceGroupName.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Remove-AzFrontDoorWafPolicy
+Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Remove-AzFrontDoorWafPolicy
 ```
 
 Remove all WAF policy in $resourceGroupName.

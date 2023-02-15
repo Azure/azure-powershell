@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
-online version: https://docs.microsoft.com/powershell/module/az.automation/start-azautomationdsccompilationjob
+online version: https://learn.microsoft.com/powershell/module/az.automation/start-azautomationdsccompilationjob
 schema: 2.0.0
 ---
 
@@ -26,9 +26,9 @@ The **Start-AzAutomationDscCompilationJob** cmdlet compiles an APS Desired State
 ## EXAMPLES
 
 ### Example 1: Compile an Azure DSC configuration in Automation
-```
-PS C:\>$Params = @{"StringParam"="Hello World";"IntegerParam"=32}
-PS C:\> Start-AzAutomationDscCompilationJob -ConfigurationName "Config01" -Parameters $Params -ResourceGroupName "ResourceGroup01"
+```powershell
+$Params = @{"StringParam"="Hello World";"IntegerParam"=32}
+Start-AzAutomationDscCompilationJob -ConfigurationName "Config01" -Parameters $Params -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command creates a dictionary of parameters, and stores them in the $Params variable.
@@ -36,15 +36,15 @@ The second command compiles the DSC configuration named Config01.
 The command includes the values in $Params for DSC configuration parameters.
 
 ### Example 2: Compile an Azure DSC configuration in Automation with a new Node Configuration build version.
-```
-PS C:\>$Params = @{"StringParam"="Hello World";"IntegerParam"=32}
-PS C:\> Start-AzAutomationDscCompilationJob -ConfigurationName "Config01" -Parameters $Params -ResourceGroupName "ResourceGroup01" -IncrementNodeConfigurationBuild
+```powershell
+$Params = @{"StringParam"="Hello World";"IntegerParam"=32}
+Start-AzAutomationDscCompilationJob -ConfigurationName "Config01" -Parameters $Params -ResourceGroupName "ResourceGroup01" -IncrementNodeConfigurationBuild
 ```
 
 Similar to the first example, the first command creates a dictionary of parameters, and stores them in the $Params variable.
 The second command compiles the DSC configuration named Config01.
 The command includes the values in $Params for DSC configuration parameters.
-It does not override the earlier existing Node Configuration by creating a new Node Configuration with the name Config01[<2>].<NodeName>. 
+It does not override the earlier existing Node Configuration by creating a new Node Configuration with the name `Config01[<2>].<NodeName>`. 
 The version number is incremented based on the existing version number already present.
 
 ## PARAMETERS
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrycredential
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrycredential
 schema: 2.0.0
 ---
 
@@ -38,8 +38,10 @@ The Update-AzContainerRegistryCredential cmdlet regenerates a login credential f
 
 ### Example 1: Regenerate a login credential for a container registry
 ```powershell
-PS C:\>Update-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -PasswordName "Password"
+Update-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -PasswordName "Password"
+```
 
+```output
 Username   Password                         Password2
 --------   --------                         ---------
 MyRegistry ++q/=K9+RH/+hwg2+3A=N+/w=J/12Ph9 //JRPkgxx+r+z/ztU=R//E==vum=pRKL

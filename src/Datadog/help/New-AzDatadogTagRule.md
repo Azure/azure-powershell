@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://docs.microsoft.com/powershell/module/az.datadog/new-azdatadogtagrule
+online version: https://learn.microsoft.com/powershell/module/az.datadog/new-azdatadogtagrule
 schema: 2.0.0
 ---
 
@@ -35,11 +35,13 @@ Create or update a tag rule set for a given monitor resource.
 
 ### Example 1: Create or update a tag rule set for a given monitor resource
 ```powershell
-PS C:\> $ftobjArray = @()
-PS C:\> $ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
-PS C:\> $ftobjArray += New-AzDatadogFilteringTagObject -Action "Exclude" -Value "Dev" -Name "Environment"
-PS C:\> New-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'test' -LogRuleFilteringTag $ftobjArray
+$ftobjArray = @()
+$ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
+$ftobjArray += New-AzDatadogFilteringTagObject -Action "Exclude" -Value "Dev" -Name "Environment"
+New-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'test' -LogRuleFilteringTag $ftobjArray
+```
 
+```output
 Name    Type
 ----    ----
 default microsoft.Datadog/monitors/tagrules
@@ -49,11 +51,13 @@ This command creates or updates a tag rule set for a given monitor resource.
 
 ### Example 2: Create or update a tag rule set for a given monitor resource by pipeline
 ```powershell
-PS C:\> $ftobjArray = @()
-PS C:\> $ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
-PS C:\> $ftobjArray += New-AzDatadogFilteringTagObject -Action "Exclude" -Value "Dev" -Name "Environment"
-PS C:\> Get-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'default' | New-AzDatadogTagRule -LogRuleFilteringTag $ftobjArray
+$ftobjArray = @()
+$ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
+$ftobjArray += New-AzDatadogFilteringTagObject -Action "Exclude" -Value "Dev" -Name "Environment"
+Get-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'default' | New-AzDatadogTagRule -LogRuleFilteringTag $ftobjArray
+```
 
+```output
 Name    Type
 ----    ----
 default microsoft.Datadog/monitors/tagrules
@@ -290,7 +294,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatadogIdentity>: Identity Parameter
+INPUTOBJECT `<IDatadogIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

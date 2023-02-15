@@ -71,6 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
             {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
             {_oSVersionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("osVersionName"), out var __jsonOSVersionName) ? (string)__jsonOSVersionName : (string)OSVersionName;}
             {_oSFamilyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("osFamilyName"), out var __jsonOSFamilyName) ? (string)__jsonOSFamilyName : (string)OSFamilyName;}
+            {_networkInterfaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("networkInterfaceName"), out var __jsonNetworkInterfaceName) ? (string)__jsonNetworkInterfaceName : (string)NetworkInterfaceName;}
+            {_iPConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("ipConfigurationName"), out var __jsonIPConfigurationName) ? (string)__jsonIPConfigurationName : (string)IPConfigurationName;}
+            {_publicIPAddressName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("publicIpAddressName"), out var __jsonPublicIPAddressName) ? (string)__jsonPublicIPAddressName : (string)PublicIPAddressName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
@@ -115,6 +118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
             AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
             AddIf( null != (((object)this._oSVersionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._oSVersionName.ToString()) : null, "osVersionName" ,container.Add );
             AddIf( null != (((object)this._oSFamilyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._oSFamilyName.ToString()) : null, "osFamilyName" ,container.Add );
+            AddIf( null != (((object)this._networkInterfaceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._networkInterfaceName.ToString()) : null, "networkInterfaceName" ,container.Add );
+            AddIf( null != (((object)this._iPConfigurationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._iPConfigurationName.ToString()) : null, "ipConfigurationName" ,container.Add );
+            AddIf( null != (((object)this._publicIPAddressName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._publicIPAddressName.ToString()) : null, "publicIpAddressName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

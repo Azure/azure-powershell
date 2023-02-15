@@ -20,114 +20,16 @@ Gets the location where a function app for the given os and plan type is availab
 .Description
 Gets the location where a function app for the given os and plan type is available.
 .Example
-PS C:\> Get-AzFunctionAppAvailableLocation
-
-Name
-----
-Central US
-North Europe
-West Europe
-Southeast Asia
-East Asia
-West US
-East US
-Japan West
-Japan East
-East US 2
-North Central US
-South Central US
-Brazil South
-Australia East
-Australia Southeast
-East Asia (Stage)
-West India
-South India
-Canada Central
-West US 2
-UK West
-UK South
-East US 2 EUAP
-Central US EUAP
-Korea Central
-France Central
-Australia Central 2
-Australia Central
-Germany West Central
-Norway East
+Get-AzFunctionAppAvailableLocation
 .Example
-PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
-
-Name
-----
-Central US
-North Europe
-West Europe
-Southeast Asia
-East Asia
-West US
-East US
-Japan West
-Japan East
-East US 2
-North Central US
-South Central US
-Brazil South
-Australia East
-Australia Southeast
-West India
-Canada Central
-West Central US
-West US 2
-UK West
-UK South
-Central US EUAP
-Korea Central
-France Central
-Norway East
+Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 .Example
-PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
-
-Name
-----
-Central US
-North Europe
-West Europe
-Southeast Asia
-East Asia
-West US
-East US
-Japan West
-Japan East
-East US 2
-North Central US
-South Central US
-Brazil South
-Australia East
-Australia Southeast
-East Asia (Stage)
-Central India
-West India
-South India
-Canada Central
-Canada East
-West Central US
-West US 2
-UK West
-UK South
-East US 2 EUAP
-Central US EUAP
-Korea Central
-France Central
-Australia Central 2
-Australia Central
-South Africa North
-Switzerland North
-Germany West Central
+Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
 #>
 function Get-AzFunctionAppAvailableLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
@@ -204,6 +106,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Functions.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             __AllParameterSets = 'Az.Functions.custom\Get-AzFunctionAppAvailableLocation';
         }
@@ -217,6 +137,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -225,15 +146,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Functions.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

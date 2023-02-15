@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version:https://docs.microsoft.com/powershell/module/az.compute/new-azvmgalleryapplication
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azvmgalleryapplication
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create a local PSVMGalleryApplication object.
 
 ```
 New-AzVmGalleryApplication -PackageReferenceId <String> [-ConfigReferenceId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,9 +24,9 @@ Creates a local PSVMGalleryApplication object.
 
 ### Example 1
 ```powershell
-PS C:\> $vm = Get-AzVm -ResourceGroupName $rgName -Name $vmName
-PS C:\> $vmGal = New-AzVmGalleryApplication -PackageReferenceId $packageRefId -ConfigReferenceId $configRefId
-PS C:\> Add-AzVmGalleryApplication -VM $vm -GalleryApplication $vmGal -Order 1
+$vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
+$vmGal = New-AzVmGalleryApplication -PackageReferenceId $packageRefId -ConfigReferenceId $configRefId
+Add-AzVmGalleryApplication -VM $vm -GalleryApplication $vmGal -Order 1
 ```
 
 This example creates a local VMGalleryApplication object and adds it to a PSVirtualMachine object.
@@ -72,6 +72,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

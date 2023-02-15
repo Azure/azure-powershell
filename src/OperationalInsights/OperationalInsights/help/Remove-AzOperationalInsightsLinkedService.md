@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightslinkedservice
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightslinkedservice
 schema: 2.0.0
 ---
 
@@ -25,9 +25,7 @@ Unlink service for workspace
 
 ### Example 1
 ```powershell
-Remove-AzOperationalInsightsLinkedService -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster
-
-true
+Remove-AzOperationalInsightsLinkedService -ResourceGroupName "rg-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster
 ```
 
 Unlink linked service for workspace

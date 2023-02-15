@@ -15,25 +15,19 @@
 namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class HybridConnectionsTests : RMTestBase
+    public class HybridConnectionsTests : RelayTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public HybridConnectionsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public HybridConnectionsTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void HybridConnectionsCRUD()
         {
-            RelayController.NewInstance.RunPsTest(_logger, "HybridConnectionsTests");
+            TestRunner.RunTestScript("HybridConnectionsTests");
         }
     }
 }

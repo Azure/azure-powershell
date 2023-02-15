@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 6AB6C366-4925-4370-A33E-EDAF4BE1E230
-online version: https://docs.microsoft.com/powershell/module/az.media/remove-azmediaservice
+online version: https://learn.microsoft.com/powershell/module/az.media/remove-azmediaservice
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzMediaService** cmdlet removes a media service.
 ## EXAMPLES
 
 ### Example 1: Remove a media service
-```
-PS C:\>Remove-AzMediaService -ResourceGroupName "ResourceGroup001" -AccountName "MediaService0011"
+```powershell
+Remove-AzMediaService -ResourceGroupName "ResourceGroup001" -AccountName "MediaService0011"
 ```
 
 This command removes the media service named MediaService0011 in the resource group named ResourceGroup001.

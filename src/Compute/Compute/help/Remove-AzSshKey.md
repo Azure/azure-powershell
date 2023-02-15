@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azsshkey
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azsshkey
 schema: 2.0.0
 ---
 
@@ -14,19 +14,19 @@ Delete a SSH Public Key resource.
 
 ### DefaultParameterSet (Default)
 ```
-Remove-AzSshKey -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Remove-AzSshKey -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
-Remove-AzSshKey [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzSshKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzSshKey [-InputObject] <PSSshPublicKeyResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzSshKey -InputObject <PSSshPublicKeyResource> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Delete a SSH Public Key resource.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSshKey -ResourceGroupName "testRG" -Name "sshKey1"
+Remove-AzSshKey -ResourceGroupName "testRG" -Name "sshKey1"
 ```
 
 Deletes Ssh Public Key resource named "sshKey1" in Resource Group "testRG"
@@ -68,7 +68,7 @@ Parameter Sets: InputObjectParameterSet
 Aliases: SshKey
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -79,7 +79,7 @@ Specifies the name of the Ssh Public Key resource to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: sshkeyName
 
 Required: True
@@ -94,7 +94,7 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: True
@@ -113,9 +113,39 @@ Parameter Sets: ResourceIDParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

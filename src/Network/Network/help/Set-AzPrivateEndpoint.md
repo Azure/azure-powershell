@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azprivateendpoint
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azprivateendpoint
 schema: 2.0.0
 ---
 
@@ -23,10 +23,10 @@ The **Set-AzPrivateEndpoint** cmdlet updates a private endpoint.
 ## EXAMPLES
 
 ### 1: Creates a private endpoint and replace one of its subnets to another
-```
+```powershell
 $virtualNetwork = Get-AzVirtualNetwork -ResourceName MyVirtualNetwork -ResourceGroupName TestResourceGroup
 $plsConnection= New-AzPrivateLinkServiceConnection -Name MyPLSConnections -PrivateLinkServiceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/privateLinkServices/privateLinkService" -RequestMessage "Please Approve my request"
-$privateEndpoint = New-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroup TestResourceGroup -Location centralus -PirvateLinkServiceConnection $plsConnection -Subnet $virtualNetwork.Subnets[0]
+$privateEndpoint = New-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroupName TestResourceGroup -Location centralus -PrivateLinkServiceConnection $plsConnection -Subnet $virtualNetwork.Subnets[0]
 
 $privateEndpoint.Subnet = $virtualNetwork.Subnet[1]
 

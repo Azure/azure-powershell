@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Blueprint.dll-Help.xml
 Module Name: Az.Blueprint
-online version: https://docs.microsoft.com/powershell/module/az.blueprint/get-azblueprintartifact
+online version: https://learn.microsoft.com/powershell/module/az.blueprint/get-azblueprintartifact
 schema: 2.0.0
 ---
 
@@ -24,9 +24,11 @@ Retrieve artifacts from a blueprint definition. If a blueprint definition versio
 
 ### Example 1
 ```powershell
-PS C:\> $bp = Get-AzBlueprint -Name SimpleBlueprint
-PS C:\> Get-AzBlueprintArtifact -Blueprint $bp 
+$bp = Get-AzBlueprint -Name SimpleBlueprint
+Get-AzBlueprintArtifact -Blueprint $bp 
+```
 
+```output
 DisplayName        : Audit use of classic virtual machines
 Description        :
 DependsOn          :

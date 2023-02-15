@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
+online version: https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 schema: 2.0.0
 ---
 
@@ -50,21 +50,21 @@ Please note some properties can be set only during cloud service creation.
 ### Example 1: Create new cloud service with single role
 ```powershell
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-PS C:\> $roleProfile = @{role = @($role)}
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$roleProfile = @{role = @($role)}
 
 # Create network profile object
-PS C:\> $publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp
-PS C:\> $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
-PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
-PS C:\> $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
+$publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp
+$feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
+$loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
+$networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
 
 # Read Configuration File
-PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
-PS C:\> $cscfgContent = Get-Content $cscfgFile | Out-String
+$cscfgFile = "<Path to cscfg configuration file>"
+$cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-PS C:\> $cloudService = New-AzCloudService                                              `
+$cloudService = New-AzCloudService                                              `
                           -Name ContosoCS                                               `
                           -ResourceGroupName ContosOrg                                  `
                           -Location EastUS                                              `
@@ -80,27 +80,27 @@ Above set of commands creates a cloud service with single role
 ### Example 2: Create new cloud service with single role and RDP extension
 ```powershell
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-PS C:\> $roleProfile = @{role = @($role)}
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$roleProfile = @{role = @($role)}
 
 # Create network profile object
-PS C:\> $publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosoOrg -Name ContosIp
-PS C:\> $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
-PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
-PS C:\> $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
+$publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosoOrg -Name ContosIp
+$feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
+$loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
+$networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
 
 # Create RDP extension object
-PS C:\> $credential = Get-Credential
-PS C:\> $expiration = (Get-Date).AddYears(1)
-PS C:\> $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1'
-PS C:\> $extensionProfile = @{extension = @($extension)}
+$credential = Get-Credential
+$expiration = (Get-Date).AddYears(1)
+$extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1'
+$extensionProfile = @{extension = @($extension)}
 
 # Read Configuration File
-PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
-PS C:\> $cscfgContent = Get-Content $cscfgFile | Out-String
+$cscfgFile = "<Path to cscfg configuration file>"
+$cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-PS C:\> $cloudService = New-AzCloudService                                              `
+$cloudService = New-AzCloudService                                              `
                           -Name ContosoCS                                               `
                           -ResourceGroupName ContosOrg                                  `
                           -Location EastUS                                              `
@@ -117,27 +117,27 @@ Above set of commands creates a cloud service with single role and RDP extension
 ### Example 3: Create new cloud service with single role and certificate from key vault
 ```powershell
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-PS C:\> $roleProfile = @{role = @($role)}
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$roleProfile = @{role = @($role)}
 
 # Create OS profile object
-PS C:\> $keyVault = Get-AzKeyVault -ResourceGroupName ContosOrg -VaultName ContosKeyVault
-PS C:\> $certificate=Get-AzKeyVaultCertificate -VaultName ContosKeyVault -Name ContosCert
-PS C:\> $secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certificate.SecretId
-PS C:\> $osProfile = @{secret = @($secretGroup)}
+$keyVault = Get-AzKeyVault -ResourceGroupName ContosOrg -VaultName ContosKeyVault
+$certificate=Get-AzKeyVaultCertificate -VaultName ContosKeyVault -Name ContosCert
+$secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certificate.SecretId
+$osProfile = @{secret = @($secretGroup)}
 
 # Create network profile object
-PS C:\> $publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp
-PS C:\> $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
-PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
-PS C:\> $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
+$publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp
+$feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
+$loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
+$networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
 
 # Read Configuration File
-PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
-PS C:\>  = Get-Content $cscfgFile | Out-String
+$cscfgFile = "<Path to cscfg configuration file>"
+$cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-PS C:\> $cloudService = New-AzCloudService                                              `
+$cloudService = New-AzCloudService                                              `
                           -Name ContosoCS                                               `
                           -ResourceGroupName ContosOrg                                  `
                           -Location EastUS                                              `
@@ -154,34 +154,34 @@ Above set of commands creates a cloud service with single role and certificate f
 ### Example 4: Create new cloud service with multiple roles and extensions
 ```powershell
 # Create role profile object
-PS C:\> $role1 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-PS C:\> $role2 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-PS C:\> $roleProfile = @{role = @($role1, $role2)}
+$role1 = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role2 = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$roleProfile = @{role = @($role1, $role2)}
 
 # Create network profile object
-PS C:\> $publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp
-PS C:\> $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
-PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
-PS C:\> $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
+$publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp
+$feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
+$loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
+$networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
 
 # Create RDP extension object
-PS C:\> $credential = Get-Credential
-PS C:\> $expiration = (Get-Date).AddYears(1)
-PS C:\> $rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1'
+$credential = Get-Credential
+$expiration = (Get-Date).AddYears(1)
+$rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1'
 
 # Create Geneva extension object
-PS C:\> $genevaExtension = New-AzCloudServiceExtensionObject -Name GenevaExtension -Publisher Microsoft.Azure.Geneva -Type GenevaMonitoringPaaS -TypeHandlerVersion "2.14.0.2"
-PS C:\> $extensionProfile = @{extension = @($rdpExtension, $genevaExtension)}
+$genevaExtension = New-AzCloudServiceExtensionObject -Name GenevaExtension -Publisher Microsoft.Azure.Geneva -Type GenevaMonitoringPaaS -TypeHandlerVersion "2.14.0.2"
+$extensionProfile = @{extension = @($rdpExtension, $genevaExtension)}
 
 # Add tags
-PS C:\> $tag=@{"Owner" = "Contoso"}
+$tag=@{"Owner" = "Contoso"}
 
 # Read Configuration File
-PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
-PS C:\> $cscfgContent = Get-Content $cscfgFile | Out-String
+$cscfgFile = "<Path to cscfg configuration file>"
+$cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-PS C:\> $cloudService = New-AzCloudService                                              `
+$cloudService = New-AzCloudService                                              `
                           -Name ContosoCS                                               `
                           -ResourceGroupName ContosOrg                                  `
                           -Location EastUS                                              `
@@ -199,10 +199,10 @@ Above set of commands creates a cloud service with single role and certificate f
 ### Example 5: Create new cloud service with CsCfg, CsDef, and Cspkg files using 'quickCreateParameterSetWithStorage' parameter set.
 ```powershell
 # Set up a storage account if you have not
-PS C:\> $storageAccount = New-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc -Location "East US" -SkuName "Standard_RAGRS" -Kind "StorageV2"
+$storageAccount = New-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc -Location "East US" -SkuName "Standard_RAGRS" -Kind "StorageV2"
 
 # Create cloud service
-PS C:\> $cloudService = New-AzCloudService                                              `
+$cloudService = New-AzCloudService                                              `
                           -Name ContosoCS                                               `
                           -ResourceGroupName ContosOrg                                  `
                           -Location EastUS                                              `
@@ -222,15 +222,15 @@ This parameter set also uploads the .CsPkg file to the provided StorageAccount.
 ### Example 6: Create new cloud service with CsCfg, CsDef, and Cspkg files using 'quickCreateParameterSetWithoutStorage' parameter set.
 ```powershell
 # getting Package URL
-PS C:\> $tokenStartTime = Get-Date 
-PS C:\> $tokenEndTime = $tokenStartTime.AddYears(1) 
-PS C:\> $storAcc = Get-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc
-PS C:\> $csPkgBlob = Get-AzStorageBlob -Container Contoso-Container -Blob ContosoBlob.cspkg -Context $storAcc.Context
-PS C:\> $csPkgToken = New-AzStorageBlobSASToken -Container Contoso-Container -Blob ContosoBlob.cspkg -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storAcc.Context
-PS C:\> $cspkgUrl = $csPkgBlob.ICloudBlob.Uri.AbsoluteUri + $csPkgToken 
+$tokenStartTime = Get-Date 
+$tokenEndTime = $tokenStartTime.AddYears(1) 
+$storAcc = Get-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc
+$csPkgBlob = Get-AzStorageBlob -Container Contoso-Container -Blob ContosoBlob.cspkg -Context $storAcc.Context
+$csPkgToken = New-AzStorageBlobSASToken -Container Contoso-Container -Blob ContosoBlob.cspkg -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storAcc.Context
+$cspkgUrl = $csPkgBlob.ICloudBlob.Uri.AbsoluteUri + $csPkgToken 
 
 # Create cloud service
-PS C:\> $cloudService = New-AzCloudService                                              `
+$cloudService = New-AzCloudService                                              `
                           -Name ContosoCS                                               `
                           -ResourceGroupName ContosOrg                                  `
                           -Location EastUS                                              `
@@ -670,7 +670,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-EXTENSIONPROFILE <ICloudServiceExtensionProfile>: Describes a cloud service extension profile.
+EXTENSIONPROFILE `<ICloudServiceExtensionProfile>`: Describes a cloud service extension profile.
   - `[Extension <IExtension[]>]`: List of extensions for the cloud service.
     - `[AutoUpgradeMinorVersion <Boolean?>]`: Explicitly specify whether platform can automatically upgrade typeHandlerVersion to higher minor versions when they become available.
     - `[ForceUpdateTag <String>]`: Tag to force apply the provided public and protected settings.         Changing the tag value allows for re-running the extension without changing any of the public or protected settings.         If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.         If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the role instance with the same sequence-number, and         it is up to handler implementation whether to re-run it or not
@@ -684,7 +684,7 @@ EXTENSIONPROFILE <ICloudServiceExtensionProfile>: Describes a cloud service exte
     - `[Type <String>]`: Specifies the type of the extension.
     - `[TypeHandlerVersion <String>]`: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
 
-NETWORKPROFILE <ICloudServiceNetworkProfile>: Network Profile for the cloud service.
+NETWORKPROFILE `<ICloudServiceNetworkProfile>`: Network Profile for the cloud service.
   - `[LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]`: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
     - `FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>`: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
       - `Name <String>`: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
@@ -696,13 +696,13 @@ NETWORKPROFILE <ICloudServiceNetworkProfile>: Network Profile for the cloud serv
   - `[SwappableCloudService <ISubResource>]`: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
     - `[Id <String>]`: Resource Id
 
-OSPROFILE <ICloudServiceOSProfile>: Describes the OS profile for the cloud service.
+OSPROFILE `<ICloudServiceOSProfile>`: Describes the OS profile for the cloud service.
   - `[Secret <ICloudServiceVaultSecretGroup[]>]`: Specifies set of certificates that should be installed onto the role instances.
     - `[SourceVaultId <String>]`: Resource Id
     - `[VaultCertificate <ICloudServiceVaultCertificate[]>]`: The list of key vault references in SourceVault which contain certificates.
       - `[CertificateUrl <String>]`: This is the URL of a certificate that has been uploaded to Key Vault as a secret.
 
-ROLEPROFILE <ICloudServiceRoleProfile>: Describes the role profile for the cloud service.
+ROLEPROFILE `<ICloudServiceRoleProfile>`: Describes the role profile for the cloud service.
   - `[Role <ICloudServiceRoleProfileProperties[]>]`: List of roles for the cloud service.
     - `[Name <String>]`: Resource name.
     - `[SkuCapacity <Int64?>]`: Specifies the number of role instances in the cloud service.

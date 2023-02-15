@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         public PSAlertsSummary(AlertsSummary summary)
         {
             GroupBy = summary.Properties.Groupedby;
-            TotalAlerts = summary.Properties.Total;
-            TotalSmartGroups = summary.Properties.SmartGroupsCount;
+            TotalAlerts = (int?)summary.Properties.Total;
+            TotalSmartGroups = (int?)summary.Properties.SmartGroupsCount;
             AggregatedCounts = new PSAggregatedCounts(summary.Properties.Values);
         }
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/remove-azdeploymentmanagerartifactsource
+online version: https://learn.microsoft.com/powershell/module/az.deploymentmanager/remove-azdeploymentmanagerartifactsource
 schema: 2.0.0
 ---
 
@@ -37,23 +37,22 @@ Specify the artifact source by its name and resource group name. Alternately, yo
 ## EXAMPLES
 
 ### Example 1: Delete an artifact source
-### Example 1
 ```powershell
-PS C:\> Remove-AzDeploymentManagerArtifactSource -ResourceGroupName "ContosoResourceGroup" -Name "ContosoArtifactSource"
+Remove-AzDeploymentManagerArtifactSource -ResourceGroupName "ContosoResourceGroup" -Name "ContosoArtifactSource"
 ```
 
 This command deletes an artifact source named ContosoArtifactSource in ContosoResourceGroup.
 
 ### Example 2: Delete an artifact source using the resource identifier
 ```powershell
-PS C:\> Remove-AzDeploymentManagerArtifactSource -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/artifactSources/ContosoArtifactSource"
+Remove-AzDeploymentManagerArtifactSource -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/artifactSources/ContosoArtifactSource"
 ```
 
 This command deletes an artifact source named ContosoArtifactSource in ContosoResourceGroup.
 
 ### Example 3: Delete an artifact source using an object
 ```powershell
-PS C:\> Remove-AzDeploymentManagerArtifactSource -InputObject $artifactSourceObject
+Remove-AzDeploymentManagerArtifactSource -InputObject $artifactSourceObject
 ```
 
 This command deletes an artifact source whose name and ResourceGroup match the Name and ResourceGroupName properties of the $artifactSourceObject, respectively.

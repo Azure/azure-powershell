@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrstorageclassificationmapping
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrstorageclassificationmapping
 schema: 2.0.0
 ---
 
@@ -31,8 +31,8 @@ The **Get-AzRecoveryServicesAsrStorageClassificationMapping** cmdlet gets the de
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $StorageClassificationMappings = Get-AzRecoveryServicesAsrStorageClassificationMapping -StorageClassification $StorageClassification
+```powershell
+$StorageClassificationMappings = Get-AzRecoveryServicesAsrStorageClassificationMapping -StorageClassification $StorageClassification
 ```
 
 List all storage classification mappings corresponding to the specified storage classification.

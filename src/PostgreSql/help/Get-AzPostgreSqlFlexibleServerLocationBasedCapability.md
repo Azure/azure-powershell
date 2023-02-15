@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverlocationbasedcapability
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverlocationbasedcapability
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Get the available SKU information for the location
 
 ### Example 1: Get location capabilities by location name
 ```powershell
-PS C:\> Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
+Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
+```
 
+```output
 SKU               Memory vCore Tier
 ---               ------ ----- ----
 Standard_B1ms       2048     1 Burstable
@@ -60,7 +62,6 @@ Standard_E32ds_v4   8192    32 MemoryOptimized
 Standard_E48ds_v4   8192    48 MemoryOptimized
 Standard_E64ds_v4   6912    64 MemoryOptimized
 ```
-
 This cmdlet shows basic sku information of the provided location.
 
 ## PARAMETERS

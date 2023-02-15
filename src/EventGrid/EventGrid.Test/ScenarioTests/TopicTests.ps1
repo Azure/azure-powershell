@@ -118,6 +118,57 @@ function TopicTests {
 .SYNOPSIS
 Tests EventGrid Topic Set operations.
 #>
+function TopicsIdentityTests {
+    # Setup
+    $location = Get-LocationForEventGrid
+    $topicName = Get-TopicName
+    $topicName2 = Get-TopicName
+    $resourceGroupName = Get-ResourceGroupName
+    $subscriptionId = Get-SubscriptionId
+
+    New-ResourceGroup $resourceGroupName $location
+
+    try
+    {
+        $ipRule1 = @{ "10.0.0.0/8" = "Allow"; "10.2.0.0/8" = "Allow" }
+        $ipRule2 = @{ "10.3.0.0/16" = "Allow" }
+
+        Write-Debug "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+        Write-Debug "Topic: $topicName"
+        $result = New-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location -IdentityType 'SystemAssigned'
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.Identity.IdentityType -eq "SystemAssigned"}
+
+        Write-Debug "Creating a new EventGrid Topic: $topicName2 in resource group $resourceGroupName"
+        Write-Debug "Topic: $topicName2"
+        $result = New-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName2 -Location $location -IdentityType 'None'
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Assert-True {$result.Identity.IdentityType -eq "None"}
+
+        $tags1 = @{test1 = "testval1"; test2 = "testval2" };
+        Write-Debug "Calling Set-AzEventGridTopic on the created topic $topicName"
+        $userIdentity = "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/amh/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testIdentity1"
+        $replacedTopic1 = Set-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName2 -Tag $tags1 -InboundIpRule $ipRule1 -PublicNetworkAccess "enabled" -IdentityType 'UserAssigned' -IdentityId $userIdentity
+        Assert-True {$replacedTopic1.Count -eq 1}
+        Assert-True {$replacedTopic1.TopicName -eq $topicName2} "Topic updated earlier is not found."
+        Assert-True {$replacedTopic1.Identity.IdentityType -eq "UserAssigned"} "Topic updated earlier is not found."
+
+        Write-Debug "Deleting topic: $topicName"
+        Remove-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
+
+        Write-Debug "Deleting topic: $topicName2"
+        Remove-AzEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName2
+    }
+    finally
+    {
+        Remove-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Tests EventGrid Topic Set operations.
+#>
 function TopicSetTests {
     # Setup
     $location = Get-LocationForEventGrid

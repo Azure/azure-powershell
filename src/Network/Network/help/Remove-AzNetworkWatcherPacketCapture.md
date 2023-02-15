@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkwatcherpacketcapture
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworkwatcherpacketcapture
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ If the packet capture session is running when Remove-AzNetworkWatcherPacketCaptu
 ## EXAMPLES
 
 ### Example 1: Remove a packet capture session
-```
+```powershell
 Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 

@@ -79,6 +79,11 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = resourceIdentifier.ResourceName;
             }
 
+            if (string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
+            }
+
             ServerAuditModelType model = new ServerAuditModelType()
             {
                 ResourceGroupName = ResourceGroupName,

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
 Module Name: Az.Subscription
-online version:https://docs.microsoft.com/powershell/module/az.subscription/get-azsubscriptionalias
+online version:https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionalias
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Get-AzSubscriptionAlias** cmdlet gets subscription alias details.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSubscriptionAlias -AliasName "ExistingAliasName"
+Get-AzSubscriptionAlias -AliasName "ExistingAliasName"
 ```
 
 Gets subscription alias details

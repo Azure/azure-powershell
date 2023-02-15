@@ -19,23 +19,11 @@ Users, contacts, and groups that are members of this group.
 HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
 Nullable.
 Supports $expand.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-System.Collections.Hashtable
-.Outputs
-System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
 #>
 function Remove-AzADGroupMember {
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName = 'ExplicitParameterSet ', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceactivedirectoryonlyauthentication
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlinstanceactivedirectoryonlyauthentication
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Get-AzSqlInstanceActiveDirectoryOnlyAuthentication** cmdlet gets Azure Act
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzSqlInstanceActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+Get-AzSqlInstanceActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
 ```
 
 This command gets Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL Managed Instance named ManagedInstance01 that is associated with a resource group named ResourceGroup01.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/add-azrmstoragecontainerlegalhold
+online version: https://learn.microsoft.com/powershell/module/az.storage/add-azrmstoragecontainerlegalhold
 schema: 2.0.0
 ---
 
@@ -39,23 +39,23 @@ The **Add-AzRmStorageContainerLegalHold** cmdlet adds legal hold tags to a Stora
 ## EXAMPLES
 
 ### Example 1: Add legal hold tags to a Storage blob container with Storage account name and container name
-```
-PS C:\>Add-AzRmStorageContainerLegalHold -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -Tag  tag1,tag2 -AllowProtectedAppendWriteAll $true
+```powershell
+Add-AzRmStorageContainerLegalHold -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -Tag  tag1,tag2 -AllowProtectedAppendWriteAll $true
 ```
 
 This command adds legal hold tags to a Storage blob container with Storage account name and container name, and set AllowProtectedAppendWriteAll as true to allow append new blocks to append or block blob.
 
 ### Example 2: Add legal hold tags to a Storage blob container with Storage account object and container name
-```
-PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
-PS C:\>Add-AzRmStorageContainerLegalHold -StorageAccount $accountObject -ContainerName "myContainer"  -Tag  tag1
+```powershell
+$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
+Add-AzRmStorageContainerLegalHold -StorageAccount $accountObject -ContainerName "myContainer"  -Tag  tag1
 ```
 
 This command adds legal hold tags to a Storage blob container with Storage account object and container name.
 
 ### Example 3: Add legal hold tags to all Storage blob containers in a Storage account with pipeline
-```
-PS C:\>Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Add-AzRmStorageContainerLegalHold -Tag  tag1,tag2,tag3
+```powershell
+Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Add-AzRmStorageContainerLegalHold -Tag  tag1,tag2,tag3
 ```
 
 This command adds legal hold tags to all Storage blob containers in a Storage account with pipeline.

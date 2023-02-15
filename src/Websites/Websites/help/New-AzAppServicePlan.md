@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 8F36244D-A4D7-40BB-AC4C-E9AD445549F8
-online version: https://docs.microsoft.com/powershell/module/az.websites/new-azappserviceplan
+online version: https://learn.microsoft.com/powershell/module/az.websites/new-azappserviceplan
 schema: 2.0.0
 ---
 
@@ -16,16 +16,17 @@ Creates an Azure App Service plan in a given Geo location.
 ### S1
 ```
 New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
- [-HyperV] [-AsJob] [-Tag <Hashtable>] [-Linux] [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [[-AseResourceId] <String>]
+ [-PerSiteScaling <Boolean>] [-HyperV] [-AsJob] [-Tag <Hashtable>] [-Linux] [-ResourceGroupName] <String>
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
 New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
- [-AsJob] [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [[-AseResourceId] <String>]
+ [-PerSiteScaling <Boolean>] [-AsJob] [-AppServicePlan] <PSAppServicePlan>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,8 +35,8 @@ The **New-AzAppServicePlan** cmdlet creates an Azure App Service plan in a given
 ## EXAMPLES
 
 ### Example 1: Create an App Service plan
-```
-PS C:\>New-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -Location "West US" -Tier "Basic" -NumberofWorkers 2 -WorkerSize "Small"
+```powershell
+New-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -Location "West US" -Tier "Basic" -NumberofWorkers 2 -WorkerSize "Small"
 ```
 
 This command creates an App Service plan named ContosoASP in the resource group named Default-Web-WestUS in Geo location West US.
@@ -83,6 +84,21 @@ Aliases:
 
 Required: False
 Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AseResourceId
+Resource id of App Service Environment
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

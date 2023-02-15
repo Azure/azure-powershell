@@ -16,17 +16,13 @@
 
 <#
 .Synopsis
-Description for Creates a backup of an app.
+Creates a backup of an app.
 .Description
-Description for Creates a backup of an app.
+Creates a backup of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupRequest
@@ -119,7 +115,7 @@ REQUEST <IBackupRequest>: Description of a backup which will be performed.
   [Enabled <Boolean?>]: True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
   [StorageAccountUrl <String>]: SAS URL to the container.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/backup-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/backup-azfunctionapp
 #>
 function Backup-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItem])]
@@ -295,6 +291,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Backup = 'Az.Functions.private\Backup-AzFunctionApp_Backup';
             BackupExpanded = 'Az.Functions.private\Backup-AzFunctionApp_BackupExpanded';
@@ -310,6 +307,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -318,17 +316,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -337,13 +338,9 @@ Get the API Key for this key id.
 .Description
 Get the API Key for this key id.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -412,7 +409,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azappinsightsapikey
+https://learn.microsoft.com/powershell/module/az.functions/get-azappinsightsapikey
 #>
 function Get-AzAppInsightsApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentApiKey])]
@@ -512,6 +509,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzAppInsightsApiKey_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzAppInsightsApiKey_GetViaIdentity';
@@ -526,6 +524,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -534,17 +533,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -553,13 +555,9 @@ Returns an Application Insights component.
 .Description
 Returns an Application Insights component.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -628,7 +626,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azappinsights
+https://learn.microsoft.com/powershell/module/az.functions/get-azappinsights
 #>
 function Get-AzAppInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent])]
@@ -721,6 +719,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzAppInsights_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzAppInsights_GetViaIdentity';
@@ -736,6 +735,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -744,133 +744,38 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Get a list of available geographical regions.
+Get a list of available geographical regions.
 .Description
-Description for Get a list of available geographical regions.
+Get a list of available geographical regions.
 .Example
-PS C:\> Get-AzFunctionAppAvailableLocation
-
-Name
-----
-Central US
-North Europe
-West Europe
-Southeast Asia
-East Asia
-West US
-East US
-Japan West
-Japan East
-East US 2
-North Central US
-South Central US
-Brazil South
-Australia East
-Australia Southeast
-East Asia (Stage)
-West India
-South India
-Canada Central
-West US 2
-UK West
-UK South
-East US 2 EUAP
-Central US EUAP
-Korea Central
-France Central
-Australia Central 2
-Australia Central
-Germany West Central
-Norway East
+Get-AzFunctionAppAvailableLocation
 .Example
-PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
-
-Name
-----
-Central US
-North Europe
-West Europe
-Southeast Asia
-East Asia
-West US
-East US
-Japan West
-Japan East
-East US 2
-North Central US
-South Central US
-Brazil South
-Australia East
-Australia Southeast
-West India
-Canada Central
-West Central US
-West US 2
-UK West
-UK South
-Central US EUAP
-Korea Central
-France Central
-Norway East
+Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 .Example
-PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
-
-Name
-----
-Central US
-North Europe
-West Europe
-Southeast Asia
-East Asia
-West US
-East US
-Japan West
-Japan East
-East US 2
-North Central US
-South Central US
-Brazil South
-Australia East
-Australia Southeast
-East Asia (Stage)
-Central India
-West India
-South India
-Canada Central
-Canada East
-West Central US
-West US 2
-UK West
-UK South
-East US 2 EUAP
-Central US EUAP
-Korea Central
-France Central
-Australia Central 2
-Australia Central
-South Africa North
-Switzerland North
-Germany West Central
+Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
 #>
 function Get-AzFunctionAppAvailableLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
@@ -965,6 +870,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzFunctionAppAvailableLocation_List';
         }
@@ -977,6 +883,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -985,56 +892,35 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Get an App Service plan.
+Get an App Service plan.
 .Description
-Description for Get an App Service plan.
+Get an App Service plan.
 .Example
-PS C:\> Get-AzFunctionAppPlan
-
-Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------    -----------------                --------------
-Func99-West-Europe-Linux-Premium   Linux      ElasticPremium EP1     West Europe Func99-West-Europe-Linux-Premium fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium1680894595   Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium428118799    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium677505437    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium711892854    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium819994758    Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionAppPlan
 .Example
-PS C:\> Get-AzFunctionAppPlan -ResourceGroupName "West Europe"
-
-Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------    -----------------                --------------
-Func99-West-Europe-Linux-Premium   Linux      ElasticPremium EP1     West Europe Func99-West-Europe-Linux-Premium fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Func99-Windows-Premium1680894595   Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionAppPlan -ResourceGroupName "West Europe"
 .Example
-PS C:\> Get-AzFunctionAppPlan -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8z
-
-Name                               WorkerType SkuTier        SkuName Location    ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------    -----------------                --------------
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     West Europe Func99-West-Europe-Win-Premium   fe16564a-d943-4bf8-8c28-cf01708c3f8z
+Get-AzFunctionAppPlan -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8z
 .Example
-PS C:\> Get-AzFunctionAppPlan -Location "Central US"
-
-Name                               WorkerType SkuTier        SkuName Location   ResourceGroupName                SubscriptionId
-----                               ---------- -------        ------- --------   -----------------                --------------
-Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     Central US Func99-West-Europe-Win-Premium   3r16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionAppPlan -Location "Central US"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -1103,7 +989,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappplan
 #>
 function Get-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -1210,6 +1096,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunctionAppPlan_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunctionAppPlan_GetViaIdentity';
@@ -1225,6 +1112,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1233,55 +1121,37 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets the details of a web, mobile, or API app.
+Gets the details of a web, mobile, or API app.
 .Description
-Description for Gets the details of a web, mobile, or API app.
+Gets the details of a web, mobile, or API app.
 .Example
-PS C:\> Get-AzFunctionApp
-
-Name                     Status  OSType  Runtime Location    AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------    -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US  CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Functions1-Windows-Java  Running Windows Java    West Europe Premium1-WE    Functions-West-Europe1    fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp
 .Example
-PS C:\> Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win -Name Functions1-Windows-DoNet
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win -Name Functions1-Windows-DoNet
 .Example
-PS C:\> Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win
 .Example
-PS C:\> Get-AzFunctionApp -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8b
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8b
 .Example
-PS C:\> Get-AzFunctionApp -Location "Central US"
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -Location "Central US"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -1350,7 +1220,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionapp
 #>
 function Get-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -1456,6 +1326,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunctionApp_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunctionApp_GetViaIdentity';
@@ -1471,6 +1342,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1479,32 +1351,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Get function information by its ID for web site, or a deployment slot.
+Get function information by its ID for web site, or a deployment slot.
 .Description
-Description for Get function information by its ID for web site, or a deployment slot.
+Get function information by its ID for web site, or a deployment slot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -1573,7 +1444,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunction
 #>
 function Get-AzFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope])]
@@ -1677,6 +1548,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunction_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunction_GetViaIdentity';
@@ -1691,6 +1563,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1699,17 +1572,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -1718,18 +1594,14 @@ Lists the access keys or Kerberos keys (if active directory enabled) for the spe
 .Description
 Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azstorageaccountkey
+https://learn.microsoft.com/powershell/module/az.functions/get-azstorageaccountkey
 #>
 function Get-AzStorageAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey])]
@@ -1821,6 +1693,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzStorageAccountKey_List';
         }
@@ -1833,6 +1706,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1841,17 +1715,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -1862,18 +1739,14 @@ Note that storage keys are not returned; use the ListKeys operation for this.
 Lists all the storage accounts available under the subscription.
 Note that storage keys are not returned; use the ListKeys operation for this.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azstorageaccount
+https://learn.microsoft.com/powershell/module/az.functions/get-azstorageaccount
 #>
 function Get-AzStorageAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount])]
@@ -1950,6 +1823,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzStorageAccount_List';
             List1 = 'Az.Functions.private\Get-AzStorageAccount_List1';
@@ -1963,6 +1837,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1971,17 +1846,208 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets the systemAssignedIdentity available under the specified RP scope.
+.Description
+Gets the systemAssignedIdentity available under the specified RP scope.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ISystemAssignedIdentity
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PrId <String>]: The stage site identifier.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: 
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [View <String>]: The type of view. This can either be "summary" or "detailed".
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azsystemassignedidentity
+#>
+function Get-AzSystemAssignedIdentity {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ISystemAssignedIdentity])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The resource provider scope of the resource.
+    # Parent resource being extended by Managed Identities.
+    ${Scope},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.Functions.private\Get-AzSystemAssignedIdentity_Get';
+            GetViaIdentity = 'Az.Functions.private\Get-AzSystemAssignedIdentity_GetViaIdentity';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
         throw
     }
 }
 
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -1990,13 +2056,9 @@ Gets the identity.
 .Description
 Gets the identity.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -2065,7 +2127,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/get-azuserassignedidentity
 #>
 function Get-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -2157,6 +2219,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzUserAssignedIdentity_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzUserAssignedIdentity_GetViaIdentity';
@@ -2172,6 +2235,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2180,37 +2244,36 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Description
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsettingslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsettingslot
 #>
 function Get-AzWebAppApplicationSettingSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -2299,6 +2362,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppApplicationSettingSlot_List';
         }
@@ -2311,6 +2375,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2319,37 +2384,36 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Description
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsetting
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsetting
 #>
 function Get-AzWebAppApplicationSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -2431,6 +2495,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppApplicationSetting_List';
         }
@@ -2443,6 +2508,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2451,32 +2517,236 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Returns whether Scm basic auth is allowed and whether Ftp is allowed for a given site.
 .Description
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Returns whether Scm basic auth is allowed and whether Ftp is allowed for a given site.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
+{{ Add code here }}
 
-{{ Add output here }}
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesCollection
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PrId <String>]: The stage site identifier.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: 
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [View <String>]: The type of view. This can either be "summary" or "detailed".
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappbasicpublishingcredentialspolicy
+#>
+function Get-AzWebAppBasicPublishingCredentialsPolicy {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesCollection])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the app.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.Functions.private\Get-AzWebAppBasicPublishingCredentialsPolicy_Get';
+            GetViaIdentity = 'Az.Functions.private\Get-AzWebAppBasicPublishingCredentialsPolicy_GetViaIdentity';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+.Description
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -2545,7 +2815,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationslot
 #>
 function Get-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -2645,6 +2915,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_GetViaIdentity';
@@ -2659,6 +2930,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2667,39 +2939,38 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets a list of web app configuration snapshots identifiers.
+Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Description
-Description for Gets a list of web app configuration snapshots identifiers.
+Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfoslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfoslot
 #>
 function Get-AzWebAppConfigurationSnapshotInfoSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo])]
@@ -2788,6 +3059,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotInfoSlot_List';
         }
@@ -2800,6 +3072,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2808,39 +3081,38 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets a list of web app configuration snapshots identifiers.
+Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Description
-Description for Gets a list of web app configuration snapshots identifiers.
+Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfo
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfo
 #>
 function Get-AzWebAppConfigurationSnapshotInfo {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo])]
@@ -2922,6 +3194,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotInfo_List';
         }
@@ -2934,6 +3207,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2942,32 +3216,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets a snapshot of the configuration of an app at a previous point in time.
+Gets a snapshot of the configuration of an app at a previous point in time.
 .Description
-Description for Gets a snapshot of the configuration of an app at a previous point in time.
+Gets a snapshot of the configuration of an app at a previous point in time.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -3036,7 +3309,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotslot
 #>
 function Get-AzWebAppConfigurationSnapshotSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -3138,6 +3411,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotSlot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotSlot_GetViaIdentity';
@@ -3151,6 +3425,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -3159,32 +3434,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets a snapshot of the configuration of an app at a previous point in time.
+Gets a snapshot of the configuration of an app at a previous point in time.
 .Description
-Description for Gets a snapshot of the configuration of an app at a previous point in time.
+Gets a snapshot of the configuration of an app at a previous point in time.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -3253,7 +3527,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshot
 #>
 function Get-AzWebAppConfigurationSnapshot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -3348,6 +3622,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshot_GetViaIdentity';
@@ -3361,6 +3636,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -3369,32 +3645,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Description
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -3463,7 +3738,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfiguration
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfiguration
 #>
 function Get-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -3555,6 +3830,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfiguration_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfiguration_GetViaIdentity';
@@ -3569,6 +3845,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -3577,17 +3854,1251 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get function keys for a function in a web site, or a deployment slot.
+.Description
+Get function keys for a function in a web site, or a deployment slot.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkeyslot
+#>
+function Get-AzWebAppFunctionKeySlot {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Function name.
+    ${FunctionName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Site name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the deployment slot.
+    ${Slot},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.Functions.private\Get-AzWebAppFunctionKeySlot_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
         throw
     }
 }
 
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get function keys for a function in a web site, or a deployment slot.
+.Description
+Get function keys for a function in a web site, or a deployment slot.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkey
+#>
+function Get-AzWebAppFunctionKey {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Function name.
+    ${FunctionName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Site name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.Functions.private\Get-AzWebAppFunctionKey_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
         throw
     }
 }
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Returns whether Scm basic auth is allowed on the site or not.
+.Description
+Returns whether Scm basic auth is allowed on the site or not.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PrId <String>]: The stage site identifier.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: 
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [View <String>]: The type of view. This can either be "summary" or "detailed".
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappscmallowed
+#>
+function Get-AzWebAppScmAllowed {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the app.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.Functions.private\Get-AzWebAppScmAllowed_Get';
+            GetViaIdentity = 'Az.Functions.private\Get-AzWebAppScmAllowed_GetViaIdentity';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets the config reference app settings and status of an app
+.Description
+Gets the config reference app settings and status of an app
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollection
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PrId <String>]: The stage site identifier.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: 
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [View <String>]: The type of view. This can either be "summary" or "detailed".
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappsettingkeyvaultreference
+#>
+function Get-AzWebAppSettingKeyVaultReference {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollection], [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceResource])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the app.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='Get1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # App Setting key name.
+    ${AppSettingKey},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_Get';
+            Get1 = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_Get1';
+            GetViaIdentity = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_GetViaIdentity';
+            GetViaIdentity1 = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_GetViaIdentity1';
+        }
+        if (('Get', 'Get1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+This is to allow calling via powershell and ARM template.
+.Description
+This is to allow calling via powershell and ARM template.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatusslot
+#>
+function Get-AzWebAppSyncStatusSlot {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the app.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the deployment slot.
+    ${Slot},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.Functions.private\Get-AzWebAppSyncStatusSlot_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+This is to allow calling via powershell and ARM template.
+.Description
+This is to allow calling via powershell and ARM template.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatus
+#>
+function Get-AzWebAppSyncStatus {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the app.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.Functions.private\Get-AzWebAppSyncStatus_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Move resources between resource groups.
+.Description
+Move resources between resource groups.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmMoveResourceEnvelope
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PrId <String>]: The stage site identifier.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: 
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [View <String>]: The type of view. This can either be "summary" or "detailed".
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+
+MOVERESOURCEENVELOPE <ICsmMoveResourceEnvelope>: Object with a list of the resources that need to be moved and the resource group they should be moved to.
+  [Resource <String[]>]: 
+  [TargetResourceGroup <String>]: 
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/move-az
+#>
+function Move-Az {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='MoveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Move', Mandatory)]
+    [Parameter(ParameterSetName='MoveExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Move')]
+    [Parameter(ParameterSetName='MoveExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='MoveViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='MoveViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Move', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='MoveViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmMoveResourceEnvelope]
+    # Object with a list of the resources that need to be moved and the resource group they should be moved to.
+    # To construct, see NOTES section for MOVERESOURCEENVELOPE properties and create a hash table.
+    ${MoveResourceEnvelope},
+
+    [Parameter(ParameterSetName='MoveExpanded')]
+    [Parameter(ParameterSetName='MoveViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String[]]
+    # .
+    ${Resource},
+
+    [Parameter(ParameterSetName='MoveExpanded')]
+    [Parameter(ParameterSetName='MoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # .
+    ${TargetResourceGroup},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Move = 'Az.Functions.private\Move-Az_Move';
+            MoveExpanded = 'Az.Functions.private\Move-Az_MoveExpanded';
+            MoveViaIdentity = 'Az.Functions.private\Move-Az_MoveViaIdentity';
+            MoveViaIdentityExpanded = 'Az.Functions.private\Move-Az_MoveViaIdentityExpanded';
+        }
+        if (('Move', 'MoveExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
 }
 
 <#
@@ -3598,13 +5109,9 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 Creates (or updates) an Application Insights component.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent
@@ -3686,7 +5193,7 @@ INSIGHTPROPERTY <IApplicationInsightsComponent>: An Application Insights compone
   [RequestSource <RequestSource?>]: Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
   [SamplingPercentage <Double?>]: Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azappinsights
+https://learn.microsoft.com/powershell/module/az.functions/new-azappinsights
 #>
 function New-AzAppInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent])]
@@ -3851,6 +5358,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzAppInsights_Create';
             CreateExpanded = 'Az.Functions.private\New-AzAppInsights_CreateExpanded';
@@ -3866,6 +5374,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -3874,33 +5383,35 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Description
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Example
-PS C:\> New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
-                              -Name MyPremiumPlan `
-                              -Location WestEurope `
-                              -MinimumWorkerCount 1 `
-                              -MaximumWorkerCount 10 `
-                              -Sku EP1 `
-                              -WorkerType Windows
-
+New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
+                      -Name MyPremiumPlan `
+                      -Location WestEurope `
+                      -MinimumWorkerCount 1 `
+                      -MaximumWorkerCount 10 `
+                      -Sku EP1 `
+                      -WorkerType Windows
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
@@ -4008,7 +5519,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
 #>
 function New-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -4308,6 +5819,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunctionAppPlan_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunctionAppPlan_CreateExpanded';
@@ -4323,6 +5835,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -4331,43 +5844,45 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -Location centralUS `
-                          -StorageAccount MyStorageAccountName `
-                          -Runtime PowerShell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -Location centralUS `
+                  -StorageAccountName MyStorageAccountName `
+                  -Runtime PowerShell
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -PlanName MyPlanName `
-                          -StorageAccount MyStorageAccountName `
-                          -Runtime PowerShell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -PlanName MyPlanName `
+                  -StorageAccountName MyStorageAccountName `
+                  -Runtime PowerShell
 .Example
-PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
-                          -ResourceGroupName MyResourceGroupName `
-                          -PlanName MyPlanName `
-                          -StorageAccount MyStorageAccountName `
-                          -DockerImageName myacr.azurecr.io/myimage:tag
-
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -PlanName MyPlanName `
+                  -StorageAccountName MyStorageAccountName `
+                  -DockerImageName myacr.azurecr.io/myimage:tag
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
@@ -4447,6 +5962,8 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -4581,6 +6098,8 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
+    [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+    [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -4716,7 +6235,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionapp
 #>
 function New-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -5082,6 +6601,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunctionApp_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunctionApp_CreateExpanded';
@@ -5097,6 +6617,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -5105,32 +6626,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Create function for web site, or a deployment slot.
+Create function for web site, or a deployment slot.
 .Description
-Description for Create function for web site, or a deployment slot.
+Create function for web site, or a deployment slot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope
@@ -5218,7 +6738,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/new-azfunction
 #>
 function New-AzFunction {
 [OutputType([System.Boolean])]
@@ -5437,6 +6957,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunction_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunction_CreateExpanded';
@@ -5452,6 +6973,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -5460,17 +6982,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -5479,13 +7004,9 @@ Create or update an identity in the specified subscription and resource group.
 .Description
 Create or update an identity in the specified subscription and resource group.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated
@@ -5561,7 +7082,7 @@ PARAMETER <IIdentityAutoGenerated>: Describes an identity resource.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/new-azuserassignedidentity
 #>
 function New-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -5677,6 +7198,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzUserAssignedIdentity_Create';
             CreateExpanded = 'Az.Functions.private\New-AzUserAssignedIdentity_CreateExpanded';
@@ -5692,6 +7214,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -5700,32 +7223,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -5846,6 +7368,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -5974,7 +7498,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azwebappconfigurationslot
+https://learn.microsoft.com/powershell/module/az.functions/new-azwebappconfigurationslot
 #>
 function New-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -6031,6 +7555,20 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
     ${ActionMinProcessExecutionTime},
@@ -6614,6 +8152,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzWebAppConfigurationSlot_Create';
             CreateExpanded = 'Az.Functions.private\New-AzWebAppConfigurationSlot_CreateExpanded';
@@ -6629,6 +8168,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -6637,32 +8177,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -6783,6 +8322,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -6911,7 +8452,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azwebappconfiguration
+https://learn.microsoft.com/powershell/module/az.functions/new-azwebappconfiguration
 #>
 function New-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -6956,6 +8497,20 @@ param(
     # Web app configuration ARM resource.
     # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -7543,6 +9098,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzWebAppConfiguration_Create';
             CreateExpanded = 'Az.Functions.private\New-AzWebAppConfiguration_CreateExpanded';
@@ -7558,6 +9114,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -7566,28 +9123,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Delete an App Service plan.
+Delete an App Service plan.
 .Description
-Description for Delete an App Service plan.
+Delete an App Service plan.
 .Example
-PS C:\> Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
+Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
 .Example
-PS C:\> Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -7656,7 +9216,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
 #>
 function Remove-AzFunctionAppPlan {
 [OutputType([System.Boolean])]
@@ -7751,6 +9311,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunctionAppPlan_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunctionAppPlan_DeleteViaIdentity';
@@ -7764,6 +9325,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -7772,28 +9334,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Deletes a web, mobile, or API app, or one of the deployment slots.
+Deletes a web, mobile, or API app, or one of the deployment slots.
 .Description
-Description for Deletes a web, mobile, or API app, or one of the deployment slots.
+Deletes a web, mobile, or API app, or one of the deployment slots.
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
 .Example
-PS C:\> Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -7862,7 +9427,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionapp
 #>
 function Remove-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -7970,6 +9535,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunctionApp_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunctionApp_DeleteViaIdentity';
@@ -7983,6 +9549,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -7991,32 +9558,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Delete a function for web site, or a deployment slot.
+Delete a function for web site, or a deployment slot.
 .Description
-Description for Delete a function for web site, or a deployment slot.
+Delete a function for web site, or a deployment slot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -8085,7 +9651,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/remove-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/remove-azfunction
 #>
 function Remove-AzFunction {
 [OutputType([System.Boolean])]
@@ -8186,6 +9752,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunction_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunction_DeleteViaIdentity';
@@ -8199,6 +9766,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -8207,17 +9775,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -8226,13 +9797,9 @@ Deletes the identity.
 .Description
 Deletes the identity.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -8301,7 +9868,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/remove-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/remove-azuserassignedidentity
 #>
 function Remove-AzUserAssignedIdentity {
 [OutputType([System.Boolean])]
@@ -8396,6 +9963,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzUserAssignedIdentity_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzUserAssignedIdentity_DeleteViaIdentity';
@@ -8409,6 +9977,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -8417,28 +9986,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Restarts an app (or deployment slot, if specified).
+Restarts an app (or deployment slot, if specified).
 .Description
-Description for Restarts an app (or deployment slot, if specified).
+Restarts an app (or deployment slot, if specified).
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -Force
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -Force
 .Example
-PS C:\> Restart-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Restart-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -8507,7 +10079,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/restart-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/restart-azfunctionapp
 #>
 function Restart-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -8616,6 +10188,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Restart = 'Az.Functions.private\Restart-AzFunctionApp_Restart';
             RestartViaIdentity = 'Az.Functions.private\Restart-AzFunctionApp_RestartViaIdentity';
@@ -8629,6 +10202,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -8637,32 +10211,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Restores a specific backup to another app (or deployment slot, if specified).
+Restores a specific backup to another app (or deployment slot, if specified).
 .Description
-Description for Restores a specific backup to another app (or deployment slot, if specified).
+Restores a specific backup to another app (or deployment slot, if specified).
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRestoreRequest
@@ -8757,7 +10330,7 @@ REQUEST <IRestoreRequest>: Description of a restore request.
   [SiteName <String>]: Name of an app.
   [StorageAccountUrl <String>]: SAS URL to the container.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/restore-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/restore-azfunctionapp
 #>
 function Restore-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -8974,6 +10547,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Restore = 'Az.Functions.private\Restore-AzFunctionApp_Restore';
             RestoreExpanded = 'Az.Functions.private\Restore-AzFunctionApp_RestoreExpanded';
@@ -8989,6 +10563,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -8997,32 +10572,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Description
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
@@ -9070,7 +10644,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/set-azfunctionappplan
 #>
 function Set-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -9332,6 +10906,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzFunctionAppPlan_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzFunctionAppPlan_UpdateExpanded';
@@ -9345,6 +10920,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -9353,32 +10929,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
@@ -9398,6 +10973,8 @@ HOSTNAMESSLSTATE <IHostNameSslState[]>: Hostname SSL states are used to manage t
   [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -9532,6 +11109,8 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
+    [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+    [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -9667,7 +11246,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/set-azfunctionapp
 #>
 function Set-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -9988,6 +11567,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzFunctionApp_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzFunctionApp_UpdateExpanded';
@@ -10001,6 +11581,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -10009,17 +11590,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -10028,13 +11612,9 @@ Create or update an identity in the specified subscription and resource group.
 .Description
 Create or update an identity in the specified subscription and resource group.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated
@@ -10050,7 +11630,7 @@ PARAMETER <IIdentityAutoGenerated>: Describes an identity resource.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/set-azuserassignedidentity
 #>
 function Set-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -10152,6 +11732,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzUserAssignedIdentity_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzUserAssignedIdentity_UpdateExpanded';
@@ -10165,6 +11746,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -10173,32 +11755,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Replaces the application settings of an app.
+Replaces the application settings of an app.
 .Description
-Description for Replaces the application settings of an app.
+Replaces the application settings of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
@@ -10214,7 +11795,7 @@ APPSETTING <IStringDictionary>: String dictionary resource.
   [Property <IStringDictionaryProperties>]: Settings.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsettingslot
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsettingslot
 #>
 function Set-AzWebAppApplicationSettingSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -10323,6 +11904,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppApplicationSettingSlot_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppApplicationSettingSlot_UpdateExpanded';
@@ -10336,6 +11918,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -10344,32 +11927,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Replaces the application settings of an app.
+Replaces the application settings of an app.
 .Description
-Description for Replaces the application settings of an app.
+Replaces the application settings of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
@@ -10385,7 +11967,7 @@ APPSETTING <IStringDictionary>: String dictionary resource.
   [Property <IStringDictionaryProperties>]: Settings.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsetting
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsetting
 #>
 function Set-AzWebAppApplicationSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -10487,6 +12069,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppApplicationSetting_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppApplicationSetting_UpdateExpanded';
@@ -10500,6 +12083,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -10508,32 +12092,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -10594,6 +12177,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -10722,7 +12307,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappconfigurationslot
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappconfigurationslot
 #>
 function Set-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -10765,6 +12350,18 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
     ${ActionMinProcessExecutionTime},
@@ -11277,6 +12874,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppConfigurationSlot_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppConfigurationSlot_UpdateExpanded';
@@ -11290,6 +12888,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -11298,32 +12897,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -11384,6 +12982,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -11512,7 +13112,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappconfiguration
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappconfiguration
 #>
 function Set-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -11545,6 +13145,18 @@ param(
     # Web app configuration ARM resource.
     # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
@@ -12060,6 +13672,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppConfiguration_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppConfiguration_UpdateExpanded';
@@ -12073,6 +13686,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -12081,28 +13695,194 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Starts an app (or deployment slot, if specified).
+Updates whether user publishing credentials are allowed on the site or not.
 .Description
-Description for Starts an app (or deployment slot, if specified).
+Updates whether user publishing credentials are allowed on the site or not.
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
+{{ Add code here }}
 .Example
-PS C:\> Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CSMPUBLISHINGACCESSPOLICIESENTITY <ICsmPublishingCredentialsPoliciesEntity>: Publishing Credentials Policies parameters.
+  [Kind <String>]: Kind of resource.
+  [Allow <Boolean?>]: <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappscmallowed
+#>
+function Set-AzWebAppScmAllowed {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the app.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity]
+    # Publishing Credentials Policies parameters.
+    # To construct, see NOTES section for CSMPUBLISHINGACCESSPOLICIESENTITY properties and create a hash table.
+    ${CsmPublishingAccessPoliciesEntity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
+    ${Allow},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Kind of resource.
+    ${Kind},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Update = 'Az.Functions.private\Set-AzWebAppScmAllowed_Update';
+            UpdateExpanded = 'Az.Functions.private\Set-AzWebAppScmAllowed_UpdateExpanded';
+        }
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Starts an app (or deployment slot, if specified).
+.Description
+Starts an app (or deployment slot, if specified).
+.Example
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
+.Example
+Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -12171,7 +13951,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/start-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/start-azfunctionapp
 #>
 function Start-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -12266,6 +14046,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Start = 'Az.Functions.private\Start-AzFunctionApp_Start';
             StartViaIdentity = 'Az.Functions.private\Start-AzFunctionApp_StartViaIdentity';
@@ -12279,6 +14060,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -12287,28 +14069,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Stops an app (or deployment slot, if specified).
+Stops an app (or deployment slot, if specified).
 .Description
-Description for Stops an app (or deployment slot, if specified).
+Stops an app (or deployment slot, if specified).
 .Example
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Stop-AzFunctionApp -Force
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Stop-AzFunctionApp -Force
 .Example
-PS C:\> Stop-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Stop-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -12377,7 +14162,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/stop-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/stop-azfunctionapp
 #>
 function Stop-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -12472,6 +14257,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Stop = 'Az.Functions.private\Stop-AzFunctionApp_Stop';
             StopViaIdentity = 'Az.Functions.private\Stop-AzFunctionApp_StopViaIdentity';
@@ -12485,6 +14271,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -12493,32 +14280,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Syncs function trigger metadata to the management database
+Syncs function trigger metadata to the management database
 .Description
-Description for Syncs function trigger metadata to the management database
+Syncs function trigger metadata to the management database
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -12587,7 +14373,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/sync-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/sync-azfunction
 #>
 function Sync-AzFunction {
 [OutputType([System.Boolean])]
@@ -12682,6 +14468,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Sync = 'Az.Functions.private\Sync-AzFunction_Sync';
             SyncViaIdentity = 'Az.Functions.private\Sync-AzFunction_SyncViaIdentity';
@@ -12695,6 +14482,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -12703,32 +14491,248 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Check if a resource name is available.
+Syncs function trigger metadata to the management database
 .Description
-Description for Check if a resource name is available.
+Syncs function trigger metadata to the management database
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
+{{ Add code here }}
 
-{{ Add output here }}
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PrId <String>]: The stage site identifier.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: 
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [View <String>]: The type of view. This can either be "summary" or "detailed".
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/sync-azwebappfunctionslot
+#>
+function Sync-AzWebAppFunctionSlot {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Sync', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Sync', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the app.
+    ${Name},
+
+    [Parameter(ParameterSetName='Sync', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Sync', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the deployment slot.
+    ${Slot},
+
+    [Parameter(ParameterSetName='Sync')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='SyncViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Sync = 'Az.Functions.private\Sync-AzWebAppFunctionSlot_Sync';
+            SyncViaIdentity = 'Az.Functions.private\Sync-AzWebAppFunctionSlot_SyncViaIdentity';
+        }
+        if (('Sync') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Check if a resource name is available.
+.Description
+Check if a resource name is available.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceNameAvailabilityRequest
@@ -12804,7 +14808,7 @@ REQUEST <IResourceNameAvailabilityRequest>: Resource name availability request c
   Type <CheckNameResourceTypes>: Resource type used for verification.
   [IsFqdn <Boolean?>]: Is fully qualified domain name.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/test-aznameavailability
+https://learn.microsoft.com/powershell/module/az.functions/test-aznameavailability
 #>
 function Test-AzNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceNameAvailability])]
@@ -12913,6 +14917,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Check = 'Az.Functions.private\Test-AzNameAvailability_Check';
             CheckExpanded = 'Az.Functions.private\Test-AzNameAvailability_CheckExpanded';
@@ -12928,6 +14933,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -12936,31 +14942,378 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Validate if a resource can be created.
 .Description
-Description for Creates or updates an App Service Plan.
+Validate if a resource can be created.
 .Example
-PS C:\> Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
-                                 -Name MyPremiumPlan `
-                                 -MaximumWorkerCount 20 `
-                                 -Sku EP2 `
-                                 -Force
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateRequest
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [Location <String>]: 
+  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PrId <String>]: The stage site identifier.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: 
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Userid <String>]: The user id of the user.
+  [View <String>]: The type of view. This can either be "summary" or "detailed".
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+
+VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
+  Location <String>: Expected location of the resource.
+  Name <String>: Resource name to verify.
+  Type <ValidateResourceTypes>: Resource type used for verification.
+  [Capacity <Int32?>]: Target capacity of the App Service plan (number of VMs).
+  [ContainerImagePlatform <String>]: Platform (windows or linux)
+  [ContainerImageRepository <String>]: Repository name (image name)
+  [ContainerImageTag <String>]: Image tag
+  [ContainerRegistryBaseUrl <String>]: Base URL of the container registry
+  [ContainerRegistryPassword <String>]: Password for to access the container registry
+  [ContainerRegistryUsername <String>]: Username for to access the container registry
+  [HostingEnvironment <String>]: Name of App Service Environment where app or App Service plan should be created.
+  [IsSpot <Boolean?>]: <code>true</code> if App Service plan is for Spot instances; otherwise, <code>false</code>.
+  [IsXenon <Boolean?>]: <code>true</code> if App Service plan is running as a windows container
+  [NeedLinuxWorker <Boolean?>]: <code>true</code> if App Service plan is for Linux workers; otherwise, <code>false</code>.
+  [ServerFarmId <String>]: ARM resource ID of an App Service plan that would host the app.
+  [SkuName <String>]: Name of the target SKU for the App Service plan.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/test-az
+#>
+function Test-Az {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateResponse])]
+[CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Validate', Mandatory)]
+    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Validate')]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Validate', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateRequest]
+    # Resource validation request content.
+    # To construct, see NOTES section for VALIDATEREQUEST properties and create a hash table.
+    ${ValidateRequest},
+
+    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Expected location of the resource.
+    ${Location},
+
+    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Resource name to verify.
+    ${Name},
+
+    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes]
+    # Resource type used for verification.
+    ${Type},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # Target capacity of the App Service plan (number of VMs).
+    ${Capacity},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Platform (windows or linux)
+    ${ContainerImagePlatform},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Repository name (image name)
+    ${ContainerImageRepository},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Image tag
+    ${ContainerImageTag},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Base URL of the container registry
+    ${ContainerRegistryBaseUrl},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Password for to access the container registry
+    ${ContainerRegistryPassword},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Username for to access the container registry
+    ${ContainerRegistryUsername},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Name of App Service Environment where app or App Service plan should be created.
+    ${HostingEnvironment},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # <code>true</code> if App Service plan is for Spot instances; otherwise, <code>false</code>.
+    ${IsSpot},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # <code>true</code> if App Service plan is running as a windows container
+    ${IsXenon},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # <code>true</code> if App Service plan is for Linux workers; otherwise, <code>false</code>.
+    ${NeedLinuxWorker},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # ARM resource ID of an App Service plan that would host the app.
+    ${ServerFarmId},
+
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Name of the target SKU for the App Service plan.
+    ${SkuName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Validate = 'Az.Functions.private\Test-Az_Validate';
+            ValidateExpanded = 'Az.Functions.private\Test-Az_ValidateExpanded';
+            ValidateViaIdentity = 'Az.Functions.private\Test-Az_ValidateViaIdentity';
+            ValidateViaIdentityExpanded = 'Az.Functions.private\Test-Az_ValidateViaIdentityExpanded';
+        }
+        if (('Validate', 'ValidateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates or updates an App Service Plan.
+.Description
+Creates or updates an App Service Plan.
+.Example
+Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
+                         -Name MyPremiumPlan `
+                         -MaximumWorkerCount 20 `
+                         -Sku EP2 `
+                         -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlanPatchResource
@@ -12982,7 +15335,7 @@ APPSERVICEPLAN <IAppServicePlanPatchResource>: ARM resource for a app service pl
   [IsXenon <Boolean?>]: Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
   [MaximumElasticWorkerCount <Int32?>]: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   [PerSiteScaling <Boolean?>]: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
-  [Reserved <Boolean?>]: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+  [Reserved <Boolean?>]: This needs to set to <code>true</code> when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>. It should be <code>false</code> otherwise.
   [SpotExpirationTime <DateTime?>]: The time when the server farm expires. Valid only if it is a spot server farm.
   [TargetWorkerCount <Int32?>]: Scaling worker count.
   [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
@@ -13046,7 +15399,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionappplan
 #>
 function Update-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -13152,7 +15505,9 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+    # This needs to set to <code>true</code>
+    # when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>.
+    # It should be <code>false</code> otherwise.
     ${Reserved},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -13239,6 +15594,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzFunctionAppPlan_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzFunctionAppPlan_UpdateExpanded';
@@ -13254,6 +15610,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -13262,32 +15619,35 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName -Force
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType SystemAssigned -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType SystemAssigned -Force
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -ApplicationInsightsName ApplicationInsightsProjectName -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -ApplicationInsightsName ApplicationInsightsProjectName -Force
 .Example
-PS C:\> Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType None -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType None -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePatchResource
@@ -13367,6 +15727,8 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -13520,6 +15882,8 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [SiteConfig <ISiteConfig>]: Configuration of the app.
+    [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+    [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -13633,7 +15997,7 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
     [WindowsFxVersion <String>]: Xenon App Framework and version
     [XManagedServiceIdentityId <Int32?>]: Explicit Managed Service Identity Id
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionapp
 #>
 function Update-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -13972,6 +16336,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzFunctionApp_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzFunctionApp_UpdateExpanded';
@@ -13987,6 +16352,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -13995,17 +16361,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -14014,13 +16383,9 @@ Update an identity in the specified subscription and resource group.
 .Description
 Update an identity in the specified subscription and resource group.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityUpdate
@@ -14096,7 +16461,7 @@ PARAMETER <IIdentityUpdate>: Describes an identity resource.
   [Tag <IIdentityUpdateTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/update-azuserassignedidentity
 #>
 function Update-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -14212,6 +16577,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzUserAssignedIdentity_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzUserAssignedIdentity_UpdateExpanded';
@@ -14227,6 +16593,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -14235,32 +16602,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -14381,6 +16747,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -14509,7 +16877,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azwebappconfigurationslot
+https://learn.microsoft.com/powershell/module/az.functions/update-azwebappconfigurationslot
 #>
 function Update-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -14566,6 +16934,20 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
     ${ActionMinProcessExecutionTime},
@@ -15149,6 +17531,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_UpdateExpanded';
@@ -15164,6 +17547,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -15172,32 +17556,31 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource
@@ -15318,6 +17701,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -15446,7 +17831,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azwebappconfiguration
+https://learn.microsoft.com/powershell/module/az.functions/update-azwebappconfiguration
 #>
 function Update-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -15491,6 +17876,20 @@ param(
     # Web app configuration ARM resource.
     # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -16078,6 +18477,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzWebAppConfiguration_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzWebAppConfiguration_UpdateExpanded';
@@ -16093,6 +18493,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -16101,15 +18502,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

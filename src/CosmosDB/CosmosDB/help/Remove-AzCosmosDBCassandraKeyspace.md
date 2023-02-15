@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbcassandrakeyspace
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbcassandrakeyspace
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The **Remove-AzCosmosDBCassandraKeyspace** cmdlet deletes an existing CosmosDB C
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCosmosDBCassandraKeyspace -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Name {keyspaceName}
+Remove-AzCosmosDBCassandraKeyspace -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "keyspaceName"
 ```
 
 The cmdlet returns an object of type bool(when -PassThru is passed) which is true if the delete was successful.

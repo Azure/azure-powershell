@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: B4EC9132-8DB9-498D-8B3F-2AB51D8EA03A
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightsazureactivitylogdatasource
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightsazureactivitylogdatasource
 schema: 2.0.0
 ---
 
@@ -33,9 +33,11 @@ The New-AzOperationalInsightsAzureActivityLogDataSource cmdlet enables Log Analy
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzOperationalInsightsAzureActivityLogDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsworkspace -Name test -SubscriptionId 0b1f6471-1bf0-4dda-aec3-cb9272f09590
 ```
-PS C:\> New-AzOperationalInsightsAzureActivityLogDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsworkspace -Name test -SubscriptionId 0b1f6471-1bf0-4dda-aec3-cb9272f09590
 
+```output
 Name              : test
 ResourceGroupName : testrg
 WorkspaceName     : LogAnalyticsworkspace

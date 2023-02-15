@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 1FF0B0F9-4B2C-46BC-8BED-12BE865E4480
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/suspend-azdatafactorypipeline
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/suspend-azdatafactorypipeline
 schema: 2.0.0
 ---
 
@@ -32,8 +32,11 @@ You can resume the pipeline by using the Resume-AzDataFactoryPipeline cmdlet.
 ## EXAMPLES
 
 ### Example 1: Suspend a pipeline
+```powershell
+Suspend-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikiSample" -DataFactoryName "WikiADF"
 ```
-PS C:\>Suspend-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikiSample" -DataFactoryName "WikiADF"
+
+```output
 Confirm
 Are you sure you want to suspend pipeline 'DPWikisample' in data factory 'WikiADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y

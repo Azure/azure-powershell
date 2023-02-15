@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: B5C909D7-6087-463A-83BF-99DD196B9862
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseactivity
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldatabaseactivity
 schema: 2.0.0
 ---
 
@@ -25,15 +25,15 @@ The **Get-AzSqlDatabaseActivity** cmdlet gets the status of database operations 
 ## EXAMPLES
 
 ### Example 1: Get status for all SQL Database instances
-```
-PS C:\>Get-AzSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
+```powershell
+Get-AzSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
 ```
 
 This command returns the operation status of all SQL Database instances in an elastic pool named ElasticPool01.
 
 ### Example 2: Get status for all SQL Database operations
-```
-PS C:\>Get-AzSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+```powershell
+Get-AzSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 This command returns the status of all SQL Database operations in a database.

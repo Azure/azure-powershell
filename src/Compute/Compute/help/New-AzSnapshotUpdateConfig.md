@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotupdateconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azsnapshotupdateconfig
 schema: 2.0.0
 ---
 
@@ -15,8 +15,9 @@ Creates a configurable snapshot update object.
 ```
 New-AzSnapshotUpdateConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[-DiskSizeGB] <Int32>]
  [[-Tag] <Hashtable>] [-SupportsHibernation <Boolean>] [-EncryptionSettingsEnabled <Boolean>]
- [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
- [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-PublicNetworkAccess <String>]
+ [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-EdgeZone <String>]
+ [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-DiskEncryptionSetId <String>] [-EncryptionType <String>]
+ [-PublicNetworkAccess <String>] [-DataAccessAuthMode <String>] [-Architecture <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,15 +27,15 @@ The **New-AzSnapshotUpdateConfig** cmdlet creates a configurable snapshot update
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $snapshotupdateconfig = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
-PS C:\> $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
-PS C:\> $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
-PS C:\> $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
-PS C:\> $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
-PS C:\> $snapshotupdateconfig = Set-AzSnapshotUpdateDiskEncryptionKey -SnapshotUpdate $snapshotupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
-PS C:\> $snapshotupdateconfig = Set-AzSnapshotUpdateKeyEncryptionKey -SnapshotUpdate $snapshotupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
-PS C:\> Update-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -SnapshotUpdate $snapshotupdateconfig;
+```powershell
+$snapshotupdateconfig = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -EncryptionSettingsEnabled $true;
+$secretUrl = 'https://myvault.vault-int.azure-int.net/secrets/123/';
+$secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
+$keyUrl = 'https://myvault.vault-int.azure-int.net/keys/456';
+$keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
+$snapshotupdateconfig = Set-AzSnapshotUpdateDiskEncryptionKey -SnapshotUpdate $snapshotupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
+$snapshotupdateconfig = Set-AzSnapshotUpdateKeyEncryptionKey -SnapshotUpdate $snapshotupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
+Update-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -SnapshotUpdate $snapshotupdateconfig;
 ```
 
 The first command creates a local empty snapshot update object with size 10GB in Premium_LRS
@@ -44,14 +45,44 @@ object. The last command takes the snapshot update object and updates an existin
 name 'Snapshot01' in resource group 'ResourceGroup01'.
 
 ### Example 2
-```
-PS C:\> New-AzSnapshotUpdateConfig -DiskSizeGB 10 | Update-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01';
+```powershell
+New-AzSnapshotUpdateConfig -DiskSizeGB 10 | Update-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01';
 ```
 
 This command updates an existing snapshot with name 'Snapshot01' in resource group
 'ResourceGroup01' to 10 GB disk size.
 
 ## PARAMETERS
+
+### -Architecture
+CPU architecture supported by an OS disk. Possible values are "X64" and "Arm64".
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DataAccessAuthMode
+Additional authentication requirements when exporting or uploading to a disk or snapshot.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -108,6 +139,21 @@ Aliases:
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EdgeZone
+Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -205,7 +251,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportsHibernation
-{{ Fill SupportsHibernation Description }}
+Indicates if the OS on the snapshot supports hibernation with $true or $false
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

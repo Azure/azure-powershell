@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: BFEAE1F7-56E3-4EA9-B39A-ED09582C8A09
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverupgradehint
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlserverupgradehint
 schema: 2.0.0
 ---
 
@@ -28,8 +28,11 @@ This cmdlet returns hints for all databases hosted on the specified server.
 ## EXAMPLES
 
 ### Example 1: Get combined recommendations
+```powershell
+Get-AzSqlServerUpgradeHint -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
-PS C:\>Get-AzSqlServerUpgradeHint -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+
+```output
 ElasticPools Databases           
 ------------ ---------           
 {}           {database01, database02}

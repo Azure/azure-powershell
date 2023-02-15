@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvmgroup
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvmgroup
 schema: 2.0.0
 ---
 
@@ -27,11 +27,14 @@ The New-AzSqlVMGroup cmdlet creates an Azure SQL virtual machine group.
 
 ### Example 1
 ```powershell
-PS C:\> $secureKey = ConvertTo-SecureString $profile.StorageAccountPrimaryKey -AsPlainText -Force
-PS C:\> New-AzSqlVMGroup $resourceGroupName $groupName $location -ClusterOperatorAccount $profile.ClusterOperatorAccount `
->>         -SqlServiceAccount $profile.SqlServiceAccount -StorageAccountUrl $profile.StorageAccountUrl `
->>         -StorageAccountPrimaryKey $secureKey -DomainFqdn $profile.DomainFqdn `
->>         -Offer 'SQL2017-WS2016' -Sku 'Developer'
+$secureKey = ConvertTo-SecureString $profile.StorageAccountPrimaryKey -AsPlainText -Force
+New-AzSqlVMGroup $resourceGroupName $groupName $location -ClusterOperatorAccount $profile.ClusterOperatorAccount `
+         -SqlServiceAccount $profile.SqlServiceAccount -StorageAccountUrl $profile.StorageAccountUrl `
+         -StorageAccountPrimaryKey $secureKey -DomainFqdn $profile.DomainFqdn `
+         -Offer 'SQL2017-WS2016' -Sku 'Developer'
+```
+
+```output         
 Name       ResourceGroupName  Sku       Offer
 ----       -----------------  ---       -----
 test-group ResourceGroup01	  Developer SQL2017-WS2016
@@ -253,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountUrl
-Primary key of the witness storage account
+Storage account url of the witness storage account
 
 ```yaml
 Type: System.String

@@ -15,6 +15,7 @@
 using Commands.StorageSync.Interop.Clients;
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
 using Microsoft.Win32;
 using System;
@@ -23,11 +24,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 {
     /// <summary>
     /// Class StorageSyncResourceManager.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncResourceManager" />
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncResourceManager" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncResourceManager" />
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncResourceManager" />
     public class StorageSyncResourceManager : IStorageSyncResourceManager
     {
 
@@ -101,5 +100,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         /// <returns>System.String.</returns>
         public string GetTenantId() => null;
+
+        /// <summary>
+        /// Get Service Principal Or Null
+        /// </summary>
+        /// <returns>MicrosoftGraphServicePrincipal</returns>
+        public MicrosoftGraphServicePrincipal GetServicePrincipalOrNull() => null;
     }
 }

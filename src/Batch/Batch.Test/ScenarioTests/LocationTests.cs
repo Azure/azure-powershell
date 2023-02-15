@@ -12,27 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class LocationTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class LocationTests : BatchTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public LocationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public LocationTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationQuotas()
         {
-            BatchController.NewInstance.RunPsTest(_logger, "Test-GetLocationQuotas");
+            TestRunner.RunTestScript("Test-GetLocationQuotas");
         }
     }
 }

@@ -30,6 +30,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected const int size8MB = 8 * 1024 * 1024;
 
+        protected const int size256MB = 256 * 1024 * 1024;
+
         /// <summary>
         /// block blob type
         /// </summary>
@@ -71,7 +73,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
-        /// <param name="msg">Confirmation message</param>
+        /// <param name="source">Indicating the source.</param>
+        /// <param name="destination">Indicating the destination.</param>
         /// <returns>True if the opeation is confirmed, otherwise return false</returns>
         protected bool ConfirmOverwrite(object source, object destination)
         {
@@ -82,7 +85,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
-        /// <param name="msg">Confirmation message</param>
+        /// <param name="source">Indicating the source.</param>
+        /// <param name="destination">Indicating the destination.</param>
         /// <returns>True if the opeation is confirmed, otherwise return false</returns>
         protected async Task<bool> ConfirmOverwriteAsync(object source, object destination)
         {

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlServerMSSupportAudit
+online version: https://learn.microsoft.com/powershell/module/az.sql/Get-AzSqlServerMSSupportAudit
 schema: 2.0.0
 ---
 
@@ -32,8 +32,11 @@ Specify the *ResourceGroupName* and *ServerName* parameters to identify the serv
 ## EXAMPLES
 
 ### Example 1: Get the Microsoft support operations auditing settings of an Azure SQL server
+```powershell
+Get-AzSqlServerMSSupportAudit -ResourceGroupName "resourcegroup01" -ServerName "server01"
 ```
-PS C:\>Get-AzSqlServerMSSupportAudit -ResourceGroupName "resourcegroup01" -ServerName "server01"
+
+```output
 ServerName                          : server01
 ResourceGroupName                   : resourcegroup01
 BlobStorageTargetState              : Enabled
@@ -46,8 +49,11 @@ WorkspaceResourceId                 : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2
 ```
 
 ### Example 2: Get, through pipeline, the Microsoft support operations auditing settings of an Azure SQL server
+```powershell
+Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Get-AzSqlServerMSSupportAudit
 ```
-PS C:\> Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Get-AzSqlServerMSSupportAudit
+
+```output
 ServerName                          : server01
 ResourceGroupName                   : resourcegroup01
 BlobStorageTargetState              : Enabled
@@ -60,8 +66,11 @@ WorkspaceResourceId                 : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2
 ```
 
 ### Example 3: Get the Microsoft support operations auditing settings of an Azure SQL server
+```powershell
+Get-AzSqlServerMSSupportAudit -ResourceGroupName "resourcegroup01" -ServerName "server01"
 ```
-PS C:\>Get-AzSqlServerMSSupportAudit -ResourceGroupName "resourcegroup01" -ServerName "server01"
+
+```output
 ServerName                          : server01
 ResourceGroupName                   : resourcegroup01
 BlobStorageTargetState              : Enabled

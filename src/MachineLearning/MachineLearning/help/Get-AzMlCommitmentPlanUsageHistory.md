@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
-online version: https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlcommitmentplanusagehistory
+online version: https://learn.microsoft.com/powershell/module/az.machinelearning/get-azmlcommitmentplanusagehistory
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Retrieves usage history information for a specified commitment plan, including r
 ## EXAMPLES
 
 ### Example 1: Get usage history for a specific commitment plan
-```
+```powershell
 Get-AzMlCommitmentPlanUsageHistory -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
 

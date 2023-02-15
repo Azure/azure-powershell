@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesasrprotectioncontainer
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesasrprotectioncontainer
 schema: 2.0.0
 ---
 
@@ -23,9 +23,9 @@ The Remove-AzRecoveryServicesAsrProtectionContainer cmdlet deletes the specified
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzRecoveryServicesAsrProtectionContainer -Name xxxxx  -Fabric $fabric
-PS C:\> Remove-AzRecoveryServicesAsrProtectionContainer -InputObject $protectionContainer
+```powershell
+Get-AzRecoveryServicesAsrProtectionContainer -Name xxxxx  -Fabric $fabric
+Remove-AzRecoveryServicesAsrProtectionContainer -InputObject $protectionContainer
 ```
 
 Starts the deletion of specified protection container and returns the ASR job used to track the remove operation.

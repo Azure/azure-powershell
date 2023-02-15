@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/get-azaccesstoken
+online version: https://learn.microsoft.com/powershell/module/az.accounts/get-azaccesstoken
 schema: 2.0.0
 ---
 
@@ -31,21 +31,21 @@ Get access token
 
 ### Example 1 Get the access token for ARM endpoint
 ```powershell
-PS C:\> Get-AzAccessToken
+Get-AzAccessToken
 ```
 
 Get access token of current account for ResourceManager endpoint
 
 ### Example 2 Get the access token for Microsoft Graph endpoint
 ```powershell
-PS C:\> Get-AzAccessToken -ResourceTypeName MSGraph
+Get-AzAccessToken -ResourceTypeName MSGraph
 ```
 
 Get access token of Microsoft Graph endpoint for current account
 
 ### Example 3 Get the access token for Microsoft Graph endpoint
 ```powershell
-PS C:\> Get-AzAccessToken -ResourceUrl "https://graph.microsoft.com/"
+Get-AzAccessToken -ResourceUrl "https://graph.microsoft.com/"
 ```
 
 Get access token of Microsoft Graph endpoint for current account
@@ -56,7 +56,7 @@ Get access token of Microsoft Graph endpoint for current account
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,10 +68,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceTypeName
-Optional resource type name, supported values: AadGraph, AnalysisServices, Arm, Attestation, Batch, DataLake, KeyVault, MSGraph, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.
+Optional resource type name, supported values: AadGraph, AnalysisServices, AppConfiguration, Arm, Attestation, Batch, DataLake, KeyVault, MSGraph, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: KnownResourceTypeName
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 Resource url for that you're requesting token, e.g. 'https://graph.microsoft.com/'.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceUrl
 Aliases: Resource, ResourceUri
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Optional Tenant Id. Use tenant id of default context if not specified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

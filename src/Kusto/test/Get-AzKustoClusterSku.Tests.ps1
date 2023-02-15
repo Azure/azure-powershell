@@ -15,7 +15,7 @@ Describe 'Get-AzKustoClusterSku' {
     }
     It 'List' {
         [array]$clusterSku = Get-AzKustoClusterSku
-        $clusterSku.Count | Should -Be 530
+        $clusterSku.Count | Should -Be 724
     }
 
     It 'List1' {
@@ -23,6 +23,6 @@ Describe 'Get-AzKustoClusterSku' {
         $clusterName = $env.clusterName
 
         [array]$clusterSku = Get-AzKustoClusterSku -ResourceGroupName $resourceGroupName -ClusterName $clusterName
-        $clusterSku.Count | Should -Be 24
+        $clusterSku.Count | Should -Be 54
     }
 }

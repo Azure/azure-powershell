@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/New-AzIotSecuritySolutionRecommendationConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/az.security/New-AzIotSecuritySolutionRecommendationConfigurationObject
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ This way the status of a recommendation is configured, whether it is enabled or 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_ACRAuthentication" -Enabled $false
+New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_ACRAuthentication" -Enabled $false
+```
 
+```output
 RecommendationType: "IoT_ACRAuthentication"
 Name: "Service prinicpal not used with ACR repository"
 Status: "Disabled"

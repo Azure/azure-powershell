@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.dll-Help.xml
 Module Name: Az.Marketplace
-online version:https://docs.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestoreoffer
+online version:https://learn.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestoreoffer
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Remove an offer from private store that was created in tenant scope.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzMarketplacePrivateStoreOffer -privateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -offerId  publisherid.offerid
+Remove-AzMarketplacePrivateStoreOffer -privateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -offerId  publisherid.offerid
 ```
 
 Remove an offer from private store that was created in tenant scope.

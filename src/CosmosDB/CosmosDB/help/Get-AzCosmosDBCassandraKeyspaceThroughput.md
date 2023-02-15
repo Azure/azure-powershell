@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The **Get-AzCosmosDBCassandraKeyspaceThroughput** cmdlet gets the throughput obj
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBCassandraKeyspaceThroughput -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Name {name}
+Get-AzCosmosDBCassandraKeyspaceThroughput -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "name"
 ```
 
 ## PARAMETERS

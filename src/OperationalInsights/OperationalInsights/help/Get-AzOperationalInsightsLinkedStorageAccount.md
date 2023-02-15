@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightslinkedstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightslinkedstorageaccount
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Get linked storage account, list all linked storage accounts when "-DataSourceTy
 
 ### Example 1
 ```powershell
-Get-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName {rg-name} -WorkspaceName {workspace-name}
+Get-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "rg-name" -WorkspaceName "workspace-name"
+```
 
+```output
 Id                : /subscriptions/{subscription}/resourceGroups/{rg-name}/providers/Microsoft.OperationalInsights/workspaces/{workspace-name}/linkedStorageAccounts/customlogs
 Name              :
 Type              : Microsoft.OperationalInsights/workspaces/linkedStorageAccounts

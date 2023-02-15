@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azpublicipprefix
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azpublicipprefix
 schema: 2.0.0
 ---
 
@@ -24,11 +24,11 @@ The **Set-AzPublicIpPrefix** cmdlet sets the Tags for a public IP prefix.
 
 ### Set the tags for public ip prefix
 ```powershell
-PS C:\> $publicIpPrefix = Get-AzPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName
+$publicIpPrefix = Get-AzPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName
 
-PS C:\> $publicIpPrefix.Tags = "TestTag"
+$publicIpPrefix.Tags = "TestTag"
 
-PS C:\> Set-AzPublicIpPrefix -PublicIpPrefix $publicIpPrefix
+Set-AzPublicIpPrefix -PublicIpPrefix $publicIpPrefix
 ```
 
 The first command gets an existing public IP Prefix, the second command sets the Tags Property and the third command updates the existing object.

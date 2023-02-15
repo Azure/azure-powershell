@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageblobserviceproperty
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageblobserviceproperty
 schema: 2.0.0
 ---
 
@@ -37,8 +37,9 @@ The **Get-AzStorageBlobServiceProperty** cmdlet gets the service properties for 
 
 ### Example 1: Get  Azure Storage Blob services property of a specified Storage Account
 ```powershell
-PS C:\> Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
-
+Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+```
+```output
 StorageAccountName            : mystorageaccount
 ResourceGroupName             : myresourcegroup
 DefaultServiceVersion         : 

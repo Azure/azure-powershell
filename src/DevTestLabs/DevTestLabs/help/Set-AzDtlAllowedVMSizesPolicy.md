@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs.dll-Help.xml
 Module Name: Az.DevTestLabs
 ms.assetid: AAABDD1D-71BF-409C-B50B-9BE861D84229
-online version: https://docs.microsoft.com/powershell/module/az.devtestlabs/set-azdtlallowedvmsizespolicy
+online version: https://learn.microsoft.com/powershell/module/az.devtestlabs/set-azdtlallowedvmsizespolicy
 schema: 2.0.0
 ---
 
@@ -32,6 +32,28 @@ The **Set-AzDtlAllowedVMSizesPolicy** cmdlet sets the allowed virtual machine si
 The cmdlet uses the specified resource group and name of the lab to set the policy.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Set-AzDtlAllowedVMSizesPolicy -LabName debtestlab -ResourceGroupName yuzhi-rg
+```
+
+```output
+Name               : AllowedVmSizesInLab
+Type               : Microsoft.DevTestLab/labs/policySets/policies
+Tags               : 
+Id                 : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/yuzhi-rg/providers/microsoft.devtestlab/labs/debte
+                     stlab/policysets/default/policies/allowedvmsizesinlab
+Location           : 
+Fact Name          : LabVmSize
+Threshold          : ["Basic_A0"]
+Evaluator Type     : AllowedValuesPolicy
+Description        : 
+Status             : Enabled
+Provisioning State : 
+```
+Sets the allowed virtual machine sizes policy of a lab in DevTest Labs.
+
 
 ## PARAMETERS
 

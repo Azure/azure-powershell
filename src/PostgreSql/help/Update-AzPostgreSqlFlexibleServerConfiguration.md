@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlflexibleserverconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlflexibleserverconfiguration
 schema: 2.0.0
 ---
 
@@ -34,8 +34,10 @@ Use Update-AzPostgreSqlFlexibleServer instead if you want update AdministratorLo
 
 ### Example 1: Updatae specified PostgreSql configuration by name
 ```powershell
-PS C:\> Update-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Value 8192
+Update-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Value 8192
+```
 
+```output
 Name     Value AllowedValue Source         DefaultValue
 ----     ----- ------------ ------         ------------
 work_mem 8192  4096-2097151 system-default 4096
@@ -44,11 +46,13 @@ work_mem 8192  4096-2097151 system-default 4096
 
 This cmdlet updates specified PostgreSql configuration by name.
 
-### Example 1: Updatae specified PostgreSql configuration by identity
+### Example 2: Updatae specified PostgreSql configuration by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/configurations/work_mem"
-PS C:\> Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Value 8192
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/configurations/work_mem"
+Update-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Value 8192
+```
 
+```output
 Name     Value AllowedValue Source         DefaultValue
 ----     ----- ------------ ------         ------------
 work_mem 8192  4096-2097151 system-default 4096
@@ -261,7 +265,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

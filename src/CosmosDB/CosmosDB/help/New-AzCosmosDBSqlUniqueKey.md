@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekey
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekey
 schema: 2.0.0
 ---
 
@@ -23,8 +23,10 @@ The **New-AzCosmosDBSqlUniqueKey** cmdlet creates a new object of type PSUniqueK
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlUniqueKey -Path {path}
+New-AzCosmosDBSqlUniqueKey -Path "path"
+```
 
+```output
 Path
 ----
 {path}

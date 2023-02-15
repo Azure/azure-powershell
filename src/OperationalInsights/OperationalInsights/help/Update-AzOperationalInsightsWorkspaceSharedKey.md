@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/Update-AzOperationalInsightsWorkspaceSharedKey
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/Update-AzOperationalInsightsWorkspaceSharedKey
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Regenerates the shared keys for a Log Analytics Workspace. These keys are used t
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
+Update-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
 ```
 
 Regenerates the shared keys for a Log Analytics Workspace. returns Primary and Secondary shared keys

@@ -11,6 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes InstanceView = @"instanceView";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes UserData = @"userData";
+
         /// <summary>the value for an instance of the <see cref="InstanceViewTypes" /> Enum.</summary>
         private string _value { get; set; }
 

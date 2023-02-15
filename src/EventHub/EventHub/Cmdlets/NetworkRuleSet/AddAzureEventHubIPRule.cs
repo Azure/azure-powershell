@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
     /// <summary>
     /// 'New-AzureRmEventHubIpfilterRule' Cmdlet creates a new IPFilterRule
     /// </summary>
+    [GenericBreakingChange("This cmdlet would be deprecated in a future release. Please use Set-AzEventHubNetworkRuleSet.")]
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubIPRule", DefaultParameterSetName = IPRulePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSNetworkRuleSetAttributes))]
     public class AddAzureEventHubIPRule : AzureEventHubsCmdletBase
     {
@@ -53,7 +55,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
         public override void ExecuteCmdlet()
         {
-            PSNetworkRuleSetAttributes networkRuleSet = Client.GetNetworkRuleSet(ResourceGroupName, Name);
+            PSNetworkRuleSetAttributes networkRuleSet = UtilityClient.GetNetworkRuleSet(ResourceGroupName, Name);
             if (!networkRuleSet.IpRules.Contains(new PSNWRuleSetIpRulesAttributes { IpMask = IpMask }))
             {
                 if (ShouldProcess(target: Name, action: string.Format("Adding IP rule for NetworkRuleSet of {0} in Resourcegroup {1}", Name, ResourceGroupName)))
@@ -71,7 +73,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                             networkRuleSet.IpRules.Add(IpRuleObject);
                         }
 
-                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
+                        WriteObject(UtilityClient.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
                     }
                     catch (Management.EventHub.Models.ErrorResponseException ex)
                     {

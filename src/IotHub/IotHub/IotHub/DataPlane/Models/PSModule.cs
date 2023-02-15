@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public DateTime ConnectionStateUpdatedTime { get; set; }
 
         /// <summary>
-        /// Time when the <see cref="Device"/> was last active
+        /// Time when the <see cref="PSDevice"/> was last active
         /// </summary>
         [JsonProperty(PropertyName = "lastActivityTime")]
         public DateTime LastActivityTime { get; set; }

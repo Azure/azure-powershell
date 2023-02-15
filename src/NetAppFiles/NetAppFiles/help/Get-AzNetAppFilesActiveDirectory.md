@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesactivedirectory
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesactivedirectory
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The **Get-AzNetAppFilesActiveDirectory** cmdlet gets details of an ANF accounts 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyADConfigName"
+Get-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -ActiveDirectoryId "MyADConfigName"
 ```
 
 This command gets the AD configuration named MyADConfigName for the Azure NetApp Files (ANF) account named MyAnfAccount.
@@ -127,3 +127,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesActiveDirectory](./New-AzNetAppFilesActiveDirectory.md)
+[Remove-AzNetAppFilesActiveDirectory](./Remove-AzNetAppFilesActiveDirectory.md)
+[Update-AzNetAppFilesActiveDirectory](./Update-AzNetAppFilesActiveDirectory.md)
+[Get-AzNetAppFilesAccount](./Get-AzNetAppFilesAccount.md)
+[New-AzNetAppFilesAccount](./New-AzNetAppFilesAccount.md)
+[Remove-AzNetAppFilesAccount](./Remove-AzNetAppFilesAccount.md)
+[Set-AzNetAppFilesAccount](./Set-AzNetAppFilesAccount.md)
+[Update-AzNetAppFilesAccount](./Update-AzNetAppFilesAccount.md)

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Set-AzSecuritySetting
+online version: https://learn.microsoft.com/powershell/module/az.security/Set-AzSecuritySetting
 schema: 2.0.0
 ---
 
@@ -17,7 +17,7 @@ Update a security setting in Azure Security Center
 Set-AzSecuritySetting [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DataExportSettingsScope
+### SettingsScope
 ```
 Set-AzSecuritySetting -SettingName <String> -SettingKind <String> -Enabled <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -36,8 +36,10 @@ The Set-AzSecuritySetting cmdlet updates a specific security setting in Azure Se
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecuritySetting -SettingName "MCAS" -SettingKind "DataExportSettings" -Enabled $true
+Set-AzSecuritySetting -SettingName "MCAS" -SettingKind "DataExportSettings" -Enabled $true
+```
 
+```output
 Id: "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/settings/MCAS"
 Name: "MCAS"
 Type: "Microsoft.Security/settings"
@@ -68,7 +70,7 @@ Enables the setting.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: DataExportSettingsScope
+Parameter Sets: SettingsScope
 Aliases:
 
 Required: True
@@ -110,7 +112,7 @@ Setting kind. (DataExportSettings/AlertSyncSettings)
 
 ```yaml
 Type: System.String
-Parameter Sets: DataExportSettingsScope
+Parameter Sets: SettingsScope
 Aliases:
 
 Required: True
@@ -125,7 +127,7 @@ Setting name. (MCAS/WDATP/Sentinel)
 
 ```yaml
 Type: System.String
-Parameter Sets: DataExportSettingsScope
+Parameter Sets: SettingsScope
 Aliases:
 
 Required: True

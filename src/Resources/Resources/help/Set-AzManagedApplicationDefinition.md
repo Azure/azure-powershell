@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/set-azmanagedapplicationdefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/set-azmanagedapplicationdefinition
 schema: 2.0.0
 ---
 
@@ -34,7 +34,7 @@ The **Set-AzManagedApplicationDefinition** cmdlet updates managed application de
 
 ### Example 1: Update managed application definition description
 ```powershell
-PS C:\>Set-AzManagedApplicationDefinition -ResourceId "/subscriptions/mySubId/resourcegroups/myRG/Microsoft.Solutions/applicationDefinitions/myAppDef" -Description "Updated description here"
+Set-AzManagedApplicationDefinition -ResourceId "/subscriptions/mySubId/resourcegroups/myRG/Microsoft.Solutions/applicationDefinitions/myAppDef" -Description "Updated description here"
 ```
 
 This command updates the managed application definition description

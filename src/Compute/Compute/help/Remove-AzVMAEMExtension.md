@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: B1CD5302-9BF0-460E-98FE-F60DFE072848
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmaemextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmaemextension
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzVMAEMExtension** cmdlet removes the Azure Enhanced Monitoring (AE
 ## EXAMPLES
 
 ### Example 1: Remove the AEM extension
-```
-PS C:\> Remove-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
+```powershell
+Remove-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 
 This command removes the AEM extension for the virtual machine named contoso-server.

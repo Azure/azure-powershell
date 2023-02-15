@@ -2362,7 +2362,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualmachines/0?api-version=2019-03-01",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualMachines/0?api-version=2019-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczEyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2NycHRlc3RwczEyOC92aXJ0dWFsbWFjaGluZXMvMD9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2432,7 +2432,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualmachines/0/instanceView?api-version=2019-03-01",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualMachines/0/instanceView?api-version=2019-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczEyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2NycHRlc3RwczEyOC92aXJ0dWFsbWFjaGluZXMvMC9pbnN0YW5jZVZpZXc/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2502,7 +2502,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualmachines/1?api-version=2019-03-01",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualMachines/1?api-version=2019-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczEyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2NycHRlc3RwczEyOC92aXJ0dWFsbWFjaGluZXMvMT9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2572,7 +2572,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualmachines/1/instanceView?api-version=2019-03-01",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualMachines/1/instanceView?api-version=2019-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczEyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2NycHRlc3RwczEyOC92aXJ0dWFsbWFjaGluZXMvMS9pbnN0YW5jZVZpZXc/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -5858,7 +5858,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualmachines/0/reimageall?api-version=2019-03-01",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualMachines/0/reimageall?api-version=2019-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczEyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2NycHRlc3RwczEyOC92aXJ0dWFsbWFjaGluZXMvMC9yZWltYWdlYWxsP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
       "RequestMethod": "POST",
       "RequestBody": "",
@@ -7087,7 +7087,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualmachines/1/reimageall?api-version=2019-03-01",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps128/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps128/virtualMachines/1/reimageall?api-version=2019-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczEyOC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2NycHRlc3RwczEyOC92aXJ0dWFsbWFjaGluZXMvMS9yZWltYWdlYWxsP2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
       "RequestMethod": "POST",
       "RequestBody": "",

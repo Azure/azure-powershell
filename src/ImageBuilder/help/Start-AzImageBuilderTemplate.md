@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/start-azimagebuildertemplate
+online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/start-azimagebuildertemplate
 schema: 2.0.0
 ---
 
@@ -14,9 +14,8 @@ Create artifacts from a existing image template
 
 ### Run (Default)
 ```
-Start-AzImageBuilderTemplate -ImageTemplateName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Start-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RunViaIdentity
@@ -32,17 +31,20 @@ Create artifacts from a existing image template
 
 ### Example 1: Start an image template
 ```powershell
-PS C:\> Start-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder -Name template-name-sn78hg
+Start-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg
+```
 
+```output
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+1      Start-AzImageB…                 Running       True            localhost            Start-AzImageBuilderTemp…
 ```
 
 This command starts an image template.
 
 ### Example 2: Start an image template
 ```powershell
-PS C:\> $template = Get-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder -Name template-name-sn78hg
-PS C:\> Start-AzImageBuilderTemplate -InputObject $template
-
+Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg | Start-AzImageBuilderTemplate
 ```
 
 This command starts an image template.
@@ -79,21 +81,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageTemplateName
-The name of the image Template
-
-```yaml
-Type: System.String
-Parameter Sets: Run
-Aliases: Name
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -107,6 +94,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the image Template
+
+```yaml
+Type: System.String
+Parameter Sets: Run
+Aliases: ImageTemplateName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -222,7 +224,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IImageBuilderIdentity>: Identity Parameter
+`INPUTOBJECT <IImageBuilderIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ImageTemplateName <String>]`: The name of the image Template
   - `[ResourceGroupName <String>]`: The name of the resource group.

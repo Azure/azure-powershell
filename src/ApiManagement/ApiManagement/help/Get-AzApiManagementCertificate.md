@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 6F7C6611-5C56-4F1D-AB98-CDD92D88821C
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementcertificate
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementcertificate
 schema: 2.0.0
 ---
 
@@ -31,17 +31,17 @@ The **Get-AzApiManagementCertificate** cmdlet gets all Azure API Management cert
 ## EXAMPLES
 
 ### Example 1: Get all certificates
-```
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementCertificate -Context $ApiMgmtContext
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementCertificate -Context $ApiMgmtContext
 ```
 
 This command gets all API Management certificates.
 
 ### Example 2: Get a certificate by its ID
-```
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789"
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789"
 ```
 
 This command gets the API Management certificate with the specified ID.

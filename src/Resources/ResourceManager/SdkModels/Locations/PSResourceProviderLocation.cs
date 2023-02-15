@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
@@ -30,6 +31,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         /// Gets or sets the location display name
         /// </summary>
         public string DisplayName { get; set; }
+
+        public LocationType? Type { get;set; }
+
+
+        public string Longitude { get;set; }
+
+        public string Latitude { get;set; }
+
+        public string PhysicalLocation { get;set; }
+
+        public string RegionType { get;set; }
+
+        public string RegionCategory { get;set; }
+
+        public string GeographyGroup { get;set; }
+
+        public IList<PairedRegion> PairedRegion { get; set; }
 
         /// <summary>
         /// Gets or sets the providers that are supported in this location

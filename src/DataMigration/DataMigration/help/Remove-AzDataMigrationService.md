@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/Remove-AzDataMigrationService
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Remove-AzDataMigrationService
 schema: 2.0.0
 ---
 
 # Remove-AzDataMigrationService
 
 ## SYNOPSIS
-Removes an instance of the Azure Database Migration Service from Azure.
+Removes an instance of the Azure Database Migration Service (classic) from Azure.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzDataMigrationService [-ResourceId] <String> [-Force] [-DeleteRunningTas
 ```
 
 ## DESCRIPTION
-The Remove-AzDataMigrationService cmdlet removes an instance of the Azure Database Migration Service from Azure. Supplying the DeleteRunningTask parameter removes all of the Azure Database Migration Service tasks associated with the service that is being removed. 
+The Remove-AzDataMigrationService cmdlet removes an instance of the Azure Database Migration Service (classic) from Azure. Supplying the DeleteRunningTask parameter removes all of the Azure Database Migration Service (classic) tasks associated with the service that is being removed. 
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
+```powershell
+Remove-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
 ```
 
-The above example removes an instance of the Azure Database Migration Service named TestService that is contained in an Azure Resource Group named MyResourceGroup.
+The above example removes an instance of the Azure Database Migration Service (classic) named TestService that is contained in an Azure Resource Group named MyResourceGroup.
 
 ## PARAMETERS
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Database Migration Service.
+The name of the Azure Database Migration Service (classic).
 
 ```yaml
 Type: System.String
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

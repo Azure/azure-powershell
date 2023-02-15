@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzSecurityContact
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzSecurityContact
 schema: 2.0.0
 ---
 
@@ -35,7 +35,10 @@ The security contact can get notifications on security alerts that happen on the
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityContact
+Get-AzSecurityContact
+```
+
+```output
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/securityContacts/default1
 Name               : default1
 Email              : ascasc@microsoft.com

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 47F0EE55-78C0-4C71-BD32-C7CB7B200DC3
-online version: https://docs.microsoft.com/powershell/module/az.compute/restart-azvmss
+online version: https://learn.microsoft.com/powershell/module/az.compute/restart-azvmss
 schema: 2.0.0
 ---
 
@@ -25,15 +25,15 @@ This cmdlet can also be used to restart a specific virtual machine inside the VM
 ## EXAMPLES
 
 ### Example 1: Restart the VMSS
-```
-PS C:\> Restart-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001";
+```powershell
+Restart-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001";
 ```
 
 This command restarts the VMSS named VMSS001 that belongs to the resource group named Group001.
 
 ### Example 2: Restart a specific virtual machine within the VMSS
-```
-PS C:\> Restart-AzVmss -ResourceGroupName "Group004" -VMScaleSetName "VMSS001" -InstanceId "1"
+```powershell
+Restart-AzVmss -ResourceGroupName "Group004" -VMScaleSetName "VMSS001" -InstanceId "1"
 ```
 
 This command restarts a virtual machine that has the instance ID of 1 in the VMSS named VMSS001 that belongs to the resource group named Group001.

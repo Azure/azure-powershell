@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlconfiguration
 schema: 2.0.0
 ---
 
@@ -34,8 +34,10 @@ Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, 
 
 ### Example 1: Update MySql configuration by name
 ```powershell
-PS C:\> Update-AzMySqlConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
+Update-AzMySqlConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
+```
 
+```output
 Name            Value
 ----            -----
 net_retry_count 15
@@ -45,9 +47,11 @@ This cmdlet updates MySql configuration by name.
 
 ### Example 2: Update MySql configuration by identity.
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/configurations/wait_timeout"
-PS C:\> Update-AzMySqlConfiguration -InputObject $ID -Value 150
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/configurations/wait_timeout"
+Update-AzMySqlConfiguration -InputObject $ID -Value 150
+```
 
+```output
 Name         Value
 ----         -----
 wait_timeout 150
@@ -260,7 +264,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter.
+`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter.
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.

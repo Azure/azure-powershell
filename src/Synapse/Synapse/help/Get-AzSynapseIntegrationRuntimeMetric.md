@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapseintegrationruntimemetric
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapseintegrationruntimemetric
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The **Get-AzSynapseIntegrationRuntimeMetric** cmdlet gets metric data about inte
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseIntegrationRuntimeMetric -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
+Get-AzSynapseIntegrationRuntimeMetric -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
 ```
 
 This command displays metric data about the integration runtime named 'test-selfhost-ir' in the workspace named ContosoWorkspace.

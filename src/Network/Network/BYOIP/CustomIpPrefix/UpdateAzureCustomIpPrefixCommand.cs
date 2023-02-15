@@ -76,6 +76,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "start deprovisioning process.")]
         public SwitchParameter Deprovision { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Current commission is No Internet Advertise commission")]
+        public SwitchParameter NoInternetAdvertise { get; set; }
+
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -149,6 +152,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.Cidr != null)
             {
                 customIpPrefixToUpdate.Cidr = this.Cidr;
+            }
+
+            if (NoInternetAdvertise)
+            {
+                customIpPrefixToUpdate.NoInternetAdvertise = true;
             }
 
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(customIpPrefixToUpdate);

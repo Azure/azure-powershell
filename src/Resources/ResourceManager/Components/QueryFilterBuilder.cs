@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="tagName">The tag name.</param>
         /// <param name="tagValue">The tag value.</param>
         /// <param name="filter">The filter.</param>
+        /// <param name="nameContains"></param>
+        /// <param name="resourceGroupNameContains"></param>
         public static string CreateFilter(
             string subscriptionId,
             string resourceGroup,

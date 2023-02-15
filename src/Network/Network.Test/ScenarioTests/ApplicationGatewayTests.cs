@@ -14,8 +14,8 @@
 
 using System;
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -47,6 +47,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestWafDynamicManifest()
+        {
+            TestRunner.RunTestScript("Test-WafDynamicManifest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
@@ -60,8 +68,8 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUD2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUD3()
         {
@@ -69,7 +77,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestKeyVaultIntegrationTest()
         {
@@ -151,6 +159,23 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayWithTCPResources()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayWithTCPResources -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayWithTLSResources()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayWithTLSResources -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
         public void TestTopLevelWafPolicyExclusions()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyExclusions -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
@@ -202,6 +227,31 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationGatewayCRUDWithMutualAuthentication()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDWithMutualAuthentication -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithCustomRules()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCustomRules");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithUppercaseTransform()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithUppercaseTransform");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithCustomBlockResponse()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCustomBlockResponse");
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azdatalakegen2item
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azdatalakegen2item
 schema: 2.0.0
 ---
 
@@ -24,6 +24,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Get a directory from a Filesystem, and show the details
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $dir1 = Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
 PS C:\> $dir1
@@ -92,9 +93,10 @@ AccessTierChangedOn   : 1/1/0001 12:00:00 AM +00:00
 This command gets a directory from a Filesystem, and show the details.
 
 ### Example 2: Get a file from a Filesystem
+```powershell
+Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
 ```
-PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
-
+```output
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               

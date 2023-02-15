@@ -26,45 +26,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AlexaChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AlexaChannel'", "AlexaChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "AlexaChannel");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FacebookChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FacebookChannel", "FacebookChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "FacebookChannel");
+                yield return new global::System.Management.Automation.CompletionResult("'FacebookChannel'", "FacebookChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "FacebookChannel");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EmailChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EmailChannel", "EmailChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "EmailChannel");
+                yield return new global::System.Management.Automation.CompletionResult("'EmailChannel'", "EmailChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "EmailChannel");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "KikChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("KikChannel", "KikChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "KikChannel");
+                yield return new global::System.Management.Automation.CompletionResult("'KikChannel'", "KikChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "KikChannel");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TelegramChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TelegramChannel", "TelegramChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "TelegramChannel");
+                yield return new global::System.Management.Automation.CompletionResult("'TelegramChannel'", "TelegramChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "TelegramChannel");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SlackChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SlackChannel", "SlackChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "SlackChannel");
+                yield return new global::System.Management.Automation.CompletionResult("'SlackChannel'", "SlackChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "SlackChannel");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MsTeamsChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MsTeamsChannel", "MsTeamsChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "MsTeamsChannel");
+                yield return new global::System.Management.Automation.CompletionResult("'MsTeamsChannel'", "MsTeamsChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "MsTeamsChannel");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SkypeChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SkypeChannel", "SkypeChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "SkypeChannel");
+                yield return new global::System.Management.Automation.CompletionResult("'SkypeChannel'", "SkypeChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "SkypeChannel");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WebChatChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WebChatChannel", "WebChatChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebChatChannel");
+                yield return new global::System.Management.Automation.CompletionResult("'WebChatChannel'", "WebChatChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebChatChannel");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DirectLineChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DirectLineChannel", "DirectLineChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "DirectLineChannel");
+                yield return new global::System.Management.Automation.CompletionResult("'DirectLineChannel'", "DirectLineChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "DirectLineChannel");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SmsChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SmsChannel", "SmsChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "SmsChannel");
+                yield return new global::System.Management.Automation.CompletionResult("'SmsChannel'", "SmsChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "SmsChannel");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "LineChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'LineChannel'", "LineChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "LineChannel");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DirectLineSpeechChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DirectLineSpeechChannel'", "DirectLineSpeechChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "DirectLineSpeechChannel");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OutlookChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'OutlookChannel'", "OutlookChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "OutlookChannel");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Omnichannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Omnichannel'", "Omnichannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "Omnichannel");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "TelephonyChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'TelephonyChannel'", "TelephonyChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "TelephonyChannel");
             }
         }
     }

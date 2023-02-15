@@ -285,6 +285,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Type of repair action (replace, restart, reimage) that will be used for repairing unhealthy virtual machines in the scale set. Default value is replace.",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Replace", "Restart", "Reimage")]
+        public string AutomaticRepairAction { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The number of VMs that should be regular priority VMs before adding any Spot VMs",
+            ValueFromPipelineByPropertyName = true)]
+        public int BaseRegularPriorityCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The percentage of VMs that should be regular priority after the base number of regular priority VMs has been reached",
+            ValueFromPipelineByPropertyName = true)]
+        public int RegularPriorityPercentage { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the gallery image resource id for vmss deployment. This can be fetched from the gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string ImageReferenceId { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -324,6 +349,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtendedLocation
             CM.PSExtendedLocation vExtendedLocation = null;
+
+            // PriorityMix
+            PriorityMixPolicy vPriorityMixPolicy = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -667,11 +695,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vIdentity = new VirtualMachineScaleSetIdentity();
                 }
 
-                vIdentity.UserAssignedIdentities = new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>();
+                vIdentity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
 
                 foreach (var id in this.IdentityId)
                 {
-                    vIdentity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
+                    vIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
                 }
             }
 
@@ -695,6 +723,52 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.UserData = this.UserData;
             }
 
+            if (this.IsParameterBound(c => c.AutomaticRepairAction))
+            {
+                if (vAutomaticRepairsPolicy == null)
+                {
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                vAutomaticRepairsPolicy.RepairAction = this.AutomaticRepairAction;
+            }
+
+            if (this.IsParameterBound(c => c.BaseRegularPriorityCount))
+            {
+                if (vPriorityMixPolicy == null)
+                {
+                    vPriorityMixPolicy = new PriorityMixPolicy();
+                }
+                vPriorityMixPolicy.BaseRegularPriorityCount = this.BaseRegularPriorityCount;
+            }
+
+            if (this.IsParameterBound(c => c.RegularPriorityPercentage))
+            {
+                if (vPriorityMixPolicy == null)
+                {
+                    vPriorityMixPolicy = new PriorityMixPolicy();
+                }
+                vPriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
+            if (this.IsParameterBound(c => c.ImageReferenceId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile == null)
+                {
+                    vVirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile.ImageReference == null)
+                {
+                    vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
+                }
+                vVirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
+            }
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -716,7 +790,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ScaleInPolicy = vScaleInPolicy,
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
-                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null
+                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
+                PriorityMixPolicy = vPriorityMixPolicy 
             };
 
             WriteObject(vVirtualMachineScaleSet);

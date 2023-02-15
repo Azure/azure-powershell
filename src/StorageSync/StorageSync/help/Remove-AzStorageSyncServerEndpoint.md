@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/powershell/module/az.storagesync/remove-azstoragesyncserverendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagesync/remove-azstoragesyncserverendpoint
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ Removing a server endpoint is a destructive operation. This server location will
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzStorageSyncServerEndpoint -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"
+Remove-AzStorageSyncServerEndpoint -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"
 ```
 
 This command will remove the server endpoint.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: B1897EFC-0184-4A8B-B8E4-203CC8E3B179
-online version: https://docs.microsoft.com/powershell/module/az.automation/set-azautomationaccount
+online version: https://learn.microsoft.com/powershell/module/az.automation/set-azautomationaccount
 schema: 2.0.0
 ---
 
@@ -35,17 +35,17 @@ For more information about Automation accounts, see the New-AzAutomationAccount 
 ## EXAMPLES
 
 ### Example 1: Set the tags for an Automation account
-```
-PS C:\>$Tags = @{"tag01"="value01";"tag02"="value02"}
-PS C:\> Set-AzAutomationAccount -Name "AutomationAccount01" -ResourceGroupName "ResourceGroup01" -Tags $Tags
+```powershell
+$Tags = @{"tag01"="value01";"tag02"="value02"}
+Set-AzAutomationAccount -Name "AutomationAccount01" -ResourceGroupName "ResourceGroup01" -Tags $Tags
 ```
 
 The first command assigns two key/value pairs to the $Tags variable.
 The second command sets tags in $Tags for the Automation account named AutomationAccount01.
 
 ### Example 2: Change the plan for an Automation account
-```
-PS C:\>Set-AzAutomationAccount -Name "AutomationAccount01" -ResourceGroupName "ResourceGroup01" -Plan Basic
+```powershell
+Set-AzAutomationAccount -Name "AutomationAccount01" -ResourceGroupName "ResourceGroup01" -Plan Basic
 ```
 
 This command changes the plan to Basic for the Automation account named AutomationAccount01.
@@ -53,7 +53,7 @@ This command changes the plan to Basic for the Automation account named Automati
 ## PARAMETERS
 
 ### -AssignSystemIdentity
-Generate and assign a new System Identity for this Automation Account for use with other services like Azure KeyVault.
+Generate and assign a new System Identity for this automation account
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignUserIdentity
-Specifies the list of user assigned identities associated with the automation account. The user assigned identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+Assign the User Assigned Identities to this automation account
 
 ```yaml
 Type: System.String[]
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutomationServicesEncryption
-Specify whether set Automation Account Encryption KeySource to Microsoft.AutomationServices or not.
+Whether to set Automation Account KeySource to Microsoft.Automation or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisablePublicNetworkAccess
-Whether to disable traffic on the non-ARM endpoints (Webhook/Agent) from the public internet and allow access only through private network.
+Whether to disable traffic on the non-ARM endpoints (Webhook/Agent) from the public internet
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyName
-Automation Account encryption KeyVault KeyName
+CMK KeyName
 
 ```yaml
 Type: System.String
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultEncryption
-Specify whether set Automation Account encryption keySource to Microsoft.KeyVault or not. If you specify KeyName, KeyVersion and KeyVaultUri, Automation Account Encryption KeySource will also be set to Microsoft.KeyVault whether this parameter is set or not.
+Whether to set Automation Account KeySource to Microsoft.KeyVault(enable CMK) or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultUri
-Automation Account encryption KeyVault KeyVaultUri
+CMK KeyVaultUri
 
 ```yaml
 Type: System.String
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVersion
-Automation Account encryption KeyVault KeyVersion
+CMK KeyVersion
 
 ```yaml
 Type: System.String
@@ -253,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserIdentityEncryption
-User Assigned Identity associated with the account to be used for encryption. The user assigned identity reference will be ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+User Assigned Identity used for encryption
 
 ```yaml
 Type: System.String

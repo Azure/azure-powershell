@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgeuser
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgeuser
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzDataBoxEdgeUser** cmdlet removes a user on the Data Box Edge devi
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
+Remove-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName -Name username
 ```
 
 ## PARAMETERS

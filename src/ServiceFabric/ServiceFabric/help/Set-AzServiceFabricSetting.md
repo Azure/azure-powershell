@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/set-azservicefabricsetting
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/set-azservicefabricsetting
 schema: 2.0.0
 ---
 
@@ -31,14 +31,14 @@ Use **Set-AzServiceFabricSetting** to add or update Service Fabric settings in a
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Set-AzServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -Section 'NamingService' -Parameter 'MaxFileOperationTimeout' -Value 5000
 ```
 
 This command will set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'.
 
 ### Example 2
-```
+```powershell
 $fabricSettings = @(
     @{ 
         "name" = "NamingService";

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: B2CF11FC-520C-4C14-9A1B-13F06B250B5D
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancerruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azloadbalancerruleconfig
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Get-AzLoadBalancerRuleConfig** cmdlet gets one or more rule configurations
 ## EXAMPLES
 
 ### Example 1: Get the rule configuration of a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer $slb
+```powershell
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Get-AzLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer $slb
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.

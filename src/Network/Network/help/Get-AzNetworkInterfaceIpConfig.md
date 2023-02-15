@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1B39809C-90DA-4ECB-B949-D4A9A54ED982
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfaceipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Get-AzNetworkInterfaceIPConfig** cmdlet gets a network interface IP config
 ## EXAMPLES
 
 ### 1: Get an IP configuration of a network interface
-```
+```powershell
 $nic1 = Get-AzNetworkInterface -Name mynic -ResourceGroupName $myrg
 Get-AzNetworkInterfaceIpConfig -Name ipconfig1 -NetworkInterface $nic1
 ```

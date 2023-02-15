@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 351145AC-7C1E-4EB7-A17D-B8B7D8ED8DAB
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragequeuestoredaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragequeuestoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **New-AzStorageQueueStoredAccessPolicy** cmdlet creates a stored access poli
 ## EXAMPLES
 
 ### Example 1: Create a stored access policy in a storage queue
-```
-PS C:\>New-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy01"
+```powershell
+New-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy01"
 ```
 
 This command creates an access policy named Policy01 in the storage queue named MyQueue.

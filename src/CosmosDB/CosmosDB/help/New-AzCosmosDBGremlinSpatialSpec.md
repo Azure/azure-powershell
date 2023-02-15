@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinspatialspec
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinspatialspec
 schema: 2.0.0
 ---
 
@@ -24,7 +24,10 @@ Creates Object corresponding to Gremlin API's SpatialSpec.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBGremlinSpatialSpec -Path "/abc" -Type String
+New-AzCosmosDBGremlinSpatialSpec -Path "/abc" -Type String
+```
+
+```output
 Path Types
 ---- -----
 /abc {String}

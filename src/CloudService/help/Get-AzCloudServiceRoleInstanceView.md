@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview
+online version: https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview
 schema: 2.0.0
 ---
 
@@ -24,12 +24,13 @@ Retrieves information about the run-time state of a role instance in a cloud ser
 
 ### Example 1: Get instance view details for cloud service role instance
 ```powershell
-PS C:\> Get-AzCloudServiceRoleInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
+Get-AzCloudServiceRoleInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
+```
 
+```output
 Statuses           PlatformFaultDomain PlatformUpdateDomain
 --------           ------------------- --------------------
 {RoleStateStarted} 0                   0
-
 ```
 
 This cmdlet gets the instance view of the role instance named ContosoFrontEnd_IN_0 of cloud service named ContosoCS that belongs to the resource group named ContosOrg.

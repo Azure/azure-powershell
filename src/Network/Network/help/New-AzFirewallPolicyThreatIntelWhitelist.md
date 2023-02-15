@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicythreatintelwhitelist
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpolicythreatintelwhitelist
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **New-AzFirewallPolicyThreatIntelWhitelist** cmdlet creates a threat intel w
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
+New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
 ```
 
 This example creates a threat intel whitelist containing a FQDN whitelist of one entry and an Ip address whitelist of two entries

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitoroutputobject
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitoroutputobject
 schema: 2.0.0
 ---
 
@@ -24,14 +24,15 @@ The New-AzNetworkWatcherConnectionMonitorOutputObject cmdlet creates connection 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkWatcherConnectionMonitorOutputObject -OutputType "workspace" -WorkspaceResourceId MyWSResourceId
+New-AzNetworkWatcherConnectionMonitorOutputObject -OutputType "workspace" -WorkspaceResourceId MyWSResourceId
 ```
 
+```output
 Type              : "workspace"
 WorkspaceSettings : {
                       "WorkspaceResourceId": "MyWSResourceId"
                     }
-
+```
 ## PARAMETERS
 
 ### -DefaultProfile

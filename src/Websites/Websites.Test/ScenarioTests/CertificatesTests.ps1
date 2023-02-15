@@ -147,10 +147,10 @@ Tests for importing a keyvaultcertificate to appservice
 #>
 function Test-ImportAzWebAppKeyVaultCertificate
 {
-	$rgname = "lketmtestantps10"
-	$wname = "lketmtestantps10"
-	$keyvaultname =	"testkv1611"
-	$keyvaultcertname =	"testcertname1611"
+	$rgname = "RG-PS-UnitTesting"
+	$wname = "PS-AppServices-UnitTesting"
+	$keyvaultname =	"PS-UnitTesting-Keyvault"
+	$keyvaultcertname =	"PS-UnitTesting"
 	try
 	{		
 		#Setup

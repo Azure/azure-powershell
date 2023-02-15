@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -412,6 +412,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting compute node extension &quot;{0}&quot; from compute node &quot;{1}&quot; on pool &quot;{2}&quot;..
+        /// </summary>
+        internal static string GetComputeNodeExtensionByName {
+            get {
+                return ResourceManager.GetString("GetComputeNodeExtensionByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting compute nodes extensions from pool &quot;{0}&quot;, compute node {1}..
+        /// </summary>
+        internal static string GetComputeNodeExtensions {
+            get {
+                return ResourceManager.GetString("GetComputeNodeExtensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting all compute nodes under pool &quot;{0}&quot;..
         /// </summary>
         internal static string GetComputeNodeNoFilter {
@@ -714,6 +732,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GettingLocationQuotas {
             get {
                 return ResourceManager.GetString("GettingLocationQuotas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all supported virtual machine Skus for location {0}..
+        /// </summary>
+        internal static string GettingSupportedVirtualMachineSku {
+            get {
+                return ResourceManager.GetString("GettingSupportedVirtualMachineSku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all supported virtual machine Skus for location {0}. MaxResultCount: {1}, Filter: {2}..
+        /// </summary>
+        internal static string GettingSupportedVirtualMachineSkuWithODataParameters {
+            get {
+                return ResourceManager.GetString("GettingSupportedVirtualMachineSkuWithODataParameters", resourceCulture);
             }
         }
         

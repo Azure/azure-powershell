@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/get-azdatashare
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatashare
 schema: 2.0.0
 ---
 
@@ -31,8 +31,11 @@ If you do not specify a name, this cmdlet gets information about all of the data
 ## EXAMPLES
 
 ### Example 1 : Get a specific data share
+```powershell
+Get-AzDataShare -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -Name "AdsShare"
 ```
-PS C:\>Get-AzDataShare -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -Name "AdsShare"
+
+```output
 Name                : AdsShare
 Id                  : /subscriptions/f3ead1ff-d0ab-4cf4-9a5a-86f1661d4685/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAdsAccount/shares/AdsShare
 Type                : Microsoft.DataShare/shares

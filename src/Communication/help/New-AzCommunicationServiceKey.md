@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Communication
-online version: https://docs.microsoft.com/powershell/module/az.communication/new-azcommunicationservicekey
+online version: https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservicekey
 schema: 2.0.0
 ---
 
@@ -47,8 +47,10 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ### Example 1: Regenerates the Primary key using a IRegenerateKeyParameters hashtable
 ```powershell
-PS > New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Parameter @{KeyType="Primary"}
+New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Parameter @{KeyType="Primary"}
+```
 
+```output
 PrimaryConnectionString              PrimaryKey
 -----------------------              ----------
 endpoint=<example-primary-endpoint>  <example-primarykey>
@@ -58,8 +60,10 @@ Invalidates the previous Primary key, regenerate a new one and return it.
 
 ### Example 2: Regenerates the Secondary key using a KeyType
 ```powershell
-PS C:\> New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
+New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
+```
 
+```output
 SecondaryConnectionString               SecondaryKey
 -----------------------                 ----------
 endpoint=<example-secondary-endpoint>   <example-secondarykey>
@@ -231,13 +235,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
+INPUTOBJECT `<ICommunicationIdentity>`: Identity Parameter
   - `[CommunicationServiceName <String>]`: The name of the CommunicationService resource.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regenerate access keys
+PARAMETER `<IRegenerateKeyParameters>`: Parameters describes the request to regenerate access keys
   - `[KeyType <KeyType?>]`: The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).
 
 ## RELATED LINKS

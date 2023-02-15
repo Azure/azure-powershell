@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 2AB1B227-68C4-49AE-84C0-E1421E609DE7
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmbackup
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmbackup
 schema: 2.0.0
 ---
 
@@ -19,12 +19,13 @@ Remove-AzVMBackup [-ResourceGroupName] <String> [-VMName] <String> [-Tag] <Strin
 ```
 
 ## DESCRIPTION
+The **Remove-AzVMBackup** cmdlet removes the backup from a virtual machine.
 
 ## EXAMPLES
 
-### 1:
+### Example 1
 ```
-PS C:\>
+Remove-AzVMBackup -ResourceGroupName $rgname -VMName $vmName
 ```
 
 ## PARAMETERS

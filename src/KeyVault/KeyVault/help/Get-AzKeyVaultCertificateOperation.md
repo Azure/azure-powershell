@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 0743C43D-2A1F-4950-B0F3-1FED4014EEC5
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultcertificateoperation
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultcertificateoperation
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ The **Get-AzKeyVaultCertificateOperation** cmdlet gets the status of a certifica
 
 ### Example 1: Get the status of a certificate operation
 ```powershell
-PS C:\> Get-AzKeyVaultCertificateOperation -VaultName "contosoKV01" -Name "TestCert01"
+Get-AzKeyVaultCertificateOperation -VaultName "contosoKV01" -Name "TestCert01"
+```
 
+```output
 Id                        : https://contosoKV01.vault.azure.net/certificates/TestCert01/pending
 Status                    : inProgress
 StatusDetails             : Pending certificate created. Certificate request is in progress. This may take some time

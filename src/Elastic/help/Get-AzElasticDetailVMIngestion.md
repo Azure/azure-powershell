@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticdetailvmingestion
+online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticdetailvmingestion
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ List the vm ingestion details that will be monitored by the Elastic monitor reso
 
 ### Example 1: List the vm ingestion details that will be monitored by the Elastic monitor resource
 ```powershell
-PS C:\> Get-AzElasticDetailVMIngestion -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
+Get-AzElasticDetailVMIngestion -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
+```
 
+```output
 CloudId                                  IngestionKey
 -------                                  ------------
 elastic-rhqz1v:xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxx
@@ -42,8 +44,10 @@ This command lists the vm ingestion details that will be monitored by the Elasti
 
 ### Example 2: List the vm ingestion details that will be monitored by the Elastic monitor resource by pipeline
 ```powershell
-PS C:\> Get-AzElasticMonitor -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v | Get-AzElasticDetailVMIngestion
+Get-AzElasticMonitor -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v | Get-AzElasticDetailVMIngestion
+```
 
+```output
 CloudId                                  IngestionKey
 -------                                  ------------
 elastic-rhqz1v:xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxx
@@ -182,7 +186,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
+INPUTOBJECT `<IElasticIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name
   - `[ResourceGroupName <String>]`: The name of the resource group to which the Elastic resource belongs.

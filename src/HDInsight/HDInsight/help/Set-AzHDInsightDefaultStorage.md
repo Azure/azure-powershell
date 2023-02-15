@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 37E41DA2-B65B-4AA2-B6AB-F93CCA881C72
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightdefaultstorage
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightdefaultstorage
 schema: 2.0.0
 ---
 
@@ -25,31 +25,31 @@ The **Set-AzHDInsightDefaultStorage** cmdlet sets the default Storage account se
 ## EXAMPLES
 
 ### Example 1: Set the default storage account for the cluster configuration object
-```
-PS C:\># Primary storage account info
-PS C:\> $storageAccountResourceGroupName = "Group"
-PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
-PS C:\> $storageAccountName = "yourstorageaccountname"
-PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+```powershell
+# Primary storage account info
+$storageAccountResourceGroupName = "Group"
+$storageAccountResourceId = "yourstorageaccountresourceid"
+$storageAccountName = "yourstorageaccountname"
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
-PS C:\>$storageContainer = "container002"
+$storageType = "AzureStorage"
 
 # Cluster configuration info
-PS C:\> $location = "East US 2"
-PS C:\> $clusterResourceGroupName = "Group"
-PS C:\> $clusterName = "your-hadoop-002"
-PS C:\> $clusterCreds = Get-Credential
+$location = "East US 2"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
 
 # If the cluster's resource group doesn't exist yet, run:
 #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
 # Create the cluster
-PS C:\> New-AzHDInsightClusterConfig `
+New-AzHDInsightClusterConfig `
             | Set-AzHDInsightDefaultStorage `
                 -StorageAccountResourceId $storageAccountResourceId `
                 -StorageAccountKey $key2 `
-                -StorageContainer $storageContainer `
+                -StorageAccountType $storageType `
             | New-AzHDInsightCluster `
                 -ClusterType Hadoop `
                 -OSType Windows `

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DedicatedHsm
-online version: https://docs.microsoft.com/powershell/module/az.dedicatedhsm/remove-azdedicatedhsm
+online version: https://learn.microsoft.com/powershell/module/az.dedicatedhsm/remove-azdedicatedhsm
 schema: 2.0.0
 ---
 
@@ -31,17 +31,15 @@ Deletes the specified Azure Dedicated HSM.
 
 ### Example 1: Remove a Dedicated HSM by name
 ```powershell
-PS C:\> Remove-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName lucas-manual-test
-
+Remove-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName lucas-manual-test
 ```
 
 This commnad removes a hardware security module(HSM) by name.
 
 ### Example 2: Remove a Dedicated HSM  by object
 ```powershell
-PS C:\> $hsm = Get-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName dedicatedhsm-rg-n359cz
-PS C:\> Remove-AzDedicatedHsm -InputObject  $hsm
-
+$hsm = Get-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName dedicatedhsm-rg-n359cz
+Remove-AzDedicatedHsm -InputObject  $hsm
 ```
 
 This commnad removes a Dedicated HSM by object.
@@ -221,7 +219,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDedicatedHsmIdentity>: Identity Parameter
+INPUTOBJECT `<IDedicatedHsmIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: Name of the dedicated Hsm
   - `[ResourceGroupName <String>]`: The name of the Resource Group to which the resource belongs.

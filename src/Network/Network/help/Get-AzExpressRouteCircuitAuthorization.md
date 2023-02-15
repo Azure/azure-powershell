@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 3D80F94B-AF9D-40C2-BE7E-2F32E5E926D2
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressroutecircuitauthorization
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressroutecircuitauthorization
 schema: 2.0.0
 ---
 
@@ -31,9 +31,9 @@ well as other information about the authorization, can be viewed at any time by 
 ## EXAMPLES
 
 ### Example 1: Get all ExpressRoute authorizations
-```
+```powershell
 $Circuit = Get-AzExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
-Get-AzExpressRouteCircuitAuthorization -Circuit $Circuit
+Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $Circuit
 ```
 
 These commands return information about all the ExpressRoute authorizations associated with an
@@ -44,9 +44,9 @@ variable $Circuit. The second command then uses that object reference and the
 authorizations associated with ContosoCircuit.
 
 ### Example 2: Get all ExpressRoute authorizations using the Where-Object cmdlet
-```
+```powershell
 $Circuit = Get-AzExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
- Get-AzExpressRouteCircuitAuthorization -Circuit $Circuit | Where-Object {$_.AuthorizationUseStatus -eq "Available"}
+ Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $Circuit | Where-Object {$_.AuthorizationUseStatus -eq "Available"}
 ```
 
 These commands represent a variation on the commands used in Example 1. In this case, however,

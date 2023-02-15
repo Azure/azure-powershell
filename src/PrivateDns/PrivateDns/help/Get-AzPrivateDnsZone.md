@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version: https://docs.microsoft.com/powershell/module/az.privatedns/get-azprivatednszone
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/get-azprivatednszone
 schema: 2.0.0
 ---
 
@@ -26,12 +26,11 @@ You can use the **PrivateDnsZone** object to update the zone, for example you ca
 ## EXAMPLES
 
 ### Example 1: Get a zone
+```powershell
+$Zone = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com"
 ```
-PS C:\> $Zone = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com"
 
-This example gets the Private DNS zone named myzone.com from the specified resource group, and then stores it in the $Zone variable.
-$Zone looks something like this: 
-
+```output
 Name                          : myzone.com
 ResourceId:                   : "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/PrivateZones/myzone.com"
 ResourceGroupName             : MyResourceGroup
@@ -41,11 +40,14 @@ Tags                          : {}
 NumberOfRecordSets            : 1
 MaxNumberOfRecordSets         : 5000
 ```
+This example gets the Private DNS zone named myzone.com from the specified resource group, and then stores it in the $Zone variable.
 
 ### Example 2: Get all of the zones in a resource group
+```powershell
+$Zones = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup"
 ```
-PS C:\> $Zones = Get-AzPrivateDnsZone -ResourceGroupName "MyResourceGroup"
 
+```output
 Name                  : zone1.com
 ResourceId            : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Micros
                         oft.Network/privateDnsZones/zone1.com
@@ -70,9 +72,11 @@ MaxNumberOfRecordSets : 5000
 This example gets all of the Private DNS zones in the specified resource group, and then stores it in the $Zones variable.
 
 ### Example 3: Get all of the zones in a subscription
+```powershell
+$Zones = Get-AzPrivateDnsZone
 ```
-PS C:\> $Zones = Get-AzPrivateDnsZone
 
+```output
 Name                  : zone1.com
 ResourceId            : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup1/providers/Micros
                         oft.Network/privateDnsZones/zone1.com

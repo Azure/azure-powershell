@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionappsetting
+online version: https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappsetting
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Removes app settings from a function app.
 
 ### Example 1: Remove app settings in a function app.
 ```powershell
-PS C:\> Remove-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSettingName "MyAppSetting1", "MyAppSetting2"
+Remove-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSettingName "MyAppSetting1", "MyAppSetting2"
 ```
 
 This command removes app settings in a function app.
@@ -194,7 +194,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISite>: 
+`INPUTOBJECT <ISite>`: 
   - `Location <String>`: Resource Location.
   - `[Kind <String>]`: Kind of resource.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -215,6 +215,8 @@ INPUTOBJECT <ISite>:
   - `[CloningInfoTrafficManagerProfileId <String>]`: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   - `[CloningInfoTrafficManagerProfileName <String>]`: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   - `[Config <ISiteConfig>]`: Configuration of the app.
+    - `[AcrUseManagedIdentityCred <Boolean?>]`: Flag to use Managed Identity Creds for ACR pull
+    - `[AcrUserManagedIdentityId <String>]`: If using user managed identity, the user managed identity ClientId
     - `[ActionMinProcessExecutionTime <String>]`: Minimum time the process must execute         before taking the action
     - `[ActionType <AutoHealActionType?>]`: Predefined action to be taken.
     - `[AlwaysOn <Boolean?>]`: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.

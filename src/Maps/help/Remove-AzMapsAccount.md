@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Maps
-online version: https://docs.microsoft.com/powershell/module/az.maps/remove-azmapsaccount
+online version: https://learn.microsoft.com/powershell/module/az.maps/remove-azmapsaccount
 schema: 2.0.0
 ---
 
@@ -31,16 +31,14 @@ Delete a Maps Account.
 
 ### Example 1: Delete a Maps Account
 ```powershell
-PS C:\> Remove-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01
-
+Remove-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01
 ```
 
 This command deletes a Maps Account.
 
 ### Example 2: Delete a Maps Account by pipeline
 ```powershell
-PS C:\> Get-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount02 | Remove-AzMapsAccount
-
+Get-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount02 | Remove-AzMapsAccount
 ```
 
 This command deletes a Maps Account by pipeline.
@@ -190,7 +188,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMapsIdentity>: Identity Parameter
+INPUTOBJECT `<IMapsIdentity>`: Identity Parameter
   - `[AccountName <String>]`: The name of the Maps Account.
   - `[CreatorName <String>]`: The name of the Maps Creator instance.
   - `[Id <String>]`: Resource identity path

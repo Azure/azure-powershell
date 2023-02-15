@@ -245,3 +245,47 @@ function Test-DedicatedHostVirtualMachine
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Restart dedicated host feature.
+#>
+function Test-DedicatedHostRestart
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        # [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        # $loc = $loc.Replace(' ', '');
+        $loc = "eastus2euap";
+        
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $hostGroupName = $rgname + 'hostgroup';
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1  -Zone "2" -Tag @{key1 = "val1"};
+
+        $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
+        $hostName = $rgname + 'host';
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -Tag @{key1 = "val2"};
+
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        
+        # Restart the dedicated host
+        Restart-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+
+        # Resource Id Parameter set
+        Restart-AzHost -ResourceId $dedicatedHost.Id;
+
+        # Object Parameter set
+        Restart-AzHost -Host $dedicatedHost;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

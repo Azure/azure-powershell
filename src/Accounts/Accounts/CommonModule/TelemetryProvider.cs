@@ -102,21 +102,21 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Log a telemtry event
+        /// Log a telemetry event
         /// </summary>
-        /// <param name="qosEvent">The event to log</param>
-        public virtual void LogEvent(string key)
+        /// <param name="qosEventKey">The event to log</param>
+        public virtual void LogEvent(string qosEventKey)
         {
             var dataCollection = _dataCollectionProfile.EnableAzureDataCollection;
             var enabled = dataCollection.HasValue ? dataCollection.Value : true;
 
-            AzurePSQoSEvent qos;
-            if (this.TryGetValue(key, out qos))
+            AzurePSQoSEvent qosEvent;
+            if (this.TryGetValue(qosEventKey, out qosEvent))
             {
-                qos.FinishQosEvent();
-                _helper.LogQoSEvent(qos, enabled, enabled);
+                qosEvent.FinishQosEvent();
+                _helper.LogQoSEvent(qosEvent, enabled, enabled);
                 _helper.FlushMetric();
-                this.Remove(key);
+                this.Remove(qosEventKey);
             }
         }
 
@@ -134,6 +134,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="invocationInfo"></param>
         /// <param name="parameterSetName"></param>
         /// <param name="correlationId"></param>
+        /// <param name="processRecordId"></param>
         /// <returns></returns>
         public virtual AzurePSQoSEvent CreateQosEvent(InvocationInfo invocationInfo, string parameterSetName, string correlationId, string processRecordId)
         {
@@ -142,12 +143,15 @@ namespace Microsoft.Azure.Commands.Common
                 CommandName = invocationInfo?.MyCommand?.Name,
                 ModuleVersion = TrimModuleVersion(invocationInfo?.MyCommand?.Module?.Version),
                 ModuleName = TrimModuleName(invocationInfo?.MyCommand?.ModuleName),
-                SessionId = correlationId,
+                SourceScript = invocationInfo?.ScriptName,
+                ScriptLineNumber = invocationInfo?.ScriptLineNumber ?? 0,
+                SessionId = MetricHelper.SessionId,
                 ParameterSetName = parameterSetName,
                 InvocationName = invocationInfo?.InvocationName,
                 InputFromPipeline = invocationInfo?.PipelineLength > 0,
                 UserAgent = AzurePSCmdlet.UserAgent,
                 AzVersion = AzurePSCmdlet.AzVersion,
+                AzAccountsVersion = AzurePSCmdlet.AzAccountsVersion,
                 PSVersion = AzurePSCmdlet.PowerShellVersion,
                 HostVersion = AzurePSCmdlet.PSHostVersion,
                 PSHostName = AzurePSCmdlet.PSHostName,
@@ -222,7 +226,7 @@ namespace Microsoft.Azure.Commands.Common
             }
 
             warningLogger(Resources.DataCollectionEnabledWarning);
-            return new AzurePSDataCollectionProfile(true);
+            return new AzurePSDataCollectionProfile();
         }
 
         public void Dispose()

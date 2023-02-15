@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azprivatelinkservice
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azprivatelinkservice
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ The **Set-AzPrivateLinkService** cmdlet updates a private link service.
 ## EXAMPLES
 
 ### 1: Creates a private link service and update its
-```
+```powershell
 $vnet = Get-AzVirtualNetwork -ResourceName "myvnet" -ResourceGroupName "myresourcegroup"
 $IPConfig = New-AzPrivateLinkServiceIpConfig -Name "IP-Config" -Subnet $vnet.subnets[1] -PrivateIpAddress "10.0.0.5"
 $publicip = Get-AzPublicIpAddress -ResourceGroupName "myresourcegroup"

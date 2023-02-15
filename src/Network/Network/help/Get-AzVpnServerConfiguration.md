@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvpnserverconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvpnserverconfiguration
 schema: 2.0.0
 ---
 
@@ -30,8 +30,10 @@ The **Get-AzVpnServerConfiguration** cmdlet returns the existing VpnServerConfig
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzVpnServerConfiguration -ResourceGroupName P2SCortexGATesting -Name test1config
+Get-AzVpnServerConfiguration -ResourceGroupName P2SCortexGATesting -Name test1config
+```
 
+```output
 ResourceGroupName            : P2SCortexGATesting
 Name                         : test1config
 Id                           : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/vpnServerConfigurations/test1config

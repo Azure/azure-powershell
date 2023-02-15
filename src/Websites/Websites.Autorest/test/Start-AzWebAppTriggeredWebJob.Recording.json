@@ -1,0 +1,135 @@
+{
+  "Start-AzWebAppTriggeredWebJob+[NoContext]+Start+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/triggeredwebjobs/triggeredjob-01/run?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/triggeredwebjobs/triggeredjob-01/run?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "cc946373-b3df-4a6a-b81b-5a257b245eb7" ],
+        "CommandName": [ "Start-AzWebAppTriggeredWebJob" ],
+        "FullCommandName": [ "Start-AzWebAppTriggeredWebJob_Run" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.Websites/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://appservice-test01.scm.azurewebsites.net/api/triggeredwebjobs/triggeredjob-01/history/202201041016535049" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0e7bba2b-862e-4882-a0ea-33eaf515fa39" ],
+        "Set-Cookie": [ "ARRAffinity=54146e8a427f2ebd92841849bd05deb7404c264922301252bfeb1f942b3f0989;Path=/;HttpOnly;Secure;Domain=appservice-test01.scm.azurewebsites.net", "ARRAffinitySameSite=54146e8a427f2ebd92841849bd05deb7404c264922301252bfeb1f942b3f0989;Path=/;HttpOnly;SameSite=None;Secure;Domain=appservice-test01.scm.azurewebsites.net" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "4d921784-5a8d-4f10-8298-c1cb8789e1e6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220104T101653Z:4d921784-5a8d-4f10-8298-c1cb8789e1e6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 04 Jan 2022 10:16:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Start-AzWebAppTriggeredWebJob+[NoContext]+StartViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/triggeredwebjobs/triggeredjob-02?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/triggeredwebjobs/triggeredjob-02?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "71b114dc-76a7-4949-b27b-f010afc31548" ],
+        "CommandName": [ "Get-AzWebAppTriggeredWebJob" ],
+        "FullCommandName": [ "Get-AzWebAppTriggeredWebJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.Websites/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d75f62c7-2dc2-4934-b786-9500942af5d9" ],
+        "Set-Cookie": [ "ARRAffinity=54146e8a427f2ebd92841849bd05deb7404c264922301252bfeb1f942b3f0989;Path=/;HttpOnly;Secure;Domain=appservice-test01.scm.azurewebsites.net", "ARRAffinitySameSite=54146e8a427f2ebd92841849bd05deb7404c264922301252bfeb1f942b3f0989;Path=/;HttpOnly;SameSite=None;Secure;Domain=appservice-test01.scm.azurewebsites.net" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "da0f7664-4efa-4501-9991-e674772388bb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220104T101655Z:da0f7664-4efa-4501-9991-e674772388bb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 04 Jan 2022 10:16:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1293" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/triggeredwebjobs/triggeredjob-02\",\"name\":\"appService-test01/triggeredjob-02\",\"type\":\"Microsoft.Web/sites/triggeredwebjobs\",\"location\":\"Central US\",\"properties\":{\"latest_run\":{\"id\":\"202201041010410773\",\"name\":\"202201041010410773\",\"status\":\"Success\",\"start_time\":\"2022-01-04T10:10:41.0773779Z\",\"end_time\":\"2022-01-04T10:10:43.1555345Z\",\"duration\":\"00:00:02.0781566\",\"output_url\":\"https://appservice-test01.scm.azurewebsites.net/vfs/data/jobs/triggered/triggeredjob-02/202201041010410773/output_log.txt\",\"error_url\":null,\"url\":\"https://appservice-test01.scm.azurewebsites.net/api/triggeredwebjobs/triggeredjob-02/history/202201041010410773\",\"job_name\":\"triggeredjob-02\",\"trigger\":\"External - \"},\"history_url\":\"https://appservice-test01.scm.azurewebsites.net/api/triggeredwebjobs/triggeredjob-02/history\",\"scheduler_logs_url\":null,\"name\":\"triggeredjob-02\",\"run_command\":\"continuouwebjob.ps1\",\"url\":\"https://appservice-test01.scm.azurewebsites.net/api/triggeredwebjobs/triggeredjob-02\",\"extra_info_url\":\"https://appservice-test01.scm.azurewebsites.net/azurejobs/#/jobs/triggered/triggeredjob-02\",\"type\":\"triggered\",\"error\":null,\"using_sdk\":false,\"settings\":{}}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzWebAppTriggeredWebJob+[NoContext]+StartViaIdentity+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/triggeredwebjobs/triggeredjob-02/run?api-version=2021-02-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/webjob-rg-test/providers/Microsoft.Web/sites/appService-test01/triggeredwebjobs/triggeredjob-02/run?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "d6202f71-d69d-485a-94be-6ac904ed8bdf" ],
+        "CommandName": [ "Start-AzWebAppTriggeredWebJob" ],
+        "FullCommandName": [ "Start-AzWebAppTriggeredWebJob_RunViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.Websites/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://appservice-test01.scm.azurewebsites.net/api/triggeredwebjobs/triggeredjob-02/history/202201041016570912" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9671af95-86bc-4c83-a55c-28b02283bc8e" ],
+        "Set-Cookie": [ "ARRAffinity=54146e8a427f2ebd92841849bd05deb7404c264922301252bfeb1f942b3f0989;Path=/;HttpOnly;Secure;Domain=appservice-test01.scm.azurewebsites.net", "ARRAffinitySameSite=54146e8a427f2ebd92841849bd05deb7404c264922301252bfeb1f942b3f0989;Path=/;HttpOnly;SameSite=None;Secure;Domain=appservice-test01.scm.azurewebsites.net" ],
+        "Server": [ "Microsoft-IIS/10.0", "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "544bb761-462c-47ef-891a-b9f909137085" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220104T101657Z:544bb761-462c-47ef-891a-b9f909137085" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 04 Jan 2022 10:16:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

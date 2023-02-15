@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightazuremonitor
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightazuremonitor
 schema: 2.0.0
 ---
 
@@ -37,20 +37,20 @@ The **Get-AzHDInsightAzureMonitor** cmdlet gets the azure monitor status of a sp
 
 ### Example 1
 ```powershell
-PS C:\> # Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $resourceGroupName = "Group"
-PS C:\> Get-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName
+# Cluster info
+$clusterName = "your-hadoop-001"
+$resourceGroupName = "Group"
+Get-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 ```
 
 This cmdlet gets the azure monitor status of a specified HDInsight cluster.
 
 ### Example 2
 ```powershell
-PS C:\> # Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $cluster=Get-AzHDInsightCluster -ClusterName $clusterName
-PS C:\> $cluster | Get-AzHDInsightAzureMonitor
+# Cluster info
+$clusterName = "your-hadoop-001"
+$cluster=Get-AzHDInsightCluster -ClusterName $clusterName
+$cluster | Get-AzHDInsightAzureMonitor
 ```
 
 This cmdlet gets the azure monitor with pipeline.

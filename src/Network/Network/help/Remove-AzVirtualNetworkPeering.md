@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1CE08F0F-A59E-46AC-B470-F1DCCD46513E
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetworkpeering
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azvirtualnetworkpeering
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Removes a virtual network peering.
 ## EXAMPLES
 
 ### Example 1: Remove a virtual network peering
-```
+```powershell
 # Remove the virtual network peering named myVnet1TomyVnet2 located in myVnet1 in the resource group named myResourceGroup.
 
 Remove-AzVirtualNetworkPeering -Name "myVnet1TomyVnet2" -VirtualNetworkName "myVnet" -ResourceGroupName "myResourceGroup"

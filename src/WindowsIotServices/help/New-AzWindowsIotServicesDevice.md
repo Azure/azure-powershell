@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.WindowsIotServices
-online version: https://docs.microsoft.com/powershell/module/az.windowsiotservices/new-azwindowsiotservicesdevice
+online version: https://learn.microsoft.com/powershell/module/az.windowsiotservices/new-azwindowsiotservicesdevice
 schema: 2.0.0
 ---
 
@@ -28,8 +28,9 @@ The usual pattern to modify a property is to retrieve the Windows IoT Device Ser
 
 ### Example 1: Create a new Windows IoT services
 ```powershell
-PS C:\> New-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test -Location eastus -Quantity 10 -BillingDomainName 'microsoft.onmicrosoft.com' -AdminDomainName 'microsoft.onmicrosoft.com'
-
+New-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test -Location eastus -Quantity 10 -BillingDomainName 'microsoft.onmicrosoft.com' -AdminDomainName 'microsoft.onmicrosoft.com'
+```
+```output
 Location Name    Type                                Etag
 -------- ----    ----                                ----
 eastus   wsi-t03 Microsoft.WindowsIoT/DeviceServices "6a00eee9-0000-0700-0000-5fab82870000"

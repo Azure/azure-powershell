@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapseintegrationruntime
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapseintegrationruntime
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The **Remove-AzSynapseIntegrationRuntime** cmdlet removes a integration runtime.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-reserved-ir' -Confirm
+Remove-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-reserved-ir' -Confirm
 ```
 
 This command removes the integration runtime named 'test-reserved-ir' from the workspace named ContosoWorkspace.

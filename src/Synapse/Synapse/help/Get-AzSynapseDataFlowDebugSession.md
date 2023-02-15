@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsedataflowdebugsession
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsedataflowdebugsession
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ List all active data flow debug sessions in specified Synapse workspace with det
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseDataFlowDebugSession -WorkspaceName ContosoWorkspace
+Get-AzSynapseDataFlowDebugSession -WorkspaceName ContosoWorkspace
 ```
 
 Get all active data flow debug sessions in Synapse workspace "ContosoWorkspace".
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseDataFlowDebugSession
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseDataFlowDebugSession
 ```
 
 Get all active data flow debug sessions in Synapse workspace "ContosoWorkspace" through pipeline.

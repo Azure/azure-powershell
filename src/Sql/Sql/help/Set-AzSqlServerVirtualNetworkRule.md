@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqlservervirtualnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.sql/set-azsqlservervirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ To control the set of virtual network rules in the server, use 'Add-AzSqlServerV
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $virtualNetworkRule = Set-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRuleName -VirtualNetworkSubnetId virtualNetworkSubnetId
+```powershell
+$virtualNetworkRule = Set-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRuleName -VirtualNetworkSubnetId virtualNetworkSubnetId
 ```
 
 Modifies an existing virtual network rule with the new virtual network subnet id which contains information about the new virtual network

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/get-azsignalrkey
+online version: https://learn.microsoft.com/powershell/module/az.signalr/get-azsignalrkey
 schema: 2.0.0
 ---
 
@@ -36,8 +36,10 @@ Get the access keys of a SignalR service.
 
 ### Get access keys of a specific SignalR service
 ```powershell
-PS C:\> Get-AzSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1
+Get-AzSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1
+```
 
+```output
 Name                      : mysignalr1
 PrimaryKey                : vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs=
 PrimaryConnectionString   : Endpoint=https://mysignalr1.service.signalr.net;AccessKey=vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmO
@@ -50,8 +52,10 @@ SecondaryConnectionString : Endpoint=https://mysignalr1.service.signalr.net;Acce
 ### Get access keys from a SignalR service object in pipe
 
 ```powershell
-PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 | Get-AzSignalRKey
+Get-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 | Get-AzSignalRKey
+```
 
+```output
 Name                      : mysignalr1
 PrimaryKey                : vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs=
 PrimaryConnectionString   : Endpoint=https://mysignalr1.service.signalr.net;AccessKey=vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmO

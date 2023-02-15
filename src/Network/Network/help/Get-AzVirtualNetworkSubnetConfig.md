@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 7688CE56-0A25-4409-9676-BF1B67C3F05F
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworksubnetconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworksubnetconfig
 schema: 2.0.0
 ---
 
@@ -31,13 +31,11 @@ The **Get-AzVirtualNetworkSubnetConfig** cmdlet gets one or more subnet configur
 ## EXAMPLES
 
 ### 1: Get a subnet in a virtual network
-```
+```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
-    $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet 
-    -AddressPrefix "10.0.1.0/24"
-    $virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName 
-    TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
-    Get-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+Get-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork
 ```
 
 This example creates a resource group and a virtual network with a single subnet in that resource group. It then retrieves data about that subnet.

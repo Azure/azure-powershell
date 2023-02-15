@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azmanagementgroup/
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azmanagementgroup/
 schema: 2.0.0
 ---
 
@@ -31,12 +31,12 @@ The **Remove-AzManagementGroup** cmdlet deletes a Management Group.
 
 ### Example 1: Remove a Management Group
 ```powershell
-PS C:\> Remove-AzManagementGroup -GroupName "TestGroup"
+Remove-AzManagementGroup -GroupName "TestGroup"
 ```
 
 ### Example 2: Remove a Management Group by piping PSManagementGroup Object
 ```powershell
-PS C:\> Get-AzManagementGroup -GroupName "TestGroup" | Remove-AzManagementGroup
+Get-AzManagementGroup -GroupName "TestGroup" | Remove-AzManagementGroup
 ```
 
 ## PARAMETERS

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdregistrationinfo
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdregistrationinfo
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Remove the Windows virtual desktop registration info.
 
 ### Example 1: Delete a Windows Virtual Desktop Registration Token
 ```powershell
-PS C:\> Remove-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
+Remove-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
 
 This command deletes a Windows Virtual Desktop Registration Token in a Host Pool.

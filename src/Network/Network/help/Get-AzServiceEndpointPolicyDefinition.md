@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azserviceendpointpolicydefinition
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azserviceendpointpolicydefinition
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ The **Get-AzServiceEndpointPolicyDefinition** cmdlet gets a service endpoint pol
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $policydef= Get-AzServiceEndpointPolicyDefinition -Name "ServiceEndpointPolicyDefinition1" -ServiceEndpointPolicy $Policy
 ```
 

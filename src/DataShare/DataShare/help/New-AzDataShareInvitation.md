@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/new-azdatashareinvitation
+online version: https://learn.microsoft.com/powershell/module/az.datashare/new-azdatashareinvitation
 schema: 2.0.0
 ---
 
@@ -36,8 +36,11 @@ The **New-AzDataShareInvitation** cmdlet sends an invitation to the target consu
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataShareInvitation -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsInvitation" -TargetEmail "adstest@microsoft.com"
 ```
-PS C:\> New-AzDataShareInvitation -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsInvitation" -TargetEmail "adstest@microsoft.com"
+
+```output
 InvitationId     : 167e06ff-567f-4bc7-be0c-645a6de710f3
 InvitationStatus : Pending
 Sender           : adsprovider@microsoft.com

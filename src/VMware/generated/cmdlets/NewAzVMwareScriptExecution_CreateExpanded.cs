@@ -8,14 +8,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
     using System;
 
-    /// <summary>Create or update a script execution resource in a private cloud</summary>
+    /// <summary>Create or update a script execution in a private cloud</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions/{scriptExecutionName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzVMwareScriptExecution_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecution))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create or update a script execution resource in a private cloud")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create or update a script execution in a private cloud")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     public partial class NewAzVMwareScriptExecution_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener
@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>An instance of a script executed by a user - custom or AVS</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution _scriptExecutionBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptExecution();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -67,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"Error message if the script was able to run, but if the script itself had errors or powershell threw an exception",
         SerializedName = @"failureReason",
         PossibleTypes = new [] { typeof(string) })]
-        public string FailureReason { get => ScriptExecutionBody.FailureReason ?? null; set => ScriptExecutionBody.FailureReason = value; }
+        public string FailureReason { get => _scriptExecutionBody.FailureReason ?? null; set => _scriptExecutionBody.FailureReason = value; }
 
         /// <summary>
         /// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
@@ -80,8 +83,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         ReadOnly = false,
         Description = @"Parameters that will be hidden/not visible to ARM, such as passwords and credentials",
         SerializedName = @"hiddenParameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecutionParameter) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecutionParameter[] HiddenParameter { get => ScriptExecutionBody.HiddenParameter ?? null /* arrayOf */; set => ScriptExecutionBody.HiddenParameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionParameter) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionParameter[] HiddenParameter { get => _scriptExecutionBody.HiddenParameter ?? null /* arrayOf */; set => _scriptExecutionBody.HiddenParameter = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -99,11 +102,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -130,8 +133,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         ReadOnly = false,
         Description = @"User-defined dictionary.",
         SerializedName = @"namedOutputs",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecutionPropertiesNamedOutputs) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecutionPropertiesNamedOutputs NamedOutput { get => ScriptExecutionBody.NamedOutput ?? null /* object */; set => ScriptExecutionBody.NamedOutput = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionPropertiesNamedOutputs) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionPropertiesNamedOutputs NamedOutput { get => _scriptExecutionBody.NamedOutput ?? null /* object */; set => _scriptExecutionBody.NamedOutput = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -151,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"Standard output stream from the powershell execution",
         SerializedName = @"output",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] Output { get => ScriptExecutionBody.Output ?? null /* arrayOf */; set => ScriptExecutionBody.Output = value; }
+        public string[] Output { get => _scriptExecutionBody.Output ?? null /* arrayOf */; set => _scriptExecutionBody.Output = value; }
 
         /// <summary>Parameters the script will accept</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -162,8 +165,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         ReadOnly = false,
         Description = @"Parameters the script will accept",
         SerializedName = @"parameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecutionParameter) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecutionParameter[] Parameter { get => ScriptExecutionBody.Parameter ?? null /* arrayOf */; set => ScriptExecutionBody.Parameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionParameter) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionParameter[] Parameter { get => _scriptExecutionBody.Parameter ?? null /* arrayOf */; set => _scriptExecutionBody.Parameter = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.HttpPipeline" /> that the remote call will use.
@@ -223,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"Time to live for the resource. If not provided, will be available for 60 days",
         SerializedName = @"retention",
         PossibleTypes = new [] { typeof(string) })]
-        public string Retention { get => ScriptExecutionBody.Retention ?? null; set => ScriptExecutionBody.Retention = value; }
+        public string Retention { get => _scriptExecutionBody.Retention ?? null; set => _scriptExecutionBody.Retention = value; }
 
         /// <summary>A reference to the script cmdlet resource if user is running a AVS script</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A reference to the script cmdlet resource if user is running a AVS script")]
@@ -234,13 +237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"A reference to the script cmdlet resource if user is running a AVS script",
         SerializedName = @"scriptCmdletId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ScriptCmdletId { get => ScriptExecutionBody.ScriptCmdletId ?? null; set => ScriptExecutionBody.ScriptCmdletId = value; }
-
-        /// <summary>Backing field for <see cref="ScriptExecutionBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecution _scriptExecutionBody= new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ScriptExecution();
-
-        /// <summary>An instance of a script executed by a user - custom or AVS</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecution ScriptExecutionBody { get => this._scriptExecutionBody; set => this._scriptExecutionBody = value; }
+        public string ScriptCmdletId { get => _scriptExecutionBody.ScriptCmdletId ?? null; set => _scriptExecutionBody.ScriptCmdletId = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -269,37 +266,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"Time limit for execution",
         SerializedName = @"timeout",
         PossibleTypes = new [] { typeof(string) })]
-        public string Timeout { get => ScriptExecutionBody.Timeout ?? null; set => ScriptExecutionBody.Timeout = value; }
+        public string Timeout { get => _scriptExecutionBody.Timeout ?? null; set => _scriptExecutionBody.Timeout = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecution"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution">Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecution> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -325,7 +327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ScriptExecutionBody = this.ScriptExecutionBody;
+            clone._scriptExecutionBody = this._scriptExecutionBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.PrivateCloudName = this.PrivateCloudName;
@@ -336,7 +338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -477,7 +479,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -492,12 +493,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ScriptExecutionsCreateOrUpdate(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, ScriptExecutionBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.ScriptExecutionsCreateOrUpdate(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, _scriptExecutionBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,PrivateCloudName=PrivateCloudName,Name=Name,body=ScriptExecutionBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,PrivateCloudName=PrivateCloudName,Name=Name,body=_scriptExecutionBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -520,12 +521,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -542,15 +543,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, PrivateCloudName=PrivateCloudName, Name=Name, body=ScriptExecutionBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, PrivateCloudName=PrivateCloudName, Name=Name, body=_scriptExecutionBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, PrivateCloudName=PrivateCloudName, Name=Name, body=ScriptExecutionBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, PrivateCloudName=PrivateCloudName, Name=Name, body=_scriptExecutionBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -560,12 +561,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecution"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution">Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecution> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution> response)
         {
             using( NoSynchronizationContext )
             {
@@ -577,7 +578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IScriptExecution
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution
                 WriteObject((await response));
             }
         }

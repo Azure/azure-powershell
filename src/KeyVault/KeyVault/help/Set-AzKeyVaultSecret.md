@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 9FC72DE9-46BB-4CB5-9880-F53756DBE012
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultsecret
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -36,9 +36,11 @@ cmdlet creates a new version of that secret.
 
 ### Example 1: Modify the value of a secret using default attributes
 ```powershell
-PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
-PS C:\> Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret
+$Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret
+```
 
+```output
 Vault Name   : Contoso
 Name         : ITSecret
 Version      : 8b5c0cb0326e4350bd78200fac932b51
@@ -60,13 +62,15 @@ secret value becomes the value stored in $Secret.
 
 ### Example 2: Modify the value of a secret using custom attributes
 ```powershell
-PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
-PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $NBF =(Get-Date).ToUniversalTime()
-PS C:\> $Tags = @{ 'Severity' = 'medium'; 'IT' = 'true'}
-PS C:\> $ContentType = 'txt'
-PS C:\> Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable -Tags $Tags
+$Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+$Expires = (Get-Date).AddYears(2).ToUniversalTime()
+$NBF =(Get-Date).ToUniversalTime()
+$Tags = @{ 'Severity' = 'medium'; 'IT' = 'true'}
+$ContentType = 'txt'
+Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable -Tags $Tags
+```
 
+```output
 Vault Name   : Contoso
 Name         : ITSecret
 Version      : a2c150be3ea24dd6b8286986e6364851
@@ -89,6 +93,23 @@ The next commands define custom attributes for the expiry date, tags, and contex
 the attributes in variables.
 The final command modifies values of the secret named ITSecret in the key vault named Contoso, by
 using the values specified previously as variables.
+
+### Example 3: Create a secret in azure key vault by command Set-Secret in module Microsoft.PowerShell.SecretManagement
+```powershell
+# Install module Microsoft.PowerShell.SecretManagement
+Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -AllowPrerelease
+# Register vault for Secret Management
+Register-SecretVault -Name AzKeyVault -ModuleName Az.KeyVault -VaultParameters @{ AZKVaultName = 'test-kv'; SubscriptionId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
+# Set secret for vault AzKeyVault
+$secure = ConvertTo-SecureString -String "Password" -AsPlainText -Force
+Set-Secret -Name secureSecret -SecureStringSecret $secure -Vault AzKeyVault
+```
+
+```output
+None
+```
+
+This example sets a secret named `secureSecret` in azure key vault `test-kv` by command `Set-Secret` in module `Microsoft.PowerShell.SecretManagement`.
 
 ## PARAMETERS
 

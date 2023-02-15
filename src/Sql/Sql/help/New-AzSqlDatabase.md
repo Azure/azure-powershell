@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: D2DB7821-A7D2-4017-8522-78793DDE040E
-online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase
+online version: https://learn.microsoft.com/powershell/module/az.sql/new-azsqldatabase
 schema: 2.0.0
 ---
 
@@ -20,9 +20,9 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-SampleName <String>]
  [-ZoneRedundant] [-AsJob] [-Force] [-LicenseType <String>] [-AutoPauseDelayInMinutes <Int32>]
  [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
- [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-EnableLedger] [-Confirm]
- [<CommonParameters>]
+ [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-EnableLedger]
+ [-PreferredEnclaveType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -32,9 +32,9 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-SampleName <String>] [-ZoneRedundant] [-AsJob] [-Force] -VCore <Int32> -ComputeGeneration <String>
  [-LicenseType <String>] [-ComputeModel <String>] [-AutoPauseDelayInMinutes <Int32>]
  [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
- [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-EnableLedger] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-EnableLedger]
+ [-PreferredEnclaveType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,8 +44,11 @@ You can also create an elastic database by setting the *ElasticPoolName* paramet
 ## EXAMPLES
 
 ### Example 1: Create a database on a specified server
+```powershell
+New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
-PS C:\>New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+
+```output
 ResourceGroupName             : ResourceGroup01
 ServerName                    : Server01
 DatabaseName                  : Database01
@@ -71,8 +74,11 @@ EnableLedger                  : False
 This command creates a database named Database01 on server Server01.
 
 ### Example 2: Create an elastic database on a specified server
+```powershell
+New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ElasticPoolName "ElasticPool01"
 ```
-PS C:\>New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ElasticPoolName "ElasticPool01"
+
+```output
 ResourceGroupName             : ResourceGroup01
 ServerName                    : Server01
 DatabaseName                  : Database02
@@ -98,8 +104,11 @@ EnableLedger                  : False
 This command creates a database named Database02 in the elastic pool named ElasticPool01 on server Server01.
 
 ### Example 3: Create an Vcore database on a specified server
+```powershell
+New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database03" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen4"
 ```
-PS C:\>New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database03" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen4"
+
+```output
 ResourceGroupName             : ResourceGroup01
 ServerName                    : Server01
 DatabaseName                  : Database03
@@ -123,8 +132,11 @@ EnableLedger                  : False
 This command creates a Vcore database named Database03 on server Server01.
 
 ### Example 4: Create an Serverless database on the specified server
+```powershell
+New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database04" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen5" -ComputeModel Serverless
 ```
-PS C:\>New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database04" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen5" -ComputeModel Serverless
+
+```output
 ResourceGroupName             : ResourceGroup01
 ServerName                    : Server01
 DatabaseName                  : Database04
@@ -194,7 +206,7 @@ The Backup storage redundancy used to store backups for the SQL Database. Option
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Local, Zone, Geo
+Accepted values: Local, Zone, Geo, GeoZone
 
 Required: False
 Position: Named
@@ -444,6 +456,21 @@ For serverless Azure Sql databases only.
 Type: System.Double
 Parameter Sets: (All)
 Aliases: MinVCore, MinCapacity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferredEnclaveType
+The preferred enclave type for the Azure Sql database. Possible values are Default and VBS.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

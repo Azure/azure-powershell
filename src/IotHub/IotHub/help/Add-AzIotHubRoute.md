@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroute
+online version: https://learn.microsoft.com/powershell/module/az.iothub/add-aziothubroute
 schema: 2.0.0
 ---
 
@@ -39,9 +39,11 @@ Create a route to send specific data source and condition to a desired endpoint.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Add-AzIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -Source DeviceMessages -EndpointName E1
 ```
-PS C:\> Add-AzIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -Source DeviceMessages -EndpointName E1
 
+```output
 RouteName     : R1
 DataSource    : DeviceMessages
 EndpointNames : E1

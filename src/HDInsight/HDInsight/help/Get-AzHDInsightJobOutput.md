@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 5871C962-27D7-4EC8-927E-D4CAE5F23C58
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjoboutput
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjoboutput
 schema: 2.0.0
 ---
 
@@ -26,16 +26,16 @@ The **Get-AzHDInsightJobOutput** cmdlet gets the log output for a job from the S
 ## EXAMPLES
 
 ### Example 1: Get the log output for a job
-```
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $clusterCreds = Get-Credential
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
 # Hive job details
-PS C:\> $statusFolder = "<status folder>"
-PS C:\> $query = "<query here>"
+$statusFolder = "<status folder>"
+$query = "<query here>"
 
-PS C:\> New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
+New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
             -Query $query `
         | Start-AzHDInsightJob `
             -ClusterName $clusterName `

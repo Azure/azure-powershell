@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azdeploymentscriptlog
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azdeploymentscriptlog
 schema: 2.0.0
 ---
 
@@ -37,22 +37,22 @@ The **Get-AzDeploymentScriptLog** cmdlet gets the log of a deployment script exe
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDeploymentScriptLog -Name MyDeploymentScript -ResourceGroupName DS-TestRg
+Get-AzDeploymentScriptLog -Name MyDeploymentScript -ResourceGroupName DS-TestRg
 ```
 
 Gets the log of a deployment script with the name MyDeploymentScript in resource group DS-TestRG.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDeploymentScriptLog -Name MyDeploymentScript -ResourceGroupName DS-TestRg -Tail 3
+Get-AzDeploymentScriptLog -Name MyDeploymentScript -ResourceGroupName DS-TestRg -Tail 3
 ```
 
 Gets the last 3 lines of the log of a deployment script with the name MyDeploymentScript in resource group DS-TestRG.
 
 ### Example 3
 ```powershell
-PS C:\> $ds = Get-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
-PS C:\> Get-AzDeploymentScriptLog -DeploymentScriptInputObject $ds
+$ds = Get-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
+Get-AzDeploymentScriptLog -DeploymentScriptInputObject $ds
 ```
 
 The first command gets a deployment script with the name MyDeploymentScript in resource group DS-TestRG.

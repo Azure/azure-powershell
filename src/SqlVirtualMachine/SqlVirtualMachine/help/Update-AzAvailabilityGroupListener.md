@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azavailabilitygrouplistener
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azavailabilitygrouplistener
 schema: 2.0.0
 ---
 
@@ -46,13 +46,14 @@ The Update-AzAvailabilityGroupListener cmdlet updates an Availability Group List
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -Name AgListener01 -SqlVirtualMachineId $VmResourceId01,$VmResourceId02
+Update-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -Name AgListener01 -SqlVirtualMachineId $VmResourceId01,$VmResourceId02
 ```
 
+```output
 Name         ResourceGroupName GroupName    AvailabilityGroupName
 ----         ----------------- ---------    ---------------------
 AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
-
+```
 Updates the list SQL Virtual Machines for the Availability Group Listener.
 
 ## PARAMETERS

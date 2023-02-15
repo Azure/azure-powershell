@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The **Get-AzCosmosDBSqlContainerThroughput** cmdlet gets the throughput settings
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlContainerThroughput  -AccountName {accountName} -ResourceGroupName {resourceGroupName} -DatabaseName {databaseName} -Name {containerName}
+Get-AzCosmosDBSqlContainerThroughput  -AccountName "accountName" -ResourceGroupName "resourceGroupName" -DatabaseName "databaseName" -Name "containerName"
+```
 
+```output
 Throughput          : {throughputValue}
 MinimumThroughput   :
 OfferReplacePending :

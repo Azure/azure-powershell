@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecache
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecache
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Exports a database file from target database.
 
 ### Example 1: Export database to file
 ```powershell
-PS C:\> Export-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer?sp=signedPermissions&se=signedExpiry&sv=signedVersion&sr=signedResource&sig=signature;mystoragekey"
+Export-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer?sp=signedPermissions&se=signedExpiry&sv=signedVersion&sr=signedResource&sig=signature;mystoragekey"
 ```
 
 This command exports the database of the Redis Enterprise cache named MyCache to a database file.
@@ -196,6 +196,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+Export-AzRedisEnterpriseCacheDatabase
 
 ## RELATED LINKS
 

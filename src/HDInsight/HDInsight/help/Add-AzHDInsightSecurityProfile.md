@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: FB37494B-4035-45B7-88AB-DF33CEEF0D0A
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightsecurityprofile
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightsecurityprofile
 schema: 2.0.0
 ---
 
@@ -27,37 +27,37 @@ Security profile contains configuration related joining the cluster to Active Di
 ## EXAMPLES
 
 ### Example 1: Add security profile to the cluster configuration object
-```
-PS C:\> #Primary storage account info
-PS C:\> $storageAccountResourceGroupName = "Group"
-PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
-PS C:\> $storageAccountName = "yourstorageacct001"
-PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+```powershell
+#Primary storage account info
+$storageAccountResourceGroupName = "Group"
+$storageAccountResourceId = "yourstorageaccountresourceid"
+$storageAccountName = "yourstorageacct001"
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
-PS C:\> $storageContainer = "container001"
+$storageContainer = "container001"
 
 # Cluster configuration info
-PS C:\> $location = "East US 2"
-PS C:\> $clusterResourceGroupName = "Group"
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $clusterCreds = Get-Credential
+$location = "East US 2"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
 # If the cluster's resource group doesn't exist yet, run:
 #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
 #Security profile info
-PS C:\> $domain="sampledomain.onmicrosoft.com"
-PS C:\> $domainUser="sample.user@sampledomain.onmicrosoft.com"
-PS C:\> $domainPassword=ConvertTo-SecureString "domainPassword" -AsPlainText -Force
-PS C:\> $domainUserCredential=New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
-PS C:\> $organizationalUnitDN="ou=testunitdn"
-PS C:\> $ldapsUrls=("ldaps://sampledomain.onmicrosoft.com:636","ldaps://sampledomain.onmicrosoft.com:389")
-PS C:\> $clusterUsersGroupDNs=("groupdn1","groupdn2")
+$domain="sampledomain.onmicrosoft.com"
+$domainUser="sample.user@sampledomain.onmicrosoft.com"
+$domainPassword=ConvertTo-SecureString "domainPassword" -AsPlainText -Force
+$domainUserCredential=New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
+$organizationalUnitDN="ou=testunitdn"
+$ldapsUrls=("ldaps://sampledomain.onmicrosoft.com:636","ldaps://sampledomain.onmicrosoft.com:389")
+$clusterUsersGroupDNs=("groupdn1","groupdn2")
 
 # Create the cluster
-PS C:\> New-AzHDInsightClusterConfig `
+New-AzHDInsightClusterConfig `
             | Add-AzHDInsightSecurityProfile `
-                -Domain $domain `
+                -DomainResourceId $domain `
                 -DomainUserCredential $domainUserCredential `
                 -OrganizationalUnitDN $organizationalUnitDN `
                 -LdapsUrls $ldapsUrls `

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/get-azdatasharesynchronizationdetail
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatasharesynchronizationdetail
 schema: 2.0.0
 ---
 
@@ -30,9 +30,11 @@ The **Get-AzDataShareSynchronizationDetail** cmdlet provides details of the sync
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareSynchronizationDetail -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -SynchronizationId "02a17faa-4498-45ee-a884-162180af9251"
 ```
-PS C:\> Get-AzDataShareSynchronizationDetail -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -SynchronizationId "02a17faa-4498-45ee-a884-162180af9251"
 
+```output
 DataSetId    : d2411889-5357-4ca8-8d65-9363e46ef2ed
 DataSetType  : BlobFolder
 EndTime      : 7/8/2019 10:24:27 PM

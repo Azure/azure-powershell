@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: A27EE9C0-C7F5-4BF6-AE52-58087BD1B1C3
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewaydefaultsite
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewaydefaultsite
 schema: 2.0.0
 ---
 
@@ -27,10 +27,10 @@ Forced tunneling is carried out by using a virtual private network (VPN) tunnel;
 ## EXAMPLES
 
 ### Example 1: Assign a default site to a virtual network gateway
-```
-PS C:\>$LocalGateway = Get-AzLocalNetworkGateway -Name "ContosoLocalGateway " -ResourceGroup "ContosoResourceGroup"
-PS C:\> $VirtualGateway = Get-AzVirtualNetworkGateway -Name "ContosoVirtualGateway"
-PS C:\> Set-AzVirtualNetworkGatewayDefaultSite -GatewayDefaultSite $LocalGateway -VirtualNetworkGateway $VirtualGateway
+```powershell
+$LocalGateway = Get-AzLocalNetworkGateway -Name "ContosoLocalGateway " -ResourceGroupName "ContosoResourceGroup"
+$VirtualGateway = Get-AzVirtualNetworkGateway -Name "ContosoVirtualGateway"
+Set-AzVirtualNetworkGatewayDefaultSite -GatewayDefaultSite $LocalGateway -VirtualNetworkGateway $VirtualGateway
 ```
 
 This example assigns a default site to a virtual network gateway named ContosoVirtualGateway.

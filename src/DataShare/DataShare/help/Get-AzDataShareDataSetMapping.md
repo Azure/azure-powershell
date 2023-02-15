@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/get-azdatasharedatasetmapping
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatasharedatasetmapping
 schema: 2.0.0
 ---
 
@@ -30,9 +30,11 @@ The **Get-AzDataShareDataSetMapping** cmdlet gets information about a particular
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareDataSetMapping -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -ShareSubscriptionName "WikiADS"
 ```
-PS C:\> Get-AzDataShareDataSetMapping -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -ShareSubscriptionName "WikiADS"
 
+```output
 ContainerName        : testing
 Prefix               : providercontainer
 DataSetId            : 372899d4-5e67-4c85-bc60-21168b484424
@@ -50,7 +52,7 @@ Type                 : Microsoft.DataShare/DataSetMappings
 ## PARAMETERS
 
 ### -AccountName
-Azure data share account name.
+The name of the Azure storage account that is the source of the data being shared.
 
 ```yaml
 Type: System.String

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlfirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlfirewallrule
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Deletes a server firewall rule.
 
 ### Example 1: Remove PostgreSql Firewall Rule by name
 ```powershell
-PS C:\> Remove-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Remove-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 ```
 
@@ -40,9 +40,9 @@ This cmdlet removes PostgreSql Firewall Rule by name.
 
 ### Example 2: Remove PostgreSql Firewall Rule by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
-PS C:\> Remove-AzPostgreSqlFirewallRule -InputObject $ID
- 
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+Remove-AzPostgreSqlFirewallRule -InputObject $ID
+
 ```
 
 These cmdlets remove PostgreSql Firewall Rule by identity.
@@ -237,7 +237,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

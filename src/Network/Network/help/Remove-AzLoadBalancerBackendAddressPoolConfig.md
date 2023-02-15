@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F965A9DE-645C-471B-84E8-58D648B1CA57
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancerbackendaddresspoolconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azloadbalancerbackendaddresspoolconfig
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzLoadBalancerBackendAddressPoolConfig** cmdlet removes a backend a
 ## EXAMPLES
 
 ### Example 1: Remove a backend address pool configuration from a load balancer
-```
-PS C:\>Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup" | Remove-AzLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool02" | Set-AzLoadBalancer
+```powershell
+Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup" | Remove-AzLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool02" | Set-AzLoadBalancer
 ```
 
 This command gets the load balancer named MyLoadBalancer and passes it to **Remove-AzLoadBalancerBackendAddressPoolConfig**, which removes the BackendAddressPool02 configuration from MyLoadBalancer.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicynetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpolicynetworkrule
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ The **New-AzFirewallPolicyNetworkRule** cmdlet creates a Network rule for a Azur
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyNetworkRule -Name NRC1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress * -DestinationPort *
+New-AzFirewallPolicyNetworkRule -Name NRC1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress * -DestinationPort *
 ```
 
 This example creates an network rule with the source address, protocol , destination address and destination port

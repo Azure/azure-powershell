@@ -18,13 +18,169 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.4.0
+* Added a warning message for the upcoming breaking change when creating a Storage account
+    - `New-AzStorageAccount`
+* Removed the ValidateSet of StandardBlobTier parameter
+    - `Copy-AzStorageBlob`
+    - `Set-AzStorageBlobContent` 
+    - `Start-AzStorageBlobCopy`
+
+## Version 5.3.0
+* Returned ListBlobProperties in blob list result
+    - `Get-AzStorageBlob`
+* Returned AllowedCopyScope in get account result
+    - `Get-AzStorageAccount`
+
+## Version 5.2.0
+* Supported MaxPageSize, Include, and Filter parameters for listing encryption scopes 
+    - `Get-AzStorageEncryptionScope`
+* Supported excludePrefix, includeDeleted, and many new schema fields in Blob Inventory
+    - `New-AzStorageBlobInventoryPolicyRule`
+
+## Version 5.1.0
+* Supported generate DataLakeGen2 Sas token with Encryption scope
+    -  `New-AzDataLakeGen2SasToken`
+* Supported blob type conversions in sync blob copy
+    - `Copy-AzStorageBlob`
+* Supported create/upgrade storage account with Keyvault from another tenant and access Keyvault with FederatedClientId
+  * `New-AzStorageAccount`
+  * `Set-AzStorageAccount`
+* Supported find blobs in a container with a blob tag filter sql expression
+  * `Get-AzStorageBlobByTag`
+* Migrated following Azure File dataplane cmdlets from 'Microsoft.Azure.Storage.File' to 'Azure.Storage.Files.Shares'
+  * `Get-AzStorageFileHandle`
+  * `Close-AzStorageFileHandle`
+
+## Version 5.0.0
+* Migrated following Azure File dataplane cmdlets from 'Microsoft.Azure.Storage.File 11.2.2' to 'Azure.Storage.Files.Shares 12.10.0'
+  * `Get-AzStorageFile`
+  * `Get-AzStorageFileCopyState`
+  * `Get-AzStorageShare`
+  * `Get-AzStorageShareStoredAccessPolicy`
+  * `New-AzStorageDirectory`
+  * `New-AzStorageFileSasToken`
+  * `New-AzStorageShare`
+  * `New-AzStorageShareSasToken`
+  * `New-AzStorageShareStoredAccessPolicy`
+  * `Remove-AzStorageDirectory`
+  * `Remove-AzStorageFile`
+  * `Remove-AzStorageShare`
+  * `Remove-AzStorageShareStoredAccessPolicy`
+  * `Set-AzStorageShareQuota`
+  * `Set-AzStorageShareStoredAccessPolicy`
+  * `Start-AzStorageFileCopy`
+  * `Stop-AzStorageFileCopy`
+* Migrated Get/List blob to always use 'Azure.Storage.Blobs'
+  * `Get-AzStorageBlob`
+* Fix create file sas failure with file object pipeline
+  * `New-AzStorageFileSasToken`
+
+## Version 4.9.0
+* Supported to create or update Storage account with Azure Files Active Directory Domain Service Kerberos Authentication
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+* Supported create/upgrade storage account by enable sftp and enable localuser
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+* Supported manage local user of a storage account
+    -  `Set-AzStorageLocalUser`
+    -  `Get-AzStorageLocalUser`
+    -  `Remove-AzStorageLocalUser`
+    -  `New-AzStorageLocalUserSshPassword`
+    -  `Get-AzStorageLocalUserKey`
+    -  `New-AzStorageLocalUserSshPublicKey`
+    -  `New-AzStorageLocalUserPermissionScope`
+* Supported soft delete DataLake Gen2 item
+    - `Get-AzDataLakeGen2DeletedItem`
+    - `Restore-AzDataLakeGen2DeletedItem`
+
+## Version 4.8.0
+* Added check for storage account sas token is secured with the storage account key.
+    -  `New-AzStorageAccountSASToken`
+* Supported Management Policy rule filter BlobIndexMatch
+    -  Added a new cmdlet `New-AzStorageAccountManagementPolicyBlobIndexMatchObject`
+    -  Added a new parameter `BlobIndexMatch` in `New-AzStorageAccountManagementPolicyFilter`
+
+## Version 4.7.0
+* Supported BaseBlob DaysAfterCreationGreaterThan in Management Policy
+    -  `Add-AzStorageAccountManagementPolicyAction`
+
+## Version 4.6.0
+* Supported generate Sas token for DataLakeGen2
+    -  `New-AzDataLakeGen2SasToken`
+* Showed OAuth token in debug log in debug build only
+    -  `New-AzStorageContext`
+* Supported return more file properties when list Azure file
+    -  `Get-AzStorageFile`
+
+## Version 4.5.0
+* Supported DaysAfterLastTierChangeGreaterThan in Management Policy
+    -  `Add-AzStorageAccountManagementPolicyAction`
+* Fixed the issue that upload blob might fail on Linux [#17743]
+    -  `Set-AzStorageBlobContent`
+* Supported AllowPermanentDelete when enable blob soft delete
+    - `Enable-AzStorageBlobDeleteRetentionPolicy`
+* Added breaking change warning message for upcoming cmdlet breaking change
+    - `Get-AzStorageFile`
+
+## Version 4.4.1
+* Fixed get blob by tag failure on Powershell 7.2.2
+    -  `Get-AzStorageBlobByTag`
+
+## Version 4.4.0
+* Updated examples in reference documentation for `Close-AzStorageFileHandle`
+* Supported create storage context with customized blob, queue, file, table service endpoint
+    - `New-AzStorageContext`
+* Fixed copy blob failure on Premium Storage account, or account enabled hierarchical namespace
+    -  `Copy-AzStorageBlob` 
+* Supported create account SAS token, container SAS token, blob  SAS token with EncryptionScope
+    -  `New-AzStorageAccountSASToken` 
+    -  `New-AzStorageContainerSASToken` 
+    -  `New-AzStorageBlobSASToken` 
+* Supported asynchronous blob copy run on new API version
+    -  `Start-AzStorageBlobCopy`
+* Fixed IpRule examples in help
+    -  `Add-AzStorageAccountNetworkRule`
+    -  `Remove-AzStorageAccountNetworkRule`
+    -  `Update-AzStorageAccountNetworkRuleSet`
+
+## Version 4.3.0
+* Supported download blob from managed disk account with Sas Uri and bearer token
+    -  `Get-AzStorageBlobContent` 
+* Supported create/upgrade storage account with ActiveDirectorySamAccountName and ActiveDirectoryAccountType
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+
+## Version 4.2.0
 * Fixed the issue that output number in console when update/copy blob sometimes [#16783]
     -  `Set-AzStorageBlobContent` 
     -  `Copy-AzStorageBlob` 
+* Updated help file, added more description for the asynchronous blob copy.
+    -  `Start-AzStorageBlobCopy`
 
 ## Version 4.1.1
 * Fixed the failure of sync copy blob with long destination blob name [#16628]
     -  `Copy-AzStorageBlob` 
+* Supported AAD oauth storage context in storage table cmdlets.
+    - `Get-AzStorageCORSRule`
+    - `Get-AzStorageServiceLoggingProperty`
+    - `Get-AzStorageServiceMetricsProperty`
+    - `Get-AzStorageServiceProperty`
+    - `Get-AzStorageTable`
+    - `Get-AzStorageTableStoredAccessPolicy`
+    - `New-AzStorageTable`
+    - `New-AzStorageTableSASToken`
+    - `New-AzStorageTableStoredAccessPolicy`
+    - `Remove-AzStorageCORSRule`
+    - `Remove-AzStorageTableStoredAccessPolicy`
+    - `Set-AzStorageCORSRule`
+    - `Set-AzStorageServiceLoggingProperty`
+    - `Set-AzStorageServiceMetricsProperty`
+    - `Set-AzStorageServiceProperty`
+    - `Set-AzStorageTable`
+    - `Set-AzStorageTableStoredAccessPolicy`
 
 ## Version 4.1.0
 * Fixed the failure of `Get-AzStorageContainerStoredAccessPolicy` when permission is null [#15644]
@@ -47,24 +203,6 @@
 * Supported create storage account with enable account level immutability with versioning, and create/update storage account with account level immutability policy.
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
-* Supported AAD oauth storage context in storage table cmdlets.
-    - `Get-AzStorageCORSRule`
-    - `Get-AzStorageServiceLoggingProperty`
-    - `Get-AzStorageServiceMetricsProperty`
-    - `Get-AzStorageServiceProperty`
-    - `Get-AzStorageTable`
-    - `Get-AzStorageTableStoredAccessPolicy`
-    - `New-AzStorageTable`
-    - `New-AzStorageTableSASToken`
-    - `New-AzStorageTableStoredAccessPolicy`
-    - `Remove-AzStorageCORSRule`
-    - `Remove-AzStorageTableStoredAccessPolicy`
-    - `Set-AzStorageCORSRule`
-    - `Set-AzStorageServiceLoggingProperty`
-    - `Set-AzStorageServiceMetricsProperty`
-    - `Set-AzStorageServiceProperty`
-    - `Set-AzStorageTable`
-    - `Set-AzStorageTableStoredAccessPolicy`
 
 ## Version 3.12.0
 * Upgraded Azure.Storage.Blobs to 12.10.0

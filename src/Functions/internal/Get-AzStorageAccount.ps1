@@ -22,18 +22,14 @@ Note that storage keys are not returned; use the ListKeys operation for this.
 Lists all the storage accounts available under the subscription.
 Note that storage keys are not returned; use the ListKeys operation for this.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azstorageaccount
+https://learn.microsoft.com/powershell/module/az.functions/get-azstorageaccount
 #>
 function Get-AzStorageAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount])]
@@ -110,6 +106,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzStorageAccount_List';
             List1 = 'Az.Functions.private\Get-AzStorageAccount_List1';
@@ -123,6 +120,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -131,15 +129,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

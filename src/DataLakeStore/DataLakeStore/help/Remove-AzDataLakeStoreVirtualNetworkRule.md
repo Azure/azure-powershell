@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
-online version: https://docs.microsoft.com/powershell/module/az.datalakestore/remove-azdatalakestorevirtualnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.datalakestore/remove-azdatalakestorevirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Remove-AzDataLakeStoreVirtualNetworkRule** cmdlet removes the specified vi
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET"
+Remove-AzDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET"
 ```
 
 Removes virtual network rule "myVNET" from account "dls"

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricapplication
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricapplication
 schema: 2.0.0
 ---
 
@@ -37,10 +37,10 @@ This cmdlet removes an application form the cluster. This will remove all the se
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> Remove-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+Remove-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName
 ```
 
 This example removes the application "testApp" under the resource group "testRG" and cluster "testCluster".
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns $True if the command succeeds and $False if it fails. By default, this cmdlet does not return any output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

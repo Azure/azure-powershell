@@ -13,53 +13,26 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ManagedInstanceFailoverScenarioTests : SqlTestsBase
+    /// <summary>
+    /// These tests depends on the existing resources. Please contact MDCSSQLCustomerExp@microsoft.com for instructions.
+    /// </summary>
+    public class ManagedInstanceFailoverScenarioTests : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
-        }
-
         public ManagedInstanceFailoverScenarioTests(ITestOutputHelper output) : base(output)
         {
         }
 
-        [Fact(Skip = "Depends on hardcoded resource")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverManagedInstance()
         {
-            RunPowerShellTest("Test-FailoverManagedInstance");
-        }
-
-        [Fact(Skip = "Depends on hardcoded resource")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestFailoverManagedInstancePassThru()
-        {
-            RunPowerShellTest("Test-FailoverManagedInstancePassThru");
-        }
-
-        [Fact(Skip = "Depends on hardcoded resource")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestFailoverManagedInstancePiping()
-        {
-            RunPowerShellTest("Test-FailoverManagedInstancePiping");
-        }
-
-        [Fact(Skip = "Depends on hardcoded resource")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestFailoverManagedInstanceReadableSecondary()
-        {
-            RunPowerShellTest("Test-FailoverManagedInstanceReadableSecondary");
+            TestRunner.RunTestScript("Test-FailoverManagedInstance");
         }
     }
 }

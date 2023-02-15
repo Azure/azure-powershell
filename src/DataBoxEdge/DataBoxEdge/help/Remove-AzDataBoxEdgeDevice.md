@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgedevice
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgedevice
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ Refer the documentation on Deleting the resource before using this [cmdlet](http
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeDevice ResourceGroupName resourceGroupName -Name deviceName
+Remove-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName
 ```
 
 ## PARAMETERS

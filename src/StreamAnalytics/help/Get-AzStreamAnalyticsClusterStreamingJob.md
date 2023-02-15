@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsclusterstreamingjob
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsclusterstreamingjob
 schema: 2.0.0
 ---
 
@@ -24,8 +24,9 @@ Lists all of the streaming jobs in the given cluster.
 
 ### Example 1: Get all jobs under the stream analytics cluster
 ```powershell
-PS C:\> Get-AzStreamAnalyticsClusterStreamingJob -ResourceGroupName pwshaz-rg-test -ClusterName sac-m-test01
-
+Get-AzStreamAnalyticsClusterStreamingJob -ResourceGroupName pwshaz-rg-test -ClusterName sac-m-test01
+```
+```output
 JobState StreamingUnit
 -------- -------------
 Created  3

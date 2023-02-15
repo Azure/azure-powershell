@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
+online version: https://learn.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
 schema: 2.0.0
 ---
 
@@ -23,9 +23,11 @@ Create a in-memory object for FilteringTag
 
 ### Example 1: Create a in-memory object for FilteringTag used when creating tag rules
 ```powershell
-PS C:\> $ft = New-AzElasticFilteringTagObject -Action Include -Name key -Value '1'
-PS C:\> New-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02 -LogRuleFilteringTag $ft
+$ft = New-AzElasticFilteringTagObject -Action Include -Name key -Value '1'
+New-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02 -LogRuleFilteringTag $ft
+```
 
+```output
 Name    Type
 ----    ----
 default microsoft.elastic/monitors/tagrules

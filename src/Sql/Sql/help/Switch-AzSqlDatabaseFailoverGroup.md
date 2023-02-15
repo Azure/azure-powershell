@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup
+online version: https://learn.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup
 schema: 2.0.0
 ---
 
@@ -26,15 +26,15 @@ If the AllowDataLoss parameter is not specified, this command waits until both r
 ## EXAMPLES
 
 ### Example 1
-```
-C:\> Get-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName secondaryserver -FailoverGroupName fg | Switch-AzSqlDatabaseFailoverGroup -AllowDataLoss
+```powershell
+Get-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName secondaryserver -FailoverGroupName fg | Switch-AzSqlDatabaseFailoverGroup -AllowDataLoss
 ```
 
 Issue a failover operation allowing data loss by piping in the Failover Group.
 
 ### Example 2
-```
-C:\> Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName secondaryserver -FailoverGroupName fg
+```powershell
+Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName secondaryserver -FailoverGroupName fg
 ```
 
 Issue a best effort failover operation that will either succeed without losing data or fail and roll back.

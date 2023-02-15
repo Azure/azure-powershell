@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/update-azvirtualrouterpeer
+online version: https://learn.microsoft.com/powershell/module/az.network/update-azvirtualrouterpeer
 schema: 2.0.0
 ---
 
@@ -56,7 +56,7 @@ Update-AzVirtualRouterPeer -ResourceId $virtualRouterPeerId  -VirtualRouterName 
 
 ### Example 3
 ```powershell
-$virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName testVirtualRouter -RouterName virtualRouter -PeerName csr
+$virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName testVirtualRouter -VirtualRouterName virtualRouter -PeerName csr
 Update-AzVirtualRouterPeer -ResourceGroupName virtualRouterRG -InputObject $virtualRouterPeer  -VirtualRouterName virtualRouter
 ```
 

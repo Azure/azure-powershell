@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase
 schema: 2.0.0
 ---
 
@@ -36,8 +36,8 @@ The **Remove-AzSqlInstanceDatabase** cmdlet removes an Azure SQL Managed Instanc
 ## EXAMPLES
 
 ### Example 1: Remove a database from an instance
-```
-PS C:\>Remove-AzSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the database named Database01 from instance managedInstance1.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 3D88F561-7FE4-4017-BAC4-8F085AD037A9
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysku
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysku
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Set-AzApplicationGatewaySku** cmdlet modifies the stock keeping unit (SKU)
 ## EXAMPLES
 
 ### Example 1: Update the application gateway SKU
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGw = Set-AzApplicationGatewaySku -ApplicationGateway $AppGw -Name "Standard_Small" -Tier "Standard" -Capacity 2
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Set-AzApplicationGatewaySku -ApplicationGateway $AppGw -Name "Standard_Small" -Tier "Standard" -Capacity 2
 ```
 
 The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01, and stores it in the $AppGw variable.

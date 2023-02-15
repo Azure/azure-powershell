@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 770093CD-CE2A-4076-8A28-F4DCFFB7A075
-online version: https://docs.microsoft.com/powershell/module/az.resources/set-azresourcelock
+online version: https://learn.microsoft.com/powershell/module/az.resources/set-azresourcelock
 schema: 2.0.0
 ---
 
@@ -61,8 +61,8 @@ The **Set-AzResourceLock** cmdlet modifies a resource lock.
 ## EXAMPLES
 
 ### Example 1: Update notes for a lock
-```
-PS C:\>Set-AzResourceLock -LockLevel CanNotDelete -LockNotes "Updated note" -LockName "ContosoSiteLock" -ResourceName "ContosoSite" -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11"
+```powershell
+Set-AzResourceLock -LockLevel CanNotDelete -LockNotes "Updated note" -LockName "ContosoSiteLock" -ResourceName "ContosoSite" -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11"
 ```
 
 This command updates the note for a lock named ContosoSiteLock.

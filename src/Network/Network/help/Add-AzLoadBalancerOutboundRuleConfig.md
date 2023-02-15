@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azloadbalanceroutboundruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azloadbalanceroutboundruleconfig
 schema: 2.0.0
 ---
 
@@ -35,8 +35,8 @@ The **Add-AzLoadBalancerOutboundRuleConfig** cmdlet adds an outbound rule config
 
 ### Example 1: Add an outbound rule configuration to a load balancer
 ```powershell
-PS C:\>$slb = Get-AzLoadBalancer -ResourceGroupName "MyResourceGroup" -Name "MyLoadBalancer"
-PS C:\>$slb | Add-AzLoadBalancerOutboundRuleConfig -Name "NewRule" -Protocol "Tcp" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -BackendAddressPool $slb.BackendAddressPools[0]
+$slb = Get-AzLoadBalancer -ResourceGroupName "MyResourceGroup" -Name "MyLoadBalancer"
+$slb | Add-AzLoadBalancerOutboundRuleConfig -Name "NewRule" -Protocol "Tcp" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -BackendAddressPool $slb.BackendAddressPools[0]
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.

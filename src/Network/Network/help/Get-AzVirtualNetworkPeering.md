@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 463DDBA8-0F93-483D-A4B6-3B055968CDE8
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkpeering
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkpeering
 schema: 2.0.0
 ---
 
@@ -24,17 +24,17 @@ The **Get-AzVirtualNetworkPeering** cmdlet gets the virtual network peering.
 ## EXAMPLES
 
 ### Example 1: Get a peering between two virtual networks
-```
+```powershell
 # Get virtual network peering named myVnet1TomyVnet2 located in myVirtualNetwork in the resource group named myResourceGroup.
 
-Get-AzVirtualNetworkPeering -Name "myVnet1TomyVnet2" -VirtualNetwork "myVnet" -ResourceGroupName "myResourceGroup"
+Get-AzVirtualNetworkPeering -Name "myVnet1TomyVnet2" -VirtualNetworkName "myVnet" -ResourceGroupName "myResourceGroup"
 ```
 
 ### Example 2: Get all peerings in virtual network
-```
+```powershell
 # Get all virtual network peerings located in myVirtualNetwork in the resource group named myResourceGroup.
 
-Get-AzVirtualNetworkPeering -Name "myVnet1To*" -VirtualNetwork "myVnet" -ResourceGroupName "myResourceGroup"
+Get-AzVirtualNetworkPeering -Name "myVnet1To*" -VirtualNetworkName "myVnet" -ResourceGroupName "myResourceGroup"
 ```
 
 ## PARAMETERS

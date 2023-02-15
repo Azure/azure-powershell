@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImportExport
-online version: https://docs.microsoft.com/powershell/module/az.importexport/update-azimportexport
+online version: https://learn.microsoft.com/powershell/module/az.importexport/update-azimportexport
 schema: 2.0.0
 ---
 
@@ -18,27 +18,27 @@ It can also be used to cancel an existing job.
 ```
 Update-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AcceptLanguage <String>] [-BackupDriveManifest] [-CancelRequested] [-DeliveryPackageCarrierName <String>]
- [-DeliveryPackageDriveCount <Int32>] [-DeliveryPackageShipDate <String>]
+ [-DeliveryPackageDriveCount <Int64>] [-DeliveryPackageShipDate <String>]
  [-DeliveryPackageTrackingNumber <String>] [-DriveList <IDriveStatus[]>] [-LogLevel <String>]
  [-ReturnAddressCity <String>] [-ReturnAddressCountryOrRegion <String>] [-ReturnAddressEmail <String>]
  [-ReturnAddressPhone <String>] [-ReturnAddressPostalCode <String>] [-ReturnAddressRecipientName <String>]
  [-ReturnAddressStateOrProvince <String>] [-ReturnAddressStreetAddress1 <String>]
  [-ReturnAddressStreetAddress2 <String>] [-ReturnShippingCarrierAccountNumber <String>]
- [-ReturnShippingCarrierName <String>] [-State <String>] [-Tag <IUpdateJobParametersTags>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ReturnShippingCarrierName <String>] [-State <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzImportExport -InputObject <IImportExportIdentity> [-AcceptLanguage <String>] [-BackupDriveManifest]
- [-CancelRequested] [-DeliveryPackageCarrierName <String>] [-DeliveryPackageDriveCount <Int32>]
+ [-CancelRequested] [-DeliveryPackageCarrierName <String>] [-DeliveryPackageDriveCount <Int64>]
  [-DeliveryPackageShipDate <String>] [-DeliveryPackageTrackingNumber <String>] [-DriveList <IDriveStatus[]>]
  [-LogLevel <String>] [-ReturnAddressCity <String>] [-ReturnAddressCountryOrRegion <String>]
  [-ReturnAddressEmail <String>] [-ReturnAddressPhone <String>] [-ReturnAddressPostalCode <String>]
  [-ReturnAddressRecipientName <String>] [-ReturnAddressStateOrProvince <String>]
  [-ReturnAddressStreetAddress1 <String>] [-ReturnAddressStreetAddress2 <String>]
  [-ReturnShippingCarrierAccountNumber <String>] [-ReturnShippingCarrierName <String>] [-State <String>]
- [-Tag <IUpdateJobParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,7 +50,10 @@ It can also be used to cancel an existing job.
 
 ### Example 1: Update ImportExport job by resource group and server name
 ```powershell
-PS C:\> Update-AzImportExport -Name test-job -ResourceGroupName ImportTestRG -DeliveryPackageCarrierName pwsh -DeliveryPackageTrackingNumber pwsh20200000
+Update-AzImportExport -Name test-job -ResourceGroupName ImportTestRG -DeliveryPackageCarrierName pwsh -DeliveryPackageTrackingNumber pwsh20200000
+```
+
+```output
 Location Name     Type
 -------- ----     ----
 East US  test-job Microsoft.ImportExport/jobs
@@ -60,7 +63,10 @@ This cmdlet updates ImportExport job by resource group and server name.
 
 ### Example 2: Update ImportExport job by identity.
 ```powershell
-PS C:\> Get-AzImportExport -Name test-job -ResourceGroupName ImportTestRG | Update-AzImportExport -CancelRequested
+Get-AzImportExport -Name test-job -ResourceGroupName ImportTestRG | Update-AzImportExport -CancelRequested
+```
+
+```output
 Location Name     Type
 -------- ----     ----
 East US  test-job Microsoft.ImportExport/jobs
@@ -150,7 +156,7 @@ Accept wildcard characters: False
 The number of drives included in the package.
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +202,7 @@ List of drives that comprise the job.
 To construct, see NOTES section for DRIVELIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus[]
 Parameter Sets: (All)
 Aliases:
 
@@ -465,10 +471,10 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies the tags that will be assigned to the job
+Specifies the tags that will be assigned to the job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -519,7 +525,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
 
 ## NOTES
 
@@ -530,7 +536,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DRIVELIST <IDriveStatus[]>: List of drives that comprise the job.
+`DRIVELIST <IDriveStatus[]>`: List of drives that comprise the job.
   - `[BitLockerKey <String>]`: The BitLocker key used to encrypt the drive.
   - `[BytesSucceeded <Int64?>]`: Bytes successfully transferred for the drive.
   - `[CopyStatus <String>]`: Detailed status about the data transfer process. This field is not returned in the response until the drive is in the Transferring state.
@@ -540,11 +546,11 @@ DRIVELIST <IDriveStatus[]>: List of drives that comprise the job.
   - `[ManifestFile <String>]`: The relative path of the manifest file on the drive. 
   - `[ManifestHash <String>]`: The Base16-encoded MD5 hash of the manifest file on the drive.
   - `[ManifestUri <String>]`: A URI that points to the blob containing the drive manifest file. 
-  - `[PercentComplete <Int32?>]`: Percentage completed for the drive. 
+  - `[PercentComplete <Int64?>]`: Percentage completed for the drive. 
   - `[State <DriveState?>]`: The drive's current state. 
   - `[VerboseLogUri <String>]`: A URI that points to the blob containing the verbose log for the data transfer operation. 
 
-INPUTOBJECT <IImportExportIdentity>: Identity Parameter
+`INPUTOBJECT <IImportExportIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[JobName <String>]`: The name of the import/export job.
   - `[LocationName <String>]`: The name of the location. For example, West US or westus.

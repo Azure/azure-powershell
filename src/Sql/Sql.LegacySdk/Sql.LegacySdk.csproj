@@ -16,4 +16,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" PrivateAssets="all" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

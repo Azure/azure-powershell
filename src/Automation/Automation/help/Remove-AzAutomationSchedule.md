@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: EAD39EE1-C66F-4092-8876-E7F9FA612481
-online version: https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationschedule
+online version: https://learn.microsoft.com/powershell/module/az.automation/remove-azautomationschedule
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Remove-AzAutomationSchedule** cmdlet deletes a schedule from Azure Automat
 ## EXAMPLES
 
 ### Example 1: Remove a schedule
-```
-PS C:\>Remove-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command deletes the schedule named Schedule01 in automation account Contoso17 in resource group ResourceGroup01.
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

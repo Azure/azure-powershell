@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricnodetype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricnodetype
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ primary node type using '-IsPrimaryNodeType $false', another primary node type m
 
 ### Example 1
 ```powershell
-PS c:> Update-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -IsPrimaryNodeType $false
+Update-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'nt1' -IsPrimaryNodeType $false
 ```
 
 This command will update NodeType 'nt1' to stop acting as a primary node type. It may be done after adding another primary node type, in order to migrate seed nodes and system services.

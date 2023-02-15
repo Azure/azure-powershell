@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 28BC1B99-946C-4A8D-9581-4D5CC0BCEF8B
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy
 schema: 2.0.0
 ---
 
@@ -53,8 +53,10 @@ The **Set-AzKeyVaultCertificatePolicy** cmdlet creates or updates the policy for
 
 ### Example 1: Set a certificate policy
 ```powershell
-PS C:\> Set-AzKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01" -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal $True -PassThru
+Set-AzKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01" -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal $True -PassThru
+```
 
+```output
 SecretContentType               : application/x-pkcs12
 Kty                             :
 KeySize                         : 2048

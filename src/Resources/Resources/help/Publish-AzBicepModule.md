@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/publish-azbicepmodule
+online version: https://learn.microsoft.com/powershell/module/az.resources/publish-azbicepmodule
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Publish-AzBicepModule** cmdlet publishes a Bicep file to a registry as a m
 
 ### Example 1
 ```powershell
-PS C:\> Publish-AzBicepModule -FilePath main.bicep -Target br:{registry}/{moduleName}:{tag}
+Publish-AzBicepModule -FilePath 'main.bicep' -Target 'br:{registry}/{moduleName}:{tag}'
 ```
 
 Publishes `main.bicep` to `br:{registry}/{moduleName}:{tag}`.

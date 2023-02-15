@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapseintegrationruntimenode
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapseintegrationruntimenode
 schema: 2.0.0
 ---
 
@@ -45,7 +45,7 @@ The **Remove-AzSynapseIntegrationRuntimeNode** cmdlet removes a node in an integ
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseIntegrationRuntimeNode -WorkspaceName ContosoWorkspace -IntegrationRuntimeName 'test-selfhost-ir' -NodeName 'Node_1'
+Remove-AzSynapseIntegrationRuntimeNode -WorkspaceName ContosoWorkspace -IntegrationRuntimeName 'test-selfhost-ir' -NodeName 'Node_1'
 ```
 
 Remove a node with the given name on an integration runtime.

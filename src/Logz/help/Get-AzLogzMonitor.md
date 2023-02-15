@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitor
+online version: https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitor
 schema: 2.0.0
 ---
 
@@ -41,8 +41,10 @@ Get the properties of a specific monitor resource.
 
 ### Example 1: List all logz monitor resources under a subscription
 ```powershell
-PS C:\> Get-AzLogzMonitor
+Get-AzLogzMonitor
+```
 
+```output
 Name                            MonitoringStatus Location      ResourceGroupName
 ----                            ---------------- --------      -----------------
 ssoMultipleTest03               Enabled          westus2       koyTest
@@ -54,33 +56,39 @@ This command lists all logz monitor resources under a subscription.
 
 ### Example 2: List all logz monitor resources under a resource group
 ```powershell
-PS C:\> Get-AzLogzMonitor -ResourceGroupName logz-rg-test
+Get-AzLogzMonitor -ResourceGroupName logz-rg-test
+```
 
+```output
 Name          MonitoringStatus Location ResourceGroupName
 ----          ---------------- -------- -----------------
-logz-pwsh01 Enabled          westus2  logz-rg-test
+logz-pwsh01   Enabled          westus2  logz-rg-test
 ```
 
 This command lists all logz monitor resources under a resource group.
 
 ### Example 3: Get the properties of a specific logz monitor resource
 ```powershell
-PS C:\> Get-AzLogzMonitor -ResourceGroupName logz-rg-test -Name logz-pwsh01
+Get-AzLogzMonitor -ResourceGroupName logz-rg-test -Name logz-pwsh01
+```
 
+```output
 Name          MonitoringStatus Location ResourceGroupName
 ----          ---------------- -------- -----------------
-logz-pwsh01 Enabled          westus2  logz-rg-test
+logz-pwsh01   Enabled          westus2  logz-rg-test
 ```
 
 This command gets the properties of a specific logz monitor resource.
 
 ### Example 4: Get the properties of a specific logz monitor resource by pipeline
 ```powershell
-PS C:\> New-AzLogzMonitor -ResourceGroupName logz-rg-test -Name logz-pwsh01 -Location 'westus2' -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress 'xxxxx@microsoft.com' -UserInfoPhoneNumber 'xxxxxxxx' -UserInfoFirstName 'xxx' -UserInfoLastName 'xxx' | Get-AzLogzMonitor
+New-AzLogzMonitor -ResourceGroupName logz-rg-test -Name logz-pwsh01 -Location 'westus2' -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress 'xxxxx@microsoft.com' -UserInfoPhoneNumber 'xxxxxxxx' -UserInfoFirstName 'xxx' -UserInfoLastName 'xxx' | Get-AzLogzMonitor
+```
 
+```output
 Name          MonitoringStatus Location ResourceGroupName
 ----          ---------------- -------- -----------------
-logz-pwsh01 Enabled          westus2  logz-rg-test
+logz-pwsh01   Enabled          westus2  logz-rg-test
 ```
 
 This command gets the properties of a specific logz monitor resource by pipeline.
@@ -184,7 +192,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ILogzIdentity>: Identity Parameter
+INPUTOBJECT `<ILogzIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Databases FirewallRules
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlCapabilitiesCommunicator(IAzureContext context)
         {
             Context = context;

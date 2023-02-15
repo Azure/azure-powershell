@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrprotectableitem
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrprotectableitem
 schema: 2.0.0
 ---
 
@@ -48,16 +48,18 @@ The **Get-AzRecoveryServicesAsrProtectableItem** cmdlet gets the protectable ite
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $ProtectableItems = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $Container
+```powershell
+$ProtectableItems = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $Container
 ```
 
 Gets all the protectable items in specified ASR protection container.
 
 ### Example 2
+```powershell
+Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $pc -FriendlyName $piFriendlyName
 ```
-PS C:\> Get-ASRProtectableItem -ProtectionContainer $pc -FriendlyName $piFriendlyName
 
+```output
 Disks                         : {}
 FabricObjectId                :
 FabricSpecificVMDetails       : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificVMDetails
@@ -78,9 +80,11 @@ SupportedReplicationProviders : {InMage, InMageAzureV2}
 Get the protectable items in specified ASR protection container and with given friendly name.
 
 ### Example 3
+```powershell
+Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $pc -Name $piName
 ```
-PS C:\> Get-ASRProtectableItem -ProtectionContainer $pc -Name $piName
 
+```output
 Disks                         : {}
 FabricObjectId                :
 FabricSpecificVMDetails       : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificVMDetails

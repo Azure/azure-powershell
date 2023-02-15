@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5C309071-A2ED-464C-9197-0A77859C8FBB
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway
 schema: 2.0.0
 ---
 
@@ -26,6 +26,8 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
+ [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -43,6 +45,8 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
+ [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>]
  -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -53,9 +57,9 @@ The **Set-AzVirtualNetworkGateway** cmdlet updates a virtual network gateway.
 ## EXAMPLES
 
 ### Example 1: Update a virtual network gateway's ASN
-```
-PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
-PS C:\> Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Asn 1337
+```powershell
+$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Asn 1337
 ```
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
@@ -63,10 +67,10 @@ The second command updates the virtual network gateway stored in variable $Gatew
 The command also sets the ASN to 1337.
 
 ### Example 2: Add IPsec policy to a virtual network gateway
-```
-PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
-PS C:\> $vpnclientipsecpolicy = New-AzVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86472 -SADataSizeKilobytes 429497 -IkeEncryption AES256 -IkeIntegrity SHA256 -DhGroup DHGroup2 -PfsGroup None
-PS C:\> $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientIpsecPolicy $vpnclientipsecpolicy
+```powershell
+$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+$vpnclientipsecpolicy = New-AzVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86472 -SADataSize 429497 -IkeEncryption AES256 -IkeIntegrity SHA256 -DhGroup DHGroup2 -PfsGroup None
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientIpsecPolicy $vpnclientipsecpolicy
 ```
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
@@ -75,10 +79,12 @@ The third command updates the virtual network gateway stored in variable $Gatewa
 The command also sets the custom vpn ipsec policy specified in the $vpnclientipsecpolicy object on Virtual network gateway.
 
 ### Example 3: Add/Update Tags to an existing virtual network gateway
+```powershell
+$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" }
 ```
-PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
-PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" }
 
+```output
 Name                   : Gateway001
 ResourceGroupName      : ResourceGroup001
 Location               : westus
@@ -128,9 +134,10 @@ The first command gets a virtual network gateway named Gateway01 that belongs to
 The second command updates the virtual network gateway Gateway01 with the tags @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" }.
 
 ### Example 4: Add/Update AAD authentication configuration for VpnClient of an existing virtual network gateway
-```
-PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
-PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -AadTenantUri "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4" -AadIssuerUri "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/" -AadAudienceId "a21fce82-76af-45e6-8583-a08cb3b956f9"
+<!-- Skip: Output cannot be splitted from code -->
+```powershell
+$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -AadTenantUri "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4" -AadIssuerUri "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/" -AadAudienceId "a21fce82-76af-45e6-8583-a08cb3b956f9"
 
 Name                   : Gateway001
 ResourceGroupName      : ResourceGroup001
@@ -194,7 +201,7 @@ BgpSettings            : {
                            "PeerWeight": 0
                          }
 						 
-PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientRootCertificates $rootCert -RemoveAadAuthentication
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientRootCertificates $rootCert -RemoveAadAuthentication
 ```
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
@@ -202,13 +209,15 @@ The second command updates the virtual network gateway Gateway01 with the AAD au
 The third command removes the AAD authentication configuration from VpnClient of virtual network gateway.
 
 ### Example 5: Add/Update IpConfigurationBgpPeeringAddresses to an existing virtual network gateway
+```powershell
+$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+$ipconfigurationId1 = '/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default'
+$addresslist1 = @('169.254.21.25')
+$gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -IpConfigurationBgpPeeringAddresses $gw1ipconfBgp1
 ```
-PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
-PS C:\>$ipconfigurationId1 = '/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default'
-PS C:\>$addresslist1 = @('169.254.21.25')
-PS C:\>$gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
-PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -IpConfigurationBgpPeeringAddresses $gw1ipconfBgp1
 
+```output
 Name                   : Gateway001
 ResourceGroupName      : ResourceGroup001
 Location               : westcentralus
@@ -269,14 +278,84 @@ The third command assigns the address list into addresslist1.
 The fourth command created a PSIpConfigurationBgpPeeringAddress object.
 The fifth command set this new created PSIpConfigurationBgpPeeringAddress to IpConfigurationBgpPeeringAddresses and update the gateway.
 
-### Example 6: Add/Update NatRules to an existing virtual network gateway
+### Example 6: Update/Remove CustomAddress to an existing IpConfigurationBgpPeeringAddresses of virtual network gateway
+```powershell
+$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+$ipconfigurationId1 = '/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default'
+$addresslist1 = @()
+$gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -IpConfigurationBgpPeeringAddresses $gw1ipconfBgp1
 ```
-PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
-PS C:\>$vngNatRules = $Gateway.NatRules
-PS C:\>$natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
-PS C:\>$vngNatRules.Add($natrule)
-PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -NatRule $vngNatRules.NatRules -BgpRouteTranslationForNat $true
 
+```output
+Name                   : Gateway001
+ResourceGroupName      : ResourceGroup001
+Location               : westcentralus
+Id                     : /subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001
+Etag                   : W/"a08f13d3-6106-44e0-9127-e35e6f9793d5"
+ResourceGuid           : 30993429-a1ed-42ca-9862-9156b013626e
+ProvisioningState      : Succeeded
+Tags                   :
+IpConfigurations       : [
+                           {
+                             "PrivateIpAllocationMethod": "Dynamic",
+                             "Subnet": {
+                               "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworks/newApipaNet/subnets/GatewaySubnet"
+                             },
+                             "PublicIpAddress": {
+                               "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/publicIPAddresses/newapipaip"
+                             },
+                             "Name": "default",
+                             "Etag": "W/\"a08f13d3-6106-44e0-9127-e35e6f9793d5\"",
+                             "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default"
+                           }
+                         ]
+GatewayType            : Vpn
+VpnType                : RouteBased
+EnableBgp              : False
+ActiveActive           : False
+GatewayDefaultSite     : null
+Sku                    : {
+                           "Capacity": 2,
+                           "Name": "VpnGw1",
+                           "Tier": "VpnGw1"
+                         }
+VpnClientConfiguration : null
+BgpSettings            : {
+                           "Asn": 65515,
+                           "BgpPeeringAddress": "10.1.255.30",
+                           "PeerWeight": 0,
+                           "BgpPeeringAddresses": [
+                             {
+                               "IpconfigurationId": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default",
+                               "DefaultBgpIpAddresses": [
+                                 "10.1.255.30"
+                               ],
+                               "CustomBgpIpAddresses": [],
+                               "TunnelIpAddresses": [
+                                 "13.78.146.151"
+                               ]
+                             }
+                           ]
+                         }
+```
+
+The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
+The second command assigns the value of virtual network gateway Gateway01 IpConfiguration Id into variable ipconfigurationId1.
+The third command assigns the address list into addresslist1.
+The fourth command created a PSIpConfigurationBgpPeeringAddress object.
+The fifth command set this new created PSIpConfigurationBgpPeeringAddress to IpConfigurationBgpPeeringAddresses and update the gateway.
+
+### Example 7: Add/Update NatRules to an existing virtual network gateway
+```powershell
+$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+$vngNatRules = $Gateway.NatRules
+$natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
+$vngNatRules.Add($natrule)
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -NatRule $vngNatRules.NatRules -BgpRouteTranslationForNat $true
+```
+
+```output
 Name                   : Gateway001
 ResourceGroupName      : ResourceGroup001
 Location               : westcentralus
@@ -358,18 +437,18 @@ The third command assigns the value newly created PSVirtualNetworkGatewayNatRule
 The fourth command add this PSVirtualNetworkGatewayNatRule object into vngNatRules list.
 The fifth command set this new created PSVirtualNetworkGatewayNatRule to NatRules of gateway and update the gateway.
 
-### Example 7: Delete multiple expired VpnClientRootCertificates of an existing virtual network gateway
-```
-PS C:\>$Gateway=Get-Azvirtualnetworkgateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+### Example 8: Delete multiple expired VpnClientRootCertificates of an existing virtual network gateway
+```powershell
+$Gateway=Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 
-PS C:\>$rootCerts=$Gateway.VpnClientConfiguration.VpnClientRootCertificates
+$rootCerts=$Gateway.VpnClientConfiguration.VpnClientRootCertificates
 
-PS C:\>$rootCerts.Count
-PS C:\>$rootCerts[0]
-PS C:\>$rootCerts[1]
-PS C:\>$rootCerts.Remove($rootCerts[1])
+$rootCerts.Count
+$rootCerts[0]
+$rootCerts[1]
+$rootCerts.Remove($rootCerts[1])
 
-PS C:\>$Gateway1 = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientRootCertificates $rootCerts
+$Gateway1 = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientRootCertificates $rootCerts
 
 ```
 
@@ -469,6 +548,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientConnectionConfiguration
+P2S Client Connection Configuration that assiociate between address and policy group
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSClientConnectionConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkGatewayPolicyGroup
+P2S policy group added to this gateway
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayPolicyGroup[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

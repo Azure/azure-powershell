@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubcustomrollout
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubcustomrollout
 schema: 2.0.0
 ---
 
@@ -28,8 +28,10 @@ Creates or updates the rollout details.
 
 ### Example 1: Create/Update a resource provider custom rollout.
 ```powershell
-PS C:\> New-AzProviderHubCustomRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "customRollout1" -CanaryRegion "Eastus2EUAP"
+New-AzProviderHubCustomRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "customRollout1" -CanaryRegion "Eastus2EUAP"
+```
 
+```output
 Name                Type
 ----                ----
 customRollout1      Microsoft.ProviderHub/providerRegistrations/customRollouts
@@ -240,7 +242,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SPECIFICATIONPROVIDERREGISTRATION <IProviderRegistration>: .
+SPECIFICATIONPROVIDERREGISTRATION `<IProviderRegistration>`: .
   - `[Capability <IResourceProviderCapabilities[]>]`: 
     - `Effect <ResourceProviderCapabilitiesEffect>`: 
     - `QuotaId <String>`: 

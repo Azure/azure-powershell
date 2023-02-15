@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/add-azdatafactoryv2triggersubscription
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/add-azdatafactoryv2triggersubscription
 schema: 2.0.0
 ---
 
@@ -37,9 +37,11 @@ This command subscribes the event trigger to the specified external service even
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 ```
-PS C:\> Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 
+```output
 TriggerName Status
 ----------- ------
 Trigger1    Provisioning

@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
-online version: https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice
+online version: https://learn.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice
 schema: 2.0.0
 ---
 
@@ -31,12 +31,12 @@ You can return the string immediately or save it to a file.
 ## EXAMPLES
 
 ### Example 1: Export as string
-```
+```powershell
 Export-AzMlWebService -WebService $svc -ToJsonString
 ```
 
 ### Example 2: Export to file
-```
+```powershell
 Export-AzMlWebService -WebService $svc -OutputFile "C:\mlservice.json"
 ```
 

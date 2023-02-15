@@ -48,6 +48,9 @@ function Test-RouteServerCRUD
       Assert-AreEqual $expectedvr.Name $actualvr.Name
       Assert-AreEqual $expectedvr.Location $actualvr.Location
 
+      # Update route server
+      $actualvr = Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -HubRoutingPreference "ASPath"
+
       # List route servers
       $list = Get-AzRouteServer -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count

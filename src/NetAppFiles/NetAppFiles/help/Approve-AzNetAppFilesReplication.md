@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/approve-aznetappfilesreplication
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/approve-aznetappfilesreplication
 schema: 2.0.0
 ---
 
@@ -38,9 +38,10 @@ Approve the replication connection on the source volume
 
 ### Example 1
 ```powershell
-PS C:\> Approve-AzNetAppFilesReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -DataProtectionVolumeId "MyDestinationVolumeId"
+Approve-AzNetAppFilesReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -DataProtectionVolumeId "MyDestinationVolumeId"
+```
 
-Output:
+```output
 remoteVolumeResourceId          : resourceId
 ```
 
@@ -230,3 +231,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Initialize-AzNetAppFilesReplication](./Initialize-AzNetAppFilesReplication.md)
+[Suspend-AzNetAppFilesReplication](./Suspend-AzNetAppFilesReplication.md)
+[Resume-AzNetAppFilesReplication](./Resume-AzNetAppFilesReplication.md)
+[Remove-AzNetAppFilesReplication](./Remove-AzNetAppFilesReplication.md)
+[Get-AzNetAppFilesReplicationStatus](./Get-AzNetAppFilesReplicationStatus.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)

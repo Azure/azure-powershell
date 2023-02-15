@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azcapacityreservation
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azcapacityreservation
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Remove-AzCapacityReservation** cmdlet removes a Capacity Reservation resou
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCapacityReservation -ResourceGroupName "myRG" -ReservationGroupName "myCapacityReservationGroup" -Name "myCapacityReservation"
+Remove-AzCapacityReservation -ResourceGroupName "myRG" -ReservationGroupName "myCapacityReservationGroup" -Name "myCapacityReservation"
 ```
 
 This command removes the Capacity Reservation resource. 

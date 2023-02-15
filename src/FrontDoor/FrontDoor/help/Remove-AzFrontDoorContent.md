@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorcontent
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorcontent
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Remove-AzFrontDoorContent purges cached contents in a Front Door
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFrontDoorContent -ResourceGroupName $ResourceGroupName -Name $FrontDoorName -ContentPath "/*"
+Remove-AzFrontDoorContent -ResourceGroupName $ResourceGroupName -Name $FrontDoorName -ContentPath "/*"
 ```
 
 ## PARAMETERS

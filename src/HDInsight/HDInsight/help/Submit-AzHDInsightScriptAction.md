@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 15C5D659-472B-41DD-806A-A0A175434EE3
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/submit-azhdinsightscriptaction
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/submit-azhdinsightscriptaction
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ Use *PersistOnSuccess* to have the script action run each time the cluster is sc
 ## EXAMPLES
 
 ### Example 1: Submit a new script action to a running HDInsight cluster
-```
-PS C:\>Submit-AzHDInsightScriptAction `
+```powershell
+Submit-AzHDInsightScriptAction `
             -ClusterName "your-hadoop-001" `
             -Name "scriptaction" `
             -Uri "<script action URI>" `

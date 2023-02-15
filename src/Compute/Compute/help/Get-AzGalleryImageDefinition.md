@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azgalleryimagedefinition
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azgalleryimagedefinition
 schema: 2.0.0
 ---
 
@@ -18,9 +18,27 @@ Get-AzGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <Strin
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SharedGalleryParameterSet
+```
+Get-AzGalleryImageDefinition [[-Name] <String>] -GalleryUniqueName <String> [-Scope <String>]
+ -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### CommunityGalleryParameterSet
+```
+Get-AzGalleryImageDefinition [[-Name] <String>] -GalleryPublicName <String> -Location <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ResourceIdParameter
 ```
 Get-AzGalleryImageDefinition [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ListCommunityGalleryParameterSet
+```
+Get-AzGalleryImageDefinition [-Location <String>] [-Community] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -31,8 +49,10 @@ Get or list gallery image definitions.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1
+Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1
+```
 
+```output
 ResourceGroupName   : rg1
 Eula                : eula
 PrivacyStatementUri : Https://www.microsoft.com
@@ -70,8 +90,10 @@ Get the gallery image definition.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image*
+Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image*
+```
 
+```output
 ResourceGroupName   : rg1
 Eula                : eula
 PrivacyStatementUri : Https://www.microsoft.com
@@ -141,8 +163,10 @@ Get the gallery image definition that starts with "image".
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1
+Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1
+```
 
+```output
 ResourceGroupName   : rg1
 Eula                : eula
 PrivacyStatementUri : Https://www.microsoft.com
@@ -212,6 +236,21 @@ Get the gallery image definitions in gallery1.
 
 ## PARAMETERS
 
+### -Community
+List community galleries.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListCommunityGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -242,12 +281,69 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -GalleryPublicName
+The public name of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: CommunityGalleryParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -GalleryUniqueName
+The unique name of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet, CommunityGalleryParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ListCommunityGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the gallery image definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: DefaultParameter
+Parameter Sets: DefaultParameter, SharedGalleryParameterSet, CommunityGalleryParameterSet
 Aliases: GalleryImageDefinitionName
 
 Required: False
@@ -282,6 +378,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Scope
+Specifies galleries shared to subscription or tenant.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedKubernetes
-online version: https://docs.microsoft.com/powershell/module/az.connectedkubernetes/remove-azconnectedkubernetes
+online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/remove-azconnectedkubernetes
 schema: 2.0.0
 ---
 
@@ -31,21 +31,19 @@ Delete a connected cluster, removing the tracked resource in Azure Resource Mana
 
 ## EXAMPLES
 
-### Example 1: Remove a connected kubernetes
+### Example 1: Remove a connected kubernetes.
 ```powershell
-PS C:\> Remove-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
-
+Remove-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
 ```
 
-This command removes a connected kubernetes
+This command removes a connected kubernetes.
 
-### Example 2: Remove a connected kubernetes by object
+### Example 2: Remove a connected kubernetes by object.
 ```powershell
-PS C:\> Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group | Remove-AzConnectedKubernetes
-
+Get-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group | Remove-AzConnectedKubernetes
 ```
 
-This command removes a connected kubernetes by object
+This command removes a connected kubernetes by object.
 
 ## PARAMETERS
 
@@ -252,7 +250,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedKubernetesIdentity>: Identity Parameter
+`INPUTOBJECT <IConnectedKubernetesIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the Kubernetes cluster on which get is called.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.

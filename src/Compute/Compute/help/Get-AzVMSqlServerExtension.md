@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: CAA3E6A9-7E1A-4D57-A269-0B2D3D9C3BEC
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmsqlserverextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmsqlserverextension
 schema: 2.0.0
 ---
 
@@ -24,8 +24,11 @@ The **Get-AzVMSqlServerExtension** cmdlet gets the settings of the SQL Server in
 ## EXAMPLES
 
 ### Example 1: Get the settings of a SQL Server extension on a virtual machine
+```powershell
+Get-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
 ```
-PS C:\> Get-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+
+```output
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0
@@ -38,8 +41,11 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 This command gets the settings of the SQL Server extension on a virtual machine named ContosoVM07.
 
 ### Example 2: Get the settings by using the pipeline
+```powershell
+Get-AzVM -ResourceGroupName "testrg" -Name "ContosoVM22" | Get-AzVMSqlServerExtension
 ```
-PS C:\> Get-AzVM -ServiceName "Service08" -Name "ContosoVM22" | Get-AzVMSqlServerExtension
+
+```output
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0
@@ -49,23 +55,9 @@ AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings
 ```
 
-This command gets the virtual machine named ContosoVM22 on the service Service08 by using the Get-AzVM cmdlet.
+This command gets the virtual machine named ContosoVM22 in the Resource Group testrg by using the Get-AzVM cmdlet.
 The command passes the results to the current cmdlet by using the pipeline operator.
 The current command gets the settings of the SQL Server IaaS Agent on that virtual machine.
-
-### Example 3: Get the settings of specific SQL Server version
-```
-PS C:\> Get-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07" -Version "1.0"
-ExtensionName        : SqlIaaSAgent
-Publisher            : Microsoft.SqlServer.Management
-Version              : 1.0
-State                : Enable
-RoleName             : VMName
-AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoPatchingSettings
-AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings
-```
-
-This command gets the settings of version 1.0 of the SQL Server extension on a virtual machine named ContosoVM07.
 
 ## PARAMETERS
 

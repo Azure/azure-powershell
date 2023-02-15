@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsemanagedprivateendpoint
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsemanagedprivateendpoint
 schema: 2.0.0
 ---
 
@@ -33,15 +33,25 @@ The **New-AzSynapseManagedPrivateEndpoint** cmdlet creates or updates a managed 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
+<#
+endpoint.json
+{
+	"name": "ContosoManagedPrivateEndpoint",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/contosoResourceGroup/providers/Microsoft.Storage/storageAccounts/contosoStorageAccount",
+		"groupId": "file"
+	}
+}
+#>
+New-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
 ```
 
 This command creates or updates a managed private endpoint from json file in the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | New-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | New-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
 ```
 
 This command creates or updates a managed private endpoint from json file in the workspace named ContosoWorkspace through pipeline.

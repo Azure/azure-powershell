@@ -1,174 +1,55 @@
 {
-  "[NoDescription]+[NoContext]+DataExpandedEventHub+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01+1": {
+  "[NoDescription]+[NoContext]+DataExpandedEventHub+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"EventHub\",\r\n    \"properties\": {\r\n      \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/test-clients-rg/providers/Microsoft.EventHub/namespaces/testclientsns/eventhubs/testclientseh\",\r\n      \"consumerGroup\": \"$Default\",\r\n      \"compression\": \"None\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionqlp6ob9u4t7o\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"EventHub\",\r\n    \"properties\": {\r\n      \"eventHubResourceId\": \"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourcegroups/test-clients-rg/providers/Microsoft.EventHub/namespaces/testclientsns22/eventhubs/testclientseh\",\r\n      \"consumerGroup\": \"Default\",\r\n      \"compression\": \"None\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionl3rxfoq31ema\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "436" ]
+        "Content-Length": [ "437" ]
       }
     },
     "Response": {
       "StatusCode": 202,
       "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "3cfed2d2-ea4e-4576-9cfa-2c8e543cd158" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/af23341a-b17d-49e3-bbdb-9ad623c4dd77?api-version=2021-01-01" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-correlation-request-id": [ "01e143ab-5bf7-416b-af1e-3120678b6e2b" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115721Z:01e143ab-5bf7-416b-af1e-3120678b6e2b" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
         "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:57:21 GMT" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/af23341a-b17d-49e3-bbdb-9ad623c4dd77?api-version=2021-01-01\u0026operationResultResponseType=Location" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "0" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": null,
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/af23341a-b17d-49e3-bbdb-9ad623c4dd77?api-version=2021-01-01+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/af23341a-b17d-49e3-bbdb-9ad623c4dd77?api-version=2021-01-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "9290b0f8-c059-4da5-bd46-f7fea65f80dd" ],
-        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
-        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_Data" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "7ea68c63-e4ec-4712-be07-f2e1a0c7c5fa" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-correlation-request-id": [ "41635e74-2e80-4ad2-986b-e4347a87a27a" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115752Z:41635e74-2e80-4ad2-986b-e4347a87a27a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:57:52 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "458" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/af23341a-b17d-49e3-bbdb-9ad623c4dd77\",\"name\":\"af23341a-b17d-49e3-bbdb-9ad623c4dd77\",\"status\":\"Succeeded\",\"startTime\":\"2021-05-13T11:57:21.6048093Z\",\"endTime\":\"2021-05-13T11:57:27.4177738Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}}",
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/af23341a-b17d-49e3-bbdb-9ad623c4dd77?api-version=2021-01-01\u0026operationResultResponseType=Location+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/af23341a-b17d-49e3-bbdb-9ad623c4dd77?api-version=2021-01-01\u0026operationResultResponseType=Location",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "9290b0f8-c059-4da5-bd46-f7fea65f80dd" ],
-        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
-        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_Data" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "5d2807aa-01e5-4f27-96b8-6b5b0303d7b3" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
-        "x-ms-correlation-request-id": [ "694a63fe-9347-4d15-a1df-429eba1986df" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115752Z:694a63fe-9347-4d15-a1df-429eba1986df" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:57:52 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "103" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}",
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataExpandedEventGrid+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01+1": {
-    "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"EventGrid\",\r\n    \"properties\": {\r\n      \"storageAccountResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/test-clients-rg/providers/Microsoft.Storage/storageAccounts/testclients\",\r\n      \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/test-clients-rg/providers/Microsoft.EventHub/namespaces/testclientsns/eventhubs/testclientseg\",\r\n      \"consumerGroup\": \"$Default\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionqlp6obksghcq\"\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "584" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "73ec31f8-6a8d-495d-834b-e718d65e796c" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/f0e836b8-4324-45dd-a934-fe3fb0cb9841?api-version=2021-01-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/319dfd63-309a-46fd-9ca8-5c70ff221553?api-version=2022-02-01\u0026operationResultResponseType=Location" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/319dfd63-309a-46fd-9ca8-5c70ff221553?api-version=2022-02-01" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
-        "x-ms-correlation-request-id": [ "27753f08-eb23-4e1d-9c39-b05421db9ddc" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115753Z:27753f08-eb23-4e1d-9c39-b05421db9ddc" ],
+        "x-ms-request-id": [ "4a85b2a6-97b1-4b58-8b27-0daddce6b1c2" ],
+        "x-ms-correlation-request-id": [ "4a85b2a6-97b1-4b58-8b27-0daddce6b1c2" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152545Z:4a85b2a6-97b1-4b58-8b27-0daddce6b1c2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:57:53 GMT" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/f0e836b8-4324-45dd-a934-fe3fb0cb9841?api-version=2021-01-01\u0026operationResultResponseType=Location" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Sun, 20 Mar 2022 15:25:45 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "0" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
       },
       "Content": null,
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DataExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/f0e836b8-4324-45dd-a934-fe3fb0cb9841?api-version=2021-01-01+2": {
+  "[NoDescription]+[NoContext]+DataExpandedEventHub+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/319dfd63-309a-46fd-9ca8-5c70ff221553?api-version=2022-02-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/f0e836b8-4324-45dd-a934-fe3fb0cb9841?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/319dfd63-309a-46fd-9ca8-5c70ff221553?api-version=2022-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "c8cd4a12-18a7-4cae-9cd1-10f414f0d314" ],
+        "x-ms-unique-id": [ "228" ],
+        "x-ms-client-request-id": [ "836c0846-759f-4e9c-ba0e-be86ce0f7bf0" ],
         "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
         "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_Data" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
       },
       "ContentHeaders": {
       }
@@ -176,40 +57,41 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "dfc729a1-99c9-42cb-a8b9-b481bddde692" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "297" ],
-        "x-ms-correlation-request-id": [ "8d22138b-18b9-4f59-8275-d42cd1f67edb" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115824Z:8d22138b-18b9-4f59-8275-d42cd1f67edb" ],
+        "x-ms-request-id": [ "42915b3c-ff02-4247-90b3-b2610288c7c0" ],
+        "x-ms-operation-root-activity-id": [ "ecc3319f-0012-4d1d-abd9-11fa1b48c9b2" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "287" ],
+        "x-ms-correlation-request-id": [ "4f0cbd39-c3f6-4154-a3a5-618275ee5bd9" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152615Z:4f0cbd39-c3f6-4154-a3a5-618275ee5bd9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:58:23 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Sun, 20 Mar 2022 15:26:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "519" ],
+        "Content-Length": [ "458" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/f0e836b8-4324-45dd-a934-fe3fb0cb9841\",\"name\":\"f0e836b8-4324-45dd-a934-fe3fb0cb9841\",\"status\":\"Succeeded\",\"startTime\":\"2021-05-13T11:57:53.7038614Z\",\"endTime\":\"2021-05-13T11:57:58.9073642Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"},{\"ErrorMessage\":\"BlobStorageEventType {0} is not supported\"}]}}",
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/319dfd63-309a-46fd-9ca8-5c70ff221553\",\"name\":\"319dfd63-309a-46fd-9ca8-5c70ff221553\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-20T15:25:45.3646676Z\",\"endTime\":\"2022-03-20T15:25:51.8051288Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DataExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/f0e836b8-4324-45dd-a934-fe3fb0cb9841?api-version=2021-01-01\u0026operationResultResponseType=Location+3": {
+  "[NoDescription]+[NoContext]+DataExpandedEventHub+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/319dfd63-309a-46fd-9ca8-5c70ff221553?api-version=2022-02-01\u0026operationResultResponseType=Location+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/f0e836b8-4324-45dd-a934-fe3fb0cb9841?api-version=2021-01-01\u0026operationResultResponseType=Location",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/319dfd63-309a-46fd-9ca8-5c70ff221553?api-version=2022-02-01\u0026operationResultResponseType=Location",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "c8cd4a12-18a7-4cae-9cd1-10f414f0d314" ],
+        "x-ms-unique-id": [ "229" ],
+        "x-ms-client-request-id": [ "836c0846-759f-4e9c-ba0e-be86ce0f7bf0" ],
         "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
         "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_Data" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
       },
       "ContentHeaders": {
       }
@@ -217,77 +99,77 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "09129747-5955-4a18-8ba3-ccd39038be0a" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "296" ],
-        "x-ms-correlation-request-id": [ "ec7c998b-397e-4eb9-a0ec-666951e67682" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115824Z:ec7c998b-397e-4eb9-a0ec-666951e67682" ],
+        "x-ms-request-id": [ "46e377a0-e2b9-4c8f-9947-23adee644720" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "286" ],
+        "x-ms-correlation-request-id": [ "d0a66170-1a67-46ba-acec-0ae6a99e5b56" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152616Z:d0a66170-1a67-46ba-acec-0ae6a99e5b56" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:58:23 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Sun, 20 Mar 2022 15:26:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "164" ],
+        "Content-Length": [ "103" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"},{\"ErrorMessage\":\"BlobStorageEventType {0} is not supported\"}]}",
+      "Content": "{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DataExpandedIotHub+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01+1": {
+  "[NoDescription]+[NoContext]+DataExpandedEventGrid+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"IotHub\",\r\n    \"properties\": {\r\n      \"iotHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/test-clients-rg/providers/Microsoft.Devices/IotHubs/test-clients-iot\",\r\n      \"consumerGroup\": \"$Default\",\r\n      \"sharedAccessPolicyName\": \"registryRead\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionqlp6ob5gj291\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"EventGrid\",\r\n    \"properties\": {\r\n      \"storageAccountResourceId\": \"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourcegroups/test-clients-rg/providers/Microsoft.Storage/storageAccounts/testclients\",\r\n      \"eventHubResourceId\": \"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourcegroups/test-clients-rg/providers/Microsoft.EventHub/namespaces/testclientsns22/eventhubs/testclientseg\",\r\n      \"consumerGroup\": \"Default\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionl3rxfo5cubpj\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "426" ]
+        "Content-Length": [ "585" ]
       }
     },
     "Response": {
       "StatusCode": 202,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a46cf93e-d2c6-4cde-9377-364125244824" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/8e775b45-896f-4f22-82ec-b9a6ed063983?api-version=2021-01-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/759b7d89-f507-4c91-82aa-7929a4462d2b?api-version=2022-02-01\u0026operationResultResponseType=Location" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/759b7d89-f507-4c91-82aa-7929a4462d2b?api-version=2022-02-01" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
-        "x-ms-correlation-request-id": [ "5f145dd1-81b5-4701-ad72-00c5f1465757" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115825Z:5f145dd1-81b5-4701-ad72-00c5f1465757" ],
+        "x-ms-request-id": [ "1eec55a7-0e22-4927-a969-d719f024048e" ],
+        "x-ms-correlation-request-id": [ "1eec55a7-0e22-4927-a969-d719f024048e" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152617Z:1eec55a7-0e22-4927-a969-d719f024048e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:58:24 GMT" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/8e775b45-896f-4f22-82ec-b9a6ed063983?api-version=2021-01-01\u0026operationResultResponseType=Location" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Sun, 20 Mar 2022 15:26:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "0" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
       },
       "Content": null,
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DataExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/8e775b45-896f-4f22-82ec-b9a6ed063983?api-version=2021-01-01+2": {
+  "[NoDescription]+[NoContext]+DataExpandedEventGrid+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/759b7d89-f507-4c91-82aa-7929a4462d2b?api-version=2022-02-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/8e775b45-896f-4f22-82ec-b9a6ed063983?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/759b7d89-f507-4c91-82aa-7929a4462d2b?api-version=2022-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "192a3fa4-a556-4edb-b634-b90a0ca1d9b8" ],
+        "x-ms-unique-id": [ "231" ],
+        "x-ms-client-request-id": [ "70a3353f-552f-4b61-85e7-ad92dc92faab" ],
         "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
         "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_Data" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
       },
       "ContentHeaders": {
       }
@@ -295,362 +177,41 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "ce726bdb-c977-4d7b-8eac-49ba36a66123" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "295" ],
-        "x-ms-correlation-request-id": [ "a0727d73-df12-41b5-88e4-242195ab3583" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115856Z:a0727d73-df12-41b5-88e4-242195ab3583" ],
+        "x-ms-request-id": [ "ca432033-f31f-4de9-81bc-bbbef9085366" ],
+        "x-ms-operation-root-activity-id": [ "15c61eaf-2cdf-4052-91a5-be92d3ed32f6" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "285" ],
+        "x-ms-correlation-request-id": [ "99723840-f326-4429-9293-690394735c0e" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152648Z:99723840-f326-4429-9293-690394735c0e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:58:55 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "458" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/8e775b45-896f-4f22-82ec-b9a6ed063983\",\"name\":\"8e775b45-896f-4f22-82ec-b9a6ed063983\",\"status\":\"Succeeded\",\"startTime\":\"2021-05-13T11:58:25.6382363Z\",\"endTime\":\"2021-05-13T11:58:29.3884126Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}}",
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/8e775b45-896f-4f22-82ec-b9a6ed063983?api-version=2021-01-01\u0026operationResultResponseType=Location+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/8e775b45-896f-4f22-82ec-b9a6ed063983?api-version=2021-01-01\u0026operationResultResponseType=Location",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "192a3fa4-a556-4edb-b634-b90a0ca1d9b8" ],
-        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
-        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_Data" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "fa0ff547-9db8-4513-bc28-c7d7fd398cc2" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "294" ],
-        "x-ms-correlation-request-id": [ "2d997474-d6ba-433e-95f2-5ddb9bc35dfb" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115856Z:2d997474-d6ba-433e-95f2-5ddb9bc35dfb" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:58:55 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "103" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}",
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest?api-version=2021-01-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest?api-version=2021-01-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "4ed95c73-ea51-4bca-82a4-58efed9c4362" ],
-        "CommandName": [ "Get-AzKustoDatabase" ],
-        "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "482bb543-eb04-49a3-8e85-99b2f37256bc" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "297" ],
-        "x-ms-correlation-request-id": [ "6c8b7a73-7a7e-4aad-8056-07df812a33f4" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115857Z:6c8b7a73-7a7e-4aad-8056-07df812a33f4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:58:56 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "536" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest\",\"name\":\"eventgridclienttest/databasetest\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"etag\":\"\\\"\\\"\",\"location\":\"Australia Central\",\"kind\":\"ReadWrite\",\"tags\":{},\"properties\":{\"isFollowed\":false,\"softDeletePeriodInDays\":3650,\"softDeletePeriod\":\"P3650D\",\"hotCachePeriodInDays\":31,\"hotCachePeriod\":\"P31D\",\"statistics\":{\"size\":10497512.0},\"provisioningState\":\"Succeeded\"}}",
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventHub+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01+2": {
-    "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"EventHub\",\r\n    \"properties\": {\r\n      \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/test-clients-rg/providers/Microsoft.EventHub/namespaces/testclientsns/eventhubs/testclientseh\",\r\n      \"consumerGroup\": \"$Default\",\r\n      \"compression\": \"None\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionqlp6ob9u4t7o\"\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "436" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "0953b1bc-544d-4b5b-ba23-7f8dd6e1bd9e" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/555d7ca2-2bbd-439f-9451-38fceac21d5c?api-version=2021-01-01" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
-        "x-ms-correlation-request-id": [ "162cb51b-92e8-4af0-a262-01a0cb38722b" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115858Z:162cb51b-92e8-4af0-a262-01a0cb38722b" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:58:58 GMT" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/555d7ca2-2bbd-439f-9451-38fceac21d5c?api-version=2021-01-01\u0026operationResultResponseType=Location" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "0" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": null,
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/555d7ca2-2bbd-439f-9451-38fceac21d5c?api-version=2021-01-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/555d7ca2-2bbd-439f-9451-38fceac21d5c?api-version=2021-01-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "548a1e84-ac63-4f51-8197-dcab5aa2bc1e" ],
-        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
-        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_DataViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "31eb192f-151b-42ac-bf7e-86c586af8bca" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "293" ],
-        "x-ms-correlation-request-id": [ "4bb395fd-e04b-4cac-acd1-5e7287acb7d7" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115928Z:4bb395fd-e04b-4cac-acd1-5e7287acb7d7" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:59:27 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "457" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/555d7ca2-2bbd-439f-9451-38fceac21d5c\",\"name\":\"555d7ca2-2bbd-439f-9451-38fceac21d5c\",\"status\":\"Succeeded\",\"startTime\":\"2021-05-13T11:58:58.1502102Z\",\"endTime\":\"2021-05-13T11:59:01.869193Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}}",
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/555d7ca2-2bbd-439f-9451-38fceac21d5c?api-version=2021-01-01\u0026operationResultResponseType=Location+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/555d7ca2-2bbd-439f-9451-38fceac21d5c?api-version=2021-01-01\u0026operationResultResponseType=Location",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "548a1e84-ac63-4f51-8197-dcab5aa2bc1e" ],
-        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
-        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_DataViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "71f4c3c7-b199-4126-9264-2818a64f79b0" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "292" ],
-        "x-ms-correlation-request-id": [ "e3e23821-08b6-49f6-b28f-fc55c735dbaf" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115929Z:e3e23821-08b6-49f6-b28f-fc55c735dbaf" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:59:29 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "103" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}",
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest?api-version=2021-01-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest?api-version=2021-01-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "37" ],
-        "x-ms-client-request-id": [ "114041f7-6ab0-4006-a29d-97d6ae05262b" ],
-        "CommandName": [ "Get-AzKustoDatabase" ],
-        "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "194b60c5-c50d-46d4-b1ba-d5738cdef113" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "296" ],
-        "x-ms-correlation-request-id": [ "0f8cbba2-5a13-4702-8aac-4f03e0f65693" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115929Z:0f8cbba2-5a13-4702-8aac-4f03e0f65693" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:59:29 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "536" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest\",\"name\":\"eventgridclienttest/databasetest\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"etag\":\"\\\"\\\"\",\"location\":\"Australia Central\",\"kind\":\"ReadWrite\",\"tags\":{},\"properties\":{\"isFollowed\":false,\"softDeletePeriodInDays\":3650,\"softDeletePeriod\":\"P3650D\",\"hotCachePeriodInDays\":31,\"hotCachePeriod\":\"P31D\",\"statistics\":{\"size\":10497512.0},\"provisioningState\":\"Succeeded\"}}",
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventGrid+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01+2": {
-    "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"EventGrid\",\r\n    \"properties\": {\r\n      \"storageAccountResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/test-clients-rg/providers/Microsoft.Storage/storageAccounts/testclients\",\r\n      \"eventHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/test-clients-rg/providers/Microsoft.EventHub/namespaces/testclientsns/eventhubs/testclientseg\",\r\n      \"consumerGroup\": \"$Default\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionqlp6obksghcq\"\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "584" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "996396db-8e50-49ca-9c82-acb7e39a4cf2" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/cdc7dfb8-49e1-44ed-b0f1-720fe3362c0f?api-version=2021-01-01" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
-        "x-ms-correlation-request-id": [ "e5ac00d1-cbb4-4f44-8a90-f0eb2dde7ec1" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115930Z:e5ac00d1-cbb4-4f44-8a90-f0eb2dde7ec1" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:59:30 GMT" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/cdc7dfb8-49e1-44ed-b0f1-720fe3362c0f?api-version=2021-01-01\u0026operationResultResponseType=Location" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "0" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": null,
-      "isContentBase64": false
-    }
-  },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/cdc7dfb8-49e1-44ed-b0f1-720fe3362c0f?api-version=2021-01-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/cdc7dfb8-49e1-44ed-b0f1-720fe3362c0f?api-version=2021-01-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "39" ],
-        "x-ms-client-request-id": [ "e4c54f7a-a9c8-4d3d-978b-70c02fff88ae" ],
-        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
-        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_DataViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "ae08b3d4-57de-43f9-ab65-68a77d792a3e" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "291" ],
-        "x-ms-correlation-request-id": [ "9efcd9b2-b238-4b12-a7ac-93ff6d56709f" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T120001Z:9efcd9b2-b238-4b12-a7ac-93ff6d56709f" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 12:00:00 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Sun, 20 Mar 2022 15:26:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "519" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/cdc7dfb8-49e1-44ed-b0f1-720fe3362c0f\",\"name\":\"cdc7dfb8-49e1-44ed-b0f1-720fe3362c0f\",\"status\":\"Succeeded\",\"startTime\":\"2021-05-13T11:59:30.6901154Z\",\"endTime\":\"2021-05-13T11:59:33.3934349Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"},{\"ErrorMessage\":\"BlobStorageEventType {0} is not supported\"}]}}",
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/759b7d89-f507-4c91-82aa-7929a4462d2b\",\"name\":\"759b7d89-f507-4c91-82aa-7929a4462d2b\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-20T15:26:17.7594165Z\",\"endTime\":\"2022-03-20T15:26:21.2601197Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"},{\"ErrorMessage\":\"BlobStorageEventType {0} is not supported\"}]}}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/cdc7dfb8-49e1-44ed-b0f1-720fe3362c0f?api-version=2021-01-01\u0026operationResultResponseType=Location+4": {
+  "[NoDescription]+[NoContext]+DataExpandedEventGrid+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/759b7d89-f507-4c91-82aa-7929a4462d2b?api-version=2022-02-01\u0026operationResultResponseType=Location+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/cdc7dfb8-49e1-44ed-b0f1-720fe3362c0f?api-version=2021-01-01\u0026operationResultResponseType=Location",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/759b7d89-f507-4c91-82aa-7929a4462d2b?api-version=2022-02-01\u0026operationResultResponseType=Location",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "e4c54f7a-a9c8-4d3d-978b-70c02fff88ae" ],
+        "x-ms-unique-id": [ "232" ],
+        "x-ms-client-request-id": [ "70a3353f-552f-4b61-85e7-ad92dc92faab" ],
         "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
-        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_DataViaIdentity" ],
+        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_Data" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
       },
       "ContentHeaders": {
       }
@@ -658,16 +219,16 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "5a22b970-6a30-4385-b081-51288ffef8fc" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "290" ],
-        "x-ms-correlation-request-id": [ "bc82a9c1-a452-4a41-b332-c7c74a341693" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T120001Z:bc82a9c1-a452-4a41-b332-c7c74a341693" ],
+        "x-ms-request-id": [ "47b67ffb-b68c-4fa7-b20b-6195f04db108" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "284" ],
+        "x-ms-correlation-request-id": [ "6160022c-1273-4b74-b61f-38acefa232f4" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152648Z:6160022c-1273-4b74-b61f-38acefa232f4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 12:00:00 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Sun, 20 Mar 2022 15:26:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "164" ],
@@ -678,19 +239,139 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest?api-version=2021-01-01+1": {
+  "[NoDescription]+[NoContext]+DataExpandedIotHub+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"IotHub\",\r\n    \"properties\": {\r\n      \"iotHubResourceId\": \"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourcegroups/test-clients-rg/providers/Microsoft.Devices/IotHubs/test-clients-iot\",\r\n      \"consumerGroup\": \"Default\",\r\n      \"sharedAccessPolicyName\": \"registryRead\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionl3rxfoi5tdgc\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "425" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/58bbca29-e126-429e-9b53-bdb389d1edc2?api-version=2022-02-01\u0026operationResultResponseType=Location" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/58bbca29-e126-429e-9b53-bdb389d1edc2?api-version=2022-02-01" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-request-id": [ "e5b4e50c-8983-4fb0-9657-560e5ccb2233" ],
+        "x-ms-correlation-request-id": [ "e5b4e50c-8983-4fb0-9657-560e5ccb2233" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152650Z:e5b4e50c-8983-4fb0-9657-560e5ccb2233" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:26:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataExpandedIotHub+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/58bbca29-e126-429e-9b53-bdb389d1edc2?api-version=2022-02-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/58bbca29-e126-429e-9b53-bdb389d1edc2?api-version=2022-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "41" ],
-        "x-ms-client-request-id": [ "15d0fe5f-87b3-4e4c-8190-00f2d2f5506d" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "234" ],
+        "x-ms-client-request-id": [ "28ad04ca-72b3-4841-bdb3-4dac01e3540c" ],
+        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
+        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_Data" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "0feacc46-eb7e-484d-8497-4b514953dc11" ],
+        "x-ms-operation-root-activity-id": [ "36778db3-e8c3-41a3-a9f9-68bf5d40af90" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "283" ],
+        "x-ms-correlation-request-id": [ "c209f27c-1243-4c36-83b7-3bcc8a36f1f2" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152720Z:c209f27c-1243-4c36-83b7-3bcc8a36f1f2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:27:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "458" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/58bbca29-e126-429e-9b53-bdb389d1edc2\",\"name\":\"58bbca29-e126-429e-9b53-bdb389d1edc2\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-20T15:26:50.1138421Z\",\"endTime\":\"2022-03-20T15:26:55.8015145Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataExpandedIotHub+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/58bbca29-e126-429e-9b53-bdb389d1edc2?api-version=2022-02-01\u0026operationResultResponseType=Location+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/58bbca29-e126-429e-9b53-bdb389d1edc2?api-version=2022-02-01\u0026operationResultResponseType=Location",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "235" ],
+        "x-ms-client-request-id": [ "28ad04ca-72b3-4841-bdb3-4dac01e3540c" ],
+        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
+        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_Data" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "1a819584-71d7-40df-9c5b-dda4aa8b86d4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "282" ],
+        "x-ms-correlation-request-id": [ "959e9996-d43c-432c-8db4-de8527ef6e9a" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152720Z:959e9996-d43c-432c-8db4-de8527ef6e9a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:27:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "103" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest?api-version=2022-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest?api-version=2022-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "236" ],
+        "x-ms-client-request-id": [ "0b0d43ac-f096-40c3-8113-6f033d887e8a" ],
         "CommandName": [ "Get-AzKustoDatabase" ],
         "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -699,78 +380,77 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a11bf5f1-2932-4cf4-bc06-3ecc317d3173" ],
+        "x-ms-request-id": [ "a121dd7a-4b27-4ce4-8a89-86758c6e9a5f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "295" ],
-        "x-ms-correlation-request-id": [ "7824a2af-848f-4ecb-861c-b3ccc0646440" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T120002Z:7824a2af-848f-4ecb-861c-b3ccc0646440" ],
+        "x-ms-correlation-request-id": [ "474c68b6-91f1-46cb-8016-5fa2d42d5250" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152722Z:474c68b6-91f1-46cb-8016-5fa2d42d5250" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 12:00:01 GMT" ],
-        "ETag": [ "\"\"" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Sun, 20 Mar 2022 15:27:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "536" ],
+        "Content-Length": [ "448" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest\",\"name\":\"eventgridclienttest/databasetest\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"etag\":\"\\\"\\\"\",\"location\":\"Australia Central\",\"kind\":\"ReadWrite\",\"tags\":{},\"properties\":{\"isFollowed\":false,\"softDeletePeriodInDays\":3650,\"softDeletePeriod\":\"P3650D\",\"hotCachePeriodInDays\":31,\"hotCachePeriod\":\"P31D\",\"statistics\":{\"size\":10497512.0},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest\",\"name\":\"eventgridclienttest2/databasetest\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"location\":\"Australia Central\",\"kind\":\"ReadWrite\",\"properties\":{\"softDeletePeriod\":\"P365D\",\"hotCachePeriod\":\"P31D\",\"statistics\":{\"size\":0.0},\"isFollowed\":false,\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedIotHub+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01+2": {
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventHub+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"IotHub\",\r\n    \"properties\": {\r\n      \"iotHubResourceId\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/test-clients-rg/providers/Microsoft.Devices/IotHubs/test-clients-iot\",\r\n      \"consumerGroup\": \"$Default\",\r\n      \"sharedAccessPolicyName\": \"registryRead\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionqlp6ob5gj291\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"EventHub\",\r\n    \"properties\": {\r\n      \"eventHubResourceId\": \"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourcegroups/test-clients-rg/providers/Microsoft.EventHub/namespaces/testclientsns22/eventhubs/testclientseh\",\r\n      \"consumerGroup\": \"Default\",\r\n      \"compression\": \"None\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionl3rxfoq31ema\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "426" ]
+        "Content-Length": [ "437" ]
       }
     },
     "Response": {
       "StatusCode": 202,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "cc165a6a-6efc-45c3-8ce3-7c48e605f322" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/31a344e5-8cd8-49f7-9d4f-be7f198365b7?api-version=2021-01-01" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
-        "x-ms-correlation-request-id": [ "ef72bb5f-06e3-4d10-aa00-b11a61e91c77" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T120003Z:ef72bb5f-06e3-4d10-aa00-b11a61e91c77" ],
+        "Location": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/833ffa9c-ead9-4eea-bbba-202b92d1c4c7?api-version=2022-02-01\u0026operationResultResponseType=Location" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/833ffa9c-ead9-4eea-bbba-202b92d1c4c7?api-version=2022-02-01" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
+        "x-ms-request-id": [ "bd18f268-2a04-49ce-89ae-94e30b84ae60" ],
+        "x-ms-correlation-request-id": [ "bd18f268-2a04-49ce-89ae-94e30b84ae60" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152723Z:bd18f268-2a04-49ce-89ae-94e30b84ae60" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 12:00:02 GMT" ],
-        "Location": [ "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/31a344e5-8cd8-49f7-9d4f-be7f198365b7?api-version=2021-01-01\u0026operationResultResponseType=Location" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Sun, 20 Mar 2022 15:27:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "0" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
       },
       "Content": null,
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/31a344e5-8cd8-49f7-9d4f-be7f198365b7?api-version=2021-01-01+3": {
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/833ffa9c-ead9-4eea-bbba-202b92d1c4c7?api-version=2022-02-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/31a344e5-8cd8-49f7-9d4f-be7f198365b7?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/833ffa9c-ead9-4eea-bbba-202b92d1c4c7?api-version=2022-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "3bd347a9-8052-4bef-beb9-d12d1098230d" ],
+        "x-ms-unique-id": [ "238" ],
+        "x-ms-client-request-id": [ "75d4bf71-6238-451f-afe4-ed4e624a69f4" ],
         "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
         "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_DataViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
       },
       "ContentHeaders": {
       }
@@ -778,40 +458,41 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "3d20d9ba-cae8-4336-9634-b348318c0088" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "289" ],
-        "x-ms-correlation-request-id": [ "49374d40-9930-4642-9ee9-a6412ec9a908" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T120033Z:49374d40-9930-4642-9ee9-a6412ec9a908" ],
+        "x-ms-request-id": [ "134b9d57-c98a-4eab-8a53-5c8b6de078a5" ],
+        "x-ms-operation-root-activity-id": [ "fb815972-b477-4e8f-b5d1-c70dbe3cb2b4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "281" ],
+        "x-ms-correlation-request-id": [ "e6492d1b-6989-4352-ba62-ddd4169f6a7d" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152754Z:e6492d1b-6989-4352-ba62-ddd4169f6a7d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 12:00:33 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Sun, 20 Mar 2022 15:27:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "458" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/31a344e5-8cd8-49f7-9d4f-be7f198365b7\",\"name\":\"31a344e5-8cd8-49f7-9d4f-be7f198365b7\",\"status\":\"Succeeded\",\"startTime\":\"2021-05-13T12:00:03.1758235Z\",\"endTime\":\"2021-05-13T12:00:06.8947774Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}}",
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/833ffa9c-ead9-4eea-bbba-202b92d1c4c7\",\"name\":\"833ffa9c-ead9-4eea-bbba-202b92d1c4c7\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-20T15:27:23.5557224Z\",\"endTime\":\"2022-03-20T15:27:27.3044048Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DataViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/31a344e5-8cd8-49f7-9d4f-be7f198365b7?api-version=2021-01-01\u0026operationResultResponseType=Location+4": {
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventHub+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/833ffa9c-ead9-4eea-bbba-202b92d1c4c7?api-version=2022-02-01\u0026operationResultResponseType=Location+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/31a344e5-8cd8-49f7-9d4f-be7f198365b7?api-version=2021-01-01\u0026operationResultResponseType=Location",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/833ffa9c-ead9-4eea-bbba-202b92d1c4c7?api-version=2022-02-01\u0026operationResultResponseType=Location",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "3bd347a9-8052-4bef-beb9-d12d1098230d" ],
+        "x-ms-unique-id": [ "239" ],
+        "x-ms-client-request-id": [ "75d4bf71-6238-451f-afe4-ed4e624a69f4" ],
         "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
         "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_DataViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
       },
       "ContentHeaders": {
       }
@@ -819,16 +500,338 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a87672a4-de20-4922-b8a4-fb97a519133e" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "288" ],
-        "x-ms-correlation-request-id": [ "cd45c517-3c4b-4a71-9259-cd7fe19141bb" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T120034Z:cd45c517-3c4b-4a71-9259-cd7fe19141bb" ],
+        "x-ms-request-id": [ "12fa9c9b-2628-47ab-b869-e743ed3779af" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "280" ],
+        "x-ms-correlation-request-id": [ "66d6c8c4-1ab6-4524-aae4-f817f50a1181" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152754Z:66d6c8c4-1ab6-4524-aae4-f817f50a1181" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:27:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "103" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest?api-version=2022-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest?api-version=2022-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "240" ],
+        "x-ms-client-request-id": [ "855a36ed-51b0-4486-90e0-1c569cd8eadd" ],
+        "CommandName": [ "Get-AzKustoDatabase" ],
+        "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
         "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 12:00:33 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "cdfc8d82-f554-4d43-a482-b0f0626f36ea" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "294" ],
+        "x-ms-correlation-request-id": [ "2a422493-8dfb-4c2a-bd30-269a8074b329" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152755Z:2a422493-8dfb-4c2a-bd30-269a8074b329" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:27:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "448" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest\",\"name\":\"eventgridclienttest2/databasetest\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"location\":\"Australia Central\",\"kind\":\"ReadWrite\",\"properties\":{\"softDeletePeriod\":\"P365D\",\"hotCachePeriod\":\"P31D\",\"statistics\":{\"size\":0.0},\"isFollowed\":false,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventGrid+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"EventGrid\",\r\n    \"properties\": {\r\n      \"storageAccountResourceId\": \"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourcegroups/test-clients-rg/providers/Microsoft.Storage/storageAccounts/testclients\",\r\n      \"eventHubResourceId\": \"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourcegroups/test-clients-rg/providers/Microsoft.EventHub/namespaces/testclientsns22/eventhubs/testclientseg\",\r\n      \"consumerGroup\": \"Default\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionl3rxfo5cubpj\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "585" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/e8d43b92-ed4b-4689-943e-e6ecb4b642d7?api-version=2022-02-01\u0026operationResultResponseType=Location" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/e8d43b92-ed4b-4689-943e-e6ecb4b642d7?api-version=2022-02-01" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-request-id": [ "06edc65c-e056-4fef-b473-44176d3bb399" ],
+        "x-ms-correlation-request-id": [ "06edc65c-e056-4fef-b473-44176d3bb399" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152756Z:06edc65c-e056-4fef-b473-44176d3bb399" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:27:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/e8d43b92-ed4b-4689-943e-e6ecb4b642d7?api-version=2022-02-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/e8d43b92-ed4b-4689-943e-e6ecb4b642d7?api-version=2022-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "242" ],
+        "x-ms-client-request-id": [ "910c67aa-7d93-4c08-a3a8-9a255985ddba" ],
+        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
+        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_DataViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "7cd2a69d-fe7c-496b-9e86-1f4032c91f89" ],
+        "x-ms-operation-root-activity-id": [ "c130c778-7d14-48e3-9961-5c2384a2bdae" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "279" ],
+        "x-ms-correlation-request-id": [ "4818dc24-7f8f-4045-8387-a7ba19e368c3" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152827Z:4818dc24-7f8f-4045-8387-a7ba19e368c3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:28:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "519" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/e8d43b92-ed4b-4689-943e-e6ecb4b642d7\",\"name\":\"e8d43b92-ed4b-4689-943e-e6ecb4b642d7\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-20T15:27:56.6353666Z\",\"endTime\":\"2022-03-20T15:28:00.8073246Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"},{\"ErrorMessage\":\"BlobStorageEventType {0} is not supported\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedEventGrid+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/e8d43b92-ed4b-4689-943e-e6ecb4b642d7?api-version=2022-02-01\u0026operationResultResponseType=Location+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/e8d43b92-ed4b-4689-943e-e6ecb4b642d7?api-version=2022-02-01\u0026operationResultResponseType=Location",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "243" ],
+        "x-ms-client-request-id": [ "910c67aa-7d93-4c08-a3a8-9a255985ddba" ],
+        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
+        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_DataViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "1a922421-35cd-4816-b2b4-5a94fef0485d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "278" ],
+        "x-ms-correlation-request-id": [ "5edea0c3-a1bf-45b2-805d-f14716b56777" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152827Z:5edea0c3-a1bf-45b2-805d-f14716b56777" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:28:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "164" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"},{\"ErrorMessage\":\"BlobStorageEventType {0} is not supported\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest?api-version=2022-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest?api-version=2022-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "244" ],
+        "x-ms-client-request-id": [ "39c205df-97b6-4a6b-a470-015f71012083" ],
+        "CommandName": [ "Get-AzKustoDatabase" ],
+        "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "97d107d2-d92e-4798-b5a3-3a495db7d203" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "293" ],
+        "x-ms-correlation-request-id": [ "3e6edd48-147a-4ad2-93a0-717c575cf77e" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152828Z:3e6edd48-147a-4ad2-93a0-717c575cf77e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:28:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "448" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest\",\"name\":\"eventgridclienttest2/databasetest\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"location\":\"Australia Central\",\"kind\":\"ReadWrite\",\"properties\":{\"softDeletePeriod\":\"P365D\",\"hotCachePeriod\":\"P31D\",\"statistics\":{\"size\":0.0},\"isFollowed\":false,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedIotHub+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest2/Databases/databasetest/dataConnectionValidation?api-version=2022-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"location\": \"Australia Central\",\r\n    \"kind\": \"IotHub\",\r\n    \"properties\": {\r\n      \"iotHubResourceId\": \"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourcegroups/test-clients-rg/providers/Microsoft.Devices/IotHubs/test-clients-iot\",\r\n      \"consumerGroup\": \"Default\",\r\n      \"sharedAccessPolicyName\": \"registryRead\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectionl3rxfoi5tdgc\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "425" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/32810ac1-671a-4335-86d7-75561286c5b2?api-version=2022-02-01\u0026operationResultResponseType=Location" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/32810ac1-671a-4335-86d7-75561286c5b2?api-version=2022-02-01" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "x-ms-request-id": [ "24847147-d5a0-46de-acbb-9b1009e2b2af" ],
+        "x-ms-correlation-request-id": [ "24847147-d5a0-46de-acbb-9b1009e2b2af" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152830Z:24847147-d5a0-46de-acbb-9b1009e2b2af" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:28:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/32810ac1-671a-4335-86d7-75561286c5b2?api-version=2022-02-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/32810ac1-671a-4335-86d7-75561286c5b2?api-version=2022-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "246" ],
+        "x-ms-client-request-id": [ "55662640-6a5f-40cb-8804-3f15fcadf60a" ],
+        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
+        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_DataViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ed8b082f-8c9f-4d3e-8146-32c4d816d928" ],
+        "x-ms-operation-root-activity-id": [ "6436f167-dc1b-432b-80b8-e0939cccfde3" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "277" ],
+        "x-ms-correlation-request-id": [ "6f3a3014-e5e3-4a55-8a15-cfe3aa0b9bce" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152900Z:6f3a3014-e5e3-4a55-8a15-cfe3aa0b9bce" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:29:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "458" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationresults/32810ac1-671a-4335-86d7-75561286c5b2\",\"name\":\"32810ac1-671a-4335-86d7-75561286c5b2\",\"status\":\"Succeeded\",\"startTime\":\"2022-03-20T15:28:30.2431273Z\",\"endTime\":\"2022-03-20T15:28:35.3370661Z\",\"percentComplete\":1.0,\"properties\":{\"Value\":[{\"ErrorMessage\":\"event hub resource id and consumer group tuple provided are already used\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+DataViaIdentityExpandedIotHub+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia Central/operationResults/32810ac1-671a-4335-86d7-75561286c5b2?api-version=2022-02-01\u0026operationResultResponseType=Location+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/Australia%20Central/operationResults/32810ac1-671a-4335-86d7-75561286c5b2?api-version=2022-02-01\u0026operationResultResponseType=Location",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "247" ],
+        "x-ms-client-request-id": [ "55662640-6a5f-40cb-8804-3f15fcadf60a" ],
+        "CommandName": [ "Az.Kusto.internal\\Invoke-AzKustoDataConnectionValidation" ],
+        "FullCommandName": [ "Invoke-AzKustoDataConnectionValidation_DataViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "574b4e08-6acb-4449-9d12-886f18284ddb" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "276" ],
+        "x-ms-correlation-request-id": [ "5cacfe7e-96bf-440b-a553-ba81f8a2546d" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152901Z:5cacfe7e-96bf-440b-a553-ba81f8a2546d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 20 Mar 2022 15:29:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "103" ],

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualrouterpeeradvertisedroute
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualrouterpeeradvertisedroute
 schema: 2.0.0
 ---
 
@@ -31,13 +31,13 @@ Given A virtual router peer either by name or by object, enumerate routes being 
 
 ### Example 1
 ```powershell
-Get-AzVirtualRouterPeerAdvertisedRouter -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
+Get-AzVirtualRouterPeerAdvertisedRoute -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
 ```
 
 ### Example 2
 ```powershell
 $virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
-Get-AzVirtualRouterPeerAdvertisedRouter -InputObject $virtualRouterPeer
+Get-AzVirtualRouterPeerAdvertisedRoute -InputObject $virtualRouterPeer
 ```
 
 ## PARAMETERS

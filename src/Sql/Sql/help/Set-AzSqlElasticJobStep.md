@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/set-Azsqlelasticjobstep
+online version: https://learn.microsoft.com/powershell/module/Az.sql/set-Azsqlelasticjobstep
 schema: 2.0.0
 ---
 
@@ -109,9 +109,11 @@ The Set-AzSqlElasticJobStep cmdlet updates a job step
 
 ### Example 1: Updates a job step's target group for a job
 ```powershell
-PS C:\> $jobStep = Get-AzSqlElasticJobStep -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -StepName step1
+$jobStep = Get-AzSqlElasticJobStep -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -StepName step1
 $jobStep | Set-AzSqlElasticJobStep -TargetGroupName tg2
+```
 
+```output
 JobName StepName StepId TargetGroupName CredentialName Output ExecutionOptions   CommandText
 ------- -------- ------ --------------- -------------- ------ ----------------   -----------
 job1    step1    1      tg2             cred1                 (43200,10,1,120,2) SELECT 1
@@ -119,9 +121,11 @@ job1    step1    1      tg2             cred1                 (43200,10,1,120,2)
 
 ### Example 2: Updates a job step's T-SQL script for a job
 ```powershell
-PS C:\> $jobStep = Get-AzSqlElasticJobStep -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -StepName step1
+$jobStep = Get-AzSqlElasticJobStep -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -StepName step1
 $jobStep | Set-AzSqlElasticJobStep -CommandText "SELECT 2"
+```
 
+```output
 JobName StepName StepId TargetGroupName CredentialName Output ExecutionOptions   CommandText
 ------- -------- ------ --------------- -------------- ------ ----------------   -----------
 job1    step1    1      tg1             cred1                 (43200,10,1,120,2) SELECT 2
@@ -131,8 +135,8 @@ Updates a job step from a job
 
 ### Example 3
 
+<!-- Aladdin Generated Example -->
 ```powershell
-<!-- Aladdin Generated Example --> 
 Set-AzSqlElasticJobStep -AgentName agent -CommandText 'SELECT 2' -JobName job1 -Name step1 -ResourceGroupName MyResourceGroup -ServerName s1
 ```
 

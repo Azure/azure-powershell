@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 7610228A-61F9-41B8-A42A-CD7C793BB33F
-online version: https://docs.microsoft.com/powershell/module/az.network/add-aznetworkinterfaceipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-aznetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ The **Add-AzNetworkInterfaceIpConfig** cmdlet adds a network interface IP config
 ## EXAMPLES
 
 ### Example 1: Add a new IP configuration with an application security group
-```
+```powershell
 $subnet = New-AzVirtualNetworkSubnetConfig -Name MySubnet -AddressPrefix 10.0.1.0/24
 $vnet = New-AzVirtualNetwork -Name MyVNET -ResourceGroupName MyResourceGroup -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 

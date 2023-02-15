@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 60BED40A-EEA4-4667-93E9-8A9B35037726
-online version: https://docs.microsoft.com/powershell/module/az.resources/move-azresource
+online version: https://learn.microsoft.com/powershell/module/az.resources/move-azresource
 schema: 2.0.0
 ---
 
@@ -26,9 +26,9 @@ That resource group can be in a different subscription.
 ## EXAMPLES
 
 ### Example 1: Move a resource to a resource group
-```
-PS C:\>$Resource = Get-AzResource -ResourceType "Microsoft.ClassicCompute/storageAccounts" -ResourceName "ContosoStorageAccount"
-PS C:\> Move-AzResource -ResourceId $Resource.ResourceId -DestinationResourceGroupName "ResourceGroup14"
+```powershell
+$Resource = Get-AzResource -ResourceType "Microsoft.ClassicCompute/storageAccounts" -ResourceName "ContosoStorageAccount"
+Move-AzResource -ResourceId $Resource.ResourceId -DestinationResourceGroupName "ResourceGroup14"
 ```
 
 The first command gets a resource named ContosoStorageAccount by using the Get-AzResource cmdlet, and then stores that resource in the $Resource variable.

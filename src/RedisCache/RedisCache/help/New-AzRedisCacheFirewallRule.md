@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscachefirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.rediscache/new-azrediscachefirewallrule
 schema: 2.0.0
 ---
 
@@ -36,9 +36,11 @@ Create a firewall rule on a Redis Cache.
 ## EXAMPLES
 
 ### Example 1: Create a firewall rule
+```powershell
+New-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone" -StartIP "10.0.0.1" -EndIP "10.0.0.32"
 ```
-PS C:\>New-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone" -StartIP "10.0.0.1" -EndIP "10.0.0.32"
 
+```output
         ResourceGroupName : myGroup
         Name              : mycache
         FirewallRuleId    : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/mycache/firewallRules/ruleone

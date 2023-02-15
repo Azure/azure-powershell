@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MonitoringSolutions
-online version: https://docs.microsoft.com/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution
+online version: https://learn.microsoft.com/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution
 schema: 2.0.0
 ---
 
@@ -25,9 +25,11 @@ Creates a log analytics solution.
 
 ### Example 1: Create a monitor log analytics solution for the log analytics workspace
 ```powershell
-PS C:\> $workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName azureps-manual-test -Name monitoringworkspace-2vob7n
-PS C:\> New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName azureps-manual-test -Location $workspace.Location -WorkspaceResourceId $workspace.ResourceId
+$workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName azureps-manual-test -Name monitoringworkspace-2vob7n
+New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName azureps-manual-test -Location $workspace.Location -WorkspaceResourceId $workspace.ResourceId
+```
 
+```output
 Name                                   Type                                     Location
 ----                                   ----                                     --------
 Containers(monitoringworkspace-2vob7n) Microsoft.OperationsManagement/solutions East US
@@ -215,5 +217,5 @@ ALIASES
 
 
 
-[Get-AzOperationalInsightsWorkspace](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
+[Get-AzOperationalInsightsWorkspace](https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
 

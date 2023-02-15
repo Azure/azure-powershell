@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveradvanceddatasecuritypolicy
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlserveradvanceddatasecuritypolicy
 schema: 2.0.0
 ---
 
@@ -24,10 +24,12 @@ The **Get-AzSqlServerAdvancedDataSecurityPolicy** cmdlet retrieves the Advanced 
 
 ### Example 1: Gets server Advanced Data Security
 ```powershell
-PS C:\>  Get-AzSqlServerAdvancedDataSecurityPolicy `
+Get-AzSqlServerAdvancedDataSecurityPolicy `
             -ResourceGroupName "ResourceGroup01" `
-            -ServerName "Server01" 
+            -ServerName "Server01"
+```
 
+```output
 ResourceGroupName	         : ResourceGroup01
 ServerName		             : Server01
 IsEnabled		             : True
@@ -35,11 +37,13 @@ IsEnabled		             : True
 
 ### Example 2: Gets server Advanced Data Security from server resource
 ```powershell
-PS C:\>  Get-AzSqlServer `
+Get-AzSqlServer `
            -ResourceGroupName "ResourceGroup01" `
            -ServerName "Server01" `
            | Get-AzSqlServerAdvancedDataSecurityPolicy
+```
 
+```output
 ResourceGroupName	         : ResourceGroup01
 ServerName		             : Server01
 IsEnabled		             : True

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol
+online version: https://learn.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol
 schema: 2.0.0
 ---
 
@@ -28,17 +28,19 @@ The New-AzAutomationSourceControl cmdlet creates a configuration to link an Azur
 Create a source control configuration to link an Azure Automation account with a VSTS TFVC project. TFVC projects do not have branches, and therefore, the Branch parameter is not specified.
 
 ```powershell
-PS C:\> # VSTS Personal access token
-PS C:\> $token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
-PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
-PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
+# VSTS Personal access token
+$token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
+$accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
+New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "VSTSNative" `
                                            -RepoUrl "https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname>" `
                                            -SourceType "VsoTfvc" `
                                            -FolderPath "/Runbooks" `
                                            -AccessToken $accessToken
+```
 
+```output
 Name        SourceType Branch FolderPath AutoSync PublishRunbook RepoUrl
 ----        ---------- ------ ---------- -------- -------------- -------
 VSTSNative  VsoTfvc            /Runbooks True     True           https://dev.azure.com/<accountname>/<adopro...
@@ -49,10 +51,10 @@ Create a source control configuration to link an Azure Automation account with a
 
 
 ```powershell
-PS C:\> # VSTS Personal access token
-PS C:\> $token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
-PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
-PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
+# VSTS Personal access token
+$token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
+$accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
+New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "VSTSGit" `
                                            -RepoUrl "https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname>" `
@@ -60,7 +62,9 @@ PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -Branch "Development" `
                                            -FolderPath "/" `
                                            -AccessToken $accessToken
+```
 
+```output
 Name    SourceType Branch      FolderPath AutoSync PublishRunbook RepoUrl
 ----    ---------- ------      ---------- -------- -------------- -------
 VSTSGit VsoGit     Development /          True     True           https://dev.azure.com/<accountname>/<adopro...
@@ -71,10 +75,10 @@ Create a source control configuration to link an Azure Automation account with a
 
 
 ```powershell
-PS C:\> # GitHub access token
-PS C:\> $token = "68b08011223aac8bdd3388913a44rrsaa84fdf"
-PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
-PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
+# GitHub access token
+$token = "68b08011223aac8bdd3388913a44rrsaa84fdf"
+$accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
+ New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "GitHub1" `
                                            -RepoUrl "https://github.com/Contoso/TestSourceControl.git" `
@@ -82,7 +86,9 @@ PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -Branch "master" `
                                            -FolderPath "/Runbooks" `
                                            -AccessToken $accessToken
+```
 
+```output
 Name    SourceType Branch FolderPath AutoSync PublishRunbook RepoUrl
 ----    ---------- ------ ---------- -------- -------------- -------
 GitHub1 GitHub     master /Runbooks  True     True           https://github.com/Contoso/TestSourceControl...
@@ -304,7 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 7915A7AC-5A47-4868-B846-2896BCEBFAB2
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition
 schema: 2.0.0
 ---
 
@@ -24,8 +24,11 @@ The **Get-AzMetricDefinition** cmdlet gets metric definitions.
 ## EXAMPLES
 
 ### Example 1: Get metric definitions for a resource
+```powershell
+Get-AzMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2"
 ```
-PS C:\>Get-AzMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2"
+
+```output
 Name                   : CpuTime
 Dimensions             : {}
 MetricAvailabilities   : {Microsoft.Azure.Insights.Models.MetricAvailability, 
@@ -49,8 +52,11 @@ Unit                   : Count
 This command gets the metrics definitions for the specified resource.
 
 ### Example 2: Get metric definitions with detailed output
+```powershell
+Get-AzMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2" -DetailedOutput
 ```
-PS C:\>Get-AzMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2" -DetailedOutput
+
+```output
 Dimensions             : 
 MetricAvailabilities   : 
                              Location  : 
@@ -89,8 +95,11 @@ This command gets the metric definitions for website2.
 The output is detailed.
 
 ### Example 3: Get metric definitions by name
+```powershell
+Get-AzMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2" -DetailedOutput -MetricName "BytesSent,CpuTime"
 ```
-PS C:\>Get-AzMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2" -DetailedOutput -MetricName "BytesSent,CpuTime"
+
+```output
 MetricAvailabilities   : 
                              Location  : 
                              Retention : 2.00:00:00

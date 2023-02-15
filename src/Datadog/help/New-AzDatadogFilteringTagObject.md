@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://docs.microsoft.com/powershell/module/az.Datadog/new-AzDatadogFilteringTagObject
+online version: https://learn.microsoft.com/powershell/module/az.Datadog/new-AzDatadogFilteringTagObject
 schema: 2.0.0
 ---
 
@@ -23,8 +23,7 @@ Create a in-memory object for FilteringTag
 
 ### Example 1: Create a in-memory object for FilteringTag
 ```powershell
-PS C:\> New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
-
+New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
 ```
 
 This command Create a in-memory object for FilteringTag.

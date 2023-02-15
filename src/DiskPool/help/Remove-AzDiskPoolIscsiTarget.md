@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/az.diskpool/remove-azdiskpooliscsitarget
+online version: https://learn.microsoft.com/powershell/module/az.diskpool/remove-azdiskpooliscsitarget
 schema: 2.0.0
 ---
 
@@ -32,16 +32,14 @@ Delete an iSCSI Target.
 
 ### Example 1: Remove an iSCSI target
 ```powershell
-PS C:\> Remove-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0'
-
+Remove-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0'
 ```
 
 This command removes an iSCSI target.
 
 ### Example 2: Remove an iSCSI target by object
 ```powershell
-PS C:\> Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0' | Remove-AzDiskPoolIscsiTarget
-
+Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0' | Remove-AzDiskPoolIscsiTarget
 ```
 
 This command removes an iSCSI target by object.
@@ -236,7 +234,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
+INPUTOBJECT `<IDiskPoolIdentity>`: Identity Parameter
   - `[DiskPoolName <String>]`: The name of the Disk Pool.
   - `[Id <String>]`: Resource identity path
   - `[IscsiTargetName <String>]`: The name of the iSCSI Target.

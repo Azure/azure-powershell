@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: F0BDB0EE-1F26-450D-9C68-34C79CE8F778
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementuserfromgroup
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementuserfromgroup
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Remove-AzApiManagementUserFromGroup** cmdlet removes a user from an existi
 ## EXAMPLES
 
 ### Example 1: Remove a user from a group
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementUserFromGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementUserFromGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
 ```
 
 This command removes a user from a group.

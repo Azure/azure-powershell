@@ -14,7 +14,6 @@
 
 
 using ScenarioTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -24,20 +23,14 @@ namespace StorageSyncTests
     /// <summary>
     /// Class StorageSyncServiceTests.
     /// </summary>
-    public class StorageSyncServiceTests
+    public class StorageSyncServiceTests : StorageSyncTestRunner
     {
-        /// <summary>
-        /// The logger
-        /// </summary>
-        private readonly XunitTracingInterceptor _logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageSyncServiceTests"/> class.
         /// </summary>
         /// <param name="output">The output.</param>
-        public StorageSyncServiceTests(ITestOutputHelper output)
+        public StorageSyncServiceTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(_logger = new XunitTracingInterceptor(output));
         }
 
         /// <summary>
@@ -47,7 +40,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageSyncService()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-StorageSyncService");
+            TestRunner.RunTestScript("Test-StorageSyncService");
         }
 
         /// <summary>
@@ -57,7 +50,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewStorageSyncService()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-NewStorageSyncService");
+            TestRunner.RunTestScript("Test-NewStorageSyncService");
         }
 
         /// <summary>
@@ -67,7 +60,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetStorageSyncService()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetStorageSyncService");
+            TestRunner.RunTestScript("Test-GetStorageSyncService");
         }
 
         /// <summary>
@@ -77,7 +70,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetStorageSyncServices()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetStorageSyncServices");
+            TestRunner.RunTestScript("Test-GetStorageSyncServices");
         }
 
         /// <summary>
@@ -87,7 +80,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveStorageSyncService()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveStorageSyncService");
+            TestRunner.RunTestScript("Test-RemoveStorageSyncService");
         }
 
         /// <summary>
@@ -97,7 +90,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveStorageSyncServiceInputObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveStorageSyncServiceInputObject");
+            TestRunner.RunTestScript("Test-RemoveStorageSyncServiceInputObject");
         }
 
         /// <summary>
@@ -107,7 +100,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveStorageSyncServiceResourceId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveStorageSyncServiceResourceId");
+            TestRunner.RunTestScript("Test-RemoveStorageSyncServiceResourceId");
         }
 
     }

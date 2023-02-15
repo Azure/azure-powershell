@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version: https://docs.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridtopic
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridtopic
 schema: 2.0.0
 ---
 
@@ -37,14 +37,14 @@ Removes an Azure Event Grid Topic.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1
+Remove-AzEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1
 ```
 
 Removes the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/topics/Topic1" | Remove-AzEventGridTopic
+Get-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/topics/Topic1" | Remove-AzEventGridTopic
 ```
 
 Removes the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.

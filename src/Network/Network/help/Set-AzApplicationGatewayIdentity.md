@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewayidentity
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewayidentity
 schema: 2.0.0
 ---
 
@@ -24,10 +24,10 @@ The **Set-AzApplicationGatewayIdentity** cmdlet updates an identity assigned to 
 
 ### Example 1
 ```powershell
-PS C:\>$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgName
-PS C:\>$identity = New-AzUserAssignedIdentity -Name $identityName -ResourceGroupName $rgName -Location $location
-PS C:\>$appgwIdentity = Set-AzApplicationGatewayIdentity -UserAssignedIdentity $identity.Id -ApplicationGateway $appgw
-PS C:\>$updatedAppGw = Set-AzApplicationGateway -ApplicationGateway $appgw
+$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgName
+$identity = New-AzUserAssignedIdentity -Name $identityName -ResourceGroupName $rgName -Location $location
+$appgwIdentity = Set-AzApplicationGatewayIdentity -UserAssignedIdentity $identity.Id -ApplicationGateway $appgw
+$updatedAppGw = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 In this example, we assign a user assigned identity to an existing application gateway.

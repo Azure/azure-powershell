@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Type = storageInsight.Type;
             this.StorageAccountResourceId = storageInsight.StorageAccount?.Id;
             this.StorageAccountKey = storageInsight.StorageAccount?.Key;
-            this.Tables = storageInsight.Tables.ToList();
-            this.Containers = storageInsight.Containers.ToList();
+            this.Tables = storageInsight.Tables?.ToList();
+            this.Containers = storageInsight.Containers?.ToList();
             this.State = storageInsight.Status?.State;
             this.StateDescription = storageInsight.Status?.Description;
             this.ETag = storageInsight.ETag;
@@ -53,22 +53,22 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public string WorkspaceName { get; set; }
 
-        public string Type { get; set; }//added
+        public string Type { get; set; }
 
         public string StorageAccountResourceId { get; set; }
 
-        public string StorageAccountKey { get; set; }// new prop
+        public string StorageAccountKey { get; set; }
 
         public string State { get; set; }
 
-        public string StateDescription { get; set; }//new prop
+        public string StateDescription { get; set; }
 
         public List<string> Tables { get; set; }
 
         public List<string> Containers { get; set; }
 
-        public Hashtable Tags { get; set; } //new prop
+        public Hashtable Tags { get; set; }
 
-        public string ETag { get; set; }//new prop
+        public string ETag { get; set; }
     }
 }

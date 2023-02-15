@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/set-azsynapseintegrationruntime
+online version: https://learn.microsoft.com/powershell/module/az.synapse/set-azsynapseintegrationruntime
 schema: 2.0.0
 ---
 
@@ -99,14 +99,14 @@ The **Set-AzSynapseIntegrationRuntime** cmdlet updates an integration runtime wi
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -Description 'New description'
+Set-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -Description 'New description'
 ```
 
 The cmdlet updates the description of integration runtime named 'test-selfhost-ir'.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' `
+Set-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' `
                                         -SharedIntegrationRuntimeResourceId '/subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir' -Type "SelfHosted"
 ```
 

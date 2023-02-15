@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 35562212-283C-4BB2-8B12-C3617A6760D0
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayipconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayipconfiguration
 schema: 2.0.0
 ---
 
@@ -25,17 +25,17 @@ The IP configuration contains the subnet in which the application gateway is dep
 ## EXAMPLES
 
 ### Example 1: Get a specific IP configuration
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $GatewaySubnet = Get-AzApplicationGatewayIPConfiguration -Name "GatewaySubnet01" -ApplicationGateway $AppGw
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$GatewaySubnet = Get-AzApplicationGatewayIPConfiguration -Name "GatewaySubnet01" -ApplicationGateway $AppGw
 ```
 
 The first command gets an application gateway and stores it in the $AppGw variable.The second command gets an IP configuration named GateSubnet01 from the gateway stored in $AppGw.
 
 ### Example 2: Get a list of IP configurations
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $GatewaySubnets = Get-AzApplicationGatewayIPConfiguration -ApplicationGateway $AppGw
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$GatewaySubnets = Get-AzApplicationGatewayIPConfiguration -ApplicationGateway $AppGw
 ```
 
 The first command gets an application gateway and stores it in the $AppGw variable.The second command gets a list of all IP configurations.

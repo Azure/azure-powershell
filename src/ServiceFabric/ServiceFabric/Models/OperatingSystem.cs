@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
         WindowsServer2016Datacenter,
         WindowsServer2016DatacenterwithContainers,
         UbuntuServer1604,
-        UbuntuServer1804
+        UbuntuServer1804,
+        UbuntuServer2004,
+        WindowsServer2022
     }
 }

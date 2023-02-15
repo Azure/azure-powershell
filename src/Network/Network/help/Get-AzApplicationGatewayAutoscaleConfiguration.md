@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayautoscaleconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayautoscaleconfiguration
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Get-AzApplicationGatewayAutoscaleConfiguration** cmdlet gets Autoscale Con
 
 ### Example 1
 ```powershell
-PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-PS C:\> $autoscaleConfiguration = Get-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $gw
-PS C:\> $autoscaleConfiguration.MinCapacity
+$gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
+$autoscaleConfiguration = Get-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $gw
+$autoscaleConfiguration.MinCapacity
 ```
 
 The first command gets the application gateway and stores it in $gw variable.

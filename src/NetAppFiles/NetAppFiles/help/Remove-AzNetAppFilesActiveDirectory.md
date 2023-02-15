@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesactivedirectory
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesactivedirectory
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ The **Remove-AzNetAppFilesActiveDirectory** cmdlet deletes an ANF active directo
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyADName"
+Remove-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAccount" -ActiveDirectoryId "MyActiveDirectoryId"
 ```
 
 This command deletes the new ANF active directory configuration with a the name "MyADName".
@@ -197,3 +197,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetAppFilesActiveDirectory](./Get-AzNetAppFilesActiveDirectory.md)
+[New-AzNetAppFilesActiveDirectory](./New-AzNetAppFilesActiveDirectory.md)
+[Update-AzNetAppFilesActiveDirectory](./Update-AzNetAppFilesActiveDirectory.md)
+[Get-AzNetAppFilesAccount](./Get-AzNetAppFilesAccount.md)
+[New-AzNetAppFilesAccount](./New-AzNetAppFilesAccount.md)
+[Remove-AzNetAppFilesAccount](./Remove-AzNetAppFilesAccount.md)
+[Set-AzNetAppFilesAccount](./Set-AzNetAppFilesAccount.md)
+[Update-AzNetAppFilesAccount](./Update-AzNetAppFilesAccount.md)

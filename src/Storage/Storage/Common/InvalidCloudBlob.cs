@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             : base(blobAbsoluteUri)
         {
             string blobUri = blobAbsoluteUri.ToString();
-            if (credentials.IsSAS)
+            if (credentials != null && credentials.IsSAS)
             {
                 blobUri = blobUri.Replace(credentials.SASSignature, "[Sig]");
             }

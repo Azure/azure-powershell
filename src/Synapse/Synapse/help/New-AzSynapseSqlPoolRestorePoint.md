@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsesqlpoolrestorepoint
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsesqlpoolrestorepoint
 schema: 2.0.0
 ---
 
@@ -45,7 +45,7 @@ The **New-AzSynapseSqlPoolRestorePoint** cmdlet creates a new restore point that
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseSqlPoolRestorePoint -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -RestorePointLabel ContosoRestorePoint
+New-AzSynapseSqlPoolRestorePoint -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -RestorePointLabel ContosoRestorePoint
 ```
 
 This command creates a restore point for SQL pool called ContosoSqlPool in the workspace ContosoWorkspace.

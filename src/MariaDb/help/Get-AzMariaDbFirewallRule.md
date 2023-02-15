@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MariaDb
-online version: https://docs.microsoft.com/powershell/module/az.mariadb/get-azmariadbfirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.mariadb/get-azmariadbfirewallrule
 schema: 2.0.0
 ---
 
@@ -36,8 +36,10 @@ Gets information about a server firewall rule.
 
 ### Example 1: List all firewall rule under a MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbFirewallRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig
+Get-AzMariaDbFirewallRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig
+```
 
+```output
 Name       Type
 ----       ----
 fr-cfgl3y  Microsoft.DBforMariaDB/servers/firewallRules
@@ -49,8 +51,10 @@ This command lists all girewall rule under a MariaDB.
 
 ### Example 2: Get a firewall rule under a MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbFirewallRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig -Name frname-001
+Get-AzMariaDbFirewallRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig -Name frname-001
+```
 
+```output
 Name       Type
 ----       ----
 frname-001 Microsoft.DBforMariaDB/servers/firewallRules
@@ -172,7 +176,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
+INPUTOBJECT `<IMariaDbIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

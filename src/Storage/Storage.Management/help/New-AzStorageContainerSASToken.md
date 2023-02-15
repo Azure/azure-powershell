@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 6FF04E82-4921-4F7B-83D0-6997316BC5FD
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainersastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragecontainersastoken
 schema: 2.0.0
 ---
 
@@ -17,16 +17,16 @@ Generates an SAS token for an Azure storage container.
 ```
 New-AzStorageContainerSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EncryptionScope <String>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzStorageContainerSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EncryptionScope <String>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,32 +35,32 @@ The **New-AzStorageContainerSASToken** cmdlet generates a Shared Access Signatur
 ## EXAMPLES
 
 ### Example 1: Generate a container SAS token with full container permission
-```
-PS C:\>New-AzStorageContainerSASToken -Name "Test" -Permission rwdl
+```powershell
+New-AzStorageContainerSASToken -Name "Test" -Permission rwdl
 ```
 
 This example generates a container SAS token with full container permission.
 
 ### Example 2: Generate multiple container SAS token by pipeline
-```
-PS C:\>Get-AzStorageContainer -Container test* | New-AzStorageContainerSASToken -Permission rwdl
+```powershell
+Get-AzStorageContainer -Container test* | New-AzStorageContainerSASToken -Permission rwdl
 ```
 
 This example generates multiple container SAS tokens by using the pipeline.
 
 ### Example 3: Generate container SAS token with shared access policy
-```
-PS C:\>New-AzStorageContainerSASToken -Name "Test" -Policy "PolicyName"
+```powershell
+New-AzStorageContainerSASToken -Name "Test" -Policy "PolicyName"
 ```
 
 This example generates a container SAS token with shared access policy.
 
 ### Example 3: Generate a User Identity container SAS token with storage context based on OAuth authentication
-```
-PS C:\> $ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $startTime.AddDays(6)
-PS C:\> New-AzStorageContainerSASToken -Name "ContainerName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
+```powershell
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
+$StartTime = Get-Date
+$EndTime = $startTime.AddDays(6)
+New-AzStorageContainerSASToken -Name "ContainerName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
 ```
 
 This example generates a User Identity container SAS token with storage context based on OAuth authentication
@@ -91,6 +91,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionScope
+Encryption scope to use when sending requests authorized with this SAS URI.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -165,7 +180,7 @@ Accept wildcard characters: False
 
 ### -Permission
 Specifies permissions for a storage container.
-It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete). The permissions that are supported for container resource type are described [here](https://learn.microsoft.com/rest/api/storageservices/create-service-sas#permissions-for-a-directory-container-or-blob).
 
 ```yaml
 Type: System.String
@@ -260,7 +275,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

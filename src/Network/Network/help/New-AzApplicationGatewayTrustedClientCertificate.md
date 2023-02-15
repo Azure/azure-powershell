@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewaytrustedclientcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewaytrustedclientcertificate
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The New-AzApplicationGatewayTrustedClientCertificate cmdlet creates a trusted cl
 
 ### Example 1
 ```powershell
-PS C:\> $trustedClient = New-AzApplicationGatewayTrustedClientCertificate -Name "ClientCert" -CertificateFile "C:\clientCAChain.cer"
+$trustedClient = New-AzApplicationGatewayTrustedClientCertificate -Name "ClientCert" -CertificateFile "C:\clientCAChain.cer"
 ```
 The command creates a new trusted client CA certificate chain object taking path of the client CA certificate as input.
 

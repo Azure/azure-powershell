@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azrouteserverpeer
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azrouteserverpeer
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ The **Add-AzRouteServerPeer** cmdlet adds a RouteServer Peer to an Azure RouteSe
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -PeerIp "192.168.1.5" -PeerAsn "20000"
+Add-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -PeerIp "192.168.1.5" -PeerAsn "20000"
 ```
 
 ## PARAMETERS

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azautoapprovedprivatelinkservice
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azautoapprovedprivatelinkservice
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ The **Get-AzAutoApprovedPrivateLinkService** gets an array of private link servi
 ## EXAMPLES
 
 ### Example
-```
+```powershell
 Get-AzAutoApprovedPrivateLinkService -Location westus -ResourceGroupName TestResourceGroup
 ```
 

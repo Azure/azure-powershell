@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
-online version: https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan
+online version: https://learn.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ If a commitment plan with the same name exists in the resource group, the call a
 ## EXAMPLES
 
 ### Example 1: Create a new commitment plan
-```
+```powershell
 New-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName" -Location "South Central US" -SkuName DevTest -SkuTier Standard -SkuCapacity 1
 ```
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 329EF130-5CC9-4BFF-8561-DE5274018B09
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementsubscription
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementsubscription
 schema: 2.0.0
 ---
 
@@ -39,9 +39,9 @@ The **Remove-AzApiManagementSubscription** cmdlet deletes an existing subscripti
 ## EXAMPLES
 
 ### Example 1: Delete a subscription
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789" -Force
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789"
 ```
 
 This command deletes an existing subscription.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolattacheddatabaseconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolattacheddatabaseconfiguration
 schema: 2.0.0
 ---
 
@@ -38,8 +38,10 @@ Returns an attached database configuration.
 
 ### Example 1: List all the AttachedDatabaseConfigurations in a kusto pool
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool
+Get-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool
+```
 
+```output
 Name                                               Type                                                                   Location
 ----                                               ----                                                                   --------
 testws/testfollowerkustopool/followerconfiguration Microsoft.Synapse/workspaces/kustoPools/AttachedDatabaseConfigurations East US 2
@@ -49,8 +51,10 @@ The above command lists all the AttachedDatabaseConfigurations in the kusto pool
 
 ### Example 2: Get a specific AttachedDatabaseConfiguration in a kusto pool
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool -Name followerconfiguration
+Get-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool -Name followerconfiguration
+```
 
+```output
 Name                                               Type                                                                   Location
 ----                                               ----                                                                   --------
 testws/testfollowerkustopool/followerconfiguration Microsoft.Synapse/workspaces/kustoPools/AttachedDatabaseConfigurations East US 2
@@ -187,7 +191,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
+INPUTOBJECT `<ISynapseIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[DataConnectionName <String>]`: The name of the data connection.
   - `[DatabaseName <String>]`: The name of the database in the Kusto pool.

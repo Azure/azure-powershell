@@ -22,6 +22,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardD14V2 = @"Standard_D14_v2";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardD16DV5 = @"Standard_D16d_v5";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardD32DV4 = @"Standard_D32d_v4";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardD32DV5 = @"Standard_D32d_v5";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardDs13V21TbPs = @"Standard_DS13_v2+1TB_PS";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardDs13V22TbPs = @"Standard_DS13_v2+2TB_PS";
@@ -32,13 +38,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16AV4 = @"Standard_E16a_v4";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16AdsV5 = @"Standard_E16ads_v5";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16AsV43TbPs = @"Standard_E16as_v4+3TB_PS";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16AsV44TbPs = @"Standard_E16as_v4+4TB_PS";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16AsV53TbPs = @"Standard_E16as_v5+3TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16AsV54TbPs = @"Standard_E16as_v5+4TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16SV43TbPs = @"Standard_E16s_v4+3TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16SV44TbPs = @"Standard_E16s_v4+4TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16SV53TbPs = @"Standard_E16s_v5+3TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16SV54TbPs = @"Standard_E16s_v5+4TB_PS";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE2AV4 = @"Standard_E2a_v4";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE2AdsV5 = @"Standard_E2ads_v5";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE4AV4 = @"Standard_E4a_v4";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE4AdsV5 = @"Standard_E4ads_v5";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE64IV3 = @"Standard_E64i_v3";
 
@@ -46,9 +70,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8AV4 = @"Standard_E8a_v4";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8AdsV5 = @"Standard_E8ads_v5";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8AsV41TbPs = @"Standard_E8as_v4+1TB_PS";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8AsV42TbPs = @"Standard_E8as_v4+2TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8AsV51TbPs = @"Standard_E8as_v5+1TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8AsV52TbPs = @"Standard_E8as_v5+2TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8SV41TbPs = @"Standard_E8s_v4+1TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8SV42TbPs = @"Standard_E8s_v4+2TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8SV51TbPs = @"Standard_E8s_v5+1TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8SV52TbPs = @"Standard_E8s_v5+2TB_PS";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL16S = @"Standard_L16s";
 

@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevSpaces.dll-Help.xml
 Module Name: Az.DevSpaces
-online version: https://docs.microsoft.com/powershell/module/az.devspaces/new-azdevspacescontroller
+online version: https://learn.microsoft.com/powershell/module/az.devspaces/new-azdevspacescontroller
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create a new Azure DevSpaces controller.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName -TargetResourceGroupName clusterResourceGroup -TargetClusterName clusterName
+New-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName -TargetResourceGroupName clusterResourceGroup -TargetClusterName clusterName
+```
 
+```output
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded

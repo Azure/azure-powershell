@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsesqlactivedirectoryadministrator
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsesqlactivedirectoryadministrator
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Get-AzSynapseSqlActiveDirectoryAdministrator** cmdlet gets information abo
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace
+Get-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace
 ```
 
 This command gets information about an Azure AD administrator for a workspace named ContosoWorkspace.

@@ -1,0 +1,43 @@
+{
+  "Get-AzServiceLinkerConfigurationForSpringCloud+[NoContext]+Get+$POST+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/e2etest/deployments/default/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-05-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "47443aa5-a40c-4940-8f2a-9137a82d7bd4" ],
+        "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinkerConfiguration" ],
+        "FullCommandName": [ "Get-AzServiceLinkerConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "a3aa463e-390a-4b07-967e-3bb8f216d107" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0013b7e7-825a-4c34-82ba-c09fd92a755f" ],
+        "x-ms-correlation-request-id": [ "1ef2ecd3-74b9-40f1-b644-6057e1b645d7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T064305Z:1ef2ecd3-74b9-40f1-b644-6057e1b645d7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 07 May 2022 06:43:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "227" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"configurations\":[{\"name\":\"AZURE_POSTGRESQL_CONNECTIONSTRING\",\"value\":\"Server=servicelinker-postgresql.postgres.database.azure.com;Database=pollsdb;Port=5432;Ssl Mode=Require;User Id=servicelinker@servicelinker-postgresql;\"}]}"
+    }
+  }
+}

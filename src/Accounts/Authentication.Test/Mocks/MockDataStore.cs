@@ -376,7 +376,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 () =>
                 {
                     writeLocks[path] = false;
-                    virtualStore[path] = Encoding.Default.GetString(buffer);
+                    // trim \0 otherwise json fails to parse
+                    virtualStore[path] = Encoding.UTF8.GetString(buffer).TrimEnd('\0');
                 }
              );
         }

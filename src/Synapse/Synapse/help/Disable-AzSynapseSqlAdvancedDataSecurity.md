@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/disable-azsynapsesqladvanceddatasecurity
+online version: https://learn.microsoft.com/powershell/module/az.synapse/disable-azsynapsesqladvanceddatasecurity
 schema: 2.0.0
 ---
 
@@ -37,14 +37,14 @@ The **Disable-AzSynapseSqlAdvancedDataSecurity** cmdlet disables Advanced Data S
 
 ### Example 1
 ```powershell
-PS C:\> Disable-AzSynapseSqlAdvancedDataSecurity -WorkspaceName ContosoWorkspace
+Disable-AzSynapseSqlAdvancedDataSecurity -WorkspaceName ContosoWorkspace
 ```
 
 This command disables Advanced Data Security on the workspace named ContosoWorkspace.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace | Disable-AzSynapseSqlAdvancedDataSecurity
+Get-AzSynapseWorkspace -Name ContosoWorkspace | Disable-AzSynapseSqlAdvancedDataSecurity
 ```
 
 This command disables Advanced Data Security on the workspace named ContosoWorkspace through pipeline.

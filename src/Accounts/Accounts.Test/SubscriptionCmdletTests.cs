@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             TestRunner.RunTestScript("Test-GetSubscriptionsEndToEnd");
         }
 
-        [Fact]
+        [Fact(Skip ="Need a service principal that can access more than one subscription.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureRmContextWorks()
         {
@@ -65,6 +65,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void GetSubscriptionsAfterContextRenameAndSet()
         {
             TestRunner.RunTestScript("Test-GetSubscriptionsAfterContextRenameAndSet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetSubscriptionsWithDefaultProfileAsInput()
+        {
+            TestRunner.RunTestScript("Test-GetSubscriptionsWithDefaultProfileAsInput");
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightslinkedservice
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightslinkedservice
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Get or list linked service for workspace, list when "-LinkedServiceName" was not
 
 ### Example 1
 ```powershell
-Get-AzOperationalInsightsLinkedService -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster
+Get-AzOperationalInsightsLinkedService -ResourceGroupName "rg-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster
+```
 
+```output
 Id                    : /subscriptions/{subscription}/resourcegroups/{rg-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}/linkedservices/cluster
 Name                  : {cluster-name}/Cluster
 Type                  : Microsoft.OperationalInsights/workspaces/linkedServices

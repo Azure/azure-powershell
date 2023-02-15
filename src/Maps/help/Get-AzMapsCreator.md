@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Maps
-online version: https://docs.microsoft.com/powershell/module/az.maps/get-azmapscreator
+online version: https://learn.microsoft.com/powershell/module/az.maps/get-azmapscreator
 schema: 2.0.0
 ---
 
@@ -36,8 +36,10 @@ Get a Maps Creator resource.
 
 ### Example 1: List all Maps Creator resources under a Maps Account
 ```powershell
-PS C:\> Get-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01
+Get-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01
+```
 
+```output
 Location Name       Type
 -------- ----       ----
 eastus2  creator-01 Microsoft.Maps/accounts/creators
@@ -47,8 +49,10 @@ This command lists Maps Creator resources under a Maps Account.
 
 ### Example 2: Get a Maps Creator resource
 ```powershell
-PS C:\> Get-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01
+Get-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01
+```
 
+```output
 Location Name       Type
 -------- ----       ----
 eastus2  creator-01 Microsoft.Maps/accounts/creators
@@ -58,8 +62,10 @@ This command gets a Maps Creator resource.
 
 ### Example 3: Get a Maps Creator resource by pipeline
 ```powershell
-PS C:\> New-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01 -Location eastus2 -StorageUnit 3 | Get-AzMapsCreator
+New-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01 -Location eastus2 -StorageUnit 3 | Get-AzMapsCreator
+```
 
+```output
 Location Name       Type
 -------- ----       ----
 eastus2  creator-01 Microsoft.Maps/accounts/creators
@@ -181,7 +187,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMapsIdentity>: Identity Parameter
+INPUTOBJECT `<IMapsIdentity>`: Identity Parameter
   - `[AccountName <String>]`: The name of the Maps Account.
   - `[CreatorName <String>]`: The name of the Maps Creator instance.
   - `[Id <String>]`: Resource identity path

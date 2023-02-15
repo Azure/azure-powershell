@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://docs.microsoft.com/powershell/module/az.resourcemover/resolve-azresourcemovermovecollectiondependency
+online version: https://learn.microsoft.com/powershell/module/az.resourcemover/resolve-azresourcemovermovecollectiondependency
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Computes, resolves and validate the dependencies of the moveResources in the mov
 
 ### Example 1: Compute, resolve and validate the dependencies of the Move Resources in the Move collection.
 ```powershell
-PS C:\> Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" 
+Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" 
+```
 
+```output
 AdditionalInfo : 
 Code           : MoveCollectionResolveDependenciesOperationFailed
 Detail         : {}

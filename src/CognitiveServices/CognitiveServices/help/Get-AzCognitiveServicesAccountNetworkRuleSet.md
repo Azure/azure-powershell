@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountnetworkruleset
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountnetworkruleset
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Get-AzCognitiveServicesAccountNetworkRuleSet** cmdlet gets the NetworkRule
 ## EXAMPLES
 
 ### Example 1: Get NetworkRule property of a specified Cognitive Services account
-```
-PS C:\> Get-AzCognitiveServicesAccountNetworkRuleSet  -ResourceGroupName "rg1" -Name "myaccount"
+```powershell
+Get-AzCognitiveServicesAccountNetworkRuleSet  -ResourceGroupName "rg1" -Name "myaccount"
 ```
 
 This command gets NetworkRule property of a specified Cognitive Services account

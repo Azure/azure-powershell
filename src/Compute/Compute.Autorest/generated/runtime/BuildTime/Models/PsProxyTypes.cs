@@ -30,6 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
     internal class VariantGroup
     {
         public string ModuleName { get; }
+
+        public string RootModuleName {get => @"";}
         public string CmdletName { get; }
         public string CmdletVerb { get; }
         public string CmdletNoun { get; }
@@ -365,7 +367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
         public string OnlineVersion { get; }
         public string[] RelatedLinks { get; }
 
-        private const string HelpLinkPrefix = @"https://docs.microsoft.com/powershell/module/";
+        private const string HelpLinkPrefix = @"https://learn.microsoft.com/powershell/module/";
 
         public CommentInfo(VariantGroup variantGroup)
         {
@@ -385,7 +387,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
                        helpInfo.OutputTypes.Where(it => it.Name.NullIfWhiteSpace() != null).Select(ot => ot.Name).ToArray())
                 .Where(o => o != "None").Distinct().OrderBy(o => o).ToArray();
 
-            OnlineVersion = helpInfo.OnlineVersion?.Uri.NullIfEmpty() ?? $@"{HelpLinkPrefix}{variantGroup.ModuleName.ToLowerInvariant()}/{variantGroup.CmdletName.ToLowerInvariant()}";
+            // Use root module name in the help link
+            var moduleName = variantGroup.RootModuleName == "" ? variantGroup.ModuleName.ToLowerInvariant() : variantGroup.RootModuleName.ToLowerInvariant();
+            OnlineVersion = helpInfo.OnlineVersion?.Uri.NullIfEmpty() ?? $@"{HelpLinkPrefix}{moduleName}/{variantGroup.CmdletName.ToLowerInvariant()}";
             RelatedLinks = helpInfo.RelatedLinks.Select(rl => rl.Text).ToArray();
         }
     }

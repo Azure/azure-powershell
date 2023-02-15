@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Consumption.dll-Help.xml
 Module Name: Az.Billing
-online version: https://docs.microsoft.com/powershell/module/az.billing/remove-azconsumptionbudget
+online version: https://learn.microsoft.com/powershell/module/az.billing/remove-azconsumptionbudget
 schema: 2.0.0
 ---
 
@@ -31,19 +31,28 @@ The Remove-AzConsumptionBudget cmdlet removes a budget in either a subscription 
 
 ### Example 1: Remove a budget with a budget name at subscription level
 ```powershell
-PS C:\> Remove-AzConsumptionBudget -Name PSBudget -PassThru
+Remove-AzConsumptionBudget -Name PSBudget -PassThru
+```
+
+```output
 True
 ```
 
 ### Example 2: Remove a budget with a budget name at resource group level
 ```powershell
-PS C:\> Remove-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -PassThru
+Remove-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -PassThru
+```
+
+```output
 True
 ```
 
 ### Example 3: Remove a budget through piping at subscription level
 ```powershell
-PS C:\> Get-AzConsumptionBudget -Name PSBudget | Remove-AzConsumptionBudget -PassThru
+Get-AzConsumptionBudget -Name PSBudget | Remove-AzConsumptionBudget -PassThru
+```
+
+```output
 True
 ```
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/Update-AzApiManagementGateway
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/Update-AzApiManagementGateway
 schema: 2.0.0
 ---
 
@@ -40,8 +40,8 @@ The **Update-AzApiManagementGateway** cmdlet configures an API management Gatewa
 
 ### Example 1: Configure a management group
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Update-AzApiManagementGateway -Context $apimContext -GatewayId "0001" -Description "Updated Gateway"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Update-AzApiManagementGateway -Context $apimContext -GatewayId "0001" -Description "Updated Gateway"
 ```
 
 This command configures a gateway.

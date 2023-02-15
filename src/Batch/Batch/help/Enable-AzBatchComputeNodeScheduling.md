@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 36EB9CE6-EAC9-471C-97D6-14E882E0F710
-online version: https://docs.microsoft.com/powershell/module/az.batch/enable-azbatchcomputenodescheduling
+online version: https://learn.microsoft.com/powershell/module/az.batch/enable-azbatchcomputenodescheduling
 schema: 2.0.0
 ---
 
@@ -32,9 +32,9 @@ A compute node is an Azure virtual machine dedicated to a specific application w
 ## EXAMPLES
 
 ### Example 1: Enable task scheduling on a compute node
-```
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
-PS C:\> Enable-AzBatchComputeNodeScheduling  -PoolId "myPool" -Id "tvm-1783593343_34-20151117t222514z" -BatchContext $Context
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
+Enable-AzBatchComputeNodeScheduling  -PoolId "myPool" -Id "tvm-1783593343_34-20151117t222514z" -BatchContext $Context
 ```
 
 These commands enable task scheduling on the compute node tvm-1783593343_34-20151117t222514z.
@@ -43,9 +43,9 @@ This object reference is stored in a variable named $context.
 The second command then uses this object reference and the **Enable-AzBatchComputeNodeScheduling** cmdlet to connect to the pool myPool and enable task scheduling on tvm-1783593343_34-20151117t222514z.
 
 ### Example 2: Enable task scheduling on compute nodes in a pool
-```
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
-PS C:\> Get-AzBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Enable-AzBatchComputeNodeScheduling  -BatchContext $Context
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
+Get-AzBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Enable-AzBatchComputeNodeScheduling  -BatchContext $Context
 ```
 
 These commands enable task scheduling on all the compute nodes found in the pool Pool06.

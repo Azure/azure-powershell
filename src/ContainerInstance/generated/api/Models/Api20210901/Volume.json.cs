@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
         partial void AfterFromJson(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject json);
 
         /// <summary>
-        /// <c>AfterToJson</c> will be called after the json erialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject"
+        /// <c>AfterToJson</c> will be called after the json serialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject"
         /// /> before it is returned. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
         /// <summary>
         /// <c>BeforeFromJson</c> will be called before the json deserialization has commenced, allowing complete customization of
         /// the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name= "returnNow" />
+        /// output parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="json">The JsonNode that should be deserialized into this object.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
         /// <summary>
         /// <c>BeforeToJson</c> will be called before the json serialization has commenced, allowing complete customization of the
         /// object before it is serialized.
-        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -106,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
             {_azureFile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("azureFile"), out var __jsonAzureFile) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.AzureFileVolume.FromJson(__jsonAzureFile) : AzureFile;}
             {_gitRepo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("gitRepo"), out var __jsonGitRepo) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.GitRepoVolume.FromJson(__jsonGitRepo) : GitRepo;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_emptyDir = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("emptyDir"), out var __jsonEmptyDir) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Any.FromJson(__jsonEmptyDir) : EmptyDir;}
+            {_emptyDir = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("emptyDir"), out var __jsonEmptyDir) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.VolumeEmptyDir.FromJson(__jsonEmptyDir) : EmptyDir;}
             {_secret = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("secret"), out var __jsonSecret) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.SecretVolume.FromJson(__jsonSecret) : Secret;}
             AfterFromJson(json);
         }

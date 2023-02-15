@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azrestorepoint
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azrestorepoint
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ This cmdlet can create a New Restore Point
 
 ```
 New-AzRestorePoint [-ResourceGroupName] <String> [-RestorePointCollectionName] <String> [-Name] <String>
- [[-DisksToExclude] <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-Location] <String>] [-RestorePointId <String>] [-DisksToExclude <String[]>] [-ConsistencyMode <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,18 +25,33 @@ Create's a new Restore Point
 
 ### Example 1
 ```powershell
-New-AzRestorePoint -ResourceGroupName <String> -RestorePointCollectionName <String> -Name <String> [-DisksToExclude] <String[]>
+New-AzRestorePoint -ResourceGroupName "myRG" -RestorePointCollectionName "myCollection" -Name "myRestorePoint" -ConsistencyMode "CrashConsistent"
 ```
 
 Creates a new Restore Point
 
 ## PARAMETERS
 
+### -ConsistencyMode
+ConsistencyMode of the restore point. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -48,25 +63,40 @@ Accept wildcard characters: False
 ```
 
 ### -DisksToExclude
-List of disk resource ids that the customer wishes to exclude from the restorepoint. If no disks are specified, all disks will be included.
+List of disk resource Id values that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
 
 ```yaml
-Type: String[]
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Set the region of the restore point
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 3
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Name
+The name of the restore point
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: RestorePointName
 
@@ -78,10 +108,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Resource group name this resource belongs to
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,10 +123,10 @@ Accept wildcard characters: False
 ```
 
 ### -RestorePointCollectionName
-Restore Point Collection Name
+Name of the restore point collection this restore point is part of
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,11 +137,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -RestorePointId
+ARM Id of the source restore point
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -127,7 +172,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -233,13 +234,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 //  fetch Nodelist for SQLAGs 
                 if (protectableItem.ProtectableItemType == "SQLAvailabilityGroup")
                 {
-                    // add the NodeList
-                    ProtectionContainerResource cont = ServiceClientAdapter.GetContainer(vaultName, resourceGroupName, containerUri);
-                    AzureSQLAGWorkloadContainerProtectionContainer protectionContainer = (AzureSQLAGWorkloadContainerProtectionContainer)cont.Properties;
-
-                    if(protectionContainer.ExtendedInfo != null)
+                    try
                     {
-                        protectableItem.NodesList = protectionContainer.ExtendedInfo.NodesList;
+                        // add the NodeList
+                        ProtectionContainerResource sqlAGContainer = ServiceClientAdapter.GetContainer(vaultName, resourceGroupName, containerUri);
+
+                        if(sqlAGContainer != null)
+                        {
+                            AzureSQLAGWorkloadContainerProtectionContainer protectionContainer = (AzureSQLAGWorkloadContainerProtectionContainer)sqlAGContainer.Properties;
+
+                            if (protectionContainer != null && protectionContainer.ExtendedInfo != null)
+                            {
+                                protectableItem.NodesList = protectionContainer.ExtendedInfo.NodesList;
+                            }
+                        }                        
+                    }
+                    catch (Exception e)
+                    {
+                        WriteDebug(e.Message);
                     }
                 }
             }

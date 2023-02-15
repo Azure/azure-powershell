@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilespool
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilespool
 schema: 2.0.0
 ---
 
@@ -35,11 +35,11 @@ The **Get-AzNetAppFilesPool** cmdlet gets details of an ANF pool.
 ## EXAMPLES
 
 ### Example 1: Get an ANF pool
+```powershell
+Get-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool"
 ```
-PS C:\>Get-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool"
 
-Output:
-
+```output
 Location          : westus2
 Id                : /subscriptions/subsID/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool
 Name              : MyAnfAccount/MyAnfPool
@@ -164,3 +164,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesPool](./New-AzNetAppFilesPool.md)
+[Remove-AzNetAppFilesPool](./Remove-AzNetAppFilesPool.md)
+[Set-AzNetAppFilesPool](./Set-AzNetAppFilesPool.md)
+[Update-AzNetAppFilesPool](./Update-AzNetAppFilesPool.md)

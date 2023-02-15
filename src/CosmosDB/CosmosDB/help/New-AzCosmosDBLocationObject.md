@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdblocationobject
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdblocationobject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Create a new CosmosDB Location Object(PSLocation).
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBLocationObject -LocationName {locationName} -FailoverPriority 2 -IsZoneRedundant 0
+New-AzCosmosDBLocationObject -LocationName "locationName" -FailoverPriority 2 -IsZoneRedundant 0
+```
 
+```output
 LocationName     FailoverPriority IsZoneRedundant
 ------------     ---------------- ---------------
 {locationName}                 2           False

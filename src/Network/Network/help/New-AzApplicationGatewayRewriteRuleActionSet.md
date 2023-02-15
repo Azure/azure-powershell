@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriteruleactionset
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriteruleactionset
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ New-AzApplicationGatewayRewriteRuleActionSet
 
 ### Example 1
 ```powershell
-PS C:\> $action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc -UrlConfiguration $urlConfiguration
+$action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc -UrlConfiguration $urlConfiguration
 ```
 
 This command creates a rewrite rule action set and stores the result in the variable named $action.

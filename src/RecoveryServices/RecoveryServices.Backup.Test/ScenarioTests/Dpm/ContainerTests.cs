@@ -13,23 +13,27 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ContainerTests : RMTestBase
+    public partial class ContainerTests : RecoveryServicesBackupTestRunner
     {
+        private readonly string _DpmcommonModule = $"ScenarioTests/Common.ps1";
+        private readonly string _DpmtestModule = $"ScenarioTests/{PsBackupProviderTypes.Dpm}/ContainerTests.ps1";
+
         [Fact(Skip ="To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.DPM)]
         public void TestBmsGetContainer()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.Dpm, "Test-BmsGetContainer");
+            TestRunner.RunTestScript(
+                $"Import-Module {_DpmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_DpmtestModule.AsAbsoluteLocation()}",
+                "Test-BmsGetContainer"
+            );
         }
 
         [Fact(Skip = "To be fixed in upcoming release")]
@@ -37,8 +41,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.DPM)]
         public void TestBmsUnregisterContainer()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.Dpm, "Test-BmsUnregisterContainer");
+            TestRunner.RunTestScript(
+                $"Import-Module {_DpmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_DpmtestModule.AsAbsoluteLocation()}",
+                "Test-BmsUnregisterContainer"
+            );
         }
     }
 }

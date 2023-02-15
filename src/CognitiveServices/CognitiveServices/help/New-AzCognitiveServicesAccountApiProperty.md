@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccountapiproperty
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccountapiproperty
 schema: 2.0.0
 ---
 
@@ -26,9 +26,9 @@ ApiProperties is required by certain account types.
 
 ### Example 1
 ```powershell
-PS C:\> $apiProperties = New-AzCognitiveServicesAccountApiProperty
-PS C:\> $apiProperties.QnaRuntimeEndpoint = "https://qnamaker.azurewebsites.net"
-PS C:\> New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name qnamaker -Type QnAMaker -SkuName S0 -Locatio WestUS -ApiProperty $apiProperties
+$apiProperties = New-AzCognitiveServicesAccountApiProperty
+$apiProperties.QnaRuntimeEndpoint = "https://qnamaker.azurewebsites.net"
+New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name qnamaker -Type QnAMaker -SkuName S0 -Location WestUS -ApiProperty $apiProperties
 ```
 
 Above example will create an QnAMaker account, with API property "QnaRuntimeEndpoint".

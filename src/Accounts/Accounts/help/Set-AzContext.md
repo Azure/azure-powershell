@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext
+online version: https://learn.microsoft.com/powershell/module/az.accounts/set-azcontext
 schema: 2.0.0
 ---
 
@@ -59,9 +59,11 @@ The context includes tenant, subscription, and environment information.
 ## EXAMPLES
 
 ### Example 1: Set the subscription context
+```powershell
+Set-AzContext -Subscription "xxxx-xxxx-xxxx-xxxx"
 ```
-PS C:\>Set-AzContext -Subscription "xxxx-xxxx-xxxx-xxxx"
 
+```Output
 Name    Account             SubscriptionName    Environment         TenantId
 ----    -------             ----------------    -----------         --------
 Work    test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...

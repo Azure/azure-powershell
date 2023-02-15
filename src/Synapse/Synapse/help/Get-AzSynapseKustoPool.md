@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopool
 schema: 2.0.0
 ---
 
@@ -36,8 +36,10 @@ Gets a Kusto pool.
 
 ### Example 1: List all Kusto pools in a workspace
 ```powershell
-PS C:\> Get-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws
+Get-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws
+```
 
+```output
 Location  Name                     Type                                    Etag
 --------  ----                     ----                                    ----
 East US 2 testws/testnewkustopool  Microsoft.Synapse/workspaces/kustoPools 
@@ -48,8 +50,10 @@ The above command lists all Kusto pools in the resource group "testrg".
 
 ### Example 2: Get a specific Kusto pool by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool
+Get-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool
+```
 
+```output
 Location  Name                    Type                                    Etag
 --------  ----                    ----                                    ----
 East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools 
@@ -171,7 +175,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
+INPUTOBJECT `<ISynapseIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[DataConnectionName <String>]`: The name of the data connection.
   - `[DatabaseName <String>]`: The name of the database in the Kusto pool.

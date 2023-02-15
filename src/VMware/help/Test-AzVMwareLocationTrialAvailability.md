@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationtrialavailability
+online version: https://learn.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationtrialavailability
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Return trial status for subscription by region
 
 ### Example 1: Check trial availability
 ```powershell
-PS C:\> Test-AzVMwareLocationTrialAvailability -Location westcentralus
+Test-AzVMwareLocationTrialAvailability -Location westcentralus
+```
 
+```output
 AvailableHost Status
 ------------- ------
 0             TrialDisabled
@@ -118,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ITrial
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ITrial
 
 ## NOTES
 

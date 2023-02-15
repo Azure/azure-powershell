@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/update-azvpngateway
+online version: https://learn.microsoft.com/powershell/module/az.network/update-azvpngateway
 schema: 2.0.0
 ---
 
@@ -17,7 +17,7 @@ Updates a scalable VPN gateway.
 Update-AzVpnGateway -ResourceGroupName <String> -Name <String> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzVpnGateway -ResourceGroupName <String> -Name <String> [-VpnConnection <
 Update-AzVpnGateway -InputObject <PSVpnGateway> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Update-AzVpnGateway -InputObject <PSVpnGateway> [-VpnConnection <PSVpnConnection
 Update-AzVpnGateway -ResourceId <String> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -48,12 +48,14 @@ An Azure VPN gateway is a software defined connectivity for site to site connect
 ### Example 1
 
 ```powershell
-PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
-PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
-PS C:\> $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-PS C:\> $vpnGateway = New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
-PS C:\> Update-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VpnGatewayScaleUnit 3
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+$virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+$vpnGateway = New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -VpnGatewayScaleUnit 2
+Update-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VpnGatewayScaleUnit 3
+```
 
+```output
 ResourceGroupName   : testRG
 Name                : testvpngw
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnGateways/testvpngw
@@ -73,19 +75,21 @@ After the gateway has been created, it uses  Update-AzVpnGateway to upgrade the 
 ### Example 2
 
 ```powershell
-PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
-PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
-PS C:\> $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-PS C:\> $vpnGateway = New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
-PS C:\>$ipconfigurationId1 = 'Instance0'
-PS C:\>$addresslist1 = @('169.254.21.5')
-PS C:\>$gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
-PS C:\>$ipconfigurationId2 = 'Instance1'
-PS C:\>$addresslist2 = @('169.254.21.10')
-PS C:\>$gw1ipconfBgp2 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId2 -CustomAddress $addresslist2
-PS C:\>$gw = Get-AzVpnGateway -ResourceGroupName testRg -Name testgw
-PS C:\> Update-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -BgpPeeringAddress @($gw1ipconfBgp1,$gw1ipconfBgp2)
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+$virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+$vpnGateway = New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -VpnGatewayScaleUnit 2
+$ipconfigurationId1 = 'Instance0'
+$addresslist1 = @('169.254.21.5')
+$gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
+$ipconfigurationId2 = 'Instance1'
+$addresslist2 = @('169.254.21.10')
+$gw1ipconfBgp2 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId2 -CustomAddress $addresslist2
+$gw = Get-AzVpnGateway -ResourceGroupName testRg -Name testgw
+Update-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -BgpPeeringAddress @($gw1ipconfBgp1,$gw1ipconfBgp2)
+```
 
+```output
 ResourceGroupName   : testRG
 Name                : testvpngw
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnGateways/testvpngw
@@ -102,6 +106,39 @@ A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
 
 After the gateway has been created, it uses Set-AzVpnGateway to update BgpPeeringAddress.
 
+### Example 3
+
+```powershell
+$gw = Get-AzVpnGateway -ResourceGroupName "testRg" -Name "testgw"
+$gw.BgpSettings.BgpPeeringAddresses
+$gw.BgpSettings.BgpPeeringAddresses[0].CustomBgpIpAddresses=$null
+$gw.BgpSettings.BgpPeeringAddresses[1].CustomBgpIpAddresses=$null
+$gw.BgpSettings.BgpPeeringAddresses
+Update-AzVpnGateway -InputObject $gw
+```
+The above example will update the Virtual WAN VPN Gateway to use the default BgpPeeringAddress.
+
+### Example 4
+
+```powershell
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+$virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+$vpnGateway = New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -VpnGatewayScaleUnit 2
+$ipconfigurationId1 = 'Instance0'
+$addresslist1 = @()
+$gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
+$ipconfigurationId2 = 'Instance1'
+$addresslist2 = @()
+$gw1ipconfBgp2 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId2 -CustomAddress $addresslist2
+$gw = Get-AzVpnGateway -ResourceGroupName testRg -Name testgw
+Update-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -BgpPeeringAddress @($gw1ipconfBgp1,$gw1ipconfBgp2)
+```
+
+The above example will update the Virtual WAN VPN Gateway to use the default BgpPeeringAddress.
+
+It uses Update-AzVpnGateway to update BgpPeeringAddress
+
 ## PARAMETERS
 
 ### -AsJob
@@ -109,6 +146,21 @@ Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Asn
+The vpn gateway's ASN for BGP over VPN
+
+```yaml
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 

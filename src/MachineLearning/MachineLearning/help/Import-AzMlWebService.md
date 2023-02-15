@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
-online version: https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice
+online version: https://learn.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice
 schema: 2.0.0
 ---
 
@@ -28,12 +28,12 @@ The Import-AzMlWebService cmdlet imports , specified either directly or in a ref
 ## EXAMPLES
 
 ### Example 1: Import from string
-```
+```powershell
 Import-AzMlWebService -JsonString $jsonDefinition
 ```
 
 ### Example 2: Import from file path
-```
+```powershell
 Import-AzMlWebService -InputFile "C:\mlservice.json"
 ```
 

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ContainerInstance
 Module Guid: ddf74844-4a25-4263-8a5c-f27979292e4e
-Download Help Link: https://docs.microsoft.com/powershell/module/az.containerinstance
+Download Help Link: https://learn.microsoft.com/powershell/module/az.containerinstance
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -47,7 +47,7 @@ Create a in-memory object for ImageRegistryCredential
 Create a in-memory object for Port
 
 ### [New-AzContainerGroupVolumeObject](New-AzContainerGroupVolumeObject.md)
-Create a in-memory object for Volume
+Create an in-memory object for Volume.
 
 ### [New-AzContainerInstanceEnvironmentVariableObject](New-AzContainerInstanceEnvironmentVariableObject.md)
 Create a in-memory object for EnvironmentVariable

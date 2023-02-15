@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
 ms.assetid: A8E230A0-5057-40BC-81CD-6D397A503A84
-online version: https://docs.microsoft.com/powershell/module/az.privatedns/Set-AzPrivateDnsVirtualNetworkLink
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/Set-AzPrivateDnsVirtualNetworkLink
 schema: 2.0.0
 ---
 
@@ -42,9 +42,11 @@ When specifying the zone using a **PSPrivateDnsVirtualNetworkLink** object (pass
 ## EXAMPLES
 
 ### Example 1: Set a link
+```powershell
+Set-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -Tag @{} -IsRegistrationEnabled $true
 ```
-PS C:\>Set-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -Tag @{} -IsRegistrationEnabled $true
 
+```output
 Name                    : mylink
 ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
                           etwork/privateDnsZones/myzone.com/virtualNetworkLinks/mylink

@@ -100,7 +100,7 @@ function Create-ProjectToFullPathMappings
             {
                 throw ($CsprojFile.FullName + " is conflicts with " + $Mappings[$CsprojFile.BaseName])
             }
-            $Mappings[$CsprojFile.BaseName] = $CsprojFile.FullName
+            $Mappings[$CsprojFile.BaseName] = [IO.Path]::GetRelativePath([IO.Path]::Combine($PSScriptRoot, ".."), $CsprojFile.FullName)
         }
     }
 
@@ -160,13 +160,8 @@ function Add-ProjectDependencies
     
     foreach ($Csproj in $CsprojList)
     {
-        try
-        {
-            $CsprojAbslutionPath = Resolve-Path -Path ($SolutionFoloderPath + "\\" + $Csproj)
-        }
-        catch
-        {
-            throw "${SolutionPath}: $Csproj is not found!"
+        If(-Not (Test-Path ($SolutionFoloderPath + "\\" + $Csproj))) {
+            Write-Error "${SolutionPath}: $Csproj is not found!"
         }
     }
     $Mappings[$SolutionPath] = $CsprojList | ForEach-Object { (Split-Path -Path $_ -Leaf).Replace('.csproj', '') }

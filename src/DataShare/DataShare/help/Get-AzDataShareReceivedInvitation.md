@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/get-azdatasharereceivedinvitation
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatasharereceivedinvitation
 schema: 2.0.0
 ---
 
@@ -23,9 +23,11 @@ The **Get-AzDataShareReceivedInvitation** cmdlet provides information about all 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareReceivedInvitation -location "westus"
 ```
-PS C:\> Get-AzDataShareReceivedInvitation -location "westus"
 
+```output
 DataSetCount      : 3
 InvitationId      : 167e06ff-567f-4bc7-be0c-645a6de710f3
 InvitationStatus  : Pending

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewaylearnedroute
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewaylearnedroute
 schema: 2.0.0
 ---
 
@@ -23,9 +23,11 @@ Enumerates routes learned by an Azure virtual network gateway from various sourc
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName resourceGroup -VirtualNetworkGatewayname gatewayName
 ```
-PS C:\> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName resourceGroup -VirtualNetworkGatewayname gatewayName
 
+```output
 AsPath       :
 LocalAddress : 10.1.0.254
 Network      : 10.1.0.0/16

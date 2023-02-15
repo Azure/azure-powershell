@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://docs.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsendpoint
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsendpoint
 schema: 2.0.0
 ---
 
@@ -37,37 +37,31 @@ Get DigitalTwinsInstances Endpoint.
 
 ### Example 1: List AzDigitalTwinsEndpoint in ResourceGroup
 ```powershell
-PS C:\> Get-AzDigitalTwinsEndpoint -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
+Get-AzDigitalTwinsEndpoint -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+```
 
-Name                     Type
-----                     ----
-youriDigitalTwinEndpoint Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
+```output
+Name            EndpointType AuthenticationType ResourceGroupName
+----            ------------ ------------------ -----------------
+azps-dt-eh      EventHub     KeyBased           azps_test_group
+azps-dt-eg      EventGrid    KeyBased           azps_test_group
+azps-dt-sb      ServiceBus   KeyBased           azps_test_group
 ```
 
 List all AzDigitalTwinsEndpoints by ResourceGroupName
 
 ### Example 2: Get AzDigitalTwinsEndpoint by EndpointName
 ```powershell
-PS C:\> Get-AzDigitalTwinsEndpoint -EndpointName youriDigitalTwinEndpoint -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
+Get-AzDigitalTwinsEndpoint -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -EndpointName azps-dt-eh
+```
 
-Name                     Type
-----                     ----
-youriDigitalTwinEndpoint Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
+```output
+Name       EndpointType AuthenticationType ResourceGroupName
+----       ------------ ------------------ -----------------
+azps-dt-eh EventHub     KeyBased           azps_test_group
 ```
 
 Get AzDigitalTwinsEndpoint by EndpointName in ResourceGroup
-
-### Example 3: Get AzDigitalTwinsEndpoint by 'AzDigitalTwinsEndpoint' Object
-```powershell
-PS C:\> $GetAzDigitalTwinsEndpoint = Get-AzDigitalTwinsEndpoint -EndpointName youriDigitalTwinEndpoint -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
-Get-AzDigitalTwinsEndpoint -InputObject $GetAzDigitalTwinsEndpoint
-
-Name                     Type
-----                     ----
-youriDigitalTwinEndpoint Microsoft.DigitalTwins/digitalTwinsInstances/endpoints
-```
-
-Get AzDigitalTwinsEndpoint by 'AzDigitalTwinsEndpoint' Object
 
 ## PARAMETERS
 
@@ -171,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
 
 ## NOTES
 
@@ -182,13 +176,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+`INPUTOBJECT <IDigitalTwinsIdentity>`: Identity Parameter
   - `[EndpointName <String>]`: Name of Endpoint Resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location of DigitalTwinsInstance.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the DigitalTwinsInstance.
+  - `[ResourceId <String>]`: The name of the private link resource.
   - `[ResourceName <String>]`: The name of the DigitalTwinsInstance.
   - `[SubscriptionId <String>]`: The subscription identifier.
+  - `[TimeSeriesDatabaseConnectionName <String>]`: Name of time series database connection.
 
 ## RELATED LINKS
 

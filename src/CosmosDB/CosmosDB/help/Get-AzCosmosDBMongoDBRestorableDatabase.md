@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbrestorabledatabase
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbrestorabledatabase
 schema: 2.0.0
 ---
 
@@ -34,10 +34,12 @@ For example, if user wants to restore the database account to a timestamp when a
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBMongoDBRestorableDatabase -Location {location} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId}
+Get-AzCosmosDBMongoDBRestorableDatabase -Location "location" -DatabaseAccountInstanceId "DatabaseAccountInstanceId"
+```
 
+```output
 Name            : cb04fbfc-4142-413d-b2c5-c91723a17e28
-Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{DatabaseAccountInstanceIdInstanceId}/restorableMongoDBDatabases/cb04fbfc-4142-413d-b2c5-c91723
+Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{DatabaseAccountInstanceId}/restorableMongoDBDatabases/cb04fbfc-4142-413d-b2c5-c91723
                   a17e28
 Type            : Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableMongoDBDatabases
 _rid            : a+35ZwAAAA==

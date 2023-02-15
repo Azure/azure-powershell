@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azcapacityreservationgroup
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azcapacityreservationgroup
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **New-AzCapacityReservationGroup** cmdlet creates a Capacity Reservation Gro
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCapacityReservationGroup -ResourceGroupName "myRG" -Location "eastus" -Name "myCapacityReservationGroup"
+New-AzCapacityReservationGroup -ResourceGroupName "myRG" -Location "eastus" -Name "myCapacityReservationGroup"
 ```
 
 This command will create a Capacity Reservation Group with given properties. 

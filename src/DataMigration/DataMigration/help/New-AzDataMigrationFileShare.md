@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationFileShare
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationFileShare
 schema: 2.0.0
 ---
 
 # New-AzDataMigrationFileShare
 
 ## SYNOPSIS
-Creates the FileShare object for the Azure Database Migration Service, which specifies the local network share to take the source database backups to.
+Creates the FileShare object for the Azure Database Migration Service (classic), which specifies the local network share to take the source database backups to.
 
 ## SYNTAX
 
@@ -18,14 +18,16 @@ New-AzDataMigrationFileShare -Path <String> -Credential <PSCredential>
 ```
 
 ## DESCRIPTION
-The New-AzDataMigrationFileShare cmdlet creates the FileShare object that specifies the local network share that Azure Database Migration Service can take source database backups to. The service account running source SQL Server instance must have write privileges on this network share.
+The New-AzDataMigrationFileShare cmdlet creates the FileShare object that specifies the local network share that Azure Database Migration Service (classic) can take source database backups to. The service account running source SQL Server instance must have write privileges on this network share.
 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataMigrationFileShare -Path $fileSharePath -Credential $fileShareCred
 ```
-PS C:\> New-AzDmsFileShare -Path $fileSharePath -Credential $fileShareCred
 
+```output
 UserName    Password     Path
 --------    --------     ----
 domain\user testadmin123 \\fileshare\folder1
@@ -79,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

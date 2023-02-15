@@ -26,8 +26,4 @@ Describe 'Update-AzADServicePrincipal' {
     It 'InputObjectWithDisplayNameParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'SPNWithDisplayNameParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

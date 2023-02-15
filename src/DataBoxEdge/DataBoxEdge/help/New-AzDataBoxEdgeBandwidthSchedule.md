@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/new-azdataboxedgebandwidthschedule
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/new-azdataboxedgebandwidthschedule
 schema: 2.0.0
 ---
 
@@ -33,7 +33,10 @@ The **New-AzDataBoxEdgeBandwidthSchedule** cmdlet creates a new Bandwidth Schedu
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeBandwidthSchedule  -Days Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -StartTime 11:00 -StopTime 12:00 -Bandwidth 30
+New-AzDataBoxEdgeBandwidthSchedule -DaysOfWeek Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -StartTime 11:00 -StopTime 12:00 -Bandwidth 30
+```
+
+```output
 Name                DaysOfWeek                  RateInMbps StartTime StopTime
 ----                ----------                  ---------- --------- --------
 bandwidthSchedule  Sunday, Tuesday, Saturday    30         11:00:00  12:00:00
@@ -41,7 +44,10 @@ bandwidthSchedule  Sunday, Tuesday, Saturday    30         11:00:00  12:00:00
 
 ### Example 2
 ```powershell
-PS C:\> New-AzDataBoxEdgeBandwidthSchedule  -Days Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthScheduleUnlimited -StartTime 11:00 -StopTime 12:00 -UnlimitedBandwidth
+New-AzDataBoxEdgeBandwidthSchedule -DaysOfWeek Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthScheduleUnlimited -StartTime 11:00 -StopTime 12:00 -UnlimitedBandwidth $ture
+```
+
+```output
 Name                          DaysOfWeek                RateInMbps  StartTime    StopTime
 ----------------              ----------------------    ----------- -----------  ---------
 bandwidthScheduleUnlimited  Sunday,Tuesday,Saturday     unlimited	11:00:00     12:00:00

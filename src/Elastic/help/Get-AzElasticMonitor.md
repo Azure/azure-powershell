@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticmonitor
+online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitor
 schema: 2.0.0
 ---
 
@@ -41,8 +41,10 @@ Get the properties of a specific monitor resource.
 
 ### Example 1: List all elastic monitors under a subscription
 ```powershell
-PS C:\> Get-AzElasticMonitor
+Get-AzElasticMonitor
+```
 
+```output
 Name                           SkuName                         MonitoringStatus Location      ResourceGroupName
 ----                           -------                         ---------------- --------      -----------------
 kk-elastictest02               ess-monthly-consumption_Monthly Enabled          westus2       kk-rg
@@ -56,8 +58,10 @@ This command lists all elastic monitors under a subscription.
 
 ### Example 2: List all elastic monitors under a resource group
 ```powershell
-PS C:\> Get-AzElasticMonitor -ResourceGroupName azure-elastic-test
+Get-AzElasticMonitor -ResourceGroupName azure-elastic-test
+```
 
+```output
 Name             SkuName                         MonitoringStatus Location ResourceGroupName
 ----             -------                         ---------------- -------- -----------------
 elastic-portal01 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
@@ -70,8 +74,10 @@ This command lists all elastic monitors under a resource group.
 
 ### Example 3: Get the properties of a specific monitor resource
 ```powershell
-PS C:\> Get-AzElasticMonitor -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
+Get-AzElasticMonitor -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
+```
 
+```output
 Name           SkuName                         MonitoringStatus Location ResourceGroupName
 ----           -------                         ---------------- -------- -----------------
 elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
@@ -81,8 +87,10 @@ This command gets the properties of a specific monitor resource.
 
 ### Example 4: Get the properties of a specific monitor resource by pipeline
 ```powershell
-PS C:\> New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -SkuName "ess-monthly-consumption_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com' | Get-AzElasticMonitor
+New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-monthly-consumption_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com' | Get-AzElasticMonitor
+```
 
+```output
 Name           SkuName                         MonitoringStatus Location ResourceGroupName
 ----           -------                         ---------------- -------- -----------------
 elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
@@ -190,7 +198,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
+INPUTOBJECT `<IElasticIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name
   - `[ResourceGroupName <String>]`: The name of the resource group to which the Elastic resource belongs.

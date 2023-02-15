@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 7C86B385-D784-45FD-9B57-31C895115A2C
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/add-azapimanagementapitoproduct
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/add-azapimanagementapitoproduct
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Add-AzApiManagementApiToProduct** cmdlet adds an Azure API Management API 
 ## EXAMPLES
 
 ### Example 1: Add an API to a product
-```
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Add-AzApiManagementApiToProduct -Context $ApiMgmtContext -ProductId "0123456789" -ApiId "0001"
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Add-AzApiManagementApiToProduct -Context $ApiMgmtContext -ProductId "0123456789" -ApiId "0001"
 ```
 
 This command adds the specified API to the specified product.

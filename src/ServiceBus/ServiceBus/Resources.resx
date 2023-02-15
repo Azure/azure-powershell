@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApproveNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Approve PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
+  </data>
   <data name="CompleteMigrationConfiguration" xml:space="preserve">
     <value>Complete the Standard to Premium migration</value>
   </data>
@@ -159,6 +162,15 @@
   <data name="FileDoesNotExist" xml:space="preserve">
     <value>File {0} does not exist</value>
   </data>
+  <data name="GetNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Get PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
+  </data>
+  <data name="GetNamespacePrivateLinks" xml:space="preserve">
+    <value>Get all PrivateLinks for Namespace: {0} of ResourceGroup: {1}</value>
+  </data>
+  <data name="ListNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Get all PrivateEndpoints for Namespace: {0} of ResourceGroup: {1}</value>
+  </data>
   <data name="RegenerateKeyNamesapce" xml:space="preserve">
     <value>Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Namespace:{1}</value>
   </data>
@@ -167,6 +179,9 @@
   </data>
   <data name="RegenerateKeyTopic" xml:space="preserve">
     <value>Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Topic:{1}</value>
+  </data>
+  <data name="RejectNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Reject PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
   </data>
   <data name="RemoveMigrationConfiguration" xml:space="preserve">
     <value>Delete the Migration Configuration</value>
@@ -177,11 +192,14 @@
   <data name="RemoveNamespaceAuthorizationRule" xml:space="preserve">
     <value>Are you sure you want to delete  AtuhorizationRule:{0} of Namespace: {1}</value>
   </data>
+  <data name="RemoveNamespacePrivateEndpoints" xml:space="preserve">
+    <value>Remove PrivateEndpoint named: {0} for Namespace: {1} of ResourceGroup: {2}</value>
+  </data>
   <data name="RemoveQueue" xml:space="preserve">
     <value>Deleting Queue:{0} of Namespace:{1}</value>
   </data>
   <data name="RemoveQueueAuthorizationRule" xml:space="preserve">
-    <value>Removeing AtuhorizationRule:{0} from Queue::{1} of Namespace: {2}</value>
+    <value>Removing AtuhorizationRule:{0} from Queue::{1} of Namespace: {2}</value>
   </data>
   <data name="RemoveRule" xml:space="preserve">
     <value>Deleting Rule:{0} for Subscription:{1} of Namespace:{2}</value>
@@ -193,10 +211,10 @@
     <value>Deleting Topic:{0} of Namespace:{1}</value>
   </data>
   <data name="RemoveTopicAuthorizationRule" xml:space="preserve">
-    <value>Removeing AtuhorizationRule:{0} from Topic: {1} of Namespace: {2}</value>
+    <value>Removeing AuthorizationRule:{0} from Topic: {1} of Namespace: {2}</value>
   </data>
   <data name="RemovingNamespaceAuthorizationRule" xml:space="preserve">
-    <value>Removing AtuhorizationRule:{0} of Namespace: {1}</value>
+    <value>Removing AuthorizationRule:{0} of Namespace: {1}</value>
   </data>
   <data name="RemovingQueueAuthorizationRule" xml:space="preserve">
     <value>Are you sure you want to remove AtuhorizationRule:{0} from Queue:{1} of Namespace: {2}</value>

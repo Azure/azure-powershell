@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/remove-azimagebuildertemplate
+online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/remove-azimagebuildertemplate
 schema: 2.0.0
 ---
 
@@ -14,9 +14,8 @@ Delete a virtual machine image template
 
 ### Delete (Default)
 ```
-Remove-AzImageBuilderTemplate -ImageTemplateName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -32,17 +31,14 @@ Delete a virtual machine image template
 
 ### Example 1: Remove a image template
 ```powershell
-PS C:\> Remove-AzImageBuilderTemplate -ImageTemplateName template-name-dmt6ze -ResourceGroupName wyunchi-imagebuilder
-
+Remove-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg
 ```
 
 This command removes a image template.
 
 ### Example 2: Remove a image template
 ```powershell
-PS C:\> $template = Get-AzImageBuilderTemplate -ImageTemplateName template-name-3uo8p6 -ResourceGroupName wyunchi-imagebuilder
-PS C:\> Remove-AzImageBuilderTemplate -InputObject $template
-
+Get-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg | Remove-AzImageBuilderTemplate
 ```
 
 This command removes a image template.
@@ -79,21 +75,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageTemplateName
-The name of the image Template
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: Name
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -107,6 +88,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the image Template
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: ImageTemplateName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -222,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IImageBuilderIdentity>: Identity Parameter
+`INPUTOBJECT <IImageBuilderIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ImageTemplateName <String>]`: The name of the image Template
   - `[ResourceGroupName <String>]`: The name of the resource group.

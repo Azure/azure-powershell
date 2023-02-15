@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Properties;
     using ResourceManager.Common;
     using WindowsAzure.Commands.Common;
+    using SdkModels = Microsoft.Azure.Management.ApiManagement.Models;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementCustomHostnameConfiguration", DefaultParameterSetName = "NoChangeCertificate")]
     [OutputType(typeof(PsApiManagementCustomHostNameConfiguration))]
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         private const string NoChangeCertificate = "NoChangeCertificate";
         private const string SslCertificateFromFile = "SslCertificateFromFile";
         private const string SslCertificateFromKeyVault = "SslCertificateFromKeyVault";
+        private const string SslCertificateManaged = "SslCertificateManaged";
 
         [Parameter(ValueFromPipelineByPropertyName = false,
             ParameterSetName = NoChangeCertificate, Mandatory = true, HelpMessage = "Custom Hostname")]
@@ -38,6 +40,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ParameterSetName = SslCertificateFromFile, Mandatory = true, HelpMessage = "Custom Hostname")]
         [Parameter(ValueFromPipelineByPropertyName = false,
             ParameterSetName = SslCertificateFromKeyVault, Mandatory = true, HelpMessage = "Custom Hostname")]
+        [Parameter(ValueFromPipelineByPropertyName = false,
+            ParameterSetName = SslCertificateManaged, Mandatory = true, HelpMessage = "Custom Hostname")]
         [ValidateNotNullOrEmpty]
         public string Hostname { get; set; }
 
@@ -47,6 +51,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ParameterSetName = SslCertificateFromFile, Mandatory = true, HelpMessage = "Hostname Type")]
         [Parameter(ValueFromPipelineByPropertyName = false,
             ParameterSetName = SslCertificateFromKeyVault, Mandatory = true, HelpMessage = "Hostname Type")]
+        [Parameter(ValueFromPipelineByPropertyName = false,
+            ParameterSetName = SslCertificateManaged, Mandatory = true, HelpMessage = "Hostname Type")]
         public PsApiManagementHostnameType HostnameType { get; set; }
         
         [Parameter(
@@ -96,6 +102,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                   " This parameter is optional. Default Value is false.")]
         public SwitchParameter NegotiateClientCertificate { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = SslCertificateManaged,
+            HelpMessage = "Determines whether we want to provision a managed certificate whose rotation is managed " +
+            "by the platform")]
+        public SwitchParameter ManagedCertificate { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var hostnameConfig = new PsApiManagementCustomHostNameConfiguration();
@@ -105,6 +118,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             if (!string.IsNullOrWhiteSpace(KeyVaultId))
             {
                 hostnameConfig.KeyVaultId = KeyVaultId;
+                hostnameConfig.CertificateSource = SdkModels.CertificateSource.KeyVault;
                 if (!string.IsNullOrWhiteSpace(IdentityClientId))
                 {
                     hostnameConfig.IdentityClientId = IdentityClientId;
@@ -126,6 +140,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 }
                 var encodedCertificate = Convert.ToBase64String(certificate);
                 hostnameConfig.EncodedCertificate = encodedCertificate;
+                hostnameConfig.CertificateSource = SdkModels.CertificateSource.Custom;
 
                 if (PfxPassword != null)
                 {
@@ -135,6 +150,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             else if (HostNameCertificateInformation != null)
             {
                 hostnameConfig.CertificateInformation = HostNameCertificateInformation;
+            }
+            else if (ManagedCertificate.IsPresent)
+            {
+                // managed certificate
+                hostnameConfig.CertificateSource = SdkModels.CertificateSource.Managed;
             }
             else
             {

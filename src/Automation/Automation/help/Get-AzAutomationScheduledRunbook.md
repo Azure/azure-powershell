@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: EE854F8A-4B6B-4831-992A-6EC318BEE234
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook
+online version: https://learn.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook
 schema: 2.0.0
 ---
 
@@ -51,25 +51,33 @@ Specify the name of a runbook or a schedule or both to see specific runbook sche
 ## EXAMPLES
 
 ### Example 1: Get all scheduled runbooks
-```
-PS C:\>Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01"
+```powershell
+Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets all scheduled runbooks in the Azure Automation account named Contoso17.
 
 ### Example 2: Get all schedules associated with a runbook
-```
-PS C:\>Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -RunbookName "Runbk01"
+```powershell
+Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -RunbookName "Runbk01"
 ```
 
 This command gets all scheduled runbooks for the runbook Runbk01 in the Azure Automation account named Contoso17.
 
 ### Example 3: Get all runbooks associated with a schedule
-```
-PS C:\>Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -ScheduleName "Schedule01"
+```powershell
+Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -ScheduleName "Schedule01"
 ```
 
 This command gets all scheduled runbooks for the schedule Schedule01 in the Azure Automation account named Contoso17.
+
+### Example 4: Get Parameters given to a particular Scheduled Runbook
+
+```powershell
+Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -JobScheduleId "2b1d7738-093d-4ff7-b87b-e4b2321319e5"
+```
+
+This is currently not supported for jobs created with complex parameters (for example - array) through Azure portal.
 
 ## PARAMETERS
 
@@ -164,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

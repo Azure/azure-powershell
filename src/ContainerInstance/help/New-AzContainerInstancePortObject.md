@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstancePortObject
+online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstancePortObject
 schema: 2.0.0
 ---
 
@@ -23,8 +23,10 @@ Create a in-memory object for ContainerPort
 
 ### Example 1: Specify port 8000 exposed on a container instance with TCP protocol
 ```powershell
-PS C:\> New-AzContainerInstancePortObject -Port 8000 -Protocol TCP
+New-AzContainerInstancePortObject -Port 8000 -Protocol TCP
+```
 
+```output
 Port Protocol
 ----- --------
 8000  TCP

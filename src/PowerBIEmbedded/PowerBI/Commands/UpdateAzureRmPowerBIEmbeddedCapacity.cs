@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.PowerBI
             Mandatory = false,
             HelpMessage = "Name of the Sku used to create the capacity")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("A1", "A2", "A3", "A4", "A5", "A6", IgnoreCase = true)]
+        [ValidateSet("A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", IgnoreCase = true)]
         public string Sku { get; set; }
 
         [Parameter(

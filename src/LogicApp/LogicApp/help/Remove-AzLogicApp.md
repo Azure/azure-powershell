@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 39D1576D-7042-4A62-AB41-0B5131C150D5
-online version: https://docs.microsoft.com/powershell/module/az.logicapp/remove-azlogicapp
+online version: https://learn.microsoft.com/powershell/module/az.logicapp/remove-azlogicapp
 schema: 2.0.0
 ---
 
@@ -29,8 +29,8 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Remove a logic app
-```
-PS C:\>Remove-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -Force
+```powershell
+Remove-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -Force
 ```
 
 This command removes a logic app from a resource group.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
-online version: https://docs.microsoft.com/powershell/module/az.resources/set-azroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/set-azroledefinition
 schema: 2.0.0
 ---
 
@@ -62,16 +62,16 @@ Following is a sample updated role definition json for Set-AzRoleDefinition
 
 ### Example 1: Update using PSRoleDefinitionObject
 ```powershell
-PS C:\> $roleDef = Get-AzRoleDefinition "Contoso On-Call"
-PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
-PS C:\> $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
-PS C:\> $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-PS C:\> Set-AzRoleDefinition -Role $roleDef
+$roleDef = Get-AzRoleDefinition "Contoso On-Call"
+$roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
+$roleDef.Description = "Can monitor all resources and start and restart virtual machines"
+$roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+Set-AzRoleDefinition -Role $roleDef
 ```
 
 ### Example 2: Create using JSON file
 ```powershell
-PS C:\> Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
+Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
 
 ## PARAMETERS

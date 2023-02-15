@@ -124,33 +124,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to InitialDownloadPolicy parameter has invalid value..
-        /// </summary>
-        internal static string InvalidInitialDownloadPolicyErrorMessage {
-            get {
-                return ResourceManager.GetString("InvalidInitialDownloadPolicyErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LocalCacheMode parameter has invalid value..
-        /// </summary>
-        internal static string InvalidLocalCacheModeErrorMessage {
-            get {
-                return ResourceManager.GetString("InvalidLocalCacheModeErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &quot;This cmdlet has been deprecated. Please use the &apos;Invoke-StorageSyncFileRecall&apos; cmdlet that is shipped with the AFS agent..
-        /// </summary>
-        internal static string InvokeAzStorageSyncFileRecallDeprecationMessage {
-            get {
-                return ResourceManager.GetString("InvokeAzStorageSyncFileRecallDeprecationMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invoke change detection for Cloud Endpoint.
         /// </summary>
         internal static string InvokeChangeDetectionActionMessage {
@@ -165,15 +138,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         internal static string InvokeCompatibilityCheckError1Format {
             get {
                 return ResourceManager.GetString("InvokeCompatibilityCheckError1Format", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invoke Storage Sync File Recall.
-        /// </summary>
-        internal static string InvokeStorageSyncFileRecallActionMessage {
-            get {
-                return ResourceManager.GetString("InvokeStorageSyncFileRecallActionMessage", resourceCulture);
             }
         }
         
@@ -201,6 +165,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         internal static string MissingResourceIdErrorMessage {
             get {
                 return ResourceManager.GetString("MissingResourceIdErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service Principal for Azure File Sync was not found. Please contact administrator for further troubleshooting..
+        /// </summary>
+        internal static string MissingServicePrincipalResourceIdErrorMessage {
+            get {
+                return ResourceManager.GetString("MissingServicePrincipalResourceIdErrorMessage", resourceCulture);
             }
         }
         

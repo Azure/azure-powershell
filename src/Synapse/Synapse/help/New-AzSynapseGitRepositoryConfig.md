@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsegitrepositoryconfig
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsegitrepositoryconfig
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Creates Git repository configuration.
 ```
 New-AzSynapseGitRepositoryConfig -RepositoryType <String> [-HostName <String>] -AccountName <String>
  [-ProjectName <String>] -RepositoryName <String> -CollaborationBranch <String> [-RootFolder <String>]
- [-TenantId <Guid>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-TenantId <Guid>] [-LastCommitId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,10 +25,10 @@ This **New-AzSynapseGitRepositoryConfig** cmdlets creates a Git repository confi
 
 ### Example 1
 ```powershell
-PS C:\> $config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
-PS C:\> $password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
-PS C:\> $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
-PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -AsJob -GitRepository $config
+$config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
+$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+$creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
+New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -AsJob -GitRepository $config
 ```
 
 The first command creates a Git repository configuration. Then the rest methods uses the configuration to creates a new Synapse workspace.
@@ -83,6 +83,21 @@ Accept wildcard characters: False
 ### -HostName
 GitHub Enterprise host name.
 For example: `https://github.mydomain.com`
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LastCommitId
+The last published commit Id.
 
 ```yaml
 Type: System.String

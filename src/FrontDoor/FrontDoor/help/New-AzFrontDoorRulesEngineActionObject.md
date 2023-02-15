@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorrulesengineactionobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorrulesengineactionobject
 schema: 2.0.0
 ---
 
@@ -49,16 +49,17 @@ Use cmdlet "New-AzFrontDoorHeaderActionObject" to create PSHeaderObjects to pass
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> $headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Append" -HeaderName "X-Content-Type-Options" -Value "nosniff"
-PS C:\> $headerActions
+$headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Append" -HeaderName "X-Content-Type-Options" -Value "nosniff"
+$headerActions
 
 HeaderName             HeaderActionType Value
 ----------             ---------------- -----
 X-Content-Type-Options           Append nosniff
 
-PS C:\> $rulesEngineAction = New-AzFrontDoorRulesEngineActionObject -ResponseHeaderAction $headerActions
-PS C:\> $rulesEngineAction
+$rulesEngineAction = New-AzFrontDoorRulesEngineActionObject -ResponseHeaderAction $headerActions
+$rulesEngineAction
 
 RequestHeaderActions ResponseHeaderActions    RouteConfigurationOverride
 -------------------- ---------------------    --------------------------
@@ -69,23 +70,24 @@ RequestHeaderActions ResponseHeaderActions    RouteConfigurationOverride
 Create a rules engine action that append response header value and show how to view the properties of the rules engine action created.
 
 ### Example 2
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> $rulesEngineAction = New-AzFrontDoorRulesEngineActionObject -RequestHeaderAction $headerActions -ForwardingProtocol HttpsOnly -BackendPoolName mybackendpool -ResourceGroupName Jessicl-Test-RG -FrontDoorName jessicl-test-myappfrontend -QueryParameterStripDirective StripNone -DynamicCompression Disabled -EnableCaching $true
-PS C:\> $rulesEngineAction
+$rulesEngineAction = New-AzFrontDoorRulesEngineActionObject -RequestHeaderAction $headerActions -ForwardingProtocol HttpsOnly -BackendPoolName mybackendpool -ResourceGroupName Jessicl-Test-RG -FrontDoorName jessicl-test-myappfrontend -QueryParameterStripDirective StripNone -DynamicCompression Disabled -EnableCaching $true
+$rulesEngineAction
 
 RequestHeaderAction            ResponseHeaderAction RouteConfigurationOverride
 -------------------            -------------------- --------------------------
 {headeraction1, headeraction2} {}                   Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
 
-PS C:\> $rulesEngineAction.RequestHeaderAction
+$rulesEngineAction.RequestHeaderAction
 
 HeaderName    HeaderActionType Value
 ----------    ---------------- -----
 headeraction1        Overwrite
 headeraction2           Append
 
-PS C:\> $rulesEngineAction.ResponseHeaderAction
-PS C:\> $rulesEngineAction.RouteConfigurationOverride
+$rulesEngineAction.ResponseHeaderAction
+$rulesEngineAction.RouteConfigurationOverride
 
 CustomForwardingPath         :
 ForwardingProtocol           : HttpsOnly
@@ -99,15 +101,16 @@ EnableCaching                : True
 Create a rules engine action that forwards the requests to a speicific backend pool and show how to view the properties of the rules engine action created.
 
 ### Example 3
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> $rulesEngineAction = New-AzFrontDoorRulesEngineActionObject -RedirectType Moved -RedirectProtocol MatchRequest -CustomHost www.contoso.com
-PS C:\> $rulesEngineAction
+$rulesEngineAction = New-AzFrontDoorRulesEngineActionObject -RedirectType Moved -RedirectProtocol MatchRequest -CustomHost www.contoso.com
+$rulesEngineAction
 
 RequestHeaderActions ResponseHeaderActions RouteConfigurationOverride
 -------------------- --------------------- --------------------------
 {}                   {}                    Microsoft.Azure.Commands.FrontDoor.Models.PSRedirectConfiguration
 
-PS C:\> $rulesEngineAction.RouteConfigurationOverride
+$rulesEngineAction.RouteConfigurationOverride
 
 RedirectType      : Moved
 RedirectProtocol  : MatchRequest

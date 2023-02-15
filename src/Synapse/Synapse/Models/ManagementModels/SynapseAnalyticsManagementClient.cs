@@ -1662,11 +1662,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region Spark pool operations
 
-        public BigDataPoolResourceInfo CreateOrUpdateSparkPool(string resourceGroupName, string workspaceName, string sparkPoolName, BigDataPoolResourceInfo createOrUpdateParams)
+        public BigDataPoolResourceInfo CreateOrUpdateSparkPool(string resourceGroupName, string workspaceName, string sparkPoolName, BigDataPoolResourceInfo createOrUpdateParams, bool? Force = false)
         {
             try
             {
-                return _synapseManagementClient.BigDataPools.CreateOrUpdate(resourceGroupName, workspaceName, sparkPoolName, createOrUpdateParams);
+                return _synapseManagementClient.BigDataPools.CreateOrUpdate(resourceGroupName, workspaceName, sparkPoolName, createOrUpdateParams, Force);
             }
             catch (ErrorResponseException ex)
             {
@@ -2591,6 +2591,44 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             catch (AzPSResourceNotFoundCloudException)
             {
                 return false;
+            }
+        }
+
+        #endregion
+
+        #region Azure AD-Only Authentication
+
+        public List<AzureADOnlyAuthentication> ListAzureADOnlyAuthentications(string resourceGroupName, string workspaceName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+                var firstPage = this._synapseManagementClient.AzureADOnlyAuthentications.List(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.AzureADOnlyAuthentications.ListNext);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        public AzureADOnlyAuthentication CreateOrUpdateAzureADOnlyAuthentication(string resourceGroupName, string workspaceName, AzureADOnlyAuthentication azureADOnlyAuthentication)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }            
+
+                return this._synapseManagementClient.AzureADOnlyAuthentications.Create(resourceGroupName, workspaceName, azureADOnlyAuthentication);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw GetAzurePowerShellException(ex);
             }
         }
 

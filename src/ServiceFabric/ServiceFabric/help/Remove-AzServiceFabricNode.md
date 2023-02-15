@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricnode
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricnode
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Use **Remove-AzServiceFabricNode** to remove nodes from a specific node type fro
 
 ### Example 1
 ```powershell
-PS c:> Remove-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'nt1' -NumberOfNodesToRemove 2
+Remove-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'nt1' -NumberOfNodesToRemove 2
 ```
 
 This command will remove 2 nodes from the NodeType 'nt1'.

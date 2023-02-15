@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorloadbalancingsettingobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorloadbalancingsettingobject
 schema: 2.0.0
 ---
 
@@ -25,9 +25,10 @@ Create a PSLoadBalancingSetting object for Front Door creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
+New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
+```
 
-
+```output
 SampleSize                    : 4
 AdditionalLatencyMilliseconds : 0
 SuccessfulSamplesRequired     : 2

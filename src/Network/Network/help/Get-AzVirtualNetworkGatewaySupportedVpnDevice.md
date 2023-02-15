@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewaysupportedvpndevice
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewaysupportedvpndevice
 schema: 2.0.0
 ---
 
@@ -23,19 +23,14 @@ This commandlet returns a list of supported VPN device brands, models, and firmw
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzVirtualNetworkGatewaySupportedVpnDevice -ResourceGroupName TestRG -Name TestGateway 
-<?xml version="1.0" encoding="utf-8"?>
-<RpVpnDeviceList version="1.0">
-  <Vendor name="Cisco-Test">
-    <DeviceFamily name="IOS-Test">
-       <FirmwareVersion name="20" />
-    </DeviceFamily>
-  </Vendor>
-</RpVpnDeviceList>
+
+The following example returns a list of supported VPN device brands, models and firmware versions.
+
+```powershell
+Get-AzVirtualNetworkGatewaySupportedVpnDevice -ResourceGroupName TestRG -Name TestGateway
 ```
 
-Returns list of supported VPN device brands, models and firmware versions:
+```output
 <?xml version="1.0" encoding="utf-8"?>
 <RpVpnDeviceList version="1.0">
   <Vendor name="Cisco-Test">
@@ -44,6 +39,7 @@ Returns list of supported VPN device brands, models and firmware versions:
     </DeviceFamily>
   </Vendor>
 </RpVpnDeviceList>
+```
 
 ## PARAMETERS
 

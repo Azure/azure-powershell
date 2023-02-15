@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/set-azenvironment
+online version: https://learn.microsoft.com/powershell/module/az.accounts/set-azenvironment
 schema: 2.0.0
 ---
 
@@ -51,8 +51,9 @@ The Set-AzEnvironment cmdlet sets endpoints and metadata for connecting to an in
 ## EXAMPLES
 
 ### Example 1: Creating and modifying a new environment
-```
-PS C:\> Add-AzEnvironment -Name TestEnvironment `
+<!-- Skip: Output cannot be splitted from code -->
+```powershell
+Add-AzEnvironment -Name TestEnvironment `
         -ActiveDirectoryEndpoint TestADEndpoint `
         -ActiveDirectoryServiceEndpointResourceId TestADApplicationId `
         -ResourceManagerEndpoint TestRMEndpoint `
@@ -63,8 +64,8 @@ Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/
 
-PS C:\> Set-AzEnvironment -Name TestEnvironment
-        -ActiveDirectoryEndpoint NewTestADEndpoint
+Set-AzEnvironment -Name TestEnvironment `
+        -ActiveDirectoryEndpoint NewTestADEndpoint `
         -GraphEndpoint NewTestGraphEndpoint | Format-List
 
 Name                                              : TestEnvironment

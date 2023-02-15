@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 0F141A92-4994-45B3-AE94-09865BC691C4
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -36,7 +36,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,14 +45,14 @@ Creates the Site-to-Site VPN connection between the virtual network gateway and 
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5'
 ```
 ### Example 2 Add/Update IngressNatRule/EgressNatRule to an existing virtual network gateway connection
-```
-PS C:\>$ingressnatrule = get-azVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule1" -ParentResourceName vnetgw1
-PS C:\>$egressnatrule = get-azVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule2" -ParentResourceName vnetgw1
-PS C:\>New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5' 
+```powershell
+$ingressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule1" -ParentResourceName vnetgw1
+$egressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule2" -ParentResourceName vnetgw1
+New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5' `
 -IngressNatRule $ingressnatrule -EgressNatRule $egressnatrule
 ```
 The first command gets a virtual network gateway natRule named natRule1 that's type is IngressSnat.
@@ -215,6 +215,21 @@ Accept wildcard characters: False
 
 ### -ExpressRouteGatewayBypass
 Whether to use accelerated virtual network access by bypassing gateway
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnablePrivateLinkFastPath
+Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (ExpressRouteGatewayBypass) must be enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

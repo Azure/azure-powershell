@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgestorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgestorageaccount
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzDataBoxEdgeStorageAccount** cmdlet removes an associated Edge Sto
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeStorageAccount -ResourceGroupName resourceGroupName -DeviceName deviceName -Name edgestorageaccountname
+Remove-AzDataBoxEdgeStorageAccount -ResourceGroupName resourceGroupName -DeviceName deviceName -Name edgestorageaccountname
 ```
 
 ## PARAMETERS

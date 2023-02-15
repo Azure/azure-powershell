@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsfunction
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsfunction
 schema: 2.0.0
 ---
 
@@ -36,8 +36,9 @@ update one or two properties) a function without affecting the rest the job or f
 
 ### Example 1: Update a Stream Analytics function
 ```powershell
-PS C:\> Update-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name function-01 -File .\test\template-json\Function_JavascriptUdf.json
-
+Update-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name function-01 -File .\test\template-json\Function_JavascriptUdf.json
+```
+```output
 Name        Type                                              ETag
 ----        ----                                              ----
 function-01 Microsoft.StreamAnalytics/streamingjobs/functions 3206c07f-ed77-4e24-b101-7aa2ac1f3cef
@@ -47,8 +48,9 @@ This command updates a function from the file Function_JavascriptUdf.json.
 
 ### Example 2: Update a Stream Analytics function by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name function-01 | Update-AzStreamAnalyticsFunction -File .\test\template-json\MachineLearningServices.json
-
+Get-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name function-01 | Update-AzStreamAnalyticsFunction -File .\test\template-json\MachineLearningServices.json
+```
+```output
 Name        Type                                              ETag
 ----        ----                                              ----
 function-01 Microsoft.StreamAnalytics/streamingjobs/functions 3206c07f-ed77-4e24-b101-7aa2ac1f3cef
@@ -234,7 +236,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+INPUTOBJECT `<IStreamAnalyticsIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.
   - `[FunctionName <String>]`: The name of the function.
   - `[Id <String>]`: Resource identity path

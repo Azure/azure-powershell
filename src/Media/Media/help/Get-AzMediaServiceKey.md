@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 2099938F-5325-416C-AE10-6813546A1055
-online version: https://docs.microsoft.com/powershell/module/az.media/get-azmediaservicekey
+online version: https://learn.microsoft.com/powershell/module/az.media/get-azmediaservicekey
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzMediaServiceKey** cmdlet gets key information for accessing the Repr
 ## EXAMPLES
 
 ### Example 1: Get the key information for accessing the media service
-```
-PS C:\>Get-AzMediaServiceKey -ResourceGroupName "ResourceGroup001" -AccountName "MediaService001"
+```powershell
+Get-AzMediaServiceKey -ResourceGroupName "ResourceGroup001" -AccountName "MediaService001"
 ```
 
 This command gets the key information for accessing the media service named MediaService001 that belongs to the resource group named ResourceGroup001.

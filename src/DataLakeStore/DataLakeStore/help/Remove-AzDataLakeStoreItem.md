@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 164DC871-0F0C-4E71-A37A-2B85CE65C2C4
-online version: https://docs.microsoft.com/powershell/module/az.datalakestore/remove-azdatalakestoreitem
+online version: https://learn.microsoft.com/powershell/module/az.datalakestore/remove-azdatalakestoreitem
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzDataLakeStoreItem** cmdlet deletes a file or folder in Data Lake 
 ## EXAMPLES
 
 ### Example 1: Remove multiple items
-```
-PS C:\>Remove-AzDataLakeStoreItem -AccountName "ContosoADL" -Paths "/File01.txt","/MyFiles/File.csv"
+```powershell
+Remove-AzDataLakeStoreItem -AccountName "ContosoADL" -Paths "/File01.txt","/MyFiles/File.csv"
 ```
 
 This command removes the files File01.txt and File.csv from the Data Lake Store.

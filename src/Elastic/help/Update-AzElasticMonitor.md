@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.elastic/update-azelasticmonitor
+online version: https://learn.microsoft.com/powershell/module/az.elastic/update-azelasticmonitor
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Update a monitor resource.
 
 ### Example 1: Update a monitor resource
 ```powershell
-PS C:\> Update-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -Tag @{'key01' = '1'; 'key2' = '2'; 'key3' = '3'}
+Update-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -Tag @{'key01' = '1'; 'key2' = '2'; 'key3' = '3'}
+```
 
+```output
 Name           SkuName                         MonitoringStatus Location ResourceGroupName
 ----           -------                         ---------------- -------- -----------------
 elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
@@ -42,8 +44,10 @@ This command updates a monitor resource.
 
 ### Example 2: Update a monitor resource by pipeline
 ```powershell
-PS C:\> Get-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 | Update-AzElasticMonitor -Tag @{'key01' = '1'; 'key2' = '2'; 'key3' = '3'}
+Get-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 | Update-AzElasticMonitor -Tag @{'key01' = '1'; 'key2' = '2'; 'key3' = '3'}
+```
 
+```output
 Name           SkuName                         MonitoringStatus Location ResourceGroupName
 ----           -------                         ---------------- -------- -----------------
 elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
@@ -197,7 +201,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
+INPUTOBJECT `<IElasticIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name
   - `[ResourceGroupName <String>]`: The name of the resource group to which the Elastic resource belongs.

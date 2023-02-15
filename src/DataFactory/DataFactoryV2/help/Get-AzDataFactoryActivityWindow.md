@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: F8C67F7B-64C5-45E4-A0BF-32212BEBE885
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryactivitywindow
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryactivitywindow
 schema: 2.0.0
 ---
 
@@ -37,8 +37,11 @@ The **Get-AzDataFactoryActivityWindow** cmdlet gets information about the activi
 ## EXAMPLES
 
 ### Example 1: Get activity windows associated with a data factory
+```powershell
+Get-AzDataFactoryActivityWindow -DataFactoryName "WikiADF" -ResourceGroupName "ADF" -Top 3
 ```
-PS C:\>Get-AzDataFactoryActivityWindow -DataFactoryName "WikiADF" -ResourceGroupName "ADF" -Top 3
+
+```output
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF
 PipelineName      : DP_WikipediaSamplePipeline

@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw new ArgumentException(
                             Resources.GetRPErrorStartTimeShouldBeLessThanUTCNow);
                     }
-
+                    
                     providerParameters.Add(RecoveryPointParams.StartDate, rangeStart);
                     providerParameters.Add(RecoveryPointParams.EndDate, rangeEnd);
                     if (string.Compare(Item.BackupManagementType.ToString(),
@@ -203,6 +203,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         new PsBackupProviderManager(providerParameters, ServiceClientAdapter);
                     IPsBackupProvider psBackupProvider =
                         providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
+                    
                     var rpList = psBackupProvider.ListRecoveryPoints();
 
                     WriteDebug(string.Format("RPCount in Response = {0}", rpList.Count));

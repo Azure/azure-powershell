@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceinstanceview
+online version: https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceinstanceview
 schema: 2.0.0
 ---
 
@@ -23,15 +23,16 @@ Gets the status of a cloud service.
 ## EXAMPLES
 
 ### Example 1: Get cloud service instance view
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\>$cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 
-PS C:\>$cloudServiceInstanceView
+$cloudServiceInstanceView
 RoleInstanceStatusesSummary                                   Statuses
 ---------------------------                                   --------
 {{ProvisioningState/succeeded : 4}, {PowerState/started : 4}} {Provisioning succeeded, Started, Current Upgrade Domain of cloud service is -1., Max Upgrade Domain of cloud service is 1.}
 
-PS C:\>$cloudServiceInstanceView.ToJsonString()
+$cloudServiceInstanceView.ToJsonString()
 {
   "roleInstance": {
     "statusesSummary": [

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup
+online version: https://learn.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup
 schema: 2.0.0
 ---
 
@@ -26,25 +26,25 @@ The Failover Group's primary server must be used to execute the command.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $failoverGroup = Get-AzSqlDatabase -ResourceGroupName rg -ServerName primaryserver -DatabaseName db1 | Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg
+```powershell
+$failoverGroup = Get-AzSqlDatabase -ResourceGroupName rg -ServerName primaryserver -DatabaseName db1 | Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg
 ```
 
 This command adds one database to a Failover Group by piping it in.
 
 ### Example 2
-```
-PS C:\> $primaryServer = Get-AzSqlServer -ResourceGroupName rg -ServerName primaryserver
-PS C:\> $failoverGroup = $primaryServer | Add-AzSqlDatabaseToFailoverGroup -FailoverGroupName fg -Database ($primaryServer | Get-AzSqlDatabase)
+```powershell
+$primaryServer = Get-AzSqlServer -ResourceGroupName rg -ServerName primaryserver
+$failoverGroup = $primaryServer | Add-AzSqlDatabaseToFailoverGroup -FailoverGroupName fg -Database ($primaryServer | Get-AzSqlDatabase)
 ```
 
 This command adds all databases in a server to a Failover Group.
 
 ### Example 3
-```
-PS C:\> $failoverGroup = Get-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg
-PS C:\> $databases = Get-AzSqlElasticPoolDatabase -ResourceGroupName rg -ServerName primaryserver -ElasticPoolName pool1
-PS C:\> $failoverGroup = $failoverGroup | Add-AzSqlDatabaseToFailoverGroup -Database $databases
+```powershell
+$failoverGroup = Get-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg
+$databases = Get-AzSqlElasticPoolDatabase -ResourceGroupName rg -ServerName primaryserver -ElasticPoolName pool1
+$failoverGroup = $failoverGroup | Add-AzSqlDatabaseToFailoverGroup -Database $databases
 ```
 
 This command adds all databases in an Elastic Pool to a Failover Group.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://docs.microsoft.com/powershell/module/az.functions/restart-azfunctionapp
+online version: https://learn.microsoft.com/powershell/module/az.functions/restart-azfunctionapp
 schema: 2.0.0
 ---
 
@@ -31,14 +31,14 @@ Restarts a function app.
 
 ### Example 1: Get a function app by name and restart it.
 ```powershell
-PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -Force
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -Force
 ```
 
 This command gets a function app by name and restarts it.
 
 ### Example 2: Restart a function app by name.
 ```powershell
-PS C:\> Restart-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Restart-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 ```
 
 This command restarts a function app by name.
@@ -201,7 +201,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISite>: 
+`INPUTOBJECT <ISite>`: 
   - `Location <String>`: Resource Location.
   - `[Kind <String>]`: Kind of resource.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -222,6 +222,8 @@ INPUTOBJECT <ISite>:
   - `[CloningInfoTrafficManagerProfileId <String>]`: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   - `[CloningInfoTrafficManagerProfileName <String>]`: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   - `[Config <ISiteConfig>]`: Configuration of the app.
+    - `[AcrUseManagedIdentityCred <Boolean?>]`: Flag to use Managed Identity Creds for ACR pull
+    - `[AcrUserManagedIdentityId <String>]`: If using user managed identity, the user managed identity ClientId
     - `[ActionMinProcessExecutionTime <String>]`: Minimum time the process must execute         before taking the action
     - `[ActionType <AutoHealActionType?>]`: Predefined action to be taken.
     - `[AlwaysOn <Boolean?>]`: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.

@@ -16,40 +16,19 @@
 
 <#
 .Synopsis
-Description for Gets the details of a web, mobile, or API app.
+Gets the details of a web, mobile, or API app.
 .Description
-Description for Gets the details of a web, mobile, or API app.
+Gets the details of a web, mobile, or API app.
 .Example
-PS C:\> Get-AzFunctionApp
-
-Name                     Status  OSType  Runtime Location    AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------    -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US  CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
-Functions1-Windows-Java  Running Windows Java    West Europe Premium1-WE    Functions-West-Europe1    fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp
 .Example
-PS C:\> Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win -Name Functions1-Windows-DoNet
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win -Name Functions1-Windows-DoNet
 .Example
-PS C:\> Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -ResourceGroupName Functions-West-Europe-Win
 .Example
-PS C:\> Get-AzFunctionApp -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8b
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8b
 .Example
-PS C:\> Get-AzFunctionApp -Location "Central US"
-
-Name                     Status  OSType  Runtime Location   AppServicePlan ResourceGroupName         SubscriptionId
-----                     ------  ------  ------- --------   -------------- -----------------         --------------
-Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Functions-West-Europe-Win fe16564a-d943-4bf8-8c28-cf01708c3f8b
+Get-AzFunctionApp -Location "Central US"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -118,7 +97,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionapp
 #>
 function Get-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -224,6 +203,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunctionApp_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunctionApp_GetViaIdentity';
@@ -239,6 +219,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -247,15 +228,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

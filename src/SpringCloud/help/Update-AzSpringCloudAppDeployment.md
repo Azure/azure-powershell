@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.SpringCloud/update-azSpringCloudappdeployment
+online version: https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudappdeployment
 schema: 2.0.0
 ---
 
@@ -15,20 +15,18 @@ Operation to update an exiting Deployment.
 ### UpdateExpanded (Default)
 ```
 Update-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String>] [-Cpu <Int32>] [-EnvironmentVariable <Hashtable>]
- [-JvmOption <String>] [-MemoryInGb <Int32>] [-RuntimeVersion <RuntimeVersion>]
- [-SourceArtifactSelector <String>] [-SourceRelativePath <String>] [-SourceType <UserSourceType>]
- [-SourceVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ServiceName <String> [-SubscriptionId <String>] [-Active] [-AddonConfig <Hashtable>]
+ [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Source <IUserSourceInfo>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringCloudAppDeployment -InputObject <ISpringCloudIdentity> [-Cpu <Int32>]
- [-EnvironmentVariable <Hashtable>] [-JvmOption <String>] [-MemoryInGb <Int32>]
- [-RuntimeVersion <RuntimeVersion>] [-SourceArtifactSelector <String>] [-SourceRelativePath <String>]
- [-SourceType <UserSourceType>] [-SourceVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSpringCloudAppDeployment -InputObject <ISpringCloudIdentity> [-Active] [-AddonConfig <Hashtable>]
+ [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Source <IUserSourceInfo>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,65 +34,65 @@ Operation to update an exiting Deployment.
 
 ## EXAMPLES
 
-### Example 1: Update Spring Cloud Deployment by name.
+### Example 1: Operation to update an exiting Deployment
 ```powershell
-PS C:\> Update-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default -SourceRelativePath resources/4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889-2020080815-6986fdbd-59f6-42b8-8d1f-a75d403cbcde
-Active                               : True
-AppName                              : gateway
-CreatedTime                          :
-DeploymentSettingCpu                 : 1
-DeploymentSettingEnvironmentVariable : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentSettingsEnvironmentVariables
-DeploymentSettingInstanceCount       : 1
-DeploymentSettingJvmOption           :
-DeploymentSettingMemoryInGb          : 1
-DeploymentSettingRuntimeVersion      : Java_8
-Id                                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/spring-cloud-rg/providers/Microsoft.AppPlatform/Spring/spring-cloud-service/apps/gateway/deployments/default
-Instance                             : {gateway-default-7-fb79b6b5d-kvmpz}
-Name                                 : default
-ProvisioningState                    : Succeeded
-SourceArtifactSelector               :
-SourceRelativePath                   : resources/4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889-2020080815-6986fdbd-59f6-42b8-8d1f-a75d403cbcde
-SourceType                           : Jar
-SourceVersion                        :
-Status                               : Running
-Type                                 : Microsoft.AppPlatform/Spring/apps/deployments
-DeploymentSetting                    : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentSettings
-Property                             : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentResourceProperties
-Source                               : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.UserSourceInfo
+Update-AzSpringCloudAppDeployment -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName tools -Name default
 ```
 
-Update Spring Cloud Deployment by name.
-
-### Example 2: Update Spring Cloud Deployment from pipe.
-```powershell
-PS C:\> Get-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default | Update-AzSpringCloudAppDeployment -SourceRelativePath resources/4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889-2020080815-6986fdbd-59f6-42b8-8d1f-a75d403cbcde
-Active                               : True
-AppName                              : gateway
-CreatedTime                          :
-DeploymentSettingCpu                 : 1
-DeploymentSettingEnvironmentVariable : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentSettingsEnvironmentVariables
-DeploymentSettingInstanceCount       : 1
-DeploymentSettingJvmOption           :
-DeploymentSettingMemoryInGb          : 1
-DeploymentSettingRuntimeVersion      : Java_8
-Id                                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/spring-cloud-rg/providers/Microsoft.AppPlatform/Spring/spring-cloud-service/apps/gateway/deployments/default
-Instance                             : {gateway-default-7-fb79b6b5d-kvmpz}
-Name                                 : default
-ProvisioningState                    : Succeeded
-SourceArtifactSelector               :
-SourceRelativePath                   : resources/4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889-2020080815-6986fdbd-59f6-42b8-8d1f-a75d403cbcde
-SourceType                           : Jar
-SourceVersion                        :
-Status                               : Running
-Type                                 : Microsoft.AppPlatform/Spring/apps/deployments
-DeploymentSetting                    : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentSettings
-Property                             : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentResourceProperties
-Source                               : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.UserSourceInfo
+```output
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----    ------------------- -------------------     ----------------------- ------------------------ ------------------
+default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
 ```
 
-Update Spring Cloud Deployment from pipe.
+Operation to update an exiting Deployment.
+
+### Example 2: Operation to update an exiting Deployment by pipeline
+```powershell
+Get-AzSpringCloudAppDeployment -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName tools -Name default | Update-AzSpringCloudAppDeployment
+```
+
+```output
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----    ------------------- -------------------     ----------------------- ------------------------ ------------------
+default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
+```
+
+Operation to update an exiting Deployment by pipeline.
 
 ## PARAMETERS
+
+### -Active
+Indicates whether the Deployment is active
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddonConfig
+Collection of addons
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AppName
 The name of the App resource.
@@ -116,21 +114,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Cpu
-Required CPU
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -187,36 +170,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JvmOption
-JVM parameter
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MemoryInGb
-Required Memory size in GB
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the Deployment resource.
 
@@ -263,11 +216,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuntimeVersion
-Runtime version
+### -ResourceRequestCpu
+Required CPU.
+1 core can be represented by 1 or 1000m.
+This should be 500m or 1 for Basic tier, and {500m, 1, 2, 3, 4} for Standard tier.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceRequestMemory
+Required memory.
+1 GB can be represented by 1Gi or 1024Mi.
+This should be {512Mi, 1Gi, 2Gi} for Basic tier, and {512Mi, 1Gi, 2Gi, ..., 8Gi} for Standard tier.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -293,9 +265,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceArtifactSelector
-Selector for the artifact to be used for the deployment for multi-module projects.
-This should bethe relative path to the target module/project.
+### -SkuCapacity
+Current capacity of the target resource
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+Name of the Sku
 
 ```yaml
 Type: System.String
@@ -309,8 +295,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceRelativePath
-Relative path of the storage which stores the source
+### -SkuTier
+Tier of the Sku
 
 ```yaml
 Type: System.String
@@ -324,26 +310,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceType
-Type of the source uploaded
+### -Source
+Uploaded source information of the deployment.
+To construct, see NOTES section for SOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceVersion
-Version of the source
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IUserSourceInfo
 Parameter Sets: (All)
 Aliases:
 
@@ -410,7 +382,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IDeploymentResource
 
 ## NOTES
 
@@ -421,17 +393,31 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+`INPUTOBJECT <ISpringCloudIdentity>`: Identity Parameter
+  - `[AgentPoolName <String>]`: The name of the build service agent pool resource.
   - `[AppName <String>]`: The name of the App resource.
   - `[BindingName <String>]`: The name of the Binding resource.
+  - `[BuildName <String>]`: The name of the build resource.
+  - `[BuildResultName <String>]`: The name of the build result resource.
+  - `[BuildServiceName <String>]`: The name of the build service resource.
+  - `[BuilderName <String>]`: The name of the builder resource.
+  - `[BuildpackBindingName <String>]`: The name of the Buildpack Binding Name
+  - `[BuildpackName <String>]`: The name of the buildpack resource.
   - `[CertificateName <String>]`: The name of the certificate resource.
+  - `[ConfigurationServiceName <String>]`: The name of Application Configuration Service.
   - `[DeploymentName <String>]`: The name of the Deployment resource.
   - `[DomainName <String>]`: The name of the custom domain resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   - `[ServiceName <String>]`: The name of the Service resource.
+  - `[ServiceRegistryName <String>]`: The name of Service Registry.
+  - `[StackName <String>]`: The name of the stack resource.
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+`SOURCE <IUserSourceInfo>`: Uploaded source information of the deployment.
+  - `Type <String>`: Type of the source uploaded
+  - `[Version <String>]`: Version of the source
 
 ## RELATED LINKS
 

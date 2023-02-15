@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveractivedirectoryonlyauthentication
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlserveractivedirectoryonlyauthentication
 schema: 2.0.0
 ---
 
@@ -37,7 +37,10 @@ The **Get-AzSqlServerActiveDirectoryOnlyAuthentication** cmdlet gets Azure Activ
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+Get-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+```
+
+```output
 ResourceGroupName ServerName AzureADOnlyAuthentication
 ----------------- ---------- ----------- -------- -----------
 ResourceGroup01   Server01   True

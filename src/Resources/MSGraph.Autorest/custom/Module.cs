@@ -35,6 +35,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
                     end = query.Length;
                 }
                 search = query.Substring(start, end - start);
+                //Remove " in search query
+                search = System.Text.RegularExpressions.Regex.Replace(search, "^%22|%22$", "");
                 
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
                 sb.Append(query.Substring(0, start));

@@ -19,17 +19,14 @@ Creates or updates a database.
 .Description
 Creates or updates a database.
 .Example
-PS C:\> New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
+New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
 
 Kind      Location Name                                Type
 ----      -------- ----                                ----
 ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
-
-.Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 #>
 function New-AzKustoDatabase {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDatabase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -146,7 +143,7 @@ function New-AzKustoDatabase {
 
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.ReadWriteDatabase]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ReadWriteDatabase]::new()
 
             $Parameter.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 0C35E679-B991-49A8-890F-C8DAB68A8240
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightsworkspace
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightsworkspace
 schema: 2.0.0
 ---
 
@@ -25,24 +25,24 @@ If this workspace was linked to an existing account via the *CustomerId* paramet
 ## EXAMPLES
 
 ### Example 1: Remove a workspace by name
-```
-PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
+```powershell
+Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
 ```
 
 This command removes the workspace named MyWorkspace from the resource group named ContosoResourceGroup.
 
 ### Example 2: Remove a workspace by using the pipeline and without confirmation
-```
-PS C:\>Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace" | Remove-AzOperationalInsightsWorkspace -Force
+```powershell
+Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace" | Remove-AzOperationalInsightsWorkspace -Force
 ```
 
 This command uses the Get-AzOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkspace, and then passes it to the **Remove-AzOperationalInsightsWorkspace** cmdlet by using the pipeline operator to remove it.
 Since the *Force* parameter is specified, the command does not prompt you before removing the workspace.
 
 ### Example 3: Force delete workspace (cannot be recovered)
-```
-PS C:\> $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
-PS C:\> $workspace | Remove-AzOperationalInsightsWorkspace -ForceDelete
+```powershell
+$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName "RG-NAME" -Name "WORKSPACE-NAME" -Location "REGION-VALUE"
+$workspace | Remove-AzOperationalInsightsWorkspace -ForceDelete
 ```
 
 Force delete a workspace.

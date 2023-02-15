@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserverconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserverconfiguration
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ Updates information about a configuration of a MySQL flexible server.
 
 ### Example 1: Update MySql configuration by name
 ```powershell
-PS C:\> Update-AzMySqlFlexibleServerConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
+Update-AzMySqlFlexibleServerConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
+```
 
+```output
 Name            Value AllowedValue  Source         DefaultValue
 ----            ----- ------------  ------         ------------
 net_retry_count 15    1-4294967295  user-override  10
@@ -43,9 +45,11 @@ This cmdlet updates MySql configuration by name.
 
 ### Example 2: Update MySql configuration by identity.
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/configurations/wait_timeout"
-PS C:\> Update-AzMySqlFlexibleServerConfiguration -InputObject $ID -Value 150
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/configurations/wait_timeout"
+Update-AzMySqlFlexibleServerConfiguration -InputObject $ID -Value 150
+```
 
+```output
 Name         Value AllowedValue Source         DefaultValue
 ----         ----- ------------ ------         ------------
 wait_timeout 150   1-31536000   user-override  28800
@@ -259,7 +263,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.

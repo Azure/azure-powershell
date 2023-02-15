@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: C7EC21C7-1C7E-49B2-9B33-486532FCDAEC
-online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azalertrule
+online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azalertrule
 schema: 2.0.0
 ---
 
@@ -26,8 +26,11 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 ## EXAMPLES
 
 ### Example 1: Remove an alert rule
+```powershell
+Remove-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
 ```
-PS C:\>Remove-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
+
+```output
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 2c6c159b-0e73-4a01-a67b-c32c1a0008a3                                                                                 OK

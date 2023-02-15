@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmarketplaceagreement
+online version: https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmarketplaceagreement
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ List Datadog marketplace agreements in the subscription.
 
 ### Example 1: List Datadog marketplace agreements in the subscription
 ```powershell
-PS C:\> Get-AzDatadogMarketplaceAgreement
+Get-AzDatadogMarketplaceAgreement
+```
 
+```output
 Name        Type
 ----        ----
 marketplace Microsoft.Datadog/agreements

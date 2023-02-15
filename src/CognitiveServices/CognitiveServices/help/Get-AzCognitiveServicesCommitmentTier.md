@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicescommitmenttier
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicescommitmenttier
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Get CommitmentTier of Cognitive Services
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesCommitmentTier -Location 'WestUS'
+Get-AzCognitiveServicesCommitmentTier -Location 'WestUS'
 ```
 
 Get CommitmentTier of Cognitive Services

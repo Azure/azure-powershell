@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azcustomipprefix
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azcustomipprefix
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzCustomIpPrefix** cmdlet removes a CustomIpPrefix.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName
+Remove-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $rgName
 ```
 
 Removes the CustomIpPrefix with Name $prefixName from resource group $rgName

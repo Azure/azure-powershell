@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class CloudEndpointChangeEnumerationActivityConverter.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpointChangeEnumerationActivity, Microsoft.Azure.Management.StorageSync.Models.CloudEndpointChangeEnumerationActivity}" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSCloudEndpointChangeEnumerationActivity, CloudEndpointChangeEnumerationActivity}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpointChangeEnumerationActivity, Microsoft.Azure.Management.StorageSync.Models.CloudEndpointChangeEnumerationActivity}" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSCloudEndpointChangeEnumerationActivity, CloudEndpointChangeEnumerationActivity}" />
     public class CloudEndpointChangeEnumerationActivityConverter : ConverterBase<PSCloudEndpointChangeEnumerationActivity, StorageSyncModels.CloudEndpointChangeEnumerationActivity>
     {
         /// <summary>

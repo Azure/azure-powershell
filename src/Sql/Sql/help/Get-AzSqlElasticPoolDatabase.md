@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14620FBD-4B10-4366-94F7-891BC01B893F
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlelasticpooldatabase
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlelasticpooldatabase
 schema: 2.0.0
 ---
 
@@ -26,15 +26,15 @@ You can specify the name of an elastic database in Azure SQL Database to see the
 ## EXAMPLES
 
 ### Example 1: Get all databases in an elastic pool
-```
-PS C:\> Get-AzSqlElasticPoolDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
+```powershell
+Get-AzSqlElasticPoolDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
 ```
 
 This command gets all databases in an elastic pool named ElasticPool01.
 
 ### Example 2: Get all databases in an elastic pool using filtering
-```
-PS C:\> Get-AzSqlElasticPoolDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -DatabaseName "Database*"
+```powershell
+Get-AzSqlElasticPoolDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -DatabaseName "Database*"
 ```
 
 This command gets all databases in an elastic pool named ElasticPool01 that start with "Database".

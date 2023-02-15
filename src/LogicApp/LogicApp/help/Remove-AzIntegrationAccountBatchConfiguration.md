@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
-online version: https://docs.microsoft.com/powershell/module/az.logicapp/remove-azintegrationaccountbatchconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.logicapp/remove-azintegrationaccountbatchconfiguration
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzIntegrationAccountBatchConfiguration** cmdlet removes a batch con
 
 ### Example 1: Remove a batch configuration by parameters
 ```powershell
-PS C:\> Remove-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig"
+Remove-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig"
 ```
 
 Removes the batch configuration named "sampleBatchConfig" located in the integration account "sampleIntegrationAccount".

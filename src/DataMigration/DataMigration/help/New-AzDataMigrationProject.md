@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationProject
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationProject
 schema: 2.0.0
 ---
 
 # New-AzDataMigrationProject
 
 ## SYNOPSIS
-Creates a new Azure Database Migration Service project.
+Creates a new Azure Database Migration Service (classic) project.
 
 ## SYNTAX
 
@@ -37,16 +37,16 @@ New-AzDataMigrationProject [-ResourceId] <String> -Location <String> -Name <Stri
 ```
 
 ## DESCRIPTION
-The New-AzDataMigrationProject cmdlet creates a new Azure Database Migration Service project. This cmdlet takes in all necessary parameters, such as the name of the Azure Resource Group, the name of Azure Data Migration Service in which new project is to be created, the region in which the project is to be created, the unique name of the new project, the source and target connection objects, and the target type object, as input for the list of databases to migrate. Use the New-AzDataMigrationConnectionInfo cmdlet to create a new ConnectionInfo object for both the source and target connections. The list of Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo is expected for selected databases; this object can be created by using New-AzDataMigrationDatabaseInfo cmdlet. 
+The New-AzDataMigrationProject cmdlet creates a new Azure Database Migration Service (classic) project. This cmdlet takes in all necessary parameters, such as the name of the Azure Resource Group, the name of Azure Data Migration Service in which new project is to be created, the region in which the project is to be created, the unique name of the new project, the source and target connection objects, and the target type object, as input for the list of databases to migrate. Use the New-AzDataMigrationConnectionInfo cmdlet to create a new ConnectionInfo object for both the source and target connections. The list of Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo is expected for selected databases; this object can be created by using New-AzDataMigrationDatabaseInfo cmdlet.  
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzDataMigrationProject -ResourceGroupName MyResourceGroup -ServiceName TestService -ProjectName MyDMSProject -Location "central us"  -SourceType SQL -TargetType SQLDB -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo -DatabaseInfo $dbList
+```powershell
+New-AzDataMigrationProject -ResourceGroupName MyResourceGroup -ServiceName TestService -ProjectName MyDMSProject -Location "central us"  -SourceType SQL -TargetType SQLDB -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo -DatabaseInfo $dbList
 ```
 
-The above example shows how to create new project named MyDMSProject located in Central US region under the Azure Database Migration Service instance named TestService.
+The above example shows how to create new project named MyDMSProject located in Central US region under the Azure Database Migration Service (classic) instance named TestService.
 
 ## PARAMETERS
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the Azure Database Migration Service instance.
+The location of the Azure Database Migration Service (classic) instance.
 
 ```yaml
 Type: System.String
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-The name of the Azure Database Migration Service instance.
+The name of the Azure Database Migration Service (classic) instance.
 
 ```yaml
 Type: System.String
@@ -261,7 +261,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

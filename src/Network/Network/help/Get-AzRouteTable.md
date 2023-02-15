@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 4F487FCA-930D-4D56-8D28-7693312E1A01
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azroutetable
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azroutetable
 schema: 2.0.0
 ---
 
@@ -32,9 +32,11 @@ You can get a single route table, or get all the route tables in a resource grou
 ## EXAMPLES
 
 ### Example 1: Get a route table
+```powershell
+Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
 ```
-PS C:\> Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
 
+```output
 Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
@@ -61,9 +63,11 @@ Subnets           : []
 This command gets the route table named RouteTable01 in the resource group named ResourceGroup11.
 
 ### Example 2: List route tables using filtering
+```powershell
+Get-AzRouteTable -Name RouteTable*
 ```
-PS C:\> Get-AzRouteTable -Name RouteTable*
 
+```output
 Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus

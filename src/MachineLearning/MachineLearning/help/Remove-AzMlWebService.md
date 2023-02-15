@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
-online version: https://docs.microsoft.com/powershell/module/az.machinelearning/remove-azmlwebservice
+online version: https://learn.microsoft.com/powershell/module/az.machinelearning/remove-azmlwebservice
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ Deletes a Azure Machine Learning web service referenced by resource group and na
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Remove-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 

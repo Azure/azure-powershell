@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: D704BAC0-D89E-4F15-ACF8-FA2C1F0D1B8F
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationdsccompilationjob
+online version: https://learn.microsoft.com/powershell/module/az.automation/get-azautomationdsccompilationjob
 schema: 2.0.0
 ---
 
@@ -39,22 +39,22 @@ The **Get-AzAutomationDscCompilationJob** cmdlet gets APS Desired State Configur
 ## EXAMPLES
 
 ### Example 1: Get all DSC compilation jobs
-```
-PS C:\>Get-AzAutomationDscCompilationJob -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17"
+```powershell
+Get-AzAutomationDscCompilationJob -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17"
 ```
 
 This command gets all compilation jobs in the Automation account named Contoso17.
 
 ### Example 2: Get DSC compilation jobs for a configuration
-```
-PS C:\>Get-AzAutomationDscCompilationJob -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -ConfigurationName "ContosoConfiguration"
+```powershell
+Get-AzAutomationDscCompilationJob -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -ConfigurationName "ContosoConfiguration"
 ```
 
 This command gets all compilation jobs for the DSC configuration named ContosoConfiguration in the Automation account named Contoso17.
 
 ### Example 3: Get a specific DSC compilation job
-```
-PS C:\>Get-AzAutomationDscCompilationJob -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -Id c0a1718e-d8be-4fa3-91b6-82e1d3a36298
+```powershell
+Get-AzAutomationDscCompilationJob -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -Id c0a1718e-d8be-4fa3-91b6-82e1d3a36298
 ```
 
 This command gets the compilation job with the specified ID in the Automation account named Contoso17.
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

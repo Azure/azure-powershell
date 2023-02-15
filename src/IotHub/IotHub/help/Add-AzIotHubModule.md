@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmodule
+online version: https://learn.microsoft.com/powershell/module/az.iothub/add-aziothubmodule
 schema: 2.0.0
 ---
 
@@ -40,8 +40,10 @@ Create a module on a target IoT device with different authorization type in an I
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzIoTHubModule -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -AuthMethod shared_private_key
+Add-AzIoTHubModule -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -AuthMethod shared_private_key
+```
 
+```output
 ModuleId                   : myModule1
 DeviceId                   : myDevice1
 GenerationId               : 637148941292917073

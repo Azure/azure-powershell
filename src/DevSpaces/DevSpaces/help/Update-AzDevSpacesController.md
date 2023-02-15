@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DevSpaces.dll-Help.xml
 Module Name: Az.DevSpaces
-online version: https://docs.microsoft.com/powershell/module/az.devspaces/update-azdevspacescontroller
+online version: https://learn.microsoft.com/powershell/module/az.devspaces/update-azdevspacescontroller
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Update the DevSpaces controller to add tags.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName -Tag @{ tagKey="tagValue"}
+Update-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName -Tag @{ tagKey="tagValue"}
+```
 
+```output
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded

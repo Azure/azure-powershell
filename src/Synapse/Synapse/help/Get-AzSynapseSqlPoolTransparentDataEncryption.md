@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsesqlpooltransparentdataencryption
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsesqlpooltransparentdataencryption
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The **Get-AzSynapseSqlPoolTransparentDataEncryption** cmdlet gets the state of T
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlPoolTransparentDataEncryption -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Get-AzSynapseSqlPoolTransparentDataEncryption -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command gets the status of TDE for the SQL pool named ContosoSqlPool under the workspace named ContosoWorkspace.

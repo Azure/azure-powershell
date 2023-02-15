@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 67FB5D02-4F4B-4119-B3AC-0D205247253E
-online version: https://docs.microsoft.com/powershell/module/az.batch/enable-azbatchtask
+online version: https://learn.microsoft.com/powershell/module/az.batch/enable-azbatchtask
 schema: 2.0.0
 ---
 
@@ -32,15 +32,15 @@ If a task has exhausted its retry count, this cmdlet nevertheless enables it to 
 ## EXAMPLES
 
 ### Example 1: Reactivate a task
-```
-PS C:\>Enable-AzBatchTask -JobId "Job7" -Id "Task2" -BatchContext $Context
+```powershell
+Enable-AzBatchTask -JobId "Job7" -Id "Task2" -BatchContext $Context
 ```
 
 This command reactivates the task Task2 in job Job7.
 
 ### Example 2: Reactivate a task by using the pipeline
-```
-PS C:\>Get-AzBatchTask -JobId "Job8" -Id "Task3" -BatchContext $Context | Enable-AzBatchTask -BatchContext $Context
+```powershell
+Get-AzBatchTask -JobId "Job8" -Id "Task3" -BatchContext $Context | Enable-AzBatchTask -BatchContext $Context
 ```
 
 This command gets the Batch task that has the ID Task3 in the job that has the ID Job8 by using the Get-AzBatchTask cmdlet.

@@ -20,7 +20,7 @@ Updates a workspace.
 Updates a workspace.
 #>
 function Update-AzDatabricksWorkspace {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the workspace.")]
@@ -83,12 +83,51 @@ function Update-AzDatabricksWorkspace {
         # The version of KeyVault key.
         ${EncryptionKeyVersion},
 
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The name of KeyVault key.
+        ${KeyVaultKeyName},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The version of KeyVault key.
+        ${KeyVaultKeyVersion},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The Uri of KeyVault.
+        ${KeyVaultUri},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${AmlWorkspaceId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The SKU tier.
+        ${SkuTier},
+
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceUpdateTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspaceUpdateTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules]
+        # Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
+        # Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
+        # 'NoAzureServiceRules' value is for internal use only.
+        ${RequiredNsgRule},
 
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -158,7 +197,13 @@ function Update-AzDatabricksWorkspace {
             $hasEncryptionKeyVaultUri = $PSBoundParameters.Remove('EncryptionKeyVaultUri')
             $hasEncryptionKeyName = $PSBoundParameters.Remove('EncryptionKeyName')
             $hasEncryptionKeyVersion = $PSBoundParameters.Remove('EncryptionKeyVersion')
+            $hasKeyVaultKeyName = $PSBoundParameters.Remove('KeyVaultKeyName')
+            $hasKeyVaultKeyVersion = $PSBoundParameters.Remove('KeyVaultKeyVersion')
+            $hasKeyVaultUri = $PSBoundParameters.Remove('KeyVaultUri')
+            $hasAmlWorkspaceId = $PSBoundParameters.Remove('AmlWorkspaceId')
+            $hasSkuTier = $PSBoundParameters.Remove('SkuTier')
             $hasTag = $PSBoundParameters.Remove('Tag')
+            $hasRequiredNsgRule = $PSBoundParameters.Remove('RequiredNsgRule')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
@@ -190,8 +235,32 @@ function Update-AzDatabricksWorkspace {
                     $workspace.EncryptionKeyVersion = ""
                 }
             }
+            if ($hasKeyVaultKeyName) {
+                $workspace.KeyVaultKeyName = $KeyVaultKeyName
+            }
+
+            if ($hasKeyVaultKeyVersion) {
+                $workspace.KeyVaultKeyVersion = $KeyVaultKeyVersion
+            }
+
+            if ($hasKeyVaultUri) {
+                $workspace.KeyVaultUri = $KeyVaultUri
+            }
+
+            if ($hasAmlWorkspaceId) {
+                $workspace.AmlWorkspaceId = $AmlWorkspaceId
+            }
+
+            if ($hasSkuTier) {
+                $workspace.SkuTier = $SkuTier
+            }
+
             if ($hasTag) {
                 $workspace.Tag = $Tag
+            }
+
+            if ($hasRequiredNsgRule) {
+                $workspace.RequiredNsgRule = $RequiredNsgRule
             }
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)

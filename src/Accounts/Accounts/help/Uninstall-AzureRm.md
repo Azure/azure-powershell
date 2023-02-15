@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/uninstall-azurerm
+online version: https://learn.microsoft.com/powershell/module/az.accounts/uninstall-azurerm
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ Removes all AzureRm modules from a machine.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Uninstall-AzureRm
+```powershell
+Uninstall-AzureRm
 ```
 
 Running this command will remove all AzureRm modules from the machine for the version of PowerShell in which the cmdlet is run.

@@ -20,13 +20,9 @@ Invoke action removePassword
 .Description
 Invoke action removePassword
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths1Idoj4GServiceprincipalsServiceprincipalIdMicrosoftGraphRemovepasswordPostRequestbodyContentApplicationJsonSchema
@@ -41,7 +37,7 @@ BODY <IPaths1Idoj4GServiceprincipalsServiceprincipalIdMicrosoftGraphRemovepasswo
   [(Any) <Object>]: This indicates any property can be added to this object.
   [KeyId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalpassword
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalpassword
 #>
 function Remove-AzADServicePrincipalPassword {
 [OutputType([System.Boolean])]
@@ -133,6 +129,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Remove = 'Az.MSGraph.private\Remove-AzADServicePrincipalPassword_Remove';
             RemoveExpanded = 'Az.MSGraph.private\Remove-AzADServicePrincipalPassword_RemoveExpanded';
@@ -143,6 +140,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -151,15 +149,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

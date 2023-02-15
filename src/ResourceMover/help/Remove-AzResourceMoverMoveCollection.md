@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://docs.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermovecollection
+online version: https://learn.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermovecollection
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Deletes a move collection.
 
 ### Example 1: Remove the Move Collection.
 ```powershell
-PS C:\> Remove-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"
+Remove-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"
+```
 
+```output
 AdditionalInfo : 
 Code           : 
 Detail         : 

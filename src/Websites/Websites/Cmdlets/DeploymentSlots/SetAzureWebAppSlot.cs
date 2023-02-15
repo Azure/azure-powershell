@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             switch (ParameterSetName)
             {
                 case ParameterSet1Name:
-                    WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+                    WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot, false));
                     location = WebApp.Location;
                     tags = WebApp.Tags;
                     var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
@@ -182,7 +182,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
                             NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
                             AlwaysOn = parameters.Contains("AlwaysOn") ? (bool?)AlwaysOn : null,
-                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : WebApp.SiteConfig.FtpsState
+                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : WebApp.SiteConfig.FtpsState,
+                            MinTlsVersion = parameters.Contains("MinTlsVersion") ? MinTlsVersion : WebApp.SiteConfig.MinTlsVersion
                         };
                     }
 

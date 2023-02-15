@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlroledefinition
 schema: 2.0.0
 ---
 
@@ -48,16 +48,18 @@ In order to specify the Role Definition's Permissions, either use the DataAction
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Update-AzCosmosDBSqlRoleDefinition
-	-AccountName accountName 
-	-ResourceGroupName resourceGroupName 
-	-Id id
-	-Type CustomRole
-	-RoleName roleName
-	-DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
+```powershell
+Update-AzCosmosDBSqlRoleDefinition `
+	-AccountName accountName `
+	-ResourceGroupName resourceGroupName `
+	-Id id `
+	-Type CustomRole `
+	-RoleName roleName `
+	-DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create" `
 	-AssignableScope "/"
+```
 
+```output
 RoleName         : roleName
 Id               : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/id
 Type             : CustomRole
@@ -66,17 +68,19 @@ AssignableScopes : {/subscriptions/subId/resourceGroups/resourceGroupName/provid
 ```
 
 ### Example 2: Using Permission and ParentObject
-```
-PS C:\> $DatabaseAccount = Get-AzCosmosDBAccount -Name accountName -ResourceGroupName resourceGroupName
-PS C:\> $Permission = New-AzCosmosDBPermission -DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
-PS C:\> Update-AzCosmosDBSqlRoleDefinition
-	-Type CustomRole
-	-Id id
-	-RoleName roleName
-	-Permission $Permission
-	-AssignableScope "/"
+```powershell
+$DatabaseAccount = Get-AzCosmosDBAccount -Name accountName -ResourceGroupName resourceGroupName
+$Permission = New-AzCosmosDBPermission -DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
+Update-AzCosmosDBSqlRoleDefinition `
+	-Type CustomRole `
+	-Id id `
+	-RoleName roleName `
+	-Permission $Permission `
+	-AssignableScope "/" `
 	-ParentObject $DatabaseAccount
+```
 
+```output
 RoleName         : roleName
 Id               : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/id
 Type             : CustomRole

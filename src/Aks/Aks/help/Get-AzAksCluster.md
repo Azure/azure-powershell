@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/get-azakscluster
+online version: https://learn.microsoft.com/powershell/module/az.aks/get-azakscluster
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ List Kubernetes managed clusters.
 
 ### List all Kubernetes clusters
 ```powershell
-PS C:\> Get-AzAksCluster
+Get-AzAksCluster
 ```
 
 ## PARAMETERS

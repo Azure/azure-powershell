@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/add-azenvironment
+online version: https://learn.microsoft.com/powershell/module/az.accounts/add-azenvironment
 schema: 2.0.0
 ---
 
@@ -58,8 +58,9 @@ The built-in environments AzureCloud and AzureChinaCloud target existing public 
 ## EXAMPLES
 
 ### Example 1: Creating and modifying a new environment
-```
-PS C:\> Add-AzEnvironment -Name TestEnvironment `
+<!-- Skip: Output cannot be splitted from code -->
+```powershell
+Add-AzEnvironment -Name TestEnvironment `
         -ActiveDirectoryEndpoint TestADEndpoint `
         -ActiveDirectoryServiceEndpointResourceId TestADApplicationId `
         -ResourceManagerEndpoint TestRMEndpoint `
@@ -70,7 +71,7 @@ Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/
 
-PS C:\> Set-AzEnvironment -Name TestEnvironment `
+Set-AzEnvironment -Name TestEnvironment `
         -ActiveDirectoryEndpoint NewTestADEndpoint `
         -GraphEndpoint NewTestGraphEndpoint | Format-List
 
@@ -107,10 +108,10 @@ ExtendedProperties                                : {}
 BatchEndpointResourceId                           :
 ```
 
-In this example we are creating a new Azure environment with sample endpoints using Add-AzEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzEnvironment.
+In this example we are creating a new Azure environment with sample endpoints using Add-AzEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzEnvironment. 
 
 ### Example 2: Discovering a new environment via Uri
-```
+```powershell
 <#
 Uri https://configuredmetadata.net returns an array of environment metadata. The following example contains a payload for the AzureCloud default environment.
 
@@ -149,8 +150,10 @@ Uri https://configuredmetadata.net returns an array of environment metadata. The
 ]
 #>
 
-PS C:\> Add-AzEnvironment -AutoDiscover -Uri https://configuredmetadata.net
+Add-AzEnvironment -AutoDiscover -Uri https://configuredmetadata.net
+```
 
+```Output
 Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/

@@ -14,8 +14,8 @@ while(-not $mockingPath) {
 Describe 'AzVMwareLocationTrialAvailability' {
     It 'Check' {
         {
-            $config = Test-AzVMwareLocationTrialAvailability -Location $env.location2
-            $config.Status | Should -Be "TrialDisabled"
+            $config = Test-AzVMwareLocationTrialAvailability -Location "eastus2"
+            $config.Status | Should -Be "TrialAvailable"
         } | Should -Not -Throw
     }
 }

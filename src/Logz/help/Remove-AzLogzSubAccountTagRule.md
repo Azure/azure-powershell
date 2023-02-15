@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzsubaccounttagrule
+online version: https://learn.microsoft.com/powershell/module/az.logz/remove-azlogzsubaccounttagrule
 schema: 2.0.0
 ---
 
@@ -31,16 +31,14 @@ Delete a tag rule set for a given monitor resource.
 
 ### Example 1: Delete a tag rule set for a given logz sub account resource
 ```powershell
-PS C:\> Remove-AzLogzSubAccountTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01
-
+Remove-AzLogzSubAccountTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01
 ```
 
 This command deletes a tag rule set for a given logz sub account resource.
 
 ### Example 2: Delete a tag rule set for a given logz sub account resource by pipeline
 ```powershell
-PS C:\> Get-AzLogzSubAccountTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01 | Remove-AzLogzSubAccountTagRule
-
+Get-AzLogzSubAccountTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01 | Remove-AzLogzSubAccountTagRule
 ```
 
 This command deletes a tag rule set for a given logz sub account resource by pipeline.
@@ -205,7 +203,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ILogzIdentity>: Identity Parameter
+INPUTOBJECT `<ILogzIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

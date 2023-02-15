@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ Once a job is started it will start processing input events and produce output.
 
 ### Example 1: Start a Stream Analytics job
 ```powershell
-PS C:\> Start-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal
+Start-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal
 
 ```
 
@@ -43,7 +43,7 @@ This command starts the job StreamingJob.
 
 ### Example 2: Start a Stream Analytics job by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal | Start-AzStreamAnalyticsJob
+Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-portal | Start-AzStreamAnalyticsJob
 
 ```
 
@@ -255,7 +255,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+INPUTOBJECT `<IStreamAnalyticsIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.
   - `[FunctionName <String>]`: The name of the function.
   - `[Id <String>]`: Resource identity path

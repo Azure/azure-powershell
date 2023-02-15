@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationsourcecontrol
+online version: https://learn.microsoft.com/powershell/module/az.automation/get-azautomationsourcecontrol
 schema: 2.0.0
 ---
 
@@ -35,11 +35,12 @@ This command gets an Automation source control named VSTSNative in the account n
 
 
 ```powershell
-PS C:\> Get-AzAutomationSourceControl -ResourceGroupName "rg1" `
+Get-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
-                                           -Name "VSTSNative" 
+                                           -Name "VSTSNative"
+```
 
-
+```output
 Name            SourceType Branch FolderPath  AutoSync PublishRunbook RepoUrl
 ----            ---------- ------ ----------  -------- -------------- -------
 VSTSNative      VsoTfvc           /MyRunbooks False    True           https://contoso.visualstudio.com/_git/Fin...
@@ -124,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

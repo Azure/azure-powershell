@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbsqlcontainerthroughputmigration
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbsqlcontainerthroughputmigration
 schema: 2.0.0
 ---
 
@@ -32,14 +32,14 @@ Invoke-AzCosmosDBSqlContainerThroughputMigration [-Name <String>] -InputObject <
 ```
 
 ## DESCRIPTION
-ThroughpyteType paramter defines the throughput to which you want to migrate to.
+ThroughputType parameter defines the throughput to which you want to migrate to.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>$NewSqlContainer =  New-AzCosmosDBSqlContainer -AccountName myAccountName -ResourceGroupName myRgName -Name myContainerName  -Throughput  700 -DatabaseName myDbName
-      $AutoscaleThroughput = Invoke-AzCosmosDBSqlContainerThroughputMigration -InputObject $NewSqlContainer -ThroughputType Autoscale
+$NewSqlContainer = New-AzCosmosDBSqlContainer -AccountName myAccountName -ResourceGroupName myRgName -Name myContainerName -Throughput 700 -DatabaseName myDbName
+$AutoscaleThroughput = Invoke-AzCosmosDBSqlContainerThroughputMigration -InputObject $NewSqlContainer -ThroughputType Autoscale
 ```
 
 ## PARAMETERS

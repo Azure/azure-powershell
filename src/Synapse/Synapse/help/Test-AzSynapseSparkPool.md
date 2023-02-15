@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/test-azsynapsesparkpool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/test-azsynapsesparkpool
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The **Test-AzSynapseSparkPool** cmdlet checks for the existence of a Synapse Ana
 
 ### Example 1
 ```powershell
-PS C:\> Test-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+Test-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
 ```
 
 This command checks the existence of the specified Spark pool.

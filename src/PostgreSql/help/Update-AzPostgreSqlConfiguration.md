@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlconfiguration
 schema: 2.0.0
 ---
 
@@ -34,8 +34,10 @@ Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassw
 
 ### Example 1: Update PostgreSql configuration by name
 ```powershell
-PS C:\> Update-AzPostgreSqlConfiguration -Name intervalstyle -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -Value SQL_STANDARD
+Update-AzPostgreSqlConfiguration -Name intervalstyle -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -Value SQL_STANDARD
+```
 
+```output
 Name          Value
 ----          -----
 intervalstyle SQL_STANDARD
@@ -45,9 +47,11 @@ This cmdlet updates PostgreSql configuration by name.
 
 ### Example 2: Update PostgreSql configuration by identity.
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/configurations/deadlock_timeout"
-PS C:\> Update-AzPostgreSqlConfiguration -InputObject $ID -Value 2000
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/configurations/deadlock_timeout"
+Update-AzPostgreSqlConfiguration -InputObject $ID -Value 2000
+```
 
+```output
 Name             Value
 ----             -----
 deadlock_timeout 2000
@@ -260,7 +264,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

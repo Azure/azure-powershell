@@ -16,22 +16,18 @@
 
 <#
 .Synopsis
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Description
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsettingslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsettingslot
 #>
 function Get-AzWebAppApplicationSettingSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -120,6 +116,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppApplicationSettingSlot_List';
         }
@@ -132,6 +129,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -140,15 +138,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The **Get-AzCosmosDBGremlinGraph** cmdlet gets the CosmosDB Gremlin Graph proper
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBGremlinGraph -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Name {graphName}
+Get-AzCosmosDBGremlinGraph -ResourceGroupName "rgName" -AccountName "accountName" -DatabaseName "dbName" -Name "graphName"
+```
 
+```output
 Name    Id   Resource
 {name}  {id} Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinGraphGetPropertiesResource
 ```

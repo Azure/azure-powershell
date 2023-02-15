@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/Remove-AzDataMigrationTask
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Remove-AzDataMigrationTask
 schema: 2.0.0
 ---
 
 # Remove-AzDataMigrationTask
 
 ## SYNOPSIS
-Removes an Azure Database Migration Service task from Azure.
+Removes an Azure Database Migration Service (classic) task from Azure.
 
 ## SYNTAX
 
@@ -32,24 +32,23 @@ Remove-AzDataMigrationTask [-ResourceId] <String> [-Force] [-PassThru]
 ```
 
 ## DESCRIPTION
-The Remove-AzDataMigrationTask cmdlet removes an Azure Database Migration Service task from Azure.
+The Remove-AzDataMigrationTask cmdlet removes an Azure Database Migration Service (classic) task from Azure.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzDataMigrationTask -TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService
- -ResourceGroupName MyResourceGroup
+```powershell
+Remove-AzDataMigrationTask -TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService -ResourceGroupName MyResourceGroup
 ```
 
-The preceding example removes an Azure Database Migration Service task named TestTask from Azure based on task name parameter.
+The preceding example removes an Azure Database Migration Service (classic) task named TestTask from Azure based on task name parameter.
 
 ### Example 2
-```
-PS C:\> Remove-AzDataMigrationTask -InputObject $TestTask
+```powershell
+Remove-AzDataMigrationTask -InputObject $TestTask
 ```
 
-The preceding example removes an Azure Database Migration Service task based on PSProjectTask object passed in.
+The preceding example removes an Azure Database Migration Service (classic) task based on PSProjectTask object passed in.
 
 ## PARAMETERS
 
@@ -175,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Database Migration Service Name.
+Azure Database Migration Service (classic) Name.
 
 ```yaml
 Type: System.String
@@ -221,7 +220,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

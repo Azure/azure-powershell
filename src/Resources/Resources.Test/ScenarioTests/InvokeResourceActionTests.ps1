@@ -46,9 +46,7 @@ function Test-InvokeResourceActionsWithResouceId
                 $statusChanged = $true
                 break
 			}
-        	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-                start-sleep -seconds 20
-            }
+        	Start-TestSleep -Seconds 20
         }
         
         Assert-True { $statusChanged }

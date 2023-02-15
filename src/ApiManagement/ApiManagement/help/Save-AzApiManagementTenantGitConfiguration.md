@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 6221C40F-63FC-4D66-B6BD-01024AFF3B65
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/save-azapimanagementtenantgitconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/save-azapimanagementtenantgitconfiguration
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Save-AzApiManagementTenantGitConfiguration** cmdlet saves the changes by c
 ## EXAMPLES
 
 ### Example 1: Save changes to configuration
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Save-AzApiManagementTenantGitConfiguration -Context $apimContext -Branch 'master' -PassThru
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Save-AzApiManagementTenantGitConfiguration -Context $apimContext -Branch 'master' -PassThru
 ```
 
 This command saves the changes by creating a commit with the current configuration snapshot to the specified branch in the repository.

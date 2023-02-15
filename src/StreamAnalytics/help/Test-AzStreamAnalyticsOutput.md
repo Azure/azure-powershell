@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsoutput
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsoutput
 schema: 2.0.0
 ---
 
@@ -24,8 +24,9 @@ Tests whether an output’s datasource is reachable and usable by the Azure Stre
 
 ### Example 1: Test the connection status of an output
 ```powershell
-PS C:\> Test-AzStreamAnalyticsOutput -ResourceGroupName lucas-rg-test -JobName sajob-01-pwsh -Name output-01
-
+Test-AzStreamAnalyticsOutput -ResourceGroupName lucas-rg-test -JobName sajob-01-pwsh -Name output-01
+```
+```output
 Status
 ------
 TestSucceeded

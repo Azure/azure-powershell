@@ -69,6 +69,18 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         [ValidateSet("ExistingNonCompliant", "ReEvaluateCompliance")]
         public string ResourceDiscoveryMode { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.RemediationResourceCount)]
+        [ValidateRange(1, int.MaxValue)]
+        public int? ResourceCount { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.RemediationParallelDeployments)]
+        [ValidateRange(1, int.MaxValue)]
+        public int? ParallelDeploymentCount { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.RemediationFailureThreshold)]
+        [ValidateRange(0.0, 1.0)]
+        public double? FailureThreshold { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -89,6 +101,14 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
             if (this.LocationFilter != null)
             {
                 remediation.Filters = new RemediationFilters(this.LocationFilter);
+            }
+
+            remediation.ResourceCount = this.ResourceCount;
+            remediation.ParallelDeployments = this.ParallelDeploymentCount;
+
+            if (this.FailureThreshold != null)
+            {
+                remediation.FailureThreshold = new RemediationPropertiesFailureThreshold(percentage: this.FailureThreshold);
             }
 
             if (this.ShouldProcess(target: remediationName, action: string.Format(CultureInfo.InvariantCulture, Resources.CreatingRemediation, rootScope, remediationName)))

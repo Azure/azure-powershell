@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkvirtualappliance
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworkvirtualappliance
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The Remove-AzNetworkVirtualAppliance command removes a Network Virtual Appliance
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva
+Remove-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva
 ```
 
 Delete a Network Virtual Appliance resource.

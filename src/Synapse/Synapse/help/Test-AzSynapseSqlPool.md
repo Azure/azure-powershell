@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/test-azsynapsesqlpool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/test-azsynapsesqlpool
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The **Test-AzSynapseSqlPool** cmdlet checks for the existence of a Synapse Analy
 
 ### Example 1
 ```powershell
-PS C:\> Test-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Test-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command checks the existence of the specified SQL pool.

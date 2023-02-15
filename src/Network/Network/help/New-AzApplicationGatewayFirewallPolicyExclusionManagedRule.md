@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicyexclusionmanagedrule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicyexclusionmanagedrule
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **New-AzApplicationGatewayFirewallPolicyExclusionManagedRule** creates an ex
 
 ### Example 1
 ```powershell
-PS C:\> $ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRule -RuleId $ruleId
+$ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRule -RuleId $ruleId
 ```
 
 Creates an exclusion rule Entry with RuleId as $ruleId.

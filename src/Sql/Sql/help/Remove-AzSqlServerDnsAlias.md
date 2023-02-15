@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserverdnsalias
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlserverdnsalias
 schema: 2.0.0
 ---
 
@@ -36,8 +36,8 @@ This commands remove Azure SQL Server DNS Alias from the server leaving server i
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzSqlServerDnsAlias -DnsAliasName aliasName -ServerName serverName -ResourceGroupName rg
+```powershell
+Remove-AzSqlServerDnsAlias -DnsAliasName aliasName -ServerName serverName -ResourceGroupName rg
 ```
 
 Removes Azure SQL Server DNS Alias with the name aliasName from the server with the name serverName

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiRevision", DefaultParameterSetName = ExpandedParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementApi), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
     public class SetAzureApiManagementApiRevision : SetAzureApiManagementApi
-    {   
+    {
         [Parameter(
             ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
@@ -77,10 +77,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     SubscriptionKeyQueryParamName,
                     OpenIdProviderId,
                     BearerTokenSendingMethod,
-                    InputObject);
+                    InputObject,
+                    ApiType,
+                    TermsOfServiceUrl,
+                    ContactName,
+                    ContactUrl,
+                    ContactEmail,
+                    LicenseName,
+                    LicenseUrl);
 
                 if (PassThru.IsPresent)
-                {                                      
+                {
                     WriteObject(updatedApiRevision);
                 }
             }

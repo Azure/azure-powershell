@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightslinkedstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightslinkedstorageaccount
 schema: 2.0.0
 ---
 
@@ -25,8 +25,7 @@ Delete linked storage account for workspace
 
 ### Example 1
 ```powershell
-Remove-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataSourceType CustomLogs
-True
+Remove-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "rg-name" -WorkspaceName "workspace-name" -DataSourceType CustomLogs
 ```
 
 Delete linked storage account with type "CustomLogs" for {workspace-name}

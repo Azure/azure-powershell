@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosversion
+online version: https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosversion
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets properties of a guest operating system version that can be specified in the
 
 ### Example 1: Get all OS versions in a location
 ```powershell
-PS C:\> Get-AzCloudServiceOSVersion -location 'westus2'
+Get-AzCloudServiceOSVersion -location 'westus2'
+```
 
+```output
 Name                        Label                                            IsDefault IsActive Family FamilyLabel
 ----                        -----                                            --------- -------- ------ -----------
 WA-GUEST-OS-6.7_201905-01   Windows Azure Guest OS 6.7 (Release 201905-01)   False     False    6      Windows Server 2019
@@ -52,8 +54,10 @@ This command gets all OS versions in location westus2
 
 ### Example 2: Get OS version
 ```powershell
-PS C:\> Get-AzCloudServiceOSVersion -location 'westus2' -OSVersionName 'WA-GUEST-OS-6.7_201905-01'
+Get-AzCloudServiceOSVersion -location 'westus2' -OSVersionName 'WA-GUEST-OS-6.7_201905-01'
+```
 
+```output
 Name                      Label                                          IsDefault IsActive Family FamilyLabel
 ----                      -----                                          --------- -------- ------ -----------
 WA-GUEST-OS-6.7_201905-01 Windows Azure Guest OS 6.7 (Release 201905-01) False     False    6      Windows Server 2019
@@ -160,12 +164,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
+INPUTOBJECT `<ICloudServiceIdentity>`: Identity Parameter
   - `[CloudServiceName <String>]`: 
+  - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
+  - `[PublicIPAddressName <String>]`: The name of the public IP Address.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

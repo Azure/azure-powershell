@@ -69,6 +69,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public static readonly string DashParameterName = string.Empty;
 
         /// <summary>
+        /// The name of the mock ps host/console.
+        /// </summary>
+        public const string MockPSHostName = "MockPSHost";
+
+        /// <summary>
         /// The service endpoint to get the list of suggestions.
         /// </summary>
         public const string PredictionsEndpoint = "/predictions";

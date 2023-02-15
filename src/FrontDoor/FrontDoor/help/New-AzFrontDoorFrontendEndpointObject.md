@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorfrontendendpointobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorfrontendendpointobject
 schema: 2.0.0
 ---
 
@@ -27,9 +27,10 @@ Create a PSFrontendEndpoint Object for Front Door creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName "frontendendpoint1"
+New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName "frontendendpoint1"
+```
 
-
+```output
 HostName                         : frontendendpoint1
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0

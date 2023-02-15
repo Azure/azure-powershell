@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbpermission
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbpermission
 schema: 2.0.0
 ---
 
@@ -23,8 +23,11 @@ Creates a new CosmosDB Permission object to be used to create or update a Role D
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzCosmosDBPermission -DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
 ```
-PS C:\> New-AzCosmosDBPermission -DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
+
+```output
 DataActions
 -----------
 {Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create}

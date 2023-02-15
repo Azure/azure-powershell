@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsedataset
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsedataset
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzSynapseDataset** cmdlet removes a dataset from workspace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseDataset -WorkspaceName ContosoWorkspace -Name ContosoDataset
+Remove-AzSynapseDataset -WorkspaceName ContosoWorkspace -Name ContosoDataset
 ```
 
 This command removes the dataset named ContosoDataset from the workspace named ContosoWorkspace.

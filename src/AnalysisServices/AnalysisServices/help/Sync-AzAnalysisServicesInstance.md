@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane.dll-Help.xml
 Module Name: Az.AnalysisServices
-online version: https://docs.microsoft.com/powershell/module/az.analysisservices/sync-azanalysisservicesinstance
+online version: https://learn.microsoft.com/powershell/module/az.analysisservices/sync-azanalysisservicesinstance
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The Sync-AzAnalysisServicesInstance cmdlet synchronizes a specified database on 
 
 ### Example 1
 
-```
-PS C:\>Sync-AzAnalysisServicesInstance -Instance asazure://westus.asazure.windows.net/contoso -Database SalesOrders
+```powershell
+Sync-AzAnalysisServicesInstance -Instance asazure://westus.asazure.windows.net/contoso -Database SalesOrders
 ```
 
 This command will synchronize the database named SalesOrders in the server named 'contoso' in the environment westus.asazure.windows.net provided the user has logged-in to this environment using Add-AzAnalysisServicesAccount command.

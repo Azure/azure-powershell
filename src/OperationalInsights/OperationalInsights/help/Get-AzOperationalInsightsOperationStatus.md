@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsOperationStatus
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsOperationStatus
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Get the status of a long running azure asynchronous operation.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzOperationalInsightsOperationStatus -Location {location} -OperationId {op_id}
+Get-AzOperationalInsightsOperationStatus -Location "location" -OperationId "op_id"
 ```
 
 gets a long running azure asynchronous operation

@@ -1,13 +1,19 @@
-### Example 1: Remove Spring Cloud App by name.
+### Example 1: Remove Spring Cloud App by name
 ```powershell
-PS C:\> Remove-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway
+Remove-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway 
+```
+
+```output
 ```
 
 Remove Spring Cloud App by name.
 
-### Example 2: Remove Spring Cloud App from pipe.
+### Example 2: Remove Spring Cloud App by pipeline
 ```powershell
-PS C:\> Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway | Remove-AzSpringCloudApp
+Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway | Remove-AzSpringCloudApp
 ```
 
-Remove Spring Cloud App from pipe.
+```output
+```
+
+Remove Spring Cloud App by pipeline.

@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2pipeline
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2pipeline
 schema: 2.0.0
 ---
 
@@ -36,8 +36,11 @@ The Remove-AzDataFactoryV2Pipeline cmdlet removes a pipeline from Azure Data Fac
 ## EXAMPLES
 
 ### Example 1: Remove a pipeline
+```powershell
+Remove-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
 ```
-PS C:\> Remove-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
+
+```output
           Confirm
           Are you sure you want to remove pipeline 'DPWikisample' in data factory 'WikiADF'?
           [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y

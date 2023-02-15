@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Active".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Active", "Active", global::System.Management.Automation.CompletionResultType.ParameterValue, "Active");
+                yield return new global::System.Management.Automation.CompletionResult("'Active'", "Active", global::System.Management.Automation.CompletionResultType.ParameterValue, "Active");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Inactive".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Inactive", "Inactive", global::System.Management.Automation.CompletionResultType.ParameterValue, "Inactive");
+                yield return new global::System.Management.Automation.CompletionResult("'Inactive'", "Inactive", global::System.Management.Automation.CompletionResultType.ParameterValue, "Inactive");
             }
         }
     }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccountcommitmentplan
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccountcommitmentplan
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Create a CommitmentPlan for a Cognitive Services account
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "plan" -Properties $properties
+New-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name -Name "plan" -Properties $properties
 ```
 
 Create a CommitmentPlan for a Cognitive Services account

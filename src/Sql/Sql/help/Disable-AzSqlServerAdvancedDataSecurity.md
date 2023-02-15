@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlserveradvanceddatasecurity
+online version: https://learn.microsoft.com/powershell/module/az.sql/disable-azsqlserveradvanceddatasecurity
 schema: 2.0.0
 ---
 
@@ -25,10 +25,12 @@ The **Disable-AzSqlServerAdvancedDataSecurity** cmdlet disables Advanced Data Se
 
 ### Example 1: Disable server Advanced Data Security
 ```powershell
-PS C:\>  Disable-AzSqlServerAdvancedDataSecurity `
+Disable-AzSqlServerAdvancedDataSecurity `
             -ResourceGroupName "ResourceGroup01" `
-            -ServerName "Server01" 
+            -ServerName "Server01"
+```
 
+```output
 ResourceGroupName	         : ResourceGroup01
 ServerName		             : Server01
 IsEnabled		             : False
@@ -36,11 +38,13 @@ IsEnabled		             : False
 
 ### Example 2: Disable server Advanced Data Security from server resource
 ```powershell
-PS C:\>  Get-AzSqlServer `
+Get-AzSqlServer `
            -ResourceGroupName "ResourceGroup01" `
            -ServerName "Server01" `
            | Disable-AzSqlServerAdvancedDataSecurity
+```
 
+```output
 ResourceGroupName	         : ResourceGroup01
 ServerName		             : Server01
 IsEnabled		             : False

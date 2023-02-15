@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricnode
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricnode
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Use **Add-AzServiceFabricNode** to add nodes to the specific node type. You just
 
 ### Example 1
 ```powershell
-PS c:> Add-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1'
+Add-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeType 'nt1'
 ```
 
 This command will add 2 nodes to the node type 'n1'.

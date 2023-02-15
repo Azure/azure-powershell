@@ -74,6 +74,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
         /// <summary>
         /// set the access level of specified container
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="name">container name</param>
         /// <param name="accessLevel">access level in ("off", "blob", "container")</param>
         internal async Task SetContainerAcl(long taskId, IStorageBlobManagement localChannel, string name, BlobContainerPublicAccessType accessLevel)

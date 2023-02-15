@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrytag
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrytag
 schema: 2.0.0
 ---
 
@@ -35,7 +35,9 @@ first.
 ### Example 1
 ```powershell
 Get-AzContainerRegistryTag -RegistryName registry -RepositoryName alpine
+```
 
+```output
 Registry                    ImageName Tags
 --------                    --------- ----
 registry.azurecr.io alpine    {latest}
@@ -46,7 +48,9 @@ List tags for repository alpine under registry.
 ### Example 2
 ```powershell
 Get-AzContainerRegistryTag -RegistryName registry -RepositoryName alpine -name latest
+```
 
+```output
 Registry                    ImageName Attributes
 --------                    --------- ----------
 registry.azurecr.io alpine    Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase

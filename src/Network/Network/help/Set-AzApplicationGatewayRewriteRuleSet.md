@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewayrewriteruleset
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewayrewriteruleset
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Set-AzApplicationGatewayRewriteRuleSet** cmdlet modifies a request routing
 
 ### Example 1
 ```powershell
-PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGw = Set-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $AppGw -Name "ruleset1" -RewriteRule $rule
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Set-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $AppGw -Name "ruleset1" -RewriteRule $rule
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: E7F31B71-983A-4DB3-BB30-BDC5C0247E74
-online version: https://docs.microsoft.com/powershell/module/az.automation/publish-azautomationrunbook
+online version: https://learn.microsoft.com/powershell/module/az.automation/publish-azautomationrunbook
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Publish-AzAutomationRunbook** cmdlet publishes a runbook for use in the pr
 ## EXAMPLES
 
 ### Example 1: Publish a runbook
-```
-PS C:\>Publish-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ResourceGroupName "ResourceGroup01"
+```powershell
+Publish-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command publishes the runbook named Runbk01 in the Azure Automation account named Contoso17.
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

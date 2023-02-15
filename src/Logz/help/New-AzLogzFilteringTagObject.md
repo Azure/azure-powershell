@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.Logz/new-AzLogzFilteringTagObject
+online version: https://learn.microsoft.com/powershell/module/az.Logz/new-AzLogzFilteringTagObject
 schema: 2.0.0
 ---
 
@@ -23,9 +23,11 @@ Create a in-memory object for FilteringTag
 
 ### Example 1: Create a in-memory object for FilteringTag pass into parameter LogRuleFilteringTag when creating a tage rule for the monitor resource
 ```powershell
-PS C:\> $filter = New-AzLogzFilteringTagObject -Action 'Include' -Name 'Env' -Value "Prod"
-PS C:\> New-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -LogRuleFilteringTag $filter
+$filter = New-AzLogzFilteringTagObject -Action 'Include' -Name 'Env' -Value "Prod"
+New-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -LogRuleFilteringTag $filter
+```
 
+```output
 Name    ProvisioningState ResourceGroupName
 ----    ----------------- -----------------
 default Succeeded         logz-rg-test

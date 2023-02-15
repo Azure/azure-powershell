@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicyintrusiondetectionsignatureoverride
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpolicyintrusiondetectionsignatureoverride
 schema: 2.0.0
 ---
 
@@ -22,10 +22,10 @@ The **New-AzFirewallPolicyIntrusionDetectionSignatureOverride** cmdlet creates a
 
 ## EXAMPLES
 
-### Example 1: 1. Create intrusion detection with signature overrides
+### Example 1: Create intrusion detection with signature overrides
 ```powershell
-PS C:\> $signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
-PS C:\> New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride
+$signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
+New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride
 ```
 This example creates intrusion detection with specific signature override to Deny mode
 

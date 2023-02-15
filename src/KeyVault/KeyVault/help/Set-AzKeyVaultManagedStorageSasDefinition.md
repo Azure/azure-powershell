@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition
 schema: 2.0.0
 ---
 
@@ -37,15 +37,15 @@ Storage Account.
 
 ### Example 1: Set an account-type SAS definition, and obtain a current SAS token based on it
 ```powershell
-PS C:\> $sa = Get-AzStorageAccount -Name mysa -ResourceGroupName myrg
-PS C:\> $kv = Get-AzKeyVault -VaultName mykv
-PS C:\> Add-AzKeyVaultManagedStorageAccount -VaultName $kv.VaultName -AccountName $sa.StorageAccountName -AccountResourceId $sa.Id -ActiveKeyName key1 -RegenerationPeriod ([System.Timespan]::FromDays(180))
-PS C:\> $sctx = New-AzStorageContext -StorageAccountName $sa.StorageAccountName -Protocol Https -StorageAccountKey Key1
-PS C:\> $start = [System.DateTime]::Now.AddDays(-1)
-PS C:\> $end = [System.DateTime]::Now.AddMonths(1)
-PS C:\> $at = New-AzStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $sctx
-PS C:\> $sas = Set-AzKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccountName -VaultName $kv.VaultName -Name accountsas -TemplateUri $at -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
-PS C:\> Get-AzKeyVaultSecret -VaultName $kv.VaultName -Name $sas.Sid.Substring($sas.Sid.LastIndexOf('/')+1)
+$sa = Get-AzStorageAccount -Name mysa -ResourceGroupName myrg
+$kv = Get-AzKeyVault -VaultName mykv
+Add-AzKeyVaultManagedStorageAccount -VaultName $kv.VaultName -AccountName $sa.StorageAccountName -AccountResourceId $sa.Id -ActiveKeyName key1 -RegenerationPeriod ([System.Timespan]::FromDays(180))
+$sctx = New-AzStorageContext -StorageAccountName $sa.StorageAccountName -Protocol Https -StorageAccountKey Key1
+$start = [System.DateTime]::Now.AddDays(-1)
+$end = [System.DateTime]::Now.AddMonths(1)
+$at = "sv=2018-03-28&ss=bfqt&srt=sco&sp=rw&spr=https"
+$sas = Set-AzKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccountName -VaultName $kv.VaultName -Name accountsas -TemplateUri $at -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
+Get-AzKeyVaultSecret -VaultName $kv.VaultName -Name $sas.Sid.Substring($sas.Sid.LastIndexOf('/')+1)
 ```
 
 Sets an account SAS definition 'accountsas' on a KeyVault-managed storage account 'mysa' in vault 'mykv'. Specifically, the sequence above performs the following:
@@ -259,4 +259,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azureâ€‹RM.â€‹Keyâ€‹Vault](/powershell/module/az.keyvault/)
+[Get-AzKeyVaultManagedStorageSasDefinition](./Get-AzKeyVaultManagedStorageSasDefinition.md)
+
+[Remove-AzKeyVaultManagedStorageSasDefinition](./Remove-AzKeyVaultManagedStorageSasDefinition.md)
+
+[Undo-AzKeyVaultManagedStorageSasDefinitionRemoval](./Undo-AzKeyVaultManagedStorageSasDefinitionRemoval.md)

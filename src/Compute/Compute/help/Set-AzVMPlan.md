@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: A1EA7D34-A8B4-4FA0-BD8C-3E846715AFBA
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmplan
 schema: 2.0.0
 ---
 
@@ -23,6 +23,18 @@ The **Set-AzVMPlan** cmdlet sets the Azure Marketplace plan information for a vi
 Before being able to deploy a Marketplace image through the command-line, programmatic access must be enabled or the virtual machine must be deployed by using the Azure portal.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_B1s" |
+    Set-AzVMPlan -Publisher "Canonical" -Product "UbuntuServer" -Name "18.04-LTS"
+```
+
+```Output
+Name            : VirtualMachine07
+HardwareProfile : {VmSize}
+Plan            : {Name, Publisher, Product}
+```
 
 ## PARAMETERS
 

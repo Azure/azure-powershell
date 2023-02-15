@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ The **Get-AzCosmosDBGremlinGraphThroughput** cmdlet gets the throughput of a Cos
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBGremlinGraphThroughput -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Name {graphName}
+Get-AzCosmosDBGremlinGraphThroughput -ResourceGroupName "rgName" -AccountName "accountName" -DatabaseName "dbName" -Name "graphName"
+```
 
+```output
 Name: {throughputName}
 Id: {Id}
 Throughput: {value} 

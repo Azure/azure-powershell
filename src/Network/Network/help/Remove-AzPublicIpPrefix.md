@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipprefix
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azpublicipprefix
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzPublicIpPrefix** cmdlet removes an Azure public IP prefix as long
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName
+Remove-AzPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName
 ```
 
 Removes the public IP prefix with Name $prefixName from resource group $rgName

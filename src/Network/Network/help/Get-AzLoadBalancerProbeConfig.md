@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 278228EB-0126-4F27-A30F-51DC498C65FE
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancerprobeconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azloadbalancerprobeconfig
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Get-AzLoadBalancerProbeConfig** cmdlet gets one or more probe configuratio
 ## EXAMPLES
 
 ### Example 1: Get the probe configuration of a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzLoadBalancerProbeConfig -Name "MyProbe" -LoadBalancer $slb
+```powershell
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Get-AzLoadBalancerProbeConfig -Name "MyProbe" -LoadBalancer $slb
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/set-azdeploymentmanagerstep
+online version: https://learn.microsoft.com/powershell/module/az.deploymentmanager/set-azdeploymentmanagerstep
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The cmdlet returns the updated step object.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDeploymentManagerStep -InputObject $stepObject
+Set-AzDeploymentManagerStep -InputObject $stepObject
 ```
 
 This command updates a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.

@@ -17,35 +17,31 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 {
-    public class SnapshotTests
+    public class SnapshotTests : NetAppFilesTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public SnapshotTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SnapshotTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSnapshotCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SnapshotCrud");
+            TestRunner.RunTestScript("Test-SnapshotCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSnapshotPipelines()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SnapshotPipelines");
+            TestRunner.RunTestScript("Test-SnapshotPipelines");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateVolumeFromSnapshot()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateVolumeFromSnapshot");
+            TestRunner.RunTestScript("Test-CreateVolumeFromSnapshot");
         }
                
 
@@ -53,7 +49,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreVolumeFromSnapshot()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RestoreVolumeFromSnapshot");
+            TestRunner.RunTestScript("Test-RestoreVolumeFromSnapshot");
         }
     }
 }

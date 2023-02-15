@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 78F356F6-A621-4C27-B9CC-D103E74B3A33
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azloadbalancer
 schema: 2.0.0
 ---
 
@@ -31,9 +31,11 @@ The **Get-AzLoadBalancer** cmdlet gets one or more Azure load balancers that are
 ## EXAMPLES
 
 ### Example 1: Get a load balancer
+```powershell
+Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
 ```
-PS C:\> Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
 
+```output
 Name                     : MyLoadBalancer1
 ResourceGroupName        : MyResourceGroup
 Location                 : australiaeast
@@ -59,9 +61,11 @@ This command gets the load balancer named MyLoadBalancer.
 A load balancer must exist before you can run this cmdlet.
 
 ### Example 2: List load balancers using filtering
+```powershell
+Get-AzLoadBalancer -Name MyLoadBalancer*
 ```
-PS C:\> Get-AzLoadBalancer -Name MyLoadBalancer*
 
+```output
 Name                     : MyLoadBalancer1
 ResourceGroupName        : MyResourceGroup
 Location                 : australiaeast

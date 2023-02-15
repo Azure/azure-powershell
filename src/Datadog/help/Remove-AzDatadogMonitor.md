@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://docs.microsoft.com/powershell/module/az.datadog/remove-azdatadogmonitor
+online version: https://learn.microsoft.com/powershell/module/az.datadog/remove-azdatadogmonitor
 schema: 2.0.0
 ---
 
@@ -31,16 +31,14 @@ Delete a monitor resource.
 
 ### Example 1: Delete a monitor resource
 ```powershell
-PS C:\> Remove-AzDatadogMonitor -ResourceGroupName azure-rg-test -Name Datadog-portal03
-
+Remove-AzDatadogMonitor -ResourceGroupName azure-rg-test -Name Datadog-portal03
 ```
 
 This command deletes a monitor resource.
 
 ### Example 2: Delete a monitor resource by pipeline
 ```powershell
-PS C:\> Get-AzDatadogMonitor -ResourceGroupName azure-rg-test -Name Datadog-portal02 | Remove-AzDatadogMonitor
-
+Get-AzDatadogMonitor -ResourceGroupName azure-rg-test -Name Datadog-portal02 | Remove-AzDatadogMonitor
 ```
 
 This command deletes a monitor resource by pipeline.
@@ -220,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatadogIdentity>: Identity Parameter
+INPUTOBJECT `<IDatadogIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

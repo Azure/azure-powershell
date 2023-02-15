@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: E1AC7139-786C-4DD6-A898-242723E0D159
-online version: https://docs.microsoft.com/powershell/module/az.resources/set-azpolicydefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/set-azpolicydefinition
 schema: 2.0.0
 ---
 
@@ -54,9 +54,9 @@ The **Set-AzPolicyDefinition** cmdlet modifies a policy definition.
 ## EXAMPLES
 
 ### Example 1: Update the description of a policy definition
-```
-PS C:\> $PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
-PS C:\> Set-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
+```powershell
+$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
+Set-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
 ```
 
 The first command gets a policy definition named VMPolicyDefinition by using the Get-AzPolicyDefinition cmdlet.
@@ -64,18 +64,19 @@ The command stores that object in the $PolicyDefinition variable.
 The second command updates the description of the policy definition identified by the **ResourceId** property of $PolicyDefinition.
 
 ### Example 2: Update the mode of a policy definition
-```
-PS C:\> Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
+```powershell
+Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
 ```
 
 This command updates the policy definition named VMPolicyDefinition by using the Set-AzPolicyDefinition cmdlet to 
 set its mode property to 'All'.
 
 ### Example 3: Update the metadata of a policy definition
+```powershell
+Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}'
 ```
-PS C:\> Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}'
 
-
+```output
 Name               : VMPolicyDefinition
 ResourceId         : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policyDefinitions/VMPolicyDefinition
 ResourceName       : VMPolicyDefinition

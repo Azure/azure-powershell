@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverlocationbasedcapability
+online version: https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverlocationbasedcapability
 schema: 2.0.0
 ---
 
@@ -24,7 +24,10 @@ Get the available SKU information for the location
 
 ### Example 1: Get location capabilities by location name
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
+Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
+```
+
+```output
 "Please refer to https://aka.ms/mysql-pricing for pricing details"
 
 SKU               Memory Tier            vCore
@@ -46,7 +49,6 @@ Standard_E16ds_v4   8192 MemoryOptimized    16
 Standard_E32ds_v4   8192 MemoryOptimized    32
 Standard_E48ds_v4   8192 MemoryOptimized    48
 Standard_E64ds_v4   8192 MemoryOptimized    64
-
 ```
 
 This cmdlet shows basic sku information of the provided location.

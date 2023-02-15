@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/grant-azsnapshotaccess
+online version: https://learn.microsoft.com/powershell/module/az.compute/grant-azsnapshotaccess
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Grant-AzSnapshotAccess** cmdlet grants an access to a snapshot.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Grant-AzSnapshotAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Access 'Read' -DurationInSecond 60;
+```powershell
+Grant-AzSnapshotAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Access 'Read' -DurationInSecond 60;
 ```
 
 Grant 'Read' access to the snapshot named 'Snapshot01' in the resource group named 'ResourceGroup01' for 60 seconds.

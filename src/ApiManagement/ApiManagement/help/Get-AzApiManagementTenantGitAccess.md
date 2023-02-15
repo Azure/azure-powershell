@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 6F01F494-CD1D-483A-9E57-BF693B1F2FC1
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementtenantgitaccess
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementtenantgitaccess
 schema: 2.0.0
 ---
 
@@ -26,11 +26,11 @@ Keys will not be included into result details. To get client secret, use **Get-A
 
 ### Example 1: Get tenant access configuration
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementTenantGitAccess -Context $apimContext
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementTenantGitAccess -Context $apimContext
 ```
 
-```
+```output
 Enabled Id  PrimaryKey                                                                               SecondaryKey
 ------- --  ----------                                                                               ------------
    True git GrPksEiunqn1BgprRvWIZZxUuaRl9vdz0ZFjVBxxx==             OR4wVD//HzaE4Okb6aSdG9zy0O6kHhmfIJBaL9Zwu+Mxxxf9R2ydOslIw==

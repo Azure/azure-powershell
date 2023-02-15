@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandrakeyspace
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandrakeyspace
 schema: 2.0.0
 ---
 
@@ -33,8 +33,10 @@ Creates a new CosmosDB Cassandra Keyspace.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBCassandraKeyspace -AccountName myAccountName -ResourceGroupName myRgName -Name myKeyspaceName -Throughput 600
+New-AzCosmosDBCassandraKeyspace -AccountName myAccountName -ResourceGroupName myRgName -Name myKeyspaceName -Throughput 600
+```
 
+```output
 Name     : myKeyspace
 Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/cassandraKeyspaces/myKeyspaceName
 Location :

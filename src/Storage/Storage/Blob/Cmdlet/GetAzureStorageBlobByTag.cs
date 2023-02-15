@@ -63,6 +63,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "As the blobs get by tag don't contain blob proeprties, specify tis parameter to get blob properties with an additional request on each blob.")]
         public SwitchParameter GetBlobProperty { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Container name, specify this parameter to only return all blobs whose tags match a search expression in the container.")]
+        [ValidateNotNullOrEmpty]
+        public string Container { get; set; }
+
         // Overwrite the useless parameter
         public override string TagCondition { get; set; }
         protected override bool UseTrack2Sdk()
@@ -90,10 +94,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// list blobs by blob Tag
         /// </summary>
-        internal async Task ListBlobsByTag(long taskId, IStorageBlobManagement localChannel, string tagFilterSqlExpression)
+        internal void ListBlobsByTag(IStorageBlobManagement localChannel, string tagFilterSqlExpression)
         {
 
             BlobServiceClient blobServiceClient = Util.GetTrack2BlobServiceClient(localChannel.StorageContext, ClientOptions);
+            BlobContainerClient containerClient = null;
+            if (!string.IsNullOrEmpty(this.Container))
+            {
+                containerClient = blobServiceClient.GetBlobContainerClient(this.Container);
+            }
+
 
             int listCount = InternalMaxCount;
             int MaxListCount = 5000;
@@ -106,16 +116,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 requestCount = Math.Min(listCount, MaxListCount);
                 realListCount = 0;
-                IAsyncEnumerator<Page<TaggedBlobItem>> enumerator = blobServiceClient.FindBlobsByTagsAsync(tagFilterSqlExpression, CmdletCancellationToken)
-                    .AsPages(track2ContinuationToken, requestCount)
-                    .GetAsyncEnumerator();
+                IEnumerator<Page<TaggedBlobItem>> enumerator;
+
+                if (string.IsNullOrEmpty(this.Container))
+                {
+                    enumerator = blobServiceClient.FindBlobsByTags(tagFilterSqlExpression, CmdletCancellationToken)
+                        .AsPages(track2ContinuationToken, requestCount)
+                        .GetEnumerator();
+                }
+                else
+                {
+                    enumerator = containerClient.FindBlobsByTags(tagFilterSqlExpression, CmdletCancellationToken)
+                        .AsPages(track2ContinuationToken, requestCount)
+                        .GetEnumerator();
+                }
 
                 Page<TaggedBlobItem> page;
-                await enumerator.MoveNextAsync().ConfigureAwait(false);
+                enumerator.MoveNext();
                 page = enumerator.Current;
                 foreach (TaggedBlobItem item in page.Values)
                 {
-                    OutputStream.WriteObject(taskId, new AzureStorageBlob(item, Channel.StorageContext, page.ContinuationToken, ClientOptions, this.GetBlobProperty.IsPresent));
+                    WriteObject(new AzureStorageBlob(item, Channel.StorageContext, page.ContinuationToken, ClientOptions, this.GetBlobProperty.IsPresent));
                     realListCount++;
                 }
                 track2ContinuationToken = page.ContinuationToken;
@@ -133,12 +154,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            Func<long, Task> taskGenerator = null;
             IStorageBlobManagement localChannel = Channel;
 
-            taskGenerator = (taskId) => ListBlobsByTag(taskId, localChannel, this.TagFilterSqlExpression);    
-
-            RunTask(taskGenerator);
+            ListBlobsByTag(localChannel, this.TagFilterSqlExpression);
         }
     }
 }

@@ -16,17 +16,13 @@
 
 <#
 .Synopsis
-Description for Create function for web site, or a deployment slot.
+Create function for web site, or a deployment slot.
 .Description
-Description for Create function for web site, or a deployment slot.
+Create function for web site, or a deployment slot.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope
@@ -114,7 +110,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/new-azfunction
 #>
 function New-AzFunction {
 [OutputType([System.Boolean])]
@@ -333,6 +329,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunction_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunction_CreateExpanded';
@@ -348,6 +345,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -356,15 +354,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

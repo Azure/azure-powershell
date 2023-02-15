@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.BotService
-online version: https://docs.microsoft.com/powershell/module/az.botservice/publish-azbotserviceapp
+online version: https://learn.microsoft.com/powershell/module/az.botservice/publish-azbotserviceapp
 schema: 2.0.0
 ---
 
@@ -24,8 +24,7 @@ Returns a BotService specified by the parameters.
 
 ### Example 1: Publish your BotService to Azure
 ```powershell
-PS C:\> Publish-AzBotServiceApp -ResourceGroupName youriBotTest -CodeDir D:\zips\MyEchoBot -Name youriechobottest
-
+Publish-AzBotServiceApp -ResourceGroupName youriBotTest -CodeDir D:\zips\MyEchoBot -Name youriechobottest
 ```
 
 Publish your BotService to Azure by code

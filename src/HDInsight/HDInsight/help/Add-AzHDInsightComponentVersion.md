@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 774848C9-47A1-4C43-B6FA-B3C0C3C76470
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightcomponentversion
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightcomponentversion
 schema: 2.0.0
 ---
 
@@ -25,14 +25,14 @@ The Add-AzHDInsightComponentVersion cmdlet adds a version for a service running 
 ## EXAMPLES
 
 ### Example 1: Add a version for Spark to the cluster configuration object.
-```
-PS C:\> # Primary storage account info
+```powershell
+        # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountName = "yourstorageacct001"
         $storageAccountResourceId = "yourstorageaccountresourceid"
         $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
-            -Name $storageAccountName | %{ $_.Key1 }
+            -Name $storageAccountName | ForEach-Object{ $_.Key1 }
         $storageContainer = "container001"
 
         # Cluster configuration info

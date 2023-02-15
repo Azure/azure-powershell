@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Extensions;
+    using System;
 
     /// <summary>Description for Detach the user provided function app from the static site</summary>
     /// <remarks>
@@ -244,7 +245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.Debug:

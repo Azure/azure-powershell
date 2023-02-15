@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 606C5453-F841-4574-95F8-5CC29A4186E1
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightproperty
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightproperty
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Get-AzHDInsightProperty** cmdlet gets properties specific to Azure HDInsig
 ## EXAMPLES
 
 ### Example 1: Get the properties of an Azure HDInsight cluster
-```
-PS C:\>Get-AzHDInsightProperty -Location "East US 2"
+```powershell
+Get-AzHDInsightProperty -Location "East US 2"
 ```
 
 This command gets properties from an HDInsight service from location East US 2.

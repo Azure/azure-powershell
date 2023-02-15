@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlog
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlog
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ Gets a flow log resource or a list of flow log resources in the specified subscr
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkWatcherFlowLog -Location eastus -Name pstest
+Get-AzNetworkWatcherFlowLog -Location eastus -Name pstest
 ```
 
 Name                       : pstest

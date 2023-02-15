@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5D887302-7678-44C0-86F3-CEF2EF8A0991
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaywebapplicationfirewallconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewaywebapplicationfirewallconfiguration
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Get-AzApplicationGatewayWebApplicationFirewallConfiguration** cmdlet gets 
 ## EXAMPLES
 
 ### Example 1: Get an application gateway web application firewall configuration
-```
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $FirewallConfig = Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$FirewallConfig = Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
 ```
 
 The first command gets the application gateway named ApplicationGateway01, and then stores it in the $AppGW variable.

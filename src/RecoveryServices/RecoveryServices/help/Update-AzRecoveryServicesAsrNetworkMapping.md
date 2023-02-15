@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrnetworkmapping
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrnetworkmapping
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ The **Update-AzRecoveryServicesAsrNetworkMapping** cmdlet updates the specified 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Update-AzRecoveryServicesAsrNetworkMapping -Mapping $NetworkMapping -RecoveryNetwork $RecoveryNetwork
+```powershell
+Update-AzRecoveryServicesAsrNetworkMapping -InputObject $NetworkMapping -RecoveryNetwork $RecoveryNetwork
 ```
 
 Starts the update network mapping operation using the specified parameters and returns the ASR job used to track the operation.

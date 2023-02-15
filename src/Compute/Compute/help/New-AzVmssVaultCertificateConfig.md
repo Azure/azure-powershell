@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 5CC89899-00B6-424A-8896-FD32DE9DDA28
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azvmssvaultcertificateconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azvmssvaultcertificateconfig
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The output of this cmdlet is intended to be used with the Add-AzVmssSecret cmdle
 ## EXAMPLES
 
 ### Example 1: Create a Key Vault certificate configuration
-```
-PS C:\> New-AzVmssVaultCertificateConfig -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion" -CertificateStore "MyCerts"
+```powershell
+New-AzVmssVaultCertificateConfig -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion" -CertificateStore "MyCerts"
 ```
 
 This command creates a Key Vault certificate configuration that uses the certificate store named MyCerts located at the specified certificate URL.

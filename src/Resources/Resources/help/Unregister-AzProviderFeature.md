@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/unregister-azproviderfeature
+online version: https://learn.microsoft.com/powershell/module/az.resources/unregister-azproviderfeature
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Unregister-AzProviderFeature** cmdlet unregisters an Azure provider featur
 ## EXAMPLES
 
 ### Example 1: Unregister a feature
-```
-PS C:\>Unregister-AzProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+```powershell
+Unregister-AzProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
 This unregisters the AllowApplicationSecurityGroups feature for Microsoft.Network from your account.

@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationSelectedDBObject
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationSelectedDBObject
 schema: 2.0.0
 ---
 
@@ -33,18 +33,22 @@ The New-AzDataMigrationSelectedDB cmdlet creates a database info object that con
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataMigrationSelectedDBObject -MigrateSqlServerSqlDb -Name "HR" -TargetDatabaseName "HR_PSTEST" -TableMap $tableMap
 ```
-PS C:\> New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name "HR" -TargetDatabaseName "HR_PSTEST" -TableMap $tableMap
 
+```output
 Name TargetDatabaseName MakeSourceDbReadOnly TableMap
 ---- ------------------ -------------------- --------
 HR   HR_PSTEST                         False {[HR.COUNTRIES, HR.COUNTRIES]}
 ```
 
 ### Example 2
+```powershell
+New-AzDataMigrationSelectedDBObject -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
 ```
-PS C:\> New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
 
+```output
 Name RestoreDatabaseName BackupFileShare
 ---- ------------------- ---------------
 HR   HRTest              Microsoft.Azure.Management.DataMigration.Models.FileShare
@@ -175,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

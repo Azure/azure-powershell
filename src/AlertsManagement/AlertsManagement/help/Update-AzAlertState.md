@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/update-azalertstate
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/update-azalertstate
 schema: 2.0.0
 ---
 
@@ -14,13 +14,13 @@ Updates alert state
 
 ### ByAlertId (Default)
 ```
-Update-AzAlertState -AlertId <String> -State <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Update-AzAlertState -AlertId <String> -State <String> -Comment <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzAlertState -State <String> -InputObject <PSAlert> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Update-AzAlertState -State <String> -Comment <String> -InputObject <PSAlert> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Update-AzAlertState -State <String> -InputObject <PSAlert> [-DefaultProfile <IAz
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzAlertState -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529" -State "Closed"
+Update-AzAlertState -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529" -State "Closed"
 ```
 
 This cmdlet updates the alert state to Closed.
@@ -91,6 +91,20 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Comment
+Reason why to change alert state
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 Required: True
 Position: Named
 Default value: None

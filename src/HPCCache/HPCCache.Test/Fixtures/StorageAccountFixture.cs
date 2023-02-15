@@ -6,6 +6,7 @@
     using System.Web;
     using Microsoft.Azure.Commands.HPCCache.Test.Helper;
     using Microsoft.Azure.Commands.HPCCache.Test.Utilities;
+    using Microsoft.Azure.Commands.TestFx;
     using Microsoft.Azure.Management.Internal.Resources.Models;
     using Microsoft.Azure.Management.Storage;
     using Microsoft.Azure.Management.Storage.Models;
@@ -48,7 +49,6 @@
             this.fixture = fixture;
             using (this.Context = new HpcCacheTestContext(this.GetType().Name))
             {
-                this.Context = new HpcCacheTestContext(this.GetType().Name);
                 this.StorageTarget = this.AddClfsStorageTarget(this.Context);
                 Match clfsTargetMatch = ClfsTargetRegex.Match(this.StorageTarget.Clfs.Target);
                 var storageAccountName = clfsTargetMatch.Groups["StorageAccountName"].Value;

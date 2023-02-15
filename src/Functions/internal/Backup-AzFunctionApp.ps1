@@ -16,17 +16,13 @@
 
 <#
 .Synopsis
-Description for Creates a backup of an app.
+Creates a backup of an app.
 .Description
-Description for Creates a backup of an app.
+Creates a backup of an app.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupRequest
@@ -119,7 +115,7 @@ REQUEST <IBackupRequest>: Description of a backup which will be performed.
   [Enabled <Boolean?>]: True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
   [StorageAccountUrl <String>]: SAS URL to the container.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/backup-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/backup-azfunctionapp
 #>
 function Backup-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItem])]
@@ -295,6 +291,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Backup = 'Az.Functions.private\Backup-AzFunctionApp_Backup';
             BackupExpanded = 'Az.Functions.private\Backup-AzFunctionApp_BackupExpanded';
@@ -310,6 +307,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -318,15 +316,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

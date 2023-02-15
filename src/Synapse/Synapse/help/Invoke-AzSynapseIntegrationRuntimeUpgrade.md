@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/invoke-azsynapseintegrationruntimeupgrade
+online version: https://learn.microsoft.com/powershell/module/az.synapse/invoke-azsynapseintegrationruntimeupgrade
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The **Invoke-AzSynapseIntegrationRuntimeUpgrade** cmdlet upgrades self-hosted in
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzSynapseIntegrationRuntimeUpgrade -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
+Invoke-AzSynapseIntegrationRuntimeUpgrade -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
 ```
 
 The cmdlet upgrades self-hosted integration runtime named 'test-selfhost-ir' in workspace ContosoWorkspace.

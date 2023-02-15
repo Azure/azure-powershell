@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.OutboundFirewallRules.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Databases OutboundFirewallRules
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerOutboundFirewallRulesCommunicator(IAzureContext context)
         {
             Context = context;

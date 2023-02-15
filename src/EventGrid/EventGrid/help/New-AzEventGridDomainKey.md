@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version: https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgriddomainkey
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgriddomainkey
 schema: 2.0.0
 ---
 
@@ -40,8 +40,10 @@ Regenerates the shared access key for an Azure Event Grid Domain.
 Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ```powershell
-PS C:\> New-AzEventGridDomainKey -ResourceGroup MyResourceGroupName -DomainName Domain1 -Name key1
+New-AzEventGridDomainKey -ResourceGroupName MyResourceGroupName -DomainName Domain1 -Name key1
+```
 
+```output
 Key1                                         Key2
 ----                                         ----
 <New Value for Key1>                        <Old Value for Key2>
@@ -52,8 +54,10 @@ Key1                                         Key2
 Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
 ```powershell
-PS C:\> Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1 | New-AzEventGridTopicKey -KeyName "key1"
+Get-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 | New-AzEventGridTopicKey -KeyName "key1"
+```
 
+```output
 Key1                                         Key2
 ----                                         ----
 <New Value for Key1>                        <Old Value for Key2>
@@ -64,8 +68,10 @@ Key1                                         Key2
 Regenerate the key corresponding to key \'key2'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using its full resource Id.
 
 ```powershell
-PS C:\> New-AzEventGridDomainKey -ResourceId /subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1 -KeyName Key2
+New-AzEventGridDomainKey -DomainResourceId /subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1 -KeyName Key2
+```
 
+```output
 Key1                                         Key2
 ----                                         ----
 <Old Value for Key1>                        <New Value for Key2>

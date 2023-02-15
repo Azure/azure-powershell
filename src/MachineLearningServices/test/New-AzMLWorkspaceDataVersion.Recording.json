@@ -1,0 +1,42 @@
+{
+  "New-AzMLWorkspaceDataVersion+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/data/iris-data/versions/2?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/data/iris-data/versions/2?api-version=2022-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"dataType\": \"uri_file\",\r\n    \"dataUri\": \"https://azuremlexamples.blob.core.windows.net/datasets/iris.csv\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "139" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "74e557a4-e0f4-4f79-a53a-ac376b687af9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.359" ],
+        "x-ms-correlation-request-id": [ "74e557a4-e0f4-4f79-a53a-ac376b687af9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T124251Z:74e557a4-e0f4-4f79-a53a-ac376b687af9" ],
+        "Date": [ "Sun, 05 Jun 2022 12:42:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "737" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/data/iris-data/versions/2\",\n  \"name\": \"2\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/data/versions\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": null,\n    \"properties\": null,\n    \"isArchived\": false,\n    \"isAnonymous\": false,\n    \"dataUri\": \"https://azuremlexamples.blob.core.windows.net/datasets/iris.csv\",\n    \"dataType\": \"uri_file\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-06-05T12:36:55.9487626Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2022-06-05T12:36:55.9650692Z\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

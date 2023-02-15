@@ -13,28 +13,43 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.PowerShell.Common.Share.Survey;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Diagnostics;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Profile.Survey
 {
     [Cmdlet(VerbsCommon.Open, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SurveyLink"), OutputType(typeof(void))]
     public class OpenAzSurveyLinkCmdlet : AzurePSCmdlet
     {
-        private const string _surveyLinkFormat = "https://aka.ms/azpssurvey?Q_CHL=INTERCEPT";
-
         protected override IAzureContext DefaultContext => null;
 
         protected override string DataCollectionWarning => null;
 
         public override void ExecuteCmdlet()
         {
-            WriteInformation(new HostInformationMessage() { Message = $"Opening the default browser to {_surveyLinkFormat}" }, new string[] { "PSHOST" });
-            OpenBrowser(_surveyLinkFormat);
+            DateTime today = DateTime.UtcNow;
+            AzureSession.Instance.ExtendedProperties.TryGetValue("InstallationId", out string InstallationId);
+            String version= AzurePSCmdlet.AzVersion;
+            int gapDays = -1;
+
+            ScheduleInfo scheduleInfo = SurveyHelper.GetInstance().GetScheduleInfo();
+            DateTime LastPromptDate = Convert.ToDateTime(scheduleInfo?.LastPromptDate);
+            if (LastPromptDate != DateTime.MinValue){
+                TimeSpan ts = today.Subtract(LastPromptDate);
+                gapDays = (int) ts.TotalDays;
+            }
+            String svLink = $"https://go.microsoft.com/fwlink/?linkid=2201766&ID={InstallationId}&v={version}&d={gapDays}";
+            WriteInformation(new HostInformationMessage() { Message = $"Opening the default browser to {svLink}" }, new string[] { "PSHOST" });
+            OpenBrowser(svLink);
         }
+
 
         private void OpenBrowser(string url)
         {

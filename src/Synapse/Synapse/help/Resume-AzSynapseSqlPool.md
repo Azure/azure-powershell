@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/resume-azsynapsesqlpool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/resume-azsynapsesqlpool
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The **Resume-AzSynapseSqlPool** cmdlet resumes an Azure Synapse Analytics SQL po
 
 ### Example 1
 ```powershell
-PS C:\> Resume-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Resume-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command resumes a suspended Azure Synapse Analytics SQL pool.

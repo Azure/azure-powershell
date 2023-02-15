@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekqlscript
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekqlscript
 schema: 2.0.0
 ---
 
@@ -31,22 +31,22 @@ The **Get-AzSynapseKqlScript** cmdlet gets information about KQL scripts in a wo
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseKqlScript -WorkspaceName ContosoWorkspace
+Get-AzSynapseKqlScript -WorkspaceName ContosoWorkspace
 ```
 
 Gets a list of all KQL scripts in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -Name ContosoKqlScript
+Get-AzSynapseKqlScript -WorkspaceName ContosoWorkspace -Name ContosoKqlScript
 ```
 
 Gets a single KQL script called ContosoKqlScript in the workspace ContosoWorkspace.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseKqlScript -Name ContosoKqlScript
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseKqlScript -Name ContosoKqlScript
 ```
 
 Gets a single KQL script called ContosoKqlScript in the workspace ContosoWorkspace through pipeline.

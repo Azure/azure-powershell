@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://docs.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsinstance
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsinstance
 schema: 2.0.0
 ---
 
@@ -16,15 +16,17 @@ The usual pattern to modify a property is to retrieve the DigitalTwinsInstance a
 ### CreateExpanded (Default)
 ```
 New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> -Location <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-IdentityType <DigitalTwinsIdentityType>]
+ [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentityExpanded
 ```
-New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String>
- -DigitalTwinsCreate <IDigitalTwinsDescription> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> -Location <String>
+ [-IdentityType <DigitalTwinsIdentityType>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,28 +35,19 @@ The usual pattern to modify a property is to retrieve the DigitalTwinsInstance a
 
 ## EXAMPLES
 
-### Example 1: Create an AzDigitalTwinsInstance by default.
+### Example 1: Create or update the metadata of a DigitalTwinsInstance.
 ```powershell
-PS C:\> New-AzDigitalTwinsInstance -ResourceGroupName youritest -ResourceName youriDigitalTwin -Location eastus
-
-Location Name             SkuName Type
--------- ----             ------- ----
-eastus   youriDigitalTwin S1      Microsoft.DigitalTwins/digitalTwinsInstances
+New-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Location eastus -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled'
 ```
 
-Create an AzDigitalTwinsInstance by default
-
-### Example 2: Create an AzDigitalTwinsInstance by AzDigitalTwins Object.
-```powershell
-PS C:\> $GetAzDigTwin = Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
-New-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest01 -DigitalTwinsCreate $getAzdigitalTwins
-
-Location Name                    Type
--------- ----                    ----
-eastus   youriDigitalTwinsTest01 Microsoft.DigitalTwins/digitalTwinsInstances
+```output
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
 ```
 
-Create an AzDigitalTwinsInstance by AzDigitalTwins Object
+Create or update the metadata of a DigitalTwinsInstance.
+The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
 
 ## PARAMETERS
 
@@ -88,13 +81,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DigitalTwinsCreate
-The description of the DigitalTwins service.
-To construct, see NOTES section for DIGITALTWINSCREATE properties and create a hash table.
+### -IdentityType
+The type of Managed Identity used by the DigitalTwinsInstance.
+Only SystemAssigned is supported.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription
-Parameter Sets: Create
+Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.DigitalTwinsIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -109,7 +118,7 @@ The resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -134,12 +143,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateEndpointConnection
+The private endpoint connections.
+To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Public network access for the DigitalTwinsInstance.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.PublicNetworkAccess
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -154,7 +194,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -169,7 +209,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -184,7 +224,7 @@ The resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -230,11 +270,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription
 
 ## NOTES
 
@@ -245,10 +285,28 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DIGITALTWINSCREATE <IDigitalTwinsDescription>: The description of the DigitalTwins service.
-  - `Location <String>`: The resource location.
-  - `[Tag <IDigitalTwinsResourceTags>]`: The resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
+`INPUTOBJECT <IDigitalTwinsIdentity>`: Identity Parameter
+  - `[EndpointName <String>]`: Name of Endpoint Resource.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: Location of DigitalTwinsInstance.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[ResourceGroupName <String>]`: The name of the resource group that contains the DigitalTwinsInstance.
+  - `[ResourceId <String>]`: The name of the private link resource.
+  - `[ResourceName <String>]`: The name of the DigitalTwinsInstance.
+  - `[SubscriptionId <String>]`: The subscription identifier.
+  - `[TimeSeriesDatabaseConnectionName <String>]`: Name of time series database connection.
+
+`PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>`: The private endpoint connections.
+  - `[GroupId <String[]>]`: The list of group ids for the private endpoint connection.
+  - `[PrivateLinkServiceConnectionStateActionsRequired <String>]`: Actions required for a private endpoint connection.
+  - `[PrivateLinkServiceConnectionStateDescription <String>]`: The description for the current state of a private endpoint connection.
+  - `[PrivateLinkServiceConnectionStateStatus <PrivateLinkServiceConnectionStatus?>]`: The status of a private endpoint connection.
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 ## RELATED LINKS
 

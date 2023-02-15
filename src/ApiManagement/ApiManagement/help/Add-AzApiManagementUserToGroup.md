@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 8C014335-9622-4F2E-A163-4B0C84531506
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/add-azapimanagementusertogroup
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/add-azapimanagementusertogroup
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Add-AzApiManagementUserToGroup** cmdlet adds a user to a group.
 ## EXAMPLES
 
 ### Example 1: Add a user to a group
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Add-AzApiManagementUserToGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Add-AzApiManagementUserToGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
 ```
 
 This command adds an existing user to an existing group.

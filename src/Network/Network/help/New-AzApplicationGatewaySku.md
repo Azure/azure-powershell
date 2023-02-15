@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 48C33FAF-83C1-4725-AD2A-CF48D0718182
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewaysku
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewaysku
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **New-AzApplicationGatewaySku** cmdlet creates a stock keeping unit (SKU) fo
 ## EXAMPLES
 
 ### Example 1: Create a SKU for an Azure application gateway
-```
-PS C:\>$SKU = New-AzApplicationGatewaySku -Name "Standard_Small" -Tier "Standard" -Capacity 2
+```powershell
+$SKU = New-AzApplicationGatewaySku -Name "Standard_Small" -Tier "Standard" -Capacity 2
 ```
 
 This command creates a SKU named Standard_Small for an Azure application gateway and stores the result in the variable named $SKU.

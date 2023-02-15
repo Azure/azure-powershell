@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Billing Scope")]
         public string BillingScope { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Type of Workload")]
+        [Parameter(Mandatory = true, HelpMessage = "Type of Workload")]
         [PSArgumentCompleter("Production", "DevTest")]
         public string Workload { get; set; }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         {
             if (this.ShouldProcess(target: this.AliasName, action: "New subscription Alias"))
             {
-                PutAliasResponse result = new PutAliasResponse();
+                SubscriptionAliasResponse result = new SubscriptionAliasResponse();
 
                 // Create the subscription.
                 result = this.SubscriptionClient.Alias.Create(

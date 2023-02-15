@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/Az.storage/new-azstorageblobqueryconfig
+online version: https://learn.microsoft.com/powershell/module/Az.storage/new-azstorageblobqueryconfig
 schema: 2.0.0
 ---
 
@@ -30,16 +30,17 @@ The **New-AzStorageBlobQueryConfig** cmdlet creates a blob query configuration o
 
 ### Example 1: Create blob query configures , and query a blob
 ```powershell
-PS C:\> $inputconfig = New-AzStorageBlobQueryConfig -AsCsv -ColumnSeparator "," -QuotationCharacter """" -EscapeCharacter "\" -RecordSeparator "`n" -HasHeader
+$inputconfig = New-AzStorageBlobQueryConfig -AsCsv -ColumnSeparator "," -QuotationCharacter """" -EscapeCharacter "\" -RecordSeparator "`n" -HasHeader
 
-PS C:\> $outputconfig = New-AzStorageBlobQueryConfig -AsJson -RecordSeparator "`n" 
+$outputconfig = New-AzStorageBlobQueryConfig -AsJson -RecordSeparator "`n" 
 
-PS C:\> $queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
+$queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
 
-PS C:\> $result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
+$result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
 
-PS C:\> $result
-
+$result
+```
+```output
 BytesScanned FailureCount BlobQueryError
 ------------ ------------ --------------
          449            0

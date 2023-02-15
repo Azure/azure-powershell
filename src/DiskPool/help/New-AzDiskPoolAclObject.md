@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolAclObject
+online version: https://learn.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolAclObject
 schema: 2.0.0
 ---
 
@@ -23,8 +23,10 @@ Create a in-memory object for Acl
 
 ### Example 1: Create an acl object
 ```powershell
-PS C:\> New-AzDiskPoolAclObject -InitiatorIqn 'iqn.2021-05.com.microsoft:target0' -MappedLun @('lun0')
+New-AzDiskPoolAclObject -InitiatorIqn 'iqn.2021-05.com.microsoft:target0' -MappedLun @('lun0')
+```
 
+```output
 InitiatorIqn                      MappedLun
 ------------                      ---------
 iqn.2021-05.com.microsoft:target0 {lun0}

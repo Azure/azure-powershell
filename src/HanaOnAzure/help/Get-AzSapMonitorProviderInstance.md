@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HanaOnAzure
-online version: https://docs.microsoft.com/powershell/module/az.hanaonazure/get-azsapmonitorproviderinstance
+online version: https://learn.microsoft.com/powershell/module/az.hanaonazure/get-azsapmonitorproviderinstance
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets properties of a provider instance for the specified subscription, resource 
 
 ### Example 1: Get all instances under a SAP monitor
 ```powershell
-PS C:\> Get-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -SapMonitorName ps-spamonitor-t01
+Get-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -SapMonitorName ps-spamonitor-t01
+```
 
+```output
 Name                 Type
 ----                 ----
 ps-sapmonitorins-t01 Microsoft.HanaOnAzure/sapMonitors/providerInstances
@@ -49,8 +51,10 @@ This command gets all instances under a SAP monitor.
 
 ### Example 2: Get an instances of SAP monitor by name
 ```powershell
-PS C:\> Get-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -SapMonitorName ps-spamonitor-t01 -Name ps-sapmonitorins-t02
+Get-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -SapMonitorName ps-spamonitor-t01 -Name ps-sapmonitorins-t02
+```
 
+```output
 Name                 Type
 ----                 ----
 ps-sapmonitorins-t02 Microsoft.HanaOnAzure/sapMonitors/providerInstances
@@ -60,9 +64,11 @@ This command gets an instances of SAP monitor by name.
 
 ### Example 3: Get an instances of SAP monitor by object
 ```powershell
-PS C:\> $sapIns = Get-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -SapMonitorName ps-spamonitor-t01 -Name ps-sapmonitorins-t02
-PS C:\> Get-AzSapMonitorProviderInstance -InputObject $sapIns
+$sapIns = Get-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -SapMonitorName ps-spamonitor-t01 -Name ps-sapmonitorins-t02
+Get-AzSapMonitorProviderInstance -InputObject $sapIns
+```
 
+```output
 Name                 Type
 ----                 ----
 ps-sapmonitorins-t02 Microsoft.HanaOnAzure/sapMonitors/providerInstances
@@ -72,8 +78,10 @@ This command gets an instances of SAP monitor by object.
 
 ### Example 4: Get an instances of SAP monitor by pipeline
 ```powershell
-PS C:\> @{Id = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/nancyc-hn1/providers/Microsoft.HanaOnAzure/sapMonitors/ps-spamonitor-t01/providerInstances/ps-sapmonitorins-t02"} | Get-AzSapMonitorProviderInstance
+@{Id = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/nancyc-hn1/providers/Microsoft.HanaOnAzure/sapMonitors/ps-spamonitor-t01/providerInstances/ps-sapmonitorins-t02"} | Get-AzSapMonitorProviderInstance
+```
 
+```output
 Name                 Type
 ----                 ----
 ps-sapmonitorins-t02 Microsoft.HanaOnAzure/sapMonitors/providerInstances
@@ -195,7 +203,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
+INPUTOBJECT `<IHanaOnAzureIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The location of the deleted vault.
   - `[OperationKind <AccessPolicyUpdateKind?>]`: Name of the operation

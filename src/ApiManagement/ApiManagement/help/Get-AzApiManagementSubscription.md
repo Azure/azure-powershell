@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 227EF8A2-E04A-4F6B-B66E-E77F1276A7E4
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementsubscription
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementsubscription
 schema: 2.0.0
 ---
 
@@ -57,41 +57,43 @@ Keys will not be included into result details. To get keys, use **Get-AzApiManag
 
 ### Example 1: Get all subscriptions
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementSubscription -Context $apimContext
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
+Get-AzApiManagementSubscription -Context $apimContext
 ```
 
 This command gets all subscriptions.
 
 ### Example 2: Get a subscription with a specified ID
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
+Get-AzApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789"
 ```
 
 This command gets a subscription by ID.
 
 ### Example 3: Get all subscriptions for a user
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementSubscription -Context $apimContext -UserId "777"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
+Get-AzApiManagementSubscription -Context $apimContext -UserId "777"
 ```
 
 This command gets a user's subscriptions.
 
 ### Example 4: Get all subscriptions for a product
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementSubscription -Context $apimContext -ProductId "999"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
+Get-AzApiManagementSubscription -Context $apimContext -ProductId "999"
 ```
 
 This command gets all subscriptions for the product.
 
 ### Example 5: Get all subscriptions for a Scope
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementSubscription -Context $apimContext -Scope "/apis"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
+Get-AzApiManagementSubscription -Context $apimContext -Scope "/apis"
+```
 
+```output
 SubscriptionId    : allApScope
 UserId            :
 OwnerId           :
@@ -104,8 +106,8 @@ StartDate         :
 ExpirationDate    :
 EndDate           :
 NotificationDate  :
-PrimaryKey        : 5e48532634114fe999a6979ce0d63a64
-SecondaryKey      : 0a8efaf85a664aa0a412241015c7c8f6
+PrimaryKey        :
+SecondaryKey      :
 StateComment      :
 AllowTracing      : False
 Id                : /subscriptions/subid/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/contoso/subscriptions/allApScope
@@ -117,9 +119,11 @@ This command gets all subscriptions which are configured for global api scope
 
 ### Example 6: Get all subscriptions for a product and user scope
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementSubscription -Context $apimContext -ProductId 59b872f28a82740f547e6270 -UserId 1
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
+Get-AzApiManagementSubscription -Context $apimContext -ProductId 59b872f28a82740f547e6270 -UserId 1
+```
 
+```output
 SubscriptionId    : 59b872f38a82741750c8da56
 UserId            : 1
 OwnerId           : /subscriptions/subid/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/contoso/users/1
@@ -132,8 +136,8 @@ StartDate         : 9/12/2017 12:00:00 AM
 ExpirationDate    :
 EndDate           :
 NotificationDate  :
-PrimaryKey        : 7e64ef904b194706835febf87f729bb0
-SecondaryKey      : 0354fccef73e43feb82e5c5da17674d5
+PrimaryKey        :
+SecondaryKey      :
 StateComment      :
 AllowTracing      : True
 Id                : /subscriptions/subid/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/contoso/subscriptions/59b872f38a82741750c8da56

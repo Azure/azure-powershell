@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Deploy the built jar to service.
+Deploy the build file to an existing deployment.
 .Description
-Deploy the built jar to service.
+Deploy the build file to an existing deployment.
 .Example
 PS C:\> {{ Add code here }}
 
@@ -28,13 +28,13 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.SpringCloud/deploy-azSpringCloudapp
+https://learn.microsoft.com/powershell/module/az.SpringCloud/deploy-azSpringCloudapp
 #>
 function Deploy-AzSpringCloudApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource])]
+[CmdletBinding(DefaultParameterSetName='DeployAppForStandard', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('AppName')]
@@ -65,11 +65,23 @@ param(
     ${SubscriptionId},
 
 
-    [Parameter(Mandatory)]
+    [Parameter(Mandatory, HelpMessage='The path of the file need to be deploied. The file supports Jar, NetcoreZip and Source.')]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
     [System.String]
-    # The path of the jar need to be deploied.
-    ${JarPath},
+    # The path of the file need to be deploied. The file supports Jar, NetcoreZip and Source.
+    ${FilePath},
+
+    [Parameter(Mandatory, ParameterSetName = "DeployAppForEnterprise", HelpMessage='The resource id of builder to build the source code.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [System.String]
+    # The path of the file need to be deploied. The file supports Jar, NetcoreZip and Source.
+    ${BuilderId},
+
+    [Parameter(Mandatory, ParameterSetName = "DeployAppForEnterprise", HelpMessage='The resource id of agent pool.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Path')]
+    [System.String]
+    # The path of the file need to be deploied. The file supports Jar, NetcoreZip and Source.
+    ${AgentPoolId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -133,6 +145,9 @@ param(
 
 
     process {
+        <# IMPORTANT
+            1. deployment.source.type with value Jar/NetCoreZip is not supported when service instance;sku.tier is Enterprise
+        #>
         $DeployPSBoundParameters = @{}
         if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
             $DeployPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
@@ -141,27 +156,150 @@ param(
             $DeployPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
         }
         $DeployPSBoundParameters['SubscriptionId'] = $SubscriptionId
-
-        Write-Host '[1/3] Requesting for upload URL' -ForegroundColor Yellow
-        $UploadInfo = Az.SpringCloud.internal\Get-AzSpringCloudAppResourceUploadUrl -ResourceGroupName $ResourceGroupName -serviceName $ServiceName -AppName $Name @DeployPSBoundParameters
-        $UploadUrl = $UploadInfo.UploadUrl
-        $Uri = [System.Uri]::New($UploadUrl.Split('?')[0])
-        $SasToken = $UploadUrl.Split('?')[-1]
-        $StorageCredentials = [Microsoft.WindowsAzure.Storage.Auth.StorageCredentials]::New($SasToken)
-        $CloudFile = [Microsoft.WindowsAzure.Storage.File.CloudFile]::New($Uri, $StorageCredentials)
         
-        Write-Host '[2/3] Uploading package to blob' -ForegroundColor Yellow
-        $UploadTask = $CloudFile.UploadFromFileAsync($JarPath)
-        try {
-            $null = $UploadTask.GetAwaiter().GetResult()
-        }
-        catch {
-            Write-Error $_.Exception
-            return
-        }
+        # Get spring cloud service sku tier
+        $service = Get-AzSpringCloud -ResourceGroupName $ResourceGroupName -Name $ServiceName @DeployPSBoundParameters
+        # Get active deployment of the spring cloud app
+        $activeDeployment = (Get-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name @DeployPSBoundParameters | Where-Object {$_.Active}).Name
+        # Uploading package to blob
+        $relativePath = UploadFileToSpringCloud -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name -ServiceType $service.SkuTier -FilePath $FilePath -DeployPSBoundParameters $DeployPSBoundParameters
         Write-Host "[3/3] Updating deployment in app $Name (this operation can take a while to complete)" -ForegroundColor Yellow
-        $App = Get-AzSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name @DeployPSBoundParameters
-        Update-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name -DeploymentName $App.ActiveDeploymentName -SourceRelativePath $UploadInfo.RelativePath @DeployPSBoundParameters
-        Start-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name -DeploymentName $App.ActiveDeploymentName @DeployPSBoundParameters
+        if ($service.SkuTier -eq 'Enterprise')
+        {
+            DeployEnterpriseSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name -DeploymentName $activeDeployment `
+            -BuilderId $BuilderId -AgentPoolId $AgentPoolId -RelativePath $relativePath -DeployPSBoundParameters $DeployPSBoundParameters
+        }
+        DeployStandardSpringCloudApp -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $Name -DeploymentName $activeDeployment -RelativePath $relativePath -DeployPSBoundParameters $DeployPSBoundParameters
     }
+}
+
+function UploadFileToSpringCloud {
+    param (                
+        [string]
+        $ResourceGroupName,
+
+        [string]
+        $ServiceName,
+
+        [string]
+        $AppName,
+
+        [string]
+        $ServiceType,
+
+        [string]
+        $FilePath,
+
+        [hashtable]
+        $DeployPSBoundParameters
+    )
+    Write-Host '[1/3] Requesting for upload URL' -ForegroundColor Yellow
+    if ($ServiceType -eq 'Enterprise')
+    {
+        $uploadInfo = Az.SpringCloud.internal\Get-AzSpringCloudBuildServiceResourceUploadUrl -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name default @DeployPSBoundParameters
+    }
+    else {
+        $uploadInfo = Az.SpringCloud.internal\Get-AzSpringCloudAppResourceUploadUrl -ResourceGroupName $ResourceGroupName -serviceName $ServiceName -Name $AppName @DeployPSBoundParameters
+    }
+    Write-Host '[2/3] Uploading package to blob' -ForegroundColor Yellow
+    $uploadUrl = $uploadInfo.UploadUrl
+    $uri = [System.Uri]::New($uploadUrl.Split('?')[0])
+    $sasToken = $uploadUrl.Split('?')[-1]
+    $storageCredentials = [Microsoft.WindowsAzure.Storage.Auth.StorageCredentials]::New($sasToken)
+    $cloudFile = [Microsoft.WindowsAzure.Storage.File.CloudFile]::New($uri, $storageCredentials)
+    $uploadTask = $cloudFile.UploadFromFileAsync($filePath)
+    try {
+        $null = $uploadTask.GetAwaiter().GetResult()
+    }
+    catch {
+        throw $_.Exception
+    }
+    return $uploadInfo.RelativePath
+}
+
+function DeployStandardSpringCloudApp {
+    param (
+        [string]
+        $ResourceGroupName,
+
+        [string]
+        $ServiceName,
+
+        [string]
+        $AppName,
+
+        [string]
+        $DeploymentName,
+
+        [string]
+        $RelativePath,
+
+        [hashtable]
+        $DeployPSBoundParameters
+    )
+    $deployment = Get-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName @DeployPSBoundParameters
+    if ($deployment.Source.Type -eq 'Jar')
+    {
+        $source = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo]::New()
+        $source.RelativePath = $RelativePath
+        $source.Type = $deployment.Source.Type
+    }
+    if ($deployment.Source.Type -eq 'NetCoreZip')
+    {
+        $source = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo]::New()
+        $source.RelativePath = $RelativePath
+        $source.Type = $deployment.Source.Type
+    }
+    if ($deployment.Source.Type -eq 'Source')
+    {
+        $source = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.SourceUploadedUserSourceInfo]::New()
+        $source.RelativePath = $RelativePath
+        $source.Type = $deployment.Source.Type
+    }
+    Update-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName -Source $source @DeployPSBoundParameters
+    Start-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName @DeployPSBoundParameters
+}
+
+function DeployEnterpriseSpringCloudApp {
+    param (
+        [string]
+        $ResourceGroupName,
+
+        [string]
+        $ServiceName,
+
+        [string]
+        $AppName,
+
+        [string]
+        $DeploymentName,
+
+        [string]
+        $BuilderId,
+
+        [string]
+        $AgentPoolId,
+
+        [string]
+        $RelativePath,
+
+        [hashtable]
+        $DeployPSBoundParameters
+    )
+    $buildName = 'default' + (Get-Random)
+    $null = Az.SpringCloud.internal\New-AzSpringCloudBuildServiceBuild -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -Name $buildName -AgentPoolId $AgentPoolId -BuilderId $BuilderId -RelativePath $RelativePath @DeployPSBoundParameters
+    do {
+        Start-Sleep 30
+        $result = Az.SpringCloud.internal\Get-AzSpringCloudBuildServiceBuildResult -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -BuildName $buildName -Name 1
+        if ($result.ProvisioningState -eq 'Failed')
+        {
+            $resultFailedLog = Az.SpringCloud.internal\Get-AzSpringCloudBuildServiceBuildResultLog -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -BuildName $buildName -Name 1
+            throw "Service build failed, Log file url: $resultFailedLog"
+        }
+    } until ($result.ProvisioningState -eq 'Succeeded')
+    $buildResult = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo]::New()
+    $buildResult.Type = "BuildResult"
+    $buildResult.BuildResultId = $result.Id
+    $null  = Update-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName -Source $buildResult @DeployPSBoundParameters
+    Start-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName @DeployPSBoundParameters
 }

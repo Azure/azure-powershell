@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 223FBBA6-4405-4B7A-BA63-5F2434A2A50D
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementproduct
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementproduct
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ The **Set-AzApiManagementProduct** cmdlet sets the API Management product detail
 
 ### Example 1: Update the product details
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzApiManagementProduct -Context $apimContext -ProductId "0123456789" -Title "Starter" -Description "Starter Product" -LegalTerms "Free for all" -SubscriptionRequired $True -State "NotPublished"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Set-AzApiManagementProduct -Context $apimContext -ProductId "0123456789" -Title "Starter" -Description "Starter Product" -LegalTerms "Free for all" -SubscriptionRequired $True -State "NotPublished"
 ```
 
 This command updates the API Management product details, requires a subscription, and then unpublishes.

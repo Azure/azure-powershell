@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapseworkspacepackage
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapseworkspacepackage
 schema: 2.0.0
 ---
 
@@ -37,15 +37,15 @@ The **Remove-AzSynapseWorkspacePackage** removes a workspace package
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Name ContosoPackageName
+Remove-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Name ContosoPackageName
 ```
 
 This command deletes a workspace package under an Azure Synapse Analytics workspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseWorkspacePackage -Name ContosoPackageName
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseWorkspacePackage -Name ContosoPackageName
 ```
 
 This command deletes a workspace package under an Azure Synapse Analytics workspace through pipeline.

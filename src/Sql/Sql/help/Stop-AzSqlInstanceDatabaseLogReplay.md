@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlInstanceDatabaseLogReplay
+online version: https://learn.microsoft.com/powershell/module/az.sql/Stop-AzSqlInstanceDatabaseLogReplay
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ The **Stop-AzSqlInstanceDatabaseLogReplay** cmdlet drops the database and thus c
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName"
+Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName"
 ```
 
 This command will cancel log replay service on the given database.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azmanagedapplication
 schema: 2.0.0
 ---
 
@@ -36,15 +36,15 @@ The **Get-AzManagedApplication** cmdlet gets managed applications
 ## EXAMPLES
 
 ### Example 1: Get all managed applications under a resource group
-```
-PS C:\>Get-AzManagedApplication -ResourceGroupName "MyRG"
+```powershell
+Get-AzManagedApplication -ResourceGroupName "MyRG"
 ```
 
 This command gets managed applications under resource group "MyRG"
 
 ### Example 2: Get all managed applications
-```
-PS C:\>Get-AzManagedApplication
+```powershell
+Get-AzManagedApplication
 ```
 
 This command get all managed applications under the current subscription

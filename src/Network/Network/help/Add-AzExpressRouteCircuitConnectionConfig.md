@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 7b4a8c9f-874c-4a27-b87e-c8ad7e73188d
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azexpressroutecircuitconnectionconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azexpressroutecircuitconnectionconfig
 schema: 2.0.0
 ---
 
@@ -36,7 +36,7 @@ you must call the Set-AzExpressRouteCircuit cmdlet to activate the configuration
 ## EXAMPLES
 
 ### Example 1: Add a circuit connection resource to an existing ExpressRoute circuit
-```
+```powershell
 $circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 $circuit_peer = Get-AzExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
 $addressSpace = '60.0.0.0/29'
@@ -46,7 +46,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
 
 ### Example 2: Add a circuit connection configuration using Piping to an existing ExpressRoute Circuit
-```
+```powershell
 $circuit_peer = Get-AzExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
 $addressSpace = '60.0.0.0/29'
 Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Add-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey |Set-AzExpressRouteCircuit

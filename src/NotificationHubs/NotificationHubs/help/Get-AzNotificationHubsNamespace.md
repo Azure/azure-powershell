@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 9805B3F1-C6BB-4A0F-A7C3-1DD1ACB75CDA
-online version: https://docs.microsoft.com/powershell/module/az.notificationhubs/get-aznotificationhubsnamespace
+online version: https://learn.microsoft.com/powershell/module/az.notificationhubs/get-aznotificationhubsnamespace
 schema: 2.0.0
 ---
 
@@ -31,22 +31,22 @@ To get information about the authorization rules associated with a namespace use
 ## EXAMPLES
 
 ### Example 1: Get information for all notification hub namespaces
-```
-PS C:\>Get-AzNotificationHubsNamespace
+```powershell
+Get-AzNotificationHubsNamespace
 ```
 
 This command returns information for all your notification hub namespaces.
 
 ### Example 2: Get information for a single notification hub namespace
-```
-PS C:\>Get-AzNotificationHubsNamespace -Namespace "ContosoNamespace"
+```powershell
+Get-AzNotificationHubsNamespace -Namespace "ContosoNamespace"
 ```
 
 This command gets information for a single notification hub namespace: ContosoNamespace.
 
 ### Example 3: Get information for all notification hubs assigned to a specific namespace
-```
-PS C:\>Get-AzNotificationHubsNamespace -ResourceGroup "ContosoNotificationsGroup"
+```powershell
+Get-AzNotificationHubsNamespace -ResourceGroup "ContosoNotificationsGroup"
 ```
 
 This command gets information for all notification hub namespaces assigned to the resource group ContosoNotificationsGroup.

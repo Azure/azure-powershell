@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex
 schema: 2.0.0
 ---
 
@@ -24,7 +24,10 @@ The **New-AzCosmosDBMongoDBIndex** creates a new CosmosDB MongoDB Index.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBMongoDBIndex -TtlInSeconds {val} -Unique 1 -Key "key1"
+New-AzCosmosDBMongoDBIndex -TtlInSeconds 604800 -Unique 1 -Key "key1"
+```
+
+```output
 Key                                                       Options
 ---                                                       -------
 Microsoft.Azure.Commands.CosmosDB.Models.PSMongoIndexKeys Microsoft.Azure.Commands.CosmosDB.Models.PSMongoIndexOptions

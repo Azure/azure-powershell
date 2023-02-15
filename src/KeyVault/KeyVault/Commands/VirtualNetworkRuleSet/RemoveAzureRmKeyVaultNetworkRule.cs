@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Remove network rule 
-    /// NOTE: Define VaultName & ResourceGroupName in this class instead of base one because TAB order for input.
+    /// NOTE: Define VaultName &amp; ResourceGroupName in this class instead of base one because TAB order for input.
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultNetworkRule",DefaultParameterSetName = ByVaultNameParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]

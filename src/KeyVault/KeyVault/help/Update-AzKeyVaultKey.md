@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/update-azkeyvaultkey
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/update-azkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -22,8 +22,9 @@ Update-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [[-Version] <String>
 ### HsmInteractive
 ```
 Update-AzKeyVaultKey -HsmName <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Tag <Hashtable>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Immutable] [-ReleasePolicyPath <String>]
+ [-Tag <Hashtable>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
@@ -40,10 +41,12 @@ The **Update-AzKeyVaultKey** cmdlet updates the editable attributes of a key in 
 
 ### Example 1: Modify a key to enable it, and set the expiration date and tags
 ```powershell
-PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = 'true'}
-PS C:\> Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
+$Expires = (Get-Date).AddYears(2).ToUniversalTime()
+$Tags = @{'Severity' = 'high'; 'Accounting' = 'true'}
+Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
+```
 
+```output
 Vault Name     : Contoso
 Name           : ITSoftware
 Version        : 394f9379a47a4e2086585468de6c7ae5
@@ -68,8 +71,10 @@ time to the time stored in $Expires, and sets the tags that are stored in $Tags.
 
 ### Example 2: Modify a key to delete all tags
 ```powershell
-PS C:\> Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '394f9379a47a4e2086585468de6c7ae5' -Tag @{}
+Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '394f9379a47a4e2086585468de6c7ae5' -Tag @{}
+```
 
+```output
 Vault Name     : Contoso
 Name           : ITSoftware
 Version        : 394f9379a47a4e2086585468de6c7ae5
@@ -149,6 +154,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Immutable
+Sets the release policy as immutable state. Once marked immutable, this flag cannot be reset and the policy cannot be changed under any circumstances.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: HsmInteractive
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Key object
 
@@ -219,6 +239,21 @@ If this switch is specified, returns the updated key bundle object.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReleasePolicyPath
+A path to a file containing JSON policy definition. The policy rules under which a key can be exported.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmInteractive
 Aliases:
 
 Required: False

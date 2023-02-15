@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create CustomRule Object for WAF policy creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
+New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
+```
 
+```output
 Name   RuleType Action Priority RateLimitDurationInMinutes
 ----   -------- ------ -------- --------------------------
 Rule1 MatchRule  Block        2                          1

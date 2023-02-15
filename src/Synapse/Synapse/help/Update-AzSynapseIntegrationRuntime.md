@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapseintegrationruntime
+online version: https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapseintegrationruntime
 schema: 2.0.0
 ---
 
@@ -47,8 +47,8 @@ The **Update-AzSynapseIntegrationRuntime** cmdlet updates integration runtime pr
 
 ### Example 1
 ```powershell
-PS C:\> $ts = New-TimeSpan -Hours 3
-PS C:\> Update-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -AutoUpdate Off -AutoUpdateDelayOffset $ts
+$ts = New-TimeSpan -Hours 3
+Update-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -IntegrationRuntimeName 'test-selfhost-ir' -AutoUpdate Off -AutoUpdateDelayOffset $ts
 ```
 
 The cmdlet updates self-hosted integration runtime named 'test-selfhost-ir'.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappconfiguredrole
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappconfiguredrole
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Description for Lists the roles configured for the static site.
 
 ### Example 1: Lists the roles configured for the static site
 ```powershell
-PS C:\> Get-AzStaticWebAppConfiguredRole -ResourceGroupName azure-rg-test -Name staticweb-portal04
+Get-AzStaticWebAppConfiguredRole -ResourceGroupName azure-rg-test -Name staticweb-portal04
+```
 
+```output
 Kind Name            Type                                      Property
 ---- ----            ----                                      --------
      configuredRoles Microsoft.Web/staticSites/configuredRoles {anonymous, authenticated}

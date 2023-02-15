@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorbackendpoolssettingobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorbackendpoolssettingobject
 schema: 2.0.0
 ---
 
@@ -24,9 +24,10 @@ The **New-AzFrontDoorBackendpoolsSettingObject** cmdlet creates a new PSBackendP
 
 ### Example 1: Create BackendPoolsSettings object using defaults
 ```powershell
-PS C:\> New-AzFrontDoorBackendpoolsSettingObject
+New-AzFrontDoorBackendpoolsSettingObject
+```
 
-
+```output
 EnforceCertificateNameCheck : Enabled
 SendRecvTimeoutInSeconds      : 30
 Id                          :
@@ -36,9 +37,10 @@ Type                        :
 
 ### Example 2: Create BackendPoolsSettings object with user specified values
 ```powershell
-PS C:\> New-AzFrontDoorBackendpoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCertificateNameCheck Enabled
+New-AzFrontDoorBackendpoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCertificateNameCheck Enabled
+```
 
-
+```output
 EnforceCertificateNameCheck : Enabled
 SendRecvTimeoutInSeconds      : 60
 Id                          :

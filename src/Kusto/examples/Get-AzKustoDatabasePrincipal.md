@@ -1,7 +1,9 @@
 ### Example 1: List of database principals of the given Kusto cluster and database
 ```powershell
-PS C:\> Get-AzKustoDatabasePrincipal -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase
+Get-AzKustoDatabasePrincipal -ResourceGroupName testrg -ClusterName testnewkustocluster -DatabaseName mykustodatabase
+```
 
+```output
 AppId Email                   Fqn                                                                               Name        Role  TenantName Type
 ----- -----                   ---                                                                               ----        ----  ---------- ----
       someuser@microsoft.com  aaduser=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Some User   Admin Microsoft  User

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://docs.microsoft.com/powershell/module/az.addomainservices/remove-azaddomainservice
+online version: https://learn.microsoft.com/powershell/module/az.addomainservices/remove-azaddomainservice
 schema: 2.0.0
 ---
 
@@ -31,17 +31,15 @@ The Delete Domain Service operation deletes an existing Domain Service.
 
 ### Example 1: Delete the AzADDomain by ResourceGroupName and Name
 ```powershell
-PS C:\> Remove-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
-
+Remove-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
 ```
 
 Delete the AzADDomain by ResourceGroupName and Name
 
 ### Example 2: Delete the AzADDomain by InputObject
 ```powershell
-PS C:\> $GetADDomainExample = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
+$GetADDomainExample = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
 Remove-AzADDomainService -InputObject $GetADDomainExample
-
 ```
 
 Delete the AzADDomain by InputObject
@@ -222,7 +220,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAdDomainServicesIdentity>: Identity Parameter
+INPUTOBJECT `<IAdDomainServicesIdentity>`: Identity Parameter
   - `[DomainServiceName <String>]`: The name of the domain service.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group within the user's subscription. The name is case insensitive.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 009F6E65-0268-4505-AEC1-FF379CB96804
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressrouteserviceprovider
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressrouteserviceprovider
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ providers and their attributes. Attribute include location and bandwidth options
 ## EXAMPLES
 
 ### Example 1: Get a list of service provider with locations in "Silicon Valley"
-```
+```powershell
 Get-AzExpressRouteServiceProvider |
    Where-Object PeeringLocations -Contains "Silicon Valley" |
    Select-Object Name

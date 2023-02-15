@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/powershell/module/az.search/remove-azsearchsharedprivatelinkresource
+online version: https://learn.microsoft.com/powershell/module/az.search/remove-azsearchsharedprivatelinkresource
 schema: 2.0.0
 ---
 
@@ -44,8 +44,9 @@ The **Remove-AzSearchSharedPrivateLinkResource** cmdlet removes the shared priva
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name blob-pe
-
+Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name blob-pe
+```
+```output
 Confirm
 Remove Shared Private Link Resource 'blob-pe'.
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y

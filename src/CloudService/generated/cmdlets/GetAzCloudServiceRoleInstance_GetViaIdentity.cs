@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Extensions;
+    using System;
 
     /// <summary>Gets a role instance from a cloud service.</summary>
     /// <remarks>
@@ -52,12 +53,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         /// <summary>Backing field for <see cref="Expand" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes _expand;
 
-        /// <summary>The expand expression to apply to the operation.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The expand expression to apply to the operation.")]
+        /// <summary>
+        /// The expand expression to apply to the operation. 'UserData' is not supported for cloud services.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The expand expression to apply to the operation. 'UserData' is not supported for cloud services.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The expand expression to apply to the operation.",
+        Description = @"The expand expression to apply to the operation. 'UserData' is not supported for cloud services.",
         SerializedName = @"$expand",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.ParameterCategory.Query)]

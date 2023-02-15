@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 1B29AB8C-95DD-4C4F-86E2-2F81E8020CEA
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragetable
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragetable
 schema: 2.0.0
 ---
 
@@ -24,15 +24,15 @@ The **Remove-AzStorageTable** cmdlet removes one or more storage tables from a s
 ## EXAMPLES
 
 ### Example 1: Remove a table
-```
-PS C:\>Remove-AzStorageTable -Name "TableABC"
+```powershell
+Remove-AzStorageTable -Name "TableABC"
 ```
 
 This command removes a table.
 
 ### Example 2: Remove several tables
-```
-PS C:\>Get-AzStorageTable table* | Remove-AzStorageTable
+```powershell
+Get-AzStorageTable table* | Remove-AzStorageTable
 ```
 
 This example uses a wildcard character with the *Name* parameter to get all tables that match the pattern table and then passes the result on the pipeline to remove the tables.

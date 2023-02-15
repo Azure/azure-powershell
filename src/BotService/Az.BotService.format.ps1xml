@@ -15,6 +15,9 @@
             <Label>ConnectionName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>PrivateEndpointConnectionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -34,6 +37,9 @@
                 <PropertyName>ConnectionName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>PrivateEndpointConnectionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -48,9 +54,89 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.Bot</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.AlexaChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.Bot</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.AlexaChannel</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.AlexaChannelProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.AlexaChannelProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AlexaSkillId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ServiceEndpointUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UrlFragment</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AlexaSkillId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ServiceEndpointUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UrlFragment</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Bot</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Bot</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -73,7 +159,7 @@
             <Label>SkuTier</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
+            <Label>Zone</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -98,7 +184,7 @@
                 <PropertyName>SkuTier</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Type</PropertyName>
+                <PropertyName>Zone</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -106,9 +192,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.BotChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.BotChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotChannel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -131,7 +217,7 @@
             <Label>SkuTier</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
+            <Label>Zone</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -156,7 +242,7 @@
                 <PropertyName>SkuTier</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Type</PropertyName>
+                <PropertyName>Zone</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -164,12 +250,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.BotProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.BotProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>AppPasswordHint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CmekEncryptionStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CmekKeyVaultUrl</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>ConfiguredChannel</Label>
           </TableColumnHeader>
@@ -184,6 +279,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeveloperAppInsightsApplicationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisableLocalAuth</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DisplayName</Label>
@@ -201,18 +299,72 @@
             <Label>IconUrl</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>IsCmekEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDeveloperAppInsightsApiKeySet</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsStreamingSupported</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>LuisAppId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LuisKey</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ManifestUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MigrationToken</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>MsaAppId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MsaAppMsiResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MsaAppTenantId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MsaAppType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OpenWithHint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicNetworkAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublishingCredentials</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SchemaTransformationVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AppPasswordHint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CmekEncryptionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CmekKeyVaultUrl</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ConfiguredChannel</PropertyName>
               </TableColumnItem>
@@ -227,6 +379,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DeveloperAppInsightsApplicationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisableLocalAuth</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DisplayName</PropertyName>
@@ -244,23 +399,112 @@
                 <PropertyName>IconUrl</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>IsCmekEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDeveloperAppInsightsApiKeySet</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsStreamingSupported</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>LuisAppId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LuisKey</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ManifestUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MigrationToken</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MsaAppId</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MsaAppMsiResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MsaAppTenantId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MsaAppType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OpenWithHint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicNetworkAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublishingCredentials</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SchemaTransformationVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.BotResponseList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotPropertiesAllSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.BotResponseList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotPropertiesAllSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotPropertiesParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotPropertiesParameters</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotResponseList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotResponseList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -280,21 +524,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.Channel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Channel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.Channel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Channel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -302,9 +564,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ChannelResponseList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ChannelResponseList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ChannelResponseList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ChannelResponseList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -324,17 +586,78 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.CheckNameAvailabilityRequestBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ChannelSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.CheckNameAvailabilityRequestBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ChannelSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BotIconUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BotId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ChannelDisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ChannelId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisableLocalAuth</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtensionKey1</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtensionKey2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsEnabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BotIconUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BotId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ChannelDisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ChannelId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisableLocalAuth</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExtensionKey1</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExtensionKey2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsEnabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.CheckNameAvailabilityRequestBody</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.CheckNameAvailabilityRequestBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -343,18 +666,15 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.CheckNameAvailabilityResponseBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.CheckNameAvailabilityResponseBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.CheckNameAvailabilityResponseBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.CheckNameAvailabilityResponseBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -380,9 +700,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ConnectionItemName</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ConnectionItemName</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ConnectionItemName</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ConnectionItemName</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -402,9 +722,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ConnectionSetting</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ConnectionSetting</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ConnectionSetting</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ConnectionSetting</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -427,7 +747,7 @@
             <Label>SkuTier</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
+            <Label>Zone</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -452,7 +772,7 @@
                 <PropertyName>SkuTier</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Type</PropertyName>
+                <PropertyName>Zone</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -460,9 +780,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ConnectionSettingParameter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ConnectionSettingParameter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ConnectionSettingParameter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ConnectionSettingParameter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -488,9 +808,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ConnectionSettingProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ConnectionSettingProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ConnectionSettingProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ConnectionSettingProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -499,6 +819,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ClientSecret</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Scope</Label>
@@ -523,6 +849,12 @@
                 <PropertyName>ClientSecret</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Scope</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -540,9 +872,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ConnectionSettingResponseList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ConnectionSettingResponseList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ConnectionSettingResponseList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ConnectionSettingResponseList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -562,21 +894,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.DirectLineChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.CreateEmailSignInUrlResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.DirectLineChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.CreateEmailSignInUrlResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>Location</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -584,17 +916,134 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.DirectLineSite</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.CreateEmailSignInUrlResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.DirectLineSite</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.CreateEmailSignInUrlResponseProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Url</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Url</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.DirectLineChannel</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.DirectLineChannel</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.DirectLineChannelProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.DirectLineChannelProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DirectLineEmbedCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtensionKey1</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtensionKey2</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DirectLineEmbedCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExtensionKey1</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExtensionKey2</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.DirectLineSite</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.DirectLineSite</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AppId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ETag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsBlockUserUploadEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDetailedLoggingEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>IsEnabled</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>IsEndpointParametersEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsNoStorageEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>IsSecureSiteEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsTokenEnabled</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>IsV1Enabled</Label>
@@ -603,16 +1052,16 @@
             <Label>IsV3Enabled</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>IsWebchatPreviewEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Key</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Key2</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SiteId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SiteName</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TrustedOrigin</Label>
@@ -622,10 +1071,31 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>AppId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ETag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsBlockUserUploadEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDetailedLoggingEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>IsEnabled</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>IsEndpointParametersEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsNoStorageEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>IsSecureSiteEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsTokenEnabled</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IsV1Enabled</PropertyName>
@@ -634,16 +1104,16 @@
                 <PropertyName>IsV3Enabled</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>IsWebchatPreviewEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Key</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Key2</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SiteId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SiteName</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TrustedOrigin</PropertyName>
@@ -654,21 +1124,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EmailChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.DirectLineSpeechChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EmailChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.DirectLineSpeechChannel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -676,17 +1164,121 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EmailChannelProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.DirectLineSpeechChannelProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EmailChannelProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.DirectLineSpeechChannelProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>CognitiveServiceRegion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CognitiveServiceResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CognitiveServiceSubscriptionKey</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CustomSpeechModelId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CustomVoiceDeploymentId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDefaultBotForCogSvcAccount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsEnabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CognitiveServiceRegion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CognitiveServiceResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CognitiveServiceSubscriptionKey</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CustomSpeechModelId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CustomVoiceDeploymentId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDefaultBotForCogSvcAccount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsEnabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.EmailChannel</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.EmailChannel</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.EmailChannelProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.EmailChannelProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AuthMethod</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>EmailAddress</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>IsEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MagicCode</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Password</Label>
@@ -696,10 +1288,16 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>AuthMethod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EmailAddress</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IsEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MagicCode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Password</PropertyName>
@@ -710,201 +1308,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannel</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Etag</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Kind</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuTier</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Etag</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Kind</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuTier</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannelCheckNameAvailabilityRequest</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannelCheckNameAvailabilityRequest</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannelCheckNameAvailabilityResponse</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannelCheckNameAvailabilityResponse</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Valid</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Valid</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannelNode</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannelNode</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AzureLocation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AzureSku</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>State</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AzureLocation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AzureSku</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>State</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannelProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannelProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>State</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>State</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannelResponseList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.EnterpriseChannelResponseList</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ErrorBody</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -930,21 +1336,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.FacebookChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.FacebookChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.FacebookChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.FacebookChannel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -952,9 +1376,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.FacebookChannelProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.FacebookChannelProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.FacebookChannelProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.FacebookChannelProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -998,9 +1422,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.FacebookPage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.FacebookPage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.FacebookPage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.FacebookPage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1020,21 +1444,63 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.KikChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.HostSettingsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.KikChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.HostSettingsResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>BotOpenIdMetadata</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OAuthUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ToBotFromChannelOpenIdMetadataUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ToBotFromChannelTokenIssuer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ToBotFromEmulatorOpenIdMetadataUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ToChannelFromBotLoginUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ToChannelFromBotOAuthScope</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ValidateAuthority</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>BotOpenIdMetadata</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OAuthUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ToBotFromChannelOpenIdMetadataUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ToBotFromChannelTokenIssuer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ToBotFromEmulatorOpenIdMetadataUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ToChannelFromBotLoginUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ToChannelFromBotOAuthScope</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ValidateAuthority</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1042,9 +1508,49 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.KikChannelProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.KikChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.KikChannelProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.KikChannel</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.KikChannelProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.KikChannelProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1082,21 +1588,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.MSTeamsChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.LineChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.MSTeamsChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.LineChannel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1104,17 +1628,228 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.MSTeamsChannelProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.LineChannelProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.MSTeamsChannelProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.LineChannelProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>CallingWebHook</Label>
+            <Label>CallbackUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsValidated</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CallbackUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsValidated</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.LineRegistration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.LineRegistration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ChannelAccessToken</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ChannelSecret</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GeneratedId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ChannelAccessToken</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ChannelSecret</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GeneratedId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ListChannelWithKeysResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ListChannelWithKeysResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ChannelName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PropertiesEtag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PropertiesLocation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PropertiesProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SkuName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SkuTier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Zone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ChangedTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EntityTag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ChannelName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PropertiesEtag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PropertiesLocation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PropertiesProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SkuName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SkuTier</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Zone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ChangedTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EntityTag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.MSTeamsChannel</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.MSTeamsChannel</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.MSTeamsChannelProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.MSTeamsChannelProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AcceptedTerm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CallingWebhook</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DeploymentEnvironment</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>EnableCalling</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IncomingCallRoute</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>IsEnabled</Label>
@@ -1124,10 +1859,19 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>CallingWebHook</PropertyName>
+                <PropertyName>AcceptedTerm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CallingWebhook</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeploymentEnvironment</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnableCalling</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IncomingCallRoute</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IsEnabled</PropertyName>
@@ -1138,9 +1882,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.OperationDisplayInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.OperationDisplayInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.OperationDisplayInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.OperationDisplayInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1178,9 +1922,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.OperationEntity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.OperationEntity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.OperationEntity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.OperationEntity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1206,9 +1950,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.OperationEntityListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.OperationEntityListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.OperationEntityListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.OperationEntityListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1228,9 +1972,307 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.OperationResultsDescription</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.OperationResultsDescription</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.OutlookChannel</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.OutlookChannel</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateEndpointConnection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateEndpointConnection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateEndpointConnectionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateEndpointConnectionProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateLinkResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateLinkResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateLinkResourceBase</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateLinkResourceBase</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateLinkResourceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateLinkResourceProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>GroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RequiredMember</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RequiredZoneName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>GroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RequiredMember</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RequiredZoneName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateLinkServiceConnectionState</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.PrivateLinkServiceConnectionState</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionsRequired</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionsRequired</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.QnAMakerEndpointKeysRequestBody</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.QnAMakerEndpointKeysRequestBody</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Authkey</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Hostname</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Authkey</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Hostname</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.QnAMakerEndpointKeysResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.QnAMakerEndpointKeysResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>InstalledVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastStableVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrimaryEndpointKey</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecondaryEndpointKey</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>InstalledVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastStableVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrimaryEndpointKey</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecondaryEndpointKey</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Resource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1247,7 +2289,7 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
+            <Label>Zone</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1266,7 +2308,7 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Type</PropertyName>
+                <PropertyName>Zone</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1274,9 +2316,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1296,9 +2338,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ServiceProviderParameter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ServiceProviderParameter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ServiceProviderParameter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ServiceProviderParameter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1316,9 +2358,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1339,8 +2378,27 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ServiceProviderParameterMetadataConstraints</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ServiceProviderParameterMetadataConstraints</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Required</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Type</PropertyName>
+                <PropertyName>Required</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1348,9 +2406,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ServiceProviderProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ServiceProviderProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ServiceProviderProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ServiceProviderProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1388,9 +2446,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ServiceProviderResponseList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ServiceProviderResponseList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ServiceProviderResponseList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ServiceProviderResponseList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1410,9 +2468,149 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Site</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Site</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AppId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ETag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsBlockUserUploadEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDetailedLoggingEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsEndpointParametersEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsNoStorageEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsSecureSiteEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsTokenEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsV1Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsV3Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsWebchatPreviewEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Key</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Key2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TrustedOrigin</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AppId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ETag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsBlockUserUploadEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDetailedLoggingEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsEndpointParametersEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsNoStorageEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsSecureSiteEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsTokenEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsV1Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsV3Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsWebchatPreviewEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Key</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Key2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TrustedOrigin</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SiteInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SiteInfo</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Key</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SiteName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Key</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SiteName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Sku</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Sku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1438,21 +2636,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SkypeChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SkypeChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SkypeChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SkypeChannel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1460,9 +2676,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SkypeChannelProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SkypeChannelProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SkypeChannelProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SkypeChannelProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1489,6 +2705,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>GroupsMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IncomingCallRoute</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>IsEnabled</Label>
@@ -1522,6 +2741,9 @@
                 <PropertyName>GroupsMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>IncomingCallRoute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>IsEnabled</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -1530,21 +2752,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SlackChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SlackChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SlackChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SlackChannel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1552,9 +2792,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SlackChannelProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SlackChannelProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SlackChannelProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SlackChannelProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1581,6 +2821,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RegisterBeforeOAuthFlow</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Scope</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SigningSecret</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>VerificationToken</Label>
@@ -1614,6 +2860,12 @@
                 <PropertyName>RegisterBeforeOAuthFlow</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Scope</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SigningSecret</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>VerificationToken</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -1622,21 +2874,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SmsChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SmsChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SmsChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SmsChannel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1644,9 +2914,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SmsChannelProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SmsChannelProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.SmsChannelProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.SmsChannelProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1690,21 +2960,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.TelegramChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.TelegramChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.TelegramChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.TelegramChannel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1712,9 +3000,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.TelegramChannelProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.TelegramChannelProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.TelegramChannelProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.TelegramChannelProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1746,21 +3034,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.WebChatChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.WebChatChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.WebChatChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.WebChatChannel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Etag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1768,9 +3074,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.WebChatChannelProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.WebChatChannelProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.WebChatChannelProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.WebChatChannelProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1790,17 +3096,47 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.WebChatSite</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.WebChatSite</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.WebChatSite</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.WebChatSite</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>EnablePreview</Label>
+            <Label>AppId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ETag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsBlockUserUploadEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDetailedLoggingEnabled</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>IsEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsEndpointParametersEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsNoStorageEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsSecureSiteEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsTokenEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsV1Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsV3Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsWebchatPreviewEnabled</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Key</Label>
@@ -1809,20 +3145,50 @@
             <Label>Key2</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SiteId</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SiteName</Label>
+            <Label>TrustedOrigin</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>EnablePreview</PropertyName>
+                <PropertyName>AppId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ETag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsBlockUserUploadEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDetailedLoggingEnabled</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IsEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsEndpointParametersEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsNoStorageEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsSecureSiteEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsTokenEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsV1Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsV3Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsWebchatPreviewEnabled</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Key</PropertyName>
@@ -1831,10 +3197,10 @@
                 <PropertyName>Key2</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SiteId</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SiteName</PropertyName>
+                <PropertyName>TrustedOrigin</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

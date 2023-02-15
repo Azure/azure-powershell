@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapsesqldatabase
+online version: https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsesqldatabase
 schema: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ The **Update-AzSynapseSqlDatabase** cmdlet updates an Azure Synapse Analytics SQ
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase -Tag @{'key'='value'}
+Update-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase -Tag @{'key'='value'}
 ```
 
 This command updates an Azure Synapse Analytics SQL database.

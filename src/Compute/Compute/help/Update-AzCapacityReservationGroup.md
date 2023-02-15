@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azcapacityreservationgroup
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azcapacityreservationgroup
 schema: 2.0.0
 ---
 
@@ -43,14 +43,14 @@ Update the Capacity Reservation Group.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $capResGroup -Tag @{ CreatedBy = "John" }
+Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $capResGroup -Tag @{ CreatedBy = "John" }
 ```
 
 Updating the Capacity Reservation Group's tags.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $capResGroup | Update-AzCapacityReservationGroup -Tag @{ CreatedBy = "John" }
+Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $capResGroup | Update-AzCapacityReservationGroup -Tag @{ CreatedBy = "John" }
 ```
 
 Updating the Capacity Reservation Group's tags using the InputObject parameter set. 

@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
             {
                 if (AliasName != null)
                 {
-                    PutAliasResponse result = new PutAliasResponse();
+                    SubscriptionAliasResponse result = new SubscriptionAliasResponse();
 
                     result = this.SubscriptionClient.Alias.Get(AliasName);
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
                 }
                 else
                 {
-                    PutAliasListResult result = new PutAliasListResult();
+                    SubscriptionAliasListResult result = new SubscriptionAliasListResult();
 
                     result = this.SubscriptionClient.Alias.List();
 

@@ -105,10 +105,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             string targetResourceId,
             string target,
             string endpointStatus,
+            string alwaysServe,
             uint? weight,
             uint? priority,
             string endpointLocation,
             uint? minChildEndpoints,
+            uint? minChildEndpointsIPv4,
+            uint? minChildEndpointsIPv6,
             IList<string> geoMapping,
             IList<TrafficManagerIpAddressRange> subnetMapping,
             IList<TrafficManagerCustomHeader> customHeaders
@@ -126,10 +129,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                     EndpointStatus = endpointStatus,
                     GeoMapping = geoMapping,
                     MinChildEndpoints = minChildEndpoints,
+                    MinChildEndpointsIPv4 = minChildEndpointsIPv4,
+                    MinChildEndpointsIPv6 = minChildEndpointsIPv6,
                     Priority = priority,
                     Target = target,
                     TargetResourceId = targetResourceId,
                     Weight = weight,
+                    AlwaysServe = alwaysServe,
                     Subnets = subnetMapping?.Select(ipAddressRange => ipAddressRange.ToSDKSubnetMapping()).ToList(),
                     CustomHeaders = customHeaders?.Select(customHeader => customHeader.ToSDKEndpointPropertiesCustomHeadersItem()).ToList()
                 });
@@ -351,10 +357,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 GeoMapping = sdkEndpoint.GeoMapping != null ? sdkEndpoint.GeoMapping.ToList() : null,
                 Location = sdkEndpoint.EndpointLocation,
                 MinChildEndpoints = (uint?)sdkEndpoint.MinChildEndpoints,
+                MinChildEndpointsIPv4 = (uint?)sdkEndpoint.MinChildEndpointsIPv4,
+                MinChildEndpointsIPv6 = (uint?)sdkEndpoint.MinChildEndpointsIPv6,
                 Priority = (uint?)sdkEndpoint.Priority,
                 Target = sdkEndpoint.Target,
                 TargetResourceId = sdkEndpoint.TargetResourceId,
                 Weight = (uint?)sdkEndpoint.Weight,
+                AlwaysServe = sdkEndpoint.AlwaysServe,
                 SubnetMapping = sdkEndpoint.Subnets?.Select(ipAddressRange =>
                     TrafficManagerIpAddressRange.FromSDKSubnetMapping(ipAddressRange)).ToList(),
                 CustomHeaders = sdkEndpoint.CustomHeaders?.Select(customHeader =>

@@ -1,0 +1,77 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/24f15700-370c-45bc-86a7-aee1b0c4eb8a/providers/Microsoft.Authorization/privateLinkAssociations/1d7942d1-288b-48de-8d0f-2d2aa8e03ad4?api-version=2020-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzLzI0ZjE1NzAwLTM3MGMtNDViYy04NmE3LWFlZTFiMGM0ZWI4YS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcHJpdmF0ZUxpbmtBc3NvY2lhdGlvbnMvMWQ3OTQyZDEtMjg4Yi00OGRlLThkMGYtMmQyYWE4ZTAzYWQ0P2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"privateLink\": \"/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/ResourceManagementPrivateLink\",\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0bf0e2b0-7762-4c7e-adfb-1f53a3ddfb3f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19044",
+          "Microsoft.Azure.Management.ResourceManager.ResourcePrivateLinkClient/3.17.3.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "268"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "centralus:1a81d53f-1453-4c23-a357-c2b65cb83f9b"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "655b2e09-1fa4-47e5-b72e-6888041474dd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20220321T234618Z:655b2e09-1fa4-47e5-b72e-6888041474dd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 21 Mar 2022 23:46:17 GMT"
+        ],
+        "Content-Length": [
+          "680"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"privateLink\": \"/subscriptions/6dbb5850-64b4-49c0-ba85-d38f089c6fa4/resourceGroups/ARMPrivateLinkRG/providers/Microsoft.Authorization/resourceManagementPrivateLinks/DeepDiveRMPL\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"tenantId\": \"24f15700-370c-45bc-86a7-aee1b0c4eb8a\",\r\n    \"scope\": \"/providers/Microsoft.Management/managementGroups/24f15700-370c-45bc-86a7-aee1b0c4eb8a\"\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/24f15700-370c-45bc-86a7-aee1b0c4eb8a/providers/Microsoft.Authorization/privateLinkAssociations/1d7942d1-288b-48de-8d0f-2d2aa8e03ad4\",\r\n  \"type\": \"Microsoft.Authorization/privateLinkAssociations\",\r\n  \"name\": \"1d7942d1-288b-48de-8d0f-2d2aa8e03ad4\"\r\n}",
+      "StatusCode": 201
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "6dbb5850-64b4-49c0-ba85-d38f089c6fa4"
+  }
+}

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultcertificate
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -43,8 +43,10 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up certificate
 ```powershell
-PS C:\> Restore-AzKeyVaultCertificate -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+Restore-AzKeyVaultCertificate -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+```
 
+```output
 Certificate   : [Subject]
                   CN=contoso.com
 

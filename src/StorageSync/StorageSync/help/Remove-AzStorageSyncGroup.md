@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/powershell/module/az.storagesync/remove-azstoragesyncgroup
+online version: https://learn.microsoft.com/powershell/module/az.storagesync/remove-azstoragesyncgroup
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ This command will delete the specified sync group. A sync group can only be remo
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzStorageSyncGroup -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
+Remove-AzStorageSyncGroup -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
 ```
 
 This command will remove the sync group.

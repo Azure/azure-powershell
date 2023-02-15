@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Set-AzDeviceSecurityGroup
+online version: https://learn.microsoft.com/powershell/module/az.security/Set-AzDeviceSecurityGroup
 schema: 2.0.0
 ---
 
@@ -43,13 +43,15 @@ The Set-AzDeviceSecurityGroup cmdlet creates or updates a device security group 
 
 ### Example 1
 ```powershell
-PS C:\> $TimeWindowSize = New-TimeSpan -Minutes 5
-PS C:\> $TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type "ActiveConnectionsNotInAllowedRange" -Enabled $true 
+$TimeWindowSize = New-TimeSpan -Minutes 5
+$TimeWindowRule = New-AzDeviceSecurityGroupTimeWindowRuleObject -Type "ActiveConnectionsNotInAllowedRange" -Enabled $true `
 -MaxThreshold 30 -MinThreshold 0 -TimeWindowSize $TimeWindowSize
-PS C:\> Set-AzDeviceSecurityGroup -Name "MySecurityGroup" 
--HubResourceId "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub" 
+Set-AzDeviceSecurityGroup -Name "MySecurityGroup" `
+-HubResourceId "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub" `
 -TimeWindowRule $TimeWindowRules
+```
 
+```output
 Id: "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Devices/IotHubs/MyHub/providers/Microsoft.Security/deviceSecurityGroups/MySecurityGroup"
 Name: "MySecurityGroup"
 Type: "Microsoft.Security/deviceSecurityGroups"

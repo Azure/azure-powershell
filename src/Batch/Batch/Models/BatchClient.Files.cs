@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
                 Func<NodeFile, PSNodeFile> mappingFunction = f => { return new PSNodeFile(f); };
                 return PSPagedEnumerable<PSNodeFile, NodeFile>.CreateWithMaxCount(
-                    nodeFiles, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    nodeFiles, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
         }
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
                 Func<NodeFile, PSNodeFile> mappingFunction = f => { return new PSNodeFile(f); };
                 return PSPagedEnumerable<PSNodeFile, NodeFile>.CreateWithMaxCount(
-                    nodeFiles, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    nodeFiles, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
         }
 

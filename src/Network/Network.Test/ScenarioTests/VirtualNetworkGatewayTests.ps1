@@ -115,7 +115,7 @@ function Test-VirtualNetworkGatewayCRUD
       $ipconfigurationId = $vnetIpConfig.id
       $addresslist = @('169.254.21.25')
       $gw1ipconfBgp = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId -CustomAddress $addresslist
-      $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -IpConfigurationBgpPeeringAddresses $gw1ipconfBgp -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -AsJob
+      $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -IpConfigurationBgpPeeringAddresses $gw1ipconfBgp -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -DisableIPsecProtection $false -AsJob
 	  $job | Wait-Job
 	  $actual = $job | Receive-Job
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
@@ -124,6 +124,7 @@ function Test-VirtualNetworkGatewayCRUD
       Assert-AreEqual "Vpn" $expected.GatewayType
       Assert-AreEqual "RouteBased" $expected.VpnType
       Assert-AreEqual 1 @($expected.BgpSettings.BGPPeeringAddresses).Count
+      Assert-AreEqual $expected.DisableIPsecProtection $actual.DisableIPsecProtection
 
 	  # List virtualNetworkGateways
       $list = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname
@@ -144,6 +145,64 @@ function Test-VirtualNetworkGatewayCRUD
 	  $actual = Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $expected -GatewayVip $publicipAddress.IpAddress
 	  $list = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
+
+      # Delete virtualNetworkGateway
+      $job = Remove-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
+	  $job | Wait-Job
+	  $delete = $job | Receive-Job
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
+
+<#
+.SYNOPSIS
+Virtual network gateway tests
+#>
+function Test-VirtualNetworkGatewayDisableIPsecProtection
+{
+# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+
+      # Create & Get virtualnetworkgateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $ipconfigurationId = $vnetIpConfig.id
+      $addresslist = @('169.254.21.25')
+      $gw1ipconfBgp = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId -CustomAddress $addresslist
+      $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -IpConfigurationBgpPeeringAddresses $gw1ipconfBgp -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -DisableIPsecProtection $true -AsJob
+	  $job | Wait-Job
+	  $actual = $job | Receive-Job
+      $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.DisableIPsecProtection $actual.DisableIPsecProtection
 
       # Delete virtualNetworkGateway
       $job = Remove-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
@@ -1330,6 +1389,96 @@ function Test-VirtualNetworkGatewayNatRuleCRUD
       $list = Get-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
      }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
+
+<#
+.SYNOPSIS
+Virtual network gateway tests
+#>
+function Test-VirtualNetworkGatewayPolicyGroupCRUD
+{
+param 
+    ( 
+        $basedir = ".\" 
+    )
+
+    # Setup
+    $rgname = Get-ResourceName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = Get-ProviderLocation $resourceTypeParent
+	$vpnclientAuthMethod = "EAPTLS"
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+      #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+      $samplePublicCertData = "MIIC8TCCAdmgAwIBAgIQEqoni9yN+Y5Jdmfm9iieSzANBgkqhkiG9w0BAQsFADAbMRkwFwYDVQQDDBBCVlRNdWx0aXBvb2xSb290MB4XDTIyMDMwODIxMjM0M1oXDTIzMDMwODIxNDM0M1owGzEZMBcGA1UEAwwQQlZUTXVsdGlwb29sUm9vdDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMNgZH9pjOkayYfPbd1HnFosUtpRluaP0tFsb8MKOSlah5LNIjxT0SEY1r3RpdV9JSlyEe75leWRXrUqiSEUATza8tLW3kyBY8C7fO2ppBFbpALYdnTSnO2MzA5R6oqDKENCinfvL+nExSP48CRDYTtqPajFsBtCA0g55dKiEll9Ov/QRhWbWhehDbDULKd0JMuycbS6P8UFYii7HPKDTbWj8wBETvkc2HO8FOQCMQ14PNAhXuBXVZkuPrlyNpaEqWwGXNNm4SLKiWt9Yat2LYnUvdx/8J1N3Qt7K7S///fHmYMfNH+A+xOeAKhS+IwFRlVbycZ001f0252yvfBmhPUCAwEAAaMxMC8wDgYDVR0PAQH/BAQDAgIEMB0GA1UdDgQWBBRGU/KC4/phW9thGt5yAli1sWxNwTANBgkqhkiG9w0BAQsFAAOCAQEAlO1P/4FKu0n+BRRT9dKx+nTZtIDhFg1GauI9bYvBsc7Wm1opA/+CCXNo5ChNWvrSmDxGInVrGmHwlaB0PEL5W0u5W65UIZlb8ew0vzPmm+Dn/D/9DiqbSt+6yP6RBd6w26og2eh/daMIR90T2ehMsShzlgjmiTeola6EXA15lokfEOaNroj/wFWs26Yz9pvlL+R/nu+QPrnvQQWz/sSYuabmlOzF6rwS2vTae0Q8Y3JvWpEmGeCUMvFYDaK+Wqy1SmMyFLK1QOFz2e/D0PIk1eljoq16p2gd0h6iwsqKstEBXULi0BF9ZhFLBZ1d0ispMdp00huccSektXZiVBpBdQ=="
+      $clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
+      $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
+
+      $aadTenant = "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4"
+      $aadIssuer = "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/"
+      $aadAudience = "a21fce82-76af-45e6-8583-a08cb3b956f9"
+      
+      #create the policy group and connection client configuration
+      $member1=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member1" -AttributeType "CertificateGroupId" -AttributeValue "ab"
+      $member2=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member2" -AttributeType "CertificateGroupId" -AttributeValue "cd"
+      $policyGroup1=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup1" -Priority 0 -DefaultPolicyGroup  -PolicyMember $member1
+      $policyGroup2=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup2" -Priority 10 -PolicyMember $member2
+      $vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "coonfig1" -VirtualNetworkGatewayPolicyGroup $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
+      $vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "coonfig2" -VirtualNetworkGatewayPolicyGroup $policyGroup2 -VpnClientAddressPool "192.168.20.0/24" 
+
+      #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+      $Secure_String_Pwd = ConvertTo-SecureString "radiuspd" -AsPlainText -Force
+      $RadiusIP = "1.2.3.4"
+      # Create & Get virtualnetworkgateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationType Certificate,Radius,AAD -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer -VpnClientProtocol OpenVPN -VirtualNetworkGatewayPolicyGroup $policyGroup1,$policyGroup2 -ClientConnectionConfiguration $vngconnectionConfig,$vngconnectionConfig2
+      $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $expected.Name $actual.Name	
+      Assert-NotNull  $actual.VpnClientConfiguration.ClientConnectionConfigurations
+      Assert-NotNull  $actual.VirtualNetworkGatewayPolicyGroups
+      Assert-AreEqual "Vpn" $expected.GatewayType
+      Assert-AreEqual "RouteBased" $expected.VpnType
+      Assert-NotNull $expected.VpnClientConfiguration
+      $authTypes = $expected.VpnClientConfiguration.VpnAuthenticationTypes
+      Assert-NotNull $authTypes
+      Assert-AreEqual 3 @($authTypes).Count
+
+      $member1=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member1" -AttributeType "CertificateGroupId" -AttributeValue "bj"
+      $member2=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member2" -AttributeType "CertificateGroupId" -AttributeValue "cd"
+      $policyGroup1=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup1" -Priority 0 -DefaultPolicyGroup  -PolicyMember $member1
+      $policyGroup2=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup2" -Priority 10 -PolicyMember $member2
+      $vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "coonfig1" -VirtualNetworkGatewayPolicyGroup $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
+      $vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "coonfig2" -VirtualNetworkGatewayPolicyGroup $policyGroup2 -VpnClientAddressPool "192.168.20.0/24" 
+
+      $actual = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $expected -VirtualNetworkGatewayPolicyGroup $policyGroup1,$policyGroup2 -ClientConnectionConfiguration $vngconnectionConfig,$vngconnectionConfig2
+      $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual "bj" $expected.VirtualNetworkGatewayPolicyGroups[0].PolicyMembers[0].AttributeValue
+    }
      finally
      {
         # Cleanup

@@ -1,0 +1,92 @@
+{
+  "Get-AzMLWorkspaceComponentVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/train_data_component/versions?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/train_data_component/versions?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "e4311a9a-c157-47b0-82c1-dc7977c6e16b" ],
+        "CommandName": [ "Get-AzMLWorkspaceComponentVersion" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceComponentVersion_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "55e78fdf-1855-48b2-81b4-364466cb3579" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.374" ],
+        "x-ms-correlation-request-id": [ "55e78fdf-1855-48b2-81b4-364466cb3579" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094017Z:55e78fdf-1855-48b2-81b4-364466cb3579" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2655" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/train_data_component/versions/1\",\n      \"name\": \"1\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/components/versions\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"isAnonymous\": false,\n        \"componentSpec\": {\n          \"name\": \"train_data_component\",\n          \"version\": \"1\",\n          \"display_name\": \"train_data\",\n          \"is_deterministic\": \"True\",\n          \"type\": \"command\",\n          \"inputs\": {\n            \"training_data\": {\n              \"type\": \"uri_folder\",\n              \"optional\": \"False\"\n            },\n            \"max_epocs\": {\n              \"type\": \"integer\",\n              \"optional\": \"False\"\n            },\n            \"learning_rate\": {\n              \"type\": \"number\",\n              \"optional\": \"False\",\n              \"default\": \"0.01\"\n            },\n            \"learning_rate_schedule\": {\n              \"type\": \"string\",\n              \"optional\": \"False\",\n              \"default\": \"time-based\"\n            }\n          },\n          \"outputs\": {\n            \"model_output\": {\n              \"type\": \"uri_folder\"\n            }\n          },\n          \"code\": \"azureml:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/e08a4be4-66c4-477b-acd7-9579fdd0a3f1/versions/1\",\n          \"environment\": \"azureml:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/AzureML-sklearn-0.24-ubuntu18.04-py37-cpu/versions/1\",\n          \"resources\": {\n            \"instance_count\": \"1\"\n          },\n          \"command\": \"python train.py  --training_data ${{inputs.training_data}}  --max_epocs ${{inputs.max_epocs}}    --learning_rate ${{inputs.learning_rate}}  --learning_rate_schedule ${{inputs.learning_rate_schedule}}  --model_output ${{outputs.model_output}}\",\n          \"$schema\": \"https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json\"\n        }\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-24T07:23:25.3105486Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-24T07:23:25.5758536Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMLWorkspaceComponentVersion+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/train_data_component/versions/1?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/train_data_component/versions/1?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "25dcb46b-5d21-40d5-ba19-5c79bbc79456" ],
+        "CommandName": [ "Get-AzMLWorkspaceComponentVersion" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceComponentVersion_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "4fa9c094-bd29-4513-84c8-d81c7b1ec385" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.256" ],
+        "x-ms-correlation-request-id": [ "4fa9c094-bd29-4513-84c8-d81c7b1ec385" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094019Z:4fa9c094-bd29-4513-84c8-d81c7b1ec385" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2398" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/train_data_component/versions/1\",\n  \"name\": \"1\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/components/versions\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": {},\n    \"properties\": {},\n    \"isArchived\": false,\n    \"isAnonymous\": false,\n    \"componentSpec\": {\n      \"name\": \"train_data_component\",\n      \"version\": \"1\",\n      \"display_name\": \"train_data\",\n      \"is_deterministic\": \"True\",\n      \"type\": \"command\",\n      \"inputs\": {\n        \"training_data\": {\n          \"type\": \"uri_folder\",\n          \"optional\": \"False\"\n        },\n        \"max_epocs\": {\n          \"type\": \"integer\",\n          \"optional\": \"False\"\n        },\n        \"learning_rate\": {\n          \"type\": \"number\",\n          \"optional\": \"False\",\n          \"default\": \"0.01\"\n        },\n        \"learning_rate_schedule\": {\n          \"type\": \"string\",\n          \"optional\": \"False\",\n          \"default\": \"time-based\"\n        }\n      },\n      \"outputs\": {\n        \"model_output\": {\n          \"type\": \"uri_folder\"\n        }\n      },\n      \"code\": \"azureml:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/e08a4be4-66c4-477b-acd7-9579fdd0a3f1/versions/1\",\n      \"environment\": \"azureml:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/AzureML-sklearn-0.24-ubuntu18.04-py37-cpu/versions/1\",\n      \"resources\": {\n        \"instance_count\": \"1\"\n      },\n      \"command\": \"python train.py  --training_data ${{inputs.training_data}}  --max_epocs ${{inputs.max_epocs}}    --learning_rate ${{inputs.learning_rate}}  --learning_rate_schedule ${{inputs.learning_rate_schedule}}  --model_output ${{outputs.model_output}}\",\n      \"$schema\": \"https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json\"\n    }\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-05-24T07:23:25.3105486Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2022-05-24T07:23:25.5758536Z\",\n    \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 17653793-3CE1-465F-87F7-20B4B8F56193
-online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchapplicationpackage
+online version: https://learn.microsoft.com/powershell/module/az.batch/get-azbatchapplicationpackage
 schema: 2.0.0
 ---
 
@@ -24,8 +24,11 @@ The **Get-AzBatchApplicationPackage** cmdlet gets information about an applicati
 ## EXAMPLES
 
 ### Example 1: Get details of an application package in a Batch account
+```powershell
+Get-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "Litware" -ApplicationVersion "1.0"
 ```
-PS C:\>Get-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "Litware" -ApplicationVersion "1.0"
+
+```output
 Format             : zip
 State              : Active
 Version            : 1.0

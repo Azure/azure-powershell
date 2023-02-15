@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Storage.BlobCreated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobCreated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Storage.BlobCreated");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Storage.BlobCreated'", "Microsoft.Storage.BlobCreated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Storage.BlobCreated");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Storage.BlobRenamed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Storage.BlobRenamed", "Microsoft.Storage.BlobRenamed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Storage.BlobRenamed");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Storage.BlobRenamed'", "Microsoft.Storage.BlobRenamed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Storage.BlobRenamed");
             }
         }
     }

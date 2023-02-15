@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleexclusionobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleexclusionobject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Create managed rule exclusion object for WAF managed rule sets, groups, or rules
 
 ### Example 1
 ```powershell
-PS C:> New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ParameterName"
+New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ParameterName"
+```
 
+```output
 MatchVariable       SelectorMatchOperator Selector
 -------------       --------------------- --------
 QueryStringArgNames Equals                ParameterName

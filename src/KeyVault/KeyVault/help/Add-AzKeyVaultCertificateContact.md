@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 2D3021B3-12C5-4797-8BF2-800E3CEAC56C
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificatecontact
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificatecontact
 schema: 2.0.0
 ---
 
@@ -40,8 +40,10 @@ These events are determined by the certificate policy.
 
 ### Example 1: Add a key vault certificate contact
 ```powershell
-PS C:\> Add-AzKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+Add-AzKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+```
 
+```output
 Email                    VaultName
 -----                    ---------
 patti.fuller@contoso.com ContosoKV01

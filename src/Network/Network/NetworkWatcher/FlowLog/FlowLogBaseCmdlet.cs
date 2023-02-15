@@ -76,7 +76,10 @@ namespace Microsoft.Azure.Commands.Network
             bool enableTrafficAnalytics, string trafficAnalyticsWorkspaceId, int? trafficAnalyticsInterval, int? retentionPolicyDays)
         {
             ResourceIdentifier targetResourceInfo = new ResourceIdentifier(targetResourceId);
-            if (!this.IsValidResourceId(targetResourceInfo, "Microsoft.Network/networkSecurityGroups"))
+            if (!this.IsValidResourceId(targetResourceInfo, "Microsoft.Network/networkSecurityGroups") &&
+                !this.IsValidResourceId(targetResourceInfo, "Microsoft.Network/virtualNetworks") &&
+                !this.IsValidResourceId(targetResourceInfo, "Microsoft.Network/virtualNetworks/subnets") &&
+                !this.IsValidResourceId(targetResourceInfo, "Microsoft.Network/networkInterfaces"))
             {
                 throw new PSArgumentException(Properties.Resources.InvalidTargetResourceId);
             }

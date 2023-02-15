@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 3308F901-4C9F-424D-8BEB-877A6038B246
-online version: https://docs.microsoft.com/powershell/module/az.logicapp/stop-azlogicapprun
+online version: https://learn.microsoft.com/powershell/module/az.logicapp/stop-azlogicapprun
 schema: 2.0.0
 ---
 
@@ -29,8 +29,8 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Cancel a run of a logic app
-```
-PS C:\>Stop-AzLogicAppRun -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -RunName "08587489104702792076" -Force
+```powershell
+Stop-AzLogicAppRun -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -RunName "08587489104702792076" -Force
 ```
 
 This command cancels a run of the logic app named LogicApp03.

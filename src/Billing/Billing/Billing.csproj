@@ -14,4 +14,6 @@
     <PackageReference Include="Microsoft.Azure.Management.Billing" Version="4.1.0" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

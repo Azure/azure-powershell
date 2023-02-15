@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrvaultcontext
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrvaultcontext
 schema: 2.0.0
 ---
 
@@ -22,8 +22,8 @@ The **Get-AzRecoveryServicesAsrVaultContext** cmdlet gets ASR vault settings inf
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $VaultSettings = Get-AzRecoveryServicesAsrVaultContext
+```powershell
+$VaultSettings = Get-AzRecoveryServicesAsrVaultContext
 ```
 
 Gets the ASR vault settings for the currently active(in the PowerShell session) Recovery Services vault.

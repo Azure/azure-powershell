@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobinventorypolicyrule
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstorageblobinventorypolicyrule
 schema: 2.0.0
 ---
 
@@ -16,13 +16,14 @@ Creates a blob inventory policy rule object, which can be used in Set-AzStorageB
 ```
 New-AzStorageBlobInventoryPolicyRule [-Name] <String> [-Disabled] -Destination <String> -Format <String>
  -Schedule <String> -BlobSchemaField <String[]> -BlobType <String[]> [-PrefixMatch <String[]>]
- [-IncludeSnapshot] [-IncludeBlobVersion] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ExcludePrefix <String[]>] [-IncludeSnapshot] [-IncludeBlobVersion] [-IncludeDeleted]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ContainerRuleParameterSet
 ```
 New-AzStorageBlobInventoryPolicyRule [-Name] <String> [-Disabled] -Destination <String> -Format <String>
- -Schedule <String> -ContainerSchemaField <String[]> [-PrefixMatch <String[]>]
+ -Schedule <String> -ContainerSchemaField <String[]> [-PrefixMatch <String[]>] [-ExcludePrefix <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -32,13 +33,17 @@ The **New-AzStorageBlobInventoryPolicyRule** cmdlet creates a blob inventory pol
 ## EXAMPLES
 
 ### Example 1: Create blob inventory policy rule objects, then sets blob inventory policy with the rule objects.
+<!-- Skip: Output cannot be splitted from code -->
+
 ```
 PS C:\> $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
 
 PS C:\> $rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
                 -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata
+PS C:\> $rule3 = New-AzStorageBlobInventoryPolicyRule -Name Test3 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -IncludeDeleted -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
+                 -ExcludePrefix ccc,ddd -BlobSchemaField name,Last-Modified,BlobType,AccessTier,AccessTierChangeTime,Content-Type,Content-CRC64,CopyId,x-ms-blob-sequence-number,TagCount
 
-PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
+PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
 
 PS C:\> $policy
 
@@ -49,18 +54,19 @@ Id                 : /subscriptions/{subscription-Id}/resourceGroups/myresourceg
 Type               : Microsoft.Storage/storageAccounts/inventoryPolicies
 LastModifiedTime   : 5/12/2021 8:53:38 AM
 Enabled            : False
-Rules              : {Test1, Test2}
+Rules              : {Test1, Test2, Test3}
 
 PS C:\> $policy.Rules
 
-Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions BlobTypes               PrefixMatch  SchemaFields                                           
-----  ------- -----------   ---------- ------  -------- ---------------- ------------------- ---------               -----------  ------------                                           
-Test1 False   containername Container  Csv     Daily                                                                 {con1, con2} {Name, Metadata, PublicAccess, Last-Modified...}       
-Test2 True    containername Blob       Parquet Weekly   True             True                {blockBlob, appendBlob} {aaa, bbb}   {Name, Creation-Time, Last-Modified, Content-Length...}
+Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions IncludeDeleted BlobTypes               PrefixMatch ExcludePrefix  SchemaFields                                           
+----  ------- -----------   ---------- ------  -------- ---------------- ------------------- -------------- ---------               ----------- -------------  ------------                                           
+Test1 False   containername Container  Csv     Daily                                                                                {con1, con2}               {Name, Metadata, PublicAccess, Last-Modified...}       
+Test2 True    containername Blob       Parquet Weekly   True             True                               {blockBlob, appendBlob} {aaa, bbb}                 {Name, Creation-Time, Last-Modified, Content-Length...}
+Test3 True    containername Blob       Parquet Weekly   True             True                True           {blockBlob, appendBlob} {aaa, bbb}  {ccc, ddd}     {Name, Content-Type, Content-CRC64, Last-Modified...}
 ```
 
-This first 2 commands create 2 BlobInventoryPolicy rule objects: rule "Test1" for contaienr inventory; rule "Test2" for blob inventory.
-The following command sets blob inventory policy to a Storage account with the 2 rule objects, then show the updated policy and rules properties.
+This first 3 commands create 3 BlobInventoryPolicy rule objects: rule "Test1" for contaienr inventory; rule "Test2" for blob inventory; rule "Test3" for blob inventory with more schema fields, excludePrefix specified, and IncludeDeleted enabled.
+The following command sets blob inventory policy to a Storage account with the 3 rule objects, then show the updated policy and rules properties.
 
 ## PARAMETERS
 
@@ -73,7 +79,7 @@ If specify '-IncludeSnapshot', will include 'Snapshot'  in the inventory.  If sp
 Type: System.String[]
 Parameter Sets: BlobRuleParameterSet
 Aliases:
-Accepted values: Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Metadata, LastAccessTime, AccessTierInferred, Tags
+Accepted values: Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Metadata, LastAccessTime, AccessTierInferred, Tags, Etag, Content-Type, Content-Encoding, Content-Language, Content-CRC64, Cache-Control, Content-Disposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, RemainingRetentionDays, ImmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, x-ms-blob-sequence-number, EncryptionScope, IncrementalCopy, DeletionId, DeletedTime, TagCount
 
 Required: True
 Position: Named
@@ -107,7 +113,7 @@ Specifies the fields and properties of the container object to be included in th
 Type: System.String[]
 Parameter Sets: ContainerRuleParameterSet
 Aliases:
-Accepted values: Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold
+Accepted values: Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays
 
 Required: True
 Position: Named
@@ -161,6 +167,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExcludePrefix
+Sets an array of strings with maximum 10 blob prefixes to be excluded from the inventory.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Format
 Specifies the format for the inventory files. Possible values include: 'Csv', 'Parquet'
 
@@ -179,6 +200,21 @@ Accept wildcard characters: False
 
 ### -IncludeBlobVersion
 The rule is disabled if set it.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: BlobRuleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeDeleted
+Includes deleted blob in blob inventory. When include delete blob, for ContainerSchemaFields, must include 'Deleted, Version, DeletedTime and RemainingRetentionDays'. For BlobSchemaFields, on HNS enabled storage accounts, must include 'DeletionId, Deleted, DeletedTime and RemainingRetentionDays', and on Hns disabled accounts must include 'Deleted and RemainingRetentionDays', else they must be excluded.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -256,7 +292,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

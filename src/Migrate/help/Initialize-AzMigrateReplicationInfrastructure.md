@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
+online version: https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Initialises the infrastructure for the migrate project.
 
 ```
 Initialize-AzMigrateReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String>
- -Scenario <String> -TargetRegion <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -Scenario <String> -TargetRegion <String> [-CacheStorageAccountId <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,14 +25,42 @@ The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrast
 
 ### Example 1: Initialises the infrastructure for the migrate project.
 ```powershell
-PS C:\> Initialize-AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName TestRG  -ProjectName TestProject -Vmwareagentless -TargetRegion centralus
+Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName TestRG -ProjectName TestProject -TargetRegion centralus
+```
 
+```output
 True
 ```
 
 Initialises the infrastructure for the migrate project.
 
+### Example 2: Initialises the infrastructure for the migrate project for private endpoint scenario.
+```powershell
+Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName "TestRG" -ProjectName "TestPEProject" -TargetRegion "centraluseuap" -Scenario "agentlessVMware" -CacheStorageAccountId "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/singhabh-rg/providers/Microsoft.Storage/storageAccounts/singhabhstoragepe1"
+```
+
+```output
+True
+```
+
+Initialises the infrastructure for the migrate project for private endpoint scenario.
+
 ## PARAMETERS
+
+### -CacheStorageAccountId
+Specifies the Storage Account Id to be used for private endpoint scenario.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

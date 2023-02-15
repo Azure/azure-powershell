@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2B4A3E2A-1868-492F-9F77-932319D2CE6D
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvpnclientpackage
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvpnclientpackage
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ You must specify the architecture type when running **Get-AzVpnClientPackage**.
 ## EXAMPLES
 
 ### Example 1: Get information about a processor architecture VPN client package
-```
-PS C:\>Get-AzVpnClientPackage -ProcessorArchitecture -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup" -ProcessorArchitecture "Amd64"
+```powershell
+Get-AzVpnClientPackage -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup" -ProcessorArchitecture "Amd64"
 ```
 
 This command gets information about the AMD64 VPN client packages stored on the virtual network gateway named ContosoVirtualNetworkGateway.

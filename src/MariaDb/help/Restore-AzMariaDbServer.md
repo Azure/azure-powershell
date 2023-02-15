@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MariaDb
-online version: https://docs.microsoft.com/powershell/module/az.mariadb/restore-azmariadbserver
+online version: https://learn.microsoft.com/powershell/module/az.mariadb/restore-azmariadbserver
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Restore a MariaDB from a existing MariaDB.
 
 ### Example 1: Restore a PointInTime MariaDB by server name.
 ```powershell
-PS C:\> Restore-AzMariaDbServer -Name restore-db01 -ServerName mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
+Restore-AzMariaDbServer -Name restore-db01 -ServerName mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z -RestorePointInTime $(Get-Date) -Location eastus
+```
 
+```output
 Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----         -------- ------------------ ------- ----------------------- -------   -------        --------------
 restore-db01 eastus   adminuser          10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled
@@ -36,9 +38,11 @@ This command restore a PointInTime MariaDB by server name.
 
 ### Example 2: Restore a PointInTime MariaDB by server object
 ```powershell
-PS C:\> $db = Get-AzMariaDbServer -Name mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z
-PS C:\>Restore-AzMariaDbServer -Name restore-db02 -InputObject $db -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
+$db = Get-AzMariaDbServer -Name mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z
+Restore-AzMariaDbServer -Name restore-db02 -InputObject $db -RestorePointInTime $(Get-Date) -Location eastus
+```
 
+```output
 Name         Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----         -------- ------------------ ------- ----------------------- -------   -------        --------------
 restore-db02 eastus   adminuser          10.2    5120                    GP_Gen5_4 GeneralPurpose Enabled
@@ -269,7 +273,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServer>: The source server object to restore from.
+INPUTOBJECT `<IServer>`: The source server object to restore from.
   - `Location <String>`: The location the resource resides in.
   - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgerole
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/remove-azdataboxedgerole
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzDataBoxEdgeRole** cmdlet removes the associated IoT role for a Da
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name roleName
+Remove-AzDataBoxEdgeRole -ResourceGroupName resourceGroupName -DeviceName deviceName -Name roleName
 ```
 
 ## PARAMETERS

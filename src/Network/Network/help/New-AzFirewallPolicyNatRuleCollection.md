@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicynatrulecollection
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpolicynatrulecollection
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **New-AzFirewallPolicyNatRuleCollection** cmdlet creates a Nat rule collecti
 
 ### Example 1
 ```powershell
-PS C:\> $netRule1 = New-AzFirewallPolicyNatRule -Name NatRule1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress 10.20.30.40 -DestinationPort 1000 -TranslatedAddress "192.168.0.1" -TranslatedPort "100"
-PS C:\> New-AzFirewallPolicyNatRuleCollection -Name NatRC1 -Priority 200 -Rule $netRule1 -ActionType "Dnat"
+$netRule1 = New-AzFirewallPolicyNatRule -Name NatRule1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress 10.20.30.40 -DestinationPort 1000 -TranslatedAddress "192.168.0.1" -TranslatedPort "100"
+New-AzFirewallPolicyNatRuleCollection -Name NatRC1 -Priority 200 -Rule $netRule1 -ActionType "Dnat"
 ```
 
 This example creates a nat rule collection with a network rule

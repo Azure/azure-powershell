@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         /// </summary>
         public IList<AzureSqlSyncGroupSchemaColumnModel> Columns { get; set; }
 
-        // <summary>
+        /// <summary>
         /// The quoted table name
         /// </summary>
         public string QuotedName { get; set; }

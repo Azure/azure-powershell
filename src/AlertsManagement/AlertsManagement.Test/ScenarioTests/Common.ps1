@@ -23,11 +23,11 @@ function Get-TestResourceGroupName($action)
 
 <#
 .SYNOPSIS
-Gets valid action rule name
+Gets valid alert processing rule name
 #>
-function Get-TestActionRuleName($action)
+function Get-TestAlertProcessingRuleName($action)
 {
-    return "pstestar" + $action
+    return "pstestapr" + $action
 }
 
 <#
@@ -44,10 +44,10 @@ function Get-ProviderLocation($provider)
 .SYNOPSIS
 Cleans the created resources
 #>
-function CleanUp($rgname, $actionRuleName)
+function CleanUp($rgname, $alertProcessingRuleName)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzActionRule -ResourceGroupName $rgname -Name $actionRuleName
+        Remove-AzAlertProcessingRule -ResourceGroupName $rgname -Name $alertProcessingRuleName
         Remove-AzResourceGroup -Name $rgname -Force
     }
 }

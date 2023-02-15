@@ -51,5 +51,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GalleryImageVersionDiskImage");
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGalleryDirectSharing()
+        {
+            TestRunner.RunTestScript("Test-GalleryDirectSharing");
+        }
     }
 }

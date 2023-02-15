@@ -225,6 +225,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "DisableTcpStateTracking")]
+        public string DisableTcpStateTracking { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "EnableIPForwarding")]
         public SwitchParameter EnableIPForwarding { get; set; }
         
@@ -232,6 +238,15 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "EnableAcceleratedNetworking")]
         public SwitchParameter EnableAcceleratedNetworking { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The auxiliary mode of the Network Interface ")]
+        [ValidateSet(
+            MNM.NetworkInterfaceAuxiliaryMode.None,
+            MNM.NetworkInterfaceAuxiliaryMode.MaxConnections,
+            IgnoreCase = true)]
+        public string AuxiliaryMode { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -279,6 +294,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(EdgeZone))
             {
                 networkInterface.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
+            if (!string.IsNullOrEmpty(DisableTcpStateTracking))
+            {
+                networkInterface.DisableTcpStateTracking = this.DisableTcpStateTracking;
             }
 
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
@@ -436,6 +456,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 networkInterface.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
+
+            if (!string.IsNullOrEmpty(this.AuxiliaryMode))
+            {
+                networkInterface.AuxiliaryMode = this.AuxiliaryMode;
             }
 
             List<string> resourceIdsRequiringAuthToken = new List<string>();

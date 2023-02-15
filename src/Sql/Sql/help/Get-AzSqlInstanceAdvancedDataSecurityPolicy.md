@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceadvanceddatasecuritypolicy
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlinstanceadvanceddatasecuritypolicy
 schema: 2.0.0
 ---
 
@@ -25,10 +25,12 @@ The **Get-AzSqlInstanceAdvancedDataSecurityPolicy** cmdlet retrieves the Advance
 
 ### Example 1: Gets managed instance Advanced Data Security
 ```powershell
-PS C:\>  Get-AzSqlInstanceAdvancedDataSecurityPolicy `
+Get-AzSqlInstanceAdvancedDataSecurityPolicy `
             -ResourceGroupName "ResourceGroup01" `
-            -InstanceName "ManagedInstance01" `
+            -InstanceName "ManagedInstance01"
+```
 
+```output
 ResourceGroupName	         : ResourceGroup01
 ManagedInstanceName		     : ManagedInstance01
 IsEnabled		             : True
@@ -36,11 +38,13 @@ IsEnabled		             : True
 
 ### Example 2: Gets managed instance Advanced Data Security from managed instance resource
 ```powershell
-PS C:\>  Get-AzSqlInstance `
+Get-AzSqlInstance `
            -ResourceGroupName "ResourceGroup01" `
            -Name "ManagedInstance01" `
            | Get-AzSqlInstanceAdvancedDataSecurityPolicy
+```
 
+```output
 ResourceGroupName	         : ResourceGroup01
 ManagedInstanceName		     : ManagedInstance01
 IsEnabled		             : True

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsfunction
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsfunction
 schema: 2.0.0
 ---
 
@@ -37,8 +37,9 @@ Gets details about the specified function.
 
 ### Example 1: Get all Stream Analytics functions
 ```powershell
-PS C:\> Get-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh
-
+Get-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh
+```
+```output
 Name        Type                                              ETag
 ----        ----                                              ----
 function-01 Microsoft.StreamAnalytics/streamingjobs/functions
@@ -48,8 +49,9 @@ This command gets the functions defined on the job.
 
 ### Example 2: Get a specific Stream Analytics function
 ```powershell
-PS C:\> Get-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name function-01
-
+Get-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name function-01
+```
+```output
 Name        Type                                              ETag
 ----        ----                                              ----
 function-01 Microsoft.StreamAnalytics/streamingjobs/functions e35beaf1-8c6c-4b26-bafe-733835510f49
@@ -59,8 +61,9 @@ This command gets information about the function defined on the job.
 
 ### Example 3: Get a specific Stream Analytics function by pipeline
 ```powershell
-PS C:\> New-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name function-05 -File .\test\template-json\Function_JavascriptUdf.json | Get-AzStreamAnalyticsFunction
-
+New-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name function-05 -File .\test\template-json\Function_JavascriptUdf.json | Get-AzStreamAnalyticsFunction
+```
+```output
 Name        Type                                              ETag
 ----        ----                                              ----
 function-05 Microsoft.StreamAnalytics/streamingjobs/functions e35beaf1-8c6c-4b26-bafe-733835510f49
@@ -200,7 +203,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+INPUTOBJECT `<IStreamAnalyticsIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.
   - `[FunctionName <String>]`: The name of the function.
   - `[Id <String>]`: Resource identity path

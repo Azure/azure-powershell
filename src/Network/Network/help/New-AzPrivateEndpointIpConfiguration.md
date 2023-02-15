@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azprivateendpointipconfiguration
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **New-AzPrivateEndpointIpConfiguration** cmdlet creates an IpConfiguration o
 
 ### Example 1
 ```powershell
-PS C:\> New-AzPrivateEndpointIpConfiguration -Name "IpConfigurationForPrivateEndpoint" -PrivateIPAddress "10.0.0.10"
+New-AzPrivateEndpointIpConfiguration -Name "IpConfigurationForPrivateEndpoint" -PrivateIPAddress "10.0.0.10"
 ```
 
 This example creates an IpConfiguration object used for private endpoint.

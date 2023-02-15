@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: C1C0F69D-6A3F-4523-BB70-27676A3DDCBD
-online version: https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection
+online version: https://learn.microsoft.com/powershell/module/az.automation/remove-azautomationconnection
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Remove-AzAutomationConnection** cmdlet removes a connection from Azure Aut
 ## EXAMPLES
 
 ### Example 1: Remove a connection
-```
-PS C:\>Remove-AzAutomationConnection -AutomationAccountName "Contoso17" -Name "ContosoConnection" -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzAutomationConnection -AutomationAccountName "Contoso17" -Name "ContosoConnection" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes a certificate named ContosoConnection in the Automation account named Contoso17.
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

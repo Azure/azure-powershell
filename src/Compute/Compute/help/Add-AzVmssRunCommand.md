@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmssruncommand
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmssruncommand
 schema: 2.0.0
 ---
 
@@ -39,8 +39,7 @@ Adding Run Command to All VMSS Instances
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Location eastus -Name myruncommand -Script "Write-Host Hello World" -TimeOutInSeconds 3600 -RunAsUser "admin01" 
-
+Add-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Location eastus -Name myruncommand -Script "Write-Host Hello World" -TimeOutInSeconds 3600 -RunAsUser "admin01"
 ```
 
 Adding 'myruncommand' to VMSS
@@ -51,7 +50,7 @@ Adding 'myruncommand' to VMSS
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +65,7 @@ Accept wildcard characters: False
 Optional. If set to true, provisioning will complete as soon as the script starts and will not wait for script to complete.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +80,7 @@ Accept wildcard characters: False
 RunCommand Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -111,7 +110,7 @@ Accept wildcard characters: False
 Specifies the Azure storage blob where script error stream will be uploaded.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +125,7 @@ Accept wildcard characters: False
 Resource location
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -141,7 +140,7 @@ Accept wildcard characters: False
 Resource name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +155,7 @@ Accept wildcard characters: False
 Specifies the Azure storage blob where script output stream will be uploaded.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +170,7 @@ Accept wildcard characters: False
 The parameters used by the script.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +185,7 @@ Accept wildcard characters: False
 The parameters used by the script.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -201,7 +200,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -216,7 +215,7 @@ Accept wildcard characters: False
 Specifies the user account password on the VM when executing the run command.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -231,7 +230,7 @@ Accept wildcard characters: False
 Specifies the user account on the VM when executing the run command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -246,7 +245,7 @@ Accept wildcard characters: False
 The source of the run command script.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -261,7 +260,7 @@ Accept wildcard characters: False
 The Path of source of the run command script.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -276,7 +275,7 @@ Accept wildcard characters: False
 The Uri source of the run command script.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -291,7 +290,7 @@ Accept wildcard characters: False
 The timeout in seconds to execute the run command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -306,7 +305,7 @@ Accept wildcard characters: False
 The VirtualMachineScaleSetVM
 
 ```yaml
-Type: PSVirtualMachineScaleSetVM
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
 Parameter Sets: ObjectParameter
 Aliases:
 
@@ -321,7 +320,7 @@ Accept wildcard characters: False
 The VirtualMachineScaleSet
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -336,7 +335,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -352,7 +351,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 87B3C102-0A8C-4FFA-8429-594D2360AC32
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/remove-azhdinsightcluster
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/remove-azhdinsightcluster
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ Data stored in external metastores is not deleted.
 ## EXAMPLES
 
 ### Example 1: Delete an Azure HDInsight cluster
-```
-PS C:\>Remove-AzHDInsightCluster -ClusterName "your-hadoop-001"
+```powershell
+Remove-AzHDInsightCluster -ClusterName "your-hadoop-001"
 ```
 
 This command removes the cluster named your-hadoop-001.

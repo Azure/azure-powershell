@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice
 schema: 2.0.0
 ---
 
@@ -23,9 +23,11 @@ Get-AzVirtualNetworkAvailableEndpointService lists endpoint services available i
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzVirtualNetworkAvailableEndpointService -Location westus
 ```
-PS C:\> Get-AzVirtualNetworkAvailableEndpointService -Location westus
 
+```output
 -Name              Id                                                                                             Type
 -----              --                                                                                             ----
 -Microsoft.Storage /subscriptions/id/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Storage Microsoft.Network/virtualNetworkEndpointServices

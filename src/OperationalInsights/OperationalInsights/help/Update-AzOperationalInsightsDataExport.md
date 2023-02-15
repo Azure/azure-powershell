@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/update-azoperationalinsightsdataexport
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/update-azoperationalinsightsdataexport
 schema: 2.0.0
 ---
 
@@ -38,18 +38,20 @@ Updates a data export.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzOperationalInsightsDataExport -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName} -TableNames {table_names}
+Update-AzOperationalInsightsDataExport -ResourceGroupName "rg-name" -WorkspaceName "workspace-name" -DataExportName "dataExportName" -TableName "table_name" -Enable $true
+```
 
+```output
 Name             : {dataExportName}
 Id               : /subscriptions/{subscription}/resourcegroups/{rg-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}/dataexports/{dataExportName}
 Type             : Microsoft.OperationalInsights/workspaces/export
 DataExportId     : {GUID}
-TableNames       : {table_names}
+TableNames       : {table_name}
 ResourceId       : /subscriptions/{resource_subscription}/resourceGroups/{resource_rg}/providers/Microsoft.Storage/storageAc
                    counts/{storage_name}
 DataExportType   : StorageAccount
 EventHubName     :
-Enable           : false
+Enable           : true
 CreatedDate      : 
 LastModifiedDate :
 ```
@@ -182,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -TableName
-An array of tables to export, for example: ["Heartbeat, SecurityEvent"].
+An array of tables to export, for example: \["Heartbeat, SecurityEvent"\].
 
 ```yaml
 Type: System.String[]

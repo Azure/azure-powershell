@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 466F6B7C-BA7E-4DFD-8504-5A196A335231
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzRecoveryServicesVault** cmdlet deletes a Recovery Services vault.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzRecoveryServicesVault -Vault $vault
+```powershell
+Remove-AzRecoveryServicesVault -Vault $vault
 ```
 
 Deletes a Recovery Services vault.

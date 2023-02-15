@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightstable
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightstable
 schema: 2.0.0
 ---
 
@@ -23,15 +23,15 @@ Get or list tables for a workspace, list tables under workspace when "-TableName
 ## EXAMPLES
 
 ### Example 1: Get all tables for a workspace
-```
-PS C:\>Get-AzOperationalInsightsTable -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
+```powershell
+Get-AzOperationalInsightsTable -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
 ```
 
 This command gets all of the tables associated with a workspace.
 
 ### Example 2: Get a specific table by name
-```
-PS C:\>Get-AzOperationalInsightsTable -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -tableName "ContosoSavedTableName"
+```powershell
+Get-AzOperationalInsightsTable -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -tableName "ContosoSavedTableName"
 ```
 
 This command gets a specific table by its name.

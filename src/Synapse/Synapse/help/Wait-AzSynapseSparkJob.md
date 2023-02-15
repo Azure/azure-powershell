@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/wait-azsynapsesparkjob
+online version: https://learn.microsoft.com/powershell/module/az.synapse/wait-azsynapsesparkjob
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ The **Wait-AzSynapseSparkJob** cmdlet waits for an Azure Synapse Analytics job t
 
 ### Example 1
 ```powershell
-PS C:\> Wait-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 324
+Wait-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 324
 ```
 
 This command waits for the job with the specified ID to complete.

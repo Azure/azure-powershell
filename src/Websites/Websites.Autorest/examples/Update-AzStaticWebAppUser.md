@@ -1,7 +1,8 @@
 ### Example 1: Update a user entry with the listed roles
 ```powershell
-PS C:\> Update-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal01 -Authprovider 'github' -Userid 'fa4eba85fa9f4a42b5300dc4c7bb45aa' -Role 'contributor'
-
+Update-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal01 -Authprovider 'github' -Userid 'fa4eba85fa9f4a42b5300dc4c7bb45aa' -Role 'contributor'
+```
+```output
 Kind Name                             Type
 ---- ----                             ----
      fa4eba85fa9f4a42b5300dc4c7bb45aa Microsoft.Web/staticSites/users
@@ -11,8 +12,9 @@ This command updates a user entry with the listed roles.
 
 ### Example 2: Update a user entry with the listed roles by pipeline
 ```powershell
-PS C:\> Get-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal01 -Authprovider 'all'  | Update-AzStaticWebAppUser -Role 'contributor'
-
+Get-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal01 -Authprovider 'all'  | Update-AzStaticWebAppUser -Role 'contributor'
+```
+```output
 Kind Name                             Type
 ---- ----                             ----
      fa4eba85fa9f4a42b5300dc4c7bb45aa Microsoft.Web/staticSites/users

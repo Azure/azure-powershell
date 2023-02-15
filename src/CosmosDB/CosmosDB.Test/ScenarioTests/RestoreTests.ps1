@@ -345,7 +345,7 @@ function Test-UpdateCosmosDBAccountBackupPolicyCmdLet {
   }
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous
-  Start-Sleep -s 50
+  Start-TestSleep -Seconds 50
 
   $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
   Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover
+online version: https://learn.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover
 schema: 2.0.0
 ---
 
@@ -25,14 +25,14 @@ The Invoke-AzSqlDatabaseFailover cmdlet failovers an Azure SQL database. If the 
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzSqlDatabaseFailover -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+Invoke-AzSqlDatabaseFailover -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 This command will failover the primary replica of the database named "Database01" on the server named "Server01"
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzSqlDatabaseFailover -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -ReadableSecondary
+Invoke-AzSqlDatabaseFailover -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -ReadableSecondary
 ```
 
 This command will failover the readable secondary replica of the database named "Database01" on the server named "Server01"

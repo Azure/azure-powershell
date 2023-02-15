@@ -19,6 +19,23 @@
 -->
 
 ## Upcoming Release
+* Updated Alerts cmdlets:
+    `Get-AzSecurityAlert`
+    `Set-AzSecurityAlert`
+* Moving Security Contacts to be based on the latest API version '2020-01-01-preview' with backward compatibility support
+## Version 1.3.0
+* Added new cmdlet: `Get-AzSecuritySolution`
+* Added Alerts Suppression Rules to cmdlets:
+    `Get-AlertsSuppressionRule`
+    `Remove-AlertsSuppressionRule`
+    `Set-AlertsSuppressionRule`
+    `New-AzAlertsSuppressionRuleScope`
+
+## Version 1.3.0
+* Added new cmdlets for security  SecuritySolutionsReferenceData API
+
+## Version 1.2.0
+* Added new cmdlets for security Automations API
 
 ## Version 1.1.1
 * Updated Security .NET SDK package reference to version 3.0.0

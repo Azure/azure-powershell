@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 462F3EF7-4C15-41F8-853D-CDCC8E67673D
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azexpressroutecircuitpeeringconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azexpressroutecircuitpeeringconfig
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ peering configuration.
 ## EXAMPLES
 
 ### Example 1: Remove a peering configuration from an ExpressRoute circuit
-```
+```powershell
 $circuit = Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
 Remove-AzExpressRouteCircuitPeeringConfig -Name 'AzurePrivatePeering' -ExpressRouteCircuit $circuit
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit

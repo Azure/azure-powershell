@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 6C90AF6C-3193-4D75-A78F-3EC315C6D7DF
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayhttplistener
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayhttplistener
 schema: 2.0.0
 ---
 
@@ -24,10 +24,10 @@ The **Remove-AzApplicationGatewayHttpListener** cmdlet removes an HTTP listener 
 ## EXAMPLES
 
 ### Example 1: Remove an application gateway HTTP listener
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzApplicationGatewayHttpListener -ApplicationGateway $AppGw -Name "Listener02"
-PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGW
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewayHttpListener -ApplicationGateway $AppGw -Name "Listener02"
+Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
 The first command gets an application gateway and stores it in the $AppGw variable.

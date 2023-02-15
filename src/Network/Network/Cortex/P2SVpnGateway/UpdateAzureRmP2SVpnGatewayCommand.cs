@@ -114,6 +114,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of P2SConnectionConfigurations that this P2SVpnGateway needs to have.")]
+        public PSP2SConnectionConfiguration[] P2SConnectionConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName + CortexParameterSetNames.ByVpnServerConfigurationObject,
             HelpMessage = "The VpnServerConfiguration to be attached to this P2SVpnGateway.")]
@@ -215,28 +220,36 @@ namespace Microsoft.Azure.Commands.Network
                 existingP2SVpnGateway.VpnGatewayScaleUnit = Convert.ToInt32(this.VpnGatewayScaleUnit);
             }
 
-            //// Modify the P2SConnectionConfigurations
-            if (existingP2SVpnGateway.P2SConnectionConfigurations == null || !existingP2SVpnGateway.P2SConnectionConfigurations.Any())
+            // Modify the P2SConnectionConfigurations
+            if (this.P2SConnectionConfiguration != null)
             {
-                PSP2SConnectionConfiguration p2sConnectionConfig = new PSP2SConnectionConfiguration()
+                existingP2SVpnGateway.P2SConnectionConfigurations = new List<PSP2SConnectionConfiguration>();
+                existingP2SVpnGateway.P2SConnectionConfigurations.AddRange(this.P2SConnectionConfiguration);
+            }
+            else
+            {
+                if (existingP2SVpnGateway.P2SConnectionConfigurations == null || !existingP2SVpnGateway.P2SConnectionConfigurations.Any())
                 {
-                    Name = P2SConnectionConfigurationName,
-                    VpnClientAddressPool = new PSAddressSpace()
+                    PSP2SConnectionConfiguration p2sConnectionConfig = new PSP2SConnectionConfiguration()
                     {
-                        AddressPrefixes = new List<string>()
-                    }
-                };
+                        Name = P2SConnectionConfigurationName,
+                        VpnClientAddressPool = new PSAddressSpace()
+                        {
+                            AddressPrefixes = new List<string>()
+                        }
+                    };
 
-                existingP2SVpnGateway.P2SConnectionConfigurations = new List<PSP2SConnectionConfiguration>()
+                    existingP2SVpnGateway.P2SConnectionConfigurations = new List<PSP2SConnectionConfiguration>()
                     {
                         p2sConnectionConfig
                     };
-            }
+                }
 
-            if (this.VpnClientAddressPool != null)
-            {
-                existingP2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes.Clear();
-                existingP2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes = new List<string>(this.VpnClientAddressPool);
+                if (this.VpnClientAddressPool != null)
+                {
+                    existingP2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes.Clear();
+                    existingP2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes = new List<string>(this.VpnClientAddressPool);
+                }
             }
 
             if (this.EnableInternetSecurityFlag.IsPresent && this.DisableInternetSecurityFlag.IsPresent)
@@ -246,12 +259,12 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.EnableInternetSecurityFlag.IsPresent)
             {
-                existingP2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity = true;
+                existingP2SVpnGateway.P2SConnectionConfigurations.ForEach(config => config.EnableInternetSecurity = true);
             }
 
             if (this.DisableInternetSecurityFlag.IsPresent)
             {
-                existingP2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity = false;
+                existingP2SVpnGateway.P2SConnectionConfigurations.ForEach(config => config.EnableInternetSecurity = false);
             }
 
             if (this.RoutingConfiguration != null)
@@ -261,7 +274,7 @@ namespace Microsoft.Azure.Commands.Network
                     throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
                 }
 
-                existingP2SVpnGateway.P2SConnectionConfigurations[0].RoutingConfiguration = RoutingConfiguration;
+                existingP2SVpnGateway.P2SConnectionConfigurations.ForEach(config => config.RoutingConfiguration = RoutingConfiguration);
             }
 
             // Set the custom dns servers, if it is specified by customer.

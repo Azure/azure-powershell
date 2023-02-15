@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 3efb6270-f908-4734-bdb1-6c7e4e4eb382
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressroutecrossconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressroutecrossconnection
 schema: 2.0.0
 ---
 
@@ -26,12 +26,12 @@ AzureRmExpressRouteCrossConnection
 ## EXAMPLES
 
 ### Example 1: Get the ExpressRoute cross connection
-```
+```powershell
 Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 ```
 
 ### Example 2: List the ExpressRoute cross connections using a filter
-```
+```powershell
 Get-AzExpressRouteCrossConnection -Name test*
 ```
 

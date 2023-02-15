@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Confluent
-online version: https://docs.microsoft.com/powershell/module/az.confluent/get-azconfluentmarketplaceagreement
+online version: https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentmarketplaceagreement
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ List Confluent marketplace agreements in the subscription.
 
 ### Example 1: List all confluent marketplace agreement under a subscription
 ```powershell
-PS C:\> Get-AzConfluentMarketplaceAgreement
+Get-AzConfluentMarketplaceAgreement
+```
 
+```output
 Name        Type
 ----        ----
 marketplace Microsoft.Confluent/agreements

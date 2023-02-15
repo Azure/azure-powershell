@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsesqlactivedirectoryadministrator
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsesqlactivedirectoryadministrator
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ The **Remove-AzSynapseSqlActiveDirectoryAdministrator** cmdlet removes an Azure 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace
+Remove-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace
 ```
 
 This command removes the Azure AD administrator for the workspace named ContosoWorkspace.

@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureBatchPoolUsageMetrics = "AzureBatchPoolUsageMetrics";
         public const string AzureBatchPoolResize = "AzureBatchPoolResize";
         public const string AzureBatchComputeNode = "AzureBatchComputeNode";
+        public const string AzureBatchComputeNodeExtension = "AzureBatchComputeNodeExtension";
         public const string AzureBatchComputeNodeScheduling = "AzureBatchComputeNodeScheduling";
         public const string AzureBatchComputeNodeUser = "AzureBatchComputeNodeUser";
         public const string AzureBatchJobSchedule = "AzureBatchJobSchedule";

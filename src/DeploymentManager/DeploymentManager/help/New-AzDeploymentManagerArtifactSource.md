@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/new-azdeploymentmanagerartifactsource
+online version: https://learn.microsoft.com/powershell/module/az.deploymentmanager/new-azdeploymentmanagerartifactsource
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ The cmdlet returns an ArtifactSource object that has a ResourceId which can be r
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDeploymentManagerArtifactSource -ResourceGroupName ContosoResourceGroup -Name ContosoArtifactSource -Location "Central US" -SasUri "https://ContosoStorage.blob.core.windows.net/ContosoArtifacts?sasParameters"
+New-AzDeploymentManagerArtifactSource -ResourceGroupName ContosoResourceGroup -Name ContosoArtifactSource -Location "Central US" -SasUri "https://ContosoStorage.blob.core.windows.net/ContosoArtifacts?sasParameters"
 ```
 
 Creates an artifact source in the ContosoResourceGroup with the name ContosoArtifactSource with Central US as the location of the resource. The SasUri property provides an Azure Storage SAS Uri to the storage container where the artifacts are stored.

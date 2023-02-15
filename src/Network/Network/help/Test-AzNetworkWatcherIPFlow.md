@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/test-aznetworkwatcheripflow
+online version: https://learn.microsoft.com/powershell/module/az.network/test-aznetworkwatcheripflow
 schema: 2.0.0
 ---
 
@@ -42,8 +42,8 @@ The Test-AzNetworkWatcherIPFlow cmdlet, for a specified VM resource and a packet
 ## EXAMPLES
 
 ### Example 1: Run Test-AzNetworkWatcherIPFlow
-```
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+```powershell
+$nw = Get-AzResource | Where-Object {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 $VM = Get-AzVM -ResourceGroupName testResourceGroup -Name VM0 
 $Nics = Get-AzNetworkInterface | Where-Object { $vm.NetworkProfile.NetworkInterfaces.Id -contains $_.Id }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2triggersubscription
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2triggersubscription
 schema: 2.0.0
 ---
 
@@ -37,8 +37,8 @@ This command unsubscribes the event trigger to the specified external service ev
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
+```powershell
+Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 ```
 
 This command will unsubscribe BlobEnetTrigger1 trigger to the specified events from the trigger defintion.

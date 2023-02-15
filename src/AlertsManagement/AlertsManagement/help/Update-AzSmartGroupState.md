@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/update-azsmartgroupstate
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/update-azsmartgroupstate
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Update-AzSmartGroupState -State <String> -InputObject <PSSmartGroup> [-DefaultPr
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSmartGroupState -SmartGroupId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529" -State "Acknowledged"
+Update-AzSmartGroupState -SmartGroupId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529" -State "Acknowledged"
 ```
 
 This cmdlet updates the smart group state to Acknowleged.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationdscnodeconfigurationdeployment
+online version: https://learn.microsoft.com/powershell/module/az.automation/get-azautomationdscnodeconfigurationdeployment
 schema: 2.0.0
 ---
 
@@ -32,12 +32,15 @@ The **Get-AzAutomationDscNodeConfigurationDeployment** cmdlet deploys an APS Des
 ## EXAMPLES
 
 ### Example 1: Get a node configuration deployment
-```
-PS C:\> $deployment = Get-AzAutomationDscNodeConfigurationDeployment `
+<!-- Skip: Output cannot be splitted from code -->
+
+
+```powershell
+$deployment = Get-AzAutomationDscNodeConfigurationDeployment `
                          -JobId 35b14eb4-52b7-4a1d-ad62-8e9f84adc657 `
-                         -AutomationAccountName "Contoso01"  `
-                         -ResourceGroupName "ResourceGroup01" `
-            
+                         -AutomationAccountName "Contoso01" `
+                         -ResourceGroupName "ResourceGroup01"
+
 ResourceGroupName     : ResourceGroup01
 AutomationAccountName : Contoso01
 JobId                 : 35b14eb4-52b7-4a1d-ad62-8e9f84adc657
@@ -48,7 +51,7 @@ NodeConfigurationName : Config01.Node1
 JobSchedule           :
 JobScheduleId         : 00000000-0000-0000-0000-000000000000
 
-PS C:\> $deployment | Select -expand nodeStatus
+$deployment | Select-Object -ExpandProperty nodeStatus
 
 Key        Value
 ---        -----
@@ -168,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

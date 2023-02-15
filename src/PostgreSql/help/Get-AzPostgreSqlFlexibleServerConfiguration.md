@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverconfiguration
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets information about a configuration of server.
 
 ### Example 1: Get specified PostgreSql configuration by name
 ```powershell
-PS C:\> Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+```
 
+```output
 Name     Value AllowedValue Source         DefaultValue
 ----     ----- ------------ ------         ------------
 work_mem 4096  4096-2097151 system-default 4096
@@ -48,8 +50,10 @@ This cmdlet gets specified PostgreSql configuration by name.
 
 ### Example 2: List all configurations in specified PostgreSql server
 ```powershell
-PS C:\> Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+```
 
+```output
 Name                                       Value                      AllowedValue
 ----                                       -----                      ------------
 application_name                                                      [A-Za-z0-9._-]*
@@ -181,7 +185,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsesqlpool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsesqlpool
 schema: 2.0.0
 ---
 
@@ -33,14 +33,14 @@ The **New-AzSynapseSqlPool** cmdlet creates an Azure Synapse Analytics SQL pool.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -PerformanceLevel DW200c
+New-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -PerformanceLevel DW200c
 ```
 
 This command creates an Azure Synapse Analytics SQL pool.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -PerformanceLevel DW200c -StorageAccountType LRS
+New-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -PerformanceLevel DW200c -StorageAccountType LRS
 ```
 
 This command creates an Azure Synapse Analytics SQL pool with specified storage account type.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup
 schema: 2.0.0
 ---
 
@@ -38,8 +38,8 @@ The Instance Failover Group's primary region should be used to execute the comma
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Remove-AzSqlDatabaseInstanceFailoverGroup
+```powershell
+Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Remove-AzSqlDatabaseInstanceFailoverGroup
 ```
 
 Remove a Instance Failover Group.

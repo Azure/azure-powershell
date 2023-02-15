@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azroutefilterruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azroutefilterruleconfig
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The Add-AzRouteFilterRuleConfig cmdlet adds a route filter rule to an Azure rout
 ## EXAMPLES
 
 ### Example 1: Add a route filter rule to a route filter
-```
-PS C:\>$RouteFilter = Get-AzRouteFilter -ResourceGroupName "ResourceGroup11" -Name "routefilter01"
-					  PS C:\> Add-AzRouteFilterRuleConfig -Name "rule13" -Access Allow -RouteFilterRuleType Community -RouteFilter $RouteFilter
+```powershell
+$RouteFilter = Get-AzRouteFilter -ResourceGroupName "ResourceGroup11" -Name "routefilter01"
+Add-AzRouteFilterRuleConfig -Name "rule13" -Access Allow -RouteFilterRuleType Community -RouteFilter $RouteFilter
 ```
 
 The first command gets a route filter named routefilter01 by using the Get-AzRouteFilter cmdlet.

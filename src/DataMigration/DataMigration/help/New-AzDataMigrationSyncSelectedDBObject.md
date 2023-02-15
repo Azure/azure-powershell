@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationSyncSelectedDBObject
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationSyncSelectedDBObject
 schema: 2.0.0
 ---
 
@@ -25,16 +25,16 @@ The New-AzDataMigrationSyncSelectedDB cmdlet creates a database info object spec
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $tableMap = New-Object 'system.collections.hashtable'
-	$tableMap.Add("dbo.TestTable1", "dbo.TestTable1")
-	$tableMap.Add("dbo.TestTable2","dbo.TestTable2")
+```powershell
+$tableMap = New-Object 'system.collections.hashtable'
+$tableMap.Add("dbo.TestTable1", "dbo.TestTable1")
+$tableMap.Add("dbo.TestTable2","dbo.TestTable2")
 
-	$selectedDbs = New-AzDmsSyncSelectedDBObject 
-		-TargetDatabaseName DatabaseName `
-		-SchemaName dbo `
-		-TableMap $tableMap `
-		-SourceDatabaseName DatabaseName
+$selectedDbs = New-AzDataMigrationSyncSelectedDBObject `
+	-TargetDatabaseName DatabaseName `
+	-SchemaName dbo `
+	-TableMap $tableMap `
+	-SourceDatabaseName DatabaseName
 ```
 
 This example creates a database metadata object describing the migrating settings for $DatabaseName to database $DatabaseName.  
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

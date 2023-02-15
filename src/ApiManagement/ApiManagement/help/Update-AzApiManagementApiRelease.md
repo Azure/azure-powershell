@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementapirelease
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementapirelease
 schema: 2.0.0
 ---
 
@@ -32,8 +32,8 @@ The **Update-AzApiManagementApiRelease** cmdlet modifies an Azure API Management
 
 ### Example 1: Updates an API Release for an API Revision
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Update-AzApiManagementApiRelease -Context $ApiMgmtContext -ApiId "echo-api" -ReleaseId "echo-api-release" -Note "Releasing version 2 of the echo-api to public"
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Update-AzApiManagementApiRelease -Context $ApiMgmtContext -ApiId "echo-api" -ReleaseId "echo-api-release" -Note "Releasing version 2 of the echo-api to public"
 ```
 
 This command updates the `echo-api-release` API Release of the Api `echo-api` with new note.

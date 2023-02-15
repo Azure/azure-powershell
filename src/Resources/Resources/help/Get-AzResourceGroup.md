@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 5B17A241-BF36-48A6-BC29-4C32C08F5F94
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azresourcegroup
 schema: 2.0.0
 ---
 
@@ -34,41 +34,41 @@ For more information about Azure resources and Azure resource groups, see the Ne
 ## EXAMPLES
 
 ### Example 1: Get a resource group by name
-```
-PS C:\> Get-AzResourceGroup -Name "EngineerBlog"
+```powershell
+Get-AzResourceGroup -Name "EngineerBlog"
 ```
 
 This command gets the Azure resource group in your subscription named EngineerBlog.
 
 ### Example 2: Get all tags of a resource group
-```
-PS C:\> (Get-AzResourceGroup -Name "ContosoRG").Tags
+```powershell
+(Get-AzResourceGroup -Name "ContosoRG").Tags
 ```
 
 This command gets the resource group named ContosoRG, and displays the tags associated with that group.
 
 ### Example 3: Get resource groups based on tag
-```
-PS C:\> Get-AzResourceGroup -Tag @{'environment'='prod'}
+```powershell
+Get-AzResourceGroup -Tag @{'environment'='prod'}
 ```
 
 ### Example 4: Show the Resource groups by location
-```
-PS C:\> Get-AzResourceGroup |
-  Sort Location,ResourceGroupName |
-  Format-Table -GroupBy Location ResourceGroupName,ProvisioningState,Tags
+```powershell
+Get-AzResourceGroup |
+  Sort-Object Location,ResourceGroupName |
+    Format-Table -GroupBy Location ResourceGroupName,ProvisioningState,Tags
 ```
 
 ### Example 5: Show the names of all the Resource groups in a particular location
-```
-PS C:\> Get-AzResourceGroup -Location westus2 |
-   Sort ResourceGroupName | 
-   Format-Wide ResourceGroupName -Column 4
+```powershell
+Get-AzResourceGroup -Location westus2 |
+  Sort-Object ResourceGroupName |
+    Format-Wide ResourceGroupName -Column 4
 ```
 
 ### Example 6: Show the Resource groups whose names begin with WebServer
-```
-PS C:\> Get-AzResourceGroup -Name WebServer*
+```powershell
+Get-AzResourceGroup -Name WebServer*
 ```
 
 ## PARAMETERS

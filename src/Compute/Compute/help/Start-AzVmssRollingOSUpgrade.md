@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/start-azvmssrollingosupgrade
+online version: https://learn.microsoft.com/powershell/module/az.compute/start-azvmssrollingosupgrade
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Instances which are already running the latest available OS version are not affe
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Start-AzVmssRollingOSUpgrade -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+```powershell
+Start-AzVmssRollingOSUpgrade -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command starts a rolling upgrade of all vm instances of VM scale set "VMSS001" in resource group "Group001".

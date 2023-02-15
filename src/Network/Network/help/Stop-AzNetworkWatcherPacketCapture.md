@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/stop-aznetworkwatcherpacketcapture
+online version: https://learn.microsoft.com/powershell/module/az.network/stop-aznetworkwatcherpacketcapture
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The Stop-AzNetworkWatcherPacketCapture stops a running packet capture session. A
 ## EXAMPLES
 
 ### Example 1: Stop a packet capture session
-```
+```powershell
 Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 

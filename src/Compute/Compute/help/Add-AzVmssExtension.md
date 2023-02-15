@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 7EC166C7-151D-4DA0-9B10-165E735D4F12
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmssextension
 schema: 2.0.0
 ---
 
@@ -27,24 +27,24 @@ The **Add-AzVmssExtension** cmdlet adds an extension to the Virtual Machine Scal
 ## EXAMPLES
 
 ### Example 1: Add an extension to the VMSS
-```
-PS C:\> Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
+```powershell
+Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
 ```
 
 This command adds an extension to the VMSS.
 
 ### Example 2: Add an extension to the VMSS with settings and protected settings
-```
-PS C:\> $Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
-PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
+```powershell
+$Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
+$ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
 
-PS C:\> Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
   -Type $vmssExtensionType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True  `
   -Setting $Settings -ProtectedSetting $ProtectedSettings
 ```
 
 ### Example 3: Add an extension to the VMSS with settings and protected settings
-```
+```powershell
 $BatchFile = "runbook.sh"
 $ResourceGroupName = "HelloRG"
 $VMScaleSetName = "HelloVmSS"

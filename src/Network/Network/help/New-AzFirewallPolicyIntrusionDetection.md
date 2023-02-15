@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicyintrusiondetection
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpolicyintrusiondetection
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Creates a new Azure Firewall Policy Intrusion Detection to associate with Firewa
 ```
 New-AzFirewallPolicyIntrusionDetection -Mode <String>
  [-SignatureOverride <PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]>]
- [-BypassTraffic <PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[]>]
+ [-BypassTraffic <PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[]>] [-PrivateRange <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,26 +24,34 @@ The **New-AzFirewallPolicyIntrusionDetection** cmdlet creates an Azure Firewall 
 
 ## EXAMPLES
 
-### Example 1: 1. Create intrusion detection with mode
+### Example 1: Create intrusion detection with mode
 ```powershell
-PS C:\> New-AzFirewallPolicyIntrusionDetection -Mode "Alert"
+New-AzFirewallPolicyIntrusionDetection -Mode "Alert"
 ```
 
 This example creates intrusion detection with Alert (detection) mode
 
-### Example 2: 2. Create intrusion detection with signature overrides
+### Example 2: Create intrusion detection with signature overrides
 ```powershell
-PS C:\> $signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
-PS C:\> New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride
+$signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
+New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride
 ```
 
 This example creates intrusion detection with specific signature override
 
-### Example 3: 3. Create firewall policy with intrusion detection configured with bypass traffic setting
+### Example 3: Create firewall policy with intrusion detection configured with bypass traffic setting
 ```powershell
-PS C:\> $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
-PS C:\> $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -BypassTraffic $bypass
-PS C:\> New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroup TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
+$bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
+$intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -BypassTraffic $bypass
+New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroupName TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
+```
+
+This example creates intrusion detection with bypass traffic setting
+
+### Example 4: Create firewall policy with intrusion detection configured with private ranges setting
+```powershell
+$intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -PrivateRange @("167.220.204.0/24", "167.221.205.101/32")
+New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroupName TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
 ```
 
 This example creates intrusion detection with bypass traffic setting
@@ -54,7 +62,7 @@ This example creates intrusion detection with bypass traffic setting
 List of rules for traffic to bypass.
 
 ```yaml
-Type: PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[]
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[]
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +77,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,7 +92,7 @@ Accept wildcard characters: False
 Intrusion Detection general state.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Off, Alert, Deny
@@ -96,11 +104,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateRange
+List of IDPS Private IP ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SignatureOverride
 List of specific signatures states.
 
 ```yaml
-Type: PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +138,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -131,7 +154,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

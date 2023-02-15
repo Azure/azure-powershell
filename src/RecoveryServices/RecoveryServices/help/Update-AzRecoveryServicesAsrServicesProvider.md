@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrservicesprovider
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrservicesprovider
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Update-AzRecoveryServicesAsrServicesProvider** cmdlet updates the informat
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Update-AzRecoveryServicesAsrServicesProvider -InputObject $ServicesProvider
+```powershell
+$currentJob = Update-AzRecoveryServicesAsrServicesProvider -InputObject $ServicesProvider
 ```
 
 Starts the operation of refreshing the information from the specified ASR services provider and returns the ASR job used to track the operation.

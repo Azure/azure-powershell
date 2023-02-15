@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azroutefilter
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azroutefilter
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The New-AzRouteFilter cmdlet creates an Azure route filter.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
+New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
 ```
 
 The command creates a new route filter.

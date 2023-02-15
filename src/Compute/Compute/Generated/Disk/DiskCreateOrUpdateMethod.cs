@@ -29,9 +29,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [GenericBreakingChange("Starting in May 2023 the \"New-AzDisk\" cmdlet will deploy with the Trusted Launch configuration by default. This includes defaulting the \"HyperVGeneration\" parameter to \"v2\". To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Disk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
     public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
@@ -48,7 +52,39 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Disk disk = new Disk();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(this.Disk, disk);
 
-                    var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
+                    Dictionary<string, List<string>> auxAuthHeader = null;
+                    if (!string.IsNullOrEmpty(disk.CreationData?.GalleryImageReference?.Id))
+                    {
+                        var resourceId = ResourceId.TryParse(disk.CreationData.GalleryImageReference.Id);
+
+                        if (string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                         && !string.Equals(this.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                        {
+                            List<string> resourceIds = new List<string>();
+                            resourceIds.Add(disk.CreationData.GalleryImageReference.Id);
+                            var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                            if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                            {
+                                auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                            }
+                        }
+                    }
+
+                    Disk result;
+                    if (auxAuthHeader != null)
+                    {
+                        var res = this.DisksClient.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            diskName,
+                            disk,
+                            auxAuthHeader).GetAwaiter().GetResult();
+
+                        result = res.Body;
+                    }
+                    else
+                    {
+                        result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
+                    }
                     var psObject = new PSDisk();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
                     WriteObject(psObject);

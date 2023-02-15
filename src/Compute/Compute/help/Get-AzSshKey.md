@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azsshkey
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azsshkey
 schema: 2.0.0
 ---
 
@@ -15,12 +15,13 @@ Gets the properties of SSH Public Key resources.
 ### DefaultParameterSet (Default)
 ```
 Get-AzSshKey [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
-Get-AzSshKey [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSshKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,21 +31,21 @@ Gets the properties of SSH Public Key resources.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSshKey -ResourceGroupName "testRG" -Name "SshKey1"
+Get-AzSshKey -ResourceGroupName "testRG" -Name "SshKey1"
 ```
 
 This example retrieves a specific Ssh Public Key resource.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSshKey -ResourceGroupName "testRG"
+Get-AzSshKey -ResourceGroupName "testRG"
 ```
 
 This example retrieves a list of Ssh Public Key resources that are in Resource Group: "testRG"
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzSshKey 
+Get-AzSshKey
 ```
 
 This example retrieves all the Ssh Public Key resources in the subscription. 
@@ -71,7 +72,7 @@ Specifies the name of the Ssh Public Key resource to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: sshkeyName
 
 Required: False
@@ -86,7 +87,7 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
@@ -105,9 +106,39 @@ Parameter Sets: ResourceIDParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Synapse
 Module Guid: 89eceb4f-9916-4ec5-8499-d5cca97a9cae
-Download Help Link: https://docs.microsoft.com/powershell/module/az.synapse
+Download Help Link: https://learn.microsoft.com/powershell/module/az.synapse
 Help Version: 0.0.1.0
 Locale: en-US
 ---
@@ -23,11 +23,17 @@ Clears the vulnerability assessment rule baseline.
 ### [Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan](Convert-AzSynapseSqlPoolVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
+### [Disable-AzSynapseActiveDirectoryOnlyAuthentication](Disable-AzSynapseActiveDirectoryOnlyAuthentication.md)
+Disables Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
+
 ### [Disable-AzSynapseSqlAdvancedDataSecurity](Disable-AzSynapseSqlAdvancedDataSecurity.md)
 Disables Advanced Data Security on a workspace.
 
 ### [Disable-AzSynapseSqlPoolSensitivityRecommendation](Disable-AzSynapseSqlPoolSensitivityRecommendation.md)
 Disables (dismisses) sensitivity recommendations on columns in the SQL pool.
+
+### [Enable-AzSynapseActiveDirectoryOnlyAuthentication](Enable-AzSynapseActiveDirectoryOnlyAuthentication.md)
+Enables Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
 
 ### [Enable-AzSynapseSqlAdvancedDataSecurity](Enable-AzSynapseSqlAdvancedDataSecurity.md)
 Enables Advanced Data Security on a workspace.
@@ -46,6 +52,9 @@ Exports a sql script from a Synapse workspace.
 
 ### [Export-AzSynapseSparkConfiguration](Export-AzSynapseSparkConfiguration.md)
 Exports a Synapse spark configuration to an output folder.
+
+### [Get-AzSynapseActiveDirectoryOnlyAuthentication](Get-AzSynapseActiveDirectoryOnlyAuthentication.md)
+Gets Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
 
 ### [Get-AzSynapseActivityRun](Get-AzSynapseActivityRun.md)
 Gets information about activity runs for a pipeline run.
@@ -76,6 +85,18 @@ Gets metric data for an integration runtime.
 
 ### [Get-AzSynapseIntegrationRuntimeNode](Get-AzSynapseIntegrationRuntimeNode.md)
 Gets an integration runtime node information.
+
+### [Get-AzSynapseLinkConnectionLinkTable](Get-AzSynapseLinkConnectionLinkTable.md)
+Gets information about link tables under a link connection.
+
+### [Get-AzSynapseLinkConnectionLinkTableStatus](Get-AzSynapseLinkConnectionLinkTableStatus.md)
+Gets status of link tables under a link connection.
+
+### [Get-AzSynapseLinkConnection](Get-AzSynapseLinkConnection.md)
+Gets information about link connections in workspace.
+
+### [Get-AzSynapseLinkConnectionDetailedStatus](Get-AzSynapseLinkConnectionDetailedStatus.md)
+Gets detail status about a link connection in workspace.
 
 ### [Get-AzSynapseLinkedService](Get-AzSynapseLinkedService.md)
 Gets information about linked services in workspace.
@@ -362,6 +383,12 @@ Creates or updates a dataset in workspace.
 ### [Set-AzSynapseIntegrationRuntime](Set-AzSynapseIntegrationRuntime.md)
 Updates an integration runtime.
 
+### [Set-AzSynapseLinkConnectionLinkTable](Set-AzSynapseLinkConnectionLinkTable.md)
+Edits link tables under a link connection.
+
+### [Set-AzSynapseLinkConnection](Set-AzSynapseLinkConnection.md)
+Creates or updates a link connection in workspace.
+
 ### [Set-AzSynapseLinkedService](Set-AzSynapseLinkedService.md)
 Links a data store or a cloud service to workspace.
 
@@ -470,6 +497,9 @@ Updates an integration runtime.
 ### [Update-AzSynapseIntegrationRuntimeNode](Update-AzSynapseIntegrationRuntimeNode.md)
 Updates self-hosted integration runtime node.
 
+### [Update-AzSynapseLinkConnectionLandingZoneCredential](Update-AzSynapseLinkConnectionLandingZoneCredential.md)
+Updates the landing zone credential of a link connection.
+
 ### [Update-AzSynapseManagedVirtualNetworkConfig](Update-AzSynapseManagedVirtualNetworkConfig.md)
 Updates managed virtual network configuration to workspace.
 
@@ -572,11 +602,20 @@ Remove a list of language extensions that can run within KQL queries.
 ### [Remove-AzSynapseKustoPoolPrincipalAssignment](Remove-AzSynapseKustoPoolPrincipalAssignment.md)
 Deletes a Kusto pool principalAssignment.
 
+### [Remove-AzSynapseLinkConnection](Remove-AzSynapseLinkConnection.md)
+Deletes a link connection from workspace.
+
 ### [Start-AzSynapseKustoPool](Start-AzSynapseKustoPool.md)
 Starts a Kusto pool.
 
+### [Start-AzSynapseLinkConnection](Start-AzSynapseLinkConnection.md)
+Starts a link connection.
+
 ### [Stop-AzSynapseKustoPool](Stop-AzSynapseKustoPool.md)
 Stops a Kusto pool.
+
+### [Stop-AzSynapseLinkConnection](Stop-AzSynapseLinkConnection.md)
+Stops a link connection.
 
 ### [Update-AzSynapseKustoPool](Update-AzSynapseKustoPool.md)
 Update a Kusto Kusto Pool.

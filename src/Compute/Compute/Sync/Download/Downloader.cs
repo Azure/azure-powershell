@@ -19,6 +19,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.ServiceModel.Channels;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Download
 {
@@ -81,14 +83,16 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
             var fileStreamLock = new object();
             using (new ServicePointHandler(parameters.BlobUri.Uri, parameters.ConnectionLimit))
             {
-                using (new ProgressTracker(downloadStatus, parameters.ProgressDownloadStatus, parameters.ProgressDownloadComplete, TimeSpan.FromSeconds(1)))
+                using (ProgressTracker progressTracker = new ProgressTracker(downloadStatus, parameters.ProgressDownloadStatus, parameters.ProgressDownloadComplete))
                 {
                     using (var fileStream = new FileStream(parameters.LocalFilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write, 8 * megaByte, FileOptions.WriteThrough))
                     {
                         fileStream.SetLength(0);
                         fileStream.SetLength(blobHandle.Length);
 
-                        LoopResult lr = Parallel.ForEach<IndexRange, Stream>(ranges,
+                        Task<LoopResult> task = Task<LoopResult>.Factory.StartNew(() =>
+                        {
+                            return Threading.Parallel.ForEach<IndexRange, Stream>(ranges,
                                     blobHandle.OpenStream,
                                     (r, b) =>
                                         {
@@ -111,6 +115,14 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
                                             pbwlf.Dispose();
                                         },
                                     parameters.ConnectionLimit);
+                        });
+
+                        while (!task.Wait(TimeSpan.FromSeconds(1)))
+                        {
+                            progressTracker.Update();
+                        }
+
+                        LoopResult lr = task.Result;
 
                         if (lr.IsExceptional)
                         {

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F421174A-B138-45EB-AF84-CB3CE5870F27
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancerbackendaddresspoolconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azloadbalancerbackendaddresspoolconfig
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Get-AzLoadBalancerBackendAddressPoolConfig** cmdlet gets a single backend 
 ## EXAMPLES
 
 ### Example 1: Get the backend address pool
-```
-PS C:\>$loadbalancer = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool02" -LoadBalancer $loadbalancer
+```powershell
+$loadbalancer = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Get-AzLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool02" -LoadBalancer $loadbalancer
 ```
 
 The first command gets an existing load balancer named MyLoadBalancer in the resource group named MyResourceGroup, and then stores it in the $loadbalancer variable.

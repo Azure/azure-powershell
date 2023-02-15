@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderContactDetailsObject
+online version: https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderContactDetailsObject
 schema: 2.0.0
 ---
 
@@ -25,7 +25,9 @@ Create an in-memory object for ContactDetails.
 ### Example 1: Contact details object
 ```powershell
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName ContactName -EmailList @("emailId") -Phone Phone
+```
 
+```output
 ContactName    : random
 EmailList      : {"emailId"}
 Mobile         :

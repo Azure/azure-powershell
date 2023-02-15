@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: E9390015-FD5C-4015-BA81-3445ADF8F8BF
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationgateway
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzApplicationGateway** cmdlet removes an application gateway.
 ## EXAMPLES
 
 ### Example 1: Remove a specified application gateway
-```
-PS C:\>Remove-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01.

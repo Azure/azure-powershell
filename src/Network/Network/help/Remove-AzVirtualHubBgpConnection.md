@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualhubbgpconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azvirtualhubbgpconnection
 schema: 2.0.0
 ---
 
@@ -43,22 +43,22 @@ The Remove-AzVirtualHubBgpConnection cmdlet removes a HubBgpConnection resource 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzVirtualHubBgpConnection -ResourceGroupName "testRG" -VirtualHubName "testHub" -Name "testBgpConnection"
+Remove-AzVirtualHubBgpConnection -ResourceGroupName "testRG" -VirtualHubName "testHub" -Name "testBgpConnection"
 ```
 
 The above will remove a Virtual WAN Hub BGP Connection using its resource group name, the Virtual WAN Hub name and the Connection name.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzVirtualHubBgpConnection -ResourceGroupName "testRG" -VirtualHubName "testHub" -Name "testBgpConnection" | Remove-AzVirtualHubBgpConnection
+Get-AzVirtualHubBgpConnection -ResourceGroupName "testRG" -VirtualHubName "testHub" -Name "testBgpConnection" | Remove-AzVirtualHubBgpConnection
 ```
 
 The above will remove a Virtual WAN Hub BGP Connection using powershell piping on the output from Get-AzVirtualHubBgpConnection.
 
 ### Example 3
 ```powershell
-PS C:\> $bgpConnectionId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{bgpConnectionName}"
-PS C:\> Remove-AzVirtualHubBgpConnection -ResourceId $bgpConnectionId
+$bgpConnectionId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections/{bgpConnectionName}"
+Remove-AzVirtualHubBgpConnection -ResourceId $bgpConnectionId
 ```
 
 The above will remove a Virtual WAN Hub BGP Connection using the BGP Connection resource id.

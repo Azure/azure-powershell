@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: B6229D26-D38C-44CD-B9CA-7F39365C8B9D
-online version: https://docs.microsoft.com/powershell/module/az.batch/new-azbatchjob
+online version: https://learn.microsoft.com/powershell/module/az.batch/new-azbatchjob
 schema: 2.0.0
 ---
 
@@ -28,10 +28,10 @@ The **New-AzBatchJob** cmdlet creates a job in the Azure Batch service in the ac
 ## EXAMPLES
 
 ### Example 1: Create a job
-```
-PS C:\>$PoolInformation = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSPoolInformation"
-PS C:\> $PoolInformation.PoolId = "Pool22"
-PS C:\> New-AzBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformation -BatchContext $Context
+```powershell
+$PoolInformation = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSPoolInformation"
+$PoolInformation.PoolId = "Pool22"
+New-AzBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformation -BatchContext $Context
 ```
 
 The first command creates a **PSPoolInformation** object by using the New-Object cmdlet.

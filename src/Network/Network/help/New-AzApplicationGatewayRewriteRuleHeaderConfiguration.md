@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriteruleheaderconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriteruleheaderconfiguration
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName <String> [-He
 
 ### Example 1
 ```powershell
-PS C:\> $hc = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName abc -HeaderValue def
+$hc = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName abc -HeaderValue def
 ```
 
 This command creates a rewrite rule header configuration and stores the result in the variable named $hc.

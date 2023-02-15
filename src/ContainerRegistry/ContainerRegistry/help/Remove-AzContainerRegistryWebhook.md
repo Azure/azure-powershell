@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrywebhook
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistrywebhook
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The Remove-AzContainerRegistryWebhook cmdlet removes a container registry webhoo
 
 ### Example 1: Remove a container registry webhook.
 ```powershell
-PS C:\> Remove-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
+Remove-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
 ```
 
 Removes a container registry webhook.

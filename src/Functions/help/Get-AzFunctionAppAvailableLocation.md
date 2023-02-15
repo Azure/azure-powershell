@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
+online version: https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Gets the location where a function app for the given os and plan type is availab
 
 ### Example 1: Get the locations where Premium is available for Windows. If no parameters are specified, PlanType is set to 'Premium' and OSType is set to 'Windows'.
 ```powershell
-PS C:\> Get-AzFunctionAppAvailableLocation
+Get-AzFunctionAppAvailableLocation
+```
 
+```output
 Name
 ----
 Central US
@@ -64,8 +66,10 @@ This command gets the locations where Premium is available for Windows.
 
 ### Example 2: Get the locations where Premium is available for Linux.
 ```powershell
-PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
+Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
+```
 
+```output
 Name
 ----
 Central US
@@ -99,8 +103,10 @@ This command gets the locations where Premium is available for Linux.
 
 ### Example 3: Get the locations where Consumption is available for Windows.
 ```powershell
-PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
+Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
+```
 
+```output
 Name
 ----
 Central US

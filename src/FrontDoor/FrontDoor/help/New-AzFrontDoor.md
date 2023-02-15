@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoor
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoor
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ The **New-AzFrontDoor** cmdlet creates a new Azure Front Door load balancer in t
 
 ### Example 1: Create a Front Door based on given parameters.
 ```powershell
-PS C:\> New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSetting1
+New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSetting1
+```
 
+```output
 FriendlyName                : frontdoor1
 RoutingRules                : {routingrule1}
 BackendPools                : {backendpool1}

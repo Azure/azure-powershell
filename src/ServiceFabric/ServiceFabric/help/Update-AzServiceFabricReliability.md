@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricreliability
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricreliability
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Use **Update-AzServiceFabricReliability** to update reliability of the primary n
 
 ### Example 1
 ```powershell
-PS c:> Update-AzServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
+Update-AzServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
 ```
 
 This command changes the reliability tier of the primary node type to silver.

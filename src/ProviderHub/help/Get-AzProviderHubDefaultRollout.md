@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubdefaultrollout
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubdefaultrollout
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets the default rollout details.
 
 ### Example 1: List all default rollouts under the resource provider.
 ```powershell
-PS C:\> Get-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso"
+Get-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso"
+```
 
+```output
 Name                      Type
 ----                      ----
 defaultRollout2021w10     Microsoft.ProviderHub/providerRegistrations/defaultRollouts
@@ -49,8 +51,10 @@ List all default rollouts under the resource provider.
 
 ### Example 2: Get a specific rollout by name.
 ```powershell
-PS C:\> Get-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
+Get-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
+```
 
+```output
 Name                      Type
 ----                      ----
 defaultRollout2021w10     Microsoft.ProviderHub/providerRegistrations/defaultRollouts
@@ -156,7 +160,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+INPUTOBJECT `<IProviderHubIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[NestedResourceTypeFirst <String>]`: The first child resource type.
   - `[NestedResourceTypeSecond <String>]`: The second child resource type.

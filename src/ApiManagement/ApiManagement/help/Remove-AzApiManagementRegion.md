@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 17D7EBD2-FE3F-4D24-A1AA-8C45B9B1FEF5
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementregion
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementregion
 schema: 2.0.0
 ---
 
@@ -26,15 +26,15 @@ To update a deployment of an API Management, pass the modified **PsApiManagement
 ## EXAMPLES
 
 ### Example 1: Remove a region from a PsApiManagement instance
-```
-PS C:\>Remove-AzApiManagementRegion -ApiManagement $ApiManagement -Location "East US"
+```powershell
+Remove-AzApiManagementRegion -ApiManagement $ApiManagement -Location "East US"
 ```
 
 This command removes the region named East US from the **PsApiManagement** instance.
 
 ### Example 2: Remove a region from a PsApiManagement instance using a series of commands
-```
-PS C:\>Get-AzApiManagement -ResourceGroupName "Contoso" -Name ContosoApi | Remove-AzApiManagementRegion -Location "East US" | Set-AzApiManagement
+```powershell
+Get-AzApiManagement -ResourceGroupName "Contoso" -Name ContosoApi | Remove-AzApiManagementRegion -Location "East US" | Set-AzApiManagement
 ```
 
 This first command gets an instance of **PsApiManagement** from the resource group named Contoso named ContosoApi.

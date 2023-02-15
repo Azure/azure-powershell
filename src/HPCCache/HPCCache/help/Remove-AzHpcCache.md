@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HPCCache.dll-Help.xml
 Module Name: Az.HPCCache
-online version: https://docs.microsoft.com/powershell/module/az.hpccache/remove-azhpccache
+online version: https://learn.microsoft.com/powershell/module/az.hpccache/remove-azhpccache
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Remove-AzHpcCache** cmdlet removes a Azure HPC Cache.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzHpcCache -ResourceGroupName testRG -CacheName testCache
+Remove-AzHpcCache -ResourceGroupName testRG -CacheName testCache
 ```
 
 ## PARAMETERS

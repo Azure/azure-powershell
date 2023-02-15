@@ -15,24 +15,24 @@ Describe 'AzVMwareAuthorization' {
     It 'List' {
         {
             $config = New-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-            $config.Name | Should -Be $env.rstr3
+            $config.Name | Should -Be "authorization1"
 
             $config = Get-AzVMwareAuthorization -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-            $config.Count | Should -Be 2
+            $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
             $config = Get-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-            $config.Name | Should -Be $env.rstr3
+            $config.Name | Should -Be "authorization1"
         } | Should -Not -Throw
     }
 
     It 'CreateExpanded' {
         {
             $config = New-AzVMwareAuthorization -Name $env.rstr4 -PrivateCloudName $env.privateCloudName3 -ResourceGroupName $env.resourceGroup3
-            $config.Name | Should -Be $env.rstr4
+            $config.Name | Should -Be "authorization1"
         } | Should -Not -Throw
     }
 

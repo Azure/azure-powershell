@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: A70F4C03-E842-45D5-9323-DC5B14B569F1
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azautoscalehistory
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azautoscalehistory
 schema: 2.0.0
 ---
 
@@ -24,15 +24,18 @@ The **Get-AzAutoscaleHistory** cmdlet gets the history of events related to an A
 ## EXAMPLES
 
 ### Example 1: Get all events associated with a subscription
-```
-PS C:\>Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -DetailedOutput
+```powershell
+Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -DetailedOutput
 ```
 
 This command gets all of the Autoscale-related events associated with the current subscription.
 
 ### Example 2: GetAutoscaleHistory for a particular resource
+```powershell
+Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
 ```
-PS C:\>Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
+
+```output
 Authorization        : 
 Caller               : Microsoft.Insights/autoscaleSettings
 Claims               :  http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/autoscaleSettings
@@ -301,8 +304,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Add-AzAutoscaleSetting](./Add-AzAutoscaleSetting.md)
 
 [Get-AzAutoscaleSetting](./Get-AzAutoscaleSetting.md)
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azfirewallpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azfirewallpolicy
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ The **Get-AzFirewallPolicy** cmdlet gets one or more Firewalls in a resource gro
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzFirewallPolicy -Name firewallPolicy -ResourceGroupName TestRg
+Get-AzFirewallPolicy -Name firewallPolicy -ResourceGroupName TestRg
 ```
 
 This example gets a firewall policy named "firewallPolicy" in the resource group "TestRg"

@@ -53,8 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// <summary>
         /// Creates a communicator for Azure SQL Managed Instance Active Directory administrator
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceActiveDirectoryOnlyAuthenticationCommunicator(IAzureContext context)
         {
             Context = context;

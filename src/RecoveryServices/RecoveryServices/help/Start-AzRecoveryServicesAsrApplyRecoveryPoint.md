@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrapplyrecoverypoint
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrapplyrecoverypoint
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Start-AzRecoveryServicesAsrApplyRecoveryPoint** changes the recovery point
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Start-AzRecoveryServicesAsrApplyRecoveryPoint -RecoveryPoint $RecoveryPoint -ReplicationProtectedItem $RPI
+```powershell
+$currentJob = Start-AzRecoveryServicesAsrApplyRecoveryPoint -RecoveryPoint $RecoveryPoint -ReplicationProtectedItem $RPI
 ```
 
 Starts applying the specified recovery point to the replication protected item and returns the ASR job used to track the operation.

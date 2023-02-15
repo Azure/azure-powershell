@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: DBD40431-DD7A-42CB-83AA-568B1065A468
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azrouteconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azrouteconfig
 schema: 2.0.0
 ---
 
@@ -25,8 +25,11 @@ You can specify a route by name.
 ## EXAMPLES
 
 ### Example 1: Get a route table
+```powershell
+Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Get-AzRouteConfig -Name "Route07"
 ```
-PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Get-AzRouteConfig -Name "Route07"
+
+```output
 Name              : route07
 Id                : 
 Etag              : 

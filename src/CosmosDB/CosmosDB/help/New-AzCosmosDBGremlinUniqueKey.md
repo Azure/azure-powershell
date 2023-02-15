@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinuniquekey
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinuniquekey
 schema: 2.0.0
 ---
 
@@ -23,7 +23,10 @@ The **New-AzCosmosDBGremlinUniqueKeyPolicy** cmdlet creates a new object of type
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBGremlinUniqueKey -Path "abc"
+New-AzCosmosDBGremlinUniqueKey -Path "abc"
+```
+
+```output
 UniqueKeys
 ----------
 {Microsoft.Azure.Commands.CosmosDB.Models.PSUniqueKey}

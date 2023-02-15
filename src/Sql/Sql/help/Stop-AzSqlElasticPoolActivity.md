@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlelasticpoolactivity
+online version: https://learn.microsoft.com/powershell/module/az.sql/stop-azsqlelasticpoolactivity
 schema: 2.0.0
 ---
 
@@ -24,9 +24,11 @@ The **Stop-AzSqlElasticPoolActivity** cmdlet cancels the asynchronous update ope
 ## EXAMPLES
 
 ### Example 1: Cancel the asynchronous update operation on an elastic pool
+```powershell
+Stop-AzSqlElasticPoolActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
 ```
-PS C:\> Stop-AzSqlElasticPoolActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -OperationId af97005d-9243-4f8a-844e-402d1cc855f5
 
+```output
 OperationId     : af97005d-9243-4f8a-844e-402d1cc855f5
 ServerName      : Server01
 DatabaseName    : ElasticPool01

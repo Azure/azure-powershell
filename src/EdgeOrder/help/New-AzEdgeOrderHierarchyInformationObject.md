@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderHierarchyInformationObject
+online version: https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderHierarchyInformationObject
 schema: 2.0.0
 ---
 
@@ -24,9 +24,11 @@ Create an in-memory object for HierarchyInformation.
 
 ### Example 1: Creates hierarchy information object
 ```powershell
-PS C:\> $HierarchyInformation=New-AzEdgeOrderHierarchyInformationObject -ProductFamilyName "azurestackedge" -ProductLineName "azurestackedge" -ProductName "azurestackedgegpu" -ConfigurationName "EdgeP_High"
-PS C:\> $HierarchyInformation | fl
+$HierarchyInformation=New-AzEdgeOrderHierarchyInformationObject -ProductFamilyName "azurestackedge" -ProductLineName "azurestackedge" -ProductName "azurestackedgegpu" -ConfigurationName "EdgeP_High"
+$HierarchyInformation | Format-List
+```
 
+```output
 ConfigurationName : EdgeP_High
 ProductFamilyName : azurestackedge
 ProductLineName   : azurestackedge

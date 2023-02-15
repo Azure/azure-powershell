@@ -42,8 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// <summary>
         /// Constructs a firewall rule adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public ImportExportDatabaseAdapter(IAzureContext context)
         {
             Context = context;
@@ -169,6 +168,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// Creates the response model given server response
         /// </summary>
         /// <param name="response">Server Response</param>
+        /// <param name="originalModel"></param>
+        /// <param name="statusLink"></param>
         /// <returns>Response Model</returns>
         private AzureSqlDatabaseImportExportBaseModel CreateImportExportResponse(ImportExportOperationResult response, AzureSqlDatabaseImportExportBaseModel originalModel, Uri statusLink)
         {

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
+online version: https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
 schema: 2.0.0
 ---
 
@@ -31,14 +31,14 @@ Deletes a function app plan.
 
 ### Example 1: Get a function app plan by name and delete it.
 ```powershell
-PS C:\> Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
+Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
 ```
 
 This command gets a function app plan by name and deletes it.
 
 ### Example 2: Delete a function app plan by name.
 ```powershell
-PS C:\> Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 ```
 
 This command deletes a function app plan by name.
@@ -201,7 +201,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAppServicePlan>: 
+`INPUTOBJECT <IAppServicePlan>`: 
   - `Location <String>`: Resource Location.
   - `[Kind <String>]`: Kind of resource.
   - `[Tag <IResourceTags>]`: Resource tags.

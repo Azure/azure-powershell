@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: FD2E3442-9CEA-4390-BE9C-772C7D6FD1E2
-online version: https://docs.microsoft.com/powershell/module/az.batch/remove-azbatchapplicationpackage
+online version: https://learn.microsoft.com/powershell/module/az.batch/remove-azbatchapplicationpackage
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Remove-AzBatchApplicationPackage** cmdlet deletes an application package r
 ## EXAMPLES
 
 ### Example 1: Delete an application package from a Batch account
-```
-PS C:\>Remove-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "litware" -ApplicationVersion "1.0"
+```powershell
+Remove-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationName "litware" -ApplicationVersion "1.0"
 ```
 
 This command deletes version 1.0 of the Litware application from the ContosoBatchGroup account.

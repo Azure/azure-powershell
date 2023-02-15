@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: D40BA2E2-50DF-4D51-A4D2-2D02AECBF20F
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationdsccompilationjoboutput
+online version: https://learn.microsoft.com/powershell/module/az.automation/get-azautomationdsccompilationjoboutput
 schema: 2.0.0
 ---
 
@@ -25,9 +25,9 @@ The **Get-AzAutomationDscCompilationJobOutput** cmdlet gets the stream records o
 ## EXAMPLES
 
 ### Example 1: Get the logs for a DSC compilation job
-```
-PS C:\>$Jobs = Get-AzAutomationDscCompilationJob -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17"
-PS C:\> $Jobs[0] | Get-AzAutomationDscCompilationJobOutput -Stream "Any"
+```powershell
+$Jobs = Get-AzAutomationDscCompilationJob -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17"
+$Jobs[0] | Get-AzAutomationDscCompilationJobOutput -Stream "Any"
 ```
 
 The first command gets the compilation jobs in the Automation account named Contoso17 by using the Get-AzAutomationDscCompilationJob cmdlet.
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

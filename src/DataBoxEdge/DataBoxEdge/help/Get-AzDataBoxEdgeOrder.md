@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/get-azdataboxedgeorder
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/get-azdataboxedgeorder
 schema: 2.0.0
 ---
 
@@ -36,7 +36,10 @@ The **Get-AzDataBoxEdgeOrder** cmdlet gets the order details for a Data Box Edge
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxEdgeOrder -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzDataBoxEdgeOrder -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 DeviceName  ResourceGroupName Status    UpdatedDatetime
 ----------  ----------------- ------    ---------------
 deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM

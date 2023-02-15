@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/set-azsynapsedataset
+online version: https://learn.microsoft.com/powershell/module/az.synapse/set-azsynapsedataset
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The **Set-AzSynapseDataset** cmdlet creates a dataset or updates an existing dat
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseDataset -WorkspaceName ContosoWorkspace -Name ContosoDataset -DefinitionFile "C:\\samples\\Dataset.json"
+Set-AzSynapseDataset -WorkspaceName ContosoWorkspace -Name ContosoDataset -DefinitionFile "C:\\samples\\Dataset.json"
 ```
 
 This command creates a dataset named ContosoDataset in the workspace named ContosoWorkspace.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6AB09621-488B-4A16-92D9-9C47EB87DA95
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azresourceprovider
 schema: 2.0.0
 ---
 
@@ -33,8 +33,10 @@ The **Get-AzResourceProvider** cmdlet gets an Azure resource provider.
 ### Example 1: Get all resource providers registered with the current subscription
 
 ```powershell
-PS C:\>Get-AzResourceProvider
+Get-AzResourceProvider
+```
 
+```output
 ProviderNamespace : Microsoft.AppConfiguration
 RegistrationState : Registered
 ResourceTypes     : {configurationStores, configurationStores/eventGridFilters, checkNameAvailability, locations…}
@@ -97,7 +99,10 @@ This command gets all the resource providers from the subscription.
 ### Example 2: Get all resource provider details from the given ProviderNamespace
 
 ```powershell
-PS C:\>Get-AzResourceProvider -ProviderNamespace Microsoft.Compute
+Get-AzResourceProvider -ProviderNamespace Microsoft.Compute
+```
+
+```output
 ProviderNamespace : Microsoft.Compute
 RegistrationState : Registered
 ResourceTypes     : {availabilitySets}
@@ -140,7 +145,10 @@ This command Gets all the resource providers under "Microsoft.Compute".
 ### Example 3: Get all resource provider details from the given ProviderNamespace array
 
 ```powershell
-PS C:\>Get-AzResourceProvider -ProviderNamespace Microsoft.Compute,Microsoft.Network
+Get-AzResourceProvider -ProviderNamespace Microsoft.Compute,Microsoft.Network
+```
+
+```output
 ProviderNamespace : Microsoft.Compute
 RegistrationState : Registered
 ResourceTypes     : {availabilitySets}

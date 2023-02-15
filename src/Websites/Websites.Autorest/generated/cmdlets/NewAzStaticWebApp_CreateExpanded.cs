@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Description for Creates a new static site in an existing resource group, or updates an existing static site.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/set-azpolicysetdefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/set-azpolicysetdefinition
 schema: 2.0.0
 ---
 
@@ -58,9 +58,9 @@ The **Set-AzPolicySetDefinition** cmdlet modifies a policy definition.
 ## EXAMPLES
 
 ### Example 1: Update the description of a policy set definition
-```
-PS C:\> $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
-PS C:\> Set-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
+```powershell
+$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+Set-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
 ```
 
 The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.
@@ -68,10 +68,11 @@ The command stores that object in the $PolicySetDefinition variable.
 The second command updates the description of the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
 
 ### Example 2: Update the metadata of a policy set definition
+```powershell
+Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
 ```
-PS C:\> Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
 
-
+```output
 Name                  : VMPolicySetDefinition
 ResourceId            : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policySetDefinitions/VMPolicySetDefinition
 ResourceName          : VMPolicySetDefinition
@@ -84,16 +85,16 @@ PolicySetDefinitionId : /subscriptions/11111111-1111-1111-1111-111111111111/prov
 This command updates the metadata of a policy set definition named VMPolicySetDefinition to indicate its category is "Virtual Machine".
 
 ### Example 3: Update the groups of a policy set definition
-```
-PS C:\> Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition '[{ "name": "group1", "displayName": "Virtual Machine Security" }, { "name": "group2" }]'
+```powershell
+Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition '[{ "name": "group1", "displayName": "Virtual Machine Security" }, { "name": "group2" }]'
 ```
 
 This command updates the groups of a policy set definition named VMPolicySetDefinition.
 
 ### Example 4: Update the groups of a policy set definition using a hash table
-```
-$groupsJson = ConvertTo-Json @{ name = "group1", displayName = "Virtual Machine Security" }, @{ name = "group2" }
-PS C:\> Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson
+```powershell
+$groupsJson = ConvertTo-Json @{ name = "group1"; displayName = "Virtual Machine Security" }, @{ name = "group2" }
+Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson
 ```
 
 This command updates the groups of a policy set definition named VMPolicySetDefinition using a hash table to construct the groups.

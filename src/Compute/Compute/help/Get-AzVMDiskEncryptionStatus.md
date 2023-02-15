@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: E6F91D2E-6481-44C2-AF21-F62947C3D78C
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiskencryptionstatus
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmdiskencryptionstatus
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ In addition to encryption status, it also displays the encryption secret URL, ke
 ## EXAMPLES
 
 ### Example 1: Get the encryption status of a virtual machine
-```
-PS C:\> Get-AzVmDiskEncryptionStatus -ResourceGroupName "MyResourceGroup001" -VMName "VM001"
+```powershell
+Get-AzVmDiskEncryptionStatus -ResourceGroupName "MyResourceGroup001" -VMName "VM001"
 ```
 
 This command gets the encryption status of the virtual machine named VM001.

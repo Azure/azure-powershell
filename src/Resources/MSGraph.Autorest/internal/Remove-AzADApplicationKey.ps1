@@ -20,13 +20,9 @@ Invoke action removeKey
 .Description
 Invoke action removeKey
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPathsHxlydaApplicationsApplicationIdMicrosoftGraphRemovekeyPostRequestbodyContentApplicationJsonSchema
@@ -42,7 +38,7 @@ BODY <IPathsHxlydaApplicationsApplicationIdMicrosoftGraphRemovekeyPostRequestbod
   [KeyId <String>]: 
   [Proof <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplicationkey
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapplicationkey
 #>
 function Remove-AzADApplicationKey {
 [OutputType([System.Boolean])]
@@ -140,6 +136,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Remove = 'Az.MSGraph.private\Remove-AzADApplicationKey_Remove';
             RemoveExpanded = 'Az.MSGraph.private\Remove-AzADApplicationKey_RemoveExpanded';
@@ -150,6 +147,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -158,15 +156,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

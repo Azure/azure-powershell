@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementcustomhostnameconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementcustomhostnameconfiguration
 schema: 2.0.0
 ---
 
@@ -33,6 +33,13 @@ New-AzApiManagementCustomHostnameConfiguration -Hostname <String> -HostnameType 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SslCertificateManaged
+```
+New-AzApiManagementCustomHostnameConfiguration -Hostname <String> -HostnameType <PsApiManagementHostnameType>
+ [-DefaultSslBinding] [-NegotiateClientCertificate] [-ManagedCertificate]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzApiManagementCustomHostnameConfiguration** cmdlet is a helper command that creates an instance of **PsApiManagementCustomHostNameConfiguration**.
 This command is used with the New-AzApiManagement and Set-AzApiManagement cmdlet.
@@ -41,19 +48,19 @@ This command is used with the New-AzApiManagement and Set-AzApiManagement cmdlet
 
 ### Example 1: Create and initialize an instance of PsApiManagementCustomHostNameConfiguration using an Ssl Certificate from file
 ```powershell
-PS C:\>$portal = New-AzApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -PfxPath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111" -DefaultSslBinding
-PS C:\>$customConfig = @($portal)
-PS C:\>New-AzApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -CustomHostnameConfiguration $customConfig
+$portal = New-AzApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -PfxPath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111" -DefaultSslBinding
+$customConfig = @($portal)
+New-AzApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -CustomHostnameConfiguration $customConfig
 ```
 
 This command creates and initializes an instance of **PsApiManagementCustomHostNameConfiguration** for Portal. Then it creates a new ApiManagement service with custom hostname configuration.
 
 ### Example 2: Create and initialize an instance of PsApiManagementCustomHostNameConfiguration using an Secret from KeyVault Resource
 ```powershell
-PS C:\>$portal = New-AzApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/api-portal-custom-ssl.pfx"
+$portal = New-AzApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/api-portal-custom-ssl.pfx"
 
-PS C:\>$customConfig = @($portal)
-PS C:\>New-AzApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -CustomHostnameConfiguration $customConfig -SystemAssignedIdentity
+$customConfig = @($portal)
+New-AzApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -CustomHostnameConfiguration $customConfig -SystemAssignedIdentity
 ```
 
 This command creates and initializes an instance of **PsApiManagementCustomHostNameConfiguration**.
@@ -159,6 +166,21 @@ KeyVaultId to the secret storing the Custom SSL Certificate.
 ```yaml
 Type: System.String
 Parameter Sets: SslCertificateFromKeyVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedCertificate
+Determines whether we want to provision a managed certificate whose rotation is managed by the platform
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SslCertificateManaged
 Aliases:
 
 Required: True

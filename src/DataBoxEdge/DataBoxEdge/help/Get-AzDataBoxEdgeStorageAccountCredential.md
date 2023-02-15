@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/get-azdataboxedgestorageaccountcredential
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/get-azdataboxedgestorageaccountcredential
 schema: 2.0.0
 ---
 
@@ -43,7 +43,10 @@ The **Get-AzDataBoxEdgeStorageAccountCredential** cmdlet gets the storage accoun
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 Name                          StorageAccount          SslStatus  ResourceGroupName
 ----------------------------- ---------------------- ---------- ---------------------
 storageAccountCredentialName  StorageAccountName     Enabled    resourceGroupName

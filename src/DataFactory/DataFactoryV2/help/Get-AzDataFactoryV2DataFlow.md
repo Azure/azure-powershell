@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2dataflow
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2dataflow
 schema: 2.0.0
 ---
 
@@ -38,8 +38,10 @@ If you do not specify a name, this cmdlet gets information about all the data fl
 ## EXAMPLES
 ### Example 1: Get information about all data flows
 ```powershell
-PS C:\> Get-AzDataFactoryV2DataFlow -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+Get-AzDataFactoryV2DataFlow -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+```
 
+```output
 DataFlowName           DataFactoryName ResourceGroupName                                                    Properties
 ------------           --------------- -----------------                                                    ----------
 TaxiDemo1                      WikiADF               adf Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow
@@ -51,8 +53,10 @@ This command gets information about all data flows in the data factory named Wik
 
 ### Example 2: Get information about a specific data flow
 ```powershell
-PS C:\> Get-AzDataFactoryV2DataFlow -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "dataflow1"
+Get-AzDataFactoryV2DataFlow -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "dataflow1"
+```
 
+```output
 DataFlowName           DataFactoryName ResourceGroupName                                                    Properties
 ------------           --------------- -----------------                                                    ----------
 TaxiDemo1                      WikiADF               adf Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow

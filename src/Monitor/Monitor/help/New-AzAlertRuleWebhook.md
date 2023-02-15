@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 0137ECA3-37E1-4064-8A65-A582519E9017
-online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azalertrulewebhook
+online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azalertrulewebhook
 schema: 2.0.0
 ---
 
@@ -24,15 +24,15 @@ The **New-AzAlertRuleWebhook** cmdlet creates an alert rule webhook.
 ## EXAMPLES
 
 ### Example 1: Create an alert rule webhook
-```
-PS C:\>New-AzAlertRuleWebhook -ServiceUri "http://contoso.com"
+```powershell
+New-AzAlertRuleWebhook -ServiceUri "http://contoso.com"
 ```
 
 This command creates an alert rule webhook by specifying only the service URI.
 
 ### Example 2: Create a webhook with one property
-```
-PS C:\>$Actual = New-AzAlertRuleWebhook -ServiceUri "http://contoso.com" -Property @{prop1 = 'value1'}
+```powershell
+$Actual = New-AzAlertRuleWebhook -ServiceUri "http://contoso.com" -Property @{prop1 = 'value1'}
 ```
 
 This command creates an alert rule webhook for Contoso.com that has one property, and then stores it in the $Actual variable.
@@ -106,7 +106,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 
 [New-AzAlertRuleEmail](./New-AzAlertRuleEmail.md)
-
-[New-AzAutoscaleWebhook](./New-AzAutoscaleWebhook.md)
-
-

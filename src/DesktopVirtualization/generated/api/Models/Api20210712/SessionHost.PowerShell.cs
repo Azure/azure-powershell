@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
         /// Creates a new instance of <see cref="SessionHost" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SessionHost" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHost FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,26 +101,86 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateState = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState?) content.GetValueForProperty("UpdateState",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateState, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastHeartBeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartBeat",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastHeartBeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Session = (int?) content.GetValueForProperty("Session",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Session, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AgentVersion = (string) content.GetValueForProperty("AgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AgentVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AllowNewSession = (bool?) content.GetValueForProperty("AllowNewSession",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AllowNewSession, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).VirtualMachineId = (string) content.GetValueForProperty("VirtualMachineId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).VirtualMachineId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AssignedUser = (string) content.GetValueForProperty("AssignedUser",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AssignedUser, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).StatusTimestamp = (global::System.DateTime?) content.GetValueForProperty("StatusTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).StatusTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).OSVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).SxSStackVersion = (string) content.GetValueForProperty("SxSStackVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).SxSStackVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastUpdateTime = (global::System.DateTime?) content.GetValueForProperty("LastUpdateTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastUpdateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateErrorMessage = (string) content.GetValueForProperty("UpdateErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateErrorMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).HealthCheckResult = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostHealthCheckReport[]) content.GetValueForProperty("HealthCheckResult",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).HealthCheckResult, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostHealthCheckReport>(__y, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostHealthCheckReportTypeConverter.ConvertFrom));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status.CreateFrom);
+            }
+            if (content.Contains("UpdateState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateState = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState?) content.GetValueForProperty("UpdateState",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateState, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState.CreateFrom);
+            }
+            if (content.Contains("ObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastHeartBeat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastHeartBeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartBeat",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastHeartBeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Session"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Session = (int?) content.GetValueForProperty("Session",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Session, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AgentVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AgentVersion = (string) content.GetValueForProperty("AgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AgentVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllowNewSession"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AllowNewSession = (bool?) content.GetValueForProperty("AllowNewSession",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AllowNewSession, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("VirtualMachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).VirtualMachineId = (string) content.GetValueForProperty("VirtualMachineId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).VirtualMachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AssignedUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AssignedUser = (string) content.GetValueForProperty("AssignedUser",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AssignedUser, global::System.Convert.ToString);
+            }
+            if (content.Contains("StatusTimestamp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).StatusTimestamp = (global::System.DateTime?) content.GetValueForProperty("StatusTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).StatusTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("OSVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).OSVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("SxSStackVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).SxSStackVersion = (string) content.GetValueForProperty("SxSStackVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).SxSStackVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastUpdateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastUpdateTime = (global::System.DateTime?) content.GetValueForProperty("LastUpdateTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastUpdateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("UpdateErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateErrorMessage = (string) content.GetValueForProperty("UpdateErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("HealthCheckResult"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).HealthCheckResult = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostHealthCheckReport[]) content.GetValueForProperty("HealthCheckResult",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).HealthCheckResult, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostHealthCheckReport>(__y, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostHealthCheckReportTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -136,26 +198,86 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateState = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState?) content.GetValueForProperty("UpdateState",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateState, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastHeartBeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartBeat",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastHeartBeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Session = (int?) content.GetValueForProperty("Session",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Session, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AgentVersion = (string) content.GetValueForProperty("AgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AgentVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AllowNewSession = (bool?) content.GetValueForProperty("AllowNewSession",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AllowNewSession, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).VirtualMachineId = (string) content.GetValueForProperty("VirtualMachineId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).VirtualMachineId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AssignedUser = (string) content.GetValueForProperty("AssignedUser",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AssignedUser, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).StatusTimestamp = (global::System.DateTime?) content.GetValueForProperty("StatusTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).StatusTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).OSVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).SxSStackVersion = (string) content.GetValueForProperty("SxSStackVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).SxSStackVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastUpdateTime = (global::System.DateTime?) content.GetValueForProperty("LastUpdateTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastUpdateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateErrorMessage = (string) content.GetValueForProperty("UpdateErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateErrorMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).HealthCheckResult = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostHealthCheckReport[]) content.GetValueForProperty("HealthCheckResult",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).HealthCheckResult, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostHealthCheckReport>(__y, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostHealthCheckReportTypeConverter.ConvertFrom));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status.CreateFrom);
+            }
+            if (content.Contains("UpdateState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateState = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState?) content.GetValueForProperty("UpdateState",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateState, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.UpdateState.CreateFrom);
+            }
+            if (content.Contains("ObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastHeartBeat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastHeartBeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartBeat",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastHeartBeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Session"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Session = (int?) content.GetValueForProperty("Session",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).Session, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AgentVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AgentVersion = (string) content.GetValueForProperty("AgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AgentVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllowNewSession"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AllowNewSession = (bool?) content.GetValueForProperty("AllowNewSession",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AllowNewSession, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("VirtualMachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).VirtualMachineId = (string) content.GetValueForProperty("VirtualMachineId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).VirtualMachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).ResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AssignedUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AssignedUser = (string) content.GetValueForProperty("AssignedUser",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).AssignedUser, global::System.Convert.ToString);
+            }
+            if (content.Contains("StatusTimestamp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).StatusTimestamp = (global::System.DateTime?) content.GetValueForProperty("StatusTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).StatusTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("OSVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).OSVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("SxSStackVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).SxSStackVersion = (string) content.GetValueForProperty("SxSStackVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).SxSStackVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastUpdateTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastUpdateTime = (global::System.DateTime?) content.GetValueForProperty("LastUpdateTime",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).LastUpdateTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("UpdateErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateErrorMessage = (string) content.GetValueForProperty("UpdateErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).UpdateErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("HealthCheckResult"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).HealthCheckResult = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostHealthCheckReport[]) content.GetValueForProperty("HealthCheckResult",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostInternal)this).HealthCheckResult, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHostHealthCheckReport>(__y, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostHealthCheckReportTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

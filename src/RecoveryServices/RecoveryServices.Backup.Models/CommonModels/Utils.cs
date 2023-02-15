@@ -42,6 +42,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public const int AfsYearlyRetentionMax = 10;
         public const int AfsYearlyRetentionMin = 1;
 
+        //Hourly policy constants 
+        public const int AfsHourlyWindowDurationMin = 4;
+        public const int AfsHourlyWindowDurationMax = 23;       
+
         /// <summary>
         /// Maximum number of days in a month.
         /// </summary>

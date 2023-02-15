@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 45F35BDD-969E-4521-9E8D-3499A15434A6
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimagetype
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmextensionimagetype
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzVMExtensionImageType** cmdlet gets the type of an Azure extension.
 ## EXAMPLES
 
 ### Example 1: Get an extension image type
-```
-PS C:\> Get-AzVMExtensionImageType -Location "Central US" -PublisherName "Fabrikam"
+```powershell
+Get-AzVMExtensionImageType -Location "Central US" -PublisherName "Fabrikam"
 ```
 
 This command gets the extension image type for the specified publisher and location.

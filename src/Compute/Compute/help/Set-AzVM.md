@@ -2,14 +2,14 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 939320CB-2595-4150-AFDD-500CEA78559C
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvm
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvm
 schema: 2.0.0
 ---
 
 # Set-AzVM
 
 ## SYNOPSIS
-Marks a virtual machine as generalized.
+This cmdlet can be used to do the followings: reapply or redeploy a virtual machine, mark a virtual machine as generalized, simulate eviction to a spot virtual machine.
 
 ## SYNTAX
 
@@ -61,17 +61,40 @@ Set-AzVM [-Id] <String> [-SimulateEviction] [-AsJob] [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-The **Set-AzVM** cmdlet marks a virtual machine as generalized.
-Before you run this cmdlet, log on to the virtual machine and use Sysprep to prepare the hard disk.
+The **Set-AzVM** cmdlet can be used to redeploy or reapply a virtual machine. It can also be used to mark a virtual machine as generalized or simulate eviction to a spot virtual machine.<br>
+Before you mark a virtual machine as generalized, log on to the virtual machine and use Sysprep to prepare the hard disk. See [here](https://learn.microsoft.com/en-us/azure/virtual-machines/generalize#windows) for more information.
 
 ## EXAMPLES
 
 ### Example 1: Mark a virtual machine as generalized
-```
-PS C:\> Set-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
+```powershell
+Set-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
 ```
 
-This command marks the virtual machine named VirtualMachine07 as generalized.
+This command marks the virtual machine named "VirtualMachine07" as generalized.
+
+### Example 2: Simulate eviction to a spot virtual machine using resource ID
+```powershell
+$vm = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+Set-AzVM -Id $vm.id -SimulateEviction
+```
+
+This command simulates eviction to the virtual machine named "VirtualMachine07" using the resource ID.
+
+### Example 3: Reapply a virtual machine
+```powershell
+Set-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Reapply
+```
+
+This command reapplies the virtual machine named "VirtualMachine07".
+
+### Example 4: Redeploy a virtual machine using resource ID
+```powershell
+$vm = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+Set-AzVM -Id $vm.id -Redeploy
+```
+
+This command deploys the virtual machine named "VirtualMachine07" using the resource ID.
 
 ## PARAMETERS
 

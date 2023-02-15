@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 57A6DB40-43EC-402C-9784-06817ECD99B8
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayrequestroutingrule
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayrequestroutingrule
 schema: 2.0.0
 ---
 
@@ -24,18 +24,18 @@ The **Get-AzApplicationGatewayRequestRoutingRule** cmdlet gets the request routi
 ## EXAMPLES
 
 ### Example 1: Get a specific request routing rule
-```
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Rule = Get-AzApplicationGatewayRequestRoutingRule -"Rule01" -ApplicationGateway $AppGW
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$Rule = Get-AzApplicationGatewayRequestRoutingRule -Name "Rule01" -ApplicationGateway $AppGW
 ```
 
 The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
 The second command gets the request routing rule named Rule01 from the Application Gateway stored in the variable named $AppGW.
 
 ### Example 2: Get a list of request routing rules
-```
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Rules = Get-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGW
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$Rules = Get-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGW
 ```
 
 The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.

@@ -20,6 +20,40 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+* Added NamespaceV2 cmdlets for ServiceBus.
+
+## Version 2.0.0
+* Most cmdlets in Az.ServiceBus module have been migrated to a new format and would witness breaking changes. Please refer our migration guide https://go.microsoft.com/fwlink/?linkid=2204584 to know breaking changes in detail.
+
+## Version 1.11.0
+* In the upcoming major breaking change release in October 2022, Az.ServiceBus would be migrating most cmdlets to a new format
+for a better powershell experience and as a result would witness breaking changes. Please refer our migration guide to know more https://go.microsoft.com/fwlink/?linkid=2204584.
+* Added -MinimumTlsVersion to New-AzServiceBusNamespace and Set-AzServiceBusNamespace
+
+## Version 1.10.0
+* Added cmdlets for manual approval of Service Bus Private Endpoint Connections. The added cmdlets include,
+    -Approve-AzServiceBusPrivateEndpointConnection
+    -Deny-AzServiceBusPrivateEndpointConnection
+    -Get-AzServiceBusPrivateEndpointConnection
+    -Remove-AzServiceBusPrivateEndpointConnection
+    -Get-AzServiceBusPrivateLink
+
+## Version 1.9.0
+* Fixed miscellaneous network rule set typos across module.
+* Add `TrustedServiceAccessEnabled` to `Set-AzServiceBusNetworkRuleSet`
+
+## Version 1.8.1
+* Fixed that `New-AzServiceBusAuthorizationRuleSASToken` returns invalid token. [#12975]
+ 
+## Version 1.8.0
+* Added identity and encryption properties to New-AzServiceBusNamespace and Set-AzServiceBusNamespace.
+* Added New-AzServiceBusEncryptionConfig
+
+## Version 1.7.0
+* Added support to Enable or Disable  Public Network Access as optional parameter 'PublicNetworkAccess' to `Set-AzServiceBusNetworkRuleSet`
+* Fixed `Set-AzServiceBusNamespace` with Tags 
+
 ## Version 1.6.0
 * Added support for ZoneRedundant and optional switch parameter 'DisableLocalAuth' to `New-AzServiceBusNamespace` and `Set-AzServiceBusNamespace` 
 

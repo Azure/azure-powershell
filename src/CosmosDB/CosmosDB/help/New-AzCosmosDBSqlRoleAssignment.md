@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlroleassignment
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlroleassignment
 schema: 2.0.0
 ---
 
@@ -43,14 +43,16 @@ RoleDefinitionId can be either fully qualified or just the Guid.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzCosmosDBSqlRoleAssignment 
-	-AccountName accountName 
-	-ResourceGroupName resourceGroupName 
-	-RoleDefinitionId "/subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/roleDefinitionId" 
-	-Scope "/subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName" 
+```powershell
+New-AzCosmosDBSqlRoleAssignment `
+	-AccountName accountName `
+	-ResourceGroupName resourceGroupName `
+	-RoleDefinitionId "/subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/roleDefinitionId" `
+	-Scope "/subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName" `
 	-PrincipalId principalId
+```
 
+```output
 Id               : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleAssignments/roleAssignmentId
 Scope            : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName
 RoleDefinitionId : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/roleDefinitionId

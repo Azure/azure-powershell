@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlfirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlfirewallrule
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets information about a server firewall rule.
 
 ### Example 1: Lists all the Firewall Rules in specified PostgreSql server
 ```powershell
-PS C:\> Get-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Get-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+```
 
+```output
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
 rule 0.0.0.0        0.0.0.1
@@ -48,8 +50,10 @@ This cmdlet lists all the Firewall Rule in specified PostgreSql server.
 
 ### Example 2: Get Firewall Rule by name
 ```powershell
-PS C:\> Get-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Get-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+```
 
+```output
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
 rule 0.0.0.0        0.0.0.1
@@ -59,9 +63,11 @@ This cmdlet gets Firewall Rule by name.
 
 ### Example 3: Get Firewall Rule by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
-PS C:\> Get-AzPostgreSqlFirewallRule -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+Get-AzPostgreSqlFirewallRule -InputObject $ID
+```
 
+```output
 Name StartIPAddress EndIPAddress
 ---- -------------- ------------
 rule 0.0.0.0        0.0.0.1
@@ -183,7 +189,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

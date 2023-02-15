@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/Get-AzDataMigrationProject
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Get-AzDataMigrationProject
 schema: 2.0.0
 ---
 
 # Get-AzDataMigrationProject
 
 ## SYNOPSIS
-Retrieves the properties of an Azure Database Migration project.
+Retrieves the properties of an Azure Database Migration Service (classic) project.
 
 ## SYNTAX
 
@@ -36,15 +36,15 @@ The Get-AzDataMigrationProject cmdlet retrieves the properties of an Azure Datab
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzDataMigrationProject -ServiceName testService -Name testProject -ResourceGroup testResourceGroup
+```powershell
+Get-AzDataMigrationProject -ServiceName testService -Name testProject -ResourceGroupName testResourceGroup
 ```
 
 The above example retrieves  Azure Database Migration project named TestProject in the resource group called testResourceGroup and under service called testService
 
 ### Example 2
-```
-PS C:\> Get-AzDataMigrationProject -InputObject $myService
+```powershell
+Get-AzDataMigrationProject -InputObject $myService
 ```
 
 The above example retrieves the  Azure Database Migration project based on PSProject object input parameter passed in. 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

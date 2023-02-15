@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.Compute-help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
 schema: 2.0.0
 ---
 
@@ -15,10 +15,10 @@ Update a gallery Application Version.
 ### UpdateExpanded (Default)
 ```
 Update-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> -PackageFileLink <String> [-SubscriptionId <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -PackageFileLink <String>
  [-DefaultConfigFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
- [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Update-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName
 Update-AzGalleryApplicationVersion -InputObject <IComputeIdentity> -PackageFileLink <String>
  [-DefaultConfigFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
- [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-TargetRegion <ITargetRegion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -38,13 +38,13 @@ Update a gallery Application Version.
 
 ### Example 1: Update Replica Count of Gallery Application Version
 ```powershell
-PS C:\> $ctx = New-AzStorageContext -StorageAccountName $storAccName
-PS C:\> $SASToken = new-azstorageblobsastoken -Context $ctx -Container $containerName -blob $blobName -Permission r
-PS C:\> $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
-PS C:\> $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
-PS C:\> $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
-PS C:\> $SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
-PS C:\> Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
+$ctx = New-AzStorageContext -StorageAccountName $storAccName
+$SASToken = New-AzStorageBlobSASToken -Context $ctx -Container $containerName -blob $blobName -Permission r
+$storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
+$SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
+$SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
+Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3
 ```
 
 Updating a Gallery Application Version's replica count.
@@ -294,7 +294,7 @@ This property is updatable.
 To construct, see NOTES section for TARGETREGION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ITargetRegion[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]
 Parameter Sets: (All)
 Aliases:
 
@@ -345,7 +345,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
 
 ## NOTES
 
@@ -356,7 +356,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IComputeIdentity>: Identity Parameter
+`INPUTOBJECT <IComputeIdentity>`: Identity Parameter
   - `[CommandId <String>]`: The command id.
   - `[GalleryApplicationName <String>]`: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
   - `[GalleryApplicationVersionName <String>]`: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
@@ -372,14 +372,15 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   - `[VMName <String>]`: The name of the virtual machine where the run command should be created or updated.
   - `[VMScaleSetName <String>]`: The name of the VM scale set.
 
-TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is going to be replicated to. This property is updatable.
+`TARGETREGION <ITargetRegion[]>`: The target regions where the Image Version is going to be replicated to. This property is updatable.
   - `Name <String>`: The name of the region.
   - `[EncryptionDataDiskImage <IDataDiskImageEncryption[]>]`: A list of encryption specifications for data disk images.
     - `Lun <Int32>`: This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
     - `[DiskEncryptionSetId <String>]`: A relative URI containing the resource ID of the disk encryption set.
   - `[OSDiskImageDiskEncryptionSetId <String>]`: A relative URI containing the resource ID of the disk encryption set.
   - `[RegionalReplicaCount <Int32?>]`: The number of replicas of the Image Version to be created per region. This property is updatable.
+  - `[SecurityProfileConfidentialVMEncryptionType <ConfidentialVMEncryptionType?>]`: confidential VM encryption types
+  - `[SecurityProfileSecureVMDiskEncryptionSetId <String>]`: secure VM disk encryption set id
   - `[StorageAccountType <StorageAccountType?>]`: Specifies the storage account type to be used to store the image. This property is not updatable.
 
 ## RELATED LINKS
-

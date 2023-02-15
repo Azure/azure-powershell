@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubvirtualnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubvirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -15,13 +15,13 @@ Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namesp
 ### VirtualNetworkRulePropertiesParameterSet (Default)
 ```
 Remove-AzEventHubVirtualNetworkRule [-ResourceGroupName] <String> [-Name] <String> [-SubnetId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VirtualNetworkRuleInputObjectParameterSet
 ```
 Remove-AzEventHubVirtualNetworkRule [-ResourceGroupName] <String> [-Name] <String>
- [-VirtualNetworkRuleObject] <PSNWRuleSetVirtualNetworkRulesAttributes>
+ [-VirtualNetworkRuleObject] <PSNWRuleSetVirtualNetworkRulesAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,18 +32,17 @@ Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namesp
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01"
+Remove-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01"
 ```
 
 Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namespace
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -VirtualNetworkRuleObject $virtualruleset1
+Remove-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -VirtualNetworkRuleObject $virtualruleset1
 ```
 
 Remove the $virtualruleset1 of NetworkRuleSet for the given Namespace
-
 
 ## PARAMETERS
 
@@ -184,8 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

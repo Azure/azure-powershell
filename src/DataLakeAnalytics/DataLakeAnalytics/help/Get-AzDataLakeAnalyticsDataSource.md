@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: 0377C4E9-C1DC-49BA-BBC4-5598C83234F8
-online version: https://docs.microsoft.com/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticsdatasource
+online version: https://learn.microsoft.com/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticsdatasource
 schema: 2.0.0
 ---
 
@@ -37,15 +37,15 @@ The **Get-AzDataLakeAnalyticsDataSource** cmdlet gets an Azure Data Lake Analyti
 ## EXAMPLES
 
 ### Example 1: Get a data source from an account
-```
-PS C:\>Get-AzDataLakeAnalyticsDataSource -AccountName "ContosoAdlA" -DataLakeStore "ContosoAdls"
+```powershell
+Get-AzDataLakeAnalyticsDataSource -AccountName "ContosoAdlA" -DataLakeStore "ContosoAdls"
 ```
 
 This command gets a Data Lake Store data source named ContosoAdls from a Data Lake Analytics account.
 
 ### Example 2: Get the list of Data Lake Store accounts in a Data Lake Analytics account
-```
-PS C:\>Get-AzDataLakeAnalyticsDataSource -AccountName "ContosoAdlA" -DataSource "DataLakeStore"
+```powershell
+Get-AzDataLakeAnalyticsDataSource -AccountName "ContosoAdlA"
 ```
 
 This command gets all Data Lake Store accounts from a Data Lake Analytics account.

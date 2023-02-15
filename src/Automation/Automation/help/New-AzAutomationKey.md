@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 055526FA-5DB7-4F1D-81B3-5D9753283FE2
-online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationkey
+online version: https://learn.microsoft.com/powershell/module/az.automation/new-azautomationkey
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **New-AzAutomationKey** cmdlet regenerates registration keys for an Azure Au
 ## EXAMPLES
 
 ### Example 1: Regenerate a key for an Automation account
-```
-PS C:\>New-AzAutomationKey -KeyType Primary -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+```powershell
+New-AzAutomationKey -KeyType Primary -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command regenerates the primary key for the Azure Automation account named AutomationAccount01 in the resource group named ResourceGroup01.
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

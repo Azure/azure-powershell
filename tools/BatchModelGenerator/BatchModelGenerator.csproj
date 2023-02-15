@@ -4,7 +4,7 @@
   <Import Project="$(RepoTools)Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>BatchModelGenerator</AssemblyName>
     <RootNamespace>BatchModelGenerator</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -26,6 +26,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;RELEASE;NETSTANDARD</DefineConstants>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="GeneratedFiles\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.CodeDom" Version="4.5.0" />

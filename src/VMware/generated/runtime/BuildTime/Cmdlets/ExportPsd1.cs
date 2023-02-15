@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell
                     throw new ArgumentException($"Custom folder '{CustomFolder}' does not exist");
                 }
 
-                string version = Convert.ToString(@"0.3.0");
+                string version = Convert.ToString(@"0.4.0");
                 // Validate the module version should be semantic version
                 // Following regex is official from https://semver.org/
                 Regex rx = new Regex(@"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$", RegexOptions.Compiled);
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell
 
                 if (previewVersion != null)
                 {
-                    sb.AppendLine($@"{Indent}{Indent}{Indent}Prerelease = {previewVersion}");
+                    sb.AppendLine($@"{Indent}{Indent}{Indent}Prerelease = '{previewVersion}'");
                 }
                 sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"Azure ResourceManager ARM PSModule VMware".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
                 sb.AppendLine($@"{Indent}{Indent}{Indent}LicenseUri = '{"https://aka.ms/azps-license"}'");

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsjob
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsjob
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Deletes a streaming job.
 
 ### Example 1: Remove a stream analytics job
 ```powershell
-PS C:\> Remove-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh
+Remove-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh
 
 ```
 
@@ -39,7 +39,7 @@ This command removes the stream analytics job.
 
 ### Example 2: Remove a stream analytics job by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-02-pwsh | Remove-AzStreamAnalyticsJob
+Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-02-pwsh | Remove-AzStreamAnalyticsJob
 
 ```
 
@@ -220,7 +220,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+INPUTOBJECT `<IStreamAnalyticsIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.
   - `[FunctionName <String>]`: The name of the function.
   - `[Id <String>]`: Resource identity path

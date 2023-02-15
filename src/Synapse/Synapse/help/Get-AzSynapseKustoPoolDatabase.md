@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldatabase
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldatabase
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Returns a database.
 
 ### Example 1: List all Kusto databases in a workspace by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
+Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
+```
 
+```output
 Kind      Location  Name                                                                                                                                                                                                
 ----      --------  ----                                  
 ReadWrite East US 2 testws/testnewkustopool/mykustodatabase
@@ -48,8 +50,10 @@ The above command returns all Kusto databases in Kusto Pool "testkustopool" in t
 
 ### Example 2: Get a specific Kusto database by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+```
 
+```output
 Kind      Location  Name                                                                                            
 ----      --------  ----                                  
 ReadWrite East US 2 testws/testnewkustopool/mykustodatabase
@@ -186,7 +190,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
+INPUTOBJECT `<ISynapseIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[DataConnectionName <String>]`: The name of the data connection.
   - `[DatabaseName <String>]`: The name of the database in the Kusto pool.

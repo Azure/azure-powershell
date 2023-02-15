@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version:https://docs.microsoft.com/powershell/module/az.compute/remove-azvmssgalleryapplication
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmssgalleryapplication
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Remove a VMGalleryApplication object from the PSVirtualMachineScaleSetVMProfile 
 
 ```
 Remove-AzVmssGalleryApplication -VirtualMachineScaleSetVM <PSVirtualMachineScaleSetVMProfile>
- -GalleryApplicationsReferenceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -GalleryApplicationsReferenceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,9 +25,11 @@ Removes a VMGalleryApplication object from the PSVirtualMachineScaleSetVMProfile
 
 ### Example 1
 ```powershell
-PS C:\> $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName
-PS C:\> Remove-AzVmssGalleryApplication -VM $vmss.VirtualMachineProfile -GalleryApplicationReferenceId $refId
+$vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName
+Remove-AzVmssGalleryApplication -VirtualMachineScaleSetVM $vmss.VirtualMachineProfile -GalleryApplicationsReferenceId $refId
 ```
+
+Remove gallery application by reference Id
 
 ## PARAMETERS
 
@@ -69,6 +72,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

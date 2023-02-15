@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImportExport
-online version: https://docs.microsoft.com/powershell/module/az.importexport/new-azimportexport
+online version: https://learn.microsoft.com/powershell/module/az.importexport/new-azimportexport
 schema: 2.0.0
 ---
 
@@ -16,22 +16,23 @@ Creates a new job or updates an existing job in the specified subscription.
 New-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AcceptLanguage <String>] [-ClientTenantId <String>] [-BackupDriveManifest] [-BlobListBlobPath <String[]>]
  [-BlobListBlobPathPrefix <String[]>] [-CancelRequested] [-DeliveryPackageCarrierName <String>]
- [-DeliveryPackageDriveCount <Int32>] [-DeliveryPackageShipDate <String>]
+ [-DeliveryPackageDriveCount <Int64>] [-DeliveryPackageShipDate <String>]
  [-DeliveryPackageTrackingNumber <String>] [-DiagnosticsPath <String>] [-DriveList <IDriveStatus[]>]
- [-ExportBlobListblobPath <String>] [-IncompleteBlobListUri <String>] [-JobType <String>] [-Location <String>]
- [-LogLevel <String>] [-PercentComplete <Int32>] [-ProvisioningState <String>] [-ReturnAddressCity <String>]
- [-ReturnAddressCountryOrRegion <String>] [-ReturnAddressEmail <String>] [-ReturnAddressPhone <String>]
- [-ReturnAddressPostalCode <String>] [-ReturnAddressRecipientName <String>]
- [-ReturnAddressStateOrProvince <String>] [-ReturnAddressStreetAddress1 <String>]
- [-ReturnAddressStreetAddress2 <String>] [-ReturnPackageCarrierName <String>]
- [-ReturnPackageDriveCount <Int32>] [-ReturnPackageShipDate <String>] [-ReturnPackageTrackingNumber <String>]
- [-ReturnShippingCarrierAccountNumber <String>] [-ReturnShippingCarrierName <String>]
- [-ShippingInformationCity <String>] [-ShippingInformationCountryOrRegion <String>]
- [-ShippingInformationPhone <String>] [-ShippingInformationPostalCode <String>]
- [-ShippingInformationRecipientName <String>] [-ShippingInformationStateOrProvince <String>]
- [-ShippingInformationStreetAddress1 <String>] [-ShippingInformationStreetAddress2 <String>] [-State <String>]
- [-StorageAccountId <String>] [-Tag <IPutJobParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-EncryptionKeyKekType <EncryptionKekType>] [-EncryptionKeyKekUrl <String>]
+ [-EncryptionKeyKekVaultId <String>] [-ExportBlobListBlobPath <String>] [-IncompleteBlobListUri <String>]
+ [-JobType <String>] [-Location <String>] [-LogLevel <String>] [-PercentComplete <Int64>]
+ [-ProvisioningState <String>] [-ReturnAddressCity <String>] [-ReturnAddressCountryOrRegion <String>]
+ [-ReturnAddressEmail <String>] [-ReturnAddressPhone <String>] [-ReturnAddressPostalCode <String>]
+ [-ReturnAddressRecipientName <String>] [-ReturnAddressStateOrProvince <String>]
+ [-ReturnAddressStreetAddress1 <String>] [-ReturnAddressStreetAddress2 <String>]
+ [-ReturnPackageCarrierName <String>] [-ReturnPackageDriveCount <Int64>] [-ReturnPackageShipDate <String>]
+ [-ReturnPackageTrackingNumber <String>] [-ReturnShippingCarrierAccountNumber <String>]
+ [-ReturnShippingCarrierName <String>] [-ShippingInformationCity <String>]
+ [-ShippingInformationCountryOrRegion <String>] [-ShippingInformationPhone <String>]
+ [-ShippingInformationPostalCode <String>] [-ShippingInformationRecipientName <String>]
+ [-ShippingInformationStateOrProvince <String>] [-ShippingInformationStreetAddress1 <String>]
+ [-ShippingInformationStreetAddress2 <String>] [-State <String>] [-StorageAccountId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,8 +42,11 @@ Creates a new job or updates an existing job in the specified subscription.
 
 ### Example 1: Create a new ImportExport job
 ```powershell
-PS C:\> $driveList = @( @{ DriveId = "9CA995BA"; BitLockerKey = "238810-662376-448998-450120-652806-203390-606320-483076"; ManifestFile = "\\DriveManifest.xml"; ManifestHash = "109B21108597EF36D5785F08303F3638"; DriveHeaderHash = "" })
-PS C:\> New-AzImportExport -Name test-job -ResourceGroupName ImportTestRG -Location eastus -StorageAccountId "/subscriptions/<SubscriptionId>/resourcegroups/ImportTestRG/providers/Microsoft.Storage/storageAccounts/teststorageforimport" -JobType Import -ReturnAddressRecipientName "Some name" -ReturnAddressStreetAddress1 "Street1" -ReturnAddressCity "Redmond" -ReturnAddressStateOrProvince "WA" -ReturnAddressPostalCode "98008" -ReturnAddressCountryOrRegion "USA" -ReturnAddressPhone "4250000000" -ReturnAddressEmail test@contoso.com -DiagnosticsPath "waimportexport" -BackupDriveManifest -DriveList $driveList
+$driveList = @( @{ DriveId = "9CA995BA"; BitLockerKey = "238810-662376-448998-450120-652806-203390-606320-483076"; ManifestFile = "\\DriveManifest.xml"; ManifestHash = "109B21108597EF36D5785F08303F3638"; DriveHeaderHash = "" })
+New-AzImportExport -Name test-job -ResourceGroupName ImportTestRG -Location eastus -StorageAccountId "/subscriptions/<SubscriptionId>/resourcegroups/ImportTestRG/providers/Microsoft.Storage/storageAccounts/teststorageforimport" -JobType Import -ReturnAddressRecipientName "Some name" -ReturnAddressStreetAddress1 "Street1" -ReturnAddressCity "Redmond" -ReturnAddressStateOrProvince "WA" -ReturnAddressPostalCode "98008" -ReturnAddressCountryOrRegion "USA" -ReturnAddressPhone "4250000000" -ReturnAddressEmail test@contoso.com -DiagnosticsPath "waimportexport" -BackupDriveManifest -DriveList $driveList
+```
+
+```output
 Location Name     Type
 -------- ----     ----
 eastus   test-job Microsoft.ImportExport/jobs
@@ -177,7 +181,7 @@ Accept wildcard characters: False
 The number of drives included in the package.
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -239,7 +243,7 @@ The drive list is a required element for an import job; it is not specified for 
 To construct, see NOTES section for DRIVELIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus[]
 Parameter Sets: (All)
 Aliases:
 
@@ -250,7 +254,52 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExportBlobListblobPath
+### -EncryptionKeyKekType
+The type of kek encryption key
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.EncryptionKekType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyKekUrl
+Specifies the url for kek encryption key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyKekVaultId
+Specifies the keyvault resource id for kek encryption key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExportBlobListBlobPath
 The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name.
 If the blob is in root container, the URI must begin with $root.
 
@@ -347,7 +396,7 @@ Accept wildcard characters: False
 Overall percentage completed for the job.
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -542,7 +591,7 @@ Accept wildcard characters: False
 The number of drives included in the package.
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -782,7 +831,7 @@ Accept wildcard characters: False
 Specifies the tags that will be assigned to the job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParametersTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -831,7 +880,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
 
 ## NOTES
 
@@ -842,7 +891,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DRIVELIST <IDriveStatus[]>: List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs.
+`DRIVELIST <IDriveStatus[]>`: List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs.
   - `[BitLockerKey <String>]`: The BitLocker key used to encrypt the drive.
   - `[BytesSucceeded <Int64?>]`: Bytes successfully transferred for the drive.
   - `[CopyStatus <String>]`: Detailed status about the data transfer process. This field is not returned in the response until the drive is in the Transferring state.
@@ -852,7 +901,7 @@ DRIVELIST <IDriveStatus[]>: List of up to ten drives that comprise the job. The 
   - `[ManifestFile <String>]`: The relative path of the manifest file on the drive. 
   - `[ManifestHash <String>]`: The Base16-encoded MD5 hash of the manifest file on the drive.
   - `[ManifestUri <String>]`: A URI that points to the blob containing the drive manifest file. 
-  - `[PercentComplete <Int32?>]`: Percentage completed for the drive. 
+  - `[PercentComplete <Int64?>]`: Percentage completed for the drive. 
   - `[State <DriveState?>]`: The drive's current state. 
   - `[VerboseLogUri <String>]`: A URI that points to the blob containing the verbose log for the data transfer operation. 
 

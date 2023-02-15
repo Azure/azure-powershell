@@ -20,18 +20,10 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class InstancePoolCrudTests : SqlTestsBase
+    public class InstancePoolCrudTests : SqlTestRunner
     {
         public InstancePoolCrudTests(ITestOutputHelper output) : base(output)
         {
-        }
-
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
         }
 
         #region Instance pool
@@ -43,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateInstancePool()
         {
-            RunPowerShellTest("Test-CreateInstancePool");
+            TestRunner.RunTestScript("Test-CreateInstancePool");
         }
 
         /// <summary>
@@ -53,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateInstancePool()
         {
-            RunPowerShellTest("Test-UpdateInstancePool");
+            TestRunner.RunTestScript("Test-UpdateInstancePool");
         }
 
         /// <summary>
@@ -63,14 +55,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInstancePool()
         {
-            RunPowerShellTest("Test-GetInstancePool");
+            TestRunner.RunTestScript("Test-GetInstancePool");
         }
 
         [Fact(Skip = "Skip due to long setup time for managed instance pool")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveInstancePool()
         {
-            RunPowerShellTest("Test-RemoveInstancePool");
+            TestRunner.RunTestScript("Test-RemoveInstancePool");
         }
 
         #endregion
@@ -84,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedInstanceInInstancePool()
         {
-            RunPowerShellTest("Test-CreateManagedInstanceInInstancePool");
+            TestRunner.RunTestScript("Test-CreateManagedInstanceInInstancePool");
         }
 
         /// <summary>
@@ -94,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedInstanceInInstancePool()
         {
-            RunPowerShellTest("Test-GetManagedInstanceInInstancePool");
+            TestRunner.RunTestScript("Test-GetManagedInstanceInInstancePool");
         }
 
         /// <summary>
@@ -104,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateManagedInstanceInInstancePool()
         {
-            RunPowerShellTest("Test-UpdateManagedInstanceInInstancePool");
+            TestRunner.RunTestScript("Test-UpdateManagedInstanceInInstancePool");
         }
 
         /// <summary>
@@ -114,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteManagedInstanceInInstancePool()
         {
-            RunPowerShellTest("Test-DeleteManagedInstanceInInstancePool");
+            TestRunner.RunTestScript("Test-DeleteManagedInstanceInInstancePool");
         }
 
         #endregion
@@ -128,7 +120,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInstancePoolUsage()
         {
-            RunPowerShellTest("Test-GetInstancePoolUsage");
+            TestRunner.RunTestScript("Test-GetInstancePoolUsage");
         }
 
         #endregion

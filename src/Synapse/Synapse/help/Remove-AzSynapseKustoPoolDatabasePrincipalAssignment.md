@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldatabaseprincipalassignment
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldatabaseprincipalassignment
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ Deletes a Kusto pool principalAssignment.
 
 ### Example 1: Delete an existing Kusto database PrincipalAssignment by name
 ```powershell
-PS C:\> Remove-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -DatabaseName mykustodatabase -PrincipalAssignmentName kustoprincipal1
+Remove-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -DatabaseName mykustodatabase -PrincipalAssignmentName kustoprincipal1
 ```
 
 The above command deletes the PrincipalAssignment named "kustoprincipal1" in the Kusto database "mykustodatabase" in workspace "testws" found in resource group "testrg".
@@ -258,7 +258,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
+INPUTOBJECT `<ISynapseIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[DataConnectionName <String>]`: The name of the data connection.
   - `[DatabaseName <String>]`: The name of the database in the Kusto pool.

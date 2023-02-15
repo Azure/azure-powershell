@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.elastic/new-azelastictagrule
+online version: https://learn.microsoft.com/powershell/module/az.elastic/new-azelastictagrule
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create or update a tag rule set for a given monitor resource.
 
 ### Example 1: Create or update a tag rule set for a given monitor resource
 ```powershell
-PS C:\> New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
+New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
+```
 
+```output
 Name    ProvisioningState ResourceGroupName
 ----    ----------------- -----------------
 default Succeeded         azps-elastic-test

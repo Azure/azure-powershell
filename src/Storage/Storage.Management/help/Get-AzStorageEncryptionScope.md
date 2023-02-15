@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageencryptionscope
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageencryptionscope
 schema: 2.0.0
 ---
 
@@ -15,13 +15,15 @@ Get or list encryption scopes from a Storage account.
 ### AccountName (Default)
 ```
 Get-AzStorageEncryptionScope [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-EncryptionScopeName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EncryptionScopeName <String>] [-MaxPageSize <Int32>] [-Filter <String>] [-Include <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Get-AzStorageEncryptionScope -StorageAccount <PSStorageAccount> [-EncryptionScopeName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MaxPageSize <Int32>] [-Filter <String>] [-Include <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,9 +32,10 @@ The **Get-AzStorageEncryptionScope** cmdlet gets or lists encryption scopes from
 ## EXAMPLES
 
 ### Example 1: Get a single encryption scope
+```powershell
+Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName $scopename
 ```
-PS C:\> Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName $scopename
-
+```output
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -44,6 +47,7 @@ testscope Disabled Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/k
 This command gets a single encryption scope.
 
 ### Example 2: List all encryption scopes of a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" 
 
@@ -57,6 +61,38 @@ scope2    Enabled  Microsoft.Storage
 ```
 
 This command lists all encryption scopes of a Storage account.
+
+### Example 3: List all enabled encryption scopes of a Storage account with a max page size of 10 for each request
+```powershell
+Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -MaxPageSize 10 -Include Enabled
+```
+
+```output
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name      State    Source             KeyVaultKeyUri                                         
+----      -----    ------             --------------                                         
+scope1    Enabled  Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname
+scope2    Enabled  Microsoft.Storage
+```
+This command lists all enabled encryption scopes of a Storage account, with a max page size of 10 encryption scopes included in each list response. 
+If there are more than 10 encryption scopes to be listed, the command will still list all the encryption scopes, but with multiple requests sent and responses received.
+
+### Example 4: List all disabled encryption scopes with names starting with "test" of a Storage account 
+```powershell
+Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Include Disabled -Filter "startswith(name, test)"
+```
+
+```output
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name          State      Source             KeyVaultKeyUri                                         
+----          -----      ------             --------------                                         
+testscope1    Disabled   Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname
+testscope2    Disabled   Microsoft.Storage
+```
+This command lists all disabled encryption scopes with names starting with "test" of a Storage account. 
+The parameter "Filter" specifies the prefix of the encryption scopes listed, and it should be in format of "startswith(name, {prefixValue})".
 
 ## PARAMETERS
 
@@ -82,6 +118,52 @@ Azure Storage EncryptionScope name
 Type: System.String
 Parameter Sets: (All)
 Aliases: Name
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+The filter of encryption scope name. When specified, only encryption scope names starting with the filter will be listed.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Include
+The filter of encryption scope name. When specified, only encryption scope names starting with the filter will be listed.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: All, Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxPageSize
+The maximum number of encryption scopes that will be included in the list response
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -136,7 +218,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

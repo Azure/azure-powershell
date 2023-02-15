@@ -20,11 +20,11 @@ Deletes a server firewall rule.
 .Description
 Deletes a server firewall rule.
 .Example
-PS C:\> Remove-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+ Remove-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
-PS C:\> Remove-AzPostgreSqlFirewallRule -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+ Remove-AzPostgreSqlFirewallRule -InputObject $ID
  
 
 .Inputs
@@ -48,7 +48,7 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlfirewallrule
+https://learn.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlfirewallrule
 #>
 function Remove-AzPostgreSqlFirewallRule {
 [OutputType([System.Boolean])]

@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/Remove-AzDataMigrationProject
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Remove-AzDataMigrationProject
 schema: 2.0.0
 ---
 
 # Remove-AzDataMigrationProject
 
 ## SYNOPSIS
-Removes an Azure Database Migration Service project from Azure.
+Removes an Azure Database Migration Service (classic) project from Azure.
 
 ## SYNTAX
 
@@ -32,23 +32,23 @@ Remove-AzDataMigrationProject [-ResourceId] <String> [-Force] [-DeleteRunningTas
 ```
 
 ## DESCRIPTION
-The Remove-AzDataMigrationProject cmdlet removes an Azure Database Migration Service project from Azure. Supplying the DeleteRunningTask parameter removes all of the Azure Database Migration Service tasks associated with the project that is being removed. 
+The Remove-AzDataMigrationProject cmdlet removes an Azure Database Migration Service (classic) project from Azure. Supplying the DeleteRunningTask parameter removes all of the Azure Database Migration Service (classic) tasks associated with the project that is being removed. 
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzDataMigrationProject -ResourceGroupName myResourceGroup -ServiceName myDMService -ProjectName myDMProject
+```powershell
+Remove-AzDataMigrationProject -ResourceGroupName myResourceGroup -ServiceName myDMService -ProjectName myDMProject
 ```
 
-The above example removes the Azure Database Migration Service project called myDMProject from Azure based on name as input parameter
+The above example removes the Azure Database Migration Service (classic) project called myDMProject from Azure based on name as input parameter
 
 ### Example 2
-```
-PS C:\> Remove-AzDataMigrationProject -InputObject $myDMSProject
+```powershell
+Remove-AzDataMigrationProject -InputObject $myDMSProject
 ```
 
-The above example removes the Azure Database Migration Service project based on PSProject object as input parameter.
+The above example removes the Azure Database Migration Service (classic) project based on PSProject object as input parameter.
 
 ## PARAMETERS
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Database Migration Service Name.
+Azure Database Migration Service (classic) Name.
 
 ```yaml
 Type: System.String
@@ -220,7 +220,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

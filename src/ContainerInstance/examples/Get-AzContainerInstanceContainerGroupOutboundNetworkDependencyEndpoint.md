@@ -1,7 +1,9 @@
 ### Example 1: Get a list of the outbound network dependencies
 ```powershell
-PS C:\> Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint -ResourceGroupName test-rg -ContainerGroupName test-cg
+Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint -ResourceGroupName test-rg -ContainerGroupName test-cg
+```
 
+```output
 []
 ```
 

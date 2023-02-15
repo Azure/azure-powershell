@@ -79,13 +79,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         writer.WriteLine(keypair.PrivateKey);
                     }
-                    Console.WriteLine("Private key is saved to " + privateKeyFilePath);
+                    WriteWarning("Private key is saved to " + privateKeyFilePath);
                     
                     using (StreamWriter writer = new StreamWriter(publicKeyFilePath))
                     {
                         writer.WriteLine(keypair.PublicKey);
                     }
-                    Console.WriteLine("Public key is saved to " + publicKeyFilePath);
+                    WriteWarning("Public key is saved to " + publicKeyFilePath);
                 }
 
                 var psObject = new PSSshPublicKeyResource();

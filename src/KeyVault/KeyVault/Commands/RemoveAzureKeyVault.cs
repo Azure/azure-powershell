@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
 
         public override void ExecuteCmdlet()
-        {
+      {
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName;

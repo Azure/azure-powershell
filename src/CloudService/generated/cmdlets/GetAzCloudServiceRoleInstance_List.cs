@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Gets the list of all role instances in a cloud service. Use nextLink property in the response to get the next page of
@@ -34,6 +35,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -68,12 +75,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         /// <summary>Backing field for <see cref="Expand" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes _expand;
 
-        /// <summary>The expand expression to apply to the operation.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The expand expression to apply to the operation.")]
+        /// <summary>
+        /// The expand expression to apply to the operation. 'UserData' is not supported for cloud services.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The expand expression to apply to the operation. 'UserData' is not supported for cloud services.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The expand expression to apply to the operation.",
+        Description = @"The expand expression to apply to the operation. 'UserData' is not supported for cloud services.",
         SerializedName = @"$expand",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.ParameterCategory.Query)]
@@ -413,13 +422,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
                 // pageable / value / nextLink
                 var result = await response;
                 WriteObject(result.Value,true);
-                if (result.NextLink != null)
+                _nextLink = result.NextLink;
+                if (_isFirst)
                 {
-                    if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                    _isFirst = false;
+                    while (_nextLink != null)
                     {
-                        requestMessage = requestMessage.Clone(new global::System.Uri( result.NextLink ),Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Method.Get );
-                        await ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.CloudServiceRoleInstancesList_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.CloudServiceRoleInstancesList_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
                     }
                 }
             }

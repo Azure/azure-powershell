@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsesqlauditsetting
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsesqlauditsetting
 schema: 2.0.0
 ---
 
@@ -37,14 +37,14 @@ The **Get-AzSynapseSqlAuditSetting** cmdlet gets the auditing settings of an Azu
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlAuditSetting -WorkspaceName ContosoWorkspace
+Get-AzSynapseSqlAuditSetting -WorkspaceName ContosoWorkspace
 ```
 
 Gets the auditing settings of a workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace | Get-AzSynapseSqlAuditSetting
+Get-AzSynapseWorkspace -Name ContosoWorkspace | Get-AzSynapseSqlAuditSetting
 ```
 
 Gets the auditing settings of a workspace named ContosoWorkspace through pipeline.

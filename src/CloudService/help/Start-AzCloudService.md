@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/start-azcloudservice
+online version: https://learn.microsoft.com/powershell/module/az.cloudservice/start-azcloudservice
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Starts the cloud service.
 
 ### Example 1: Start cloud service
 ```powershell
-PS C:\> Start-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+Start-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 ```
 
 This command starts all the role instances that belong to the the cloud service named ContosoCS.
@@ -211,12 +211,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
+INPUTOBJECT `<ICloudServiceIdentity>`: Identity Parameter
   - `[CloudServiceName <String>]`: 
+  - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
+  - `[PublicIPAddressName <String>]`: The name of the public IP Address.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

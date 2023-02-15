@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 4B7ACEC8-29BB-4791-8087-801300F246B4
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupmanagementserver
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupmanagementserver
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 ## EXAMPLES
 
 ### Example 1: Get all Backup management servers
-```
-PS C:\>Get-AzRecoveryServicesBackupManagementServer
+```powershell
+Get-AzRecoveryServicesBackupManagementServer
 ```
 
 This command gets all Backup management servers registered with the vault.

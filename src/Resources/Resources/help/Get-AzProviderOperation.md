@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6424B740-DBFB-490C-AEAA-EDD60952B435
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azprovideroperation
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azprovideroperation
 schema: 2.0.0
 ---
 
@@ -29,17 +29,17 @@ Use Get-AzProviderOperation Microsoft.Compute/* to get all operations of Microso
 
 ### Example 1: Get all actions for all providers
 ```powershell
-PS C:\> Get-AzProviderOperation *
+Get-AzProviderOperation *
 ```
 
 ### Example 2: Get actions for a particular resource provider
 ```powershell
-PS C:\> Get-AzProviderOperation Microsoft.Insights/*
+Get-AzProviderOperation Microsoft.Insights/*
 ```
 
 ### Example 3: Get all actions that can be performed on virtual machines
 ```powershell
-PS C:\> Get-AzProviderOperation */virtualMachines/*
+Get-AzProviderOperation */virtualMachines/*
 ```
 
 ## PARAMETERS

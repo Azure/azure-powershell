@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesasrfabric
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesasrfabric
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Remove-AzRecoveryServicesAsrFabric** cmdlet removes the specified Azure Si
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Remove-AzRecoveryServicesAsrFabric -Fabric $Fabric
+```powershell
+$currentJob = Remove-AzRecoveryServicesAsrFabric -Fabric $Fabric
 ```
 
 Starts the deletion of specified fabric and returns the ASR job used to track the operation.

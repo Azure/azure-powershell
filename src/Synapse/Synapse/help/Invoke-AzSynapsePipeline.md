@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/invoke-azsynapsepipeline
+online version: https://learn.microsoft.com/powershell/module/az.synapse/invoke-azsynapsepipeline
 schema: 2.0.0
 ---
 
@@ -40,23 +40,23 @@ The **Invoke-AzSynapsePipeline** command starts a run on the specified pipeline 
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzSynapsePipeline -WorkspaceName ContosoWorkspace -PipelineName ContosoPipeline
+Invoke-AzSynapsePipeline -WorkspaceName ContosoWorkspace -PipelineName ContosoPipeline
 ```
 
 This command starts a run for pipeline called ContosoPipeline in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Invoke-AzSynapsePipeline -PipelineName ContosoPipeline
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Invoke-AzSynapsePipeline -PipelineName ContosoPipeline
 ```
 
 This command starts a run for pipeline called ContosoPipeline in the workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $pipeline = Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
-PS C:\> $pipeline | Invoke-AzSynapsePipeline
+$pipeline = Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
+$pipeline | Invoke-AzSynapsePipeline
 ```
 
 This command starts a run for pipeline called ContosoPipeline in the workspace ContosoWorkspace through pipeline.

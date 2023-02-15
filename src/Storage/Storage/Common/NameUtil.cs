@@ -67,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Is valid container name <see cref="http://msdn.microsoft.com/en-us/library/windowsazure/dd135715.aspx"/>
+        /// Is valid container name <see href="http://msdn.microsoft.com/en-us/library/windowsazure/dd135715.aspx"/>
         /// </summary>
         /// <param name="containerName">Container name</param>
         /// <returns>True for valid container name, otherwise return false</returns>
@@ -116,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Is valid blob name <see cref="http://msdn.microsoft.com/en-us/library/windowsazure/dd135715.aspx"/>
+        /// Is valid blob name <see href="http://msdn.microsoft.com/en-us/library/windowsazure/dd135715.aspx"/>
         /// </summary>
         /// <param name="blobName">Blob name</param>
         /// <returns>True for valid blob name, otherwise return false</returns>
@@ -136,9 +136,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Is valid blob prefix <see cref="http://msdn.microsoft.com/en-us/library/windowsazure/dd135715.aspx"/>
+        /// Is valid blob prefix <see href="http://msdn.microsoft.com/en-us/library/windowsazure/dd135715.aspx"/>
         /// </summary>
-        /// <param name="blobName">Blob name</param>
+        /// <param name="blobPrefix">Blob name</param>
         /// <returns>True for valid blob name, otherwise return false</returns>
         public static bool IsValidBlobPrefix(string blobPrefix)
         {
@@ -147,7 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
 
         /// <summary>
-        /// Is valid table name <see cref="http://msdn.microsoft.com/en-us/library/windowsazure/dd179338.aspx"/>
+        /// Is valid table name <see href="http://msdn.microsoft.com/en-us/library/windowsazure/dd179338.aspx"/>
         /// </summary>
         /// <param name="tableName">Table name</param>
         /// <returns>True for valid table name, otherwise return false</returns>
@@ -183,7 +183,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
 
         /// <summary>
-        /// Is valid queue name <see cref="http://msdn.microsoft.com/en-us/library/windowsazure/dd179349.aspx"/>
+        /// Is valid queue name <see href="http://msdn.microsoft.com/en-us/library/windowsazure/dd179349.aspx"/>
         /// </summary>
         /// <param name="queueName">Queue name</param>
         /// <returns>True for valid queue name, otherwise return false</returns>
@@ -263,6 +263,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// convert blob name into valid file name
         /// </summary>
         /// <param name="blobName">blob name</param>
+        /// <param name="snapshotTime">blob snapshot time</param>
         /// <returns>valid file name</returns>
         public static string ConvertBlobNameToFileName(string blobName, DateTimeOffset? snapshotTime)
         {

@@ -1,8 +1,10 @@
 ### Example 1: Get all cloud service under a resource group
 
 ```powershell
-PS C:\> Get-AzCloudService -ResourceGroupName "ContosOrg"
+Get-AzCloudService -ResourceGroupName "ContosOrg"
+```
 
+```output
 ResourceGroupName Name              Location    ProvisioningState
 ----------------- ----              --------    -----------------
 ContosOrg         ContosoCS         eastus2euap Succeeded
@@ -14,14 +16,14 @@ This command gets all cloud services in resource group named ContosOrg
 ### Example 2: Get cloud service
 
 ```powershell
-PS C:\> Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 
 ResourceGroupName Name              Location    ProvisioningState
 ----------------- ----              --------    -----------------
 ContosOrg         ContosoCS         eastus2euap Succeeded
 
-PS C:\> $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
-PS C:\> $cloudService | Format-List
+$cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService | Format-List
 ResourceGroupName : ContosOrg
 Configuration     : xxxxxxxx
 ConfigurationUrl  :

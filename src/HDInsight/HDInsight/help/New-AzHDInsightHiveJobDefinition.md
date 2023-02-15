@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 580D3388-4E18-4E67-866F-1FCF5E54AB3A
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsighthivejobdefinition
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/new-azhdinsighthivejobdefinition
 schema: 2.0.0
 ---
 
@@ -25,16 +25,16 @@ The **New-AzHDInsightHiveJobDefinition** cmdlet defines a Hive job object for us
 ## EXAMPLES
 
 ### Example 1: Create a Hive job definition
-```
-PS C:\># Cluster info
-PS C:\>$clusterName = "your-hadoop-001"
-PS C:\>$clusterCreds = Get-Credential
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
 # Hive job details
-PS C:\>$statusFolder = "<status folder>"        
-PS C:\>$query = "SHOW TABLES"
+$statusFolder = "<status folder>"        
+$query = "SHOW TABLES"
 
-PS C:\>New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
+New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
             -Query $query `
         | Start-AzHDInsightJob `
             -ClusterName $clusterName `

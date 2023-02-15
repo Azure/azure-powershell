@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationsourcecontrol
+online version: https://learn.microsoft.com/powershell/module/az.automation/remove-azautomationsourcecontrol
 schema: 2.0.0
 ---
 
@@ -25,13 +25,11 @@ The Remove-AzAutomationSourceControl cmdlet removes a source control from Azure 
 
 ### Example 1
 This command removes the Automation source control named VSTSNative in the account named devAccount.
-This command specifies the *Force* parameter. Therefore, it does not prompt you for confirmation.
 
 ```powershell
-PS C:\> Remove-AzAutomationSourceControl -ResourceGroupName "rg1" `
+Remove-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                               -AutomationAccountName "devAccount" `
-                                              -Name "VSTSNative" `
-                                              -Force
+                                              -Name "VSTSNative"
 ```
 
 ## PARAMETERS
@@ -144,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

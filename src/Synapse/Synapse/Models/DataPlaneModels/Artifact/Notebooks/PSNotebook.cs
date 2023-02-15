@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.SessionProperties = new PSNotebookSessionProperties(notebook?.SessionProperties);
             this.Metadata = new PSNotebookMetadata(notebook?.Metadata);
             this.Folder = new PSNotebookFolder(notebook?.Folder);
-            this.NotebookFormat = notebook?.Nbformat;
-            this.NotebookFormatMinor = notebook?.NbformatMinor;
+            this.NotebookFormat = notebook?.NotebookFormat;
+            this.NotebookFormatMinor = notebook?.NotebookFormatMinor;
             this.Cells = notebook?.Cells?.Select(element => new PSNotebookCell(element)).ToList();
             this.AdditionalProperties = notebook?.AdditionalProperties;
         }

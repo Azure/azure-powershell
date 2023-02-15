@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 05626BF7-F886-4C76-8FC2-DDF783DEB539
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvpnclientrevokedcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvpnclientrevokedcertificate
 schema: 2.0.0
 ---
 
@@ -27,15 +27,15 @@ Client-revocation certificates prevent client computers from using the specified
 ## EXAMPLES
 
 ### Example 1: Get information about all client-revocation certificates
-```
-PS C:\>Get-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup"
+```powershell
+Get-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup"
 ```
 
 This command gets information about all the client-revocation certificates associated with the virtual network gateway named ContosoVirtualNetworkGateway.
 
 ### Example 2: Get information about specific client-revocation certificates
-```
-PS C:\>Get-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate"
+```powershell
+Get-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate"
 ```
 
 This command is a variation of the command shown in Example 1.

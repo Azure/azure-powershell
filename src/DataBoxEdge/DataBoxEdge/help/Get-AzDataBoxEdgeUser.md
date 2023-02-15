@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/get-azdataboxedgeuser
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/get-azdataboxedgeuser
 schema: 2.0.0
 ---
 
@@ -42,7 +42,10 @@ The **Get-AzDataBoxEdgeUser** cmdlet lists the users configured for a Data Box E
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzDataBoxEdgeUser -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 User name  Type  ResourceGroupName DeviceName
 ---------  ----  ----------------- ----------
 deviceName Share resourceGroupName deviceName

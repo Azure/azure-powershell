@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworktap
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azvirtualnetworktap
 schema: 2.0.0
 ---
 
@@ -23,10 +23,10 @@ The **Set-AzVirtualNetworkTap** cmdlet updates a virtual network tap.
 ## EXAMPLES
 
 ### Example 1: Configure a Virtual network tap
-```
-PS C:\>$vTap = Get-AzVirtualNetworkTap -ResourceGroupName "ResourceGroup1" -Name "VirtualTap1"
-PS C:\>$vTap.DestinationNetworkInterfaceIPConfiguration = $newDestinationNic.IpConfigurations[0]
-PS C:\>Set-AzVirtualNetworkTap -VirtualNetworkTap $vTap
+```powershell
+$vTap = Get-AzVirtualNetworkTap -ResourceGroupName "ResourceGroup1" -Name "VirtualTap1"
+$vTap.DestinationNetworkInterfaceIPConfiguration = $newDestinationNic.IpConfigurations[0]
+Set-AzVirtualNetworkTap -VirtualNetworkTap $vTap
 ```
 
 The command updates the Destination IpConfiguration and updates the Virtual network tap.

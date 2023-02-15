@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: A4226BFB-AB3B-4883-9D52-5EB7F29D8A71
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementregion
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementregion
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Creates an instance of PsApiManagementRegion.
 ```
 New-AzApiManagementRegion -Location <String> [-Capacity <Int32>]
  [-VirtualNetwork <PsApiManagementVirtualNetwork>] [-Zone <String[]>] [-DisableGateway <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PublicIpAddressId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ This command is to be used with New-AzApiManagement command.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 $apimRegion = New-AzApiManagementRegion -Location "Central US" 
 
 $additionalRegions = @($apimRegion)
@@ -35,14 +35,14 @@ New-AzApiManagement -ResourceGroupName ContosoGroup -Location "West US" -Name Co
 ```
 
 ### Example 2
-```
-$apimRegionVirtualNetwork = New-AzApiManagementVirtualNetwork -Location "Central US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/centralusvirtualNetwork/subnets/backendSubnet"
+```powershell
+$apimRegionVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/centralusvirtualNetwork/subnets/backendSubnet"
 
 $apimRegion = New-AzApiManagementRegion -Location "Central US" -VirtualNetwork $apimRegionVirtualNetwork 
 
 $additionalRegions = @($apimRegion)
 
-$virtualNetwork = New-AzApiManagementVirtualNetwork -Location "West US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc2-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet"
+$virtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId "/subscriptions/a8ff56dc-3bc2-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet"
 
 New-AzApiManagement -ResourceGroupName ContosoGroup -Location "West US" -Name ContosoApi -Organization Contoso -AdminEmail admin@contoso.com -AdditionalRegions $additionalRegions -VirtualNetwork $virtualNetwork -VpnType "External" -Sku "Premium"
 ```
@@ -109,6 +109,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressId
+Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/set-Azsqlelasticjobcredential
+online version: https://learn.microsoft.com/powershell/module/Az.sql/set-Azsqlelasticjobcredential
 schema: 2.0.0
 ---
 
@@ -37,10 +37,12 @@ The Set-AzSqlElasticJobCredential cmdlet updates a job credential
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $cred = Get-AzSqlElasticJobCredential -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -Name cred1
+```powershell
+$cred = Get-AzSqlElasticJobCredential -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -Name cred1
 $cred | Set-AzSqlElasticJobCredential -Name cred1 -Credential (Get-Credential)
+```
 
+```output
 CredentialName UserName
 -------------- --------
 cred1          user2

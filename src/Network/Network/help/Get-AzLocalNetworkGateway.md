@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F8756DA1-7BB9-4CD5-9D81-E11FF7A26125
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azlocalnetworkgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azlocalnetworkgateway
 schema: 2.0.0
 ---
 
@@ -27,7 +27,9 @@ The **Get-AzLocalNetworkGateway** cmdlet returns the object representing your on
 ### Example 1: Get a Local Network Gateway
 ```powershell
 Get-AzLocalNetworkGateway -Name myLocalGW1 -ResourceGroupName myRG
+```
 
+```output
 Name                     : myLocalGW1
 ResourceGroupName        : myRG
 Location                 : eastus
@@ -49,7 +51,9 @@ Returns the object of the Local Network Gateway with the name "myLocalGW1" withi
 ### Example 2: Get Local Network Gateways using filtering
 ```powershell
 Get-AzLocalNetworkGateway -Name myLocalGW* -ResourceGroupName myRG
+```
 
+```output
 Name                     : myLocalGW1
 ResourceGroupName        : myRG
 Location                 : eastus

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorhealthprobesettingobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorhealthprobesettingobject
 schema: 2.0.0
 ---
 
@@ -25,9 +25,10 @@ Create a PSHealthProbeSetting object for Front Door creation
 
 ### Example 1
 ```powershell
-PS C:\>  New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1"
+New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1"
+```
 
-
+```output
 Path              : /
 Protocol          : Http
 IntervalInSeconds : 30

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 9BE2E42C-594B-4B67-866C-BBA3B84AA5FD
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmssadditionalunattendcontent
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmssadditionalunattendcontent
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Add-AzVmssAdditionalUnattendContent** cmdlet adds information to the unatt
 ## EXAMPLES
 
 ### Example 1: Add information to the unattended Windows Setup answer file
-```
-PS C:\> Add-AzVmssAdditionalUnattendContent -VirtualMachineScaleSet $VMSS -ComponentName  $AUCComponentName -Content  $AUCContent -PassName $AUCPassName -SettingName  $AUCSetting
+```powershell
+Add-AzVmssAdditionalUnattendContent -VirtualMachineScaleSet $VMSS -ComponentName  $AUCComponentName -Content  $AUCContent -PassName $AUCPassName -SettingName  $AUCSetting
 ```
 
 This command adds information to the unattended Windows Setup answer file.

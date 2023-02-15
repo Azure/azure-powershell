@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CustomProviders
-online version: https://docs.microsoft.com/powershell/module/az.customproviders/remove-azcustomproviderassociation
+online version: https://learn.microsoft.com/powershell/module/az.customproviders/remove-azcustomproviderassociation
 schema: 2.0.0
 ---
 
@@ -31,15 +31,17 @@ Delete an association.
 
 ### Example 1: Remove a custom provider association.
 ```powershell
-PS C:\> PS C:\> Remove-AzCustomProviderAssociation -Scope $id -Name Namespace.Type
+Remove-AzCustomProviderAssociation -Scope $id -Name Namespace.Type
 ```
 
 Remove a custom provider association.
 
 ### Example 2: Remove a custom provider association with Piping
 ```powershell
-PS C:\> PS C:\> Get-AzCustomProviderAssociation | Remove-AzCustomProviderAssociation -PassThru
+Get-AzCustomProviderAssociation | Remove-AzCustomProviderAssociation -PassThru
+```
 
+```output
 True
 ```
 
@@ -204,7 +206,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
+INPUTOBJECT `<ICustomProvidersIdentity>`: Identity Parameter
   - `[AssociationName <String>]`: The name of the association.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.

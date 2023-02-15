@@ -297,6 +297,7 @@ function Test-CreateNewWebAppSlot
 	$planName = Get-WebHostPlanName
 	$tier = "Standard"
 	$resourceType = "Microsoft.Web/sites"
+	$tag= @{"TagKey" = "TagValue"}
 	try
 	{
 		#Setup
@@ -318,7 +319,7 @@ function Test-CreateNewWebAppSlot
 		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
 
 		# Create deployment slot
-		$job = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AsJob
+		$job = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Tag $tag -AsJob
 		$job | Wait-Job
 		$slot1 = $job | Receive-Job
 
@@ -327,6 +328,8 @@ function Test-CreateNewWebAppSlot
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot1.Name
 		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
+		Assert-AreEqual $tag.Keys $slot1.Tags.Keys
+        	Assert-AreEqual $tag.Values $slot1.Tags.Values
 	}
 	finally
 	{
@@ -461,6 +464,7 @@ function Test-SetWebAppSlot
 		$slot.SiteConfig.RequestTracingEnabled = $true
 		$slot.SiteConfig.FtpsState = "FtpsOnly"
 		$slot.SiteConfig.MinTlsVersion = "1.0"
+		$slot.SiteConfig.HealthCheckPath = "/api/path"
 
 		$slot = $slot | Set-AzWebAppSlot
 
@@ -471,6 +475,7 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $true $slot.SiteConfig.RequestTracingEnabled
 		Assert-AreEqual "FtpsOnly" $slot.SiteConfig.FtpsState
 		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
+		Assert-AreEqual "/api/path" $slot.SiteConfig.HealthCheckPath
 
 		# set app settings and connection strings
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
@@ -481,7 +486,7 @@ function Test-SetWebAppSlot
         # Assert
         Assert-NotNull  $slot.Identity
         Assert-AreEqual ($appSettings.Keys.Count) $slot.SiteConfig.AppSettings.Count
-		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
+		Assert-AreEqual "1.2" $slot.SiteConfig.MinTlsVersion
 
         $slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
 

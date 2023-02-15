@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/start-aznetworkwatcherconnectionmonitor
+online version: https://learn.microsoft.com/powershell/module/az.network/start-aznetworkwatcherconnectionmonitor
 schema: 2.0.0
 ---
 
@@ -48,8 +48,8 @@ The Start-AzNetworkWatcherConnectionMonitor cmdlet starts the specified connecti
 ## EXAMPLES
 
 ### Example 1: Start a connection monitor
-```
-PS C:\> Start-AzNetworkWatcherConnectionMonitor -NetworkWatcherName NetworkWatcher_centraluseuap -ResourceGroupName NetworkWatcherRG -Name cm
+```powershell
+Start-AzNetworkWatcherConnectionMonitor -NetworkWatcherName NetworkWatcher_centraluseuap -ResourceGroupName NetworkWatcherRG -Name cm
 ```
 
 In this example we start connection monitor specified by name and network watcher

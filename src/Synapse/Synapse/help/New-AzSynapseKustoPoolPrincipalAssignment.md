@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolprincipalassignment
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolprincipalassignment
 schema: 2.0.0
 ---
 
@@ -26,8 +26,10 @@ Create a Kusto pool principalAssignment.
 
 ### Example 1: Create a Kusto pool principalAssignment
 ```powershell
-PS C:\> New-AzKustoPoolPrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testnewkustopool -PrincipalAssignmentName kustoprincipal -PrincipalId "00000000-0000-0000-0000-000000000000" -PrincipalType App -Role AllDatabasesAdmin
+New-AzSynapseKustoPoolPrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testnewkustopool -PrincipalAssignmentName kustoprincipal -PrincipalId "00000000-0000-0000-0000-000000000000" -PrincipalType App -Role AllDatabasesAdmin
+```
 
+```output
 Name                                   Type
 ----                                   ----
 testws/testnewkustopool/kustoprincipal Microsoft.Synapse/workspaces/kustoPools/PrincipalAssignments

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapseintegrationruntimekey
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapseintegrationruntimekey
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The **Get-AzSynapseIntegrationRuntimeKey** cmdlet gets keys for an integration r
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseIntegrationRuntimeKey -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
+Get-AzSynapseIntegrationRuntimeKey -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
 ```
 
 The cmdlet retrieves keys for an integration runtime named 'test-selfhost-ir'.

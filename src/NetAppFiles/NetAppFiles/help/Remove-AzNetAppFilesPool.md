@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilespool
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilespool
 schema: 2.0.0
 ---
 
@@ -42,8 +42,8 @@ The **Remove-AzNetAppFilesPool** cmdlet deletes an ANF pool.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Remove-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool"
+```powershell
+Remove-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool"
 ```
 
 This command deletes the ANF pool "MyAnfPool".
@@ -219,3 +219,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesPool](./New-AzNetAppFilesPool.md)
+[Get-AzNetAppFilesPool](./Get-AzNetAppFilesPool.md)
+[Set-AzNetAppFilesPool](./Set-AzNetAppFilesPool.md)
+[Update-AzNetAppFilesPool](./Update-AzNetAppFilesPool.md)

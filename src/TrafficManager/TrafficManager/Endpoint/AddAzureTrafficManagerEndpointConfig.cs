@@ -65,9 +65,22 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.")]
+        [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string AlwaysServe { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The minimum number of endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
         [ValidateNotNullOrEmpty]
         public uint? MinChildEndpoints { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The minimum number of  IPv4 (DNS record type A) endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MinChildEndpointsIPv4 { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The minimum number of IPv6 (DNS record type AAAA) endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MinChildEndpointsIPv6 { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The list of regions mapped to this endpoint when using the ‘Geographic’ traffic routing method. Please consult Traffic Manager documentation for a full list of accepted values.")]
         [ValidateCount(1, 350)]
@@ -104,9 +117,12 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     Priority = this.Priority,
                     Location = this.EndpointLocation,
                     MinChildEndpoints = this.MinChildEndpoints,
+                    MinChildEndpointsIPv4 = this.MinChildEndpointsIPv4,
+                    MinChildEndpointsIPv6 = this.MinChildEndpointsIPv6,
                     GeoMapping = this.GeoMapping,
                     SubnetMapping = this.SubnetMapping,
                     CustomHeaders = this.CustomHeader,
+                    AlwaysServe = this.AlwaysServe
                 });
 
             this.WriteVerbose(ProjectResources.Success);

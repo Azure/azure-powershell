@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsepipeline
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsepipeline
 schema: 2.0.0
 ---
 
@@ -31,22 +31,22 @@ The **Get-AzSynapsePipeline** cmdlet gets information about pipelines in workspa
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace
+Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace
 ```
 
 This command gets information about all pipelines in the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
+Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
 ```
 
 This command gets information about the pipeline named ContosoPipeline in the workspace named ContosoWorkspace.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapsePipeline -Name ContosoPipeline
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapsePipeline -Name ContosoPipeline
 ```
 
 This command gets information about the pipeline named ContosoPipeline in the workspace named ContosoWorkspace through pipeline.

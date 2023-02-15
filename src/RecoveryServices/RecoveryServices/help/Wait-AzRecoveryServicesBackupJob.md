@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: F671A7CC-2A27-460E-B064-2FBF1B9C6A0B
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob
 schema: 2.0.0
 ---
 
@@ -32,9 +32,9 @@ Set the vault context by using the -VaultId parameter.
 ### Example 1: Wait for a job to finish
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
-PS C:\> Wait-AzRecoveryServicesBackupJob -Job $Jobs[0] -VaultId $vault.ID -Timeout 3600
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
+Wait-AzRecoveryServicesBackupJob -Job $Jobs[0] -VaultId $vault.ID -Timeout 3600
 ```
 
 This script polls the first job that is currently in progress until the job has completed or timeout period of 1 hour expired.

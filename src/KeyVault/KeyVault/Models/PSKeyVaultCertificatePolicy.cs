@@ -86,7 +86,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             var keyTypeToUse = GetDefaultKeyTypeIfNotSpecified(keyType);
             var keySizeToUse = GetDefaultKeySizeIfNotSpecified(keyTypeToUse, curve, keySize);
 
-            DnsNames = (dnsNames == null || !dnsNames.Any()) ? null : dnsNames.ToList();
+            // DnsNames could be an empty list
+            DnsNames = dnsNames?.ToList();
             KeyUsage = (keyUsages == null || !keyUsages.Any()) ? null : keyUsages.ToList();
             Ekus = (ekus == null || !ekus.Any()) ? null : ekus.ToList();
             Enabled = enabled;

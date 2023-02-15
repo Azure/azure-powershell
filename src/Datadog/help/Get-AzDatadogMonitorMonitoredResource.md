@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitormonitoredresource
+online version: https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitormonitoredresource
 schema: 2.0.0
 ---
 
@@ -24,8 +24,7 @@ List the resources currently being monitored by the Datadog monitor resource.
 
 ### Example 1: List the resources currently being monitored by the Datadog monitor resource
 ```powershell
-PS C:\> Get-AzDatadogMonitorMonitoredResource -ResourceGroupName azure-rg-Datadog -Name Datadog
-
+Get-AzDatadogMonitorMonitoredResource -ResourceGroupName azure-rg-Datadog -Name Datadog
 ```
 
 This command lists the resources currently being monitored by the Datadog monitor resource.

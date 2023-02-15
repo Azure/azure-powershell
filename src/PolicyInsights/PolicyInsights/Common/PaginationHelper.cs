@@ -32,20 +32,20 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         /// <param name="getFirstPage">A function that will request the first page</param>
         /// <param name="getNextPage">A function that will consume a nextLink and request further pages</param>
         /// <param name="action">The action to perform on each page.</param>
-        /// <param name="top">The maximum number of resource to return.</param>
+        /// <param name="numberOfResults">The maximum number of results to return.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         public static void ForEach<T>(
             Func<IPage<T>> getFirstPage, 
             Func<string, IPage<T>> getNextPage,
             Action<IEnumerable<T>> action, 
-            int top,
+            int numberOfResults,
             CancellationToken cancellationToken)
         {
             IPage<T> currentPage = null;
             int count = 0;
             while (!cancellationToken.IsCancellationRequested && 
                    (currentPage == null || !string.IsNullOrWhiteSpace(currentPage.NextPageLink)) &&
-                   count < top)
+                   count < numberOfResults)
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 currentPage = currentPage == null ? getFirstPage() : getNextPage(currentPage.NextPageLink);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
                 }
 
                 var results = currentPage.ToArray();
-                action(results.Take(top - count));
+                action(results.Take(numberOfResults - count));
                 count += results.Length;
             }
         }

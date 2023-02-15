@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.dll-Help.xml
 Module Name: Az.AnalysisServices
-online version: https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver
+online version: https://learn.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver
 schema: 2.0.0
 ---
 
@@ -43,8 +43,8 @@ The Set-AzAnalysisServicesServer cmdlet modifies an instance of Analysis Service
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Set-AzAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup" -Tag "key1:value1,key2:value2" -Administrator "testuser1@contoso.com"
+```powershell
+Set-AzAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup" -Tag @{key1 = "value1"; key2 ="value2"} -Administrator "testuser1@contoso.com"
 ```
 
 Modifies the server named testserver in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com

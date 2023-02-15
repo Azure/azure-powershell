@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Queue management constructor
         /// </summary>
-        /// <param name="client">Cloud queue client</param>
+        /// <param name="context">Cloud queue client</param>
         public StorageQueueManagement(AzureStorageContext context)
         {
             internalStorageContext = context;
@@ -202,7 +202,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Get queue permission
         /// </summary>
-        /// <param name="options">Queue request options </param>
+        /// <param name="queue">Cloud queue object</param>
+        /// <param name="options">Queue request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>QueuePermissions object</returns>
         public QueuePermissions GetPermissions(CloudQueue queue, QueueRequestOptions options, OperationContext operationContext)

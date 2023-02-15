@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapselinkedserviceencryptedcredential
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapselinkedserviceencryptedcredential
 schema: 2.0.0
 ---
 
@@ -37,15 +37,15 @@ Please ensure the following prerequisites are met:
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseLinkedServiceEncryptedCredential -WorkspaceName ContosoWorkspace -ResourceGroupName ContosoRG -IntegrationRuntimeName "IR-LSEncryptedCredential" -DefinitionFile "D:\sqlLinkService.json" > "D:\SynapseEncryptedSQLServerLinkedService.json"
+New-AzSynapseLinkedServiceEncryptedCredential -WorkspaceName ContosoWorkspace -ResourceGroupName ContosoRG -IntegrationRuntimeName "IR-LSEncryptedCredential" -DefinitionFile "D:\sqlLinkService.json" > "D:\SynapseEncryptedSQLServerLinkedService.json"
 ```
 
 This command encrypts credential in file D:\SynapseEncryptedSQLServerLinkedService.json with the integration runtime named IR-LSEncryptedCredential.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | New-AzSynapseLinkedServiceEncryptedCredential -IntegrationRuntimeName "IR-LSEncryptedCredential" -DefinitionFile "D:\sqlLinkService.json" > "D:\SynapseEncryptedSQLServerLinkedService.json"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | New-AzSynapseLinkedServiceEncryptedCredential -IntegrationRuntimeName "IR-LSEncryptedCredential" -DefinitionFile "D:\sqlLinkService.json" > "D:\SynapseEncryptedSQLServerLinkedService.json"
 ```
 
 This command encrypts credential in file D:\SynapseEncryptedSQLServerLinkedService.json with the integration runtime named IR-LSEncryptedCredential through pipeline.

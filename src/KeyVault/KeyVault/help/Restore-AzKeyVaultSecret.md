@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 70DB088D-4AF5-406B-8D66-118A0F766041
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultsecret
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -44,8 +44,10 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up secret
 ```powershell
-PS C:\> Restore-AzKeyVaultSecret -VaultName 'contoso' -InputFile "C:\Backup.blob"
+Restore-AzKeyVaultSecret -VaultName 'contoso' -InputFile "C:\Backup.blob"
+```
 
+```output
 Vault Name   : contoso
 Name         : secret1
 Version      : 7128133570f84a71b48d7d0550deb74c

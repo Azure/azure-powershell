@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://docs.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsinstance
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsinstance
 schema: 2.0.0
 ---
 
@@ -40,52 +40,45 @@ Get DigitalTwinsInstances resource.
 
 ## EXAMPLES
 
-### Example 1: List (Default)
+### Example 1: List DigitalTwinsInstances resource.
 ```powershell
-PS C:\> Get-AzDigitalTwinsInstance
-
-Location Name                    Type
--------- ----                    ----
-eastus   youriDigitalTwinsTest   Microsoft.DigitalTwins/digitalTwinsInstances
-eastus   youriDigitalTwin        Microsoft.DigitalTwins/digitalTwinsInstances
+Get-AzDigitalTwinsInstance
 ```
 
-Get all the DigitalTwinsInstance by default
-
-### Example 2: Get
-```powershell
-PS C:\> Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwin
-
-Location Name             Type
--------- ----             ----
-eastus   youriDigitalTwin Microsoft.DigitalTwins/digitalTwinsInstances
+```output
+Name                      Location ResourceGroupName
+----                      -------- -----------------
+azps-dt                   eastus   azps_test_group
+azps-digitaltwin-instance eastus   azps_test_group
 ```
 
-Get the specified AzDigitalTwinsInstance by ResourceName
+List DigitalTwinsInstances resource.
 
-### Example 3: GetViaIdentity
+### Example 2: Get DigitalTwinsInstances resource by ResourceGroup.
 ```powershell
-PS C:\> $NewAzDigital = New-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwin -Location eastus
-Get-AzDigitalTwinsInstance -inputObject $NewAzDigital
-
-Location Name             Type
--------- ----             ----
-eastus   youriDigitalTwin Microsoft.DigitalTwins/digitalTwinsInstances
+Get-AzDigitalTwinsInstance -ResourceGroupName azps_test_group
 ```
 
-Get the specified AzDigitalTwinsInstance by Object
-
-### Example 4: List1
-```powershell
-PS C:\> Get-AzDigitalTwinsInstance -ResourceGroupName youritemp
-
-Location Name                    Type
--------- ----                    ----
-eastus   youriDigitalTwinsTest   Microsoft.DigitalTwins/digitalTwinsInstances
-eastus   youriDigitalTwin        Microsoft.DigitalTwins/digitalTwinsInstances
+```output
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
 ```
 
-Get all the DigitalTwinsInstance by ResourceGroupName
+Get DigitalTwinsInstances resource by ResourceGroup.
+
+### Example 3: Get DigitalTwinsInstances resource by Instance Name.
+```powershell
+Get-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+```
+
+```output
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
+```
+
+Get DigitalTwinsInstances resource by Instance Name.
 
 ## PARAMETERS
 
@@ -174,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription
 
 ## NOTES
 
@@ -185,13 +178,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+`INPUTOBJECT <IDigitalTwinsIdentity>`: Identity Parameter
   - `[EndpointName <String>]`: Name of Endpoint Resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location of DigitalTwinsInstance.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the DigitalTwinsInstance.
+  - `[ResourceId <String>]`: The name of the private link resource.
   - `[ResourceName <String>]`: The name of the DigitalTwinsInstance.
   - `[SubscriptionId <String>]`: The subscription identifier.
+  - `[TimeSeriesDatabaseConnectionName <String>]`: Name of time series database connection.
 
 ## RELATED LINKS
 

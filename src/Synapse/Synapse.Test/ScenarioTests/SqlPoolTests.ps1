@@ -216,7 +216,7 @@ function Get-SqlPoolTestEnvironmentParameters ($testSuffix)
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
 			  perfLevel = 'DW200c';
-              location = "canadacentral";
+              location = "eastus";
               tags = @{"NewSqlPoolTag" = "TestTagToNewCommand"}
               storageAccountType = "LRS" 
 	}

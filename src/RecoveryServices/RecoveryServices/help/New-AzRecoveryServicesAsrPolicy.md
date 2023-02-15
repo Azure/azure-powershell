@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrpolicy
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrpolicy
 schema: 2.0.0
 ---
 
@@ -68,16 +68,18 @@ The replication policy is used to specify replication settings such as the repli
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzRecoveryServicesAsrPolicy -Name "abc" -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -NumberOfRecoveryPointsToRetain 10
+```powershell
+New-AzRecoveryServicesAsrPolicy -Name "abc" -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -NumberOfRecoveryPointsToRetain 10
 ```
 
 Starts the replication policy creation operation using the specified parameters and returns the ASR job used to track the operation.
 
 ### Example 2
+```powershell
+New-AzRecoveryServicesAsrPolicy -Name "abc122" -ReplicationProvider HyperVReplica2012R2 -ReplicationFrequencyInSeconds 300 -ReplicationPort 211
 ```
-PS C:\> New-AzRecoveryServicesAsrPolicy -Name "abc122" -ReplicationProvider HyperVReplica2012R2 -ReplicationFrequencyInSeconds 300 -ReplicationPort 211
 
+```output
 Name             : 1c609a5b-324e-461c-866f-ad58f944df25
 ID               : /Subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationJobs/1c609a5b-324e-461c-866f-ad58f944df25
 Type             :
@@ -99,30 +101,9 @@ Errors           : {}
 Starts the replication policy creation operation using the specified parameters and returns the ASR job used to track the operation.
 
 ### Example 3
-```
-PS C:\> New-AzRecoveryServicesAsrPolicy -Name $policyName1 -ReplicationProvider InMageAzureV2 -RecoveryPoints 40  -RPOWarningThresholdInMinutes 5 -ApplicationConsistentSnapshotFrequencyInMinutes 15
-Name             : ed69e451-878b-4f19-9c0f-73184be05eaf
-ID               : /Subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/xxxxxxxxxxxx/providers/Microsoft.RecoveryServices/vaults/xxxxxxxxxxxx/replicationJobs/ed69e451-878b-4f19-9c0f-73184be05eaf
-Type             :
-JobType          :
-DisplayName      :
-ClientRequestId  : d8922fa2-303c-4eb4-b556-e07969ea6fba ActivityId: 9e946cdf-2351-44c2-9aef-70ef2eab29b4
-State            : NotStarted
-StateDescription : NotStarted
-StartTime        :
-EndTime          :
-TargetObjectId   :
-TargetObjectType :
-TargetObjectName :
-AllowedActions   :
-Tasks            : {}
-Errors           : {}
-```
-
-### Example 4
-```
-PS C:\>  $Job = New-AzRecoveryServicesAsrPolicy -Name $TestPolicy1 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5 
-PS C:\>  Get-AsrJob -name $Job.id
+```powershell
+$Job = New-AzRecoveryServicesAsrPolicy -Name $TestPolicy1 -AzureToAzure -RecoveryPointRetentionInHours 10  -ApplicationConsistentSnapshotFrequencyInHours 5 
+Get-AzRecoveryServicesAsrJob -name $Job.id
 ```
 
 Starts the replication policy creation operation using the specified parameters and returns the ASR job used to track the operation.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: A39A415A-B403-48D3-AF80-CF7CFE382577
-online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchlocationquota
+online version: https://learn.microsoft.com/powershell/module/az.batch/get-azbatchlocationquota
 schema: 2.0.0
 ---
 
@@ -23,9 +23,12 @@ Gets the Batch service quotas for the specified subscription at the given locati
 ## EXAMPLES
 
 ### Example 1: Get the Batch service quotas for the subscription in the West US region
+```powershell
+Get-AzBatchLocationQuota -Location "westus"
 ```
-PS C:\>Get-AzBatchLocationQuota -Location "westus"
-          AccountQuota Location
+
+```output
+AccountQuota Location
           ------------ --------
           1            westus
 ```

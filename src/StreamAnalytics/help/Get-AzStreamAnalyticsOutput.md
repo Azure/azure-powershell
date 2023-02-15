@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoutput
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoutput
 schema: 2.0.0
 ---
 
@@ -37,8 +37,9 @@ Gets details about the specified output.
 
 ### Example 1: Get information about job outputs
 ```powershell
-PS C:\> Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh
-
+Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh
+```
+```output
 Name      Type                                            ETag
 ----      ----                                            ----
 output-01 Microsoft.StreamAnalytics/streamingjobs/outputs
@@ -48,8 +49,9 @@ This command returns information about the outputs defined on the job.
 
 ### Example 2: Get information about a specific job output
 ```powershell
-PS C:\> Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name output-01
-
+Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name output-01
+```
+```output
 Name      Type                                            ETag
 ----      ----                                            ----
 output-01 Microsoft.StreamAnalytics/streamingjobs/outputs 3819fb65-07f5-4dc3-83e1-d3149596f8d0
@@ -59,8 +61,9 @@ This command returns information about the output defined on the job.
 
 ### Example 3: Get information about a specific job output by pipeline
 ```powershell
-PS C:\>New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name output-05 -File .\test\template-json\StroageAccount.json | Get-AzStreamAnalyticsOutput
-
+New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name output-05 -File .\test\template-json\StroageAccount.json | Get-AzStreamAnalyticsOutput
+```
+```output
 Name      Type                                            ETag
 ----      ----                                            ----
 output-05 Microsoft.StreamAnalytics/streamingjobs/outputs 3a11e210-2a7f-4856-8d5a-25d4ecabee06
@@ -200,7 +203,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+INPUTOBJECT `<IStreamAnalyticsIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the cluster.
   - `[FunctionName <String>]`: The name of the function.
   - `[Id <String>]`: Resource identity path

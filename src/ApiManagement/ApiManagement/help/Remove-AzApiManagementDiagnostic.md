@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementdiagnostic
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementdiagnostic
 schema: 2.0.0
 ---
 
@@ -37,8 +37,8 @@ The cmdlet **Remove-AzApiManagementDiagnostic** removes the diagnostic entity sp
 
 ### Example 1: Remove the Diagnostic entity
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementDiagnostic -Context $apimContext -DiagnosticId "applicationinsights"
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementDiagnostic -Context $apimContext -DiagnosticId "applicationinsights"
 ```
 
 This example remove the diagnostic `applicationinsights` from the Api Management service.

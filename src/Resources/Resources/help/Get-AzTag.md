@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Tags.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 726E01DD-D73C-4D4B-8FC0-52767927367C
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-aztag
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-aztag
 schema: 2.0.0
 ---
 
@@ -41,8 +41,10 @@ To search resource groups for a specific tag name or name and value, use the *Ta
 
 ### Example 1: Get all predefined tags
 ```powershell
-PS C:\>Get-AzTag
+Get-AzTag
+```
 
+```output
 Name      Count
 ========  =====
 
@@ -56,8 +58,10 @@ The Count property shows how many times the tag has been applied to resources an
 
 ### Example 2: Get a tag by name
 ```powershell
-PS C:\>Get-AzTag -Name "Department"
+Get-AzTag -Name "Department"
+```
 
+```output
 Name:   Department
 Count:  5
 Values: 
@@ -74,8 +78,10 @@ The Count property shows how many times the tag and each of its values has been 
 
 ### Example 3: Get values of all tags
 ```powershell
-PS C:\>Get-AzTag -Detailed
+Get-AzTag -Detailed
+```
 
+```output
 Name:   Department
 Count:  5
 Values: 
@@ -109,8 +115,10 @@ Using the *Detailed* parameter is the equivalent of using the *Name* parameter f
 ### Example 4: Get the entire set of tags on a subscription
 
 ```powershell
-PS C:\>Get-AzTag -ResourceId /subscriptions/{subId}
+Get-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
 
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}
@@ -126,8 +134,10 @@ This command gets the entire set of tags on the subscription with {subId}.
 ### Example 5: Get the entire set of tags on a resource
 
 ```powershell
-PS C:\>Get-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1
+Get-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/testrg/providers/Microsoft.Sql/servers/Server1
+```
 
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}

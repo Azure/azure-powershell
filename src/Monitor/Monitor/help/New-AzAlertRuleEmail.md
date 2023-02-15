@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: B1000C10-265E-4465-B167-F1251470BE3E
-online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azalertruleemail
+online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azalertruleemail
 schema: 2.0.0
 ---
 
@@ -24,22 +24,22 @@ The **New-AzAlertRuleEmail** cmdlet creates an e-mail action for an alert rule.
 ## EXAMPLES
 
 ### Example 1: Create an alert rule email action for service owners
-```
-PS C:\>New-AzAlertRuleEmail -SendToServiceOwners
+```powershell
+New-AzAlertRuleEmail -SendToServiceOwner
 ```
 
 This command creates an alert rule email action to send for its service owners when an alert rule is fired.
 
 ### Example 2: Create an alert rule email action for non-service owners
-```
-PS C:\>New-AzAlertRuleEmail -CustomEmail pattif@contoso.com,davidchew@contoso.net
+```powershell
+New-AzAlertRuleEmail -CustomEmail pattif@contoso.com,davidchew@contoso.net
 ```
 
 This command creates an alert rule email action for the specified email addresses, but not for the service owners.
 
 ### Example 3: Create an alert rule email action for service owners and non-service owners
-```
-PS C:\>New-AzAlertRuleEmail -CustomEmail pattif@contoso.net -SendToServiceOwners
+```powershell
+New-AzAlertRuleEmail -CustomEmail pattif@contoso.net -SendToServiceOwner
 ```
 
 This command creates an alert rule email action for the specified address and for its service owners.

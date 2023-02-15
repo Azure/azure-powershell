@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 6BEED413-E2E4-4557-BD31-2A655E790C1D
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancerfrontendipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azloadbalancerfrontendipconfig
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Get-AzLoadBalancerFrontendIpConfig** cmdlet gets a front-end IP configurat
 ## EXAMPLES
 
 ### Example 1: Get a front-end IP configuration in a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzLoadBalancerFrontendIpConfig -Name "MyFrontEnd" -LoadBalancer $slb
+```powershell
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Get-AzLoadBalancerFrontendIpConfig -Name "MyFrontEnd" -LoadBalancer $slb
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.

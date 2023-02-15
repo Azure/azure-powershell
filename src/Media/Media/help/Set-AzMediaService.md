@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 0FA49058-F3A7-4ED9-93F2-0C84BC130FB7
-online version: https://docs.microsoft.com/powershell/module/az.media/set-azmediaservice
+online version: https://learn.microsoft.com/powershell/module/az.media/set-azmediaservice
 schema: 2.0.0
 ---
 
@@ -25,8 +25,9 @@ The **Set-AzMediaService** cmdlet modifies specified properties of an existing m
 ## EXAMPLES
 
 ### Example 1: Modify an existing media service
-```
-PS C:\>$Tags = @{"tag1" = "value1"; "tag2" = "value2"}
+```powershell
+$StorageAccounts = New-AzStorageAccount -ResourceGroupName "ResourceGroupName001" -Name "Storage1" -Location "East US" -Type "Standard_GRS"
+$Tags = @{"tag1" = "value1"; "tag2" = "value2"}
 Set-AzMediaService -ResourceGroupName "ResourceGroup123" -AccountName "MediaService001" -Tag $Tags -StorageAccounts $StorageAccounts
 ```
 

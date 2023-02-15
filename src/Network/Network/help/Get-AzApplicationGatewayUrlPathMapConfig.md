@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 000B32E9-FFFB-4165-87ED-F19A6E6CEE54
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayurlpathmapconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayurlpathmapconfig
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzApplicationGatewayURLPathMapConfig** cmdlet gets an array of URL pat
 ## EXAMPLES
 
 ### Example 1: Get a URL path map configuration
-```
-PS C:\>Get-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway Gateway
+```powershell
+Get-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway Gateway
 ```
 
 This command gets the URL path map configurations from the backend server located on the application gateway named Gateway.

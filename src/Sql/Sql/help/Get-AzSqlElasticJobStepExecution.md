@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/Az.sql/get-Azsqlelasticjobstepexecution
+online version: https://learn.microsoft.com/powershell/module/Az.sql/get-Azsqlelasticjobstepexecution
 schema: 2.0.0
 ---
 
@@ -59,20 +59,24 @@ The Get-AzSqlElasticJobStepExecution cmdlet gets one or more job step executions
 ## EXAMPLES
 
 ### Example 1 - Gets one or more job step executions from a job executions
-```
-PS C:\> $je = Get-AzSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId 3bcfc912-20b2-411d-a2b7-6265d13fe272
+```powershell
+$je = Get-AzSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId 3bcfc912-20b2-411d-a2b7-6265d13fe272
 $je | Get-AzSqlElasticJobStepExecution
+```
 
+```output
 JobName JobVersion StepName StepId JobExecutionId                       Lifecycle StartTime            EndTime
 ------- ---------- -------- ------ --------------                       --------- ---------            -------
 job1    1          step1    1      3bcfc912-20b2-411d-a2b7-6265d13fe272 Succeeded 6/1/2018 10:11:44 PM 6/1/2018 10:11:47 PM
 ```
 
 ### Example 2 - Gets one or more job step executions from a job execution, filtering by step name
-```
-PS C:\> $je = Get-AzSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId 3bcfc912-20b2-411d-a2b7-6265d13fe272
+```powershell
+$je = Get-AzSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId 3bcfc912-20b2-411d-a2b7-6265d13fe272
 $je | Get-AzSqlElasticJobStepExecution -StepName step1
+```
 
+```output
 JobName JobVersion StepName StepId JobExecutionId                       Lifecycle StartTime            EndTime
 ------- ---------- -------- ------ --------------                       --------- ---------            -------
 job1    1          step1    1      3bcfc912-20b2-411d-a2b7-6265d13fe272 Succeeded 6/1/2018 10:11:44 PM 6/1/2018 10:11:47 PM

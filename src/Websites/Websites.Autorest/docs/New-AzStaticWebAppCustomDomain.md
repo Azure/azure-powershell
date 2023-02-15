@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebappcustomdomain
+online version: https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebappcustomdomain
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Description for Creates a new static site custom domain in an existing resource 
 
 ### Example 1: Create a new static site custom domain in an existing resource group and static site
 ```powershell
-PS C:\> New-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName 'www01.azpstest.net'
+New-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName 'www01.azpstest.net'
+```
 
+```output
 Kind Name               Type
 ---- ----               ----
      www01.azpstest.net Microsoft.Web/staticSites/customDomains

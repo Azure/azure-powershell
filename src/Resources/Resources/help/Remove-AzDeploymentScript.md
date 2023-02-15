@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azdeploymentscript
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azdeploymentscript
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzDeploymentScript** cmdlet removes a deployment script and its ass
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
+Remove-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
 ```
 
 Deletes a deployment script with the name MyDeploymentScript in resource group DS-TestRG.

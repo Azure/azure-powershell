@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 59692f1f-9f1e-4a3c-8200-312c3806a9b7
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressroutecircuitconnectionconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressroutecircuitconnectionconfig
 schema: 2.0.0
 ---
 
@@ -25,13 +25,13 @@ associated with Private Peering for an ExpressRoute circuit.
 ## EXAMPLES
 
 ### Example 1: Display the circuit connection configuration for an ExpressRoute circuit
-```
+```powershell
 $circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 Get-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
 ```
 
 ### Example 2: Get circuit connection resource associated with an ExpressRoute Circuit using piping
-```
+```powershell
 Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Get-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName
 ```
 

@@ -20,14 +20,14 @@ Restarts a server.
 .Description
 Restarts a server.
 .Example
-PS C:\> Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
+ Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/restart"
-PS C:\> Restart-AzPostgreSqlFlexibleServer -InputObject $ID
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/restart"
+ Restart-AzPostgreSqlFlexibleServer -InputObject $ID
 .Example
-PS C:\> Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode PlannedFailover
+ Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode PlannedFailover
 .Example
-PS C:\> Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode ForcedFailover
+ Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode ForcedFailover
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter
@@ -56,7 +56,7 @@ PARAMETER <IRestartParameter>: Represents server restart parameters.
   [FailoverMode <String>]: Failover mode.
   [RestartWithFailover <Boolean?>]: Indicates whether to restart the server with failover.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlflexibleserver
+https://learn.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlflexibleserver
 #>
 function Restart-AzPostgreSqlFlexibleServer {
 [OutputType([System.Boolean])]

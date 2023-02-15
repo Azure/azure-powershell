@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementbackend
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementbackend
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Removes a backend specified by the Identifier from the Api Management.
 
 ### Example 1: Remove the Backend 123
 ```powershell
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementBackend -Context $apimContext -BackendId 123 -PassThru
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementBackend -Context $apimContext -BackendId 123 -PassThru
 ```
 
 ## PARAMETERS

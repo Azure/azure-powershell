@@ -31,9 +31,9 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRoutePortMacSecConfigCRUD()
         { 
             TestRunner.RunTestScript("Test-ExpressRoutePortMacSecConfigCRUD");

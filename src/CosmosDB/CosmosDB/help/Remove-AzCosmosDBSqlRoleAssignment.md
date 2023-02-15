@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbsqlroleassignment
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbsqlroleassignment
 schema: 2.0.0
 ---
 
@@ -37,8 +37,11 @@ Id can be either fully qualified or just the Guid.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Remove-AzCosmosDBSqlRoleAssignment -ResourceGroupName resourceGroupName -AccountName accountName -Id id -PassThru
 ```
-PS C:\> Remove-AzCosmosDBSqlRoleAssignment -ResourceGroupName resourceGroupName -AccountName accountName -Id id -PassThru
+
+```output
 true
 ```
 

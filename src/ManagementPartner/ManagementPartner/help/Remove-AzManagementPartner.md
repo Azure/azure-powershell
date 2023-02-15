@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner.dll-Help.xml
 Module Name: Az.ManagementPartner
-online version: https://docs.microsoft.com/powershell/module/az.managementpartner/remove-azmanagementpartner
+online version: https://learn.microsoft.com/powershell/module/az.managementpartner/remove-azmanagementpartner
 schema: 2.0.0
 ---
 
@@ -24,7 +24,10 @@ Delete the Microsoft Partner Network(MPN) ID of the current authenticated user o
 
 ### Example 1
 ```powershell
-PS C:\>Remove-AzManagementPartner -PartnerId 123457 -PassThru
+Remove-AzManagementPartner -PartnerId 123457 -PassThru
+```
+
+```output
 true
 ```
 

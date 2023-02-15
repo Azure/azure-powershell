@@ -91,7 +91,7 @@ PREFERENCE <IPreferences>: Customer preference.
   [TransportPreference <ITransportPreferences>]: Preferences related to the shipment logistics of the order.
     PreferredShipmentType <TransportShipmentTypes>: Indicates Shipment Logistics type that the customer preferred.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/update-azedgeorderitem
+https://learn.microsoft.com/powershell/module/az.edgeorder/update-azedgeorderitem
 #>
 function Update-AzEdgeOrderItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource])]

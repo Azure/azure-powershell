@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 462F3EF7-4C15-41F8-853D-CDCC8E67673D
-online version: https://docs.microsoft.com/powershell/module/az.network/Remove-AzExpressRouteCrossConnectionPeering
+online version: https://learn.microsoft.com/powershell/module/az.network/Remove-AzExpressRouteCrossConnectionPeering
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ peering configuration.
 ## EXAMPLES
 
 ### Example 1: Remove a peering configuration from an ExpressRoute cross connection
-```
+```powershell
 $cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 Remove-AzExpressRouteCrossConnectionPeering -Name 'AzurePrivatePeering' -ExpressRouteCrossConnection $cc
 Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection $cc

@@ -58,15 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.Container.ResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Status of the registration of the container with the recovery services vault.
-        /// </summary>
-        [Parameter(Mandatory = false, Position = 5,
-            HelpMessage = ParamHelpMsgs.Container.Status)]
-        [ValidateNotNullOrEmpty]
-        public ContainerRegistrationStatus Status { get; set; }
+        public string ResourceGroupName { get; set; }        
 
         public override void ExecuteCmdlet()
         {
@@ -86,9 +78,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     backupManagementTypeNullable = backupManagementType;
                 }
 
-                // Forcing this cmdlet to return only Registered containers for now. 
-                // Once we support containers returning other status types, one can undo this behavior.
-                Status = ContainerRegistrationStatus.Registered;
+                // Currently the containers API doesn't support any status level filtering 
+                // Also the NotRegitered container isn't a valid scenario, so we're not allowing client filtering too
+                // If the filtering is required in future we can add client side filtering                 
+                // Status = ContainerRegistrationStatus.Registered;
 
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
@@ -98,8 +91,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { ContainerParams.ContainerType, ContainerType },
                         { ContainerParams.BackupManagementType, backupManagementTypeNullable },
                         { ContainerParams.FriendlyName, FriendlyName },
-                        { ContainerParams.ResourceGroupName, ResourceGroupName },
-                        { ContainerParams.Status, Status },
+                        { ContainerParams.ResourceGroupName, ResourceGroupName },                        
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =

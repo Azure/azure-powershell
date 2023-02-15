@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsesparkjobdefinition
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsesparkjobdefinition
 schema: 2.0.0
 ---
 
@@ -31,22 +31,22 @@ The **Get-AzSynapseSparkJobDefinition** cmdlet gets information about Spark job 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace
+Get-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace
 ```
 
 This command gets information about all Spark job definitions in the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoJobDefinition
+Get-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoJobDefinition
 ```
 
 This command gets information about the Spark job definition named ContosoSparkJobDefinition in the workspace named ContosoWorkspace.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseSparkJobDefinition -Name ContosoSparkJobDefinition
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseSparkJobDefinition -Name ContosoSparkJobDefinition
 ```
 
 This command gets information about the Spark job definition named ContosoSparkJobDefinition in the workspace named ContosoWorkspace through pipeline.

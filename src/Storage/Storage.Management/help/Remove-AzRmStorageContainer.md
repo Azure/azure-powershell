@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azrmstoragecontainer
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azrmstoragecontainer
 schema: 2.0.0
 ---
 
@@ -36,23 +36,23 @@ The **Remove-AzRmStorageContainer** cmdlet removes a Storage blob container
 ## EXAMPLES
 
 ### Example 1: Remove a Storage blob container with Storage account name and container name
-```
-PS C:\>Remove-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
+```powershell
+Remove-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
 ```
 
 This command removes a Storage blob container with Storage account name and container name.
 
 ### Example 2: Remove a Storage blob container with Storage account object and container name
-```
-PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
-PS C:\>Remove-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer"
+```powershell
+$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
+Remove-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer"
 ```
 
 This command removes a Storage blob container with Storage account object and container name.
 
 ### Example 3: Remove all Storage blob containers in a Storage account with pipeline
-```
-PS C:\>Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Remove-AzRmStorageContainer -Force
+```powershell
+Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Remove-AzRmStorageContainer -Force
 ```
 
 This command removes all Storage blob containers in a Storage account with pipeline.

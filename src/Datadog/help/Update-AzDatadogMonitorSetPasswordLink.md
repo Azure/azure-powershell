@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://docs.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitorsetpasswordlink
+online version: https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitorsetpasswordlink
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Refresh the set password link and return a latest one.
 
 ### Example 1: Refresh the set password link and return a latest one
 ```powershell
-PS C:\> Update-AzDatadogMonitorSetPasswordLink -ResourceGroupName azure-rg-Datadog -Name Datadog
+Update-AzDatadogMonitorSetPasswordLink -ResourceGroupName azure-rg-Datadog -Name Datadog
+```
 
+```output
 https://us3.Datadoghq.com/account/reset_password/xxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
@@ -40,8 +42,10 @@ This command refresh the set password link and return a latest one.
 
 ### Example 2: Refresh the set password link and return a latest one by pipeline
 ```powershell
-PS C:\> Get-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog | Update-AzDatadogMonitorSetPasswordLink
+Get-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog | Update-AzDatadogMonitorSetPasswordLink
+```
 
+```output
 https://us3.Datadoghq.com/account/reset_password/xxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
@@ -177,7 +181,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatadogIdentity>: Identity Parameter
+INPUTOBJECT `<IDatadogIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
-online version: https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlcommitmentplan
+online version: https://learn.microsoft.com/powershell/module/az.machinelearning/get-azmlcommitmentplan
 schema: 2.0.0
 ---
 
@@ -24,17 +24,17 @@ Depending on the parameters passed, the cmdlet returns the a specific commitment
 ## EXAMPLES
 
 ### Example 1: Get a specific commitment plan
-```
+```powershell
 Get-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
 
 ### Example 2: Get all commitment plan resources in current subscription
-```
+```powershell
 Get-AzMlCommitmentPlan
 ```
 
 ### Example 3: Get all commitment plans in the current subscription and given resource group
-```
+```powershell
 Get-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup"
 ```
 

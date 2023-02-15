@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 7740AC3B-F643-4F8D-8DC5-ACBF59323BD8
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azroledefinition
 schema: 2.0.0
 ---
 
@@ -38,15 +38,15 @@ To inspect individual operations that a role grants access to, review the Action
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzRoleDefinition -Name Reader
+```powershell
+Get-AzRoleDefinition -Name Reader
 ```
 
 Get the Reader role definition
 
 ### Example 2
-```
-PS C:\> Get-AzRoleDefinition
+```powershell
+Get-AzRoleDefinition
 ```
 
 Lists all RBAC role definitions

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2A3B7343-9AA0-4505-AEDE-31C0C5B98694
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azexpressroutecrossconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azexpressroutecrossconnection
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ The **Set-AzExpressRouteCrossConnection** cmdlet saves the modified ExpressRoute
 ## EXAMPLES
 
 ### Example 1: Change the Service Provider Provisioning State of an ExpressRoute cross connection
-```
+```powershell
 $cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 $cc.ServiceProviderProvisioningState = 'Provisioned'
 Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection $cc

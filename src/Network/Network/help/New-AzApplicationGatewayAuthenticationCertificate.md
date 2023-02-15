@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 4736FA0D-222D-4D69-BCBD-72036303A20E
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayauthenticationcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayauthenticationcertificate
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **New-AzApplicationGatewayAuthenticationCertificate** cmdlet creates an auth
 ## EXAMPLES
 
 ### Example 1: Create an authentication certificate
-```
-PS C:\> $cert = New-AzApplicationGatewayAuthenticationCertificate -Name "cert01" -CertificateFile "C:\cert.cer"
+```powershell
+$cert = New-AzApplicationGatewayAuthenticationCertificate -Name "cert01" -CertificateFile "C:\cert.cer"
 ```
 
 The first command creates authentication certificate named cert01.

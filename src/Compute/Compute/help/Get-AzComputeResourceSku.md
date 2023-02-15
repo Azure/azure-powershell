@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ List all compute resource Skus
 ## SYNTAX
 
 ```
-Get-AzComputeResourceSku [[-Location] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzComputeResourceSku [[-Location] <String>] [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,8 +23,8 @@ List all compute resource Skus
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzComputeResourceSku "westus";
+```powershell
+Get-AzComputeResourceSku "westus";
 ```
 
 List all compute resource skus in West US region
@@ -42,6 +43,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EdgeZone
+Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

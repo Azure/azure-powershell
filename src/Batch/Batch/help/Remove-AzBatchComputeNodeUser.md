@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 9E423A10-06AF-42F8-AC90-82DB01012AFA
-online version: https://docs.microsoft.com/powershell/module/az.batch/remove-azbatchcomputenodeuser
+online version: https://learn.microsoft.com/powershell/module/az.batch/remove-azbatchcomputenodeuser
 schema: 2.0.0
 ---
 
@@ -24,15 +24,13 @@ The **Remove-AzBatchComputeNodeUser** cmdlet deletes a user account from an Azur
 
 ## EXAMPLES
 
-### Example 1: Delete a user from a compute node without confirmation
-```
-PS C:\>Remove-AzBatchComputeNodeUser -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "User14" -Force -BatchContext $Context
+### Example 1: Delete a user from a compute node
+```powershell
+Remove-AzBatchComputeNodeUser -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "User14" -BatchContext $Context
 ```
 
 This command deletes the user named User14 from compute node named ComputeNode01.
 The compute node is in the pool named Pool01.
-This command specifies the *Force* parameter.
-Therefore, the command does not prompt you for confirmation.
 
 ## PARAMETERS
 

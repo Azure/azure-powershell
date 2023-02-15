@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 010328F9-C878-4F16-AFD7-2135465A1968
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/set-azoperationalinsightsstorageinsight
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/set-azoperationalinsightsstorageinsight
 schema: 2.0.0
 ---
 
@@ -35,17 +35,17 @@ The **Set-AzOperationalInsightsStorageInsight** cmdlet changes the configuration
 ## EXAMPLES
 
 ### Example 1: Modify a Storage Insight by name
-```
-PS C:\>Set-AzOperationalInsightsStorageInsight -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -Name "MyStorageInsight" -Tables @("WADWindowsEventLogsTable")
+```powershell
+Set-AzOperationalInsightsStorageInsight -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -Name "MyStorageInsight" -Tables @("WADWindowsEventLogsTable")
 ```
 
 This command modifies the tables from which the Storage Insight named MyStorageInsight reads.
 
 ### Example 2: Modify a Storage Insight by using a workspace object
-```
-PS C:\>$Workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
+```powershell
+$Workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
 
-PS C:\>Set-AzOperationalInsightsStorageInsight -Workspace $Workspace -Name "MyStorageInsight" -Containers @("wad-iis-logfiles")
+Set-AzOperationalInsightsStorageInsight -Workspace $Workspace -Name "MyStorageInsight" -Containers @("wad-iis-logfiles")
 ```
 
 The first command uses the Get-AzOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkspace, and then stores it in the $Workspace variable.

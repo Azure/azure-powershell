@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.Compute-help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create or update a gallery Application Definition.
 ## SYNTAX
 
 ```
-New-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- -SupportedOSType <OperatingSystemTypes> [-SubscriptionId <String>] [-Description <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Location <String> -SupportedOSType <OperatingSystemTypes> [-Description <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,10 +23,9 @@ Create or update a gallery Application Definition.
 
 ## EXAMPLES
 
-### Example 1: Create a gallery application 
+### Example 1: Create a gallery application
 ```powershell
-PS C:\> New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryName $galleryName -Name $name -SupportedOSType Windows
-
+New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryName $galleryName -Name $name -SupportedOSType Windows
 ```
 
 Creating a Gallery Application in a Gallery.
@@ -247,11 +246,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

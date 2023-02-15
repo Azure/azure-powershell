@@ -17,42 +17,38 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
-    public class CassandraOperationsTests
+    public class CassandraOperationsTests : CosmosDBTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public CassandraOperationsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public CassandraOperationsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCassandraCreateUpdateGetCmdletsByPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraCreateUpdateGetCmdletsByPiping");
+            TestRunner.RunTestScript("Test-CassandraCreateUpdateGetCmdletsByPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCassandraThroughputCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraThroughputCmdlets");
+            TestRunner.RunTestScript("Test-CassandraThroughputCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCassandraCreateUpdateGetCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraCreateUpdateGetCmdlets");
+            TestRunner.RunTestScript("Test-CassandraCreateUpdateGetCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCassandraMigrateThroughputCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CassandraMigrateThroughputCmdlets");
+            TestRunner.RunTestScript("Test-CassandraMigrateThroughputCmdlets");
         }
     }
 }

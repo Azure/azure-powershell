@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooliscsitarget
+online version: https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpooliscsitarget
 schema: 2.0.0
 ---
 
@@ -36,8 +36,10 @@ Get an iSCSI Target.
 
 ### Example 1: List iSCSI targets in a Disk Pool
 ```powershell
-PS C:\> Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5'
+Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5'
+```
 
+```output
 Name               Type
 ----               ----
 target0 Microsoft.StoragePool/diskPools/iscsiTargets
@@ -47,8 +49,10 @@ This command lists all iSCSI targets in a Disk Pool.
 
 ### Example 2: Get an iSCSI target
 ```powershell
-PS C:\> Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0'
+Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0'
+```
 
+```output
 Name               Type
 ----               ----
 target0 Microsoft.StoragePool/diskPools/iscsiTargets
@@ -58,8 +62,10 @@ This command gets an iSCSI target.
 
 ### Example 3: Get an iSCSI target by object
 ```powershell
-PS C:\> New-AzDiskPoolIscsiTarget -DiskPoolName 'disk-pool-5' -Name 'target1' -ResourceGroupName 'storagepool-rg-test' -AclMode 'Dynamic' | Get-AzDiskPoolIscsiTarget
+New-AzDiskPoolIscsiTarget -DiskPoolName 'disk-pool-5' -Name 'target1' -ResourceGroupName 'storagepool-rg-test' -AclMode 'Dynamic' | Get-AzDiskPoolIscsiTarget
+```
 
+```output
 Name               Type
 ----               ----
 target1 Microsoft.StoragePool/diskPools/iscsiTargets
@@ -181,7 +187,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
+INPUTOBJECT `<IDiskPoolIdentity>`: Identity Parameter
   - `[DiskPoolName <String>]`: The name of the Disk Pool.
   - `[Id <String>]`: Resource identity path
   - `[IscsiTargetName <String>]`: The name of the iSCSI Target.

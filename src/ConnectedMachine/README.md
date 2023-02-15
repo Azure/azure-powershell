@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ConnectedMachine service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -40,39 +40,30 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 50ed15bd61ac79f2368d769df0c207a00b9e099f
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-module-version: 0.4.0
+input-file:
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-03-10/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-03-10/privateLinkScopes.json
+
+module-version: 0.5.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
-input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2021-05-20/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2021-05-20/privateLinkScopes.json
 
-branch: 3d3c5dda9043e697cbdbb4b3264123b5e39470fd
+identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
+
 directive:
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/upgradeExtensions"].post.responses
+  - from: swagger-document 
+    where: $.definitions.Machine.properties.properties
     transform: >-
       return {
-          "200": {
-            "description": "OK"
-          },
-          "202": {
-            "description": "HTTP 202 (Accepted) if the operation was successfully started and will complete asynchronously."
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/3d3c5dda9043e697cbdbb4b3264123b5e39470fd/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
-            }
-          }
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/MachineProperties",
+          "description": "Hybrid Compute Machine properties"
         }
-  - where:
-      subject: Operation
-    hide: true
-  - where: $.definitions.Identifier.properties
-    suppress: R3019
 
   - from: swagger-document 
     where: $.definitions.MachineExtensionUpdateProperties.properties
@@ -104,15 +95,16 @@ directive:
         },
         "settings": {
           "type": "object",
+          "additionalProperties": true,
           "description": "Json formatted public settings for the extension."
         },
         "protectedSettings": {
           "type": "object",
+          "additionalProperties": true,
           "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
         }
       }
-
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.MachineExtensionProperties.properties
     transform: >-
       return {
@@ -142,10 +134,12 @@ directive:
         },
         "settings": {
           "type": "object",
+          "additionalProperties": true,
           "description": "Json formatted public settings for the extension."
         },
         "protectedSettings": {
           "type": "object",
+          "additionalProperties": true,
           "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
         },
         "provisioningState": {
@@ -158,7 +152,7 @@ directive:
           "description": "The machine extension instance view."
         }
       }
-      
+
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
       verb: Get
@@ -208,9 +202,10 @@ directive:
     set:
       format-table:
         properties:
+          - ResourceGroupName
           - Name
           - Location
-          - OSName
+          - OSType
           - Status
           - ProvisioningState
   - where:
@@ -218,20 +213,22 @@ directive:
     set:
       format-table:
         properties:
+          - ResourceGroupName
           - Name
           - Location
-          - PropertiesType
+          - TypeHandlerVersion
           - ProvisioningState
+          - Publisher
   - where:
        model-name: HybridComputePrivateLinkScope
     set:
       format-table:
         properties:
+          - ResourceGroupName
           - Name
           - Location
           - PublicNetworkAccess
           - ProvisioningState
-          - Tag
 
   # Removing cmlets
   - where:
@@ -263,7 +260,5 @@ directive:
 
   # These APIs are used by the agent so they do not need to be in the cmdlets.
   - remove-operation:
-    - Machines_Reconnect
     - Machines_CreateOrUpdate
-    - Machines_Update
 ```

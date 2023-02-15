@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/reset-azvirtualnetworkgatewayconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/reset-azvirtualnetworkgatewayconnection
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Reset-AzVirtualNetworkGatewayConnection** cmdlet resets your virtual netwo
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzVirtualNetworkGatewayConnection -ResourceGroupName myRG -Name myTunnel
+Reset-AzVirtualNetworkGatewayConnection -ResourceGroupName myRG -Name myTunnel
 ```
 
 Resets the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"

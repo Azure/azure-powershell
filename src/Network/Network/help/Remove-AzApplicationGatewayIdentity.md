@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayidentity
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayidentity
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Remove-AzApplicationGatewayIdentity -ApplicationGateway <PSApplicationGateway>
 
 ### Example 1
 ```powershell
-PS C:\> $appgw = Remove-AzApplicationGatewayIdentity -ApplicationGateway $appgw
-PS C:\> $updatedgateway = Set-AzApplicationGateway -ApplicationGateway $appgw
+$appgw = Remove-AzApplicationGatewayIdentity -ApplicationGateway $appgw
+$updatedgateway = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 In this example, we remove identity from an existing application gateway.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmuefi
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmuefi
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Set-AzVMUefi** cmdlet modifies UEFI properties of a virtual machine.
 
 ### Example 1
 ```powershell
-PS C:\> $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
-PS C:\> Set-AzVMUefi -VM $VM -EnableVtpm $true -EnableSecureBoot $true
+$VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+Set-AzVMUefi -VM $VM -EnableVtpm $true -EnableSecureBoot $true
 ```
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzVM**.
@@ -40,7 +40,7 @@ A change to the cashing mode causes the virtual machine to restart.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 Parameter to toggle secure boot on the VM
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 Parameter to toggle vTPM on the VM
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The virtual machine profile.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 

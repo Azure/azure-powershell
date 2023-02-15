@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azbastion
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azbastion
 schema: 2.0.0
 ---
 
@@ -43,7 +43,9 @@ The **Get-Bastion** cmdlet gets one or more bastions in a resource group or subs
 ### Example 1
 ```powershell
 Get-AzBastion
+```
 
+```output
 ResourceGroupName    : abagarwaProd-PPTest
 Location             : westcentralus
 ResourceGuid         :
@@ -161,7 +163,9 @@ IpConfigurationsText : [
 ### Example 2
 ```powershell
 Get-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion"
+```
 
+```output
 IpConfigurations     : {IpConf}
 DnsName              : bst-0597f607-ab71-46c2-ab2a-777bfa887aff.bastion.azure.com
 ProvisioningState    : Succeeded

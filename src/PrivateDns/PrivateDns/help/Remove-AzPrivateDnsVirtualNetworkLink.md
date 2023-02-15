@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
 ms.assetid: A8E230A0-5057-40BC-81CD-6D397A503A84
-online version: https://docs.microsoft.com/powershell/module/az.privatedns/remove-azprivatednsvirtualnetworklink
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/remove-azprivatednsvirtualnetworklink
 schema: 2.0.0
 ---
 
@@ -40,8 +40,8 @@ When specifying the link using a **PSPrivateDnsVirtualNetworkLink** object (pass
 ## EXAMPLES
 
 ### Example 1: Remove a link
-```
-PS C:\>Remove-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "mylink"
+```powershell
+Remove-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "mylink"
 ```
 
 This command removes the link named mylink linked to zone myzone.com from the resource group named MyResourceGroup.

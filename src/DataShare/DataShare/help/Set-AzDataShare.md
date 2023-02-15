@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/set-azdatashare
+online version: https://learn.microsoft.com/powershell/module/az.datashare/set-azdatashare
 schema: 2.0.0
 ---
 
@@ -36,8 +36,11 @@ The **Set-AzDataShare** cmdlet updates a data share that exists within a specifi
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Set-AzDataShare -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -Name "AdsShare" -Description "Updated description" -TermsOfUse "Updated terms"
 ```
-PS C:\> Set-AzDataShare -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -Name "AdsShare" -Description "Updated description" -TermsOfUse "Updated terms"
+
+```output
 Name                : AdsShare
 Id                  : /subscriptions/f3ead1ff-d0ab-4cf4-9a5a-86f1661d4685/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAdsAccount/shares/AdsShare
 Type                : Microsoft.DataShare/shares

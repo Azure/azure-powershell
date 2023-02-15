@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1FDA90C0-D01F-45E1-9149-16AD04046271
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancerinboundnatruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azloadbalancerinboundnatruleconfig
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Get-AzLoadBalancerInboundNatRuleConfig** cmdlet gets one or more inbound n
 ## EXAMPLES
 
 ### Example 1: Get an inbound NAT rule configuration
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzLoadBalancerInboundNatRuleConfig -Name "MyInboundNatRule1" -LoadBalancer $slb
+```powershell
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Get-AzLoadBalancerInboundNatRuleConfig -Name "MyInboundNatRule1" -LoadBalancer $slb
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and stores it in the variable $slb.

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 326C87EB-EC3B-4B04-B593-EAC56FFA854A
-online version: https://docs.microsoft.com/powershell/module/az.notificationhubs/get-aznotificationhublistkey
+online version: https://learn.microsoft.com/powershell/module/az.notificationhubs/get-aznotificationhublistkey
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ One of these parameters, the signature, is used to authenticate the user and pro
 ## EXAMPLES
 
 ### Example 1: Get the primary and secondary connection strings for an authorization rule
-```
-PS C:\>Get-AzNotificationHubListKey -Namespace "ContosoNamespace" -NotificationHub "ContosoInternalHub" -ResourceGroup "ContosoNotificationsGroup" -AuthorizationRule "ListenRule"
+```powershell
+Get-AzNotificationHubListKey -Namespace "ContosoNamespace" -NotificationHub "ContosoInternalHub" -ResourceGroup "ContosoNotificationsGroup" -AuthorizationRule "ListenRule"
 ```
 
 This command gets the primary and secondary connection strings for the authorization rule ListenRule, a rule assigned to the ContosoInternalHub notification hub.

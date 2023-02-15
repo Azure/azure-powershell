@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/set-azservicefabricupgradetype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/set-azservicefabricupgradetype
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ Use **Set-AzServiceFabricUpgradeType** to set upgrade type to automatic or manua
 ## EXAMPLES
 
 ### Example 1
-```
-PS c:> Set-AzServiceFabricUpgradeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -UpgradeMode Automatic
+```powershell
+Set-AzServiceFabricUpgradeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -UpgradeMode Automatic
 ```
 
 This command will set the cluster upgrade mode to automatic.

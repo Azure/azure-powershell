@@ -54,7 +54,7 @@ function Install-AzModuleInternal {
     process {
 
         try {
-            Write-Progress -Id $script:FixProgressBarId "Download packagkes from $Repository."
+            Write-Progress -Id $script:FixProgressBarId "Download packages from $Repository."
 
             if ($Force -or !$WhatIfPreference) {
                 [string]$tempRepo = Join-Path ([Path]::GetTempPath()) ((New-Guid).Guid)
@@ -86,7 +86,7 @@ function Install-AzModuleInternal {
                     }
                     $downloader.WaitForAllTasks()
                     $file = $null
-                    foreach($file in $fileList) {
+                    foreach ($file in $fileList) {
                         if (!(Test-Path -Path $file.Path)) {
                             Throw "[$Invoker] Fail to download $($file.Name) to $tempRepo. Please check your network connection and retry."
                         }
@@ -99,7 +99,7 @@ function Install-AzModuleInternal {
                 }
             }
 
-            Write-Progress -Id $script:FixProgressBarId  "Install packagkes from local."
+            Write-Progress -Id $script:FixProgressBarId  "Install packages from local."
 
             $moduleInstalled = @()
 
@@ -207,7 +207,6 @@ function Install-AzModuleInternal {
                                 $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation)
                                 Write-Output $result
                             } -ThrottleLimit $maxJobCount
-                             #-StreamingHost $Host
                         }
                     }
                     else {

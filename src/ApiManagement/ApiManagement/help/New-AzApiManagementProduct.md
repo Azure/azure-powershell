@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: E94B88AA-B8B0-49F0-AD36-6707E17B40AD
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementproduct
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementproduct
 schema: 2.0.0
 ---
 
@@ -26,24 +26,22 @@ The **New-AzApiManagementProduct** cmdlet creates an API Management product.
 ## EXAMPLES
 
 ### Example 1: Create a product that does not require a subscription
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementProduct -Context $apimContext -ProductId "0123456789" -Title "Starter" -Description "Starter Product" -LegalTerms "Free for all" -SubscriptionRequired $False -State "Published"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementProduct -Context $apimContext -ProductId "0123456789" -Title "Starter" -Description "Starter Product" -LegalTerms "Free for all" -SubscriptionRequired $False -State "Published"
 ```
 
 This command creates an API Management product.
 No subscription is required.
 
 ### Example 2: Create a product that requires a subscription and approval
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzApiManagementProduct -Context $apimContext -ProductId "9876543210" -Title "Unlimited" -Description "Subscribers have completely unlimited access to the API. Administrator approval is required." -LegalTerms "Free for all" -ApprovalRequired $True -State "Published" -NotificationPeriod "D10" -SubscriptionPeriod "Y1"
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+New-AzApiManagementProduct -Context $apimContext -ProductId "9876543210" -Title "Unlimited" -Description "Subscribers have completely unlimited access to the API. Administrator approval is required." -LegalTerms "Free for all" -ApprovalRequired $True -State "Published"
 ```
 
 This command creates a product.
 A subscription and approval are required.
-This command sets the notification period to 10 days.
-The subscription duration is set to one year.
 
 ## PARAMETERS
 

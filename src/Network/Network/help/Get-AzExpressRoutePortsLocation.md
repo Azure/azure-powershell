@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressrouteportslocation
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressrouteportslocation
 schema: 2.0.0
 ---
 
@@ -26,14 +26,14 @@ the details of that location i.e., list of available bandwidths at that location
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzExpressRoutePortsLocation
+Get-AzExpressRoutePortsLocation
 ```
 
 Lists the locations at which ExpressRoutePort resources are available.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzExpressRoutePortsLocation -LocationName $loc
+Get-AzExpressRoutePortsLocation -LocationName $loc
 ```
 
 Lists the ExpressRoutePort bandwidths available at location $loc.

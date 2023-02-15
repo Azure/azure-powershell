@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 89DA3965-5344-4A1D-AEF1-10EA58E129CF
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ You must pass the output of this cmdlet to the Update-AzVM cmdlet to implement y
 ## EXAMPLES
 
 ### Example 1: Remove the Diagnostics extension from a virtual machine
-```
-PS C:\> Remove-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" | Update-AzVM
+```powershell
+Remove-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" | Update-AzVM
 ```
 
 This command removes the Diagnostics extension from a virtual machine named ContosoVM22.

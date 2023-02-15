@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Subscription.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -24,50 +22,45 @@ namespace Subscription.Test.ScenarioTests
     /// The following tests require four subscriptions to be created manually. This can be done by 
     /// calling New-AzureRmSubscription. At this time, this can only be done by EA customers.
     /// </summary>
-    public class SubscriptionTests
+    public class SubscriptionTests : SubscriptionTestRunner
     {
-        private XunitTracingInterceptor _logger;
-
-        public SubscriptionTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SubscriptionTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateRenameSubscription()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateRenameSubscription");
+            TestRunner.RunTestScript("Test-UpdateRenameSubscription");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateCancelSubscription()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateCancelSubscription");
+            TestRunner.RunTestScript("Test-UpdateCancelSubscription");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSubscriptionAlias()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewSubscriptionAlias");
+            TestRunner.RunTestScript("Test-NewSubscriptionAlias");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSubscriptionAlias()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetSubscriptionAlias");
+            TestRunner.RunTestScript("Test-GetSubscriptionAlias");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSubscriptionAlias()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveSubscriptionAlias");
+            TestRunner.RunTestScript("Test-RemoveSubscriptionAlias");
         }
     }
 }

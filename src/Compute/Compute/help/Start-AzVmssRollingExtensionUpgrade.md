@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/start-azvmssrollingextensionupgrade
+online version: https://learn.microsoft.com/powershell/module/az.compute/start-azvmssrollingextensionupgrade
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ This cmdlet starts a rolling upgrade for all extensions on the given Virtual Mac
 
 ## SYNTAX
 
-### DefaultParameter
+### DefaultParameter (Default)
 ```
 Start-AzVmssRollingExtensionUpgrade -ResourceGroupName <String> -VMScaleSetName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -38,9 +38,9 @@ Extensions which are already running the latest available version are not affect
 
 ### Example 1
 ```powershell
-PS C:\> $vmss = Get-AzVM -ResourceGroupName "MyResourceGroupName" -VMScaleSetName "MyVmssName";
-PS C:\> Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "testExtension" -Publisher Microsoft.CPlat.Core -Type "NullWindows" -TypeHandlerVersion "3.0" -AutoUpgradeMinorVersion $True  -Setting "";
-PS C:\> Start-AzVmssRollingExtensionUpgrade -ResourceGroupName "MyResourceGroupName" -VMScaleSetName "MyVmssName";
+$vmss = Get-AzVmss -ResourceGroupName "MyResourceGroupName" -Name "MyVmssName";
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "testExtension" -Publisher Microsoft.CPlat.Core -Type "NullWindows" -TypeHandlerVersion "3.0" -AutoUpgradeMinorVersion $True  -Setting "";
+Start-AzVmssRollingExtensionUpgrade -ResourceGroupName "MyResourceGroupName" -VMScaleSetName "MyVmssName";
 ```
 
 This example gets the existing VM scale set "MyVmssName", and adds an extension to it. The final command runs the extension rolling upgrade process. 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstanceadvanceddatasecurity
+online version: https://learn.microsoft.com/powershell/module/az.sql/disable-azsqlinstanceadvanceddatasecurity
 schema: 2.0.0
 ---
 
@@ -25,10 +25,12 @@ The **Disable-AzSqlInstanceAdvancedDataSecurity** cmdlet disables Advanced Data 
 
 ### Example 1 - Disable managed instance Advanced Data Security
 ```powershell
-PS C:\>  Disable-AzSqlInstanceAdvancedDataSecurity `
+Disable-AzSqlInstanceAdvancedDataSecurity `
             -ResourceGroupName "ResourceGroup01" `
-            -InstanceName "ManagedInstance01" `
+            -InstanceName "ManagedInstance01"
+```
 
+```output
 ResourceGroupName	         : ResourceGroup01
 ManagedInstanceName		     : ManagedInstance01
 IsEnabled		             : False
@@ -36,11 +38,13 @@ IsEnabled		             : False
 
 ### Example 2 - Disable server Advanced Data Security from managed instance resource
 ```powershell
-PS C:\>  Get-AzSqlInstance `
+Get-AzSqlInstance `
            -ResourceGroupName "ResourceGroup01" `
            -Name "ManagedInstance01" `
            | Disable-AzSqlInstanceAdvancedDataSecurity
+```
 
+```output
 ResourceGroupName	         : ResourceGroup01
 ManagedInstanceName		     : ManagedInstance01
 IsEnabled		             : False

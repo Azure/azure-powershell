@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzSecuritySecureScoreControl
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzSecuritySecureScoreControl
 schema: 2.0.0
 ---
 
@@ -22,11 +22,29 @@ Get-AzSecuritySecureScoreControl [-DefaultProfile <IAzureContextContainer>] [<Co
 Get-AzSecuritySecureScoreControl -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+## DESCRIPTION
+The Get-AzSecuritySecureScoreControl comlet gets security secure score controls and their results on a subscription.
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecuritySecureScoreControl
+Get-AzSecuritySecureScoreControl
+```
+
+```output
+Id : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Security/secureSco
+res/ascScore/secureScoreControls/8fd574ec-43cf-426e-a439-a67cbaf2d564
+Name : 8fd574ec-43cf-426e-a439-a67cbaf2d564
+Type : Microsoft.Security/secureScores/secureScoreControls
+DisplayName : Enable encryption at rest
+CurrentScore : 0
+MaxScore : 4
+Percentage : 0
+Weight : 6
+HealthyResourceCount : 0
+UnhealthyResourceCount : 6
+NotApplicableResourceCount : 0
 ```
 
 Gets all the security secure scores in a subscription
@@ -37,7 +55,7 @@ Gets all the security secure scores in a subscription
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -52,7 +70,7 @@ Accept wildcard characters: False
 Secure score name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource
 Aliases:
 

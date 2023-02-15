@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 585D6C4D-EA80-4E6B-8C36-E7632430431F
-online version: https://docs.microsoft.com/powershell/module/az.datalakestore/remove-azdatalakestoreaccount
+online version: https://learn.microsoft.com/powershell/module/az.datalakestore/remove-azdatalakestoreaccount
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzDataLakeStoreAccount** cmdlet deletes a Data Lake Store account p
 ## EXAMPLES
 
 ### Example 1: Remove a Data Lake Store account
-```
-PS C:\>Remove-AzDataLakeStoreAccount -Name "ContosoADL"
+```powershell
+Remove-AzDataLakeStoreAccount -Name "ContosoADL"
 ```
 
 This command removes the account named ContosoADL from the Data Lake Store.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azhost
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azhost
 schema: 2.0.0
 ---
 
@@ -31,9 +31,11 @@ This cmdlet also lists all hosts in a host group if a host name is not given.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName
 ```
-PS C:\> Get-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName
 
+```output
 ResourceGroupName    : myrg01
 PlatformFaultDomain  : 1
 AutoReplaceOnFailure : True
@@ -55,9 +57,11 @@ Tags                 : {"key1":"val2"}
 This command returns a host.
 
 ### Example 2
+```powershell
+Get-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName -InstanceView
 ```
-PS C:\> Get-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName -InstanceView
 
+```output
 ResourceGroupName      : myrg01
 PlatformFaultDomain    : 0
 AutoReplaceOnFailure   : True
@@ -96,9 +100,11 @@ Tags                   : {"key1":"val2"}
 This command returns the instance view of a host.
 
 ### Example 3
+```powershell
+Get-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName
 ```
-PS C:\> Get-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName
 
+```output
 ResourceGroupName       Name Location           Tags        Sku FD
 -----------------       ---- --------           ----        --- --
 myrg01              myhost01   eastus {[key1, val2]} ESv3-Type1  0
@@ -106,6 +112,38 @@ myrg01              myhost02   eastus {[key1, val2]} ESv3-Type1  1
 ```
 
 This command returns all hosts in the given host group.
+
+### Example 4: This command retuns a Host for provided -ResourceId.
+```powershell
+$rgname = "rgname"
+$loc = "eastus"
+$hostGroupName = $rgname + "HostGroup"
+$hostName = $rgname + "Host"
+$Sku = "ESv3-Type1"
+# Create Hostgroup and Hostgroupname
+New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1 -Zone "2"
+New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku $Sku
+
+# Fetch Host using -ResouceId
+$dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName
+$host = Get-AzHost -ResourceId $dedicatedHost.Id
+```
+
+```output
+ResourceGroupName    : rgname
+PlatformFaultDomain  : 0
+AutoReplaceOnFailure : True
+HostId               : 0730655b-051d-4559-a83a-5d579d15fec2
+ProvisioningTime     : 10/14/2022 7:28:47 AM
+ProvisioningState    : Succeeded
+Sku                  :
+  Name               : ESv3-Type1
+Id                   : /subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/rgname/providers/Microsoft.Compute/hostGroups/rgnameHostGroup/hosts/rgnameHost
+Name                 : rgnameHost
+Type                 : Microsoft.Compute/hostGroups/hosts
+Location             : eastus
+Tags                 : {}
+```
 
 ## PARAMETERS
 

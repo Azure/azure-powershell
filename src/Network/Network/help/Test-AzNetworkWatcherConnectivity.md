@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/test-aznetworkwatcherconnectivity
+online version: https://learn.microsoft.com/powershell/module/az.network/test-aznetworkwatcherconnectivity
 schema: 2.0.0
 ---
 
@@ -44,8 +44,9 @@ The Test-AzNetworkWatcherConnectivity cmdlet returns connectivity information fo
 ### Example 1: Test Network Watcher Connectivity from a VM to a website
 ```powershell
 Test-AzNetworkWatcherConnectivity -NetworkWatcherName NetworkWatcher -ResourceGroupName NetworkWatcherRG -SourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0" -DestinationAddress "bing.com" -DestinationPort 80
+```
 
-
+```output
 ConnectionStatus : Reachable
 AvgLatencyInMs   : 4
 MinLatencyInMs   : 2

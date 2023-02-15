@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ReadWrite".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ReadWrite", "ReadWrite", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReadWrite");
+                yield return new global::System.Management.Automation.CompletionResult("'ReadWrite'", "ReadWrite", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReadWrite");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ReadOnlyFollowing".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ReadOnlyFollowing", "ReadOnlyFollowing", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReadOnlyFollowing");
+                yield return new global::System.Management.Automation.CompletionResult("'ReadOnlyFollowing'", "ReadOnlyFollowing", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReadOnlyFollowing");
             }
         }
     }

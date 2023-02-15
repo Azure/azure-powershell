@@ -1,0 +1,92 @@
+{
+  "Get-AzMLWorkspaceDatastore+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/datastores?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/datastores?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "ee9d62e6-c529-4675-9009-a94f2161abd4" ],
+        "CommandName": [ "Get-AzMLWorkspaceDatastore" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceDatastore_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "aec6deb1-7096-44d8-a827-42aa108bdd52" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.243" ],
+        "x-ms-correlation-request-id": [ "aec6deb1-7096-44d8-a827-42aa108bdd52" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094034Z:aec6deb1-7096-44d8-a827-42aa108bdd52" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4719" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/datastores/workspaceartifactstore\",\n      \"name\": \"workspaceartifactstore\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/datastores\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": null,\n        \"properties\": null,\n        \"isDefault\": false,\n        \"credentials\": {\n          \"credentialsType\": \"AccountKey\"\n        },\n        \"datastoreType\": \"AzureBlob\",\n        \"accountName\": \"mlworkspacepor4456190370\",\n        \"containerName\": \"azureml\",\n        \"endpoint\": \"core.windows.net\",\n        \"protocol\": \"https\",\n        \"serviceDataAccessAuthIdentity\": \"None\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-05T01:27:41.8673778Z\",\n        \"createdBy\": \"779301c0-18b2-4cdc-801b-a0a3368fee0a\",\n        \"createdByType\": \"Application\",\n        \"lastModifiedAt\": \"2022-05-05T01:27:42.7939658Z\",\n        \"lastModifiedBy\": \"779301c0-18b2-4cdc-801b-a0a3368fee0a\",\n        \"lastModifiedByType\": \"Application\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/datastores/workspaceworkingdirectory\",\n      \"name\": \"workspaceworkingdirectory\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/datastores\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": null,\n        \"properties\": null,\n        \"isDefault\": false,\n        \"credentials\": {\n          \"credentialsType\": \"AccountKey\"\n        },\n        \"datastoreType\": \"AzureFile\",\n        \"accountName\": \"mlworkspacepor4456190370\",\n        \"fileShareName\": \"code-391ff5ac-6576-460f-ba4d-7e03433c68b6\",\n        \"endpoint\": \"core.windows.net\",\n        \"protocol\": \"https\",\n        \"serviceDataAccessAuthIdentity\": \"None\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-05T01:27:41.8666446Z\",\n        \"createdBy\": \"779301c0-18b2-4cdc-801b-a0a3368fee0a\",\n        \"createdByType\": \"Application\",\n        \"lastModifiedAt\": \"2022-05-05T01:27:42.7965802Z\",\n        \"lastModifiedBy\": \"779301c0-18b2-4cdc-801b-a0a3368fee0a\",\n        \"lastModifiedByType\": \"Application\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/datastores/workspaceblobstore\",\n      \"name\": \"workspaceblobstore\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/datastores\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": null,\n        \"properties\": null,\n        \"isDefault\": true,\n        \"credentials\": {\n          \"credentialsType\": \"AccountKey\"\n        },\n        \"datastoreType\": \"AzureBlob\",\n        \"accountName\": \"mlworkspacepor4456190370\",\n        \"containerName\": \"azureml-blobstore-9f63aae3-2f5d-4271-a834-b59aeaff1316\",\n        \"endpoint\": \"core.windows.net\",\n        \"protocol\": \"https\",\n        \"serviceDataAccessAuthIdentity\": \"WorkspaceSystemAssignedIdentity\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-05T01:27:41.8464528Z\",\n        \"createdBy\": \"779301c0-18b2-4cdc-801b-a0a3368fee0a\",\n        \"createdByType\": \"Application\",\n        \"lastModifiedAt\": \"2022-05-05T01:27:42.7609529Z\",\n        \"lastModifiedBy\": \"779301c0-18b2-4cdc-801b-a0a3368fee0a\",\n        \"lastModifiedByType\": \"Application\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/datastores/workspacefilestore\",\n      \"name\": \"workspacefilestore\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/datastores\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": null,\n        \"properties\": null,\n        \"isDefault\": false,\n        \"credentials\": {\n          \"credentialsType\": \"AccountKey\"\n        },\n        \"datastoreType\": \"AzureFile\",\n        \"accountName\": \"mlworkspacepor4456190370\",\n        \"fileShareName\": \"azureml-filestore-9f63aae3-2f5d-4271-a834-b59aeaff1316\",\n        \"endpoint\": \"core.windows.net\",\n        \"protocol\": \"https\",\n        \"serviceDataAccessAuthIdentity\": \"None\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-05T01:27:41.8447961Z\",\n        \"createdBy\": \"779301c0-18b2-4cdc-801b-a0a3368fee0a\",\n        \"createdByType\": \"Application\",\n        \"lastModifiedAt\": \"2022-05-05T01:27:42.7731463Z\",\n        \"lastModifiedBy\": \"779301c0-18b2-4cdc-801b-a0a3368fee0a\",\n        \"lastModifiedByType\": \"Application\"\n      }\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMLWorkspaceDatastore+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/datastores/workspaceartifactstore?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/datastores/workspaceartifactstore?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "f1592a7a-e065-4af6-9529-3ad736a38cd9" ],
+        "CommandName": [ "Get-AzMLWorkspaceDatastore" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceDatastore_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "d4111157-cdaa-4a52-a313-4e070ddc7435" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.128" ],
+        "x-ms-correlation-request-id": [ "d4111157-cdaa-4a52-a313-4e070ddc7435" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094036Z:d4111157-cdaa-4a52-a313-4e070ddc7435" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1025" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/datastores/workspaceartifactstore\",\n  \"name\": \"workspaceartifactstore\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/datastores\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": null,\n    \"properties\": null,\n    \"isDefault\": false,\n    \"credentials\": {\n      \"credentialsType\": \"AccountKey\"\n    },\n    \"datastoreType\": \"AzureBlob\",\n    \"accountName\": \"mlworkspacepor4456190370\",\n    \"containerName\": \"azureml\",\n    \"endpoint\": \"core.windows.net\",\n    \"protocol\": \"https\",\n    \"serviceDataAccessAuthIdentity\": \"None\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-05-05T01:27:41.8673778Z\",\n    \"createdBy\": \"779301c0-18b2-4cdc-801b-a0a3368fee0a\",\n    \"createdByType\": \"Application\",\n    \"lastModifiedAt\": \"2022-05-05T01:27:42.7939658Z\",\n    \"lastModifiedBy\": \"779301c0-18b2-4cdc-801b-a0a3368fee0a\",\n    \"lastModifiedByType\": \"Application\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

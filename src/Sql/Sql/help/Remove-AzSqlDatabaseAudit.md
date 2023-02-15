@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/powershell/module/az.sql/Remove-AzSqlDatabaseAudit
+online version: https://learn.microsoft.com/powershell/module/az.sql/Remove-AzSqlDatabaseAudit
 schema: 2.0.0
 ---
 
@@ -32,13 +32,13 @@ To use the cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName*
 ## EXAMPLES
 
 ### Example 1: Remove the auditing settings of an Azure SQL database
-```
-PS C:\>Remove-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+```powershell
+Remove-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 ### Example 2: Remove, through pipeline, the auditing settings of an Azure SQL database
-```
-PS C:\> Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Remove-AzSqlDatabaseAudit
+```powershell
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Remove-AzSqlDatabaseAudit
 ```
 
 ## PARAMETERS

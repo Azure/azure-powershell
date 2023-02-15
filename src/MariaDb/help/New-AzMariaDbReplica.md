@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MariaDb
-online version: https://docs.microsoft.com/powershell/module/az.mariadb/new-azmariadbreplica
+online version: https://learn.microsoft.com/powershell/module/az.mariadb/new-azmariadbreplica
 schema: 2.0.0
 ---
 
@@ -33,8 +33,10 @@ Creates a replica of a MariaDB server.
 
 ### Example 1: Create a replica db for a MariaDB
 ```powershell
-PS C:\> New-AzMariaDbReplica -MasterName mariadb-test-9pebvn -ReplicaName mariadb-test-9pebvn-rep01 -ResourceGroupName mariadb-test-qu5ov0
+New-AzMariaDbReplica -MasterName mariadb-test-9pebvn -ReplicaName mariadb-test-9pebvn-rep01 -ResourceGroupName mariadb-test-qu5ov0
+```
 
+```output
 Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
 mariadb-test-9pebvn-rep01 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
@@ -44,8 +46,10 @@ This command creates a replica db for a MariaDB.
 
 ### Example 2: Create a replica db for a MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | New-AzMariaDbReplica -ReplicaName mariadb-test-9pebvn-rep02
+Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 | New-AzMariaDbReplica -ReplicaName mariadb-test-9pebvn-rep02
+```
 
+```output
 Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
 mariadb-test-9pebvn-rep02 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
@@ -55,9 +59,11 @@ This command creates a replica db for a MariaDB.
 
 ### Example 3: Create a replica db for a MariaDB
 ```powershell
-PS C:\> $mariaDb = Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 
-PS C:\> New-AzMariaDbReplica -Master $mariaDb -ReplicaName mariadb-test-9pebvn-rep03
+$mariaDb = Get-AzMariaDbServer -Name mariadb-test-9pebvn -ResourceGroupName mariadb-test-qu5ov0 
+New-AzMariaDbReplica -Master $mariaDb -ReplicaName mariadb-test-9pebvn-rep03
+```
 
+```output
 Name                      Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
 ----                      -------- ------------------ ------- ----------------------- -------   -------        --------------
 mariadb-test-9pebvn-rep03 eastus   xpwjyfdgui         10.2    7168                    GP_Gen5_4 GeneralPurpose Enabled
@@ -286,7 +292,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-MASTER <IServer>: The source server object to restore from.
+MASTER `<IServer>`: The source server object to restore from.
   - `Location <String>`: The location the resource resides in.
   - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

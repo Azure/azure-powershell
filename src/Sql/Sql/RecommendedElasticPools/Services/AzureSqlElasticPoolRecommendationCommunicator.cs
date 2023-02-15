@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Recommended Elastic Pool
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlElasticPoolRecommendationCommunicator(IAzureContext context)
         {
             Context = context;

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Set-AzSqlInformationProtectionPolicy
+online version: https://learn.microsoft.com/powershell/module/az.security/Set-AzSqlInformationProtectionPolicy
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Sets the effective tenant SQL information protection policy.
 
 ### Example
 ```powershell
-PS C:\> Set-AzSqlInformationProtectionPolicy -FilePath "C:\Users\myUser\Desktop\policy.json"
+Set-AzSqlInformationProtectionPolicy -FilePath "C:\Users\myUser\Desktop\policy.json"
 ```
 
 ## PARAMETERS

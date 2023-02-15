@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: D2CCAEB4-E43E-4075-9436-77F2C4FE9463
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmimageoffer
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzVMImageOffer** cmdlet gets the VMImage offer types.
 ## EXAMPLES
 
 ### Example 1: Get offer types for a publisher
-```
-PS C:\> Get-AzVMImageOffer -Location "Central US" -PublisherName "Fabrikam"
+```powershell
+Get-AzVMImageOffer -Location "Central US" -PublisherName "Fabrikam"
 ```
 
 This command gets the offer types for the specified publisher in the Central US region.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/update-aznetworkvirtualappliance
+online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworkvirtualappliance
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The Update-AzNetworkVirtualAppliance modifies a Network Virtual Appliance resour
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -VirtualApplianceAsn 1234
+Update-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -VirtualApplianceAsn 1234
 ```
 
 Modify the Virtual Appliance ASN number.

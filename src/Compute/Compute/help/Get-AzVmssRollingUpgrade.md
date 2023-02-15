@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmssrollingupgrade
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmssrollingupgrade
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ Shows the status of the latest virtual machine scale set rolling upgrade.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzVmssRollingUpgrade -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+```powershell
+Get-AzVmssRollingUpgrade -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command shows  the status of the latest rolling upgrade of the VMSS named VMSS001 that belongs to the resource group named Group001.

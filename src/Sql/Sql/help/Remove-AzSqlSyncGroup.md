@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlsyncgroup
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlsyncgroup
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Remove-AzSqlSyncGroup** cmdlet removes an Azure SQL Database Sync Group.
 ## EXAMPLES
 
 ### Example 1: Remove a sync group
-```
-PS C:\>Remove-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -Name "syncGroup01"
+```powershell
+Remove-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -Name "syncGroup01"
 ```
 
 This command removes the Azure SQL Database Sync Group named syncGroup01.

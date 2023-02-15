@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azpublicipprefix
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azpublicipprefix
 schema: 2.0.0
 ---
 
@@ -30,8 +30,10 @@ The **Get-AzPublicIpPrefix** cmdlet gets one or more public IP prefixes in a res
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzPublicIpPrefix -ResourceGroupName myRg -Name myPublicIpPrefix1
+Get-AzPublicIpPrefix -ResourceGroupName myRg -Name myPublicIpPrefix1
+```
 
+```output
 Name                   : myPublicIpPrefix1
 ResourceGroupName      : myRg
 Location               : westus
@@ -58,8 +60,10 @@ This command gets a public IP prefix resource with myPublicIpPrefix1 in resource
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzPublicIpPrefix -Name myPublicIpPrefix*
+Get-AzPublicIpPrefix -Name myPublicIpPrefix*
+```
 
+```output
 Name                   : myPublicIpPrefix1
 ResourceGroupName      : myRg
 Location               : westus

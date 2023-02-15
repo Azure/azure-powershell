@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/powershell/module/az.databoxedge/get-azdataboxedgeshare
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/get-azdataboxedgeshare
 schema: 2.0.0
 ---
 
@@ -42,7 +42,10 @@ The **Get-AzDataBoxEdgeShare** cmdlet gets the available shares for a Data Box E
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzDataBoxEdgeShare -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 Name       Type       DataPolicy       DataFormat       ResourceGroupName     StorageAccountName
 ---------- ---------- ---------------- ---------------- --------------------- -------------------
 share-1    SMB        Cloud            PageBlob         resourceGroupName     storageAccountName

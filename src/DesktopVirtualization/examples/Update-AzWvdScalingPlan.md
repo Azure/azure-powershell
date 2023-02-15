@@ -1,6 +1,6 @@
 ### Example 1: Update a Windows Virtual Desktop Scaling Plan by name
 ```powershell
-PS C:\> Update-AzWvdScalingPlan `
+Update-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
             -Name 'scalingPlan1' `
             -Description 'Description' `
@@ -40,7 +40,9 @@ PS C:\> Update-AzWvdScalingPlan `
                 }
 
             )
+```
 
+```output
 Location      Name         Type
 --------      ----         ----
 westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans

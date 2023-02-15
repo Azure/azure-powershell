@@ -61,11 +61,12 @@ namespace Microsoft.Azure.Commands.Profile.Common
         }
 
         /// <summary>
-        /// Get the context modification scope for the current user.  This will be 'Process' if changes should 
-        /// only affect the current PowerShell session, or 'CurrentUser'  if any changes should be global.
+        /// Get the context modification scope for the current user. This will be 'Process' if changes should 
+        /// only affect the current PowerShell session, or 'CurrentUser' if any changes should be global.
         /// </summary>
+        /// <param name="session"> The PowerShell session to be affected</param>
         /// <param name="writer">A writer to write debug messages</param>
-        /// <returns>'Process'  if all changes should only impact the current session, or 'CurrentUser' if 
+        /// <returns>'Process' if all changes should only impact the current session, or 'CurrentUser' if 
         /// changes should be global.</returns>
         public static ContextModificationScope GetContextModificationScopeForUser(IAzureSession session, DebugWriter writer)
         {

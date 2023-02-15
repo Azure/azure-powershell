@@ -20,121 +20,116 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DataSyncTests : SqlTestsBase
+    public class DataSyncTests : SqlTestRunner
     {
         public DataSyncTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
 
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers",
-                "Microsoft.Sql/managedInstances/databases"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncAgentCreate()
         {
-            RunPowerShellTest("Test-CreateSyncAgent");
+            TestRunner.RunTestScript("Test-CreateSyncAgent");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncAgentsGetAndList()
         {
-            RunPowerShellTest("Test-GetAndListSyncAgents");
+            TestRunner.RunTestScript("Test-GetAndListSyncAgents");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncAgentRemove()
         {
-            RunPowerShellTest("Test-RemoveSyncAgent");
+            TestRunner.RunTestScript("Test-RemoveSyncAgent");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncAgentKeyCreate()
         {
-            RunPowerShellTest("Test-CreateSyncAgentKey");
+            TestRunner.RunTestScript("Test-CreateSyncAgentKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncAgentLinkedDatabaseList()
         {
-            RunPowerShellTest("Test-listSyncAgentLinkedDatabase");
+            TestRunner.RunTestScript("Test-listSyncAgentLinkedDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncGroupCreate()
         {
-            RunPowerShellTest("Test-CreateSyncGroup");
+            TestRunner.RunTestScript("Test-CreateSyncGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncGroupUpdate()
         {
-            RunPowerShellTest("Test-UpdateSyncGroup");
+            TestRunner.RunTestScript("Test-UpdateSyncGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncGroupsGetAndList()
         {
-            RunPowerShellTest("Test-GetAndListSyncGroups");
+            TestRunner.RunTestScript("Test-GetAndListSyncGroups");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncGroupHubSchemaRefreshAndGet()
         {
-            RunPowerShellTest("Test-RefreshAndGetSyncGroupHubSchema");
+            TestRunner.RunTestScript("Test-RefreshAndGetSyncGroupHubSchema");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncGroupRemove()
         {
-            RunPowerShellTest("Test-RemoveSyncGroup");
+            TestRunner.RunTestScript("Test-RemoveSyncGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncMemberCreate()
         {
-            RunPowerShellTest("Test-CreateSyncMember");
+            TestRunner.RunTestScript("Test-CreateSyncMember");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncMembersGetAndList()
         {
-            RunPowerShellTest("Test-GetAndListSyncMembers");
+            TestRunner.RunTestScript("Test-GetAndListSyncMembers");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncMemberUpdate()
         {
-            RunPowerShellTest("Test-UpdateSyncMember");
+            TestRunner.RunTestScript("Test-UpdateSyncMember");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncMemberSchemaRefreshAndGet()
         {
-            RunPowerShellTest("Test-RefreshAndGetSyncMemberSchema");
+            TestRunner.RunTestScript("Test-RefreshAndGetSyncMemberSchema");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncMemberRemove()
         {
-            RunPowerShellTest("Test-RemoveSyncMember");
+            TestRunner.RunTestScript("Test-RemoveSyncMember");
         }
     }
 }

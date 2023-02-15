@@ -18,37 +18,36 @@ Create subscription
 #>
 function Test-UpdateRenameSubscription
 {
-    $subId = "bc085fce-1a23-4734-b588-7c36b622317e"
+    $subscriptionId = "d17ad3ae-320e-42ff-b5a1-705389c6063a"
 
-    $updateSub = Update-AzSubscription -SubscriptionId $subId -Action "Rename" -Name "RenameFromPowershell"
+    $updateSub = Update-AzSubscription -SubscriptionId $subscriptionId -Action "Rename" -Name "RenameFromPowershell"
 
 	Assert-NotNull updateSub.SubscriptionId
 }
 
 function Test-UpdateCancelSubscription
 {
-    $subId = "bc085fce-1a23-4734-b588-7c36b622317e"
+    $subscriptionId = "687a7385-011e-4538-8d8d-ab484f19ba00"
 
-    $updateSub = Update-AzSubscription -SubscriptionId $subId -Action "Cancel"
+    $updateSub = Update-AzSubscription -SubscriptionId $subscriptionId -Action "Cancel"
 
 	Assert-NotNull updateSub.SubscriptionId
 }
 
 function Test-NewSubscriptionAlias
 {
-    $aliasName = "navyprod1"
-	$displayName = "testSub1"
-	$billingScope ="billingScope"
+    $aliasName = "test-alias"
 	$workload = "Production"
+	$subscriptionId = "d17ad3ae-320e-42ff-b5a1-705389c6063a"
 
-    $newsub = New-AzSubscriptionAlias -AliasName $aliasName -SubscriptionName $displayName -BillingScope $billingScope -Workload $workload
+    $newsub = New-AzSubscriptionAlias -AliasName $aliasName -Workload $workload -SubscriptionId $subscriptionId
 
 	Assert-NotNull newsub
 }
 
 function Test-GetSubscriptionAlias
 {
-    $aliasName = "navyprod1"
+    $aliasName = "test-alias"
 
     $newsub = Get-AzSubscriptionAlias -AliasName $aliasName
 
@@ -57,7 +56,7 @@ function Test-GetSubscriptionAlias
 
 function Test-RemoveSubscriptionAlias
 {
-    $aliasName = "navyprod1"
+    $aliasName = "test-alias"
 
     $newsub = Remove-AzSubscriptionAlias -AliasName $aliasName
 

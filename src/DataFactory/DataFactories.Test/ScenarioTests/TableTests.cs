@@ -12,20 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataFactories.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
-    public class TableTests : DataFactoriesScenarioTestsBase
+    public class TableTests : DataFactoriesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public TableTests(Xunit.Abstractions.ITestOutputHelper output)
+        public TableTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD
@@ -37,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTable()
         {
-            RunPowerShellTest(_logger, "Test-Table");
+            TestRunner.RunTestScript("Test-Table");
         }
 
 #if NETSTANDARD
@@ -49,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableWithDataFactoryParameter()
         {
-            RunPowerShellTest(_logger, "Test-TableWithDataFactoryParameter");
+            TestRunner.RunTestScript("Test-TableWithDataFactoryParameter");
         }
 
 #if NETSTANDARD
@@ -61,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTablePiping()
         {
-            RunPowerShellTest(_logger, "Test-TablePiping");
+            TestRunner.RunTestScript("Test-TablePiping");
         }
     }
 }

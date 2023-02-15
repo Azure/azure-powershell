@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.TimeSeriesInsights
-online version: https://docs.microsoft.com/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightsenvironment
+online version: https://learn.microsoft.com/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightsenvironment
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Deletes the environment with the specified name in the specified subscription an
 
 ### Example 1: Remove a time series insights environment by name
 ```powershell
-PS C:\> Remove-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsill
+Remove-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsill
 
 ```
 
@@ -39,8 +39,8 @@ This command removes a time series insights environment.
 
 ### Example 2: Remove a time series insights environment by object
 ```powershell
-PS C:\> $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsill
-PS C:\> Remove-AzTimeSeriesInsightsEnvironment -InputObject $env
+$env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsill
+Remove-AzTimeSeriesInsightsEnvironment -InputObject $env
 
 ```
 
@@ -190,7 +190,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
+INPUTOBJECT `<ITimeSeriesInsightsIdentity>`: Identity Parameter
   - `[AccessPolicyName <String>]`: Name of the access policy.
   - `[EnvironmentName <String>]`: Name of the environment
   - `[EventSourceName <String>]`: The name of the Time Series Insights event source associated with the specified environment.

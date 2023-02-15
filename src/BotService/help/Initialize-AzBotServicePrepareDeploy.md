@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.BotService
-online version: https://docs.microsoft.com/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
+online version: https://learn.microsoft.com/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
 schema: 2.0.0
 ---
 
@@ -24,8 +24,7 @@ Returns a BotService specified by the parameters.
 
 ### Example 1: Initialize the Project FileFolder
 ```powershell
-PS C:\> Initialize-AzBotServicePrepareDeploy -CodeDir D:\zips\MyEchoBot -ProjFileName MyEchoBot.csproj
-
+Initialize-AzBotServicePrepareDeploy -CodeDir D:\zips\MyEchoBot -ProjFileName MyEchoBot.csproj
 ```
 
 Initialize Prepares a resource for use, and sets it to a default state
@@ -33,7 +32,7 @@ Initialize Prepares a resource for use, and sets it to a default state
 ## PARAMETERS
 
 ### -CodeDir
-The name of the Bot resource group in the user subscription.
+The path to prepare a resource.
 
 ```yaml
 Type: System.String
@@ -63,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Language
-
+The language could be C#, JavaScript or TypeScript.
 
 ```yaml
 Type: System.String
@@ -78,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjFileName
-
+The project file name.
 
 ```yaml
 Type: System.String
@@ -114,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
+### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
 
 ## NOTES
 

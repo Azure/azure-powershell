@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/get-azdatasharesynchronization
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatasharesynchronization
 schema: 2.0.0
 ---
 
@@ -30,9 +30,11 @@ The **Get-AzDataShareSynchronization** cmdlet provides information about all the
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare"
 ```
-PS C:\> Get-AzDataShareSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare"
 
+```output
 Company           : ADS Test
 DurationMs        : 107013
 EndTime           : 7/8/2019 11:53:18 PM

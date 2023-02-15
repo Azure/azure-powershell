@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MariaDb
-online version: https://docs.microsoft.com/powershell/module/az.mariadb/get-azmariadbconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.mariadb/get-azmariadbconfiguration
 schema: 2.0.0
 ---
 
@@ -36,8 +36,10 @@ Gets information about a configuration of server.
 
 ### Example 1: List all configuration under a MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbConfiguration -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0
+Get-AzMariaDbConfiguration -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0
+```
 
+```output
 Name                                     Type
 ----                                     ----
 audit_log_enabled                        Microsoft.DBforMariaDB/servers/configurations
@@ -201,8 +203,10 @@ This command lists all configuration under a MariaDB.
 
 ### Example 2: Get a configuration of MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbConfiguration -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0 -Name max_connections
+Get-AzMariaDbConfiguration -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0 -Name max_connections
+```
 
+```output
 Name            Type
 ----            ----
 max_connections Microsoft.DBforMariaDB/servers/configurations
@@ -324,7 +328,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
+INPUTOBJECT `<IMariaDbIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

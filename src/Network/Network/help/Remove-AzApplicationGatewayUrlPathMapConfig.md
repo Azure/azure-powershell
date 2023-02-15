@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: E43C8D2A-A6B5-4259-94B9-353FBC15F5A8
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayurlpathmapconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayurlpathmapconfig
 schema: 2.0.0
 ---
 
@@ -24,10 +24,10 @@ The **Remove-AzApplicationGatewayUrlPathMapConfig** cmdlet removes URL path mapp
 ## EXAMPLES
 
 ### Example 1: Remove an URL path mapping from an application gateway
-```
-PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
-PS C:\> $appgw = Remove-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "map01"
-PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+```powershell
+$appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+$appgw = Remove-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "map01"
+$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 The first command gets the application gateway named appGwName and stores the result in the $appgw variable.

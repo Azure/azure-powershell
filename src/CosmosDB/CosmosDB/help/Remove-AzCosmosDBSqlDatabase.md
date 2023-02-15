@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbsqldatabase
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbsqldatabase
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The **Remove-AzCosmosDBSqlDatabase** cmdlet deletes the CosmosDB Sql Database co
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCosmosDBSqlDatabase -ResourceGroupName {resourceGroupName} -AccountName {accountName} -Name {databaseName}
+Remove-AzCosmosDBSqlDatabase -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "databaseName"
 ```
 
 ## PARAMETERS

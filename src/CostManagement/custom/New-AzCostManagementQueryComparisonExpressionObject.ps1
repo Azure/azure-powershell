@@ -20,12 +20,12 @@ Create a in-memory object for QueryComparisonExpression
 Create a in-memory object for QueryComparisonExpression
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
+https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
 #>
 function New-AzCostManagementQueryComparisonExpressionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,7 +41,7 @@ function New-AzCostManagementQueryComparisonExpressionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression]::New()
 
         $Object.Name = $Name
         # Description: The type of the Operator is enum,but it only contains one value,so the parameter is not exposed now.

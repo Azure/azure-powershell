@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherreachabilityproviderslist
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkwatcherreachabilityproviderslist
 schema: 2.0.0
 ---
 
@@ -46,9 +46,11 @@ The Get-AzNetworkWatcherReachabilityProvidersList lists all available internet s
 
 ### Example 1
 ```powershell
-PS C:\> $nw = Get-AzNetworkWatcher -Name NetworkWatcher -ResourceGroupName NetworkWatcherRG
-PS C:\> Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle"
+$nw = Get-AzNetworkWatcher -Name NetworkWatcher -ResourceGroupName NetworkWatcherRG
+Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -State "washington" -City "seattle"
+```
 
+```output
 "countries" : [
     {
         "countryName" : "United States",

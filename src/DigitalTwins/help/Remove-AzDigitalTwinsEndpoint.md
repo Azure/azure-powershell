@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://docs.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsendpoint
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsendpoint
 schema: 2.0.0
 ---
 
@@ -30,22 +30,12 @@ Delete a DigitalTwinsInstance endpoint.
 
 ## EXAMPLES
 
-### Example 1: Delete the azDigitalTwinsEndPoint by EndPointName
+### Example 1: Delete the azDigitalTwinsEndPoint by EndPointName.
 ```powershell
-PS C:\> Remove-AzDigitalTwinsEndpoint -ResourceGroupName youritemp -EndpointName youriEHEndpoint -ResourceName youriDigitalTwinsTest
-
+Remove-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
 ```
 
-Delete the azDigitalTwinsEndPoint by EndPointName ResourceGroupName and ResourceName
-
-### Example 2: Delete the azDigitalTwinsEndPoint by Object
-```powershell
-PS C:\> $GetAzdigitalTwinsEndpoint = Get-AzDigitalTwinsEndpoint -EndpointName youriEHEndpoint -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
-Remove-AzDigitalTwinsEndpoint -InputObject $GetAzdigitalTwinsEndpoint
-
-```
-
-Delete the azDigitalTwinsEndPoint by Object
+Delete the azDigitalTwinsEndPoint by EndPointName ResourceGroupName and ResourceName.
 
 ## PARAMETERS
 
@@ -225,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
 
 ## NOTES
 
@@ -236,13 +226,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+`INPUTOBJECT <IDigitalTwinsIdentity>`: Identity Parameter
   - `[EndpointName <String>]`: Name of Endpoint Resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location of DigitalTwinsInstance.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the DigitalTwinsInstance.
+  - `[ResourceId <String>]`: The name of the private link resource.
   - `[ResourceName <String>]`: The name of the DigitalTwinsInstance.
   - `[SubscriptionId <String>]`: The subscription identifier.
+  - `[TimeSeriesDatabaseConnectionName <String>]`: Name of time series database connection.
 
 ## RELATED LINKS
 

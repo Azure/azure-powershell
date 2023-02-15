@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorheaderactionobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorheaderactionobject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Creates PSHeaderAction object for the creation of PSRulesEngineAction object.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorHeaderActionObject -HeaderName headername -HeaderActionType Append
+New-AzFrontDoorHeaderActionObject -HeaderName headername -HeaderActionType Append
+```
 
+```output
 HeaderName HeaderActionType Value
 ---------- ---------------- -----
 headername           Append

@@ -1,7 +1,9 @@
 ### Example 1: List all Kusto clusters in a resource group
 ```powershell
-PS C:\> Get-AzKustoCluster -ResourceGroupName testrg
+Get-AzKustoCluster -ResourceGroupName testrg
+```
 
+```output
 Location Name                 Type                     Zone
 -------- ----                 ----                     ----
 East US  testnewkustocluster  Microsoft.Kusto/Clusters
@@ -12,8 +14,10 @@ The above command lists all Kusto clusters in the resource group "testrg".
 
 ### Example 2: Get a specific Kusto cluster by name
 ```powershell
-PS C:\>  Get-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster
+ Get-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster
+```
 
+```output
 Location Name                Type                     Zone
 -------- ----                ----                     ----
 East US  testnewkustocluster Microsoft.Kusto/Clusters

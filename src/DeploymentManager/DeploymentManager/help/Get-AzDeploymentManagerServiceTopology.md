@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeploymentManager.dll-Help.xml
 Module Name: Az.DeploymentManager
-online version: https://docs.microsoft.com/powershell/module/az.deploymentmanager/get-azdeploymentmanagerservicetopology
+online version: https://learn.microsoft.com/powershell/module/az.deploymentmanager/get-azdeploymentmanagerservicetopology
 schema: 2.0.0
 ---
 
@@ -40,21 +40,21 @@ Specify the service topology by its name and the resource group name. Alternatel
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDeploymentManagerServiceTopology -ResourceGroupName ContosoResourceGroup -Name ContosoServiceTopology
+Get-AzDeploymentManagerServiceTopology -ResourceGroupName ContosoResourceGroup -Name ContosoServiceTopology
 ```
 
 This command gets a service topology named ContosoServiceTopology in the ContosoResourceGroup.
 
 ### Example 2: Get a service topology using the resource identifier.
 ```powershell
-PS C:\> Get-AzDeploymentManagerServiceTopology -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology"
+Get-AzDeploymentManagerServiceTopology -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology"
 ```
 
 This command gets a service topology named ContosoServiceTopology in the ContosoResourceGroup.
 
 ### Example 3: Get a service topology using the service topology object.
 ```powershell
-PS C:\> Get-AzDeploymentManagerService -InputObject $serviceTopologyObject
+Get-AzDeploymentManagerService -InputObject $serviceTopologyObject
 ```
 
 This command gets a service topology whose name and ResourceGroup match the Name and ResourceGroupName properties of the $serviceTopologyObject, respectively.

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **New-AzManagedApplicationDefinition** cmdlet creates a managed application 
 ## EXAMPLES
 
 ### Example 1
-```
-PS> New-AzManagedApplicationDefinition -Name myAppDef -ResourceGroupName myRG -DisplayName test -Description "sample description" -Location westus -LockLevel ReadOnly -PackageFileUri https://sample.blob.core.windows.net/files/myPackage.zip -Authorization <principalId:roleDefinitionId>
+```powershell
+New-AzManagedApplicationDefinition -Name myAppDef -ResourceGroupName myRG -DisplayName test -Description "sample description" -Location westus -LockLevel ReadOnly -PackageFileUri https://sample.blob.core.windows.net/files/myPackage.zip -Authorization <principalId:roleDefinitionId>
 ```
 
 This command creates a managed application definition

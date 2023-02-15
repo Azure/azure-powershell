@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecachedimage
+online version: https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecachedimage
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Get the list of cached images on specific OS type for a subscription in a region
 
 ### Example 1: Get the list of cached images for the current subscription in a region.
 ```powershell
-PS C:\> Get-AzContainerInstanceCachedImage -Location eastus
+Get-AzContainerInstanceCachedImage -Location eastus
+```
 
+```output
 Image                                                                                OSType
 -----                                                                                ------
 microsoft/dotnet-framework:4.7.2-runtime-20181211-windowsservercore-ltsc2016         Windows

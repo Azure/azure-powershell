@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
     public static class Base64Url
     {
         /// <summary>Encode a string as a Base64URL encoded string.</summary>
-        /// <param name="bytes">String input buffer.</param>
+        /// <param name="value"></param>
         /// <returns>The UTF8 bytes for the string, encoded as a Base64URL string.</returns>
         public static string EncodeString(string value)
         {

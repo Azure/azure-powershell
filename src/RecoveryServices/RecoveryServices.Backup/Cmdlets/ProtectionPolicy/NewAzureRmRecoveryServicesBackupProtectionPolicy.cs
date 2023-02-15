@@ -79,6 +79,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public SchedulePolicyBase SchedulePolicy { get; set; }
 
+        /// <summary>
+        /// Boolean value that specifies whether recovery points should be moved to archive storage by the policy or not. Allowed values are $true, $false. 
+        /// If no value is specified, then there is no change in behaviour for the existing protection policy.
+        /// </summary>
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.MoveToArchiveTier)]
+        public bool? MoveToArchiveTier { get; set; }
+
+        /// <summary>
+        /// Tiering mode to specify whether to move recommended or all eligible recovery points.
+        /// </summary>
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.TieringMode)]
+        [ValidateSet("TierRecommended", "TierAllEligible")]
+        public TieringMode TieringMode { get; set; }
+
+        /// <summary>
+        /// Specifies after how many days/months recovery points should start moving to the archive tier. Applicable only for TieringMode: TierAllEligible
+        /// </summary>
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.TierAfterDuration)]
+        public int? TierAfterDuration { get; set; }
+
+        /// <summary>
+        /// Specifies whether the TierAfterDuration is in Days or Months.
+        /// </summary>
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.TierAfterDurationType)]
+        [ValidateSet("Days", "Months")]
+        public string TierAfterDurationType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -99,7 +126,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 // validate policy name
                 PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
-
+                
                 // Validate if policy already exists               
                 if (PolicyCmdletHelpers.GetProtectionPolicyByName(
                     Name,
@@ -110,31 +137,72 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
                 }
 
-                PsBackupProviderManager providerManager =
-                    new PsBackupProviderManager(new Dictionary<Enum, object>()
+                // check if smart tiering feature is enabled on this subscription                
+                bool isSmartTieringEnabled = true;                
+
+                TieringPolicy tieringDetails = null;
+                if (MoveToArchiveTier != null)
+                {
+                    if (WorkloadType != Models.WorkloadType.AzureVM && WorkloadType != Models.WorkloadType.MSSQL && WorkloadType != Models.WorkloadType.SAPHanaDatabase)
                     {
-                        { VaultParams.VaultName, vaultName },
-                        { VaultParams.ResourceGroupName, resourceGroupName },
-                        { PolicyParams.PolicyName, Name },
-                        { PolicyParams.WorkloadType, WorkloadType },
-                        { PolicyParams.RetentionPolicy, RetentionPolicy },
-                        { PolicyParams.SchedulePolicy, SchedulePolicy },
-                    }, ServiceClientAdapter);
+                        throw new ArgumentException(Resources.SmartTieringNotSupported);
+                    }
+
+                    tieringDetails = new TieringPolicy();
+                    if (MoveToArchiveTier == false)
+                    {
+                        if(TieringMode != 0 || TierAfterDuration != null || TierAfterDurationType != null)
+                        {
+                            throw new ArgumentException(Resources.InvalidParametersForTiering);
+                        }
+
+                        tieringDetails.TieringMode = TieringMode.DoNotTier;
+                    }
+                    else
+                    {
+                        if ((WorkloadType == Models.WorkloadType.MSSQL || WorkloadType == Models.WorkloadType.SAPHanaDatabase) && TieringMode == TieringMode.TierRecommended)
+                        {
+                            throw new ArgumentException(Resources.TierRecommendedNotSupportedForAzureWorkload);
+                        }
+
+                        tieringDetails.TargetTier = RecoveryPointTier.VaultArchive;
+                        tieringDetails.TieringMode = TieringMode;
+                        tieringDetails.TierAfterDuration = TierAfterDuration;
+                        tieringDetails.TierAfterDurationType = TierAfterDurationType;
+
+                        tieringDetails.Validate();
+                    }
+                }
+
+                Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
+                providerParameters.Add(VaultParams.VaultName, vaultName);
+                providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
+                providerParameters.Add(PolicyParams.PolicyName, Name);
+                providerParameters.Add(PolicyParams.WorkloadType, WorkloadType);
+                providerParameters.Add(PolicyParams.RetentionPolicy, RetentionPolicy);
+                providerParameters.Add(PolicyParams.SchedulePolicy, SchedulePolicy);
+                providerParameters.Add(PolicyParams.TieringPolicy, tieringDetails);
+                providerParameters.Add(PolicyParams.IsSmartTieringEnabled, isSmartTieringEnabled);
+                
+                PsBackupProviderManager providerManager = new PsBackupProviderManager(providerParameters, ServiceClientAdapter);                
 
                 IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
+                
                 psBackupProvider.CreatePolicy();
-
+                
                 WriteDebug("Successfully created policy, now fetching it from service: " + Name);
-
+                
                 // now get the created policy and return
                 ServiceClientModel.ProtectionPolicyResource policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
                     Name,
                     ServiceClientAdapter,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
+
                 // now convert service Policy to PSObject
                 WriteObject(ConversionHelpers.GetPolicyModel(policy));
+
             }, ShouldProcess(Name, VerbsCommon.New));
         }
     }

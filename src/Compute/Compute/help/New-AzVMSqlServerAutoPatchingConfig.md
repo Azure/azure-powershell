@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 7016BAA9-C25D-404E-9F75-2BE49FBF91A8
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azvmsqlserverautopatchingconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azvmsqlserverautopatchingconfig
 schema: 2.0.0
 ---
 
@@ -24,8 +24,11 @@ The **New-AzVMSqlServerAutoPatchingConfig** cmdlet creates a configuration objec
 ## EXAMPLES
 
 ### Example 1: Create a configuration object to configure automatic patching
+```powershell
+$AutoPatchingConfig = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 ```
-PS C:\> $AutoPatchingConfig = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+
+```output
 Enable                        : True
 DayOfWeek                     : Thursday
 MaintenanceWindowStartingHour : 11

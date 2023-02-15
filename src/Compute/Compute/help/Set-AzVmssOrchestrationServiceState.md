@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmssorchestrationservicestate
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmssorchestrationservicestate
 schema: 2.0.0
 ---
 
@@ -38,15 +38,15 @@ Sets the orchestration service state for the VMSS.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Set-AzVmssOrchestrationServiceState -ResourceGroupName "rg" -VMScaleSetName "vmss1" -ServiceName "AutomaticRepairs" -Action "Suspend"
+```powershell
+Set-AzVmssOrchestrationServiceState -ResourceGroupName "rg" -VMScaleSetName "vmss1" -ServiceName "AutomaticRepairs" -Action "Suspend"
 ```
 
 This command suspends Automatic Repairs service on the VMSS "vmss1" in the resource group "rg".
 
 ### Example 2
-```
-PS C:\> Get-AzVmss -ResourceGroupName "rg" -VMScaleSetName "vmss1" | Set-AzVmssOrchestrationServiceState -ServiceName "AutomaticRepairs" -Action "Resume"
+```powershell
+Get-AzVmss -ResourceGroupName "rg" -VMScaleSetName "vmss1" | Set-AzVmssOrchestrationServiceState -ServiceName "AutomaticRepairs" -Action "Resume"
 ```
 
 This command resumes Automatic Repairs service on the VMSS "vmss1" in the resource group "rg".

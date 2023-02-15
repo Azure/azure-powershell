@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Portal
-online version: https://docs.microsoft.com/powershell/module/az.portal/set-azportaldashboard
+online version: https://learn.microsoft.com/powershell/module/az.portal/set-azportaldashboard
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Creates or updates a Dashboard.
 
 ### Example 1: Update the dashboard definition using a dashboard template
 ```powershell
-PS C:\> Set-AzPortalDashboard -DashboardPath .\resources\dash1-update.json -ResourceGroupName my-rg -DashboardName dashbase03
+Set-AzPortalDashboard -DashboardPath .\resources\dash1-update.json -ResourceGroupName my-rg -DashboardName dashbase03
+```
 
+```output
 Location Name       Type
 -------- ----       ----
 eastasia dashbase03 Microsoft.Portal/dashboards

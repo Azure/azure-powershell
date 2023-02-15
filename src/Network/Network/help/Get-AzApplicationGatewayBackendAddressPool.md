@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 4B2066B6-51D7-46D8-8A72-1A232B3E6589
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendaddresspool
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendaddresspool
 schema: 2.0.0
 ---
 
@@ -24,18 +24,18 @@ The **Get-AzApplicationGatewayBackendAddressPool** cmdlet gets one or more backe
 ## EXAMPLES
 
 ### Example 1: Get a specified back-end server pool
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $BackendPool = Get-AzApplicationGatewayBackendAddressPool -Name "Pool01" -ApplicationGateway $AppGw
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$BackendPool = Get-AzApplicationGatewayBackendAddressPool -Name "Pool01" -ApplicationGateway $AppGw
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable.
 The second command gets the back-end address pool associated with $AppGw named Pool01 and stores it in the $BackendPool variable.
 
 ### Example 2: Get a list of back-end server pool
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $BackendPools = Get-AzApplicationGatewayBackendAddressPool -ApplicationGateway $AppGw
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$BackendPools = Get-AzApplicationGatewayBackendAddressPool -ApplicationGateway $AppGw
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable.

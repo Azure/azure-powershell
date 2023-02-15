@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://docs.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverunresolveddependency
+online version: https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverunresolveddependency
 schema: 2.0.0
 ---
 
@@ -25,7 +25,10 @@ Gets a list of unresolved dependencies.
 
 ### Example 1: Get list of unresolved dependent resources for a Move Collection.
 ```powershell
-PS C:\> Get-AzResourceMoverUnresolvedDependency -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -DependencyLevel Descendant
+Get-AzResourceMoverUnresolvedDependency -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -DependencyLevel Descendant
+```
+
+```output
 Count Id                                                                                                                                        
 ----- --                                                                                                                                        
     1 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm111   

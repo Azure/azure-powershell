@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesasrrecoveryplan
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesasrrecoveryplan
 schema: 2.0.0
 ---
 
@@ -30,8 +30,8 @@ The **Remove-AzRecoveryServicesAsrRecoveryPlan** cmdlet deletes the specified re
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Remove-AzRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
+```powershell
+$currentJob = Remove-AzRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
 ```
 
 Starts the deletion of specified recovery plan and returns the ASR job used to track the operation.

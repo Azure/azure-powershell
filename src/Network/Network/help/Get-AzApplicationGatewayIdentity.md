@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayidentity
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayidentity
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzApplicationGatewayIdentity** cmdlet gets identity assigned to the ap
 
 ### Example 1
 ```powershell
-PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-PS C:\> $identity = Get-AzApplicationGatewayIdentity -ApplicationGateway $gw
+$gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
+$identity = Get-AzApplicationGatewayIdentity -ApplicationGateway $gw
 ```
 
 This examples shows how to get application gateway identity from Application Gateway.

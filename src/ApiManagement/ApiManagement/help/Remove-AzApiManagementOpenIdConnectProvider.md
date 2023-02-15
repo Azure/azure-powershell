@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 80B61E7D-14DC-422A-8EE3-CAC49EF1BE8B
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementopenidconnectprovider
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/remove-azapimanagementopenidconnectprovider
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Remove-AzApiManagementOpenIdConnectProvider** cmdlet removes an OpenID Con
 ## EXAMPLES
 
 ### Example 1: Remove a provider
-```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzApiManagementOpenIdConnectProvider -Context $apimContext -OpenIdConnectProviderId "OICProvider01" -PassThru
+```powershell
+$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementOpenIdConnectProvider -Context $apimContext -OpenIdConnectProviderId "OICProvider01" -PassThru
 ```
 
 This command removes a provider that has the ID OICProvider01.

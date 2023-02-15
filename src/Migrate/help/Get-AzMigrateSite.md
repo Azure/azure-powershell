@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesite
+online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesite
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Method to get a site.
 
 ### Example 1: Get (Default)
 ```powershell
-PS C:\> Get-AzMigrateSite -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -SiteName BBVMwareAVScbbcsite
+Get-AzMigrateSite -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -SiteName BBVMwareAVScbbcsite
+```
 
+```output
 ETag Location      Name                Type
 ---- --------      ----                ----
      southeastasia BBVMwareAVScbbcsite Microsoft.OffAzure/VMwareSites

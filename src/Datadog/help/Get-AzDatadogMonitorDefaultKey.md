@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitordefaultkey
+online version: https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitordefaultkey
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Get the default api key.
 
 ### Example 1: Get the default api key
 ```powershell
-PS C:\> Get-AzDatadogMonitorDefaultKey -ResourceGroupName azure-rg-Datadog -Name Datadog
+Get-AzDatadogMonitorDefaultKey -ResourceGroupName azure-rg-Datadog -Name Datadog
+```
 
+```output
 Created CreatedBy Key                              Name
 ------- --------- ---                              ----
                   xxxxxxxxxxxxx
@@ -42,8 +44,10 @@ This command gets the default api key.
 
 ### Example 2: Get the default api key by pipeline
 ```powershell
-PS C:\> Get-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog | Get-AzDatadogMonitorDefaultKey
+Get-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog | Get-AzDatadogMonitorDefaultKey
+```
 
+```output
 Created CreatedBy Key                              Name
 ------- --------- ---                              ----
                   xxxxxxxxxxxxx
@@ -181,7 +185,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatadogIdentity>: Identity Parameter
+INPUTOBJECT `<IDatadogIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

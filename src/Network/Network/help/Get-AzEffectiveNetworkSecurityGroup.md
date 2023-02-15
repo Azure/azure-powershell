@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: B9409AD6-F761-4B80-8E08-DBB2356F567D
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azeffectivenetworksecuritygroup
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azeffectivenetworksecuritygroup
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzEffectiveNetworkSecurityGroup** cmdlet returns the effective network
 ## EXAMPLES
 
 ### Example 1: Get the effective network security group on a network interface
-```
-PS C:\>Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName "MyNetworkInterface" -ResourceGroupName "myResourceGroup"
+```powershell
+Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName "MyNetworkInterface" -ResourceGroupName "myResourceGroup"
 ```
 
 This command gets all of the effective network security rules associated with the network interface named MyNetworkInterface in the resource group named myResourceGroup.

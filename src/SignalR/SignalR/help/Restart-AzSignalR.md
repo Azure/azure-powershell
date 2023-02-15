@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/restart-azsignalr
+online version: https://learn.microsoft.com/powershell/module/az.signalr/restart-azsignalr
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Restart a SignalR service.
 
 ### Restart a specific SignalR service
 ```powershell
-PS C:\> Restart-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
+Restart-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
+```
 
+```output
 True
 ```
 

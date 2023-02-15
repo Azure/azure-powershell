@@ -1,0 +1,43 @@
+{
+  "[NoDescription]+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork3/outboundNetworkDependenciesEndpoints?api-version=2022-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork3/outboundNetworkDependenciesEndpoints?api-version=2022-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "2634d0ef-86e0-4a47-bf54-2648f6c38bce" ],
+        "CommandName": [ "Get-AzKustoClusterOutboundNetworkDependencyEndpoint" ],
+        "FullCommandName": [ "Get-AzKustoClusterOutboundNetworkDependencyEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v5.1.22000.282", "Az.Kusto/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "46f87e4c-3128-40f9-8865-8dce01a12d23" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "cf19a6df-42d4-49b6-b1e0-4bfdae7c75f2" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220321T145007Z:cf19a6df-42d4-49b6-b1e0-4bfdae7c75f2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 21 Mar 2022 14:50:07 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5707" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork3/OutboundNetworkDependenciesEndpoints/AzureActiveDirectory\",\"name\":\"testclusternetwork3/AzureActiveDirectory\",\"type\":\"Microsoft.Kusto/Clusters/OutboundNetworkDependenciesEndpoints\",\"location\":\"Australia East\",\"properties\":{\"category\":\"Azure Active Directory\",\"endpoints\":[{\"domainName\":\"login.microsoftonline.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"graph.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"graph.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"graph.microsoft-ppe.com\",\"endpointDetails\":[{\"port\":443}]}],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork3/OutboundNetworkDependenciesEndpoints/AzureMonitor\",\"name\":\"testclusternetwork3/AzureMonitor\",\"type\":\"Microsoft.Kusto/Clusters/OutboundNetworkDependenciesEndpoints\",\"location\":\"Australia East\",\"properties\":{\"category\":\"Azure Monitor\",\"endpoints\":[{\"domainName\":\"prod.warmpath.msftcloudes.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"gcs.prod.monitoring.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"production.diagnostics.monitoring.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"shoebox2.metrics.nsatc.net:443\",\"endpointDetails\":[{\"port\":443}]}],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork3/OutboundNetworkDependenciesEndpoints/CertificateAuthority\",\"name\":\"testclusternetwork3/CertificateAuthority\",\"type\":\"Microsoft.Kusto/Clusters/OutboundNetworkDependenciesEndpoints\",\"location\":\"Australia East\",\"properties\":{\"category\":\"Certificate Authority\",\"endpoints\":[{\"domainName\":\"ocsp.msocsp.com\",\"endpointDetails\":[{\"port\":80}]},{\"domainName\":\"ocsp.digicert.com\",\"endpointDetails\":[{\"port\":80}]},{\"domainName\":\"crl3.digicert.com\",\"endpointDetails\":[{\"port\":80}]},{\"domainName\":\"crl.microsoft.com\",\"endpointDetails\":[{\"port\":80}]},{\"domainName\":\"www.microsoft.com\",\"endpointDetails\":[{\"port\":80}]}],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork3/OutboundNetworkDependenciesEndpoints/AzureStorage\",\"name\":\"testclusternetwork3/AzureStorage\",\"type\":\"Microsoft.Kusto/Clusters/OutboundNetworkDependenciesEndpoints\",\"location\":\"Australia East\",\"properties\":{\"category\":\"Azure Storage\",\"endpoints\":[{\"domainName\":\"36pintestclusternetwork3.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"36pintestclusternetwork3.queue.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"36pintestclusternetwork3.table.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"yu8getestclusternetwork3.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"yu8getestclusternetwork3.queue.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"yu8getestclusternetwork3.table.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"ev1cktestclusternetwork3.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"ev1cktestclusternetwork3.queue.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"ev1cktestclusternetwork3.table.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"4s4getestclusternetwork3.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"4s4getestclusternetwork3.queue.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"4s4getestclusternetwork3.table.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"syxadtestclusternetwork3.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"syxadtestclusternetwork3.queue.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"syxadtestclusternetwork3.table.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"9v6cktestclusternetwork3.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"9v6cktestclusternetwork3.queue.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"9v6cktestclusternetwork3.table.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"fgntestclusternetwork300.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"fgntestclusternetwork300.queue.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"fgntestclusternetwork300.table.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"95ntestclusternetwork301.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"95ntestclusternetwork301.queue.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"95ntestclusternetwork301.table.core.windows.net\",\"endpointDetails\":[{\"port\":443}]}],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork3/OutboundNetworkDependenciesEndpoints/AzureKeyVault\",\"name\":\"testclusternetwork3/AzureKeyVault\",\"type\":\"Microsoft.Kusto/Clusters/OutboundNetworkDependenciesEndpoints\",\"location\":\"Australia East\",\"properties\":{\"category\":\"Azure KeyVault\",\"endpoints\":[{\"domainName\":\"https://E-testclustern6b70yl9id3.vault.azure.net/\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"https://D-testclusternig5r4wfdge.vault.azure.net/\",\"endpointDetails\":[{\"port\":443}]}],\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

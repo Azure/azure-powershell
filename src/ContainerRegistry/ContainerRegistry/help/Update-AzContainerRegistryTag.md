@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrytag
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrytag
 schema: 2.0.0
 ---
 
@@ -29,7 +29,9 @@ first.
 ### Example 1
 ```powershell
 Update-AzContainerRegistryTag -RegistryName registry -RepositoryName alpine -Name latest -DeleteEnabled $false -WriteEnabled $true -ListEnabled $true -ReadEnabled $true
+```
 
+```output
 Registry                    ImageName Attributes
 --------                    --------- ----------
 registry.azurecr.io alpine    Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute

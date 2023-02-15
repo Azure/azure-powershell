@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticdeploymentinfo
+online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticdeploymentinfo
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Fetch information regarding Elastic cloud deployment corresponding to the Elasti
 
 ### Example 1: Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource
 ```powershell
-PS C:\> Get-AzElasticDeploymentInfo -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
+Get-AzElasticDeploymentInfo -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
+```
 
+```output
 DiskCapacity MemoryCapacity Status  Version
 ------------ -------------- ------  -------
 491520       16384          Healthy 7.14.1

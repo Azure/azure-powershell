@@ -46,6 +46,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName;
                     string vmScaleSetName;
+                    string zone = this.Zone;
+                    string placementgroupid = this.PlacementGroupId;
+
                     switch (this.ParameterSetName)
                     {
                         case "ResourceIdParameter":
@@ -62,8 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             break;
                     }
                     int platformUpdateDomain = this.PlatformUpdateDomain;
-
-                    var result = VirtualMachineScaleSetsClient.ForceRecoveryServiceFabricPlatformUpdateDomainWalk(resourceGroupName, vmScaleSetName, platformUpdateDomain);
+                    var result = VirtualMachineScaleSetsClient.ForceRecoveryServiceFabricPlatformUpdateDomainWalk(resourceGroupName, vmScaleSetName, platformUpdateDomain, zone: zone, placementGroupId: placementgroupid);
                     var psObject = new PSRecoveryWalkResponse();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<RecoveryWalkResponse, PSRecoveryWalkResponse>(result, psObject);
                     WriteObject(psObject);
@@ -92,6 +94,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true)]
         public int PlatformUpdateDomain { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set the Zone for the VMSS")]
+        public string Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set the Placement Group Id")]
+        public string PlacementGroupId { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",

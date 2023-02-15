@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HanaOnAzure
-online version: https://docs.microsoft.com/powershell/module/az.hanaonazure/update-azsapmonitor
+online version: https://learn.microsoft.com/powershell/module/az.hanaonazure/update-azsapmonitor
 schema: 2.0.0
 ---
 
@@ -31,8 +31,10 @@ Patches the Tags field of a SAP monitor for the specified subscription, resource
 
 ### Example 1: Update a SAP monitor by name
 ```powershell
-PS C:\> Update-AzSapMonitor -ResourceGroupName nancyc-hn1 -Name ps-spamonitor-t01 -Tag @{'key'=1;'key2'=2; 'key3'=3}
+Update-AzSapMonitor -ResourceGroupName nancyc-hn1 -Name ps-spamonitor-t01 -Tag @{'key'=1;'key2'=2; 'key3'=3}
+```
 
+```output
 Location Name              Type
 -------- ----              ----
 westus2  ps-spamonitor-t01 Microsoft.HanaOnAzure/sapMonitors
@@ -42,9 +44,11 @@ This commands updates a SAP monitor by name.
 
 ### Example 2: Update a SAP monitor by object
 ```powershell
-PS C:\> $sap = Get-AzSapMonitor -ResourceGroupName nancyc-hn1 -Name ps-sapmonitor-t01
-PS C:\> Update-AzSapMonitor -InputObject $sap -Tag @{'key'=1;'key2'=2; 'key3'=3}
+$sap = Get-AzSapMonitor -ResourceGroupName nancyc-hn1 -Name ps-sapmonitor-t01
+Update-AzSapMonitor -InputObject $sap -Tag @{'key'=1;'key2'=2; 'key3'=3}
+```
 
+```output
 Location Name              Type
 -------- ----              ----
 westus2  ps-sapmonitor-t01 Microsoft.HanaOnAzure/sapMonitors
@@ -197,7 +201,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
+INPUTOBJECT `<IHanaOnAzureIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The location of the deleted vault.
   - `[OperationKind <AccessPolicyUpdateKind?>]`: Name of the operation

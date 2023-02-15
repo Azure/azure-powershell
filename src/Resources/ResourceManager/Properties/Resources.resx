@@ -501,7 +501,7 @@ You can help us improve the accuracy of the result by opening an issue here: htt
     <value>Unrecognized resource change {0}: {1}. Specify one ore more values in the following list and try again: {2}.</value>
   </data>
   <data name="BicepNotFound" xml:space="preserve">
-    <value>Cannot find Bicep. Please add Bicep to your PATH or visit https://github.com/Azure/bicep/blob/main/docs/installing.md to install Bicep.</value>
+    <value>Cannot find Bicep. Please add Bicep to your PATH or visit https://aka.ms/bicep-install to install Bicep.</value>
   </data>
   <data name="InvalidBicepFilePath" xml:space="preserve">
     <value>Invalid Bicep file path.</value>

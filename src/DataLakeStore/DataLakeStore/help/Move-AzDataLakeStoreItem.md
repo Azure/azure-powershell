@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 00CCA9B8-7C57-4FC0-9BD1-5FC16010E820
-online version: https://docs.microsoft.com/powershell/module/az.datalakestore/move-azdatalakestoreitem
+online version: https://learn.microsoft.com/powershell/module/az.datalakestore/move-azdatalakestoreitem
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Move-AzDataLakeStoreItem** cmdlet moves or renames a file or folder in Dat
 ## EXAMPLES
 
 ### Example 1: Move and rename an item
-```
-PS C:\>Move-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/Original/Path/File.txt" -Destination "/New/Path/RenamedFile.txt"
+```powershell
+Move-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/Original/Path/File.txt" -Destination "/New/Path/RenamedFile.txt"
 ```
 
 This command renames the item File.txt to RenamedFile.txt and moves it to a different folder.

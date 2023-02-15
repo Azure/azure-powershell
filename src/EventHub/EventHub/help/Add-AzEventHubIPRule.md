@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/add-azeventhubiprule
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/add-azeventhubiprule
 schema: 2.0.0
 ---
 
@@ -32,27 +32,33 @@ Add a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -IpMask "11.22.33.44" -Action Allow
+Add-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -IpMask "11.22.33.44" -Action Allow
 ```
+
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.Eventhub/namespaces/Eventhub-Namespace-2389/networkRuleSets/default
 Type                : Microsoft.Eventhub/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
-VirtualNetworkRules : 
+VirtualNetworkRules :
+```
 
 add the IPRule with IpMask "11.22.33.44" and Action Allow for the given namespace.
 
 ### Example 2
 ```powershell
-PS C:\> Add-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -IpRuleObject $ipruleobject
+Add-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -IpRuleObject $ipruleobject
 ```
+
+```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.Eventhub/namespaces/Eventhub-Namespace-2389/networkRuleSets/default
 Type                : Microsoft.Eventhub/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
-VirtualNetworkRules : 
+VirtualNetworkRules :
+```
 
 add the IPRule with IpMask "11.22.33.44" and Action Allow for the given namespace.
 
@@ -180,8 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

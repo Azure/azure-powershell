@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualrouterpeer
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azvirtualrouterpeer
 schema: 2.0.0
 ---
 
@@ -48,7 +48,7 @@ Remove-AzVirtualRouterPeer -ResourceId $virtualRouterPeerId
 
 ### Example 3
 ```powershell
-$virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName virtualRouter -RouterName virtualRouter -PeerName csr
+$virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName virtualRouter -VirtualRouterName virtualRouter -PeerName csr
 Remove-AzVirtualRouterPeer -InputObject $virtualRouterPeer
 ```
 

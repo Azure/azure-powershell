@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrrecoveryplan
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrrecoveryplan
 schema: 2.0.0
 ---
 
@@ -35,8 +35,8 @@ The **Get-AzRecoveryServicesAsrRecoveryPlan** cmdlet gets the details of the spe
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $RP = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RPName
+```powershell
+$RP = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RPName
 ```
 
 Gets the recovery plan with the specified name.

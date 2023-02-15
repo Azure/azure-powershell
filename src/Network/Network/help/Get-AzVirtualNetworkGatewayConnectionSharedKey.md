@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: ECC5C079-C9A0-4159-A039-EE216897D686
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionsharedkey
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionsharedkey
 schema: 2.0.0
 ---
 
@@ -24,8 +24,11 @@ Displays the shared key used for the connection.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzVirtualNetworkGatewayConnectionSharedKey -Name 1 -ResourceGroupName P2SVPNGateway
+```
+
+```output
 xxxxxx
 ```
 

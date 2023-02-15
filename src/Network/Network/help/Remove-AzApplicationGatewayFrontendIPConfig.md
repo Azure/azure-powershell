@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 289B761C-1A1D-46D2-8755-B6B6A4758EFC
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayfrontendipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayfrontendipconfig
 schema: 2.0.0
 ---
 
@@ -24,10 +24,10 @@ The **Remove-AzApplicationGatewayFrontendIPConfig** cmdlet removes frontend IP f
 ## EXAMPLES
 
 ### Example 1: Remove a front-end IP configuration
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $AppGw -Name "FrontEndIP02"
-PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGW
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $AppGw -Name "FrontEndIP02"
+Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
 The first command gets an application gateway named ApplicationGateway01 and stores it in the $AppGw variable.

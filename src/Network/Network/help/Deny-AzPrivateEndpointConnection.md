@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/deny-azprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/deny-azprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -20,9 +20,8 @@ Deny-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
 
 ### ByResource
 ```
-Deny-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
-[-PrivateLinkResourceType <string>] [-Description <String>]
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Deny-AzPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String>
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +30,8 @@ The **Deny-AzPrivateEndpointConnection** cmdlet denies a private endpoint connec
 ## EXAMPLES
 
 ### Example 1
-```
-Deny-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService
+```powershell
+Deny-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService -PrivateLinkResourceType Microsoft.Network/privateLinkServices
 ```
 
 This example denies a private endpoint connection.
@@ -92,10 +91,10 @@ Type: System.String
 Parameter Sets: ByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: 'Microsoft.Network/privateLinkServices'
-Accept pipeline input: True (ByPropertyName)
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

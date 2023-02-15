@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 029361F0-C4E9-4948-9EBA-BFBD1B029909
-online version: https://docs.microsoft.com/powershell/module/az.batch/restart-azbatchcomputenode
+online version: https://learn.microsoft.com/powershell/module/az.batch/restart-azbatchcomputenode
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ The **Restart-AzBatchComputeNode** cmdlet reboots the specified compute node.
 ## EXAMPLES
 
 ### Example 1: Restart a compute node
-```
-PS C:\>Restart-AzBatchComputeNode -PoolId "MyPool" -Id "tvm-3257026573_2-20150813t200938z" -BatchContext $Context
+```powershell
+Restart-AzBatchComputeNode -PoolId "MyPool" -Id "tvm-3257026573_2-20150813t200938z" -BatchContext $Context
 ```
 
 This command reboots the compute node with the ID "tvm-3257026573_2-20150813t200938z" in the pool MyPool.
 
 ### Example 2: Restart every compute node in a pool
-```
-PS C:\>Get-AzBatchComputeNode -PoolId "MyPool" -BatchContext $Context | Restart-AzBatchComputeNode -BatchContext $Context
+```powershell
+Get-AzBatchComputeNode -PoolId "MyPool" -BatchContext $Context | Restart-AzBatchComputeNode -BatchContext $Context
 ```
 
 This command reboots every compute node in the pool MyPool.

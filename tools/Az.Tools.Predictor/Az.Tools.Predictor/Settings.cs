@@ -24,34 +24,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// Represents the settings used in AzPredictor.
     /// </summary>
-    sealed class Settings
+    sealed partial class Settings
     {
         private static Settings _instance;
-
-        /// <summary>
-        /// The maximum number of suggestions that have the same command name.
-        /// </summary>
-        public int? MaxAllowedCommandDuplicate { get; set; }
-
-        /// <summary>
-        /// The service to get the prediction results back.
-        /// </summary>
-        public string ServiceUri { get; set; }
-
-        /// <summary>
-        /// Set the user as an internal user.
-        /// </summary>
-        public bool? SetAsInternal { get; set; }
-
-        /// <summary>
-        /// The number of suggestions to return to PSReadLine.
-        /// </summary>
-        public int? SuggestionCount { get; set; }
-
-        /// <summary>
-        /// The survey id. It should be internal but make it public so that we can read/write to Json.
-        /// </summary>
-        public int? SurveyId { get; set; }
 
         private static bool? _isContinueOnTimeout;
         /// <summary>
@@ -90,10 +65,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             if (Settings._instance == null)
             {
-                var settings = CreateDefaultSettings();
+                Settings settings = new();
                 settings.OverrideSettingsFromProfile();
                 settings.OverrideSettingsFromEnv();
-
                 Settings._instance = settings;
             }
 
@@ -103,21 +77,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Gets the settings from the user profile folder.
         /// </summary>
-        internal static Settings GetProfileSettings()
+        private static Settings GetProfileSettings()
         {
             string profileSettingFilePath = Settings.GetProfileSettingsFilePath();
 
             if (File.Exists(profileSettingFilePath))
             {
-                try
-                {
-                    var fileContent = File.ReadAllText(profileSettingFilePath, Encoding.UTF8);
-                    return JsonSerializer.Deserialize<Settings>(fileContent, JsonUtilities.DefaultSerializerOptions);
-                }
-                catch
-                {
-                    // Ignore all the exception
-                }
+                var fileContent = File.ReadAllText(profileSettingFilePath, Encoding.UTF8);
+                return JsonSerializer.Deserialize<Settings>(fileContent, JsonUtilities.DefaultSerializerOptions);
             }
 
             return null;
@@ -126,57 +93,44 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Gets the file path of the settings in the user profile folder.
         /// </summary>
-        internal static string GetProfileSettingsFilePath()
+        private static string GetProfileSettingsFilePath()
         {
             var userProfileDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string profileDirectoryPath = Path.Join(userProfileDirectory, AzPredictorConstants.AzureProfileDirectoryName);
             return Path.Join(profileDirectoryPath, AzPredictorConstants.SettingsFileName);
         }
 
-        private static Settings CreateDefaultSettings()
-        {
-            var fileInfo = new FileInfo(typeof(Settings).Assembly.Location);
-            var directory = fileInfo.DirectoryName;
-            var settingFilePath = Path.Join(directory, AzPredictorConstants.SettingsFileName);
-            var fileContent = File.ReadAllText(settingFilePath, Encoding.UTF8);
-            var settings = JsonSerializer.Deserialize<Settings>(fileContent, JsonUtilities.DefaultSerializerOptions);
-
-            return settings;
-        }
-
         private void OverrideSettingsFromProfile()
         {
-            var profileSettings = Settings.GetProfileSettings();
-
-            if (profileSettings != null)
+            try
             {
-                if (!string.IsNullOrWhiteSpace(profileSettings.ServiceUri))
-                {
-                    ServiceUri = profileSettings.ServiceUri;
-                }
+                var profileSettings = Settings.GetProfileSettings();
 
-                if (profileSettings.SuggestionCount.HasValue && (profileSettings.SuggestionCount.Value > 0))
+                if (profileSettings != null)
                 {
-                    SuggestionCount = profileSettings.SuggestionCount;
+                    OverrideSettingsFrom(profileSettings);
                 }
-
-                if (profileSettings.MaxAllowedCommandDuplicate.HasValue && (profileSettings.MaxAllowedCommandDuplicate.Value > 0))
-                {
-                    this.MaxAllowedCommandDuplicate = profileSettings.MaxAllowedCommandDuplicate;
-                }
-
-                this.SetAsInternal = profileSettings.SetAsInternal;
-                this.SurveyId = profileSettings.SurveyId;
+            }
+            catch (Exception)
+            {
+                // Ignore all exceptions so we still can use the default settings.
             }
         }
 
         private void OverrideSettingsFromEnv()
         {
-            var serviceUri = System.Environment.GetEnvironmentVariable("AzPredictorServiceUri");
-
-            if (!string.IsNullOrWhiteSpace(serviceUri))
+            try
             {
-                ServiceUri = serviceUri;
+                var serviceUri = System.Environment.GetEnvironmentVariable("AzPredictorServiceUri");
+
+                if (!string.IsNullOrWhiteSpace(serviceUri))
+                {
+                    ServiceUri = serviceUri;
+                }
+            }
+            catch (Exception)
+            {
+                // Ignore all the exceptions
             }
         }
     }

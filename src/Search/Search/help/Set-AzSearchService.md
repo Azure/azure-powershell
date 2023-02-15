@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/powershell/module/az.search/set-azsearchservice
+online version: https://learn.microsoft.com/powershell/module/az.search/set-azsearchservice
 schema: 2.0.0
 ---
 
@@ -41,8 +41,9 @@ The **Set-AzSearchService** cmdlet modifies an Azure Cognitive Search service.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -PartitionCount 2 -ReplicaCount 2
-
+Set-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -PartitionCount 2 -ReplicaCount 2
+```
+```output
 
 ResourceGroupName : TestAzureSearchPsGroup
 Name              : pstestazuresearch01

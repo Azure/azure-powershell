@@ -15,26 +15,21 @@
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
-    public class SparkJobTests : SynapseTestBase
+    public class SparkJobTests : SynapseTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public SparkJobTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SparkJobTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Job submission through Service Principal has not been supported.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseSparkJob()
         {
-            string resourceGroupName = SynapseTestBase.TestResourceGroupName;
-            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
-            string testSparkPoolName = SynapseTestBase.TestSparkPoolName;
+            string resourceGroupName = SynapseTestRunner.TestResourceGroupName;
+            string testWorkspaceName = SynapseTestRunner.TestWorkspaceName;
+            string testSparkPoolName = SynapseTestRunner.TestSparkPoolName;
             if (string.IsNullOrEmpty(resourceGroupName) || string.IsNullOrEmpty(testWorkspaceName) || string.IsNullOrEmpty(testSparkPoolName))
             {
                 resourceGroupName = nameof(TestResourceGroupName);
@@ -42,8 +37,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 testSparkPoolName = nameof(TestSparkPoolName);
             }
 
-            SynapseTestBase.NewInstance.RunPsTest(
-                _logger,
+            TestRunner.RunTestScript(
                 string.Format(
                 "Test-SynapseSparkJob -resourceGroupname '{0}' -workspaceName '{1}' -sparkPoolName {2}",
                 resourceGroupName,

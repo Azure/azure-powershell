@@ -19,13 +19,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ElasticJobCredentialCrudTests : SqlTestsBase
+    public class ElasticJobCredentialCrudTests : SqlTestRunner
     {
         public ElasticJobCredentialCrudTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
+
         }
 
         #region Create Tests
@@ -34,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobCredentialCreate()
         {
-            RunPowerShellTest("Test-CreateJobCredential");
+            TestRunner.RunTestScript("Test-CreateJobCredential");
         }
 
         #endregion
@@ -45,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobCredentialUpdate()
         {
-            RunPowerShellTest("Test-UpdateJobCredential");
+            TestRunner.RunTestScript("Test-UpdateJobCredential");
         }
 
         #endregion
@@ -56,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobCredentialGet()
         {
-            RunPowerShellTest("Test-GetJobCredential");
+            TestRunner.RunTestScript("Test-GetJobCredential");
         }
 
         #endregion
@@ -67,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobCredentialRemove()
         {
-            RunPowerShellTest("Test-RemoveJobCredential");
+            TestRunner.RunTestScript("Test-RemoveJobCredential");
         }
 
         #endregion

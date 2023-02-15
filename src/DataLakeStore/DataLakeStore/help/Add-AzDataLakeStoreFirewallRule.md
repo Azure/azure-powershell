@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: C6FD4734-720C-4C8C-9B58-EDB331DD6415
-online version: https://docs.microsoft.com/powershell/module/az.datalakestore/add-azdatalakestorefirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.datalakestore/add-azdatalakestorefirewallrule
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Add-AzDataLakeStoreFirewallRule** cmdlet adds a firewall rule to the speci
 ## EXAMPLES
 
 ### Example 1: Add a new firewall rule to a Data Lake Store account
-```
-PS C:\> Add-AzDataLakeStoreFirewallRule -AccountName "ContosoADL" -Name MyRule -StartIpAddress "127.0.0.1" -EndIpAddress "127.0.0.2"
+```powershell
+Add-AzDataLakeStoreFirewallRule -AccountName "ContosoADL" -Name MyRule -StartIpAddress "127.0.0.1" -EndIpAddress "127.0.0.2"
 ```
 
 This creates a new firewall rule called "MyRule" in account "ContosoADL" with an IP range of 127.0.0.1 - 127.0.0.2

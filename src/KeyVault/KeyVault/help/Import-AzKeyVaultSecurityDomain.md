@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultsecuritydomain
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultsecuritydomain
 schema: 2.0.0
 ---
 
@@ -33,8 +33,8 @@ This cmdlet imports previously exported security domain data to a managed HSM.
 
 ### Example 1
 ```powershell
-PS C:\> $keys = @{PublicKey = "sd1.cer"; PrivateKey = "sd1.key"}, @{PublicKey = "sd2.cer"; PrivateKey = "sd2.key"}, @{PublicKey = "sd3.cer"; PrivateKey = "sd3.key"}
-PS C:\> Import-AzKeyVaultSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath {pathOfBackup}\sd.ps.json
+$keys = @{PublicKey = "sd1.cer"; PrivateKey = "sd1.key"}, @{PublicKey = "sd2.cer"; PrivateKey = "sd2.key"}, @{PublicKey = "sd3.cer"; PrivateKey = "sd3.key"}
+Import-AzKeyVaultSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath sd.ps.json
 ```
 
 First, the keys need be provided to decrypt the security domain data.

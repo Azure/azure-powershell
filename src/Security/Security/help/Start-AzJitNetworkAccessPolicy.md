@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Start-AzJitNetworkAccessPolicy
+online version: https://learn.microsoft.com/powershell/module/az.security/Start-AzJitNetworkAccessPolicy
 schema: 2.0.0
 ---
 
@@ -51,7 +51,6 @@ $JitPolicy = (@{
     })
 $ActivationVM = @($JitPolicy)
 Start-AzJitNetworkAccessPolicy -ResourceGroupName $($MyResource.ResourceGroupName) -Location $MyResource.Location -Name "default" -VirtualMachine $ActivationVM
-
 ```
 
 Opens up a network connection for 1 hour over port 22 from my public IP (not shown).

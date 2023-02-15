@@ -16,7 +16,7 @@
 	.SYNOPSIS
 	Tests create and update a database with read scale option
 #>
-function Test-CreateUpdateDatabaseReadScale ($serverVersion = "12.0", $location = "Southeast Asia")
+function Test-CreateUpdateDatabaseReadScale ($serverVersion = "12.0", $location = "West Europe")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -44,7 +44,7 @@ function Test-CreateUpdateDatabaseReadScale ($serverVersion = "12.0", $location 
 	.SYNOPSIS
 	Tests Getting a database read scale option
 #>
-function Test-GetDatabaseReadScale ($serverVersion = "12.0", $location = "Southeast Asia")
+function Test-GetDatabaseReadScale ($serverVersion = "12.0", $location = "West Europe")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -81,7 +81,7 @@ function Test-GetDatabaseReadScale ($serverVersion = "12.0", $location = "Southe
 	.SYNOPSIS
 	Tests database HighAvailabilityReplicaCount option
 #>
-function Test-DatabaseReadReplicaCount ($serverVersion = "12.0", $location = "Southeast Asia")
+function Test-DatabaseReadReplicaCount ($serverVersion = "12.0", $location = "West Europe")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest

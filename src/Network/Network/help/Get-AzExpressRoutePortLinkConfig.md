@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressrouteportlinkconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressrouteportlinkconfig
 schema: 2.0.0
 ---
 
@@ -32,14 +32,14 @@ of an ExpressRoutePort.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzExpressRoutePortLinkConfig -ExpressRoutePort $erport -Name Link1
+Get-AzExpressRoutePortLinkConfig -ExpressRoutePort $erport -Name Link1
 ```
 
 Gets the Link1 configuration of ExpressRoutePort $erport
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzExpressRoutePortLinkConfig -ExpressRoutePort $erport -ResourceId $id
+Get-AzExpressRoutePortLinkConfig -ExpressRoutePort $erport -ResourceId $id
 ```
 
 Gets the configuration of link with ResourceId $id in ExpressRoutePort $erport

@@ -21,83 +21,23 @@
 function Test-GetVirtualCluster
 {
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Sql/virtualclusters"
-	$rg = Create-ResourceGroupForTest $location
+	$params = Get-DefaultManagedInstanceParameters
 
-	$rgName = $rg.ResourceGroupName
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
+	Write-Debug $params.rg
 
-	# Setup VNET 
-	$virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location $rgName
-	$subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+	# Test using all parameters
+	$virtualClusterList = Get-AzSqlVirtualCluster
+	$virtualCluster = $virtualClusterList.where({$_.SubnetId -eq $params.subnet})[0]
+	Assert-AreEqual $params.rg $virtualCluster.ResourceGroupName
+	$virtualClusterName = $virtualCluster.VirtualClusterName
 
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$virtualClusterList = Get-AzSqlVirtualCluster -ResourceGroupName $params.rg
+	$virtualCluster = $virtualClusterList.where({$_.SubnetId -eq $params.subnet})[0]
+	Assert-AreEqual $params.rg $virtualCluster.ResourceGroupName
+	Assert-AreEqual $virtualClusterName $virtualCluster.VirtualClusterName
 
-	try
-	{
-		# Test using all parameters
-		$virtualClusterList = Get-AzSqlVirtualCluster
-		$virtualCluster = $virtualClusterList.where({$_.SubnetId -eq $subnetId})
-		Assert-AreEqual $rgName $virtualCluster.ResourceGroupName
-		$virtualClusterName = $virtualCluster.VirtualClusterName
-
-		$virtualClusterList = Get-AzSqlVirtualCluster -ResourceGroupName $rgName
-		$virtualCluster = $virtualClusterList.where({$_.SubnetId -eq $subnetId})
-		Assert-AreEqual $rgName $virtualCluster.ResourceGroupName
-		Assert-AreEqual $virtualClusterName $virtualCluster.VirtualClusterName
-
-		$virtualCluster = Get-AzSqlVirtualCluster -ResourceGroupName $rgName -Name $virtualClusterName
-		Assert-AreEqual $rgName $virtualCluster.ResourceGroupName
-		Assert-AreEqual $virtualClusterName $virtualCluster.VirtualClusterName
-		Assert-AreEqual $subnetId $virtualCluster.SubnetId
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
-}
-
-<#
-	.SYNOPSIS
-	Tests Removing a VirtualCluster
-	.DESCRIPTION
-	SmokeTest
-#>
-function Test-RemoveVirtualCluster
-{
-	# Setup
-	$location = Get-ProviderLocation "Microsoft.Sql/virtualclusters"
-	$rg = Create-ResourceGroupForTest $location
-
-	$rgName = $rg.ResourceGroupName
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-
-	# Setup VNET 
-	$virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location $rgName
-	$subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
-	try
-	{
-		$virtualClusterList = Get-AzSqlVirtualCluster -ResourceGroupName $rgName
-		$virtualCluster = $virtualClusterList.where({$_.SubnetId -eq $subnetId})
-		$virtualClusterName = $virtualCluster.VirtualClusterName
-
-		# Remove the managed instance first
-		$managedInstance | Remove-AzSqlInstance -Force
-
-		# Remove virtual cluster
-		$virtualCluster | Remove-AzSqlVirtualCluster
-
-		$all = Get-AzSqlVirtualCluster -ResourceGroupName $rgName
-		$virtualCluster = $all.where({$_.VirtualClusterName -eq $virtualClusterName})
-		Assert-AreEqual $virtualCluster.Count 0
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
+	$virtualCluster = Get-AzSqlVirtualCluster -ResourceGroupName $params.rg -Name $virtualClusterName
+	Assert-AreEqual $params.rg $virtualCluster.ResourceGroupName
+	Assert-AreEqual $virtualClusterName $virtualCluster.VirtualClusterName
+	Assert-AreEqual $params.subnet $virtualCluster.SubnetId
 }

@@ -20,6 +20,58 @@
 
 ## Upcoming Release
 
+## Version 2.2.0
+* Added breaking change message for  `-SparkConfigFilePath`. It will be deprecated around the middle of December.
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool configuration artifact by `-SparkCongifuration`. `-SparkCongifuration` is an alternative of parameter `-SparkConfigFilePath`.
+
+## Version 2.1.0
+* Updated `Update-AzSynaspeWorkSpace` and `New-AzSynpaseWorkspace` to support for Workspace Encrytion Managed Identity setting
+
+## Version 2.0.0
+* [Breaking Change] Updated models of Synapse Link for Azure Sql Database
+* Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for user assigned managed identity (UAMI) by `-UserAssignedIdentityAction` and `-UserAssignedIdentityId`
+* Added EnablePublicNetworkAccess parameter to `New-AzureSynapseWorkspace` and `Update-AzSynapseWorkspace`
+
+## Version 1.6.0
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool dynamic executor allocation by `-EnableDynamicExecutorAllocation`
+
+## Version 1.5.0
+* Set `ResourceGroupName` as optional for `Set-AzSynapseSqlAuditSetting` cmdlet
+* Added LastCommitId parameter to `New-AzureSynapseGitRepositoryConfig`
+* Fixed the issue that update spark pool version fail by `Update-AzSynapseSparkPool`
+
+## Version 1.4.0
+* Added support for Synapse Link for Azure Sql Database
+    - Added `Get-AzSynapseLinkConnection` cmdlet
+    - Added `Get-AzSynapseLinkConnectionDetailedStatus` cmdlet
+    - Added `Set-AzSynapseLinkConnection` cmdlet
+    - Added `Remove-AzSynapseLinkConnection` cmdlet
+    - Added `Start-AzSynapseLinkConnection` cmdlet
+    - Added `Stop-AzSynapseLinkConnection` cmdlet
+    - Added `Set-AzSynapseLinkConnectionLinkTable` cmdlet
+    - Added `Get-AzSynapseLinkConnectionLinkTable` cmdlet
+    - Added `Get-AzSynapseLinkConnectionLinkTableStatus` cmdlet
+    - Added `Update-AzSynapseLinkConnectionLandingZoneCredential` cmdlet
+* Set `UploadedTimestamp` when adding package to spark pool by `Update-AzSynapseSparkPool`
+
+## Version 1.3.0
+* Added support for Synapse Azure Active Directory (Azure AD) only authentication
+    - Added `Get-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
+    - Added `Enable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
+    - Added `Disable-AzSynapseActiveDirectoryOnlyAuthentication` cmdlet
+
+## Version 1.2.0
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.14
+* Fixed the issue that following cmdlets only shows 100 entries
+    - `Get-AzSynapseRoleAssignment` cmdlet
+    - `Get-AzSynapsePipelineRun` cmdlet
+    - `Get-AzSynapseTriggerRun` cmdlet
+    - `Get-AzSynapseActivityRun` cmdlet
+* Fixed the issue that there should be an error message when removing a dependency pipeline
+
+## Version 1.1.0
+* Updated `Update-AzSynapseSparkPool` to support new parameter [-ForceApplySetting]
+
 ## Version 1.0.0
 * General availability of Az.Synapse
 * Migrated Azure AD features in Az.Synapse to MSGraph APIs. The cmdlets below called MSGraph API according to input parameters:

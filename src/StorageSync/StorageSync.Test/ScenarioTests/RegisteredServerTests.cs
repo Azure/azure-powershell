@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using ScenarioTests;
@@ -25,20 +24,14 @@ namespace StorageSyncTests
     /// <summary>
     /// Class RegisteredServerTests.
     /// </summary>
-    public class RegisteredServerTests
+    public class RegisteredServerTests : StorageSyncTestRunner
     {
-        /// <summary>
-        /// The logger
-        /// </summary>
-        private readonly XunitTracingInterceptor _logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="RegisteredServerTests"/> class.
         /// </summary>
         /// <param name="output">The output.</param>
-        public RegisteredServerTests(ITestOutputHelper output)
+        public RegisteredServerTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(_logger = new XunitTracingInterceptor(output));
         }
 
         /// <summary>
@@ -48,7 +41,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRegisteredServer()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RegisteredServer");
+            TestRunner.RunTestScript("Test-RegisteredServer");
         }
 
         /// <summary>
@@ -58,7 +51,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRegisteredServerPipeline1()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RegisteredServerPipeline1");
+            TestRunner.RunTestScript("Test-RegisteredServerPipeline1");
         }
 
         /// <summary>
@@ -68,7 +61,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRegisteredServerPipeline2()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RegisteredServerPipeline2");
+            TestRunner.RunTestScript("Test-RegisteredServerPipeline2");
         }
 
         /// <summary>
@@ -79,7 +72,7 @@ namespace StorageSyncTests
         public void TestNewRegisteredServer()
         {
             var value = HttpMockServer.GetCurrentMode();
-            TestController.NewInstance.RunPsTest(_logger, "Test-NewRegisteredServer");
+            TestRunner.RunTestScript("Test-NewRegisteredServer");
         }
 
         /// <summary>
@@ -89,7 +82,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewRegisteredServerParentObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-NewRegisteredServerParentObject");
+            TestRunner.RunTestScript("Test-NewRegisteredServerParentObject");
         }
 
         /// <summary>
@@ -99,7 +92,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewRegisteredServerParentResourceId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-NewRegisteredServerParentResourceId");
+            TestRunner.RunTestScript("Test-NewRegisteredServerParentResourceId");
         }
 
         /// <summary>
@@ -109,7 +102,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRegisteredServer()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetRegisteredServer");
+            TestRunner.RunTestScript("Test-GetRegisteredServer");
         }
 
         /// <summary>
@@ -119,7 +112,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRegisteredServerParentObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetRegisteredServerParentObject");
+            TestRunner.RunTestScript("Test-GetRegisteredServerParentObject");
         }
 
         /// <summary>
@@ -129,7 +122,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRegisteredServerParentResourceId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetRegisteredServerParentResourceId");
+            TestRunner.RunTestScript("Test-GetRegisteredServerParentResourceId");
         }
 
         /// <summary>
@@ -139,7 +132,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRegisteredServers()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetRegisteredServers");
+            TestRunner.RunTestScript("Test-GetRegisteredServers");
         }
 
         /// <summary>
@@ -149,7 +142,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveRegisteredServer()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveRegisteredServer");
+            TestRunner.RunTestScript("Test-RemoveRegisteredServer");
         }
 
         /// <summary>
@@ -159,7 +152,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveRegisteredServerResourceId()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveRegisteredServerResourceId");
+            TestRunner.RunTestScript("Test-RemoveRegisteredServerResourceId");
         }
 
         /// <summary>
@@ -169,7 +162,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveRegisteredServerInputObject()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveRegisteredServerInputObject");
+            TestRunner.RunTestScript("Test-RemoveRegisteredServerInputObject");
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase
 schema: 2.0.0
 ---
 
@@ -31,13 +31,16 @@ Get-AzSqlInstanceDatabase [[-Name] <String>] [-InstanceObject] <AzureSqlManagedI
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlInstanceDatabase** cmdlet gets one or more Azure SQL databases from an Azure SQL Database Managed Instance.
+The **Get-AzSqlInstanceDatabase** cmdlet gets one or more Azure SQL databases from an Azure SQL Managed Instance.
 
 ## EXAMPLES
 
 ### Example 1: Get all databases on a instance
+```powershell
+Get-AzSqlInstanceDatabase -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
 ```
-PS C:\>Get-AzSqlInstanceDatabase -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
+
+```output
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -80,8 +83,11 @@ FailoverGroupId          :
 This command gets all databases on the instance named managedInstance1.
 
 ### Example 2: Get a database by name on a Managed instance
+```powershell
+Get-AzSqlInstanceDatabase -Name "managedDatabase1" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
-PS C:\>Get-AzSqlInstanceDatabase -Name "managedDatabase1" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+
+```output
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -105,8 +111,11 @@ FailoverGroupId          :
 This command gets a database named managedDatabase1 from a instance named managedInstance1.
 
 ### Example 3: Get all databases on a instance using filtering
+```powershell
+Get-AzSqlInstanceDatabase -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01" -Name "managedDatabase*"
 ```
-PS C:\> Get-AzSqlInstanceDatabase -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01" -Name "managedDatabase*"
+
+```output
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus

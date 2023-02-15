@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 35FAA57F-B2BD-4E43-8238-12F7A8269E4D
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultcertificatecontact
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultcertificatecontact
 schema: 2.0.0
 ---
 
@@ -38,8 +38,10 @@ The **Remove-AzKeyVaultCertificateContact** cmdlet deletes a contact that is reg
 
 ### Example 1: Remove a certificate contact
 ```powershell
-PS C:\> Remove-AzKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+Remove-AzKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+```
 
+```output
 Email               VaultName
 -----               ---------
 user1@microsoft.com mvault2

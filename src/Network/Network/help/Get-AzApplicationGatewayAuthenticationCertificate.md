@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 706C918B-1D1A-476C-BB74-EBB4EE72AC0C
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayauthenticationcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayauthenticationcertificate
 schema: 2.0.0
 ---
 
@@ -24,9 +24,9 @@ The **Get-AzApplicationGatewayAuthenticationCertificate** cmdlet gets an authent
 ## EXAMPLES
 
 ### Example 1: Get a specified authentication certificate
-```
-PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
-PS C:\> $cert = Get-AzApplicationGatewayAuthenticationCertificate -Name "cert01" -ApplicationGateway $appgw
+```powershell
+$appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+$cert = Get-AzApplicationGatewayAuthenticationCertificate -Name "cert01" -ApplicationGateway $appgw
 ```
 
 The first command gets the application gateway named appGwName and stores it in the $appgw variable.

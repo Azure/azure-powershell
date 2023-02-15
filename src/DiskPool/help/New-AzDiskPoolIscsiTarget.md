@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpooliscsitarget
+online version: https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpooliscsitarget
 schema: 2.0.0
 ---
 
@@ -26,8 +26,10 @@ Create or Update an iSCSI Target.
 
 ### Example 1: Create an iSCSI target
 ```powershell
-PS C:\> New-AzDiskPoolIscsiTarget -DiskPoolName 'disk-pool-1' -Name 'target1' -ResourceGroupName 'storagepool-rg-test' -AclMode 'Dynamic'
+New-AzDiskPoolIscsiTarget -DiskPoolName 'disk-pool-1' -Name 'target1' -ResourceGroupName 'storagepool-rg-test' -AclMode 'Dynamic'
+```
 
+```output
 Name               Type
 ----               ----
 target1 Microsoft.StoragePool/diskPools/iscsiTargets

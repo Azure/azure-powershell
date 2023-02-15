@@ -45,7 +45,7 @@ function Install-SingleModuleFromPackage{
 
     process {
         $InstallStarted = Get-Date
-        $downloader = [ParallelDownloader]::new()                
+        $downloader = [ParallelDownloader]::new()
         try {
             $filePath = $downloader.Download($Path, $DestinationPath)
             $moduleName = $downloader.LastModuleName
@@ -62,7 +62,7 @@ function Install-SingleModuleFromPackage{
             $downloader.Dispose()
         }
 
-        Write-Progress -Id $script:FixProgressBarId  "Install packagkes from local."
+        Write-Progress -Id $script:FixProgressBarId  "Install packages from local."
 
         $InstallStarted = Get-Date
         Write-Debug "[$Invoker] Will install $moduleName"
@@ -86,14 +86,14 @@ function Install-SingleModuleFromPackage{
             }
             PowerShellGet\Install-Module @installModuleParams -Name $moduleName -RequiredVersion "$moduleVersion"
         }
-        
+
         if (!$WhatIfPreference) {
             $moduleInstalled = @()
             $moduleInstalled += [PSCustomObject]@{
                 Name = $moduleName
                 Version = $moduleVersion
             }
-            Write-Output $moduleInstalled 
+            Write-Output $moduleInstalled
         }
     }
 }

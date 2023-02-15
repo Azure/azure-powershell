@@ -2,14 +2,14 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 017EF522-ABC5-40EE-B8DC-369D097F49D0
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-AzSqlDatabaseAdvancedThreatProtectionSetting
+online version: https://learn.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseAdvancedThreatProtectionSetting
 schema: 2.0.0
 ---
 
 # Get-AzSqlDatabaseAdvancedThreatProtectionSetting
 
 ## SYNOPSIS
-Gets the advanced threat protection settings for a database.
+Gets the Advanced Threat Protection settings for a database.
 
 ## SYNTAX
 
@@ -20,26 +20,24 @@ Get-AzSqlDatabaseAdvancedThreatProtectionSetting [-ServerName] <String> [-Databa
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlDatabaseAdvancedThreatProtectionSetting** cmdlet gets the advanced threat protection settings of an Azure SQL database.
+The **Get-AzSqlDatabaseAdvancedThreatProtectionSetting** cmdlet gets the Advanced Threat Protection settings of an Azure SQL database.
 To use this cmdlet, specify the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database for which this cmdlet gets the settings.
 
 ## EXAMPLES
 
-### Example 1: Get the advanced threat protection settings for a database
-```
-PS C:\>Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01" -DatabaseName "Database01"
-DatabaseName                 : Database01
-ResourceGroupName            : ResourceGroup11
-ServerName                   : Server01
-ThreatDetectionState         : Enabled
-NotificationRecipientsEmails : admin@myCompany.com
-StorageAccountName           : mystorage
-EmailAdmins                  : True
-ExcludedDetectionTypes       : {}
-RetentionInDays              : 0
+### Example 1: Get the Advanced Threat Protection settings for a database
+```powershell
+Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
-This command gets the advanced threat protection settings for a database named Database01.
+```output
+DatabaseName                  : Database01
+ResourceGroupName             : ResourceGroup11
+ServerName                    : Server01
+AdvancedThreatProtectionState : Enabled
+```
+
+This command gets the Advanced Threat Protection settings for a database named Database01.
 The database is located on the server named Server01, which is assigned to the resource group ResourceGroup11.
 
 ## PARAMETERS

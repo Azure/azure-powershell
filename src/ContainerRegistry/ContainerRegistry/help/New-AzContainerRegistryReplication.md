@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistryreplication
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistryreplication
 schema: 2.0.0
 ---
 
@@ -38,8 +38,10 @@ The New-AzContainerRegistryReplication cmdlet creates a new container registry r
 
 ### Example 1: Create a new container registry replication.
 ```powershell
-PS C:\>New-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name replication001 -Location 'west us' -Tag @{tagName='MyTag'}
+New-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name replication001 -Location 'west us' -Tag @{tagName='MyTag'}
+```
 
+```output
 Name                 Location   Provisioni Status               StatusTimestamp                Tags
                                 ngState
 ----                 --------   ---------- ------               ---------------                ----
