@@ -25,6 +25,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Globalization;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -305,8 +306,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> GetEntity()
         {
+            ODataQuery<Management.Sql.Models.Database> oDataQuery = new ODataQuery<Management.Sql.Models.Database>();
+
+            oDataQuery.Expand = "keys";
+
             return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName)
+                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, oDataQuery)
             };
         }
 
@@ -341,7 +346,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,
             };
 
-            var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
+            ODataQuery<Management.Sql.Models.Database> oDataQuery = new ODataQuery<Management.Sql.Models.Database>();
+            oDataQuery.Expand = "keys";
+
+            var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName, oDataQuery);
             Management.Sql.Models.Sku databaseCurrentSku = new Management.Sql.Models.Sku()
             {
                 Name = database.SkuName,
@@ -352,17 +360,30 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             // DB level CMK keys
             //
-            if (this.Keys != null && this.Keys.Any())
+            if (this.Keys.Any() || this.KeysToRemove.Any())
             {
-                if (model.FirstOrDefault()?.Keys.Count > 0)
+                if (database.Keys.Count > 0)
                 {
                     foreach (string akvKey in Keys)
                     {
-                        if (!model.FirstOrDefault().Keys.ContainsKey(akvKey))
+                        if (!database.Keys.ContainsKey(akvKey))
                         {
                             model.FirstOrDefault().Keys.Add(akvKey, new Management.Sql.Models.DatabaseKey());
                         }
                     }
+
+                    if (this.KeysToRemove != null && this.KeysToRemove.Any())
+                    {
+                        foreach (string akvKey in KeysToRemove)
+                        {
+                            if (database.Keys.ContainsKey(akvKey))
+                            {
+                                model.FirstOrDefault().Keys[akvKey] = null;
+                            }
+                        }
+                    }
+
+                    newDbModel.Keys = model.FirstOrDefault().Keys;
                 }
                 else
                 {

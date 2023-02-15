@@ -53,8 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             {
                 oDataQuery.Expand = String.Format("keys($filter=pointInTime('{0}'))", KeysFilter);
             }
-
-            if (ExpandKeys.IsPresent)
+            else if (ExpandKeys.IsPresent)
             {
                 oDataQuery.Expand = "keys";
             }
