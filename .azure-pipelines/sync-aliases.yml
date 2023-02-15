@@ -27,6 +27,7 @@ jobs:
     displayName: Git commit and push
   
   - pwsh: |
+      git branch --list
       git checkout main
       $diff = git diff main internal/sync-fabricbot-json
       git checkout internal/sync-fabricbot-json
