@@ -28,7 +28,7 @@ jobs:
   
   - pwsh: |
       git remote -v
-      
+      git branch -vv
       $diff = git diff main internal/sync-fabricbot-json
       if ($diff.Length -eq 0) {
         Write-Host "No differences between main and internal/sync-fabricbot-json. Skipping PR creation."
