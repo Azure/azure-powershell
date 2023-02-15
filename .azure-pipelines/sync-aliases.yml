@@ -16,6 +16,17 @@ jobs:
     displayName: Update fabricbot.json file locally
       
   - pwsh: |
+      $gitStatus = git status -s
+      if ($gitStatus -eq "") {
+          Write-Host "The wiki has no changes ."
+          Write-Host "##vso[task.setvariable variable=ChangesDetected]false"
+      } else {
+          Write-Host "There are changes in the repository."
+          Write-Host "##vso[task.setvariable variable=ChangesDetected]true"
+      }
+    displayName: Check if Wiki table has any changes
+
+  - pwsh: |
       git branch -vv
       git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
       git config --global user.name "azure-powershell-bot"
@@ -27,20 +38,13 @@ jobs:
       git remote set-url origin https://$(BotAccessToken)@github.com/xtr0d666/azure-powershell.git;
       git push origin internal/sync-fabricbot-json --force
     displayName: Git commit and push
+    condition: and(eq(variables['ChangesDetected'], 'true'))
   
   - pwsh: |
-      git branch -vv
-      $diff = git diff internal/sync-fabricbot-json^ internal/sync-fabricbot-json
-      if ($diff.Length -eq 0) {
-        Write-Host "No differences between main and internal/sync-fabricbot-json. Skipping PR creation."
-      } else {
-        Write-Host "you differences"
-        exit 0;
-        $Title = "Sync fabricbot.json According To ADO Wiki Page"
-        $HeadBranch = "internal/sync-fabricbot-json"
-        $BaseBranch = "main"
-        $Description = "This PR sync taskType: scheduledAndTrigger part of fabricbot.json from table of Service-Team-Label-and-Contact-List in ADO wiki page"
-        ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
-      }
+      $Title = "Sync fabricbot.json According To ADO Wiki Page"
+      $HeadBranch = "internal/sync-fabricbot-json"
+      $BaseBranch = "main"
+      $Description = "This PR sync taskType: scheduledAndTrigger part of fabricbot.json from table of Service-Team-Label-and-Contact-List in ADO wiki page"
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
     displayName: Create PR to main branch
-
+    condition: and(eq(variables['ChangesDetected'], 'true'))
