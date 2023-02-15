@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/remove-azactionrule
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/remove-azalertprocessingrule
 schema: 2.0.0
 ---
 

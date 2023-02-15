@@ -39,10 +39,15 @@ jobs:
     condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))
   
   - pwsh: |
-      $Title = "Sync fabricbot.json According To ADO Wiki Page"
-      $HeadBranch = "internal/sync-fabricbot-json"
-      $BaseBranch = "main"
-      $Description = "This PR sync taskType: scheduledAndTrigger part of fabricbot.json from table of Service-Team-Label-and-Contact-List in ADO wiki page"
-      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
+      $diff = git diff main..internal/sync-fabricbot-json
+      if ($diff.Length -eq 0) {
+        Write-Host "No differences between main and internal/sync-fabricbot-json. Skipping PR creation."
+      } else {
+        $Title = "Sync fabricbot.json According To ADO Wiki Page"
+        $HeadBranch = "internal/sync-fabricbot-json"
+        $BaseBranch = "main"
+        $Description = "This PR sync taskType: scheduledAndTrigger part of fabricbot.json from table of Service-Team-Label-and-Contact-List in ADO wiki page"
+        ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
+      }
     displayName: Create PR to main branch
     condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))
