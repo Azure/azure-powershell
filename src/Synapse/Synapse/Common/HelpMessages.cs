@@ -272,7 +272,7 @@ Add means to add user assigned managed identities for workspace, Remove means to
 “SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP“,  
 “FAILED_DATABASE_AUTHENTICATION_GROUP“  
 This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs.
-For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.";
+For more information, see https://learn.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.";
 
         public const string AuditAction =
 @"The set of audit actions.  
@@ -291,7 +291,7 @@ For example:
 SELECT on dbo.myTable by public  
 SELECT on DATABASE::myDatabase by public  
 SELECT on SCHEMA::mySchema by public  
-For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.";
+For more information, see https://learn.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.";
 
         public const string PredicateExpression = "The T-SQL predicate (WHERE clause) used to filter audit logs.";
 

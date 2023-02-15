@@ -18,19 +18,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     {
         /// <summary>
         /// Use the Azure CNI network plugin. See [Azure CNI (advanced)
-        /// networking](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking)
+        /// networking](https://learn.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking)
         /// for more information.
         /// </summary>
         public const string Azure = "azure";
         /// <summary>
         /// Use the Kubenet network plugin. See [Kubenet (basic)
-        /// networking](https://docs.microsoft.com/azure/aks/concepts-network#kubenet-basic-networking)
+        /// networking](https://learn.microsoft.com/azure/aks/concepts-network#kubenet-basic-networking)
         /// for more information.
         /// </summary>
         public const string Kubenet = "kubenet";
         /// <summary>
         /// No CNI plugin is pre-installed. See [BYO
-        /// CNI](https://docs.microsoft.com/en-us/azure/aks/use-byo-cni) for
+        /// CNI](https://learn.microsoft.com/en-us/azure/aks/use-byo-cni) for
         /// more information.
         /// </summary>
         public const string None = "none";
