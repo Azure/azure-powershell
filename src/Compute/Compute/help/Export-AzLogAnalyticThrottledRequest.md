@@ -24,7 +24,7 @@ This exports the total number of throttled Microsoft.Compute API calls.
 The logs can be further aggregated by five options: GroupByOperationName, GroupByThrottlePolicy, GroupByResourceName, GroupByUserAgent, or GroupByApplicationId.
 Note that this cmdlet collects only CRP logs.
 
-For an overview of the Compute Resource Provider's API throttling, see https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits. 
+For an overview of the Compute Resource Provider's API throttling, see https://learn.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits. 
 
 ## EXAMPLES
 

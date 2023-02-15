@@ -56,7 +56,7 @@ Start-AzStorageBlobIncrementalCopy -AbsoluteUri <String> -DestContainer <String>
 
 ## DESCRIPTION
 Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
-See more details of the feature in https://docs.microsoft.com/rest/api/storageservices/fileservices/incremental-copy-blob.
+See more details of the feature in https://learn.microsoft.com/rest/api/storageservices/fileservices/incremental-copy-blob.
 
 ## EXAMPLES
 

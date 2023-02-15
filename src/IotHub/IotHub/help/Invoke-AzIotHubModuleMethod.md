@@ -35,7 +35,7 @@ Invoke-AzIotHubModuleMethod [-ResourceId] <String> [-DeviceId] <String> [-Module
 ```
 
 ## DESCRIPTION
-Invoke an Edge module method. See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods for more information.
+Invoke an Edge module method. See https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods for more information.
 
 ## EXAMPLES
 

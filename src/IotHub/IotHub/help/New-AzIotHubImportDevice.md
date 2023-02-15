@@ -22,7 +22,7 @@ New-AzIotHubImportDevice [-ResourceGroupName] <String> [-Name] <String> [-InputB
 Creates a new import devices job for the IotHub.
 This will import all the devices to the IotHub from the specified container. 
 Refer to the following article on how to generate the SAS URI.
-https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#get-the-container-sas-uri .
+https://learn.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#get-the-container-sas-uri .
 
 ## EXAMPLES
 
