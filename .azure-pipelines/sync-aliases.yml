@@ -17,7 +17,6 @@ jobs:
   - pwsh: |
       git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
       git config --global user.name "azure-powershell-bot"
-      git branch -vv
       git checkout -b "internal/sync-fabricbot-json"
         
       git add .
@@ -28,9 +27,8 @@ jobs:
     displayName: Git commit and push
   
   - pwsh: |
-      git remote -v
       git branch -vv
-      $diff = git diff main internal/sync-fabricbot-json
+      $diff = git diff internal/sync-fabricbot-json^ internal/sync-fabricbot-json
       if ($diff.Length -eq 0) {
         Write-Host "No differences between main and internal/sync-fabricbot-json. Skipping PR creation."
       } else {
