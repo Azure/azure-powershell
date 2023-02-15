@@ -17,7 +17,7 @@ jobs:
       
   - pwsh: |
       $gitStatus = git status -s
-      if ($gitStatus -eq "") {
+      if ($gitStatus.Trim() -eq "") {
           Write-Host "The wiki has no changes ."
           Write-Host "##vso[task.setvariable variable=ChangesDetected]false"
       } else {
@@ -27,7 +27,6 @@ jobs:
     displayName: Check if Wiki table has any changes
 
   - pwsh: |
-      git branch -vv
       git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
       git config --global user.name "azure-powershell-bot"
       git checkout -b "internal/sync-fabricbot-json"
