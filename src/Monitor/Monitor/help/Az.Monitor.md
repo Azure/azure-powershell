@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Monitor
 Module Guid: 698c387c-bd6b-41c6-82ce-721f1ef39548
-Download Help Link: https://docs.microsoft.com/powershell/module/az.monitor
+Download Help Link: https://learn.microsoft.com/powershell/module/az.monitor
 Help Version: 4.0.4.0
 Locale: en-US
 ---
@@ -216,6 +216,9 @@ Creates a new or updates an existing action group.
 
 ### [Set-AzDataCollectionRule](Set-AzDataCollectionRule.md)
 Updates (full replacement) a data collection rule.
+
+### [Test-AzActionGroup](Test-AzActionGroup.md)
+Sends test notifications
 
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.

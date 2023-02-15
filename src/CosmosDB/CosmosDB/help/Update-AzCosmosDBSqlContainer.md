@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer
 schema: 2.0.0
 ---
 
@@ -55,15 +55,15 @@ Updates the CosmosDB Sql Container. Performs a client side patch operation by re
 
 ### Example 1
 ```powershell
-Update-AzCosmosDBMongoDBDatabase -AccountName myAccountName -Name myDatabaseName -ResourceGroupName myResourcegroupName -Throughput 800
+Update-AzCosmosDBSqlContainer -AccountName myAccountName -Name myDatabaseName -ResourceGroupName myResourcegroupName -Throughput 800
 ```
 
 ```output
 Name     : myDatabaseName
-Id       : /subscriptions/mySubscriptionId/resourceGroups/myResourcegroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/mongodbDatabases/myDatabaseName
+Id       : /subscriptions/mySubscriptionId/resourceGroups/myResourcegroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlDatabases/myDatabaseName
 Location :
 Tags     :
-Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetPropertiesResource
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetPropertiesResource
 ```
 
 ## PARAMETERS

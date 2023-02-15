@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 494291A1-D854-4E97-B5EE-27BB5653D97C
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageserviceloggingproperty
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageserviceloggingproperty
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzStorageServiceLoggingProperty** cmdlet gets logging properties for A
 ## EXAMPLES
 
 ### Example 1: Get logging properties for the Blob service
-```
-C:\PS>Get-AzStorageServiceLoggingProperty -ServiceType Blob
+```powershell
+Get-AzStorageServiceLoggingProperty -ServiceType Blob
 ```
 
 This command gets logging properties for blob storage.

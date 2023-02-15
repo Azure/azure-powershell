@@ -60,7 +60,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkvm
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkvm
 #>
 function Get-AzVMwareWorkloadNetworkVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVirtualMachine])]

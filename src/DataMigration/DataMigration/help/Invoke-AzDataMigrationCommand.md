@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/Invoke-AzDataMigrationCommand
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Invoke-AzDataMigrationCommand
 schema: 2.0.0
 ---
 
 # Invoke-AzDataMigrationCommand
 
 ## SYNOPSIS
-Creates a new command to be executed on an existing DMS task.
+Creates a new command to be executed on an existing DMS (classic) task.
 
 ## SYNTAX
 

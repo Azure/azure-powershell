@@ -284,6 +284,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public Guid? FederatedClientId { get; set; }
 
         /// <summary>
+        /// Gets or sets the preferred enclave type requested on the database.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The preferred enclave type for the Azure Sql database. Possible values are Default and VBS.")]
+        [PSArgumentCompleter(
+            "Default",
+            "VBS")]
+        public string PreferredEnclaveType { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -341,6 +351,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
+                PreferredEnclaveType = PreferredEnclaveType,
                 Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, model.FirstOrDefault().Identity),
                 EncryptionProtector = this.EncryptionProtector ?? model.FirstOrDefault().EncryptionProtector,
                 FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,

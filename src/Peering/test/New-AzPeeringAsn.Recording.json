@@ -1,0 +1,37 @@
+{
+  "New-AzPeeringAsn+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/PsTestAsn?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/PsTestAsn?api-version=2022-10-01",
+      "Content": "{\n  \"properties\": {\n    \"peerAsn\": 65001,\n    \"peerContactDetail\": [\n      {\n        \"role\": \"Noc\",\n        \"email\": \"abc@xyz.com\",\n        \"phone\": \"1234567890\"\n      }\n    ],\n    \"peerName\": \"DemoPeering\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "212" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "3ba3f113-aa9a-4f3a-a5af-b5990093ac33" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "695093c7-60de-42ed-a54a-c5083eafaa8b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T013747Z:695093c7-60de-42ed-a54a-c5083eafaa8b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:37:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "435" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65001,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"abc@xyz.com\",\r\n        \"phone\": \"1234567890\"\r\n      }\r\n    ],\r\n    \"peerName\": \"DemoPeering\",\r\n    \"validationState\": \"Pending\"\r\n  },\r\n  \"name\": \"PsTestAsn\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/PsTestAsn\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

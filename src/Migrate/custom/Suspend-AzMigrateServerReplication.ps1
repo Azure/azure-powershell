@@ -19,7 +19,7 @@ Suspends the ongoing replication.
 .Description
 The Suspend-AzMigrateServerReplication suspends the ongoing replication.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/suspend-azmigrateserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/suspend-azmigrateserverreplication
 #>
 function Suspend-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]

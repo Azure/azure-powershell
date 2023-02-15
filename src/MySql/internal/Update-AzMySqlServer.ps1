@@ -70,7 +70,7 @@ PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: The version of a server.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlserver
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlserver
 #>
 function Update-AzMySqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]

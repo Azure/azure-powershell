@@ -25,7 +25,7 @@ Get-AzContainerInstanceCapability -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICapabilities
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecapability
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecapability
 #>
 function Get-AzContainerInstanceCapability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICapabilities])]

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/submit-azsynapsesparkjob
+online version: https://learn.microsoft.com/powershell/module/az.synapse/submit-azsynapsesparkjob
 schema: 2.0.0
 ---
 
@@ -123,7 +123,7 @@ Number of core and memory to be used for executors allocated in the specified Sp
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Small, Medium, Large
+Accepted values: Small, Medium, Large, XLarge, XXLarge, XXXLarge
 
 Required: True
 Position: Named

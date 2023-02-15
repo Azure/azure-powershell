@@ -154,6 +154,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseGetWithPreferredEnclaveType()
+        {
+            TestRunner.RunTestScript("Test-GetDatabaseWithPreferredEnclaveType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseRemove()
         {
             TestRunner.RunTestScript("Test-RemoveDatabase");
@@ -178,6 +185,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestDatabaseCreateWithGeoZoneBackupStorageRedundancy()
         {
             TestRunner.RunTestScript("Test-CreateDatabaseWithGeoZoneBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithPreferredEnclaveType ()
+        {
+            TestRunner.RunTestScript("Test-CreateDatabaseWithPreferredEnclaveType");
         }
 
         [Fact]

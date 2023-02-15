@@ -14,18 +14,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
     {
 
         /// <summary>Backing field for <see cref="End" /> property.</summary>
-        private global::System.DateTime _end;
+        private global::System.DateTime? _end;
 
         /// <summary>the end time for the profile in ISO 8601 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PropertyOrigin.Owned)]
-        public global::System.DateTime End { get => this._end; set => this._end = value; }
+        public global::System.DateTime? End { get => this._end; set => this._end = value; }
 
         /// <summary>Backing field for <see cref="Start" /> property.</summary>
-        private global::System.DateTime _start;
+        private global::System.DateTime? _start;
 
         /// <summary>the start time for the profile in ISO 8601 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PropertyOrigin.Owned)]
-        public global::System.DateTime Start { get => this._start; set => this._start = value; }
+        public global::System.DateTime? Start { get => this._start; set => this._start = value; }
 
         /// <summary>Backing field for <see cref="TimeZone" /> property.</summary>
         private string _timeZone;
@@ -70,20 +70,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
     {
         /// <summary>the end time for the profile in ISO 8601 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"the end time for the profile in ISO 8601 format.",
         SerializedName = @"end",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime End { get; set; }
+        global::System.DateTime? End { get; set; }
         /// <summary>the start time for the profile in ISO 8601 format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"the start time for the profile in ISO 8601 format.",
         SerializedName = @"start",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime Start { get; set; }
+        global::System.DateTime? Start { get; set; }
         /// <summary>
         /// the timezone of the start and end times for the profile. Some examples of valid time zones are: Dateline Standard Time,
         /// UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard Time (Mexico), Pacific Standard Time, US Mountain
@@ -123,9 +123,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
 
     {
         /// <summary>the end time for the profile in ISO 8601 format.</summary>
-        global::System.DateTime End { get; set; }
+        global::System.DateTime? End { get; set; }
         /// <summary>the start time for the profile in ISO 8601 format.</summary>
-        global::System.DateTime Start { get; set; }
+        global::System.DateTime? Start { get; set; }
         /// <summary>
         /// the timezone of the start and end times for the profile. Some examples of valid time zones are: Dateline Standard Time,
         /// UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard Time (Mexico), Pacific Standard Time, US Mountain

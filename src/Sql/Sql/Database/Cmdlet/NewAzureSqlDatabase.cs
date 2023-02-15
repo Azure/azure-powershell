@@ -241,6 +241,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public SwitchParameter EnableLedger { get; set; }
 
         /// <summary>
+        /// Gets or sets the preferred enclave type requested on the database.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The preferred enclave type for the Azure Sql database. Possible values are Default and VBS.")]
+        [PSArgumentCompleter(
+            "Default",
+            "VBS")]
+        public string PreferredEnclaveType { get; set; }
+
+        /// <summary>
         /// Switch parameter to control if database identity is to be assigned.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -360,6 +370,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
                 EnableLedger = this.IsParameterBound(p => p.EnableLedger) ? EnableLedger.ToBool() : (bool?)null,
+                PreferredEnclaveType = this.PreferredEnclaveType,
                 Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, null),
                 Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.Keys),
                 EncryptionProtector = this.EncryptionProtector,

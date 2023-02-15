@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Ssh.dll-Help.xml
 Module Name: Az.Ssh
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.ssh/export-azsshconfig
 schema: 2.0.0
 ---
 

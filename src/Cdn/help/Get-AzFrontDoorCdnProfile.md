@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofile
+online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofile
 schema: 2.0.0
 ---
 
 # Get-AzFrontDoorCdnProfile
 
 ## SYNOPSIS
-
+Gets an Azure Front Door Standard or Azure Front Door Premium with the specified profile name under the specified subscription and resource group.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Get-AzFrontDoorCdnProfile -ResourceGroupName <String> [-SubscriptionId <String[]
 ```
 
 ## DESCRIPTION
-
+Gets an Azure Front Door Standard or Azure Front Door Premium with the specified profile name under the specified subscription and resource group.
 
 ## EXAMPLES
 

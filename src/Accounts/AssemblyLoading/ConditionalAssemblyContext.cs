@@ -20,10 +20,14 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
     /// <inheritdoc/>
     public class ConditionalAssemblyContext : IConditionalAssemblyContext
     {
-        public ConditionalAssemblyContext(Version psVersion)
+        public ConditionalAssemblyContext(string psEdition, Version psVersion)
         {
+            PSEdition = psEdition;
             PSVersion = psVersion;
         }
+
+        /// <inheritdoc/>
+        public string PSEdition { get; private set; }
 
         /// <inheritdoc/>
         public Version PSVersion { get; private set; }

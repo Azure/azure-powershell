@@ -739,4 +739,10 @@
   <data name="ServerIpv6FirewallRuleNameDoesNotExist" xml:space="preserve">
     <value>IPv6 Firewall Rule with name: '{0}' does not exist for server '{1}'.</value>
   </data>
+  <data name="SetAzureSqlInstanceDtcDescription" xml:space="preserve">
+    <value>Updating DTC on managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="SetAzureSqlInstanceDtcWarning" xml:space="preserve">
+    <value>Are you sure you want to update DTC on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
 </root>

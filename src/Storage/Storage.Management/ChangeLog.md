@@ -18,9 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-*Return ListBlobProperties in blob list result
+
+## Version 5.4.0
+* Added a warning message for the upcoming breaking change when creating a Storage account
+    - `New-AzStorageAccount`
+* Removed the ValidateSet of StandardBlobTier parameter
+    - `Copy-AzStorageBlob`
+    - `Set-AzStorageBlobContent` 
+    - `Start-AzStorageBlobCopy`
+
+## Version 5.3.0
+* Returned ListBlobProperties in blob list result
     - `Get-AzStorageBlob`
-*Output AllowedCopyScope in get account result
+* Returned AllowedCopyScope in get account result
     - `Get-AzStorageAccount`
 
 ## Version 5.2.0

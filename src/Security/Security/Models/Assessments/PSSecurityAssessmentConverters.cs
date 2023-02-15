@@ -32,6 +32,18 @@ namespace Microsoft.Azure.Commands.Security.Models.Assessments
             };
         }
 
+        public static PSSecurityAssessment ConvertToPSType(this SecurityAssessmentResponse value)
+        {
+            return new PSSecurityAssessment()
+            {
+                Id = value.Id,
+                Name = value.Name,
+                DisplayName = value.DisplayName,
+                ResourceDetails = value.ResourceDetails.ConvertToPSType(),
+                Status = value.Status.ConvertToPSType()
+            };
+        }
+
         public static PSSecurityResourceDetails ConvertToPSType(this ResourceDetails value)
         {
             if (value is AzureResourceDetails details)
@@ -60,6 +72,11 @@ namespace Microsoft.Azure.Commands.Security.Models.Assessments
         }
 
         public static List<PSSecurityAssessment> ConvertToPSType(this IEnumerable<SecurityAssessment> value)
+        {
+            return value.Select(obj => obj.ConvertToPSType()).ToList();
+        }
+
+        public static List<PSSecurityAssessment> ConvertToPSType(this IEnumerable<SecurityAssessmentResponse> value)
         {
             return value.Select(obj => obj.ConvertToPSType()).ToList();
         }

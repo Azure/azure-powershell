@@ -156,5 +156,40 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AutoScalerProfile");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGpuInstanceProfile()
+        {
+            TestRunner.RunTestScript("Test-GpuInstanceProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableUptimeSLA()
+        {
+            TestRunner.RunTestScript("Test-EnableUptimeSLA");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-EdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAadProfile()
+        {
+            TestRunner.RunTestScript("Test-AadProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHostGroupID()
+        {
+            TestRunner.RunTestScript("Test-HostGroupID");
+        }
     }
 }

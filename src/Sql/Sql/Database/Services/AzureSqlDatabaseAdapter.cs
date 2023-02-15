@@ -189,6 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 SecondaryType = model.Database.SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),
                 IsLedgerOn = model.Database.EnableLedger,
+                PreferredEnclaveType = model.Database.PreferredEnclaveType,
                 Identity = model.Database.Identity,
                 Keys = model.Database.Keys,
                 EncryptionProtector = model.Database.EncryptionProtector,
