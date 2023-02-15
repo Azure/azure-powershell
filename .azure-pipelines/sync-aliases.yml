@@ -27,7 +27,7 @@ jobs:
     displayName: Git commit and push
   
   - pwsh: |
-      $diff = git diff origin/main..internal/sync-fabricbot-json
+      $diff = git diff main.."internal/sync-fabricbot-json"
       if ($diff.Length -eq 0) {
         Write-Host "No differences between main and internal/sync-fabricbot-json. Skipping PR creation."
       } else {
