@@ -27,7 +27,7 @@ Gets an authorization rule for a namespace by rule name.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfigauthorizationrule
 #>
 function Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -202,12 +202,12 @@ Gets the primary and secondary connection strings for the namespace.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfigkey
 #>
 function Get-AzServiceBusDisasterRecoveryConfigKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -348,7 +348,7 @@ Gets an authorization rule for a namespace by rule name.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -371,7 +371,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespaceauthorizationrule
 #>
 function Get-AzServiceBusNamespaceAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -516,12 +516,12 @@ Gets the primary and secondary connection strings for the namespace.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespacekey
 #>
 function Get-AzServiceBusNamespaceKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -654,12 +654,12 @@ Lists all of the available ServiceBus REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusoperation
 #>
 function Get-AzServiceBusOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -765,7 +765,7 @@ Gets an authorization rule for a queue by rule name.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -788,7 +788,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueueauthorizationrule
 #>
 function Get-AzServiceBusQueueAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -940,12 +940,12 @@ Primary and secondary connection strings to the queue.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueuekey
 #>
 function Get-AzServiceBusQueueKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1086,7 +1086,7 @@ Returns the specified authorization rule.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1109,7 +1109,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebustopicauthorizationrule
 #>
 function Get-AzServiceBusTopicAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1261,12 +1261,12 @@ Gets the primary and secondary connection strings for the topic.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebustopickey
 #>
 function Get-AzServiceBusTopicKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1577,7 +1577,7 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IFailoverProperties
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IFailoverProperties
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
@@ -1651,7 +1651,7 @@ param(
     [Parameter(ParameterSetName='Fail', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='FailViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IFailoverProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IFailoverProperties]
     # Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -1774,11 +1774,11 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 New-AzServiceBusGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace "/subscriptions/0000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySecondaryNamespace"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IArmDisasterRecovery
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IArmDisasterRecovery
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1811,7 +1811,7 @@ PARAMETER <IArmDisasterRecovery>: Single item in List or Get Alias(Disaster Reco
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
 #>
 function New-AzServiceBusGeoDRConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IArmDisasterRecovery])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -1823,7 +1823,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IArmDisasterRecovery]
     # Single item in List or Get Alias(Disaster Recovery configuration) operation
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -1935,11 +1935,11 @@ Creates or updates an authorization rule for a namespace.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1971,7 +1971,7 @@ PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespaceauthorizationrule
 #>
 function New-AzServiceBusNamespaceAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -2017,7 +2017,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule]
     # Description of a namespace authorization rule.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2127,9 +2127,9 @@ Regenerates the primary or secondary connection strings for the namespace.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRegenerateAccessKeyParameters
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRegenerateAccessKeyParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2142,7 +2142,7 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespacekey
 #>
 function New-AzServiceBusNamespaceKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='Regenerate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2173,7 +2173,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRegenerateAccessKeyParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRegenerateAccessKeyParameters]
     # Parameters supplied to the Regenerate Authorization Rule operation, specifies which key needs to be reset.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2292,11 +2292,11 @@ New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2336,6 +2336,7 @@ PARAMETER <ISbNamespace>: Description of a namespace resource.
     [KeyVersion <String>]: Version of KeyVault
     [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
   [MinimumTlsVersion <TlsVersion?>]: The minimum TLS version for the cluster to support, e.g. '1.2'
+  [PremiumMessagingPartition <Int32?>]: The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
   [PrivateEndpointConnection <IPrivateEndpointConnection[]>]: List of private endpoint connections.
     [ConnectionState <PrivateLinkConnectionStatus?>]: Status of the connection.
     [Description <String>]: Description of the connection state.
@@ -2349,7 +2350,7 @@ PARAMETER <ISbNamespace>: Description of a namespace resource.
     [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [PublicNetworkAccess <PublicNetworkAccess?>]: This determines if traffic is allowed over public network. By default it is enabled.
   [RequireInfrastructureEncryption <Boolean?>]: Enable Infrastructure Encryption (Double Encryption)
-  [SkuCapacity <Int32?>]: The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+  [SkuCapacity <Int32?>]: Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
   [SkuName <SkuName?>]: Name of this SKU.
   [SkuTier <SkuTier?>]: The billing tier of this particular SKU.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
@@ -2377,7 +2378,7 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoi
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespacev2
 #>
 function New-AzServiceBusNamespaceV2 {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -2443,7 +2444,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[]]
     # Properties of KeyVault
     # To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
     ${KeyVaultProperty},
@@ -2457,9 +2458,17 @@ param(
     ${MinimumTlsVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # The number of partitions of a Service Bus namespace.
+    # This property is only applicable to Premium SKU namespaces.
+    # The default value is 1 and possible values are 1, 2 and 4
+    ${PremiumMessagingPartition},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection[]]
     # List of private endpoint connections.
     # To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
     ${PrivateEndpointConnection},
@@ -2481,8 +2490,10 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Int32]
-    # The specified messaging units for the tier.
-    # For Premium tier, capacity are 1,2 and 4.
+    # Messaging units for your service bus premium namespace.
+    # Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting.
+    # For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16.
+    # If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
     ${SkuCapacity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2508,7 +2519,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Properties for User Assigned Identities
     ${UserAssignedIdentity},
@@ -2521,7 +2532,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace]
     # Description of a namespace resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2643,11 +2654,11 @@ Create or update NetworkRuleSet for a Namespace.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSet
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSet
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2695,7 +2706,7 @@ VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>: List VirtualNetwork Rules
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusnetworkruleset
 #>
 function New-AzServiceBusNetworkRuleSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSet])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -2735,7 +2746,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetIPRules[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetIPRules[]]
     # List of IpRules
     # To construct, see NOTES section for IPRULE properties and create a hash table.
     ${IPRule},
@@ -2757,14 +2768,14 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetVirtualNetworkRules[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetVirtualNetworkRules[]]
     # List VirtualNetwork Rules
     # To construct, see NOTES section for VIRTUALNETWORKRULE properties and create a hash table.
     ${VirtualNetworkRule},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSet]
     # Description of NetworkRuleSet resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2874,11 +2885,11 @@ Creates or updates PrivateEndpointConnections of service namespace.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2913,7 +2924,7 @@ PARAMETER <IPrivateEndpointConnection>: Properties of the PrivateEndpointConnect
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusprivateendpointconnection
 #>
 function New-AzServiceBusPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -2978,7 +2989,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection]
     # Properties of the PrivateEndpointConnection.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3088,11 +3099,11 @@ Creates an authorization rule for a queue.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3124,7 +3135,7 @@ PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueueauthorizationrule
 #>
 function New-AzServiceBusQueueAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -3176,7 +3187,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule]
     # Description of a namespace authorization rule.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3286,9 +3297,9 @@ Regenerates the primary or secondary connection strings to the queue.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRegenerateAccessKeyParameters
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRegenerateAccessKeyParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3301,7 +3312,7 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueuekey
 #>
 function New-AzServiceBusQueueKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='Regenerate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3338,7 +3349,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRegenerateAccessKeyParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRegenerateAccessKeyParameters]
     # Parameters supplied to the Regenerate Authorization Rule operation, specifies which key needs to be reset.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3447,11 +3458,11 @@ This operation is idempotent.
 New-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue -AutoDeleteOnIdle (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4) -DefaultMessageTimeToLive (New-TimeSpan -Days 5) -EnablePartitioning
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3498,7 +3509,7 @@ PARAMETER <ISbQueue>: Description of queue Resource.
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
 #>
 function New-AzServiceBusQueue {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -3510,7 +3521,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue]
     # Description of queue Resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3616,11 +3627,11 @@ New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespa
 New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name mySqlRule -FilterType SqlFilter -SqlExpression 3=2 -ActionSqlExpression "SET a=b"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3669,7 +3680,7 @@ PARAMETER <IRule>: Description of Rule Resource.
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule
 #>
 function New-AzServiceBusRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -3681,7 +3692,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule]
     # Description of Rule Resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3785,11 +3796,11 @@ Creates a topic subscription.
 New-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 6) -EnableBatchedOperations
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3836,7 +3847,7 @@ PARAMETER <ISbSubscription>: Description of subscription resource.
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
 #>
 function New-AzServiceBusSubscription {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -3848,7 +3859,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription]
     # Description of subscription resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3954,11 +3965,11 @@ Creates an authorization rule for the specified topic.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3990,7 +4001,7 @@ PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebustopicauthorizationrule
 #>
 function New-AzServiceBusTopicAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -4042,7 +4053,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule]
     # Description of a namespace authorization rule.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -4152,9 +4163,9 @@ Regenerates primary or secondary connection strings for the topic.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRegenerateAccessKeyParameters
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRegenerateAccessKeyParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4167,7 +4178,7 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebustopickey
 #>
 function New-AzServiceBusTopicKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='Regenerate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4204,7 +4215,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRegenerateAccessKeyParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRegenerateAccessKeyParameters]
     # Parameters supplied to the Regenerate Authorization Rule operation, specifies which key needs to be reset.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -4311,11 +4322,11 @@ Creates a topic in the specified namespace.
 New-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myTopic -DefaultMessageTimeToLive (New-TimeSpan -Days 18) -EnableBatchedOperations
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4357,7 +4368,7 @@ PARAMETER <ISbTopic>: Description of topic resource.
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebustopic
 #>
 function New-AzServiceBusTopic {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -4369,7 +4380,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic]
     # Description of topic resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -5001,11 +5012,11 @@ Creates Migration configuration and starts migration of entities from Standard t
 Start-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace -PostMigrationName myStandardNamespace2 -TargetNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myPremiumNamespace
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IMigrationConfigProperties
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IMigrationConfigProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5038,7 +5049,7 @@ PARAMETER <IMigrationConfigProperties>: Single item in List or Get Migration Con
 https://learn.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
 #>
 function Start-AzServiceBusMigration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IMigrationConfigProperties])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -5050,7 +5061,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IMigrationConfigProperties]
     # Single item in List or Get Migration Config operation
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -5168,11 +5179,11 @@ Check the give namespace name availability.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailability
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailability
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailabilityResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5198,7 +5209,7 @@ PARAMETER <ICheckNameAvailability>: Description of a Check Name availability req
 https://learn.microsoft.com/powershell/module/az.servicebus/test-azservicebusdisasterrecoveryconfignameavailability
 #>
 function Test-AzServiceBusDisasterRecoveryConfigNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailabilityResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Check', Mandatory)]
@@ -5235,7 +5246,7 @@ param(
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailability]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailability]
     # Description of a Check Name availability request properties.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -5355,11 +5366,11 @@ Check the give namespace name availability.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailability
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailability
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailabilityResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5385,7 +5396,7 @@ PARAMETER <ICheckNameAvailability>: Description of a Check Name availability req
 https://learn.microsoft.com/powershell/module/az.servicebus/test-azservicebusnamespacenameavailability
 #>
 function Test-AzServiceBusNamespaceNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailabilityResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Check')]
@@ -5408,7 +5419,7 @@ param(
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailability]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailability]
     # Description of a Check Name availability request properties.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

@@ -40,7 +40,7 @@ $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName myResource
 $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentityId @()
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -69,7 +69,7 @@ KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties of KeyVault
 https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusnamespacev2
 #>
 function Set-AzServiceBusNamespaceV2 {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace])]
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
@@ -112,7 +112,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[]]
     # Properties of KeyVault
     # To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
     ${KeyVaultProperty},
