@@ -31,6 +31,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        ///  Defines whether the Cmdlets will output the model object at the end of its execution
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out.
+        /// </summary>
+        /// <returns>True if the model object should be written out; false otherwise.</returns>
+        protected override bool WriteResult() { return PassThru; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>Database entity</returns>
