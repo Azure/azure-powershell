@@ -17,12 +17,12 @@ assign a custom domain to it and update global variable values.
 #>
 
 #Global variables
-$rgname = "lketmtestantps10"
-$appname = "lketmtestantps10"
+$rgname = "RG-PS-UnitTesting"
+$appname = "AppService-PS-UnitTesting"
 $slot = "testslot"
-$prodHostname = "www.adorenow.net"
-$slotHostname = "testslot.adorenow.net"
-$thumbprint = "6156D1475113476C55A3064D44DED9ECA0B33864"
+$prodHostname = "www.psunittesting.com"
+$slotHostname = "testslot.psunittesting.com"
+$thumbprint = "210C5A1BBF7BC63F8733C3CB5E612FCFF3643E41"
 
 <#
 .SYNOPSIS
