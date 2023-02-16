@@ -70,6 +70,3 @@ Invoke-LiveTestScenario -Name "Remove ApplicationInsights" -Description "Test Re
     $GetServiceList = Get-AzApplicationInsights -ResourceGroupName $rgName
     Assert-False { $GetServiceList.Name -contains $appName}
 }
-
-
-
