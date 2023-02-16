@@ -24,6 +24,7 @@
     - `New-AzFirewallPolicy`
     - `Set-AzFirewallPolicy`
 * Fixed a bug that reverts classic fw private ranges to default when doing get & set
+* Onboard Microsoft.Monitor to Private Link Common Cmdlets
 
 ## Version 5.4.0
 * Fixed a bug that does not enable to set Perform SNAT to Always
