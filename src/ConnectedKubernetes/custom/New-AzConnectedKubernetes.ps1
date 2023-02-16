@@ -233,6 +233,7 @@ function New-AzConnectedKubernetes {
     )
 
     process {
+        . "$PSScriptRoot/HelmHelper.ps1"
         if($AzureHybridBenefit){
             if(!$AcceptEULA){
                 $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
@@ -286,6 +287,7 @@ function New-AzConnectedKubernetes {
 
         #Region check helm install
         try {
+            Get-HelmClientLocation
             $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
             if ($HelmVersion.Contains("v2")) {
                 Write-Error "Helm version 3+ is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
@@ -297,13 +299,12 @@ function New-AzConnectedKubernetes {
                 Return
             }
         } catch {
-            Write-Error "Helm version 3+ is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
-            throw
+            throw "Helm version 3+ is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"            
         }
         #EndRegion
 
         #Region get release namespace
-        Set-Variable ReleaseInstallNamespace -option Constant -value "azure-arc-release"
+        $ReleaseInstallNamespace = Get-Release-Install-Namespace
         $ReleaseNamespace = $null
         try {
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace | ConvertFrom-Json).namespace
@@ -376,8 +377,8 @@ function New-AzConnectedKubernetes {
             if ($Response.StatusCode -eq 200) {
                 $RegisteryPath = ($Response.Content | ConvertFrom-Json).repositoryPath
             } else {
-                throw "Error while fetching helm chart registry path: ${$Response.RawContent}"
-                
+                Write-Error "Error while fetching helm chart registry path: ${$Response.RawContent}"
+                return
             }
         }
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
@@ -399,8 +400,7 @@ function New-AzConnectedKubernetes {
         try {
             helm chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
         } catch {
-            Write-Error "Unable to export helm chart from the registery $RegisteryPath"
-            throw
+            throw "Unable to export helm chart from the registery $RegisteryPath"            
         }
         #Endregion
 
@@ -493,8 +493,7 @@ function New-AzConnectedKubernetes {
                     $ProxyCredential = New-Object System.Management.Automation.PSCredential ($userInfo[0] , $pass)
                     $PSBoundParameters.Add('ProxyCredential', $ProxyCredential)
                 } catch {
-                    Write-Warning "Please set ProxyCredential or provide username and password in the Proxy parameter"
-                    throw
+                    throw "Please set ProxyCredential or provide username and password in the Proxy parameter"                    
                 }
             } else {
                 Write-Warning "If the proxy is a private proxy, pass ProxyCredential parameter or provide username and password in the Proxy parameter"

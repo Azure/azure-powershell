@@ -152,6 +152,7 @@ param(
 )
 
     process {
+        . "$PSScriptRoot/HelmHelper.ps1"
         if ($PSBoundParameters.ContainsKey('KubeConfig')) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         } elseif (Test-Path Env:KUBECONFIG) {
@@ -173,7 +174,8 @@ param(
         }
 
         #Region check helm install
-        try {
+        try {       
+            Get-HelmClientLocation
             $HelmVersion = helm version --short --kubeconfig $KubeConfig
             if ($HelmVersion.Contains("v2")) {
                 Write-Error "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
@@ -186,7 +188,7 @@ param(
         #Endregion
 
         #Region get release namespace
-        Set-Variable ReleaseInstallNamespace -option Constant -value "azure-arc-release"
+        $ReleaseInstallNamespace = Get-Release-Install-Namespace
         $ReleaseNamespace = $null
         try {
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace | ConvertFrom-Json).namespace
