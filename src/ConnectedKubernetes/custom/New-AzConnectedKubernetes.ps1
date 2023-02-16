@@ -58,19 +58,19 @@ function New-AzConnectedKubernetes {
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.Uri]
         # The http URI of the proxy server for the kubernetes cluster to use
-        ${ProxyHttp},
+        ${HttpProxy},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.Uri]
         # The https URI of the proxy server for the kubernetes cluster to use
-        ${ProxyHttps},
+        ${HttpsProxy},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
         # The comma-separated list of hostnames that should be excluded from the proxy server for the kubernetes cluster to use
-        ${ProxyNo},
+        ${NoProxy},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
@@ -427,28 +427,28 @@ function New-AzConnectedKubernetes {
         #Region helm options
         $options = ""
         $proxyEnableState = $false
-        if (-not ([string]::IsNullOrEmpty($ProxyHttp))) {
-            $ProxyHttpStr = $ProxyHttp.ToString()
-            $ProxyHttpStr = $ProxyHttpStr -replace ',','\,'
-            $ProxyHttpStr = $ProxyHttpStr -replace '/','\/'
-            $options += " --set global.httpProxy=$ProxyHttpStr"
+        if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
+            $HttpProxyStr = $HttpProxy.ToString()
+            $HttpProxyStr = $HttpProxyStr -replace ',','\,'
+            $HttpProxyStr = $HttpProxyStr -replace '/','\/'
+            $options += " --set global.httpProxy=$HttpProxyStr"
             $proxyEnableState = $true
-            $Null = $PSBoundParameters.Remove('ProxyHttp')
+            $Null = $PSBoundParameters.Remove('HttpProxy')
         }
-        if (-not ([string]::IsNullOrEmpty($ProxyHttps))) {
-            $ProxyHttpsStr = $ProxyHttps.ToString()
-            $ProxyHttpsStr = $ProxyHttpsStr -replace ',','\,'
-            $ProxyHttpsStr = $ProxyHttpsStr -replace '/','\/'
-            $options += " --set global.httpsProxy=$ProxyHttpsStr"
+        if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
+            $HttpsProxyStr = $HttpsProxy.ToString()
+            $HttpsProxyStr = $HttpsProxyStr -replace ',','\,'
+            $HttpsProxyStr = $HttpsProxyStr -replace '/','\/'
+            $options += " --set global.httpsProxy=$HttpsProxyStr"
             $proxyEnableState = $true
-            $Null = $PSBoundParameters.Remove('ProxyHttps')
+            $Null = $PSBoundParameters.Remove('HttpsProxy')
         }
-        if (-not ([string]::IsNullOrEmpty($ProxyNo))) {
-            $ProxyNo = $ProxyNo -replace ',','\,'
-            $ProxyNo = $ProxyNo -replace '/','\/'
-            $options += " --set global.noProxy=$ProxyNo"
+        if (-not ([string]::IsNullOrEmpty($NoProxy))) {
+            $NoProxy = $NoProxy -replace ',','\,'
+            $NoProxy = $NoProxy -replace '/','\/'
+            $options += " --set global.noProxy=$NoProxy"
             $proxyEnableState = $true
-            $Null = $PSBoundParameters.Remove('ProxyNo')
+            $Null = $PSBoundParameters.Remove('NoProxy')
         }
         if ($proxyEnableState) {
             $options += " --set global.isProxyEnabled=true"
