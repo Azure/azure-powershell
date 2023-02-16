@@ -1,12 +1,12 @@
 {
-  "Get-AzServiceLinkerConfigurationForContainerApp+[NoContext]+List+$POST+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-05-01+1": {
+  "Get-AzServiceLinkerConfigurationForContainerApp+[NoContext]+List+$POST+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-11-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.App/containerApps/servicelinker-containerapp/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-11-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "c77f0223-bc4a-44b0-ab98-38d5e771e8c5" ],
+        "x-ms-client-request-id": [ "3b3cd48e-c232-4928-bfcc-340eb9fb1a9c" ],
         "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinkerConfiguration" ],
         "FullCommandName": [ "Get-AzServiceLinkerConfiguration_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,23 +21,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "0188fb0c-6eac-451a-a23e-a3d736cb773e" ],
+        "mise-correlation-id": [ "9da2798d-3ef0-48fc-bbd2-5b587d7a6c38" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "740cb3db-59f0-4fa5-a09d-81ff77ef6a66" ],
-        "x-ms-correlation-request-id": [ "fd94b62a-ad29-414f-9e9b-695e026603c3" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T064256Z:fd94b62a-ad29-414f-9e9b-695e026603c3" ],
+        "x-ms-request-id": [ "8ea66fcc-a9aa-416d-a0c1-11df05b1651c" ],
+        "x-ms-correlation-request-id": [ "d56af4ee-399f-4114-99b1-df7ac28fa5bf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230130T074100Z:d56af4ee-399f-4114-99b1-df7ac28fa5bf" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 07 May 2022 06:42:56 GMT" ]
+        "Date": [ "Mon, 30 Jan 2023 07:40:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "78" ],
+        "Content-Length": [ "125" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"configurations\":[{\"name\":\"AZURE_POSTGRESQL_CONNECTIONSTRING\",\"value\":null}]}"
+      "Content": "{\"configurations\":[{\"name\":\"AZURE_APPCONFIGURATION_ENDPOINT\",\"value\":\"https://servicelinker-app-configuration.azconfig.io\"}]}"
     }
   }
 }

@@ -58,7 +58,7 @@ Get-AzServiceLinkerForContainerApp -ContainerApp servicelinker-app -ResourceGrou
 
 ```output
 AuthInfo                     : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model
-                               s.Api20220501.SecretAuthInfo
+                               s.Api20221101Preview.SecretAuthInfo
 ClientType                   : dotnet
 Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/re 
                                sourceGroups/servicelinker-test-group/providers/ 
@@ -75,7 +75,7 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 TargetService                : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model 
-                               s.Api20220501.AzureResource
+                               s.Api20221101Preview.AzureResource
 Type                         : microsoft.servicelinker/linkers
 VNetSolutionType             : serviceEndpoint
 
@@ -94,7 +94,7 @@ $identity | Get-AzServiceLinkerForContainerApp  | Format-List
 
 ```output
 AuthInfo                     : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model
-                               s.Api20220501.SecretAuthInfo
+                               s.Api20221101Preview.SecretAuthInfo
 ClientType                   : dotnet
 Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/re 
                                sourceGroups/servicelinker-test-group/providers/ 
@@ -111,7 +111,7 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 TargetService                : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model 
-                               s.Api20220501.AzureResource
+                               s.Api20221101Preview.AzureResource
 Type                         : microsoft.servicelinker/linkers
 VNetSolutionType             : serviceEndpoint
 
@@ -237,7 +237,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
 
 ## NOTES
 
@@ -249,9 +249,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  - `[ConnectorName <String>]`: The name of resource.
+  - `[DryrunName <String>]`: The name of dryrun.
   - `[Id <String>]`: Resource identity path
   - `[LinkerName <String>]`: The name Linker resource.
+  - `[Location <String>]`: The name of Azure region.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

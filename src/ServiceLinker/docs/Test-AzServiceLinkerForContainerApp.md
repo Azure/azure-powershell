@@ -234,7 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateResult
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IValidateResult
 
 ## NOTES
 
@@ -246,9 +246,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  - `[ConnectorName <String>]`: The name of resource.
+  - `[DryrunName <String>]`: The name of dryrun.
   - `[Id <String>]`: Resource identity path
   - `[LinkerName <String>]`: The name Linker resource.
+  - `[Location <String>]`: The name of Azure region.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
