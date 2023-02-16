@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
         [Parameter(Mandatory = false,
             HelpMessage = "The list of AKV keys for the SQL Database.")]
-        public List<string> Keys { get; set; }
+        public List<string> KeyList { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The list of AKV keys to remove from the SQL Database.")]
@@ -371,11 +371,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             // DB level CMK keys
             //
-            if (this.Keys.Any() || this.KeysToRemove.Any())
+            if (this.KeyList.Any() || this.KeysToRemove.Any())
             {
                 if (database.Keys.Count > 0)
                 {
-                    foreach (string akvKey in Keys)
+                    foreach (string akvKey in KeyList)
                     {
                         if (!database.Keys.ContainsKey(akvKey))
                         {
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 }
                 else
                 {
-                    newDbModel.Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.Keys);
+                    newDbModel.Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList);
                 }
             }
 

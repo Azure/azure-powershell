@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Revalidate-AzSqlServerTransparentDataEncryptionProtector cmdlet
     /// </summary>
-    [Cmdlet("Revalidate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTransparentDataEncryptionProtector", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerTransparentDataEncryptionProtectorModel))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTransparentDataEncryptionProtectorRevalidation", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerTransparentDataEncryptionProtectorModel))]
     public class RevalidateAzureSqlServerTransparentDataEncryptionProtector : AzureSqlServerTransparentDataEncryptionProtectorCmdletBase
     {
         /// <summary>

@@ -1,47 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://learn.microsoft.com/powershell/module/az.sql/revalidate-azsqlinstancetransparentdataencryptionprotector
+online version: https://learn.microsoft.com/powershell/module/az.sql/invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation
 schema: 2.0.0
 ---
 
-# Revalidate-AzSqlInstanceTransparentDataEncryptionProtector
+# Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation
 
 ## SYNOPSIS
-Revalidates the Azure Key Vault Key used for TDE for a managed instance.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorDefaultParameterSet (Default)
 ```
-Revalidate-AzSqlInstanceTransparentDataEncryptionProtector [-Force] [-AsJob] [-ResourceGroupName] <String>
- [-InstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-Force] [-AsJob]
+ [-ResourceGroupName] <String> [-InstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorInputObjectParameterSet
 ```
-Revalidate-AzSqlInstanceTransparentDataEncryptionProtector [-Force] [-AsJob]
+Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-Force] [-AsJob]
  [-Instance] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorResourceIdParameterSet
 ```
-Revalidate-AzSqlInstanceTransparentDataEncryptionProtector [-Force] [-AsJob] [-InstanceResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-Force] [-AsJob]
+ [-InstanceResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Revalidate-AzSqlInstanceTransparentDataEncryptionProtector** command revalidates the Azure Key Vault Key used for TDE for a managed instance.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Revalidate-AzSqlInstanceTransparentDataEncryptionProtector -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01";
+PS C:\> {{ Add example code here }}
 ```
 
-This command revalidates the encryption protector for the instance.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -52,21 +54,6 @@ Run cmdlet in the background
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -160,6 +147,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

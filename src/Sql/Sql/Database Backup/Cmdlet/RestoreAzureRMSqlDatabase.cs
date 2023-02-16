@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 
         [Parameter(Mandatory = false,
             HelpMessage = "The list of AKV keys for the SQL Database.")]
-        public List<string> Keys { get; set; }
+        public List<string> KeyList { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
                 HighAvailabilityReplicaCount = HAReplicaCount,
                 Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, null),
-                Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.Keys),
+                Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId,
             };

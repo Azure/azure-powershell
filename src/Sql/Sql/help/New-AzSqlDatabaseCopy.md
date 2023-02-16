@@ -19,9 +19,9 @@ New-AzSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <String>] 
  [-Tags <Hashtable>] [-CopyResourceGroupName <String>] [-CopyServerName <String>] -CopyDatabaseName <String>
  [-AsJob] [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-Keys <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -30,9 +30,9 @@ New-AzSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourc
  [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
  [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-Keys <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -249,7 +249,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Keys
+### -KeyList
 The list of AKV keys for the SQL Database copy.
 
 ```yaml

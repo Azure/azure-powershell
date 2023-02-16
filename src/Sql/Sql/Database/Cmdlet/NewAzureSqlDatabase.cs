@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The list of AKV keys for the SQL Database.")]
-        public List<string> Keys { get; set; }
+        public List<string> KeyList { get; set; }
 
         /// <summary>
         /// Federated client id
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 EnableLedger = this.IsParameterBound(p => p.EnableLedger) ? EnableLedger.ToBool() : (bool?)null,
                 PreferredEnclaveType = this.PreferredEnclaveType,
                 Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, null),
-                Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.Keys),
+                Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId
             };

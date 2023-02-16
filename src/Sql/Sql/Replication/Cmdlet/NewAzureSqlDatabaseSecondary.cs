@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 
         [Parameter(Mandatory = false,
             HelpMessage = "The list of AKV keys for the SQL Database copy.")]
-        public List<string> Keys { get; set; }
+        public List<string> KeyList { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
                 Identity = Common.DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, null),
-                Keys = Common.DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.Keys),
+                Keys = Common.DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId
             };

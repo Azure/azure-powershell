@@ -14,7 +14,7 @@ Gets one or more databases.
 ## SYNTAX
 
 ```
-Get-AzSqlDatabase [[-DatabaseName] <String>] [-ExpandKeys] [-KeysFilter <String>] [-ServerName] <String>
+Get-AzSqlDatabase [[-DatabaseName] <String>] [-ExpandKeyList] [-KeysFilter <String>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -293,7 +293,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandKeys
+### -ExpandKeyList
 Flag to be used to view all the AKV keys in a database.
 
 ```yaml

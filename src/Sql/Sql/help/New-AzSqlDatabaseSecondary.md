@@ -21,9 +21,9 @@ New-AzSqlDatabaseSecondary [-DatabaseName] <String> [-SecondaryServiceObjectiveN
  [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-SecondaryType <String>]
  [-HighAvailabilityReplicaCount <Int32>] [-ZoneRedundant] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-Keys <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -34,9 +34,9 @@ New-AzSqlDatabaseSecondary [-DatabaseName] <String> [-Tags <Hashtable>] -Partner
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-HighAvailabilityReplicaCount <Int32>]
  [-ZoneRedundant] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-Keys <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,7 +200,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Keys
+### -KeyList
 The list of AKV keys for the SQL Database copy.
 
 ```yaml

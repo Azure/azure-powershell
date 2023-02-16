@@ -1,34 +1,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://learn.microsoft.com/powershell/module/az.sql/revert-azsqldatabasetransparentdataencryptionprotector
+online version: https://learn.microsoft.com/powershell/module/az.sql/invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation
 schema: 2.0.0
 ---
 
-# Revert-AzSqlDatabaseTransparentDataEncryptionProtector
+# Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation
 
 ## SYNOPSIS
-Reverts an existing encryption protector for a particular database.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Revert-AzSqlDatabaseTransparentDataEncryptionProtector -DatabaseName <String> [-Force] [-AsJob]
+Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation -DatabaseName <String> [-Force] [-AsJob]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Revert-AzSqlDatabaseTransparentDataEncryptionProtector** command reverts an existing encryption protector for a particular database.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Revert-AzSqlDatabaseTransparentDataEncryptionProtector -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\> {{ Add example code here }}
 ```
 
-This command reverts the encryption protector for the database.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -47,23 +47,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DatabaseName
-The name of the Azure SQL Database to revert.
+The name of the Azure SQL Database to revalidate.
 
 ```yaml
 Type: String
@@ -134,6 +119,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

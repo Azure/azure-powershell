@@ -1,34 +1,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://learn.microsoft.com/powershell/module/az.sql/revalidate-azsqlservertransparentdataencryptionprotector
+online version: https://learn.microsoft.com/powershell/module/az.sql/invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert
 schema: 2.0.0
 ---
 
-# Revalidate-AzSqlServerTransparentDataEncryptionProtector
+# Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert
 
 ## SYNOPSIS
-Revalidates the Azure Key Vault Key used for TDE for a server.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Revalidate-AzSqlServerTransparentDataEncryptionProtector [-Force] [-AsJob] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert -DatabaseName <String> [-Force] [-AsJob]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Revalidate-AzSqlServerTransparentDataEncryptionProtector** command revalidates the Azure Key Vault Key used for TDE for a server.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Revalidate Encryption Protector
+### Example 1
 ```powershell
-Revalidate-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\> {{ Add example code here }}
 ```
 
-This command revalidates the encryption protector for the server.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -47,15 +47,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DatabaseName
+The name of the Azure SQL Database to revert.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases: Name
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The Azure Sql Server name.
+The name of the Azure SQL Database Server the database is in.
 
 ```yaml
 Type: String
@@ -119,6 +119,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -147,8 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureSqlServerTransparentDataEncryptionProtectorModel
-
+### System.Object
 ## NOTES
 
 ## RELATED LINKS

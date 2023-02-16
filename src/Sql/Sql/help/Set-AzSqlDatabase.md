@@ -20,13 +20,12 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
  [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ComputeModel <String>]
  [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>]
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-MaintenanceConfigurationId <String>]
- [-PreferredEnclaveType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-Keys <System.Collections.Generic.List`1[System.String]>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>]
  [-KeysToRemove <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PreferredEnclaveType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -36,25 +35,23 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
  [-ComputeGeneration <String>] [-LicenseType <String>] [-ComputeModel <String>]
  [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>]
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-MaintenanceConfigurationId <String>]
- [-PreferredEnclaveType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-Keys <System.Collections.Generic.List`1[System.String]>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>]
  [-KeysToRemove <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PreferredEnclaveType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Rename
 ```
 Set-AzSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-BackupStorageRedundancy <String>]
- [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-PreferredEnclaveType <String>]
- [-ServerName] <String> [-ResourceGroupName] <String>  [-AssignIdentity]
+ [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-Keys <System.Collections.Generic.List`1[System.String]>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>]
  [-KeysToRemove <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PreferredEnclaveType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -395,7 +392,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Keys
+### -KeyList
 The list of AKV keys for the SQL Database.
 
 ```yaml

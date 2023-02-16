@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet for Revalidate Azure Sql Database encryption protector
     /// </summary>
-    [Cmdlet("Revalidate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseTransparentDataEncryptionProtector", SupportsShouldProcess = true)]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseTransparentDataEncryptionProtectorRevalidation", SupportsShouldProcess = true)]
     public class RevalidateAzureSqlDatabaseTransparentDataEncryptionProtector : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseModel>
     {
         /// <summary>

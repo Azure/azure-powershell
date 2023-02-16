@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
         [Parameter(Mandatory = false,
             HelpMessage = "Flag to be used to view all the AKV keys in a database.")]
-        public SwitchParameter ExpandKeys { get; set; }
+        public SwitchParameter ExpandKeyList { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -63,11 +63,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             ODataQuery<Management.Sql.Models.Database> oDataQuery = new ODataQuery<Management.Sql.Models.Database>();
 
-            if (ExpandKeys.IsPresent && !String.IsNullOrEmpty(KeysFilter))
+            if (ExpandKeyList.IsPresent && !String.IsNullOrEmpty(KeysFilter))
             {
                 oDataQuery.Expand = String.Format("keys($filter=pointInTime('{0}'))", KeysFilter);
             }
-            else if (ExpandKeys.IsPresent)
+            else if (ExpandKeyList.IsPresent)
             {
                 oDataQuery.Expand = "keys";
             }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             {
                 results = new List<AzureSqlDatabaseModel>();
 
-                if (ExpandKeys.IsPresent)
+                if (ExpandKeyList.IsPresent)
                 {
                     results.Add(ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, oDataQuery));
                 }

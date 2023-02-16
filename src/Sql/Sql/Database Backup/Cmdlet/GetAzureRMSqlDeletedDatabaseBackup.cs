@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     {
         [Parameter(Mandatory = false,
             HelpMessage = "Flag to be used to view all the AKV keys in a database.")]
-        public SwitchParameter ExpandKeys { get; set; }
+        public SwitchParameter ExpandKeyList { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 
             ODataQuery<Management.Sql.Models.RestorableDroppedDatabase> oDataQuery = new ODataQuery<Management.Sql.Models.RestorableDroppedDatabase>();
 
-            if (ExpandKeys.IsPresent && !MyInvocation.BoundParameters.ContainsKey("DatabaseId"))
+            if (ExpandKeyList.IsPresent)
             {
-                throw new PSArgumentNullException("Deletion date is required with ExpandKeys parameter");
-            }
+                if (!MyInvocation.BoundParameters.ContainsKey("DatabaseId"))
+                {
+                    throw new PSArgumentNullException("DatabaseId parameter is required with ExpandKeys parameter. DatabaseId can be fetched from list of restorable dropped databases.");
+                }
 
-            if (ExpandKeys.IsPresent)
-            {
                 if (!String.IsNullOrEmpty(KeysFilter))
                 {
                     oDataQuery.Expand = String.Format("keys($filter=pointInTime('{0}'))", KeysFilter);

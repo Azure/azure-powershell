@@ -14,7 +14,7 @@ Gets a geo-redundant backup of a database.
 ## SYNTAX
 
 ```
-Get-AzSqlDatabaseGeoBackup [-ExpandKeys] [-KeysFilter <String>] [-ServerName] <String>
+Get-AzSqlDatabaseGeoBackup [-ExpandKeyList] [-KeysFilter <String>] [-ServerName] <String>
  [[-DatabaseName] <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -87,7 +87,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandKeys
+### -ExpandKeyList
 Flag to be used to view all the AKV keys in a database.
 
 ```yaml

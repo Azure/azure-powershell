@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     {
         [Parameter(Mandatory = false,
             HelpMessage = "Flag to be used to view all the AKV keys in a database.")]
-        public SwitchParameter ExpandKeys { get; set; }
+        public SwitchParameter ExpandKeyList { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 
             ODataQuery<Management.Sql.Models.RecoverableDatabase> oDataQuery = new ODataQuery<Management.Sql.Models.RecoverableDatabase>();
 
-            if (ExpandKeys.IsPresent && !String.IsNullOrEmpty(KeysFilter))
+            if (ExpandKeyList.IsPresent && !String.IsNullOrEmpty(KeysFilter))
             {
                 oDataQuery.Expand = String.Format("keys($filter=pointInTime('{0}'))", KeysFilter);
             }
-            else if (ExpandKeys.IsPresent)
+            else if (ExpandKeyList.IsPresent)
             {
                 oDataQuery.Expand = "keys";
             }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             {
                 results = new List<AzureSqlDatabaseGeoBackupModel>();
 
-                if (ExpandKeys.IsPresent)
+                if (ExpandKeyList.IsPresent)
                 {
                     results.Add(ModelAdapter.GetRecoverableDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, oDataQuery));
                 }
