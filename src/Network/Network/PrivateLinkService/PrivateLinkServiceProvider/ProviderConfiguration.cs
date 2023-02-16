@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Media/videoanalyzers", "2021-11-01-preview", true, true);
             RegisterConfiguration("Microsoft.Migrate/assessmentProjects", "2020-05-01-preview", false, false);
             RegisterConfiguration("Microsoft.Migrate/migrateProjects", "2020-06-01-preview", false, false);
+            RegisterConfiguration("Microsoft.Monitor/accounts", "2021-06-03-preview", true, false);
             RegisterConfiguration("Microsoft.Network/applicationgateways", "2020-05-01", true, false);
             RegisterConfiguration("Microsoft.Network/privateLinkServices", "2020-05-01", true, false, false);
             RegisterConfiguration("Microsoft.OffAzure/masterSites", "2020-07-07", false, false);
