@@ -23,7 +23,7 @@ Create or update container groups with specified configurations.
 https://learn.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 #>
 function New-AzContainerGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -50,7 +50,7 @@ param(
     [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainer[]]
     # The containers within the container group.
     # To construct, see NOTES section for CONTAINER properties and create a hash table.
     ${Container},
@@ -115,7 +115,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IPort[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IPort[]]
     # The list of ports exposed on the container group.
     # To construct, see NOTES section for IPADDRESSPORT properties and create a hash table.
     ${IPAddressPort},
@@ -138,7 +138,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroupIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The list of user identities associated with the container group.
     # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -147,7 +147,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IImageRegistryCredential[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IImageRegistryCredential[]]
     # The image registry credentials by which the container group is created from.
     # To construct, see NOTES section for IMAGEREGISTRYCREDENTIAL properties and create a hash table.
     ${ImageRegistryCredential},
@@ -155,7 +155,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IInitContainerDefinition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinition[]]
     # The init containers for a container group.
     # To construct, see NOTES section for INITCONTAINER properties and create a hash table.
     ${InitContainer},
@@ -175,7 +175,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ILogAnalyticsMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ILogAnalyticsMetadata]))]
     [System.Collections.Hashtable]
     # Metadata for log analytics.
     ${LogAnalyticMetadata},
@@ -216,14 +216,14 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroupSubnetId[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupSubnetId[]]
     # The subnet resource IDs for a container group.
     # To construct, see NOTES section for SUBNETID properties and create a hash table.
     ${SubnetId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IResourceTags]))]
     [System.Collections.Hashtable]
     # The resource tags.
     ${Tag},
@@ -231,7 +231,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolume[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolume[]]
     # The list of volumes that can be mounted by containers in this container group.
     # To construct, see NOTES section for VOLUME properties and create a hash table.
     ${Volume},
@@ -256,6 +256,12 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # The priority of the Container Group.
+    ${Priority},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Runtime')]

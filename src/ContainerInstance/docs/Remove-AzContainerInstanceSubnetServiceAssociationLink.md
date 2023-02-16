@@ -1,52 +1,75 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://learn.microsoft.com/powershell/module/az.containerinstance/stop-azcontainergroup
+online version: https://learn.microsoft.com/powershell/module/az.containerinstance/remove-azcontainerinstancesubnetserviceassociationlink
 schema: 2.0.0
 ---
 
-# Stop-AzContainerGroup
+# Remove-AzContainerInstanceSubnetServiceAssociationLink
 
 ## SYNOPSIS
-Stops all containers in a container group.
-Compute resources will be deallocated and billing will stop.
+Delete container group virtual network association links.
+The operation does not delete other resources provided by the user.
 
 ## SYNTAX
 
-### Stop (Default)
+### Delete (Default)
 ```
-Stop-AzContainerGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzContainerInstanceSubnetServiceAssociationLink -ResourceGroupName <String> -SubnetName <String>
+ -VirtualNetworkName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StopViaIdentity
+### DeleteViaIdentity
 ```
-Stop-AzContainerGroup -InputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzContainerInstanceSubnetServiceAssociationLink -InputObject <IContainerInstanceIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Stops all containers in a container group.
-Compute resources will be deallocated and billing will stop.
+Delete container group virtual network association links.
+The operation does not delete other resources provided by the user.
 
 ## EXAMPLES
 
-### Example 1: Stop all containers in a container group
+### Example 1: {{ Add title here }}
 ```powershell
-Stop-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
+{{ Add code here }}
 ```
 
-This command stops all containers in a container group.
-Compute resources will be deallocated and billing will stop.
-
-### Example 2: Stop all containers in a container group by piping
-```powershell
-Get-AzContainerGroup -Name test-cg -ResourceGroupName test-rg | Stop-AzContainerGroup
+```output
+{{ Add output here }}
 ```
 
-This command stops all containers in a container group by piping.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -69,7 +92,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
-Parameter Sets: StopViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -79,15 +102,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the container group.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: Stop
-Aliases: ContainerGroupName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -114,7 +137,22 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubnetName
+The name of the subnet.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -130,12 +168,27 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkName
+The name of the virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
