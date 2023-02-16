@@ -1288,10 +1288,10 @@ function Test-RevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK ($location = "eas
 	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
 
 	# Revalidate AKV key
-	Revalidate-AzSqlDatabaseTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 
 	# Revert encryption protector
-	Revert-AzSqlDatabaseTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 
 	Remove-ResourceGroupForTest $rg
 }

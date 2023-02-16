@@ -50,7 +50,7 @@ This command gets all available geo-redundant backups on a specified server that
 
 ### Example 4: Get a recoverable database with TDE AKV keys on a server using expand keys
 ```powershell
-Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "Contoso" -ExpandKeys
+Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "Contoso" -ExpandKeyList
 ```
 
 This command gets a recoverable database configured with CMK with expand keys on a specified server. This filter when used, shows all AKV keys on a database.

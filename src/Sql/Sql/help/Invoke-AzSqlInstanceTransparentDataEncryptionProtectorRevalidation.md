@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Revalidates the Managed Instance Encryption Protector AKV key
 
 ## SYNTAX
 
@@ -34,16 +34,16 @@ Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-Force] [-As
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation** cmdlet revalidates the Encryption Protector AKV key on managed instance
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation -ResourceGroupName "ResourceGroup01" -InstanceName "Instance01"
 ```
 
-{{ Add example description here }}
+Revalidates AKV key for SQL Managed Instance "Instance01"
 
 ## PARAMETERS
 

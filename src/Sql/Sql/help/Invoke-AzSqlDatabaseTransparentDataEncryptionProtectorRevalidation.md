@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Revalidates Database Encryption Protector AKV key
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation -DatabaseName
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation** cmdlet revalidates Database Encryption Protector AKV key
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation -DatabaseName "Database01" -ServerName "Server01" -ResourceGroupName "ResourceGroup01"
 ```
 
-{{ Add example description here }}
+Revalidates AKV key for "Database01" on SQL server "Server01"
 
 ## PARAMETERS
 

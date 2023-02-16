@@ -168,7 +168,7 @@ function Test-RevalidateTransparentDataEncryptionProtector ($location = "eastus2
 	try
 	{
 		# Revalidate
-		Revalidate-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $rg -ServerName $server
+		Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation -ResourceGroupName $rg -ServerName $server
 	}
 	finally
 	{

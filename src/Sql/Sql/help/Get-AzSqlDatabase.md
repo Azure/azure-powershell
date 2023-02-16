@@ -159,7 +159,7 @@ This command gets all databases on the server named server01 that start with "da
 
 ### Example 4: Get a database with TDE AKV keys on a server using expand keys parameter.
 ```powershell
-Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ExpandKeys
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ExpandKeyList
 ```
 
 ```output
@@ -194,7 +194,7 @@ This command gets all the TDE AKV keys configured on the database.
 
 ### Example 5: Get a database with TDE AKV keys on a server using expand keys and filter by date
 ```powershell
-Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ExpandKeys -KeysFilter "1/13/2022"
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ExpandKeyList -KeysFilter "1/13/2022"
 ```
 
 ```output
@@ -229,7 +229,7 @@ This command gets a database configured with TDE CMK keys
 
 ### Example 6: Get a database with TDE AKV keys on a server using expand keys and filter as 'current'
 ```powershell
-Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ExpandKeys -KeysFilter "current"
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ExpandKeyList -KeysFilter "current"
 ```
 
 ```output

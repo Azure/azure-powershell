@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Reverts Database Encryption Protector AKV key to Server level key
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert -DatabaseName <Stri
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert** cmdlet reverts Database Encryption Protector AKV key to Server level TDE key
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert -DatabaseName "Database01" -ServerName "Server01" -ResourceGroupName "ResourceGroup01"
 ```
 
-{{ Add example description here }}
+Reverts the AKV key for "Database01" on SQL server "Server01"
 
 ## PARAMETERS
 
