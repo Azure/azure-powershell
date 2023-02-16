@@ -181,6 +181,12 @@ directive:
       subject: AFDProfileSku
       verb: Update|Upgrade
     hide: true
+  # Hide validate the secret
+  - where:
+      subject: ProfileSecret
+      subjectPrefix: FrontDoorCdn
+      verb: Test
+    hide: true
 
   # Rename
   - where:
