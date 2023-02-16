@@ -48,14 +48,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
            Mandatory = true,
            HelpMessage = "Name of the EventHub ConsumerGroup")]
         [ValidateNotNullOrEmpty]
-        public EventHubConsumerGroupName EventHubConsumerGroupName { get; set; }
+        public string EventHubConsumerGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             string eventsEndpointName = "events";
-            if (ShouldProcess(EventHubConsumerGroupName.Name, Properties.Resources.AddEventHubConsumerGroup))
+            if (ShouldProcess(EventHubConsumerGroupName, Properties.Resources.AddEventHubConsumerGroup))
             {
-                this.IotHubClient.IotHubResource.CreateEventHubConsumerGroup(this.ResourceGroupName, this.Name, eventsEndpointName, this.EventHubConsumerGroupName.Name, this.EventHubConsumerGroupName);
+                EventHubConsumerGroupName properties = new EventHubConsumerGroupName(this.EventHubConsumerGroupName);
+                this.IotHubClient.IotHubResource.CreateEventHubConsumerGroup(this.ResourceGroupName, this.Name, eventsEndpointName, this.EventHubConsumerGroupName, properties);
                 IEnumerable<EventHubConsumerGroupInfo> iotHubEHConsumerGroups = this.IotHubClient.IotHubResource.ListEventHubConsumerGroups(this.ResourceGroupName, this.Name, eventsEndpointName);
                 this.WriteObject(IotHubUtils.ToPSEventHubConsumerGroupInfo(iotHubEHConsumerGroups), true);
             }
