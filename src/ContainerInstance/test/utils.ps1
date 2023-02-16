@@ -52,6 +52,7 @@ function setupEnv() {
     New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.regularContainerGroupName)-remove2" -Location $env.location -Container $container1 -Priority $env.regularPriority
     New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.spotContainerGroupName)-remove1" -Location $env.location -Container $container1 -Priority $env.spotPriority
     New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.spotContainerGroupName)-remove2" -Location $env.location -Container $container1 -Priority $env.spotPriority
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.confidentialContainerGroupName -Location $env.location -Container $container1 -Sku $env.confidentialSku
     New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.confidentialContainerGroupName)-remove1" -Location $env.location -Container $container1 -Sku $env.confidentialSku
     New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.confidentialContainerGroupName)-remove2" -Location $env.location -Container $container1 -Sku $env.confidentialSku
     
