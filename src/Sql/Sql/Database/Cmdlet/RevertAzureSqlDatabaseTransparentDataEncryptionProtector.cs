@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet for Revert Azure Sql Database encryption protector
     /// </summary>
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseTransparentDataEncryptionProtectorRevert", SupportsShouldProcess = true)]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseTransparentDataEncryptionProtectorRevert", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseModel))]
     public class RevertAzureSqlDatabaseTransparentDataEncryptionProtector : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseModel>
     {
         /// <summary>
