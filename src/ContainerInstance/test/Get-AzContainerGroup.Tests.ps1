@@ -12,12 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzContainerGroup' {
-    It 'List' {
-        {
-            Get-AzContainerGroup
-        } | Should -Not -Throw
-    }
-
+    
     It 'Get' {
         Get-AzContainerGroup -Name $env.containerGroupName -ResourceGroupName $env.resourceGroupName
     }

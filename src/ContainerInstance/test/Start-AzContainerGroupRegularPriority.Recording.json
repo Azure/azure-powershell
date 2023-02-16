@@ -1,13 +1,13 @@
 {
-  "Start-AzContainerGroupRegularPriority+[NoContext]+Start+$POST+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgih1jy/providers/Microsoft.ContainerInstance/containerGroups/test-cghq045/start?api-version=2022-10-01-preview+1": {
+  "Start-AzContainerGroupRegularPriority+[NoContext]+Start+$POST+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-cgzoyea/start?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgih1jy/providers/Microsoft.ContainerInstance/containerGroups/test-cghq045/start?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-cgzoyea/start?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "119" ],
-        "x-ms-client-request-id": [ "52e04da7-12d4-4e85-ae89-b25ece27a52d" ],
+        "x-ms-unique-id": [ "102" ],
+        "x-ms-client-request-id": [ "b1c4fb97-0788-45ab-ae97-c9045f94ece6" ],
         "CommandName": [ "Start-AzContainerGroup" ],
         "FullCommandName": [ "Start-AzContainerGroup_Start" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,13 +22,13 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "eastus:d1b6e424-afc7-4bbf-bb1a-bba0241474fb" ],
+        "x-ms-request-id": [ "eastus:95ea9e97-79ab-4b71-8eb2-647830bfe603" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
-        "x-ms-correlation-request-id": [ "d6fb88fb-6f9e-4e72-9733-a64d0588c42d" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230216T042230Z:d6fb88fb-6f9e-4e72-9733-a64d0588c42d" ],
+        "x-ms-correlation-request-id": [ "4f250da5-5169-4c56-90fd-9f5ed7e1b1b5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230216T234602Z:4f250da5-5169-4c56-90fd-9f5ed7e1b1b5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 16 Feb 2023 04:22:29 GMT" ]
+        "Date": [ "Thu, 16 Feb 2023 23:46:01 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -37,15 +37,15 @@
       "isContentBase64": false
     }
   },
-  "Start-AzContainerGroupRegularPriority+[NoContext]+StartViaIdentity+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgih1jy/providers/Microsoft.ContainerInstance/containerGroups/test-cghq045?api-version=2022-10-01-preview+1": {
+  "Start-AzContainerGroupRegularPriority+[NoContext]+StartViaIdentity+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-cgzoyea?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgih1jy/providers/Microsoft.ContainerInstance/containerGroups/test-cghq045?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-cgzoyea?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "120" ],
-        "x-ms-client-request-id": [ "b28303f4-b96d-4f5e-9ee1-6d30ea375502" ],
+        "x-ms-unique-id": [ "103" ],
+        "x-ms-client-request-id": [ "287c82a8-fd62-4506-8769-18acdcc3978d" ],
         "CommandName": [ "Get-AzContainerGroup" ],
         "FullCommandName": [ "Get-AzContainerGroup_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -61,32 +61,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:a3084941-225f-417e-8d0c-4f2978f7b27a" ],
+        "x-ms-request-id": [ "eastus:4be55582-9f88-4d17-a206-ecfce269e256" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "x-ms-correlation-request-id": [ "e479445f-27f8-4626-96c9-f2c12e0f3f36" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230216T042231Z:e479445f-27f8-4626-96c9-f2c12e0f3f36" ],
+        "x-ms-correlation-request-id": [ "cb2d7f31-e4b6-4c8b-91b5-491033be675f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230216T234602Z:cb2d7f31-e4b6-4c8b-91b5-491033be675f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 16 Feb 2023 04:22:30 GMT" ]
+        "Date": [ "Thu, 16 Feb 2023 23:46:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1597" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"sku\":\"Standard\",\"provisioningState\":\"Succeeded\",\"containers\":[{\"name\":\"1\",\"properties\":{\"image\":\"nginx\",\"ports\":[{\"port\":80}],\"environmentVariables\":[],\"instanceView\":{\"restartCount\":0,\"currentState\":{\"state\":\"Running\",\"startTime\":\"2023-02-16T04:20:03.251Z\",\"detailStatus\":\"\"},\"events\":[{\"count\":1,\"firstTimestamp\":\"2023-02-16T03:48:43Z\",\"lastTimestamp\":\"2023-02-16T03:48:43Z\",\"name\":\"Pulling\",\"message\":\"pulling image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-16T03:48:49Z\",\"lastTimestamp\":\"2023-02-16T03:48:49Z\",\"name\":\"Pulled\",\"message\":\"Successfully pulled image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":2,\"firstTimestamp\":\"2023-02-16T03:49:01Z\",\"lastTimestamp\":\"2023-02-16T04:20:03Z\",\"name\":\"Started\",\"message\":\"Started container\",\"type\":\"Normal\"},{\"count\":2,\"firstTimestamp\":\"2023-02-16T04:19:58Z\",\"lastTimestamp\":\"2023-02-16T04:19:58Z\",\"name\":\"Killing\",\"message\":\"Killing container with id 60091308826a86b273786065e2c04e3a483b90a0276f3eb782a3af7ae033cd8c.\",\"type\":\"Normal\"}]},\"resources\":{\"requests\":{\"memoryInGB\":1.5,\"cpu\":1.0}}}}],\"initContainers\":[],\"osType\":\"Linux\",\"instanceView\":{\"events\":[],\"state\":\"Running\"},\"priority\":\"Regular\"},\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgih1jy/providers/Microsoft.ContainerInstance/containerGroups/test-cghq045\",\"name\":\"test-cghq045\",\"type\":\"Microsoft.ContainerInstance/containerGroups\",\"location\":\"eastus\",\"tags\":{\"key\":\"value\"}}",
+      "Content": "{\"properties\":{\"sku\":\"Standard\",\"provisioningState\":\"Succeeded\",\"containers\":[{\"name\":\"1\",\"properties\":{\"image\":\"nginx\",\"ports\":[{\"port\":80}],\"environmentVariables\":[],\"instanceView\":{\"restartCount\":0,\"currentState\":{\"state\":\"Running\",\"startTime\":\"2023-02-16T23:43:41.937Z\",\"detailStatus\":\"\"},\"events\":[{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:14:27Z\",\"lastTimestamp\":\"2023-02-16T23:14:27Z\",\"name\":\"Pulling\",\"message\":\"pulling image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:14:28Z\",\"lastTimestamp\":\"2023-02-16T23:14:28Z\",\"name\":\"Pulled\",\"message\":\"Successfully pulled image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":2,\"firstTimestamp\":\"2023-02-16T23:14:37Z\",\"lastTimestamp\":\"2023-02-16T23:43:41Z\",\"name\":\"Started\",\"message\":\"Started container\",\"type\":\"Normal\"},{\"count\":2,\"firstTimestamp\":\"2023-02-16T23:43:39Z\",\"lastTimestamp\":\"2023-02-16T23:43:39Z\",\"name\":\"Killing\",\"message\":\"Killing container with id ba8fa0db69cc449490066966ead45a9f0eba769bfecd0ed59a0a629b44117709.\",\"type\":\"Normal\"}]},\"resources\":{\"requests\":{\"memoryInGB\":1.5,\"cpu\":1.0}}}}],\"initContainers\":[],\"osType\":\"Linux\",\"instanceView\":{\"events\":[],\"state\":\"Running\"},\"priority\":\"Regular\"},\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-cgzoyea\",\"name\":\"test-cgzoyea\",\"type\":\"Microsoft.ContainerInstance/containerGroups\",\"location\":\"eastus\",\"tags\":{\"key\":\"value\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzContainerGroupRegularPriority+[NoContext]+StartViaIdentity+$POST+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgih1jy/providers/Microsoft.ContainerInstance/containerGroups/test-cghq045/start?api-version=2022-10-01-preview+2": {
+  "Start-AzContainerGroupRegularPriority+[NoContext]+StartViaIdentity+$POST+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-cgzoyea/start?api-version=2022-10-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgih1jy/providers/Microsoft.ContainerInstance/containerGroups/test-cghq045/start?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-cgzoyea/start?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "121" ],
-        "x-ms-client-request-id": [ "bdd1b83d-c564-4729-ab3e-41c128dd2621" ],
+        "x-ms-unique-id": [ "104" ],
+        "x-ms-client-request-id": [ "e8260106-f50c-42da-b197-52af95b9c606" ],
         "CommandName": [ "Start-AzContainerGroup" ],
         "FullCommandName": [ "Start-AzContainerGroup_StartViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -101,13 +101,13 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "eastus:c639ba60-cbd1-414b-b833-fa4299364e90" ],
+        "x-ms-request-id": [ "eastus:15d893e7-f87f-4edf-9ede-7796b4b5823a" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
-        "x-ms-correlation-request-id": [ "bc762f8a-5b89-426a-ae8c-5c6fabf0f9a1" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230216T042231Z:bc762f8a-5b89-426a-ae8c-5c6fabf0f9a1" ],
+        "x-ms-correlation-request-id": [ "539288f5-b293-4af2-b7e3-0c139ba0781b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230216T234603Z:539288f5-b293-4af2-b7e3-0c139ba0781b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 16 Feb 2023 04:22:30 GMT" ]
+        "Date": [ "Thu, 16 Feb 2023 23:46:02 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
