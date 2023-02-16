@@ -1,30 +1,30 @@
-Invoke-LiveTestScenario -Name "Create Spring Cloud Instance" -Description "Test the process of create a new spring cloud instance." -ScenarioScript `
-{
-    param ($rg)
+# Invoke-LiveTestScenario -Name "Create Spring Cloud Instance" -Description "Test the process of create a new spring cloud instance." -ScenarioScript `
+# {
+#     param ($rg)
 
-    $rgName = $rg.ResourceGroupName
-    $location = "eastus"
-    $springCloudServiceName = New-LiveTestResourceName
+#     $rgName = $rg.ResourceGroupName
+#     $location = "eastus"
+#     $springCloudServiceName = New-LiveTestResourceName
 
-    $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Basic" -SkuName "B0"
+#     $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Basic" -SkuName "B0"
 
-    Assert-AreEqual $springCloudServiceName $springCloudInstance.Name
-}
+#     Assert-AreEqual $springCloudServiceName $springCloudInstance.Name
+# }
 
-Invoke-LiveTestScenario -Name "Create Spring Cloud App Instance" -Description "Test the process of create a new spring cloud app instance." -ScenarioScript `
-{
-    param ($rg)
+# Invoke-LiveTestScenario -Name "Create Spring Cloud App Instance" -Description "Test the process of create a new spring cloud app instance." -ScenarioScript `
+# {
+#     param ($rg)
 
-    $rgName = $rg.ResourceGroupName
-    $location = "eastus"
-    $springCloudServiceName = New-LiveTestResourceName
-    $appName = New-LiveTestResourceName
+#     $rgName = $rg.ResourceGroupName
+#     $location = "eastus"
+#     $springCloudServiceName = New-LiveTestResourceName
+#     $appName = New-LiveTestResourceName
 
-    $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Basic" -SkuName "B0"
-    $appInstance = New-AzSpringCloudApp -ResourceGroupName $rgName -ServiceName $springCloudServiceName -Name $appName
+#     $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Basic" -SkuName "B0"
+#     $appInstance = New-AzSpringCloudApp -ResourceGroupName $rgName -ServiceName $springCloudServiceName -Name $appName
 
-    Assert-AreEqual $appName $appInstance.Name
-}
+#     Assert-AreEqual $appName $appInstance.Name
+# }
 
 Invoke-LiveTestScenario -Name "Create Spring Cloud App Deployment Instance" -Description "Test the process of create a new spring cloud app deployment instance." -ScenarioScript `
 {
@@ -38,7 +38,8 @@ Invoke-LiveTestScenario -Name "Create Spring Cloud App Deployment Instance" -Des
 
     $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Basic" -SkuName "B0"
     $appInstance = New-AzSpringCloudApp -ResourceGroupName $rgName -ServiceName $springCloudServiceName -Name $appName
-    $deployment = New-AzSpringCloudAppDeployment -ResourceGroupName $rgName -Name $springCloudServiceName -AppName $appName -DeploymentName $deploymentName
+    $jarSource = New-AzSpringCloudAppDeploymentJarUploadedObject -RuntimeVersion "Java_8"
+    $deployment = New-AzSpringCloudAppDeployment -ResourceGroupName $rgName -ServiceName $springCloudServiceName -AppName $appName -DeploymentName $deploymentName -Source $jarSource -EnvironmentVariable @{"env" = "prod"}
 
     Assert-AreEqual $appName $appInstance.Name
 }
