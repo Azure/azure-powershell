@@ -3630,6 +3630,10 @@
                 <Label>AuthorizationKey</Label>
                 <PropertyName>AuthorizationKey</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>AuthorizationStatus</Label>
+                <PropertyName>AuthorizationStatus</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
