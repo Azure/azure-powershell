@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzContainerGroupConfidentialSku' {
     It 'Creates a container group with Confidential Sku using latest nginx image' {
         $container = New-AzContainerInstanceObject -Name $env.containerInstanceName -Image $env.image -RequestCpu 1 -RequestMemoryInGb 1.5
-        $containerGroup = New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.confidentialContainerGroupName -Location $env.location -Container $container -OsType $env.osType -RestartPolicy $env.restartPolicy -Sku $env.confidentialSku
+        $containerGroup = New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.confidentialContainerGroupName -Location $env.location -Container $container -OsType $env.osType -Sku $env.confidentialSku
 
         $containerGroup | Should -Not -Be $null
         $containerGroup.Name | Should -Be $env.confidentialContainerGroupName
