@@ -459,8 +459,7 @@ function New-AzConnectedKubernetes {
                 $options += " --set global.isCustomCert=true"
             }
         } catch {
-            Write-Error "Unable to find ProxyCert from file path"
-            throw
+            throw "Unable to find ProxyCert from file path"            
         }
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
