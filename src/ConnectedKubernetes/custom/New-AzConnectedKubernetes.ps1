@@ -345,8 +345,7 @@ function New-AzConnectedKubernetes {
                 $ReleaseTrain = Get-ChildItem -Path Env:RELEASETRAIN
             } else {
                 $ReleaseTrain = 'stable'
-            }
-            #Requires -Module Az.Resources
+            }            
             $AzLocation = Get-AzLocation | Where-Object { ($_.DisplayName -ieq $Location) -or ($_.Location -ieq $Location)}
             $Region = $AzLocation.Location
             if ($null -eq $Region) {
