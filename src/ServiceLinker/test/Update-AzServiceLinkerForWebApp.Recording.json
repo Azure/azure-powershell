@@ -1,16 +1,17 @@
 {
-  "Update-AzServiceLinkerForWebApp+[NoContext]+UpdateExpanded+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-05-01+1": {
+  "Update-AzServiceLinkerForWebApp+[NoContext]+UpdateExpanded+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-11-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-11-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "82" ],
-        "x-ms-client-request-id": [ "4fbf8912-a6e6-4900-a83e-518a617b34d2" ],
+        "x-ms-unique-id": [ "68" ],
+        "x-ms-client-request-id": [ "10606511-0d36-4655-906b-deefdd9d7902" ],
         "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinker" ],
         "FullCommandName": [ "Get-AzServiceLinker_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -21,36 +22,37 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"3a00dd6e-0000-0100-0000-6276145e0000\"" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11943" ],
+        "ETag": [ "\"e9004883-0000-0100-0000-63d6e60d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "086751a3-8da2-4592-a6ce-2cb6570946c4" ],
+        "mise-correlation-id": [ "9e4e8c6a-78ef-4977-8f31-9663a4ee9d8d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "16cb8d84-83fb-43f7-a019-4bf8bbc08833" ],
-        "x-ms-correlation-request-id": [ "30484da9-a3fa-4631-bf4e-a8180918747f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065619Z:30484da9-a3fa-4631-bf4e-a8180918747f" ],
+        "x-ms-request-id": [ "686208c7-b758-4e7f-89d2-56c07e785144" ],
+        "x-ms-correlation-request-id": [ "f79f7532-4c93-4862-8b19-3e521086189a" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20230130T052555Z:f79f7532-4c93-4862-8b19-3e521086189a" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 07 May 2022 06:56:18 GMT" ]
+        "Date": [ "Mon, 30 Jan 2023 05:25:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "814" ],
+        "Content-Length": [ "1056" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\",\"resourceProperties\":{\"connectAsKubernetesCsiDriver\":false,\"type\":\"KeyVault\"},\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"xichen\",\"secretInfo\":{\"value\":null,\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"clientType\":\"dotnet\",\"scope\":null,\"vNetSolution\":null,\"secretStore\":null}}"
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"systemData\":{\"createdBy\":\"naji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-20T02:10:21.6542229Z\",\"lastModifiedBy\":\"c4288165-6698-45ba-98a5-48ea7791fed3\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-01-29T21:33:01.9216341Z\"},\"properties\":{\"publicNetworkSolution\":null,\"configurationInfo\":null,\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\",\"resourceProperties\":null,\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"xichen\",\"secretInfo\":{\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"clientType\":\"django\",\"scope\":null,\"vNetSolution\":null,\"secretStore\":null}}",
+      "isContentBase64": false
     }
   },
-  "Update-AzServiceLinkerForWebApp+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-05-01+2": {
+  "Update-AzServiceLinkerForWebApp+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-11-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-05-01",
-      "Content": "{\n  \"properties\": {\n    \"targetService\": {\n      \"type\": \"AzureResource\",\n      \"id\": \"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\",\n      \"resourceProperties\": {\n        \"type\": \"KeyVault\",\n        \"connectAsKubernetesCsiDriver\": false\n      }\n    },\n    \"authInfo\": {\n      \"authType\": \"secret\",\n      \"name\": \"xichen\",\n      \"secretInfo\": {\n        \"secretType\": \"rawValue\"\n      }\n    },\n    \"clientType\": \"dotnet\"\n  }\n}",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-11-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"targetService\": {\n      \"type\": \"AzureResource\",\n      \"id\": \"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\",\n      \"resourceProperties\": {\n        \"type\": \"KeyVault\"\n      }\n    },\n    \"authInfo\": {\n      \"authType\": \"secret\",\n      \"name\": \"xichen\",\n      \"secretInfo\": {\n        \"secretType\": \"rawValue\"\n      }\n    },\n    \"clientType\": \"dotnet\"\n  }\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "565" ]
+        "Content-Length": [ "518" ]
       }
     },
     "Response": {
@@ -58,39 +60,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"3a00ce77-0000-0100-0000-627618130000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "ETag": [ "\"ea0021d4-0000-0100-0000-63d754e40000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "8bbd4353-4cae-4258-b9ea-e85e71eeb0dc" ],
+        "mise-correlation-id": [ "0c602934-d38b-4749-a967-56676114f065" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/572d6a2b-1b12-4e7f-bd53-4f1d294a9df5*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01" ],
-        "x-ms-request-id": [ "572d6a2b-1b12-4e7f-bd53-4f1d294a9df5" ],
-        "x-ms-correlation-request-id": [ "d3c0b20a-b96d-4c71-8775-081b2e6e339c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065619Z:d3c0b20a-b96d-4c71-8775-081b2e6e339c" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/88c038fc-303d-4c74-ab1a-b6c5f4a23892*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2021-01-01-privatepreview" ],
+        "x-ms-request-id": [ "88c038fc-303d-4c74-ab1a-b6c5f4a23892" ],
+        "x-ms-correlation-request-id": [ "ca1fd80d-c33f-4516-ba86-bc9255151d1b" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20230130T052556Z:ca1fd80d-c33f-4516-ba86-bc9255151d1b" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 07 May 2022 06:56:19 GMT" ]
+        "Date": [ "Mon, 30 Jan 2023 05:25:55 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1048" ],
+        "Content-Length": [ "1089" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"systemData\":{\"createdBy\":\"naji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-20T02:10:21.6542229Z\",\"lastModifiedBy\":\"xiaofanzhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-05-07T06:56:19.1743389Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\",\"resourceProperties\":{\"connectAsKubernetesCsiDriver\":false,\"type\":\"KeyVault\"},\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"xichen\",\"secretInfo\":{\"value\":null,\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"vNetSolution\":null,\"clientType\":\"dotnet\",\"secretStore\":null,\"scope\":null}}"
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"systemData\":{\"createdBy\":\"naji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-20T02:10:21.6542229Z\",\"lastModifiedBy\":\"xiaofanzhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-30T05:25:55.6334752Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\",\"resourceProperties\":{\"connectAsKubernetesCsiDriver\":false,\"type\":\"KeyVault\"},\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"xichen\",\"secretInfo\":{\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"vNetSolution\":null,\"clientType\":\"dotnet\",\"secretStore\":null,\"scope\":null,\"publicNetworkSolution\":null,\"configurationInfo\":null}}",
+      "isContentBase64": false
     }
   },
-  "Update-AzServiceLinkerForWebApp+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/572d6a2b-1b12-4e7f-bd53-4f1d294a9df5*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01+3": {
+  "Update-AzServiceLinkerForWebApp+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/88c038fc-303d-4c74-ab1a-b6c5f4a23892*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2021-01-01-privatepreview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/572d6a2b-1b12-4e7f-bd53-4f1d294a9df5*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/88c038fc-303d-4c74-ab1a-b6c5f4a23892*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40?api-version=2021-01-01-privatepreview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "84" ],
-        "x-ms-client-request-id": [ "ec9b1206-d10d-4013-a607-1f9a0f0e53ed" ],
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "d5d5f765-7b37-491a-b2c7-cc7f9bcec2b5" ],
         "CommandName": [ "Az.ServiceLinker.internal\\New-AzServiceLinker" ],
         "FullCommandName": [ "New-AzServiceLinker_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -100,36 +104,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0605db5d-0000-0200-0000-627618170000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11942" ],
-        "x-ms-request-id": [ "1c0851b1-63b6-4cd6-a5a4-637c8f2dbb18" ],
-        "x-ms-correlation-request-id": [ "e096aecf-820b-47bc-a6f2-7e459c7258ff" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065650Z:e096aecf-820b-47bc-a6f2-7e459c7258ff" ],
+        "ETag": [ "\"b204519e-0000-0100-0000-63d754ea0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11953" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20230130T052626Z:69c64abe-a3ff-4043-af54-b3a90c87550d" ],
+        "x-ms-request-id": [ "6f0736cf-ab71-436f-8cc8-ebd15c54e4c5" ],
+        "x-ms-correlation-request-id": [ "69c64abe-a3ff-4043-af54-b3a90c87550d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 07 May 2022 06:56:49 GMT" ]
+        "Date": [ "Mon, 30 Jan 2023 05:26:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "823" ],
+        "Content-Length": [ "822" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/572d6a2b-1b12-4e7f-bd53-4f1d294a9df5*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"name\":\"572d6a2b-1b12-4e7f-bd53-4f1d294a9df5*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"status\":\"Succeeded\",\"startTime\":\"2022-05-07T06:56:19.5963955Z\",\"endTime\":\"2022-05-07T06:56:23.5839631Z\",\"properties\":{\"message\":\"Deny public network access is set to yes. Please confirm you are using private endpoint connection to access target resource.\"}}"
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/providers/Microsoft.ServiceLinker/locations/EASTUS/operationStatuses/88c038fc-303d-4c74-ab1a-b6c5f4a23892*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"name\":\"88c038fc-303d-4c74-ab1a-b6c5f4a23892*B991DCAFEBFF5C3A79EC9E2FD2F2ADE7A54C04792D45A2389E902AD7087E3F40\",\"resourceId\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"status\":\"Succeeded\",\"startTime\":\"2023-01-30T05:25:55.980302Z\",\"endTime\":\"2023-01-30T05:26:02.7968237Z\",\"properties\":{\"Message\":\"Deny public network access is set to yes. Please confirm you are using private endpoint connection to access target resource.\"}}",
+      "isContentBase64": false
     }
   },
-  "Update-AzServiceLinkerForWebApp+[NoContext]+UpdateExpanded+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-05-01+4": {
+  "Update-AzServiceLinkerForWebApp+[NoContext]+UpdateExpanded+$GET+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-11-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker?api-version=2022-11-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "85" ],
-        "x-ms-client-request-id": [ "ec9b1206-d10d-4013-a607-1f9a0f0e53ed" ],
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "d5d5f765-7b37-491a-b2c7-cc7f9bcec2b5" ],
         "CommandName": [ "Az.ServiceLinker.internal\\New-AzServiceLinker" ],
         "FullCommandName": [ "New-AzServiceLinker_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceLinker/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -139,24 +145,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"f5000ff6-0000-0200-0000-627618170000\"" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11941" ],
+        "ETag": [ "\"ea0035d4-0000-0100-0000-63d754ea0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "26a7c2ab-53d9-452d-9ea6-76d908e8762c" ],
+        "mise-correlation-id": [ "a8df9924-99a6-466c-8830-d4f14f2a6137" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "83c2a959-9fd4-43e7-9554-9475dbd90853" ],
-        "x-ms-correlation-request-id": [ "c9a2e6d0-ec82-4528-b4c4-6c7c72821090" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T065651Z:c9a2e6d0-ec82-4528-b4c4-6c7c72821090" ],
+        "x-ms-request-id": [ "c2a770b1-3261-41ab-82fa-369dd3e681fe" ],
+        "x-ms-correlation-request-id": [ "c434d5d8-c106-4a3f-a599-ec53091193bf" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20230130T052627Z:c434d5d8-c106-4a3f-a599-ec53091193bf" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 07 May 2022 06:56:50 GMT" ]
+        "Date": [ "Mon, 30 Jan 2023 05:26:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "814" ],
+        "Content-Length": [ "1090" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\",\"resourceProperties\":{\"connectAsKubernetesCsiDriver\":false,\"type\":\"KeyVault\"},\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"xichen\",\"secretInfo\":{\"value\":null,\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"clientType\":\"dotnet\",\"scope\":null,\"vNetSolution\":null,\"secretStore\":null}}"
+      "Content": "{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker\",\"name\":\"preparedLinker\",\"type\":\"microsoft.servicelinker/linkers\",\"systemData\":{\"createdBy\":\"naji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-20T02:10:21.6542229Z\",\"lastModifiedBy\":\"xiaofanzhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-30T05:25:55.6334752Z\"},\"properties\":{\"publicNetworkSolution\":null,\"configurationInfo\":null,\"provisioningState\":\"Succeeded\",\"targetService\":{\"id\":\"/subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.DBforPostgreSQL/servers/servicelinker-postgresql/databases/pollsdb\",\"resourceProperties\":{\"connectAsKubernetesCsiDriver\":false,\"type\":\"KeyVault\"},\"type\":\"AzureResource\"},\"authInfo\":{\"name\":\"xichen\",\"secretInfo\":{\"secretType\":\"rawValue\"},\"authType\":\"secret\"},\"clientType\":\"dotnet\",\"scope\":null,\"vNetSolution\":null,\"secretStore\":null}}",
+      "isContentBase64": false
     }
   }
 }
