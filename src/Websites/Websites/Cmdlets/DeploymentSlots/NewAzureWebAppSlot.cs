@@ -96,6 +96,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 		[Parameter(Mandatory = false, HelpMessage = "Enables/Disables container continuous deployment webhook")]
 		public SwitchParameter EnableContainerContinuousDeployment { get; set; }
 
+		[Parameter( Mandatory = false, HelpMessage = "Copies the managed identity from the parent or source WebApp")]
+		[ValidateNotNullOrEmpty]
+		public SwitchParameter CopyIdentity { get; set; }
 
 		[Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         	public SwitchParameter AsJob { get; set; }
@@ -167,8 +170,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 		public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
-            CloningInfo cloningInfo = null;
+			ManagedServiceIdentity sourceIdentity = null;
+			CloningInfo cloningInfo = null;
             if (SourceWebApp != null)
             {
                 cloningInfo = new CloningInfo
@@ -181,10 +184,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
                 };
                 cloningInfo = new PSCloningInfo(cloningInfo);
-            }
+				if(CopyIdentity)
+					sourceIdentity = SourceWebApp.Identity;
+			}
 
             var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
-	    var site = new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName, (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag)));
+			if (CopyIdentity && sourceIdentity == null)
+				sourceIdentity = webApp.Identity;
+			var site = new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName, (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),sourceIdentity));
 			UpdateConfigIfNeeded(site);
         }
     }
