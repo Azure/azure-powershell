@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// <summary>
     /// 'Set-AzRelayNamespace' Cmdlet updates the specified Relay Namespace
     /// </summary>
-    [GenericBreakingChange("Set-AzRelayNamespace will be removed in an upcoming breaking change release, you can use Update-AzRelayNamespace in a future release")]
+    [GenericBreakingChange("Set-AzRelayNamespace will be removed in an upcoming breaking change release, you can use Update-AzRelayNamespace in a future release", "2.0.0")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayNamespace", SupportsShouldProcess = true), OutputType(typeof(PSRelayNamespaceAttributes))]
     public class SetAzureRelayNamespace : AzureRelayCmdletBase
     {
