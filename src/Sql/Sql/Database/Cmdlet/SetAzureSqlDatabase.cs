@@ -269,15 +269,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
         [Parameter(Mandatory = false,
             HelpMessage = "The list of user assigned identity for the SQL Database.")]
-        public List<string> UserAssignedIdentityId { get; set; }
+        public string[] UserAssignedIdentityId { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The list of AKV keys for the SQL Database.")]
-        public List<string> KeyList { get; set; }
+        public string[] KeyList { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The list of AKV keys to remove from the SQL Database.")]
-        public List<string> KeysToRemove { get; set; }
+        public string[] KeysToRemove { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]

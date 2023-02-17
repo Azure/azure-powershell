@@ -188,11 +188,11 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 
         [Parameter(Mandatory = false,
             HelpMessage = "The list of user assigned identity for the SQL Database copy.")]
-        public List<string> UserAssignedIdentityId { get; set; }
+        public string[] UserAssignedIdentityId { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The list of AKV keys for the SQL Database copy.")]
-        public List<string> KeyList { get; set; }
+        public string[] KeyList { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]

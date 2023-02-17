@@ -269,14 +269,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The list of user assigned identity for the SQL Database.")]
-        public List<string> UserAssignedIdentityId { get; set; }
+        public string[] UserAssignedIdentityId { get; set; }
 
         /// <summary>
         /// List of Azure Key vault keys
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The list of AKV keys for the SQL Database.")]
-        public List<string> KeyList { get; set; }
+        public string[] KeyList { get; set; }
 
         /// <summary>
         /// Federated client id

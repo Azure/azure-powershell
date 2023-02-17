@@ -215,15 +215,18 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 LastAvailableBackupDate = (DateTime)recoverableDatabase.LastAvailableBackupDate,
             };
 
-            model.Keys = new List<string>();
+            List<string> keysFromGet = new List<string>();
 
             if (recoverableDatabase.Keys.Any())
             {
                 foreach (var keys in recoverableDatabase.Keys)
                 {
-                    model.Keys.Add(keys.Key);
+                    keysFromGet.Add(keys.Key);
                 }
             }
+
+            model.Keys = keysFromGet.ToArray();
+
             return model;
         }
 
@@ -278,15 +281,17 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ResourceId = restoreableDroppedDatabase.Id,
             };
 
-            model.Keys = new List<string>();
+            List<string> keysFromGet = new List<string>();
 
             if (restoreableDroppedDatabase.Keys.Any())
             {
                 foreach (var keys in restoreableDroppedDatabase.Keys)
                 {
-                    model.Keys.Add(keys.Key);
+                    keysFromGet.Add(keys.Key);
                 }
             }
+
+            model.Keys = keysFromGet.ToArray();
 
             return model;
         }

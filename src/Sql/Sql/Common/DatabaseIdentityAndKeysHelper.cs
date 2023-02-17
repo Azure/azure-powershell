@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <param name="userAssignedIdentities">User assigned identities</param>
         /// <param name="existingIdentity">Existing identity on database</param>
         /// <returns>Database Identity</returns>
-        public static DatabaseIdentity GetDatabaseIdentity(bool assignIdentityIsPresent, List<string> userAssignedIdentities, Management.Sql.Models.DatabaseIdentity existingIdentity)
+        public static DatabaseIdentity GetDatabaseIdentity(bool assignIdentityIsPresent, string[] userAssignedIdentities, Management.Sql.Models.DatabaseIdentity existingIdentity)
         {
             DatabaseIdentity identityResult = null;
             if (!assignIdentityIsPresent)
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         /// <param name="akvKeys">List of AKV keys</param>
         /// <returns>Dictionary of database keys</returns>
-        public static Dictionary<string, DatabaseKey> GetDatabaseKeysDictionary(List<string> akvKeys)
+        public static Dictionary<string, DatabaseKey> GetDatabaseKeysDictionary(string[] akvKeys)
         {
             Dictionary<string, DatabaseKey> akvKeysResult = new Dictionary<string, DatabaseKey>();
 

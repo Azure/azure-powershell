@@ -85,6 +85,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <summary>
         /// Gets or sets the list of database AKV keys.
         /// </summary>
-        public List<string> Keys { get; set; }
+        public string[] Keys { get; set; }
     }
 }
