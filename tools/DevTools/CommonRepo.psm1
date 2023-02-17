@@ -1,0 +1,96 @@
+﻿<#
+ .Synopsis
+  Connects azure-powershell repo to azure-powershell-common repo for debugging.
+
+ .Description
+  Connects azure-powershell repo to azure-powershell-common repo for debugging.
+
+ .Parameter CommonRepoPath
+  Path to the common repo. Relative or absolute.
+
+ .Example
+   Connect-CommonRepo -CommonRepoPath ..\azure-powershell-common
+#>
+function Connect-CommonRepo {
+  [CmdletBinding()]
+  param(
+    [Parameter(Mandatory)]
+    [system.string]
+    ${CommonRepoPath}
+  )
+
+  Write-Host "1/2 Adding common projects to sln and csproj"
+
+  $csprojs = @(
+    '.\src\Authentication.Abstractions\Authentication.Abstractions.csproj',
+    '.\src\Common\Common.csproj',
+    '.\src\ResourceManager\ResourceManager.csproj',
+    '.\src\Graph.Rbac\Graph.Rbac.csproj'
+  )
+  $CommonRepoPath = (Resolve-Path $CommonRepoPath).Path
+  $RepoRoot = "$PSScriptRoot/../.."
+  Push-Location "$RepoRoot/src/Accounts"
+  try {
+    foreach ($csproj in $csprojs) {
+      $csproj = [System.IO.Path]::Combine($CommonRepoPath, $csproj)
+      $csproj = [System.IO.Path]::GetFullPath($csproj)
+      dotnet sln add $csproj
+      if ($LASTEXITCODE -ne 0) {
+        throw "Failed to add $csproj to Accounts.sln"
+      }
+      dotnet add ./Accounts/Accounts.csproj reference $csproj
+      if ($LASTEXITCODE -ne 0) {
+        throw "Failed to add $csproj to Accounts.csproj"
+      }
+      dotnet add ./Authentication/Authentication.csproj reference $csproj
+      if ($LASTEXITCODE -ne 0) {
+        throw "Failed to add $csproj to Authentication.csproj"
+      }
+
+    }
+  }
+  finally {
+    Pop-Location
+  }
+
+
+  Write-Host "2/2: Remove the dependency of those common projects from .targets file"
+
+  $Patterns = @(
+    '<PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions"',
+    '<PackageReference Include="Microsoft.Azure.PowerShell.Common"',
+    '<PackageReference Include="Microsoft.Azure.PowerShell.Clients.Graph.Rbac"',
+    '<PackageReference Include="Microsoft.Azure.PowerShell.Clients.ResourceManager"',
+    '<PackageReference Include="Microsoft.Azure.PowerShell.Common.Share"'
+  )
+  $TargetsFile = (Resolve-Path "$RepoRoot/tools/Common.Netcore.Dependencies.targets").Path
+  (Get-Content $TargetsFile) | ForEach-Object { # https://stackoverflow.com/questions/10480673/find-and-replace-in-files-fails
+    [string]$line = $_
+    $IsMatch = $false
+    foreach ($pattern in $patterns) {
+      if ($line.IndexOf($pattern) -ne -1) {
+        $IsMatch = $true
+        break
+      }
+    }
+    if ($IsMatch -and -not $line.StartsWith('<!--')) {
+      return "<!--$line-->"
+    }
+    else {
+      return $line
+    }
+  } | Set-Content $TargetsFile
+
+  Write-Host "Done connecting both repositories."
+}
+
+function Disconnect-CommonRepo {
+  Write-Host  "Please run the following commands to undo Connect-CommonRepo. Double check those files do not have wanted changes.
+  git checkout -- .\src\Accounts\Accounts.sln
+  git checkout -- .\src\Accounts\Accounts\Accounts.csproj
+  git checkout -- .\src\Accounts\Authentication\Authentication.csproj
+  git checkout -- .\tools\Common.Netcore.Dependencies.targets
+  "
+}
+
+Export-ModuleMember -Function Connect-CommonRepo, Disconnect-CommonRepo
