@@ -183,8 +183,7 @@ directive:
     hide: true
   # Hide validate the secret
   - where:
-      subject: ProfileSecret
-      subjectPrefix: FrontDoorCdn
+      subject: (.*)ProfileSecret
       verb: Test
     hide: true
 

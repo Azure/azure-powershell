@@ -437,9 +437,6 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 ### [Test-AzFrontDoorCdnProfileMigration](Test-AzFrontDoorCdnProfileMigration.md)
 Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
-### [Test-AzFrontDoorCdnProfileSecret](Test-AzFrontDoorCdnProfileSecret.md)
-Validate a Secret in the profile.
-
 ### [Update-AzCdnEndpoint](Update-AzCdnEndpoint.md)
 Updates an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
