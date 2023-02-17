@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model
 {
     public class ManagedInstanceAdvancedDataSecurityPolicyModel
     {
+        /// testCI
         /// <summary>
         /// Gets or sets the resource group
         /// </summary>
