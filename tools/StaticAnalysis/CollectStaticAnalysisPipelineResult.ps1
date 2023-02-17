@@ -95,11 +95,10 @@ ForEach ($Step In $Steps) {
                     $markdownContent.Add($title, $contentArray)
                 }
             }
-            foreach ($key in $markdownContent.Keys) {
-                $moduleInfo = $Details.Modules | Where-Object { $_.Module -eq $key }
-                if ($moduleInfo) {
-                    $moduleInfo.Content = $markdownContent[$key] -join "<br>"
-                    $moduleInfo.Status = "Succeeded"
+            foreach ($moduleInfo in $Details.Modules) {
+                $moduleInfo.Status = "Succeeded"
+                if ($markdownContent.ContainsKey($moduleInfo.Module)) {
+                    $moduleInfo.Content = $markdownContent[$moduleInfo.Module] -join "<br>"
                 }
             }
             continue;
