@@ -28,8 +28,8 @@ foreach ($SyncPath in $Config.SyncPath)
 
 $SyncFile = Split-Path $SyncPath -Leaf
 
-git config --global user.email "azurepowershell@ms.com"
-git config --global user.name "azurepowershell"
+git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+git config user.name "azure-powershell-bot"
 
 cd $WorkSpace
 git clone $RepoCloneLink
