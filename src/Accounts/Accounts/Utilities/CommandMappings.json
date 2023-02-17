@@ -4316,6 +4316,7 @@
       "Remove-AzNetworkManagerManagementGroupConnection": {},
       "Set-AzNetworkManagerManagementGroupConnection": {},
       "Get-AzFirewallLearnedIpPrefix": {},
+      "New-AzFirewallPolicySnat": {},
       "List-AzApplicationGatewayAvailableWafRuleSets": {},
       "List-AzApplicationGatewayAvailableSslOptions": {},
       "List-AzApplicationGatewaySslPredefinedPolicy": {},
@@ -4535,7 +4536,11 @@
       "Start-AzPolicyRemediation": {},
       "Stop-AzPolicyRemediation": {},
       "Get-AzPolicyMetadata": {},
-      "Start-AzPolicyComplianceScan": {}
+      "Start-AzPolicyComplianceScan": {},
+      "New-AzPolicyAttestation": {},
+      "Get-AzPolicyAttestation": {},
+      "Set-AzPolicyAttestation": {},
+      "Remove-AzPolicyAttestation": {}
     },
     "Az.Portal": {
       "Get-AzPortalDashboard": {},
@@ -5577,6 +5582,7 @@
       "Get-AzServiceLinkerConfigurationForContainerApp": {},
       "Get-AzServiceLinkerConfigurationForSpringCloud": {},
       "Get-AzServiceLinkerConfigurationForWebApp": {},
+      "Get-AzServiceLinkerConfigurationName": {},
       "Get-AzServiceLinkerForContainerApp": {},
       "Get-AzServiceLinkerForSpringCloud": {},
       "Get-AzServiceLinkerForWebApp": {},
@@ -5591,7 +5597,7 @@
       "New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject": {},
       "New-AzServiceLinkerUserAssignedIdentityAuthInfoObject": {},
       "Remove-AzServiceLinkerForContainerApp": {},
-      "Remove-AzServiceLinkerForSpringcloud": {},
+      "Remove-AzServiceLinkerForSpringCloud": {},
       "Remove-AzServiceLinkerForWebApp": {},
       "Test-AzServiceLinkerForContainerApp": {},
       "Test-AzServiceLinkerForSpringCloud": {},
