@@ -1,3 +1,4 @@
+# Sync doc from Azure/azure-powershell to MicrosoftDocs/azure-docs-powershell
 [CmdletBinding()]
 param(
     [Parameter()]
@@ -12,7 +13,7 @@ param(
     [string]$GithubToken
 )
 
-#The absolute location of repos
+# The absolute location of repos
 $WorkSpace = (Resolve-Path (Join-Path $PSScriptRoot "../../")).Path
 $RepoCloneLink = "https://github.com/$OrgName/$RepoName.git"
 $Config = Get-Content (Join-Path $PSScriptRoot "../.azure-pipelines/SyncDocsConfig.json") | ConvertFrom-Json
