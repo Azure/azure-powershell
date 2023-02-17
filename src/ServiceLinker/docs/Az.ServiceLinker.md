@@ -65,7 +65,7 @@ Create an in-memory object for UserAssignedIdentityAuthInfo.
 ### [Remove-AzServiceLinkerForContainerApp](Remove-AzServiceLinkerForContainerApp.md)
 Delete a link in container app.
 
-### [Remove-AzServiceLinkerForSpringcloud](Remove-AzServiceLinkerForSpringcloud.md)
+### [Remove-AzServiceLinkerForSpringCloud](Remove-AzServiceLinkerForSpringCloud.md)
 Delete a link in spring cloud.
 
 ### [Remove-AzServiceLinkerForWebApp](Remove-AzServiceLinkerForWebApp.md)
