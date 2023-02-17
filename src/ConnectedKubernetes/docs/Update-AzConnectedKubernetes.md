@@ -64,7 +64,8 @@ Update-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupNa
 ```
 
 ```output
-I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to apply this benefit to AKS on Azure Stack HCI or Windows Server. Visit https://aka.ms/ahb-aks for details.
+I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to apply this benefit to AKS on Azure Stack HCI or Windows Server.
+Visit https://aka.ms/ahb-aks for details.
 [Y] Yes  [N] No  (default is "N"): y
 
 Location Name                  ResourceGroupName
@@ -292,7 +293,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IConnectedKubernetesIdentity>`: Identity Parameter
+INPUTOBJECT <IConnectedKubernetesIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the Kubernetes cluster on which get is called.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
