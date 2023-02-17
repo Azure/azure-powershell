@@ -30,6 +30,6 @@ Describe 'New-AzContainerGroupConfidentialSku' {
         $containerGroup.OSType | Should -Be $env.osType
         $containerGroup.RestartPolicy | Should -Be $env.restartPolicy
         $containerGroup.Sku | Should -Be $env.confidentialSku
-	$containerGroup.ConfidentialComputeProperties.CcePolicy | Should -Not -Be $null
+	$containerGroup.CcePolicy | Should -Not -Be $null
     }
 }
