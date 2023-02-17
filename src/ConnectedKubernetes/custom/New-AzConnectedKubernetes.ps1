@@ -346,7 +346,7 @@ function New-AzConnectedKubernetes {
             } else {
                 $ReleaseTrain = 'stable'
             }
-            
+            #Requires -Module Az.Resources
             $AzLocation = Get-AzLocation | Where-Object { ($_.DisplayName -ieq $Location) -or ($_.Location -ieq $Location)}
             $Region = $AzLocation.Location
             if ($null -eq $Region) {
@@ -404,7 +404,7 @@ function New-AzConnectedKubernetes {
         $RSA = [System.Security.Cryptography.RSA]::Create(4096)
         if ($PSVersionTable.PSVersion.Major -eq 5) {
             try {
-                . "$PSScriptRoot/../utils/RSAHelper.ps1"
+                . "$PSScriptRoot/RSAHelper.ps1"
                 $AgentPublicKey = ExportRSAPublicKeyBase64($RSA)
                 $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA)
                 $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $AgentPrivateKey + "`n-----END RSA PRIVATE KEY-----"                

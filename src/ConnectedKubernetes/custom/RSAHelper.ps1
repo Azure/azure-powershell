@@ -1,4 +1,5 @@
 function ExportRSAPrivateKeyBase64{
+[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory)]
         [System.Security.Cryptography.RSA]
@@ -35,6 +36,7 @@ function ExportRSAPrivateKeyBase64{
 }
 
 function ExportRSAPublicKeyBase64{
+[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory)]
         [System.Security.Cryptography.RSA]
@@ -62,6 +64,7 @@ function ExportRSAPublicKeyBase64{
 }
 
 function EncodeLength{
+[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
         [System.IO.BinaryWriter]$stream,
         [int]$length
@@ -95,6 +98,7 @@ function EncodeLength{
 }
 
 function EncodeIntegerBigEndian{
+[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
         [System.IO.BinaryWriter]$stream,
         [byte[]]$value,
