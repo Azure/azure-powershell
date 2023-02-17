@@ -1,13 +1,13 @@
 {
-  "Get-AzContainerGroupConfidentialSku+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview+1": {
+  "Get-AzContainerGroupConfidentialSku+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgdx8ho/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgdx8ho/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "48" ],
-        "x-ms-client-request-id": [ "26c194f8-4356-4fec-986b-d45e86fb0c44" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "d5023eb9-7ac2-473a-80c3-6eadc7417597" ],
         "CommandName": [ "Get-AzContainerGroup" ],
         "FullCommandName": [ "Get-AzContainerGroup_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,27 +23,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:4714aa82-fd93-4aec-9ae5-36b0bef9f318" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
-        "x-ms-correlation-request-id": [ "e8109434-31c4-45e4-86ab-08c21160c9cd" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230216T232302Z:e8109434-31c4-45e4-86ab-08c21160c9cd" ],
+        "x-ms-request-id": [ "eastus:44b337b8-3e8a-4048-a47a-cf3983c8677b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "x-ms-correlation-request-id": [ "970ce43c-a245-49dd-aacb-b40665e05bc0" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230217T015122Z:970ce43c-a245-49dd-aacb-b40665e05bc0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 16 Feb 2023 23:23:02 GMT" ]
+        "Date": [ "Fri, 17 Feb 2023 01:51:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2446" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"sku\":\"Confidential\",\"confidentialComputeProperties\":{\"ccePolicy\":\"cGFja2FnZSBwb2xpY3kKCmFwaV9zdm4gOj0gIjAuMTAuMCIKCm1vdW50X2RldmljZSA6PSB7ImFsbG93ZWQiOiB0cnVlfQptb3VudF9vdmVybGF5IDo9IHsiYWxsb3dlZCI6IHRydWV9CmNyZWF0ZV9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbCwgImFsbG93X3N0ZGlvX2FjY2VzcyI6IHRydWV9CnVubW91bnRfZGV2aWNlIDo9IHsiYWxsb3dlZCI6IHRydWV9IAp1bm1vdW50X292ZXJsYXkgOj0geyJhbGxvd2VkIjogdHJ1ZX0KZXhlY19pbl9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbH0KZXhlY19leHRlcm5hbCA6PSB7ImFsbG93ZWQiOiB0cnVlLCAiZW52X2xpc3QiOiBudWxsLCAiYWxsb3dfc3RkaW9fYWNjZXNzIjogdHJ1ZX0Kc2h1dGRvd25fY29udGFpbmVyIDo9IHsiYWxsb3dlZCI6IHRydWV9CnNpZ25hbF9jb250YWluZXJfcHJvY2VzcyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV9tb3VudCA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CmdldF9wcm9wZXJ0aWVzIDo9IHsiYWxsb3dlZCI6IHRydWV9CmR1bXBfc3RhY2tzIDo9IHsiYWxsb3dlZCI6IHRydWV9CnJ1bnRpbWVfbG9nZ2luZyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpsb2FkX2ZyYWdtZW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CnNjcmF0Y2hfbW91bnQgOj0geyJhbGxvd2VkIjogdHJ1ZX0Kc2NyYXRjaF91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9Cg==\"},\"provisioningState\":\"Succeeded\",\"containers\":[{\"name\":\"1\",\"properties\":{\"image\":\"nginx\",\"ports\":[{\"port\":80}],\"environmentVariables\":[],\"instanceView\":{\"restartCount\":0,\"currentState\":{\"state\":\"Running\",\"startTime\":\"2023-02-16T23:18:46.027Z\",\"detailStatus\":\"\"},\"events\":[{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:17:58Z\",\"lastTimestamp\":\"2023-02-16T23:17:58Z\",\"name\":\"Pulled\",\"message\":\"Successfully pulled image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:17:58Z\",\"lastTimestamp\":\"2023-02-16T23:17:58Z\",\"name\":\"Pulling\",\"message\":\"pulling image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:18:46Z\",\"lastTimestamp\":\"2023-02-16T23:18:46Z\",\"name\":\"Started\",\"message\":\"Started container\",\"type\":\"Normal\"}]},\"resources\":{\"requests\":{\"memoryInGB\":1.5,\"cpu\":1.0}}}}],\"initContainers\":[],\"osType\":\"Linux\",\"instanceView\":{\"events\":[],\"state\":\"Running\"}},\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup\",\"name\":\"test-confidential-containergroup\",\"type\":\"Microsoft.ContainerInstance/containerGroups\",\"location\":\"eastus\"}",
+      "Content": "{\"properties\":{\"sku\":\"Confidential\",\"confidentialComputeProperties\":{\"ccePolicy\":\"cGFja2FnZSBwb2xpY3kKCmFwaV9zdm4gOj0gIjAuMTAuMCIKCm1vdW50X2RldmljZSA6PSB7ImFsbG93ZWQiOiB0cnVlfQptb3VudF9vdmVybGF5IDo9IHsiYWxsb3dlZCI6IHRydWV9CmNyZWF0ZV9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbCwgImFsbG93X3N0ZGlvX2FjY2VzcyI6IHRydWV9CnVubW91bnRfZGV2aWNlIDo9IHsiYWxsb3dlZCI6IHRydWV9IAp1bm1vdW50X292ZXJsYXkgOj0geyJhbGxvd2VkIjogdHJ1ZX0KZXhlY19pbl9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbH0KZXhlY19leHRlcm5hbCA6PSB7ImFsbG93ZWQiOiB0cnVlLCAiZW52X2xpc3QiOiBudWxsLCAiYWxsb3dfc3RkaW9fYWNjZXNzIjogdHJ1ZX0Kc2h1dGRvd25fY29udGFpbmVyIDo9IHsiYWxsb3dlZCI6IHRydWV9CnNpZ25hbF9jb250YWluZXJfcHJvY2VzcyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV9tb3VudCA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CmdldF9wcm9wZXJ0aWVzIDo9IHsiYWxsb3dlZCI6IHRydWV9CmR1bXBfc3RhY2tzIDo9IHsiYWxsb3dlZCI6IHRydWV9CnJ1bnRpbWVfbG9nZ2luZyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpsb2FkX2ZyYWdtZW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CnNjcmF0Y2hfbW91bnQgOj0geyJhbGxvd2VkIjogdHJ1ZX0Kc2NyYXRjaF91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9Cg==\"},\"provisioningState\":\"Succeeded\",\"containers\":[{\"name\":\"1\",\"properties\":{\"image\":\"nginx\",\"ports\":[{\"port\":80}],\"environmentVariables\":[],\"instanceView\":{\"restartCount\":0,\"currentState\":{\"state\":\"Running\",\"startTime\":\"2023-02-17T01:48:18.072Z\",\"detailStatus\":\"\"},\"events\":[{\"count\":1,\"firstTimestamp\":\"2023-02-17T01:47:29Z\",\"lastTimestamp\":\"2023-02-17T01:47:29Z\",\"name\":\"Pulling\",\"message\":\"pulling image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-17T01:47:35Z\",\"lastTimestamp\":\"2023-02-17T01:47:35Z\",\"name\":\"Pulled\",\"message\":\"Successfully pulled image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-17T01:48:18Z\",\"lastTimestamp\":\"2023-02-17T01:48:18Z\",\"name\":\"Started\",\"message\":\"Started container\",\"type\":\"Normal\"}]},\"resources\":{\"requests\":{\"memoryInGB\":1.5,\"cpu\":1.0}}}}],\"initContainers\":[],\"osType\":\"Linux\",\"instanceView\":{\"events\":[],\"state\":\"Running\"}},\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgdx8ho/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup\",\"name\":\"test-confidential-containergroup\",\"type\":\"Microsoft.ContainerInstance/containerGroups\",\"location\":\"eastus\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzContainerGroupConfidentialSku+[NoContext]+GetViaIdentity+$PATCH+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview+1": {
+  "Get-AzContainerGroupConfidentialSku+[NoContext]+GetViaIdentity+$PATCH+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgdx8ho/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgdx8ho/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview",
       "Content": "{\n  \"tags\": {\n    \"key\": \"value\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -59,32 +59,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:7bd4cbe5-cde5-42bc-a380-187b7238aabe" ],
+        "x-ms-request-id": [ "eastus:d492f7d5-952c-4e84-a9b0-fd446e9c3220" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
-        "x-ms-correlation-request-id": [ "3084c7ea-5469-41bb-9a35-4ef64744697d" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230216T232304Z:3084c7ea-5469-41bb-9a35-4ef64744697d" ],
+        "x-ms-correlation-request-id": [ "735b9f4d-26e4-46b8-a718-5ce479b8bda4" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230217T015123Z:735b9f4d-26e4-46b8-a718-5ce479b8bda4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 16 Feb 2023 23:23:03 GMT" ]
+        "Date": [ "Fri, 17 Feb 2023 01:51:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2469" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"sku\":\"Confidential\",\"confidentialComputeProperties\":{\"ccePolicy\":\"cGFja2FnZSBwb2xpY3kKCmFwaV9zdm4gOj0gIjAuMTAuMCIKCm1vdW50X2RldmljZSA6PSB7ImFsbG93ZWQiOiB0cnVlfQptb3VudF9vdmVybGF5IDo9IHsiYWxsb3dlZCI6IHRydWV9CmNyZWF0ZV9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbCwgImFsbG93X3N0ZGlvX2FjY2VzcyI6IHRydWV9CnVubW91bnRfZGV2aWNlIDo9IHsiYWxsb3dlZCI6IHRydWV9IAp1bm1vdW50X292ZXJsYXkgOj0geyJhbGxvd2VkIjogdHJ1ZX0KZXhlY19pbl9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbH0KZXhlY19leHRlcm5hbCA6PSB7ImFsbG93ZWQiOiB0cnVlLCAiZW52X2xpc3QiOiBudWxsLCAiYWxsb3dfc3RkaW9fYWNjZXNzIjogdHJ1ZX0Kc2h1dGRvd25fY29udGFpbmVyIDo9IHsiYWxsb3dlZCI6IHRydWV9CnNpZ25hbF9jb250YWluZXJfcHJvY2VzcyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV9tb3VudCA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CmdldF9wcm9wZXJ0aWVzIDo9IHsiYWxsb3dlZCI6IHRydWV9CmR1bXBfc3RhY2tzIDo9IHsiYWxsb3dlZCI6IHRydWV9CnJ1bnRpbWVfbG9nZ2luZyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpsb2FkX2ZyYWdtZW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CnNjcmF0Y2hfbW91bnQgOj0geyJhbGxvd2VkIjogdHJ1ZX0Kc2NyYXRjaF91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9Cg==\"},\"provisioningState\":\"Succeeded\",\"containers\":[{\"name\":\"1\",\"properties\":{\"image\":\"nginx\",\"ports\":[{\"port\":80}],\"environmentVariables\":[],\"instanceView\":{\"restartCount\":0,\"currentState\":{\"state\":\"Running\",\"startTime\":\"2023-02-16T23:18:46.027Z\",\"detailStatus\":\"\"},\"events\":[{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:17:58Z\",\"lastTimestamp\":\"2023-02-16T23:17:58Z\",\"name\":\"Pulled\",\"message\":\"Successfully pulled image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:17:58Z\",\"lastTimestamp\":\"2023-02-16T23:17:58Z\",\"name\":\"Pulling\",\"message\":\"pulling image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:18:46Z\",\"lastTimestamp\":\"2023-02-16T23:18:46Z\",\"name\":\"Started\",\"message\":\"Started container\",\"type\":\"Normal\"}]},\"resources\":{\"requests\":{\"memoryInGB\":1.5,\"cpu\":1.0}}}}],\"initContainers\":[],\"osType\":\"Linux\",\"instanceView\":{\"events\":[],\"state\":\"Running\"}},\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup\",\"name\":\"test-confidential-containergroup\",\"type\":\"Microsoft.ContainerInstance/containerGroups\",\"location\":\"eastus\",\"tags\":{\"key\":\"value\"}}",
+      "Content": "{\"properties\":{\"sku\":\"Confidential\",\"confidentialComputeProperties\":{\"ccePolicy\":\"cGFja2FnZSBwb2xpY3kKCmFwaV9zdm4gOj0gIjAuMTAuMCIKCm1vdW50X2RldmljZSA6PSB7ImFsbG93ZWQiOiB0cnVlfQptb3VudF9vdmVybGF5IDo9IHsiYWxsb3dlZCI6IHRydWV9CmNyZWF0ZV9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbCwgImFsbG93X3N0ZGlvX2FjY2VzcyI6IHRydWV9CnVubW91bnRfZGV2aWNlIDo9IHsiYWxsb3dlZCI6IHRydWV9IAp1bm1vdW50X292ZXJsYXkgOj0geyJhbGxvd2VkIjogdHJ1ZX0KZXhlY19pbl9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbH0KZXhlY19leHRlcm5hbCA6PSB7ImFsbG93ZWQiOiB0cnVlLCAiZW52X2xpc3QiOiBudWxsLCAiYWxsb3dfc3RkaW9fYWNjZXNzIjogdHJ1ZX0Kc2h1dGRvd25fY29udGFpbmVyIDo9IHsiYWxsb3dlZCI6IHRydWV9CnNpZ25hbF9jb250YWluZXJfcHJvY2VzcyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV9tb3VudCA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CmdldF9wcm9wZXJ0aWVzIDo9IHsiYWxsb3dlZCI6IHRydWV9CmR1bXBfc3RhY2tzIDo9IHsiYWxsb3dlZCI6IHRydWV9CnJ1bnRpbWVfbG9nZ2luZyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpsb2FkX2ZyYWdtZW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CnNjcmF0Y2hfbW91bnQgOj0geyJhbGxvd2VkIjogdHJ1ZX0Kc2NyYXRjaF91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9Cg==\"},\"provisioningState\":\"Succeeded\",\"containers\":[{\"name\":\"1\",\"properties\":{\"image\":\"nginx\",\"ports\":[{\"port\":80}],\"environmentVariables\":[],\"instanceView\":{\"restartCount\":0,\"currentState\":{\"state\":\"Running\",\"startTime\":\"2023-02-17T01:48:18.072Z\",\"detailStatus\":\"\"},\"events\":[{\"count\":1,\"firstTimestamp\":\"2023-02-17T01:47:29Z\",\"lastTimestamp\":\"2023-02-17T01:47:29Z\",\"name\":\"Pulling\",\"message\":\"pulling image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-17T01:47:35Z\",\"lastTimestamp\":\"2023-02-17T01:47:35Z\",\"name\":\"Pulled\",\"message\":\"Successfully pulled image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-17T01:48:18Z\",\"lastTimestamp\":\"2023-02-17T01:48:18Z\",\"name\":\"Started\",\"message\":\"Started container\",\"type\":\"Normal\"}]},\"resources\":{\"requests\":{\"memoryInGB\":1.5,\"cpu\":1.0}}}}],\"initContainers\":[],\"osType\":\"Linux\",\"instanceView\":{\"events\":[],\"state\":\"Running\"}},\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgdx8ho/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup\",\"name\":\"test-confidential-containergroup\",\"type\":\"Microsoft.ContainerInstance/containerGroups\",\"location\":\"eastus\",\"tags\":{\"key\":\"value\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzContainerGroupConfidentialSku+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview+2": {
+  "Get-AzContainerGroupConfidentialSku+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgdx8ho/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgdx8ho/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "50" ],
-        "x-ms-client-request-id": [ "abb7953f-3c0c-418d-8c29-f851cdeb19a1" ],
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "6dfaf621-43c5-4d08-acde-003a77eccbaf" ],
         "CommandName": [ "Get-AzContainerGroup" ],
         "FullCommandName": [ "Get-AzContainerGroup_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -100,20 +100,20 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:cf930b9c-a8de-45ce-a4a5-ed103ecddc2e" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
-        "x-ms-correlation-request-id": [ "f52c3336-ef22-4446-bc68-827c45a46c1a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230216T232304Z:f52c3336-ef22-4446-bc68-827c45a46c1a" ],
+        "x-ms-request-id": [ "eastus:6470cb42-1c8c-4f26-bc24-ddb518cd0844" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "x-ms-correlation-request-id": [ "5c355326-3346-41b4-b8c6-0d51f5f0a74f" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230217T015123Z:5c355326-3346-41b4-b8c6-0d51f5f0a74f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 16 Feb 2023 23:23:04 GMT" ]
+        "Date": [ "Fri, 17 Feb 2023 01:51:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2469" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"sku\":\"Confidential\",\"confidentialComputeProperties\":{\"ccePolicy\":\"cGFja2FnZSBwb2xpY3kKCmFwaV9zdm4gOj0gIjAuMTAuMCIKCm1vdW50X2RldmljZSA6PSB7ImFsbG93ZWQiOiB0cnVlfQptb3VudF9vdmVybGF5IDo9IHsiYWxsb3dlZCI6IHRydWV9CmNyZWF0ZV9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbCwgImFsbG93X3N0ZGlvX2FjY2VzcyI6IHRydWV9CnVubW91bnRfZGV2aWNlIDo9IHsiYWxsb3dlZCI6IHRydWV9IAp1bm1vdW50X292ZXJsYXkgOj0geyJhbGxvd2VkIjogdHJ1ZX0KZXhlY19pbl9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbH0KZXhlY19leHRlcm5hbCA6PSB7ImFsbG93ZWQiOiB0cnVlLCAiZW52X2xpc3QiOiBudWxsLCAiYWxsb3dfc3RkaW9fYWNjZXNzIjogdHJ1ZX0Kc2h1dGRvd25fY29udGFpbmVyIDo9IHsiYWxsb3dlZCI6IHRydWV9CnNpZ25hbF9jb250YWluZXJfcHJvY2VzcyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV9tb3VudCA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CmdldF9wcm9wZXJ0aWVzIDo9IHsiYWxsb3dlZCI6IHRydWV9CmR1bXBfc3RhY2tzIDo9IHsiYWxsb3dlZCI6IHRydWV9CnJ1bnRpbWVfbG9nZ2luZyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpsb2FkX2ZyYWdtZW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CnNjcmF0Y2hfbW91bnQgOj0geyJhbGxvd2VkIjogdHJ1ZX0Kc2NyYXRjaF91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9Cg==\"},\"provisioningState\":\"Succeeded\",\"containers\":[{\"name\":\"1\",\"properties\":{\"image\":\"nginx\",\"ports\":[{\"port\":80}],\"environmentVariables\":[],\"instanceView\":{\"restartCount\":0,\"currentState\":{\"state\":\"Running\",\"startTime\":\"2023-02-16T23:18:46.027Z\",\"detailStatus\":\"\"},\"events\":[{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:17:58Z\",\"lastTimestamp\":\"2023-02-16T23:17:58Z\",\"name\":\"Pulled\",\"message\":\"Successfully pulled image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:17:58Z\",\"lastTimestamp\":\"2023-02-16T23:17:58Z\",\"name\":\"Pulling\",\"message\":\"pulling image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-16T23:18:46Z\",\"lastTimestamp\":\"2023-02-16T23:18:46Z\",\"name\":\"Started\",\"message\":\"Started container\",\"type\":\"Normal\"}]},\"resources\":{\"requests\":{\"memoryInGB\":1.5,\"cpu\":1.0}}}}],\"initContainers\":[],\"osType\":\"Linux\",\"instanceView\":{\"events\":[],\"state\":\"Running\"}},\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup\",\"name\":\"test-confidential-containergroup\",\"type\":\"Microsoft.ContainerInstance/containerGroups\",\"location\":\"eastus\",\"tags\":{\"key\":\"value\"}}",
+      "Content": "{\"properties\":{\"sku\":\"Confidential\",\"confidentialComputeProperties\":{\"ccePolicy\":\"cGFja2FnZSBwb2xpY3kKCmFwaV9zdm4gOj0gIjAuMTAuMCIKCm1vdW50X2RldmljZSA6PSB7ImFsbG93ZWQiOiB0cnVlfQptb3VudF9vdmVybGF5IDo9IHsiYWxsb3dlZCI6IHRydWV9CmNyZWF0ZV9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbCwgImFsbG93X3N0ZGlvX2FjY2VzcyI6IHRydWV9CnVubW91bnRfZGV2aWNlIDo9IHsiYWxsb3dlZCI6IHRydWV9IAp1bm1vdW50X292ZXJsYXkgOj0geyJhbGxvd2VkIjogdHJ1ZX0KZXhlY19pbl9jb250YWluZXIgOj0geyJhbGxvd2VkIjogdHJ1ZSwgImVudl9saXN0IjogbnVsbH0KZXhlY19leHRlcm5hbCA6PSB7ImFsbG93ZWQiOiB0cnVlLCAiZW52X2xpc3QiOiBudWxsLCAiYWxsb3dfc3RkaW9fYWNjZXNzIjogdHJ1ZX0Kc2h1dGRvd25fY29udGFpbmVyIDo9IHsiYWxsb3dlZCI6IHRydWV9CnNpZ25hbF9jb250YWluZXJfcHJvY2VzcyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV9tb3VudCA6PSB7ImFsbG93ZWQiOiB0cnVlfQpwbGFuOV91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CmdldF9wcm9wZXJ0aWVzIDo9IHsiYWxsb3dlZCI6IHRydWV9CmR1bXBfc3RhY2tzIDo9IHsiYWxsb3dlZCI6IHRydWV9CnJ1bnRpbWVfbG9nZ2luZyA6PSB7ImFsbG93ZWQiOiB0cnVlfQpsb2FkX2ZyYWdtZW50IDo9IHsiYWxsb3dlZCI6IHRydWV9CnNjcmF0Y2hfbW91bnQgOj0geyJhbGxvd2VkIjogdHJ1ZX0Kc2NyYXRjaF91bm1vdW50IDo9IHsiYWxsb3dlZCI6IHRydWV9Cg==\"},\"provisioningState\":\"Succeeded\",\"containers\":[{\"name\":\"1\",\"properties\":{\"image\":\"nginx\",\"ports\":[{\"port\":80}],\"environmentVariables\":[],\"instanceView\":{\"restartCount\":0,\"currentState\":{\"state\":\"Running\",\"startTime\":\"2023-02-17T01:48:18.072Z\",\"detailStatus\":\"\"},\"events\":[{\"count\":1,\"firstTimestamp\":\"2023-02-17T01:47:29Z\",\"lastTimestamp\":\"2023-02-17T01:47:29Z\",\"name\":\"Pulling\",\"message\":\"pulling image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-17T01:47:35Z\",\"lastTimestamp\":\"2023-02-17T01:47:35Z\",\"name\":\"Pulled\",\"message\":\"Successfully pulled image \\\"nginx@sha256:7f797701ded5055676d656f11071f84e2888548a2e7ed12a4977c28ef6114b17\\\"\",\"type\":\"Normal\"},{\"count\":1,\"firstTimestamp\":\"2023-02-17T01:48:18Z\",\"lastTimestamp\":\"2023-02-17T01:48:18Z\",\"name\":\"Started\",\"message\":\"Started container\",\"type\":\"Normal\"}]},\"resources\":{\"requests\":{\"memoryInGB\":1.5,\"cpu\":1.0}}}}],\"initContainers\":[],\"osType\":\"Linux\",\"instanceView\":{\"events\":[],\"state\":\"Running\"}},\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgdx8ho/providers/Microsoft.ContainerInstance/containerGroups/test-confidential-containergroup\",\"name\":\"test-confidential-containergroup\",\"type\":\"Microsoft.ContainerInstance/containerGroups\",\"location\":\"eastus\",\"tags\":{\"key\":\"value\"}}",
       "isContentBase64": false
     }
   }

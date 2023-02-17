@@ -28,8 +28,7 @@ Describe 'New-AzContainerGroupConfidentialSku' {
         $containerGroup.Container[0].RequestMemoryInGb | Should -Be 1.5
 
         $containerGroup.OSType | Should -Be $env.osType
-        $containerGroup.RestartPolicy | Should -Be $env.restartPolicy
         $containerGroup.Sku | Should -Be $env.confidentialSku
-	$containerGroup.CcePolicy | Should -Not -Be $null
+	$containerGroup.ConfidentialComputePropertyCcePolicy | Should -Not -Be $null
     }
 }

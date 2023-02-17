@@ -16,7 +16,7 @@ Describe 'Get-AzContainerGroupConfidentialSku' {
     It 'Get' {
         $get = Get-AzContainerGroup -Name $env.confidentialContainerGroupName -ResourceGroupName $env.resourceGroupName
         $get.Sku | Should -Be $env.confidentialSku
-	$get.CcePolicy | Should -Not -Be $null
+	$get.ConfidentialComputePropertyCcePolicy | Should -Not -Be $null
     }
 
     It 'GetViaIdentity' {
