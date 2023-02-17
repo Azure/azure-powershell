@@ -78,7 +78,7 @@ ForEach ($Step In $Steps) {
         $Details = $Details[0]
         If ($PhaseName -eq "cmdlet-diff") {
             $content = Get-Content -Path $IssuePath
-            $hashTable = @{}
+            $markdownContent = @{}
             foreach ($line in $content) {
                 # Check if the line starts with an asterisk followed by a space
                 if ($line -match '^\*\s') {
@@ -92,15 +92,13 @@ ForEach ($Step In $Steps) {
                             $contentArray += $content[$i]
                         }
                     }
-                    $hashTable.Add($title, $contentArray)
+                    $markdownContent.Add($title, $contentArray)
                 }
             }
-            # travese hashTable, and add the content to the module in $Details.Modules
-            foreach ($key in $hashTable.Keys) {
+            foreach ($key in $markdownContent.Keys) {
                 $moduleInfo = $Details.Modules | Where-Object { $_.Module -eq $key }
                 if ($moduleInfo) {
-                    # $moduleInfo.Content is a string, we need to convert $hashTable[$key] to string that can be shown correctly as markdown
-                    $moduleInfo.Content = $hashTable[$key] -join "<br>"
+                    $moduleInfo.Content = $markdownContent[$key] -join "<br>"
                     $moduleInfo.Status = "Succeeded"
                 }
             }
