@@ -32,7 +32,7 @@ jobs:
     inputs:
       targetType: inline
       script: >-
-        ./tools/SyncDocs.ps1 -BranchName $(BranchName) -GithubToken $(GithubToken)
+        ./tools/SyncDocsToMicrosoftDocsOrg.ps1 -BranchName $(BranchName) -GithubToken $(GithubToken)
       pwsh: true
 
   - pwsh: |
