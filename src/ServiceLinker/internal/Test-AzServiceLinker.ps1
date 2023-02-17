@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Validate a link.
+Validate a Linker.
 .Description
-Validate a link.
+Validate a Linker.
 .Example
 {{ Add code here }}
 .Example
@@ -27,21 +27,26 @@ Validate a link.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateOperationResult
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IValidateOperationResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
   [Id <String>]: Resource identity path
   [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicelinker/test-azservicelinker
 #>
 function Test-AzServiceLinker {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateOperationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IValidateOperationResult])]
 [CmdletBinding(DefaultParameterSetName='Validate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]

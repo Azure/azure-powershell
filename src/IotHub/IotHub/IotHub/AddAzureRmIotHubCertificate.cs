@@ -142,11 +142,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 {
                     certificate = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(certificate));
 
-                    CertificateBodyDescription certificateBodyDescription = new CertificateBodyDescription();
-                    certificateBodyDescription.Certificate = certificate;
+                    CertificateProperties certificateProperties = new CertificateProperties();
+                    certificateProperties.Certificate = certificate;
 
                     CertificateDescription certificateDescription;
-                    certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, this.Etag, certificateBodyDescription.Certificate);
+                    certificateDescription = this.IotHubClient.Certificates.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, this.Etag, certificateProperties);
 
 
                     this.WriteObject(IotHubUtils.ToPSCertificateDescription(certificateDescription));

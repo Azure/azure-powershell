@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     /// [OpenAPI] ListNetworkRuleSets=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkRuleSets"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzServiceBusNetworkRuleSet_List")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSet))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Gets list of NetworkRuleSet for a Namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
     public partial class GetAzServiceBusNetworkRuleSet_List : global::System.Management.Automation.PSCmdlet,
@@ -166,12 +166,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSetListResult">Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSetListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSetListResult">Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSetListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSetListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSetListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -387,12 +387,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSetListResult">Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSetListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSetListResult">Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSetListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSetListResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSetListResult> response)
         {
             using( NoSynchronizationContext )
             {

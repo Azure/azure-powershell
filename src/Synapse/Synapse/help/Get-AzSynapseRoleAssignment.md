@@ -89,6 +89,9 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 * GET /users/{id}
 * GET /servicePrincipals/{id}
 
+>[!Note]
+> To retrieve a role assignment for a service principal, pass the object ID of the principal in the ObjectId parameter.
+
 ## EXAMPLES
 
 ### Example 1

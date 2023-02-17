@@ -25,11 +25,11 @@ Creates an authorization rule for a queue.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,7 +61,7 @@ PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueueauthorizationrule
 #>
 function New-AzServiceBusQueueAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -113,7 +113,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule]
     # Description of a namespace authorization rule.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

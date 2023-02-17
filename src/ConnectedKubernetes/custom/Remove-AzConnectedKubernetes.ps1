@@ -186,9 +186,10 @@ param(
         #Endregion
 
         #Region get release namespace
+        Set-Variable ReleaseInstallNamespace -option Constant -value "azure-arc-release"
         $ReleaseNamespace = $null
         try {
-            $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext | ConvertFrom-Json).namespace
+            $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace | ConvertFrom-Json).namespace
         } catch {
             Write-Error "Fail to find the namespace for azure-arc."
         }
@@ -211,7 +212,7 @@ param(
         }
         if (($ResourceGroupName -eq $ConfigmapRgName) -and ($ClusterName -eq $ConfigmapClusterName)) {
             Az.ConnectedKubernetes.internal\Remove-AzConnectedKubernetes @PSBoundParameters
-            helm delete azure-arc --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
+            helm delete azure-arc --namespace $ReleaseInstallNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
         } else {
             Write-Error "The current context in the kubeconfig file does not correspond to the connected cluster resource specified. Agents installed on this cluster correspond to the resource group name '$ConfigmapRgName' and resource name '$ConfigmapClusterName'."
         }

@@ -25,12 +25,12 @@ Test-AzServiceBusName -NamespaceName myNamespace
 Test-AzServiceBusName -NamespaceName myNamespace -ResourceGroupName myResourceGroup -AliasName myAlias
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailabilityResult
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/test-azservicebusname
 #>
 function Test-AzServiceBusName {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailabilityResult])]
 [CmdletBinding(DefaultParameterSetName='NamespaceAvailability', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
