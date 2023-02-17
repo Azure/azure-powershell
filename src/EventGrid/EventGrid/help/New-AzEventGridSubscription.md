@@ -341,7 +341,7 @@ The schema to be used when delivering events to the destination. The possible va
 Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0, EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
+Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
 
 Required: False
 Position: Named
@@ -354,7 +354,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
-Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0, EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
+Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
 
 Required: False
 Position: Named
@@ -460,7 +460,7 @@ This can be webhook, eventhub, storagequeue, hybridconnection or servicebusqueue
 Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction, webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
 
 Required: False
 Position: Named
@@ -473,7 +473,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction, webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
 
 Required: False
 Position: Named

@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Added breaking change message for `New-AzVmss`.
+* Added `-PerformancePlus` parameter to `New-AzDiskConfig`
 
 ## Version 5.4.0
 * Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 

@@ -112,8 +112,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkJobByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.ExecutorSize)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(NodeSize.Small, NodeSize.Medium, NodeSize.Large, IgnoreCase = true)]
-        [PSArgumentCompleter(NodeSize.Small, NodeSize.Medium, NodeSize.Large)]
+        [ValidateSet(NodeSize.Small, NodeSize.Medium, NodeSize.Large, NodeSize.XLarge, NodeSize.XXLarge, NodeSize.XXXLarge, IgnoreCase = true)]
+        [PSArgumentCompleter(NodeSize.Small, NodeSize.Medium, NodeSize.Large, NodeSize.XLarge, NodeSize.XXLarge, NodeSize.XXXLarge)]
         public string ExecutorSize { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RunSparkJobParameterSetName,

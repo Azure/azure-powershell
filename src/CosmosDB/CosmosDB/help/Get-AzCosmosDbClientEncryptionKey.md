@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbclientencryptionkey
 schema: 2.0.0
 ---
 
