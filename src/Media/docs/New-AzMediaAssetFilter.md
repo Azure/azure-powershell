@@ -27,27 +27,21 @@ Creates or updates an Asset Filter associated with the specified Asset.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates an Asset Filter associated with the specified Asset.
 ```powershell
-{{ Add code here }}
+$filterTrackProperty = New-AzMediaFilterTrackPropertyConditionObject -Operation 'Equal' -Property 'Type' -Value "Audio"
+$filterTrackSelection = New-AzMediaFilterTrackSelectionObject -TrackSelection $filterTrackProperty
+
+New-AzMediaAssetFilter -AccountName azpsms -AssetName azpsms-asset -FilterName azpsms-asset-filter -ResourceGroupName azps_test_group -FirstQualityBitrate '720' -PresentationTimeRangeEndTimestamp '200000' -PresentationTimeRangeForceEndTimestamp:$False -PresentationTimeRangeLiveBackoffDuration '60' -PresentationTimeRangePresentationWindowDuration '600000' -PresentationTimeRangeStartTimestamp '100000' -PresentationTimeRangeTimescale '1000' -Track $filterTrackSelection
 ```
 
 ```output
-{{ Add output here }}
+Name                ResourceGroupName
+----                -----------------
+azpsms-asset-filter azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates or updates an Asset Filter associated with the specified Asset.
 
 ## PARAMETERS
 

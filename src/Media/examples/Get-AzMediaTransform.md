@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List Transform by Media Name.
 ```powershell
-{{ Add code here }}
+Get-AzMediaTransform -AccountName azpsms -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Name             ResourceGroupName
+----             -----------------
+azpsms-transform azps_test_group
 ```
 
-{{ Add description here }}
+List Transform by Media Name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a Transform by Transform Name.
 ```powershell
-{{ Add code here }}
+Get-AzMediaTransform -AccountName azpsms -ResourceGroupName azps_test_group -Name azpsms-transform
 ```
 
 ```output
-{{ Add output here }}
+Name             ResourceGroupName
+----             -----------------
+azpsms-transform azps_test_group
 ```
 
-{{ Add description here }}
-
+Get a Transform by Transform Name.

@@ -22,27 +22,18 @@ Create an in-memory object for ContentKeyPolicyOption.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ContentKeyPolicyOption.
 ```powershell
-{{ Add code here }}
+New-AzMediaContentKeyPolicyOptionObject -ConfigurationOdataType "#Microsoft.Media.ContentKeyPolicyWidevineConfiguration" -RestrictionOdataType "#Microsoft.Media.ContentKeyPolicyOpenRestriction" -Name "widevineoption"
 ```
 
 ```output
-{{ Add output here }}
+Name           PolicyOptionId
+----           --------------
+widevineoption
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ContentKeyPolicyOption.
 
 ## PARAMETERS
 

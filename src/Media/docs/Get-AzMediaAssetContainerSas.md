@@ -13,18 +13,10 @@ The signatures are derived from the storage account keys.
 
 ## SYNTAX
 
-### ListExpanded (Default)
 ```
 Get-AzMediaAssetContainerSas -AccountName <String> -AssetName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-ExpiryTime <DateTime>] [-Permission <AssetContainerPermission>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzMediaAssetContainerSas -AccountName <String> -AssetName <String> -ResourceGroupName <String>
- -Parameter <IListContainerSasInput> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,27 +25,18 @@ The signatures are derived from the storage account keys.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Lists storage container URLs with shared access signatures (SAS) for uploading and downloading Asset content.
 ```powershell
-{{ Add code here }}
+Get-AzMediaAssetContainerSas -AccountName azpsms -ResourceGroupName azps_test_group -AssetName azpsms-asset
 ```
 
 ```output
-{{ Add output here }}
+https://azpssa.blob.core.windows.net/asset-xxxxxxxxxxxxxxxx
+https://azpssa.blob.core.windows.net/asset-xxxxxxxxxxxxxxxx
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Lists storage container URLs with shared access signatures (SAS) for uploading and downloading Asset content.
+The signatures are derived from the storage account keys.
 
 ## PARAMETERS
 
@@ -108,7 +91,7 @@ This must be less than 24 hours from the current time.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ListExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -118,28 +101,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-The parameters to the list SAS request.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Media.Models.Api20220801.IListContainerSasInput
-Parameter Sets: List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Permission
 The permissions to set on the SAS URL.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Media.Support.AssetContainerPermission
-Parameter Sets: ListExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -215,8 +182,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Media.Models.Api20220801.IListContainerSasInput
-
 ## OUTPUTS
 
 ### System.String
@@ -224,15 +189,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PARAMETER <IListContainerSasInput>`: The parameters to the list SAS request.
-  - `[ExpiryTime <DateTime?>]`: The SAS URL expiration time.  This must be less than 24 hours from the current time.
-  - `[Permission <AssetContainerPermission?>]`: The permissions to set on the SAS URL.
 
 ## RELATED LINKS
 

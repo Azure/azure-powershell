@@ -30,7 +30,7 @@ For information on how to develop for `Az.Media`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: fe6e157bd3c7a7ba73a98ac492003bed60c195a8
+branch: d66735f5dc80731ee5c7a31399c2a46f8743153a
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
@@ -94,6 +94,15 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+  - where:
+      subject: AssetContainerSas
+      variant: ^List$
+    remove: true
+  - where:
+      subject: LiveEvent
+      variant: ^Allocate$|^AllocateViaIdentity&
+    remove: true
+
   - where:
       verb: Set
     remove: true

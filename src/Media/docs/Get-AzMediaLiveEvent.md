@@ -34,27 +34,31 @@ Gets properties of a live event.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List properties of live event by Media Name.
 ```powershell
-{{ Add code here }}
+Get-AzMediaLiveEvent -AccountName azpsms -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name         ResourceGroupName
+-------- ----         -----------------
+East US  azpsms-event azps_test_group
 ```
 
-{{ Add description here }}
+List properties of live event by Media Name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get properties of a live event by Live Event Name.
 ```powershell
-{{ Add code here }}
+Get-AzMediaLiveEvent -AccountName azpsms -ResourceGroupName azps_test_group -Name azpsms-event
 ```
 
 ```output
-{{ Add output here }}
+Location Name         ResourceGroupName
+-------- ----         -----------------
+East US  azpsms-event azps_test_group
 ```
 
-{{ Add description here }}
+Get properties of a live event by Live Event Name.
 
 ## PARAMETERS
 

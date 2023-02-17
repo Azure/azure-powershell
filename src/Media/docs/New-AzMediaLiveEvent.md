@@ -12,20 +12,7 @@ A live event is in StandBy state after allocation completes, and is ready to sta
 
 ## SYNTAX
 
-### Allocate (Default)
-```
-New-AzMediaLiveEvent -AccountName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### AllocateViaIdentity
-```
-New-AzMediaLiveEvent -InputObject <IMediaIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzMediaLiveEvent -AccountName <String> -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AutoStart] [-CrossSiteAccessPolicyClientAccessPolicy <String>]
@@ -41,32 +28,31 @@ New-AzMediaLiveEvent -AccountName <String> -Name <String> -ResourceGroupName <St
  [<CommonParameters>]
 ```
 
+### AllocateViaIdentity
+```
+New-AzMediaLiveEvent -InputObject <IMediaIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 A live event is in StandBy state after allocation completes, and is ready to start.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: A live event is in StandBy state after allocation completes, and is ready to start.
 ```powershell
-{{ Add code here }}
+$ipRange = New-AzMediaIPRangeObject -Address "0.0.0.0" -Name AllowAll -SubnetPrefixLength 0
+
+New-AzMediaLiveEvent -AccountName azpsms -Name azpsms-event -ResourceGroupName azps_test_group -Location eastus -InputAccessControlIPAllow $ipRange -InputKeyFrameIntervalDuration "PT2S" -InputStreamingProtocol 'RTMP' -PreviewAccessControlIPAllow $ipRange
 ```
 
 ```output
-{{ Add output here }}
+Location Name         ResourceGroupName
+-------- ----         -----------------
+East US  azpsms-event azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+A live event is in StandBy state after allocation completes, and is ready to start.
 
 ## PARAMETERS
 
@@ -75,7 +61,7 @@ The Media Services account name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Allocate, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -382,7 +368,7 @@ The name of the live event, maximum length is 32.
 
 ```yaml
 Type: System.String
-Parameter Sets: Allocate, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases: LiveEventName
 
 Required: True
@@ -412,7 +398,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Allocate, AllocateViaIdentity
+Parameter Sets: AllocateViaIdentity
 Aliases:
 
 Required: False
@@ -511,7 +497,7 @@ The name of the resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Allocate, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -543,7 +529,7 @@ The unique identifier for a Microsoft Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Allocate, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

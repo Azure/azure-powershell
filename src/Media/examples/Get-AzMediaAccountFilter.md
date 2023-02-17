@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the details of Account Filter in the Media Services account by Media Name.
 ```powershell
-{{ Add code here }}
+Get-AzMediaAccountFilter -AccountName azpsms -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Name                 ResourceGroupName
+----                 -----------------
+azpsms-accountfilter azps_test_group
 ```
 
-{{ Add description here }}
+List the details of Account Filter in the Media Services account by Media Name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the details of an Account Filter in the Media Services account by Media Account Folter Name.
 ```powershell
-{{ Add code here }}
+Get-AzMediaAccountFilter -AccountName azpsms -ResourceGroupName azps_test_group -FilterName azpsms-accountfilter
 ```
 
 ```output
-{{ Add output here }}
+Name                 ResourceGroupName
+----                 -----------------
+azpsms-accountfilter azps_test_group
 ```
 
-{{ Add description here }}
-
+Get the details of an Account Filter in the Media Services account by Media Account Folter Name.

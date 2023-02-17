@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates an Asset in the Media Services account.
 ```powershell
-{{ Add code here }}
+New-AzMediaAsset -AccountName azpsms -Name azpsms-asset -ResourceGroupName azps_test_group -AlternateId "123" -Container "con" -Description "description" -StorageAccountName azpssa
 ```
 
 ```output
-{{ Add output here }}
+Name         ResourceGroupName
+----         -----------------
+azpsms-asset azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates or updates an Asset in the Media Services account.

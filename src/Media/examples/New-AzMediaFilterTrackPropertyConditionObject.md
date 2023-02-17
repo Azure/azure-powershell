@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for FilterTrackPropertyCondition.
 ```powershell
-{{ Add code here }}
+New-AzMediaFilterTrackPropertyConditionObject -Operation 'Equal' -Property 'Type' -Value "Audio"
 ```
 
 ```output
-{{ Add output here }}
+Operation Property Value
+--------- -------- -----
+Equal     Type     Audio
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for FilterTrackPropertyCondition.

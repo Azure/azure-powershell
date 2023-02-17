@@ -34,27 +34,32 @@ Gets a streaming endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List streaming endpoint by Media Name.
 ```powershell
-{{ Add code here }}
+Get-AzMediaStreamingEndpoint -AccountName azpsms -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name      ResourceGroupName
+-------- ----      -----------------
+East US  azpsms-se azps_test_group
+East US  default   azps_test_group
 ```
 
-{{ Add description here }}
+List streaming endpoint by Media Name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a streaming endpoint by Streaming Endpoint Name.
 ```powershell
-{{ Add code here }}
+Get-AzMediaStreamingEndpoint -AccountName azpsms -ResourceGroupName azps_test_group -Name azpsms-se
 ```
 
 ```output
-{{ Add output here }}
+Location Name      ResourceGroupName
+-------- ----      -----------------
+East US  azpsms-se azps_test_group
 ```
 
-{{ Add description here }}
+Get a streaming endpoint by Streaming Endpoint Name.
 
 ## PARAMETERS
 

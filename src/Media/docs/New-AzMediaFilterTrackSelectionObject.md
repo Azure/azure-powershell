@@ -21,27 +21,19 @@ Create an in-memory object for FilterTrackSelection.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ContentKeyPolicyOption.
 ```powershell
-{{ Add code here }}
+$filterTrackProperty = New-AzMediaFilterTrackPropertyConditionObject -Operation 'Equal' -Property 'Type' -Value "Audio"
+New-AzMediaFilterTrackSelectionObject -TrackSelection $filterTrackProperty
 ```
 
 ```output
-{{ Add output here }}
+TrackSelection
+--------------
+{{…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ContentKeyPolicyOption.
 
 ## PARAMETERS
 

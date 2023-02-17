@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AkamaiSignatureHeaderAuthenticationKey.
 ```powershell
-{{ Add code here }}
+New-AzMediaAkamaiSignatureHeaderAuthenticationKeyObject -Base64Key "dGVzdGlkMQ==" -Expiration "2029-12-31T16:00:00-08:00" -Identifier "id1"
 ```
 
 ```output
-{{ Add output here }}
+Base64Key    Expiration             Identifier
+---------    ----------             ----------
+dGVzdGlkMQ== 2030-01-01 08:00:00 AM id1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for AkamaiSignatureHeaderAuthenticationKey.

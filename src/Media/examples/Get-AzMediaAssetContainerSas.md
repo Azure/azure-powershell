@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Lists storage container URLs with shared access signatures (SAS) for uploading and downloading Asset content.
 ```powershell
-{{ Add code here }}
+Get-AzMediaAssetContainerSas -AccountName azpsms -ResourceGroupName azps_test_group -AssetName azpsms-asset
 ```
 
 ```output
-{{ Add output here }}
+https://azpssa.blob.core.windows.net/asset-xxxxxxxxxxxxxxxx
+https://azpssa.blob.core.windows.net/asset-xxxxxxxxxxxxxxxx
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Lists storage container URLs with shared access signatures (SAS) for uploading and downloading Asset content.
+The signatures are derived from the storage account keys.

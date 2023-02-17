@@ -22,27 +22,18 @@ Create an in-memory object for TransformOutput.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for TransformOutput.
 ```powershell
-{{ Add code here }}
+New-AzMediaTransformOutputObject -PresetOdataType "#Microsoft.Media.BuiltInStandardEncoderPreset" -OnError 'StopProcessingJob' -RelativePriority 'Normal'
 ```
 
 ```output
-{{ Add output here }}
+OnError           RelativePriority
+-------           ----------------
+StopProcessingJob Normal
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for TransformOutput.
 
 ## PARAMETERS
 

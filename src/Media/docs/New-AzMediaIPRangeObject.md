@@ -22,27 +22,18 @@ Create an in-memory object for IPRange.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for IPRange.
 ```powershell
-{{ Add code here }}
+New-AzMediaIPRangeObject -Address "0.0.0.0" -Name AllowAll -SubnetPrefixLength 0
 ```
 
 ```output
-{{ Add output here }}
+Address Name     SubnetPrefixLength
+------- ----     ------------------
+0.0.0.0 AllowAll 0
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for IPRange.
 
 ## PARAMETERS
 
