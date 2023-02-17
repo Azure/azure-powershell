@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-PerformancePlus` parameter to `New-AzDiskConfig`
 
 ## Version 5.4.0
 * Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
