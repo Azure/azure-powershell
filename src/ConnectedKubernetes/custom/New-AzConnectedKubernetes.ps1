@@ -336,7 +336,12 @@ function New-AzConnectedKubernetes {
             $HelmRepoUrl = Get-ChildItem -Path Env:HELMREPOURL
             helm repo add $HelmRepoName $HelmRepoUrl --kubeconfig $KubeConfig --kube-context $KubeContext
         }
-
+        
+        $resources = Get-Module Az.Resources -ListAvailable
+        if ($null -eq $resources) {
+            Write-Error "Missing required module(s): Az.Resources. Please run 'Install-Module Az.Resources -Repository PSGallery' to install Az.Resources."
+            return
+        }
         if (Test-Path Env:HELMREGISTRY) {
             $RegisteryPath = Get-ChildItem -Path Env:HELMREGISTRY
         } else {
@@ -345,8 +350,7 @@ function New-AzConnectedKubernetes {
                 $ReleaseTrain = Get-ChildItem -Path Env:RELEASETRAIN
             } else {
                 $ReleaseTrain = 'stable'
-            }
-            
+            }            
             $AzLocation = Get-AzLocation | Where-Object { ($_.DisplayName -ieq $Location) -or ($_.Location -ieq $Location)}
             $Region = $AzLocation.Location
             if ($null -eq $Region) {
@@ -372,8 +376,8 @@ function New-AzConnectedKubernetes {
             if ($Response.StatusCode -eq 200) {
                 $RegisteryPath = ($Response.Content | ConvertFrom-Json).repositoryPath
             } else {
-                Write-Error "Error while fetching helm chart registry path: ${$Response.RawContent}"
-                throw
+                throw "Error while fetching helm chart registry path: ${$Response.RawContent}"
+                
             }
         }
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
@@ -381,8 +385,7 @@ function New-AzConnectedKubernetes {
         try {
             helm chart pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
         } catch {
-            Write-Error "Unable to pull helm chart from the registery $RegisteryPath"
-            throw
+            throw "Unable to pull helm chart from the registery $RegisteryPath"            
         }
         #Endregion
 
@@ -404,13 +407,12 @@ function New-AzConnectedKubernetes {
         $RSA = [System.Security.Cryptography.RSA]::Create(4096)
         if ($PSVersionTable.PSVersion.Major -eq 5) {
             try {
-                . "$PSScriptRoot/../utils/RSAHelper.ps1"
+                . "$PSScriptRoot/RSAHelper.ps1"
                 $AgentPublicKey = ExportRSAPublicKeyBase64($RSA)
                 $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA)
                 $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $AgentPrivateKey + "`n-----END RSA PRIVATE KEY-----"                
             } catch {
-                Write-Error "Unable to generate RSA keys"
-                throw
+                throw "Unable to generate RSA keys"
             }
         } else {
             $AgentPublicKey = [System.Convert]::ToBase64String($RSA.ExportRSAPublicKey())
@@ -459,8 +461,7 @@ function New-AzConnectedKubernetes {
                 $options += " --set global.isCustomCert=true"
             }
         } catch {
-            Write-Error "Unable to find ProxyCert from file path"
-            throw
+            throw "Unable to find ProxyCert from file path"            
         }
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
