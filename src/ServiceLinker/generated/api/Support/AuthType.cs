@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support
     public partial struct AuthType :
         System.IEquatable<AuthType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType AccessKey = @"accessKey";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType Secret = @"secret";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType ServicePrincipalCertificate = @"servicePrincipalCertificate";
@@ -17,6 +19,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType ServicePrincipalSecret = @"servicePrincipalSecret";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType SystemAssignedIdentity = @"systemAssignedIdentity";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType UserAccount = @"userAccount";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType UserAssignedIdentity = @"userAssignedIdentity";
 
