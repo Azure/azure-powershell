@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "74" ],
-        "x-ms-client-request-id": [ "b32309d1-82fc-47dc-b2b9-8f6329d989d5" ],
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "a3943565-b37f-4e20-98c6-f71fdd06bcbd" ],
         "CommandName": [ "Get-AzContainerInstanceUsage" ],
         "FullCommandName": [ "Get-AzContainerInstanceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,20 +23,20 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:af9ad886-914f-4a88-b283-d637714fd306" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
-        "x-ms-correlation-request-id": [ "f2d7351c-6168-4fd0-9bdc-e4e6c7b16172" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230216T040312Z:f2d7351c-6168-4fd0-9bdc-e4e6c7b16172" ],
+        "x-ms-request-id": [ "eastus:aebb2fdc-6325-4cf1-8934-720e522ed969" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
+        "x-ms-correlation-request-id": [ "27e1d0b2-cc11-4d9b-a6d3-4ea4314bc0ac" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230216T232738Z:27e1d0b2-cc11-4d9b-a6d3-4ea4314bc0ac" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 16 Feb 2023 04:03:12 GMT" ]
+        "Date": [ "Thu, 16 Feb 2023 23:27:38 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2638" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/ContainerGroups\",\"unit\":\"Count\",\"currentValue\":159,\"limit\":1000,\"name\":{\"value\":\"ContainerGroups\",\"localizedValue\":\"Container Groups\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardCores\",\"unit\":\"Count\",\"currentValue\":151,\"limit\":4000,\"name\":{\"value\":\"StandardCores\",\"localizedValue\":\"Standard Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardSpotCores\",\"unit\":\"Count\",\"currentValue\":3,\"limit\":100,\"name\":{\"value\":\"StandardSpotCores\",\"localizedValue\":\"Standard Spot Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardK80Cores\",\"unit\":\"Count\",\"currentValue\":1,\"limit\":100,\"name\":{\"value\":\"StandardK80Cores\",\"localizedValue\":\"Standard K80 Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardP100Cores\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":100,\"name\":{\"value\":\"StandardP100Cores\",\"localizedValue\":\"Standard P100 Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardV100Cores\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":100,\"name\":{\"value\":\"StandardV100Cores\",\"localizedValue\":\"Standard V100 Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/DedicatedContainerGroups\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":0,\"name\":{\"value\":\"DedicatedContainerGroups\",\"localizedValue\":\"Dedicated Container Groups\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/dedicatedCores\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":0,\"name\":{\"value\":\"DedicatedCores\",\"localizedValue\":\"Dedicated Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/ConfidentialContainerGroups\",\"unit\":\"Count\",\"currentValue\":32,\"limit\":1000,\"name\":{\"value\":\"ConfidentialContainerGroups\",\"localizedValue\":\"Dedicated Container Groups\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/confidentialCores\",\"unit\":\"Count\",\"currentValue\":35,\"limit\":4000,\"name\":{\"value\":\"ConfidentialCores\",\"localizedValue\":\"Dedicated Cores\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/ContainerGroups\",\"unit\":\"Count\",\"currentValue\":163,\"limit\":1000,\"name\":{\"value\":\"ContainerGroups\",\"localizedValue\":\"Container Groups\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardCores\",\"unit\":\"Count\",\"currentValue\":161,\"limit\":4000,\"name\":{\"value\":\"StandardCores\",\"localizedValue\":\"Standard Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardSpotCores\",\"unit\":\"Count\",\"currentValue\":3,\"limit\":100,\"name\":{\"value\":\"StandardSpotCores\",\"localizedValue\":\"Standard Spot Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardK80Cores\",\"unit\":\"Count\",\"currentValue\":1,\"limit\":100,\"name\":{\"value\":\"StandardK80Cores\",\"localizedValue\":\"Standard K80 Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardP100Cores\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":100,\"name\":{\"value\":\"StandardP100Cores\",\"localizedValue\":\"Standard P100 Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/standardV100Cores\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":100,\"name\":{\"value\":\"StandardV100Cores\",\"localizedValue\":\"Standard V100 Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/DedicatedContainerGroups\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":0,\"name\":{\"value\":\"DedicatedContainerGroups\",\"localizedValue\":\"Dedicated Container Groups\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/dedicatedCores\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":0,\"name\":{\"value\":\"DedicatedCores\",\"localizedValue\":\"Dedicated Cores\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/ConfidentialContainerGroups\",\"unit\":\"Count\",\"currentValue\":35,\"limit\":1000,\"name\":{\"value\":\"ConfidentialContainerGroups\",\"localizedValue\":\"Dedicated Container Groups\"}},{\"id\":\"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/usages/confidentialCores\",\"unit\":\"Count\",\"currentValue\":41,\"limit\":4000,\"name\":{\"value\":\"ConfidentialCores\",\"localizedValue\":\"Dedicated Cores\"}}]}",
       "isContentBase64": false
     }
   }

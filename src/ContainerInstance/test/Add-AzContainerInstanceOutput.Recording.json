@@ -1,13 +1,13 @@
 {
-  "Add-AzContainerInstanceOutput+[NoContext]+Attach+$POST+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgih1jy/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/attach?api-version=2022-10-01-preview+1": {
+  "Add-AzContainerInstanceOutput+[NoContext]+Attach+$POST+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/attach?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgih1jy/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/attach?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgct2wp/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/attach?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "d9e40d3e-22dd-466f-9a19-7e3f403e670c" ],
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "37199561-264e-418b-8287-58db7770241a" ],
         "CommandName": [ "Add-AzContainerInstanceOutput" ],
         "FullCommandName": [ "Add-AzContainerInstanceOutput_Attach" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,20 +23,20 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:a4c6dca1-1115-4ff0-b3b7-5ddbc572e943" ],
+        "x-ms-request-id": [ "eastus:d8dd54ba-6307-44e8-ae2f-adda25a91b4d" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "ade4cb28-cf74-4cb6-b89e-5898a4ee3f52" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230216T035543Z:ade4cb28-cf74-4cb6-b89e-5898a4ee3f52" ],
+        "x-ms-correlation-request-id": [ "f9a14699-1386-4147-89d0-223642685a35" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230216T232143Z:f9a14699-1386-4147-89d0-223642685a35" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 16 Feb 2023 03:55:43 GMT" ]
+        "Date": [ "Thu, 16 Feb 2023 23:21:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "197" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"webSocketUri\":\"wss://sbzwm8tp6wjtd2s.eastus.atlas.cloudapp.azure.com:19390/logstream/sessionId/f9d7f76f-de68-4a02-ae6c-5f1262c3eca8?api-version=1.0\",\"password\":\"qHr!sZm-zot(7m1xZ0VCJ7H${[[EOM]]\"}",
+      "Content": "{\"webSocketUri\":\"wss://sbzfsaxhnyyo0wq.eastus.atlas.cloudapp.azure.com:19390/logstream/sessionId/a2a5af3e-0bbb-49e6-b90b-163bc3f7bcc4?api-version=1.0\",\"password\":\"+kp0(M{76hqizd9:trAc:ia:5[[EOM]]\"}",
       "isContentBase64": false
     }
   }

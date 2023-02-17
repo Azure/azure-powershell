@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "70" ],
-        "x-ms-client-request-id": [ "64cc3ede-2d03-4799-9a1d-2f93f1619dc5" ],
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "3a80d2cb-b4fe-4fa9-a656-3905b841cf77" ],
         "CommandName": [ "Get-AzContainerInstanceCachedImage" ],
         "FullCommandName": [ "Get-AzContainerInstanceCachedImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,13 +23,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:b4ffd6a4-ada5-4ab8-89e4-e13ff1c96c7b" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "4828a01e-a6fe-47ad-a306-ee90666a1bb2" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230216T040046Z:4828a01e-a6fe-47ad-a306-ee90666a1bb2" ],
+        "x-ms-request-id": [ "eastus:aa8ba954-e526-4074-a99d-7fd929cd2fec" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
+        "x-ms-correlation-request-id": [ "de0fec3c-c67a-4882-999f-2eab7541f612" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230216T232501Z:de0fec3c-c67a-4882-999f-2eab7541f612" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 16 Feb 2023 04:00:46 GMT" ]
+        "Date": [ "Thu, 16 Feb 2023 23:25:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "5880" ],
