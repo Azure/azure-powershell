@@ -339,7 +339,7 @@ function New-AzConnectedKubernetes {
         
         $resources = Get-Module Az.Resources -ListAvailable
         if ($null -eq $resources) {
-            Write-Error "Require module: Az.Resources"
+            Write-Error "Missing required module(s): Az.Resources. Please run 'Install-Module Az.Resources -Repository PSGallery' to install Az.Resources."
             return
         }
         if (Test-Path Env:HELMREGISTRY) {
