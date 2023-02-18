@@ -1,13 +1,13 @@
 {
-  "Get-AzContainerInstanceCachedImage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2022-10-01-preview+1": {
+  "Get-AzContainerInstanceCachedImage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/858cf1fd-d678-42ee-ae83-7f84b54c67df/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/858cf1fd-d678-42ee-ae83-7f84b54c67df/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "59" ],
-        "x-ms-client-request-id": [ "26f03d1e-ef38-4137-ba90-ab6f8f61bcb7" ],
+        "x-ms-client-request-id": [ "8c47ed68-73bd-4e81-bb1a-8281984d8935" ],
         "CommandName": [ "Get-AzContainerInstanceCachedImage" ],
         "FullCommandName": [ "Get-AzContainerInstanceCachedImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,13 +23,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:07d52aee-42fc-4d13-a608-275cc982a6d8" ],
+        "x-ms-request-id": [ "eastus:02da9e66-4b5b-4ea0-b5cf-1dae1bc34b73" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
-        "x-ms-correlation-request-id": [ "34d22293-e9fb-4634-ae86-42eeef92ee7e" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230217T015142Z:34d22293-e9fb-4634-ae86-42eeef92ee7e" ],
+        "x-ms-correlation-request-id": [ "cd2626b3-34d4-4edc-ab3a-ae5eea631278" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230218T000408Z:cd2626b3-34d4-4edc-ab3a-ae5eea631278" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 17 Feb 2023 01:51:42 GMT" ]
+        "Date": [ "Sat, 18 Feb 2023 00:04:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "5880" ],
