@@ -38,7 +38,8 @@ Invoke-LiveTestScenario -Name "Create Spring Cloud App Deployment Instance" -Des
 
     $springCloudInstance = New-AzSpringCloud -ResourceGroupName $rgName -Name $springCloudServiceName -Location $location -SkuTier "Basic" -SkuName "B0"
     $appInstance = New-AzSpringCloudApp -ResourceGroupName $rgName -ServiceName $springCloudServiceName -Name $appName
-    $deployment = New-AzSpringCloudAppDeployment -ResourceGroupName $rgName -Name $springCloudServiceName -AppName $appName -DeploymentName $deploymentName
+    $jarSource = New-AzSpringCloudAppDeploymentJarUploadedObject -RuntimeVersion "Java_8"
+    $deployment = New-AzSpringCloudAppDeployment -ResourceGroupName $rgName -ServiceName $springCloudServiceName -AppName $appName -DeploymentName $deploymentName -Source $jarSource -EnvironmentVariable @{"env" = "prod"}
 
     Assert-AreEqual $appName $appInstance.Name
 }
