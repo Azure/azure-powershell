@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -1544,6 +1544,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetAzureSqlInstanceDescription {
             get {
                 return ResourceManager.GetString("SetAzureSqlInstanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating DTC on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
+        /// </summary>
+        internal static string SetAzureSqlInstanceDtcDescription {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceDtcDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update DTC on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
+        /// </summary>
+        internal static string SetAzureSqlInstanceDtcWarning {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceDtcWarning", resourceCulture);
             }
         }
         

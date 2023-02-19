@@ -24,15 +24,15 @@ The **Remove-AzStorageTable** cmdlet removes one or more storage tables from a s
 ## EXAMPLES
 
 ### Example 1: Remove a table
-```
-PS C:\>Remove-AzStorageTable -Name "TableABC"
+```powershell
+Remove-AzStorageTable -Name "TableABC"
 ```
 
 This command removes a table.
 
 ### Example 2: Remove several tables
-```
-PS C:\>Get-AzStorageTable table* | Remove-AzStorageTable
+```powershell
+Get-AzStorageTable table* | Remove-AzStorageTable
 ```
 
 This example uses a wildcard character with the *Name* parameter to get all tables that match the pattern table and then passes the result on the pipeline to remove the tables.

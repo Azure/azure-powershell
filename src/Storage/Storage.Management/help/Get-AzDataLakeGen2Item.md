@@ -93,10 +93,10 @@ AccessTierChangedOn   : 1/1/0001 12:00:00 AM +00:00
 This command gets a directory from a Filesystem, and show the details.
 
 ### Example 2: Get a file from a Filesystem
-<!-- Skip: Output cannot be splitted from code -->
+```powershell
+Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
 ```
-PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
-
+```output
    FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               

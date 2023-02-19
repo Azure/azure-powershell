@@ -49,14 +49,14 @@ The **Set-AzStorageBlobContent** cmdlet uploads a local file to an Azure Storage
 ## EXAMPLES
 
 ### Example 1: Upload a named file
-```
+```powershell
 Set-AzStorageBlobContent -Container "ContosoUpload" -File ".\PlanningData" -Blob "Planning2015"
 ```
 
 This command uploads the file that is named PlanningData to a blob named Planning2015.
 
 ### Example 2: Upload all files under the current folder
-```
+```powershell
 Get-ChildItem -File -Recurse | Set-AzStorageBlobContent -Container "ContosoUploads"
 ```
 
@@ -64,7 +64,7 @@ This command uses the core Windows PowerShell cmdlet Get-ChildItem to get all th
 The **Set-AzStorageBlobContent** cmdlet uploads the files to the container named ContosoUploads.
 
 ### Example 3: Overwrite an existing blob
-```
+```powershell
 Get-AzStorageBlob -Container "ContosoUploads" -Blob "Planning2015" | Set-AzStorageBlobContent -File "ContosoPlanning"
 ```
 
@@ -75,7 +75,7 @@ The command prompts you for confirmation.
 If you confirm the command, the cmdlet overwrites the existing blob.
 
 ### Example 4: Upload a file to a container by using the pipeline
-```
+```powershell
 Get-AzStorageContainer -Container "ContosoUpload*" | Set-AzStorageBlobContent -File "ContosoPlanning" -Blob "Planning2015"
 ```
 
@@ -83,7 +83,7 @@ This command gets the container that starts with the string ContosoUpload by usi
 The command uploads the file that is named ContosoPlanning as Planning2015.
 
 ### Example 5: Upload a file to page blob with metadata and PremiumPageBlobTier as P10
-```
+```powershell
 $Metadata = @{"key" = "value"; "name" = "test"}
 Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Metadata $Metadata -BlobType Page -PremiumPageBlobTier P10
 ```
@@ -93,13 +93,12 @@ The second command uploads the file that is named ContosoPlanning to the contain
 The blob includes the metadata stored in $Metadata, and has PremiumPageBlobTier as P10.
 
 ### Example 6: Upload a file to blob with specified blob properties, and set StandardBlobTier as Cool
-<!-- Skip: Output cannot be splitted from code -->
-
-
+```powershell
+$filepath = "c:\temp\index.html"
+Set-AzStorageBlobContent -File $filepath -Container "contosouploads" -Properties @{"ContentType" = [System.Web.MimeMapping]::GetMimeMapping($filepath); "ContentMD5" = "i727sP7HigloQDsqadNLHw=="} -StandardBlobTier Cool
 ```
-PS C:\> $filepath = "c:\temp\index.html"
-PS C:\> Set-AzStorageBlobContent -File $filepath -Container "contosouploads" -Properties @{"ContentType" = [System.Web.MimeMapping]::GetMimeMapping($filepath); "ContentMD5" = "i727sP7HigloQDsqadNLHw=="} -StandardBlobTier Cool
 
+```output
    AccountName: storageaccountname, ContainerName: contosouploads
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
@@ -111,13 +110,13 @@ This command uploads the file c:\temp\index.html to the container named contosou
 This command gets ContentType value set to blob properties by [System.Web.MimeMapping]::GetMimeMapping() API.
 
 ### Example 7: Upload a file to a blob with Encryption Scope
-<!-- Skip: Output cannot be splitted from code -->
+```powershell
+$blob = Set-AzStorageBlobContent  -File "mylocalfile" -Container "mycontainer" -Blob "myblob"  -EncryptionScope "myencryptscope"
 
-
+$blob.BlobProperties.EncryptionScope
 ```
-PS C:\> $blob = Set-AzStorageBlobContent  -File "mylocalfile" -Container "mycontainer" -Blob "myblob"  -EncryptionScope "myencryptscope"
 
-PS C:\> $blob.BlobProperties.EncryptionScope
+```output
 myencryptscope
 ```
 

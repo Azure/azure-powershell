@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = false, HelpMessage = HelpMessages.ExecutorSize)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSparkPool,
             Mandatory = false, HelpMessage = HelpMessages.ExecutorSize)]
-        [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, IgnoreCase = true)]
-        [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
+        [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge, IgnoreCase = true)]
+        [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge)]
         public string ExecutorSize { get; set; } = Management.Synapse.Models.NodeSize.Small;
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,

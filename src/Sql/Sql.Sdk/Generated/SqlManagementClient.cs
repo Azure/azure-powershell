@@ -477,6 +477,11 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedServerDnsAliasesOperations ManagedServerDnsAliases { get; private set; }
 
         /// <summary>
+        /// Gets the IManagedInstanceDtcsOperations.
+        /// </summary>
+        public virtual IManagedInstanceDtcsOperations ManagedInstanceDtcs { get; private set; }
+
+        /// <summary>
         /// Gets the IManagedDatabasesOperations.
         /// </summary>
         public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
@@ -809,6 +814,7 @@ namespace Microsoft.Azure.Management.Sql
             DatabaseAdvancedThreatProtectionSettings = new DatabaseAdvancedThreatProtectionSettingsOperations(this);
             ServerAdvancedThreatProtectionSettings = new ServerAdvancedThreatProtectionSettingsOperations(this);
             ManagedServerDnsAliases = new ManagedServerDnsAliasesOperations(this);
+            ManagedInstanceDtcs = new ManagedInstanceDtcsOperations(this);
             ManagedDatabases = new ManagedDatabasesOperations(this);
             ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");

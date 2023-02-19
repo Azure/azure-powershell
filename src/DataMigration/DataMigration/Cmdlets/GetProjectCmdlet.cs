@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     /// <summary>
-    /// Class for the command let that creates a new instance of the Data Migration Service.
+    /// Class for the command let that creates a new instance of the Azure Database Migration Service (classic).
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationProject", DefaultParameterSetName = ComponentNameParameterSet), OutputType(typeof(PSProject))]
     [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsProject")]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "DataMigrationService Resource Id.")]
+            HelpMessage = "Azure Database Migration Service (classic) Resource Id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Parameter(
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            HelpMessage = "Database Migration Service Name.")]
+            HelpMessage = "Azure Database Migration Service (classic) Name.")]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
 

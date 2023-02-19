@@ -78,10 +78,14 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateRange(3, 200)]
         public int NodeCount { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.IsolatedCompute)]
+        public SwitchParameter EnableIsolatedCompute { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true,
             HelpMessage = HelpMessages.NodeSize)]
-        [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, IgnoreCase = true)]
-        [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
+        [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge, IgnoreCase = true)]
+        [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge)]
         public string NodeSize { get; set; }
 
         private SwitchParameter enableAutoScale;
@@ -219,6 +223,7 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 Location = existingWorkspace.Location,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
+                IsComputeIsolationEnabled = EnableIsolatedCompute.IsPresent,
                 NodeCount = this.enableAutoScale ? (int?)null : this.NodeCount,
                 NodeSizeFamily = NodeSizeFamily.MemoryOptimized,
                 NodeSize = NodeSize,

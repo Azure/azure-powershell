@@ -27,7 +27,7 @@ Gets test subscription ID.
 #>
 function Get-TestSubscriptionId {
    # Reminder: The subscription ID in the test context (created via PS command or by creating an env variable) should be the same as this subscription ID.
-   "086aecf4-23d6-4dfd-99a8-a5c6299f0322"
+   "086aecf4-23d6-4dfd-99a8-a5c6299f0322" # This is the Azure Governance Perf 21 subscription
 }
 
 <#
@@ -283,7 +283,7 @@ function Validate-PolicyStateSummary {
    Assert-NotNull $policyStateSummary.Results.NonCompliantPolicies
 
    Assert-NotNull $policyStateSummary.PolicyAssignments
-   Assert-True { $policyStateSummary.PolicyAssignments.Count -gt 0 } 
+   Assert-True { $policyStateSummary.PolicyAssignments.Count -gt 0 }
 
    Foreach ($policyAssignmentSummary in $policyStateSummary.PolicyAssignments) {
       Assert-NotNull $policyAssignmentSummary
@@ -321,7 +321,7 @@ function Validate-SummaryResults {
    param([Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults] $results,
       [switch]$nonCompliantPoliciesAssertNull = $true
    )
-   
+
    Assert-NotNull $results.NonCompliantResources
    if ($nonCompliantPoliciesAssertNull) {
       Assert-Null $results.NonCompliantPolicies
@@ -402,4 +402,290 @@ function Assert-NotNullOrEmpty {
    param([string]$value)
 
    Assert-False { [string]::IsNullOrEmpty($value) }
+}
+
+<#
+.SYNOPSIS
+Gets test manual policy definition name targetted at subcriptions.
+#>
+function Get-TestManualPolicyDefinitonNameSub{
+   "PSTestAttestationSub"
+}
+
+<#
+.SYNOPSIS
+Gets test manual policy definition name targetted at resource groups.
+#>
+function Get-TestManualPolicyDefinitonNameRG{
+   "PSTestAttestationRG"
+}
+
+<#
+.SYNOPSIS
+Gets test manual policy definition name targetted at resources.
+#>
+function Get-TestManualPolicyDefinitonNameResource{
+   "PSTestAttestationResource"
+}
+
+<#
+.SYNOPSIS
+Gets test manual policy initiative name targetted at subcriptions.
+#>
+function Get-TestManualPolicyInitiativeNameSub{
+   "PSTestAttestationInitiativeSub"
+}
+
+<#
+.SYNOPSIS
+Gets test manual policy initiative name targetted at resource groups.
+#>
+function Get-TestManualPolicyInitiativeNameRG{
+   "PSTestAttestationInitiativeRG"
+}
+
+<#
+.SYNOPSIS
+Gets test manual policy initiative name targetted at resource.
+#>
+function Get-TestManualPolicyInitiativeNameResource{
+   "PSTestAttestationInitiativeResource"
+}
+
+#region Attestation Subsciption Scope
+
+<#
+.SYNOPSIS
+Get the name of the policy assignment at the subscription scope.
+#>
+function Get-TestAttestationSubscriptionPolicyAssignmentName {
+   "PSAttestationSubAssignment"
+}
+
+<#
+.SYNOPSIS
+Get the name of the policy assignment at the subscription scope for a policy initiative.
+#>
+function Get-TestInitiativeAttestationSubPolicyAssignmentName {
+   "PSAttestationInitiativeSubAssignment"
+}
+
+<#
+.SYNOPSIS
+Gets the resource id of policy assignment used for attestation tests at subscription scope.
+#>
+function Get-TestAttestationSubscriptionPolicyAssignmentId {
+   "/subscriptions/$(Get-TestSubscriptionId)/providers/Microsoft.Authorization/policyAssignments/$(Get-TestAttestationSubscriptionPolicyAssignmentName)"
+}
+
+<#
+.SYNOPSIS
+Gets the policy assignment id used for attestation tests at subscription scope.
+#>
+function Get-TestInitiativeAttestationSubPolicyAssignmentId {
+   "/subscriptions/$(Get-TestSubscriptionId)/providers/Microsoft.Authorization/policyAssignments/$(Get-TestInitiativeAttestationSubPolicyAssignmentName)"
+}
+
+<#
+.SYNOPSIS
+Gets the policy definition reference id of the initiative used for attestation tests at subscription scope.
+#>
+function Get-TestInitiativeAttestationSubPolicyRefId {
+   "$(Get-TestManualPolicyDefinitonNameSub)_1"
+}
+
+#endregion
+
+#region Attestation Resource Group Scope
+<#
+.SYNOPSIS
+Gets the name of the resource group used for attestation tests at resource group scope.
+#>
+function Get-PSAttestationTestRGName {
+   "ps-attestation-test-rg"
+}
+
+<#
+.SYNOPSIS
+Gets the name of the policy assignment for an initiative used for attestation tests at resource group scope.
+#>
+function Get-TestInitiativeAttestationRGPolicyAssignmentName {
+   "PSAttestationInitiativeRGAssignment"
+}
+
+<#
+.SYNOPSIS
+Gets the name of the policy assignment for attestation tests at resource group scope.
+#>
+function Get-TestAttestationRGPolicyAssignmentName {
+   "PSAttestationRGAssignment"
+}
+
+<#
+.SYNOPSIS
+Gets the policy assignment id for attestation tests at resource group scope.
+#>
+function Get-TestAttestationRGPolicyAssignmentId {
+   "/subscriptions/$(Get-TestSubscriptionId)/providers/Microsoft.Authorization/policyAssignments/$(Get-TestAttestationRGPolicyAssignmentName)"
+}
+
+<#
+.SYNOPSIS
+Gets the policy initiative's assignment id for attestation tests at resource group scope.
+#>
+function Get-TestInitiativeAttestationRGPolicyAssignmentId {
+   "/subscriptions/$(Get-TestSubscriptionId)/providers/Microsoft.Authorization/policyAssignments/$(Get-TestInitiativeAttestationRGPolicyAssignmentName)"
+}
+
+<#
+.SYNOPSIS
+Gets the policy definition reference id for attestation tests at resource group scope.
+#>
+function Get-TestInitiativeAttestationRGPolicyRefId {
+   "$(Get-TestManualPolicyDefinitonNameRG)_1"
+}
+
+#endregion
+
+#region Attestation Resource Scope
+<#
+.SYNOPSIS
+Gets the name of the resource used in attestation tests at resource scope.
+#>
+function Get-PSAttestationTestResourceName {
+   "$(Get-TestResourceNamePrefix)0"
+}
+
+<#
+.SYNOPSIS
+Gets the resource id of the resource used in attestation tests at resource scope.
+#>
+function Get-PSAttestationTestResourceId {
+   "/subscriptions/$(Get-TestSubscriptionId)/resourceGroups/$(Get-PSAttestationTestRGName)/providers/Microsoft.Network/networkSecurityGroups/$(Get-PSAttestationTestResourceName)"
+}
+
+<#
+.SYNOPSIS
+Gets the name of the policy assignment used for attestation tests at resource scope.
+#>
+function Get-TestAttestationResourcePolicyAssignmentName {
+   "PSAttestationResourceAssignment"
+}
+
+<#
+.SYNOPSIS
+Gets the resource id of the policy assignment used for attestation tests at resource scope.
+#>
+function Get-TestAttestationResourcePolicyAssignmentId {
+   "/subscriptions/$(Get-TestSubscriptionId)/providers/Microsoft.Authorization/policyAssignments/$(Get-TestAttestationResourcePolicyAssignmentName)"
+}
+
+<#
+.SYNOPSIS
+Gets the name of the policy assignment for an initiative used for attestation tests at resource scope.
+#>
+function Get-TestAttestationInitiativeResourcePolicyAssignmentName {
+   "PSAttestationInitiativeResourceAssignment"
+}
+
+<#
+.SYNOPSIS
+Gets the resource id of the policy assignment for an initiative used for attestation tests at resource scope.
+#>
+function Get-TestAttestationInitiativeResourcePolicyAssignmentId {
+   "/subscriptions/$(Get-TestSubscriptionId)/providers/Microsoft.Authorization/policyAssignments/$(Get-TestAttestationInitiativeResourcePolicyAssignmentName)"
+}
+
+<#
+.SYNOPSIS
+Gets the policy definition reference id used in attestation tests at resource scope.
+#>
+function Get-TestAttestationInitiativeResourcePolicyRefId {
+   "$(Get-TestManualPolicyDefinitonNameResource)_1"
+}
+#endregion
+
+<#
+.SYNOPSIS
+Validates an attestation
+#>
+function Validate-Attestation {
+   param([Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation]$attestation)
+
+   Assert-NotNull $attestation
+   Assert-NotNull $attestation.LastComplianceStateChangeAt
+   Assert-True { $attestation.Id -like "*/providers/microsoft.policyinsights/attestations/*" }
+   Assert-AreEqual "Microsoft.PolicyInsights/attestations" $attestation.Type
+   Assert-NotNullOrEmpty $attestation.Name
+   Assert-NotNullOrEmpty $attestation.PolicyAssignmentId
+   Assert-NotNullOrEmpty $attestation.ProvisioningState
+}
+
+<#
+.SYNOPSIS
+Validates the properties of an attestation.
+#>
+function Validate-AttestationProperties {
+   param(
+      [Parameter(Mandatory = $true)]$attestation,
+      [Parameter(Mandatory = $false)]$expectedName = $null,
+      [Parameter(Mandatory = $false)]$expectedProvisioningState = $null,
+      [Parameter(Mandatory = $false)]$expectedPolicyAssignmentId = $null,
+      [Parameter(Mandatory = $false)]$expectedPolicyDefinitionReferenceId = $null,
+      [Parameter(Mandatory = $false)]$expectedComplianceState = $null,
+      [Parameter(Mandatory = $false)]$expectedComment = $null,
+      [Parameter(Mandatory = $false)]$expectedExpiresOn = $null,
+      [Parameter(Mandatory = $false)]$expectedMetadata = $null,
+      [Parameter(Mandatory = $false)]$expectedEvidence = $null,
+      [Parameter(Mandatory = $false)]$expectedOwner = $null,
+      [Parameter(Mandatory = $false)]$expectedAssessmentDate = $null
+   )
+   if ($null -ne $expectedName) {
+      Assert-AreEqual $expectedName $attestation.Name
+   }
+   if ($null -ne $expectedProvisioningState) {
+      Assert-AreEqual $expectedProvisioningState $attestation.ProvisioningState
+   }
+   if ($null -ne $expectedPolicyAssignmentId) {
+      Assert-AreEqual $expectedPolicyAssignmentId $attestation.PolicyAssignmentId
+   }
+   if ($null -ne $expectedPolicyDefinitionReferenceId) {
+      Assert-AreEqual $expectedPolicyDefinitionReferenceId $attestation.PolicyDefinitionReferenceId
+   }
+   if ($null -ne $expectedComplianceState) {
+      Assert-AreEqual $expectedComplianceState $attestation.ComplianceState
+   }
+   if ($null -ne $expectedExpiresOn) {
+      Assert-AreEqual $expectedExpiresOn $attestation.ExpiresOn
+   }
+   if ($null -ne $expectedMetadata) {
+      $expectedMetadataJson = [Newtonsoft.Json.Linq.JObject]::Parse($expectedMetadata)
+      Assert-AreEqual $expectedMetadataJson.ToString() $attestation.metadata.ToString()
+   }
+   if ($null -ne $expectedEvidence) {
+      Validate-PolicyAttestationEvidence($attestation.Evidence, $expectedEvidence)
+   }
+   if ($null -ne $expectedOwner) {
+      Assert-AreEqual $expectedOwner $attestation.Owner
+   }
+   if ($null -ne $expectedComment) {
+      Assert-AreEqual $expectedComment $attestation.Comment
+   }
+   if ($null -ne $expectedAssessmentDate) {
+      Assert-AreEqual $expectedAssessmentDate $attestation.AssessmentDate
+   }
+}
+
+<#
+.SYNOPSIS
+Validates an attestation evidence.
+#>
+function Validate-AttestationEvidence {
+   param($actualEvidence, $expectedEvidence)
+
+   Assert-NotNullOrEmpty $actualEvidence
+   for ($i = 0; $i -lt $actualEvidence.Count; $i++) {
+      Assert-AreEqual $expectedEvidence[$i].Description $actualEvidence[$i].Description
+      Assert-AreEqual $expectedEvidence[$i].SourceUri $actualEvidence[$i].SourceUri
+   }
 }

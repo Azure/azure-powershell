@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Added support for Immutable backup vaults
 * Added Cross subscription restore flag for backup vaults
 * Added Soft delete setting for backup vaults
