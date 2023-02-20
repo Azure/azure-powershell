@@ -3,16 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "primarynamespace_name": {
-      "value": "primaryNSbmgu13"
+      "value": "primaryNSd7oma3"
     },
     "secondarynamespace_name": {
-      "value": "secondaryNS9l7z8s"
+      "value": "secondaryNSjazpct"
     },
     "migrationPrimaryNamespace": {
-      "value": "primaryNSf6buvg"
+      "value": "primaryNSp1xb3a"
     },
     "migrationSecondaryNamespace": {
-      "value": "secondaryNS63vrkc"
+      "value": "secondaryNS5doyqa"
     }
   }
 }
