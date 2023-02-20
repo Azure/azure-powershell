@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Updated CognitiveServices PowerShell to use 2022-12-01 version.
 * Added new CognitiveServices CommitmentPlan and Association cmdlets.
-* Added Locations support for CognitiveServices Account cmdlets.
+* Added MultiRegionSetting support for CognitiveServices Account cmdlets.
 
 ## Version 1.12.0
 * Updated CognitiveServices PowerShell to use 2022-10-01 version.

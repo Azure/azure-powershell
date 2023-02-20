@@ -13,8 +13,8 @@ Create a Cognitive Services Commitment Plan
 ## SYNTAX
 
 ```
-New-AzCognitiveServicesCommitmentPlan [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
- [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-Properties] <CommitmentPlanProperties>
+New-AzCognitiveServicesCommitmentPlan -ResourceGroupName <String> -Name <String> -Type <String>
+ -SkuName <String> -Location <String> [-Tag <Hashtable[]>] -Properties <CommitmentPlanProperties>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Create a Cognitive Services Commitment Plan for SpeechServices STT T1
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -58,12 +58,12 @@ Accept wildcard characters: False
 Cognitive Services CommitmentPlan Location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -73,12 +73,12 @@ Accept wildcard characters: False
 Cognitive Services Account Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -88,12 +88,12 @@ Accept wildcard characters: False
 Cognitive Services CommitmentPlan Properties.
 
 ```yaml
-Type: CommitmentPlanProperties
+Type: Microsoft.Azure.Management.CognitiveServices.Models.CommitmentPlanProperties
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -103,12 +103,12 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -118,12 +118,12 @@ Accept wildcard characters: False
 Cognitive Services Account/CommitmentPlan Sku Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Cognitive Services CommitmentPlan Tags.
 
 ```yaml
-Type: Hashtable[]
+Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -148,12 +148,12 @@ Accept wildcard characters: False
 Cognitive Services Account/CommitmentPlan Type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Kind
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -179,7 +179,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -206,3 +206,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzCognitiveServicesCommitmentPlan](./Get-AzCognitiveServicesCommitmentPlan.md)
+
+[Get-AzCognitiveServicesCommitmentPlanAssociation](./Get-AzCognitiveServicesCommitmentPlanAssociation.md)
+
+[New-AzCognitiveServicesCommitmentPlanAssociation](./New-AzCognitiveServicesCommitmentPlanAssociation.md)
+
+[Remove-AzCognitiveServicesCommitmentPlan](./Remove-AzCognitiveServicesCommitmentPlan.md)
+
+[Remove-AzCognitiveServicesCommitmentPlanAssociation](./Remove-AzCognitiveServicesCommitmentPlanAssociation.md)

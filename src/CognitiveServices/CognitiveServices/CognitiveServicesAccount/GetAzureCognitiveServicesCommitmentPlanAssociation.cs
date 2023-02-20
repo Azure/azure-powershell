@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
@@ -80,13 +81,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     case ResourceIdParameterSet:
                         if (!CognitiveServices.ResourceId.TryParse(ResourceId, out CognitiveServices.ResourceId resourceId))
                         {
-                            WriteError(new ErrorRecord(new Exception("Failed to parse ResourceId"), string.Empty, ErrorCategory.NotSpecified, null));
+                            throw new AzPSArgumentException("Failed to parse ResourceId", "ResourceId");
                         }
 
                         ResourceGroupName = resourceId.ResourceGroupName;
                         Name = resourceId.GetAccountName();
                         CommitmentPlanName = resourceId.GetAccountSubResourceName();
-                        WriteError(new ErrorRecord(new Exception("Failed to parse ResourceId"), string.Empty, ErrorCategory.NotSpecified, null));
                         break;
                     case DefaultParameterSet:
                         break;

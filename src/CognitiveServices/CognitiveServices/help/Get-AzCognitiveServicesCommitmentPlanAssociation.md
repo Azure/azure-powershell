@@ -12,16 +12,16 @@ Get Cognitive Services Commitment Plan Association
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
+```
+Get-AzCognitiveServicesCommitmentPlanAssociation [[-ResourceGroupName] <String>] [-CommitmentPlanName] <String>
+ [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ResourceIdParameterSet
 ```
 Get-AzCognitiveServicesCommitmentPlanAssociation [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### DefaultParameterSet
-```
-Get-AzCognitiveServicesCommitmentPlanAssociation [[-ResourceGroupName] <String>] [-PlanName] <String>
- [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,11 +38,26 @@ Get a Cognitive Services Commitment Plan Association
 
 ## PARAMETERS
 
+### -CommitmentPlanName
+Cognitive Services CommitmentPlan Name.
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -57,7 +72,7 @@ Accept wildcard characters: False
 Cognitive Services CommitmentPlan AssociationName Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -68,26 +83,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PlanName
-Cognitive Services CommitmentPlan Name.
-
-```yaml
-Type: String
-Parameter Sets: DefaultParameterSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -127,3 +127,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzCognitiveServicesCommitmentPlan](./Get-AzCognitiveServicesCommitmentPlan.md)
+
+[New-AzCognitiveServicesCommitmentPlan](./New-AzCognitiveServicesCommitmentPlan.md)
+
+[New-AzCognitiveServicesCommitmentPlanAssociation](./New-AzCognitiveServicesCommitmentPlanAssociation.md)
+
+[Remove-AzCognitiveServicesCommitmentPlan](./Remove-AzCognitiveServicesCommitmentPlan.md)
+
+[Remove-AzCognitiveServicesCommitmentPlanAssociation](./Remove-AzCognitiveServicesCommitmentPlanAssociation.md)

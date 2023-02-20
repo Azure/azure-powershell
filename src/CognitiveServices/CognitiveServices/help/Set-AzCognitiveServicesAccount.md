@@ -19,9 +19,9 @@ Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-AssignIdentity] [-UserAssignedIdentityId <String[]>]
  [-IdentityType <IdentityType>] [-StorageAccountId <String[]>] [-CognitiveServicesEncryption]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
- [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>] [-MultiRegionSetting <MultiRegionSettings>]
- [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>]
+ [-MultiRegionSetting <MultiRegionSettings>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyVaultEncryption
@@ -31,9 +31,9 @@ Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  [-IdentityType <IdentityType>] [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String>
  -KeyVersion <String> -KeyVaultUri <String> [-KeyVaultIdentityClientId <String>]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
- [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>] [-MultiRegionSetting <MultiRegionSettings>]
- [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>]
+ [-MultiRegionSetting <MultiRegionSettings>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

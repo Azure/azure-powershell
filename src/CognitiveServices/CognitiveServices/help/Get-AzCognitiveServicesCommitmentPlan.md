@@ -12,13 +12,13 @@ Get Cognitive Services Commitment Plan
 
 ## SYNTAX
 
-### ResourceGroupParameterSet
+### ResourceGroupParameterSet (Default)
 ```
 Get-AzCognitiveServicesCommitmentPlan [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### AccountNameParameterSet
+### CommitmentPlanNameParameterSet
 ```
 Get-AzCognitiveServicesCommitmentPlan [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -42,7 +42,7 @@ Get a Cognitive Services Commitment Plan
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -57,8 +57,8 @@ Accept wildcard characters: False
 Cognitive Services Account Name.
 
 ```yaml
-Type: String
-Parameter Sets: AccountNameParameterSet
+Type: System.String
+Parameter Sets: CommitmentPlanNameParameterSet
 Aliases:
 
 Required: True
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -84,8 +84,8 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
-Parameter Sets: AccountNameParameterSet
+Type: System.String
+Parameter Sets: CommitmentPlanNameParameterSet
 Aliases:
 
 Required: True
@@ -109,3 +109,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzCognitiveServicesCommitmentPlanAssociation](./Get-AzCognitiveServicesCommitmentPlanAssociation.md)
+
+[New-AzCognitiveServicesCommitmentPlan](./New-AzCognitiveServicesCommitmentPlan.md)
+
+[New-AzCognitiveServicesCommitmentPlanAssociation](./New-AzCognitiveServicesCommitmentPlanAssociation.md)
+
+[Remove-AzCognitiveServicesCommitmentPlan](./Remove-AzCognitiveServicesCommitmentPlan.md)
+
+[Remove-AzCognitiveServicesCommitmentPlanAssociation](./Remove-AzCognitiveServicesCommitmentPlanAssociation.md)

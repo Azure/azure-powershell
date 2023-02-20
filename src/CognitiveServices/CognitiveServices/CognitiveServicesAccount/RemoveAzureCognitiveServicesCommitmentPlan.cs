@@ -40,14 +40,31 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            RunCmdLet(() =>
+            if (ShouldProcess(
+                this.Name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveResource_ProcessMessage, this.Name))
+                ||
+                Force.IsPresent)
             {
-                this.CognitiveServicesClient.CommitmentPlans.DeletePlan(this.ResourceGroupName, this.Name);
-            });
+                RunCmdLet(() =>
+                {
+                    this.CognitiveServicesClient.CommitmentPlans.DeletePlan(this.ResourceGroupName, this.Name);
+
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
+                });
+            }
         }
     }
 }
