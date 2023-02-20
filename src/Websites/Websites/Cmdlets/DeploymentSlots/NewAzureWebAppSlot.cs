@@ -170,8 +170,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 		public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-			ManagedServiceIdentity sourceIdentity = null;
-			CloningInfo cloningInfo = null;
+	    ManagedServiceIdentity sourceIdentity = null;
+	    CloningInfo cloningInfo = null;
             if (SourceWebApp != null)
             {
                 cloningInfo = new CloningInfo
