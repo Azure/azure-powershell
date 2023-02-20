@@ -184,12 +184,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
                 };
                 cloningInfo = new PSCloningInfo(cloningInfo);
-				if(CopyIdentity)
+				if(CopyIdentity.IsPresent)
 					sourceIdentity = SourceWebApp.Identity;
 			}
 
             var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
-			if (CopyIdentity && sourceIdentity == null)
+			if (CopyIdentity.IsPresent && sourceIdentity == null)
 				sourceIdentity = webApp.Identity;
 			var site = new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName, (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),sourceIdentity));
 			UpdateConfigIfNeeded(site);
