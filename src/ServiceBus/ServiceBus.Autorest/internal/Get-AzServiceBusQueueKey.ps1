@@ -25,12 +25,12 @@ Primary and secondary connection strings to the queue.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueuekey
 #>
 function Get-AzServiceBusQueueKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

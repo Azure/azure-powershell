@@ -23,12 +23,12 @@ Creates Migration configuration and starts migration of entities from Standard t
 Start-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace -PostMigrationName myStandardNamespace2 -TargetNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myPremiumNamespace
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IMigrationConfigProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
 #>
 function Start-AzServiceBusMigration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IMigrationConfigProperties])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
