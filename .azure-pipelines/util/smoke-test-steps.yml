@@ -79,13 +79,6 @@ jobs:
        Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\"
 
   - task: NuGetCommand@2
-    condition: and(succeeded(), eq('${{ parameters.psVersion }}', '5.1.14'))
-    displayName: 'Download ThreadJob .nupkg File for PowerShell 5.1.14'
-    inputs:
-      command: custom
-      arguments: 'install ThreadJob -directdownload -packagesavemode nupkg -source https://www.powershellgallery.com/api/v2 -OutputDirectory packages'
-
-  - task: NuGetCommand@2
     condition: and(succeeded(), eq(variables['GalleryName'], 'LocalRepo'))
     displayName: 'Download Previous Az .nupkg Files'
     inputs:
