@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzDataMigrationCommand
 
 ## SYNOPSIS
-Creates a new command to be executed on an existing DMS task.
+Creates a new command to be executed on an existing DMS (classic) task.
 
 ## SYNTAX
 

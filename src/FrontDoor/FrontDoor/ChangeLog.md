@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed New-AzFrontDoorWafPolicy cmdlet to support adding Tags for the Azure Frontdoor waf policy
 
 ## Version 1.9.0
 * Allowed rule engine action creation without RouteConfigurationOverride for `New-AzFrontDoorRulesEngineActionObject`.

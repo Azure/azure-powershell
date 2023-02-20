@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzServiceBusNamespaceV2_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Creates or updates a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
     public partial class NewAzServiceBusNamespaceV2_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Description of a namespace resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.SbNamespace();
+        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.SbNamespace();
 
         /// <summary>Alternate name for namespace</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Alternate name for namespace")]
@@ -132,8 +132,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         ReadOnly = false,
         Description = @"Properties of KeyVault",
         SerializedName = @"keyVaultProperties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[] KeyVaultProperty { get => _parametersBody.KeyVaultProperty ?? null /* arrayOf */; set => _parametersBody.KeyVaultProperty = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[] KeyVaultProperty { get => _parametersBody.KeyVaultProperty ?? null /* arrayOf */; set => _parametersBody.KeyVaultProperty = value; }
 
         /// <summary>The Geo-location where the resource lives</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The Geo-location where the resource lives")]
@@ -194,6 +194,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.HttpPipeline Pipeline { get; set; }
 
+        /// <summary>
+        /// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default
+        /// value is 1 and possible values are 1, 2 and 4
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4",
+        SerializedName = @"premiumMessagingPartitions",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PremiumMessagingPartition { get => _parametersBody.PremiumMessagingPartition ?? default(int); set => _parametersBody.PremiumMessagingPartition = value; }
+
         /// <summary>List of private endpoint connections.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of private endpoint connections.")]
@@ -203,8 +217,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         ReadOnly = false,
         Description = @"List of private endpoint connections.",
         SerializedName = @"privateEndpointConnections",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection[] PrivateEndpointConnection { get => _parametersBody.PrivateEndpointConnection ?? null /* arrayOf */; set => _parametersBody.PrivateEndpointConnection = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection[] PrivateEndpointConnection { get => _parametersBody.PrivateEndpointConnection ?? null /* arrayOf */; set => _parametersBody.PrivateEndpointConnection = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -262,14 +276,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
         /// <summary>
-        /// The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+        /// Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions
+        /// setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and
+        /// 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.",
+        Description = @"Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64",
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(int) })]
         public int SkuCapacity { get => _parametersBody.SkuCapacity ?? default(int); set => _parametersBody.SkuCapacity = value; }
@@ -340,8 +356,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         ReadOnly = false,
         Description = @"Properties for User Assigned Identities",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get => _parametersBody.UserAssignedIdentity ?? null /* object */; set => _parametersBody.UserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get => _parametersBody.UserAssignedIdentity ?? null /* object */; set => _parametersBody.UserAssignedIdentity = value; }
 
         /// <summary>
         /// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
@@ -373,12 +389,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace">Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace">Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -648,12 +664,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace">Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace">Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace> response)
         {
             using( NoSynchronizationContext )
             {
@@ -665,7 +681,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
                 WriteObject((await response));
             }
         }

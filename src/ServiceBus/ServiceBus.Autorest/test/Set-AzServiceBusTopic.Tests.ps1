@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusTopic'))
 }
 
 function AssertTopicUpdates{
-    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic]$expectedTopic,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic]$actualTopic)
+    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic]$expectedTopic,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic]$actualTopic)
     $expectedTopic.Name | Should -Be $actualTopic.Name
     $expectedTopic.ResourceGroupName | Should -Be $actualTopic.ResourceGroupName
     $expectedTopic.MaxSizeInMegabytes | Should -Be $actualTopic.MaxSizeInMegabytes

@@ -21,12 +21,12 @@ Create an in-memory object for SecretAuthInfo.
 Create an in-memory object for SecretAuthInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.SecretAuthInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SecretAuthInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersecretauthinfoobject
 #>
 function New-AzServiceLinkerSecretAuthInfoObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.SecretAuthInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SecretAuthInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,7 +34,7 @@ function New-AzServiceLinkerSecretAuthInfoObject {
         [string]
         $Name,
         [Parameter(DontShow, HelpMessage="Password or key vault secret for secret auth.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISecretInfoBase]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISecretInfoBase]
         $SecretInfo,
 
         [Parameter(HelpMessage="Raw value of secret.")]
@@ -54,7 +54,7 @@ function New-AzServiceLinkerSecretAuthInfoObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.SecretAuthInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SecretAuthInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

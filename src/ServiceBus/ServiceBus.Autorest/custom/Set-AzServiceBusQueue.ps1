@@ -20,7 +20,7 @@ Updates a ServiceBus Queue
 #>
 
 function Set-AzServiceBusQueue{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Queue.")]
