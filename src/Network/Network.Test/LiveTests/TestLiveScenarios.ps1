@@ -272,3 +272,192 @@ Invoke-LiveTestScenario -Name "Network private link service" -Description "Test 
     $actualPls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName -ErrorAction SilentlyContinue
     Assert-Null $actualPls
 }
+
+Invoke-LiveTestScenario -Name "Create network load balancer" -Description "Test creating a network load balancer" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "westus"
+    $publicIpName = New-LiveTestResourceName
+    $feIpCfgName = New-LiveTestResourceName
+    $bePoolCfgName = New-LiveTestResourceName
+    $probeName = New-LiveTestResourceName
+    $lbRuleName = New-LiveTestResourceName
+    $lbName = New-LiveTestResourceName
+
+    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Dynamic
+    $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -PublicIpAddress $publicIp
+    $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
+    $probe = New-AzLoadBalancerProbeConfig -Name $probeName -Protocol "Http" -Port 80 -RequestPath "healthcheck.aspx" -IntervalInSeconds 15 -ProbeCount 5 -ProbeThreshold 5
+    $lbRule = New-AzLoadBalancerRuleConfig -Name $lbRuleName -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Protocol "Tcp" -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 5 -EnableFloatingIP -LoadDistribution "SourceIP"
+    New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Probe $probe -LoadBalancingRule $lbRule
+
+    $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName
+    Assert-NotNull $actual
+    Assert-AreEqual $rgName $actual.ResourceGroupName
+    Assert-AreEqual $lbName $actual.Name
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual "Succeeded" $actual.ProvisioningState
+
+    Assert-AreEqual 1 $actual.Probes.Count
+    Assert-AreEqual "Http" $actual.Probes[0].Protocol
+    Assert-AreEqual 80 $actual.Probes[0].Port
+
+    Assert-AreEqual 1 $actual.LoadBalancingRules.Count
+    Assert-AreEqual "Tcp" $actual.LoadBalancingRules[0].Protocol
+    Assert-AreEqual 80 $actual.LoadBalancingRules[0].FrontendPort
+    Assert-AreEqual 80 $actual.LoadBalancingRules[0].BackendPort
+}
+
+Invoke-LiveTestScenario -Name "Update network load balancer" -Description "Test updating an existing network load balancer" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "eastus"
+    $publicIpName = New-LiveTestResourceName
+    $feIpCfgName = New-LiveTestResourceName
+    $bePoolCfgName = New-LiveTestResourceName
+    $probeName1 = New-LiveTestResourceName
+    $probeName2 = New-LiveTestResourceName
+    $lbRuleName = New-LiveTestResourceName
+    $lbName = New-LiveTestResourceName
+    $natRuleName = New-LiveTestResourceName
+
+    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Dynamic
+    $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -PublicIpAddress $publicIp
+    $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
+    $probe = New-AzLoadBalancerProbeConfig -Name $probeName1 -Protocol "Http" -Port 80 -RequestPath "healthcheck80.aspx" -IntervalInSeconds 15 -ProbeCount 5 -ProbeThreshold 5
+    $lbRule = New-AzLoadBalancerRuleConfig -Name $lbRuleName -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Protocol "Tcp" -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 5 -EnableFloatingIP -LoadDistribution "SourceIP"
+    New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Probe $probe -LoadBalancingRule $lbRule
+    $lb = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName
+
+    $lb | Add-AzLoadBalancerProbeConfig -Name $probeName2 -Protocol "Http" -Port 443 -RequestPath "healthcheck443.aspx" -IntervalInSeconds 10 -ProbeCount 3 -ProbeThreshold 3
+    $lb | Add-AzLoadBalancerInboundNatRuleConfig -Name $natRuleName -FrontendIPConfiguration $lb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 3350 -BackendPort 3350 -EnableFloatingIP
+    $lb | Set-AzLoadBalancerRuleConfig -Name $lbRuleName -FrontendIPConfiguration $lb.FrontendIpConfigurations[0] -Protocol "Tcp" -FrontendPort 8080 -BackendPort 8080
+    $lb | Set-AzLoadBalancer
+
+    $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName
+    Assert-NotNull $actual
+    Assert-AreEqual $rgName $actual.ResourceGroupName
+    Assert-AreEqual $lbName $actual.Name
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual "Succeeded" $actual.ProvisioningState
+
+    Assert-AreEqual 1 $actual.LoadBalancingRules.Count
+    Assert-AreEqual "Tcp" $actual.LoadBalancingRules[0].Protocol
+    Assert-AreEqual 8080 $actual.LoadBalancingRules[0].FrontendPort
+    Assert-AreEqual 8080 $actual.LoadBalancingRules[0].BackendPort
+
+    Assert-AreEqual 1 $actual.InboundNatRules.Count
+    Assert-AreEqual "Tcp" $actual.InboundNatRules[0].Protocol
+    Assert-AreEqual 3350 $actual.InboundNatRules[0].FrontendPort
+    Assert-AreEqual 3350 $actual.InboundNatRules[0].BackendPort
+
+    Assert-AreEqual 2 $actual.Probes.Count
+}
+
+Invoke-LiveTestScenario -Name "Remove network load balancer" -Description "Test removing a network load balancer" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "centralus"
+    $publicIpName = New-LiveTestResourceName
+    $feIpCfgName = New-LiveTestResourceName
+    $bePoolCfgName = New-LiveTestResourceName
+    $probeName = New-LiveTestResourceName
+    $lbRuleName = New-LiveTestResourceName
+    $lbName = New-LiveTestResourceName
+
+    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Dynamic
+    $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -PublicIpAddress $publicIp
+    $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
+    $probe = New-AzLoadBalancerProbeConfig -Name $probeName -Protocol "Http" -Port 80 -RequestPath "healthcheck.aspx" -IntervalInSeconds 15 -ProbeCount 5 -ProbeThreshold 5
+    $lbRule = New-AzLoadBalancerRuleConfig -Name $lbRuleName -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Protocol "Tcp" -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 5 -EnableFloatingIP -LoadDistribution "SourceIP"
+    New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Probe $probe -LoadBalancingRule $lbRule
+
+    Remove-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Force
+    $actual = Get-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -ErrorAction SilentlyContinue
+    Assert-Null $actual
+}
+
+Invoke-LiveTestScenario -Name "Create virtual network" -Description "Test creating a virtual network" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "westus"
+    $feSnetName = New-LiveTestResourceName
+    $beSnetName = New-LiveTestResourceName
+    $vnetName = New-LiveTestResourceName
+
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24"
+    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24"
+    New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet, $beSnet -DnsServer 10.0.1.10, 10.0.1.11
+
+    $actual = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
+    Assert-NotNull $actual
+    Assert-AreEqual $rgName $actual.ResourceGroupName
+    Assert-AreEqual $vnetName $actual.Name
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual "Succeeded" $actual.ProvisioningState
+    Assert-AreEqual 1 $actual.AddressSpace.AddressPrefixes.Count
+    Assert-AreEqual "10.0.0.0/16" $actual.AddressSpace.AddressPrefixes[0]
+    Assert-AreEqual 2 $actual.Subnets.Count
+}
+
+Invoke-LiveTestScenario -Name "Update virtual network" -Description "Test updating an existing virtual network" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "eastus"
+    $feSnetName = New-LiveTestResourceName
+    $beSnetName = New-LiveTestResourceName
+    $vnetName = New-LiveTestResourceName
+
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24"
+    New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet
+
+    $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
+    Assert-NotNull $vnet
+    Assert-AreEqual $rgName $vnet.ResourceGroupName
+    Assert-AreEqual $vnetName $vnet.Name
+    Assert-AreEqual $location $vnet.Location
+    Assert-AreEqual "Succeeded" $vnet.ProvisioningState
+    Assert-AreEqual 1 $vnet.Subnets.Count
+
+    $vnet | Add-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24"
+    $vnet | Remove-AzVirtualNetworkSubnetConfig -Name $feSnetName
+    $vnet | Set-AzVirtualNetwork
+
+    $actual = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
+    Assert-NotNull $actual
+    Assert-AreEqual $rgName $actual.ResourceGroupName
+    Assert-AreEqual $vnetName $actual.Name
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual "Succeeded" $actual.ProvisioningState
+    Assert-AreEqual 1 $actual.Subnets.Count
+    Assert-AreEqual $beSnetName $actual.Subnets[0].Name
+}
+
+Invoke-LiveTestScenario -Name "Remove virtual network" -Description "Test removing a virtual network" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "centralus"
+    $feSnetName = New-LiveTestResourceName
+    $beSnetName = New-LiveTestResourceName
+    $vnetName = New-LiveTestResourceName
+
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24"
+    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24"
+    New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet, $beSnet
+    Remove-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Force
+
+    $actual = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -ErrorAction SilentlyContinue
+    Assert-Null $actual
+}
