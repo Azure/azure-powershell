@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/update-azeventgridchannel
 schema: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ Updates the Event Grid channel so partner topics will expire 8 days from the cur
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -60,7 +60,7 @@ The kind of event type used.
 Possible values include: 'Inline'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Expiration time of the partner topic.
 If this timer expires while the partner topic is still never activated, the partner topic and corresponding event channel are deleted.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +92,7 @@ Hashtable representing information on inline events.
 The inline event keys are of type string which represents the name of the event.The inline event values are Hashtables containing the optional keys description, displayName, documentationUrl, and dataSchemaUrl which define the information about the inline event.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 Accepted values: Inline
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Channel object
 
 ```yaml
-Type: PSChannel
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSChannel
 Parameter Sets: ChannelInputObjectParameterSet
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The name of the Event Grid channel.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ChannelNameParameterSet
 Aliases: ChannelName
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 Event Grid partner namespace name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ChannelNameParameterSet
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ChannelNameParameterSet
 Aliases: ResourceGroup
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -184,7 +184,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

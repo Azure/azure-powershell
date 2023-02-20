@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSSLBinding"), OutputType(typeof(HostNameSslState))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSSLBinding", SupportsShouldProcess = true), OutputType(typeof(HostNameSslState))]
     public class NewAzureWebAppSSLBinding : WebAppBaseClientCmdLet
     {
         const string CertNamePostFixSeparator = "_";
@@ -130,7 +130,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
                     try
                     {
-                       Certificate cert= WebsitesClient.CreateCertificate(resourceGroupName, certificateName, certificate);
+                        if (this.ShouldProcess(this.WebAppName, string.Format("Creating a new certificate - '{0}' in Web Application - {1}.", certificateName, this.WebAppName)))
+                        {
+                            Certificate cert = WebsitesClient.CreateCertificate(resourceGroupName, certificateName, certificate);
+                        }
                     }
                     catch (CloudException e)
                     {
@@ -149,8 +152,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     thumbPrint = Thumbprint;
                     break;
             }
-
-            WriteObject(CmdletHelpers.GetHostNameSslStatesFromSiteResponse(
+            if (this.ShouldProcess(this.WebAppName, string.Format("Binding the certificate with thumbprint- '{0}' to Web Application - {1}.", thumbPrint, this.WebAppName)))
+            {
+                WriteObject(CmdletHelpers.GetHostNameSslStatesFromSiteResponse(
                 WebsitesClient.UpdateHostNameSslState(
                     resourceGroupName,
                     webAppName,
@@ -160,6 +164,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     SslState.HasValue ? SslState.Value : Management.WebSites.Models.SslState.SniEnabled,
                     thumbPrint),
                 Name));
+            }
         }
 
         private string GenerateCertName(string thumbPrint, string hostingEnv, string location, string resourceGroupName)
