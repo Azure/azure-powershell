@@ -55,7 +55,7 @@ steps:
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
-   $rootFolder = $PWD\..\..
+   $rootFolder = (Get-item $PWD).Parent.Parent
    Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {cd $_.Directory.FullName; $saveFolder\tools\ExecuteCIStep.ps1 -TestAutorest}
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
