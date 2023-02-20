@@ -83,7 +83,7 @@ directive:
           "format": "password"
       }
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^RestrictViaIdentity[0-9]*.$
     remove: true
   - where:
       variant: ^Restrict$|^RestrictViaIdentity$
