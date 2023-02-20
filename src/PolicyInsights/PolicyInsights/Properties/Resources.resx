@@ -141,4 +141,37 @@
   <data name="WaitingForRemediationCompletion" xml:space="preserve">
     <value>Waiting for completion of remediation at scope '{0}' with name '{1}'.</value>
   </data>
+  <data name="CreatingAttestation" xml:space="preserve">
+    <value>Creating a new attestation at scope '{0}' with name '{1}'.</value>
+  </data>
+  <data name="UpdatingAttestation" xml:space="preserve">
+    <value>Updating an attestation with name '{0}' in scope '{1}'.</value>
+  </data>
+  <data name="Error_AttestationAlreadyExists" xml:space="preserve">
+    <value>"An attestion with name '{0}' in scope '{1}' already exists. Please use Set-AzAttestation to update an existing Attestation."</value>
+  </data>
+  <data name="Error_AttestationDoesNotExists" xml:space="preserve">
+    <value>"An attestion with name '{0}' in scope '{1}' does not exist. Please use New-AzAttestation to create a new Attestation with these properties."</value>
+  </data>
+  <data name="Error_InvalidMetadata" xml:space="preserve">
+    <value>The given metadata '{0}' is invalid</value>
+  </data>
+  <data name="DeletingAttestation" xml:space="preserve">
+    <value>Deleting attestation '{0}' from scope '{1}'</value>
+  </data>
+  <data name="InvalidFilePath" xml:space="preserve">
+    <value>The provided file {0} doesn't exist</value>
+  </data>
+  <data name="InvalidUriContent" xml:space="preserve">
+    <value>The uri {0} is inaccessible, or the content is invalid.</value>
+  </data>
+  <data name="InvalidUriScheme" xml:space="preserve">
+    <value>Please make sure the uri starts with http:// or https://.</value>
+  </data>
+  <data name="InvalidUriString" xml:space="preserve">
+    <value>The specified uri string {0} is invalid.</value>
+  </data>
+  <data name="JsonObjectExpected" xml:space="preserve">
+    <value>The provided value for parameter '{0}' is not a valid JSON object</value>
+  </data>
 </root>
