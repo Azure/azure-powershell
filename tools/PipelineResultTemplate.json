@@ -35,6 +35,12 @@
         "Details": [
         ]
     },
+    "cmdlet-diff": {
+        "PhaseName": "Cmdlet Diff Check",
+        "Order": 7,
+        "Details": [
+        ]
+    },
     "test": {
         "PhaseName": "Test",
         "Order": 100,
