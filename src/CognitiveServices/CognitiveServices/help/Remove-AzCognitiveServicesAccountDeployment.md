@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
