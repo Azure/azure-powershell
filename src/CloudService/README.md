@@ -307,7 +307,8 @@ directive:
           - Statuses
           - RoleInstanceStatusesSummary
 
-  # Fix the issue that type of settings and protectedSettings are modified to object
+  # CloudService change the type to object to fix some issues in C# SDK.
+  # But they are still passed as string in HTTP request. So we keep them string.
   - from: swagger-document
     where: $.definitions.CloudServiceExtensionProperties.properties.settings.type
     transform: >-
