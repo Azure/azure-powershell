@@ -247,19 +247,6 @@ function Set-AzServiceBusTopic{
                 $PSBoundParameters.Add('AsJob', $true)
             }
 
-            if ($topic.DefaultMessageTimeToLive -gt (New-TimeSpan -Days 10675197)) {
-                $topic.DefaultMessageTimeToLive = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($topic.AutoDeleteOnIdle -gt (New-TimeSpan -Days 10675197)) {
-                $topic.AutoDeleteOnIdle = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($topic.DuplicateDetectionHistoryTimeWindow -gt (New-TimeSpan -Days 10675197)) {
-                $topic.DuplicateDetectionHistoryTimeWindow = (New-TimeSpan -Days 10675197)
-            }
-            
-
             if ($PSCmdlet.ShouldProcess("ServiceBus Topic $($topic.Name)", "Create or update")) {
                 Az.ServiceBus.private\New-AzServiceBusTopic_CreateViaIdentity -InputObject $topic -Parameter $topic @PSBoundParameters
             }
