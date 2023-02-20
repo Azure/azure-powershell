@@ -77,7 +77,12 @@ ForEach ($Step In $Steps) {
     If ($Details.Length -Ne 0) {
         $Details = $Details[0]
         If ($PhaseName -eq "cmdlet-diff") {
-            $content = Get-Content -Path $IssuePath
+            If (Test-Path -Path $IssuePath) {
+                $content = Get-Content -Path $IssuePath
+            }
+            Else {
+                $content = @()
+            }
             $markdownContent = @{}
             foreach ($line in $content) {
                 # Check if the line starts with an asterisk followed by a space
