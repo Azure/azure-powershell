@@ -116,6 +116,7 @@ Function Set-ModuleTestStatusInPipelineResult
         [String]
         $Content=""
     )
+    Write-Warning "Set-ModuleTestStatusInPipelineResult $ModuleName - $Status"
     If (Test-Path $PipelineResultPath)
     {
         $Template = Get-Content $PipelineResultPath | ConvertFrom-Json
