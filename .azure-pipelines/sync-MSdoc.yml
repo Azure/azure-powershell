@@ -1,0 +1,56 @@
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: main
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - documentation\breaking-changes\upcoming-breaking-changes.md
+      
+variables:
+  TargetedRepo: azure-docs-powershell
+  TargetedBranchName: sync-upcoming-breaking-changes
+  GithubToken: $(GITHUB_TOKEN)
+
+jobs:
+- job: Sync
+  displayName: Sync task
+  condition: succeeded()
+  strategy:
+    matrix:
+      Generation:
+        BranchName: ${{ variables.TargetedBranchName }}
+
+  steps:
+  - task: PowerShell@2
+    displayName: Sync branch
+    inputs:
+      targetType: inline
+      script: >-
+        ./tools/SyncDocsToMicrosoftDocsOrg.ps1 -BranchName $(BranchName) -GithubToken $(GithubToken)
+      pwsh: true
+
+  - pwsh: |
+      $Title = "Sync upcoming breaking changes docs from Azure/azure-powershell repo"
+      $HeadBranch = "$(BranchName)"
+      $BaseBranch = "main"
+      $Description = "Sync latest upcoming breaking changes doc from Azure/azure-powershell repo."
+      $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $(GithubToken)"}
+      $PrBody = @"
+      <!-- DO NOT DELETE THIS TEMPLATE -->
+
+      ## Description
+      $Description
+
+      <!-- Please add a brief description of the changes made in this PR. If you have an ongoing or finished cmdlet design, please paste the link below. -->
+      "@
+      $RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
+      Invoke-WebRequest -Uri https://api.github.com/repos/MicrosoftDocs/azure-docs-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
+    
+    continueOnError: true
+    displayName: Create PR to main branch
