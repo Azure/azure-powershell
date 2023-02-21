@@ -53,6 +53,9 @@ Param(
     [Switch]
     $StaticAnalysisUX,
 
+    [Switch]
+    $StaticAnalysisCmdletDiff,
+
     [String]
     $RepoArtifacts='artifacts',
 
@@ -367,6 +370,7 @@ If ($StaticAnalysis)
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisSignature @Parameters
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisCmdletDiff @Parameters
     Return
 }
 
@@ -456,6 +460,24 @@ If ($StaticAnalysisUX)
     {
         Write-Host "Running static analysis for UX metadata..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers ux -u -m $UXModuleList
+    }
+    Return
+}
+
+If ($StaticAnalysisCmdletDiff)
+{
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
+    {
+        $CmdletDiffModuleList = $TargetModule
+    }
+    Else
+    {
+        $CmdletDiffModuleList = Join-String -Separator ';' -InputObject $CIPlan.'cmdlet-diff'
+    }
+    If ("" -Ne $CmdletDiffModuleList)
+    {
+        Write-Host "Running static analysis for cmdlet diff..."
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers cmdlet-diff -u -m $CmdletDiffModuleList
     }
     Return
 }

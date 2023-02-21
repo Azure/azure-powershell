@@ -23,12 +23,12 @@ Gets the systemAssignedIdentity available under the specified RP scope.
 Get-AzSystemAssignedIdentity -Scope "/subscriptions/00000000-0000-0000-00000000000/resourcegroups/lucas-rg-test/providers/Microsoft.Web/sites/functionportal01"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.ISystemAssignedIdentity
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.ISystemAssignedIdentity
 .Link
 https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azsystemassignedidentity
 #>
 function Get-AzSystemAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.ISystemAssignedIdentity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.ISystemAssignedIdentity])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

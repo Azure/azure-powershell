@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
     {
         None = 0,
         DeviceManagement = 1,
-        GWV2 = 2
+        GWV2 = 2,
+        RootCertificateV2 = 3
     }
 }

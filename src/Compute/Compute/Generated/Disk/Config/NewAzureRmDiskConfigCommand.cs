@@ -242,6 +242,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("X64", "Arm64")]
         public string Architecture { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set this flag to true to get a boost on the performance target of the disk deployed, see here on the respective performance target. This flag can only be set on disk creation time and cannot be disabled after enabled.")]
+        public bool? PerformancePlus { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Disk", "New"))
@@ -349,6 +355,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vCreationData = new CreationData();
                 }
                 vCreationData.LogicalSectorSize = this.LogicalSectorSize;
+            }
+
+            if (this.IsParameterBound(c => c.PerformancePlus))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.PerformancePlus = this.PerformancePlus;
             }
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))

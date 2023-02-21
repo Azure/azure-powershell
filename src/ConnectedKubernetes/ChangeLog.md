@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.8.0
+* Added optional configs (-HttpProxy, -HttpsProxy, -NoProxy, -ProxyCert) for connection behind outbound proxy server.
+* Added optional configs (-ContainerLogPath, -DisableAutoUpgrade, -NoWait, -OnboardingTimeout).
+* Fixed invalid URI issue with display name of location.
+* Fixed response can't be parsed issue with UseBasicParsing.
+
 ## Version 0.7.1
 * Made `New-AzConnectedKubernetes` support PowerShell 5.
 

@@ -37,7 +37,9 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChange("Starting in May 2023 the \"New-AzVmss\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch")]
+    [GenericBreakingChange("Starting May 2023, the \"New-AzVmss\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch", "6.0.0")]
+    [GenericBreakingChange("Starting May 2023, the \"New-AzVmss\" cmdlet will create a OrchestrationMode: Flexible VMSS by default unless explicitly provded \"-OrchestrationMode Uniform\".", "6.0.0")]
+    [GenericBreakingChange("Starting May 2023, the \"New-AzVmss\" used with \"-OrchestrationMode Flexible\" will allow NAT pool to be configured. Before, VMSS in OrchestrationMode:Flexible defaulted NAT pool to be not configured(null).", "6.0.0")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet

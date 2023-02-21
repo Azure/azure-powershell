@@ -32,6 +32,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Internal'", "Internal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Internal");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "enable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'enable'", "enable", global::System.Management.Automation.CompletionResultType.ParameterValue, "enable");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "optOut".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'optOut'", "optOut", global::System.Management.Automation.CompletionResultType.ParameterValue, "optOut");
+            }
         }
     }
 }
