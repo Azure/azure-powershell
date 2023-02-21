@@ -216,5 +216,12 @@ param(
         } else {
             Write-Error "The current context in the kubeconfig file does not correspond to the connected cluster resource specified. Agents installed on this cluster correspond to the resource group name '$ConfigmapRgName' and resource name '$ConfigmapClusterName'."
         }
+        if ($ReleaseNamespace -eq $ReleaseInstallNamespace) {
+            try {
+                kubectl delete namespace $ReleaseInstallNamespace
+            } catch {
+                throw "Unable to clean-up kubernetes namespace: $ReleaseInstallNamespace"
+            }
+        }
     }
 }
