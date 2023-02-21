@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added an optional parameter 'SecondaryType' to:
+    'Set-AzSqlDatabaseInstanceFailoverGroup'
+    'New-AzSqlDatabaseInstanceFailoverGroup'
 
 ## Version 4.3.0
 * Added an optional parameter `HAReplicaCount` to `Restore-AzSqlDatabase`
