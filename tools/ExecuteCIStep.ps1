@@ -102,7 +102,7 @@ Function Get-ModuleFromPath
         [String]
         $Path
     )
-    Return "Az." + $Path.Split([IO.Path]::DirectorySeparatorChar + "azure-powershell" + [IO.Path]::DirectorySeparatorChar + "src")[1].Split([IO.Path]::DirectorySeparatorChar)[1]
+    Return "Az." + $Path.Split([IO.Path]::DirectorySeparatorChar + "src")[1].Split([IO.Path]::DirectorySeparatorChar)[1]
     
 }
 
@@ -177,22 +177,6 @@ If ($Build)
         }
 
         #Region produce result.json for GitHub bot to comsume
-        If ($IsWindows)
-        {
-            $OS = "Windows"
-        }
-        ElseIf ($IsLinux)
-        {
-            $OS = "Linux"
-        }
-        ElseIf ($IsMacOS)
-        {
-            $OS = "MacOS"
-        }
-        Else
-        {
-            $OS = "Others"
-        }
         $Platform = Get-PlatformInfo
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
         $ModuleBuildInfoList = @()
