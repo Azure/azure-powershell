@@ -4,7 +4,7 @@
 # Create RDP extension object
 $rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name "RDPExtension" -Credential $credential -Expiration $expiration -TypeHandlerVersion "1.2.1"
 # Get existing cloud service
-$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 # Add RDP extension to existing cloud service extension object
 $cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension + $rdpExtension
 # Update cloud service
@@ -17,7 +17,7 @@ Above set of commands adds a RDP extension to already existing cloud service nam
 
 ```powershell
 # Get existing cloud service
-$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 # Set extension to empty list
 $cloudService.ExtensionProfile.Extension = @()
 # Update cloud service
@@ -30,7 +30,7 @@ Above set of commands removes all extensions from existing cloud service named C
 
 ```powershell
 # Get existing cloud service
-$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 # Remove extension by name RDPExtension
 $cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension | Where-Object { $_.Name -ne "RDPExtension" }
 # Update cloud service
@@ -43,7 +43,7 @@ Above set of commands removes RDP extension from existing cloud service named Co
 
 ```powershell
 # Get existing cloud service
-$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 
 # Scale-out all role instance count by 1
 $cloudService.RoleProfile.Role | ForEach-Object {$_.SkuCapacity += 1}

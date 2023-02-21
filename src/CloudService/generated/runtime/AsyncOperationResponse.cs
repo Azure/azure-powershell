@@ -31,10 +31,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
 
 
         /// <summary>
-        /// Creates a new instance of <see cref="AdministratorDetails" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="AsyncOperationResponse" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="AsyncOperationResponse" /> model class.</returns>
         public static AsyncOperationResponse FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(jsonText));
 
     }
@@ -43,19 +43,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
     {
 
         /// <summary>
-        /// Determines if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <paramref name="destinationType" />
         /// parameter.
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object"/> to convert from</param>
         /// <param name="destinationType">the <see cref="System.Type" /> to convert to</param>
         /// <returns>
-        /// <c>true</c> if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
+        /// <c>true</c> if the converter can convert the <paramref name="sourceValue"/> parameter to the <paramref name="destinationType" />
         /// parameter, otherwise <c>false</c>.
         /// </returns>
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to a <see cref="AsyncOperationResponse" /> type
         /// parameter.
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="AsyncOperationResponse"
@@ -104,19 +104,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
         }
 
         /// <summary>
-        /// Determines if the <see cref="sourceValue" /> parameter can be converted to the <see cref="destinationType" /> parameter
+        /// Determines if the <paramref name="sourceValue" /> parameter can be converted to the <paramref name="destinationType" /> parameter
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object"/> to convert from</param>
         /// <param name="destinationType">the <see cref="System.Type" /> to convert to</param>
         /// <returns>
-        /// <c>true</c> if the converter can convert the <see cref="sourceValue" /> parameter to the <see cref="destinationType" />
+        /// <c>true</c> if the converter can convert the <paramref name="sourceValue" /> parameter to the <paramref name="destinationType" />
         /// parameter, otherwise <c>false</c>
         /// </returns>
         public override bool CanConvertTo(object sourceValue, global::System.Type destinationType) => false;
 
         /// <summary>
-        /// Converts the <see cref="sourceValue" /> parameter to the <see cref="destinationType" /> parameter using <see cref="formatProvider"
-        /// /> and <see cref="ignoreCase" />
+        /// Converts the <paramref name="sourceValue" /> parameter to the <paramref name="destinationType" /> parameter using <paramref name="formatProvider"
+        /// /> and <paramref name="ignoreCase" />
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object"/> to convert from</param>
         /// <param name="destinationType">the <see cref="System.Type" /> to convert to</param>
@@ -128,8 +128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <see cref="sourceValue" /> parameter to the <see cref="destinationType" /> parameter using <see cref="formatProvider"
-        /// /> and <see cref="ignoreCase" />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="AsyncOperationResponse" />
         /// </summary>
         /// <param name="sourceValue">the value to convert into an instance of <see cref="AsyncOperationResponse" />.</param>
         /// <returns>
