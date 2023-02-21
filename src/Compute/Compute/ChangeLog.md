@@ -23,6 +23,8 @@
 * Added breaking change message for `New-AzVmss`.
 * Added `-PerformancePlus` parameter to `New-AzDiskConfig`
 * Added ''MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand
+* Added support for 'latest' in 'Get-AzvmImage' '-Version' parameter
+
 
 ## Version 5.4.0
 * Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
