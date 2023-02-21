@@ -62,12 +62,56 @@ function InitializeLiveTestModule {
 function New-LiveTestRandomName {
     [CmdletBinding()]
     [OutputType([string])]
-    param ()
+    param (
+        [Parameter()]
+        [ValidateSet("Alphanumerics", "AllNumbers", "AllLetters", "StartWithNumber", "StartWithLetter", IgnoreCase = $false)]
+        [string] $Option = "Alphanumerics",
+
+        [Parameter()]
+        [ValidateRange(1, 20)]
+        [int] $MaxLength = 10
+    )
 
     $alphanumerics = "0123456789abcdefghijklmnopqrstuvwxyz"
-    $randomName = $alphanumerics[(Get-Random -Maximum 10)]
-    for ($i = 0; $i -lt 9; $i ++) {
-        $randomName += $alphanumerics[(Get-Random -Maximum $alphanumerics.Length)]
+    $numLast = 10
+    $alphanumLast = $alphanumerics.Length
+
+    switch ($Option) {
+        "Alphanumerics" {
+            $firstChar = ""
+            $maxLen = $MaxLength
+            $min = 0
+            $max = $alphanumLast
+        }
+        "AllNumbers" {
+            $firstChar = ""
+            $maxLen = $MaxLength
+            $min = 0
+            $max = $numLast
+        }
+        "AllLetters" {
+            $firstChar = ""
+            $maxLen = $MaxLength
+            $min = $numLast
+            $max = $alphanumLast
+        }
+        "StartWithNumber" {
+            $firstChar = $alphanumerics[(Get-Random -Maximum $numLast)]
+            $maxLen = $MaxLength - 1
+            $min = 0
+            $max = $alphanumLast
+        }
+        "StartWithLetter" {
+            $firstChar = $alphanumerics[(Get-Random -Minimum $numLast -Maximum $alphanumLast)]
+            $maxLen = $MaxLength - 1
+            $min = 0
+            $max = $alphanumLast
+        }
+    }
+
+    $randomName += $firstChar
+    for ($i = 0; $i -lt $maxLen; $i ++) {
+        $randomName += $alphanumerics[(Get-Random -Minimum $min -Maximum $max)]
     }
 
     $randomName
@@ -79,7 +123,7 @@ function New-LiveTestResourceGroupName {
     param ()
 
     $rgPrefix = $script:ResourceGroupPrefix
-    $rgName = New-LiveTestRandomName
+    $rgName = New-LiveTestRandomName -Option StartWithNumber
 
     $rgFullName = "$rgPrefix$rgName"
     $rgFullName
@@ -109,7 +153,7 @@ function New-LiveTestResourceName {
     param ()
 
     $rPrefix = $script:ResourcePrefix
-    $rName = New-LiveTestRandomName
+    $rName = New-LiveTestRandomName -Option StartWithNumber
 
     $rFullName = "$rPrefix$rName"
     $rFullName
@@ -121,7 +165,7 @@ function New-LiveTestStorageAccountName {
     param ()
 
     $saPrefix = $script:StorageAccountPrefix
-    $saName = New-LiveTestRandomName
+    $saName = New-LiveTestRandomName -Option StartWithNumber
 
     $saFullName = "$saPrefix$saName"
     $saFullName

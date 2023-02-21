@@ -461,3 +461,163 @@ Invoke-LiveTestScenario -Name "Remove virtual network" -Description "Test removi
     $actual = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -ErrorAction SilentlyContinue
     Assert-Null $actual
 }
+
+Invoke-LiveTestScenario -Name "Create private DNS zone group" -Description "Test creating a private DNS zone group" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "westus"
+    $feSnetName = New-LiveTestResourceName
+    $beSnetName = New-LiveTestResourceName
+    $oSnetName = New-LiveTestResourceName
+    $vnetName = New-LiveTestResourceName
+    $feIpCfgName = New-LiveTestResourceName
+    $bePoolCfgName = New-LiveTestResourceName
+    $lbName = New-LiveTestResourceName
+    $plsIpCfgName = New-LiveTestResourceName
+    $plsName = New-LiveTestResourceName
+    $plsConnName = New-LiveTestResourceName
+    $peName = New-LiveTestResourceName
+
+    $r5l = New-LiveTestRandomName -Option AllLetters -MaxLength 5
+    $zoneName = "$r5l.private.contoso.com"
+    $zoneCfgName = New-LiveTestResourceName
+    $zoneGroupName = New-LiveTestResourceName
+
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $oSnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix "10.0.3.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet, $beSnet, $oSnet
+    $feSnet = $vnet.Subnets | Where-Object Name -eq $feSnetName
+    $oSnet = $vnet.Subnets | Where-Object Name -eq $oSnetName
+    $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -Subnet $feSnet -PrivateIpAddress "10.0.1.10"
+    $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
+    $lb = New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Sku Standard
+    $plsIpCfg = New-AzPrivateLinkServiceIpConfig -Name $plsIpCfgName -PrivateIpAddress "10.0.3.10" -Subnet $oSnet
+    $feIpCfg = $lb | Get-AzLoadBalancerFrontendIpConfig
+    $pls = New-AzPrivateLinkService -ResourceGroupName $rgName -Name $plsName -Location $location -IpConfiguration $plsIpCfg -LoadBalancerFrontendIpConfiguration $feIpCfg
+    $plsConn = New-AzPrivateLinkServiceConnection -Name $plsConnName -PrivateLinkServiceId $pls.Id
+    New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peName -Location $location -Subnet $feSnet -PrivateLinkServiceConnection $plsConn
+
+    New-AzPrivateDnsZone -ResourceGroupName $rgName -Name $zoneName
+    $zone = Get-AzPrivateDnsZone  -ResourceGroupName $rgName -Name $zoneName
+    $zoneCfg = New-AzPrivateDnsZoneConfig -Name $zoneCfgName -PrivateDnsZoneId $zone.ResourceId
+    New-AzPrivateDnsZoneGroup -ResourceGroupName $rgName -Name $zoneGroupName -PrivateEndpointName $peName -PrivateDnsZoneConfig $zoneCfg
+
+    $actual = Get-AzPrivateDnsZoneGroup -ResourceGroupName $rgName -Name $zoneGroupName -PrivateEndpointName $peName
+    Assert-NotNull $actual
+    Assert-AreEqual $zoneGroupName $actual.Name
+    Assert-AreEqual "Succeeded" $actual.ProvisioningState
+    Assert-AreEqual 1 $actual.PrivateDnsZoneConfigs.Count
+    Assert-AreEqual $zoneCfgName $actual.PrivateDnsZoneConfigs[0].Name
+    Assert-AreEqual $zone.ResourceId $actual.PrivateDnsZoneConfigs[0].PrivateDnsZoneId
+}
+
+Invoke-LiveTestScenario -Name "Update private DNS zone group" -Description "Test updating an existing private DNS zone group with different zone config" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "eastus"
+    $feSnetName = New-LiveTestResourceName
+    $beSnetName = New-LiveTestResourceName
+    $oSnetName = New-LiveTestResourceName
+    $vnetName = New-LiveTestResourceName
+    $feIpCfgName = New-LiveTestResourceName
+    $bePoolCfgName = New-LiveTestResourceName
+    $lbName = New-LiveTestResourceName
+    $plsIpCfgName = New-LiveTestResourceName
+    $plsName = New-LiveTestResourceName
+    $plsConnName = New-LiveTestResourceName
+    $peName = New-LiveTestResourceName
+
+    $r5l1 = New-LiveTestRandomName -Option AllLetters -MaxLength 5
+    $zoneName1 = "$r5l1.private.contoso.com"
+    $zoneCfgName1 = New-LiveTestResourceName
+    $zoneGroupName = New-LiveTestResourceName
+
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $oSnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix "10.0.3.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet, $beSnet, $oSnet
+    $feSnet = $vnet.Subnets | Where-Object Name -eq $feSnetName
+    $oSnet = $vnet.Subnets | Where-Object Name -eq $oSnetName
+    $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -Subnet $feSnet -PrivateIpAddress "10.0.1.10"
+    $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
+    $lb = New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Sku Standard
+    $plsIpCfg = New-AzPrivateLinkServiceIpConfig -Name $plsIpCfgName -PrivateIpAddress "10.0.3.10" -Subnet $oSnet
+    $feIpCfg = $lb | Get-AzLoadBalancerFrontendIpConfig
+    $pls = New-AzPrivateLinkService -ResourceGroupName $rgName -Name $plsName -Location $location -IpConfiguration $plsIpCfg -LoadBalancerFrontendIpConfiguration $feIpCfg
+    $plsConn = New-AzPrivateLinkServiceConnection -Name $plsConnName -PrivateLinkServiceId $pls.Id
+    New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peName -Location $location -Subnet $feSnet -PrivateLinkServiceConnection $plsConn
+
+    $zone1 = New-AzPrivateDnsZone -ResourceGroupName $rgName -Name $zoneName1
+    $zoneCfg1 = New-AzPrivateDnsZoneConfig -Name $zoneCfgName1 -PrivateDnsZoneId $zone1.ResourceId
+    New-AzPrivateDnsZoneGroup -ResourceGroupName $rgName -Name $zoneGroupName -PrivateEndpointName $peName -PrivateDnsZoneConfig $zoneCfg1
+
+    $r5l2 = New-LiveTestRandomName -Option AllLetters -MaxLength 5
+    $zoneName2 = "$r5l2.private.contoso.com"
+    $zoneCfgName2 = New-LiveTestResourceName
+
+    $zone2 = New-AzPrivateDnsZone -ResourceGroupName $rgName -Name $zoneName2
+    $zoneCfg2 = New-AzPrivateDnsZoneConfig -Name $zoneCfgName2 -PrivateDnsZoneId $zone2.ResourceId
+    Set-AzPrivateDnsZoneGroup -ResourceGroupName $rgName -Name $zoneGroupName -PrivateEndpointName $peName -PrivateDnsZoneConfig $zoneCfg2
+
+    $actual = Get-AzPrivateDnsZoneGroup -ResourceGroupName $rgName -Name $zoneGroupName -PrivateEndpointName $peName
+    Assert-NotNull $actual
+    Assert-AreEqual $zoneGroupName $actual.Name
+    Assert-AreEqual "Succeeded" $actual.ProvisioningState
+    Assert-AreEqual 1 $actual.PrivateDnsZoneConfigs.Count
+    Assert-AreEqual $zoneCfgName2 $actual.PrivateDnsZoneConfigs[0].Name
+    Assert-AreEqual $zone2.ResourceId $actual.PrivateDnsZoneConfigs[0].PrivateDnsZoneId
+}
+
+Invoke-LiveTestScenario -Name "Remove private DNS zone group" -Description "Test removing a private DNS zone group" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $location = "eastus"
+    $feSnetName = New-LiveTestResourceName
+    $beSnetName = New-LiveTestResourceName
+    $oSnetName = New-LiveTestResourceName
+    $vnetName = New-LiveTestResourceName
+    $feIpCfgName = New-LiveTestResourceName
+    $bePoolCfgName = New-LiveTestResourceName
+    $lbName = New-LiveTestResourceName
+    $plsIpCfgName = New-LiveTestResourceName
+    $plsName = New-LiveTestResourceName
+    $plsConnName = New-LiveTestResourceName
+    $peName = New-LiveTestResourceName
+
+    $r5l = New-LiveTestRandomName -Option AllLetters -MaxLength 5
+    $zoneName = "$r5l.private.contoso.com"
+    $zoneCfgName = New-LiveTestResourceName
+    $zoneGroupName = New-LiveTestResourceName
+
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $oSnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix "10.0.3.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet, $beSnet, $oSnet
+    $feSnet = $vnet.Subnets | Where-Object Name -eq $feSnetName
+    $oSnet = $vnet.Subnets | Where-Object Name -eq $oSnetName
+    $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -Subnet $feSnet -PrivateIpAddress "10.0.1.10"
+    $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
+    $lb = New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $feIpCfg -BackendAddressPool $bePoolCfg -Sku Standard
+    $plsIpCfg = New-AzPrivateLinkServiceIpConfig -Name $plsIpCfgName -PrivateIpAddress "10.0.3.10" -Subnet $oSnet
+    $feIpCfg = $lb | Get-AzLoadBalancerFrontendIpConfig
+    $pls = New-AzPrivateLinkService -ResourceGroupName $rgName -Name $plsName -Location $location -IpConfiguration $plsIpCfg -LoadBalancerFrontendIpConfiguration $feIpCfg
+    $plsConn = New-AzPrivateLinkServiceConnection -Name $plsConnName -PrivateLinkServiceId $pls.Id
+    New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peName -Location $location -Subnet $feSnet -PrivateLinkServiceConnection $plsConn
+
+    New-AzPrivateDnsZone -ResourceGroupName $rgName -Name $zoneName
+    $zone = Get-AzPrivateDnsZone -ResourceGroupName $rgName -Name $zoneName
+    $zoneCfg = New-AzPrivateDnsZoneConfig -Name $zoneCfgName -PrivateDnsZoneId $zone.ResourceId
+    New-AzPrivateDnsZoneGroup -ResourceGroupName $rgName -Name $zoneGroupName -PrivateEndpointName $peName -PrivateDnsZoneConfig $zoneCfg
+
+    Remove-AzPrivateDnsZoneGroup -ResourceGroupName $rgName -Name $zoneGroupName -PrivateEndpointName $peName -Force
+
+    $actual = Get-AzPrivateDnsZoneGroup -ResourceGroupName $rgName -Name $zoneGroupName -PrivateEndpointName $peName -ErrorAction SilentlyContinue
+    Assert-Null $actual
+}
