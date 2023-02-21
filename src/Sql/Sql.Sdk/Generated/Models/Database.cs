@@ -206,6 +206,14 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// for this database.</param>
         /// <param name="federatedClientId">The Client id used for cross tenant
         /// per database CMK scenario</param>
+        /// <param name="keys">The resource ids of the user assigned identities
+        /// to use</param>
+        /// <param name="encryptionProtector">The azure key vault URI of the
+        /// database if it's configured with per Database Customer Managed
+        /// Keys.</param>
+        /// <param name="preferredEnclaveType">Type of enclave requested on the
+        /// database i.e. Default or VBS enclaves. Possible values include:
+        /// 'Default', 'VBS'</param>
         /// <param name="sourceResourceId">The resource identifier of the
         /// source associated with the create operation of this database.
         ///
@@ -308,7 +316,6 @@ namespace Microsoft.Azure.Management.Sql.Models
             IsLedgerOn = isLedgerOn;
             IsInfraEncryptionEnabled = isInfraEncryptionEnabled;
             FederatedClientId = federatedClientId;
-            PreferredEnclaveType = preferredEnclaveType;
             Keys = keys;
             EncryptionProtector = encryptionProtector;
             PreferredEnclaveType = preferredEnclaveType;
