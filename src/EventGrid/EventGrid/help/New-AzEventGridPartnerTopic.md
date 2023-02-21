@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgridpartnertopic
 schema: 2.0.0
 ---
 
@@ -46,7 +46,7 @@ Creates a new Event Grid partner topic \`PartnerTopic\` in resource group \`MyRe
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -62,7 +62,7 @@ The kind of event type used.
 Possible values include: 'Inline'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 Accepted values: Inline
@@ -79,7 +79,7 @@ Expiration time of the partner topic.
 If this timer expires while the partner topic is still never activated, the partner topic and corresponding event channel are deleted.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The list of user assigned identities
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 
@@ -110,7 +110,7 @@ Different identity types.
 Could be either  of following 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
@@ -127,7 +127,7 @@ Hashtable representing information on inline events.
 The inline event keys are of type string which represents the name of the event.The inline event values are Hashtables containing the optional keys description, displayName, documentationUrl, and dataSchemaUrl which define the information about the inline event.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 Accepted values: Inline
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 The location of the topic.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 Context or helpful message that can be used during the approval process by the subscriber.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 EventGrid topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases: PartnerTopicName
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 Immutable id of the corresponding partner registration
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 Hashtable which represents resource Tags.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases: ResourceGroup
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 Source for a system topic
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 Hashtable which represents resource Tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases:
 
@@ -263,7 +263,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -279,7 +279,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

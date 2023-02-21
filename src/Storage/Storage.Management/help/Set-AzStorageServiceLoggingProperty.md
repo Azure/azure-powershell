@@ -25,8 +25,8 @@ The **Set-AzStorageServiceLoggingProperty** cmdlet modifies logging for Azure St
 ## EXAMPLES
 
 ### Example 1: Modify logging properties for the Blob service
-```
-C:\PS>Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write -PassThru -RetentionDays 10 -Version 1.0
+```powershell
+Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write -PassThru -RetentionDays 10 -Version 1.0
 ```
 
 This command modifies version 1.0 logging for blob storage to include read and write operations.

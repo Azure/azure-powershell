@@ -49,17 +49,17 @@ The **New-AzStorageFileSASToken** cmdlet generates a shared access signature tok
 ## EXAMPLES
 
 ### Example 1: Generate a shared access signature token that has full file permissions
-```
-PS C:\> New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd"
+```powershell
+New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd"
 ```
 
 This command generates a shared access signature token that has full permissions for the file that is named FilePath.
 
 ### Example 2: Generate a shared access signature token that has a time limit
-```
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $StartTime.AddHours(2.0)
-PS C:\> New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd" -StartTime $StartTime -ExpiryTime $EndTime
+```powershell
+$StartTime = Get-Date
+$EndTime = $StartTime.AddHours(2.0)
+New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd" -StartTime $StartTime -ExpiryTime $EndTime
 ```
 
 The first command creates a **DateTime** object by using the Get-Date cmdlet.

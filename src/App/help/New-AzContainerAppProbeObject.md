@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
+online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappprobeobject
 schema: 2.0.0
 ---
 

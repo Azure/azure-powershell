@@ -103,8 +103,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
                 return container;
             }
             AddIf( null != (((object)this._timeZone)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString(this._timeZone.ToString()) : null, "timeZone" ,container.Add );
-            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString(this._start.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)), "start" ,container.Add );
-            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString(this._end.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)), "end" ,container.Add );
+            AddIf( null != this._start ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString(this._start?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "start" ,container.Add );
+            AddIf( null != this._end ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json.JsonString(this._end?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "end" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

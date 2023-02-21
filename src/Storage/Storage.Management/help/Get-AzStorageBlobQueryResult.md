@@ -50,18 +50,19 @@ The **Get-AzStorageBlobQueryResult** cmdlet applies a simple Structured Query La
 ## EXAMPLES
 
 ### Example 1: Query a blob
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> $inputconfig = New-AzStorageBlobQueryConfig -AsCsv -HasHeader
+$inputconfig = New-AzStorageBlobQueryConfig -AsCsv -HasHeader
 
-PS C:\> $outputconfig = New-AzStorageBlobQueryConfig -AsJson
+$outputconfig = New-AzStorageBlobQueryConfig -AsJson
 
-PS C:\> $queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
+$queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
 
-PS C:\> $result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
+$result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
 
-PS C:\> $result
+$result
+```
 
+```output
 BytesScanned FailureCount BlobQueryError
 ------------ ------------ --------------
          449            0

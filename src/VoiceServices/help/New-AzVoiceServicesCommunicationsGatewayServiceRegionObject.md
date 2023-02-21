@@ -93,7 +93,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ServiceRegionProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ServiceRegionProperties
 
 ## NOTES
 

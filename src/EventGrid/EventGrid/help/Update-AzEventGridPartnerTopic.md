@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/update-azeventgridpartnertopic
 schema: 2.0.0
 ---
 
@@ -54,14 +54,13 @@ Update-AzEventGridPartnerTopic -ResourceGroup MyResourceGroupName -Name Topic1 -
 
 Sets the properties of the Event Grid Partner topic \`Topic1\` in resource group \`MyResourceGroupName\` to change identity type to \`UserAssigned\` with given identity ids.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -76,7 +75,7 @@ Accept wildcard characters: False
 The list of user assigned identities
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +91,7 @@ Different identity types.
 Could be either  of following 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
@@ -108,7 +107,7 @@ Accept wildcard characters: False
 PartnerTopic object.
 
 ```yaml
-Type: PSPartnerTopic
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSPartnerTopic
 Parameter Sets: PartnerTopicInputObjectParameterSet
 Aliases:
 
@@ -123,7 +122,7 @@ Accept wildcard characters: False
 Event Grid partner topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases: PartnerTopicName
 
@@ -138,7 +137,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicNameParameterSet
 Aliases: ResourceGroup
 
@@ -153,7 +152,7 @@ Accept wildcard characters: False
 Hashtable which represents resource Tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +167,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -184,7 +183,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

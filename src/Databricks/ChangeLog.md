@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2023-02-01
 
 ## Version 1.4.0
 * Added `RequiredNsgRule` parameter in the `Update-AzDatabricksWorkspace`.

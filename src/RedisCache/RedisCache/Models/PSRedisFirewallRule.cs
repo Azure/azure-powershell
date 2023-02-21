@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using System;
-    using Management.Redis.Models;
+    using Microsoft.Azure.Management.RedisCache.Models;
 
     public class PSRedisFirewallRule
     {

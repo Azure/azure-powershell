@@ -30,18 +30,18 @@ For information on how to develop for `Az.ServiceLinker`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 3abdf3eaf45b42d78e242a2cca4a977e8dcf3103
+branch: e7bf3adfa2d5e5cdbb804eec35279501794f461c
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/servicelinker.json
+  - $(repo)/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/preview/2022-11-01-preview/servicelinker.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
   # - $(this-folder)/../APISpecs/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/servicelinker.json
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 0.1.1
 # Normally, title is the service name
 title: ServiceLinker
 # subject-prefix: "ServiceLinker"
@@ -61,6 +61,13 @@ directive:
   - where:
       verb: Set
     remove: true
+  - where:
+      subject: ConnectorDryrun|Connector|ConnectorConfiguration
+    remove: true
+  - where:
+      verb: New|Update
+      parameter-name: (.*)DeleteOrUpdateBehavior$
+    hide: true
   - from: swagger-document
     where: 
       - $.paths["/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}"].put.parameters
@@ -104,5 +111,4 @@ directive:
     set:
       default: 
         script: '"none"'
-    
 ```
