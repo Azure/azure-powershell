@@ -1,7 +1,7 @@
 
 function Get-HelmClientLocation {
 [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
-    param(        
+    param(
     )
     process {
         if (Test-Path Env:HELM_CLIENT_PATH) {
@@ -20,7 +20,7 @@ function Get-HelmClientLocation {
             $ZipLocation = Join-Path -Path $RootFolder -ChildPath $ZipName
             $InstallLocation = Join-Path -Path $RootFolder -ChildPath "windows-amd64"
             $HelmLocation = Join-Path -Path $InstallLocation -ChildPath "helm.exe"
-            try{
+            try {
                 if (!(Test-Path $RootFolder)) {
                     $null = New-Item $RootFolder -ItemType Directory
                 }
@@ -29,7 +29,7 @@ function Get-HelmClientLocation {
                     Expand-Archive $ZipLocation $RootFolder
                 }
                 if (Test-Path $HelmLocation) {
-                    $PathStr = $InstallLocation+";$env:Path"        
+                    $PathStr = $InstallLocation + ";$env:Path"        
                     Set-Item -Path Env:Path -Value $PathStr
                 }
             } catch {
@@ -45,8 +45,8 @@ function Get-HelmClientLocation {
 
 function Get-Release-Install-Namespace {
 [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
-    param(        
-        )
+    param(
+    )
     process {
         return "azure-arc-release"
     }
@@ -54,7 +54,7 @@ function Get-Release-Install-Namespace {
 
 function IsWindows {
 [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
-    param(        
+    param(
     )
     process {
         return (Get-OSName).contains("Windows")
@@ -68,11 +68,9 @@ function Get-OSName {
     process {
         if ($PSVersionTable.PSEdition.Contains("Core")) {
             $OSPlatform = $PSVersionTable.OS
-        }
-        else {
+        } else {
             $OSPlatform = $env:OS
         }
-        
         return $OSPlatform
     }
 }

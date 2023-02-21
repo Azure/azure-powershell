@@ -351,7 +351,7 @@ function New-AzConnectedKubernetes {
                 $ReleaseTrain = Get-ChildItem -Path Env:RELEASETRAIN
             } else {
                 $ReleaseTrain = 'stable'
-            }            
+            }
             $AzLocation = Get-AzLocation | Where-Object { ($_.DisplayName -ieq $Location) -or ($_.Location -ieq $Location)}
             $Region = $AzLocation.Location
             if ($null -eq $Region) {
@@ -471,13 +471,13 @@ function New-AzConnectedKubernetes {
             $options += " --set systemDefaultValues.fluent-bit.containerLogPath=$ContainerLogPath"
             $Null = $PSBoundParameters.Remove('ContainerLogPath')
         }
-	    if (-not ([string]::IsNullOrEmpty($KubeConfig))) {
+        if (-not ([string]::IsNullOrEmpty($KubeConfig))) {
             $options += " --kubeconfig $KubeConfig"
         }
-	    if (-not ([string]::IsNullOrEmpty($KubeContext))) {
+        if (-not ([string]::IsNullOrEmpty($KubeContext))) {
             $options += " --kube-context $KubeContext"
         }
-	    if (!$NoWait) {
+        if (!$NoWait) {
             $options += " --wait --timeout $OnboardingTimeout"
             $options += "s"
         }        
@@ -504,7 +504,7 @@ function New-AzConnectedKubernetes {
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id        
-	    helm upgrade --install azure-arc $ChartPath --namespace $ReleaseInstallNamespace --create-namespace --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure (-split $options)
+        helm upgrade --install azure-arc $ChartPath --namespace $ReleaseInstallNamespace --create-namespace --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure (-split $options)
         Return $Response
     }
 }
