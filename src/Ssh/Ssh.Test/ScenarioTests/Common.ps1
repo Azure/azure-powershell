@@ -8,17 +8,17 @@ function RandomString([bool]$allChars, [int32]$len) {
 
 function Get-RandomArcName
 {
-    return 'arc-' + (RandomString -allChars $false -len 6)
+    return 'arc-' + (getAssetName)
 }
 
 function Get-RandomVmName
 {
-    return 'vm-' + (RandomString -allChars $false -len 6)
+    return 'vm-' + (getAssetName)
 }
 
 function Get-RandomResourceGroupName 
 {
-    return 'rg-' + (RandomString -allChars $false -len 6)
+    return 'rg-' + (getAssetName)
 }
 
 function Get-PasswordForVM

@@ -73,6 +73,8 @@ function Test-GetVmConfig
 {
     $VmName = Get-RandomVmName
     $ResourceGroupName = Get-RandomResourceGroupName
+    #$VmName = "myVM"
+    #$ResourceGroupName = "myRG"
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
     
@@ -82,9 +84,10 @@ function Test-GetVmConfig
 
     New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
 
+    $domainlabel = "d1" + $ResourceGroupName
     try 
     {
-        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Image UbuntuLTS -Credential $cred
+        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -DomainNameLabel $domainlabel
         Remove-Item ./config -ErrorAction Ignore
 
         Assert-NotNull $vm
