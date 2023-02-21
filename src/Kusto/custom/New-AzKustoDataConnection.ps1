@@ -110,7 +110,7 @@ function New-AzKustoDataConnection {
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String[]]
         # System properties of the event/iot hub.
-        ${EventSystemProperty},
+        ${EventSystemProperties},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -147,6 +147,34 @@ function New-AzKustoDataConnection {
         [System.String]
         # The name of the share access policy.
         ${SharedAccessPolicyName},
+
+        [Parameter(ParameterSetName = 'CreateExpandedEventHub')]
+        [Parameter(ParameterSetName = 'CreateExpandedEventGrid', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The resource ID of a managed identity (system or user assigned) to be used to authenticate with external resources.
+        ${ManagedIdentityResourceId},
+
+        [Parameter(ParameterSetName = 'CreateExpandedEventHub')]
+        [Parameter(ParameterSetName = 'CreateExpandedEventGrid', Mandatory)]
+        [Parameter(ParameterSetName = 'CreateExpandedIotHub', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting]
+        # Indication for database routing information from the data connection, by default only database routing information is allowed.
+        ${DatabaseRouting},
+
+        [Parameter(ParameterSetName = 'CreateExpandedEventHub')]
+        [Parameter(ParameterSetName = 'CreateExpandedIotHub', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.DateTime]
+        # When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
+        ${RetrievalStartDate},
+
+        [Parameter(ParameterSetName = 'CreateExpandedEventGrid', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The resource ID of the event grid that is subscribed to the storage account events.
+        ${EventGridResourceId},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -222,14 +250,29 @@ function New-AzKustoDataConnection {
                 $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']            
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
 
-                if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
-                    $Parameter.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
-                    $null = $PSBoundParameters.Remove('EventSystemProperty')
+                if ($PSBoundParameters.ContainsKey('EventSystemProperties')) {
+                    $Parameter.EventSystemProperties = $PSBoundParameters['EventSystemProperties']
+                    $null = $PSBoundParameters.Remove('EventSystemProperties')
                 }
 
                 if ($PSBoundParameters.ContainsKey('Compression')) {
                     $Parameter.Compression = $PSBoundParameters['Compression']
                     $null = $PSBoundParameters.Remove('Compression')
+                }
+
+                if ($PSBoundParameters.ContainsKey('ManagedIdentityResourceId')) {
+                    $Parameter.ManagedIdentityResourceId = $PSBoundParameters['ManagedIdentityResourceId']
+                    $null = $PSBoundParameters.Remove('ManagedIdentityResourceId')
+                }
+                
+                if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {
+                    $Parameter.DatabaseRouting = $PSBoundParameters['DatabaseRouting']
+                    $null = $PSBoundParameters.Remove('DatabaseRouting')
+                }
+                
+                if ($PSBoundParameters.ContainsKey('RetrievalStartDate')) {
+                    $Parameter.RetrievalStartDate = $PSBoundParameters['RetrievalStartDate']
+                    $null = $PSBoundParameters.Remove('RetrievalStartDate')
                 }
             }
             elseif ($PSBoundParameters['Kind'] -eq 'EventGrid') {
@@ -250,6 +293,21 @@ function New-AzKustoDataConnection {
                     $Parameter.IgnoreFirstRecord = $PSBoundParameters['IgnoreFirstRecord']
                     $null = $PSBoundParameters.Remove('IgnoreFirstRecord')
                 }
+
+                if ($PSBoundParameters.ContainsKey('EventGridResourceId')) {
+                    $Parameter.EventGridResourceId = $PSBoundParameters['EventGridResourceId']
+                    $null = $PSBoundParameters.Remove('EventGridResourceId')
+                }
+
+                if ($PSBoundParameters.ContainsKey('ManagedIdentityResourceId')) {
+                    $Parameter.ManagedIdentityResourceId = $PSBoundParameters['ManagedIdentityResourceId']
+                    $null = $PSBoundParameters.Remove('ManagedIdentityResourceId')
+                }
+
+                if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {
+                    $Parameter.DatabaseRouting = $PSBoundParameters['DatabaseRouting']
+                    $null = $PSBoundParameters.Remove('DatabaseRouting')
+                }
             }
             else {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IotHubDataConnection]::new()
@@ -260,9 +318,19 @@ function New-AzKustoDataConnection {
                 $Parameter.SharedAccessPolicyName = $PSBoundParameters['SharedAccessPolicyName']
                 $null = $PSBoundParameters.Remove('SharedAccessPolicyName')
 
-                if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
-                    $Parameter.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
-                    $null = $PSBoundParameters.Remove('EventSystemProperty')
+                if ($PSBoundParameters.ContainsKey('EventSystemProperties')) {
+                    $Parameter.EventSystemProperties = $PSBoundParameters['EventSystemProperties']
+                    $null = $PSBoundParameters.Remove('EventSystemProperties')
+                }
+
+                if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {
+                    $Parameter.DatabaseRouting = $PSBoundParameters['DatabaseRouting']
+                    $null = $PSBoundParameters.Remove('DatabaseRouting')
+                }
+
+                if ($PSBoundParameters.ContainsKey('RetrievalStartDate')) {
+                    $Parameter.RetrievalStartDate = $PSBoundParameters['RetrievalStartDate']
+                    $null = $PSBoundParameters.Remove('RetrievalStartDate')
                 }
             }
 
