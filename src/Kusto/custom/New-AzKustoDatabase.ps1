@@ -19,7 +19,8 @@ Creates or updates a database.
 .Description
 Creates or updates a database.
 .Example
-New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
+New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US' -CallerRole Admin
+
 
 Kind      Location Name                                Type
 ----      -------- ----                                ----
@@ -74,6 +75,13 @@ function New-AzKustoDatabase {
         [System.TimeSpan]
         # The time the data should be kept before it stops being accessible to queries in TimeSpan.
         ${SoftDeletePeriod},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Query')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole]
+        # By default, any user who run operation on a database become an Admin on it.
+        # This property allows the caller to exclude the caller from Admins list.
+        ${CallerRole},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -160,7 +168,7 @@ function New-AzKustoDatabase {
                 $Parameter.HotCachePeriod = $PSBoundParameters['HotCachePeriod']
                 $null = $PSBoundParameters.Remove('HotCachePeriod')
             }
-
+            
             $null = $PSBoundParameters.Add('Parameter', $Parameter)
 
             Az.Kusto.internal\New-AzKustoDatabase @PSBoundParameters
