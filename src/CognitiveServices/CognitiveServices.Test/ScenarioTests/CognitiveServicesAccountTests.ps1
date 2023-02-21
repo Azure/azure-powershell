@@ -1569,6 +1569,122 @@ function Test-CommitmentPlan
 
 <#
 .SYNOPSIS
+Test CommitmentPlan
+#>
+function Test-SharedCommitmentPlan
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $planname = 'scp' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'SpeechServices';
+        $loc = "Central US EUAP";
+        
+        # generate a account
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        Assert-NotNull $createdAccount;
+        
+        $properties = New-AzCognitiveServicesObject -Type CommitmentPlanProperties
+        $properties.HostingModel = "Web"
+        $properties.AutoRenew = $false
+        $properties.PlanType = "STT"
+        $properties.Current.Tier = "T1"
+        $properties.Next = $null
+
+        $createdPlan = New-AzCognitiveServicesCommitmentPlan -ResourceGroupName $rgname -Name $planname -Type $accounttype -SkuName $skuname -Location $loc  -Properties $properties;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdPlan.Properties.HostingModel "Web"
+        Assert-AreEqual $createdPlan.Properties.PlanType "STT"
+        Assert-AreEqual $createdPlan.Properties.Current.Tier "T1"
+
+        $plan = Get-AzCognitiveServicesCommitmentPlan -ResourceGroupName $rgname -Name $planname;
+        Assert-AreEqual $plan.Id $createdPlan.Id
+        Assert-AreEqual $plan.Properties.HostingModel "Web"
+
+        $association = New-AzCognitiveServicesCommitmentPlanAssociation -ResourceGroupName $rgname -CommitmentPlanName $planname -Name "association" -AccountId $createdAccount.Id;
+        Assert-NotNull $association;
+        Assert-AreEqual $association.AccountId $createdAccount.Id
+
+        $association = Get-AzCognitiveServicesCommitmentPlanAssociation -ResourceGroupName $rgname -CommitmentPlanName $planname -Name "association";
+        Assert-AreEqual $association.AccountId $createdAccount.Id
+
+        $account = Get-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
+        Assert-AreEqual $account.Properties.CommitmentPlanAssociations.Length 1
+        Assert-AreEqual $account.Properties.CommitmentPlanAssociations[0].CommitmentPlanId $plan.Id
+
+        Remove-AzCognitiveServicesCommitmentPlanAssociation -ResourceGroupName $rgname -CommitmentPlanName $planname -Name "association";
+
+        $account = Get-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
+        Assert-AreEqual $account.Properties.CommitmentPlanAssociations.Length 0
+
+        Remove-AzCognitiveServicesCommitmentPlan -ResourceGroupName $rgname -Name $planname;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test MultiRegionSettings
+#>
+function Test-MultiRegionSettings
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'ComputerVision';
+        $loc = "CentralUSEUAP";
+        
+        # generate a account
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname;
+        Assert-NotNull $createdAccount;
+        
+        $multiRegionSettings = New-AzCognitiveServicesObject -Type MultiRegionSettings
+        $multiRegionSettings.RoutingMethod = "Performance"
+
+        $regionSetting1 = New-AzCognitiveServicesObject -Type RegionSetting
+        $regionSetting1.Name = "CentralUSEUAP"
+        $regionSetting1.Value = 1
+
+        $regionSetting2 = New-AzCognitiveServicesObject -Type RegionSetting
+        $regionSetting2.Name = "EastUS2EUAP"
+        $regionSetting2.Value = 1
+
+        $multiRegionSettings.Regions.Add($regionSetting1)
+        $multiRegionSettings.Regions.Add($regionSetting2)
+
+        Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -MultiRegionSetting $multiRegionSettings
+
+        $account = Get-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname
+        Assert-NotNull $account.Properties.Locations;
+        Assert-AreEqual $account.Properties.Locations.RoutingMethod "Performance";
+        Assert-AreEqual $account.Properties.Locations.Regions.Count 2
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Deployment
 #>
 function Test-Deployment
