@@ -349,6 +349,12 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal void ValidateParameters()
         {
+            var context = DefaultProfile.DefaultContext;
+            if (LocalUser == null && context.Account.Type.Equals("ServicePrincipal"))
+            {
+                throw new AzPSArgumentException("Azure PowerShell doesn't currently support AAD login for Service Principal accounts. Provide a -LocalUser.", nameof(LocalUser));
+            }
+
             if (CertificateFile != null)
             {
                 if (LocalUser == null)
@@ -373,7 +379,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
                 if (Directory.Exists(ConfigFilePath))
                 {
-                    throw new AzPSArgumentException($"{ConfigFilePath} is a directory, unable to write config file in that path. Provide a valid path for a file.", ConfigFilePath);
+                    throw new AzPSArgumentException($"{ConfigFilePath} is a directory, unable to write config file in that path. Provide a valid path for a file.", nameof(ConfigFilePath));
                 }
 
                 string configFolder = Path.GetDirectoryName(ConfigFilePath);
