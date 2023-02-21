@@ -744,10 +744,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ACCEPTEDAUDIENCE <IAcceptedAudiences[]>: The cluster's accepted audiences.
+`ACCEPTEDAUDIENCE <IAcceptedAudiences[]>`: The cluster's accepted audiences.
   - `[Value <String>]`: GUID or valid URL representing an accepted audience.
 
-INPUTOBJECT <IKustoIdentity>: Identity Parameter
+`INPUTOBJECT <IKustoIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[ClusterName <String>]`: The name of the Kusto cluster.
   - `[DataConnectionName <String>]`: The name of the data connection.
@@ -763,7 +763,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   - `[ScriptName <String>]`: The name of the Kusto database script.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants.
+`TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>`: The cluster's external tenants.
   - `[Value <String>]`: GUID representing an external tenant.
 
 ## RELATED LINKS

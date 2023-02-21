@@ -16,10 +16,9 @@ Updates a data connection.
 ```
 Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
- -Location <String> [-SubscriptionId <String>] [-Compression <Compression>]
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Location <String> [-SubscriptionId <String>] [-Compression <Compression>] [-DataFormat <String>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpandedEventGrid
@@ -27,7 +26,7 @@ Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name 
 Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
  -Location <String> -StorageAccountResourceId <String> [-SubscriptionId <String>]
- [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>] [-IgnoreFirstRecord]
+ [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <String>] [-IgnoreFirstRecord]
  [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -36,17 +35,16 @@ Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name 
 ```
 Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -IotHubResourceId <String> -Kind <Kind>
- -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>]
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>] [-DataFormat <String>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedEventGrid
 ```
 Update-AzKustoDataConnection -InputObject <IKustoIdentity> -ConsumerGroup <String>
  -EventHubResourceId <String> -Kind <Kind> -Location <String> -StorageAccountResourceId <String>
- [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>] [-IgnoreFirstRecord]
+ [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <String>] [-IgnoreFirstRecord]
  [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -55,15 +53,14 @@ Update-AzKustoDataConnection -InputObject <IKustoIdentity> -ConsumerGroup <Strin
 ```
 Update-AzKustoDataConnection -InputObject <IKustoIdentity> -ConsumerGroup <String>
  -EventHubResourceId <String> -Kind <Kind> -Location <String> [-Compression <Compression>]
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedIotHub
 ```
 Update-AzKustoDataConnection -InputObject <IKustoIdentity> -ConsumerGroup <String> -IotHubResourceId <String>
- -Kind <Kind> -Location <String> -SharedAccessPolicyName <String> [-DataFormat <EventGridDataFormat>]
+ -Kind <Kind> -Location <String> -SharedAccessPolicyName <String> [-DataFormat <String>]
  [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -251,7 +248,7 @@ The data format of the message.
 Optionally the data format can be added to each message.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -546,7 +543,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IDataConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection
 
 ## NOTES
 
@@ -557,7 +554,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKustoIdentity>: Identity Parameter
+`INPUTOBJECT <IKustoIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[ClusterName <String>]`: The name of the Kusto cluster.
   - `[DataConnectionName <String>]`: The name of the data connection.

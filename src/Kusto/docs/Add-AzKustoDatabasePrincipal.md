@@ -205,7 +205,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKustoIdentity>: Identity Parameter
+`INPUTOBJECT <IKustoIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[ClusterName <String>]`: The name of the Kusto cluster.
   - `[DataConnectionName <String>]`: The name of the data connection.
@@ -221,7 +221,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   - `[ScriptName <String>]`: The name of the Kusto database script.
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-VALUE <IDatabasePrincipal[]>: The list of Kusto database principals.
+`VALUE <IDatabasePrincipal[]>`: The list of Kusto database principals.
   - `Name <String>`: Database principal name.
   - `Role <DatabasePrincipalRole>`: Database principal role.
   - `Type <DatabasePrincipalType>`: Database principal type.

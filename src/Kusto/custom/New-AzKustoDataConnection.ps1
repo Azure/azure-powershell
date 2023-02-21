@@ -86,15 +86,13 @@ function New-AzKustoDataConnection {
         # The event/iot hub consumer group.
         ${ConsumerGroup},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'CreateExpandedEventGrid')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType]
         # The name of blob storage event type to process.
         ${BlobStorageEventType},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'CreateExpandedEventGrid')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # If set to true, indicates that ingestion should ignore the first record of every file.
@@ -102,7 +100,8 @@ function New-AzKustoDataConnection {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat]
+        [System.String]
+        [ValidateSet( "MULTIJSON", "JSON", "CSV", "TSV", "SCSV", "SOHSV", "PSV", "TXT", "RAW", "SINGLEJSON", "AVRO", "TSVE", "PARQUET", "ORC", "APACHEAVRO", "W3CLOGFILE")]
         # The data format of the message. Optionally the data format can be added to each message.
         ${DataFormat},
 

@@ -121,7 +121,8 @@ function Invoke-AzKustoDataConnectionValidation {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat]
+        [System.String]
+        [ValidateSet( "MULTIJSON", "JSON", "CSV", "TSV", "SCSV", "SOHSV", "PSV", "TXT", "RAW", "SINGLEJSON", "AVRO", "TSVE", "PARQUET", "ORC", "APACHEAVRO", "W3CLOGFILE")]
         # The data format of the message. Optionally the data format can be added to each message.
         ${DataFormat},
 

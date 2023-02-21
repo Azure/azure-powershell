@@ -16,10 +16,9 @@ Creates or updates a data connection.
 ```
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
- -Location <String> [-SubscriptionId <String>] [-Compression <Compression>]
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Location <String> [-SubscriptionId <String>] [-Compression <Compression>] [-DataFormat <String>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedEventGrid
@@ -27,36 +26,18 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
  -Location <String> -StorageAccountResourceId <String> [-SubscriptionId <String>]
- [-DataFormat <EventGridDataFormat>] [-MappingRuleName <String>] [-TableName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <String>] [-IgnoreFirstRecord]
+ [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedIotHub
 ```
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -IotHubResourceId <String> -Kind <Kind>
- -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>]
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpandedEventGrid
-```
-New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> -ConsumerGroup <String> -Kind <Kind> -Location <String>
- [-SubscriptionId <String>] [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>]
- [-IgnoreFirstRecord] [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpandedEventGrid
-```
-New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> -ConsumerGroup <String> -Kind <Kind> -Location <String>
- [-SubscriptionId <String>] [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>]
- [-IgnoreFirstRecord] [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>] [-DataFormat <String>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +106,7 @@ The name of blob storage event type to process.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType
-Parameter Sets: UpdateExpandedEventGrid, UpdateViaIdentityExpandedEventGrid
+Parameter Sets: CreateExpandedEventGrid
 Aliases:
 
 Required: False
@@ -200,7 +181,7 @@ The data format of the message.
 Optionally the data format can be added to each message.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -261,7 +242,7 @@ If set to true, indicates that ingestion should ignore the first record of every
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedEventGrid, UpdateViaIdentityExpandedEventGrid
+Parameter Sets: CreateExpandedEventGrid
 Aliases:
 
 Required: False

@@ -724,10 +724,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ACCEPTEDAUDIENCE <IAcceptedAudiences[]>: The cluster's accepted audiences.
+`ACCEPTEDAUDIENCE <IAcceptedAudiences[]>`: The cluster's accepted audiences.
   - `[Value <String>]`: GUID or valid URL representing an accepted audience.
 
-TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants.
+`TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>`: The cluster's external tenants.
   - `[Value <String>]`: GUID representing an external tenant.
 
 ## RELATED LINKS

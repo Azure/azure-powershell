@@ -56,7 +56,6 @@ Script: Name='newkustoscript!' does not comply with naming rules (contains inval
 
 The above command checks that the script name which is not valid.
 
-
 ## PARAMETERS
 
 ### -ClusterName
@@ -217,21 +216,21 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKustoIdentity>: Identity Parameter
-- `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
-- `[ClusterName <String>]`: The name of the Kusto cluster.
-- `[DataConnectionName <String>]`: The name of the data connection.
-- `[DatabaseName <String>]`: The name of the database in the Kusto cluster.
-- `[Id <String>]`: Resource identity path
-- `[Location <String>]`: Azure location (region) name.
-- `[ManagedPrivateEndpointName <String>]`: The name of the managed private endpoint.
-- `[OperationId <String>]`: The Guid of the operation ID
-- `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
-- `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-- `[PrivateLinkResourceName <String>]`: The name of the private link resource.
-- `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
-- `[ScriptName <String>]`: The name of the Kusto database script.
-- `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+`INPUTOBJECT <IKustoIdentity>`: Identity Parameter
+  - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
+  - `[ClusterName <String>]`: The name of the Kusto cluster.
+  - `[DataConnectionName <String>]`: The name of the data connection.
+  - `[DatabaseName <String>]`: The name of the database in the Kusto cluster.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: Azure location (region) name.
+  - `[ManagedPrivateEndpointName <String>]`: The name of the managed private endpoint.
+  - `[OperationId <String>]`: The Guid of the operation ID
+  - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[PrivateLinkResourceName <String>]`: The name of the private link resource.
+  - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
+  - `[ScriptName <String>]`: The name of the Kusto database script.
+  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
 
