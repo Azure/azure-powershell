@@ -6,4 +6,3 @@ Remove-AzContainerInstanceSubnetServiceAssociationLink -ResourceGroup testRg -Su
 ```output
 ```
 Removes the service association link for the specified subnet.
-

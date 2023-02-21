@@ -75,7 +75,7 @@ Create a in-memory object for Remote Desktop Extension
 Create a in-memory object for CloudServiceRoleProfileProperties
 
 ### [New-AzCloudServiceVaultSecretGroupObject](New-AzCloudServiceVaultSecretGroupObject.md)
-Create a in-memory object for Secret Group
+Create a in-memory object for Vault Secret Group
 
 ### [Remove-AzCloudService](Remove-AzCloudService.md)
 Deletes a cloud service.
