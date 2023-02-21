@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgraded API version to 2021-11-01.
 
 ## Version 1.0.3
 * Update references in .psd1 to use relative path

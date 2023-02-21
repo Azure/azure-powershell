@@ -12,7 +12,7 @@
 RootModule = './Az.Relay.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '1.0.3'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -117,7 +117,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Update references in .psd1 to use relative path'
 
         # Prerelease string of this module
         # Prerelease = ''
