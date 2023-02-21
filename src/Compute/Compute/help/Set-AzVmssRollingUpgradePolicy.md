@@ -16,7 +16,7 @@ Sets the VMSS rolling upgrade policy properties.
 Set-AzVmssRollingUpgradePolicy [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [[-MaxBatchInstancePercent] <Int32>] [[-MaxUnhealthyInstancePercent] <Int32>]
  [[-MaxUnhealthyUpgradedInstancePercent] <Int32>] [-PauseTimeBetweenBatches <String>]
- [-EnableCrossZoneUpgrade <Boolean>] [-PrioritizeUnhealthyInstance <Boolean>]
+ [-EnableCrossZoneUpgrade <Boolean>] [-PrioritizeUnhealthyInstance <Boolean>] [-MaxSurge <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -76,6 +76,21 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MaxSurge
+{{ Fill MaxSurge Description }}
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
