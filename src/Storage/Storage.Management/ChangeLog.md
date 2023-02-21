@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Blob Tier Cold
+    - `Copy-AzStorageBlob`
+    - `Set-AzStorageBlobContent` 
+    - `Start-AzStorageBlobCopy`
 
 ## Version 5.7.0
 * Fixed issue of getting a single blob with leading slashes
