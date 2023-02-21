@@ -119,10 +119,10 @@ Function Set-ModuleTestStatusInPipelineResult
     Write-Warning "Set-ModuleTestStatusInPipelineResult $ModuleName - $Status"
     If (Test-Path $PipelineResultPath)
     {
-        $Template = Get-Content $PipelineResultPath | ConvertFrom-Json
+        $PipelineResult = Get-Content $PipelineResultPath | ConvertFrom-Json
         $Platform = Get-PlatformInfo
-        $Template.test.Details[0].Platform = $Platform
-        Foreach ($ModuleInfo in $Template.test.Details[0].Modules)
+        $PipelineResult.test.Details[0].Platform = $Platform
+        Foreach ($ModuleInfo in $PipelineResult.test.Details[0].Modules)
         {
             If ($ModuleInfo.Module -Eq $ModuleName)
             {
@@ -130,7 +130,7 @@ Function Set-ModuleTestStatusInPipelineResult
                 $ModuleInfo.Content = $Content
             }
         }
-        ConvertTo-Json -Depth 10 -InputObject $Template | Out-File -FilePath $PipelineResultPath
+        ConvertTo-Json -Depth 10 -InputObject $PipelineResult | Out-File -FilePath $PipelineResultPath
     }
 }
 

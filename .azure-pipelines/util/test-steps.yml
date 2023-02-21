@@ -38,8 +38,9 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(OCTOKITPAT)
-      PowerShellPlatform: ${{ parameters.powerShellPlatform }}
+    OCTOKITPAT: $(OCTOKITPAT)
+    PowerShellPlatform: ${{ parameters.powerShellPlatform }}
+  continueOnError: true
 
 # - powershell: |
 #    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
@@ -60,6 +61,19 @@ steps:
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
+
+- pwsh: |
+    $PipelineResult = Get-Content PipelineResult.json | ConvertFrom-Json
+    foreach ($Module in $PipelineResult.test.Details[0].Modules)
+    {
+      if ($Module.Status -eq "Failed")
+      {
+        return -1
+      }
+    }
+  workingDirectory: 'artifacts/PipelineResult'
+  displayName: 'Check Test Status'
+
 
 - task: PublishTestResults@2
   inputs:
