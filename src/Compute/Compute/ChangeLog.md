@@ -25,7 +25,6 @@
 * Added ''MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand
 * Added support for 'latest' in 'Get-AzvmImage' '-Version' parameter
 
-
 ## Version 5.4.0
 * Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
 * Added `ConsistencyMode` parameter to `New-AzRestorePoint`.
