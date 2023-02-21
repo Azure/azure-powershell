@@ -174,7 +174,7 @@ param(
         }
 
         #Region check helm install
-        try {       
+        try {
             Get-HelmClientLocation
             $HelmVersion = helm version --short --kubeconfig $KubeConfig
             if ($HelmVersion.Contains("v2")) {
@@ -182,8 +182,7 @@ param(
                 return
             }
         } catch {
-            Write-Error "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
-            throw
+            throw "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
         }
         #Endregion
 

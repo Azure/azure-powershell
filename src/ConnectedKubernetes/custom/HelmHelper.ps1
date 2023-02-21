@@ -1,5 +1,6 @@
 
 function Get-HelmClientLocation {
+[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(        
     )
     process {
@@ -43,6 +44,7 @@ function Get-HelmClientLocation {
 }
 
 function Get-Release-Install-Namespace {
+[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(        
         )
     process {
@@ -51,6 +53,7 @@ function Get-Release-Install-Namespace {
 }
 
 function IsWindows {
+[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(        
     )
     process {
@@ -59,6 +62,7 @@ function IsWindows {
 }
 
 function Get-OSName {
+[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
     process {
