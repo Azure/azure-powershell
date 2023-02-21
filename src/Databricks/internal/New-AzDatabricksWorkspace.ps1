@@ -33,11 +33,11 @@ New-AzDatabricksWorkspace -Name workspace3miaeb-with-custom-vn -ResourceGroupNam
 New-AzDatabricksWorkspace -Name workspace3miaeb -ResourceGroupName databricks-rg-rqb2yo -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -74,11 +74,15 @@ PARAMETER <IWorkspace>: Information about workspace.
   [EncryptionKeySource <KeySource?>]: The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
   [EncryptionKeyVaultUri <String>]: The Uri of KeyVault.
   [EncryptionKeyVersion <String>]: The version of KeyVault key.
-  [KeyVaultPropertyKeyName <String>]: The name of KeyVault key.
-  [KeyVaultPropertyKeyVaultUri <String>]: The Uri of KeyVault.
-  [KeyVaultPropertyKeyVersion <String>]: The version of KeyVault key.
   [LoadBalancerBackendPoolNameValue <String>]: The value which should be used for this field.
   [LoadBalancerIdValue <String>]: The value which should be used for this field.
+  [ManagedDiskKeyVaultPropertiesKeyName <String>]: The name of KeyVault key.
+  [ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]: The URI of KeyVault.
+  [ManagedDiskKeyVaultPropertiesKeyVersion <String>]: The version of KeyVault key.
+  [ManagedDiskRotationToLatestKeyVersionEnabled <Boolean?>]: Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+  [ManagedServicesKeyVaultPropertiesKeyName <String>]: The name of KeyVault key.
+  [ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]: The Uri of KeyVault.
+  [ManagedServicesKeyVaultPropertiesKeyVersion <String>]: The version of KeyVault key.
   [NatGatewayNameValue <String>]: The value which should be used for this field.
   [PrepareEncryption <Boolean?>]: The value which should be used for this field.
   [PublicIPNameValue <String>]: The value which should be used for this field.
@@ -102,7 +106,7 @@ PARAMETER <IWorkspace>: Information about workspace.
 https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
 function New-AzDatabricksWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -154,7 +158,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspaceProviderAuthorization[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]]
     # The workspace provider authorizations.
     # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
     ${Authorization},
@@ -194,24 +198,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
-    # The name of KeyVault key.
-    ${KeyVaultKeyName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The version of KeyVault key.
-    ${KeyVaultKeyVersion},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The Uri of KeyVault.
-    ${KeyVaultUri},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
     # The value which should be used for this field.
     ${LoadBalancerBackendPoolName},
 
@@ -220,6 +206,48 @@ param(
     [System.String]
     # The value which should be used for this field.
     ${LoadBalancerId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The name of KeyVault key.
+    ${ManagedDiskKeyVaultPropertiesKeyName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The URI of KeyVault.
+    ${ManagedDiskKeyVaultPropertiesKeyVaultUri},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The version of KeyVault key.
+    ${ManagedDiskKeyVaultPropertiesKeyVersion},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+    ${ManagedDiskRotationToLatestKeyVersionEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The name of KeyVault key.
+    ${ManagedServicesKeyVaultPropertiesKeyName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The Uri of KeyVault.
+    ${ManagedServicesKeyVaultPropertiesKeyVaultUri},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The version of KeyVault key.
+    ${ManagedServicesKeyVaultPropertiesKeyVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -325,7 +353,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace]
     # Information about workspace.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
