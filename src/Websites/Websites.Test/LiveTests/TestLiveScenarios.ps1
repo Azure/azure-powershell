@@ -22,7 +22,7 @@ Invoke-LiveTestScenario -Name "Create new web with service plan" -Description "T
     $rgName = $rg.ResourceGroupName
     $webName = New-LiveTestResourceName
     $webLocation = "westus"
-    $whpName = "WebServicePlanForPSLiveTest"
+    $whpName = New-LiveTestResourceName
     $tier = "Shared"
 
     $serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName -Location $weblocation -Tier $tier
@@ -52,8 +52,8 @@ Invoke-LiveTestScenario -Name "Update web app" -Description "Test updating servi
     $rgName = $rg.ResourceGroupName
     $webAppName = New-LiveTestResourceName
     $webLocation = "westus"
-    $appServicePlanName1 = "WebServicePlanForPSLiveTest1"
-	$appServicePlanName2 = "WebServicePlanForPSLiveTest2"
+    $appServicePlanName1 = New-LiveTestResourceName
+	$appServicePlanName2 = New-LiveTestResourceName
 	$tier1 = "Shared"
 	$tier2 = "Standard"
 
