@@ -169,7 +169,7 @@ function New-HybridConnection($ResourceGroupName, $NamespaceName, $HybridConnect
     Write-Debug "Creating namespace $NamespaceName in resource group $ResourceGroupName and location $Location"
     New-AzRelayNamespace -ResourceGroupName $ResourceGroupName -Name $NamespaceName -Location $Location
     Write-Debug "Creating hybridconnection $HybridConnectionName in Namespace $NamespaceName in resource group $ResourceGroupName and location $Location"
-    New-AzRelayHybridConnection -ResourceGroupName $ResourceGroupName -Namespace $NamespaceName -Name $HybridConnectionName -RequiresClientAuthorization $True
+    New-AzRelayHybridConnection -ResourceGroupName $ResourceGroupName -Namespace $NamespaceName -Name $HybridConnectionName -RequiresClientAuthorization
 }
 
 <#
