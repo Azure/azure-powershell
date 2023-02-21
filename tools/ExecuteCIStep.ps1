@@ -269,6 +269,7 @@ ElseIf (-Not $PSBoundParameters.ContainsKey("TargetModule"))
     $PSBoundParameters["TargetModule"] = $TargetModule
 }
 
+# Run the test-module.ps1 in current folder and set the test status in pipeline result
 If ($TestAutorest)
 {
     If (-not (Test-Path "test-module.ps1"))
@@ -328,8 +329,8 @@ If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey(
     }
     If (Test-Path $PipelineResultPath)
     {
-        $Template = Get-Content $PipelineResultPath | ConvertFrom-Json
-        Foreach ($ModuleInfo in $Template.test.Details[0].Modules)
+        $PipelineResult = Get-Content $PipelineResultPath | ConvertFrom-Json
+        Foreach ($ModuleInfo in $PipelineResult.test.Details[0].Modules)
         {
             If ($FailedTestCases.ContainsKey($ModuleInfo.Module))
             {
