@@ -18,6 +18,22 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    $resourceBridge1 = RandomString -allChars $false -len 6
+    $resourceBridge2 = RandomString -allChars $false -len 6
+
+    $env.Add("resourceBridge1", $resourceBridge1)
+    $env.Add("resourceBridge2", $resourceBridge2)
+
+    $env.Add("location", "eastus")
+
+    # Create the test group
+    $resourceGroup = "testgroup-resource-bridge-" + $env.location
+    $env.Add("resourceGroup", $resourceGroup)
+    
+    write-host "1. start to create test group..."
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -27,5 +43,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    # Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

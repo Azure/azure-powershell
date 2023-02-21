@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes an Appliance with the specified Resource Name, Resource Group, and Subscription Id.
 ```powershell
-{{ Add code here }}
+Remove-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group
 ```
 
-```output
-{{ Add output here }}
-```
+Deletes an Appliance with the specified Resource Name, Resource Group, and Subscription Id.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Deletes an Appliance with the specified Resource Name, Resource Group, and Subscription Id.
 ```powershell
-{{ Add code here }}
+Get-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group | Remove-AzArcResourceBridge
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Deletes an Appliance with the specified Resource Name, Resource Group, and Subscription Id.

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Gets the upgrade graph of an Appliance with a specified resource group and name and specific release train.
 ```powershell
-{{ Add code here }}
+Get-AzArcResourceBridgeUpgradeGraph -ResourceGroupName azps_test_group -Name azps-resource-bridge -UpgradeGraph Stable
 ```
 
 ```output
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+stable azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Gets the upgrade graph of an Appliance with a specified resource group and name and specific release train.

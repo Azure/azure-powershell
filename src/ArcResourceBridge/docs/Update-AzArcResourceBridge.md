@@ -29,27 +29,31 @@ Updates an Appliance with the specified Resource Name in the specified Resource 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 ```powershell
-{{ Add code here }}
+Update-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group -Tag @{"111"="222";"aaa"="bbb"}
 ```
 
 ```output
-{{ Add output here }}
+Name                 Location ProvisioningState ResourceGroupName
+----                 -------- ----------------- -----------------
+azps-resource-bridge eastus   Succeeded         azps_test_group
 ```
 
-{{ Add description here }}
+Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 ```powershell
-{{ Add code here }}
+Get-AzArcResourceBridge -ResourceGroupName azps_test_group -Name azps-resource-bridge | Update-AzArcResourceBridge -Tag @{"111"="222";"aaa"="bbb"}
 ```
 
 ```output
-{{ Add output here }}
+Name                 Location ProvisioningState ResourceGroupName
+----                 -------- ----------------- -----------------
+azps-resource-bridge eastus   Succeeded         azps_test_group
 ```
 
-{{ Add description here }}
+Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 
 ## PARAMETERS
 

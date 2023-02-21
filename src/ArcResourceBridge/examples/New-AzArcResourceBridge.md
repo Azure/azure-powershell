@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates an Appliance in the specified Subscription and Resource Group.
 ```powershell
-{{ Add code here }}
+New-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group -Location eastus -IdentityType 'SystemAssigned' -Distro 'AKSEdge' -InfrastructureConfigProvider 'HCI' -Tag @{"123"="abc"}
 ```
 
 ```output
-{{ Add output here }}
+Name                 Location ProvisioningState ResourceGroupName
+----                 -------- ----------------- -----------------
+azps-resource-bridge eastus   Succeeded         azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates or updates an Appliance in the specified Subscription and Resource Group.

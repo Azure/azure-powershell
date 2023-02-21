@@ -29,27 +29,16 @@ Gets the telemetry config.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets the telemetry config.
 ```powershell
-{{ Add code here }}
+Get-AzArcResourceBridgeTelemetryConfig
 ```
 
 ```output
-{{ Add output here }}
+8340f324-76bb-4716-9838-7b3eedd19914
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets the telemetry config.
 
 ## PARAMETERS
 

@@ -22,27 +22,18 @@ Returns the cluster customer credentials for the dedicated appliance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Returns the cluster customer credentials for the dedicated appliance.
 ```powershell
-{{ Add code here }}
+Get-AzArcResourceBridgeKey -ResourceGroupName azps_test_group -Name azps-resource-bridge
 ```
 
 ```output
-{{ Add output here }}
+ArtifactProfile Kubeconfig SshKey
+--------------- ---------- ------
+{…                         {…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Returns the cluster customer credentials for the dedicated appliance.
 
 ## PARAMETERS
 
