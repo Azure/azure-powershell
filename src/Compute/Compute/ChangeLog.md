@@ -20,15 +20,12 @@
 
 -->
 ## Upcoming Release
-<<<<<<< HEAD
-* Added ''MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand
-=======
 * Added breaking change message for `New-AzVmss`.
 * Added `-PerformancePlus` parameter to `New-AzDiskConfig`
+* Added ''MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand
 
 ## Version 5.4.0
 * Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
->>>>>>> origin/main
 * Added `ConsistencyMode` parameter to `New-AzRestorePoint`.
 * Updated the storage account type value in several locations from the outdated `StandardLRS` to the current `Standard_LRS`.
 * Filled in missing parameter descriptions across multiple parameters and improved some existing parameter descriptions.
