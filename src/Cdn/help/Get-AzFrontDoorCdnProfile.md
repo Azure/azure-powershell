@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFrontDoorCdnProfile
 
 ## SYNOPSIS
-
+Gets an Azure Front Door Standard or Azure Front Door Premium with the specified profile name under the specified subscription and resource group.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Get-AzFrontDoorCdnProfile -ResourceGroupName <String> [-SubscriptionId <String[]
 ```
 
 ## DESCRIPTION
-
+Gets an Azure Front Door Standard or Azure Front Door Premium with the specified profile name under the specified subscription and resource group.
 
 ## EXAMPLES
 

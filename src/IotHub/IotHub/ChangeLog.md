@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated IoT Hub Management SDK to version 4.2.0 (api-version 2021-07-02)
+* Fixed `Get-AzIoTHub` to work with DigiCert hubs
 
 ## Version 2.7.4
 * Updated IoT Hub Management SDK to version 4.1.0 (api-version 2021-07-10)

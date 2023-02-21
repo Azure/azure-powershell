@@ -25,7 +25,7 @@ pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac24,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.5.4.0.nupkg;sourceType=sa]Az.Compute,5.4.0
 pac25,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.0.0.nupkg;sourceType=sa]Az.ConfidentialLedger,1.0.0
 pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Confluent.0.2.0.nupkg;sourceType=sa]Az.Confluent,0.2.0
-pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedKubernetes.0.7.0.nupkg;sourceType=sa]Az.ConnectedKubernetes,0.7.0
+pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedKubernetes.0.8.0.nupkg;sourceType=sa]Az.ConnectedKubernetes,0.8.0
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedMachine.0.4.1.nupkg;sourceType=sa]Az.ConnectedMachine,0.4.1
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedNetwork.0.1.0.nupkg;sourceType=sa]Az.ConnectedNetwork,0.1.0
 pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ContainerInstance.3.1.0.nupkg;sourceType=sa]Az.ContainerInstance,3.1.0

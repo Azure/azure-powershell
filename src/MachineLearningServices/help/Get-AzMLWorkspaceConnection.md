@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzMLWorkspaceConnection
 
 ## SYNOPSIS
-
+Get the connection of the specified machine learning workspace.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzMLWorkspaceConnection -InputObject <IMachineLearningServicesIdentity> [-De
 ```
 
 ## DESCRIPTION
-
+Get the connection of the specified machine learning workspace.
 
 ## EXAMPLES
 

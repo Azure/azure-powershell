@@ -114,7 +114,8 @@
         "signature:module",
         "test:dependence-module",
         "file-change:module",
-        "ux:module"
+        "ux:module",
+        "cmdlet-diff:module"
       ]
     },
     {
