@@ -233,7 +233,7 @@ function New-AzConnectedKubernetes {
     )
 
     process {
-        . "$PSScriptRoot/HelmHelper.ps1"
+        . "$PSScriptRoot/helpers/HelmHelper.ps1"
         if($AzureHybridBenefit){
             if(!$AcceptEULA){
                 $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
@@ -304,7 +304,7 @@ function New-AzConnectedKubernetes {
         #EndRegion
 
         #Region get release namespace
-        $ReleaseInstallNamespace = Get-Release-Install-Namespace
+        $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
         $ReleaseNamespace = $null
         try {
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace | ConvertFrom-Json).namespace
@@ -407,7 +407,7 @@ function New-AzConnectedKubernetes {
         $RSA = [System.Security.Cryptography.RSA]::Create(4096)
         if ($PSVersionTable.PSVersion.Major -eq 5) {
             try {
-                . "$PSScriptRoot/RSAHelper.ps1"
+                . "$PSScriptRoot/helpers/RSAHelper.ps1"
                 $AgentPublicKey = ExportRSAPublicKeyBase64($RSA)
                 $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA)
                 $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $AgentPrivateKey + "`n-----END RSA PRIVATE KEY-----"                

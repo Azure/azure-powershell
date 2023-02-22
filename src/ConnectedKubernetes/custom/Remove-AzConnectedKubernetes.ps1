@@ -152,7 +152,7 @@ param(
 )
 
     process {
-        . "$PSScriptRoot/HelmHelper.ps1"
+        . "$PSScriptRoot/helpers/HelmHelper.ps1"
         if ($PSBoundParameters.ContainsKey('KubeConfig')) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         } elseif (Test-Path Env:KUBECONFIG) {
@@ -187,7 +187,7 @@ param(
         #Endregion
 
         #Region get release namespace
-        $ReleaseInstallNamespace = Get-Release-Install-Namespace
+        $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
         $ReleaseNamespace = $null
         try {
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace | ConvertFrom-Json).namespace

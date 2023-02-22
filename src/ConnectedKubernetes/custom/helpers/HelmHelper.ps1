@@ -1,6 +1,6 @@
 
 function Get-HelmClientLocation {
-[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
     process {
@@ -16,7 +16,7 @@ function Get-HelmClientLocation {
             }
             $Version = "v3.6.3"
             $ZipName = "helm-$Version-windows-amd64.zip"
-            $RootFolder = Join-Path -Path $HomePath -ChildPath ".azure" | Join-Path -ChildPath "helm" | Join-Path -ChildPath "$Version-signed"
+            $RootFolder = Join-Path -Path $HomePath -ChildPath ".azure" | Join-Path -ChildPath "helm" | Join-Path -ChildPath "$Version"
             $ZipLocation = Join-Path -Path $RootFolder -ChildPath $ZipName
             $InstallLocation = Join-Path -Path $RootFolder -ChildPath "windows-amd64"
             $HelmLocation = Join-Path -Path $InstallLocation -ChildPath "helm.exe"
@@ -43,8 +43,8 @@ function Get-HelmClientLocation {
     }
 }
 
-function Get-Release-Install-Namespace {
-[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+function Get-ReleaseInstallNamespace {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
     process {
@@ -53,7 +53,7 @@ function Get-Release-Install-Namespace {
 }
 
 function IsWindows {
-[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
     process {
@@ -62,7 +62,7 @@ function IsWindows {
 }
 
 function Get-OSName {
-[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
     process {
