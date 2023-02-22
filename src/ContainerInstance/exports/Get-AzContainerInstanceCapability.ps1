@@ -23,12 +23,12 @@ Get the list of CPU/memory/GPU capabilities of a region.
 Get-AzContainerInstanceCapability -Location eastus
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICapabilities
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICapabilities
 .Link
 https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecapability
 #>
 function Get-AzContainerInstanceCapability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICapabilities])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICapabilities])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

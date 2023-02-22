@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerGroup_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Description(@"Create or update container groups with specified configurations.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Generated]
     public partial class NewAzContainerGroup_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>A container group.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup _containerGroupBody = new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ContainerGroup();
+        private Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup _containerGroupBody = new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroup();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -50,6 +50,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ContainerInstance Client => Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Module.Instance.ClientAPI;
 
+        /// <summary>The base64 encoded confidential compute enforcement policy</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The base64 encoded confidential compute enforcement policy")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The base64 encoded confidential compute enforcement policy",
+        SerializedName = @"ccePolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ConfidentialComputePropertyCcePolicy { get => _containerGroupBody.ConfidentialComputePropertyCcePolicy ?? null; set => _containerGroupBody.ConfidentialComputePropertyCcePolicy = value; }
+
         /// <summary>The containers within the container group.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The containers within the container group.")]
@@ -59,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         ReadOnly = false,
         Description = @"The containers within the container group.",
         SerializedName = @"containers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainer) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainer[] Container { get => _containerGroupBody.Container ?? null /* arrayOf */; set => _containerGroupBody.Container = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainer) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainer[] Container { get => _containerGroupBody.Container ?? null /* arrayOf */; set => _containerGroupBody.Container = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -105,6 +116,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string DnsConfigSearchDomain { get => _containerGroupBody.DnsConfigSearchDomain ?? null; set => _containerGroupBody.DnsConfigSearchDomain = value; }
 
+        /// <summary>The keyvault managed identity.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The keyvault managed identity.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The keyvault managed identity.",
+        SerializedName = @"identity",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EncryptionPropertyIdentity { get => _containerGroupBody.EncryptionPropertyIdentity ?? null; set => _containerGroupBody.EncryptionPropertyIdentity = value; }
+
         /// <summary>The encryption key name.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The encryption key name.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Body)]
@@ -138,6 +160,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string EncryptionPropertyVaultBaseUrl { get => _containerGroupBody.EncryptionPropertyVaultBaseUrl ?? null; set => _containerGroupBody.EncryptionPropertyVaultBaseUrl = value; }
 
+        /// <summary>extensions used by virtual kubelet</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "extensions used by virtual kubelet")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"extensions used by virtual kubelet",
+        SerializedName = @"extensions",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IDeploymentExtensionSpec) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IDeploymentExtensionSpec[] Extension { get => _containerGroupBody.Extension ?? null /* arrayOf */; set => _containerGroupBody.Extension = value; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -149,6 +183,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>
+        /// The value representing the security enum. The 'Unsecure' value is the default value if not selected and means the object's
+        /// domain name label is not secured against subdomain takeover. The 'TenantReuse' value is the default value if selected
+        /// and means the object's domain name label can be reused within the same tenant. The 'SubscriptionReuse' value means the
+        /// object's domain name label can be reused within the same subscription. The 'ResourceGroupReuse' value means the object's
+        /// domain name label can be reused within the same resource group. The 'NoReuse' value means the object's domain name label
+        /// cannot be reused within the same resource group, subscription, or tenant.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value representing the security enum. The 'Unsecure' value is the default value if not selected and means the object's domain name label is not secured against subdomain takeover. The 'TenantReuse' value is the default value if selected and means the object's domain name label can be reused within the same tenant. The 'SubscriptionReuse' value means the object's domain name label can be reused within the same subscription. The 'ResourceGroupReuse' value means the object's domain name label can be reused within the same resource group. The 'NoReuse' value means the object's domain name label cannot be reused within the same resource group, subscription, or tenant.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The value representing the security enum. The 'Unsecure' value is the default value if not selected and means the object's domain name label is not secured against subdomain takeover. The 'TenantReuse' value is the default value if selected and means the object's domain name label can be reused within the same tenant. The 'SubscriptionReuse' value means the object's domain name label can be reused within the same subscription. The 'ResourceGroupReuse' value means the object's domain name label can be reused within the same resource group. The 'NoReuse' value means the object's domain name label cannot be reused within the same resource group, subscription, or tenant.",
+        SerializedName = @"autoGeneratedDomainNameLabelScope",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.DnsNameLabelReusePolicy) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.DnsNameLabelReusePolicy))]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.DnsNameLabelReusePolicy IPAddressAutoGeneratedDomainNameLabelScope { get => _containerGroupBody.IPAddressAutoGeneratedDomainNameLabelScope ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.DnsNameLabelReusePolicy)""); set => _containerGroupBody.IPAddressAutoGeneratedDomainNameLabelScope = value; }
 
         /// <summary>The Dns name label for the IP.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Dns name label for the IP.")]
@@ -181,8 +234,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         ReadOnly = false,
         Description = @"The list of ports exposed on the container group.",
         SerializedName = @"ports",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IPort) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IPort[] IPAddressPort { get => _containerGroupBody.IPAddressPort ?? null /* arrayOf */; set => _containerGroupBody.IPAddressPort = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IPort) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IPort[] IPAddressPort { get => _containerGroupBody.IPAddressPort ?? null /* arrayOf */; set => _containerGroupBody.IPAddressPort = value; }
 
         /// <summary>Specifies if the IP is exposed to the public internet or private VNET.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies if the IP is exposed to the public internet or private VNET.")]
@@ -212,20 +265,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ResourceIdentityType))]
         public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ResourceIdentityType IdentityType { get => _containerGroupBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ResourceIdentityType)""); set => _containerGroupBody.IdentityType = value; }
 
-        /// <summary>
-        /// The list of user identities associated with the container group. The user identity dictionary key references will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-        /// </summary>
+        /// <summary>The list of user identities associated with the container group.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of user identities associated with the container group.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.",
+        Description = @"The list of user identities associated with the container group.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroupIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroupIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => _containerGroupBody.IdentityUserAssignedIdentity ?? null /* object */; set => _containerGroupBody.IdentityUserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => _containerGroupBody.IdentityUserAssignedIdentity ?? null /* object */; set => _containerGroupBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>The image registry credentials by which the container group is created from.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -236,8 +286,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         ReadOnly = false,
         Description = @"The image registry credentials by which the container group is created from.",
         SerializedName = @"imageRegistryCredentials",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IImageRegistryCredential) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IImageRegistryCredential[] ImageRegistryCredential { get => _containerGroupBody.ImageRegistryCredentials ?? null /* arrayOf */; set => _containerGroupBody.ImageRegistryCredentials = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IImageRegistryCredential) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IImageRegistryCredential[] ImageRegistryCredential { get => _containerGroupBody.ImageRegistryCredentials ?? null /* arrayOf */; set => _containerGroupBody.ImageRegistryCredentials = value; }
 
         /// <summary>The init containers for a container group.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -248,8 +298,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         ReadOnly = false,
         Description = @"The init containers for a container group.",
         SerializedName = @"initContainers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IInitContainerDefinition) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IInitContainerDefinition[] InitContainer { get => _containerGroupBody.InitContainer ?? null /* arrayOf */; set => _containerGroupBody.InitContainer = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinition) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinition[] InitContainer { get => _containerGroupBody.InitContainer ?? null /* arrayOf */; set => _containerGroupBody.InitContainer = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -286,8 +336,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         ReadOnly = false,
         Description = @"Metadata for log analytics.",
         SerializedName = @"metadata",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ILogAnalyticsMetadata) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ILogAnalyticsMetadata LogAnalyticMetadata { get => _containerGroupBody.LogAnalyticMetadata ?? null /* object */; set => _containerGroupBody.LogAnalyticMetadata = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ILogAnalyticsMetadata) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ILogAnalyticsMetadata LogAnalyticMetadata { get => _containerGroupBody.LogAnalyticMetadata ?? null /* object */; set => _containerGroupBody.LogAnalyticMetadata = value; }
 
         /// <summary>The workspace id for log analytics</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The workspace id for log analytics")]
@@ -374,6 +424,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.HttpPipeline Pipeline { get; set; }
 
+        /// <summary>The priority of the container group.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The priority of the container group.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The priority of the container group.",
+        SerializedName = @"priority",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupPriority) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupPriority))]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupPriority Priority { get => _containerGroupBody.Priority ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupPriority)""); set => _containerGroupBody.Priority = value; }
+
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Runtime)]
@@ -440,8 +502,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         ReadOnly = false,
         Description = @"The subnet resource IDs for a container group.",
         SerializedName = @"subnetIds",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroupSubnetId) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroupSubnetId[] SubnetId { get => _containerGroupBody.SubnetId ?? null /* arrayOf */; set => _containerGroupBody.SubnetId = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupSubnetId) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupSubnetId[] SubnetId { get => _containerGroupBody.SubnetId ?? null /* arrayOf */; set => _containerGroupBody.SubnetId = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -473,8 +535,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         ReadOnly = false,
         Description = @"The resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IResourceTags Tag { get => _containerGroupBody.Tag ?? null /* object */; set => _containerGroupBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IResourceTags Tag { get => _containerGroupBody.Tag ?? null /* object */; set => _containerGroupBody.Tag = value; }
 
         /// <summary>The list of volumes that can be mounted by containers in this container group.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -485,8 +547,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         ReadOnly = false,
         Description = @"The list of volumes that can be mounted by containers in this container group.",
         SerializedName = @"volumes",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolume) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolume[] Volume { get => _containerGroupBody.Volume ?? null /* arrayOf */; set => _containerGroupBody.Volume = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolume) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolume[] Volume { get => _containerGroupBody.Volume ?? null /* arrayOf */; set => _containerGroupBody.Volume = value; }
 
         /// <summary>The zones for the container group.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -505,24 +567,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -752,12 +814,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -774,7 +836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_containerGroupBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -792,12 +854,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup> response)
         {
             using( NoSynchronizationContext )
             {
@@ -809,7 +871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup
                 WriteObject((await response));
             }
         }

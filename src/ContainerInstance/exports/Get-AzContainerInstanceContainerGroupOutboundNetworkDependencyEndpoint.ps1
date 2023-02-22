@@ -39,7 +39,9 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Location <String>]: The identifier for the physical azure location.
   [ResourceGroupName <String>]: The name of the resource group.
+  [SubnetName <String>]: The name of the subnet.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecontainergroupoutboundnetworkdependencyendpoint
 #>
