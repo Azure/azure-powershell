@@ -77,7 +77,7 @@ Param(
     [String]
     $TargetModule
 )
-
+$RepoArtifacts = (Get-Item $RepoArtifacts).FullName
 $CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
 $PipelineResultPath = "$RepoArtifacts/PipelineResult/PipelineResult.json"
 
@@ -275,9 +275,9 @@ ElseIf (-Not $PSBoundParameters.ContainsKey("TargetModule"))
 # Run the test-module.ps1 in current folder and set the test status in pipeline result
 If ($TestAutorest)
 {
-    If (-not (Test-Path "test-module.ps1"))
+    If (-not (Test-Path "$AutorestDirectory/test-module.ps1"))
     {
-        Write-Warning "There is no test-module.ps1 found in current folder: $PWD"
+        Write-Warning "There is no test-module.ps1 found in the folder: $AutorestDirectory"
         Return
     }
     $ModuleName = Split-Path -Path $PWD -Leaf
@@ -287,12 +287,11 @@ If ($TestAutorest)
         $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
         Write-Host $CIPlan.test
         Write-Host $ModuleFolderName
-        Set-Location $AutorestDirectory
         If (-not ($CIPlan.test.Contains($ModuleFolderName)))
         {
             Return
         }
-        .\test-module.ps1
+        . $AutorestDirectory/test-module.ps1
         If ($LastExitCode -ne 0)
         {
             $Status = "Failed"
