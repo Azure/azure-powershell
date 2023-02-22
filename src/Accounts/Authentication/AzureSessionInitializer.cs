@@ -32,6 +32,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using TraceLevel = System.Diagnostics.TraceLevel;
 using System.Collections.Generic;
 using System.Threading;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -274,6 +276,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             InitializeConfigs(session, profilePath, writeWarning);
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
+
+            session.RegisterComponent<IEndProcessingRecommendationService>(nameof(IEndProcessingRecommendationService),
+                () => new DefaultRecommendationService());
             session.TokenCache = session.TokenCache ?? new AzureTokenCache();
             return session;
         }
