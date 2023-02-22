@@ -358,7 +358,6 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.LinOpenSuseLeap154.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
-        ### sku 42.3 no longer exists
 
         # RHEL test
         $publisher = $images.Linux.RHEL.publisher;
@@ -375,7 +374,6 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.LinSuseSles15SP4.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
-        ### sku 12-SP2 no longer exists. 
 
         # Windows
         # Win2022AzureEditionCore test
