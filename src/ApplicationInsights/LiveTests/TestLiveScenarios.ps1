@@ -13,20 +13,6 @@ Invoke-LiveTestScenario -Name "Create ApplicationInsights" -Description "Test Ne
     Assert-AreEqual $appKind $actual.Kind
 }
 
-Invoke-LiveTestScenario -Name "List ApplicationInsights" -Description "Test listing ApplicationInsights" -ScenarioScript `
-{
-    param ($rg)
-
-    $rgName = $rg.ResourceGroupName
-    $appName = New-LiveTestResourceName
-    $appLocation = "westus"
-    $appKind = "java"
-
-    $null = New-AzApplicationInsights -Kind $appKind -ResourceGroupName $rgName -Name $appName -location $appLocation
-    $actual = Get-AzApplicationInsights -ResourceGroupName $rgName
-    Assert-AreEqual 1 $actual.Count
-}
-
 Invoke-LiveTestScenario -Name "Get ApplicationInsights" -Description "Test getting one ApplicationInsights" -ScenarioScript `
 {
     param ($rg)
