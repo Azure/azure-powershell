@@ -52,6 +52,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
+        [PSArgumentCompleter(SDKModel.PublicNetworkAccess.Disabled, SDKModel.PublicNetworkAccess.Enabled)]
+        public string PublicNetworkAccess { get; set; }
+
         public override void ExecuteCmdlet()
         {
             DateTime utcRestoreDateTime;
@@ -153,7 +157,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 RestoreSource = sourceAccountToRestore.Id,
                 RestoreTimestampInUtc = utcRestoreDateTime,
-                DatabasesToRestore = DatabasesToRestore
+                DatabasesToRestore = DatabasesToRestore,
+                PublicNetworkAccess = PublicNetworkAccess
             };
 
             Collection<Location> LocationCollection = new Collection<Location>();
