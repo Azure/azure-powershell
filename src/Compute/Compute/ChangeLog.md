@@ -23,6 +23,8 @@
 * Added breaking change message for `New-AzVmss`.
 * Added `-PerformancePlus` parameter to `New-AzDiskConfig`
 * Added `CompletionPercent` property to PSDisk object.
+* Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 
+  Updated the `openSUSE-Leap` and `SLES` aliases to point to an image that actually exists and updated the alias names to be descriptive and versioned.
 
 ## Version 5.4.0
 * Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
@@ -35,8 +37,6 @@
 * Updated Set-AzVMRunCommand and Set-AzVmssRunCommand ScriptLocalPath parameter set to work with Linux and with files that have comments.
 * Added `-TargetExtendedLocation` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion`
 * Added `-AllowDeletionOfReplicatedLocation` to `Update-AzGalleryImageVersion`
-* Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 
-  Updated the `openSUSE-Leap` and `SLES` aliases to point to an image that actually exists and updated the alias names to be descriptive and versioned.
 
 ## Version 5.3.0
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
