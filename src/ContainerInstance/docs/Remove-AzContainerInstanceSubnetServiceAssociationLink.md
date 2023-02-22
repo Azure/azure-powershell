@@ -32,27 +32,12 @@ The operation does not delete other resources provided by the user.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove Subnet Service Association Link
 ```powershell
-{{ Add code here }}
+Remove-AzContainerInstanceSubnetServiceAssociationLink -ResourceGroup testRg -SubnetName testSubnetName -VirtualNetworkName testVnetName
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Removes the service association link for the specified subnet.
 
 ## PARAMETERS
 
