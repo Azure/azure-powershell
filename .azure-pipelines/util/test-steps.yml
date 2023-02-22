@@ -68,12 +68,10 @@ steps:
 
 - pwsh: |
     $PipelineResult = Get-Content PipelineResult.json | ConvertFrom-Json
-    foreach ($Module in $PipelineResult.test.Details[0].Modules)
+    $FailedModuleList = $PipelineResult.test.Details[0].Modules | Where-Object { $_.Status -eq "Failed" } | ForEach-Object { $_.Module }
+    if ($FailedModuleList.Length -ne 0)
     {
-      if ($Module.Status -eq "Failed")
-      {
-        throw "test fails"
-      }
+        throw "test fails in module: $FailedModuleList"
     }
   workingDirectory: 'artifacts/PipelineResult'
   displayName: 'Check Test Status'

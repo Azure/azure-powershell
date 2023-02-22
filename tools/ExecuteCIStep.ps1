@@ -275,7 +275,6 @@ ElseIf (-Not $PSBoundParameters.ContainsKey("TargetModule"))
 # Run the test-module.ps1 in current folder and set the test status in pipeline result
 If ($TestAutorest)
 {
-    Set-Location $AutorestDirectory
     If (-not (Test-Path "test-module.ps1"))
     {
         Write-Warning "There is no test-module.ps1 found in current folder: $PWD"
@@ -288,6 +287,7 @@ If ($TestAutorest)
         $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
         Write-Host $CIPlan.test
         Write-Host $ModuleFolderName
+        Set-Location $AutorestDirectory
         If (-not ($CIPlan.test.Contains($ModuleFolderName)))
         {
             Return
