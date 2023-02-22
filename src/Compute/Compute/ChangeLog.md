@@ -23,6 +23,8 @@
 * Added `ConsistencyMode` parameter to `New-AzRestorePoint`.
 * Updated the storage account type value in several locations from the outdated `StandardLRS` to the current `Standard_LRS`.
 * Filled in missing parameter descriptions across multiple parameters and improved some existing parameter descriptions.
+* Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 
+  Updated the `openSUSE-Leap` and `SLES` aliases to point to an image that actually exists and updated the alias names to be descriptive and versioned.
 
 ## Version 5.3.0
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
