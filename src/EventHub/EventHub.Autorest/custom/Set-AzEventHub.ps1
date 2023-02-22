@@ -90,7 +90,7 @@ function Set-AzEventHub{
 
         [Parameter(HelpMessage = "Number of days to retain the events for this Event Hub, value should be 1 to 7 days")]
 		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("MessageRetentionInDays", "4.0.0", "", ChangeDescription = "-MessageRetentionInDays would be deprecated and would be replaced by -RetentionTimeInHours")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        	[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
 		[System.Int64]
 		# Number of days to retain the events for this Event Hub, value should be 1 to 7 days
 		${MessageRetentionInDays},
