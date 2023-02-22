@@ -8,7 +8,7 @@ function Get-HelmClientLocation {
             return (Get-Item Env:HELM_CLIENT_PATH).Value
         }
 
-        if (IsWindows) {
+        if (IsWindows -and IsAmd64) {
             if (Test-Path Env:Home) {
                 $HomePath = (Get-Item Env:HOME).Value
             } else {
@@ -29,7 +29,7 @@ function Get-HelmClientLocation {
                     Expand-Archive $ZipLocation $RootFolder
                 }
                 if (Test-Path $HelmLocation) {
-                    $PathStr = $InstallLocation + ";$env:Path"        
+                    $PathStr = $InstallLocation + ";$env:Path"
                     Set-Item -Path Env:Path -Value $PathStr
                 }
             } catch {
@@ -72,5 +72,15 @@ function Get-OSName {
             $OSPlatform = $env:OS
         }
         return $OSPlatform
+    }
+}
+
+function IsAmd64 {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    param(
+    )
+    process {
+        $isSupport = [Environment]::Is64BitOperatingSystem -and ($env:PROCESSOR_ARCHITECTURE -eq "AMD64")
+        return $isSupport
     }
 }
