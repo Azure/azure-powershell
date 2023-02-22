@@ -60,7 +60,7 @@ branch: 519850b125f5b5257c6d73512ac0705dd6f26131
 
 > Names
 ``` yaml
-module-version: 2.2.0
+module-version: 0.1.4
 title: Kusto
 subject-prefix: $(service-name)
 ```
