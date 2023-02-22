@@ -177,8 +177,8 @@ function Invoke-AzKustoDataConnectionValidation {
 
         [Parameter(ParameterSetName = 'DataExpandedEventHub')]
         [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventHub')]
-        [Parameter(ParameterSetName = 'DataExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid', Mandatory)]
+        [Parameter(ParameterSetName = 'DataExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String]
         # The resource ID of a managed identity (system or user assigned) to be used to authenticate with external resources.
@@ -186,10 +186,10 @@ function Invoke-AzKustoDataConnectionValidation {
 
         [Parameter(ParameterSetName = 'DataExpandedEventHub')]
         [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventHub')]
-        [Parameter(ParameterSetName = 'DataExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'DataExpandedIotHub', Mandatory)]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedIotHub', Mandatory)]
+        [Parameter(ParameterSetName = 'DataExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'DataExpandedIotHub')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedIotHub')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting]
         # Indication for database routing information from the data connection, by default only database routing information is allowed.
@@ -197,15 +197,15 @@ function Invoke-AzKustoDataConnectionValidation {
 
         [Parameter(ParameterSetName = 'DataExpandedEventHub')]
         [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventHub')]
-        [Parameter(ParameterSetName = 'DataExpandedIotHub', Mandatory)]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedIotHub', Mandatory)]
+        [Parameter(ParameterSetName = 'DataExpandedIotHub')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedIotHub')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.DateTime]
         # When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
         ${RetrievalStartDate},
 
-        [Parameter(ParameterSetName = 'DataExpandedEventGrid', Mandatory)]
-        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid', Mandatory)]
+        [Parameter(ParameterSetName = 'DataExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String]
         # The resource ID of the event grid that is subscribed to the storage account events.
