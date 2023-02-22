@@ -1,48 +1,39 @@
 ---
 external help file:
 Module Name: Az.ArcResourceBridge
-online version: https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgeusercredential
+online version: https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgecredentials
 schema: 2.0.0
 ---
 
-# Get-AzArcResourceBridgeUserCredential
+# Get-AzArcResourceBridgeCredentials
 
 ## SYNOPSIS
-Returns the cluster user credentials for the dedicated appliance.
+Returns the cluster customer credentials for the dedicated appliance.
 
 ## SYNTAX
 
 ```
-Get-AzArcResourceBridgeUserCredential -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzArcResourceBridgeCredentials -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the cluster user credentials for the dedicated appliance.
+Returns the cluster customer credentials for the dedicated appliance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Returns the cluster customer credentials for the dedicated appliance.
 ```powershell
-{{ Add code here }}
+Get-AzArcResourceBridgeCredentials -ResourceGroupName azps_test_group -Name azps-resource-bridge
 ```
 
 ```output
-{{ Add output here }}
+ArtifactProfile Kubeconfig SshKey
+--------------- ---------- ------
+{…                         {…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Returns the cluster customer credentials for the dedicated appliance.
 
 ## PARAMETERS
 
@@ -145,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListCredentialResults
+### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResults
 
 ## NOTES
 

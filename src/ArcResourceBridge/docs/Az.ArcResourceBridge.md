@@ -14,7 +14,10 @@ Microsoft Azure PowerShell: ArcResourceBridge cmdlets
 ### [Get-AzArcResourceBridge](Get-AzArcResourceBridge.md)
 Gets the details of an Appliance with a specified resource group and name.
 
-### [Get-AzArcResourceBridgeKey](Get-AzArcResourceBridgeKey.md)
+### [Get-AzArcResourceBridgeApplianceCredential](Get-AzArcResourceBridgeApplianceCredential.md)
+Returns the cluster user credentials for the dedicated appliance.
+
+### [Get-AzArcResourceBridgeCredentials](Get-AzArcResourceBridgeCredentials.md)
 Returns the cluster customer credentials for the dedicated appliance.
 
 ### [Get-AzArcResourceBridgeTelemetryConfig](Get-AzArcResourceBridgeTelemetryConfig.md)
@@ -22,9 +25,6 @@ Gets the telemetry config.
 
 ### [Get-AzArcResourceBridgeUpgradeGraph](Get-AzArcResourceBridgeUpgradeGraph.md)
 Gets the upgrade graph of an Appliance with a specified resource group and name and specific release train.
-
-### [Get-AzArcResourceBridgeUserCredential](Get-AzArcResourceBridgeUserCredential.md)
-Returns the cluster user credentials for the dedicated appliance.
 
 ### [New-AzArcResourceBridge](New-AzArcResourceBridge.md)
 Creates or updates an Appliance in the specified Subscription and Resource Group.

@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ArcResourceBridge.private.dll'
   FormatsToProcess = './Az.ArcResourceBridge.format.ps1xml'
-  FunctionsToExport = 'Get-AzArcResourceBridge', 'Get-AzArcResourceBridgeKey', 'Get-AzArcResourceBridgeTelemetryConfig', 'Get-AzArcResourceBridgeUpgradeGraph', 'Get-AzArcResourceBridgeUserCredential', 'New-AzArcResourceBridge', 'Remove-AzArcResourceBridge', 'Update-AzArcResourceBridge', '*'
+  FunctionsToExport = 'Get-AzArcResourceBridge', 'Get-AzArcResourceBridgeApplianceCredential', 'Get-AzArcResourceBridgeCredentials', 'Get-AzArcResourceBridgeTelemetryConfig', 'Get-AzArcResourceBridgeUpgradeGraph', 'New-AzArcResourceBridge', 'Remove-AzArcResourceBridge', 'Update-AzArcResourceBridge', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

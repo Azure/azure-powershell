@@ -1,39 +1,48 @@
 ---
 external help file:
 Module Name: Az.ArcResourceBridge
-online version: https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgekey
+online version: https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgeappliancecredential
 schema: 2.0.0
 ---
 
-# Get-AzArcResourceBridgeKey
+# Get-AzArcResourceBridgeApplianceCredential
 
 ## SYNOPSIS
-Returns the cluster customer credentials for the dedicated appliance.
+Returns the cluster user credentials for the dedicated appliance.
 
 ## SYNTAX
 
 ```
-Get-AzArcResourceBridgeKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzArcResourceBridgeApplianceCredential -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the cluster customer credentials for the dedicated appliance.
+Returns the cluster user credentials for the dedicated appliance.
 
 ## EXAMPLES
 
-### Example 1: Returns the cluster customer credentials for the dedicated appliance.
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzArcResourceBridgeKey -ResourceGroupName azps_test_group -Name azps-resource-bridge
+{{ Add code here }}
 ```
 
 ```output
-ArtifactProfile Kubeconfig SshKey
---------------- ---------- ------
-{…                         {…
+{{ Add output here }}
 ```
 
-Returns the cluster customer credentials for the dedicated appliance.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -136,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResults
+### Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListCredentialResults
 
 ## NOTES
 

@@ -63,7 +63,7 @@ Describe 'AzArcResourceBridge' {
 
     It 'ListKey' {
         {
-            $config = Get-AzArcResourceBridgeKey -ResourceGroupName $env.resourceGroup -Name $env.resourceBridge1
+            $config = Get-AzArcResourceBridgeCredentials -ResourceGroupName $env.resourceGroup -Name $env.resourceBridge1
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

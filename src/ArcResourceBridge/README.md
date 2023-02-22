@@ -91,7 +91,7 @@ directive:
       subject-prefix: ArcResourceBridge
       subject: ApplianceKey
     set:
-      subject: Key
+      subject: Credentials
   - where:
       subject-prefix: ArcResourceBridge
       subject: ApplianceTelemetryConfig
@@ -102,6 +102,11 @@ directive:
       subject: ApplianceUpgradeGraph
     set:
       subject: UpgradeGraph
+  - where:
+      subject-prefix: ArcResourceBridge
+      subject: UserCredential
+    set:
+      subject: ApplianceCredential
   - where:
       subject-prefix: ArcResourceBridge
       subject: ApplianceOperation
