@@ -319,19 +319,14 @@ This example creates a new VM with the GuestAttestation extension installed by d
 
 ### Example 8: Create a VM using the -Image alias.
 ```powershell
-$resourceGroupName= "Resource Group Name"
-$domainNameLabel = "Domain Name Label Name"
-$vmname = "Virtual Machine Name"
-$securePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force
-$user = "Username"
+$resourceGroupName= "<Resource Group Name>"
+$domainNameLabel = "<Domain Name Label>"
+$vmname = "<Virtual Machine Name>"
+$securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force
+$user = "<Username>"
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
 
 New-AzResourceGroup -Name $rgname -Location $loc -Force
-        
-# Create Credential 
-$securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;#Get-PasswordForVM   
-$user = "admin01"
-$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
 
 # Create a VM using an Image alias.
 $vmname = 'v' + $rgname
