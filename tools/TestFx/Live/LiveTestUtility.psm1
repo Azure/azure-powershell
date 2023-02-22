@@ -275,7 +275,13 @@ function Invoke-LiveTestScenario {
 
         do {
             try {
-                $ScenarioScript.InvokeWithContext($null, @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None")), $snrResourceGroup)
+                if ($snrRetryCount -eq $script:ScenarioMaxRetryCount) {
+                    $ScenarioScript.InvokeWithContext($null, @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None"), [psvariable]::new("DebugPreference", "Continue")), $snrResourceGroup)
+                }
+                else {
+                    $ScenarioScript.InvokeWithContext($null, @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None")), $snrResourceGroup)
+                }
+
                 Write-Host "##[section]Successfully executed the live scenario `"$Name`"." -ForegroundColor Green
                 break
             }
@@ -285,6 +291,19 @@ function Invoke-LiveTestScenario {
                 $snrErrorDetails = $snrErrorMessage
 
                 $snrInvocationInfo = $snrErrorRecord.InvocationInfo
+
+                Write-Host "##[error]Error Object:" -ForegroundColor Red
+                $_ | Format-List * -Force
+
+                Write-Host "##[error]Exception Object:" -ForegroundColor Red
+                $_.Exception.InnerException | Format-List * -Force
+
+                Write-Host "##[error]Error Record:" -ForegroundColor Red
+                $snrErrorRecord | Format-List * -Force
+
+                Write-Host "##[error]Invocation Info:" -ForegroundColor Red
+                $snrInvocationInfo | Format-List * -Force
+
                 if ($null -ne $snrInvocationInfo) {
                     $snrScriptName = Split-Path -Path $snrInvocationInfo.ScriptName -Leaf -ErrorAction SilentlyContinue
                     if ($snrScriptName -eq "Assert.ps1") {
