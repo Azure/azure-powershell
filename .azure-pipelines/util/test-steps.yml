@@ -72,7 +72,7 @@ steps:
     {
       if ($Module.Status -eq "Failed")
       {
-        return -1
+        throw "test fails"
       }
     }
   workingDirectory: 'artifacts/PipelineResult'

@@ -286,7 +286,9 @@ If ($TestAutorest)
     If (Test-Path $CIPlanPath)
     {
         $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
-        If (-not ($CIPlan.Contains($ModuleFolderName)))
+        Write-Host $CIPlan.test
+        Write-Host $ModuleFolderName
+        If (-not ($CIPlan.test.Contains($ModuleFolderName)))
         {
             Return
         }
