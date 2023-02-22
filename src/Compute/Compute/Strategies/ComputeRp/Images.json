@@ -6,22 +6,16 @@
                                  "sku":  "7.5",
                                  "version":  "latest"
                              },
-                  "CoreOS":  {
-                                 "publisher":  "CoreOS",
-                                 "offer":  "CoreOS",
-                                 "sku":  "Stable",
-                                 "version":  "latest"
-                             },
                   "Debian":  {
                                  "publisher":  "credativ",
                                  "offer":  "Debian",
                                  "sku":  "8",
                                  "version":  "latest"
                              },
-                  "openSUSE-Leap":  {
+                  "LinOpenSuseLeap154":  {
                                         "publisher":  "SUSE",
-                                        "offer":  "openSUSE-Leap",
-                                        "sku":  "42.3",
+                                        "offer":  "openSUSE-leap-15-4",
+                                        "sku":  "gen2",
                                         "version":  "latest"
                                     },
                   "RHEL":  {
@@ -30,10 +24,10 @@
                                "sku":  "7-RAW",
                                "version":  "latest"
                            },
-                  "SLES":  {
+                  "LinSuseSles15SP4":  {
                                "publisher":  "SUSE",
-                               "offer":  "SLES",
-                               "sku":  "12-SP2",
+                               "offer":  "sles-15-sp4",
+                               "sku":  "gen2",
                                "version":  "latest"
                            },
                   "UbuntuLTS":  {
