@@ -392,7 +392,7 @@ function Test-NetworkInterface-GatewayLoadBalancerConsumer
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } ;
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" };
 
         # Create Provider Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetProviderName -AddressPrefix "10.0.1.0/24";
@@ -415,7 +415,7 @@ function Test-NetworkInterface-GatewayLoadBalancerConsumer
         # Create NetworkInterface
         $nicConsumer = New-AzNetworkInterface -Name $nicConsumerName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1 -Tag @{ testtag = "testval" };
 
-        # Create NetworkInterface
+        # Get NetworkInterface
         $expectedNicConsumer = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname;
 
         # Verification
@@ -424,7 +424,7 @@ function Test-NetworkInterface-GatewayLoadBalancerConsumer
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname;
     }
 }
 
