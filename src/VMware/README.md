@@ -83,10 +83,10 @@ directive:
           "format": "password"
       }
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^RestrictViaIdentity[0-9]*.$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
-      variant: ^Restrict$|^RestrictViaIdentity$
+      variant: ^Restrict$|^RestrictViaIdentity(?!.*?Expanded)$
     remove: true
   - where:
       verb: Set
