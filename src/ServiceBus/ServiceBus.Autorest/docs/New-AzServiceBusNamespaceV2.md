@@ -16,9 +16,10 @@ Creates a new ServiceBus namespace.
 New-AzServiceBusNamespaceV2 -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AlternateName <String>] [-DisableLocalAuth]
  [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption]
- [-SkuCapacity <Int32>] [-SkuName <SkuName>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>]
- [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-PremiumMessagingPartition <Int32>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>]
+ [-SkuName <SkuName>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-ZoneRedundant]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -278,7 +279,7 @@ Properties of KeyVault
 To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -340,6 +341,23 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PremiumMessagingPartition
+The number of partitions of a Service Bus namespace.
+This property is only applicable to Premium SKU namespaces.
+The default value is 1 and possible values are 1, 2 and 4
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -525,7 +543,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
 
 ## NOTES
 

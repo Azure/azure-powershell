@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             private set;
         }
 
-        public Site CreateWebApp(string resourceGroupName, string webAppName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo, string aseName, string aseResourceGroupName, IDictionary<string, string> tags = null)
+        public Site CreateWebApp(string resourceGroupName, string webAppName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo, string aseName, string aseResourceGroupName, IDictionary<string, string> tags = null, ManagedServiceIdentity sourceIdentity=null)
         {
             Site createdWebSite = null;
             string qualifiedSiteName;
@@ -69,7 +69,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             ServerFarmId = serverFarmId,
                             CloningInfo = cloningInfo,
                             HostingEnvironmentProfile = profile,
-                            Tags = tags
+                            Tags = tags,
+                            Identity = sourceIdentity
                         });
             }
             else

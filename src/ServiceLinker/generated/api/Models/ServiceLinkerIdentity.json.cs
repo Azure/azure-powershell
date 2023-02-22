@@ -76,6 +76,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
             {
                 return;
             }
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
+            {_dryrunName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("dryrunName"), out var __jsonDryrunName) ? (string)__jsonDryrunName : (string)DryrunName;}
+            {_connectorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("connectorName"), out var __jsonConnectorName) ? (string)__jsonConnectorName : (string)ConnectorName;}
             {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)ResourceUri;}
             {_linkerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("linkerName"), out var __jsonLinkerName) ? (string)__jsonLinkerName : (string)LinkerName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
@@ -101,6 +106,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
             {
                 return container;
             }
+            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
+            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
+            AddIf( null != (((object)this._dryrunName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString(this._dryrunName.ToString()) : null, "dryrunName" ,container.Add );
+            AddIf( null != (((object)this._connectorName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString(this._connectorName.ToString()) : null, "connectorName" ,container.Add );
             AddIf( null != (((object)this._resourceUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString(this._resourceUri.ToString()) : null, "resourceUri" ,container.Add );
             AddIf( null != (((object)this._linkerName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString(this._linkerName.ToString()) : null, "linkerName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );

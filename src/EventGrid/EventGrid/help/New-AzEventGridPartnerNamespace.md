@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgridpartnernamespace
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ Creates a new Event Grid partner namespace \`PartnerNamespace1\` in resource gro
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 Switch param to disable local auth.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 Endpoint for the partner namespace
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +85,7 @@ Each rule specifies the IP Address in CIDR notation e.g., 10.0.0.0/8 along with 
 Possible Action values include Allow only
 
 ```yaml
-Type: PSInboundIpRule[]
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSInboundIpRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 Location of the partner namespace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 Event Grid partner namespace name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: PartnerNamespaceName
 
@@ -131,7 +131,7 @@ Fully qualified ARM Id of the partner registration that should be associated wit
 This takes the following format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +148,7 @@ If none is specified, source attribute routing will be used to match the partner
 Possible values include: 'SourceEventAttribute', 'ChannelNameHeader'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: SourceEventAttribute, ChannelNameHeader
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 List of PSPrivateEndointConnection representing information about the private endpoint connections.
 
 ```yaml
-Type: PSPrivateEndpointConnection[]
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSPrivateEndpointConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +182,7 @@ You can further restrict to specific IPs by configuring InboundIpRule parameters
 Allowed values are disabled and enabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 Hashtable which represents resource Tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +227,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -243,7 +243,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

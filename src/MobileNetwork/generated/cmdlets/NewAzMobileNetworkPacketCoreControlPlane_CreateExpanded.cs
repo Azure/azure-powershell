@@ -218,6 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         /// <summary>
         /// Settings to allow interoperability with third party components e.g. RANs and UEs.
         /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Settings to allow interoperability with third party components e.g. RANs and UEs.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
@@ -225,8 +226,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         ReadOnly = false,
         Description = @"Settings to allow interoperability with third party components e.g. RANs and UEs.",
         SerializedName = @"interopSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny InteropSetting { get => _parametersBody.InteropSetting ?? null /* object */; set => _parametersBody.InteropSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlanePropertiesFormatInteropSettings InteropSetting { get => _parametersBody.InteropSetting ?? null /* object */; set => _parametersBody.InteropSetting = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }

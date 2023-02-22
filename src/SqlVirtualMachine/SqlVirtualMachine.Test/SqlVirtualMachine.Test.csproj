@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="25.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="58.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="60.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="13.1.0" />
   </ItemGroup>
 

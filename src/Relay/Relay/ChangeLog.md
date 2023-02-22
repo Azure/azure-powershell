@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change message for cmdlets.
+    * `Set-AzRelayNamespace`
+    * `Get-AzRelayOperation`
 
 ## Version 1.0.3
 * Update references in .psd1 to use relative path

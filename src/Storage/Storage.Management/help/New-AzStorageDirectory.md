@@ -41,15 +41,15 @@ This cmdlet returns a **CloudFileDirectory** object.
 ## EXAMPLES
 
 ### Example 1: Create a folder in a file share
-```
-PS C:\>New-AzStorageDirectory -ShareName "ContosoShare06" -Path "ContosoWorkingFolder"
+```powershell
+New-AzStorageDirectory -ShareName "ContosoShare06" -Path "ContosoWorkingFolder"
 ```
 
 This command creates a folder named ContosoWorkingFolder in the file share named ContosoShare06.
 
 ### Example 2: Create a folder in a file share specified in a file share object
-```
-PS C:\>Get-AzStorageShare -Name "ContosoShare06" | New-AzStorageDirectory -Path "ContosoWorkingFolder"
+```powershell
+Get-AzStorageShare -Name "ContosoShare06" | New-AzStorageDirectory -Path "ContosoWorkingFolder"
 ```
 
 This command uses the **Get-AzStorageShare** cmdlet to get the file share named ContosoShare06, and then passes it to the current cmdlet by using the pipeline operator.
