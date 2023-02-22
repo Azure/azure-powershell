@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -157,8 +158,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 RestoreSource = sourceAccountToRestore.Id,
                 RestoreTimestampInUtc = utcRestoreDateTime,
-                DatabasesToRestore = DatabasesToRestore,
-                PublicNetworkAccess = PublicNetworkAccess
+                DatabasesToRestore = DatabasesToRestore
             };
 
             Collection<Location> LocationCollection = new Collection<Location>();
@@ -175,7 +175,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 Kind = apiKind,
                 CreateMode = CreateMode.Restore,
-                RestoreParameters = restoreParameters.ToSDKModel()
+                RestoreParameters = restoreParameters.ToSDKModel(),
+                PublicNetworkAccess = PublicNetworkAccess
             };
 
             if (ShouldProcess(TargetDatabaseAccountName,
