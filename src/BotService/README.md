@@ -97,7 +97,7 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.BotService/operationresults/{operationResultId}"]
     transform: delete $["get"]
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^RegenerateViaIdentity.*$
     remove: true
   - where:
       subject: Bot
