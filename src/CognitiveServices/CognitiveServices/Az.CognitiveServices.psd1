@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.3'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.CognitiveServices.dll'
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.CognitiveServices.Management.Sdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -97,7 +97,13 @@ CmdletsToExport = 'Get-AzCognitiveServicesAccount',
                'New-AzCognitiveServicesAccountDeployment', 
                'Remove-AzCognitiveServicesAccountDeployment', 
                'New-AzCognitiveServicesObject', 
-               'Get-AzCognitiveServicesAccountModel'
+               'Get-AzCognitiveServicesAccountModel', 
+               'New-AzCognitiveServicesCommitmentPlan',
+               'Remove-AzCognitiveServicesCommitmentPlan',
+               'Get-AzCognitiveServicesCommitmentPlan', 
+               'New-AzCognitiveServicesCommitmentPlanAssociation',
+               'Remove-AzCognitiveServicesCommitmentPlanAssociation',
+               'Get-AzCognitiveServicesCommitmentPlanAssociation'
 
 # Variables to export from this module
 # VariablesToExport = @()

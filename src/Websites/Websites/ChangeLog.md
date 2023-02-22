@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a new parameter `-CopyIdentity` for `New-AzWebAppSlot` to copy the identity from the parent app to the slot.
+* Updated `New-AzWebAppSSLBinding` to support -WhatIf parameter
 
 ## Version 2.12.1
 * Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as portal [#19592]

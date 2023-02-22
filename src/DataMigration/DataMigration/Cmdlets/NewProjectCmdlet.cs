@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "DataMigrationService Resource Id.")]
+            HelpMessage = "Azure Database Migration Service (classic) Resource Id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -59,13 +59,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Parameter(
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            HelpMessage = "Database Migration Service Name.")]
+            HelpMessage = "Azure Database Migration Service (classic) Name.")]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The location of the instance of the Database Migration Service")]
+            HelpMessage = "The location of the instance of the Azure Database Migration Service (classic)")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

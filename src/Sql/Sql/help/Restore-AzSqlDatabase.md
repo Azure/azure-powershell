@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackupStorageRedundancy
-The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.
+The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone, Geo and GeoZone.
 
 ```yaml
 Type: System.String
@@ -333,10 +333,9 @@ Accept wildcard characters: False
 The high availability replica count to associate with the Azure Sql Database.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-Accepted values: 0, 1, 2
 
 Required: False
 Position: Named

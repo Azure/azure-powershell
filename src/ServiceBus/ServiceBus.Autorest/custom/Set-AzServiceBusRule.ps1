@@ -20,7 +20,7 @@ Updates a ServiceBus Rule
 #>
 
 function Set-AzServiceBusRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Rule.")]

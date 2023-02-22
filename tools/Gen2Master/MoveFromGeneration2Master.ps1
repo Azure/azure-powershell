@@ -36,7 +36,7 @@ Function Move-Generation2Master {
         If (-not (Test-Path $DestPath)) {
             New-Item -ItemType Directory -Path $DestPath -Force
         }
-        $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils')
+        $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils', 'UX')
         Foreach ($Dir in $Dir2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $Dir
             $DestItem = Join-Path -Path $DestPath -ChildPath $Dir
@@ -121,9 +121,14 @@ Function Move-Generation2Master {
 
         #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
         $generateInfo = [ordered]@{}
-        $repo = "https://github.com/Azure/azure-rest-api-specs"
-        $commit = git ls-remote $repo HEAD
-        $generateInfo.Add("swagger_commit", $commit.Substring(0, 40))
+        $content = Get-Content README.md
+        $commitId = [System.Text.RegularExpressions.Regex]::New("(?i)\bbranch\b:[ \t]*([0-9a-zA-Z]+)").Matches($content) | % {$_.groups[1].Value}
+        if ($commitId -eq $null -or $commitId -eq "main")
+        {
+            $repo = "https://github.com/Azure/azure-rest-api-specs"
+            $commitId = git ls-remote $repo HEAD
+        }
+        $generateInfo.Add("swagger_commit", $commitId.Substring(0, 40))
         $generateInfo.Add("node", (node --version))
         $autorest_info = (npm ls -g @autorest/autorest).Split('@')
         $generateInfo.Add("autorest", ($autorest_info[$autorest_info.count - 2]).trim())

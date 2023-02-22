@@ -7,10 +7,7 @@ Get-AzMobileNetworkPacketCoreControlPlaneVersion
 Name
 ----
 PMN-4-9-0
-......
 pmn-2301-0-1
-......
-...
 ```
 
 List information about the specified packet core control plane version by sub.

@@ -31,7 +31,7 @@ New-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azfederatedidentitycredentials
 #>
 function Get-AzFederatedIdentityCredentials {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -68,7 +68,8 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category('Path')]
     [System.String]
-    # The name of the Resource Group to which the identity belongs.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -235,12 +236,12 @@ Gets the systemAssignedIdentity available under the specified RP scope.
 Get-AzSystemAssignedIdentity -Scope "/subscriptions/00000000-0000-0000-00000000000/resourcegroups/lucas-rg-test/providers/Microsoft.Web/sites/functionportal01"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.ISystemAssignedIdentity
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.ISystemAssignedIdentity
 .Link
 https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azsystemassignedidentity
 #>
 function Get-AzSystemAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.ISystemAssignedIdentity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.ISystemAssignedIdentity])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -585,7 +586,7 @@ New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Lo
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IIdentity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -602,7 +603,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azuserassignedidentity
 #>
 function Get-AzUserAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IIdentity])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -776,12 +777,12 @@ New-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityNam
     -Audience @("api://AzureADTokenExchange-Modified")
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential
 .Link
 https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azfederatedidentitycredentials
 #>
 function New-AzFederatedIdentityCredentials {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -799,7 +800,8 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category('Path')]
     [System.String]
-    # The name of the Resource Group to which the identity belongs.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
@@ -966,12 +968,12 @@ Create or update an identity in the specified subscription and resource group.
 New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IIdentity
 .Link
 https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity
 #>
 function New-AzUserAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IIdentity])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1179,7 +1181,8 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category('Path')]
     [System.String]
-    # The name of the Resource Group to which the identity belongs.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
@@ -1534,7 +1537,7 @@ Get-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1551,7 +1554,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.managedserviceidentity/update-azfederatedidentitycredentials
 #>
 function Update-AzFederatedIdentityCredentials {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -1569,7 +1572,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category('Path')]
     [System.String]
-    # The name of the Resource Group to which the identity belongs.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -1748,7 +1752,7 @@ Get-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 | U
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IIdentity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1765,7 +1769,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.managedserviceidentity/update-azuserassignedidentity
 #>
 function Update-AzUserAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IIdentity])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

@@ -88,6 +88,8 @@ Add means to add user assigned managed identities for workspace, Remove means to
 
         public const string NodeCount = "Number of nodes to be allocated in the specified Spark pool.";
 
+        public const string IsolatedCompute = "The Isolate Compute option is only available with the XXXLarge (80 vCPU / 504 GB) node size. Enabling this option offers isolation for Apache Spark compute for untrusted services. Isolated compute costs the same as the non-isolated VM of the same size. If you expect to enable Isolated Compute for spark pool, ensure that your Synapse workspace is created in an isolated compute supported region, please refer to this document for more details: https://learn.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-pool-configurations#isolated-compute";
+
         public const string NodeSize = "Number of core and memory to be used for nodes allocated in the specified Spark pool. This parameter must be specified when Auto-scale is disabled";
 
         public const string EnableAutoScale = "Indicates whether Auto-scale should be enabled";

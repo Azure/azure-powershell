@@ -19,6 +19,14 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
+    - `New-AzFirewallPolicySnat`
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
+* Fixed a bug that reverts classic fw private ranges to default when doing get & set
+* Onboarded `Microsoft.Monitor/accounts` to private link cmdlets
+
+## Version 5.4.0
 * Fixed a bug that does not enable to set Perform SNAT to Always
 * Fixed the incorrect type of `-TotalBytesPerSession` in `New-AzNetworkWatcherPacketCapture`
 

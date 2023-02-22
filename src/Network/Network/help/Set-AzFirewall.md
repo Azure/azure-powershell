@@ -223,6 +223,15 @@ $azFw | Set-AzFirewall
 
 In this example, Enable Fat Flow Logging is enabled on the Firewall.
 
+### 14: Upgrade Azure Firewall Standard to Premium
+```powershell
+$azfw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azfw.Sku.Tier="Premium"
+Set-AzFirewall -AzureFirewall $azfw
+```
+
+This example upgrades your existing Azure Firewall Standard to Premium Firewall. Upgrade process may take several minutes and does not require service down time. After upgrade is completed successfully you may replace your exiting standard policy with premium.
+
 ## PARAMETERS
 
 ### -AsJob

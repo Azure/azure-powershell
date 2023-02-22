@@ -12,7 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support
     public partial struct ActionType :
         System.IEquatable<ActionType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType Enable = @"enable";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType Internal = @"Internal";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType OptOut = @"optOut";
 
         /// <summary>the value for an instance of the <see cref="ActionType" /> Enum.</summary>
         private string _value { get; set; }

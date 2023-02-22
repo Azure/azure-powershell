@@ -151,7 +151,7 @@ Describes the cloud service.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
 Parameter Sets: (All)
 Aliases:
 
@@ -198,13 +198,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
 
 ## NOTES
 
@@ -215,8 +215,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<ICloudServiceIdentity>`: Identity Parameter
-  - `[CloudServiceName <String>]`: 
+`INPUTOBJECT <ICloudServiceIdentity>`: Identity Parameter
+  - `[CloudServiceName <String>]`: Name of the cloud service.
   - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
@@ -224,13 +224,13 @@ INPUTOBJECT `<ICloudServiceIdentity>`: Identity Parameter
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
   - `[PublicIPAddressName <String>]`: The name of the public IP Address.
-  - `[ResourceGroupName <String>]`: 
+  - `[ResourceGroupName <String>]`: Name of the resource group.
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   - `[UpdateDomain <Int32?>]`: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 
-PARAMETER `<ICloudService>`: Describes the cloud service.
+`PARAMETER <ICloudService>`: Describes the cloud service.
   - `Location <String>`: Resource location.
   - `[AllowModelOverride <Boolean?>]`: (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.         The default value is `false`.
   - `[Configuration <String>]`: Specifies the XML service configuration (.cscfg) for the cloud service.
@@ -241,7 +241,7 @@ PARAMETER `<ICloudService>`: Describes the cloud service.
       - `[ForceUpdateTag <String>]`: Tag to force apply the provided public and protected settings.         Changing the tag value allows for re-running the extension without changing any of the public or protected settings.         If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.         If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the role instance with the same sequence-number, and         it is up to handler implementation whether to re-run it or not
       - `[Name <String>]`: The name of the extension.
       - `[ProtectedSetting <String>]`: Protected settings for the extension which are encrypted before sent to the role instance.
-      - `[ProtectedSettingFromKeyVaultSecretUrl <String>]`: 
+      - `[ProtectedSettingFromKeyVaultSecretUrl <String>]`: Secret URL which contains the protected settings of the extension
       - `[Publisher <String>]`: The name of the extension handler publisher.
       - `[RolesAppliedTo <String[]>]`: Optional list of roles to apply this extension. If property is not specified or '*' is specified, extension is applied to all roles in the cloud service.
       - `[Setting <String>]`: Public settings for the extension. For JSON extensions, this is the JSON settings for the extension. For XML Extension (like RDP), this is the XML setting for the extension.
@@ -257,6 +257,7 @@ PARAMETER `<ICloudService>`: Describes the cloud service.
         - `[SubnetId <String>]`: Resource Id
       - `Name <String>`: The name of the Load balancer
       - `[Id <String>]`: Resource Id
+    - `[SlotType <CloudServiceSlotType?>]`: Slot type for the cloud service.         Possible values are <br /><br />**Production**<br /><br />**Staging**<br /><br />         If not specified, the default value is Production.
     - `[SwappableCloudService <ISubResource>]`: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
       - `[Id <String>]`: Resource Id
   - `[OSProfile <ICloudServiceOSProfile>]`: Describes the OS profile for the cloud service.
@@ -275,6 +276,7 @@ PARAMETER `<ICloudService>`: Describes the cloud service.
   - `[Tag <ICloudServiceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[UpgradeMode <CloudServiceUpgradeMode?>]`: Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.         Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />         If not specified, the default value is Auto. If set to Manual, PUT UpdateDomain must be called to apply the update. If set to Auto, the update is automatically applied to each update domain in sequence.
+  - `[Zone <String[]>]`: List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
 
 ## RELATED LINKS
 

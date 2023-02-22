@@ -1,8 +1,8 @@
 {
-  "Get-AzDatabricksVNetPeering+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings?api-version=2022-04-01-preview+1": {
+  "Get-AzDatabricksVNetPeering+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings?api-version=2023-02-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings?api-version=2022-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings?api-version=2023-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDatabricksVNetPeering+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2022-04-01-preview+1": {
+  "Get-AzDatabricksVNetPeering+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2023-02-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2022-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2023-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -83,10 +83,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDatabricksVNetPeering+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2022-04-01-preview+1": {
+  "Get-AzDatabricksVNetPeering+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2023-02-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2022-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2023-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -125,10 +125,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDatabricksVNetPeering+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2022-04-01-preview+2": {
+  "Get-AzDatabricksVNetPeering+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2023-02-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2022-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/workspaces/workspacepovxne/virtualNetworkPeerings/vnetpeering-2i4hwf?api-version=2023-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

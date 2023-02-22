@@ -20,7 +20,7 @@ Create a in-memory object for Diagnostics Extension
 #>
 
 function New-AzCloudServiceDiagnosticsExtension {
-  [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension')]
+  [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension')]
   param(
     [Parameter(HelpMessage="Name of Diagnostics Extension.", Mandatory)]
     [string] $Name,

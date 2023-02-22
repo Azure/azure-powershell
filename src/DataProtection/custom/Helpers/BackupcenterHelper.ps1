@@ -107,7 +107,7 @@ function CheckResourceGraphModuleDependency {
     param() 
 
     process {
-        $module = Get-InstalledModule | Where-Object { $_.Name -eq "Az.ResourceGraph" }
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.ResourceGraph" }
         if ($module -eq $null) {
             $message = "Az.ResourceGraph Module must be installed to run this command. Please run 'Install-Module -Name Az.ResourceGraph' to install and continue."
             throw $message
@@ -120,7 +120,7 @@ function CheckResourcesModuleDependency {
     param() 
 
     process {
-        $module = Get-InstalledModule | Where-Object { $_.Name -eq "Az.Resources" }
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.Resources" }
         if ($module -eq $null) {
             $message = "Az.Resources Module must be installed to run this command. Please run 'Install-Module -Name Az.Resources' to install and continue."
             throw $message
@@ -133,7 +133,7 @@ function CheckPostgreSqlModuleDependency {
     param() 
 
     process {
-        $module = Get-InstalledModule | Where-Object { $_.Name -eq "Az.PostgreSql" }
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.PostgreSql" }
         if ($module -eq $null) {
             $message = "Az.PostgreSql Module must be installed to run this command. Please run 'Install-Module -Name Az.PostgreSql' to install and continue."
             throw $message
@@ -146,7 +146,7 @@ function CheckKeyVaultModuleDependency {
     param() 
 
     process {
-        $module = Get-InstalledModule | Where-Object { $_.Name -eq "Az.KeyVault" }
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.KeyVault" }
         if ($module -eq $null) {
             $message = "Az.KeyVault Module must be installed to run this command. Please run 'Install-Module -Name Az.KeyVault' to install and continue."
             throw $message

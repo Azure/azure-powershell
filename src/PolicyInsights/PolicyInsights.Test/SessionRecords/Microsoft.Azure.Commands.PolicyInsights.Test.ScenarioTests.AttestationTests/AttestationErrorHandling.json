@@ -1,0 +1,140 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-Error-Crud?api-version=2022-09-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLUVycm9yLUNydWQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8eab0041-e6f0-4c3e-b86c-c236a836d48b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.1.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "1d846e6e-c58c-4649-ac37-23c1d20f178b"
+        ],
+        "x-ms-correlation-request-id": [
+          "1d846e6e-c58c-4649-ac37-23c1d20f178b"
+        ],
+        "x-ms-routing-request-id": [
+          "CANADACENTRAL:20230118T165710Z:1d846e6e-c58c-4649-ac37-23c1d20f178b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 18 Jan 2023 16:57:10 GMT"
+        ],
+        "Content-Length": [
+          "119"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AttestationNotFound\",\r\n    \"message\": \"The attestation with name 'Attestation-Error-Crud' does not exist.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-Error-Crud?api-version=2022-09-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLUVycm9yLUNydWQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8eab0041-e6f0-4c3e-b86c-c236a836d48b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.1.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "225"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/Microsoft.Authorization/policyAssignments/PSAttestationSubAssignment\",\r\n    \"complianceState\": \"Compliant\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "b8c46715-9ccf-4515-a922-8ce62d3578f5"
+        ],
+        "x-ms-correlation-request-id": [
+          "b8c46715-9ccf-4515-a922-8ce62d3578f5"
+        ],
+        "x-ms-routing-request-id": [
+          "CANADACENTRAL:20230118T165711Z:b8c46715-9ccf-4515-a922-8ce62d3578f5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 18 Jan 2023 16:57:11 GMT"
+        ],
+        "Content-Length": [
+          "551"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidCreateAttestationRequest\",\r\n    \"message\": \"Unable to create attestation 'Attestation-Error-Crud'. No compliance data was found for resource '/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg' against policy assignment '/subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/providers/Microsoft.Authorization/policyAssignments/PSAttestationSubAssignment' and policy definition reference ID ''. If this is a new resource or policy assignment please trigger a compliance scan or try again later.\"\r\n  }\r\n}",
+      "StatusCode": 400
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "086aecf4-23d6-4dfd-99a8-a5c6299f0322"
+  }
+}

@@ -25,8 +25,8 @@ The **Get-AzStorageCORSRule** cmdlet gets Cross-Origin Resource Sharing (CORS) r
 ## EXAMPLES
 
 ### Example 1: Get CORS rules of blob service
-```
-PS C:\>Get-AzStorageCORSRule -ServiceType Blob
+```powershell
+Get-AzStorageCORSRule -ServiceType Blob
 ```
 
 This command gets the CORS rules for the Blob service type.

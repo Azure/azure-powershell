@@ -1,24 +1,24 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines?api-version=2018-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcHJpY2luZ3MvVmlydHVhbE1hY2hpbmVzP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDE=",
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines?api-version=2022-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcHJpY2luZ3MvVmlydHVhbE1hY2hpbmVzP2FwaS12ZXJzaW9uPTIwMjItMDMtMDE=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "53454c0a-4f38-4e00-80f9-c5f043112a55"
+          "3dbd15ef-8507-4208-8d96-4cc3f9d245ed"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27317.03",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/4.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -26,32 +26,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "a037fefe-64b5-4806-8f96-158e3a3372d4"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "749"
         ],
-        "x-ms-correlation-request-id": [
-          "6c6dce52-fc3f-489e-bb8d-cafa6ca73d49"
-        ],
-        "x-ms-routing-request-id": [
-          "UKWEST:20190307T160212Z:6c6dce52-fc3f-489e-bb8d-cafa6ca73d49"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "api-supported-versions": [
+          "1.0"
+        ],
+        "x-ms-request-id": [
+          "729bb007-e779-4fd0-97f2-de538a2f7d32"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "74f359b5-9ba8-4eca-82a1-7549114721db"
+        ],
+        "x-ms-routing-request-id": [
+          "FRANCESOUTH:20221117T081721Z:74f359b5-9ba8-4eca-82a1-7549114721db"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 Mar 2019 16:02:11 GMT"
+          "Thu, 17 Nov 2022 08:17:21 GMT"
         ],
         "Content-Length": [
-          "248"
+          "263"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines\",\r\n  \"name\": \"VirtualMachines\",\r\n  \"type\": \"Microsoft.Security/pricings\",\r\n  \"properties\": {\r\n    \"pricingTier\": \"Standard\",\r\n    \"freeTrialRemainingTime\": \"PT0S\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines\",\r\n  \"name\": \"VirtualMachines\",\r\n  \"type\": \"Microsoft.Security/pricings\",\r\n  \"properties\": {\r\n    \"subPlan\": \"P2\",\r\n    \"pricingTier\": \"Standard\",\r\n    \"freeTrialRemainingTime\": \"PT0S\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],

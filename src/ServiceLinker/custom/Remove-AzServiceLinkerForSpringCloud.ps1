@@ -34,7 +34,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
 .Link
 https://learn.microsoft.com/powershell/module/az.servicelinker/remove-azservicelinkerforspringcloud
 #>
-function Remove-AzServiceLinkerForSpringcloud {
+function Remove-AzServiceLinkerForSpringCloud {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

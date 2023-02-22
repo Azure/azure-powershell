@@ -26,6 +26,7 @@ using ScheduleRunType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using SystemNet = System.Net;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -776,7 +777,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
                 queryFilter.Filter = queryFilterString;
-
+                                
                 List<RecoveryPointResource> rpListResponse;
                 rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
                 containerUri,

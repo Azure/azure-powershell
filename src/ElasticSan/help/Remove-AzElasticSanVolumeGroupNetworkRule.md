@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ElasticSan
-online version: https://learn.microsoft.com/powershell/module/az.elasticsan/add-azelasticsanvolumegroupnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolumegroupnetworkrule
 schema: 2.0.0
 ---
 
