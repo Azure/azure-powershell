@@ -281,7 +281,7 @@ If ($TestAutorest)
         Write-Warning "There is no test-module.ps1 found in current folder: $PWD"
         Return
     }
-    $ModuleName = Get-ModuleFromPath $PWD
+    $ModuleName = Split-Path -Path $PWD -Leaf
     $ModuleFolderName = $ModuleName.Split(".")[1]
     If (Test-Path $CIPlanPath)
     {
