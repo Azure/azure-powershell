@@ -37,7 +37,7 @@ function Get-HelmClientLocation {
             }
             Write-Verbose "Downloaded helm: $HelmLocation"
         } else {
-            Write-Warning "Helm version 3+ is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
+            Write-Warning "Helm version 3.6.3 is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
         }
         return $HelmLocation
     }
