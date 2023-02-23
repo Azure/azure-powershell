@@ -30,13 +30,13 @@ For information on how to develop for `Az.ContainerInstance`, see [how-to.md](ho
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 314f28163917b9cfc527f7776b5e4a1dea69d295
+branch: 81562c6c057a510ddde50ff40720d254bd5f6dbf
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2021-09-01/containerInstance.json 
+  - $(repo)/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2022-10-01-preview/containerInstance.json 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
