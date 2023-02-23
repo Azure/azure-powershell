@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         /// <summary>Backing field for <see cref="CloudServiceName" /> property.</summary>
         private string _cloudServiceName;
 
+        /// <summary>Name of the cloud service.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
         public string CloudServiceName { get => this._cloudServiceName; set => this._cloudServiceName = value; }
 
@@ -70,6 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
+        /// <summary>Name of the resource group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
@@ -116,10 +118,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
     public partial interface ICloudServiceIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IJsonSerializable
     {
+        /// <summary>Name of the cloud service.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"",
+        Description = @"Name of the cloud service.",
         SerializedName = @"cloudServiceName",
         PossibleTypes = new [] { typeof(string) })]
         string CloudServiceName { get; set; }
@@ -179,11 +182,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         SerializedName = @"publicIpAddressName",
         PossibleTypes = new [] { typeof(string) })]
         string PublicIPAddressName { get; set; }
-
+        /// <summary>Name of the resource group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"",
+        Description = @"Name of the resource group.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
@@ -230,6 +233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
     internal partial interface ICloudServiceIdentityInternal
 
     {
+        /// <summary>Name of the cloud service.</summary>
         string CloudServiceName { get; set; }
         /// <summary>The IP configuration name.</summary>
         string IPConfigurationName { get; set; }
@@ -245,7 +249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         string OSVersionName { get; set; }
         /// <summary>The name of the public IP Address.</summary>
         string PublicIPAddressName { get; set; }
-
+        /// <summary>Name of the resource group.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>Name of the role instance.</summary>
         string RoleInstanceName { get; set; }

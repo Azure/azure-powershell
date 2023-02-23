@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     }
 
                     unlockDeleteRequest.ResourceToBeDeleted = protectedItemUri;
-                    UnlockDeleteResponse unlockDeleteResponse = BmsAdapter.Client.ResourceGuardProxy.UnlockDeleteWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardMapping[0].Name, unlockDeleteRequest, customHeaders).Result.Body;
+                    UnlockDeleteResponse unlockDeleteResponse = BmsAdapter.Client.ResourceGuardProxy.UnlockDeleteWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardMapping[0].Name, unlockDeleteRequest.ResourceGuardOperationRequests, unlockDeleteRequest.ResourceToBeDeleted , customHeaders).Result.Body;
                 }
                 else if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
                 {

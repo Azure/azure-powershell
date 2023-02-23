@@ -82,7 +82,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for CLOUDSERVICE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService
 Parameter Sets: CloudService
 Aliases:
 
@@ -203,7 +203,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CLOUDSERVICE `<CloudService>`: 
+`CLOUDSERVICE <CloudService>`: 
   - `Location <String>`: Resource location.
   - `[AllowModelOverride <Boolean?>]`: (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.         The default value is `false`.
   - `[Configuration <String>]`: Specifies the XML service configuration (.cscfg) for the cloud service.
@@ -214,7 +214,7 @@ CLOUDSERVICE `<CloudService>`:
       - `[ForceUpdateTag <String>]`: Tag to force apply the provided public and protected settings.         Changing the tag value allows for re-running the extension without changing any of the public or protected settings.         If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.         If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the role instance with the same sequence-number, and         it is up to handler implementation whether to re-run it or not
       - `[Name <String>]`: The name of the extension.
       - `[ProtectedSetting <String>]`: Protected settings for the extension which are encrypted before sent to the role instance.
-      - `[ProtectedSettingFromKeyVaultSecretUrl <String>]`: 
+      - `[ProtectedSettingFromKeyVaultSecretUrl <String>]`: Secret URL which contains the protected settings of the extension
       - `[Publisher <String>]`: The name of the extension handler publisher.
       - `[RolesAppliedTo <String[]>]`: Optional list of roles to apply this extension. If property is not specified or '*' is specified, extension is applied to all roles in the cloud service.
       - `[Setting <String>]`: Public settings for the extension. For JSON extensions, this is the JSON settings for the extension. For XML Extension (like RDP), this is the XML setting for the extension.
@@ -230,6 +230,7 @@ CLOUDSERVICE `<CloudService>`:
         - `[SubnetId <String>]`: Resource Id
       - `Name <String>`: The name of the Load balancer
       - `[Id <String>]`: Resource Id
+    - `[SlotType <CloudServiceSlotType?>]`: Slot type for the cloud service.         Possible values are <br /><br />**Production**<br /><br />**Staging**<br /><br />         If not specified, the default value is Production.
     - `[SwappableCloudService <ISubResource>]`: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
       - `[Id <String>]`: Resource Id
   - `[OSProfile <ICloudServiceOSProfile>]`: Describes the OS profile for the cloud service.
@@ -248,6 +249,7 @@ CLOUDSERVICE `<CloudService>`:
   - `[Tag <ICloudServiceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[UpgradeMode <CloudServiceUpgradeMode?>]`: Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.         Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />         If not specified, the default value is Auto. If set to Manual, PUT UpdateDomain must be called to apply the update. If set to Auto, the update is automatically applied to each update domain in sequence.
+  - `[Zone <String[]>]`: List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
 
 ## RELATED LINKS
 

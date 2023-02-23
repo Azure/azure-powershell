@@ -153,7 +153,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersion
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSVersion
 
 ## NOTES
 
@@ -164,8 +164,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<ICloudServiceIdentity>`: Identity Parameter
-  - `[CloudServiceName <String>]`: 
+`INPUTOBJECT <ICloudServiceIdentity>`: Identity Parameter
+  - `[CloudServiceName <String>]`: Name of the cloud service.
   - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
@@ -173,7 +173,7 @@ INPUTOBJECT `<ICloudServiceIdentity>`: Identity Parameter
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
   - `[PublicIPAddressName <String>]`: The name of the public IP Address.
-  - `[ResourceGroupName <String>]`: 
+  - `[ResourceGroupName <String>]`: Name of the resource group.
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.

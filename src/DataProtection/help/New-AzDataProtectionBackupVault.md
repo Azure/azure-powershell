@@ -15,9 +15,11 @@ Creates or updates a BackupVault resource belonging to a resource group.
 ```
 New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
  -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-DefaultProfile <PSObject>] [-ETag <String>]
- [-IdentityType <String>] [-NoWait] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
+ [-ETag <String>] [-IdentityType <String>] [-ImmutabilityState <ImmutabilityState>] [-NoWait]
+ [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +41,21 @@ ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
 ```
 
 This command creates a new backup vault.
+
+### Example 2: Create a new backup vault with ImmutabilityState, CrossSubscriptionRestoreState, soft delete settings
+```powershell
+$sub = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
+New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location westus -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState On
+```
+
+```output
+ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
+---- ------------------- ---------------- ------------ -------- ----    ----
+                                                       westus   MyVault Microsoft.DataProtection/backupVaults
+```
+
+This command creates a new backup vault while setting Immutability state, cross subscription restore state, soft delete settings of the vault at creation time.
 
 ## PARAMETERS
 
@@ -63,6 +80,22 @@ Security alerts cannot be disabled.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CrossSubscriptionRestoreState
+Cross subscription restore state of the vault.
+Allowed values are Disabled, Enabled, PermanentlyDisabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState
 Parameter Sets: (All)
 Aliases:
 
@@ -118,6 +151,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImmutabilityState
+Immutability state of the vault.
+Allowed values are Disabled, Unlocked, Locked.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Resource location.
 
@@ -163,13 +212,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SoftDeleteRetentionDurationInDay
+Soft delete retention duration in days
+
+```yaml
+Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteState
+Soft delete state of the vault.
+Allowed values are Off, On, AlwaysOn
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageSetting
 Storage Settings of the vault.
 Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
 To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IStorageSetting[]
 Parameter Sets: (All)
 Aliases:
 

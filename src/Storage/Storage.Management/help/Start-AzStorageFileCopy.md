@@ -99,16 +99,16 @@ This cmdlet will trigger asynchronous blob copy, the copy process is handled by 
 ## EXAMPLES
 
 ### Example 1: Start copy operation from file to file by using share name and file name
-```
-PS C:\>Start-AzStorageFileCopy -SrcShareName "ContosoShare01" -SrcFilePath "FilePath01" -DestShareName "ContosoShare02" -DestFilePath "FilePath02"
+```powershell
+Start-AzStorageFileCopy -SrcShareName "ContosoShare01" -SrcFilePath "FilePath01" -DestShareName "ContosoShare02" -DestFilePath "FilePath02"
 ```
 
 This command starts a copy operation from file to file.
 The command specifies share name and file name
 
 ### Example 2: Start copy operation from blob to file by using container name and blob name
-```
-PS C:\>Start-AzStorageFileCopy -SrcContainerName "ContosoContainer01" -SrcBlobName "ContosoBlob01" -DestShareName "ContosoShare" -DestFilePath "FilePath02"
+```powershell
+Start-AzStorageFileCopy -SrcContainerName "ContosoContainer01" -SrcBlobName "ContosoBlob01" -DestShareName "ContosoShare" -DestFilePath "FilePath02"
 ```
 
 This command starts a copy operation from blob to file.

@@ -33,8 +33,8 @@ The **Set-AzStorageShareQuota** cmdlet sets the storage capacity for a specified
 ## EXAMPLES
 
 ### Example 1: Set the storage capacity of a share
-```
-PS C:\>Set-AzStorageShareQuota -ShareName "ContosoShare01" -Quota 1024
+```powershell
+Set-AzStorageShareQuota -ShareName "ContosoShare01" -Quota 1024
 ```
 
 This command sets the storage capacity for a share named ContosoShare01 to 1024 GB.

@@ -1205,6 +1205,13 @@
   - The following properties in the output type are being deprecated : 'BackupStorageRedundancy'
   - The following properties are being added to the output type : 'CurrentBackupStorageRedundancy' 'RequestedBackupStorageRedundancy'
 
+## Az.Storage
+
+### `New-AzStorageAccount`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Default value of AllowBlobPublicAccess will be changed from True to False in a future release. When AllowBlobPublicAccess is False on a storage account, it is not permitted to configure container ACLs to allow anonymous access to blobs within the storage account.
+
 ## Az.StorageSync
 
 ### `Set-AzStorageSyncServerEndpoint`

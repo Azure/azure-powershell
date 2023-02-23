@@ -1,7 +1,7 @@
 ---
 external help file: Az.SignalR-help.xml
 Module Name: Az.SignalR
-online version: https://learn.microsoft.com/powershell/module/az./new-AzWebPubSubEventHubEndpointObject
+online version: https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubeventhubendpointobject
 schema: 2.0.0
 ---
 

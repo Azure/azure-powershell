@@ -23,6 +23,10 @@ Creates or updates a BackupVault resource belonging to a resource group.
 $sub = "xxxx-xxxx-xxxxx"
 $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
 New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName "MyVault" -StorageSetting $storagesetting -Location westus
+.Example
+$sub = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
+New-AzDataProtectionBackupVault -SubscriptionId $sub "resourceGroupName" -VaultName "vaultName" -Location westus -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState On
 
 .Outputs
 System.Management.Automation.PSObject
@@ -61,7 +65,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IStorageSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IStorageSetting[]]
     # Storage Settings of the vault.
     # Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
     # To construct, see NOTES section for STORAGESETTING properties and create a hash table.
@@ -91,6 +95,33 @@ param(
     # Parameter to Enable or Disable built-in azure monitor alerts for job failures.
     # Security alerts cannot be disabled.
     ${AzureMonitorAlertsForAllJobFailure},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState]
+    # Immutability state of the vault.
+    # Allowed values are Disabled, Unlocked, Locked.
+    ${ImmutabilityState},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState]
+    # Cross subscription restore state of the vault.
+    # Allowed values are Disabled, Enabled, PermanentlyDisabled.
+    ${CrossSubscriptionRestoreState},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Double]
+    # Soft delete retention duration in days
+    ${SoftDeleteRetentionDurationInDay},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState]
+    # Soft delete state of the vault.
+    # Allowed values are Off, On, AlwaysOn
+    ${SoftDeleteState},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]

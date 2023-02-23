@@ -236,7 +236,6 @@
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(RepoTools)/GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" />
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers help -h -u -m '@(ModulesChanged)'" Condition="'$(RunStaticAnalysis)' == 'true'" />
   </Target>
 
   <!-- Everything except Publish -->

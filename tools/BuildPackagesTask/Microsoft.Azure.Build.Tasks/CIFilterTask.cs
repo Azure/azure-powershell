@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private const string BUILD_PHASE = "build";
         private const string TEST_PHASE = "test";
-        private readonly List<string> ANALYSIS_PHASE_LIST = new List<string>() { "breaking-change", "help-example", "help", "dependency", "signature", "file-change", "ux" };
+        private readonly List<string> ANALYSIS_PHASE_LIST = new List<string>() { "breaking-change", "help-example", "help", "dependency", "signature", "file-change", "ux", "cmdlet-diff" };
         private const string ACCOUNT_MODULE_NAME = "Accounts";
 
         private const string MODULE_NAME_PLACEHOLDER = "ModuleName";
@@ -173,7 +173,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         private List<string> GetTestCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
         {
             return GetRelatedCsprojList(moduleName, csprojMap)
-                .Where(x => x.Contains("Test")).ToList();;
+                .Where(x => x.Contains("Test")).ToList();
         }
 
         private bool ProcessTargetModule(Dictionary<string, string[]> csprojMap)
@@ -196,7 +196,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             Console.WriteLine("--------------------------------------------------------");
 
             FilterTaskResult.PhaseInfo = influencedModuleInfo;
-            
+
             return true;
         }
 
@@ -388,7 +388,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             influencedModuleInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
             DateTime endTime = DateTime.Now;
             Console.WriteLine(string.Format("Takes {0} seconds for RE match, {1} seconds for phase config.", (endOfRegularExpressionTime - startTime).TotalSeconds, (endTime - endOfRegularExpressionTime).TotalSeconds));
-            
+
             FilterTaskResult.PhaseInfo = influencedModuleInfo;
 
             if (!Directory.Exists(config.ArtifactPipelineInfoFolder))

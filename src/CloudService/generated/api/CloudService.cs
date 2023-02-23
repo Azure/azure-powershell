@@ -30,9 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSFamily(string location, string osFamilyName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamily>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSFamily(string location, string osFamilyName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamily>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -74,9 +74,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSFamilyViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamily>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSFamilyViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamily>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSFamily_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamily>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSFamily_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamily>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -147,13 +147,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSFamily.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSFamily.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -206,9 +206,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSVersion(string location, string osVersionName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSVersion(string location, string osVersionName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -250,9 +250,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSVersionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSVersionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSVersion_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsGetOSVersion_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -323,13 +323,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSVersion.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -382,9 +382,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSFamilies(string location, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamilyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSFamilies(string location, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamilyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -426,9 +426,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSFamiliesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamilyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSFamiliesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamilyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSFamilies_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamilyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSFamilies_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamilyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -497,13 +497,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSFamilyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSFamilyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -554,9 +554,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSVersions(string location, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSVersions(string location, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -598,9 +598,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSVersionsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSVersionsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSVersions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceOperatingSystemsListOSVersions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -669,13 +669,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSVersionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSVersionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -712,8 +712,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
         /// <summary>Deletes a role instance from a cloud service.</summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -725,9 +725,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesDelete(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesDelete(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -769,9 +769,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -826,7 +826,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -933,6 +933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -955,7 +956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -975,8 +976,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// get validation events back.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -996,8 +997,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
         /// <summary>Gets a role instance from a cloud service.</summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="Expand">The expand expression to apply to the operation. 'UserData' is not supported for cloud services.</param>
@@ -1009,9 +1010,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGet(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGet(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1048,8 +1049,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// Retrieves information about the run-time state of a role instance in a cloud service.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1060,9 +1061,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGetInstanceView(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGetInstanceView(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1106,9 +1107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGetInstanceViewViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGetInstanceViewViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1165,7 +1166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGetInstanceView_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGetInstanceView_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1183,13 +1184,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstanceView.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstanceView.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1209,8 +1210,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// but you will get validation events back.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1230,8 +1231,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
         /// <summary>Gets a remote desktop file for a role instance in a cloud service.</summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1244,7 +1245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGetRemoteDesktopFile(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<global::System.IO.Stream>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1288,7 +1289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGetRemoteDesktopFileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<global::System.IO.Stream>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1389,8 +1390,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// but you will get validation events back.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1419,9 +1420,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1477,7 +1478,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1495,13 +1496,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstance.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstance.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1521,8 +1522,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// get validation events back.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="Expand">The expand expression to apply to the operation. 'UserData' is not supported for cloud services.</param>
@@ -1547,8 +1548,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// Gets the list of all role instances in a cloud service. Use nextLink property in the response to get the next page of
         /// role instances. Do this till nextLink is null to fetch all the role instances.
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="Expand">The expand expression to apply to the operation. 'UserData' is not supported for cloud services.</param>
@@ -1560,9 +1561,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesList(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesList(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstanceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1608,9 +1609,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesListViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesListViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstanceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1664,7 +1665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstanceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1682,13 +1683,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstanceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstanceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1707,8 +1708,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// Validation method for <see cref="CloudServiceRoleInstancesList" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="Expand">The expand expression to apply to the operation. 'UserData' is not supported for cloud services.</param>
@@ -1734,8 +1735,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// use Reimage Role Instance.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1746,9 +1747,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRebuild(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRebuild(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1794,9 +1795,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRebuildViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRebuildViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1851,7 +1852,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRebuild_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRebuild_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1958,6 +1959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -1974,7 +1976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1994,8 +1996,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// will get validation events back.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2017,8 +2019,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// The Reimage Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2029,9 +2031,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesReimage(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesReimage(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2075,9 +2077,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesReimageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesReimageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2132,7 +2134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesReimage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesReimage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2239,6 +2241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -2255,7 +2258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2275,8 +2278,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// will get validation events back.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2298,8 +2301,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// The Reboot Role Instance asynchronous operation requests a reboot of a role instance in the cloud service.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2310,9 +2313,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRestart(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRestart(string roleInstanceName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2356,9 +2359,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRestartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRestartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2413,7 +2416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRestart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceRoleInstancesRestart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2520,6 +2523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -2536,7 +2540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2556,8 +2560,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// will get validation events back.
         /// </summary>
         /// <param name="roleInstanceName">Name of the role instance.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2577,8 +2581,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
         /// <summary>Gets a role from a cloud service.</summary>
         /// <param name="roleName">Name of the role.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2589,9 +2593,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRolesGet(string roleName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRole>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRolesGet(string roleName, string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRole>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2632,9 +2636,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRolesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRole>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRolesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRole>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2688,7 +2692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceRolesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRole>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceRolesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRole>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2706,13 +2710,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRole.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRole.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2732,8 +2736,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// events back.
         /// </summary>
         /// <param name="roleName">Name of the role.</param>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2755,8 +2759,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// Gets a list of all roles in a cloud service. Use nextLink property in the response to get the next page of roles. Do this
         /// till nextLink is null to fetch all the roles.
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2767,9 +2771,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRolesList(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRolesList(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRoleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2812,9 +2816,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServiceRolesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServiceRolesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRoleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2866,7 +2870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServiceRolesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServiceRolesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRoleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2884,13 +2888,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2909,8 +2913,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// Validation method for <see cref="CloudServiceRolesList" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="cloudServiceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group.</param>
+        /// <param name="cloudServiceName">Name of the cloud service.</param>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2943,9 +2947,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesCreateOrUpdate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesCreateOrUpdate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2991,9 +2995,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3048,7 +3052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3154,6 +3158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -3164,13 +3169,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3198,7 +3203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesCreateOrUpdate_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CloudServicesCreateOrUpdate_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3224,9 +3229,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesDelete(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesDelete(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3269,9 +3274,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesDeleteInstances(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesDeleteInstances(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3316,9 +3321,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesDeleteInstancesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesDeleteInstancesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3374,7 +3379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesDeleteInstances_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesDeleteInstances_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3481,6 +3486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -3497,7 +3503,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3525,7 +3531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesDeleteInstances_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CloudServicesDeleteInstances_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3548,9 +3554,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3602,7 +3608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3709,6 +3715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -3731,7 +3738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3781,9 +3788,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesGet(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesGet(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3825,9 +3832,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesGetInstanceView(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesGetInstanceView(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3867,9 +3874,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesGetInstanceViewViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesGetInstanceViewViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3921,7 +3928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesGetInstanceView_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesGetInstanceView_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceInstanceView>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3939,13 +3946,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceInstanceView.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceInstanceView.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3992,9 +3999,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4045,7 +4052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4063,13 +4070,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4121,9 +4128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesList(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesList(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4165,9 +4172,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4206,9 +4213,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4254,7 +4261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4272,13 +4279,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4324,9 +4331,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4375,7 +4382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4393,13 +4400,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4449,9 +4456,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesPowerOff(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesPowerOff(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4493,9 +4500,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesPowerOffViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesPowerOffViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4547,7 +4554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesPowerOff_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesPowerOff_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4654,6 +4661,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -4670,7 +4678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4724,9 +4732,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesRebuild(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesRebuild(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4774,9 +4782,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesRebuildViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesRebuildViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4832,7 +4840,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesRebuild_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesRebuild_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4939,6 +4947,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -4955,7 +4964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4983,7 +4992,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesRebuild_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CloudServicesRebuild_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5011,9 +5020,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesReimage(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesReimage(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5060,9 +5069,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesReimageViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesReimageViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5118,7 +5127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesReimage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesReimage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5225,6 +5234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -5241,7 +5251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5269,7 +5279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesReimage_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CloudServicesReimage_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5295,9 +5305,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesRestart(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesRestart(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5342,9 +5352,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesRestartViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesRestartViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5400,7 +5410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesRestart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesRestart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5507,6 +5517,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -5523,7 +5534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5551,7 +5562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesRestart_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstances body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CloudServicesRestart_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstances body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5576,9 +5587,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesStart(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesStart(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5618,9 +5629,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5672,7 +5683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5779,6 +5790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -5795,7 +5807,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5846,9 +5858,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesUpdate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesUpdate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5899,9 +5911,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainGetUpdateDomain(string resourceGroupName, string cloudServiceName, int updateDomain, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IUpdateDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainGetUpdateDomain(string resourceGroupName, string cloudServiceName, int updateDomain, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IUpdateDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5945,9 +5957,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainGetUpdateDomainViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IUpdateDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainGetUpdateDomainViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IUpdateDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6003,7 +6015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesUpdateDomainGetUpdateDomain_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IUpdateDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesUpdateDomainGetUpdateDomain_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IUpdateDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6021,13 +6033,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.UpdateDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.UpdateDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6079,9 +6091,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainListUpdateDomains(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IUpdateDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainListUpdateDomains(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IUpdateDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6121,9 +6133,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainListUpdateDomainsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IUpdateDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainListUpdateDomainsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IUpdateDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6177,7 +6189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesUpdateDomainListUpdateDomains_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IUpdateDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesUpdateDomainListUpdateDomains_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IUpdateDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6195,13 +6207,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.UpdateDomainListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.UpdateDomainListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6254,9 +6266,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainWalkUpdateDomain(string resourceGroupName, string cloudServiceName, int updateDomain, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IUpdateDomain body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainWalkUpdateDomain(string resourceGroupName, string cloudServiceName, int updateDomain, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IUpdateDomain body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6302,9 +6314,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainWalkUpdateDomainViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IUpdateDomain body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesUpdateDomainWalkUpdateDomainViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IUpdateDomain body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6364,7 +6376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesUpdateDomainWalkUpdateDomain_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesUpdateDomainWalkUpdateDomain_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6470,6 +6482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -6486,7 +6499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6516,7 +6529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesUpdateDomainWalkUpdateDomain_Validate(string resourceGroupName, string cloudServiceName, int updateDomain, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IUpdateDomain body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CloudServicesUpdateDomainWalkUpdateDomain_Validate(string resourceGroupName, string cloudServiceName, int updateDomain, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IUpdateDomain body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6539,9 +6552,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CloudServicesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CloudServicesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-09-04";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6596,7 +6609,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CloudServicesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6702,6 +6715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -6712,13 +6726,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6746,7 +6760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CloudServicesUpdate_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CloudServicesUpdate_Validate(string resourceGroupName, string cloudServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6774,9 +6788,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NetworkInterfacesGetByCloudService(string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string subscriptionId, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterface>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NetworkInterfacesGetByCloudService(string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string subscriptionId, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.INetworkInterface>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6822,9 +6836,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NetworkInterfacesGetByCloudServiceViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterface>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NetworkInterfacesGetByCloudServiceViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.INetworkInterface>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6883,7 +6897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task NetworkInterfacesGetByCloudService_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterface>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task NetworkInterfacesGetByCloudService_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.INetworkInterface>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6901,13 +6915,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterface.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterface.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6963,9 +6977,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudService(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudService(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7011,9 +7025,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudServiceRoleInstance(string resourceGroupName, string cloudServiceName, string roleInstanceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudServiceRoleInstance(string resourceGroupName, string cloudServiceName, string roleInstanceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7057,9 +7071,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudServiceRoleInstanceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudServiceRoleInstanceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7116,7 +7130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudServiceRoleInstance_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudServiceRoleInstance_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7134,13 +7148,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7189,9 +7203,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudServiceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudServiceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7243,7 +7257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudService_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task NetworkInterfacesListByCloudService_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.INetworkInterfaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7261,13 +7275,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7322,9 +7336,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PublicIPAddressesGetByCloudService(string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, string publicIPAddressName, string subscriptionId, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddress>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PublicIPAddressesGetByCloudService(string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, string publicIPAddressName, string subscriptionId, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPublicIPAddress>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7374,9 +7388,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PublicIPAddressesGetByCloudServiceViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddress>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PublicIPAddressesGetByCloudServiceViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPublicIPAddress>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7441,7 +7455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PublicIPAddressesGetByCloudService_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddress>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PublicIPAddressesGetByCloudService_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPublicIPAddress>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7459,13 +7473,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddress.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddress.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7525,9 +7539,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudService(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudService(string resourceGroupName, string cloudServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7575,9 +7589,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudServiceRoleInstance(string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudServiceRoleInstance(string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7625,9 +7639,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudServiceRoleInstanceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudServiceRoleInstanceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7690,7 +7704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudServiceRoleInstance_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudServiceRoleInstance_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7708,13 +7722,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddressListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddressListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7767,9 +7781,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudServiceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudServiceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-03-01";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7821,7 +7835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudService_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PublicIPAddressesListByCloudService_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPublicIPAddressListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ICloudErrorAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7839,13 +7853,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddressListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddressListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.CloudErrorAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }

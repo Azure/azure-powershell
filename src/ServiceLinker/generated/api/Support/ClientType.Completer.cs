@@ -66,6 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'springBoot'", "springBoot", global::System.Management.Automation.CompletionResultType.ParameterValue, "springBoot");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "kafka-springBoot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'kafka-springBoot'", "kafka-springBoot", global::System.Management.Automation.CompletionResultType.ParameterValue, "kafka-springBoot");
+            }
         }
     }
 }
