@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
     using Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PowerShell;
 
     /// <summary>
-    /// Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    /// Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ImageTemplatePlatformImageSourceTypeConverter))]
     public partial class ImageTemplatePlatformImageSource
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    /// Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
     [System.ComponentModel.TypeConverter(typeof(ImageTemplatePlatformImageSourceTypeConverter))]
     public partial interface IImageTemplatePlatformImageSource
 

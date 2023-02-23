@@ -2356,8 +2356,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
         /// <summary>
         /// Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name. **WARNING**:
-        /// This API will be deprecated. Instead use [ListClusterUserCredentials](https://docs.microsoft.com/en-us/rest/api/aks/managedclusters/listclusterusercredentials)
-        /// or [ListClusterAdminCredentials](https://docs.microsoft.com/en-us/rest/api/aks/managedclusters/listclusteradmincredentials)
+        /// This API will be deprecated. Instead use [ListClusterUserCredentials](https://learn.microsoft.com/en-us/rest/api/aks/managedclusters/listclusterusercredentials)
+        /// or [ListClusterAdminCredentials](https://learn.microsoft.com/en-us/rest/api/aks/managedclusters/listclusteradmincredentials)
         /// .
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
@@ -2409,8 +2409,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks
 
         /// <summary>
         /// Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name. **WARNING**:
-        /// This API will be deprecated. Instead use [ListClusterUserCredentials](https://docs.microsoft.com/en-us/rest/api/aks/managedclusters/listclusterusercredentials)
-        /// or [ListClusterAdminCredentials](https://docs.microsoft.com/en-us/rest/api/aks/managedclusters/listclusteradmincredentials)
+        /// This API will be deprecated. Instead use [ListClusterUserCredentials](https://learn.microsoft.com/en-us/rest/api/aks/managedclusters/listclusterusercredentials)
+        /// or [ListClusterAdminCredentials](https://learn.microsoft.com/en-us/rest/api/aks/managedclusters/listclusteradmincredentials)
         /// .
         /// </summary>
         /// <param name="viaIdentity"></param>
