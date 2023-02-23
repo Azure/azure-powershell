@@ -32,10 +32,12 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 ```yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-  - C:/Users/v-diya/repository/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.md
+  # - C:/Users/v-diya/repository/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.md
+  - /Users/aitest/Documents/LucasGitHub/AzurePowerShell/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.md
 
 try-require: 
-  - C:/Users/v-diya/repository/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.powershell.md
+  # - C:/Users/v-diya/repository/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.powershell.md
+  - /Users/aitest/Documents/LucasGitHub/AzurePowerShell/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.powershell.md
 
 identity-correction-for-post: true
 nested-object-to-string: true
