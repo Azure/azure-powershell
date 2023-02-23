@@ -57,6 +57,9 @@ namespace Commands.Network.Test
         // Azure Network Analytics Dev Team
         public const string netanalyticsdev = "netanalyticsdev";
 
+        // Azure NSG/ASG/Route Table Dev Team
+        public const string nsgdev = "nsgdev";
+
         // Azure NSM Dev Team
         public const string nsmdev = "nsmdev";
 
@@ -70,14 +73,14 @@ namespace Commands.Network.Test
         // Azure Private Endpoint and Private Link Dev Team
         public const string plcpdev = "plcpdev";
 
-        // RNM Dev Team
-        public const string rnmdev = "rnmdev";
-
         // Windows Azure SLB Dev Team
         public const string slbdev = "slbdev";
 
         // Virtual WAN team
         public const string virtualwan = "routeservicedev";
+
+        // Vnet Peering Dev Team
+        public const string vnetpeeringdev = "vnetpeeringdev";
 
         // Windows Azure NRP dev team
         public const string wanrpdev = "wanrpdev";
