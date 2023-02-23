@@ -298,6 +298,14 @@ namespace Microsoft.Azure.Commands.Ssh
         [ValidateNotNullOrEmpty]
         public virtual string KeysDestinationFolder { get; set; }
 
+        /// <summary>
+        /// RDP over SSH
+        /// </summary>
+        [Parameter(ParameterSetName = InteractiveParameterSet)]
+        [Parameter(ParameterSetName = IpAddressParameterSet)]
+        [Parameter(ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public virtual SwitchParameter Rdp { get; set; }
 
         [Parameter(Mandatory = false)]
         public virtual SwitchParameter PassThru { get; set; }
@@ -305,47 +313,6 @@ namespace Microsoft.Azure.Commands.Ssh
         #endregion
 
         #region Protected Internal Methods
-
-        protected internal void SetResourceType()
-        {
-            var resourcetypefilter = supportedResourceTypes.Select(type => $"resourceType eq '{type}'").ToArray();
-            String filter = $"$filter=name eq '{Name}' and (" + String.Join(" or ", resourcetypefilter) + ")";
-            ODataQuery<GenericResourceFilter> query = new ODataQuery<GenericResourceFilter>(filter);
-
-            String[] types;
-            try
-            {
-                var resources = ResourceManagementClient.Resources.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName, query).GetAwaiter().GetResult().Body;
-                types = resources.Select(resource => resource.Type).ToArray();
-            }
-            catch(CloudException exception)
-            {
-                throw new AzPSCloudException($"Failed to list resources in the {ResourceGroupName} Resource Group with error: \"{exception.Message}\". Ensure that the Resource Group Name is correct and that you have Read role on that resource group.");
-            }
-            catch
-            {
-                throw;
-            }
-
-            if (ResourceType != null)
-            {
-                if (!types.Contains(ResourceType))
-                {
-                    throw new AzPSResourceNotFoundCloudException($"Unable to find Resource \"{Name}\" of type \"{ResourceType}\" in the Resource Group \"{ResourceGroupName}\". Make sure the resource exists and that you have Read rights.");
-                }
-                return;
-            }
-
-            if (types.Count() > 1)
-            {
-                throw new AzPSArgumentException($"There is more than one resource named \"{Name}\" in the Resource Group \"{ResourceGroupName}\". Please provide a ResourceType.", ResourceType);
-            }
-            else if (types.Count() < 1)
-            {
-                throw new AzPSResourceNotFoundCloudException($"Unable to find Resource \"{Name}\" in the ResourceGroup \"{ResourceGroupName}\". Make sure the resource exists, that you have Read rights, and that the target resource is of one of the Resource Types supported by this cmdlet.");
-            }
-            ResourceType = types.ElementAt(0);
-        }
 
         protected internal void ValidateParameters()
         {
@@ -355,7 +322,12 @@ namespace Microsoft.Azure.Commands.Ssh
                 throw new AzPSArgumentException("Azure PowerShell doesn't currently support AAD login for Service Principal accounts. Provide a -LocalUser.", nameof(LocalUser));
             }
 
-            if (CertificateFile != null)
+            if (Rdp && !RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                throw new AzPSArgumentException("The -Rdp parameter is only supported in Windows OS.", nameof(Rdp));
+            }
+
+                if (CertificateFile != null)
             {
                 if (LocalUser == null)
                     WriteWarning("To authenticate with a certificate you must provide a LocalUser. The certificate will be ignored.");
@@ -397,6 +369,48 @@ namespace Microsoft.Azure.Commands.Ssh
             }
 
         }
+
+        protected internal void SetResourceType()
+        {
+            var resourcetypefilter = supportedResourceTypes.Select(type => $"resourceType eq '{type}'").ToArray();
+            String filter = $"$filter=name eq '{Name}' and (" + String.Join(" or ", resourcetypefilter) + ")";
+            ODataQuery<GenericResourceFilter> query = new ODataQuery<GenericResourceFilter>(filter);
+
+            String[] types;
+            try
+            {
+                var resources = ResourceManagementClient.Resources.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName, query).GetAwaiter().GetResult().Body;
+                types = resources.Select(resource => resource.Type).ToArray();
+            }
+            catch (CloudException exception)
+            {
+                throw new AzPSCloudException($"Failed to list resources in the {ResourceGroupName} Resource Group with error: \"{exception.Message}\". Ensure that the Resource Group Name is correct and that you have Read role on that resource group.");
+            }
+            catch
+            {
+                throw;
+            }
+
+            if (ResourceType != null)
+            {
+                if (!types.Contains(ResourceType))
+                {
+                    throw new AzPSResourceNotFoundCloudException($"Unable to find Resource \"{Name}\" of type \"{ResourceType}\" in the Resource Group \"{ResourceGroupName}\". Make sure the resource exists and that you have Read rights.");
+                }
+                return;
+            }
+
+            if (types.Count() > 1)
+            {
+                throw new AzPSArgumentException($"There is more than one resource named \"{Name}\" in the Resource Group \"{ResourceGroupName}\". Please provide a ResourceType.", ResourceType);
+            }
+            else if (types.Count() < 1)
+            {
+                throw new AzPSResourceNotFoundCloudException($"Unable to find Resource \"{Name}\" in the ResourceGroup \"{ResourceGroupName}\". Make sure the resource exists, that you have Read rights, and that the target resource is of one of the Resource Types supported by this cmdlet.");
+            }
+            ResourceType = types.ElementAt(0);
+        }
+
 
         protected internal void UpdateProgressBar(
             ProgressRecord record,
@@ -471,19 +485,23 @@ namespace Microsoft.Azure.Commands.Ssh
             return null;
         }
 
-        protected internal string GetSSHClientPath(string sshCommand)
+        protected internal string GetClientApplicationPath(string command)
         {
 
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return sshCommand;
+                return command;
             }
 
-            sshCommand = $"{sshCommand}.exe";
-            var cmdInfo = InvokeCommand.GetCommand(sshCommand, CommandTypes.Application);
+            command = $"{command}.exe";
+            var cmdInfo = InvokeCommand.GetCommand(command, CommandTypes.Application);
 
             if (cmdInfo == null)
             {
+                if (command.Equals("mstsc.exe"))
+                {
+                    throw new AzPSApplicationException($"Unable to find Remote Desktop Client ({command}). Make sure to update the PATH environment variable to make client discoverable.");
+                }
                 throw new AzPSApplicationException("Unable to find OpenSSH Client. Make sure to update the PATH environment variable to make OpenSSH client discoverable.");
             }
             
@@ -682,7 +700,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
         private string[] GetSSHCertInfo(string certFile)
         {
-            string sshKeygenPath = GetSSHClientPath("ssh-keygen");
+            string sshKeygenPath = GetClientApplicationPath("ssh-keygen");
             string args = $"-L -f \"{certFile}\"";
             WriteDebug("Runnung ssh-keygen command: " + sshKeygenPath + " " + args);
             Process keygen = new Process();
@@ -749,7 +767,7 @@ namespace Microsoft.Azure.Commands.Ssh
         private void CreateSSHKeyfile(string privateKeyFile)
         {
             string args = $"-f \"{privateKeyFile}\" -t rsa -q -N \"\"";
-            Process keygen = Process.Start(GetSSHClientPath("ssh-keygen"), args);
+            Process keygen = Process.Start(GetClientApplicationPath("ssh-keygen"), args);
             keygen.WaitForExit();
         }
 

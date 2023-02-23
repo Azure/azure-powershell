@@ -36,6 +36,14 @@ namespace Microsoft.Azure.Commands.Ssh
             }
         }
 
+        public override SwitchParameter Rdp
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public override SwitchParameter PassThru
         {
             get

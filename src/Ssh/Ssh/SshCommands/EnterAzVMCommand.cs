@@ -14,8 +14,10 @@
 
 using System;
 using System.IO;
+using System.Net;
 using System.Diagnostics;
 using System.Management.Automation;
+using System.Net.Sockets;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -48,9 +50,13 @@ namespace Microsoft.Azure.Commands.Ssh
         {
             get { return null; }
         }
-        
+
         #endregion
-      
+
+        #region fields
+        private int rdpLocalPort;
+        #endregion
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -83,7 +89,17 @@ namespace Microsoft.Azure.Commands.Ssh
                 record.RecordType = ProgressRecordType.Completed;
                 UpdateProgressBar(record, "Ready to start SSH connection.", 100);
 
-                int sshStatus = StartSSHConnection();
+
+                int sshStatus = 0;
+                if (Rdp)
+                {
+                    sshStatus = StartRDPConnection();
+                }
+                else
+                {
+                    sshStatus = StartSSHConnection();
+                }
+                
                 if (this.PassThru.IsPresent)
                 {
                     WriteObject(sshStatus == 0);
@@ -97,30 +113,9 @@ namespace Microsoft.Azure.Commands.Ssh
 
         #region Private Methods
 
-        private bool IsDebugMode()            
-        {
-            bool debug;
-            bool containsDebug = MyInvocation.BoundParameters.ContainsKey("Debug");
-            if (containsDebug)
-                debug = ((SwitchParameter)MyInvocation.BoundParameters["Debug"]).ToBool(); 
-            else
-                debug = (ActionPreference)GetVariableValue("DebugPreference") != ActionPreference.SilentlyContinue;
-            return debug;
-        }
-
         private int StartSSHConnection()
-        {                                 
-            string sshClient = GetSSHClientPath("ssh");
-            string command = GetHost() + " " + BuildArgs();
-
-            Process sshProcess = new Process();
-            WriteDebug("Running SSH command: " + sshClient + " " + command);
-
-            if (IsArc())
-                sshProcess.StartInfo.EnvironmentVariables["SSHPROXY_RELAY_INFO"] = relayInfo;
-            sshProcess.StartInfo.FileName = sshClient;
-            sshProcess.StartInfo.Arguments = command;
-            sshProcess.StartInfo.UseShellExecute = false;
+        {
+            Process sshProcess = CreateSSHProcess();
 
             // Redirect OpenSSH Logs and use it to determine when authentication succeeds, so that cleanup can be performed.
             // Redirect SSH Proxy logs to provide helpful error messaged when well known errors happen.
@@ -142,6 +137,77 @@ namespace Microsoft.Azure.Commands.Ssh
             return sshProcess.ExitCode;
         }
 
+        private int StartRDPConnection()
+        {
+            Process sshProcess = null;
+            int success = 1;
+
+            try
+            {
+                // Get an open local port to act an a listener
+                TcpListener listener = new TcpListener(IPAddress.Loopback, 0);
+                listener.Start();
+                rdpLocalPort = ((IPEndPoint)listener.LocalEndpoint).Port;
+                listener.Stop();
+
+                // Start SSH Process
+                sshProcess = CreateSSHProcess();
+                sshProcess.StartInfo.RedirectStandardError = true;
+                sshProcess.Start();
+
+                bool sshSuccess = WaitSSHTunnelConnection(sshProcess);
+                DoCleanup();
+
+                if (sshSuccess && !sshProcess.HasExited)
+                {
+                    string rdpCommand = GetClientApplicationPath("mstsc");
+
+                    Process rdpProcess = new Process();
+                    rdpProcess.StartInfo.FileName = rdpCommand;
+                    rdpProcess.StartInfo.Arguments = $"/v:localhost:{rdpLocalPort}";
+                    rdpProcess.Start();
+                    rdpProcess.WaitForExit();
+                    success = rdpProcess.ExitCode;
+                }
+            }
+            finally
+            {
+                if (sshProcess != null && !sshProcess.HasExited)
+                {
+                    sshProcess.Kill();
+                    sshProcess.WaitForExit();
+
+                    if (SshLogsPrinted() || IsDebugMode())
+                    {
+                        var stderr = sshProcess.StandardError;
+                        string line;
+                        while ((line = stderr.ReadLine()) != null)
+                        {
+                            Host.UI.WriteLine(line);
+                            CheckForCommonErrors(line);
+                        }
+                    }
+                }
+            }
+
+            return success;
+        }
+
+        private Process CreateSSHProcess()
+        {
+            string sshClient = GetClientApplicationPath("ssh");
+            string command = GetHost() + " " + BuildArgs();
+            Process sshProcess = new Process();
+            WriteDebug("Running SSH command: " + sshClient + " " + command);
+
+            if (IsArc())
+                sshProcess.StartInfo.EnvironmentVariables["SSHPROXY_RELAY_INFO"] = relayInfo;
+            sshProcess.StartInfo.FileName = sshClient;
+            sshProcess.StartInfo.Arguments = command;
+            sshProcess.StartInfo.UseShellExecute = false;
+            return sshProcess;
+        }
+
         private void ReadSshLogs(Process sshProcess)
         {
             var stderr = sshProcess.StandardError;
@@ -150,7 +216,7 @@ namespace Microsoft.Azure.Commands.Ssh
             timer.Start();
             while ((line = stderr.ReadLine()) != null)
             {
-                if (!line.Contains("debug1: ") && 
+                if (!line.Contains("debug1: ") &&
                     !line.Contains("debug2: ") &&
                     !line.Contains("debug3: ") &&
                     !line.StartsWith("Authenticated "))
@@ -158,7 +224,7 @@ namespace Microsoft.Azure.Commands.Ssh
                     Host.UI.WriteLine(line);
                     CheckForCommonErrors(line);
                 }
-                
+
                 if (line.Contains("debug1: Entering interactive session.") || timer.ElapsedMilliseconds >= 120000)
                 {
                     DoCleanup();
@@ -180,6 +246,41 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             if (!sshProcess.HasExited) { DoCleanup(); }
             return;
+        }
+
+        private bool WaitSSHTunnelConnection(Process sshProcess)
+        {
+            var stderr = sshProcess.StandardError;
+            bool sshSuccess = false;
+            string line;
+            while ((line = stderr.ReadLine()) != null)
+            {
+                // Print logs if user expects it to be printed (if verbose or debug mode)
+                // or if the message is not debug level (best effort to print fatal error messages and banner)
+                if (SshLogsPrinted() || IsDebugMode()
+                    || (!line.Contains("debug1: ") &&
+                    !line.Contains("debug2: ") &&
+                    !line.Contains("debug3: ") &&
+                    !line.StartsWith("Authenticated ")))
+                    Host.UI.WriteLine(line);
+               
+                CheckForCommonErrors(line);
+
+                if (line.Contains("debug1: Entering interactive session."))
+                {
+                    WriteDebug("SSH Connection established successfully.");
+                    sshSuccess = true;
+                    break;
+                }
+
+                if (sshProcess.HasExited)
+                {
+                    WriteDebug("SSH Connection Failed.");
+                    sshSuccess = false;
+                    break;
+                }
+            }
+            return sshSuccess;
         }
 
 
@@ -224,14 +325,17 @@ namespace Microsoft.Azure.Commands.Ssh
                     // Print SSH verbose logs if cmdlet run on debug mode
                     argList.Add("-vvv");
                 }
-                else
+                else if (Rdp || deleteCert || (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && IsArc()))
                 {
-                    // In this case stderr will be redirected. Add "-v" so that ssh logs are sent to stderr.
-                    if (deleteCert || (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && IsArc()))
-                    {
-                        argList.Add("-v");
-                    }
+                    argList.Add("-v");
                 }
+            }
+
+            if (Rdp)
+            {
+                argList.Add("-L");
+                argList.Add($"{rdpLocalPort}:localhost:3389");
+                argList.Add("-N");
             }
 
             if (SshArgument != null)
@@ -289,6 +393,17 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 throw new AzPSApplicationException("Please make sure SSH port is allowed using \"azcmagent config list\" in the target Arc Server. Ensure SSHD is running on the target machine.\n");
             }
+        }
+
+        private bool IsDebugMode()
+        {
+            bool debug;
+            bool containsDebug = MyInvocation.BoundParameters.ContainsKey("Debug");
+            if (containsDebug)
+                debug = ((SwitchParameter)MyInvocation.BoundParameters["Debug"]).ToBool();
+            else
+                debug = (ActionPreference)GetVariableValue("DebugPreference") != ActionPreference.SilentlyContinue;
+            return debug;
         }
 
         #endregion
