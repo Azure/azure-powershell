@@ -141,13 +141,13 @@ directive:
     remove: true
 
   - where:
-      variant: ^CreateViaIdentity$
+      variant: ^CreateViaIdentity.*$
       verb: New
     set:
       verb: Update
 
   - where:
-      variant: ^GetViaIdentity$
+      variant: ^GetViaIdentity.*$
       subject: ^CloudServiceRoleInstanceRemoteDesktopFile$|^CloudServiceInstanceView$|^CloudServiceRoleInstanceView$
       verb: Get
     remove: true
