@@ -19,11 +19,15 @@ function Get-HelmClientLocation {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
-    process {
-        if (Test-Path Env:HELM_CLIENT_PATH) {
-            return (Get-Item Env:HELM_CLIENT_PATH).Value
-        }
+    process {        
         if (IsWindows -and IsAmd64) {
+            if (Test-Path Env:HELM_CLIENT_PATH) {
+                $CustomPath = (Get-Item Env:HELM_CLIENT_PATH).Value
+                if ($CustomPath.EndsWith("helm.exe") -and (!((Get-Item $CustomPath) -is [System.IO.DirectoryInfo]))) {
+                    $CustomPath = $CustomPath.Replace("helm.exe","")
+                }
+                return $CustomPath
+            }
             if (Test-Path Env:Home) {
                 $HomePath = (Get-Item Env:HOME).Value
             } else {
