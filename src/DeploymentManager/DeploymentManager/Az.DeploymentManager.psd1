@@ -31,7 +31,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'PowerShell .Net Core Microsoft Azure PowerShell - Deployment Manager cmdlets for Azure Resource Manager.
-For more information, visit https://docs.microsoft.com/en-us/azure/azure-resource-manager/deployment-manager-overview'
+For more information, visit https://learn.microsoft.com/en-us/azure/azure-resource-manager/deployment-manager-overview'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Redis Cache service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Redis Cache, please visit the following: RedisCache: https://docs.microsoft.com/azure/azure-cache-for-redis/'
+For more information on Redis Cache, please visit the following: RedisCache: https://learn.microsoft.com/azure/azure-cache-for-redis/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
