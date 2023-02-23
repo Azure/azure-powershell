@@ -18,10 +18,10 @@
                                  "sku":  "8",
                                  "version":  "latest"
                              },
-                  "LinDebian91Gen2":  {
+                  "LinDebian9":  {
                                  "publisher":  "credativ",
                                  "offer":  "Debian",
-                                 "sku":  "91-gen2",
+                                 "sku":  "9",
                                  "version":  "latest"
                              },
                   "LinOpenSuseLeap154":  {

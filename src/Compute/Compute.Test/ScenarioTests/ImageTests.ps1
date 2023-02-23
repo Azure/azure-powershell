@@ -323,6 +323,7 @@ function Test-DefaultImagesExistManual
     {
         # assuming the below file path:
         # C:\repos\ps3\azure-powershell\src\Compute\Compute\Strategies\ComputeRp\Images.json
+        #$imagesFile = Get-Content -Path "..\..\..\..\Compute\Compute\Strategies\ComputeRp\Images.json";
         $imagesFile = Get-Content -Path "..\..\..\..\Compute\Strategies\ComputeRp\Images.json";
         $images = $imagesFile | ConvertFrom-Json;
         
@@ -342,6 +343,14 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.CentOS.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+
+        # CentOS versioned test
+        $publisher = $images.Linux.LinCentOS85Gen2.publisher;
+        $offer = $images.Linux.LinCentOS85Gen2.offer;
+        $sku = $images.Linux.LinCentOS85Gen2.sku;
+        $version = $images.Linux.LinCentOS85Gen2.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
         
         # Debian test
         $publisher = $images.Linux.Debian.publisher;
@@ -351,7 +360,16 @@ function Test-DefaultImagesExistManual
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
 
-        # openSUSE-Leap test
+        # Debian versioned test
+        #$loc = "centralus";
+        $publisher = $images.Linux.LinDebian9.publisher;
+        $offer = $images.Linux.LinDebian9.offer;
+        $sku = $images.Linux.LinDebian9.sku;
+        $version = $images.Linux.LinDebian9.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # LinOpenSuseLeap154 versioned test
         $publisher = $images.Linux.LinOpenSuseLeap154.publisher;
         $offer = $images.Linux.LinOpenSuseLeap154.offer;
         $sku = $images.Linux.LinOpenSuseLeap154.sku;
@@ -367,7 +385,7 @@ function Test-DefaultImagesExistManual
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
 
-        # SLES test
+        # LinSuseSles15SP4 versioned test
         $publisher = $images.Linux.LinSuseSles15SP4.publisher;
         $offer = $images.Linux.LinSuseSles15SP4.offer;
         $sku = $images.Linux.LinSuseSles15SP4.sku;
