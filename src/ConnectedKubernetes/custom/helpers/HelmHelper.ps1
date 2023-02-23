@@ -42,11 +42,11 @@ function Get-HelmClientLocation {
                 if ((!(Test-Path $HelmLocation))) {
                     Invoke-WebRequest -Uri "https://k8connecthelm.azureedge.net/helmsigned/$ZipName" -OutFile $ZipLocation -UseBasicParsing
                     Expand-Archive $ZipLocation $RootFolder
+                    Write-Verbose "Downloaded helm: $HelmLocation"
                 }
             } catch {
                 throw "Failed to download helm"
             }
-            Write-Verbose "Downloaded helm: $HelmLocation"
         } else {
             Write-Warning "Helm version 3.6.3 is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
         }
