@@ -6,10 +6,22 @@
                                  "sku":  "7.5",
                                  "version":  "latest"
                              },
+                  "LinCentOS85Gen2":  {
+                                 "publisher":  "OpenLogic",
+                                 "offer":  "CentOS",
+                                 "sku":  "8_5-gen2",
+                                 "version":  "latest"
+                             },
                   "Debian":  {
                                  "publisher":  "credativ",
                                  "offer":  "Debian",
                                  "sku":  "8",
+                                 "version":  "latest"
+                             },
+                  "LinDebian91Gen2":  {
+                                 "publisher":  "credativ",
+                                 "offer":  "Debian",
+                                 "sku":  "91-gen2",
                                  "version":  "latest"
                              },
                   "LinOpenSuseLeap154":  {
@@ -35,8 +47,14 @@
                                     "offer":  "UbuntuServer",
                                     "sku":  "16.04-LTS",
                                     "version":  "latest"
+                                },
+                  "LinUbuntu2204":  {
+                                    "publisher":  "Canonical",
+                                    "offer":  "0001-com-ubuntu-pro-advanced-sla-ca",
+                                    "sku":  "22_04",
+                                    "version":  "latest"
                                 }
-              },
+    },
     "Windows":  {
                     "Win2022AzureEditionCore": {
                                               "publisher": "MicrosoftWindowsServer",
