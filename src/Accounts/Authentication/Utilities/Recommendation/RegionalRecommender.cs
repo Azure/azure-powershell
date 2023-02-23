@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             {
                 // to support both display name and code of any region,
                 // this map contains duplicated values
-                { "EU West", "UK South" },
-                { "euwest", "UK South" },
+                { "West Europe", "UK South" },
+                { "westeurope", "UK South" },
                 { "France Central", "North Europe" },
                 { "francecentral", "North Europe" },
                 { "Germany West Central", "North Europe" },
