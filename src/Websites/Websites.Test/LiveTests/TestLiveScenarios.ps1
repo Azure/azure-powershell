@@ -38,11 +38,15 @@ Invoke-LiveTestScenario -Name "Get a webapp" -Description "Test getting a new we
     $rgName = $rg.ResourceGroupName
     $webName = New-LiveTestResourceName
     $webLocation = "westus"
+    $whpName = New-LiveTestResourceName
+    $tier = "Shared"
 
-    $null = New-AzWebApp -ResourceGroupName $rgname -Name $webName -Location $webLocation
+    $serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName -Location $weblocation -Tier $tier
+    $null = New-AzWebApp -ResourceGroupName $rgname -Name $webName -Location $webLocation -AppServicePlan $whpName
     $webApp = Get-AzWebApp -ResourceGroupName $rgname -Name $webName
     Assert-AreEqual $webName $webApp.Name
     Assert-AreEqual $rgName $webApp.ResourceGroup
+    Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
 }
 
 Invoke-LiveTestScenario -Name "Update web app" -Description "Test updating service plan & set site properties for existing web app" -ScenarioScript `
@@ -107,8 +111,11 @@ Invoke-LiveTestScenario -Name "Delete web app" -Description "Test deleting web a
     $rgName = $rg.ResourceGroupName
     $webName = New-LiveTestResourceName
     $webLocation = "westus"
+    $whpName = New-LiveTestResourceName
+    $tier = "Shared"
 
-    $null = New-AzWebApp -ResourceGroupName $rgname -Name $webName -Location $webLocation
+    $null = New-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName -Location $webLocation -Tier $tier
+    $null = New-AzWebApp -ResourceGroupName $rgname -Name $webName -Location $webLocation -AppServicePlan $whpName
     Remove-AzWebApp -ResourceGroupName $rgname -Name $webName -Force
 
     $webappNames = (Get-AzWebApp -ResourceGroupName $rgname) | Select -Property Name
