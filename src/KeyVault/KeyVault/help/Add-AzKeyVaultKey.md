@@ -333,7 +333,7 @@ $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination HSM -
 ```
 
 Generates a key (referred to as a Key Exchange Key (KEK)). The KEK must be an RSA-HSM key that has only the import key operation. Only Key Vault Premium SKU supports RSA-HSM keys.
-For more details please refer to https://docs.microsoft.com/azure/key-vault/keys/hsm-protected-keys
+For more details please refer to https://learn.microsoft.com/azure/key-vault/keys/hsm-protected-keys
 
 ### Example 9: Create a secure key in managed hsm
 

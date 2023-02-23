@@ -262,7 +262,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutoUpgradeChannel
-The upgrade channel for auto upgrade. For more information see https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.
+The upgrade channel for auto upgrade. For more information see https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.
 
 ```yaml
 Type: System.String

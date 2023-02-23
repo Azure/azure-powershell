@@ -32,7 +32,7 @@ Get-AzIotHubConfiguration [-ResourceId] <String> [-Name <String>] [-DefaultProfi
 
 ## DESCRIPTION
 Get the details of an IoT automatic device management configuration or list IoT automatic device management configurations in an IoT Hub.
-See https://docs.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management for more information.
+See https://learn.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management for more information.
 
 ## EXAMPLES
 

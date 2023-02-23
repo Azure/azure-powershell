@@ -21,11 +21,11 @@ New-AzDataCollectionRule -Location <String> -ResourceGroupName <String> -RuleNam
 ## DESCRIPTION
 The **New-AzDataCollectionRule** cmdlet creates a data collection rule.
 
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
 
 To use the -RuleFile parameter, construct a json file containing three properties: dataSources, destinations, dataFlows (see Example #1)
 
-You may find here the [schema detail](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create).
+You may find here the [schema detail](https://learn.microsoft.com/rest/api/monitor/datacollectionrules/create).
 
 The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported (see Example #2).
 
