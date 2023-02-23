@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IResourceProviderOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.portal/get-azportaloperation
+https://learn.microsoft.com/en-us/powershell/module/az.portal/get-azportaloperation
 #>
 function Get-AzPortalOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IResourceProviderOperation])]
