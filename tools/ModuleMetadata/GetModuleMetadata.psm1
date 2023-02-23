@@ -70,7 +70,7 @@ function Get-CmdletConfirmImpact
     )
 
     $ConfirmImpact = Get-CmdletBindingPropertyValue $Cmdlet "ConfirmImpact"
-    # Enum is here: https://docs.microsoft.com/en-us/dotnet/api/system.management.automation.confirmimpact?view=pscore-6.2.0
+    # Enum is here: https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.confirmimpact?view=pscore-6.2.0
     switch ($ConfirmImpact)
     {
         'None' {return 0}
