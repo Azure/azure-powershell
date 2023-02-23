@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxSurge
-{{ Fill MaxSurge Description }}
+If enabled, VMSS will create new virtual machines to upgrade the scale set, rather than updating the existing virtual machines. Existing virtual machines will be deleted once the new virtual machines are created for each batch.
 
 ```yaml
 Type: System.Boolean
