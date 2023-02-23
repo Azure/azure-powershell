@@ -152,6 +152,7 @@ param(
 )
 
     process {
+        . "$PSScriptRoot/helpers/HelmHelper.ps1"
         if ($PSBoundParameters.ContainsKey('KubeConfig')) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         } elseif (Test-Path Env:KUBECONFIG) {
@@ -174,19 +175,19 @@ param(
 
         #Region check helm install
         try {
+            Get-HelmClientLocation
             $HelmVersion = helm version --short --kubeconfig $KubeConfig
             if ($HelmVersion.Contains("v2")) {
                 Write-Error "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
                 return
             }
         } catch {
-            Write-Error "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
-            throw
+            throw "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
         }
         #Endregion
 
         #Region get release namespace
-        Set-Variable ReleaseInstallNamespace -option Constant -value "azure-arc-release"
+        $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
         $ReleaseNamespace = $null
         try {
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace | ConvertFrom-Json).namespace
@@ -215,6 +216,13 @@ param(
             helm delete azure-arc --namespace $ReleaseInstallNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
         } else {
             Write-Error "The current context in the kubeconfig file does not correspond to the connected cluster resource specified. Agents installed on this cluster correspond to the resource group name '$ConfigmapRgName' and resource name '$ConfigmapClusterName'."
+        }
+        if ($ReleaseNamespace -eq $ReleaseInstallNamespace) {
+            try {
+                kubectl delete namespace $ReleaseInstallNamespace
+            } catch {
+                throw "Unable to clean-up kubernetes namespace: $ReleaseInstallNamespace"
+            }
         }
     }
 }
