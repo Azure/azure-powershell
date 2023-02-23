@@ -361,7 +361,6 @@ function Test-DefaultImagesExistManual
         Assert-NotNull $img;
 
         # Debian versioned test
-        #$loc = "centralus";
         $publisher = $images.Linux.LinDebian9.publisher;
         $offer = $images.Linux.LinDebian9.offer;
         $sku = $images.Linux.LinDebian9.sku;
