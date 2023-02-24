@@ -6,8 +6,8 @@ pull_request:
           - "azure-powershell - windows-powershell"
         result_path: "/PipelineResult/PipelineResult.json"
       group_by_keys:
-        - "PhaseName"
         - "Module"
+        - "PhaseName"
         - "Platform"
       template_path: "templates/PRComment.handlebars"
       comment_title: "PRComment"
