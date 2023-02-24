@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             // DB level CMK keys
             //
-            if (this.KeyList.Any() || this.KeysToRemove.Any())
+            if (MyInvocation.BoundParameters.ContainsKey("KeyList") && this.KeyList.Length > 0)
             {
                 if (database.Keys.Count > 0)
                 {
@@ -379,27 +379,29 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     {
                         if (!database.Keys.ContainsKey(akvKey))
                         {
-                            model.FirstOrDefault().Keys.Add(akvKey, new Management.Sql.Models.DatabaseKey());
+                            database.Keys.Add(akvKey, new Management.Sql.Models.DatabaseKey());
                         }
                     }
-
-                    if (this.KeysToRemove != null && this.KeysToRemove.Any())
-                    {
-                        foreach (string akvKey in KeysToRemove)
-                        {
-                            if (database.Keys.ContainsKey(akvKey))
-                            {
-                                model.FirstOrDefault().Keys[akvKey] = null;
-                            }
-                        }
-                    }
-
-                    newDbModel.Keys = model.FirstOrDefault().Keys;
+                    
+                    newDbModel.Keys = database.Keys;
                 }
                 else
                 {
                     newDbModel.Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList);
                 }
+            }
+
+            if (MyInvocation.BoundParameters.ContainsKey("KeysToRemove") && this.KeysToRemove.Length > 0)
+            {
+                foreach (string akvKey in KeysToRemove)
+                {
+                    if (database.Keys.ContainsKey(akvKey))
+                    {
+                        database.Keys[akvKey] = null;
+                    }
+                }
+
+                newDbModel.Keys = database.Keys;
             }
 
             // check if current db is serverless

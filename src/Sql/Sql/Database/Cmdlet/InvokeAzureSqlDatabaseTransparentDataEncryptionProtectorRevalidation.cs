@@ -1,31 +1,22 @@
 ﻿using Microsoft.Azure.Commands.Sql.Database.Model;
 using System.Management.Automation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     /// <summary>
-    /// Cmdlet for Revert Azure Sql Database encryption protector
+    /// Cmdlet for Revalidate Azure Sql Database encryption protector
     /// </summary>
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseTransparentDataEncryptionProtectorRevert", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseModel))]
-    public class RevertAzureSqlDatabaseTransparentDataEncryptionProtector : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseModel>
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseTransparentDataEncryptionProtectorRevalidation", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseModel))]
+    public class InvokeAzureSqlDatabaseTransparentDataEncryptionProtectorRevalidation : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseModel>
     {
         /// <summary>
-        /// Gets or sets the name of the database.
+        /// Gets or sets the name of the database to revalidate.
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The name of the Azure SQL Database to revert.")]
+            HelpMessage = "The name of the Azure SQL Database to revalidate.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Defines whether it is ok to skip the revalidate Transparent Data Encryption protector request confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -43,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Returns true if the model object that was constructed by this cmdlet should be written out.
         /// </summary>
         /// <returns>True if the model object should be written out; false otherwise.</returns>
-        protected override bool WriteResult() { return PassThru; }
+        protected override bool WriteResult() { return PassThru.IsPresent; }
 
         /// <summary>
         /// Get the entities from the service
@@ -61,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>Database model</returns>
         protected override AzureSqlDatabaseModel PersistChanges(AzureSqlDatabaseModel entity)
         {
-            ModelAdapter.RevertDatabaseEncryptionProtector(entity.ResourceGroupName, entity.ServerName, entity.DatabaseName);
+            ModelAdapter.RevalidateDatabaseEncryptionProtector(entity.ResourceGroupName, entity.ServerName, entity.DatabaseName);
             return entity;
         }
     }

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// </summary>
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceTransparentDataEncryptionProtectorRevalidation", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel))]
-    public class RevalidateAzureRmSqlManagedInstanceTransparentDataEncryptionProtector : AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorBase
+    public class InvokeAzureRmSqlManagedInstanceTransparentDataEncryptionProtectorRevalidation : AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorBase
     {
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
