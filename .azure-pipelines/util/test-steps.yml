@@ -57,7 +57,7 @@ steps:
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
    $rootFolder = (Get-item $PWD).Parent.Parent
-   Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {
+   Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
     Write-Host $_.Directory.FullName
     cd $rootFolder;
     .\tools\ExecuteCIStep.ps1 -TestAutorest -AutorestDirectory $_.Directory.FullName

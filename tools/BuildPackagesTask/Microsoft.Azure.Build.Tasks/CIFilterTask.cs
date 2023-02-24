@@ -172,8 +172,13 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private List<string> GetTestCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
         {
-            return GetRelatedCsprojList(moduleName, csprojMap)
+            List<string> csprojList = GetRelatedCsprojList(moduleName, csprojMap)
                 .Where(x => x.Contains("Test")).ToList();
+            if (csprojList.Count == 0)
+            {
+                csprojList.Add(moduleName);
+            }
+            return csprojList;
         }
 
         private bool ProcessTargetModule(Dictionary<string, string[]> csprojMap)
@@ -386,6 +391,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             DateTime endOfRegularExpressionTime = DateTime.Now;
 
             influencedModuleInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
+            Console.WriteLine("----------------- After CalculateCsprojForBuildAndTest -----------------");
+            foreach (string phaseName in influencedModuleInfo.Keys)
+            {
+                Console.WriteLine(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
+            }
+            Console.WriteLine("--------------------------------------------------------");
             DateTime endTime = DateTime.Now;
             Console.WriteLine(string.Format("Takes {0} seconds for RE match, {1} seconds for phase config.", (endOfRegularExpressionTime - startTime).TotalSeconds, (endTime - endOfRegularExpressionTime).TotalSeconds));
 
@@ -411,6 +422,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private string GetModuleNameFromPath(string path)
         {
+            if (path.IndexOf(".csproj") == -1)
+            {
+                return path;
+            }
             if (path.IndexOf("src") == -1)
             {
                 return null;
