@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.Profile
         public const string UserParameterSet = "UserWithSubscriptionId";
         public const string UserWithCredentialParameterSet = "UserWithCredential";
         public const string ServicePrincipalParameterSet = "ServicePrincipalWithSubscriptionId";
-        public const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
+        public const string ServicePrincipalCertificatePa
+        rameterSet= "ServicePrincipalCertificateWithSubscriptionId";
         public const string ServicePrincipalCertificateFileParameterSet = "ServicePrincipalCertificateFileWithSubscriptionId";
         public const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
         public const string ClientAssertionParameterSet = "ClientAssertionParameterSet";
