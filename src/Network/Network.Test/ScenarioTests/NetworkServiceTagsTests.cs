@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
         public void TestNetworkServiceTagsList()
         {
             TestRunner.RunTestScript( "Test-NetworkServiceTagsList");

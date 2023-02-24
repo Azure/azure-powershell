@@ -96,6 +96,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model
         public string ReadOnlyFailoverPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets the secondary type
+        /// </summary>
+        public string SecondaryType { get; set; }
+
+        /// <summary>
         /// Gets or sets the Id of the Instance Failover Group
         /// </summary>
         public string Id { get; set; }

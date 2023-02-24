@@ -233,6 +233,7 @@ function New-AzConnectedKubernetes {
     )
 
     process {
+        . "$PSScriptRoot/helpers/HelmHelper.ps1"
         if($AzureHybridBenefit){
             if(!$AcceptEULA){
                 $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
@@ -286,6 +287,7 @@ function New-AzConnectedKubernetes {
 
         #Region check helm install
         try {
+            Get-HelmClientLocation
             $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
             if ($HelmVersion.Contains("v2")) {
                 Write-Error "Helm version 3+ is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
@@ -297,13 +299,12 @@ function New-AzConnectedKubernetes {
                 Return
             }
         } catch {
-            Write-Error "Helm version 3+ is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
-            throw
+            throw "Helm version 3+ is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"            
         }
         #EndRegion
 
         #Region get release namespace
-        Set-Variable ReleaseInstallNamespace -option Constant -value "azure-arc-release"
+        $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
         $ReleaseNamespace = $null
         try {
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace | ConvertFrom-Json).namespace
@@ -350,7 +351,7 @@ function New-AzConnectedKubernetes {
                 $ReleaseTrain = Get-ChildItem -Path Env:RELEASETRAIN
             } else {
                 $ReleaseTrain = 'stable'
-            }            
+            }
             $AzLocation = Get-AzLocation | Where-Object { ($_.DisplayName -ieq $Location) -or ($_.Location -ieq $Location)}
             $Region = $AzLocation.Location
             if ($null -eq $Region) {
@@ -376,8 +377,8 @@ function New-AzConnectedKubernetes {
             if ($Response.StatusCode -eq 200) {
                 $RegisteryPath = ($Response.Content | ConvertFrom-Json).repositoryPath
             } else {
-                throw "Error while fetching helm chart registry path: ${$Response.RawContent}"
-                
+                Write-Error "Error while fetching helm chart registry path: ${$Response.RawContent}"
+                return
             }
         }
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
@@ -399,15 +400,14 @@ function New-AzConnectedKubernetes {
         try {
             helm chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
         } catch {
-            Write-Error "Unable to export helm chart from the registery $RegisteryPath"
-            throw
+            throw "Unable to export helm chart from the registery $RegisteryPath"
         }
         #Endregion
 
         $RSA = [System.Security.Cryptography.RSA]::Create(4096)
         if ($PSVersionTable.PSVersion.Major -eq 5) {
             try {
-                . "$PSScriptRoot/RSAHelper.ps1"
+                . "$PSScriptRoot/helpers/RSAHelper.ps1"
                 $AgentPublicKey = ExportRSAPublicKeyBase64($RSA)
                 $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA)
                 $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $AgentPrivateKey + "`n-----END RSA PRIVATE KEY-----"                
@@ -471,13 +471,13 @@ function New-AzConnectedKubernetes {
             $options += " --set systemDefaultValues.fluent-bit.containerLogPath=$ContainerLogPath"
             $Null = $PSBoundParameters.Remove('ContainerLogPath')
         }
-	    if (-not ([string]::IsNullOrEmpty($KubeConfig))) {
+        if (-not ([string]::IsNullOrEmpty($KubeConfig))) {
             $options += " --kubeconfig $KubeConfig"
         }
-	    if (-not ([string]::IsNullOrEmpty($KubeContext))) {
+        if (-not ([string]::IsNullOrEmpty($KubeContext))) {
             $options += " --kube-context $KubeContext"
         }
-	    if (!$NoWait) {
+        if (!$NoWait) {
             $options += " --wait --timeout $OnboardingTimeout"
             $options += "s"
         }        
@@ -493,8 +493,7 @@ function New-AzConnectedKubernetes {
                     $ProxyCredential = New-Object System.Management.Automation.PSCredential ($userInfo[0] , $pass)
                     $PSBoundParameters.Add('ProxyCredential', $ProxyCredential)
                 } catch {
-                    Write-Warning "Please set ProxyCredential or provide username and password in the Proxy parameter"
-                    throw
+                    throw "Please set ProxyCredential or provide username and password in the Proxy parameter"                    
                 }
             } else {
                 Write-Warning "If the proxy is a private proxy, pass ProxyCredential parameter or provide username and password in the Proxy parameter"
@@ -505,7 +504,11 @@ function New-AzConnectedKubernetes {
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id        
-	    helm upgrade --install azure-arc $ChartPath --namespace $ReleaseInstallNamespace --create-namespace --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure (-split $options)
+        try {
+            helm upgrade --install azure-arc $ChartPath --namespace $ReleaseInstallNamespace --create-namespace --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure (-split $options)
+        } catch {
+            throw "Unable to install helm chart at $ChartPath"
+        }
         Return $Response
     }
 }
