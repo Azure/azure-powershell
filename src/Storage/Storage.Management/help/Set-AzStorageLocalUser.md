@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -SshAuthorizedKey
-Local user ssh authorized keys for SFTP.
+Local user ssh authorized keys for SFTP. Get the object with New-AzStorageLocalUserSshPublicKey cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSSshPublicKey[]

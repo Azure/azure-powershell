@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string HomeDirectory { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Local user ssh authorized keys for SFTP.")]
+            HelpMessage = "Local user ssh authorized keys for SFTP. Get the object with New-AzStorageLocalUserSshPublicKey cmdlet.")]
         [ValidateNotNullOrEmpty]
         public PSSshPublicKey[] SshAuthorizedKey { get; set; }
 
