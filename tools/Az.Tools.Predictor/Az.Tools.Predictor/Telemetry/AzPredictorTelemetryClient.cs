@@ -442,7 +442,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 }
             }
 
-            var maskedUserInput = CommandLineUtilities.MaskCommandLine(telemetryData.UserInput.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
+            var maskedUserInput = telemetryData.IsSupported ?
+                CommandLineUtilities.MaskCommandLine(CommandLineUtilities.GetCommandAst(telemetryData.UserInput)) :
+                AzPredictorConstants.CommandPlaceholder;
 
             var suggestionSession = new SuggestionSession()
             {
@@ -500,7 +502,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
             {
                 suggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, telemetryData.SuggestionSessionId);
-                suggestionSession.IsSuggestionComplete = false; // This continue from the previous suggestionsession. So mark it as incomplete.
+                suggestionSession.IsSuggestionComplete = false; // This continue from the previous suggestion session. So mark it as incomplete.
             }
 
             suggestionSession.DisplayMode = telemetryData.DisplayMode;

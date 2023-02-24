@@ -279,7 +279,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     parsedResult = GetAstAndMaskedCommandLine(commandLine);
                 }
 
-                _telemetryClient.OnHistory(new HistoryTelemetryData(client, parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder, success));
+                // We only collect the masked command line when the command is supported.
+                // This is to avoid the case when the user copies and pasted some sensitive data into the command line.
+
+                var collectedCommandLine = parsedResult.IsSupported ?
+                    parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder :
+                    AzPredictorConstants.CommandPlaceholder;
+                _telemetryClient.OnHistory(new HistoryTelemetryData(client, collectedCommandLine, success));
                 _commandLineExecutedCompletion?.SetResult();
             });
 
@@ -315,7 +321,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
                 finally
                 {
-                    _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(client, localSuggestionSessionId, context.InputAst,
+                    _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(client,
+                            localSuggestionSessionId,
+                            suggestions?.CommandAst,
+                            _service.IsSupportedCommand(suggestions?.CommandAst?.GetCommandName()),
                             suggestions,
                             cancellationToken.IsCancellationRequested,
                             exception));
