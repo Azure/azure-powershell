@@ -17,7 +17,7 @@ Invoke-LiveTestScenario -Name "Create ContainerApp" -Description "Test create Az
     $scaleRule = @()
     $actual = New-AzContainerApp -Name $appName -ResourceGroupName $rgName -Location $appLocation -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
     Assert-AreEqual $appName $actual.Name
-    Assert-AreEqual $appLocation $actual.Location
+    Assert-AreEqual 8080 $actual.DaprAppPort
 }
 
 Invoke-LiveTestScenario -Name "List ContainerApp" -Description "Test listing ContainerApp" -ScenarioScript `
@@ -84,7 +84,7 @@ Invoke-LiveTestScenario -Name "Update ContainerApp" -Description "Test Updating 
     $null = New-AzContainerApp -Name $appName -ResourceGroupName $rgName -Location $appLocation -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
     $null = Update-AzContainerApp -Name $appName -ResourceGroupName $rgName -DaprAppPort 8888 -Location $appLocation
     $actual = Get-AzContainerApp -ResourceGroupName $rgName -Name $appName 
-    Assert-AreEqual $actual.$DaprAppPort 8888
+    Assert-AreEqual $actual.DaprAppPort 8888
 }
 
 Invoke-LiveTestScenario -Name "Remove ContainerApp" -Description "Test Removing ContainerApp" -ScenarioScript `
@@ -104,8 +104,8 @@ Invoke-LiveTestScenario -Name "Remove ContainerApp" -Description "Test Removing 
     $image = New-AzContainerAppTemplateObject -Name $appName -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
     $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName $rgName -EnvName azps-env).Id
     $scaleRule = @()
-    $null = Remove-AzContainerApp -Name $appName -ResourceGroupName $rgName -Location $appLocation -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
-    $actual = Get-AzContainerApp -ResourceGroupName $rgName -Name $appName
+    $null = New-AzContainerApp -Name $appName -ResourceGroupName $rgName -Location $appLocation -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
+    $null = Remove-AzContainerApp -ResourceGroupName $rgName -Name $appName
     $GetServiceList = Get-AzContainerApp -ResourceGroupName $rgName
     Assert-False { $GetServiceList.Name -contains $appName}
 }

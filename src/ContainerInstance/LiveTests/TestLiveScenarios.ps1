@@ -64,6 +64,7 @@ Invoke-LiveTestScenario -Name "Remove ContainerGroup" -Description "Test Removin
     $cgLocation = "westus"
     $container = New-AzContainerInstanceObject -Name $containerName -Image alpine
     $null = New-AzContainerGroup -ResourceGroupName $rgName -Name $cgName -Location $cgLocation -Container $container 
+    $null = Remove-AzContainerGroup -ResourceGroupName $rgName -Name $cgName
     $GetServiceList = Get-AzContainerGroup -ResourceGroupName $rgName
     Assert-False { $GetServiceList.Name -contains $cgName}
 }
