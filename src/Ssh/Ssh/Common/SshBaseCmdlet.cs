@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Commands.Ssh
             }
 
             command = $"{command}.exe";
-            var cmdInfo = InvokeCommand.GetCommand(command, CommandTypes.Application);
+            ApplicationInfo appInfo = InvokeCommand.GetCommand(command, CommandTypes.Application) as ApplicationInfo;
 
             if (cmdInfo == null)
             {
