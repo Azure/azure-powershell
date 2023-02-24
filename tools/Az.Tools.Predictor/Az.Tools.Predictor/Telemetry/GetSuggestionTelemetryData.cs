@@ -34,6 +34,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public const string PropertyNameFound = "Found";
 
         /// <summary>
+        /// The telemetry property name for "Prediction".
+        /// </summary>
+        public const string PropertyNamePrediction = "Prediction";
+
+        /// <summary>
         /// The telemetry property name for "SuggestionSessionId".
         /// </summary>
         public const string PropertyNameSuggestionSessionId = "SuggestionSessionId";

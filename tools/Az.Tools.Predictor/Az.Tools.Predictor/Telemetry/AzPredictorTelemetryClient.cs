@@ -303,14 +303,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
             if (suggestions.Count > 0)
             {
-                properties.Add("Suggestion", JsonSerializer.Serialize(suggestions, JsonUtilities.TelemetrySerializerOptions));
+                properties.Add(GetSuggestionTelemetryData.PropertyNamePrediction, JsonSerializer.Serialize(suggestions, JsonUtilities.TelemetrySerializerOptions));
             }
 
             if (aggregatedData.CommandLine != null)
             {
                 // Add the command history data.
                 properties.Add(HistoryTelemetryData.PropertyNameSuccess, aggregatedData.IsCommandSuccess.ToString(CultureInfo.InvariantCulture));
-                properties.Add(HistoryTelemetryData.PropertyNameHistory, aggregatedData.CommandLine);
+                properties.Add(HistoryTelemetryData.PropertyNameCommand, aggregatedData.CommandLine);
             }
 
             SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/Aggregation", properties);
