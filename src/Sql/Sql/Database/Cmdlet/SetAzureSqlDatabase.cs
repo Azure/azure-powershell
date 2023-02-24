@@ -357,10 +357,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,
             };
 
-            ODataQuery<Management.Sql.Models.Database> oDataQuery = new ODataQuery<Management.Sql.Models.Database>();
-            oDataQuery.Expand = "keys";
-
-            var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName, oDataQuery);
+            var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
             Management.Sql.Models.Sku databaseCurrentSku = new Management.Sql.Models.Sku()
             {
                 Name = database.SkuName,
@@ -373,35 +370,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             //
             if (MyInvocation.BoundParameters.ContainsKey("KeyList") && this.KeyList.Length > 0)
             {
-                if (database.Keys.Count > 0)
-                {
-                    foreach (string akvKey in KeyList)
-                    {
-                        if (!database.Keys.ContainsKey(akvKey))
-                        {
-                            database.Keys.Add(akvKey, new Management.Sql.Models.DatabaseKey());
-                        }
-                    }
-                    
-                    newDbModel.Keys = database.Keys;
-                }
-                else
-                {
-                    newDbModel.Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList);
-                }
+                newDbModel.Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList);
             }
 
             if (MyInvocation.BoundParameters.ContainsKey("KeysToRemove") && this.KeysToRemove.Length > 0)
             {
-                foreach (string akvKey in KeysToRemove)
-                {
-                    if (database.Keys.ContainsKey(akvKey))
-                    {
-                        database.Keys[akvKey] = null;
-                    }
-                }
-
-                newDbModel.Keys = database.Keys;
+                DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionaryToRemove(this.KeysToRemove, ref newDbModel);
             }
 
             // check if current db is serverless

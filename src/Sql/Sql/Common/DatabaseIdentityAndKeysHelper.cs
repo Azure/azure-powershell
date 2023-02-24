@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,6 +99,31 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
 
             return akvKeysResult;
+        }
+
+        /// <summary>
+        /// Gets the dictionary of database keys to be removed to the api.
+        /// </summary>
+        /// <param name="akvKeys">List of AKV keys</param>
+        /// <param name="newDBModel">New DB Model to be updated</param>
+        /// <returns>Dictionary of database keys</returns>
+        public static void GetDatabaseKeysDictionaryToRemove(string[] akvKeys, ref AzureSqlDatabaseModel newDBModel)
+        {
+            if (newDBModel.Keys == null)
+            {
+                newDBModel.Keys = new Dictionary<string, DatabaseKey>();
+            }
+
+            if (akvKeys != null && akvKeys.Any())
+            {
+                foreach (string akvKey in akvKeys)
+                {
+                    if (!newDBModel.Keys.ContainsKey(akvKey))
+                    {
+                        newDBModel.Keys.Add(akvKey, null);
+                    }
+                }
+            }
         }
     }
 }
