@@ -1,0 +1,19 @@
+{{#each this}}
+<details>
+<summary>{{renderStatus Status}}{{Module}}</summary>
+
+{{#each Items}}
+><details>
+> <summary>{{renderStatus Status}}{{PhaseName}}</summary>
+>
+{{#each Items}}
+>><details>
+>> <summary>{{renderStatus Status}}{{Platform}}</summary>
+>>
+{{renderContent Content 2}}
+>></details>
+{{/each}}
+></details>
+{{/each}}
+</details>
+{{/each}}
