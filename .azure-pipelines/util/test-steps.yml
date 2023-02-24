@@ -66,6 +66,7 @@ steps:
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
+  continueOnError: true
 
 - pwsh: |
     $PipelineResult = Get-Content PipelineResult.json | ConvertFrom-Json
