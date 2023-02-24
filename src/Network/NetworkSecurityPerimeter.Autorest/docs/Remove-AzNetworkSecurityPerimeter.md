@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.NetworkSecurityPerimeter
-online version: https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/remove-aznetworksecurityperimeter
+Module Name: Az.Network
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeter
 schema: 2.0.0
 ---
 
