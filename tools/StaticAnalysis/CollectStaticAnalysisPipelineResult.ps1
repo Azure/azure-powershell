@@ -77,6 +77,10 @@ ForEach ($Step In $Steps) {
     If ($Details.Length -Ne 0) {
         $Details = $Details[0]
         If ($PhaseName -eq "cmdlet-diff") {
+            If (-not (Test-Path $IssuePath))
+            {
+                continue
+            }
             $content = Get-Content -Path $IssuePath
             $markdownContent = @{}
             foreach ($line in $content) {
