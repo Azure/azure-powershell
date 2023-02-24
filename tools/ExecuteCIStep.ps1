@@ -165,7 +165,11 @@ If ($Build)
             $Detail = Join-String -Separator ": " -InputObject $Detail
             If ($Position.Contains("src"))
             {
-                $ModuleName = "Az." + $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
+                $ModuleName = "Az." + $Position.Split("src" + [IO.Path]::DirectorySeparatorChar)[1].Split([IO.Path]::DirectorySeparatorChar)[0]
+            }
+            ElseIf ($Position.Contains([IO.Path]::DirectorySeparatorChar))
+            {
+                $ModuleName = "Az." + $Position.Split([IO.Path]::DirectorySeparatorChar)[0]
             }
             Else
             {
