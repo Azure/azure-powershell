@@ -68,12 +68,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string HomeDirectory { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.")]
+            HelpMessage = "Local user ssh authorized keys for SFTP.")]
         [ValidateNotNullOrEmpty]
         public PSSshPublicKey[] SshAuthorizedKey { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.")]
+            HelpMessage = "The permission scopes of the local user.")]
         [ValidateNotNullOrEmpty]
         public PSPermissionScope[] PermissionScope { get; set; }
 

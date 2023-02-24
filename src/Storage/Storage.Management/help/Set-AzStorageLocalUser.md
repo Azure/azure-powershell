@@ -184,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -PermissionScope
-The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
+The permission scopes of the local user.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSPermissionScope[]
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -SshAuthorizedKey
-The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
+Local user ssh authorized keys for SFTP.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSSshPublicKey[]
