@@ -286,10 +286,10 @@ namespace Microsoft.Azure.Commands.Ssh
 
         private string GetHost()
         {
-            if (ResourceType.Equals("Microsoft.HybridCompute/machines") && LocalUser != null && Name != null) 
+            if (IsArc() && LocalUser != null && Name != null) 
             {
                 return LocalUser + "@" + Name;
-            } else if (ResourceType.Equals("Microsoft.Compute/virtualMachines") && LocalUser != null && Ip != null)
+            } else if (LocalUser != null && Ip != null)
             {
                 return LocalUser + "@" + Ip;
             }

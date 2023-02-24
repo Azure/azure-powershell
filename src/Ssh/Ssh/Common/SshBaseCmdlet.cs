@@ -37,11 +37,11 @@ using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
 using Microsoft.Rest.Azure;
-using System.Data.Common;
-using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
+
 
 namespace Microsoft.Azure.Commands.Ssh
 {
+
     public abstract class SshBaseCmdlet : AzureRMCmdlet
     {
 
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
         /// <summary>
         /// The Type of the target Azure Resource.
-        /// Either Microsoft.Compute/virtualMachines or Microsoft.HybridCompute/machines.
+        /// Either Microsoft.Compute/virtualMachines, Microsoft.HybridCompute/machines, Microsoft.ConnectedVMwarevSphere/virtualMachines, Microsoft.ScVmm/virtualMachines, Microsoft.AzureStackHCI/virtualMachines.
         /// </summary>
         [Parameter(ParameterSetName = InteractiveParameterSet)]
         [PSArgumentCompleter(
@@ -383,7 +383,6 @@ namespace Microsoft.Azure.Commands.Ssh
             try
             {
                 IPage<GenericResource> resources = ResourceManagementClient.Resources.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName, query).GetAwaiter().GetResult().Body;
-                resources = null;
                 types = resources.Select(resource => resource.Type).ToArray();
             }
             catch (CloudException exception)
@@ -392,7 +391,7 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             catch (ArgumentNullException)
             {
-                throw new AzPSApplicationException($"Unable to list resources in the {ResourceGroupName} Resource Group because API call returned a null object. Please contact support.");
+                throw new AzPSApplicationException($"Unable to list resources in the {ResourceGroupName} Resource Group because API call returned a null object. Please try again and contact support.");
             }
 
             if (ResourceType != null)
@@ -500,7 +499,7 @@ namespace Microsoft.Azure.Commands.Ssh
             command = $"{command}.exe";
             ApplicationInfo appInfo = InvokeCommand.GetCommand(command, CommandTypes.Application) as ApplicationInfo;
 
-            if (cmdInfo == null)
+            if (appInfo == null)
             {
                 if (command.Equals("mstsc.exe"))
                 {
@@ -509,7 +508,7 @@ namespace Microsoft.Azure.Commands.Ssh
                 throw new AzPSApplicationException("Unable to find OpenSSH Client. Make sure to update the PATH environment variable to make OpenSSH client discoverable.");
             }
             
-            return cmdInfo.Path;
+            return appInfo.Path;
         }
 
         protected internal string GetClientSideProxy()
@@ -606,7 +605,10 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal bool IsArc()
         {
-            if (ResourceType.Equals("Microsoft.HybridCompute/machines"))
+            if (ResourceType.Equals("Microsoft.HybridCompute/machines", StringComparison.CurrentCultureIgnoreCase) ||
+                ResourceType.Equals("Microsoft.ConnectedVMwarevSphere/virtualMachines", StringComparison.CurrentCultureIgnoreCase) ||
+                ResourceType.Equals("Microsoft.ScVmm/virtualMachines", StringComparison.CurrentCultureIgnoreCase) ||
+                ResourceType.Equals("Microsoft.AzureStackHCI/virtualMachines", StringComparison.CurrentCultureIgnoreCase))
             {
                 return true;
             }
@@ -616,7 +618,6 @@ namespace Microsoft.Azure.Commands.Ssh
         #endregion
 
         #region Private Methods
-
 
         /* This method gets the full path of items that already exist. It checks if the file exist and fails if it doesn't*/
         private string GetResolvedPath(string path, string paramName)

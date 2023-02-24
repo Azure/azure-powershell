@@ -10,8 +10,8 @@ function Test-GetArcConfig
     if ($IsMacOS) {
         return
     }
-    $MachineName = Get-RandomArcName
-    $ResourceGroupName = Get-RandomResourceGroupName
+    $MachineName = Get-ArcServerName
+    $ResourceGroupName = Get-ResourceGroupName
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
 
@@ -71,8 +71,8 @@ Test Exporting SSH Config File for an Azure VM using Local User Login. Test over
 #>
 function Test-GetVmConfig
 {
-    $VmName = Get-RandomVmName
-    $ResourceGroupName = Get-RandomResourceGroupName
+    $VmName = Get-AzureVmName
+    $ResourceGroupName = Get-ResourceGroupName
     #$VmName = "myVM"
     #$ResourceGroupName = "myRG"
     $SubscriptionId = (Get-AzContext).Subscription.Id
