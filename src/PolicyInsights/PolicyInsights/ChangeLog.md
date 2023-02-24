@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for policy attestations.
 
 ## Version 1.5.1
 * Updated parameter documentation for Get-AzPolicyState 

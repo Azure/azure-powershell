@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCdnProfile
 
 ## SYNOPSIS
-
+Gets an CDN profile with the specified profile name under the specified subscription and resource group.
 
 ## SYNTAX
 
@@ -35,6 +35,7 @@ Get-AzCdnProfile -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Defa
 ```
 
 ## DESCRIPTION
+Gets an CDN profile with the specified profile name under the specified subscription and resource group.
 
 
 ## EXAMPLES

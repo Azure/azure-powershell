@@ -132,6 +132,9 @@
   <data name="RemoveAccount_ProcessMessage" xml:space="preserve">
     <value>Deleting account {0}.</value>
   </data>
+  <data name="RemoveResource_ProcessMessage" xml:space="preserve">
+    <value>Deleting resource {0}.</value>
+  </data>
   <data name="SetAccount_ProcessMessage" xml:space="preserve">
     <value>Updating account {0}.</value>
   </data>

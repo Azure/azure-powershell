@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeStartStopScheduleObject
+online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecomputestartstopscheduleobject
 schema: 2.0.0
 ---
 

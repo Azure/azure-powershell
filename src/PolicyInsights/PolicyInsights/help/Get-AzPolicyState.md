@@ -61,7 +61,7 @@ Get-AzPolicyState [-All] [-SubscriptionId <String>] -PolicyAssignmentName <Strin
  [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ResourceGroupscopePolicyAssignmentScope
+### ResourceGroupLevelPolicyAssignmentScope
 ```
 Get-AzPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <String> -PolicyAssignmentName <String>
  [-Top <Int32>] [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
