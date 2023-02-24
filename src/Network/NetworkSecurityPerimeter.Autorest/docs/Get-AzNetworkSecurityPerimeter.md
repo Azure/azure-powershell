@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.NetworkSecurityPerimeter
-online version: https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeter
+Module Name: Az.Network
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeter
 schema: 2.0.0
 ---
 
@@ -42,7 +42,6 @@ Gets the specified network security perimeter by the name.
 ## EXAMPLES
 
 ### Example 1: List NetworkSecurityPerimeter
-
 ```powershell
 
  Get-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1
@@ -61,11 +60,10 @@ eastus2euap nsp5
 
 
 ```
+
 List NetworkSecurityPerimeter
 
-
 ### Example 2: List NetworkSecurityPerimeter in a subscription
-
 ```powershell
 
  Get-AzNetworkSecurityPerimeter
@@ -84,11 +82,10 @@ eastus2euap nsp5
 
 
 ```
+
 List NetworkSecurityPerimeter in a subscription
 
-
 ### Example 3: Gets a NetworkSecurityPerimeter by Name
-
 ```powershell
 
  Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
@@ -103,11 +100,10 @@ eastus2euap nsp3
 
 
 ```
+
 Gets a NetworkSecurityPerimeter by Name
 
-
 ### Example 4: Gets a NetworkSecurityPerimeter by identity (using pipe)
-
 ```powershell
 
  $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
@@ -122,7 +118,9 @@ Location    Name
 eastus2euap nsp3
 
 ```
+
 Gets a NetworkSecurityPerimeter by identity (using pipe)
+
 ## PARAMETERS
 
 ### -DefaultProfile
