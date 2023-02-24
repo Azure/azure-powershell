@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Ssh
         private Process CreateSSHProcess()
         {
             string sshClient = GetClientApplicationPath("ssh");
-            string command = GetHost() + " " + BuildArgs();
+            string command = $"{GetHost()} {BuildArgs()}";
             Process sshProcess = new Process();
             WriteDebug("Running SSH command: " + sshClient + " " + command);
 

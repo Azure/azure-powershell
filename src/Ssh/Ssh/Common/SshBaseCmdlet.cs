@@ -38,6 +38,7 @@ using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
 using Microsoft.Rest.Azure;
 using System.Data.Common;
+using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 
 namespace Microsoft.Azure.Commands.Ssh
 {
@@ -140,13 +141,13 @@ namespace Microsoft.Azure.Commands.Ssh
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [SshResourceNameCompleter(
-            new string[] { 
+            new string[] {
                 "Microsoft.Compute/virtualMachines",
                 "Microsoft.HybridCompute/machines",
                 "Microsoft.ConnectedVMwarevSphere/virtualMachines",
                 "Microsoft.ScVmm/virtualMachines",
                 "Microsoft.AzureStackHCI/virtualMachines"
-            }, 
+            },
             "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -168,13 +169,15 @@ namespace Microsoft.Azure.Commands.Ssh
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [SshResourceIdCompleter(new string[] { 
-            "Microsoft.HybridCompute/machines",
-            "Microsoft.Compute/virtualMachines",
-            "Microsoft.ConnectedVMwarevSphere/virtualMachines",
-            "Microsoft.ScVmm/virtualMachines",
-            "Microsoft.AzureStackHCI/virtualMachines"
-        })]
+        [SshResourceIdCompleter(
+            new string[] {
+                "Microsoft.Compute/virtualMachines",
+                "Microsoft.HybridCompute/machines",
+                "Microsoft.ConnectedVMwarevSphere/virtualMachines",
+                "Microsoft.ScVmm/virtualMachines",
+                "Microsoft.AzureStackHCI/virtualMachines"
+            }
+        )]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -246,8 +249,8 @@ namespace Microsoft.Azure.Commands.Ssh
         /// </summary>
         [Parameter(ParameterSetName = InteractiveParameterSet)]
         [PSArgumentCompleter(
-            "Microsoft.HybridCompute/machines",
             "Microsoft.Compute/virtualMachines",
+            "Microsoft.HybridCompute/machines",
             "Microsoft.ConnectedVMwarevSphere/virtualMachines",
             "Microsoft.ScVmm/virtualMachines",
             "Microsoft.AzureStackHCI/virtualMachines"
@@ -317,14 +320,14 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal void ValidateParameters()
         {
             var context = DefaultProfile.DefaultContext;
-            if (LocalUser == null && context.Account.Type.Equals("ServicePrincipal"))
+            if (LocalUser == null && context.Account.Type == AzureAccount.AccountType.ServicePrincipal)
             {
                 throw new AzPSArgumentException("Azure PowerShell doesn't currently support AAD login for Service Principal accounts. Provide a -LocalUser.", nameof(LocalUser));
             }
 
             if (Rdp && !RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                throw new AzPSArgumentException("The -Rdp parameter is only supported in Windows OS.", nameof(Rdp));
+                throw new AzPSArgumentException("The -Rdp parameter is only supported on Windows OS.", nameof(Rdp));
             }
 
                 if (CertificateFile != null)
@@ -373,22 +376,23 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal void SetResourceType()
         {
             var resourcetypefilter = supportedResourceTypes.Select(type => $"resourceType eq '{type}'").ToArray();
-            String filter = $"$filter=name eq '{Name}' and (" + String.Join(" or ", resourcetypefilter) + ")";
+            String filter = $"$filter=name eq '{Name}' and ({String.Join(" or ", resourcetypefilter)})";
             ODataQuery<GenericResourceFilter> query = new ODataQuery<GenericResourceFilter>(filter);
 
             String[] types;
             try
             {
-                var resources = ResourceManagementClient.Resources.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName, query).GetAwaiter().GetResult().Body;
+                IPage<GenericResource> resources = ResourceManagementClient.Resources.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName, query).GetAwaiter().GetResult().Body;
+                resources = null;
                 types = resources.Select(resource => resource.Type).ToArray();
             }
             catch (CloudException exception)
             {
                 throw new AzPSCloudException($"Failed to list resources in the {ResourceGroupName} Resource Group with error: \"{exception.Message}\". Ensure that the Resource Group Name is correct and that you have Read role on that resource group.");
             }
-            catch
+            catch (ArgumentNullException)
             {
-                throw;
+                throw new AzPSApplicationException($"Unable to list resources in the {ResourceGroupName} Resource Group because API call returned a null object. Please contact support.");
             }
 
             if (ResourceType != null)
@@ -402,7 +406,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
             if (types.Count() > 1)
             {
-                throw new AzPSArgumentException($"There is more than one resource named \"{Name}\" in the Resource Group \"{ResourceGroupName}\". Please provide a ResourceType.", ResourceType);
+                throw new AzPSArgumentException($"There is more than one resource named \"{Name}\" in the Resource Group \"{ResourceGroupName}\". Please provide -ResourceType so that this cmdlet can identify the correct target resource.", ResourceType);
             }
             else if (types.Count() < 1)
             {
@@ -505,7 +509,7 @@ namespace Microsoft.Azure.Commands.Ssh
                 throw new AzPSApplicationException("Unable to find OpenSSH Client. Make sure to update the PATH environment variable to make OpenSSH client discoverable.");
             }
             
-            return cmdInfo.Definition;
+            return cmdInfo.Path;
         }
 
         protected internal string GetClientSideProxy()

@@ -130,8 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
             {
                 if (exception.Body.Error.Code == "AuthorizationFailed")
                 {
-                    exceptionMessage = $"Failed to create default connectivty endpoint for target Arc Server with an Authorization failure. You must have Owner or Contributor role to perform this operation." +
-                        " Contact the owner of the resource to create the connectivity endpoint. Instructions here: https://learn.microsoft.com/en-us/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli#create-default-connectivity-endpoint";
+                    exceptionMessage = "Failed to create default connectivty endpoint for target resource with an Authorization failure. This is a one time operation that must be performed by someone with Owner or Contributor role before anyone can connect to this resource. Contact the owner of the resource to create the connectivity endpoint. Instructions here: https://aka.ms/ssharc/create-default-endpoint";
                 }
                 else
                 {
