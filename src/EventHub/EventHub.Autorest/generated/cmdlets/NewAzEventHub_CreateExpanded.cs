@@ -191,6 +191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"Number of days to retain the events for this Event Hub, value should be 1 to 7 days",
         SerializedName = @"messageRetentionInDays",
         PossibleTypes = new [] { typeof(long) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChange("MessageRetentionInDays", "4.0.0", ChangeDescription="-MessageRetentionInDays would be deprecated and would be replaced by -RetentionTimeInHours")]
         public long MessageRetentionInDays { get => _parametersBody.MessageRetentionInDays ?? default(long); set => _parametersBody.MessageRetentionInDays = value; }
 
         /// <summary>
