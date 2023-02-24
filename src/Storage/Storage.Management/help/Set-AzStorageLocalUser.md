@@ -184,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -PermissionScope
-The permission scopes of the local user.
+The permission scopes of the local user. Get the object with New-AzStorageLocalUserPermissionScope cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSPermissionScope[]

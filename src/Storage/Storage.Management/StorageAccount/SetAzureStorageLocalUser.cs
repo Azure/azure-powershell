@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public PSSshPublicKey[] SshAuthorizedKey { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "The permission scopes of the local user.")]
+            HelpMessage = "The permission scopes of the local user. Get the object with New-AzStorageLocalUserPermissionScope cmdlet.")]
         [ValidateNotNullOrEmpty]
         public PSPermissionScope[] PermissionScope { get; set; }
 
