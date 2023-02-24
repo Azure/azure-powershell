@@ -40,7 +40,6 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ElasticPoolOperations.json
   - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/EncryptionProtectors.json
   - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/FailoverGroups.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstanceFailoverGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/InstancePools.json
   - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobAgents.json
   - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/JobCredentials.json
@@ -112,6 +111,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/62bb0d101c8aee92e4d77ad14b20e4cf14bb181c/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/DatabaseEncryptionProtectorRevert.json
   - https://github.com/Azure/azure-rest-api-specs/blob/62bb0d101c8aee92e4d77ad14b20e4cf14bb181c/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/RecoverableDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/62bb0d101c8aee92e4d77ad14b20e4cf14bb181c/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/RestorableDroppedDatabases.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/549bc277952e66577d69ce137eea810c9815ef22/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/InstanceFailoverGroups.json
 
 output-folder: Generated
 

@@ -1,8 +1,8 @@
 {
-  "New-AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-04-01-preview+1": {
+  "New-AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-10-01-preview",
       "Content": "{\r\n  \"location\": \"eastus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -35,10 +35,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-04-01-preview+2": {
+  "New-AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-10-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -76,10 +76,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-04-01-preview+3": {
+  "New-AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-10-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-xyv4k5/providers/Microsoft.Databricks/accessConnectors/databricks-ac?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

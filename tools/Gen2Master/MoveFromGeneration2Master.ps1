@@ -36,7 +36,7 @@ Function Move-Generation2Master {
         If (-not (Test-Path $DestPath)) {
             New-Item -ItemType Directory -Path $DestPath -Force
         }
-        $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils')
+        $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils', 'UX')
         Foreach ($Dir in $Dir2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $Dir
             $DestItem = Join-Path -Path $DestPath -ChildPath $Dir

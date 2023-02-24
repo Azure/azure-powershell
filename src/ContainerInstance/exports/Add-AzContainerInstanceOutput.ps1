@@ -24,12 +24,12 @@ $response = Add-AzContainerInstanceOutput -GroupName test-cg -Name test-containe
 $response
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerAttachResponse
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerAttachResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.containerinstance/add-azcontainerinstanceoutput
 #>
 function Add-AzContainerInstanceOutput {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerAttachResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerAttachResponse])]
 [CmdletBinding(DefaultParameterSetName='Attach', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

@@ -28,9 +28,12 @@
 * Added 'ExpandKeyList' and 'KeysFilter' parameters to `Get-AzSqlDatabaseGeoBackup` and `Get-SqlDeletedDatabaseBackup`
 * Added new cmdlets for Per DB CMK
    - 'Revalidate-AzSqlDatabaseTransparentDataEncryptionProtector'
-   - 'Revert-AzSqlDatabaseTransparentDataEncryptionProtector'
-   - 'Revalidate-AzSqlServerTransparentDataEncryptionProtector'
-   - 'Revalidate-AzSqlInstanceTransparentDataEncryptionProtector'
+   - 'Revert-AzSqlDatabaseTransparentDataEncryptionProtector'
+   - 'Revalidate-AzSqlServerTransparentDataEncryptionProtector'
+   -'Revalidate-AzSqlInstanceTransparentDataEncryptionProtector'
+* Added an optional parameter 'SecondaryType' to:
+    'Set-AzSqlDatabaseInstanceFailoverGroup'
+    'New-AzSqlDatabaseInstanceFailoverGroup'
 
 ## Version 4.3.0
 * Added an optional parameter `HAReplicaCount` to `Restore-AzSqlDatabase`

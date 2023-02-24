@@ -276,7 +276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
         /// then the attribbute is applicable
         /// If the invocationInfo is null we return true
         /// </summary>
-        /// <param name="invocation"></param>
+        /// <param name="invocationInfo"></param>
         /// <returns>bool</returns>
         public override bool IsApplicableToInvocation(InvocationInfo invocationInfo)
         {

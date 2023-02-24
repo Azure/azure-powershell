@@ -1,17 +1,17 @@
 {
-  "Get-AzCloudServiceRoleInstanceRemoteDesktopFile+[NoContext]+Get remote desktop file+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2021-03-01+1": {
+  "Get-AzCloudServiceRoleInstanceRemoteDesktopFile+[NoContext]+Get remote desktop file+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/cscmdlettestkwpz6jb9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2022-09-04+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/cscmdlettestkwpz6jb9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "209de16d-e43a-4e46-b8ac-34714c5b1c00" ],
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "0943876a-03fb-4f37-b78f-81b5a642b250" ],
         "CommandName": [ "Get-AzCloudServiceRoleInstanceRemoteDesktopFile" ],
         "FullCommandName": [ "Get-AzCloudServiceRoleInstanceRemoteDesktopFile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,23 +22,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetCloudService3Min;970,Microsoft.Compute/GetCloudService30Min;4952,Microsoft.Compute/GetCloudService3Min;383,Microsoft.Compute/GetCloudService30Min;2580" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "39f0061b-e750-446c-96bb-6352459eb995" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetCloudService3Min;382,Microsoft.Compute/GetCloudService30Min;2579" ],
+        "x-ms-request-id": [ "b8887b0a-8e39-41ae-aea4-a297dbd892c7" ],
         "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11924" ],
-        "x-ms-correlation-request-id": [ "ddbb5074-cd3a-44b6-a214-813dd330ddad" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T010720Z:ddbb5074-cd3a-44b6-a214-813dd330ddad" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-correlation-request-id": [ "3db52082-305d-44ed-8d8b-239363674daa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T052626Z:3db52082-305d-44ed-8d8b-239363674daa" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:07:20 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:26:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "109" ],
+        "Content-Length": [ "110" ],
         "Content-Type": [ "application/x-rdp" ],
         "Expires": [ "-1" ],
-        "Content-Disposition": [ "attachment; filename=cscmdlettestoe6r0n2k-WebRole_IN_0.rdp" ]
+        "Content-Disposition": [ "attachment; filename=cscmdlettestyl5shqje-WebRole_IN_0.rdp" ]
       },
-      "Content": "full address:s:52.225.152.33\r\nusername:s:userazure\r\nLoadBalanceInfo:s:Cookie: mstshash=WebRole#WebRole_IN_0\r\n",
+      "Content": "full address:s:20.221.178.103\r\nusername:s:userazure\r\nLoadBalanceInfo:s:Cookie: mstshash=WebRole#WebRole_IN_0\r\n",
       "isContentBase64": false
     }
   }
