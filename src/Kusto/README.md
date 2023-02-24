@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Kusto service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -98,17 +98,17 @@ directive:
     transform: return $.replace(/\/principalAssignments\//g, "/PrincipalAssignments/")
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Detach$|^DetachViaIdentity$
+      variant: ^Add$|^AddViaIdentity(?!.*?Expanded)|^Check$|^CheckViaIdentity(?!.*?Expanded)|^CreateViaIdentity.*$|^Detach$|^DetachViaIdentity(?!.*?Expanded)
     remove: true
   # Remove the unexpanded parameter set for specific commands
   - where:
       subject: ^AttachedDatabaseConfiguration$|^Cluster$|^ClusterPrincipalAssignment$|^DatabasePrincipalAssignment$
-      variant: ^Create$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^Update$|^UpdateViaIdentity(?!.*?Expanded)
     remove: true
   - where:
       verb: Remove
       subject: DatabasePrincipal|ClusterLanguageExtension
-      variant: ^Remove$|^RemoveViaIdentity$
+      variant: ^Remove$|^RemoveViaIdentity(?!.*?Expanded)
     remove: true
   # Custom commands
   - where:
@@ -116,7 +116,7 @@ directive:
     hide: true
   - where:
       subject: ^Database$|^DataConnection$
-      variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
+      variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity.*$
     hide: true
   # Hide the operation API
   - where:
@@ -130,7 +130,7 @@ directive:
   - where:
       verb: Get
       subject: OperationsResultsLocation
-      variant: ^Get$|^GetViaIdentity$
+      variant: ^Get$|^GetViaIdentity(?!.*?Expanded)
     set:
       subject: OperationsResultLocation
   # For Get-AzKustoOperationResult no particular need for -PassThru parameter

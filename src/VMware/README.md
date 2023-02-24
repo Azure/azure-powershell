@@ -86,7 +86,7 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
-      variant: ^Restrict$|^RestrictViaIdentity(?!.*?Expanded)$
+      variant: ^Restrict$|^RestrictViaIdentity(?!.*?Expanded)
     remove: true
   - where:
       verb: Set
