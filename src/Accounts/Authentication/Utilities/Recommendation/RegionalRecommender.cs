@@ -48,11 +48,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
         {
             recommendation = null;
 
-            if (HasDisplayed)
-            {
-                return false;
-            }
-
             if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
             {
                 if (!configManager.GetConfigValue<bool>(ConfigKeys.DisplayRegionIdentified))
@@ -71,13 +66,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
                 {
                     recommendation = string.Format(Resources.RecommendationMessageForLocation, recommendedLocation);
                     qosEvent.DisplayRegionIdentified = recommendation;
-                    HasDisplayed = true;
                     return true;
                 }
             }
             return false;
         }
-
-        private bool HasDisplayed { get; set; } = false; // thread level cool down, message is displayed once per PS session
     }
 }
