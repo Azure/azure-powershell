@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change description for parameter `MessageRetentionInDays`, which would be deprecated and would be replaced by `RetentionTimeInHours`
 
 ## Version 3.2.1
 * Fixed 'New-AzEventHubAuthorizationRuleSASToken' cmdlet which was returning wrong skn value

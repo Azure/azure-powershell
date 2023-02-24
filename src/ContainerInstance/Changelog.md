@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added `priority` property to Container Group properties
+* Added `Confidential` sku type to Container Group Skus
 
 ## Version 3.1.0
 * Supported empty directory volume and secret volume for creating container group [#17410]
