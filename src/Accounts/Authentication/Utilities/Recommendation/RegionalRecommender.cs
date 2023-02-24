@@ -48,6 +48,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
         {
             recommendation = null;
 
+            if (invocation?.MyCommand?.Name == null || invocation?.BoundParameters == null)
+            {
+                return false;
+            }
+
+
             if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
             {
                 if (!configManager.GetConfigValue<bool>(ConfigKeys.DisplayRegionIdentified))
@@ -56,7 +62,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
                 }
             }
 
-            if (string.Equals("New-AzVM", invocation.MyCommand.Name, StringComparison.InvariantCultureIgnoreCase)
+            if (string.Equals("New-AzVM", invocation?.MyCommand.Name, StringComparison.InvariantCultureIgnoreCase)
                 && invocation.BoundParameters.TryGetValue("Location", out object x)
                 && x is string inputLocation)
             {
@@ -65,7 +71,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
                 if (_regionMappings.TryGetValue(inputLocation, out string recommendedLocation))
                 {
                     recommendation = string.Format(Resources.RecommendationMessageForLocation, recommendedLocation);
-                    qosEvent.DisplayRegionIdentified = recommendation;
+                    qosEvent.DisplayRegionIdentified = recommendedLocation;
                     return true;
                 }
             }
