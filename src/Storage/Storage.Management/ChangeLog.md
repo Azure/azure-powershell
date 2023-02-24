@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated parameter descriptions for Set-AzStorageLocalUser
-    - `Set-AzStorageLocalUser`
 
 ## Version 5.4.0
 * Added a warning message for the upcoming breaking change when creating a Storage account
