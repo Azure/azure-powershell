@@ -1,6 +1,6 @@
 ### Example 1: Remove Subnet Service Association Link
 ```powershell
-Remove-AzContainerInstanceSubnetServiceAssociationLink -ResourceGroup testRg -SubnetName testSubnetName -VirtualNetworkName testVnetName
+Remove-AzContainerInstanceSubnetServiceAssociationLink -ResourceGroupName testRg -SubnetName testSubnetName -VirtualNetworkName testVnetName
 ```
 
 ```output
