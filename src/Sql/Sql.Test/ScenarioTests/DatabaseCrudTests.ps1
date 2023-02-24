@@ -384,7 +384,7 @@ function Test-CreateDatabaseWithBackupStorageRedundancy
 function Test-CreateDatabaseWithGeoZoneBackupStorageRedundancy
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Brazil South"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
