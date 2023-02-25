@@ -12,7 +12,7 @@ This cmdlet exports an SSH configuration file that can be used to connect to Azu
 
 ## SYNTAX
 
-### Interactive
+### Interactive (Default)
 ```
 Export-AzSshConfig -ResourceGroupName <String> -Name <String> -ConfigFilePath <String>
  [-PublicKeyFile <String>] [-PrivateKeyFile <String>] [-UsePrivateIp] [-LocalUser <String>] [-Port <String>]
@@ -46,6 +46,7 @@ Users can create ssh config files that use AAD issued certificates or local user
 ```powershell
 Export-AzSshConfig -ResourceGroupName myRg -Name myMachine -ConfigFilePath ./sshconfig.config
 ```
+
 When a -LocalUser is not supplied, the cmdlet will attempt to create a certificate to login using Azure AD. This is currently only supported for resources running Linux OS.
 When using Azure AD to login to resource, the Host name in the configuration entry will be "{resource group name}-{resource name}", or "{ip address}" for Azure VMs.
 
@@ -58,21 +59,26 @@ Export-AzSshConfig -Ip 1.2.3.4 -ConfigFilePath ./sshconfig.config
 ```powershell
 Export-AzSshConfig -ResourceGroupName myRg -Name myVm -LocalUser azureuser -CertificateFile ./cert -PrivateKeyFile ./id_rsa -ConfigFilePath ./sshconfig.config
 ```
+
 When using local user credentials to login, the host name in the configuration entry will be "{resource group name}-{resource name}-{username}", or "{ip address}-{username}" for Azure VMs.
+
 ### Example 4: Export a SSH configuration file for connecting to Local User on Azure Resource using SSH private key for authentication
 
 ```powershell
 Export-AzSshConfig -ResourceGroupName myRg -Name myVm -LocalUser azureuser -PrivateKeyFile ./id_rsa -ConfigFilePath ./sshconfig.config
 ```
+
 ### Example 5: Export a SSH configuration file for connecting to Local User on Azure Resource using interactive username and password for authentication
 
 ```powershell
 Export-AzSshConfig -ResourceGroupName myRg -Name myVm -LocalUser azureuser -ConfigFilePath ./sshconfig.config
 ```
+
 ### Example 6: Determine where generated keys and certificates for the certificate will the stored.
 ```powershell
 Export-AzSshConfig -ResourceGroupName myRg -Name myVm -KeysDestinationFolder /home/user/mykeys -ConfigFilePath ./sshconfig.config
 ```
+
 Generated keys and certificates are, by default, stored in "az_ssh_config" directory in the same directory as the config file. The -KeysDestinationFolder parameter allows user to decide where the keys will be stored.
 
 ### Example 7: Create a generic config for use with any Azure VM.
@@ -84,6 +90,7 @@ Export-AzSshConfig -Ip * -ConfigFilePath ./sshconfig.config
 ```powershell
 Export-AzSshConfig -ResourceGroupName myRg -Name myVm -ResourceType Microsoft.Compute/virtualMachines -ConfigFilePath ./sshconfig.config
 ```
+
 This parameter is useful when there is more than one supported resource with the same name in the Resource Group.
 
 ## PARAMETERS
@@ -290,7 +297,7 @@ Resource type of the target resource.
 Type: System.String
 Parameter Sets: Interactive
 Aliases:
-Accepted values: Microsoft.Compute/virtualMachines, Microsoft.HybridCompute/machines
+Accepted values: Microsoft.HybridCompute/machines, Microsoft.Compute/virtualMachines, Microsoft.ConnectedVMwarevSphere/virtualMachines, Microsoft.ScVmm/virtualMachines, Microsoft.AzureStackHCI/virtualMachines
 
 Required: False
 Position: Named
@@ -328,5 +335,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[SSH Access to Arzure Arc-enabled servers](https://learn.microsoft.com/en-us/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli)
+[Troubleshoot SSH access to Azure Arc Enabled Servers](https://learn.microsoft.com/en-us/azure/azure-arc/servers/ssh-arc-troubleshoot)
 [Login to a Linux VM by using Azure AD](https://learn.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
 [Install OpenSSH for Windows](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui)
