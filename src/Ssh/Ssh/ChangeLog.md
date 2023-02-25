@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Add support for the following Resource Types: 
+    - Microsoft.ConnectedVMwarevSphere/virtualMachines
+    - Microsoft.ScVmm/virtualMachines
+    - Microsoft.AzureStackHCI/virtualMachines
+* Add parameter -Rdp to Enter-AzVM
+* Add Scenario tests for Export-AzSshConfig
 
 ## Version 0.1.0
 * First preview release for module Az.Ssh

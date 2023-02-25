@@ -48,7 +48,11 @@ function Test-GetArcConfig
             $os = 'linux'
         }
 
-        $proxyName = "sshProxy_" + $os + "_" + $arch +"_1_3_017634.exe"
+
+        $proxyName = "sshProxy_" + $os + "_" + $arch +"_1_3_017634"
+        if ($IsWindows) {
+            $proxyName = $proxyName + ".exe"
+        }
         $proxyPath = Join-Path $HOME ".clientsshproxy" $proxyName
 
         $relayPath = Join-Path (Split-Path ((Resolve-Path ./config).Path)) "az_ssh_config" "$ResourceGroupName-$MachineName" "$ResourceGroupName-$MachineName-relay_info"
@@ -73,8 +77,6 @@ function Test-GetVmConfig
 {
     $VmName = Get-AzureVmName
     $ResourceGroupName = Get-ResourceGroupName
-    #$VmName = "myVM"
-    #$ResourceGroupName = "myRG"
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
     
