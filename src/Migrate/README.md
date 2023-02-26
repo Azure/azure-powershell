@@ -106,91 +106,91 @@ directive:
     where:
       verb: Test$
       subject: ^ReplicationMigrationItemMigrate
-      variant: ^TestViaIdentity$|^TestViaIdentityExpanded$|^Test$
+      variant: ^TestViaIdentity.*$|^Test$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
     where:
       verb: Get$
       subject: ReplicationFabric$|ReplicationPolicy$|ReplicationProtectionContainer$|ReplicationMigrationItem$|ReplicationJob$|ReplicationProtectionContainerMapping$|ReplicationRecoveryServicesProvider$
-      variant: ^GetViaIdentity$
+      variant: ^GetViaIdentity(?!.*?Expanded)$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
     where:
       verb: Remove$
       subject: ^ReplicationMigrationItem
-      variant: ^DeleteViaIdentity$
+      variant: ^DeleteViaIdentity(?!.*?Expanded)$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
     where:
       verb: Move$
       subject: ^ReplicationMigrationItem
-      variant: ^MigrateViaIdentityExpanded$|^Migrate$|^MigrateViaIdentity$
+      variant: ^Migrate$|^MigrateViaIdentity.*$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
     where:
       verb: Suspend$
       subject: ^ReplicationMigrationItemReplication
-      variant: ^PauseViaIdentityExpanded$|^Pause$|^PauseViaIdentity$
+      variant: ^Pause$|^PauseViaIdentity.*$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
     where:
       verb: Resume$
       subject: ^ReplicationMigrationItemReplication
-      variant: ^ResumeViaIdentityExpanded$|^Resume$|^ResumeViaIdentity$
+      variant: ^Resume$|^ResumeViaIdentity.*$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
     where:
       verb: Invoke$
       subject: ^ResyncReplicationMigrationItem
-      variant: ^ResyncViaIdentityExpanded$|^ResyncViaIdentity$|^Resync$
+      variant: ^ResyncViaIdentity.*$|^Resync$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
     where:
       verb: New$
       subject: ^ReplicationMigrationItem|ReplicationProtectionContainerMapping$|ReplicationPolicy$
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create$
+      variant: ^CreateViaIdentity.*$|^Create$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
     where:
       verb: Update$
       subject: ^ReplicationMigrationItem
-      variant: ^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^Update$
+      variant: ^UpdateViaIdentity.*$|^Update$
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
       verb: Get$
       subject: ^Machine
-      variant: ^Get1$|^GetViaIdentity1|^List1
+      variant: ^.*\d$
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
       verb: Get$
       subject: ^Site
-      variant: ^Get1$|^GetViaIdentity1|^Get2$|^GetViaIdentity2
+      variant: ^.*\d$
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
       verb: Get$
       subject: Site$|Machine$|RunAsAccount$
-      variant: ^GetViaIdentity$
+      variant: ^GetViaIdentity(?!.*?Expanded)$
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$
       subject: Project$
-      variant: ^Put$|^PutViaIdentity|^PutViaIdentityExpanded
+      variant: ^Put$|^PutViaIdentity.*$
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
       verb: Register$
       subject: ProjectTool$
-      variant: ^Register$|^RegisterViaIdentity|^RegisterViaIdentityExpanded
+      variant: ^Register$|^RegisterViaIdentity.*$
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
       verb: Get$
       subject: Project$|Solution$
-      variant: ^GetViaIdentity$
+      variant: ^GetViaIdentity(?!.*?Expanded)$
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
@@ -202,7 +202,7 @@ directive:
     where:
       verb: Remove$
       subject: Project$
-      variant: ^DeleteViaIdentity$
+      variant: ^DeleteViaIdentity(?!.*?Expanded)$
     remove: true
   # Remove cmdlets not in scope
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
@@ -367,7 +367,7 @@ directive:
     hide: true
   - where:
       verb: New$
-      variant: ^CreateViaIdentity
+      variant: ^CreateViaIdentity(?!.*?Expanded)
     hide: true
   - where:
       verb: New$|Set$|Update$
