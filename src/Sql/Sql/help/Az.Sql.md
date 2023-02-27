@@ -413,11 +413,23 @@ Returns information about Azure SQL Virtual Cluster.
 ### [Invoke-AzSqlDatabaseFailover](Invoke-AzSqlDatabaseFailover.md)
 Failovers a database.
 
+### [Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation](Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation.md)
+Revalidates Database Encryption Protector AKV key
+
+### [Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert](Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert.md)
+Reverts Database Encryption Protector AKV key to Server level key
+
 ### [Invoke-AzSqlElasticPoolFailover](Invoke-AzSqlElasticPoolFailover.md)
 Failovers an elastic pool.
 
 ### [Invoke-AzSqlInstanceFailover](Invoke-AzSqlInstanceFailover.md)
 Failovers an Azure SQL Managed Instance.
+
+### [Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation](Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation.md)
+Revalidates the Managed Instance Encryption Protector AKV key
+
+### [Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation](Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation.md)
+Revalidates the Server Encryption Protector AKV key
 
 ### [New-AzSqlDatabase](New-AzSqlDatabase.md)
 Creates a database or an elastic database.

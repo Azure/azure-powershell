@@ -487,6 +487,21 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; private set; }
 
         /// <summary>
+        /// Gets the IDatabaseEncryptionProtectorsOperations.
+        /// </summary>
+        public virtual IDatabaseEncryptionProtectorsOperations DatabaseEncryptionProtectors { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecoverableDatabasesOperations.
+        /// </summary>
+        public virtual IRecoverableDatabasesOperations RecoverableDatabases { get; private set; }
+
+        /// <summary>
+        /// Gets the IRestorableDroppedDatabasesOperations.
+        /// </summary>
+        public virtual IRestorableDroppedDatabasesOperations RestorableDroppedDatabases { get; private set; }
+        
+        /// <summary>
         /// Gets the IInstanceFailoverGroupsOperations.
         /// </summary>
         public virtual IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; private set; }
@@ -816,6 +831,9 @@ namespace Microsoft.Azure.Management.Sql
             ManagedInstanceDtcs = new ManagedInstanceDtcsOperations(this);
             ManagedDatabases = new ManagedDatabasesOperations(this);
             ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
+            DatabaseEncryptionProtectors = new DatabaseEncryptionProtectorsOperations(this);
+            RecoverableDatabases = new RecoverableDatabasesOperations(this);
+            RestorableDroppedDatabases = new RestorableDroppedDatabasesOperations(this);
             InstanceFailoverGroups = new InstanceFailoverGroupsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
