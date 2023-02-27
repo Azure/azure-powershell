@@ -248,13 +248,6 @@ namespace Microsoft.Azure.Commands.Ssh
         /// Either Microsoft.Compute/virtualMachines, Microsoft.HybridCompute/machines, Microsoft.ConnectedVMwarevSphere/virtualMachines, Microsoft.ScVmm/virtualMachines, Microsoft.AzureStackHCI/virtualMachines.
         /// </summary>
         [Parameter(ParameterSetName = InteractiveParameterSet)]
-        [PSArgumentCompleter(
-            "Microsoft.Compute/virtualMachines",
-            "Microsoft.HybridCompute/machines",
-            "Microsoft.ConnectedVMwarevSphere/virtualMachines",
-            "Microsoft.ScVmm/virtualMachines",
-            "Microsoft.AzureStackHCI/virtualMachines"
-        )]
         [ValidateSet(
             "Microsoft.HybridCompute/machines",
             "Microsoft.Compute/virtualMachines",
