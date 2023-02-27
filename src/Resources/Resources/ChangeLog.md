@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Clarify behavior of AccountEnabled when used with Password in `Update-AzAdUser`
 
 ## Version 6.5.2
 * Fixed query issue when objectId in assignment is empty for `Get-DenyAssignment`
