@@ -91,7 +91,7 @@ directive:
       subject-prefix: ArcResourceBridge
       subject: ApplianceKey
     set:
-      subject: Credentials
+      subject: Credential
   - where:
       subject-prefix: ArcResourceBridge
       subject: ApplianceTelemetryConfig

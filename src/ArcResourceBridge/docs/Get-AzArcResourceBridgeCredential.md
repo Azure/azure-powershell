@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ArcResourceBridge
-online version: https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgecredentials
+online version: https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgecredential
 schema: 2.0.0
 ---
 
-# Get-AzArcResourceBridgeCredentials
+# Get-AzArcResourceBridgeCredential
 
 ## SYNOPSIS
 Returns the cluster customer credentials for the dedicated appliance.
@@ -13,7 +13,7 @@ Returns the cluster customer credentials for the dedicated appliance.
 ## SYNTAX
 
 ```
-Get-AzArcResourceBridgeCredentials -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzArcResourceBridgeCredential -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

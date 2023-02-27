@@ -17,7 +17,7 @@ Gets the details of an Appliance with a specified resource group and name.
 ### [Get-AzArcResourceBridgeApplianceCredential](Get-AzArcResourceBridgeApplianceCredential.md)
 Returns the cluster user credentials for the dedicated appliance.
 
-### [Get-AzArcResourceBridgeCredentials](Get-AzArcResourceBridgeCredentials.md)
+### [Get-AzArcResourceBridgeCredential](Get-AzArcResourceBridgeCredential.md)
 Returns the cluster customer credentials for the dedicated appliance.
 
 ### [Get-AzArcResourceBridgeTelemetryConfig](Get-AzArcResourceBridgeTelemetryConfig.md)
