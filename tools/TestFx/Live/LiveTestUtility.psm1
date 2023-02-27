@@ -215,7 +215,7 @@ function Invoke-LiveTestCommand {
 }
 
 function Invoke-LiveTestScenario {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = "HasDefaultResourceGroup")]
     [OutputType([bool])]
     param (
         [Parameter(Mandatory, Position = 0)]
@@ -226,9 +226,12 @@ function Invoke-LiveTestScenario {
         [ValidateNotNullOrEmpty()]
         [string] $Description,
 
-        [Parameter()]
+        [Parameter(ParameterSetName = "HasDefaulResourceGroup")]
         [ValidateNotNullOrEmpty()]
         [string] $ResourceGroupLocation,
+
+        [Parameter(ParameterSetName = "HasNoDefaultResourceGroup")]
+        [switch] $NoResourceGroup,
 
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
@@ -256,31 +259,33 @@ function Invoke-LiveTestScenario {
             Errors        = ""
         }
 
-        $snrResourceGroupName = New-LiveTestResourceGroupName
-        $snrResourceGroupLocation = "westus"
-        if ($PSBoundParameters.ContainsKey("ResourceGroupLocation")) {
-            $snrResourceGroupLocation = $ResourceGroupLocation
+        if (!$NoResourceGroup.IsPresent) {
+            $snrResourceGroupName = New-LiveTestResourceGroupName
+            $snrResourceGroupLocation = "westus"
+            if ($PSBoundParameters.ContainsKey("ResourceGroupLocation")) {
+                $snrResourceGroupLocation = $ResourceGroupLocation
+            }
+
+            Write-Host "##[section]Start to create a resource group." -ForegroundColor Green
+            Write-Host "##[section]Resource group name: $snrResourceGroupName" -ForegroundColor Green
+            Write-Host "##[section]Resource group location: $snrResourceGroupLocation" -ForegroundColor Green
+
+            $snrResourceGroup = New-LiveTestResourceGroup -Name $snrResourceGroupName -Location $snrResourceGroupLocation
+
+            Write-Host "##[section]Successfully created the resource group." -ForegroundColor Green
         }
-
-        Write-Host "##[section]Start to create a resource group." -ForegroundColor Green
-        Write-Host "##[section]Resource group name: $snrResourceGroupName" -ForegroundColor Green
-        Write-Host "##[section]Resource group location: $snrResourceGroupLocation" -ForegroundColor Green
-
-        $snrResourceGroup = New-LiveTestResourceGroup -Name $snrResourceGroupName -Location $snrResourceGroupLocation
-
-        Write-Host "##[section]Successfully created the resource group." -ForegroundColor Green
 
         $snrRetryCount = 0
         $snrRetryErrors = @()
 
         do {
             try {
+                $sPrefs = @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None"))
                 if ($snrRetryCount -eq $script:ScenarioMaxRetryCount) {
-                    $ScenarioScript.InvokeWithContext($null, @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None"), [psvariable]::new("DebugPreference", "Continue")), $snrResourceGroup)
+                    $prefs += [psvariable]::new("DebugPreference", "Continue")
                 }
-                else {
-                    $ScenarioScript.InvokeWithContext($null, @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None")), $snrResourceGroup)
-                }
+
+                $ScenarioScript.InvokeWithContext($null, $prefs, $snrResourceGroup)
 
                 Write-Host "##[section]Successfully executed the live scenario `"$Name`"." -ForegroundColor Green
                 break
@@ -346,7 +351,10 @@ function Invoke-LiveTestScenario {
         $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrErrorMessage
     }
     finally {
-        if ($null -ne $snrResourceGroup) {
+        $snrCsvData.EndDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
+        $snrCsvData | Export-Csv -LiteralPath $script:LiveTestRawCsvFile -Encoding utf8 -NoTypeInformation -Append
+
+        if (!$NoResourceGroup.IsPresent -and $null -ne $snrResourceGroup) {
             try {
                 Write-Host "##[section]Start to clean up the resource group `"$snrResourceGroupName`"." -ForegroundColor Green
                 Clear-LiveTestResources -Name $snrResourceGroupName
@@ -355,8 +363,6 @@ function Invoke-LiveTestScenario {
                 # Ignore exception for clean up
             }
         }
-        $snrCsvData.EndDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
-        $snrCsvData | Export-Csv -LiteralPath $script:LiveTestRawCsvFile -Encoding utf8 -NoTypeInformation -Append
 
         Write-Host "##[endgroup]"
     }
