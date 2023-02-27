@@ -14,7 +14,7 @@ Creates a new custom rule for the application gateway firewall policy.
 
 ```
 New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> -RuleType <String>
- -MatchCondition <PSApplicationGatewayFirewallCondition[]> -Action <String>
+ -MatchCondition <PSApplicationGatewayFirewallCondition[]> -Action <String> [-State <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -29,6 +29,13 @@ $customRule = New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Pri
 ```
 
 The command creates a new custom rule with name of example-rule, priority 1 and the rule type will be MatchRule with condition defined in the condition variable, the action will the allow. The new match custom rule is saved in $customRule.
+
+### Example 2
+```powershell
+$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 1 -RuleType MatchRule -MatchCondition $condtion -Action Allow -State $enabledState
+```
+
+The command creates a new custom rule with name of example-rule, state as $enabledState, priority 1 and the rule type will be MatchRule with condition defined in the condition variable, the action will the allow. The new match custom rule is saved in $customRule.
 
 ## PARAMETERS
 
@@ -121,6 +128,22 @@ Accepted values: MatchRule
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -State
+State variable of the custom rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Enabled
+
+Required: False
+Position: Named
+Default value: Enabled
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
