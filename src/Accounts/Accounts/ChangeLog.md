@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that errors related to WAM are thrown when it is not enabled. [#20871] [#20824]
 * Updated Azure.Core library to 1.28.0.
 * Fixed an issue that the helper message about missing modules shows up at the wrong time. [#19228]
 
