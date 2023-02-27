@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common;
+using Microsoft.Azure.Commands.Ssh.Properties;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -248,13 +249,6 @@ namespace Microsoft.Azure.Commands.Ssh
         /// Either Microsoft.Compute/virtualMachines, Microsoft.HybridCompute/machines, Microsoft.ConnectedVMwarevSphere/virtualMachines, Microsoft.ScVmm/virtualMachines, Microsoft.AzureStackHCI/virtualMachines.
         /// </summary>
         [Parameter(ParameterSetName = InteractiveParameterSet)]
-        [PSArgumentCompleter(
-            "Microsoft.Compute/virtualMachines",
-            "Microsoft.HybridCompute/machines",
-            "Microsoft.ConnectedVMwarevSphere/virtualMachines",
-            "Microsoft.ScVmm/virtualMachines",
-            "Microsoft.AzureStackHCI/virtualMachines"
-        )]
         [ValidateSet(
             "Microsoft.HybridCompute/machines",
             "Microsoft.Compute/virtualMachines",
@@ -322,18 +316,18 @@ namespace Microsoft.Azure.Commands.Ssh
             var context = DefaultProfile.DefaultContext;
             if (LocalUser == null && context.Account.Type == AzureAccount.AccountType.ServicePrincipal)
             {
-                throw new AzPSArgumentException("Azure PowerShell doesn't currently support AAD login for Service Principal accounts. Provide a -LocalUser.", nameof(LocalUser));
+                throw new AzPSArgumentException(Resources.AADLoginForServicePrincipal, nameof(LocalUser));
             }
 
             if (Rdp && !RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                throw new AzPSArgumentException("The -Rdp parameter is only supported on Windows OS.", nameof(Rdp));
+                throw new AzPSArgumentException(Resources.RDPOnNonWindowsClient, nameof(Rdp));
             }
 
                 if (CertificateFile != null)
             {
                 if (LocalUser == null)
-                    WriteWarning("To authenticate with a certificate you must provide a LocalUser. The certificate will be ignored.");
+                    WriteWarning(Resources.WarningCertificateWithNoLocalUser);
                 else
                     CertificateFile = GetResolvedPath(CertificateFile, nameof(CertificateFile));
             }
@@ -354,20 +348,20 @@ namespace Microsoft.Azure.Commands.Ssh
 
                 if (Directory.Exists(ConfigFilePath))
                 {
-                    throw new AzPSArgumentException($"{ConfigFilePath} is a directory, unable to write config file in that path. Provide a valid path for a file.", nameof(ConfigFilePath));
+                    throw new AzPSArgumentException(String.Format(Resources.ConfigFilePathIsDirectory, ConfigFilePath), nameof(ConfigFilePath));
                 }
 
                 string configFolder = Path.GetDirectoryName(ConfigFilePath);
                 if (!Directory.Exists(configFolder))
                 {
-                    throw new AzPSArgumentException($"Config file destination folder {configFolder} does not exist.", nameof(ConfigFilePath));
+                    throw new AzPSArgumentException(String.Format(Resources.ConfigFolderDoesNotExist, configFolder), nameof(ConfigFilePath));
                 }
             }
 
             if (KeysDestinationFolder != null)
             {
                 if (PrivateKeyFile != null || PublicKeyFile != null)
-                    throw new AzPSArgumentException("KeysDestinationFolder can't be used in conjunction with PublicKeyFile or PrivateKeyFile. All generated keys are saved in the same directory as provided keys.", nameof(KeysDestinationFolder));
+                    throw new AzPSArgumentException(Resources.KeysDestinationFolderWithKeys, nameof(KeysDestinationFolder));
                 KeysDestinationFolder = GetUnresolvedPath(KeysDestinationFolder, nameof(KeysDestinationFolder));
             }
 
@@ -387,29 +381,29 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             catch (CloudException exception)
             {
-                throw new AzPSCloudException($"Failed to list resources in the {ResourceGroupName} Resource Group with error: \"{exception.Message}\". Ensure that the Resource Group Name is correct and that you have Read role on that resource group.");
+                throw new AzPSCloudException(String.Format(Resources.ListResourcesCloudException, ResourceGroupName, exception.Message));
             }
             catch (ArgumentNullException)
             {
-                throw new AzPSApplicationException($"Unable to list resources in the {ResourceGroupName} Resource Group because API call returned a null object. Please try again and contact support.");
+                throw new AzPSApplicationException(String.Format(Resources.ListResourcesArgumentNullException, ResourceGroupName));
             }
 
             if (ResourceType != null)
             {
                 if (!types.Contains(ResourceType))
                 {
-                    throw new AzPSResourceNotFoundCloudException($"Unable to find Resource \"{Name}\" of type \"{ResourceType}\" in the Resource Group \"{ResourceGroupName}\". Make sure the resource exists and that you have Read rights.");
+                    throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundTypeProvided,Name, ResourceType, ResourceGroupName));
                 }
                 return;
             }
 
             if (types.Count() > 1)
             {
-                throw new AzPSArgumentException($"There is more than one resource named \"{Name}\" in the Resource Group \"{ResourceGroupName}\". Please provide -ResourceType so that this cmdlet can identify the correct target resource.", ResourceType);
+                throw new AzPSArgumentException(String.Format(Resources.MultipleResourcesWithSameName, Name, ResourceGroupName), ResourceType);
             }
             else if (types.Count() < 1)
             {
-                throw new AzPSResourceNotFoundCloudException($"Unable to find Resource \"{Name}\" in the ResourceGroup \"{ResourceGroupName}\". Make sure the resource exists, that you have Read rights, and that the target resource is of one of the Resource Types supported by this cmdlet.");
+                throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundNoTypeProvided, Name, ResourceGroupName));
             }
             ResourceType = types.ElementAt(0);
         }
@@ -503,9 +497,9 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 if (command.Equals("mstsc.exe"))
                 {
-                    throw new AzPSApplicationException($"Unable to find Remote Desktop Client ({command}). Make sure to update the PATH environment variable to make client discoverable.");
+                    throw new AzPSApplicationException(Resources.MstscClientNotFound);
                 }
-                throw new AzPSApplicationException("Unable to find OpenSSH Client. Make sure to update the PATH environment variable to make OpenSSH client discoverable.");
+                throw new AzPSApplicationException(Resources.OpenSSHClientNotFound);
             }
             
             return appInfo.Path;
@@ -538,7 +532,7 @@ namespace Microsoft.Azure.Commands.Ssh
                         }
                         catch (Exception exception)
                         {
-                            WriteWarning("Couldn't delete old version of the Proxy File: " + file + ". Error: " + exception.Message);
+                            WriteWarning(String.Format(Resources.FailedToDeleteOldProxy, file, exception.Message));
                         }
                     }
                 }
@@ -550,7 +544,7 @@ namespace Microsoft.Azure.Commands.Ssh
                 }
                 catch (Exception exception)
                 {
-                    string errorMessage = "Failed to download client proxy executable from " + requestUrl + ". Error: " + exception.Message;
+                    string errorMessage = String.Format(Resources.FailedToDownloadProxy, requestUrl, exception.Message);
                     throw new AzPSApplicationException(errorMessage);
                 }
 
@@ -888,7 +882,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
             if (!isValid)
             {
-                WriteWarning("Validation of SSH Proxy {path} failed. Removing file from system.");
+                WriteWarning($"Validation of SSH Proxy {path} failed. Removing file from system.");
                 DeleteFile(path);
                 throw new AzPSApplicationException("Failed to download valid SSH Proxy. Unable to continue cmdlet execution.");
             }

@@ -19,7 +19,7 @@ using Microsoft.Azure.PowerShell.Cmdlets.Ssh.AzureClients;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-
+using Microsoft.Azure.Commands.Ssh.Properties;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
 {
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
 
             if (cred == null && string.IsNullOrEmpty(exceptionMessage))
             {
-                exceptionMessage = $"ListCredentials operation failed with error code '{code.ToString()}'.";
+                exceptionMessage = String.Format(Resources.FailedToListCredentials, code.ToString());
             }
 
             return cred;
@@ -130,11 +130,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
             {
                 if (exception.Body.Error.Code == "AuthorizationFailed")
                 {
-                    exceptionMessage = "Failed to create default connectivty endpoint for target resource with an Authorization failure. This is a one time operation that must be performed by someone with Owner or Contributor role before anyone can connect to this resource. Contact the owner of the resource to create the connectivity endpoint. Instructions here: https://aka.ms/ssharc/create-default-endpoint";
+                    exceptionMessage = Resources.FailedToCreateDefaultEndpointUnauthorized;
                 }
                 else
                 {
-                    exceptionMessage = $"Failed to create default endpoint for the target Arc Server with error: {exception}.";
+                    exceptionMessage = String.Format(Resources.FailedToCreateDefaultEndpoint, exception);
                 }
             }
 

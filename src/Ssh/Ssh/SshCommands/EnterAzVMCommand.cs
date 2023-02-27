@@ -23,7 +23,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Text.RegularExpressions;
-
+using Microsoft.Azure.Commands.Ssh.Properties;
 
 namespace Microsoft.Azure.Commands.Ssh
 {
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Commands.Ssh
             if (IsArc())
             {
                 proxyPath = GetClientSideProxy();
-                UpdateProgressBar(record, "Dowloaded SSH Proxy, saved to " + proxyPath, 25);
+                UpdateProgressBar(record, $"Dowloaded SSH Proxy, saved to {proxyPath}", 25);
                 GetRelayInformation();
-                UpdateProgressBar(record, "Retrieved Relay Information" + proxyPath, 50);
+                UpdateProgressBar(record, $"Retrieved Relay Information", 50);
             }
             try
             {
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
 
                 int sshStatus = 0;
-                if (Rdp)
+                if (Rdp.IsPresent)
                 {
                     sshStatus = StartRDPConnection();
                 }
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.Ssh
             string sshClient = GetClientApplicationPath("ssh");
             string command = $"{GetHost()} {BuildArgs()}";
             Process sshProcess = new Process();
-            WriteDebug("Running SSH command: " + sshClient + " " + command);
+            WriteDebug($"Running SSH command: {sshClient} {command}");
 
             if (IsArc())
                 sshProcess.StartInfo.EnvironmentVariables["SSHPROXY_RELAY_INFO"] = relayInfo;
@@ -361,17 +361,17 @@ namespace Microsoft.Azure.Commands.Ssh
         {
             if (deleteKeys && PrivateKeyFile != null)
             {
-                DeleteFile(PrivateKeyFile, "Couldn't delete Private Key file " + PrivateKeyFile + ".");
+                DeleteFile(PrivateKeyFile, $"Couldn't delete Private Key file {PrivateKeyFile}.");
             }
             
             if (deleteKeys && PublicKeyFile != null)
             {
-                DeleteFile(PublicKeyFile, "Couldn't delete Public Key file " + PublicKeyFile + ".");
+                DeleteFile(PublicKeyFile, $"Couldn't delete Public Key file {PublicKeyFile}.");
             }
             
             if (deleteCert && CertificateFile != null)
             {
-                DeleteFile(CertificateFile, "Couldn't delete Certificate File " + CertificateFile + ".");
+                DeleteFile(CertificateFile, $"Couldn't delete Certificate File {CertificateFile}.");
             }
             
             if (deleteKeys && !String.IsNullOrEmpty(CertificateFile))
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Commands.Ssh
             Regex regex = new Regex(pattern);
             if (regex.IsMatch(line))
             {
-                throw new AzPSApplicationException("Please make sure SSH port is allowed using \"azcmagent config list\" in the target Arc Server. Ensure SSHD is running on the target machine.\n");
+                throw new AzPSApplicationException(Resources.MakeSurePortIsEnabled);
             }
         }
 
