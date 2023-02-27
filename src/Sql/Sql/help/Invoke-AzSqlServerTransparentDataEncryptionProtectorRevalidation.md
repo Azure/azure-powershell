@@ -13,7 +13,7 @@ Revalidates the Server Encryption Protector AKV key
 ## SYNTAX
 
 ```
-Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation [-Force] [-AsJob] [-ServerName] <String>
+Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation [-AsJob] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -54,21 +54,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Skip confirmation message for performing the action
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

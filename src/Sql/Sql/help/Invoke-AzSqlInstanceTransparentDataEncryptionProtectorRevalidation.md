@@ -14,21 +14,21 @@ Revalidates the Managed Instance Encryption Protector AKV key
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorDefaultParameterSet (Default)
 ```
-Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-Force] [-AsJob]
+Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-AsJob]
  [-ResourceGroupName] <String> [-InstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorInputObjectParameterSet
 ```
-Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-Force] [-AsJob]
+Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-AsJob]
  [-Instance] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorResourceIdParameterSet
 ```
-Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-Force] [-AsJob]
+Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation [-AsJob]
  [-InstanceResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -69,21 +69,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Skip confirmation message for performing the action
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

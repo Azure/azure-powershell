@@ -30,7 +30,7 @@
    - 'Revalidate-AzSqlDatabaseTransparentDataEncryptionProtector'
    - 'Revert-AzSqlDatabaseTransparentDataEncryptionProtector'
    - 'Revalidate-AzSqlServerTransparentDataEncryptionProtector'
-   -'Revalidate-AzSqlInstanceTransparentDataEncryptionProtector'
+   - 'Revalidate-AzSqlInstanceTransparentDataEncryptionProtector'
 * Added an optional parameter 'SecondaryType' to:
     'Set-AzSqlDatabaseInstanceFailoverGroup'
     'New-AzSqlDatabaseInstanceFailoverGroup'
