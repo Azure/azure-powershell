@@ -111,3 +111,64 @@ Invoke-LiveTestScenario -Name "Remove a managed disk" -Description "Test removin
     $actual = Get-AzDisk -ResourceGroupName $rgName -DiskName $diskName -ErrorAction SilentlyContinue
     Assert-Null $actual
 }
+
+Invoke-LiveTestScenario -Name "Create a ssh key" -Description "Test creating a ssh key" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $keyName = New-LiveTestResourceName
+
+    New-AzSshKey -ResourceGroupName $rgName -Name $keyName
+
+    $actual = Get-AzSshKey -ResourceGroupName $rgName -Name $keyName
+    Assert-NotNull $actual
+    Assert-AreEqual $keyName $actual.Name
+}
+
+Invoke-LiveTestScenario -Name "Update a ssh key" -Description "Test updating an existing ssh key" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $key1Name = New-LiveTestResourceName
+    $key2Name = New-LiveTestResourceName
+
+    $key1 = New-AzSshKey -ResourceGroupName $rgName -Name $key1Name
+    $publicKey1 = $key1.publicKey
+
+    $key2 = New-AzSshKey -ResourceGroupname $rgName -Name $key2Name
+    $publicKey2 = $key2.publicKey
+
+    Get-AzSshKey -ResourceGroupName $rgName -Name $key1Name | Update-AzSshKey -PublicKey $publicKey2
+    Update-AzSshKey -ResourceId $key2.Id -PublicKey $publicKey1
+
+    $actual1 = Get-AzSshKey -ResourceGroupname $rgName -Name $key1Name
+    Assert-NotNull $actual1
+    Assert-AreEqual $key1Name $actual1.Name
+    Assert-AreEqual $publicKey2 $actual1.publicKey
+
+    $actual2 = Get-AzSshKey -ResourceGroupname $rgName -Name $key2Name
+    Assert-NotNull $actual2
+    Assert-AreEqual $key2Name $actual2.Name
+    Assert-AreEqual $publicKey1 $actual2.publicKey
+}
+
+Invoke-LiveTestScenario -Name "Delete a ssh key" -Description "Test deleting a ssh key" -ScenarioScript `
+{
+    param ($rg)
+
+    $rgName = $rg.ResourceGroupName
+    $key1Name = New-LiveTestResourceName
+    $key2Name = New-LiveTestResourceName
+
+    New-AzSshKey -ResourceGroupName $rgName -Name $key1Name
+    Remove-AzSshKey -ResourceGroupName $rgName -name $key1Name
+    $actual = Get-AzSshKey -ResourceGroupName $rgName -Name $key1Name
+    Assert-Null $actual
+
+    $key2 = New-AzSshKey -ResourceGroupName $rgName -Name $key2Name
+    Remove-AzSshKey -ResourceId $key2.Id
+    $actual = Get-AzSshKey -ResourceGroupName $rgName -Name $key2Name
+    Assert-Null $actual
+}
