@@ -16,6 +16,7 @@ using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 {
@@ -23,18 +24,31 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
     internal class ParameterTelemetryFormatter : IParameterTelemetryFormatter
     {
         /// <inheritdoc/>
-        public string FormatParameters(IDictionary<string, object> boundParameters)
+        public string FormatParameters(InvocationInfo invocation)
         {
+            if (invocation?.BoundParameters == null) return string.Empty;
+
             return string.Join(" ",
-                boundParameters.Select(pair => FormatSingleParameter(pair.Key, pair.Value)));
+                invocation.BoundParameters.Select(pair =>
+                    ShouldKeepValue(invocation, pair.Key)
+                    ? FormatParameterWithValue(pair.Key, pair.Value)
+                    : FormatParameterWithMaskedValue(pair.Key, pair.Value)));
         }
 
-        private string FormatSingleParameter(string name, object value)
+        private bool ShouldKeepValue(InvocationInfo invocation, string name)
         {
-            string safeValue = string.Equals("location", name, StringComparison.InvariantCultureIgnoreCase)
-                ? value.ToString()
-                : "***";
-            return $"-{name} {safeValue}";
+            return string.Equals("New-AzVM", invocation.MyCommand?.Name, StringComparison.InvariantCultureIgnoreCase)
+                && string.Equals("location", name, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        private string FormatParameterWithValue(string name, object value)
+        {
+            return $"-{name} {value}";
+        }
+
+        private string FormatParameterWithMaskedValue(string name, object value)
+        {
+            return $"-{name} ***";
         }
     }
 }
