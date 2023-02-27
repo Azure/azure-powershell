@@ -33,6 +33,12 @@ Param(
     $Test,
 
     [Switch]
+    $TestAutorest,
+
+    [String]
+    $AutorestDirectory,
+
+    [Switch]
     $StaticAnalysis,
 
     [Switch]
@@ -60,7 +66,7 @@ Param(
     $Configuration='Debug',
 
     [String]
-    $TestFramework='netcoreapp2.2',
+    $TestFramework='netcoreapp3.1',
 
     [String]
     $TestOutputDirectory='artifacts/TestResults',
@@ -71,6 +77,68 @@ Param(
     [String]
     $TargetModule
 )
+
+$CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
+$PipelineResultPath = "$RepoArtifacts/PipelineResult/PipelineResult.json"
+
+Function Get-PlatformInfo
+{
+    If ($IsWindows)
+    {
+        $OS = "Windows"
+    }
+    ElseIf ($IsLinux)
+    {
+        $OS = "Linux"
+    }
+    ElseIf ($IsMacOS)
+    {
+        $OS = "MacOS"
+    }
+    Else
+    {
+        $OS = "Others"
+    }
+    return "$($Env:PowerShellPlatform) - $OS"
+}
+
+Function Get-ModuleFromPath
+{
+    Param(
+        [String]
+        $Path
+    )
+    Return "Az." + $Path.Split([IO.Path]::DirectorySeparatorChar + "src")[1].Split([IO.Path]::DirectorySeparatorChar)[1]
+}
+
+Function Set-ModuleTestStatusInPipelineResult
+{
+    Param(
+        [String]
+        $ModuleName,
+        [String]
+        $Status,
+        [String]
+        $Content=""
+    )
+    Write-Warning "Set-ModuleTestStatusInPipelineResult $ModuleName - $Status"
+    If (Test-Path $PipelineResultPath)
+    {
+        $PipelineResult = Get-Content $PipelineResultPath | ConvertFrom-Json
+        $Platform = Get-PlatformInfo
+        $PipelineResult.test.Details[0].Platform = $Platform
+        Foreach ($ModuleInfo in $PipelineResult.test.Details[0].Modules)
+        {
+            If ($ModuleInfo.Module -Eq $ModuleName)
+            {
+                $ModuleInfo.Status = $Status
+                $ModuleInfo.Content = $Content
+            }
+        }
+        ConvertTo-Json -Depth 10 -InputObject $PipelineResult | Out-File -FilePath $PipelineResultPath
+    }
+}
+
 $ErrorActionPreference = 'Stop'
 
 If ($Build)
@@ -97,7 +165,11 @@ If ($Build)
             $Detail = Join-String -Separator ": " -InputObject $Detail
             If ($Position.Contains("src"))
             {
-                $ModuleName = "Az." + $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
+                $ModuleName = "Az." + $Position.Split("src" + [IO.Path]::DirectorySeparatorChar)[1].Split([IO.Path]::DirectorySeparatorChar)[0]
+            }
+            ElseIf ($Position.Contains([IO.Path]::DirectorySeparatorChar))
+            {
+                $ModuleName = "Az." + $Position.Split([IO.Path]::DirectorySeparatorChar)[0]
             }
             Else
             {
@@ -114,23 +186,7 @@ If ($Build)
         }
 
         #Region produce result.json for GitHub bot to comsume
-        If ($IsWindows)
-        {
-            $OS = "Windows"
-        }
-        ElseIf ($IsLinux)
-        {
-            $OS = "Linux"
-        }
-        ElseIf ($IsMacOS)
-        {
-            $OS = "MacOS"
-        }
-        Else
-        {
-            $OS = "Others"
-        }
-        $Platform = "$($Env:PowerShellPlatform) - $OS"
+        $Platform = Get-PlatformInfo
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
         $ModuleBuildInfoList = @()
         $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
@@ -209,7 +265,6 @@ If ($Build)
     Return
 }
 
-$CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
 If (Test-Path $CIPlanPath)
 {
     $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
@@ -220,10 +275,90 @@ ElseIf (-Not $PSBoundParameters.ContainsKey("TargetModule"))
     $PSBoundParameters["TargetModule"] = $TargetModule
 }
 
+# Run the test-module.ps1 in current folder and set the test status in pipeline result
+If ($TestAutorest)
+{
+    If (-not (Test-Path "$AutorestDirectory/test-module.ps1"))
+    {
+        Write-Warning "There is no test-module.ps1 found in the folder: $AutorestDirectory"
+        Return
+    }
+    $ModuleName = Split-Path -Path $AutorestDirectory -Leaf
+    $ModuleFolderName = $ModuleName.Split(".")[1]
+    If (Test-Path $CIPlanPath)
+    {
+        $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
+        If (-not ($CIPlan.test.Contains($ModuleFolderName)))
+        {
+            Return
+        }
+        . $AutorestDirectory/test-module.ps1
+        If ($LastExitCode -ne 0)
+        {
+            $Status = "Failed"
+        }
+        Else
+        {
+            $Status = "Succeeded"
+        }
+        Set-ModuleTestStatusInPipelineResult -ModuleName $ModuleName -Status $Status
+    }
+    Return
+}
+
 If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey("TargetModule"))))
 {
     dotnet test $RepoArtifacts/Azure.PowerShell.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
-    Return
+    
+    $TestResultFiles = Get-ChildItem "$RepoArtifacts/TestResults/" -Filter *.trx
+    $FailedTestCases = @{}
+    Foreach ($TestResultFile in $TestResultFiles)
+    {
+        $Content = Get-Content -Path $TestResultFile
+        $XmlDocument = New-Object System.Xml.XmlDocument
+        $XmlDocument.LoadXml($Content)
+        $FailedTestIdList = $XmlDocument.TestRun.Results.UnitTestResult | Where-Object { $_.outcome -eq "Failed" } | ForEach-Object { $_.testId }
+        Foreach ($FailedTestId in $FailedTestIdList)
+        {
+            $TestMethod = $XmlDocument.TestRun.TestDefinitions.UnitTest | Where-Object {$_.id -eq $FailedTestId} | ForEach-Object {$_.TestMethod}
+            $ModuleName = Get-ModuleFromPath $TestMethod.codeBase
+            $FailedTestName = $TestMethod.name
+            If (-not $FailedTestCases.ContainsKey($ModuleName))
+            {
+                $FailedTestCases.Add($ModuleName, @($FailedTestName))
+            }
+            Else
+            {
+                $FailedTestCases[$ModuleName] += $FailedTestName
+            }
+        }
+    }
+    If (Test-Path $PipelineResultPath)
+    {
+        $PipelineResult = Get-Content $PipelineResultPath | ConvertFrom-Json
+        Foreach ($ModuleInfo in $PipelineResult.test.Details[0].Modules)
+        {
+            If ($FailedTestCases.ContainsKey($ModuleInfo.Module))
+            {
+                $Status = "Failed"
+                #TODO We will add the content of failed test cases in the feature.
+            }
+            Else
+            {
+                $Status = "Succeeded"
+            }
+            Set-ModuleTestStatusInPipelineResult -ModuleName $ModuleInfo.Module -Status $Status
+        }
+    }
+    
+    If ($FailedTestCases.Length -ne 0)
+    {
+        Return -1
+    }
+    Else
+    {
+        Return
+    }
 }
 
 If ($StaticAnalysis)

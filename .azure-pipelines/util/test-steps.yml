@@ -38,27 +38,46 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(OCTOKITPAT)
-      PowerShellPlatform: ${{ parameters.powerShellPlatform }}
+    OCTOKITPAT: $(OCTOKITPAT)
+    PowerShellPlatform: ${{ parameters.powerShellPlatform }}
+  continueOnError: true
 
-- powershell: |
-   Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
-   Install-Module -Name Az.Accounts -Scope CurrentUser -Force
-   $env:PSModulePath = $env:PSModulePath + ";" + (pwd).Path
-   Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {. $_; if ($LastExitCode -ne 0) {throw "test fails when executing $_"}}
-  workingDirectory: 'artifacts/Debug'
-  displayName: Test for AutoGen Modules With Windows PowerShell
-  condition: and(succeeded(), ne('${{ parameters.testTarget }}', 'Test'))
+# Comment this because it's not triggered for 3 years
+# - powershell: |
+#    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
+#    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+#    $env:PSModulePath = $env:PSModulePath + ";" + (pwd).Path
+#    Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {. $_; if ($LastExitCode -ne 0) {throw "test fails when executing $_"}}
+#   workingDirectory: 'artifacts/Debug'
+#   displayName: Test for AutoGen Modules With Windows PowerShell
+#   condition: and(succeeded(), ne('${{ parameters.testTarget }}', 'Test'))
 
 - pwsh: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
-   Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {. $_; if ($LastExitCode -ne 0) {throw "test fails when executing $_"}}
+   $rootFolder = (Get-item $PWD).Parent.Parent
+   Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
+    Write-Host $_.Directory.FullName
+    cd $rootFolder;
+    .\tools\ExecuteCIStep.ps1 -TestAutorest -AutorestDirectory $_.Directory.FullName
+   }
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
+  continueOnError: true
+
+- pwsh: |
+    $PipelineResult = Get-Content PipelineResult.json | ConvertFrom-Json
+    $FailedModuleList = $PipelineResult.test.Details[0].Modules | Where-Object { $_.Status -eq "Failed" } | ForEach-Object { $_.Module }
+    if ($FailedModuleList.Length -ne 0)
+    {
+        throw "test fails in module: $FailedModuleList"
+    }
+  workingDirectory: 'artifacts/PipelineResult'
+  displayName: 'Check Test Status'
+
 
 - task: PublishTestResults@2
   inputs:
