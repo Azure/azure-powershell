@@ -6,7 +6,7 @@
                                  "sku":  "7.5",
                                  "version":  "latest"
                              },
-                  "LinCentOS85Gen2":  {
+                  "CentOS85Gen2":  {
                                  "publisher":  "OpenLogic",
                                  "offer":  "CentOS",
                                  "sku":  "8_5-gen2",
@@ -18,13 +18,13 @@
                                  "sku":  "8",
                                  "version":  "latest"
                              },
-                  "LinDebian9":  {
+                  "Debian9":  {
                                  "publisher":  "credativ",
                                  "offer":  "Debian",
                                  "sku":  "9",
                                  "version":  "latest"
                              },
-                  "LinOpenSuseLeap154":  {
+                  "OpenSuseLeap154":  {
                                         "publisher":  "SUSE",
                                         "offer":  "openSUSE-leap-15-4",
                                         "sku":  "gen2",
@@ -36,7 +36,7 @@
                                "sku":  "7-RAW",
                                "version":  "latest"
                            },
-                  "LinSuseSles15SP4":  {
+                  "SuseSles15SP4":  {
                                "publisher":  "SUSE",
                                "offer":  "sles-15-sp4",
                                "sku":  "gen2",
@@ -48,7 +48,7 @@
                                     "sku":  "16.04-LTS",
                                     "version":  "latest"
                                 },
-                  "LinUbuntu2204":  {
+                  "Ubuntu2204":  {
                                     "publisher":  "Canonical",
                                     "offer":  "0001-com-ubuntu-pro-advanced-sla-ca",
                                     "sku":  "22_04",

@@ -345,10 +345,10 @@ function Test-DefaultImagesExistManual
         Assert-NotNull $img;
 
         # CentOS versioned test
-        $publisher = $images.Linux.LinCentOS85Gen2.publisher;
-        $offer = $images.Linux.LinCentOS85Gen2.offer;
-        $sku = $images.Linux.LinCentOS85Gen2.sku;
-        $version = $images.Linux.LinCentOS85Gen2.version;
+        $publisher = $images.Linux.CentOS85Gen2.publisher;
+        $offer = $images.Linux.CentOS85Gen2.offer;
+        $sku = $images.Linux.CentOS85Gen2.sku;
+        $version = $images.Linux.CentOS85Gen2.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
         
@@ -361,18 +361,18 @@ function Test-DefaultImagesExistManual
         Assert-NotNull $img;
 
         # Debian versioned test
-        $publisher = $images.Linux.LinDebian9.publisher;
-        $offer = $images.Linux.LinDebian9.offer;
-        $sku = $images.Linux.LinDebian9.sku;
-        $version = $images.Linux.LinDebian9.version;
+        $publisher = $images.Linux.Debian9.publisher;
+        $offer = $images.Linux.Debian9.offer;
+        $sku = $images.Linux.Debian9.sku;
+        $version = $images.Linux.Debian9.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
 
         # LinOpenSuseLeap154 versioned test
-        $publisher = $images.Linux.LinOpenSuseLeap154.publisher;
-        $offer = $images.Linux.LinOpenSuseLeap154.offer;
-        $sku = $images.Linux.LinOpenSuseLeap154.sku;
-        $version = $images.Linux.LinOpenSuseLeap154.version;
+        $publisher = $images.Linux.OpenSuseLeap154.publisher;
+        $offer = $images.Linux.OpenSuseLeap154.offer;
+        $sku = $images.Linux.OpenSuseLeap154.sku;
+        $version = $images.Linux.OpenSuseLeap154.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
 
@@ -385,10 +385,10 @@ function Test-DefaultImagesExistManual
         Assert-NotNull $img;
 
         # LinSuseSles15SP4 versioned test
-        $publisher = $images.Linux.LinSuseSles15SP4.publisher;
-        $offer = $images.Linux.LinSuseSles15SP4.offer;
-        $sku = $images.Linux.LinSuseSles15SP4.sku;
-        $version = $images.Linux.LinSuseSles15SP4.version;
+        $publisher = $images.Linux.SuseSles15SP4.publisher;
+        $offer = $images.Linux.SuseSles15SP4.offer;
+        $sku = $images.Linux.SuseSles15SP4.sku;
+        $version = $images.Linux.SuseSles15SP4.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
 
