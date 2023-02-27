@@ -152,7 +152,7 @@ directive:
 
   - where:
       subject: UserAssignedIdentity
-      variant: ^.*\d$
+      variant: ^Get1$|^GetViaIdentity1$|^List2$|^List3$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$
     remove: true
 
   # END 
