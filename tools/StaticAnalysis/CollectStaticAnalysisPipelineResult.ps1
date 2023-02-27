@@ -63,10 +63,14 @@ $Steps = @(
     @{
         PhaseName = "file-change"
         IssuePath = "$StaticAnalysisOutputDirectory/FileChangeIssue.csv"
-    }
+    },
     @{
         PhaseName = "cmdlet-diff"
         IssuePath = "$StaticAnalysisOutputDirectory/CmdletChangeResult.md"
+    },
+    @{
+        PhaseName = "ux"
+        IssuePath = "$StaticAnalysisOutputDirectory/UXMetadataIssues.csv"
     }
 )
 
@@ -77,6 +81,10 @@ ForEach ($Step In $Steps) {
     If ($Details.Length -Ne 0) {
         $Details = $Details[0]
         If ($PhaseName -eq "cmdlet-diff") {
+            If (-not (Test-Path $IssuePath))
+            {
+                continue
+            }
             $content = Get-Content -Path $IssuePath
             $markdownContent = @{}
             foreach ($line in $content) {
@@ -136,6 +144,9 @@ ForEach ($Step In $Steps) {
                 ElseIf ($PhaseName -Eq "help-example") {
                     $Content = "|Type|Cmdlet|Example|Line|RuleName|Description|Extent|Remediation|`n|---|---|---|---|---|---|---|---|`n"
                 }
+                ElseIf ($PhaseName -Eq "ux") {
+                    $Content = "|Type|Module|ResourceType|SubResourceType|Command|Description|Remediation|`n|---|---|---|---|---|---|---|`n"
+                }
                 #EndRegion
 
                 ForEach ($Issue In $MatchedIssues) {
@@ -151,6 +162,9 @@ ForEach ($Step In $Steps) {
                     }
                     ElseIf ($PhaseName -Eq "help-example") {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Example)|$($Issue.Line)|$($Issue.RuleName)|$($Issue.Description)|$($Issue.Extent)|$($Issue.Remediation)|`n"
+                    }
+                    ElseIf ($PhaseName -Eq "ux") {
+                        $Content = "|$ErrorTypeEmoji|$($Issue.Module)|$($Issue.ResourceType)|$($Issue.SubResourceType)|$($Issue.Command)|$($Issue.Description)|$($Issue.Remediation)|`n"
                     }
                     #EndRegion
                 }
