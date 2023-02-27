@@ -2,8 +2,8 @@ pull_request:
   comment:
     - azure_pipeline:
         allow_list:
-          - "azure-powershell - powershell-core"
-          - "azure-powershell - windows-powershell"
+          - "wyunchi-ms.azure-powershell - powershell-core"
+          - "wyunchi-ms.azure-powershell - windows-powershell"
         result_path: "/PipelineResult/PipelineResult.json"
       group_by_keys:
         - "Module"
