@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "EgressNatRules", Target = ViewControl.Table)]
         public List<PSResourceId> EgressNatRules { get; set; }
 
+        [Ps1Xml(Label = "GatewayCustomBgpIpAddresses", Target = ViewControl.Table)]
         public List<PSGatewayCustomBgpIpConfiguration> GatewayCustomBgpIpAddresses { get; set; }
 
         [JsonIgnore]

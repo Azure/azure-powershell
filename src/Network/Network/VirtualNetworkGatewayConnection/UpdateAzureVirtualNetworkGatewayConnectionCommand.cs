@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Network
                         }
                     }
 
-                    if (this.GatewayCustomBgpIpAddress != null)
+                    if (this.GatewayCustomBgpIpAddress != null && this.GatewayCustomBgpIpAddress.Length > 0)
                     {
                         if (this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses == null)
                         {
@@ -215,6 +215,13 @@ namespace Microsoft.Azure.Commands.Network
                                     this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Add(reqaddress);
                                 }
                             }
+                        }
+                    }
+                    else
+                    {
+                        if (this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses != null && this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Count > 0)
+                        {
+                            this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Clear();
                         }
                     }
 
