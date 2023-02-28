@@ -3770,7 +3770,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 // Validate entries.
                 if (deliveryAttributes[i].Count < 3 || deliveryAttributes[i].Count > 4)
                 {
-                    throw new Exception($"Invalid Delivery Attribute parameter:. Unexpected number of entries for delivery attribute #{i + 1} as we expect 2-3 key-value pair while we received {deliveryAttributes[i].Count}");
+                    throw new Exception($"Invalid Delivery Attribute parameter:. Unexpected number of entries for delivery attribute #{i + 1} as we expect 3-4 key-value pair while we received {deliveryAttributes[i].Count}");
                 }
 
                 if (!deliveryAttributes[i].ContainsKey("Type"))
@@ -3830,10 +3830,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             int strIndex = endpoint.IndexOf("/queueServices/default/queues/", StringComparison.OrdinalIgnoreCase);
             string[] tokens = endpoint.Split('/');
 
-            if(queueMessageTimeToLiveInSeconds.HasValue && queueMessageTimeToLiveInSeconds < 1 && queueMessageTimeToLiveInSeconds != -1)
+            if(queueMessageTimeToLiveInSeconds.HasValue && queueMessageTimeToLiveInSeconds < -1)
             {
                 throw new Exception(
-                    "Invalid value: The value for StorageQueueMessageTtl is invalid. It should be either >=1 or -1");
+                    "Invalid value: The value for StorageQueueMessageTtl is invalid. It's value cannot be less than -1");
             }
 
             if (!this.IsValidStorageAccountResourceId(strIndex, tokens))
