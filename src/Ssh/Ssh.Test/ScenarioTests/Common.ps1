@@ -6,19 +6,19 @@ function RandomString([bool]$allChars, [int32]$len) {
     }
 }
 
-function Get-RandomArcName
+function Get-ArcServerName
 {
-    return 'arc-' + (RandomString -allChars $false -len 6)
+    return 'arc-' + (getAssetName)
 }
 
-function Get-RandomVmName
+function Get-AzureVmName
 {
-    return 'vm-' + (RandomString -allChars $false -len 6)
+    return 'vm-' + (getAssetName)
 }
 
-function Get-RandomResourceGroupName 
+function Get-ResourceGroupName 
 {
-    return 'rg-' + (RandomString -allChars $false -len 6)
+    return 'rg-' + (getAssetName)
 }
 
 function Get-PasswordForVM
