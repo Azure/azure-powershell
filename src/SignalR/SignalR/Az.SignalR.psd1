@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Azure SignalR service commands for Windows PowerShell and PowerShell Core.
 
-For more information on SignalR, please visit the following: https://docs.microsoft.com/azure/azure-signalr/'
+For more information on SignalR, please visit the following: https://learn.microsoft.com/azure/azure-signalr/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

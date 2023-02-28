@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Azure Search management cmdlets for Windows PowerShell and PowerShell Core.
 
-For more information on Search, please visit the following: https://docs.microsoft.com/azure/search/'
+For more information on Search, please visit the following: https://learn.microsoft.com/azure/search/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

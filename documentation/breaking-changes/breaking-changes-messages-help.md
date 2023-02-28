@@ -29,5 +29,5 @@ Here is a [link to our milestones](https://github.com/Azure/azure-powershell/mil
 ) is a good resource on the various types of breaking changes authors can call out in a cmdlet.
 
 ### Send us feedback
-* Generic feedback : Use the [`Send-Feedback`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/send-feedback?view=azurermps-6.11.0) cmdlet
+* Generic feedback : Use the [`Send-Feedback`](https://learn.microsoft.com/en-us/powershell/module/azurerm.profile/send-feedback?view=azurermps-6.11.0) cmdlet
 * A bug : Report issues in the [azure-powershell repository issue list](https://github.com/Azure/azure-powershell/issues) 

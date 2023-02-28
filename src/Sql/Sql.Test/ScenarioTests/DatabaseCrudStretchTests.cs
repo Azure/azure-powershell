@@ -25,28 +25,28 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseCreate()
         {
             TestRunner.RunTestScript("Test-CreateStretchDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseUpdate()
         {
             TestRunner.RunTestScript("Test-UpdateStretchDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseGet()
         {
             TestRunner.RunTestScript("Test-GetStretchDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseRemove()
         {

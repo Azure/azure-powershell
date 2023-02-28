@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The name of the Local Region from which to retrieve the Instance Failover Group.
+The name of the Local Region of the secondary instance in the Instance Failover Group.
 
 ```yaml
 Type: System.String
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group of the secondary instance in the Instance Failover Group.
 
 ```yaml
 Type: System.String

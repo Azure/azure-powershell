@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Api Management service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information Api Management, please visit the following: https://docs.microsoft.com/azure/api-management/'
+For more information Api Management, please visit the following: https://learn.microsoft.com/azure/api-management/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

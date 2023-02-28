@@ -47,7 +47,7 @@ INPUTOBJECT <IHealthBotIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.healthbot/update-azhealthbot
+https://learn.microsoft.com/en-us/powershell/module/az.healthbot/update-azhealthbot
 #>
 function Update-AzHealthBot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot])]

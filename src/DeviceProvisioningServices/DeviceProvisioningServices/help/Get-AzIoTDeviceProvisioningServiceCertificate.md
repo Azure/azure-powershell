@@ -31,7 +31,7 @@ Get-AzIoTDeviceProvisioningServiceCertificate [-ResourceId] <String> [-Certifica
 ```
 
 ## DESCRIPTION
-For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/azure/iot-dps/how-to-verify-certificates.
+For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://learn.microsoft.com/azure/iot-dps/how-to-verify-certificates.
 
 ## EXAMPLES
 

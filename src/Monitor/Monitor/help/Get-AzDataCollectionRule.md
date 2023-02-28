@@ -37,7 +37,7 @@ Get-AzDataCollectionRule -RuleId <String> [-DefaultProfile <IAzureContextContain
 ## DESCRIPTION
 The **Get-AzDataCollectionRule** cmdlet gets one or more data collection rules.
 
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
 
 ## EXAMPLES
 

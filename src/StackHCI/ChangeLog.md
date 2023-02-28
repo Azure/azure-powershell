@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed verbose while importing modules.
 
 ## Version 1.4.2
 * Added Remote Support terms and conditions for HCI device types.

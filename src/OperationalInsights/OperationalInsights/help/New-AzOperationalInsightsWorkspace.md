@@ -294,7 +294,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-A new pricing model has been released. If you are a CSP that means that you have to use "standalone" for the sku. Behind the scenes, the sku will be changed to pergb2018. For more information, please see the following: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#new-pricing-model
+A new pricing model has been released. If you are a CSP that means that you have to use "standalone" for the sku. Behind the scenes, the sku will be changed to pergb2018. For more information, please see the following: https://learn.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#new-pricing-model
 
 ## RELATED LINKS
 

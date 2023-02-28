@@ -29,7 +29,7 @@ mariadb-test-szp6dt-rep154 eastus   zcsxhpasdc         10.2    5120             
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbreplica
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbreplica
 #>
 function Get-AzMariaDbReplica {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]

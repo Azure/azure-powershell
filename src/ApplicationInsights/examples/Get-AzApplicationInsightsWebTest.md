@@ -64,7 +64,7 @@ $location01 = New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-
 $location02 = New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
 New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standardwebtestpwsh03 -Location 'westus2' `
 -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsightsportal01" = "Resource"} `
--RequestUrl "https://docs.microsoft.com/" -RequestHttpVerb "GET" `
+-RequestUrl "https://learn.microsoft.com/" -RequestHttpVerb "GET" `
 -TestName 'standardwebtestpwsh03' `
 -RuleSslCheck -RuleSslCertRemainingLifetimeCheck 7 -RuleExpectedHttpStatusCode 200 `
 -Enabled -Frequency 300 -Timeout 120 -Kind "standard" -RetryEnabled -GeoLocation $location01, $location02 ` |Get-AzApplicationInsightsWebTest

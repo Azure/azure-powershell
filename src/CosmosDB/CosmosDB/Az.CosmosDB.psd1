@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - CosmosDB service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on CosmosDB, please visit the following: https://docs.microsoft.com/azure/cosmos-db/'
+For more information on CosmosDB, please visit the following: https://learn.microsoft.com/azure/cosmos-db/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

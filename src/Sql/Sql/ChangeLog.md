@@ -18,6 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new parameters to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` cmdlets
+   - AssignIdentity
+   - EncryptionProtector
+   - UserAssignedIdentityId
+   - KeyList
+   - KeysToRemove
+   - FederatedClientId
+* Added 'ExpandKeyList' and 'KeysFilter' parameters to `Get-AzSqlDatabaseGeoBackup` and `Get-SqlDeletedDatabaseBackup`
+* Added new cmdlets for Per DB CMK
+   - 'Revalidate-AzSqlDatabaseTransparentDataEncryptionProtector'
+   - 'Revert-AzSqlDatabaseTransparentDataEncryptionProtector'
+   - 'Revalidate-AzSqlServerTransparentDataEncryptionProtector'
+   - 'Revalidate-AzSqlInstanceTransparentDataEncryptionProtector'
+* Added an optional parameter 'SecondaryType' to:
+    'Set-AzSqlDatabaseInstanceFailoverGroup'
+    'New-AzSqlDatabaseInstanceFailoverGroup'
 
 ## Version 4.3.0
 * Added an optional parameter `HAReplicaCount` to `Restore-AzSqlDatabase`

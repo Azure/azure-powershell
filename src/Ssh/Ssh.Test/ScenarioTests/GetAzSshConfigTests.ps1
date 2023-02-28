@@ -10,8 +10,8 @@ function Test-GetArcConfig
     if ($IsMacOS) {
         return
     }
-    $MachineName = Get-RandomArcName
-    $ResourceGroupName = Get-RandomResourceGroupName
+    $MachineName = Get-ArcServerName
+    $ResourceGroupName = Get-ResourceGroupName
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
 
@@ -48,7 +48,11 @@ function Test-GetArcConfig
             $os = 'linux'
         }
 
-        $proxyName = "sshProxy_" + $os + "_" + $arch +"_1_3_017634.exe"
+
+        $proxyName = "sshProxy_" + $os + "_" + $arch +"_1_3_017634"
+        if ($IsWindows) {
+            $proxyName = $proxyName + ".exe"
+        }
         $proxyPath = Join-Path $HOME ".clientsshproxy" $proxyName
 
         $relayPath = Join-Path (Split-Path ((Resolve-Path ./config).Path)) "az_ssh_config" "$ResourceGroupName-$MachineName" "$ResourceGroupName-$MachineName-relay_info"
@@ -71,8 +75,8 @@ Test Exporting SSH Config File for an Azure VM using Local User Login. Test over
 #>
 function Test-GetVmConfig
 {
-    $VmName = Get-RandomVmName
-    $ResourceGroupName = Get-RandomResourceGroupName
+    $VmName = Get-AzureVmName
+    $ResourceGroupName = Get-ResourceGroupName
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
     
@@ -82,9 +86,10 @@ function Test-GetVmConfig
 
     New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
 
+    $domainlabel = "d1" + $ResourceGroupName
     try 
     {
-        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Image UbuntuLTS -Credential $cred
+        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -DomainNameLabel $domainlabel
         Remove-Item ./config -ErrorAction Ignore
 
         Assert-NotNull $vm

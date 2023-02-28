@@ -22,6 +22,56 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class TransparentDataEncryptionsOperationsExtensions
     {
             /// <summary>
+            /// Gets a list of the logical database's transparent data encryption.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='databaseName'>
+            /// The name of the logical database for which the transparent data encryption
+            /// is defined.
+            /// </param>
+            public static IPage<LogicalDatabaseTransparentDataEncryption> ListByDatabase(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName)
+            {
+                return operations.ListByDatabaseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of the logical database's transparent data encryption.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='databaseName'>
+            /// The name of the logical database for which the transparent data encryption
+            /// is defined.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<LogicalDatabaseTransparentDataEncryption>> ListByDatabaseAsync(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets a logical database's transparent data encryption.
             /// </summary>
             /// <param name='operations'>
@@ -128,7 +178,7 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets a list of the logical database's transparent data encryption.
+            /// Updates a logical database's transparent data encryption configuration.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -141,16 +191,19 @@ namespace Microsoft.Azure.Management.Sql
             /// The name of the server.
             /// </param>
             /// <param name='databaseName'>
-            /// The name of the logical database for which the transparent data encryption
-            /// is defined.
+            /// The name of the logical database for which the security alert policy is
+            /// defined.
             /// </param>
-            public static IPage<LogicalDatabaseTransparentDataEncryption> ListByDatabase(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName)
+            /// <param name='parameters'>
+            /// The database transparent data encryption.
+            /// </param>
+            public static LogicalDatabaseTransparentDataEncryption BeginCreateOrUpdate(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters)
             {
-                return operations.ListByDatabaseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(resourceGroupName, serverName, databaseName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a list of the logical database's transparent data encryption.
+            /// Updates a logical database's transparent data encryption configuration.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -163,15 +216,18 @@ namespace Microsoft.Azure.Management.Sql
             /// The name of the server.
             /// </param>
             /// <param name='databaseName'>
-            /// The name of the logical database for which the transparent data encryption
-            /// is defined.
+            /// The name of the logical database for which the security alert policy is
+            /// defined.
+            /// </param>
+            /// <param name='parameters'>
+            /// The database transparent data encryption.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<LogicalDatabaseTransparentDataEncryption>> ListByDatabaseAsync(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LogicalDatabaseTransparentDataEncryption> BeginCreateOrUpdateAsync(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -49,7 +49,7 @@ TIMESERIESIDPROPERTY <ITimeSeriesIdProperty[]>: The list of event properties whi
   [Name <String>]: The name of the property.
   [Type <PropertyType?>]: The type of the property.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
 #>
 function New-AzTimeSeriesInsightsEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]

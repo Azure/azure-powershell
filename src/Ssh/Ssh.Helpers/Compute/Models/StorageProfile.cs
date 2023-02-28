@@ -41,12 +41,12 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// system disk used by the virtual machine. &lt;br&gt;&lt;br&gt; For
         /// more information about disks, see [About disks and VHDs for Azure
         /// virtual
-        /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).</param>
+        /// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).</param>
         /// <param name="dataDisks">Specifies the parameters that are used to
         /// add a data disk to a virtual machine. &lt;br&gt;&lt;br&gt; For more
         /// information about disks, see [About disks and VHDs for Azure
         /// virtual
-        /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).</param>
+        /// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).</param>
         public StorageProfile(ImageReference imageReference = default(ImageReference), OSDisk osDisk = default(OSDisk), IList<DataDisk> dataDisks = default(IList<DataDisk>))
         {
             ImageReference = imageReference;
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// used by the virtual machine. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
         /// For more information about disks, see [About disks and VHDs for
         /// Azure virtual
-        /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+        /// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
         /// </summary>
         [JsonProperty(PropertyName = "osDisk")]
         public OSDisk OsDisk { get; set; }
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// disk to a virtual machine. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For
         /// more information about disks, see [About disks and VHDs for Azure
         /// virtual
-        /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+        /// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
         /// </summary>
         [JsonProperty(PropertyName = "dataDisks")]
         public IList<DataDisk> DataDisks { get; set; }
