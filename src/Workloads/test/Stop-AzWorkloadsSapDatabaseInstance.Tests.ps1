@@ -19,15 +19,7 @@ Describe 'Stop-AzWorkloadsSapDatabaseInstance' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Stop' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'StopViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StopViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

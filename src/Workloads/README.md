@@ -32,22 +32,212 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 ```yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-  # - C:/Users/v-diya/repository/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.md
-  - /Users/aitest/Documents/LucasGitHub/AzurePowerShell/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.md
+  - C:/Users/v-diya/repository/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.md
 
 try-require: 
-  # - C:/Users/v-diya/repository/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.powershell.md
-  - /Users/aitest/Documents/LucasGitHub/AzurePowerShell/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.powershell.md
+  - C:/Users/v-diya/repository/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.powershell.md
 
+resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
-inlining-threshold: 50
+inlining-threshold: 100
 
 directive:
+# Monitor
+- where:
+    verb: New
+    subject: ^Monitor$
+    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+  remove: true
+
+- where:
+    verb: Update
+    subject: ^Monitor$
+    variant: ^Update$|^UpdateViaIdentity$
+  remove: true
+
+- where:
+    subject: ^Monitor$
+    parameter-name: IdentityUserAssignedIdentity
+  set:
+    parameter-name: UserAssignedIdentity
+
+- where:
+    subject: ^Monitor$
+    parameter-name: ManagedResourceGroupConfigurationName
+  set:
+    parameter-name: ManagedResourceGroupName
+
+# ProviderInstance
+- where:
+    verb: New
+    subject: ^ProviderInstance$
+    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+  remove: true
+
+- where:
+    verb: Update
+    subject: ^ProviderInstance$
+    variant: ^Update$|^UpdateViaIdentity$
+  remove: true
+
+# SapApplicationServerInstance
+- where:
+    verb: New
+    subject: ^SapApplicationServerInstance$
+    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+  remove: true
+
+- where:
+    verb: Stop
+    subject: ^SapApplicationServerInstance$
+    variant: ^Stop$|^StopViaIdentity$
+  remove: true
+
+- where:
+    verb: Update
+    subject: ^SapApplicationServerInstance$
+    variant: ^Update$|^UpdateViaIdentity$
+  remove: true
+
+- where:
+    subject: SapApplicationServerInstance
+  set:
+    subject: SapApplicationInstance
+
+- where:
+    subject: SapApplicationInstance
+    parameter-name: ApplicationInstanceName
+  set:
+    parameter-name: Name
+
+# SapCentralInstance
+- where:
+    verb: New
+    subject: ^SapCentralInstance$
+    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+  remove: true
+- where:
+    verb: Stop
+    subject: ^SapCentralInstance$
+    variant: ^Stop$|^StopViaIdentity$
+  remove: true
+
+- where:
+    verb: Update
+    subject: ^SapCentralInstance$
+    variant: ^Update$|^UpdateViaIdentity$
+  remove: true
+
+- where:
+    subject: SapCentralInstance
+    parameter-name: CentralInstanceName
+  set:
+    parameter-name: Name
+
+# SapDatabaseInstance
+- where:
+    verb: New
+    subject: ^SapDatabaseInstance$
+    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+  remove: true
+
+- where:
+    verb: Stop
+    subject: ^SapDatabaseInstance$
+    variant: ^Stop$|^StopViaIdentity$
+  remove: true
+
+- where:
+    verb: Update
+    subject: ^SapDatabaseInstance$
+    variant: ^Update$|^UpdateViaIdentity$
+  remove: true
+
+- where:
+    subject: SapDatabaseInstance
+    parameter-name: DatabaseInstanceName
+  set:
+    parameter-name: Name
+
+# SapLandscapeMonitor
+- where:
+    verb: New
+    subject: ^SapLandscapeMonitor$
+    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+  remove: true
+
+- where:
+    subject: SapLandscapeMonitor
+    parameter-name: MonitorName
+  set:
+    parameter-name: Name
+
+- where:
+    verb: Update
+    subject: ^SapLandscapeMonitor$
+    variant: ^Update$|^UpdateViaIdentity$
+  remove: true
+
+# SapVirtualInstance
+- where:
+    verb: New
+    subject: ^SapVirtualInstance$
+    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+  remove: true
+
+- where:
+    verb: Stop
+    subject: ^SapVirtualInstance$
+    variant: ^Stop$|^StopViaIdentity$
+  remove: true
+
+- where:
+    verb: Update
+    subject: ^SapVirtualInstance$
+    variant: ^Update$|^UpdateViaIdentity$
+  remove: true
+
+- where:
+    subject: ^SapVirtualInstance$
+    parameter-name: IdentityUserAssignedIdentity
+  set:
+    parameter-name: UserAssignedIdentity
+
+- where:
+    subject: ^SapVirtualInstance$
+    parameter-name: ManagedResourceGroupConfigurationName
+  set:
+    parameter-name: ManagedResourceGroupName
+
+# SapAvailabilityZoneDetail
+- where:
+    verb: Invoke
+    subject: ^SapAvailabilityZoneDetail$
+    variant: ^Sap$|^SapViaIdentity$
+  remove: true
+
+# SapDiskConfiguration
+- where:
+    verb: Invoke
+    subject: ^SapDiskConfiguration$
+    variant: ^Sap$|^SapViaIdentity$
+  remove: true
+
+# SapSizingRecommendation
+- where:
+    verb: Invoke
+    subject: ^SapSizingRecommendation$
+    variant: ^Sap$|^SapViaIdentity$
+  remove: true
+
+# SapSupportedSku
+- where:
+    verb: Invoke
+    subject: ^SapSupportedSku$
+    variant: ^Sap$|^SapViaIdentity$
+  remove: true
 
 - no-inline:  # choose ONE of these models to disable inlining
-  - Monitor
-  - MonitorProperties
-  - Error
   - ErrorInnerError
 ```

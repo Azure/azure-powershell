@@ -20,9 +20,8 @@ Get-AzWorkloadsSapDatabaseInstance -ResourceGroupName <String> -SapVirtualInstan
 
 ### Get
 ```
-Get-AzWorkloadsSapDatabaseInstance -DatabaseInstanceName <String> -ResourceGroupName <String>
- -SapVirtualInstanceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzWorkloadsSapDatabaseInstance -Name <String> -ResourceGroupName <String> -SapVirtualInstanceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -60,21 +59,6 @@ Gets the SAP Database Instance resource.
 
 ## PARAMETERS
 
-### -DatabaseInstanceName
-Database resource name string modeled as parameter for auto generation to work correctly.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -103,6 +87,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Database resource name string modeled as parameter for auto generation to work correctly.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

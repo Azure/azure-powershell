@@ -17,7 +17,7 @@ Gets properties of a SAP monitor for the specified subscription, resource group,
 ### [Get-AzWorkloadsProviderInstance](Get-AzWorkloadsProviderInstance.md)
 Gets properties of a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
-### [Get-AzWorkloadsSapApplicationServerInstance](Get-AzWorkloadsSapApplicationServerInstance.md)
+### [Get-AzWorkloadsSapApplicationInstance](Get-AzWorkloadsSapApplicationInstance.md)
 Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
 
 ### [Get-AzWorkloadsSapCentralInstance](Get-AzWorkloadsSapCentralInstance.md)
@@ -50,7 +50,7 @@ Creates a SAP monitor for the specified subscription, resource group, and resour
 ### [New-AzWorkloadsProviderInstance](New-AzWorkloadsProviderInstance.md)
 Creates a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
-### [New-AzWorkloadsSapApplicationServerInstance](New-AzWorkloadsSapApplicationServerInstance.md)
+### [New-AzWorkloadsSapApplicationInstance](New-AzWorkloadsSapApplicationInstance.md)
 Puts the SAP Application Server Instance resource.
 
 
@@ -83,7 +83,7 @@ Deletes a SAP monitor with the specified subscription, resource group, and SAP m
 ### [Remove-AzWorkloadsProviderInstance](Remove-AzWorkloadsProviderInstance.md)
 Deletes a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
-### [Remove-AzWorkloadsSapApplicationServerInstance](Remove-AzWorkloadsSapApplicationServerInstance.md)
+### [Remove-AzWorkloadsSapApplicationInstance](Remove-AzWorkloadsSapApplicationInstance.md)
 Deletes the SAP Application Server Instance resource.
 
 
@@ -111,7 +111,7 @@ Deletes a SAP Landscape Monitor Dashboard with the specified subscription, resou
 ### [Remove-AzWorkloadsSapVirtualInstance](Remove-AzWorkloadsSapVirtualInstance.md)
 Deletes a Virtual Instance for SAP solutions resource and its child resources, that is the associated Central Services Instance, Application Server Instances and Database Instance.
 
-### [Start-AzWorkloadsSapApplicationServerInstance](Start-AzWorkloadsSapApplicationServerInstance.md)
+### [Start-AzWorkloadsSapApplicationInstance](Start-AzWorkloadsSapApplicationInstance.md)
 Starts the SAP Application Server Instance.
 
 ### [Start-AzWorkloadsSapCentralInstance](Start-AzWorkloadsSapCentralInstance.md)
@@ -123,7 +123,7 @@ Starts the database instance of the SAP system.
 ### [Start-AzWorkloadsSapVirtualInstance](Start-AzWorkloadsSapVirtualInstance.md)
 Starts the SAP application, that is the Central Services instance and Application server instances.
 
-### [Stop-AzWorkloadsSapApplicationServerInstance](Stop-AzWorkloadsSapApplicationServerInstance.md)
+### [Stop-AzWorkloadsSapApplicationInstance](Stop-AzWorkloadsSapApplicationInstance.md)
 Stops the SAP Application Server Instance.
 
 ### [Stop-AzWorkloadsSapCentralInstance](Stop-AzWorkloadsSapCentralInstance.md)
@@ -138,7 +138,7 @@ Stops the SAP Application, that is the Application server instances and Central 
 ### [Update-AzWorkloadsMonitor](Update-AzWorkloadsMonitor.md)
 Patches the Tags field of a SAP monitor for the specified subscription, resource group, and SAP monitor name.
 
-### [Update-AzWorkloadsSapApplicationServerInstance](Update-AzWorkloadsSapApplicationServerInstance.md)
+### [Update-AzWorkloadsSapApplicationInstance](Update-AzWorkloadsSapApplicationInstance.md)
 Puts the SAP Application Server Instance resource.
 
 ### [Update-AzWorkloadsSapCentralInstance](Update-AzWorkloadsSapCentralInstance.md)

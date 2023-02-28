@@ -1,54 +1,32 @@
 ---
 external help file:
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssapapplicationserverinstance
+online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssapapplicationinstance
 schema: 2.0.0
 ---
 
-# New-AzWorkloadsSapApplicationServerInstance
+# Update-AzWorkloadsSapApplicationInstance
 
 ## SYNOPSIS
 Puts the SAP Application Server Instance resource.
 
-
-This will be used by service only.
-PUT by end user will return a Bad Request error.
-
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzWorkloadsSapApplicationServerInstance -ApplicationInstanceName <String> -ResourceGroupName <String>
- -SapVirtualInstanceName <String> -Location <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
+Update-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
+ -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzWorkloadsSapApplicationServerInstance -ApplicationInstanceName <String> -ResourceGroupName <String>
- -SapVirtualInstanceName <String> -Body <ISapApplicationServerInstance> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzWorkloadsSapApplicationServerInstance -InputObject <IWorkloadsIdentity>
- -Body <ISapApplicationServerInstance> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzWorkloadsSapApplicationServerInstance -InputObject <IWorkloadsIdentity> -Location <String>
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Puts the SAP Application Server Instance resource.
-
-
-This will be used by service only.
-PUT by end user will return a Bad Request error.
 
 ## EXAMPLES
 
@@ -76,21 +54,6 @@ PUT by end user will return a Bad Request error.
 
 ## PARAMETERS
 
-### -ApplicationInstanceName
-The name of SAP Application Server instance resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -103,22 +66,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Define the SAP Application Server Instance resource.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -143,7 +90,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -153,12 +100,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
+### -Name
+The name of SAP Application Server instance resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -189,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -204,7 +151,7 @@ The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -219,7 +166,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -230,11 +177,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -280,8 +227,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
@@ -296,17 +241,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <ISapApplicationServerInstance>`: Define the SAP Application Server Instance resource.
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 `INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
   - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.

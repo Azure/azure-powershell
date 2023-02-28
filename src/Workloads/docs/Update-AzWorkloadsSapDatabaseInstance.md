@@ -14,23 +14,9 @@ Updates the Database resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWorkloadsSapDatabaseInstance -DatabaseInstanceName <String> -ResourceGroupName <String>
+Update-AzWorkloadsSapDatabaseInstance -Name <String> -ResourceGroupName <String>
  -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzWorkloadsSapDatabaseInstance -DatabaseInstanceName <String> -ResourceGroupName <String>
- -SapVirtualInstanceName <String> -Body <IUpdateSapDatabaseInstanceRequest> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzWorkloadsSapDatabaseInstance -InputObject <IWorkloadsIdentity>
- -Body <IUpdateSapDatabaseInstanceRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -83,37 +69,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Defines the request body for updating SAP Database Instance.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IUpdateSapDatabaseInstanceRequest
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -DatabaseInstanceName
-Database resource name string modeled as parameter for auto generation to work correctly.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -135,13 +90,28 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Database resource name string modeled as parameter for auto generation to work correctly.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -166,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -181,7 +151,7 @@ The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -196,7 +166,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -211,7 +181,7 @@ Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -257,8 +227,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IUpdateSapDatabaseInstanceRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
@@ -273,10 +241,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IUpdateSapDatabaseInstanceRequest>`: Defines the request body for updating SAP Database Instance.
-  - `[Tag <IUpdateSapDatabaseInstanceRequestTags>]`: Gets or sets the Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 `INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
   - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.

@@ -14,7 +14,7 @@ Starts the SAP Central Services Instance.
 
 ### Start (Default)
 ```
-Start-AzWorkloadsSapCentralInstance -CentralInstanceName <String> -ResourceGroupName <String>
+Start-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String>
  -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -69,21 +69,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CentralInstanceName
-Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
-
-```yaml
-Type: System.String
-Parameter Sets: Start
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -112,6 +97,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+
+```yaml
+Type: System.String
+Parameter Sets: Start
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

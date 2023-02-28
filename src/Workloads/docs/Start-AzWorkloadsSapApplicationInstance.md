@@ -1,46 +1,32 @@
 ---
 external help file:
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssapapplicationserverinstance
+online version: https://learn.microsoft.com/powershell/module/az.workloads/start-azworkloadssapapplicationinstance
 schema: 2.0.0
 ---
 
-# Update-AzWorkloadsSapApplicationServerInstance
+# Start-AzWorkloadsSapApplicationInstance
 
 ## SYNOPSIS
-Puts the SAP Application Server Instance resource.
+Starts the SAP Application Server Instance.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Start (Default)
 ```
-Update-AzWorkloadsSapApplicationServerInstance -ApplicationInstanceName <String> -ResourceGroupName <String>
- -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+Start-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
+ -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### StartViaIdentity
+```
+Start-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzWorkloadsSapApplicationServerInstance -ApplicationInstanceName <String> -ResourceGroupName <String>
- -SapVirtualInstanceName <String> -Body <IUpdateSapApplicationInstanceRequest> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzWorkloadsSapApplicationServerInstance -InputObject <IWorkloadsIdentity>
- -Body <IUpdateSapApplicationInstanceRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzWorkloadsSapApplicationServerInstance -InputObject <IWorkloadsIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Puts the SAP Application Server Instance resource.
+Starts the SAP Application Server Instance.
 
 ## EXAMPLES
 
@@ -68,21 +54,6 @@ Puts the SAP Application Server Instance resource.
 
 ## PARAMETERS
 
-### -ApplicationInstanceName
-The name of SAP Application Server instance resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -95,22 +66,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Defines the request body for updating SAP Application Instance.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IUpdateSapApplicationInstanceRequest
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -135,13 +90,28 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: StartViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of SAP Application Server instance resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Start
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -166,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Start
 Aliases:
 
 Required: True
@@ -181,7 +151,7 @@ The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Start
 Aliases:
 
 Required: True
@@ -196,27 +166,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Start
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Gets or sets the Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -257,13 +212,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IUpdateSapApplicationInstanceRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
 
 ## NOTES
 
@@ -273,10 +226,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IUpdateSapApplicationInstanceRequest>`: Defines the request body for updating SAP Application Instance.
-  - `[Tag <IUpdateSapApplicationInstanceRequestTags>]`: Gets or sets the Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 `INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
   - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.

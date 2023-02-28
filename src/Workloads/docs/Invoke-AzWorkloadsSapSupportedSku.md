@@ -20,19 +20,6 @@ Invoke-AzWorkloadsSapSupportedSku -Location <String> -AppLocation <String> -Data
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Sap
-```
-Invoke-AzWorkloadsSapSupportedSku -Location <String> -SapSupportedSku <ISapSupportedSkusRequest>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SapViaIdentity
-```
-Invoke-AzWorkloadsSapSupportedSku -InputObject <IWorkloadsIdentity>
- -SapSupportedSku <ISapSupportedSkusRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### SapViaIdentityExpanded
 ```
 Invoke-AzWorkloadsSapSupportedSku -InputObject <IWorkloadsIdentity> -AppLocation <String>
@@ -75,7 +62,7 @@ The geo-location where the resource is to be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: SapExpanded, SapViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -91,7 +78,7 @@ Eg: HANA, DB2, etc
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDatabaseType
-Parameter Sets: SapExpanded, SapViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -122,7 +109,7 @@ Eg: SingleServer/ThreeTier
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDeploymentType
-Parameter Sets: SapExpanded, SapViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -137,7 +124,7 @@ Defines the environment type - Production/Non Production.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType
-Parameter Sets: SapExpanded, SapViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -152,7 +139,7 @@ The high availability type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapHighAvailabilityType
-Parameter Sets: SapExpanded, SapViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,7 +155,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-Parameter Sets: SapViaIdentity, SapViaIdentityExpanded
+Parameter Sets: SapViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -183,7 +170,7 @@ The name of Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: Sap, SapExpanded
+Parameter Sets: SapExpanded
 Aliases:
 
 Required: True
@@ -198,7 +185,7 @@ Defines the SAP Product type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType
-Parameter Sets: SapExpanded, SapViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -208,28 +195,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SapSupportedSku
-The SAP request to get list of supported SKUs.
-To construct, see NOTES section for SAPSUPPORTEDSKU properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSupportedSkusRequest
-Parameter Sets: Sap, SapViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Sap, SapExpanded
+Parameter Sets: SapExpanded
 Aliases:
 
 Required: False
@@ -275,8 +246,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSupportedSkusRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
@@ -303,14 +272,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`SAPSUPPORTEDSKU <ISapSupportedSkusRequest>`: The SAP request to get list of supported SKUs.
-  - `AppLocation <String>`: The geo-location where the resource is to be created.
-  - `DatabaseType <SapDatabaseType>`: The database type. Eg: HANA, DB2, etc
-  - `DeploymentType <SapDeploymentType>`: The deployment type. Eg: SingleServer/ThreeTier
-  - `Environment <SapEnvironmentType>`: Defines the environment type - Production/Non Production.
-  - `SapProduct <SapProductType>`: Defines the SAP Product type.
-  - `[HighAvailabilityType <SapHighAvailabilityType?>]`: The high availability type.
 
 ## RELATED LINKS
 

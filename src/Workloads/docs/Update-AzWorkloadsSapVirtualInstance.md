@@ -15,28 +15,14 @@ Updates a Virtual Instance for SAP solutions resource
 ### UpdateExpanded (Default)
 ```
 Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String>
- -Body <IUpdateSapVirtualInstanceRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzWorkloadsSapVirtualInstance -InputObject <IWorkloadsIdentity>
- -Body <IUpdateSapVirtualInstanceRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWorkloadsSapVirtualInstance -InputObject <IWorkloadsIdentity>
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -69,22 +55,6 @@ Updates a Virtual Instance for SAP solutions resource
 
 ## PARAMETERS
 
-### -Body
-Defines the request body for updating Virtual Instance for SAP.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IUpdateSapVirtualInstanceRequest
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -105,22 +75,7 @@ Type of manage identity
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-User assigned identities dictionary
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -136,7 +91,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -151,7 +106,7 @@ The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: SapVirtualInstanceName
 
 Required: True
@@ -167,7 +122,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -182,7 +137,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -197,7 +152,22 @@ Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+User assigned identities dictionary
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -243,8 +213,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IUpdateSapVirtualInstanceRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
@@ -259,13 +227,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IUpdateSapVirtualInstanceRequest>`: Defines the request body for updating Virtual Instance for SAP.
-  - `[IdentityType <ManagedServiceIdentityType?>]`: Type of manage identity
-  - `[IdentityUserAssignedIdentity <IUserAssignedIdentities>]`: User assigned identities dictionary
-    - `[(Any) <IUserAssignedIdentity>]`: This indicates any property can be added to this object.
-  - `[Tag <IUpdateSapVirtualInstanceRequestTags>]`: Gets or sets the Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 `INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
   - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.

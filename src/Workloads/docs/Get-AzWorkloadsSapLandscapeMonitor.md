@@ -14,8 +14,8 @@ Gets configuration values for Single Pane Of Glass for SAP monitor for the speci
 
 ### Get (Default)
 ```
-Get-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWorkloadsSapLandscapeMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -26,8 +26,8 @@ Get-AzWorkloadsSapLandscapeMonitor -InputObject <IWorkloadsIdentity> [-DefaultPr
 
 ### List
 ```
-Get-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWorkloadsSapLandscapeMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +90,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MonitorName
+### -Name
 Name of the SAP monitor resource.
 
 ```yaml

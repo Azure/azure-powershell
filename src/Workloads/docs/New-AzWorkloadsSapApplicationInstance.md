@@ -1,27 +1,33 @@
 ---
 external help file:
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssapvirtualinstance
+online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssapapplicationinstance
 schema: 2.0.0
 ---
 
-# New-AzWorkloadsSapVirtualInstance
+# New-AzWorkloadsSapApplicationInstance
 
 ## SYNOPSIS
-Creates a Virtual Instance for SAP solutions (VIS) resource
+Puts the SAP Application Server Instance resource.
+
+
+This will be used by service only.
+PUT by end user will return a Bad Request error.
 
 ## SYNTAX
 
 ```
-New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String>
- -ConfigurationType <SapConfigurationType> -Environment <SapEnvironmentType> -Location <String>
- -SapProduct <SapProductType> [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-ManagedResourceGroupName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+New-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
+ -SapVirtualInstanceName <String> -Location <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a Virtual Instance for SAP solutions (VIS) resource
+Puts the SAP Application Server Instance resource.
+
+
+This will be used by service only.
+PUT by end user will return a Bad Request error.
 
 ## EXAMPLES
 
@@ -64,21 +70,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigurationType
-The configuration Type.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapConfigurationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -86,36 +77,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Environment
-Defines the environment type - Production/Non Production.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of manage identity
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -139,28 +100,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedResourceGroupName
-Managed resource group name
+### -Name
+The name of SAP Application Server instance resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the Virtual Instances for SAP solutions resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: SapVirtualInstanceName
 
 Required: True
 Position: Named
@@ -200,11 +146,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SapProduct
-Defines the SAP Product type.
+### -SapVirtualInstanceName
+The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -232,21 +178,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-User assigned identities dictionary
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -298,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance
 
 ## NOTES
 

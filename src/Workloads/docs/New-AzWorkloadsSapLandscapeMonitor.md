@@ -12,32 +12,8 @@ Creates a SAP Landscape Monitor Dashboard for the specified subscription, resour
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
- [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
- [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
- -SapLandscapeMonitorParameter <ISapLandscapeMonitor> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzWorkloadsSapLandscapeMonitor -InputObject <IWorkloadsIdentity>
- -SapLandscapeMonitorParameter <ISapLandscapeMonitor> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzWorkloadsSapLandscapeMonitor -InputObject <IWorkloadsIdentity>
+New-AzWorkloadsSapLandscapeMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
  [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
  [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>] [-Confirm]
@@ -94,7 +70,7 @@ To construct, see NOTES section for GROUPINGLANDSCAPE properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitorSidMapping[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -110,7 +86,7 @@ To construct, see NOTES section for GROUPINGSAPAPPLICATION properties and create
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitorSidMapping[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -120,28 +96,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MonitorName
+### -Name
 Name of the SAP monitor resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -157,7 +117,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -167,28 +127,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SapLandscapeMonitorParameter
-configuration associated with SAP Landscape Monitor Dashboard.
-To construct, see NOTES section for SAPLANDSCAPEMONITORPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitor
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -204,7 +148,7 @@ To construct, see NOTES section for TOPMETRICSTHRESHOLD properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitorMetricThresholds[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -250,10 +194,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitor
-
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitor
@@ -274,35 +214,6 @@ To create the parameters described below, construct a hash table containing the 
 `GROUPINGSAPAPPLICATION <ISapLandscapeMonitorSidMapping[]>`: Gets or sets the list of Sap Applications to SID mappings.
   - `[Name <String>]`: Gets or sets the name of the grouping.
   - `[TopSid <String[]>]`: Gets or sets the list of SID's.
-
-`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
-  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
-  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
-  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[MonitorName <String>]`: Name of the SAP monitor resource.
-  - `[ProviderInstanceName <String>]`: Name of the provider instance.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`SAPLANDSCAPEMONITORPARAMETER <ISapLandscapeMonitor>`: configuration associated with SAP Landscape Monitor Dashboard.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]`: Gets or sets the list of landscape to SID mappings.
-    - `[Name <String>]`: Gets or sets the name of the grouping.
-    - `[TopSid <String[]>]`: Gets or sets the list of SID's.
-  - `[GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]`: Gets or sets the list of Sap Applications to SID mappings.
-  - `[TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>]`: Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-    - `[Green <Single?>]`: Gets or sets the threshold value for Green.
-    - `[Name <String>]`: Gets or sets the name of the threshold.
-    - `[Red <Single?>]`: Gets or sets the threshold value for Red.
-    - `[Yellow <Single?>]`: Gets or sets the threshold value for Yellow.
 
 `TOPMETRICSTHRESHOLD <ISapLandscapeMonitorMetricThresholds[]>`: Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
   - `[Green <Single?>]`: Gets or sets the threshold value for Green.

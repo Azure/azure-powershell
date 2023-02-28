@@ -14,22 +14,9 @@ Stops the SAP Central Services Instance.
 
 ### StopExpanded (Default)
 ```
-Stop-AzWorkloadsSapCentralInstance -CentralInstanceName <String> -ResourceGroupName <String>
- -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-SoftStopTimeoutSecond <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Stop
-```
-Stop-AzWorkloadsSapCentralInstance -CentralInstanceName <String> -ResourceGroupName <String>
- -SapVirtualInstanceName <String> -Body <IStopRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### StopViaIdentity
-```
-Stop-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> -Body <IStopRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String> -SapVirtualInstanceName <String>
+ [-SubscriptionId <String>] [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopViaIdentityExpanded
@@ -82,37 +69,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Stop SAP instance(s) request body.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IStopRequest
-Parameter Sets: Stop, StopViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -CentralInstanceName
-Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
-
-```yaml
-Type: System.String
-Parameter Sets: Stop, StopExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -134,13 +90,28 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-Parameter Sets: StopViaIdentity, StopViaIdentityExpanded
+Parameter Sets: StopViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+
+```yaml
+Type: System.String
+Parameter Sets: StopExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopExpanded
+Parameter Sets: StopExpanded
 Aliases:
 
 Required: True
@@ -180,7 +151,7 @@ The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopExpanded
+Parameter Sets: StopExpanded
 Aliases:
 
 Required: True
@@ -197,7 +168,7 @@ hard stop.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: StopExpanded, StopViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -212,7 +183,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopExpanded
+Parameter Sets: StopExpanded
 Aliases:
 
 Required: False
@@ -258,8 +229,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IStopRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
@@ -274,9 +243,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IStopRequest>`: Stop SAP instance(s) request body.
-  - `[SoftStopTimeoutSecond <Int64?>]`: This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop.
 
 `INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
   - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.

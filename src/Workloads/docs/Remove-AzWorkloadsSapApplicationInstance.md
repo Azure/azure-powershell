@@ -1,32 +1,40 @@
 ---
 external help file:
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/start-azworkloadssapapplicationserverinstance
+online version: https://learn.microsoft.com/powershell/module/az.workloads/remove-azworkloadssapapplicationinstance
 schema: 2.0.0
 ---
 
-# Start-AzWorkloadsSapApplicationServerInstance
+# Remove-AzWorkloadsSapApplicationInstance
 
 ## SYNOPSIS
-Starts the SAP Application Server Instance.
+Deletes the SAP Application Server Instance resource.
+
+
+This operation will be used by service only.
+Delete by end user will return a Bad Request error.
 
 ## SYNTAX
 
-### Start (Default)
+### Delete (Default)
 ```
-Start-AzWorkloadsSapApplicationServerInstance -ApplicationInstanceName <String> -ResourceGroupName <String>
+Remove-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
  -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentity
+### DeleteViaIdentity
 ```
-Start-AzWorkloadsSapApplicationServerInstance -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Starts the SAP Application Server Instance.
+Deletes the SAP Application Server Instance resource.
+
+
+This operation will be used by service only.
+Delete by end user will return a Bad Request error.
 
 ## EXAMPLES
 
@@ -53,21 +61,6 @@ Starts the SAP Application Server Instance.
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -ApplicationInstanceName
-The name of SAP Application Server instance resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Start
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -105,7 +98,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -115,8 +108,38 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of SAP Application Server instance resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -136,7 +159,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -151,7 +174,7 @@ The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -166,7 +189,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Delete
 Aliases:
 
 Required: False

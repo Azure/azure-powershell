@@ -19,7 +19,7 @@ You can delete the parent resource, which is the Virtual Instance for SAP soluti
 
 ### Delete (Default)
 ```
-Remove-AzWorkloadsSapCentralInstance -CentralInstanceName <String> -ResourceGroupName <String>
+Remove-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String>
  -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -79,21 +79,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CentralInstanceName
-Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -122,6 +107,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -19,15 +19,7 @@ Describe 'Invoke-AzWorkloadsSapSupportedSku' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Sap' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'SapViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'SapViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

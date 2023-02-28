@@ -1,38 +1,32 @@
 ---
 external help file:
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadssapapplicationserverinstance
+online version: https://learn.microsoft.com/powershell/module/az.workloads/stop-azworkloadssapapplicationinstance
 schema: 2.0.0
 ---
 
-# Get-AzWorkloadsSapApplicationServerInstance
+# Stop-AzWorkloadsSapApplicationInstance
 
 ## SYNOPSIS
-Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
+Stops the SAP Application Server Instance.
 
 ## SYNTAX
 
-### List (Default)
+### StopExpanded (Default)
 ```
-Get-AzWorkloadsSapApplicationServerInstance -ResourceGroupName <String> -SapVirtualInstanceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzWorkloadsSapApplicationServerInstance -ApplicationInstanceName <String> -ResourceGroupName <String>
- -SapVirtualInstanceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Stop-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
+ -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-SoftStopTimeoutSecond <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### StopViaIdentityExpanded
 ```
-Get-AzWorkloadsSapApplicationServerInstance -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Stop-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-SoftStopTimeoutSecond <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
+Stops the SAP Application Server Instance.
 
 ## EXAMPLES
 
@@ -60,15 +54,15 @@ Gets the SAP Application Server Instance corresponding to the Virtual Instance f
 
 ## PARAMETERS
 
-### -ApplicationInstanceName
-The name of SAP Application Server instance resource.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
-Parameter Sets: Get
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,7 +90,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: StopViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -106,13 +100,43 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of SAP Application Server instance resource.
+
+```yaml
+Type: System.String
+Parameter Sets: StopExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: StopExpanded
 Aliases:
 
 Required: True
@@ -127,10 +151,27 @@ The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: StopExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftStopTimeoutSecond
+This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing.
+Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e.
+hard stop.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,13 +182,44 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: StopExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -161,7 +233,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
 
 ## NOTES
 
