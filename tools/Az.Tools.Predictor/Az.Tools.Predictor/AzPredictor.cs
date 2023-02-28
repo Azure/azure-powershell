@@ -93,10 +93,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Task.Run(() =>
                     {
                         _settings = Settings.GetSettings();
-                        _azContext = new AzContext(_powerShellRuntime)
-                        {
-                            IsInternal = (_settings.SetAsInternal == true) ? true : false,
-                        };
+                        _azContext = new AzContext(_powerShellRuntime);
 
                         _azContext.UpdateContext();
                         // This will run the script in the right context.
