@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     {
         public static Rest.Azure.CloudException CreateFormattedException(this Rest.Azure.CloudException cloudException)
         {
+            // Test
             return new Rest.Azure.CloudException(
                 string.Format(
                     CultureInfo.InvariantCulture,
