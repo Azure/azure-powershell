@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspacePipelineJobObject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspacePipelineJobObject
 schema: 2.0.0
 ---
 
@@ -318,22 +318,22 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-JOB <IPipelineJobJobs>: Jobs construct the Pipeline Job.
+`JOB <IPipelineJobJobs>`: Jobs construct the Pipeline Job.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
 
-JOBINPUT <IPipelineJobInputs>: Inputs for the pipeline job.
+`JOBINPUT <IPipelineJobInputs>`: Inputs for the pipeline job.
   - `[(Any) <IJobInput>]`: This indicates any property can be added to this object.
 
-JOBOUTPUT <IPipelineJobOutputs>: Outputs for the pipeline job.
+`JOBOUTPUT <IPipelineJobOutputs>`: Outputs for the pipeline job.
   - `[(Any) <IJobOutput>]`: This indicates any property can be added to this object.
 
-PROPERTY <IResourceBaseProperties>: The asset property dictionary.
+`PROPERTY <IResourceBaseProperties>`: The asset property dictionary.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-SERVICEPROPERTY <IJobServiceProperties>: Additional properties to set on the endpoint.
+`SERVICEPROPERTY <IJobServiceProperties>`: Additional properties to set on the endpoint.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated.
+`TAG <IResourceBaseTags>`: Tag dictionary. Tags can be added, removed, and updated.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
