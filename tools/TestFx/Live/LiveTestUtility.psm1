@@ -388,7 +388,7 @@ function Clear-LiveTestResources {
         [string] $Name
     )
 
-    Invoke-LiveTestCommand -Command "Remove-AzResourceGroup -Name $Name -Force -AsJob"
+    Invoke-LiveTestCommand -Command "Remove-AzResourceGroup -Name $Name -Force -AsJob | Out-Null"
 }
 
 function ConvertToLiveTestJsonErrors {
