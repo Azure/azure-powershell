@@ -4,18 +4,17 @@
       "RequestUri": "/providers/Microsoft.Management/checkNameAvailability?api-version=2021-04-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"testMG3\",\r\n  \"type\": \"Microsoft.Management/managementGroups\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7e9f2a52-8864-4741-80f4-720eadc91c52"
+          "ba3325e1-87f3-410c-a200-12edaa9655ec"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.16002",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044",
+          "OSVersion/Microsoft.Windows.10.0.19045",
           "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
         ],
         "Content-Type": [
@@ -25,6 +24,7 @@
           "77"
         ]
       },
+      "RequestBody": "{\r\n  \"name\": \"testMG3\",\r\n  \"type\": \"Microsoft.Management/managementGroups\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westcentralus:f3e46b8e-59ae-4d96-932e-f69f5444ed7c"
+          "westus:7db72c7e-2cf7-413e-b266-c2adea2ec75c"
         ],
         "x-ba-restapi": [
           "0.0.0.0"
         ],
         "client-request-id": [
-          "f3e46b8e-59ae-4d96-932e-f69f5444ed7c"
+          "7db72c7e-2cf7-413e-b266-c2adea2ec75c"
         ],
         "request-id": [
-          "f3e46b8e-59ae-4d96-932e-f69f5444ed7c"
+          "7db72c7e-2cf7-413e-b266-c2adea2ec75c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -51,10 +51,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "f3e46b8e-59ae-4d96-932e-f69f5444ed7c"
+          "7db72c7e-2cf7-413e-b266-c2adea2ec75c"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220418T213350Z:f3e46b8e-59ae-4d96-932e-f69f5444ed7c"
+          "WESTUS:20230223T000513Z:7db72c7e-2cf7-413e-b266-c2adea2ec75c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -63,7 +63,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 18 Apr 2022 21:33:49 GMT"
+          "Thu, 23 Feb 2023 00:05:13 GMT"
         ],
         "Content-Length": [
           "109"
