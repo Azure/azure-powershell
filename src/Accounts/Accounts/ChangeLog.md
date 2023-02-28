@@ -22,6 +22,7 @@
 * Fixed the issue that errors related to WAM are thrown when it is not enabled. [#20871] [#20824]
 * Updated Azure.Core library to 1.28.0.
 * Fixed an issue that the helper message about missing modules shows up at the wrong time. [#19228]
+* Added a hint message for some resource creation cmdlets when there is another region which may reduce the costs.
 
 ## Version 2.11.2
 * Supported Web Account Manager on ARM64-based Windows systems. Fixed an issue where `Connect-AzAccount` failed with error "Unable to load DLL 'msalruntime_arm64'". [#20700]
