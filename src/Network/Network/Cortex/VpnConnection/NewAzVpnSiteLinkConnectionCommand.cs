@@ -8,6 +8,7 @@
     using Microsoft.WindowsAzure.Commands.Common;
     using System.Linq;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using System.Collections.Generic;
 
     [Cmdlet(
         VerbsCommon.New,
@@ -87,6 +88,13 @@
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The GatewayCustomBgpIpAddress of Vpngateway used in this link connection.")]
+        [ValidateNotNullOrEmpty]
+        public PSGatewayCustomBgpIpConfiguration[] VpnGatewayCustomBgpAddresses { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The connection mode for this link connection.")]
         [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
         public string VpnLinkConnectionMode { get; set; }
@@ -123,6 +131,16 @@
             if (!String.IsNullOrEmpty(this.VpnConnectionProtocolType))
             {
                 vpnSiteLinkConnection.VpnConnectionProtocolType = this.VpnConnectionProtocolType;
+            }
+
+            if (this.VpnGatewayCustomBgpAddresses != null)
+            {
+                vpnSiteLinkConnection.VpnGatewayCustomBgpAddresses = new List<PSGatewayCustomBgpIpConfiguration>();
+
+                foreach (var reqaddress in this.VpnGatewayCustomBgpAddresses)
+                {
+                    vpnSiteLinkConnection.VpnGatewayCustomBgpAddresses.Add(reqaddress);
+                }
             }
 
             //// Connection bandwidth

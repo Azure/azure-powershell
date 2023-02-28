@@ -83,6 +83,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "EgressNatRules", Target = ViewControl.Table)]
         public List<PSResourceId> EgressNatRules { get; set; }
 
+        public List<PSGatewayCustomBgpIpConfiguration> GatewayCustomBgpIpAddresses { get; set; }
+
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
         {
@@ -123,6 +125,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string EgressNatRulesText
         {
             get { return IngressNatRules == null ? string.Empty : JsonConvert.SerializeObject(EgressNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string GatewayCustomBgpIpAddressesText
+        {
+            get { return GatewayCustomBgpIpAddresses == null ? string.Empty : JsonConvert.SerializeObject(GatewayCustomBgpIpAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
