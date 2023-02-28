@@ -22,8 +22,10 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-SharedKey <String>] [-Peer <PSPeering>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>]
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
- [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
+ [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AsJob] [-ExpressRouteGatewayBypass]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -35,8 +37,10 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-SharedKey <String>] [-PeerId <String>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>]
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
- [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
+ [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AsJob] [-ExpressRouteGatewayBypass]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,13 +63,26 @@ The first command gets a virtual network gateway natRule named natRule1 that's t
 The second command gets a virtual network gateway natRule named natRule2 that's type is EgressSnat.
 The third command creates this new virtual Network gateway connection with Ingress and Egress NatRules.
 
+### Example 3 Add GatewayCustomBgpIpAddress  to virtual network gateway connection
+```powershell
+$LocalnetGateway = Get-AzLocalNetworkGateway -ResourceGroupName "PS_testing" -name "testLng"
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName PS_testing -ResourceName testGw
+$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw/ipConfigurations/default" -CustomBgpIpAddress "169.254.21.1"
+
+New-AzVirtualNetworkGatewayConnection -ResourceGroupName "PS_testing" -name "Conn" -location "eastus" -VirtualNetworkGateway1 $gateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -GatewayCustomBgpIpAddress $address -EnableBgp $true
+
+```
+The two command gets a local network gateway and virtual network gateway.
+The thrid command creates a AzGatewayCustomBgpIpConfigurationObject.
+The third command creates this new virtual Network gateway connection with GatewayCustomBgpIpAddress.
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +97,7 @@ Accept wildcard characters: False
 AuthorizationKey.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +112,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -110,7 +127,7 @@ Accept wildcard characters: False
 Virtual Network Gateway Connection Mode.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +142,7 @@ Accept wildcard characters: False
 Gateway connection protocol:IKEv1/IKEv2
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IKEv1, IKEv2
@@ -141,7 +158,7 @@ Accept wildcard characters: False
 Gateway connection type:IPsec/Vnet2Vnet/ExpressRoute/VPNClient
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IPsec, Vnet2Vnet, ExpressRoute, VPNClient
@@ -157,7 +174,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -172,7 +189,7 @@ Accept wildcard characters: False
 Dead Peer Detection Timeout of the connection in seconds.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +204,7 @@ Accept wildcard characters: False
 The list of egress  NAT rules that are associated with this Connection.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Type: PSResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -202,7 +219,23 @@ Accept wildcard characters: False
 Whether to establish a BGP session over a S2S VPN tunnel
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnablePrivateLinkFastPath
+Bypass the ExpressRoute gateway when accessing private-links.
+ExpressRoute FastPath (ExpressRouteGatewayBypass) must be enabled.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -217,22 +250,7 @@ Accept wildcard characters: False
 Whether to use accelerated virtual network access by bypassing gateway
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EnablePrivateLinkFastPath
-Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (ExpressRouteGatewayBypass) must be enabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +265,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -258,11 +276,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GatewayCustomBgpIpAddress
+The GatewayCustomBgpIpAddress of Virtual network gateway used in this connection.
+
+```yaml
+Type: PSGatewayCustomBgpIpConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -IngressNatRule
 The list of ingress NAT rules that are associated with this Connection.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Type: PSResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +310,7 @@ Accept wildcard characters: False
 A list of IPSec policies.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
+Type: PSIpsecPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -292,7 +325,7 @@ Accept wildcard characters: False
 local network gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+Type: PSLocalNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -307,7 +340,7 @@ Accept wildcard characters: False
 location.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -322,7 +355,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -337,7 +370,7 @@ Accept wildcard characters: False
 Peer
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPeering
+Type: PSPeering
 Parameter Sets: SetByResource
 Aliases:
 
@@ -352,7 +385,7 @@ Accept wildcard characters: False
 PeerId
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -367,7 +400,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -382,7 +415,7 @@ Accept wildcard characters: False
 RoutingWeight.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -397,7 +430,7 @@ Accept wildcard characters: False
 The Ipsec share key.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -410,11 +443,9 @@ Accept wildcard characters: False
 
 ### -Tag
 A hashtable which represents resource tags.
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -426,10 +457,10 @@ Accept wildcard characters: False
 ```
 
 ### -TrafficSelectorPolicy
-A list of Traffic Selector policies.
+A list of traffic selector policies.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
+Type: PSTrafficSelectorPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -444,7 +475,7 @@ Accept wildcard characters: False
 Whether to use PrivateIP for this S2S VPN tunnel
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -459,7 +490,7 @@ Accept wildcard characters: False
 Whether to use policy-based traffic selectors for a S2S connection
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -474,7 +505,7 @@ Accept wildcard characters: False
 First virtual network gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -489,7 +520,7 @@ Accept wildcard characters: False
 Second virtual network gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -505,7 +536,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -541,6 +572,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
 
+### Microsoft.Azure.Commands.Network.Models.PSGatewayCustomBgpIpConfiguration[]
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
@@ -548,7 +581,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzVirtualNetworkGatewayConnection](./Get-AzVirtualNetworkGatewayConnection.md)
 
 [Remove-AzVirtualNetworkGatewayConnection](./Remove-AzVirtualNetworkGatewayConnection.md)

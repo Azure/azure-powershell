@@ -16,7 +16,8 @@ Creates an Azure VpnSiteLinkConnection object.
 New-AzVpnSiteLinkConnection -Name <String> -VpnSiteLink <PSVpnSiteLink> [-SharedKey <SecureString>]
  [-ConnectionBandwidth <UInt32>] [-RoutingWeight <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
- [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-VpnLinkConnectionMode <String>]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
+ [-VpnGatewayCustomBgpAddresses <PSGatewayCustomBgpIpConfiguration[]>] [-VpnLinkConnectionMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -50,13 +51,68 @@ The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hu
 A VPN gateway will be created thereafter in the Virtual Hub.
 Once the gateway has been created, it is connected to the VpnSite using the New-AzVpnConnection command with 1 VpnSiteLinkConnections to the VpnSiteLink of the VpnSite.
 
+### Example 2 VpnGatewayCustomBgpAddresses
+```powershell
+$vpnSite = Get-AzVpnSite -ResourceGroupName PS_testing -Name testsite
+$vpnGateway = Get-AzVpnGateway -ResourceGroupName PS_testing -Name 196ddf92afae40e4b20edc32dfb48a63-eastus-gw
+
+$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.22.1"
+$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[1].IpconfigurationId -CustomBgpIpAddress "169.254.22.3"
+
+$vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name "testLinkConnection1" -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddresses $address,$address2 -EnableBgp
+
+New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
+
+RemoteVpnSite                  : Microsoft.Azure.Commands.Network.Models.PSResourceId
+SharedKey                      :
+VpnConnectionProtocolType      :
+ConnectionStatus               :
+EgressBytesTransferred         : 0
+IngressBytesTransferred        : 0
+IpsecPolicies                  : {}
+TrafficSelectorPolicies        : {}
+ConnectionBandwidth            : 0
+EnableBgp                      : False
+UseLocalAzureIpAddress         : False
+UsePolicyBasedTrafficSelectors : False
+ProvisioningState              : Succeeded
+VpnLinkConnections             : {testLinkConnection1}
+EnableInternetSecurity         : False
+RoutingConfiguration           : Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
+RoutingConfigurationText       : {
+                                   "AssociatedRouteTable": {
+                                     "Id":
+                                 "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualHubs/testhub/hubRouteTables/defaultRouteTable"
+                                   },
+                                   "PropagatedRouteTables": {
+                                     "Labels": [
+                                       "default"
+                                     ],
+                                     "Ids": [
+                                       {
+                                         "Id":
+                                 "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualHubs/testhub/hubRouteTables/defaultRouteTable"
+                                       }
+                                     ]
+                                   }
+                                 }
+Name                           : testConnection
+Etag                           : W/"7fca7d6b-98bd-4c46-97d2-d1da88375e82"
+Id                             : /subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/vpnGateways/196ddf92afae40e4b20edc32dfb48a63-eastus-gw/vpnCo
+                                 nnections/testConnection
+```
+
+The above will create AzGatewayCustomBgpIpConfigurationObject 1 VpnSiteLinks with VpnConnection in "PS_testing" resource group in Azure.
+Once connection is created, it is connected to the VpnSite using the New-AzVpnConnection command with 1 VpnSiteLinkConnections to the VpnSiteLink of the VpnSite. 
+This connection will use provided GatewayCustomBgpIpAddress for Bgp connection at VpnGateway side.
+
 ## PARAMETERS
 
 ### -ConnectionBandwidth
 The bandwidth that needs to be handled by this link connection in mbps.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +127,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -86,7 +142,7 @@ Accept wildcard characters: False
 The list of egress  NAT rules that are associated with this link Connection.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Type: PSResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +157,7 @@ Accept wildcard characters: False
 Enable BGP for this link connection
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +172,7 @@ Accept wildcard characters: False
 The list of ingress NAT rules that are associated with this link Connection.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Type: PSResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +187,7 @@ Accept wildcard characters: False
 IpSec Policy to be considered for this link connection.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy
+Type: PSIpsecPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -143,10 +199,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+VpnSiteLinkConnection Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +217,7 @@ Accept wildcard characters: False
 Routing Weight
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +232,7 @@ Accept wildcard characters: False
 The shared key required to set this link connection up.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +247,7 @@ Accept wildcard characters: False
 Use local azure ip address as source ip for this link connection.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +262,7 @@ Accept wildcard characters: False
 Use policy based traffic selectors for this link connection.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +277,7 @@ Accept wildcard characters: False
 Gateway connection protocol:IKEv1/IKEv2
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IKEv1, IKEv2
@@ -233,16 +289,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VpnGatewayCustomBgpAddresses
+The GatewayCustomBgpIpAddress of Vpngateway used in this link connection.
+
+```yaml
+Type: PSGatewayCustomBgpIpConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VpnLinkConnectionMode
 The connection mode for this link connection.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
-Default value: Default
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -250,7 +323,7 @@ Accept wildcard characters: False
 The vpn site link object to connect to.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnSiteLink
+Type: PSVpnSiteLink
 Parameter Sets: (All)
 Aliases: InputObject
 
@@ -268,6 +341,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSVpnSiteLink
 
+### Microsoft.Azure.Commands.Network.Models.PSGatewayCustomBgpIpConfiguration[]
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSVpnSiteLinkConnection
@@ -275,5 +350,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzVpnConnection](./New-AzVpnConnection.md)
