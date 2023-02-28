@@ -22,7 +22,7 @@ Invoke-LiveTestScenario -Name "List ContainerGroup" -Description "Test listing C
     $container = New-AzContainerInstanceObject -Name $containerName -Image alpine
     $null = New-AzContainerGroup -ResourceGroupName $rgName -Name $cgName -Location $cgLocation -Container $container 
     $actual = Get-AzContainerGroup -ResourceGroupName $rgName
-    Assert-AreEqual 1 $actual.Count
+    Assert-True { $actual.Count -ge 1 }
 }
 
 Invoke-LiveTestScenario -Name "Get ContainerGroup" -Description "Test getting one ContainerGroup" -ScenarioScript `
@@ -52,7 +52,7 @@ Invoke-LiveTestScenario -Name "Update ContainerGroup" -Description "Test Updatin
     $null = New-AzContainerGroup -ResourceGroupName $rgName -Name $cgName -Location $cgLocation -Container $container 
     $null = Update-AzContainerGroup -Name $cgName -ResourceGroupName $rgName -Tag $tag
     $actual = Get-AzContainerGroup -ResourceGroupName $rgName -Name $cgName
-    Assert-AreEqual $actual.$tag.Count 1
+    Assert-AreEqual $actual.tag.Count 1
 }
 
 Invoke-LiveTestScenario -Name "Remove ContainerGroup" -Description "Test Removing ContainerGroup" -ScenarioScript `

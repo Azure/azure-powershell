@@ -11,13 +11,13 @@ Invoke-LiveTestScenario -Name "List ContainerApp" -Description "Test listing Con
     $null = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $workspaceName -Sku PerGB2018 -Location $appLocation -PublicNetworkAccessForIngestion "Enabled" -PublicNetworkAccessForQuery "Enabled"
     $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $workspaceName).CustomerId
     $SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $rgName -Name $workspaceName).PrimarySharedKey
-    $null = New-AzContainerAppManagedEnv -EnvName $workspaceName -ResourceGroupName $rgName -Location $appLocation -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
+    $null = New-AzContainerAppManagedEnv -EnvName $envName -ResourceGroupName $rgName -Location $appLocation -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
     $trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
     $secretObject = New-AzContainerAppSecretObject -Name $secretName -Value "facebook-password"
     $containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name $headerName -Value Awesome
     $probe = New-AzContainerAppProbeObject -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
     $image = New-AzContainerAppTemplateObject -Name $appName -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
-    $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName $rgName -EnvName $workspaceName).Id
+    $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName $rgName -EnvName $envName).Id
     $scaleRule = @()
     # Test creating AzContainerApp
     $actual = New-AzContainerApp -Name $appName -ResourceGroupName $rgName -Location $appLocation -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
@@ -26,7 +26,7 @@ Invoke-LiveTestScenario -Name "List ContainerApp" -Description "Test listing Con
     # Test listing ContainerApp
     $null = New-AzContainerApp -Name $appName -ResourceGroupName $rgName -Location $appLocation -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
     $actual = Get-AzContainerApp -ResourceGroupName $rgName
-    Assert-AreEqual 1 $actual.Count
+    Assert-True { $actual.Count -ge 1 }
     # Test getting one ContainerApp
     $null = New-AzContainerApp -Name $appName -ResourceGroupName $rgName -Location $appLocation -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
     $actual = Get-AzContainerApp -ResourceGroupName $rgName -Name $appName

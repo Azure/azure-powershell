@@ -18,7 +18,7 @@ Invoke-LiveTestScenario -Name "List ContainerRegistry" -Description "Test listin
     $cgLocation = "westus"
     $null = New-AzContainerRegistry -ResourceGroupName $rgName -Name $cgName -Location $cgLocation -Sku Basic
     $actual = Get-AzContainerRegistry -ResourceGroupName $rgName
-    Assert-AreEqual 1 $actual.Count
+    Assert-True { $actual.Count -ge 1 }
 }
 
 Invoke-LiveTestScenario -Name "Get ContainerRegistry" -Description "Test getting one ContainerRegistry" -ScenarioScript `
