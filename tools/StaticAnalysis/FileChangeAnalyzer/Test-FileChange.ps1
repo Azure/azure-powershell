@@ -30,6 +30,10 @@ $UpdatedChangeLogs = @{}
 
 ForEach ($FilePath In ($FilesChanged | Where-Object { $_.EndsWith("ChangeLog.md") }))
 {
+    If ($FilePath -eq "ChangeLog.md") # Skip for the ChangeLog.md at root folder
+    {
+        continue
+    }
     $ModuleName = $FilePath.Split("/")[1]
     $UpdatedChangeLogs.Add($ModuleName, $FilePath)
 }
