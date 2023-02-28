@@ -33,7 +33,7 @@ Update-AzIotHubDeviceTwin [-ResourceId] <String> [-DeviceId] <String> [-Tag <Has
 ```
 
 ## DESCRIPTION
-Updates or replaces a device twin. See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins for more information.
+Updates or replaces a device twin. See https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins for more information.
 
 ## EXAMPLES
 

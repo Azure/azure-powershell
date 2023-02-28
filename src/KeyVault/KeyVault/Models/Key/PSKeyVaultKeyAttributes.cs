@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         internal PSKeyVaultKeyAttributes(Track2Sdk.KeyVaultKey key)
         {
             Enabled = key.Properties.Enabled;
-            // see https://docs.microsoft.com/en-us/dotnet/standard/datetime/converting-between-datetime-and-offset#conversions-from-datetimeoffset-to-datetime
+            // see https://learn.microsoft.com/en-us/dotnet/standard/datetime/converting-between-datetime-and-offset#conversions-from-datetimeoffset-to-datetime
             // time returned by key vault are UTC
             Expires = key.Properties.ExpiresOn?.UtcDateTime;
             NotBefore = key.Properties.NotBefore?.UtcDateTime;

@@ -544,7 +544,7 @@ function Test-EnableEncryptionAtHost {
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = 'eastus'
-    # not all vmSize support EnableEncryptionAtHost. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption 
+    # not all vmSize support EnableEncryptionAtHost. For more information, see: https://learn.microsoft.com/azure/aks/enable-host-encryption 
     $nodeVmSize = "Standard_D2_v5"
 
     try {

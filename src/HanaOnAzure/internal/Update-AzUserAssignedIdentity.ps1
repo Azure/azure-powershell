@@ -48,7 +48,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/update-azuserassignedidentity
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/update-azuserassignedidentity
 #>
 function Update-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity])]

@@ -130,7 +130,7 @@ FromPrefix           ToPrefix
 "container3"        "container3-0"   (restores whole container3)
                     
 Note: The ranges shouldn't overlap with each other.
-Reference: https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
+Reference: https://learn.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
 
 ## PARAMETERS
 

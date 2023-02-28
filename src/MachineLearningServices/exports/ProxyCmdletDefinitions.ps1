@@ -8404,7 +8404,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersionComponentSpec]))]
     [System.Collections.Hashtable]
-    # Defines Component definition details.<see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    # Defines Component definition details.<see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
     ${ComponentSpec},
 
     [Parameter()]
@@ -9760,7 +9760,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
-    # Name of the image that will be used for the environment.<seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
+    # Name of the image that will be used for the environment.<seealso href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
     ${Image},
 
     [Parameter()]

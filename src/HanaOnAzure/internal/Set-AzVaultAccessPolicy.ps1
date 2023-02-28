@@ -43,7 +43,7 @@ ACCESSPOLICY <IAccessPolicyEntry[]>: An array of 0 to 16 identities that have ac
   [PermissionSecret <SecretPermissions[]>]: Permissions to secrets
   [PermissionStorage <StoragePermissions[]>]: Permissions to storage accounts
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/set-azvaultaccesspolicy
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/set-azvaultaccesspolicy
 #>
 function Set-AzVaultAccessPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.IVaultAccessPolicyParameters])]

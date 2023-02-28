@@ -533,7 +533,7 @@ Accept wildcard characters: False
 
 ### -RequestedServiceObjectiveName
 Specifies the name of the service objective to assign to the database. For information about
-service objectives, see [Azure SQL Database Service Tiers and Performance Levels](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases)
+service objectives, see [Azure SQL Database Service Tiers and Performance Levels](https://learn.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases)
 in the Microsoft Developer Network Library.
 
 ```yaml
@@ -711,4 +711,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Suspend-AzSqlDatabase](./Suspend-AzSqlDatabase.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

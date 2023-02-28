@@ -48,7 +48,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/get-azuserassignedidentity
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/get-azuserassignedidentity
 #>
 function Get-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity])]
@@ -234,7 +234,7 @@ dolauli-instance-hana Microsoft.HanaOnAzure/sapMonitors/providerInstances
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapmonitorproviderinstance
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapmonitorproviderinstance
 #>
 function New-AzSapMonitorProviderInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance])]
@@ -415,7 +415,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azuserassignedidentity
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azuserassignedidentity
 #>
 function New-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity])]
@@ -590,7 +590,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/remove-azuserassignedidentity
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/remove-azuserassignedidentity
 #>
 function Remove-AzUserAssignedIdentity {
 [OutputType([System.Boolean])]
@@ -748,7 +748,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/set-azuserassignedidentity
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/set-azuserassignedidentity
 #>
 function Set-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity])]
@@ -918,7 +918,7 @@ ACCESSPOLICY <IAccessPolicyEntry[]>: An array of 0 to 16 identities that have ac
   [PermissionSecret <SecretPermissions[]>]: Permissions to secrets
   [PermissionStorage <StoragePermissions[]>]: Permissions to storage accounts
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/set-azvaultaccesspolicy
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/set-azvaultaccesspolicy
 #>
 function Set-AzVaultAccessPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001.IVaultAccessPolicyParameters])]
@@ -1095,7 +1095,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/update-azuserassignedidentity
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/update-azuserassignedidentity
 #>
 function Update-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity])]
