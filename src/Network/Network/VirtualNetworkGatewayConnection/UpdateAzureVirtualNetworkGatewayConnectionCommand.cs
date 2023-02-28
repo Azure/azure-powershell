@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The GatewayCustomBgpIpAddress of Virtual network gateway used in this connection.")]
-        [ValidateNotNullOrEmpty]
+        [AllowEmptyCollection]
         public PSGatewayCustomBgpIpConfiguration[] GatewayCustomBgpIpAddress { get; set; }
 
         [Parameter(
