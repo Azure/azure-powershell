@@ -183,12 +183,18 @@ function Invoke-LiveTestCommand {
 
     do {
         try {
-            Write-Host "##[section]Start to execute the command `"$Command`"" -ForegroundColor Green
-            Write-Host "##[command]The command `"$Command`" is running" -ForegroundColor Cyan
+            Write-Host "##[section]Start to execute the command `"$Command`"." -ForegroundColor Green
+            Write-Host "##[command]The command `"$Command`" is running." -ForegroundColor Cyan
 
             $cmdResult = Invoke-Expression -Command $Command -ErrorAction Stop
 
-            Write-Host "##[section]Successfully executed the command `"$Command`"" -ForegroundColor Green
+            if ($LASTEXITCODE -eq 0) {
+                Write-Host "##[section]Successfully executed the command `"$Command`"" -ForegroundColor Green
+            }
+            else {
+                throw "Error occurred when executing the command `"$Command`"."
+            }
+
             $cmdResult
             break
         }
@@ -280,14 +286,19 @@ function Invoke-LiveTestScenario {
 
         do {
             try {
-                $sPrefs = @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None"))
+                $prefs = @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None"))
                 if ($snrRetryCount -eq $script:ScenarioMaxRetryCount) {
                     $prefs += [psvariable]::new("DebugPreference", "Continue")
                 }
 
                 $ScenarioScript.InvokeWithContext($null, $prefs, $snrResourceGroup)
 
-                Write-Host "##[section]Successfully executed the live scenario `"$Name`"." -ForegroundColor Green
+                if ($LASTEXITCODE -eq 0) {
+                    Write-Host "##[section]Successfully executed the live scenario `"$Name`"." -ForegroundColor Green
+                }
+                else {
+                    throw "Error occurred when executing the live scenario `"$Name`"."
+                }
                 break
             }
             catch {
@@ -377,7 +388,7 @@ function Clear-LiveTestResources {
         [string] $Name
     )
 
-    Invoke-LiveTestCommand -Command "Remove-AzResourceGroup -Name $Name -Force"
+    Invoke-LiveTestCommand -Command "Remove-AzResourceGroup -Name $Name -Force -AsJob"
 }
 
 function ConvertToLiveTestJsonErrors {

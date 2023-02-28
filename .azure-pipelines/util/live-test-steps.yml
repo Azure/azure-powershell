@@ -6,7 +6,7 @@ parameters:
 
 jobs:
 - job: ${{ parameters.name }}
-  timeoutInMinutes: 360
+  timeoutInMinutes: 600
   pool:
     vmImage: ${{ parameters.vmImage }}
 
