@@ -93,8 +93,8 @@ $liveScenarios | ForEach-Object {
 
 Write-Host "##[section]Waiting for all cleanup jobs to be completed." -ForegroundColor Green
 while (Get-Job -State Running) {
-    Write-Host "[section]Waiting for 10 seconds ..." -ForegroundColor Green
-    Start-Sleep -Seconds 10
+    Write-Host "[section]Waiting for 30 seconds ..." -ForegroundColor Green
+    Start-Sleep -Seconds 30
 }
 Write-Host "##[section]All cleanup jobs are completed." -ForegroundColor Green
 
