@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzReservationOrderId'))
 
 Describe 'Get-AzReservationOrderId' {
     It 'Get' {
-        $response = Get-AzReservationOrderId -SubscriptionId 'eef82110-c91b-4395-9420-fcfcbefc5a47'
+        $response = Get-AzReservationOrderId -SubscriptionId '10000000-aaaa-bbbb-cccc-100000000005'
         $response | Should -Not -Be $null
         $response.Count | Should -Be 1
         $response.Type | Should -Be "Microsoft.Capacity/AppliedReservations"

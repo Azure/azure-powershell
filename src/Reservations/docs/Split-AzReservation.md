@@ -28,7 +28,6 @@ Split-AzReservation -ReservationOrderId "c615c897-aaaa-4123-8527-c42cc0da41e0" -
 
 ```
 
-```output
 Location   ReservationOrderId/ReservationId                                             Sku           State     BenefitStartTime     ExpiryDate           LastUpdatedDateTime  SkuDescription
 --------   --------------------------------                                             ---           -----     ----------------     ----------           -------------------  --------------
 westeurope c615c897-aaaa-4123-8527-c42cc0da41e0/f4f0f24c-30d4-4f5d-823c-4a9e1e18b381/2  Standard_B1ls Succeeded 7/7/2022 10:55:12 PM 7/7/2025 12:00:00 AM 7/7/2022 11:21:51 PM Reserved VM Ins…
@@ -140,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 
 ## NOTES
 

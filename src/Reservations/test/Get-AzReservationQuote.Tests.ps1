@@ -27,7 +27,7 @@ function ExecuteTestCases([object]$response) {
 
 Describe 'Get-AzReservationQuote' {
     It 'CalculateExpanded' {
-        $response = Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47' -DisplayName 'TestVm' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
+        $response = Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/30000000-aaaa-bbbb-cccc-100000000005' -DisplayName 'TestVm' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
         ExecuteTestCases($response)
     }
 
@@ -35,7 +35,7 @@ Describe 'Get-AzReservationQuote' {
         $reservationToPurchase = @{
             AppliedScopeType = "Shared"
             BillingPlan = "Upfront"
-            billingScopeId = '/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47' 
+            billingScopeId = '/subscriptions/30000000-aaaa-bbbb-cccc-100000000005' 
             DisplayName = "Testvm"
             Location = "westus"
             Quantity = 1

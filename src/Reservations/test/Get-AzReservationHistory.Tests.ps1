@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzReservationHistory'))
 
 Describe 'Get-AzReservationHistory' {
     It 'Get' {
-        $response = Get-AzReservationHistory -ReservationOrderId "e130ad2f-434a-48b4-91a4-658beb020608" -ReservationId "9672c47c-7b89-4d5a-88e2-cf0a9d29f681"
+        $response = Get-AzReservationHistory -ReservationOrderId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationId "50000000-aaaa-bbbb-cccc-100000000003"
     
         $response | Should -Not -Be $null
         $response.Count | Should -BeGreaterThan 0
@@ -24,7 +24,7 @@ Describe 'Get-AzReservationHistory' {
         {   
             $version = $response.Count - $i
             $response[$i].Location | Should -Be "westeurope"
-            $response[$i].Id | Should -Be "/providers/microsoft.capacity/reservationOrders/e130ad2f-434a-48b4-91a4-658beb020608/reservations/9672c47c-7b89-4d5a-88e2-cf0a9d29f681/revisions/$version"
+            $response[$i].Id | Should -Be "/providers/microsoft.capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001/reservations/50000000-aaaa-bbbb-cccc-100000000003/revisions/$version"
             $response[$i].Name | Should -Be "$version"
             $response[$i].SkuName | Should -Be "Standard_B1ls"
             $response[$i].ProvisioningState | Should -Not -Be $null
@@ -34,7 +34,7 @@ Describe 'Get-AzReservationHistory' {
             $response[$i].ReservedResourceType | Should -Be "VirtualMachines"
             $response[$i].InstanceFlexibility | Should -Be "On"
             $response[$i].AppliedScopeType | Should -Be "Single"
-            $response[$i].AppliedScopePropertySubscriptionId | Should -Be "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
+            $response[$i].AppliedScopePropertySubscriptionId | Should -Be "/subscriptions/10000000-aaaa-bbbb-cccc-100000000001"
         }
     }
 }

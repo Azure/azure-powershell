@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzReservationAvailableScope
 
 ## SYNOPSIS
-Get Available Scopes for `Reservation`.\n
+Check whether the scopes from request is valid for `Reservation`.\n
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Get-AzReservationAvailableScope -InputObject <IReservationsIdentity> [-Scope <St
 ```
 
 ## DESCRIPTION
-Get Available Scopes for `Reservation`.\n
+Check whether the scopes from request is valid for `Reservation`.\n
 
 ## EXAMPLES
 
@@ -52,7 +52,6 @@ Scope                                               Valid
 -----                                               -----
 /subscriptions/3f0487fd-27ca-4f9c-8a23-000770724b1b True
 ```
-
 List available reservation scope
 
 ## PARAMETERS
@@ -77,7 +76,7 @@ Available scope
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAvailableScopeRequest
 Parameter Sets: Available, AvailableViaIdentity
 Aliases:
 
@@ -135,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationId
-Id of the Reservation Item
+Id of the reservation item
 
 ```yaml
 Type: System.String
@@ -215,13 +214,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAvailableScopeRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ISubscriptionScopeProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISubscriptionScopeProperties
 
 ## NOTES
 
@@ -232,12 +231,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BODY <IAvailableScopeRequest>`: Available scope
+BODY <IAvailableScopeRequest>: Available scope
   - `[Scope <String[]>]`: 
 
-`INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
+INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
+  - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 
