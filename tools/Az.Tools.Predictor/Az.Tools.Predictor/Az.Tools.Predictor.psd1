@@ -67,7 +67,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated instrumental key'
+        ReleaseNotes = '* Data collection mechnanism updated'
 
         # Prerelease string of this module
         # Prerelease = ''
