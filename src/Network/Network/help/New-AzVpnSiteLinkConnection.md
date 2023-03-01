@@ -112,7 +112,7 @@ This connection will use provided GatewayCustomBgpIpAddress for Bgp connection a
 The bandwidth that needs to be handled by this link connection in mbps.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 The list of egress  NAT rules that are associated with this link Connection.
 
 ```yaml
-Type: PSResourceId[]
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Enable BGP for this link connection
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 The list of ingress NAT rules that are associated with this link Connection.
 
 ```yaml
-Type: PSResourceId[]
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 IpSec Policy to be considered for this link connection.
 
 ```yaml
-Type: PSIpsecPolicy
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 VpnSiteLinkConnection Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 Routing Weight
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 The shared key required to set this link connection up.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +247,7 @@ Accept wildcard characters: False
 Use local azure ip address as source ip for this link connection.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +262,7 @@ Accept wildcard characters: False
 Use policy based traffic selectors for this link connection.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +277,7 @@ Accept wildcard characters: False
 Gateway connection protocol:IKEv1/IKEv2
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IKEv1, IKEv2
@@ -293,7 +293,7 @@ Accept wildcard characters: False
 The GatewayCustomBgpIpAddress of Vpngateway used in this link connection.
 
 ```yaml
-Type: PSGatewayCustomBgpIpConfiguration[]
+Type: Microsoft.Azure.Commands.Network.Models.PSGatewayCustomBgpIpConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -308,7 +308,7 @@ Accept wildcard characters: False
 The connection mode for this link connection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -323,7 +323,7 @@ Accept wildcard characters: False
 The vpn site link object to connect to.
 
 ```yaml
-Type: PSVpnSiteLink
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnSiteLink
 Parameter Sets: (All)
 Aliases: InputObject
 
