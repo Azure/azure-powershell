@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Maintenance cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Maintenance, please visit the following: https://docs.microsoft.com/azure/maintenance/'
+For more information on Maintenance, please visit the following: https://learn.microsoft.com/azure/maintenance/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

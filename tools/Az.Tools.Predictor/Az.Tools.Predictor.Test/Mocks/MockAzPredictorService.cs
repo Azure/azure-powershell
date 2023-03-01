@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem.Prediction;
@@ -71,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
             }
         }
 
-        /// <inheritdoc/>
-        public override bool IsSupportedCommand(string cmd) => IsRecognizedCommand(cmd);
+        // <inheritdoc/>
+        // public override bool IsSupportedCommand(string cmd) => IsRecognizedCommand(cmd) || cmd.IndexOf(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase) > 0;
 
         /// <inheritdoc/>
         public override Task<bool?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)

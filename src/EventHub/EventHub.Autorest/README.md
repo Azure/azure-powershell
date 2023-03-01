@@ -343,6 +343,15 @@ directive:
     set:
       property-name: MessageRetentionInDays
 
+  - where:
+      verb: New
+      subject: EventHub
+      parameter-name: MessageRetentionInDays
+    set:
+      breaking-change:
+        change-description: -MessageRetentionInDays would be deprecated and would be replaced by -RetentionTimeInHours
+        deprecated-by-version: 4.0.0
+
 # Cluster
   - where:
       verb: New

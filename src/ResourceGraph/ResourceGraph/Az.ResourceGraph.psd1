@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Azure Resource Graph cmdlets in Windows PowerShell and PowerShell Core. Allows querying resources with a powerful query language.
 
-For more information on Resource Graph, please visit the following: https://docs.microsoft.com/azure/governance/resource-graph/'
+For more information on Resource Graph, please visit the following: https://learn.microsoft.com/azure/governance/resource-graph/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

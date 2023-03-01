@@ -95,6 +95,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).ContainerName, global::System.Convert.ToString);
             }
+            if (content.Contains("VirtualNetworkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).VirtualNetworkName = (string) content.GetValueForProperty("VirtualNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).VirtualNetworkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).SubnetName = (string) content.GetValueForProperty("SubnetName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).SubnetName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -135,6 +143,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
             if (content.Contains("ContainerName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).ContainerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VirtualNetworkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).VirtualNetworkName = (string) content.GetValueForProperty("VirtualNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).VirtualNetworkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).SubnetName = (string) content.GetValueForProperty("SubnetName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).SubnetName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

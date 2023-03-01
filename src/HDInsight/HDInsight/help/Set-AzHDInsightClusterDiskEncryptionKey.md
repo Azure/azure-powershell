@@ -232,4 +232,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Customer-managed key disk encryption](https://docs.microsoft.com/azure/hdinsight/disk-encryption)
+[Customer-managed key disk encryption](https://learn.microsoft.com/azure/hdinsight/disk-encryption)

@@ -22,6 +22,8 @@
 ## Upcoming Release
 * Added breaking change message for `New-AzVmss`.
 * Added `-PerformancePlus` parameter to `New-AzDiskConfig`
+* Added 'MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand
+* Added support for 'latest' in 'Get-AzvmImage' '-Version' parameter
 * Added `CompletionPercent` property to PSDisk object.
 * Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 
   Updated the `openSUSE-Leap` and `SLES` aliases to point to an image that actually exists and updated the alias names to be descriptive and versioned.

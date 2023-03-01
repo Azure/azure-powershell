@@ -67,7 +67,7 @@ INPUTOBJECT <IWindowsIotServicesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group that contains the Windows IoT Device Service.
   [SubscriptionId <String>]: The subscription identifier.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.windowsiotservices/get-azwindowsiotservicesdevice
+https://learn.microsoft.com/en-us/powershell/module/az.windowsiotservices/get-azwindowsiotservicesdevice
 #>
 function Get-AzWindowsIotServicesDevice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService])]
@@ -223,7 +223,7 @@ eastus   wsi-t03 Microsoft.WindowsIoT/DeviceServices "6a00eee9-0000-0700-0000-5f
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.windowsiotservices/new-azwindowsiotservicesdevice
+https://learn.microsoft.com/en-us/powershell/module/az.windowsiotservices/new-azwindowsiotservicesdevice
 #>
 function New-AzWindowsIotServicesDevice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService])]
@@ -429,7 +429,7 @@ INPUTOBJECT <IWindowsIotServicesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group that contains the Windows IoT Device Service.
   [SubscriptionId <String>]: The subscription identifier.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.windowsiotservices/remove-azwindowsiotservicesdevice
+https://learn.microsoft.com/en-us/powershell/module/az.windowsiotservices/remove-azwindowsiotservicesdevice
 #>
 function Remove-AzWindowsIotServicesDevice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService])]
@@ -598,7 +598,7 @@ INPUTOBJECT <IWindowsIotServicesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group that contains the Windows IoT Device Service.
   [SubscriptionId <String>]: The subscription identifier.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.windowsiotservices/update-azwindowsiotservicesdevice
+https://learn.microsoft.com/en-us/powershell/module/az.windowsiotservices/update-azwindowsiotservicesdevice
 #>
 function Update-AzWindowsIotServicesDevice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService])]
