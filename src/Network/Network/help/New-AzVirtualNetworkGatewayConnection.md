@@ -219,7 +219,7 @@ Accept wildcard characters: False
 Whether to establish a BGP session over a S2S VPN tunnel
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
