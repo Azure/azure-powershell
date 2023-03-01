@@ -50,7 +50,10 @@ namespace Microsoft.Azure.Commands.Sql.Common
             //
             foreach (string identity in userAssignedIdentities)
             {
-                identityDict.Add(identity, new DatabaseUserIdentity());
+                if (!identityDict.ContainsKey(identity))
+                {
+                    identityDict.Add(identity, new DatabaseUserIdentity());
+                }
             }
 
             identityResult = new DatabaseIdentity()
