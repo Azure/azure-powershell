@@ -1528,8 +1528,16 @@ function Test-VpnConnectionPacketCapture
      }
      finally
      {
+		# Delete VpnConnection using Remove-AzVpnConnection
+		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
+		Assert-AreEqual $True $delete
+
 		# Delete VpnGateway using Remove-AzVpnGateway
 		$delete = Remove-AzVpnGateway -Name $VpnGatewayName -ResourceGroupName $rgName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete VpnSite using Remove-AzVpnSite
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
 		Assert-AreEqual $True $delete
 
 		# Delete Virtual hub

@@ -136,7 +136,7 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
       Assert-AreEqual $localnetGateway.BgpSettings.PeerWeight $actual.BgpSettings.PeerWeight
 
       # Create AzGatewayCustomBgpIpConfigurationObject
-      $address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vnetGateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.21.5"
+      $address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vnetGateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.21.25"
 
       # Create & Get VirtualNetworkGatewayConnection
       $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $true -GatewayCustomBgpIpAddress $address
