@@ -133,15 +133,6 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ip Addres Parameter Set is only supported for resources of type &quot;Microsoft.Compute/virtualMachines&quot;..
-        /// </summary>
-        internal static string IpAddressNotAzureVM {
-            get {
-                return ResourceManager.GetString("IpAddressNotAzureVM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to KeysDestinationFolder can&apos;t be used in conjunction with PublicKeyFile or PrivateKeyFile. All generated keys are saved in the same directory as provided keys..
         /// </summary>
         internal static string KeysDestinationFolderWithKeys {
