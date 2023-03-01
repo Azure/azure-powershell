@@ -164,11 +164,11 @@ Invoke-LiveTestScenario -Name "Delete a ssh key" -Description "Test deleting a s
 
     New-AzSshKey -ResourceGroupName $rgName -Name $key1Name
     Remove-AzSshKey -ResourceGroupName $rgName -name $key1Name
-    $actual = Get-AzSshKey -ResourceGroupName $rgName -Name $key1Name
+    $actual = Get-AzSshKey -ResourceGroupName $rgName -Name $key1Name -ErrorAction SilentlyContinue
     Assert-Null $actual
 
     $key2 = New-AzSshKey -ResourceGroupName $rgName -Name $key2Name
     Remove-AzSshKey -ResourceId $key2.Id
-    $actual = Get-AzSshKey -ResourceGroupName $rgName -Name $key2Name
+    $actual = Get-AzSshKey -ResourceGroupName $rgName -Name $key2Name -ErrorAction SilentlyContinue
     Assert-Null $actual
 }

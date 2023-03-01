@@ -183,12 +183,12 @@ function Invoke-LiveTestCommand {
 
     do {
         try {
-            Write-Host "##[section]Start to execute the command `"$Command`"." -ForegroundColor Green
+            Write-Host "##[section]Start executing the command `"$Command`"." -ForegroundColor Green
             Write-Host "##[command]The command `"$Command`" is running." -ForegroundColor Cyan
 
             $cmdResult = Invoke-Expression -Command $Command -ErrorAction Stop
 
-            Write-Host "##[section]Successfully executed the command `"$Command`"" -ForegroundColor Green
+            Write-Host "##[section]Finish executing the command `"$Command`"" -ForegroundColor Green
 
             $cmdResult
             break
@@ -243,7 +243,7 @@ function Invoke-LiveTestScenario {
         throw "Error occurred when initializing live tests. The csv file was not found."
     }
 
-    Write-Host "##[group]Start to execute the live scenario `"$Name`"." -ForegroundColor Green
+    Write-Host "##[group]Start executing the live scenario `"$Name`"." -ForegroundColor Green
 
     try {
         $snrCsvData = [PSCustomObject]@{
@@ -267,13 +267,13 @@ function Invoke-LiveTestScenario {
                 $snrResourceGroupLocation = $ResourceGroupLocation
             }
 
-            Write-Host "##[section]Start to create a resource group." -ForegroundColor Green
+            Write-Host "##[section]Start creating a resource group." -ForegroundColor Green
             Write-Host "##[section]Resource group name: $snrResourceGroupName" -ForegroundColor Green
             Write-Host "##[section]Resource group location: $snrResourceGroupLocation" -ForegroundColor Green
 
             $snrResourceGroup = New-LiveTestResourceGroup -Name $snrResourceGroupName -Location $snrResourceGroupLocation
 
-            Write-Host "##[section]Successfully created the resource group." -ForegroundColor Green
+            Write-Host "##[section]Finish creating the resource group." -ForegroundColor Green
         }
 
         $snrRetryCount = 0
@@ -288,12 +288,8 @@ function Invoke-LiveTestScenario {
 
                 $ScenarioScript.InvokeWithContext($null, $prefs, $snrResourceGroup)
 
-                if ($LASTEXITCODE -eq 0) {
-                    Write-Host "##[section]Successfully executed the live scenario `"$Name`"." -ForegroundColor Green
-                }
-                else {
-                    throw "Error occurred when executing the live scenario `"$Name`"."
-                }
+                Write-Host "##[section]Finish executing the live scenario `"$Name`"." -ForegroundColor Green
+
                 break
             }
             catch {
@@ -302,18 +298,6 @@ function Invoke-LiveTestScenario {
                 $snrErrorDetails = $snrErrorMessage
 
                 $snrInvocationInfo = $snrErrorRecord.InvocationInfo
-
-                Write-Host "##[error]Error Object:" -ForegroundColor Red
-                $_ | Format-List * -Force
-
-                Write-Host "##[error]Exception Object:" -ForegroundColor Red
-                $_.Exception.InnerException | Format-List * -Force
-
-                Write-Host "##[error]Error Record:" -ForegroundColor Red
-                $snrErrorRecord | Format-List * -Force
-
-                Write-Host "##[error]Invocation Info:" -ForegroundColor Red
-                $snrInvocationInfo | Format-List * -Force
 
                 if ($null -ne $snrInvocationInfo) {
                     $snrScriptName = Split-Path -Path $snrInvocationInfo.ScriptName -Leaf -ErrorAction SilentlyContinue
@@ -362,7 +346,7 @@ function Invoke-LiveTestScenario {
 
         if (!$NoResourceGroup.IsPresent -and $null -ne $snrResourceGroup) {
             try {
-                Write-Host "##[section]Start to clean up the resource group `"$snrResourceGroupName`"." -ForegroundColor Green
+                Write-Host "##[section]Start cleaning up the resource group `"$snrResourceGroupName`"." -ForegroundColor Green
                 Clear-LiveTestResources -Name $snrResourceGroupName
             }
             catch {
