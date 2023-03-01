@@ -18,9 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core to 1.28.0.
 
 ## Version 3.0.1
 * Fixed bug in `Get-AzContainerRegistryTag` to show correct tags [#20528]
+
 ## Version 3.0.0
 * Updated parameter types from bool to bool? for `Update-AzContainerRegistryRepository` [#17857]
     - `ReadEnabled`
