@@ -1003,7 +1003,7 @@ WEBHOOK <IWebhookNotification[]>: the collection of webhook notifications.
     [(Any) <String>]: This indicates any property can be added to this object.
   [ServiceUri <String>]: the service address to receive the notification.
 .Link
-https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleNotificationObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleNotificationObject
 #>
 function New-AzAutoscaleNotificationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification])]
@@ -1148,7 +1148,7 @@ RULE <IScaleRule[]>: the collection of rules that provide the triggers and param
   [MetricTriggerMetricResourceLocation <String>]: the location of the resource the rule monitors.
   [ScaleActionValue <String>]: the number of instances that are involved in the scaling action. This value must be 1 or greater. The default value is 1.
 .Link
-https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleProfileObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleProfileObject
 #>
 function New-AzAutoscaleProfileObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile])]
@@ -1349,7 +1349,7 @@ New-AzAutoscaleScaleRuleMetricDimensionObject -DimensionName VMName -Operator 'E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension
 .Link
-https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleMetricDimensionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleScaleRuleMetricDimensionObject
 #>
 function New-AzAutoscaleScaleRuleMetricDimensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension])]
@@ -1474,7 +1474,7 @@ METRICTRIGGERDIMENSION <IScaleRuleMetricDimension[]>: List of dimension conditio
   Operator <ScaleRuleMetricDimensionOperationType>: the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
   Value <String[]>: list of dimension values. For example: ["App1","App2"].
 .Link
-https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleScaleRuleObject
 #>
 function New-AzAutoscaleScaleRuleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRule])]
@@ -1687,7 +1687,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IWebhookNotificationProperties>: a property bag of settings. This value can be empty.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleWebhookNotificationObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleWebhookNotificationObject
 #>
 function New-AzAutoscaleWebhookNotificationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification])]
