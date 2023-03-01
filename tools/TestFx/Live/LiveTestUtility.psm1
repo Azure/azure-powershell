@@ -143,7 +143,7 @@ function New-LiveTestResourceGroup {
         [string] $Location = "westus"
     )
 
-    $rg = Invoke-LiveTestCommand -Command "New-AzResourceGroup -Name $Name -Location $Location"
+    $rg = Invoke-LiveTestCommand -Command "New-AzResourceGroup -Name $Name -Location $Location -Force"
     $rg
 }
 
@@ -188,12 +188,7 @@ function Invoke-LiveTestCommand {
 
             $cmdResult = Invoke-Expression -Command $Command -ErrorAction Stop
 
-            if ($LASTEXITCODE -eq 0) {
-                Write-Host "##[section]Successfully executed the command `"$Command`"" -ForegroundColor Green
-            }
-            else {
-                throw "Error occurred when executing the command `"$Command`"."
-            }
+            Write-Host "##[section]Successfully executed the command `"$Command`"" -ForegroundColor Green
 
             $cmdResult
             break
