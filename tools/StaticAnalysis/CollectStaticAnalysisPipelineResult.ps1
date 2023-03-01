@@ -36,7 +36,7 @@ Else {
 $Platform = "$($Env:PowerShellPlatform) - $OS"
 $Template = Get-Content "$ArtifactPipelineInfoFolder/PipelineResult.json" | ConvertFrom-Json
 
-$DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" -And $_ -Ne "test" }
+$DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" -And $_ -Ne "test" -And $_ -Ne "pull_request_number" }
 ForEach ($Step In $DependencyStepList) {
     If ($Template.$Step.Details.Length -Ne 0) {
         $Template.$Step.Details[0] | Add-Member -NotePropertyName Platform -NotePropertyValue $Platform -Force
@@ -145,7 +145,7 @@ ForEach ($Step In $Steps) {
                     $Content = "|Type|Cmdlet|Example|Line|RuleName|Description|Extent|Remediation|`n|---|---|---|---|---|---|---|---|`n"
                 }
                 ElseIf ($PhaseName -Eq "ux") {
-                    $Content = "|Type|Module|ResourceType|SubResourceType|Command|Description|Remediation|`n|---|---|---|---|---|---|---|`n"
+                    $Content = "|Type|Module|ResourceType|SubResourceType|Command|Description|`n|---|---|---|---|---|---|`n"
                 }
                 #EndRegion
 
@@ -164,7 +164,7 @@ ForEach ($Step In $Steps) {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Example)|$($Issue.Line)|$($Issue.RuleName)|$($Issue.Description)|$($Issue.Extent)|$($Issue.Remediation)|`n"
                     }
                     ElseIf ($PhaseName -Eq "ux") {
-                        $Content = "|$ErrorTypeEmoji|$($Issue.Module)|$($Issue.ResourceType)|$($Issue.SubResourceType)|$($Issue.Command)|$($Issue.Description)|$($Issue.Remediation)|`n"
+                        $Content += "|$ErrorTypeEmoji|$($Issue.Module)|$($Issue.ResourceType)|$($Issue.SubResourceType)|$($Issue.Command)|$($Issue.Description)|`n"
                     }
                     #EndRegion
                 }
