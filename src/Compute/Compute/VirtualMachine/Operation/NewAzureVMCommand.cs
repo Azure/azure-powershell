@@ -211,12 +211,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [PSArgumentCompleter(
             "CentOS",
-            "CoreOS",
+            "CentOS85Gen2",
             "Debian",
-            "openSUSE-Leap",
+            "Debian9",
+            "OpenSuseLeap154",
             "RHEL",
-            "SLES",
+            "SuseSles15SP4",
             "UbuntuLTS",
+            "Ubuntu2204",
             "Win2022AzureEditionCore",
             "Win2019Datacenter",
             "Win2016Datacenter",
