@@ -141,6 +141,9 @@
   <data name="FailedToListCredentials" xml:space="preserve">
     <value>ListCredentials operation failed with error code '{0}'.</value>
   </data>
+  <data name="IpAddressNotAzureVM" xml:space="preserve">
+    <value>Ip Addres Parameter Set is only supported for resources of type "Microsoft.Compute/virtualMachines".</value>
+  </data>
   <data name="KeysDestinationFolderWithKeys" xml:space="preserve">
     <value>KeysDestinationFolder can't be used in conjunction with PublicKeyFile or PrivateKeyFile. All generated keys are saved in the same directory as provided keys.</value>
   </data>
