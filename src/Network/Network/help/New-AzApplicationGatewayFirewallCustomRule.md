@@ -25,17 +25,59 @@ The **New-AzApplicationGatewayFirewallCustomRule** creates a custom rule for fir
 
 ### Example 1
 ```powershell
-$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 1 -RuleType MatchRule -MatchCondition $condtion -Action Allow
+New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 1 -RuleType MatchRule -MatchCondition $condtion -Action Allow
 ```
 
-The command creates a new custom rule with name of example-rule, priority 1 and the rule type will be MatchRule with condition defined in the condition variable, the action will the allow. The new match custom rule is saved in $customRule.
+```output
+Name                : example-rule
+Priority            : 1
+RuleType            : MatchRule
+MatchConditions     : {Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCondition}
+Action              : Allow
+State               : Enabled
+MatchConditionsText : [
+                        {
+                          "MatchVariables": [
+                            {
+                              "VariableName": "RequestHeaders",
+                              "Selector": "Malicious-Header"
+                            }
+                          ],
+                          "OperatorProperty": "Any",
+                          "NegationConditon": false
+                        }
+                      ]
+```
+
+The command creates a new custom rule with name of example-rule, priority 1 and the rule type will be MatchRule with condition defined in the condition variable, the action will the allow.
 
 ### Example 2
 ```powershell
-$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 1 -RuleType MatchRule -MatchCondition $condtion -Action Allow -State $enabledState
+New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Allow -State Disabled
 ```
 
-The command creates a new custom rule with name of example-rule, state as $enabledState, priority 1 and the rule type will be MatchRule with condition defined in the condition variable, the action will the allow. The new match custom rule is saved in $customRule.
+```output
+Name                : example-rule
+Priority            : 2
+RuleType            : MatchRule
+MatchConditions     : {Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCondition}
+Action              : Allow
+State               : Disabled
+MatchConditionsText : [
+                        {
+                          "MatchVariables": [
+                            {
+                              "VariableName": "RequestHeaders",
+                              "Selector": "Malicious-Header"
+                            }
+                          ],
+                          "OperatorProperty": "Any",
+                          "NegationConditon": false
+                        }
+                      ]
+```
+
+The command creates a new custom rule with name of example-rule, state as Disabled, priority 2 and the rule type will be MatchRule with condition defined in the condition variable, the action will the allow.
 
 ## PARAMETERS
 
