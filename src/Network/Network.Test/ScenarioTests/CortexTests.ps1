@@ -1479,10 +1479,10 @@ function Test-VpnConnectionPacketCapture
     $virtualWanName = Get-ResourceName
     $virtualHubName = Get-ResourceName
     $VpnGatewayName = Get-ResourceName
-	$vpnSiteName = Get-ResourceName
-	$vpnSiteLinkName = Get-ResourceName
-	$vpnSiteLinkConnection = Get-ResourceName
-	$vpnConnectionName = Get-ResourceName
+    $vpnSiteName = Get-ResourceName
+    $vpnSiteLinkName = Get-ResourceName
+    $vpnSiteLinkConnection = Get-ResourceName
+    $vpnConnectionName = Get-ResourceName
     
     try
 	{
@@ -1515,7 +1515,7 @@ function Test-VpnConnectionPacketCapture
 
 		#VpnSiteLinkConnection with VpnGatewayCustomBgpAddresses 
 		$link = New-AzVpnSiteLink -Name $vpnSiteLinkName -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10" -BGPPeeringAddress "10.21.1.1" -BGPAsn 6500
-        $vpnSite = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Location $rglocation -VirtualWan $virtualWan -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($link)
+		$vpnSite = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Location $rglocation -VirtualWan $virtualWan -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($link)
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.22.5"
 		$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[1].IpconfigurationId -CustomBgpIpAddress "169.254.22.10"
