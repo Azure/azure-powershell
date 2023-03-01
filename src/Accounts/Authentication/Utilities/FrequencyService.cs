@@ -22,10 +22,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public class FrequencyService
     {
         private Dictionary<string, FrequencyInfo> _frequencies;
-        private static FrequencyService _instance;
-        private readonly string _filePath = "xxxx.json";
         private Dictionary<string, bool> _sessionLogic;
-        private FrequencyService()
+        private readonly string _filePath = "FrequencyService.json";
+        public FrequencyService()
         {
             try
             {
@@ -44,17 +43,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 throw new Exception("Error loading frequency file", ex);
             }
         }
-
-        public static FrequencyService GetInstance()
-        {
-            if (_instance == null)
-            {
-                _instance = new FrequencyService();
-            }
-
-            return _instance;
-        }
-
         public void Check(string featureName, Func<bool> businessCheck, Action business)
         {
             if (_sessionLogic.ContainsKey(featureName))
