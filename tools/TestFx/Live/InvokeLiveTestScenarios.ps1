@@ -93,14 +93,17 @@ $liveScenarios | ForEach-Object {
 
 Write-Host "##[section]Waiting for all cleanup jobs to be completed." -ForegroundColor Green
 while (Get-Job -State Running) {
-    Write-Host "[section]Waiting for 30 seconds ..." -ForegroundColor Green
     Start-Sleep -Seconds 30
 }
 Write-Host "##[section]All cleanup jobs are completed." -ForegroundColor Green
 
 Write-Host "##[group]Cleanup jobs information." -ForegroundColor Green
+
+Write-Host
 $cleanupJobs = Get-Job
 $cleanupJobs | Select-Object Name, Command, State, PSBeginTime, PSEndTime, Output
+Write-Host
+
 Write-Host "##[endgroup]"
 
 $cleanupJobs | Remove-Job

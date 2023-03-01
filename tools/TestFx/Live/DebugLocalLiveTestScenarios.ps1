@@ -56,8 +56,12 @@ function InvokeLocalLiveTestScenarios {
     Write-Host "##[section]All cleanup jobs are completed." -ForegroundColor Green
 
     Write-Host "##[group]Cleanup jobs information." -ForegroundColor Green
+
+    Write-Host
     $cleanupJobs = Get-Job
     $cleanupJobs | Select-Object Name, Command, State, PSBeginTime, PSEndTime, Output
+    Write-Host
+
     Write-Host "##[endgroup]"
 
     $cleanupJobs | Remove-Job
