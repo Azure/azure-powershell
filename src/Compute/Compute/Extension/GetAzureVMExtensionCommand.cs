@@ -20,6 +20,8 @@ using System.Linq;
 using System;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
+
+
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMExtension", DefaultParameterSetName = GetExtensionParamSetName)]
