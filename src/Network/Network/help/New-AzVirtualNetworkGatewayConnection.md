@@ -490,7 +490,7 @@ Accept wildcard characters: False
 Whether to use policy-based traffic selectors for a S2S connection
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
