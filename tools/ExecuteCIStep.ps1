@@ -167,7 +167,7 @@ Function Get-BuildResult
         # {
         #     $ModuleName = "dotnet"
         # }
-        Write-Warinig "$Detail - $Csproj - $ModuleName"
+        Write-Warning "$Detail - $Csproj - $ModuleName"
         $Type, $Code = $ErrorOrWarningType.Split(" ")
         $BuildResultArray += @{
             "Position" = $Position;
