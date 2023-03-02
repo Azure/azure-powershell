@@ -38,22 +38,26 @@ Gets the SAP Application Server Instance corresponding to the Virtual Instance f
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzWorkloadsSapApplicationInstance -ResourceGroupName DemoRGVIS -SapVirtualInstanceName DRT
 ```
 
 ```output
-{{ Add output here }}
+Name ResourceGroupName Health  ProvisioningState Status  Hostname Location
+---- ----------------- ------  ----------------- ------  -------- --------
+app0 DemoRGVIS         Healthy Succeeded         Running drtvm    eastus2euap
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzWorkloadsSapApplicationInstance -ResourceGroupName DemoRGVIS -SapVirtualInstanceName DRT -Name app0
 ```
 
 ```output
-{{ Add output here }}
+Name ResourceGroupName Health  ProvisioningState Status  Hostname Location
+---- ----------------- ------  ----------------- ------  -------- --------
+app0 DemoRGVIS         Healthy Succeeded         Running drtvm    eastus2euap
 ```
 
 {{ Add description here }}

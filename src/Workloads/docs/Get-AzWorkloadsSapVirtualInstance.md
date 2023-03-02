@@ -43,22 +43,41 @@ Gets a Virtual Instance for SAP solutions resource
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzWorkloadsSapVirtualInstance
 ```
 
 ```output
-{{ Add output here }}
+Name ResourceGroupName Health  Environment ProvisioningState SapProduct State                Status  Location
+---- ----------------- ------  ----------- ----------------- ---------- -----                ------  --------
+DRT  DemoRGVIS         Healthy NonProd     Succeeded         S4HANA     RegistrationComplete Running eastus2euap
+DRT  DemoRGVIS01       Healthy NonProd     Succeeded         S4HANA     RegistrationComplete Running eastus2euap
+DRT  DemoRGVIS02       Healthy NonProd     Succeeded         S4HANA     RegistrationComplete Running eastus2euap
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzWorkloadsSapVirtualInstance -ResourceGroupName DemoRGVIS -Name DRT
 ```
 
 ```output
-{{ Add output here }}
+Name ResourceGroupName Health  Environment ProvisioningState SapProduct State                Status  Location
+---- ----------------- ------  ----------- ----------------- ---------- -----                ------  --------
+DRT  DemoRGVIS         Healthy NonProd     Succeeded         S4HANA     RegistrationComplete Running eastus2euap
+```
+
+{{ Add description here }}
+
+### Example 3: {{ Add title here }}
+```powershell
+Get-AzWorkloadsSapVirtualInstance -ResourceGroupName DemoRGVIS -Name DRT
+```
+
+```output
+Name ResourceGroupName Health  Environment ProvisioningState SapProduct State                Status  Location
+---- ----------------- ------  ----------- ----------------- ---------- -----                ------  --------
+DRT  DemoRGVIS         Healthy NonProd     Succeeded         S4HANA     RegistrationComplete Running eastus2euap
 ```
 
 {{ Add description here }}

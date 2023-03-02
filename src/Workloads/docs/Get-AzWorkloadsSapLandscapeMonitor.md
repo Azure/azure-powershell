@@ -14,20 +14,14 @@ Gets configuration values for Single Pane Of Glass for SAP monitor for the speci
 
 ### Get (Default)
 ```
-Get-AzWorkloadsSapLandscapeMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWorkloadsSapLandscapeMonitor -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List
-```
-Get-AzWorkloadsSapLandscapeMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,18 +31,20 @@ Gets configuration values for Single Pane Of Glass for SAP monitor for the speci
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+New-AzWorkloadsSapLandscapeMonitor -ResourceGroupName PowerShell-CLI-TestRG -MonitorName lucasmonitor01
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName     ProvisioningState GroupingLandscape GroupingSapApplication
+----    -----------------     ----------------- ----------------- ----------------------
+default PowerShell-CLI-TestRG Succeeded
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+
 ```
 
 ```output
@@ -90,12 +86,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MonitorName
 Name of the SAP monitor resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -111,7 +107,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -126,7 +122,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -146,8 +142,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitor
-
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitorListResult
 
 ## NOTES
 

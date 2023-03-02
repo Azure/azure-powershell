@@ -14,8 +14,8 @@ Patches the SAP Landscape Monitor Dashboard for the specified subscription, reso
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWorkloadsSapLandscapeMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
+Update-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
  [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
  [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -122,7 +122,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MonitorName
 Name of the SAP monitor resource.
 
 ```yaml

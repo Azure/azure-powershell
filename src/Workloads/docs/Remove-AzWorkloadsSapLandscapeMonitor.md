@@ -14,8 +14,8 @@ Deletes a SAP Landscape Monitor Dashboard with the specified subscription, resou
 
 ### Delete (Default)
 ```
-Remove-AzWorkloadsSapLandscapeMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -84,7 +84,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MonitorName
 Name of the SAP monitor resource.
 
 ```yaml

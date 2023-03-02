@@ -167,12 +167,18 @@ directive:
     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
   remove: true
 
+# - where:
+#     verb: New|Update
+#     subject: SapLandscapeMonitor
+#     parameter-name: MonitorName
+#   set:
+#     parameter-name: Name
+# The SapLandscape only default value
 - where:
-    subject: SapLandscapeMonitor
-    parameter-name: MonitorName
-  set:
-    parameter-name: Name
-
+    verb: Get
+    subject: ^SapLandscapeMonitor$
+    variant: ^List$
+  remove: true
 - where:
     verb: Update
     subject: ^SapLandscapeMonitor$
@@ -237,6 +243,94 @@ directive:
     subject: ^SapSupportedSku$
     variant: ^Sap$|^SapViaIdentity$
   remove: true
+
+# Module Table Formatting
+- where:
+    model-name: Monitor
+  set:
+    format-table:
+      properties:
+        - Name
+        - ResourceGroupName
+        - ManagedResourceGroupConfigurationName
+        - Location
+        - ProvisioningState
+
+- where:
+    model-name: ProviderInstance
+  set:
+    format-table:
+      properties:
+        - Name
+        - ResourceGroupName
+        - ProvisioningState
+        - ProviderSettingProviderType
+        - IdentityType
+
+- where:
+    model-name: SapVirtualInstance
+  set:
+    format-table:
+      properties:
+        - Name
+        - ResourceGroupName
+        - Health
+        - Environment
+        - ProvisioningState
+        - SapProduct
+        - State
+        - Status
+        - Location
+
+- where:
+    model-name: SapCentralServerInstance
+  set:
+    format-table:
+      properties:
+        - Name
+        - ResourceGroupName
+        - Health
+        - EnqueueServerPropertyHostname
+        - ProvisioningState
+        - Status
+        - Location
+
+- where:
+    model-name: SapApplicationServerInstance
+  set:
+    format-table:
+      properties:
+        - Name
+        - ResourceGroupName
+        - Health
+        - ProvisioningState
+        - Status
+        - Hostname
+        - Location
+
+- where:
+    model-name: SapDatabaseInstance
+  set:
+    format-table:
+      properties:
+        - Name
+        - ResourceGroupName
+        - ProvisioningState
+        - Location        
+        - Status
+        - IPAddress        
+        - DatabaseSid
+
+- where:
+    model-name: SapLandscapeMonitor
+  set:
+    format-table:
+      properties:
+        - Name
+        - ResourceGroupName
+        - ProvisioningState
+        - GroupingLandscape        
+        - GroupingSapApplication
 
 - no-inline:  # choose ONE of these models to disable inlining
   - ErrorInnerError

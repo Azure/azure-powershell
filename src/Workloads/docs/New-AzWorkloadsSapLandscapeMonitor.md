@@ -13,8 +13,8 @@ Creates a SAP Landscape Monitor Dashboard for the specified subscription, resour
 ## SYNTAX
 
 ```
-New-AzWorkloadsSapLandscapeMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
+New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
  [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
  [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -96,7 +96,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MonitorName
 Name of the SAP monitor resource.
 
 ```yaml
