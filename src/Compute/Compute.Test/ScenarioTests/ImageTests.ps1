@@ -384,6 +384,14 @@ function Test-DefaultImagesExistManual
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
 
+        # RHELRaw91Gen2 test
+        $publisher = $images.Linux.RHELRaw91Gen2.publisher;
+        $offer = $images.Linux.RHELRaw91Gen2.offer;
+        $sku = $images.Linux.RHELRaw91Gen2.sku;
+        $version = $images.Linux.RHELRaw91Gen2.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
         # LinSuseSles15SP4 versioned test
         $publisher = $images.Linux.SuseSles15SP4.publisher;
         $offer = $images.Linux.SuseSles15SP4.offer;
