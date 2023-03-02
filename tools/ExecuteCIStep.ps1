@@ -258,8 +258,9 @@ If ($Build)
             }
             $Template.$DependencyStep.Details += $Detail
         }
-
-        ConvertTo-Json -Depth 10 -InputObject $Template | Out-File -FilePath "$RepoArtifacts/PipelineResult/PipelineResult.json"
+        If ($PSBoundParameters.ContainsKey("PullRequestNumber")) {
+            $Template | Add-Member -NotePropertyName pull_request_number -NotePropertyValue $PullRequestNumber
+        }
         #EndRegion
     }
     Return
