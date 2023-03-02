@@ -36,6 +36,12 @@
                                "sku":  "7-RAW",
                                "version":  "latest"
                            },
+                  "RHELRaw91Gen2":  {
+                               "publisher":  "RedHat",
+                               "offer":  "rhel-raw",
+                               "sku":  "91-gen2",
+                               "version":  "latest"
+                           },
                   "SuseSles15SP4":  {
                                "publisher":  "SUSE",
                                "offer":  "sles-15-sp4",
