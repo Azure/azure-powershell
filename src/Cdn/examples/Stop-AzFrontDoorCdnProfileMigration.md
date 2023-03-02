@@ -1,6 +1,6 @@
 ### Example 1: Abort classic cdn migrate to AFDx.
 ```powershell
-Stop-AzFrontDoorCdnProfileMigration -Name profileName-migrated -ResourceGroupName rgName
+Stop-AzFrontDoorCdnProfileMigration -Name name-migrated -ResourceGroupName rgName
 ```
 
 

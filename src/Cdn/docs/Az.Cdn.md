@@ -23,6 +23,9 @@ Disable https delivery of the custom domain.
 ### [Enable-AzCdnCustomDomainCustomHttps](Enable-AzCdnCustomDomainCustomHttps.md)
 Enable https delivery of the custom domain.
 
+### [Enable-AzFrontDoorCdnProfileMigration](Enable-AzFrontDoorCdnProfileMigration.md)
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+
 ### [Get-AzCdnCustomDomain](Get-AzCdnCustomDomain.md)
 Gets an existing custom domain within an endpoint.
 
@@ -396,9 +399,6 @@ Deletes an existing security policy within profile.
 ### [Start-AzCdnEndpoint](Start-AzCdnEndpoint.md)
 Starts an existing CDN endpoint that is on a stopped state.
 
-### [Start-AzFrontDoorCdnProfileMigration](Start-AzFrontDoorCdnProfileMigration.md)
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
-
 ### [Start-AzFrontDoorCdnProfilePrepareMigration](Start-AzFrontDoorCdnProfilePrepareMigration.md)
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
 MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy.
@@ -410,7 +410,8 @@ Stops an existing running CDN endpoint.
 
 ### [Stop-AzFrontDoorCdnProfileMigration](Stop-AzFrontDoorCdnProfileMigration.md)
 Abort classic cdn migrate to AFDx.
-This will delete all the AFD Standard or Premium configurations.
+Your new Front Door Profile will be deleted and your existing profile will remain active.
+WAF policies will not be deleted.
 
 ### [Test-AzCdnEndpointCustomDomain](Test-AzCdnEndpointCustomDomain.md)
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.

@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClassicResourceReferenceId
-Resource ID.
+Resource ID of the classic front door instance.
 
 ```yaml
 Type: System.String
@@ -211,7 +211,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the new profile that need to be created.
+Name of the new AFD Standard/Premium profile that need to be created.
 
 ```yaml
 Type: System.String

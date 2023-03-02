@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/start-AzFrontDoorCdnProfileMigration
+online version: https://docs.microsoft.com/powershell/module/az.cdn/Enable-AzFrontDoorCdnProfileMigration
 schema: 2.0.0
 ---
 
-# Start-AzFrontDoorCdnProfileMigration
+# Enable-AzFrontDoorCdnProfileMigration
 
 ## SYNOPSIS
 Commit the migrated Azure Frontdoor(Standard/Premium) profile.
@@ -13,7 +13,7 @@ Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 ## SYNTAX
 
 ```
-Start-AzFrontDoorCdnProfileMigration -ProfileName <String> -ResourceGroupName <String>
+Enable-AzFrontDoorCdnProfileMigration -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 
 ### Example 1: Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 ```powershell
-Start-AzFrontDoorCdnProfileMigration -ProfileName profileName-migrated -ResourceGroupName rgName
+Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
 ```
 
 Commit the migrated Azure Frontdoor(Standard/Premium) profile.

@@ -27,9 +27,9 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/start-AzFrontDoorCdnProfileMigration
+https://docs.microsoft.com/powershell/module/az.cdn/Enable-AzFrontDoorCdnProfileMigration
 #>
-function Start-AzFrontDoorCdnProfileMigration {
+function Enable-AzFrontDoorCdnProfileMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

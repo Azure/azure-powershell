@@ -40,11 +40,4 @@ Describe 'Update-AzFrontDoorCdnProfileSku' -Tag 'LiveOnly' {
             }
         } | Should -Not -Throw
     }
-
-
-    It 'UpgradeExpanded' -skip {
-        {
-
-        } | Should -Not -Throw
-    }
 }

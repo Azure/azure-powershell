@@ -9,24 +9,27 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Abort classic cdn migrate to AFDx.
-This will delete all the AFD Standard or Premium configurations.
+Your new Front Door Profile will be deleted and your existing profile will remain active.
+WAF policies will not be deleted.
 
 ## SYNTAX
 
 ```
-Stop-AzFrontDoorCdnProfileMigration -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzFrontDoorCdnProfileMigration -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Abort classic cdn migrate to AFDx.
-This will delete all the AFD Standard or Premium configurations.
+Your new Front Door Profile will be deleted and your existing profile will remain active.
+WAF policies will not be deleted.
 
 ## EXAMPLES
 
 ### Example 1: Abort classic cdn migrate to AFDx.
 ```powershell
-Stop-AzFrontDoorCdnProfileMigration -Name profileName-migrated -ResourceGroupName rgName
+Stop-AzFrontDoorCdnProfileMigration -Name name-migrated -ResourceGroupName rgName
 ```
 
 Abort classic cdn migrate to AFDx.
@@ -64,21 +67,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the new profile that created in AFDx.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ProfileName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -88,6 +76,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProfileName
+Name of the new AFD Standard/Premium profile that created in AFDx.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Abort classic cdn migrate to AFDx. This will delete all the AFD Standard or Premium configurations.  
+Abort classic cdn migrate to AFDx. Your new Front Door Profile will be deleted and your existing profile will remain active. WAF policies will not be deleted.
 .Description
-Abort classic cdn migrate to AFDx. This will delete all the AFD Standard or Premium configurations. 
+Abort classic cdn migrate to AFDx. Your new Front Door Profile will be deleted and your existing profile will remain active. WAF policies will not be deleted.
 .Example
 PS C:\> {{ Add code here }}
 {{ Add output here }}
@@ -35,11 +35,10 @@ function Stop-AzFrontDoorCdnProfileMigration {
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
-        [Alias('ProfileName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
-        # Name of the new profile that created in AFDx.
-        ${Name},
+        # Name of the new AFD Standard/Premium profile that created in AFDx.
+        ${ProfileName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
@@ -115,6 +114,10 @@ function Stop-AzFrontDoorCdnProfileMigration {
     )
 
     process {
-        Remove-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
+        Write-Host("Start to abort the migration.")
+        Write-Host("Your new Front Door Profile will be deleted and your existing profile will remain active. WAF policies will not be deleted.")
+        Write-Host("Please wait until the process has finished completely. This may take several minutes.")
+        Remove-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
+        Write-Host("Abort successfuly.")
     }
 }

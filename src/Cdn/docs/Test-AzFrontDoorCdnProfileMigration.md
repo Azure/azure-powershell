@@ -38,7 +38,7 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 ## PARAMETERS
 
 ### -ClassicResourceReferenceId
-Resource ID.
+Resource ID of the classic front door instance.
 
 ```yaml
 Type: System.String

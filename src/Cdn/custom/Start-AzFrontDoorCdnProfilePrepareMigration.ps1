@@ -32,7 +32,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult
 
 MIGRATIONPARAMETER <IMigrationParameters>: Request body for Migrate operation.
   ProfileName <String>: Name of the new profile that need to be created.
-  [ClassicResourceReferenceId <String>]: Resource ID.
+  [ClassicResourceReferenceId <String>]: Resource ID of the classic front door instance.
   [MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]: Waf mapping for the migrated profile
     [MigratedFromId <String>]: Resource ID.
     [MigratedToId <String>]: Resource ID.
@@ -59,13 +59,13 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
-        # Resource ID.
+        # Resource ID of the classic front door instance.
         ${ClassicResourceReferenceId},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
-        # Name of the new profile that need to be created.
+        # Name of the new AFD Standard/Premium profile that need to be created.
         ${ProfileName},
 
         [Parameter(Mandatory)]
@@ -169,14 +169,15 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
     process {
         if (!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
-            throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
+            throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor".'
         }
         Import-Module -Name Az.FrontDoor
         if (!(Get-Module -ListAvailable -Name Az.KeyVault)) {
-            throw 'Please install Az.KeyVault module by entering "Install-Module -Name Az.KeyVault"'
+            throw 'Please install Az.KeyVault module by entering "Install-Module -Name Az.KeyVault".'
         }
         Import-Module -Name Az.KeyVault
 
+        Write-Host("Starting the parameter validation process.")
         $classicResourceId = ${ClassicResourceReferenceId}.split("/")
         $frontDoorName = $classicResourceId[-1]
         $sku = ${SkuName}.ToString().ToLower()
@@ -196,8 +197,10 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         #    If associated with waf policy, then waf parameter should be typed.
         # 2. Validate whether the profile has BYOC
         #    If associated with BYOC, then MSIIdentity parameter should be typed.
-        $allPoliciesWithWAF = [System.Collections.ArrayList]@()
-        $allPoliciesWithVault = [System.Collections.ArrayList]@()
+        
+        # MigrationWebApplicationFirewallMapping parameter should onlyu requires waf Mapping per waf instance, not the waf-endpoint association count!
+        $allPoliciesWithWAF = New-Object System.Collections.Generic.HashSet[string]
+        $allPoliciesWithVault = New-Object System.Collections.Generic.HashSet[string]
         foreach ($info in $frontDoorInfos) {
             if ($info.WebApplicationFirewallPolicyLink) {
                 $allPoliciesWithWAF.Add($info.WebApplicationFirewallPolicyLink)  | Out-Null
@@ -213,7 +216,9 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         if (($PSBoundParameters.ContainsKey('IdentityType')) -ne ($allPoliciesWithVault.count -gt 0)) {
             throw "MSIIdentity should be associated if the front door has Customer Certificates. If not, remove MSIIdentity parameter."
         }
+        Write-Host("The parameters have been successfully validated.")
 
+        Write-Host("Starting to configure WAF policy upgrades.")
         # Deal with Waf policy
         if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping')) {
             $hasManagedRule = $false
@@ -254,15 +259,21 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 }
             }
         }
-        
+        Write-Host("WAF policy upgrades have been configured successfully.")
+
         # Create AFDx Profile
+        # If create AfdX profile firstly, then an error ("Invalid migrated to waf reference.") will be thrown if the migrated-To-WAF is supposed to created. (not exists in current subscription)
+        Write-Host("Starting to create your new Front Door profile and configure the new profile. Please wait until the process has finished completely. This may take several minutes.")
         $null = $PSBoundParameters.Remove('IdentityType')
         $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
         # Deal with difference between PS5 and PS7.
         $PSBoundParameters.Add('ErrorAction', 'Stop')
-        Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters 
+        Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
+
+        Write-Host("Your Front Door profile with the configuration has been successfully created.")
         
         # Deal with MSI parameter
+        Write-Host("Starting to enable managed identity.")
         # if ($PSBoundParameters.ContainsKey('IdentityType')) {
         if ($allPoliciesWithVault.count -gt 0) {
             # Waiting for results of profile created return
@@ -274,23 +285,34 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 $commandArgs.Add('IdentityUserAssignedIdentity', ${IdentityUserAssignedIdentity})
             }
             
-            $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile' -CommandArgs $commandArgs -RetryTimes 6 -SecondsDelay 10
+            $enableMSISuccessMessage = 'Enabling managed identity succeeded.'
+            $enableMSIRetryMessage = 'Retrying to enable managed identity...'
+            $enableMSIErrorMessage = "Enableing managed identity failed."
+            $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile' -CommandArgs $commandArgs -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $enableMSISuccessMessage -RetryMessage $enableMSIRetryMessage -ErrorMessage $enableMSIErrorMessage
             $identity = [System.Collections.ArrayList]@()
             foreach ($id in $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId) {
                 $identity.Add($id) | Out-Null
             }
             $identity.Add($profileIdentity.IdentityPrincipalId) | Out-Null
             
-            # Waiting for MSI enabled...
+            # Waiting for MSI granted access...
             Start-Sleep(10)
-            Write-Host("Grant managed identity to key vault")
+            Write-Host("Starting to grant managed identity to key vault.")
             foreach ($vault in $allPoliciesWithVault) {
                 foreach ($principal in $identity) {
-                    RetryCommand -Command 'Set-AzKeyVaultAccessPolicy' -CommandArgs @{ VaultName = $vault; ObjectId = $principal; PermissionsToSecrets = 'Get'; PermissionsToCertificates = 'Get'; ErrorAction = 'Stop'} -RetryTimes 6 -SecondsDelay 10 -Debug
+                    $grantAccessSuccessMessage = 'Granting managed identity to key vault succeeded.'
+                    $grantAccessRetryMessage = 'Retrying to grant managed identity to key vault...'
+                    $grantAccessErrorMessage = 'Granting managed identity to key vault failed.'
+
+                    $commandInfo = @{ VaultName = $vault; ObjectId = $principal; PermissionsToSecrets = 'Get'; PermissionsToCertificates = 'Get'; ErrorAction = 'Stop'}
+
                     # Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
+                    RetryCommand -Command 'Set-AzKeyVaultAccessPolicy' -CommandArgs $commandInfo -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $grantAccessSuccessMessage -RetryMessage $grantAccessRetryMessage -ErrorMessage $grantAccessErrorMessage
                 }
             }
         }
+
+        Write-Host("Your have successfully grant managed identity to key vault. ")
     }
 }
 
@@ -314,11 +336,11 @@ function ValidateInputType {
     try {
         $existedProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroup -Name ${ProfileName} -ErrorAction Stop
     } catch {
-        Write-debug("Profile Parameter is good for migration.")
+        Write-debug("Validation of the parameter 'ProfileName' was successful.")
     }
 
     if ($existedProfile) {
-        throw "The profile name: '${ProfileName}' already exists. Please use a different name."
+        throw "The profile name: '${ProfileName}' is already in use. Please use an unsued profile name."
     }
 
     if (($sku -ne "standard_azurefrontdoor") -and ($sku -ne "premium_azurefrontdoor"))
@@ -442,7 +464,10 @@ function RetryCommand {
         [string]$Command,
         [hashtable]$CommandArgs, 
         [int]$RetryTimes,
-        [int]$SecondsDelay
+        [int]$SecondsDelay,
+        [string]$SuccessMessage,
+        [string]$RetryMessage,
+        [string]$ErrorMessage
     )
 
     $retryCount = 0
@@ -451,16 +476,19 @@ function RetryCommand {
     while (-not $completed) {
         try {
             & $Command @CommandArgs
-            Write-Host ("Command [{0}] succeeded." -f $command)
+            Write-Host ("{0}" -f $SuccessMessage)
+            Write-Debug ("Command [{0}] succeeded." -f $command)
             $completed = $true
             return $res
         } 
         catch {
             if ($retryCount -ge $RetryTimes) {
-                Write-Host ("Command [{0}] failed the maximum number of {1} times." -f $Command, $retryCount)
+                Write-Host ("{0}" -f $ErrorMessage)
+                Write-Debug ("Command [{0}] failed the maximum number of {1} times." -f $Command, $retryCount)
                 throw
             } else {
-                Write-Host ("Command [{0}] loading..." -f $command)
+                Write-Host ("{0}" -f $RetryMessage)
+                Write-Debug ("Command [{0}] loading..." -f $command)
                 Start-Sleep $SecondsDelay
                 $retryCount++
             }

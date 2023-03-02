@@ -43,7 +43,7 @@ function Test-AzFrontDoorCdnProfileMigration {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
-        # Resource ID.
+        # Resource ID of the classic front door instance.
         ${ClassicResourceReferenceId},
 
         [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
