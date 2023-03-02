@@ -6,6 +6,9 @@ using System.Text;
 using Xunit;
 using System.Linq;
 using Microsoft.Azure.Commands.TestFx.Recorder;
+using System.Threading;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Tests
 {
@@ -95,7 +98,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
         {
             // Arrange
             var frequencyService = new FrequencyService();
-            var featureName = "MyFeature";
+            var featureName = "MyFeature1";
             var frequency = TimeSpan.FromMinutes(5);
 
             // Act
@@ -140,7 +143,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
         {
             // Arrange
             var frequencyService = new FrequencyService();
-            var featureName = "MyFeature";
+            var featureName = "MyFeature2";
             var frequency = TimeSpan.FromMinutes(5);
             var businessLogicExecuted = false;
             frequencyService.Add(featureName, frequency);
@@ -157,7 +160,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
         {
             // Arrange
             var frequencyService = new FrequencyService();
-            var featureName = "MyFeature";
+            var featureName = "MyFeature3";
             var frequency = TimeSpan.FromMinutes(5);
             var businessLogicExecuted = false;
             frequencyService.Add(featureName, frequency);
@@ -183,6 +186,47 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
 
             // Assert
             Assert.True(businessLogicExecuted);
+        }
+
+        [Fact]
+        public void Check_SessionFeatureSecondTime_DoesNotExecuteBusinessLogic()
+        {
+            // Arrange
+            var frequencyService = new FrequencyService();
+            var featureName = "MySessionFeature";
+            var businessLogicExecuted = false;
+            frequencyService.AddSession(featureName);
+
+            // Act
+            frequencyService.Check(featureName, () => true, () => businessLogicExecuted = true);
+            frequencyService.Check(featureName, () => true, () => businessLogicExecuted = false);
+
+            // Assert
+            Assert.True(businessLogicExecuted);
+        }
+
+        [Fact]
+        public void Check_Frequency_Logic()
+        {
+            var frequencyService = new FrequencyService();
+            var featureName = "MyFeature4";
+            var frequency = TimeSpan.FromMilliseconds(1000);
+            int businessLogic = 13;
+            frequencyService.Add(featureName, frequency);
+            
+            frequencyService.Check(featureName, () => true, () => businessLogic = 100);
+            Assert.Equal(100, businessLogic);
+            // sleep 1 sec
+            Thread.Sleep(2000);
+            
+            frequencyService.Check(featureName, () => true, () => businessLogic = -100);
+            Assert.Equal(-100, businessLogic);
+            frequencyService.Check(featureName, () => true, () => businessLogic = 16);
+            Assert.Equal(-100, businessLogic);
+            Thread.Sleep(2000);
+            Assert.Equal(-100, businessLogic);
+            frequencyService.Check(featureName, () => true, () => businessLogic = 17);
+            Assert.Equal(17, businessLogic);
         }
     }
 }

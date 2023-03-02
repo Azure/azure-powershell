@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public class FrequencyService
     {
         private Dictionary<string, FrequencyInfo> _frequencies;
-        private Dictionary<string, bool> _sessionLogic;
+        private Dictionary<string, bool> _perPSSessionRegistry;
         private readonly string _filePath = "FrequencyService.json";
 
-        internal Dictionary<string, bool> SessionLogic { get { return _sessionLogic; } }
+        internal Dictionary<string, bool> SessionLogic { get { return _perPSSessionRegistry; } }
 
         public FrequencyService()
         {
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
         public void Check(string featureName, Func<bool> businessCheck, Action business)
         {
-            if (_sessionLogic != null && _sessionLogic.ContainsKey(featureName))
+            if (_perPSSessionRegistry != null && _perPSSessionRegistry.ContainsKey(featureName))
             {
-                if (_sessionLogic[featureName] == false && businessCheck())
+                if (_perPSSessionRegistry[featureName] == false && businessCheck())
                 {
-                    _sessionLogic[featureName] = true;
+                    _perPSSessionRegistry[featureName] = true;
                     business();
                 }
             }
@@ -80,17 +80,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 _frequencies.Add(featureName, new FrequencyInfo(frequency, DateTime.MinValue));
                 Save();
             }
+            if (_frequencies.ContainsKey(featureName) && _frequencies[featureName].Frequency != frequency)
+            {
+                throw new ArgumentException($"Feature name '{featureName}' already exists in FrequencyService with a different frequency!");
+            }
         }
 
         public void AddSession(string featureName)
         {
-            if (_sessionLogic == null)
+            if (_perPSSessionRegistry == null)
             {
-                _sessionLogic = new Dictionary<string, bool>();
+                _perPSSessionRegistry = new Dictionary<string, bool>();
             }
-            if (!_sessionLogic.ContainsKey(featureName))
+            if (!_perPSSessionRegistry.ContainsKey(featureName))
             {
-                _sessionLogic.Add(featureName, false);
+                _perPSSessionRegistry.Add(featureName, false);
             }
         }
 
