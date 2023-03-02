@@ -4,6 +4,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20
     public partial class AzureResource
     {
         /// <summary>Property revealing 'Type' in response table.</summary>
-        public string ResourceType { get => this.Type; }
+        public string Resour
+        ceType { get => this.Type; }
     }
 }

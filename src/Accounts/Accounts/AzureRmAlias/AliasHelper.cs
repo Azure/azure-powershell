@@ -21,7 +21,8 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 
-namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
+namespace Microsoft.Azure.Commands.Profile.Azure
+RmAlias
 {
     public class AliasHelper
     {

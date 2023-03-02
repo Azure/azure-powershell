@@ -139,6 +139,100 @@ Function Set-ModuleTestStatusInPipelineResult
     }
 }
 
+Function Get-BuildResult
+{
+    Param(
+        [String]
+        $LogFile
+    )
+    
+    $LogContent = Get-Content $LogFile
+    $BuildResultArray = @()
+    ForEach ($Line In $LogContent)
+    {
+        $Position, $ErrorOrWarningType, $Detail = $Line.Split(": ")
+        $Detail = Join-String -Separator ": " -InputObject $Detail
+        If ($Position.Contains("src"))
+        {
+            $ModuleName = "Az." + $Position.Split("src" + [IO.Path]::DirectorySeparatorChar)[1].Split([IO.Path]::DirectorySeparatorChar)[0]
+        }
+        ElseIf ($Position.Contains([IO.Path]::DirectorySeparatorChar))
+        {
+            $ModuleName = "Az." + $Position.Split([IO.Path]::DirectorySeparatorChar)[0]
+        }
+        Else
+        {
+            $ModuleName = "dotnet"
+        }
+        $Type, $Code = $ErrorOrWarningType.Split(" ")
+        $BuildResultArray += @{
+            "Position" = $Position;
+            "Module" = $ModuleName;
+            "Type" = $Type;
+            "Code" = $Code;
+            "Detail" = $Detail
+        }
+    }
+
+    Return $BuildResultArray
+}
+
+Function Get-ModuleBuildInfo
+{
+    Param(
+        [Hashtable[]]
+        $BuildResultArray,
+        [String]
+        $ModuleName
+    )
+    
+    If (-not (Test-Path "$RepoArtifacts/$Configuration/Az.$ModuleName/Az.$ModuleName.psd1"))
+    {
+        $Status = "Failed"
+    }
+    Else
+    {
+        $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
+        If ($BuildResultOfModule.Length -Eq 0)
+        {
+            $Status = "Succeeded"
+            $Content = ""
+        }
+        Else
+        {
+            $Content = "|Type|Code|Position|Detail|`n|---|---|---|---|`n"
+            $ErrorCount = 0
+            ForEach ($BuildResult In $BuildResultOfModule)
+            {
+                If ($BuildResult.Type -Eq "Error")
+                {
+                    $ErrorTypeEmoji = "❌"
+                    $ErrorCount += 1
+                }
+                ElseIf ($BuildResult.Type -Eq "Warning")
+                {
+                    $ErrorTypeEmoji = "⚠️"
+                }
+                $Content += "|$ErrorTypeEmoji|$($BuildResult.Code)|$($BuildResult.Position)|$($BuildResult.Detail)|`n"
+            }
+            If ($ErrorCount -Eq 0)
+            {
+                $Status = "Warning"
+            }
+            Else
+            {
+                $Status = "Failed"
+            }
+        }
+    }
+
+    Return @{
+        Module = "Az.$ModuleName";
+        Status = $Status;
+        Content = $Content;
+    }
+}
+
 $ErrorActionPreference = 'Stop'
 
 If ($Build)
@@ -157,34 +251,7 @@ If ($Build)
 
     If (Test-Path -Path "$RepoArtifacts/PipelineResult")
     {
-        $LogContent = Get-Content $LogFile
-        $BuildResultArray = @()
-        ForEach ($Line In $LogContent)
-        {
-            $Position, $ErrorOrWarningType, $Detail = $Line.Split(": ")
-            $Detail = Join-String -Separator ": " -InputObject $Detail
-            If ($Position.Contains("src"))
-            {
-                $ModuleName = "Az." + $Position.Split("src" + [IO.Path]::DirectorySeparatorChar)[1].Split([IO.Path]::DirectorySeparatorChar)[0]
-            }
-            ElseIf ($Position.Contains([IO.Path]::DirectorySeparatorChar))
-            {
-                $ModuleName = "Az." + $Position.Split([IO.Path]::DirectorySeparatorChar)[0]
-            }
-            Else
-            {
-                $ModuleName = "dotnet"
-            }
-            $Type, $Code = $ErrorOrWarningType.Split(" ")
-            $BuildResultArray += @{
-                "Position" = $Position;
-                "Module" = $ModuleName;
-                "Type" = $Type;
-                "Code" = $Code;
-                "Detail" = $Detail
-            }
-        }
-
+        $BuildResultArray = Get-BuildResult $LogFile
         #Region produce result.json for GitHub bot to comsume
         $Platform = Get-PlatformInfo
         $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
@@ -192,46 +259,7 @@ If ($Build)
         $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
         ForEach ($ModuleName In $CIPlan.build)
         {
-            $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
-            If ($BuildResultOfModule.Length -Eq 0)
-            {
-                $ModuleBuildInfoList += @{
-                    Module = "Az.$ModuleName";
-                    Status = "Succeeded";
-                    Content = "";
-                }
-            }
-            Else
-            {
-                $Content = "|Type|Code|Position|Detail|`n|---|---|---|---|`n"
-                $ErrorCount = 0
-                ForEach ($BuildResult In $BuildResultOfModule)
-                {
-                    If ($BuildResult.Type -Eq "Error")
-                    {
-                        $ErrorTypeEmoji = "❌"
-                        $ErrorCount += 1
-                    }
-                    ElseIf ($BuildResult.Type -Eq "Warning")
-                    {
-                        $ErrorTypeEmoji = "⚠️"
-                    }
-                    $Content += "|$ErrorTypeEmoji|$($BuildResult.Code)|$($BuildResult.Position)|$($BuildResult.Detail)|`n"
-                }
-                If ($ErrorCount -Eq 0)
-                {
-                    $Status = "Warning"
-                }
-                Else
-                {
-                    $Status = "Failed"
-                }
-                $ModuleBuildInfoList += @{
-                    Module = "Az.$ModuleName";
-                    Status = $Status;
-                    Content = $Content;
-                }
-            }
+            $ModuleBuildInfoList += (Get-ModuleBuildInfo $BuildResultArray $ModuleName)
         }
         $BuildDetail = @{
             Platform = $Platform;
