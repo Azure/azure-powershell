@@ -291,6 +291,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 TEST_PHASE
             };
             expectedKeyList.AddRange(ANALYSIS_PHASE_LIST);
+            expectedKeyList.AddRange(ONLY_AFFECT_MODULE_PHASE_LIST);
             foreach (string phaseName in expectedKeyList)
             {
                 if (!influencedModuleInfo.ContainsKey(phaseName))
@@ -460,7 +461,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                         [BUILD_PHASE] = new HashSet<string>(selectedModuleList),
                         [TEST_PHASE] = new HashSet<string>(selectedModuleList)
                     };
-                    foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
+                    foreach (var analysisPhase in ANALYSIS_PHASE_LIST.Concat(ONLY_AFFECT_MODULE_PHASE_LIST))
                     {
                         influencedModuleInfo.Add(analysisPhase, new HashSet<string>(selectedModuleList));
                     }
