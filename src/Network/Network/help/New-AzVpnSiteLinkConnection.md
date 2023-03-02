@@ -17,7 +17,7 @@ New-AzVpnSiteLinkConnection -Name <String> -VpnSiteLink <PSVpnSiteLink> [-Shared
  [-ConnectionBandwidth <UInt32>] [-RoutingWeight <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
- [-VpnGatewayCustomBgpAddresses <PSGatewayCustomBgpIpConfiguration[]>] [-VpnLinkConnectionMode <String>]
+ [-VpnGatewayCustomBgpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-VpnLinkConnectionMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hu
 A VPN gateway will be created thereafter in the Virtual Hub.
 Once the gateway has been created, it is connected to the VpnSite using the New-AzVpnConnection command with 1 VpnSiteLinkConnections to the VpnSiteLink of the VpnSite.
 
-### Example 2 VpnGatewayCustomBgpAddresses
+### Example 2 VpnGatewayCustomBgpAddress
 ```powershell
 $vpnSite = Get-AzVpnSite -ResourceGroupName PS_testing -Name testsite
 $vpnGateway = Get-AzVpnGateway -ResourceGroupName PS_testing -Name 196ddf92afae40e4b20edc32dfb48a63-eastus-gw
@@ -59,7 +59,7 @@ $vpnGateway = Get-AzVpnGateway -ResourceGroupName PS_testing -Name 196ddf92afae4
 $address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.22.1"
 $address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[1].IpconfigurationId -CustomBgpIpAddress "169.254.22.3"
 
-$vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name "testLinkConnection1" -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddresses $address,$address2 -EnableBgp
+$vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name "testLinkConnection1" -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddress $address,$address2 -EnableBgp
 
 New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
 
@@ -289,7 +289,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VpnGatewayCustomBgpAddresses
+### -VpnGatewayCustomBgpAddress
 The GatewayCustomBgpIpAddress of Vpngateway used in this link connection.
 
 ```yaml

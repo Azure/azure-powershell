@@ -91,7 +91,7 @@
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The GatewayCustomBgpIpAddress of Vpngateway used in this link connection.")]
         [ValidateNotNullOrEmpty]
-        public PSGatewayCustomBgpIpConfiguration[] VpnGatewayCustomBgpAddresses { get; set; }
+        public PSGatewayCustomBgpIpConfiguration[] VpnGatewayCustomBgpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -133,11 +133,11 @@
                 vpnSiteLinkConnection.VpnConnectionProtocolType = this.VpnConnectionProtocolType;
             }
 
-            if (this.VpnGatewayCustomBgpAddresses != null)
+            if (this.VpnGatewayCustomBgpAddress != null)
             {
                 vpnSiteLinkConnection.VpnGatewayCustomBgpAddresses = new List<PSGatewayCustomBgpIpConfiguration>();
 
-                foreach (var reqaddress in this.VpnGatewayCustomBgpAddresses)
+                foreach (var reqaddress in this.VpnGatewayCustomBgpAddress)
                 {
                     vpnSiteLinkConnection.VpnGatewayCustomBgpAddresses.Add(reqaddress);
                 }

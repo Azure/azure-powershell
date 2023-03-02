@@ -1513,15 +1513,15 @@ function Test-VpnConnectionPacketCapture
 		Assert-AreEqual 1 @($updatedvpnGateway.BgpSettings.BGPPeeringAddresses[0]).Count
 		Assert-AreEqual 1 @($updatedvpnGateway.BgpSettings.BGPPeeringAddresses[1]).Count
 
-		#VpnSiteLinkConnection with VpnGatewayCustomBgpAddresses 
+		#VpnSiteLinkConnection with VpnGatewayCustomBgpAddress
 		$link = New-AzVpnSiteLink -Name $vpnSiteLinkName -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10" -BGPPeeringAddress "10.21.1.1" -BGPAsn 6500
 		$vpnSite = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Location $rglocation -VirtualWan $virtualWan -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($link)
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.22.5"
 		$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[1].IpconfigurationId -CustomBgpIpAddress "169.254.22.10"
 
-		$vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name $vpnSiteLinkConnection -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddresses $address,$address2 -EnableBgp
-		Assert-AreEqual 2 $vpnSiteLinkConnection.VpnGatewayCustomBgpAddresses.Count
+		$vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name $vpnSiteLinkConnection -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddress $address,$address2 -EnableBgp
+		Assert-AreEqual 2 $vpnSiteLinkConnection.VpnGatewayCustomBgpAddress.Count
 		$vpnConnection = New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name $vpnConnectionName -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
 		Assert-AreEqual 1 $vpnConnection.VpnLinkConnections.Count
 
