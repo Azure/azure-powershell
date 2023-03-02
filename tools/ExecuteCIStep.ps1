@@ -152,18 +152,22 @@ Function Get-BuildResult
     {
         $Position, $ErrorOrWarningType, $Detail = $Line.Split(": ")
         $Detail = Join-String -Separator ": " -InputObject $Detail
-        If ($Position.Contains("src"))
-        {
-            $ModuleName = "Az." + $Position.Split("src" + [IO.Path]::DirectorySeparatorChar)[1].Split([IO.Path]::DirectorySeparatorChar)[0]
-        }
-        ElseIf ($Position.Contains([IO.Path]::DirectorySeparatorChar))
-        {
-            $ModuleName = "Az." + $Position.Split([IO.Path]::DirectorySeparatorChar)[0]
-        }
-        Else
-        {
-            $ModuleName = "dotnet"
-        }
+        $Csproj = [System.Text.RegularExpressions.Regex]::New("\[.*\.csproj\]").Matches($Detail)[0].Value
+        $Detail = $Detail.Replace($Csproj, "")
+        $ModuleName = "Az." + $Csproj.Split("src" + [IO.Path]::DirectorySeparatorChar)[1].Split([IO.Path]::DirectorySeparatorChar)[0]
+        # If ($Position.Contains("src"))
+        # {
+        #     $ModuleName = "Az." + $Position.Split("src" + [IO.Path]::DirectorySeparatorChar)[1].Split([IO.Path]::DirectorySeparatorChar)[0]
+        # }
+        # ElseIf ($Position.Contains([IO.Path]::DirectorySeparatorChar))
+        # {
+        #     $ModuleName = "Az." + $Position.Split([IO.Path]::DirectorySeparatorChar)[0]
+        # }
+        # Else
+        # {
+        #     $ModuleName = "dotnet"
+        # }
+        Write-Warinig "$Detail - $Csproj - $ModuleName"
         $Type, $Code = $ErrorOrWarningType.Split(" ")
         $BuildResultArray += @{
             "Position" = $Position;
