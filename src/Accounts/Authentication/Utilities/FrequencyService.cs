@@ -16,6 +16,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -24,6 +25,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private Dictionary<string, FrequencyInfo> _frequencies;
         private Dictionary<string, bool> _sessionLogic;
         private readonly string _filePath = "FrequencyService.json";
+
+        internal Dictionary<string, bool> SessionLogic { get { return _sessionLogic; } }
+
         public FrequencyService()
         {
             try
@@ -45,7 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
         public void Check(string featureName, Func<bool> businessCheck, Action business)
         {
-            if (_sessionLogic.ContainsKey(featureName))
+            if (_sessionLogic != null && _sessionLogic.ContainsKey(featureName))
             {
                 if (_sessionLogic[featureName] == false && businessCheck())
                 {
@@ -80,6 +84,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public void AddSession(string featureName)
         {
+            if (_sessionLogic == null)
+            {
+                _sessionLogic = new Dictionary<string, bool>();
+            }
             if (!_sessionLogic.ContainsKey(featureName))
             {
                 _sessionLogic.Add(featureName, false);
@@ -90,6 +98,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             string json = JsonConvert.SerializeObject(_frequencies);
             File.WriteAllText(_filePath, json);
+        }
+
+        internal FrequencyInfo GetFrequencyInfo(string featureName)
+        {
+            if (_frequencies.ContainsKey(featureName))
+            {
+                return _frequencies[featureName];
+            }
+            else
+            {
+                throw new ArgumentException($"Feature name '{featureName}' not found in FrequencyService");
+            }
+        }
+        
+        internal List<string> GetFeatureNames()
+        {
+            return new List<string>(_frequencies.Keys);
+        }
+
+        internal List<string> GetAllFeatureNames()
+        {
+            var allFeatureNames = new List<string>(_frequencies.Keys);
+            if (SessionLogic != null)
+            {
+                allFeatureNames.AddRange(SessionLogic.Keys);
+            }
+            return allFeatureNames.ToList();
         }
     }
 
