@@ -406,7 +406,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE].Select(GetModuleNameFromPath).Where(x => x != null)),
                 [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Select(GetModuleNameFromPath).Where(x => x != null))
             };
-            foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
+            foreach (var analysisPhase in ANALYSIS_PHASE_LIST.Concat(ONLY_AFFECT_MODULE_PHASE_LIST))
             {
                 CIPlan.Add(analysisPhase, influencedModuleInfo[analysisPhase]);
             }
