@@ -25,6 +25,7 @@
 * Fixed the incorrect type of `-TotalBytesPerSession` in `New-AzNetworkWatcherPacketCapture`
 * Added support for connection flushing in network security group which when enabled, re-evaluates flows when rules are updated
     - `New-AzNetworkSecurityGroup`
+* Added support for state in WAF Custom Rule
 
 ## Version 5.3.0
 * Added samples for retrieving Private Link IP Configuration using 'New-AzApplicationGatewayPrivateLinkIpConfiguration' with fix [#20440]
