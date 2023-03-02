@@ -320,6 +320,7 @@ This example creates a new VM with the GuestAttestation extension installed by d
 ### Example 8: Create a VM using the -Image alias.
 ```powershell
 $resourceGroupName= "<Resource Group Name>"
+$loc = "<Azure Region>"
 $domainNameLabel = "<Domain Name Label>"
 $vmname = "<Virtual Machine Name>"
 $securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force
@@ -333,7 +334,7 @@ $vmname = 'v' + $rgname
 $domainNameLabel = "d" + $rgname
 $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image LinOpenSuseLeap154 -DomainNameLabel $domainNameLabel
 
-$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
 ```
 
 This example creates a new VM using the -Image parameter, providing many default values to the VM. 
