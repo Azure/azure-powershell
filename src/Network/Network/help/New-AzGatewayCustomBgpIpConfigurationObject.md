@@ -24,14 +24,14 @@ The **New-AzGatewayCustomBgpIpConfigurationObject** creates a GatewayCustomBgpIp
 
 ### Example 1 Create a AzGatewayCustomBgpIpConfigurationObject VirtualNetworkGatewayConnection
 ```powershell
-PS C:\> $address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/khbaheti_PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw/ipConfigurations/default" -CustomBgpIpAddress "169.254.21.1"
+$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/khbaheti_PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw/ipConfigurations/default" -CustomBgpIpAddress "169.254.21.1"
 ```
 
 ### Example 2 Create a AzGatewayCustomBgpIpConfigurationObject VpnsiteLinkConnection
 ```powershell
-PS C:\> $vpnGateway = Get-AzVpnGateway -ResourceGroupName PS_testing -Name 196ddf92afae40e4b20edc32dfb48a63-eastus-gw
-PS C:\> $address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.22.1"
-$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[1].IpconfigurationId -CustomBgpIpAddress "169.254.22.3"
+$vpnGateway = Get-AzVpnGateway -ResourceGroupName PS_testing -Name 196ddf92afae40e4b20edc32dfb48a63-eastus-gw
+$address1 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "Instance0" -CustomBgpIpAddress "169.254.22.1"
+$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "Instance1" -CustomBgpIpAddress "169.254.22.3"
 ```
 
 The above will create a IpConfigurationBgpPeeringAddressObject.

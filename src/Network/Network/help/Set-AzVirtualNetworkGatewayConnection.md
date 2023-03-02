@@ -172,7 +172,9 @@ $address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "/sub
 $conn = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName PS_testing -ResourceName Conn
  
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn -GatewayCustomBgpIpAddress $address1,$address2
- 
+```
+
+```output
  Name                        : Conn
 ResourceGroupName           : PS_testing
 Location                    : eastus
@@ -215,7 +217,8 @@ This will create new AzGatewayCustomBgpIpConfigurationObjects and update gateway
 ```powershell
 $conn = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName PS_testing -ResourceName Conn
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn -GatewayCustomBgpIpAddress @()
-
+```
+```output
 Name                      : Conn
 ResourceGroupName         : PS_testing
 Location                  : eastus

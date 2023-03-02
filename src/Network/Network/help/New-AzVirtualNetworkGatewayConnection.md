@@ -50,20 +50,24 @@ Creates the Site-to-Site VPN connection between the virtual network gateway and 
 
 ### Example 1
 ```powershell
-New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5'
+$vnetgw1 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "gw1"
+$vnetgw2 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "gw2"
+New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName "Rg1" -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location "eastus" -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5'
 ```
 ### Example 2 Add/Update IngressNatRule/EgressNatRule to an existing virtual network gateway connection
 ```powershell
-$ingressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule1" -ParentResourceName vnetgw1
-$egressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule2" -ParentResourceName vnetgw1
-New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5' `
+$vnetgw1 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "vnetgw1"
+$vnetgw2 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "vnetgw2"
+$ingressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName "Rg1" -Name "natRule1" -ParentResourceName vnetgw1
+$egressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName "Rg1" -Name "natRule2" -ParentResourceName vnetgw1
+New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location "eastus" -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5' `
 -IngressNatRule $ingressnatrule -EgressNatRule $egressnatrule
 ```
 The first command gets a virtual network gateway natRule named natRule1 that's type is IngressSnat.
 The second command gets a virtual network gateway natRule named natRule2 that's type is EgressSnat.
 The third command creates this new virtual Network gateway connection with Ingress and Egress NatRules.
 
-### Example 3 Add GatewayCustomBgpIpAddress  to virtual network gateway connection
+### Example 3 Add GatewayCustomBgpIpAddress to virtual network gateway connection
 ```powershell
 $LocalnetGateway = Get-AzLocalNetworkGateway -ResourceGroupName "PS_testing" -name "testLng"
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName PS_testing -ResourceName testGw

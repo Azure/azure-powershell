@@ -56,50 +56,12 @@ Once the gateway has been created, it is connected to the VpnSite using the New-
 $vpnSite = Get-AzVpnSite -ResourceGroupName PS_testing -Name testsite
 $vpnGateway = Get-AzVpnGateway -ResourceGroupName PS_testing -Name 196ddf92afae40e4b20edc32dfb48a63-eastus-gw
 
-$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.22.1"
-$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[1].IpconfigurationId -CustomBgpIpAddress "169.254.22.3"
+$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "Instance0" -CustomBgpIpAddress "169.254.22.1"
+$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "Instance1" -CustomBgpIpAddress "169.254.22.3"
 
 $vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name "testLinkConnection1" -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddress $address,$address2 -EnableBgp
 
 New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
-
-RemoteVpnSite                  : Microsoft.Azure.Commands.Network.Models.PSResourceId
-SharedKey                      :
-VpnConnectionProtocolType      :
-ConnectionStatus               :
-EgressBytesTransferred         : 0
-IngressBytesTransferred        : 0
-IpsecPolicies                  : {}
-TrafficSelectorPolicies        : {}
-ConnectionBandwidth            : 0
-EnableBgp                      : False
-UseLocalAzureIpAddress         : False
-UsePolicyBasedTrafficSelectors : False
-ProvisioningState              : Succeeded
-VpnLinkConnections             : {testLinkConnection1}
-EnableInternetSecurity         : False
-RoutingConfiguration           : Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
-RoutingConfigurationText       : {
-                                   "AssociatedRouteTable": {
-                                     "Id":
-                                 "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualHubs/testhub/hubRouteTables/defaultRouteTable"
-                                   },
-                                   "PropagatedRouteTables": {
-                                     "Labels": [
-                                       "default"
-                                     ],
-                                     "Ids": [
-                                       {
-                                         "Id":
-                                 "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualHubs/testhub/hubRouteTables/defaultRouteTable"
-                                       }
-                                     ]
-                                   }
-                                 }
-Name                           : testConnection
-Etag                           : W/"7fca7d6b-98bd-4c46-97d2-d1da88375e82"
-Id                             : /subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/vpnGateways/196ddf92afae40e4b20edc32dfb48a63-eastus-gw/vpnCo
-                                 nnections/testConnection
 ```
 
 The above will create AzGatewayCustomBgpIpConfigurationObject 1 VpnSiteLinks with VpnConnection in "PS_testing" resource group in Azure.
