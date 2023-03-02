@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core to 1.28.0.
 
 ## Version 5.4.0
 * Added a warning message for the upcoming breaking change when creating a Storage account
