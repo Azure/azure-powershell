@@ -94,6 +94,5 @@ Invoke-LiveTestScenario -Name "Remove a Sql Database" -Description "Test Remove-
 
     Assert-False { $actual.DatabaseName -contains $dbName}
 }
-# At the end of db test, clear the sql server and the resource group
-Remove-AzSqlServer -ResourceGroup $RgName -ServerName $ServerName
+# At the end of db test, clear the resource group
 Clear-LiveTestResources -Name $RgName
