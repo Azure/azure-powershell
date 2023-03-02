@@ -335,6 +335,14 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.UbuntuLTS.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+
+        # Ubuntu2204 test
+        $publisher = $images.Linux.Ubuntu2204.publisher;
+        $offer = $images.Linux.Ubuntu2204.offer;
+        $sku = $images.Linux.Ubuntu2204.sku;
+        $version = $images.Linux.Ubuntu2204.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
         
         # CentOS test
         $publisher = $images.Linux.CentOS.publisher;
