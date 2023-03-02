@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
             return psVirtualNetworkGatewayConnection;
         }
 
-        public PSVirtualNetworkGatewayConnection ToPsVirtualNetworkGatewayConnection(Management.Network.Models.VirtualNetworkGatewayConnection vnetGatewayConnection)
+        public PSVirtualNetworkGatewayConnection ToPsVirtualNetworkGatewayConnection(VirtualNetworkGatewayConnection vnetGatewayConnection)
         {
             var psVirtualNetworkGatewayConnection = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetworkGatewayConnection>(vnetGatewayConnection);
 
