@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceJobServiceObject
+online version: https://learn.microsoft.com/powershell/module/az./new-AzMLWorkspaceJobServiceObject
 schema: 2.0.0
 ---
 

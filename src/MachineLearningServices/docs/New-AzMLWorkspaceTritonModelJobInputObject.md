@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceTritonModelJobInputObject
+online version: https://learn.microsoft.com/powershell/module/az./new-AzMLWorkspaceTritonModelJobInputObject
 schema: 2.0.0
 ---
 
