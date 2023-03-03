@@ -5839,7 +5839,7 @@ function Enable-AzStackHCIRemoteSupport{
     }
 
     if(Assert-IsObservabilityStackPresent){
-        Import-Module DiagnosticsInitializer -Verbose -Force
+        Import-Module DiagnosticsInitializer -Force
         Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
     }
     else{
@@ -5867,7 +5867,7 @@ function Disable-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
     if(Assert-IsObservabilityStackPresent){
-        Import-Module DiagnosticsInitializer -Verbose -Force
+        Import-Module DiagnosticsInitializer -Force
         Disable-RemoteSupport
     }
     else{
@@ -5909,7 +5909,7 @@ function Get-AzStackHCIRemoteSupportAccess{
     )
 
     if(Assert-IsObservabilityStackPresent){
-        Import-Module DiagnosticsInitializer -Verbose -Force
+        Import-Module DiagnosticsInitializer -Force
         Get-RemoteSupportAccess -IncludeExpired:$IncludeExpired
     }
     else{
@@ -5999,7 +5999,7 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
     )
 
     if(Assert-IsObservabilityStackPresent){
-        Import-Module DiagnosticsInitializer -Verbose -Force
+        Import-Module DiagnosticsInitializer -Force
         Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
     }
     else{

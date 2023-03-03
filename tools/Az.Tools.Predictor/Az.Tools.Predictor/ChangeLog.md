@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Updated data collection mechanism
+
 ## Version 1.0.3
 * Updated instrumental key
 
