@@ -26,7 +26,9 @@ payload-flattening-threshold: 2
 ###
 ``` yaml
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/202-sasolank/specification/network/resource-manager/Microsoft.Network/stable/2021-08-01/networkInterface.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/network/resource-manager/Microsoft.Network/stable/2022-09-01/networkInterface.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/network/resource-manager/Microsoft.Network/stable/2022-09-01/virtualNetwork.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/network/resource-manager/Microsoft.Network/stable/2022-09-01/usage.json
 
 output-folder: Generated
 
