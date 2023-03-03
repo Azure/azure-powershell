@@ -20,21 +20,58 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class FrequencyService
+    public class FrequencyService : IFrequencyService
     {
         private Dictionary<string, FrequencyInfo> _frequencies;
         private Dictionary<string, bool> _perPSSessionRegistry;
         private readonly string _filePath = "FrequencyService.json";
+        private IDataStore _dataStore;
+        internal IClock _clock;
 
         internal Dictionary<string, bool> SessionLogic { get { return _perPSSessionRegistry; } }
+        internal Dictionary<string, FrequencyInfo> Frequencies { get { return _frequencies; } }
+        public class FrequencyInfo
+        {
+            public TimeSpan Frequency { get; set; }
+            public DateTime LastCheckTime { get; set; }
+            public FrequencyInfo(TimeSpan frequency, DateTime lastCheckTime)
+            {
+                Frequency = frequency;
+                LastCheckTime = lastCheckTime;
+            }
+        }
 
-        public FrequencyService()
+        public FrequencyService(IDataStore dataStore)
         {
             try
             {
-                if (File.Exists(_filePath))
+                _dataStore = dataStore;
+                _clock = new Clock();
+                if (dataStore.FileExists(_filePath))
                 {
-                    string json = File.ReadAllText(_filePath);
+                    string json = dataStore.ReadFileAsText(_filePath);
+                    _frequencies = JsonConvert.DeserializeObject<Dictionary<string, FrequencyInfo>>(json);
+                }
+                else
+                {
+                    _frequencies = new Dictionary<string, FrequencyInfo>();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error loading frequency file", ex);
+            }
+        }
+
+        public FrequencyService(IDataStore dataStore, IClock clock)
+        {
+            try
+            {
+                _dataStore = dataStore;
+                _clock = clock;
+                if (dataStore.FileExists(_filePath))
+                {
+                    string json = dataStore.ReadFileAsText(_filePath);
                     _frequencies = JsonConvert.DeserializeObject<Dictionary<string, FrequencyInfo>>(json);
                 }
                 else
@@ -59,9 +96,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             else if (_frequencies.ContainsKey(featureName))
             {
-                if ((DateTime.Now - _frequencies[featureName].LastCheckTime) >= _frequencies[featureName].Frequency && businessCheck())
+                if (_clock.IsDue(_frequencies[featureName].LastCheckTime, _frequencies[featureName].Frequency) && businessCheck())
                 {
                     _frequencies[featureName].LastCheckTime = DateTime.Now;
+                    Save();
+                    business();
+                }
+            }
+            else
+            {
+                throw new ArgumentException($"Feature name '{featureName}' not found in FrequencyService");
+            }
+
+        }
+        /// <summary>
+        /// This method is used for testing purposes only. It allows the caller to specify a fakeNow time to use for the check.
+        /// </summary>
+        internal void Check(string featureName, Func<bool> businessCheck, Action business, DateTime fakeNow)
+        {
+            if (_perPSSessionRegistry != null && _perPSSessionRegistry.ContainsKey(featureName))
+            {
+                if (_perPSSessionRegistry[featureName] == false && businessCheck())
+                {
+                    _perPSSessionRegistry[featureName] = true;
+                    business();
+                }
+            }
+            else if (_frequencies.ContainsKey(featureName))
+            {
+                if (_clock.IsDue(_frequencies[featureName].LastCheckTime, _frequencies[featureName].Frequency) && businessCheck())
+                {
+                    _frequencies[featureName].LastCheckTime = fakeNow;
                     Save();
                     business();
                 }
@@ -101,24 +166,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public void Save()
         {
             string json = JsonConvert.SerializeObject(_frequencies);
-            File.WriteAllText(_filePath, json);
-        }
-
-        internal FrequencyInfo GetFrequencyInfo(string featureName)
-        {
-            if (_frequencies.ContainsKey(featureName))
-            {
-                return _frequencies[featureName];
-            }
-            else
-            {
-                throw new ArgumentException($"Feature name '{featureName}' not found in FrequencyService");
-            }
-        }
-        
-        internal List<string> GetFeatureNames()
-        {
-            return new List<string>(_frequencies.Keys);
+            _dataStore.WriteFile(_filePath, json);
         }
 
         internal List<string> GetAllFeatureNames()
@@ -132,15 +180,29 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
     }
 
-    public class FrequencyInfo
+    public interface IClock
     {
-        public TimeSpan Frequency { get; set; }
-        public DateTime LastCheckTime { get; set; }
-        public FrequencyInfo(TimeSpan frequency, DateTime lastCheckTime)
+        bool IsDue(DateTime lastCheckTime, TimeSpan frequency);
+    }
+
+    class Clock : IClock
+    {
+        public bool IsDue(DateTime lastCheckTime, TimeSpan freq)
         {
-            Frequency = frequency;
-            LastCheckTime = lastCheckTime;
+            return DateTime.Now - lastCheckTime >= freq;
         }
     }
 
+    class MockClock : IClock
+    {
+        public DateTime fakeNow { get; set; }
+        public bool IsDue(DateTime lastCheckTime, TimeSpan freq)
+        {
+            return fakeNow - lastCheckTime >= freq;
+        }
+        public void AddSecond(int sec)
+        {
+            fakeNow = fakeNow.AddSeconds(sec);
+        }
+    }
 }

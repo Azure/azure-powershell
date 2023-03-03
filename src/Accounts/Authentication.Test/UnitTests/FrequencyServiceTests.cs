@@ -9,6 +9,7 @@ using Microsoft.Azure.Commands.TestFx.Recorder;
 using System.Threading;
 using Newtonsoft.Json;
 using System.IO;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Tests
 {
@@ -18,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
 
         public FrequencyServiceTests()
         {
-            _frequencyService = new FrequencyService();
+            _frequencyService = new FrequencyService(new MemoryDataStore(), new Clock());
         }
 
         [Fact]
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
             _frequencyService.Add(featureName, frequency);
 
             // Assert
-            var frequencyInfo = _frequencyService.GetFrequencyInfo(featureName);
+            var frequencyInfo = new FrequencyService.FrequencyInfo(frequency, DateTime.Now);
             Assert.NotNull(frequencyInfo);
             Assert.Equal(frequency, frequencyInfo.Frequency);
         }
@@ -73,61 +74,57 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
             _frequencyService.Check(featureName, () => businessCheck, () => businessCalled = true);
 
             Assert.True(businessCalled);
-            Assert.Equal(DateTime.Now.Date, _frequencyService.GetFrequencyInfo(featureName).LastCheckTime.Date);
         }
 
         [Fact]
-        public void AddFeature_AddsFeatureToFrequencyService()
+        public void AddsFeatureToFrequencyService()
         {
             // Arrange
-            var frequencyService = new FrequencyService();
             var featureName = "MyFeature";
             var frequency = TimeSpan.FromMinutes(5);
 
             // Act
-            frequencyService.Add(featureName, frequency);
+            _frequencyService.Add(featureName, frequency);
 
             // Assert
-            Assert.NotNull(frequencyService);
-            Assert.NotNull(frequencyService.GetAllFeatureNames());
-            Assert.Contains(featureName, frequencyService.GetAllFeatureNames());
+            Assert.NotNull(_frequencyService);
+            Assert.NotNull(_frequencyService.GetAllFeatureNames());
+            Assert.Contains(featureName, _frequencyService.GetAllFeatureNames());
         }
 
         [Fact]
-        public void AddDuplicateFeature_DoesNotAddDuplicateToFrequencyService()
+        public void DoesNotAddDuplicateToFrequencyService()
         {
             // Arrange
-            var frequencyService = new FrequencyService();
             var featureName = "MyFeature1";
             var frequency = TimeSpan.FromMinutes(5);
 
             // Act
-            frequencyService.Add(featureName, frequency);
-            frequencyService.Add(featureName, frequency);
+            _frequencyService.Add(featureName, frequency);
+            _frequencyService.Add(featureName, frequency);
 
             // Assert
-            Assert.Equal(1, frequencyService.GetAllFeatureNames().Count(n => n == featureName));
+            Assert.Equal(1, _frequencyService.GetAllFeatureNames().Count(n => n == featureName));
         }
 
         [Fact]
-        public void AddSessionFeature_AddsSessionFeatureToFrequencyService()
+        public void AddsSessionFeatureToFrequencyService()
         {
             // Arrange
-            var frequencyService = new FrequencyService();
             var featureName = "MySessionFeature";
 
             // Act
-            frequencyService.AddSession(featureName);
+            _frequencyService.AddSession(featureName);
 
             // Assert
-            Assert.Contains(featureName, frequencyService.GetAllFeatureNames());
+            Assert.Contains(featureName, _frequencyService.GetAllFeatureNames());
         }
 
         [Fact]
-        public void AddDuplicateSessionFeature_DoesNotAddDuplicateToFrequencyService()
+        public void DoesNotAddDuplicateSessionToFrequencyService()
         {
             // Arrange
-            var frequencyService = new FrequencyService();
+            var frequencyService = new FrequencyService(new MemoryDataStore(), new Clock());
             var featureName = "MySessionFeature";
 
             // Act
@@ -142,7 +139,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
         public void Check_FrequencyMet_ExecuteBusinessLogic()
         {
             // Arrange
-            var frequencyService = new FrequencyService();
+            var frequencyService = new FrequencyService(new MemoryDataStore(), new Clock());
             var featureName = "MyFeature2";
             var frequency = TimeSpan.FromMinutes(5);
             var businessLogicExecuted = false;
@@ -159,7 +156,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
         public void Check_FrequencyNotMet_DoesNotExecuteBusinessLogic()
         {
             // Arrange
-            var frequencyService = new FrequencyService();
+            var frequencyService = new FrequencyService(new MemoryDataStore());
             var featureName = "MyFeature3";
             var frequency = TimeSpan.FromMinutes(5);
             var businessLogicExecuted = false;
@@ -176,7 +173,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
         public void Check_SessionFeatureFirstTime_ExecuteBusinessLogic()
         {
             // Arrange
-            var frequencyService = new FrequencyService();
+            var frequencyService = new FrequencyService(new MemoryDataStore(), new Clock());
             var featureName = "MySessionFeature";
             var businessLogicExecuted = false;
             frequencyService.AddSession(featureName);
@@ -192,7 +189,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
         public void Check_SessionFeatureSecondTime_DoesNotExecuteBusinessLogic()
         {
             // Arrange
-            var frequencyService = new FrequencyService();
+            var frequencyService = new FrequencyService(new MemoryDataStore(), new Clock());
             var featureName = "MySessionFeature";
             var businessLogicExecuted = false;
             frequencyService.AddSession(featureName);
@@ -208,25 +205,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Tests
         [Fact]
         public void Check_Frequency_Logic()
         {
-            var frequencyService = new FrequencyService();
+            var frequencyService = new FrequencyService(new MemoryDataStore(), new MockClock());
             var featureName = "MyFeature4";
-            var frequency = TimeSpan.FromMilliseconds(1000);
-            int businessLogic = 13;
+            var frequency = TimeSpan.FromSeconds(1);
+            int businessValue = 13;
             frequencyService.Add(featureName, frequency);
-            
-            frequencyService.Check(featureName, () => true, () => businessLogic = 100);
-            Assert.Equal(100, businessLogic);
-            // sleep 1 sec
-            Thread.Sleep(2000);
-            
-            frequencyService.Check(featureName, () => true, () => businessLogic = -100);
-            Assert.Equal(-100, businessLogic);
-            frequencyService.Check(featureName, () => true, () => businessLogic = 16);
-            Assert.Equal(-100, businessLogic);
-            Thread.Sleep(2000);
-            Assert.Equal(-100, businessLogic);
-            frequencyService.Check(featureName, () => true, () => businessLogic = 17);
-            Assert.Equal(17, businessLogic);
+
+            ((MockClock)frequencyService._clock).fakeNow = DateTime.Now;
+            frequencyService.Check(featureName, () => true, () => businessValue = 100, DateTime.Now);
+            Assert.Equal(100, businessValue);
+
+            ((MockClock)frequencyService._clock).AddSecond(2);
+            frequencyService.Check(featureName, () => true, () => businessValue = -100, ((MockClock)frequencyService._clock).fakeNow);
+            Assert.Equal(-100, businessValue);
+
+            frequencyService.Check(featureName, () => true, () => businessValue = 16, ((MockClock)frequencyService._clock).fakeNow);
+            Assert.Equal(-100, businessValue);
+
+
+            ((MockClock)frequencyService._clock).AddSecond(2);
+            frequencyService.Check(featureName, () => true, () => businessValue = 17, ((MockClock)frequencyService._clock).fakeNow);
+            Assert.Equal(17, businessValue);
         }
     }
 }

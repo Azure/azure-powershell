@@ -282,6 +282,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 () => new DefaultRecommendationService());
             session.RegisterComponent<IParameterTelemetryFormatter>(nameof(IParameterTelemetryFormatter),
                 () => new ParameterTelemetryFormatter());
+            session.RegisterComponent<IFrequencyService>(nameof(IFrequencyService),
+                () => new FrequencyService(dataStore));
             session.TokenCache = session.TokenCache ?? new AzureTokenCache();
             return session;
         }
