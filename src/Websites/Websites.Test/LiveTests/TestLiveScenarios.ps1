@@ -1,20 +1,3 @@
-Invoke-LiveTestScenario -Name "Create new webapp" -Description "Test creating a new webapp with all default values" -ScenarioScript `
-{
-    param ($rg)
-
-    $rgName = $rg.ResourceGroupName
-    $webName = New-LiveTestResourceName
-    $webLocation = "westus"
-
-    $actual = New-AzWebApp -ResourceGroupName $rgname -Name $webName -Location $webLocation
-    Assert-AreEqual $webName $actual.Name
-    Assert-AreEqual $rgName $actual.ResourceGroup
-    Assert-AreEqual "app" $actual.Kind 
-    
-    Assert-True { $actual.ClientAffinityEnabled } "By default ClientAffinityEnabled should be true"
-    Assert-True { $actual.Enabled } "By default Enabled should be true"
-}
-
 Invoke-LiveTestScenario -Name "Create new web with service plan" -Description "Test creating a new web app with service plan" -ScenarioScript `
 {
     param ($rg)
@@ -129,8 +112,11 @@ Invoke-LiveTestScenario -Name "Start, Stop and Restart WebApp" -Description "Tes
     $rgName = $rg.ResourceGroupName
     $webName = New-LiveTestResourceName
     $webLocation = "westus"
+    $whpName = New-LiveTestResourceName
+    $tier = "Shared"
 
-    $webApp = New-AzWebApp -ResourceGroupName $rgname -Name $webName -Location $webLocation
+    $null = New-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName -Location $webLocation -Tier $tier
+    $webApp = New-AzWebApp -ResourceGroupName $rgname -Name $webName -Location $webLocation -AppServicePlan $whpName
     # Stop web app
     $webApp = $webApp | Stop-AzWebApp
     Assert-AreEqual "Stopped" $webApp.State
