@@ -32,8 +32,8 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Recovery Services cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Recovery Services Backup, please visit the following: https://docs.microsoft.com/azure/backup/
-For more information on Site Recovery, please visit the following: https://docs.microsoft.com/azure/site-recovery/'
+For more information on Recovery Services Backup, please visit the following: https://learn.microsoft.com/azure/backup/
+For more information on Site Recovery, please visit the following: https://learn.microsoft.com/azure/site-recovery/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -66,7 +66,7 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll',
                'Microsoft.Azure.PowerShell.RecoveryServices.Management.Sdk.dll', 
                'Microsoft.Azure.PowerShell.RecoveryServices.Backup.Management.Sdk.dll', 
                'Microsoft.Azure.PowerShell.RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.dll', 
-               'Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll', 
+               'Microsoft.Azure.PowerShell.RecoveryServices.SiteRecovery.Management.Sdk.dll', 
                'System.Configuration.ConfigurationManager.dll', 
                'TimeZoneConverter.dll'
 

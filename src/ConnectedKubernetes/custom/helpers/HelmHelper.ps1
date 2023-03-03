@@ -1,14 +1,33 @@
 
-function Get-HelmClientLocation {
+function Set-HelmClientLocation {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
     process {
-        if (Test-Path Env:HELM_CLIENT_PATH) {
-            return (Get-Item Env:HELM_CLIENT_PATH).Value
+        $HelmLocation = Get-HelmClientLocation
+        if ($null -eq $HelmLocation) {
+            return
         }
+        if (!($env:Path.contains($HelmLocation)) -and (Test-Path $HelmLocation)) {
+            $PathStr = $HelmLocation + ";$env:Path"
+            Set-Item -Path Env:Path -Value $PathStr
+        }        
+    }
+}
 
+function Get-HelmClientLocation {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    param(
+    )
+    process {        
         if (IsWindows -and IsAmd64) {
+            if (Test-Path Env:HELM_CLIENT_PATH) {
+                $CustomPath = (Get-Item Env:HELM_CLIENT_PATH).Value
+                if ($CustomPath.EndsWith("helm.exe") -and (!((Get-Item $CustomPath) -is [System.IO.DirectoryInfo]))) {
+                    $CustomPath = $CustomPath.Replace("helm.exe","")
+                }
+                return $CustomPath
+            }
             if (Test-Path Env:Home) {
                 $HomePath = (Get-Item Env:HOME).Value
             } else {
@@ -27,19 +46,15 @@ function Get-HelmClientLocation {
                 if ((!(Test-Path $HelmLocation))) {
                     Invoke-WebRequest -Uri "https://k8connecthelm.azureedge.net/helmsigned/$ZipName" -OutFile $ZipLocation -UseBasicParsing
                     Expand-Archive $ZipLocation $RootFolder
-                }
-                if (Test-Path $HelmLocation) {
-                    $PathStr = $InstallLocation + ";$env:Path"
-                    Set-Item -Path Env:Path -Value $PathStr
+                    Write-Verbose "Downloaded helm: $HelmLocation"
                 }
             } catch {
                 throw "Failed to download helm"
             }
-            Write-Verbose "Downloaded helm: $HelmLocation"
         } else {
             Write-Warning "Helm version 3.6.3 is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
         }
-        return $HelmLocation
+        return $InstallLocation
     }
 }
 

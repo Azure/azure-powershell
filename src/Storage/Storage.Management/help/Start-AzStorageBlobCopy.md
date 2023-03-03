@@ -422,7 +422,7 @@ Accept wildcard characters: False
 ### -DestTagCondition
 Optional Tag expression statement to check match condition on the destination Blob. 
 The blob request will fail when the destination blob tags does not match the given expression.
-See details in https://docs.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
+See details in https://learn.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
 
 ```yaml
 Type: System.String
@@ -608,7 +608,7 @@ Accept wildcard characters: False
 
 ### -StandardBlobTier
 Block Blob Tier, valid values are Hot/Cool/Archive.
-See detail in https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers
+See detail in https://learn.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers
 
 ```yaml
 Type: System.String
@@ -640,7 +640,7 @@ Accept wildcard characters: False
 ### -TagCondition
 Optional Tag expression statement to check match condition on the source blob. 
 The blob request will fail when the source blob tags does not match the given expression.
-See details in https://docs.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
+See details in https://learn.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
 
 ```yaml
 Type: System.String

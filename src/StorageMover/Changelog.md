@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated StorageMover API version to 2023-03-01
 
 ## Version 0.1.0
 * First preview release for module Az.StorageMover

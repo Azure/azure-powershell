@@ -484,6 +484,21 @@ namespace Microsoft.Azure.Management.Sql
         IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; }
 
         /// <summary>
+        /// Gets the IDatabaseEncryptionProtectorsOperations.
+        /// </summary>
+        IDatabaseEncryptionProtectorsOperations DatabaseEncryptionProtectors { get; }
+
+        /// <summary>
+        /// Gets the IRecoverableDatabasesOperations.
+        /// </summary>
+        IRecoverableDatabasesOperations RecoverableDatabases { get; }
+
+        /// <summary>
+        /// Gets the IRestorableDroppedDatabasesOperations.
+        /// </summary>
+        IRestorableDroppedDatabasesOperations RestorableDroppedDatabases { get; }
+
+        /// <summary>
         /// Gets the IInstanceFailoverGroupsOperations.
         /// </summary>
         IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; }

@@ -287,7 +287,7 @@ function New-AzConnectedKubernetes {
 
         #Region check helm install
         try {
-            Get-HelmClientLocation
+            Set-HelmClientLocation
             $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
             if ($HelmVersion.Contains("v2")) {
                 Write-Error "Helm version 3+ is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"

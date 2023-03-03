@@ -93,10 +93,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Task.Run(() =>
                     {
                         _settings = Settings.GetSettings();
-                        _azContext = new AzContext(_powerShellRuntime)
-                        {
-                            IsInternal = (_settings.SetAsInternal == true) ? true : false,
-                        };
+                        _azContext = new AzContext(_powerShellRuntime);
 
                         _azContext.UpdateContext();
                         // This will run the script in the right context.
@@ -279,7 +276,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     parsedResult = GetAstAndMaskedCommandLine(commandLine);
                 }
 
-                _telemetryClient.OnHistory(new HistoryTelemetryData(client, parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder, success));
+                // We only collect the masked command line when the command is supported.
+                // This is to avoid the case when the user copies and pasted some sensitive data into the command line.
+
+                var collectedCommandLine = parsedResult.IsSupported ?
+                    parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder :
+                    AzPredictorConstants.CommandPlaceholder;
+                _telemetryClient.OnHistory(new HistoryTelemetryData(client, collectedCommandLine, success));
                 _commandLineExecutedCompletion?.SetResult();
             });
 
@@ -315,7 +318,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
                 finally
                 {
-                    _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(client, localSuggestionSessionId, context.InputAst,
+                    _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(client,
+                            localSuggestionSessionId,
+                            suggestions?.CommandAst,
+                            _service.IsSupportedCommand(suggestions?.CommandAst?.GetCommandName()),
                             suggestions,
                             cancellationToken.IsCancellationRequested,
                             exception));

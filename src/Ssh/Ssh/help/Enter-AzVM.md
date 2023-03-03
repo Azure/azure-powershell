@@ -17,27 +17,26 @@ Users can login using AAD accounts, or local user accounts via standard SSH auth
 ```
 Enter-AzVM -ResourceGroupName <String> -Name <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>]
  [-UsePrivateIp] [-LocalUser <String>] [-Port <String>] [-ResourceType <String>] [-CertificateFile <String>]
- [-SshArgument <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SshArgument <String[]>] [-Rdp] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IpAddress
 ```
 Enter-AzVM -Ip <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>] [-LocalUser <String>]
- [-Port <String>] [-CertificateFile <String>] [-SshArgument <String[]>] [-PassThru]
+ [-Port <String>] [-CertificateFile <String>] [-SshArgument <String[]>] [-Rdp] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Enter-AzVM -ResourceId <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>] [-UsePrivateIp]
- [-LocalUser <String>] [-Port <String>] [-CertificateFile <String>] [-SshArgument <String[]>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-LocalUser <String>] [-Port <String>] [-CertificateFile <String>] [-SshArgument <String[]>] [-Rdp]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Start interactive SSH session to an Azure Resource (currently supports Azure VMs and Arc Servers).
 Users can login using AAD issued certificates or using local user credentials. We recommend login using AAD issued certificates when possible.
-
 
 ## EXAMPLES
 
@@ -45,22 +44,26 @@ Users can login using AAD issued certificates or using local user credentials. W
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine
 ```
+
 When a -LocalUser is not supplied, the cmdlet will attempt to login using Azure AD. This is currently only supported for resources running Linux OS.
 
 ### Example 2: Connect to Local User on Azure Resource using SSH certificates for authentication
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -PrivateKeyFile ./id_rsa -CertificateFile ./cert
 ```
+
 ### Example 3: Connect to Local User on Azure Resource using SSH private key for authentication
 
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -PrivateKeyFile ./id_rsa
 ```
+
 ### Example 4: Connect to Local User on Azure Resource using interactive username and password authetication
 
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser
 ```
+
 ### Example 5: Connect to the Public Ip of an Azure Virtual Machine using AAD issued certificates
 ```powershell
 Enter-AzVM -Ip 1.2.3.4
@@ -70,13 +73,22 @@ Enter-AzVM -Ip 1.2.3.4
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -ResourceType Microsoft.HybridCompute/machines
 ```
+
 This parameter is useful when there is more than one supported resource with the same name in the Resource Group.
 
 ### Example 7: Connect to Azure Resource using AAD certificate issued certificates and custom key files
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -PrivateKeyFile ./id_rsa -PublicKeyFile ./id_rsa.pub
 ```
+
 If custom key files are not provided, the cmdlet will generate the key pair.
+
+### Example 8: Start RDP connection over SSH connection.
+```powershell
+Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser username -Rdp
+```
+
+This parameter is useful for creating RDP session to an Arc resource via Arc Connectivity Platform.
 
 ## PARAMETERS
 
@@ -215,6 +227,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Rdp
+Start a RDP connection over SSH connection. Only supported on Windows OS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource group name.
 
@@ -252,7 +279,7 @@ Resource type of the target resource.
 Type: System.String
 Parameter Sets: Interactive
 Aliases:
-Accepted values: Microsoft.Compute/virtualMachines, Microsoft.HybridCompute/machines
+Accepted values: Microsoft.HybridCompute/machines, Microsoft.Compute/virtualMachines, Microsoft.ConnectedVMwarevSphere/virtualMachines, Microsoft.ScVmm/virtualMachines, Microsoft.AzureStackHCI/virtualMachines
 
 Required: False
 Position: Named
@@ -307,5 +334,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[SSH Access to Arzure Arc-enabled servers](https://learn.microsoft.com/en-us/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli)
+[Troubleshoot SSH access to Azure Arc Enabled Servers](https://learn.microsoft.com/en-us/azure/azure-arc/servers/ssh-arc-troubleshoot)
 [Login to a Linux VM by using Azure AD](https://learn.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
 [Install OpenSSH for Windows](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui)

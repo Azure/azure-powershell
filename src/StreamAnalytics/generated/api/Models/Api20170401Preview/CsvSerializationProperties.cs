@@ -22,8 +22,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         private string _fieldDelimiter;
 
         /// <summary>
-        /// Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input
-        /// or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required
+        /// Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input
+        /// or https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required
         /// on PUT (CreateOrReplace) requests.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Origin(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PropertyOrigin.Owned)]
@@ -51,14 +51,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.Encoding) })]
         Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.Encoding? Encoding { get; set; }
         /// <summary>
-        /// Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input
-        /// or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required
+        /// Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input
+        /// or https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required
         /// on PUT (CreateOrReplace) requests.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required on PUT (CreateOrReplace) requests.",
+        Description = @"Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required on PUT (CreateOrReplace) requests.",
         SerializedName = @"fieldDelimiter",
         PossibleTypes = new [] { typeof(string) })]
         string FieldDelimiter { get; set; }
@@ -74,8 +74,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.Encoding? Encoding { get; set; }
         /// <summary>
-        /// Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input
-        /// or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required
+        /// Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input
+        /// or https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required
         /// on PUT (CreateOrReplace) requests.
         /// </summary>
         string FieldDelimiter { get; set; }
