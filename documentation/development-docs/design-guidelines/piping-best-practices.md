@@ -18,7 +18,7 @@ The cmdlet `Get-AzEnvironment` will return a set of `Environment` objects, and t
 
 When an object is being piped to a cmdlet, PowerShell will first check to see if it can bind the input object to a parameter with the same type and has the property `ValueFromPipeline = true`. If no parameters are bound at this point, PowerShell will do the same check for parameters with the `ValueFromPipeline = true` parameter, but it will see if it can convert the input object to the type of the parameter. If no parameters are bound at this point, PowerShell will then see if it can bind the properties of the input object with parameters that share the same name and have the property `ValueFromPipelineByPropertyName = true` that are all in the same parameter set.
 
-For more information on piping, see the article [_Understanding pipelines_](https://docs.microsoft.com/en-us/powershell/scripting/learn/understanding-the-powershell-pipeline).
+For more information on piping, see the article [_Understanding pipelines_](https://learn.microsoft.com/en-us/powershell/scripting/learn/understanding-the-powershell-pipeline).
 
 ## Piping in Azure PowerShell
 

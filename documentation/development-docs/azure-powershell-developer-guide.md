@@ -284,7 +284,7 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
 
 > **Important!**
 > 1. Be sure that you have set the `ExecutionPolicy` to `Unrestricted` on both 32-bit and 64-bit PowerShell environments, as mentioned in the [prerequisites](#prerequisites) at the top
-> 2. When recording tests, if you are using a Prod environment, use ServicePrincipalName (SPN) and ServicePrincipalSecret. For more information on creating an SPN, click [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+> 2. When recording tests, if you are using a Prod environment, use ServicePrincipalName (SPN) and ServicePrincipalSecret. For more information on creating an SPN, click [here](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
 ### AD Scenario Tests
 

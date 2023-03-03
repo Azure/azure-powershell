@@ -1,5 +1,5 @@
 # Please don't use ADO UI defined scheduled triggers because it takes precedence over YAML scheduled triggers.
-# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers
+# https://learn.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers
 variables:
   today: $(Get-Date -Format yyyyMMddhhmmss)
 

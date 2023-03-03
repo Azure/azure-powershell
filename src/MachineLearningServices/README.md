@@ -52,7 +52,7 @@ directive:
       return {
           "type": "object",
           "additionalProperties": true,
-          "description": "Defines Component definition details.\r\n<see href=\"https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command\" />"
+          "description": "Defines Component definition details.\r\n<see href=\"https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command\" />"
       }
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}"].put
