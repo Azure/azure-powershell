@@ -41,6 +41,7 @@ $ArcIntegrationNotAvailableForCloudError = "Azure Arc for Server integration is 
 $ArcNeedsToBeEnabledError = "Azure Arc for servers integration can't be disabled. Skip the parameter '-EnableAzureArcServer' or Specify '-EnableAzureArcServer:`$true' in Register-AzStackHCI Cmdlet to register."
 $ArcAADAppCreationMessage= "Creating AAD application for onboarding ARC"
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
+$CheckingDependentModules = "Checking whether the required modules are installed"
 $ValidatingParametersFetchClusterName = "Validating cmdlet parameters"
 $ValidatingParametersRegisteredInfo = "Validating the parameters and checking registration information"
 $RegisterProgressActivityName = "Registering Azure Stack HCI with Azure..."
@@ -77,6 +78,7 @@ $VerifyingArcMessage = "Verifying Azure Arc for Servers registration"
 $WaitingUnregisterMessage = "Disabling Azure Arc integration on every clustered node"
 $CleanArcMessage = "Cleaning up Azure Arc integration"
 
+$MissingDependentModulesError = "Can't find PowerShell module: {0}. Please install the missing module using 'Install-Module -Name <Module_Name>' and try again."
 $ArcAlreadyEnabledInADifferentResourceError = "Below mentioned cluster node(s) are already Arc enabled with a different ARM Resource Id:`n{0}`nDisconnect Arc agent on these nodes and run Register-AzStackHCI again."
 
 $ArcAgentRolesInsufficientPreviligeMessage = "Failed to assign required roles for Azure Arc integration. Your Azure AD account must be an Owner or User Access Administrator in the subscription to enable Azure Arc integration."
@@ -242,8 +244,8 @@ $ArcSettingsDisableInProgressState = "DisableInProgress"
 $ClusterAgentServiceName = "HciClusterAgentSvc"
 $ClusterAgentGroupName = "Cloud Management"
 
-$AzAccountsModuleVersion="2.10.2"
-$AzResourcesModuleVersion="6.2.0"
+$AzAccountsModuleMinVersion="2.10.2"
+$AzResourcesModuleMinVersion="6.2.0"
 
 Function Write-Log {
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
@@ -935,12 +937,12 @@ param(
 function Install-Dependent-Module{
     param(
     [string] $ModuleName,
-    [string] $ModuleVersion
+    [string] $MinModuleVersion
     )
     try
     {
-        Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion -ErrorAction Stop
-        Write-VerboseLog ("Found required Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+        Import-Module -Name $ModuleName -MinimumVersion $MinModuleVersion -ErrorAction Stop
+        Write-VerboseLog ("Found required Module: {0}" -f $ModuleName)
     }
     catch
     {
@@ -953,12 +955,37 @@ function Install-Dependent-Module{
             Install-PackageProvider NuGet -Force | Out-Null
         }
 
-        Write-VerboseLog ("Installing Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+        Write-VerboseLog ("Installing Module: {0}" -f $ModuleName)
 
-        Install-Module -Name $ModuleName  -RequiredVersion $ModuleVersion  -Force -AllowClobber -Repository 'PSGallery'
-        Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion
+        Install-Module -Name $ModuleName -Force -AllowClobber -Repository 'PSGallery'
+        Import-Module -Name $ModuleName
         
-        Write-VerboseLog ("Successfully imported Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+        Write-VerboseLog ("Successfully imported Module: {0}" -f $ModuleName)
+    }
+}
+
+function Check-DependentModules 
+{
+    param()
+
+    $missingDependentModules = [System.Collections.ArrayList]::new()
+
+    if (-Not (Get-InstalledModule -Name "Az.Accounts" -MinimumVersion $AzAccountsModuleMinVersion -ErrorAction SilentlyContinue))
+    {
+        Write-VerboseLog "Required module Az.Accounts (minimum version: $AzAccountsModuleMinVersion) is missing"
+        $missingDependentModules.Add("Az.Accounts (minimum version: $AzAccountsModuleMinVersion)") | Out-Null
+    }
+    else 
+    {
+        Write-VerboseLog "Found required module Az.Accounts"
+        Import-Module -Name "Az.Accounts"
+    }
+    
+    if($missingDependentModules.Length -gt 0)
+    {
+        $missingDependentModules = $missingDependentModules -join ", "
+        $MissingDependentModulesExceptionMessage = $MissingDependentModulesError -f $missingDependentModules
+        throw $MissingDependentModulesExceptionMessage
     }
 }
 
@@ -978,8 +1005,7 @@ param(
 
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $InstallAzResourcesMessage -percentcomplete 10
 
-    Install-Dependent-Module -ModuleName "Az.Accounts" -ModuleVersion $AzAccountsModuleVersion
-    Install-Dependent-Module -ModuleName "Az.Resources" -ModuleVersion $AzResourcesModuleVersion
+    Install-Dependent-Module -ModuleName "Az.Resources" -MinModuleVersion $AzResourcesModuleMinVersion
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $LoggingInToAzureMessage -percentcomplete 30
 
     if($EnvironmentName -eq $AzurePPE)
@@ -2459,7 +2485,10 @@ param(
             $IsManagementNode = $True
         }
 
-        Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 1
+        Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $CheckingDependentModules -percentcomplete 1
+        Check-DependentModules
+
+        Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 2
         if($IsManagementNode)
         {
             Write-VerboseLog ("Connecting via Management Node")
@@ -3547,7 +3576,10 @@ param(
             $RPAPIVersion = "2022-09-01"
         }
 
-        Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 1
+        Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $CheckingDependentModules -percentcomplete 1
+        Check-DependentModules
+        
+        Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 2
         Write-VerboseLog ($UnregisterProgressActivityName)
         $msg = Print-FunctionParameters -Message "Unregister-AzStackHCI" -Parameters $PSBoundParameters
         Write-NodeEventLog -Message $msg  -EventID 9009 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
@@ -4175,6 +4207,9 @@ param(
             $RPAPIVersion = "2022-09-01"
         }
 
+        Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $CheckingDependentModules -PercentComplete 2
+        Check-DependentModules
+
         Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusGathering -PercentComplete 5
 
         if($PSBoundParameters.ContainsKey('ResourceId') -eq $false)
@@ -4285,8 +4320,7 @@ param(
         }
         else 
         {
-            Install-Dependent-Module -ModuleName "Az.Accounts" -ModuleVersion $AzAccountsModuleVersion
-            Install-Dependent-Module -ModuleName "Az.Resources" -ModuleVersion $AzResourcesModuleVersion
+            Install-Dependent-Module -ModuleName "Az.Resources" -MinModuleVersion $AzResourcesModuleMinVersion
         }
 
         $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop
