@@ -84,7 +84,7 @@ function Test-RestoreAccountCmdlets {
   $PartitionKeyKindValue = "Hash"
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -Location "West Us" -FailoverPriority 0 -IsZoneRedundant 0
-  $publicNetworkAccess
+  $publicNetworkAccess = "Disabled"
 
   # $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
   # New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
