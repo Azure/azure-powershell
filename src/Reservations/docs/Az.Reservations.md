@@ -45,7 +45,7 @@ Calculate price for returning `Reservations` if there are no policy errors.\n
 Returns one or more `Reservations` in exchange for one or more `Reservation` purchases.\n
 
 ### [Invoke-AzReservationReturn](Invoke-AzReservationReturn.md)
-Return a reservation and get refund information.
+Return a Reservation.
 
 ### [Invoke-AzReservationUnarchiveReservation](Invoke-AzReservationUnarchiveReservation.md)
 Restores a `Reservation` to the state it was before archiving.\n

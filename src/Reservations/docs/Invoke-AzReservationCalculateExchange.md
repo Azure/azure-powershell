@@ -245,7 +245,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <ICalculateExchangeRequest>: Calculate exchange request
+`BODY <ICalculateExchangeRequest>`: Calculate exchange request
   - `[ReservationsToExchange <IReservationToReturn[]>]`: List of reservations that are being returned in this exchange.
     - `[Quantity <Int32?>]`: Quantity to be returned. Must be greater than zero.
     - `[ReservationId <String>]`: Fully qualified identifier of the reservation being returned
@@ -284,11 +284,11 @@ BODY <ICalculateExchangeRequest>: Calculate exchange request
     - `[SkuName <String>]`: 
     - `[Term <SavingsPlanTerm?>]`: Represent savings plan term in ISO 8601 format.
 
-RESERVATIONSTOEXCHANGE <IReservationToReturn[]>: List of reservations that are being returned in this exchange.
+`RESERVATIONSTOEXCHANGE <IReservationToReturn[]>`: List of reservations that are being returned in this exchange.
   - `[Quantity <Int32?>]`: Quantity to be returned. Must be greater than zero.
   - `[ReservationId <String>]`: Fully qualified identifier of the reservation being returned
 
-RESERVATIONSTOPURCHASE <IPurchaseRequest[]>: List of reservations that are being purchased in this exchange.
+`RESERVATIONSTOPURCHASE <IPurchaseRequest[]>`: List of reservations that are being purchased in this exchange.
   - `[AppliedScopePropertyDisplayName <String>]`: Display name
   - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
   - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
@@ -308,7 +308,7 @@ RESERVATIONSTOPURCHASE <IPurchaseRequest[]>: List of reservations that are being
   - `[Sku <String>]`: 
   - `[Term <ReservationTerm?>]`: Represent the term of reservation.
 
-SAVINGSPLANSTOPURCHASE <ISavingsPlanPurchaseRequest[]>: List of savings plans that are being purchased in this exchange.
+`SAVINGSPLANSTOPURCHASE <ISavingsPlanPurchaseRequest[]>`: List of savings plans that are being purchased in this exchange.
   - `[AppliedScopePropertyDisplayName <String>]`: Display name
   - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
   - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
