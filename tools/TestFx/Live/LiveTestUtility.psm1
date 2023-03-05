@@ -22,11 +22,18 @@ param (
 
     [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
+    [string] $OSType,
+
+    [Parameter(Mandatory)]
+    [ValidateNotNullOrEmpty()]
     [string] $OSVersion,
 
     [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
     [string] $PSVersion,
+
+    [Parameter()]
+    [string] $Tag,
 
     [Parameter()]
     [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
@@ -56,7 +63,7 @@ function InitializeLiveTestModule {
         New-Item -Path $script:LiveTestRawDirectory -ItemType Directory -Force
     }
 
-    ({} | Select-Object "Source", "BuildId", "OSVersion", "PSVersion", "Module", "Name", "Description", "StartDateTime", "EndDateTime", "IsSuccess", "Errors" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $script:LiveTestRawCsvFile -Encoding utf8 -Force
+    ({} | Select-Object "Source", "BuildId", "OSVersion", "PSVersion", "Module", "Name", "Description", "StartDateTime", "EndDateTime", "IsSuccess", "Errors", "ExtendedProperties" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $script:LiveTestRawCsvFile -Encoding utf8 -Force
 }
 
 function New-LiveTestRandomName {
@@ -227,6 +234,14 @@ function Invoke-LiveTestScenario {
         [ValidateNotNullOrEmpty()]
         [string] $Description,
 
+        [Parameter()]
+        [ValidateSet("Windows", "Linux", "MacOS", IgnoreCase = $false)]
+        [string[]] $RunPlatform,
+
+        [Parameter()]
+        [ValidateSet("7.0", "7.1", "7.2", "latest", IgnoreCase = $false)]
+        [string[]] $RunPowerShellVersion,
+
         [Parameter(ParameterSetName = "HasDefaulResourceGroup")]
         [ValidateNotNullOrEmpty()]
         [string] $ResourceGroupLocation,
@@ -239,122 +254,155 @@ function Invoke-LiveTestScenario {
         [scriptblock] $ScenarioScript
     )
 
+    $proceed = $true
+
+    if ($PSBoundParameters.ContainsKey("RunPlatform") -and $OSType -notin $RunPlatform) {
+        $proceed = $false
+    }
+
+    if ($PSBoundParameters.ContainsKey("RunPowerShellVersion")) {
+        $curPSVer = (Get-Variable -Name PSVersionTable -ValueOnly).PSVersion
+        if ($PSVersion -eq "latest") {
+            if ("latest" -notin $RunPowerShellVersion) {
+                $proceed = $false
+            }
+            else {
+                $PSVersion = $curPSVer.ToString()
+            }
+        }
+        else {
+            $curMajorVer = $curPSVer.Major
+            $curMinorVer = $curPSVer.Minor
+            $curSimpleVer = "$curMajorVer.$curMinorVer"
+            if ($curSimpleVer -notin $RunPowerShellVersion) {
+                $proceed = $false
+            }
+        }
+    }
+
     if (!(Test-Path -LiteralPath $script:LiveTestRawCsvFile -PathType Leaf -ErrorAction SilentlyContinue)) {
         throw "Error occurred when initializing live tests. The csv file was not found."
     }
 
-    Write-Host "##[group]Start executing the live scenario `"$Name`"." -ForegroundColor Green
+    if ($proceed) {
+        Write-Host "##[group]Start executing the live scenario `"$Name`"." -ForegroundColor Green
 
-    try {
-        $snrCsvData = [PSCustomObject]@{
-            Source        = "LiveTest"
-            BuildId       = $BuildId
-            OSVersion     = $OSVersion
-            PSVersion     = $PSVersion
-            Module        = $ModuleName
-            Name          = $Name
-            Description   = $Description
-            StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
-            EndDateTime   = $null
-            IsSuccess     = $true
-            Errors        = ""
+        if ($PSBoundParameters.ContainsKey("Tag") -and ![string]::IsNullOrEmpty($Tag)) {
+            $exProps = @{ Tag = $Tag } | ConvertTo-Json -Compress
         }
 
-        if (!$NoResourceGroup.IsPresent) {
-            $snrResourceGroupName = New-LiveTestResourceGroupName
-            $snrResourceGroupLocation = "westus"
-            if ($PSBoundParameters.ContainsKey("ResourceGroupLocation")) {
-                $snrResourceGroupLocation = $ResourceGroupLocation
+        try {
+            $snrCsvData = [PSCustomObject]@{
+                Source             = "LiveTest"
+                BuildId            = $BuildId
+                OSVersion          = $OSVersion
+                PSVersion          = $PSVersion
+                Module             = $ModuleName
+                Name               = $Name
+                Description        = $Description
+                StartDateTime      = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
+                EndDateTime        = $null
+                IsSuccess          = $true
+                Errors             = $null
+                ExtendedProperties = $exProps
             }
 
-            Write-Host "##[section]Start creating a resource group." -ForegroundColor Green
-            Write-Host "##[section]Resource group name: $snrResourceGroupName" -ForegroundColor Green
-            Write-Host "##[section]Resource group location: $snrResourceGroupLocation" -ForegroundColor Green
-
-            $snrResourceGroup = New-LiveTestResourceGroup -Name $snrResourceGroupName -Location $snrResourceGroupLocation
-
-            Write-Host "##[section]Finish creating the resource group." -ForegroundColor Green
-        }
-
-        $snrRetryCount = 0
-        $snrRetryErrors = @()
-
-        do {
-            try {
-                $prefs = @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None"))
-                if ($snrRetryCount -eq $script:ScenarioMaxRetryCount) {
-                    $prefs += [psvariable]::new("DebugPreference", "Continue")
+            if (!$NoResourceGroup.IsPresent) {
+                $snrResourceGroupName = New-LiveTestResourceGroupName
+                $snrResourceGroupLocation = "westus"
+                if ($PSBoundParameters.ContainsKey("ResourceGroupLocation")) {
+                    $snrResourceGroupLocation = $ResourceGroupLocation
                 }
 
-                $ScenarioScript.InvokeWithContext($null, $prefs, $snrResourceGroup)
+                Write-Host "##[section]Start creating a resource group." -ForegroundColor Green
+                Write-Host "##[section]Resource group name: $snrResourceGroupName" -ForegroundColor Green
+                Write-Host "##[section]Resource group location: $snrResourceGroupLocation" -ForegroundColor Green
 
-                Write-Host "##[section]Finish executing the live scenario `"$Name`"." -ForegroundColor Green
+                $snrResourceGroup = New-LiveTestResourceGroup -Name $snrResourceGroupName -Location $snrResourceGroupLocation
 
-                break
+                Write-Host "##[section]Finish creating the resource group." -ForegroundColor Green
             }
-            catch {
-                $snrErrorRecord = $_.Exception.InnerException.ErrorRecord
-                $snrErrorMessage = $snrErrorRecord.Exception.Message
-                $snrErrorDetails = $snrErrorMessage
 
-                $snrInvocationInfo = $snrErrorRecord.InvocationInfo
+            $snrRetryCount = 0
+            $snrRetryErrors = @()
 
-                if ($null -ne $snrInvocationInfo) {
-                    $snrScriptName = Split-Path -Path $snrInvocationInfo.ScriptName -Leaf -ErrorAction SilentlyContinue
-                    if ($snrScriptName -eq "Assert.ps1") {
-                        Write-Host "##[error]Exception was thrown from the Assert.ps1. The stack trace is:" -ForegroundColor Red
-                        Write-Host "##[error]$($snrErrorRecord.ScriptStackTrace)" -ForegroundColor Red
+            do {
+                try {
+                    $prefs = @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None"))
+                    if ($snrRetryCount -eq $script:ScenarioMaxRetryCount) {
+                        $prefs += [psvariable]::new("DebugPreference", "Continue")
                     }
-                    else {
-                        $snrErrorDetails += " thrown at line:$($snrInvocationInfo.ScriptLineNumber) char:$($snrInvocationInfo.OffsetInLine) by cmdlet '$($snrInvocationInfo.MyCommand)' on '$($snrInvocationInfo.Line.ToString().Trim())'"
-                    }
-                }
 
-                $snrRetryErrors += $snrErrorDetails
+                    $ScenarioScript.InvokeWithContext($null, $prefs, $snrResourceGroup)
 
-                if ($snrRetryCount -lt $script:ScenarioMaxRetryCount) {
-                    $snrRetryCount++
-                    $exponentialDelay = [Math]::Min((1 -shl ($snrRetryCount - 1)) * [int](Get-Random -Minimum ($script:ScenarioDelay * 0.8) -Maximum ($script:ScenarioDelay * 1.2)), $script:ScenarioMaxDelay)
-                    Write-Host "##[warning]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorDetails`"." -ForegroundColor Yellow
-                    Write-Host "##[warning]Live test will retry automatically in $exponentialDelay seconds." -ForegroundColor Yellow
-                    Write-Host
+                    Write-Host "##[section]Finish executing the live scenario `"$Name`"." -ForegroundColor Green
 
-                    Start-Sleep -Seconds $exponentialDelay
-                    Write-Host "##[warning]Retry #$snrRetryCount to execute the live scenario `"$Name`"." -ForegroundColor Yellow
-                }
-                else {
-                    Write-Host "##[error]Failed to execute the live scenario `"$Name`" with error details `"$snrErrorDetails`"." -ForegroundColor Red
-                    Write-Host
-                    $snrCsvData.IsSuccess = $false
-                    $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrRetryErrors
                     break
                 }
-            }
-        }
-        while ($true)
-    }
-    catch {
-        $snrErrorMessage = $_.Exception.Message
-        Write-Host "##[error]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorDetails`"" -ForegroundColor Red
-        Write-Host
-        $snrCsvData.IsSuccess = $false
-        $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrErrorMessage
-    }
-    finally {
-        $snrCsvData.EndDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
-        $snrCsvData | Export-Csv -LiteralPath $script:LiveTestRawCsvFile -Encoding utf8 -NoTypeInformation -Append
+                catch {
+                    $snrErrorRecord = $_.Exception.InnerException.ErrorRecord
+                    $snrErrorMessage = $snrErrorRecord.Exception.Message
+                    $snrErrorDetails = $snrErrorMessage
 
-        if (!$NoResourceGroup.IsPresent -and $null -ne $snrResourceGroup) {
-            try {
-                Write-Host "##[section]Start cleaning up the resource group `"$snrResourceGroupName`"." -ForegroundColor Green
-                Clear-LiveTestResources -Name $snrResourceGroupName
-            }
-            catch {
-                # Ignore exception for clean up
-            }
-        }
+                    $snrInvocationInfo = $snrErrorRecord.InvocationInfo
 
-        Write-Host "##[endgroup]"
+                    if ($null -ne $snrInvocationInfo) {
+                        $snrScriptName = Split-Path -Path $snrInvocationInfo.ScriptName -Leaf -ErrorAction SilentlyContinue
+                        if ($snrScriptName -eq "Assert.ps1") {
+                            Write-Host "##[error]Exception was thrown from the Assert.ps1. The stack trace is:" -ForegroundColor Red
+                            Write-Host "##[error]$($snrErrorRecord.ScriptStackTrace)" -ForegroundColor Red
+                        }
+                        else {
+                            $snrErrorDetails += " thrown at line:$($snrInvocationInfo.ScriptLineNumber) char:$($snrInvocationInfo.OffsetInLine) by cmdlet '$($snrInvocationInfo.MyCommand)' on '$($snrInvocationInfo.Line.ToString().Trim())'"
+                        }
+                    }
+
+                    $snrRetryErrors += $snrErrorDetails
+
+                    if ($snrRetryCount -lt $script:ScenarioMaxRetryCount) {
+                        $snrRetryCount++
+                        $exponentialDelay = [Math]::Min((1 -shl ($snrRetryCount - 1)) * [int](Get-Random -Minimum ($script:ScenarioDelay * 0.8) -Maximum ($script:ScenarioDelay * 1.2)), $script:ScenarioMaxDelay)
+                        Write-Host "##[warning]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorDetails`"." -ForegroundColor Yellow
+                        Write-Host "##[warning]Live test will retry automatically in $exponentialDelay seconds." -ForegroundColor Yellow
+                        Write-Host
+
+                        Start-Sleep -Seconds $exponentialDelay
+                        Write-Host "##[warning]Retry #$snrRetryCount to execute the live scenario `"$Name`"." -ForegroundColor Yellow
+                    }
+                    else {
+                        Write-Host "##[error]Failed to execute the live scenario `"$Name`" with error details `"$snrErrorDetails`"." -ForegroundColor Red
+                        Write-Host
+                        $snrCsvData.IsSuccess = $false
+                        $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrRetryErrors
+                        break
+                    }
+                }
+            }
+            while ($true)
+        }
+        catch {
+            $snrErrorMessage = $_.Exception.Message
+            Write-Host "##[error]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorDetails`"" -ForegroundColor Red
+            Write-Host
+            $snrCsvData.IsSuccess = $false
+            $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrErrorMessage
+        }
+        finally {
+            $snrCsvData.EndDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
+            $snrCsvData | Export-Csv -LiteralPath $script:LiveTestRawCsvFile -Encoding utf8 -NoTypeInformation -Append
+
+            if (!$NoResourceGroup.IsPresent -and $null -ne $snrResourceGroup) {
+                try {
+                    Write-Host "##[section]Start cleaning up the resource group `"$snrResourceGroupName`"." -ForegroundColor Green
+                    Clear-LiveTestResources -Name $snrResourceGroupName
+                }
+                catch {
+                    # Ignore exception for clean up
+                }
+            }
+
+            Write-Host "##[endgroup]"
+        }
     }
 }
 

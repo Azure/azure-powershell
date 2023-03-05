@@ -1,6 +1,7 @@
 parameters:
 - name: name
 - name: vmImage
+- name: osType
 - name: psVersion
 - name: dotnetVersion
 
@@ -35,11 +36,11 @@ jobs:
         New-Item -Name $(ArtifactsName) -Path $(Pipeline.Workspace) -ItemType Directory -Force
 
   - task: DownloadPipelineArtifact@2
-    condition: and(succeeded(), eq(variables['GalleryName'], 'DailyBuild'), eq(variables['BuildPipelineBuildId'], ''))
+    condition: and(succeeded(), eq(variables['GalleryName'], 'DailyBuild'), eq(variables['PipelineBuildId'], ''))
     displayName: Download latest artifacts from daily build pipeline main branch
     inputs:
       buildType: 'specific'
-      project: $(ProjectToDownloadArtifacts)
+      project: $(BuildPipelineProject)
       definition: $(BuildPipelineDefinitionId)
       buildVersionToDownload: 'latestFromBranch'
       branchName: 'refs/heads/main'
@@ -47,14 +48,38 @@ jobs:
       targetPath: $(Pipeline.Workspace)
 
   - task: DownloadPipelineArtifact@2
-    condition: and(succeeded(), eq(variables['GalleryName'], 'DailyBuild'), ne(variables['BuildPipelineBuildId'], ''))
+    condition: and(succeeded(), eq(variables['GalleryName'], 'DailyBuild'), ne(variables['PipelineBuildId'], ''))
     displayName: Download specific artifacts from daily build pipeline
     inputs:
       buildType: 'specific'
-      project: $(ProjectToDownloadArtifacts)
+      project: $(BuildPipelineProject)
       definition: $(BuildPipelineDefinitionId)
       buildVersionToDownload: 'specific'
-      pipelineId: $(BuildPipelineBuildId)
+      pipelineId: $(PipelineBuildId)
+      artifactName: 'artifacts'
+      targetPath: $(Pipeline.Workspace)
+
+  - task: DownloadPipelineArtifact@2
+    condition: and(succeeded(), eq(variables['GalleryName'], 'Sign'), eq(variables['PipelineBuildId'], ''))
+    displayName: Download latest artifacts from sign pipeline internal/release branch
+    inputs:
+      buildType: 'specific'
+      project: $(SignPipelineProject)
+      definition: $(SignPipelineDefinitionId)
+      buildVersionToDownload: 'latestFromBranch'
+      branchName: 'refs/heads/internal/release'
+      artifactName: 'artifacts'
+      targetPath: $(Pipeline.Workspace)
+
+  - task: DownloadPipelineArtifact@2
+    condition: and(succeeded(), eq(variables['GalleryName'], 'Sign'), ne(variables['PipelineBuildId'], ''))
+    displayName: Download specific artifacts from sign pipeline
+    inputs:
+      buildType: 'specific'
+      project: $(SignPipelineProject)
+      definition: $(SignPipelineDefinitionId)
+      buildVersionToDownload: 'specific'
+      pipelineId: $(PipelineBuildId)
       artifactName: 'artifacts'
       targetPath: $(Pipeline.Workspace)
 
@@ -94,18 +119,7 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
-      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -BuildId $(Build.BuildId) -OSVersion ${{ parameters.vmImage }} -PSVersion ${{ parameters.psVersion }} -RepoLocation $(Build.SourcesDirectory)'
-
-  - task: PowerShell@2
-    displayName: Save live test results to Kusto
-    condition: succeededOrFailed()
-    inputs:
-      pwsh: true
-      targetType: filePath
-      filePath: ./tools/TestFx/Live/SaveLiveTestResult.ps1
-      arguments: $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion) $(LiveTestDatabaseName) $(LiveTestTableName) $(TestCoverageTableName) $(DataLocation)
-      failOnStderr: true
-    retryCountOnTaskFailure: 3
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -BuildId $(Build.BuildId) -OSType ${{ parameters.osType }} -OSVersion ${{ parameters.vmImage }} -PSVersion ${{ parameters.psVersion }} -Tag $(Tag) -RepoLocation $(Build.SourcesDirectory)'
 
   - task: PublishPipelineArtifact@1
     displayName: Publish live test results to pipeline artifact

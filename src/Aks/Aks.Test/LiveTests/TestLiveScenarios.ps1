@@ -1,7 +1,4 @@
-$PreDebugPreference = $DebugPreference
-$DebugPreference = 'Continue'
-
-Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRUD and node pool CRU" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRUD and node pool CRU" -RunPlatform Linux -RunPowerShellVersion latest -ScenarioScript `
 {
     param ($rg)
 
@@ -156,5 +153,3 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Write-Host "##[section]Finished removing Aks cluster : Remove-AzAksCluster"
 
 }
-
-$DebugPreference = $PreDebugPreference

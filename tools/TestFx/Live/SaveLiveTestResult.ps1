@@ -25,11 +25,7 @@ param (
 
     [Parameter(Mandatory, Position = 6)]
     [ValidateNotNullOrEmpty()]
-    [string] $LiveTestTableName,
-
-    [Parameter(Mandatory, Position = 7)]
-    [ValidateNotNullOrEmpty()]
-    [string] $TestCoverageTableName,
+    [string] $TableName,
 
     [Parameter(Mandatory, Position = 8)]
     [ValidateNotNullOrEmpty()]
@@ -48,26 +44,9 @@ if (![string]::IsNullOrWhiteSpace($liveTestResults) -and (Test-Path -LiteralPath
         -ClusterName $ClusterName `
         -ClusterRegion $ClusterRegion `
         -DatabaseName $DatabaseName `
-        -TableName $LiveTestTableName `
+        -TableName $TableName `
         -CsvFile $liveTestResults
 }
 else {
     Write-Host "##[warning]No live test data was found."
-}
-
-$testCoverageDir = Join-Path -Path $DataLocation -ChildPath "TestCoverageAnalysis" | Join-Path -ChildPath "Raw"
-$testCoverageResults = Get-ChildItem -Path $testCoverageDir -Filter "*.csv" -File -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
-if (![string]::IsNullOrWhiteSpace($testCoverageResults) -and (Test-Path -LiteralPath $testCoverageResults -PathType Leaf)) {
-    Import-KustoDataFromCsv `
-        -ServicePrincipalTenantId $ServicePrincipalTenantId `
-        -ServicePrincipalId $ServicePrincipalId `
-        -ServicePrincipalSecret $ServicePrincipalSecret `
-        -ClusterName $ClusterName `
-        -ClusterRegion $ClusterRegion `
-        -DatabaseName $DatabaseName `
-        -TableName $TestCoverageTableName `
-        -CsvFile $testCoverageResults
-}
-else {
-    Write-Host "##[warning]No test coverage data was found."
 }
