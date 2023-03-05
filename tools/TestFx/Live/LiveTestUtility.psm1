@@ -18,22 +18,7 @@ param (
 
     [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
-    [string] $BuildId,
-
-    [Parameter(Mandatory)]
-    [ValidateNotNullOrEmpty()]
-    [string] $OSType,
-
-    [Parameter(Mandatory)]
-    [ValidateNotNullOrEmpty()]
-    [string] $OSVersion,
-
-    [Parameter(Mandatory)]
-    [ValidateNotNullOrEmpty()]
-    [string] $PSVersion,
-
-    [Parameter()]
-    [string] $Tag,
+    [string] $RunPlatform,
 
     [Parameter()]
     [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
@@ -63,7 +48,7 @@ function InitializeLiveTestModule {
         New-Item -Path $script:LiveTestRawDirectory -ItemType Directory -Force
     }
 
-    ({} | Select-Object "Source", "BuildId", "OSVersion", "PSVersion", "Module", "Name", "Description", "StartDateTime", "EndDateTime", "IsSuccess", "Errors", "ExtendedProperties" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $script:LiveTestRawCsvFile -Encoding utf8 -Force
+    ({} | Select-Object "PSVersion", "Module", "Name", "Description", "StartDateTime", "EndDateTime", "IsSuccess", "Errors" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $script:LiveTestRawCsvFile -Encoding utf8 -Force
 }
 
 function New-LiveTestRandomName {
@@ -236,11 +221,11 @@ function Invoke-LiveTestScenario {
 
         [Parameter()]
         [ValidateSet("Windows", "Linux", "MacOS", IgnoreCase = $false)]
-        [string[]] $RunPlatform,
+        [string[]] $Platform,
 
         [Parameter()]
-        [ValidateSet("7.0", "7.1", "7.2", "latest", IgnoreCase = $false)]
-        [string[]] $RunPowerShellVersion,
+        [ValidateSet("5.1", "7.0", "7.1", "7.2", "7.3", "latest", IgnoreCase = $false)]
+        [string[]] $PowerShellVersion,
 
         [Parameter(ParameterSetName = "HasDefaulResourceGroup")]
         [ValidateNotNullOrEmpty()]
@@ -256,27 +241,17 @@ function Invoke-LiveTestScenario {
 
     $proceed = $true
 
-    if ($PSBoundParameters.ContainsKey("RunPlatform") -and $OSType -notin $RunPlatform) {
+    if ($PSBoundParameters.ContainsKey("Platform") -and $RunPlatform -notin $Platform) {
         $proceed = $false
     }
 
-    if ($PSBoundParameters.ContainsKey("RunPowerShellVersion")) {
-        $curPSVer = (Get-Variable -Name PSVersionTable -ValueOnly).PSVersion
-        if ($PSVersion -eq "latest") {
-            if ("latest" -notin $RunPowerShellVersion) {
-                $proceed = $false
-            }
-            else {
-                $PSVersion = $curPSVer.ToString()
-            }
-        }
-        else {
-            $curMajorVer = $curPSVer.Major
-            $curMinorVer = $curPSVer.Minor
-            $curSimpleVer = "$curMajorVer.$curMinorVer"
-            if ($curSimpleVer -notin $RunPowerShellVersion) {
-                $proceed = $false
-            }
+    $curPSVer = (Get-Variable -Name PSVersionTable -ValueOnly).PSVersion
+    if ($PSBoundParameters.ContainsKey("PowerShellVersion")) {
+        $curMajorVer = $curPSVer.Major
+        $curMinorVer = $curPSVer.Minor
+        $curSimpleVer = "$curMajorVer.$curMinorVer"
+        if ($curSimpleVer -notin $PowerShellVersion) {
+            $proceed = $false
         }
     }
 
@@ -287,16 +262,9 @@ function Invoke-LiveTestScenario {
     if ($proceed) {
         Write-Host "##[group]Start executing the live scenario `"$Name`"." -ForegroundColor Green
 
-        if ($PSBoundParameters.ContainsKey("Tag") -and ![string]::IsNullOrEmpty($Tag)) {
-            $exProps = @{ Tag = $Tag } | ConvertTo-Json -Compress
-        }
-
         try {
             $snrCsvData = [PSCustomObject]@{
-                Source             = "LiveTest"
-                BuildId            = $BuildId
-                OSVersion          = $OSVersion
-                PSVersion          = $PSVersion
+                PSVersion          = $curPSVer.ToString()
                 Module             = $ModuleName
                 Name               = $Name
                 Description        = $Description
@@ -304,7 +272,6 @@ function Invoke-LiveTestScenario {
                 EndDateTime        = $null
                 IsSuccess          = $true
                 Errors             = $null
-                ExtendedProperties = $exProps
             }
 
             if (!$NoResourceGroup.IsPresent) {

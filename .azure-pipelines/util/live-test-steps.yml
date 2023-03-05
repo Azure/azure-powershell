@@ -119,11 +119,22 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
-      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -BuildId $(Build.BuildId) -OSType ${{ parameters.osType }} -OSVersion ${{ parameters.vmImage }} -PSVersion ${{ parameters.psVersion }} -Tag $(Tag) -RepoLocation $(Build.SourcesDirectory)'
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -RunPlatform ${{ parameters.osType }} -RepoLocation $(Build.SourcesDirectory)'
+
+  - task: PowerShell@2
+    displayName: Save live test results to Kusto
+    condition: succeededOrFailed()
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Live/SaveLiveTestResult.ps1
+      arguments: $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion) $(LiveTestDatabaseName) $(LiveTestTableName) $(DataLocation) $(Build.BuildId) ${{ parameters.vmImage }} "$(Tag)"
+      failOnStderr: true
+    retryCountOnTaskFailure: 3
 
   - task: PublishPipelineArtifact@1
     displayName: Publish live test results to pipeline artifact
     inputs:
-      artifact: livetest-os-${{ parameters.vmImage }}-powershell-${{ parameters.psVersion }}
+      artifact: livetest-os-${{ parameters.vmImage }}-powershell-${{ parameters.name }}
       targetPath: $(DataLocation)
     condition: always()

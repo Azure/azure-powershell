@@ -1,19 +1,7 @@
 param (
     [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
-    [string] $BuildId,
-
-    [Parameter(Mandatory)]
-    [ValidateNotNullOrEmpty()]
-    [string] $OSType,
-
-    [Parameter(Mandatory)]
-    [ValidateNotNullOrEmpty()]
-    [string] $OSVersion,
-
-    [Parameter(Mandatory)]
-    [ValidateNotNullOrEmpty()]
-    [string] $PSVersion,
+    [string] $RunPlatform,
 
     [Parameter(Mandatory)]
     [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
@@ -30,7 +18,7 @@ $liveScenarios = Get-ChildItem -Path $srcDir -Directory -Exclude "Accounts" | Ge
 $liveScenarios | ForEach-Object {
     $moduleName = [regex]::match($_.FullName, "[\\|\/]src[\\|\/](?<ModuleName>[a-zA-Z]+)[\\|\/]").Groups["ModuleName"].Value
     Import-Module "./tools/TestFx/Assert.ps1" -Force
-    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $moduleName, $BuildId, $OSType $OSVersion, $PSVersion, $dataLocation -Force
+    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $moduleName, $RunPlatform, $dataLocation -Force
     . $_.FullName
 }
 
@@ -38,7 +26,7 @@ $accountsDir = Join-Path -Path $srcDir -ChildPath "Accounts"
 $accountsLiveScenario = Get-ChildItem -Path $accountsDir -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1"
 if ($null -ne $accountsLiveScenario) {
     Import-Module "./tools/TestFx/Assert.ps1" -Force
-    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList "Accounts", $BuildId, $OSType $OSVersion, $PSVersion, $dataLocation -Force
+    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList "Accounts", $RunPlatform, $dataLocation -Force
     . $accountsLiveScenario.FullName
 }
 

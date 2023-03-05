@@ -27,6 +27,10 @@ parameters:
   displayName: PowerShell 7.2.x Version
   type: string
   default: 7.2.*
+- name: ps_7_3_x
+  displayName: PowerShell 7.3.x Version
+  type: string
+  default: 7.3.*
 - name: ps_latest
   displayName: PowerShell Latest Version
   type: string
@@ -68,14 +72,6 @@ jobs:
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_7_0_x_win'
-    vmImage: ${{ parameters.img_windows }}
-    osType: 'Windows'
-    psVersion: ${{ parameters.ps_7_0_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/live-test-steps.yml
-  parameters:
     name: 'ps_7_1_x_win'
     vmImage: ${{ parameters.img_windows }}
     osType: 'Windows'
@@ -92,19 +88,11 @@ jobs:
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_latest_win'
+    name: 'ps_7_3_x_win'
     vmImage: ${{ parameters.img_windows }}
     osType: 'Windows'
-    psVersion: ${{ parameters.ps_latest }}
+    psVersion: ${{ parameters.ps_7_3_x }}
     dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
-
-- template: util/live-test-steps.yml
-  parameters:
-    name: 'ps_7_0_x_linux'
-    vmImage: ${{ parameters.img_linux }}
-    osType: 'Linux'
-    psVersion: ${{ parameters.ps_7_0_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
 - template: util/live-test-steps.yml
   parameters:
@@ -124,19 +112,11 @@ jobs:
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_latest_linux'
+    name: 'ps_7_3_x_linux'
     vmImage: ${{ parameters.img_linux }}
     osType: 'Linux'
-    psVersion: ${{ parameters.ps_latest }}
+    psVersion: ${{ parameters.ps_7_3_x }}
     dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
-
-- template: util/live-test-steps.yml
-  parameters:
-    name: 'ps_7_0_x_macOS'
-    vmImage: ${{ parameters.img_macos }}
-    osType: 'MacOS'
-    psVersion: ${{ parameters.ps_7_0_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
 - template: util/live-test-steps.yml
   parameters:
@@ -156,8 +136,8 @@ jobs:
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_latest_macOS'
+    name: 'ps_7_3_x_macOS'
     vmImage: ${{ parameters.img_macos }}
     osType: 'MacOS'
-    psVersion: ${{ parameters.ps_latest }}
+    psVersion: ${{ parameters.ps_7_3_x }}
     dotnetVersion: ${{ parameters.dotnet_sdk_7 }}

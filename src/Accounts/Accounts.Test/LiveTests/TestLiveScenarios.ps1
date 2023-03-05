@@ -15,6 +15,6 @@ Invoke-LiveTestScenario -Name "Disconnect service principal account" -Descriptio
     $tenantId = $account.Tenants[0]
     Disconnect-AzAccount -ApplicationId $applicationId -TenantId $tenantId
 
-    $token = Get-AzAccessToken
+    $token = Get-AzAccessToken -ErrorAction SilentlyContinue
     Assert-True { ($null -eq $token) -or ($null -ne $token -and $token.UserId -ne $applicationId) }
 }
