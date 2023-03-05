@@ -48,7 +48,7 @@ $liveTestResults = Get-ChildItem -Path $liveTestDir -Filter "*.csv" -File -Error
 
 if (![string]::IsNullOrWhiteSpace($liveTestResults)) {
     if (![string]::IsNullOrEmpty($Tag)) {
-        $props = @{ Tag = $Tag } | ConvertTo-Json -Compress
+        $exProps = @{ Tag = $Tag } | ConvertTo-Json -Compress
     }
 
     $liveTestResults | ForEach-Object {
@@ -65,7 +65,7 @@ if (![string]::IsNullOrWhiteSpace($liveTestResults)) {
         @{ Name = "EndDateTime"; Expression = { $_.EndDateTime } }, `
         @{ Name = "IsSuccess"; Expression = { $_.IsSuccess } }, `
         @{ Name = "Errors"; Expression = { $_.Errors } }, `
-        @{ Name = "ExtendedProperties"; Expression = { $props } } |
+        @{ Name = "ExtendedProperties"; Expression = { $exProps } } |
         Export-Csv -Path $_ -Encoding utf8 -NoTypeInformation -Force
     }
 

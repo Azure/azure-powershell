@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "Create new standard key vault" -Description "Test creating a new standard key vault with all default values" -Platform Windows, MacOS -ScenarioScript `
+Invoke-LiveTestScenario -Name "Create new standard key vault" -Description "Test creating a new standard key vault with all default values" -ScenarioScript `
 {
     param ($rg)
 
@@ -19,7 +19,7 @@ Invoke-LiveTestScenario -Name "Create new standard key vault" -Description "Test
     Assert-AreEqual 90 $actual.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
 }
 
-Invoke-LiveTestScenario -Name "Create new premium key vault" -Description "Test creating a new premium key vault with all default values" -PowerShellVersion "7.1", "7.2" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Create new premium key vault" -Description "Test creating a new premium key vault with all default values" -ScenarioScript `
 {
     param ($rg)
 
@@ -36,7 +36,7 @@ Invoke-LiveTestScenario -Name "Create new premium key vault" -Description "Test 
     Assert-AreEqual $true $actual.EnabledForDeployment
 }
 
-Invoke-LiveTestScenario -Name "Update key vault" -Description "Test updating properties EnableRbacAuthorization and Tag for existing key vault" -Platform MacOS -ScenarioScript `
+Invoke-LiveTestScenario -Name "Update key vault" -Description "Test updating properties EnableRbacAuthorization and Tag for existing key vault" -ScenarioScript `
 {
     param ($rg)
 
@@ -154,7 +154,7 @@ Invoke-LiveTestScenario -Name "Update key vault secret attributes" -Description 
     Assert-AreEqual $ctp $actual.ContentType
 }
 
-Invoke-LiveTestScenario -Name "Remove key vault secret" -Description "Test removing a key vault secret" -PowerShellVersion "7.2" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Remove key vault secret" -Description "Test removing a key vault secret" -ScenarioScript `
 {
     param ($rg)
 

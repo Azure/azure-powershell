@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "Valicate access token" -Description "Test validating access token" -NoResourceGroup -ScenarioScript `
+Invoke-LiveTestScenario -Name "Validate access token" -Description "Test validating access token" -NoResourceGroup -ScenarioScript `
 {
     $account = (Get-AzContext).Account
     $applicationId = $account.Id

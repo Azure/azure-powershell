@@ -21,7 +21,7 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
     # Assert-AreEqual $userData $actual.UserData
 }
 
-Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Description "Test removes a virtual machine from Azure."  -ScenarioScript `
+Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Description "Test removes a virtual machine from Azure." -ScenarioScript `
 {
     param ($rg)
 
@@ -44,7 +44,7 @@ Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Descriptio
     Assert-Null $removedVM
 }
 
-Invoke-LiveTestScenario -Name "Create a managed disk" -Description "Test creating a managed disk" -Platform Windows -PowerShellVersion "7.0", "7.1", "7.2", latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Create a managed disk" -Description "Test creating a managed disk" -ScenarioScript `
 {
     param ($rg)
 
@@ -66,7 +66,7 @@ Invoke-LiveTestScenario -Name "Create a managed disk" -Description "Test creatin
     Assert-AreEqual Windows $actual.OsType
 }
 
-Invoke-LiveTestScenario -Name "Update a managed disk" -Description "Test updating an existing managed disk" -Platform Linux -PowerShellVersion latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Update a managed disk" -Description "Test updating an existing managed disk" -ScenarioScript `
 {
     param ($rg)
 
@@ -94,7 +94,7 @@ Invoke-LiveTestScenario -Name "Update a managed disk" -Description "Test updatin
     Assert-AreEqual $diskSkuNameUpdated $actual.Sku.Name
 }
 
-Invoke-LiveTestScenario -Name "Remove a managed disk" -Description "Test removing an existing managed disk" -Platform MacOS -PowerShellVersion "7.0", "7.1", latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Remove a managed disk" -Description "Test removing an existing managed disk" -ScenarioScript `
 {
     param ($rg)
 
@@ -112,7 +112,7 @@ Invoke-LiveTestScenario -Name "Remove a managed disk" -Description "Test removin
     Assert-Null $actual
 }
 
-Invoke-LiveTestScenario -Name "Create a ssh key" -Description "Test creating a ssh key" -Platform Windows, Linux -PowerShellVersion latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Create a ssh key" -Description "Test creating a ssh key" -PowerShellVersion "5.1", "Latest" -ScenarioScript `
 {
     param ($rg)
 
@@ -126,7 +126,7 @@ Invoke-LiveTestScenario -Name "Create a ssh key" -Description "Test creating a s
     Assert-AreEqual $keyName $actual.Name
 }
 
-Invoke-LiveTestScenario -Name "Update a ssh key" -Description "Test updating an existing ssh key" -Platform Linux, MacOS -PowerShellVersion "7.0", "7.1", "7.2" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Update a ssh key" -Description "Test updating an existing ssh key" -PowerShellVersion "5.1", "Latest" -ScenarioScript `
 {
     param ($rg)
 
@@ -154,7 +154,7 @@ Invoke-LiveTestScenario -Name "Update a ssh key" -Description "Test updating an 
     Assert-AreEqual $publicKey1 $actual2.publicKey
 }
 
-Invoke-LiveTestScenario -Name "Delete a ssh key" -Description "Test deleting a ssh key" -Platform Windows, Linux, MacOS -PowerShellVersion "7.0", latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Delete a ssh key" -Description "Test deleting a ssh key" -PowerShellVersion "5.1", "Latest" -ScenarioScript `
 {
     param ($rg)
 

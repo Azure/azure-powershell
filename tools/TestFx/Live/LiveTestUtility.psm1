@@ -39,6 +39,8 @@ New-Variable -Name LiveTestAnalysisDirectory -Value (Join-Path -Path $DataLocati
 New-Variable -Name LiveTestRawDirectory -Value (Join-Path -Path $script:LiveTestAnalysisDirectory -ChildPath "Raw") -Scope Script -Option Constant
 New-Variable -Name LiveTestRawCsvFile -Value (Join-Path -Path $script:LiveTestRawDirectory -ChildPath "Az.$ModuleName.csv") -Scope Script -Option Constant
 
+New-Variable -Name PowerShellLatestVersion -Value "7.3" -Scope Script -Option Constant
+
 function InitializeLiveTestModule {
     [CmdletBinding()]
     param ()
@@ -224,7 +226,7 @@ function Invoke-LiveTestScenario {
         [string[]] $Platform,
 
         [Parameter()]
-        [ValidateSet("5.1", "7.0", "7.1", "7.2", "7.3", "latest", IgnoreCase = $false)]
+        [ValidateSet("5.1", "Latest")]
         [string[]] $PowerShellVersion,
 
         [Parameter(ParameterSetName = "HasDefaulResourceGroup")]
@@ -247,10 +249,11 @@ function Invoke-LiveTestScenario {
 
     $curPSVer = (Get-Variable -Name PSVersionTable -ValueOnly).PSVersion
     if ($PSBoundParameters.ContainsKey("PowerShellVersion")) {
+        $psSimpleVer = $PowerShellVersion -replace "Latest", $script:PowerShellLatestVersion
         $curMajorVer = $curPSVer.Major
         $curMinorVer = $curPSVer.Minor
         $curSimpleVer = "$curMajorVer.$curMinorVer"
-        if ($curSimpleVer -notin $PowerShellVersion) {
+        if ($curSimpleVer -notin $psSimpleVer) {
             $proceed = $false
         }
     }
@@ -260,18 +263,25 @@ function Invoke-LiveTestScenario {
     }
 
     if ($proceed) {
-        Write-Host "##[group]Start executing the live scenario `"$Name`"." -ForegroundColor Green
+        Write-Host "##[group]Start executing the live scenario `"$Name`"." -ForegroundColor Magenta
+
+        if ($curPSVer.Major -eq 5) {
+            $PSVersion = "5.1"
+        }
+        else {
+            $PSVersion = $curPSVer.ToString()
+        }
 
         try {
             $snrCsvData = [PSCustomObject]@{
-                PSVersion          = $curPSVer.ToString()
-                Module             = $ModuleName
-                Name               = $Name
-                Description        = $Description
-                StartDateTime      = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
-                EndDateTime        = $null
-                IsSuccess          = $true
-                Errors             = $null
+                PSVersion     = $PSVersion
+                Module        = $ModuleName
+                Name          = $Name
+                Description   = $Description
+                StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss")
+                EndDateTime   = $null
+                IsSuccess     = $true
+                Errors        = $null
             }
 
             if (!$NoResourceGroup.IsPresent) {
@@ -368,7 +378,7 @@ function Invoke-LiveTestScenario {
                 }
             }
 
-            Write-Host "##[endgroup]"
+            Write-Host "##[endgroup]" -ForegroundColor Magenta
         }
     }
 }

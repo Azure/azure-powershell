@@ -14,20 +14,20 @@ if ([string]::IsNullOrWhiteSpace($dataLocation) -or !(Test-Path -LiteralPath $da
 }
 
 $srcDir = Join-Path -Path $RepoLocation -ChildPath "src"
-$liveScenarios = Get-ChildItem -Path $srcDir -Directory -Exclude "Accounts" | Get-ChildItem -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1"
+$liveScenarios = Get-ChildItem -Path $srcDir -Directory -Exclude "Accounts" | Get-ChildItem -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" | Select-Object -ExpandProperty FullName
 $liveScenarios | ForEach-Object {
-    $moduleName = [regex]::match($_.FullName, "[\\|\/]src[\\|\/](?<ModuleName>[a-zA-Z]+)[\\|\/]").Groups["ModuleName"].Value
+    $moduleName = [regex]::match($_, "[\\|\/]src[\\|\/](?<ModuleName>[a-zA-Z]+)[\\|\/]").Groups["ModuleName"].Value
     Import-Module "./tools/TestFx/Assert.ps1" -Force
     Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $moduleName, $RunPlatform, $dataLocation -Force
-    . $_.FullName
+    . $_
 }
 
 $accountsDir = Join-Path -Path $srcDir -ChildPath "Accounts"
-$accountsLiveScenario = Get-ChildItem -Path $accountsDir -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1"
+$accountsLiveScenario = Get-ChildItem -Path $accountsDir -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" | Select-Object -ExpandProperty FullName
 if ($null -ne $accountsLiveScenario) {
     Import-Module "./tools/TestFx/Assert.ps1" -Force
     Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList "Accounts", $RunPlatform, $dataLocation -Force
-    . $accountsLiveScenario.FullName
+    . $accountsLiveScenario
 }
 
 Write-Host "##[section]Waiting for all cleanup jobs to be completed." -ForegroundColor Green
