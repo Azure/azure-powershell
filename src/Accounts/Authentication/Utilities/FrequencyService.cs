@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -24,7 +26,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         private Dictionary<string, FrequencyInfo> _frequencies;
         private Dictionary<string, bool> _perPSSessionRegistry;
-        private readonly string _filePath = "FrequencyService.json";
+        private readonly string _filePath = Path.Combine(Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                    Resources.AzureDirectoryName), "AzPSFrequencyService.json");
         private IDataStore _dataStore;
         internal IClock _clock;
 
@@ -57,10 +61,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     _frequencies = new Dictionary<string, FrequencyInfo>();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("Error loading frequency file", ex);
+                _dataStore = new MemoryDataStore();
+
+                _frequencies = new Dictionary<string, FrequencyInfo>();
+
             }
+            
         }
 
         public FrequencyService(IDataStore dataStore, IClock clock)
