@@ -28,6 +28,7 @@
 * Added support for state in WAF Custom Rule
 * Added `New-AzGatewayCustomBgpIpConfigurationObject` command
 * Updated `New-AzVirtualNetworkGatewayConnection`, `Set-AzVirtualNetworkGatewayConnection` and `New-AzVpnSiteLinkConnection` to support GatewayCustomBgpIpConfiguration.
+* Updated `Reset-AzVpnGateway` to support IpConfigurationId.
 
 ## Version 5.3.0
 * Added samples for retrieving Private Link IP Configuration using 'New-AzApplicationGatewayPrivateLinkIpConfiguration' with fix [#20440]

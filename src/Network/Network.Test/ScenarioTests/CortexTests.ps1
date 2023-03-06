@@ -1525,6 +1525,14 @@ function Test-VpnConnectionPacketCapture
 		$vpnConnection = New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name $vpnConnectionName -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
 		Assert-AreEqual 1 $vpnConnection.VpnLinkConnections.Count
 
+		# Reset the VpnGateway using IpconfigurationId
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		$job = Reset-AzVpnGateway -VpnGateway $vpnGateway -IpConfigurationId "Instance0" -AsJob
+		$job | Wait-Job
+		$actual = $job | Receive-Job
+		
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual "Succeeded" $vpnGateway.ProvisioningState
      }
      finally
      {
