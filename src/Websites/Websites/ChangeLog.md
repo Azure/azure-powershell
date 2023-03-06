@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* * Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetwork Integration Info` [#10665]
+* Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetwork Integration Info` [#10665]
 * Added a new parameter `-CopyIdentity` for `New-AzWebAppSlot` to copy the identity from the parent app to the slot.
 * Updated `New-AzWebAppSSLBinding` to support -WhatIf parameter
 
