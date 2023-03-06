@@ -25,6 +25,7 @@
 ## Version 6.5.2
 * Fixed query issue when objectId in assignment is empty for `Get-DenyAssignment`
 * Fixed an issue where running deployment cmdlets with `-WhatIf` throws exception when formatting results with nested array changes
+* Updated `Publish-AzBicepModule` to include new optional parameter `-DocumentationUri`
 
 ## Version 6.5.1
 * Fixed issue introduced in previous fix for `Set-AzPolicySetDefinition` InternalServerError when the initiative is too large [#20238], which will remove space in value.
