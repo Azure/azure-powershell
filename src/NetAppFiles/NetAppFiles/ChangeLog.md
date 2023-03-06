@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.11.1
 * Updated Azure.Core to 1.28.0.
 
 ## Version 0.11.0

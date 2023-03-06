@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
     - `New-AzFirewallPolicySnat`
     - `New-AzFirewallPolicy`
