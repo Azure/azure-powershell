@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         private const string MinimalVersionRequirementForBicepPublish = "0.4.1008";
 
+        private const string MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter = "0.14.46";
+
         public delegate void OutputCallback(string msg);
 
         public static bool IsBicepFile(string templateFilePath) =>
@@ -56,14 +58,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             return buildResultPath;
         }
 
-        public static void PublishFile(string bicepFilePath, string target, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
+        public static void PublishFile(string bicepFilePath, string target, string documentationUri = null, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
             if (!FileUtilities.DataStore.FileExists(bicepFilePath))
             {
                 throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePath, "File");
             }
 
-            RunBicepCommand($"bicep publish '{bicepFilePath}' --target '{target}'", MinimalVersionRequirementForBicepPublish, writeVerbose, writeWarning);
+            string bicepPublishCommand;
+
+            if (!string.IsNullOrWhiteSpace(documentationUri))
+            {
+                CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter);
+                bicepPublishCommand = $"bicep publish '{bicepFilePath}' --target '{target}' --documentationUri '{documentationUri}'";
+            }
+            else
+            {
+                bicepPublishCommand = $"bicep publish '{bicepFilePath}' --target '{target}'";
+            }
+
+            RunBicepCommand(bicepPublishCommand, MinimalVersionRequirementForBicepPublish, writeVerbose, writeWarning);
         }
 
         private static void CheckBicepExecutable()
